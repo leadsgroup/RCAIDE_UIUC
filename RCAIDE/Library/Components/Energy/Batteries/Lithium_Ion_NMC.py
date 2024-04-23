@@ -23,7 +23,7 @@ from scipy.interpolate  import RegularGridInterpolator
 # ---------------------------------------------------------------------------------------------------------------------- 
 ## @ingroup Library-Compoments-Energy-Batteries 
 class Lithium_Ion_NMC(Lithium_Ion_Generic):
-    """ 18650 lithium-nickel-manganese-cobalt-oxide battery cellc.
+    """ 18650 lithium-nickel-manganese-cobalt-oxide battery cells.
     """       
     
     def __defaults__(self):   
