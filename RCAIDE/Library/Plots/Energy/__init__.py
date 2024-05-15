@@ -20,3 +20,6 @@ from .plot_electric_propulsor_efficiencies      import plot_electric_propulsor_e
 from .plot_fuel_consumption                     import plot_fuel_consumption
 from .plot_altitude_sfc_weight                  import plot_altitude_sfc_weight
 from .plot_propulsor_throttles                  import plot_propulsor_throttles
+from .plot_heat_acquisition_system_conditions import plot_heat_acquisition_system_conditions
+from. plot_heat_exchanger_system_conditions import plot_heat_exchanger_system_conditions
+from . plot_reservoir_conditions import plot_reservoir_conditions
