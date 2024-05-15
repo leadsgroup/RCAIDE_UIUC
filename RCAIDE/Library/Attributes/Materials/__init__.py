@@ -1,5 +1,5 @@
 ## @defgroup Attributes-Materials Materials
-# RCAIDE/Library/Attributes/Materials/__init__.py
+# RCAIDE/Attributes/Materials/__init__.py
 # 
 
 """RCAIDE Package Setup
@@ -9,7 +9,7 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
-from .Solid import Solid
+from .Material import Material
 from Legacy.trunk.S.Attributes.Solids.Unidirectional_Carbon_Fiber import Unidirectional_Carbon_Fiber
 from Legacy.trunk.S.Attributes.Solids.Bidirectional_Carbon_Fiber import Bidirectional_Carbon_Fiber
 from Legacy.trunk.S.Attributes.Solids.Carbon_Fiber_Honeycomb import Carbon_Fiber_Honeycomb

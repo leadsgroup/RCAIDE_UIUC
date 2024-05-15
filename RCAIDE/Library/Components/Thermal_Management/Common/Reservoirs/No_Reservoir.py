@@ -1,22 +1,21 @@
-
-
-## @ingroup Energy-Thermal_Management-Batteries-Reservoir
-# RCAIDE/Energy/Thermal_Management/Batteries/Reservoir/Reservoir.py
+## @ingroup Energy-Thermal_Management-Common-Reservoirs
+# RCAIDE/Energy/Thermal_Management/Common/Reservoirs/No_Reservoir.py
 # 
 # 
+# Created:  Mar 2024, S S. Shekar
 
-# ----------------------------------------------------------------------
-#  Imports
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------
  
-from RCAIDE.Energy.Energy_Component import Energy_Component   
-from RCAIDE.Methods.Energy.Thermal_Management.Batteries.Reservoir.No_Reservoir import compute_mixing_temperature, compute_reservoir_temperature
+from RCAIDE.Library.Components import Component  
+from RCAIDE.Library.Methods.Energy.Thermal_Management.Common.Reservoir.No_Reservoir import compute_mixing_temperature, compute_reservoir_temperature
 
 # ----------------------------------------------------------------------
-#  Class
+#  No Reservoir 
 # ----------------------------------------------------------------------
 ## @ingroup Attributes-Coolants
-class No_Reservoir(Energy_Component):
+class No_Reservoir(Component):
     """Holds values for a coolant reservoir
 
     Assumptions:

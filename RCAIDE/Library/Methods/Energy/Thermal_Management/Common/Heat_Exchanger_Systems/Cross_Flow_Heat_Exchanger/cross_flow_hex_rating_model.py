@@ -9,9 +9,44 @@ import numpy as np
 #  Methods
 # ----------------------------------------------------------------------
 def cross_flow_hex_rating_model(HEX,battery_conditions,state,dt,i):
-    '''
-      COMMENTS SAI 
-      '''
+    """ 
+          
+          Inputs: 
+          HAS.
+             channel_side_thicknes
+             channel_width        
+             channel_contact_angle
+             channel_top_thickness
+             channel
+             heat_transfer_efficiency
+             coolant  
+             coolant_flow_rate
+          battery.
+                  cell.diameter
+                  cell.height  
+                  module.geometrtic_configuration.parallel_count
+                  module.geometrtic_configuration.series_count
+                  pack.number_of_modules 
+                  cell.specific_heat_capacity
+          battery_conditions.
+                             thermal_management_system.RES.coolant_temperature 
+                             thermal_management_system.percent_operation
+                             cell.temperature
+                             
+          Outputs:
+                battery_conditions.
+                                   thermal_management_system.heat_generated                 
+                                   thermal_management_system.HAS.heat_removed               
+                                   thermal_management_system.HAS.outlet_coolant_temperature
+                                   thermal_management_system.HAS.coolant_mass_flow_rate     
+                                   thermal_management_system.HAS.power 
+                                   thermal_management_system.HAS.effectiveness              
+                                   cell.temperature                            
+          Assumptions: 
+            
+          Source:
+            Shah RK, Sekulić DP. Fundamentals of Heat Exchanger Design. John Wiley & Sons; 2003 
+    """      
     
     air              = HEX.air
     coolant          = HEX.coolant 

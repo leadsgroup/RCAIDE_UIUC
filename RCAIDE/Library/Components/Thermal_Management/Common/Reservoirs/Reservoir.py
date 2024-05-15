@@ -1,23 +1,24 @@
-## @ingroup Energy-Thermal_Management-Batteries-Reservoir
-# RCAIDE/Energy/Thermal_Management/Batteries/Reservoir/Reservoir.py
+## @ingroup Energy-Thermal_Management-Common-Reservoirs
+# RCAIDE/Energy/Thermal_Management/Common/Reservoirs/Reservoir.py
 # 
 # 
+# Created:  Mar 2024, S S. Shekar
 
-# ----------------------------------------------------------------------
-#  Imports
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------
  
-from RCAIDE.Energy.Energy_Component                                         import Energy_Component   
-from RCAIDE.Attributes.Coolants.Glycol_Water                                import Glycol_Water
-from RCAIDE.Attributes.Materials.Polyetherimide                             import Polyetherimide
-from RCAIDE.Methods.Energy.Thermal_Management.Batteries.Reservoir.Reservoir import compute_mixing_temperature, compute_reservoir_temperature
+from RCAIDE.Library.Components import Component 
+from RCAIDE.Library.Attributes.Coolants.Glycol_Water                                import Glycol_Water
+from RCAIDE.Library.Attributes.Materials.Polyetherimide                             import Polyetherimide
+from RCAIDE.Library.Methods.Energy.Thermal_Management.Common.Reservoir.Reservoir import compute_mixing_temperature, compute_reservoir_temperature
 
 
 # ----------------------------------------------------------------------
 #  Class
 # ----------------------------------------------------------------------
 ## @ingroup Attributes-Coolants
-class Reservoir(Energy_Component):
+class Reservoir(Component):
     """Holds values for a coolant reservoir
 
     Assumptions:

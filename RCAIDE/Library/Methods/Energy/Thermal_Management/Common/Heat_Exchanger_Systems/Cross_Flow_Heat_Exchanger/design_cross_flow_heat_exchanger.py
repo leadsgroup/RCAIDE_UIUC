@@ -31,20 +31,11 @@ def design_cross_flow_heat_exchanger(HEX,HAS,battery, single_side_contact=True, 
         This scrip adopts RCAIDE's native optimization style where the objective function is expressed 
         as a sizing function, considering both power and mass.
           
-          Inputs: 
-          HAS.
-              Length, Height and width of the Heat Exchanger System 
-             
-          Outputs:
-                 Length, Height, and Width of the Heat Exchanger System
-                 Mass of Heat Exchanger System
-                 Power Consumed by Heat Exchanger System 
-                 
           Assumptions: 
-             The wavy channel extracts from the battery pack considering it to be a lumped mass.  
+            
         
           Source:
-            Zhao, C., Clarke, M., Kellermann H., Verstraete D., “Design of a Liquid Cooling System for Lithium-Ion Battery Packs for eVTOL Aircraft" 
+           Shah RK, Sekulić DP. Fundamentals of Heat Exchanger Design. John Wiley & Sons; 2003. 
     """    
     
     
@@ -71,7 +62,27 @@ def design_cross_flow_heat_exchanger(HEX,HAS,battery, single_side_contact=True, 
 
 ## @ingroup Methods-Thermal_Management-Batteries-Sizing
 def crossflow_heat_exchanger_design_problem_setup(HEX,HAS,print_iterations): 
+    """
+    Optimizer function
     
+           Inputs: 
+          HAS.
+              Inlet Pressures of the HEX
+              Inlet mass flow rates of the HEX
+              
+            Contraints: 
+          HAS.
+               Length, Height and width of the Heat Exchanger System
+            Objective:
+             HAS.
+              Power and Mass of the Heat Exchanger System
+             
+          Outputs:
+                 Length, Height, and Width of the Heat Exchanger System
+                 Mass of Heat Exchanger System
+                 Power Consumed by Heat Exchanger System 
+                 
+    """
     nexus                        = Nexus()
     problem                      = Data()
     nexus.optimization_problem   = problem    

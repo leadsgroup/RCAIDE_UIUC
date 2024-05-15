@@ -1,6 +1,5 @@
-## @defgroup Energy-Thermal_Management Thermal_Management
-# RCAIDE/Energy/Thermal_Management/__init__.py
-# 
+## @ingroup Methods-Thermal_Management-Batteries Batteries 
+# RCAIDE/Methods/Thermal_Management/Batteries/__init__.py 
 
 """ RCAIDE Package Setup
 """
@@ -8,8 +7,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
-from . import Batteries                            
-from . import Cryogenics
-from . import Motors
-from . import Common
 
+from . import Reservoir
+from . import No_Reservoir
