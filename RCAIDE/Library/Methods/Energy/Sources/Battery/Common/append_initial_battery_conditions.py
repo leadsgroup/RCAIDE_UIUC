@@ -3,7 +3,7 @@
 # 
 # 
 # Created:  Jul 2023, M. Clarke
-
+# Modified: Mar 2024  M. Clarke
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ def append_initial_battery_conditions(segment,bus,battery):
     battery_conditions = segment.state.conditions.energy[bus.tag][battery.tag] 
     
     # Set if it is a discharge segment
-    if type(segment) ==  RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge:  
+    if type(segment) ==  RCAIDE.Framework.Analyses.Mission.Segments.Ground.Battery_Recharge:  
         segment.state.conditions.energy.recharging  = True 
     else:
         segment.state.conditions.energy.recharging  = False 
@@ -80,8 +80,8 @@ def append_initial_battery_conditions(segment,bus,battery):
         cell_temperature  = segment.battery_cell_temperature  
     else:
         cell_temperature  = atmo_data.temperature[0,0]
-    battery_conditions.pack.temperature[:,0] = cell_temperature
-    battery_conditions.cell.temperature[:,0] = cell_temperature 
+    battery_conditions.pack.temperature[:,0] = cell_temperature +0.001
+    battery_conditions.cell.temperature[:,0] = cell_temperature +0.001
     
     # charge thoughput 
     if 'charge_throughput' in segment: 
@@ -94,8 +94,23 @@ def append_initial_battery_conditions(segment,bus,battery):
         battery_conditions.pack.maximum_initial_energy       = initial_battery_energy
         battery_conditions.pack.energy[:,0]                  = initial_battery_energy*segment.initial_battery_state_of_charge
         battery_conditions.cell.state_of_charge[:,0]         = segment.initial_battery_state_of_charge
-        battery_conditions.cell.depth_of_discharge[:,0]      = 1 - segment.initial_battery_state_of_charge
-            
+        battery_conditions.cell.depth_of_discharge[:,0]      = 1 - segment.initial_battery_state_of_charge  
+        
+    HEX = battery.thermal_management_system.heat_exchanger_system
+    HAS = battery.thermal_management_system.heat_acquisition_system
+    
+    battery_conditions.thermal_management_system.HAS.outlet_coolant_temperature[:,0] = atmo_data.temperature[0,0] 
+    battery_conditions.thermal_management_system.HAS.coolant_mass_flow_rate[:,0]     = HAS.coolant_flow_rate 
+    battery_conditions.thermal_management_system.HEX.inlet_air_temperature[:,0]      = atmo_data.temperature[0,0] 
+    battery_conditions.thermal_management_system.HEX.air_mass_flow_rate[:,0]         = HEX.design_air_mass_flow_rate
+    battery_conditions.thermal_management_system.HEX.air_inlet_pressure[:,0]         = HEX.design_air_inlet_pressure
+    battery_conditions.thermal_management_system.HEX.coolant_inlet_pressure[:,0]     = HEX.design_air_inlet_pressure
+    battery_conditions.thermal_management_system.HEX.outlet_coolant_temperature[:,0] = atmo_data.temperature[0,0]
+    battery_conditions.thermal_management_system.HEX.coolant_mass_flow_rate[:,0]     = HEX.design_coolant_mass_flow_rate 
+    battery_conditions.thermal_management_system.RES.coolant_temperature[:,0]        = atmo_data.temperature[0,0]
+    battery_conditions.thermal_management_system.percent_operation[:,0]              = HEX.percent_operation   
+    battery_conditions.thermal_management_system.segment_tag                         = segment.tag
+ 
     return 
     
  

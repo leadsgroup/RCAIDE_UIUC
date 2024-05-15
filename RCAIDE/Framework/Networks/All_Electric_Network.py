@@ -2,7 +2,8 @@
 # RCAIDE/Energy/Networks/All_Electric_Network.py
 # 
 # 
-# Created:  Jul 2023, M. Clarke 
+# Created:  Jul 2023, M. Clarke
+# Modified: Mar 2024 S S. Shekar
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -262,27 +263,51 @@ class All_Electric_Network(Network):
                 if type(segment) == RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge:
                     bus_results[battery.tag].pack.current              = segment.current * ones_row(1)  
                 else: 
-                    bus_results[battery.tag].pack.current              = 0 * ones_row(1)    
-                bus_results[battery.tag].pack.energy                   = 0 * ones_row(1)   
-                bus_results[battery.tag].pack.voltage_open_circuit     = 0 * ones_row(1)  
-                bus_results[battery.tag].pack.voltage_under_load       = 0 * ones_row(1)  
-                bus_results[battery.tag].pack.power                    = 0 * ones_row(1)   
-                bus_results[battery.tag].pack.temperature              = 0 * ones_row(1)   
-                bus_results[battery.tag].pack.heat_energy_generated    = 0 * ones_row(1)   
-                bus_results[battery.tag].pack.internal_resistance      = 0 * ones_row(1)   
-                bus_results[battery.tag].cell.heat_energy_generated    = 0 * ones_row(1)    
-                bus_results[battery.tag].cell.state_of_charge          = 0 * ones_row(1)   
-                bus_results[battery.tag].cell.power                    = 0 * ones_row(1)         
-                bus_results[battery.tag].cell.energy                   = 0 * ones_row(1)         
-                bus_results[battery.tag].cell.voltage_under_load       = 0 * ones_row(1)         
-                bus_results[battery.tag].cell.voltage_open_circuit     = 0 * ones_row(1)        
-                bus_results[battery.tag].cell.current                  = 0 * ones_row(1)         
-                bus_results[battery.tag].cell.temperature              = 0 * ones_row(1)         
-                bus_results[battery.tag].cell.charge_throughput        = 0 * ones_row(1)         
-                bus_results[battery.tag].cell.depth_of_discharge       = 0 * ones_row(1)
-                bus_results[battery.tag].cell.cycle_in_day             = 0
-                bus_results[battery.tag].cell.resistance_growth_factor = 1.
-                bus_results[battery.tag].cell.capacity_fade_factor     = 1.  
+                    bus_results[battery.tag].pack.current                                         = 0 * ones_row(1)    
+                bus_results[battery.tag].pack.energy                                              = 0 * ones_row(1)   
+                bus_results[battery.tag].pack.voltage_open_circuit                                = 0 * ones_row(1)  
+                bus_results[battery.tag].pack.voltage_under_load                                  = 0 * ones_row(1)  
+                bus_results[battery.tag].pack.power                                               = 0 * ones_row(1)   
+                bus_results[battery.tag].pack.temperature                                         = 0 * ones_row(1)   
+                bus_results[battery.tag].pack.heat_energy_generated                               = 0 * ones_row(1)   
+                bus_results[battery.tag].pack.internal_resistance                                 = 0 * ones_row(1)   
+                bus_results[battery.tag].cell.heat_energy_generated                               = 0 * ones_row(1)    
+                bus_results[battery.tag].cell.state_of_charge                                     = 0 * ones_row(1)   
+                bus_results[battery.tag].cell.power                                               = 0 * ones_row(1)         
+                bus_results[battery.tag].cell.energy                                              = 0 * ones_row(1)         
+                bus_results[battery.tag].cell.voltage_under_load                                  = 0 * ones_row(1)         
+                bus_results[battery.tag].cell.voltage_open_circuit                                = 0 * ones_row(1)        
+                bus_results[battery.tag].cell.current                                             = 0 * ones_row(1)         
+                bus_results[battery.tag].cell.temperature                                         = 0 * ones_row(1)         
+                bus_results[battery.tag].cell.charge_throughput                                   = 0 * ones_row(1)         
+                bus_results[battery.tag].cell.depth_of_discharge                                  = 0 * ones_row(1)
+                bus_results[battery.tag].cell.cycle_in_day                                        = 0
+                bus_results[battery.tag].cell.resistance_growth_factor                            = 1.
+                bus_results[battery.tag].cell.capacity_fade_factor                                = 1.
+                bus_results[battery.tag].thermal_management_system.percent_operation              = 0 * ones_row(1)  
+                bus_results[battery.tag].thermal_management_system.heat_generated                 = 0 * ones_row(1)      
+                bus_results[battery.tag].thermal_management_system.power                          = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.inlet_coolant_pressure     = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.heat_removed               = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.inlet_coolant_temperature  = 0 * ones_row(1)   
+                bus_results[battery.tag].thermal_management_system.HAS.outlet_coolant_temperature = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.coolant_mass_flow_rate     = 0 * ones_row(1)  
+                bus_results[battery.tag].thermal_management_system.HAS.effectiveness              = 0 * ones_row(1)
+                bus_results[battery.tag].thermal_management_system.HAS.power                      = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.coolant_mass_flow_rate     = 0 * ones_row(1)  
+                bus_results[battery.tag].thermal_management_system.HEX.power                      = 0 * ones_row(1)  
+                bus_results[battery.tag].thermal_management_system.HEX.inlet_air_temperature      = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.outlet_coolant_temperature = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.air_mass_flow_rate         = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.air_inlet_pressure         = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.coolant_inlet_pressure     = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.coolant_mass_flow_rate     = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.pressure_diff_air          = 0 * ones_row(1)
+                bus_results[battery.tag].thermal_management_system.HEX.effectiveness_HEX          = 0 * ones_row(1)
+                bus_results[battery.tag].thermal_management_system.RES.coolant_temperature        = 0 * ones_row(1)
+             
+             
+            
                 append_initial_battery_conditions(segment,bus,battery)    
                  
             # ------------------------------------------------------------------------------------------------------

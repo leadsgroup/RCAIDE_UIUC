@@ -2,7 +2,10 @@
 # RCAIDE/Methods/Thermal_Management/Batteries/Heat_Acquisition_System/No_Heat_Acquisition/direct_convection_model.py
 # 
 # 
-# Created:  Jul 2023, M. Clarke 
+# Created:  Jul 2023, M. Clarke
+"""
+*************** Subject to Change *****************************************
+"""
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT

@@ -207,7 +207,29 @@ class Isolated_Battery_Cell_Network(Network):
                 bus_results[battery.tag].cell.depth_of_discharge       = 0 * ones_row(1)
                 bus_results[battery.tag].cell.cycle_in_day             = 0
                 bus_results[battery.tag].cell.resistance_growth_factor = 1.
-                bus_results[battery.tag].cell.capacity_fade_factor     = 1.  
+                bus_results[battery.tag].cell.capacity_fade_factor     = 1.
+                bus_results[battery.tag].thermal_management_system.heat_generated                 = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.power                          = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.inlet_coolant_pressure     = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.heat_removed               = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.inlet_coolant_temperature  = 0 * ones_row(1)   
+                bus_results[battery.tag].thermal_management_system.HAS.outlet_coolant_temperature = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HAS.coolant_mass_flow_rate     = 0 * ones_row(1)  
+                bus_results[battery.tag].thermal_management_system.HAS.effectiveness              = 0 * ones_row(1)
+                bus_results[battery.tag].thermal_management_system.HAS.power                      = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.coolant_mass_flow_rate     = 0 * ones_row(1)  
+                bus_results[battery.tag].thermal_management_system.HEX.power                      = 0 * ones_row(1)  
+                bus_results[battery.tag].thermal_management_system.HEX.inlet_air_temperature      = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.outlet_coolant_temperature = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.air_mass_flow_rate         = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.coolant_mass_flow_rate     = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.air_inlet_pressure         = 0 * ones_row(1) 
+                bus_results[battery.tag].thermal_management_system.HEX.coolant_inlet_pressure     = 0 * ones_row(1)   
+                bus_results[battery.tag].thermal_management_system.HEX.effectiveness_HEX          = 0 * ones_row(1)
+                bus_results[battery.tag].thermal_management_system.HEX.pressure_diff_air          = 0 * ones_row(1)
+                bus_results[battery.tag].thermal_management_system.RES.coolant_temperature        = 0 * ones_row(1)
+               
+                
                 append_initial_battery_conditions(segment,bus,battery)      
                 
                 # appennd residuals and unknowns for recharge segment                     

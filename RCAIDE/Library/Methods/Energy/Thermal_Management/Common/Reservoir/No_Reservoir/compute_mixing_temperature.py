@@ -1,20 +1,33 @@
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Addition_Systems
-# RCAIDE/Energy/Thermal_Management/Batteries/H
-# 
-# 
-# Created:  Mar 2024, 
-
-# ----------------------------------------------------------------------------------------------------------------------
-#  IMPORT
-# ----------------------------------------------------------------------------------------------------------------------
-# RCAIDE imports  
-from RCAIDE.Core import Data  
+## @ingroup Library-Energy-Methods-Thermal_Management-Common
+# RCAIDE/Library/Methods/Energy/Thermal_Management/Common/Reservoir/No_Reservoir/compute_mixing_temperature.py
 
 
+# Created:  Apr 2024, S. Shekar 
+
 # ----------------------------------------------------------------------------------------------------------------------
-#  Compute Power Consumed by heating element
+#  Compute resultant temperature of the reservoir
 # ----------------------------------------------------------------------------------------------------------------------
 def compute_mixing_temperature(RES,battery_conditions,state,dt,i,remove_heat):
+    """
+     Computes the resultant temperature of the reservoir at each time step with coolant pouring in from the HAS and the HEX 
+          
+          Inputs: 
+                 HAS
+                 HEX
+                 battery_conditions
+                 dt
+                 i 
+             
+          Outputs:
+                 RES.coolant.temperature
+                 
+          Assumptions: 
+             N/A
+        
+          Source:
+
+    
+    """
     
     # Current Reservoir temperature
     T_current                = battery_conditions.thermal_management_system.RES.coolant_temperature[i,0]

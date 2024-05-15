@@ -1,22 +1,34 @@
-
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Addition_Systems
-# RCAIDE/Energy/Thermal_Management/Batteries/Heat_Addition_Systems/No_Heat_Addition/no_heat_power_consumed.py
-# 
-# 
-# Created:  Mar 2024, 
-
-# ----------------------------------------------------------------------------------------------------------------------
-#  IMPORT
-# ----------------------------------------------------------------------------------------------------------------------
-# RCAIDE imports  
-from RCAIDE.Core import Data  
+## @ingroup Library-Energy-Methods-Thermal_Management-Common
+# RCAIDE/Library/Methods/Energy/Thermal_Management/Common/Reservoir/No_Reservoir/compute_reservoir_temperature.py
 
 
+# Created:  Apr 2024, S. Shekar 
+
 # ----------------------------------------------------------------------------------------------------------------------
-#  Compute Power Consumed by heating element
+#  Compute heat loss to environment 
 # ----------------------------------------------------------------------------------------------------------------------
+
 def compute_reservoir_temperature(RES,battery_conditions,state,dt,i):
+    """
+     Computes the resultant temperature of the reservoir at each time step with coolant loosing heat to the environment
+          
+          Inputs: 
+                 HAS
+                 HEX
+                 battery_conditions
+                 dt
+                 i 
+             
+          Outputs:
+                 RES.coolant.temperature
+                 
+          Assumptions: 
+             N/A
+        
+          Source:
+
     
+    """    
     # Ambient Air Temperature 
     T_ambient                   = state.conditions.freestream.temperature[i,0] 
     
