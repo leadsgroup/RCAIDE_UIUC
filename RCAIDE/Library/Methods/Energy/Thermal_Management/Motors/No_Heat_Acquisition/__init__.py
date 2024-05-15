@@ -1,5 +1,5 @@
-## @ingroup Library-Methods-Thermal_Management-Batteries Batteries 
-# RCAIDE/Library/Methods/Thermal_Management/Batteries/__init__.py 
+## @ingroup Methods-Thermal_Management-Batteries-Heat_Acquisition_System-No_Heat_Acquisition
+# RCAIDE/Methods/Thermal_Management/Batteries/Heat_Acquisition_System/No_Heat_Acquisition/__init__.py
 
 """ RCAIDE Package Setup
 """
@@ -8,7 +8,4 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
 
-from . import Direct_Air_Heat_Aquistion
-from . import No_Heat_Acquisition
-from . import Wavy_Channel_Heat_Acquisition
-
+from .no_heat_acquisition_model import no_heat_acquisition_model

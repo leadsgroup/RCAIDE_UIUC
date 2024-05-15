@@ -12,7 +12,7 @@ from RCAIDE.Framework.Core                              import Units
 from RCAIDE.Library.Attributes.Coolants.Glycol_Water    import Glycol_Water
 from RCAIDE.Library.Components.Component                import Component  
 from RCAIDE.Library.Attributes.Materials.Aluminum       import Aluminum
-from RCAIDE.Library.Methods.Energy.Thermal_Management.Batteries.Heat_Acquisition_Systems.Wavy_Channel_Heat_Acquisition.wavy_channel_rating_model import  wavy_channel_rating_model 
+from RCAIDE.Library.Methods.Energy.Thermal_Management.Batteries.Wavy_Channel_Heat_Acquisition.wavy_channel_rating_model import  wavy_channel_rating_model 
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Conjugate_Heat_Removal_System  
