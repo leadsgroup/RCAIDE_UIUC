@@ -1,20 +1,21 @@
 ## @ingroup Energy-Thermal_Management-Batteries-Accessories
 # RCAIDE/Energy/Thermal_Management/Batteries/Accessories/Fan.py
 # 
-# 
+#
+# Created: March 2024 S S. Shekar
 
 # ----------------------------------------------------------------------
 #  Imports
 # ----------------------------------------------------------------------
 
-from RCAIDE.Core import Data
+from RCAIDE.Framework.Core import Data
 
 # ----------------------------------------------------------------------
 #  Class
 # ----------------------------------------------------------------------
 ## @ingroup Attributes-Coolants
 class Fan(Data):
-    """Holds values for a coolant reservoir
+    """Holds values for a model Fan 
 
     Assumptions:
    Power 

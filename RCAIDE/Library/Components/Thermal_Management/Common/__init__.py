@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
-from .Direct_Air           import Direct_Air 
-from .No_Heat_Acquisition  import No_Heat_Acquisition
-from .Wavy_Channel         import Wavy_Channel
+from . import Accessories
+from . import Heat_Exchanger_Systems
+from . import Reservoirs
 

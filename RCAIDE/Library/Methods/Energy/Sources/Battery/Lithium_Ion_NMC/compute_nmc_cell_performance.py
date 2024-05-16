@@ -2,13 +2,14 @@
 # RCAIDE/Methods/Energy/Sources/Battery/Lithium_Ion_NMC/compute_nmc_cell_performance.py
 # 
 # 
-# Created:  Feb 2024, M. Clarke  SAI
+# Created:  Feb 2024, M. Clarke,
+# Modified: Mar 2024 S S. Shekar 
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
-from RCAIDE.Core                       import Units 
-from RCAIDE.Methods.Energy.Sources.Battery.Common import compute_thermal_performance
+from RCAIDE.Framework.Core                       import Units 
+from RCAIDE.Library.Methods.Energy.Sources.Battery.Common import compute_thermal_performance
 import numpy as np  
  
 # ----------------------------------------------------------------------------------------------------------------------

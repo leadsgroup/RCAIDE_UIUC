@@ -1,20 +1,19 @@
 ## @ingroup Energy-Thermal_Management-Batteries-Accessories
 # RCAIDE/Energy/Thermal_Management/Batteries/Accessories/Pump.py
 # 
-# 
+# Created: March 2024 S S. Shekar 
 
 # ----------------------------------------------------------------------
 #  Imports
 # ----------------------------------------------------------------------
 
-from RCAIDE.Core import Data
+from RCAIDE.Framework.Core import Data
 
 # ----------------------------------------------------------------------
 #  Class
 # ----------------------------------------------------------------------
-## @ingroup Attributes-Coolants
 class Pump(Data):
-    """Holds values for a coolant reservoir
+    """Holds values for a pump
 
     Assumptions:
     None

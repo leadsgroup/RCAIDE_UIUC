@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------  
 # RCAIDE Imports  
 from RCAIDE.Framework.Analyses.Process   import Process 
-from RCAIDE.Library.Methods.Energy.Thermal_Management.Accessories import Pump 
+from RCAIDE.Library.Components.Thermal_Management.Common.Accessories import Pump 
 
 # Python package imports  
 import numpy as np  

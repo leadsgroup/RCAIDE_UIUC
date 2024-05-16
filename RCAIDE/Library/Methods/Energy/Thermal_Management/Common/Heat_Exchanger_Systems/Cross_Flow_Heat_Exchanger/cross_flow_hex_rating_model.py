@@ -1,8 +1,12 @@
-
+## @ingroup Library-Methods-Energy-Thermal_Management-Common-Heat_Exchanger_System
+# cross_flow_hex_rating_model.py
+# 
+# 
+# Created:  Apr 2024, S. Shekar
 # ----------------------------------------------------------------------
 #  Imports
 # ---------------------------------------------------------------------- 
-from RCAIDE.Core import Data 
+from RCAIDE.Framework.Core import Data 
 import numpy as np  
 
 # ----------------------------------------------------------------------

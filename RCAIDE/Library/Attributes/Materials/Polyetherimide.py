@@ -4,15 +4,15 @@
 # Imports
 #-------------------------------------------------------------------------------
 
-from .Material import Material
-from RCAIDE.Core import Units
+from .Solid import Solid
+from RCAIDE.Framework.Core import Units
 
 #-------------------------------------------------------------------------------
 # Aluminum for WavyChannel for battery cooling
 #-------------------------------------------------------------------------------
 
 ## @ingroup Attributes-Solid
-class Polyetherimide(Material):
+class Polyetherimide(Solid):
 
     """ Physical Constants Specific to 6061-T6 Aluminum
 

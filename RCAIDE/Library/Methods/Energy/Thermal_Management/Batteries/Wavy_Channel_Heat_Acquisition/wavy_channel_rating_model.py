@@ -9,7 +9,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports  
 from RCAIDE.Framework.Core import Data  
-from RCAIDE.Library.Methods.Energy.Thermal_Management.Accessories import Pump  
+from RCAIDE.Library.Components.Thermal_Management.Common.Accessories import Pump  
 
 # python package imports 
 import numpy as np  

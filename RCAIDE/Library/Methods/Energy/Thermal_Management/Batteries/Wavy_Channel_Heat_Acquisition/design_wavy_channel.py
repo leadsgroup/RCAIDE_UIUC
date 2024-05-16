@@ -9,8 +9,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports   
 from RCAIDE.Framework.Core import Units , Data  
-from RCAIDE.Library.Methods.Energy.Thermal_Management.Batteries.Heat_Acquisition_Systems.Wavy_Channel_Heat_Acquisition.wavy_channel_sizing_setup      import wavy_channel_sizing_setup
-from RCAIDE.Library.Methods.Energy.Thermal_Management.Batteries.Heat_Acquisition_Systems.Wavy_Channel_Heat_Acquisition.wavy_channel_geometry_setup    import wavy_channel_geometry_setup
+from RCAIDE.Library.Methods.Energy.Thermal_Management.Batteries.Wavy_Channel_Heat_Acquisition.wavy_channel_sizing_setup      import wavy_channel_sizing_setup
+from RCAIDE.Library.Methods.Energy.Thermal_Management.Batteries.Wavy_Channel_Heat_Acquisition.wavy_channel_geometry_setup    import wavy_channel_geometry_setup
 from RCAIDE.Framework.Optimization.Common             import Nexus
 from RCAIDE.Framework.Optimization.Packages.scipy     import scipy_setup
 
