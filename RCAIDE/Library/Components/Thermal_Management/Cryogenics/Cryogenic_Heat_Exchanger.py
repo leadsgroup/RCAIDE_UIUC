@@ -1,5 +1,5 @@
-## @ingroup Energy-Thermal_Management-Cryogenics
-# RCAIDE/Energy/Thermal_Management/Cryogenics/Cryogenic_Heat_Exchange.py
+## @ingroup Library-Compoments-Thermal_Management-Cryogenics
+# RCAIDE/Library/Compoments/Thermal_Management/Cryogenics/Cryogenic_Heat_Exchange.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,7 +16,7 @@ from RCAIDE.Library.Methods.Energy.Thermal_Management.Cryogenics.compute_cryogen
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Cryogenic Heat Exchanger Component
 # ---------------------------------------------------------------------------------------------------------------------- 
-## @ingroup Energy-Thermal_Management-Cryogenics
+## @ingroup Library-Compoments-Thermal_Management-Cryogenics
 class Cryogenic_Heat_Exchanger(Component):
     """This provides output values for a heat exchanger used to cool cryogenic components
     

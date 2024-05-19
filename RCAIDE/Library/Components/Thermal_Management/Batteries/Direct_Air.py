@@ -1,5 +1,5 @@
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Acquisition_Systems
-# RCAIDE/Energy/Thermal_Management/Batteries/Heat_Acquisition_Systems/Direct_Air.py
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Heat_Acquisition_Systems
+# RCAIDE/Library/Compoments/Thermal_Management/Batteries/Heat_Acquisition_Systems/Direct_Air.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -15,7 +15,7 @@ from RCAIDE.Library.Attributes.Gases import Air
 # ----------------------------------------------------------------------------------------------------------------------
 #  Atmospheric_Air_Convection_Heat_Exchanger
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Acquisition_Systems
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Heat_Acquisition_Systems
 class Direct_Air(Component):
     """This provides output values for a direct convention heat exchanger of a bettery pack
     

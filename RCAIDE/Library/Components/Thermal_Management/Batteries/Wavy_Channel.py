@@ -17,7 +17,7 @@ from RCAIDE.Library.Methods.Energy.Thermal_Management.Batteries.Wavy_Channel_Hea
 # ----------------------------------------------------------------------------------------------------------------------
 # Conjugate_Heat_Removal_System  
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Acquisition_Systems
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Heat_Acquisition_Systems
 class Wavy_Channel(Component):
     '''
        Wavy Channel Heat Acqusition System

@@ -1,5 +1,5 @@
-## @ingroup Energy-Thermal_Management-Cryogenics
-# RCAIDE/Energy/Thermal_Management/Cryogenics/Cryocooler.py
+## @ingroup Library-Compoments-Thermal_Management-Cryogenics
+# RCAIDE/Library/Compoments/Thermal_Management/Cryogenics/Cryocooler.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -15,7 +15,7 @@ from RCAIDE.Library.Methods.Energy.Thermal_Management.Cryogenics.cryocooler_mode
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Cryocooler
 # ----------------------------------------------------------------------------------------------------------------------     
-## @ingroup Energy-Thermal_Management-Cryogenics
+## @ingroup Library-Compoments-Thermal_Management-Cryogenics
 class Cryocooler(Component):
     
     """

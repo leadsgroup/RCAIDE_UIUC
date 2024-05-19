@@ -1,4 +1,4 @@
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Acquisition_Systems
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Heat_Acquisition_Systems
 # RCAIDE/Library/Components/Thermal_Management/Common/Heat_Exchanger_Systems/Cross_flow_Heat_Exchanger.py
 # 
 # Created:  Apr 2024, M. Clarke 
@@ -20,7 +20,7 @@ import os
 # ----------------------------------------------------------------------------------------------------------------------
 #  Cross Flow Heat Exchanger 
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Acquisition_Systems   
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Heat_Acquisition_Systems   
 class Cross_Flow_Heat_Exchanger(Component):
     """ This provides outlet fluid properties from a cross flow heat exchanger
     Assumptions:

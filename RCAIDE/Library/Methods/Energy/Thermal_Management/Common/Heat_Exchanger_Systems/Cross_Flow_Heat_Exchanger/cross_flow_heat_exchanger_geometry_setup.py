@@ -1,4 +1,4 @@
-## @ingroup Library-Methods-Energy-Thermal_Management-Common-Heat-Exchanger-Systems
+## @ingroup Library-Energy-Thermal_Management-Common-Heat-Exchanger-Systems
 # cross_flow_heat_exchanger_geometry_setup.py 
 #
 # Created: Jun 2023, M. Clarke

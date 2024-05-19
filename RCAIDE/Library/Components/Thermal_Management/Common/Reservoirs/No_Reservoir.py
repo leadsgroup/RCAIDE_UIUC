@@ -1,5 +1,5 @@
-## @ingroup Energy-Thermal_Management-Common-Reservoirs
-# RCAIDE/Energy/Thermal_Management/Common/Reservoirs/No_Reservoir.py
+## @ingroup Library-Compoments-Thermal_Management-Common-Reservoirs
+# RCAIDE/Library/Compoments/Thermal_Management/Common/Reservoirs/No_Reservoir.py
 # 
 # 
 # Created:  Mar 2024, S S. Shekar

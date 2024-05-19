@@ -1,5 +1,5 @@
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Acquisition_Systems
-# RCAIDE/Energy/Thermal_Management/Batteries/Heat_Acquisition_Systems/No_Removal_System.py 
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Heat_Acquisition_Systems
+# RCAIDE/Library/Compoments/Thermal_Management/Batteries/Heat_Acquisition_Systems/No_Removal_System.py 
 
 # Created:  Jul 2023, M. Clarke 
 
@@ -13,7 +13,7 @@ from RCAIDE.Library.Methods.Energy.Thermal_Management.Common.Heat_Exchanger_Syst
 # ----------------------------------------------------------------------------------------------------------------------
 #  No_Heat_Exchanger
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Energy-Thermal_Management-Batteries-Heat_Acquisition_Systems
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Heat_Acquisition_Systems
 class No_Heat_Exchanger(Component):
     """This provides output values for a direct convention heat exchanger of a bettery pack
     

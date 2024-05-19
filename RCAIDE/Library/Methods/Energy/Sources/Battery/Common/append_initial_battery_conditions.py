@@ -66,7 +66,7 @@ def append_initial_battery_conditions(segment,bus,battery):
     battery_conditions = segment.state.conditions.energy[bus.tag][battery.tag] 
     
     # Set if it is a discharge segment
-    if type(segment) ==  RCAIDE.Framework.Analyses.Mission.Segments.Ground.Battery_Recharge:  
+    if type(segment) ==  RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge:  
         segment.state.conditions.energy.recharging  = True 
     else:
         segment.state.conditions.energy.recharging  = False 

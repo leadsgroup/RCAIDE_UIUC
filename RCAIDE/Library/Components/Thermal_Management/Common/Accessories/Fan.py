@@ -1,5 +1,5 @@
-## @ingroup Energy-Thermal_Management-Batteries-Accessories
-# RCAIDE/Energy/Thermal_Management/Batteries/Accessories/Fan.py
+## @ingroup Library-Compoments-Thermal_Management-Batteries-Accessories
+# RCAIDE/Library/Compoments/Thermal_Management/Batteries/Accessories/Fan.py
 # 
 #
 # Created: March 2024 S S. Shekar

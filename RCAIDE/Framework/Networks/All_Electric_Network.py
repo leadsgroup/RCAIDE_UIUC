@@ -259,7 +259,11 @@ class All_Electric_Network(Network):
             for b_i , battery in enumerate(batteries):            
                 bus_results[battery.tag]                               = RCAIDE.Framework.Mission.Common.Conditions() 
                 bus_results[battery.tag].pack                          = RCAIDE.Framework.Mission.Common.Conditions() 
-                bus_results[battery.tag].cell                          = RCAIDE.Framework.Mission.Common.Conditions() 
+                bus_results[battery.tag].cell                          = RCAIDE.Framework.Mission.Common.Conditions()
+                bus_results[battery.tag].thermal_management_system     = RCAIDE.Framework.Mission.Common.Conditions()
+                bus_results[battery.tag].thermal_management_system.HAS = RCAIDE.Framework.Mission.Common.Conditions()
+                bus_results[battery.tag].thermal_management_system.HEX = RCAIDE.Framework.Mission.Common.Conditions()
+                bus_results[battery.tag].thermal_management_system.RES = RCAIDE.Framework.Mission.Common.Conditions()
                 if type(segment) == RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge:
                     bus_results[battery.tag].pack.current              = segment.current * ones_row(1)  
                 else: 

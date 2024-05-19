@@ -22,7 +22,7 @@ import time
 #  Wavy Channel Design
 # ----------------------------------------------------------------------
 def design_wavy_channel(HAS,battery,single_side_contact=True, dry_mass=True,
-                        solver_name= 'SLSQP',iterations = 200,solver_sense_step = 1E-6,
+                        solver_name= 'SLSQP',iterations = 200,solver_sense_step = 1E-7,
                                        solver_tolerance = 1E-5,print_iterations = False):  
     
     """ Optimizes wavy channel geometric properties input parameters to minimize either design power and mass. 
@@ -102,27 +102,26 @@ def wavy_channel_design_problem_setup(HAS,battery,print_iterations):
     # Design Variables 
     # ----------------------------------------------------------------------------------------------------------       
     inputs = []   
-    #               variable   initial      lower limit      upper limit    scaling       units 
-    inputs.append([ 'm_dot' ,  m_dot_0     ,    0.01       ,  0.5             , 1        ,  1*Units.less])   
-    inputs.append([ 'd'     ,  d_0         ,   0.001      ,  0.01         , 1E-3     ,    1*Units.less])  
-    inputs.append([ 'b'     ,  b_0         ,   0.001      ,  0.01         , 1E-3     ,  1*Units.less]) 
-    inputs.append([ 'theta' ,  theta_0     ,48*Units.degrees, 70*Units.degrees , 1.0  ,  1*Units.less])         
+    #               variable   initial      lower limit           upper limit       scaling       units 
+    inputs.append([ 'm_dot' ,  m_dot_0     ,   0.01         ,  5                 , 1E-1       ,  1*Units.less])   
+    inputs.append([ 'd'     ,  d_0         ,   0.001        ,  0.02              , 1E-3       ,  1*Units.less])  
+    inputs.append([ 'b'     ,  b_0         ,   0.001        ,  0.01              , 1E-3       ,  1*Units.less]) 
+    inputs.append([ 'theta' ,  theta_0     ,48*Units.degrees, 70*Units.degrees   , 1.0        ,  1*Units.less])         
     problem.inputs = np.array(inputs,dtype=object)    
 
     # ----------------------------------------------------------------------------------------------------------
     # Objective
     # ---------------------------------------------------------------------------------------------------------- 
     problem.objective = np.array([  
-        [  'Obj'  ,  10   ,    1*Units.less] 
-                                 ],dtype=object)
+        [  'Obj'  ,  10   ,    1*Units.less] ],dtype=object)
 
 
     # ----------------------------------------------------------------------------------------------------------
     # Constraints
     # ----------------------------------------------------------------------------------------------------------  
     constraints = []    
-    constraints.append([ 'Q_con'         ,  '<'  ,  0.1 ,   1.0   , 1*Units.less]) 
-    constraints.append([ 'thick_con'     ,  '>'  ,  0.01 ,   1.0   , 1*Units.less]) 
+    constraints.append([ 'Q_con'         ,  '>'  ,  0.0 ,   1.0   , 1*Units.less]) 
+    constraints.append([ 'thick_con'     ,  '>'  ,  0.0 ,   1.0   , 1*Units.less]) 
     
     problem.constraints =  np.array(constraints,dtype=object)                
 

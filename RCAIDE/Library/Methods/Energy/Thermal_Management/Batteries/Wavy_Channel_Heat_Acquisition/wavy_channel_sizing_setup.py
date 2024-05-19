@@ -179,8 +179,8 @@ def post_process(nexus):
     Q_line_gen           = has_opt.heat_generated  
     new_normal_spacing   = has_opt.battery_series_spacing   
     new_parallel_spacing = has_opt.battery_parllel_spacing
-    channel_width        = has_opt.channel_side_thickness
-    channel_thickness    = has_opt.channel_width         
+    channel_width        = has_opt.channel_width        
+    channel_thickness    = has_opt.channel_side_thickness 
 
     # calculate objective 
     spacing                      = new_normal_spacing + new_parallel_spacing
@@ -190,7 +190,7 @@ def post_process(nexus):
     summary.mass_power_objective =  (spacing**2+Power**2 + total_mass**2)**(0.5)  
 
     # calculate heat constraint  
-    summary.heat_energy_constraint  = abs(Q_line_gen  -  Q_line_rem)  
-    summary.thickness_constraint    = abs(channel_width-2*channel_thickness)
+    summary.heat_energy_constraint  = Q_line_rem - Q_line_gen  # abs(Q_line_gen  -  Q_line_rem)  
+    summary.thickness_constraint    = channel_width-(2*channel_thickness)# abs(channel_width-2*channel_thickness)
 
     return nexus     

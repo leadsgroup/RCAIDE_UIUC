@@ -1,5 +1,5 @@
-## @defgroup Energy-Thermal_Management Thermal_Management
-# RCAIDE/Energy/Thermal_Management/__init__.py
+## @defgroup Library-Compoments-Thermal_Management Thermal_Management
+# RCAIDE/Library/Compoments/Thermal_Management/__init__.py
 # 
 
 """ RCAIDE Package Setup

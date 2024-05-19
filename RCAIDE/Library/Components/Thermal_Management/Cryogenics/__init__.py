@@ -1,5 +1,5 @@
-## @defgroup Energy-Thermal_Management-Cryogenics Cryogenics
-# RCAIDE/Energy/Thermal_Management/Cryogenics/__init__.py
+## @defgroup Library-Compoments-Thermal_Management-Cryogenics Cryogenics
+# RCAIDE/Library/Compoments/Thermal_Management/Cryogenics/__init__.py
 # 
 
 """ RCAIDE Package Setup

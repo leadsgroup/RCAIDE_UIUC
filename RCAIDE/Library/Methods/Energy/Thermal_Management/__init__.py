@@ -1,4 +1,4 @@
-## @defgroup Methods-Energy-Thermal_Management Thermal_Management 
+## @defgroup Methods-Library-Methods-Energy-Thermal_Management Thermal_Management 
 # RCAIDE/Methods/Energy/Thermal_Management/__init__.py
 # 
 
