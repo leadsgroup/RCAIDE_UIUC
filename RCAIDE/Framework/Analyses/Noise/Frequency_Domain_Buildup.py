@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Noise
-# RCAIDE/Analyses/Noise/Frequency_Domain_Buildup.py
+# RCAIDE/Framework/Analyses/Noise/Frequency_Domain_Buildup.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke

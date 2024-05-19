@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Cruise 
-# RCAIDE/Analyses/Mission/Segments/Cruise/Constant_Pitch_Rate_Constant_Altitude.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Pitch_Rate_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -65,7 +65,8 @@ class Constant_Pitch_Rate_Constant_Altitude(Evaluate):
         initialize.conditions              = Cruise.Constant_Pitch_Rate_Constant_Altitude.initialize_conditions  
         iterate                            = self.process.iterate 
         iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation  
-        iterate.residuals.total_forces     = Common.Residuals.level_flight_forces
+        iterate.unknowns.controls          = Common.Unpack_Unknowns.control_surfaces
+        iterate.residuals.flight_dynamics  = Common.Residuals.level_flight_dynamics
         
         return
 

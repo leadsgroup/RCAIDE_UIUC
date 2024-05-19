@@ -85,7 +85,7 @@ def base_analysis(vehicle):
     aerodynamics.geometry                              = vehicle
     aerodynamics.settings.number_of_spanwise_vortices  = 5
     aerodynamics.settings.number_of_chordwise_vortices = 2       
-    aerodynamics.process.compute.lift.inviscid_wings.settings.model_fuselage = True
+    aerodynamics.settings.model_fuselage               = True
     aerodynamics.settings.drag_coefficient_increment   = 0.0000
     analyses.append(aerodynamics) 
     

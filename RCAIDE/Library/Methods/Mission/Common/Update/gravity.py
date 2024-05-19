@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/gravity.py
+## @ingroup Library-Methods-Missions-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/gravity.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Gravity
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
 def gravity(segment):
     """ Sets the gravity for each part of the mission
     

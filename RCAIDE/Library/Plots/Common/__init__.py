@@ -1,5 +1,5 @@
-## @defgroup Visualization-Performance-Common Common 
-# RCAIDE/Visualization/Performance/Common/__init__.py
+## @defgroup Library-Plots-Performance-Common Common 
+# RCAIDE/Library/Plots/Performance/Common/__init__.py
 # 
 
 """RCAIDE Package Setup

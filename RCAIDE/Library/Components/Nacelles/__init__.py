@@ -10,4 +10,4 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 from .Nacelle import Nacelle
-from.Segment import Segment
+from .Segment import Segment

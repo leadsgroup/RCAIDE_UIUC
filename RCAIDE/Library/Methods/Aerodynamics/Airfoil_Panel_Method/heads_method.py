@@ -102,7 +102,7 @@ def heads_method(npanel,ncases,ncpts,DEL_0,THETA_0,DELTA_STAR_0,CF_0,ShapeFactor
                 x_i          = TURBULENT_COORD.data[:,case,cpt][TURBULENT_COORD.mask[:,case,cpt] ==False] 
                 Ve_i         = VE_I.data[:,case,cpt][TURBULENT_COORD.mask[:,case,cpt] ==False]
                 dVe_i        = DVE_I.data[:,case,cpt][TURBULENT_COORD.mask[:,case,cpt] ==False]
-                Re_L         = RE_L[cpt] 
+                Re_L         = RE_L[case,cpt] 
                 nu           = l/Re_L 
                 n            = len(x_i)
                 dx           = np.diff(x_i)

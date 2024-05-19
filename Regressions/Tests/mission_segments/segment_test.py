@@ -80,25 +80,25 @@ def main():
             print(val)
     
     # Truth values
-    climb_throttle_1_truth   = 0.7331730643465089
-    climb_throttle_2_truth   = 0.6647986465976148
-    climb_throttle_3_truth   = 0.3607145509721956
-    climb_throttle_4_truth   = 0.5560722498297657
-    climb_throttle_5_truth   = 0.588479929095839
-    climb_throttle_6_truth   = 0.967898425536489
-    climb_throttle_7_truth   = 1.1224921609179035
-    climb_throttle_8_truth   = 0.48003505165580895
-    climb_throttle_9_truth   = 0.5231577765294667
-    cruise_CL_1_truth        = 0.7115824322835328
-    cruise_CL_2_truth        = 0.7003984891508933
-    cruise_CL_3_truth        = 0.7937338212823204
-    descent_throttle_1_truth = 0.33272615223096275
-    descent_throttle_2_truth = 0.2635278842396706
-    single_pt_CL_1_truth     = 0.0005296821376080488
-    single_pt_CL_2_truth     = 0.0010056426448536767
-    loiter_1_CL_truth        = 0.5141384024823022
-    loiter_2_CL_truth        = 0.5141342667396287
-    descent_throttle_3_truth = 0.1185272270896125 
+    climb_throttle_1_truth   = 0.7413553797099407 
+    climb_throttle_2_truth   = 0.6748115013893704 
+    climb_throttle_3_truth   = 0.5 
+    climb_throttle_4_truth   = 0.5652439104519426 
+    climb_throttle_5_truth   = 0.5983724791877032 
+    climb_throttle_6_truth   = 0.9796892676807378 
+    climb_throttle_7_truth   = 1.1355772802410204 
+    climb_throttle_8_truth   = 0.4913884528826009 
+    climb_throttle_9_truth   = 0.5344964797080338 
+    cruise_CL_1_truth        = 0.7106187945213924 
+    cruise_CL_2_truth        = 0.6990566741499781 
+    cruise_CL_3_truth        = 0.7942978175859615 
+    descent_throttle_1_truth = 0.354190151700287 
+    descent_throttle_2_truth = 0.5 
+    single_pt_CL_1_truth     = 0.0006360316610969179 
+    single_pt_CL_2_truth     = 0.00117055548737998 
+    loiter_1_CL_truth        = 0.5026993736499399 
+    loiter_2_CL_truth        = 0.5026951650817644 
+    descent_throttle_3_truth = 0.12147255075380635
     
     # Store errors 
     error = Data()
@@ -118,8 +118,8 @@ def main():
     error.descent_throttle_2 = np.max(np.abs(descent_throttle_2   - descent_throttle_2_truth))
     error.single_pt_CL_1     = np.max(np.abs(single_pt_CL_1       - single_pt_CL_1_truth ))     
     error.single_pt_CL_2     = np.max(np.abs(single_pt_CL_2       - single_pt_CL_2_truth ))  
-    error.loiter_1_CL        = np.max(np.abs(loiter_1_CL            - loiter_1_CL_truth ))      
-    error.loiter_2_CL        = np.max(np.abs(loiter_2_CL            - loiter_2_CL_truth ))         
+    error.loiter_1_CL        = np.max(np.abs(loiter_1_CL          - loiter_1_CL_truth ))      
+    error.loiter_2_CL        = np.max(np.abs(loiter_2_CL          - loiter_2_CL_truth ))         
     error.descent_throttle_3 = np.max(np.abs(descent_throttle_3   - descent_throttle_3_truth))  
      
     print('Errors:')

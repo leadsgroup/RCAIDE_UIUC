@@ -9,8 +9,7 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
-from . import Airfoil_Panel_Method
-from . import AVL
+from . import Airfoil_Panel_Method 
 from . import AERODAS
 from . import Vortex_Lattice_Method
 from . import Common

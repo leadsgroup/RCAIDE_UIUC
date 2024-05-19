@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Transition
-# RCAIDE/Analyses/Mission/Segments/Transition/Constant_Acceleration_Constant_Angle_Linear_Climb.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Transition/Constant_Acceleration_Constant_Angle_Linear_Climb.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -64,7 +64,9 @@ class Constant_Acceleration_Constant_Angle_Linear_Climb(Evaluate):
         initialize                         = self.process.initialize 
         initialize.conditions              = Segments.Transition.Constant_Acceleration_Constant_Angle_Linear_Climb.initialize_conditions  
         iterate                            = self.process.iterate  
-        iterate.residuals.total_forces     = Common.Residuals.level_flight_forces 
+        iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation
+        iterate.unknowns.controls          = Common.Unpack_Unknowns.control_surfaces
+        iterate.residuals.flight_dynamics  = Common.Residuals.level_flight_dynamics
         
         return
 

@@ -1,5 +1,5 @@
-## @ingroup Visualization-Geometry-Common
-# RCAIDE/Visualization/Noise/post_process_noise_dat.py
+## @ingroup Library-Plots-Geometry-Common
+# RCAIDE/Library/Plots/Noise/post_process_noise_dat.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -18,7 +18,7 @@ from scipy.interpolate import RegularGridInterpolator
 #  PLOTS
 # ---------------------------------------------------------------------------------------------------------------------- 
 
-## @ingroup Visualization-Geometry-Common
+## @ingroup Library-Plots-Geometry-Common
 def post_process_noise_data(results,time_step = 20): 
     """This translates all noise data into metadata for plotting 
     

@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Ground
-# RCAIDE/Analyses/Mission/Segments/Ground/Landing.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Ground/Landing.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -92,8 +92,8 @@ class Landing(Evaluate):
         initialize                         = self.process.initialize
         initialize.conditions              = Ground.Landing.initialize_conditions  
         iterate                            = self.process.iterate   
-        iterate.conditions.forces_ground   = Update.ground_forces    
+        iterate.conditions.forces_ground   = Update.ground_forces
         iterate.unknowns.mission           = Unpack_Unknowns.ground
-        iterate.residuals.total_forces     = Residuals.ground_forces        
+        iterate.residuals.flight_dynamics  = Residuals.ground_flight_dynamics
 
         return

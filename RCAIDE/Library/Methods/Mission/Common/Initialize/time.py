@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common-Initialize
-# RCAIDE/Methods/Missions/Common/Initialize/time.py
+## @ingroup Library-Methods-Missions-Common-Initialize
+# RCAIDE/Library/Methods/Missions/Common/Initialize/time.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Time
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Common-Initialize
+## @ingroup Library-Methods-Missions-Common-Initialize
 def time(segment):
     """ Sets the initial time of the vehicle at the start of the segment
     

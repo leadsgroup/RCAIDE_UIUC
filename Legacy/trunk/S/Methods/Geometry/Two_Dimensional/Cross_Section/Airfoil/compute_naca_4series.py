@@ -10,7 +10,7 @@ import numpy as np
 
 
 ## @ingroup Methods-Geometry-Two_Dimensional-Cross_Section-Airfoil
-def compute_naca_4series(airfoil_geometry_file,npoints= 200, leading_and_trailing_edge_resolution_factor = 1.5 ):
+def compute_naca_4series(airfoil_geometry_file,npoints= 201, leading_and_trailing_edge_resolution_factor = 1.5 ):
     """Computes the points of NACA 4-series airfoil
 
     Assumptions:
@@ -38,8 +38,9 @@ def compute_naca_4series(airfoil_geometry_file,npoints= 200, leading_and_trailin
     Properties Used:
     N/A
     """
-    if npoints%10 != 1:
-        raise AssertionError('Number of points must be of the form [a*(10^b) + 1], where a and b are integers')
+    if npoints%2 != 1:
+        npoints+= 1
+        print('Number of points must be odd, changing to ' + str(npoints) + ' points')  
          
     geometry        = Data()
     half_npoints    = npoints/2                                    # number of points per side    

@@ -26,5 +26,6 @@ class NACA_4_Series_Airfoil(Airfoil):
         Source:
             None
         """        
-        self.tag                    = 'NACA_4_Series'
+        self.tag                   = 'NACA_4_Series'
+        self.NACA_4_Series_code    = '0012'
         return 

@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/thrust.py
+## @ingroup Library-Methods-Missions-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/thrust.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Thrust
 # ---------------------------------------------------------------------------------------------------------------------- 
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
 def thrust(segment):
     """ Updates the thrust vector of the vehicle from the propulsors 
         

@@ -37,7 +37,6 @@ def compute_wiring_weight(wing, config, cablePower):
     """
     weight      = 0.0 
     cableLength = 0.0
-    fLength     = config.fuselages.fuselage.lengths.total 
     for network in config.networks:
         for bus in network.busses: 
             for propulsor in bus.propulsors:
@@ -52,7 +51,12 @@ def compute_wiring_weight(wing, config, cablePower):
     cableDensity    = 5.7e-6
     massCables      = cableDensity * cablePower * cableLength
      
-    # Determine mass of sensor/communication wires  
+    # Determine mass of sensor/communication wires
+    
+    fLength = 0
+    for fus in config.fuselages:
+        fLength  += fus.lengths.total 
+    
     wiresPerBundle  = 6
     wireDensity     = 460e-5
     wireLength      = cableLength + (10 * fLength) +  4*wing.spans.projected

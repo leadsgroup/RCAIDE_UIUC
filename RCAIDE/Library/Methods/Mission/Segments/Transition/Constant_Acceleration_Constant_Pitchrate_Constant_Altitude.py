@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Transition
-# RCAIDE/Methods/Missions/Segments/Transition/Constant_Acceleration_Constant_Pitchrate_Constant_Altitude.py
+## @ingroup Library-Methods-Missions-Segments-Transition
+# RCAIDE/Library/Methods/Missions/Segments/Transition/Constant_Acceleration_Constant_Pitchrate_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,8 +7,10 @@
 # ----------------------------------------------------------------------------------------------------------------------  
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------   
+# Package imports 
+import numpy as np
 
-## @ingroup Methods-Missions-Segments-Transition
+## @ingroup Library-Methods-Missions-Segments-Transition
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 
@@ -39,6 +41,7 @@ def initialize_conditions(segment):
     alt = segment.altitude 
     v0  = segment.air_speed_start
     vf  = segment.air_speed_end  
+    beta= segment.sideslip_angle
     ax  = segment.acceleration   
     T0  = segment.pitch_initial
     Tf  = segment.pitch_final     
@@ -66,7 +69,9 @@ def initialize_conditions(segment):
     time      = t_nondim * (t_final-t_initial) + t_initial
     
     # Figure out vx
-    vx = v0+(time - t_initial)*ax
+    v_mag = v0+(time - t_initial)*ax
+    v_x   = np.cos(beta)*v_mag
+    v_y   = np.sin(beta)*v_mag
     
     # set the body angle
     if Tf > T0:
@@ -78,5 +83,6 @@ def initialize_conditions(segment):
     # pack
     segment.state.conditions.freestream.altitude[:,0] = alt
     segment.state.conditions.frames.inertial.position_vector[:,2] = -alt # z points down
-    segment.state.conditions.frames.inertial.velocity_vector[:,0] = vx[:,0]
+    segment.state.conditions.frames.inertial.velocity_vector[:,0] = v_x[:,0]
+    segment.state.conditions.frames.inertial.velocity_vector[:,0] = v_y[:,0]
     segment.state.conditions.frames.inertial.time[:,0] = time[:,0]

@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Common-Initialize
-# RCAIDE/Methods/Missions/Segments/Common/Initialize/Frames.py
+## @ingroup Library-Methods-Missions-Segments-Common-Initialize
+# RCAIDE/Library/Methods/Missions/Segments/Common/Initialize/Frames.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Planet Position
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Common-Initialize
+## @ingroup Library-Methods-Missions-Segments-Common-Initialize
 def planet_position(segment):
     """ Sets the initial location of the vehicle relative to the planet at the start of the segment
     

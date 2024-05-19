@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Ground
-# RCAIDE/Methods/Missions/Segments/Ground/Takeoff.py
+## @ingroup Library-Methods-Missions-Segments-Ground
+# RCAIDE/Library/Methods/Missions/Segments/Ground/Takeoff.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke  
@@ -14,7 +14,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # unpack unknowns
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Ground
+## @ingroup Library-Methods-Missions-Segments-Ground
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 

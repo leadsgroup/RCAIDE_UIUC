@@ -1,18 +1,18 @@
-## @ingroup Visualization-Geometry
-# RCAIDE/Visualization/Geometry/plot_3d_vehicle.py
+## @ingroup Library-Plots-Geometry
+# RCAIDE/Library/Plots/Geometry/plot_3d_vehicle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
-# ----------------------------------------------------------------------------------------------------------------------  
-from RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method  import generate_vortex_distribution 
-from RCAIDE.Framework.Analyses.Aerodynamics.Common.Vortex_Lattice import Vortex_Lattice
-from RCAIDE.Library.Plots.Geometry.plot_3d_fuselage     import plot_3d_fuselage
-from RCAIDE.Library.Plots.Geometry.plot_3d_wing         import plot_3d_wing 
-from RCAIDE.Library.Plots.Geometry.plot_3d_nacelle      import plot_3d_nacelle
-from RCAIDE.Library.Plots.Geometry.plot_3d_rotor        import plot_3d_rotor
+# ----------------------------------------------------------------------------------------------------------------------
+import RCAIDE
+from RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method  import generate_vortex_distribution  
+from RCAIDE.Library.Plots.Geometry.plot_3d_fuselage             import plot_3d_fuselage
+from RCAIDE.Library.Plots.Geometry.plot_3d_wing                 import plot_3d_wing 
+from RCAIDE.Library.Plots.Geometry.plot_3d_nacelle              import plot_3d_nacelle
+from RCAIDE.Library.Plots.Geometry.plot_3d_rotor                import plot_3d_rotor
 
 # python imports 
 import numpy as np 
@@ -21,7 +21,7 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Visualization-Geometry
+## @ingroup Library-Plots-Geometry
 def plot_3d_vehicle(vehicle,
                     show_axis                   = False,
                     save_figure                 = False,
@@ -114,7 +114,7 @@ def plot_3d_vehicle(vehicle,
     
     return     
 
-## @ingroup Visualization-Geometry
+## @ingroup Library-Plots-Geometry
 def generate_3d_vehicle_geometry_data(plot_data,
                                       vehicle,
                                       alpha                       = 1.0,
@@ -151,7 +151,7 @@ def generate_3d_vehicle_geometry_data(plot_data,
     try:
         VD = vehicle.vortex_distribution
     except:
-        VL = Vortex_Lattice()  
+        VL = RCAIDE.Framework.Analyses.Aerodynamics.Subsonic_VLM()  
         VL.settings.number_of_spanwise_vortices  = 25
         VL.settings.number_of_chordwise_vortices = 5
         VL.settings.spanwise_cosine_spacing      = False
@@ -218,7 +218,7 @@ def generate_3d_vehicle_geometry_data(plot_data,
  
     return plot_data,min_x_axis_limit,max_x_axis_limit,min_y_axis_limit,max_y_axis_limit,min_z_axis_limit,max_z_axis_limit
 
-## @ingroup Visualization-Geometry
+## @ingroup Library-Plots-Geometry
 def plot_3d_energy_network(plot_data,network,number_of_airfoil_points,color_map):
     """ This plots the 3D surface of the network
 

@@ -1,5 +1,5 @@
-## @ingroup Visualization-Geometry
-# RCAIDE/Visualization/Geometry/plot_rotor.py
+## @ingroup Library-Plots-Geometry
+# RCAIDE/Library/Plots/Geometry/plot_rotor.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,7 +16,7 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Visualization-Geometry
+## @ingroup Library-Plots-Geometry
 def plot_rotor(prop, face_color = 'red', edge_color = 'black' ,show_figure = True, save_figure = False, save_filename = "Propeller_Geometry", file_type = ".png"):
     """This plots the geometry of a propeller or rotor
 

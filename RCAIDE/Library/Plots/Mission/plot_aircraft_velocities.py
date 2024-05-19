@@ -1,5 +1,5 @@
-## @defgroup Visualization-Performance-Mission 
-# RCAIDE/Visualization/Performance/Mission/plot_aircraft_velocities.py
+## @defgroup Library-Plots-Mission  
+# RCAIDE/Library/Plots/Performance/Mission/plot_aircraft_velocities.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-## @defgroup Visualization-Performance-Mission 
+## @defgroup Library-Plots-Mission  
 def plot_aircraft_velocities(results,
                              save_figure = False,
                              show_legend = True,

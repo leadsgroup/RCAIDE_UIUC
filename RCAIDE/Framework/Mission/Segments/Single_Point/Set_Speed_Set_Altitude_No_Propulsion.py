@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Single_Point
-# RCAIDE/Analyses/Mission/Segments/Single_Point/Set_Speed_Set_Altitude_No_Propulsion.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Single_Point/Set_Speed_Set_Altitude_No_Propulsion.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -69,12 +69,13 @@ class Set_Speed_Set_Altitude_No_Propulsion(Evaluate):
         initialize.expand_state            = skip
         initialize.differentials           = skip
         initialize.conditions              = Segments.Single_Point.Set_Speed_Set_Altitude_No_Propulsion.initialize_conditions 
-        iterate                            = self.process.iterate  
-        iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation    
+        iterate                            = self.process.iterate
         iterate.conditions.differentials   = skip 
         iterate.conditions.weights         = Common.Update.weights
         iterate.conditions.planet_position = skip 
-        iterate.residuals.total_forces     = Common.Residuals.level_flight_forces
+        iterate.residuals.flight_dynamics  = Common.Residuals.level_flight_dynamics
+        iterate.unknowns.controls          = Common.Unpack_Unknowns.control_surfaces
+        iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation
         
         return
 

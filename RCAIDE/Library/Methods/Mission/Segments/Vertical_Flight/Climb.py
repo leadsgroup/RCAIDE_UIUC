@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Hover
-# RCAIDE/Methods/Missions/Segments/Hover/Climb.py
+## @ingroup Library-Methods-Missions-Segments-Hover
+# RCAIDE/Library/Methods/Missions/Segments/Hover/Climb.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -8,7 +8,7 @@
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------  
 
-## @ingroup Methods-Missions-Segments-Hover
+## @ingroup Library-Methods-Missions-Segments-Hover
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 

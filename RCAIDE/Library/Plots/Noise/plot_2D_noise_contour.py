@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Noise
-# RCAIDE/Visualization/Noise/plot_2D_noise_contour.py
+## @ingroup Library-Plots-Noise
+# RCAIDE/Library/Plots/Noise/plot_2D_noise_contour.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -19,7 +19,7 @@ import matplotlib.colors as colors
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
  
-## @ingroup Visualization-Performance-Noise
+## @ingroup Library-Plots-Noise
 def plot_2D_noise_contour(noise_data,
                        noise_level              = None ,
                        min_noise_level          = 35,  

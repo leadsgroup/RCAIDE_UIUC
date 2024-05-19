@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Ground
-# RCAIDE/Methods/Missions/Segments/Ground/Battery_Charge_or_Discharge.py
+## @ingroup Library-Methods-Missions-Segments-Ground
+# RCAIDE/Library/Methods/Missions/Segments/Ground/Battery_Charge_or_Discharge.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------  
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Methods-Missions-Segments-Ground 
+## @ingroup Library-Methods-Missions-Segments-Ground 
 def initialize_conditions(segment):  
     """Sets the specified conditions which are given for the segment type.
 

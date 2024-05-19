@@ -1,5 +1,5 @@
 ## @defgroup Analyses-Energy Energy
-# RCAIDE/Analyses/Energy/__init__.py
+# RCAIDE/Framework/Analyses/Energy/__init__.py
 # 
 
 """RCAIDE Package Setup

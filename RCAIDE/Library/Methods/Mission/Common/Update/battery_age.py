@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/battery_age.py
+## @ingroup Library-Methods-Missions-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/battery_age.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Battery Age
 # ---------------------------------------------------------------------------------------------------------------------- 
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
 def battery_age(segment):  
     """Updates battery age based on operating conditions, cell temperature and time of operation.
        Source: 

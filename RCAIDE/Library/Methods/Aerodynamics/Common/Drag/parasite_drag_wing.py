@@ -11,7 +11,7 @@
 from RCAIDE.Framework.Core import Data  
 from Legacy.trunk.S.Methods.Aerodynamics.Common.Fidelity_Zero.Helper_Functions import compressible_mixed_flat_plate
 from Legacy.trunk.S.Methods.Aerodynamics.Supersonic_Zero.Drag.Cubic_Spline_Blender import Cubic_Spline_Blender
-from RCAIDE.Library.Methods.Geometry.Two_Dimensional.Planform.wing_segmented_planform import segment_properties
+from RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform import segment_properties
  
 # package imports
 import numpy as np  

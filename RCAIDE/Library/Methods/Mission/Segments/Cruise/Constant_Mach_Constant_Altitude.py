@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Cruise
-# RCAIDE/Methods/Missions/Segments/Cruise/Constant_Mach_Constant_Altitude.py
+## @ingroup Library-Methods-Missions-Segments-Cruise
+# RCAIDE/Library/Methods/Missions/Segments/Cruise/Constant_Mach_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -8,8 +8,7 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE  
-import RCAIDE 
-from RCAIDE.Library.Methods.Mission.Common.Update.atmosphere import atmosphere
+import RCAIDE  
 
 # Package imports  
 import numpy as np
@@ -17,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Cruise
+## @ingroup Library-Methods-Missions-Segments-Cruise
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 
@@ -46,6 +45,7 @@ def initialize_conditions(segment):
     alt        = segment.altitude
     xf         = segment.distance
     mach       = segment.mach_number
+    beta       = segment.sideslip_angle
     conditions = segment.state.conditions    
     
     # check for initial altitude
@@ -70,10 +70,13 @@ def initialize_conditions(segment):
     t_final   = xf / air_speed + t_initial
     t_nondim  = segment.state.numerics.dimensionless.control_points
     time      =  t_nondim * (t_final-t_initial) + t_initial
+    v_x       = np.cos(beta)*air_speed 
+    v_y       = np.sin(beta)*air_speed 
     
     # pack
     segment.state.conditions.freestream.altitude[:,0]             = alt
     segment.state.conditions.frames.inertial.position_vector[:,2] = -alt # z points down
-    segment.state.conditions.frames.inertial.velocity_vector[:,0] = air_speed[:,0]
+    segment.state.conditions.frames.inertial.velocity_vector[:,0] = v_x[:,0]
+    segment.state.conditions.frames.inertial.velocity_vector[:,1] = v_y[:,0]
     segment.state.conditions.frames.inertial.time[:,0]            = time[:,0]
     

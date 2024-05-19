@@ -80,9 +80,7 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     x_coord      = airfoil_geometry.x_coordinates
     y_coord      = airfoil_geometry.y_coordinates
     npanel       = len(x_coord)-1 
-         
-    # if (ncases !=  len(Re_L[0,:])  ):
-    #     raise AssertionError('Number of angle of attacks and Reynolds numbers must be equal')      
+               
     x_coord_3d = np.tile(x_coord[:,None,None],(1,ncases,ncpts)) # number of points, number of cases, number of control points 
     y_coord_3d = np.tile(y_coord[:,None,None],(1,ncases,ncpts)) # number of points, number of cases, number of control points 
         
@@ -466,13 +464,20 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     DCP_DX       = np.diff(CP_BL,axis=0)/ np.diff(X_BL,axis=0) 
  
     AERO_RES     = aero_coeff(x_coord_3d,y_coord_3d,CP,alpha,npanel) 
-       
+    
+    # Squire-Young relation for total drag
+    del2_inf_l   = THETA[0,:,:]*VE[0,:,:]**((5+H[0,:,:])/2)
+    del2_inf_u   = THETA[-1,:,:]*VE[-1,:,:]**((5+H[-1,:,:])/2)
+    del2_inf     = del2_inf_u + del2_inf_l
+    cd_sqy        = 2*del2_inf.T
+    
     airfoil_properties_old = Data(
         AoA            = alpha,
         Re             = Re_L,
         cl_invisc      = AERO_RES.cl,  
         cd_invisc      = AERO_RES.cdpi, 
-        cm_invisc      = AERO_RES.cm,   
+        cm_invisc      = AERO_RES.cm,
+        cd_visc        = cd_sqy,
         normals        = np.transpose(normals,(3,2,0,1)),
         x              = np.transpose(X,(2,1,0)),
         y              = np.transpose(Y,(2,1,0)),

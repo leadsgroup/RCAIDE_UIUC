@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/planet_position.py
+## @ingroup Library-Methods-Missions-Segments-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/planet_position.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -17,7 +17,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Planet Position
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
 def planet_position(segment):
     """ Updates the location of the vehicle relative to the Planet throughout the mission
     

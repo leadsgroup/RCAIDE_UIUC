@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Aerodynamics
-# RCAIDE/Visualization/Performance/Aerodynamics/plot_rotor_disc_performance.py
+## @ingroup Library-Plots-Performance-Aerodynamics
+# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_rotor_disc_performance.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------      
-## @ingroup Visualization-Performance-Aerodynamics
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_rotor_disc_performance(prop,outputs,i=0,title=None,save_figure=False): 
 
     """Plots rotor disc performance

@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Single_Point
-# RCAIDE/Analyses/Mission/Segments/Single_Point/Set_Speed_Set_Altitude.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Single_Point/Set_Speed_Set_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -60,24 +60,28 @@ class Set_Speed_Set_Altitude(Evaluate):
         self.distance                                = 10. * Units.km
         self.acceleration_x                          = 0.
         self.acceleration_z                          = 0. # note that down is positive
-        self.state.numerics.number_of_control_points = 1  
-        
+        self.state.numerics.number_of_control_points = 1   
+         
         # -------------------------------------------------------------------------------------------------------------- 
         #  Mission specific processes 
         # --------------------------------------------------------------------------------------------------------------     
-        initialize                         = self.process.initialize 
-        initialize.expand_state            = skip
-        initialize.differentials           = skip
-        initialize.conditions              = Segments.Single_Point.Set_Speed_Set_Altitude.initialize_conditions 
-        iterate                            = self.process.iterate 
-        iterate.initials.energy            = skip
-        iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation   
-        iterate.conditions.planet_position = skip    
-        iterate.conditions.acceleration    = skip
-        iterate.conditions.weights         = skip
-        iterate.residuals.total_forces     = Common.Residuals.climb_descent_forces
-        post_process                       = self.process.post_process 
-        post_process.inertial_position     = skip   
+        initialize                               = self.process.initialize 
+        initialize.expand_state                  = skip
+        initialize.differentials                 = skip
+        initialize.conditions                    = Segments.Single_Point.Set_Speed_Set_Altitude.initialize_conditions 
+        iterate                                  = self.process.iterate 
+        iterate.initials.energy                  = skip
+        iterate.unknowns.controls                = Common.Unpack_Unknowns.control_surfaces
+        iterate.unknowns.mission                 = Common.Unpack_Unknowns.orientation  
+        iterate.conditions.planet_position       = skip    
+        iterate.conditions.acceleration          = skip
+        iterate.conditions.angular_acceleration  = skip 
+        iterate.conditions.weights               = skip
+        iterate.residuals.flight_dynamics        = Common.Residuals.climb_descent_flight_dynamics
+        post_process                             = self.process.post_process 
+        post_process.inertial_position           = skip   
+        
+                
                 
         return
 

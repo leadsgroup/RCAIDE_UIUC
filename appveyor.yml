@@ -7,8 +7,8 @@ image: Ubuntu2004
 build: off
 
 environment:
-  COVERALLS_SERVICE_NAME: appveyor
-  COVERALLS_REPO_TOKEN: hF5BIYLThdcORefix246dmHWY3KEg0aH6
+  COVERALLS_SERVICE_NAME: appveyor 
+  COVERALLS_REPO_TOKEN: 25Sl8XjzDDuldcq2FscZnlq7ts1fRVhb3
 
 init:
     - sudo apt-get update
@@ -17,7 +17,7 @@ init:
 install: 
     - python3 -m pip install --upgrade pip
     - python3 -m pip install --upgrade numpy
-    - python3 -m pip install --upgrade scipy==1.7.3
+    - python3 -m pip install --upgrade scipy
     - python3 -m pip install --upgrade scikit-learn
     - python3 -m pip install --upgrade matplotlib
     - python3 -m pip install --upgrade plotly

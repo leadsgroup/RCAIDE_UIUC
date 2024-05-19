@@ -92,6 +92,7 @@ def compute_weight(config,
     weight.motors            = 0.0
     weight.rotors            = 0.0
     weight.rotors            = 0.0
+    weight.fuselage          = 0.0
     weight.wiring            = 0.0
     weight.wings             = Data()
     weight.wings_total       = 0.0
@@ -125,6 +126,7 @@ def compute_weight(config,
     # Fixed Weights
     #-------------------------------------------------------------------------------
     MTOW                = config.mass_properties.max_takeoff
+    maxSpan             = config.wings["main_wing"].spans.projected  
     weight.seats        = config.passengers * 15.   * Units.kg
     weight.passengers   = config.passengers * 70.   * Units.kg
     weight.avionics     = 15.                       * Units.kg
@@ -292,12 +294,14 @@ def compute_weight(config,
     config.landing_gear.main.mass      = weight.landing_gear
 
     #-------------------------------------------------------------------------------
-    # Fuselage  Weight
+    # Fuselage  Weight  
     #-------------------------------------------------------------------------------
-    weight.fuselage = compute_fuselage_weight(config) * Units.kg
-    config.fuselages.fuselage.mass_properties.center_of_gravity[0][0] = .45*config.fuselages.fuselage.lengths.total
-    config.fuselages.fuselage.mass_properties.mass                    =  weight.fuselage + weight.passengers + weight.seats +\
-                                                                         weight.wiring + weight.BRS 
+    for fuse in  config.fuselages: 
+        fuselage_weight = compute_fuselage_weight(fuse, maxSpan, MTOW )  
+        fuse.mass_properties.center_of_gravity[0][0] = .45*fuse.lengths.total
+        fuse.mass_properties.mass                    =  fuselage_weight + weight.passengers + weight.seats +\
+                                                                             weight.wiring + weight.BRS
+        weight.fuselage += fuselage_weight  
 
     #-------------------------------------------------------------------------------
     # Boom Weight

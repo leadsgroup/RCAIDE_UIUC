@@ -1,5 +1,5 @@
-## @defgroup Visualization-Energy Battery 
-# RCAIDE/Visualization/Energy/__init__.py
+## @defgroup Library-Plots-Energy Battery 
+# RCAIDE/Library/Plots/Energy/__init__.py
 # 
 
 """RCAIDE Package Setup

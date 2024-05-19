@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Aerodynamics
-# RCAIDE/Visualization/Performance/Aerodynamics/plot_airfoil_polars.py
+## @ingroup Library-Plots-Performance-Aerodynamics
+# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_polars.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------     
 
-## @ingroup Visualization-Performance-Aerodynamics   
+## @ingroup Library-Plots-Performance-Aerodynamics   
 def plot_airfoil_polars(polar_data,
                         save_figure   = False,
                         save_filename = "Airfoil_Polars",

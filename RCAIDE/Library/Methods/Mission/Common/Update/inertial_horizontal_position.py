@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common Common-Update
-# RCAIDE/Methods/Missions/Common/Update/inertial_horizontal_position.py
+## @ingroup Library-Methods-Missions-Common Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/inertial_horizontal_position.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -14,7 +14,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Integrate Position
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
  
 def inertial_horizontal_position(segment):
     """ Determines how far the airplane has traveled. 

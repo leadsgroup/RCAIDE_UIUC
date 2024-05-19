@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments
-# RCAIDE/Analyses/Mission/Segment/Evaluate.py
+# RCAIDE/Framework/Analyses/Mission/Segment/Evaluate.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -11,8 +11,8 @@
 # RCAIDE imports  
 from RCAIDE.Framework.Mission.Segments         import Segment
 from RCAIDE.Framework.Mission.Common.Results   import Results
-from RCAIDE.Library.Methods.Mission                   import Common , Solver 
-from RCAIDE.Framework.Analyses                          import Process  
+from RCAIDE.Library.Methods.Mission            import Common , Solver 
+from RCAIDE.Framework.Analyses                 import Process  
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  ANALYSES
@@ -61,7 +61,8 @@ class Evaluate(Segment):
         # --------------------------------------------------------------
         
         # conditions
-        self.temperature_deviation                                = 0.0     
+        self.temperature_deviation                = 0.0
+        self.sideslip_angle                       = 0.0
         self.state.conditions.update(Results())
         
         # ---------------------------------------------------------------
@@ -99,19 +100,21 @@ class Evaluate(Segment):
         
         # Update Conditions
         iterate.conditions = Process()
-        iterate.conditions.differentials   = Common.Update.differentials_time     
-        iterate.conditions.acceleration    = Common.Update.acceleration   
-        iterate.conditions.altitude        = Common.Update.altitude
-        iterate.conditions.atmosphere      = Common.Update.atmosphere
-        iterate.conditions.gravity         = Common.Update.gravity
-        iterate.conditions.freestream      = Common.Update.freestream
-        iterate.conditions.orientations    = Common.Update.orientations
-        iterate.conditions.energy          = Common.Update.thrust
-        iterate.conditions.aerodynamics    = Common.Update.aerodynamics
-        iterate.conditions.stability       = Common.Update.stability
-        iterate.conditions.weights         = Common.Update.weights
-        iterate.conditions.forces          = Common.Update.forces
-        iterate.conditions.planet_position = Common.Update.planet_position
+        iterate.conditions.differentials         = Common.Update.differentials_time
+        iterate.conditions.acceleration          = Common.Update.acceleration
+        iterate.conditions.angular_acceleration  = Common.Update.angular_acceleration
+        iterate.conditions.altitude              = Common.Update.altitude
+        iterate.conditions.atmosphere            = Common.Update.atmosphere
+        iterate.conditions.gravity               = Common.Update.gravity
+        iterate.conditions.freestream            = Common.Update.freestream
+        iterate.conditions.orientations          = Common.Update.orientations
+        iterate.conditions.energy                = Common.Update.thrust
+        iterate.conditions.aerodynamics          = Common.Update.aerodynamics
+        iterate.conditions.stability             = Common.Update.stability
+        iterate.conditions.weights               = Common.Update.weights
+        iterate.conditions.forces                = Common.Update.forces
+        iterate.conditions.moments               = Common.Update.moments
+        iterate.conditions.planet_position       = Common.Update.planet_position
 
         # Solve Residuals
         iterate.residuals = Process()

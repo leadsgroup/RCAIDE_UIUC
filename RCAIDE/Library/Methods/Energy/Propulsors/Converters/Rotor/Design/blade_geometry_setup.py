@@ -11,7 +11,7 @@
 
 # RCAIDE Imports 
 import RCAIDE   
-from RCAIDE.Library.Methods.Geometry.Two_Dimensional.Airfoil  import compute_airfoil_properties, compute_naca_4series, import_airfoil_geometry
+from RCAIDE.Library.Methods.Geometry.Airfoil  import compute_airfoil_properties, compute_naca_4series, import_airfoil_geometry
 
 # Python package imports   
 import numpy as np  

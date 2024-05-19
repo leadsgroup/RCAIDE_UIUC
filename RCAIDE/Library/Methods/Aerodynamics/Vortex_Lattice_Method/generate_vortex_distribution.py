@@ -17,7 +17,7 @@ from RCAIDE.Library.Components.Wings                             import All_Movi
 from RCAIDE.Library.Components.Fuselages                         import Fuselage
 from RCAIDE.Library.Components.Nacelles                          import Nacelle
 from RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method   import postprocess_VD, make_VLM_wings , deflect_control_surface
-from RCAIDE.Library.Methods.Geometry.Two_Dimensional.Airfoil     import import_airfoil_geometry
+from RCAIDE.Library.Methods.Geometry.Airfoil     import import_airfoil_geometry
  
 
 # ----------------------------------------------------------------------
@@ -95,7 +95,7 @@ def generate_vortex_distribution(geometry,settings):
     show_prints    = settings.verbose if ('verbose' in settings.keys()) else False
     
     # unpack discretization settings------------------------------------------
-    n_sw_global    = settings.number_of_spanwise_vortices  
+    n_sw_global    = settings.number_of_spanwise_vortices
     n_cw_global    = settings.number_of_chordwise_vortices
     n_sw_wing      = settings.wing_spanwise_vortices  
     n_cw_wing      = settings.wing_chordwise_vortices

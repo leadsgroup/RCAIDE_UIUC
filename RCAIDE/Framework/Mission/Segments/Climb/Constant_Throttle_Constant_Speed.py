@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Climb
-# RCAIDE/Analyses/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -67,6 +67,6 @@ class Constant_Throttle_Constant_Speed(Evaluate):
         iterate.unknowns.mission           = Segments.Climb.Constant_Throttle_Constant_Speed.unpack_body_angle 
         iterate.differentials_altitude     = Segments.Climb.Constant_Throttle_Constant_Speed.update_differentials_altitude
         iterate.velocities                 = Segments.Climb.Constant_Throttle_Constant_Speed.update_velocity_vector_from_wind_angle
-        iterate.residuals.total_forces     = Common.Residuals.climb_descent_forces  
+        iterate.residuals.flight_dynamics  = Common.Residuals.climb_descent_flight_dynamics
         return
 

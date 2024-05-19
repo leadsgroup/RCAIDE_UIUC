@@ -1,4 +1,4 @@
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 # optimize.py
 # 
 # Created:  Dec 2016, E. Botero
@@ -17,7 +17,7 @@ import numpy as np
 #  Converge Root
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def converge_opt(segment):
     """Interfaces the mission to an optimization algorithm
 
@@ -93,7 +93,7 @@ def converge_opt(segment):
 #  Helper Functions
 # ----------------------------------------------------------------------
     
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def get_objective(unknowns, segment):
     """ Runs the mission if the objective value is needed
     
@@ -123,7 +123,7 @@ def get_objective(unknowns, segment):
     
     return objective
 
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def get_econstraints(unknowns, segment):
     """ Runs the mission if the equality constraint values are needed
     
@@ -153,7 +153,7 @@ def get_econstraints(unknowns, segment):
     
     return constraints
 
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def make_bnds(unknowns, segment):
     """ Automatically sets the bounds of the optimization.
     
@@ -192,7 +192,7 @@ def make_bnds(unknowns, segment):
     
     return bnds
 
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def get_ieconstraints(unknowns, segment):
     """ Runs the mission if the inequality constraint values are needed, these are specific to a climb
     
@@ -242,7 +242,7 @@ def get_ieconstraints(unknowns, segment):
     
     return constraints
 
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def get_problem_pyopt(unknowns, segment):
     """ Runs the mission and obtains the objective and all constraints. This is formatted for pyopt
     

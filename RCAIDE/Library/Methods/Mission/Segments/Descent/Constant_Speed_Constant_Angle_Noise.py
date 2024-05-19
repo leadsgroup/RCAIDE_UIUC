@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Descent
-# RCAIDE/Methods/Missions/Segments/Descent/ Constant_Speed_Constant_Angle_noise.py
+## @ingroup Library-Methods-Missions-Segments-Descent
+# RCAIDE/Library/Methods/Missions/Segments/Descent/ Constant_Speed_Constant_Angle_noise.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------  
 #  Expand State
 # ----------------------------------------------------------------------------------------------------------------------   
-## @ingroup Methods-Missions-Segments-Descent
+## @ingroup Library-Methods-Missions-Segments-Descent
 def expand_state(segment):
     """Makes all vectors in the state the same size.
 
@@ -36,20 +36,10 @@ def expand_state(segment):
 
     Properties Used:
     N/A
-    """      
-
-    
-    #Modification 11/04:
-    #Necessary input for determination of noise trajectory    
-    dt = 0.5  #time step in seconds for noise calculation - Certification requirement    
-    
-    # unpack
-    descent_angle = segment.descent_angle
-    air_speed     = segment.air_speed   
-    conditions    = segment.state.conditions      
-    
-    # process velocity vector
-    s0 = 4000. #Defining the initial position of the measureament will start at 4 km from the threshold
+    """         
+    dt            = 0.5  # time step in seconds for noise calculation - Certification requirement    
+    air_speed     = segment.air_speed  
+    s0            = 4000. # Defining the initial position of the measureament will start at 4 km from the threshold
     v_x           = air_speed * np.cos(segment.descent_angle) 
     
     #number of time steps (space discretization)  
@@ -65,7 +55,7 @@ def expand_state(segment):
 #  Initialize Conditions
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Missions-Segments-Descent
+## @ingroup Library-Methods-Missions-Segments-Descent
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 
@@ -95,7 +85,8 @@ def initialize_conditions(segment):
     
     # unpack
     descent_angle= segment.descent_angle
-    air_speed    = segment.air_speed   
+    air_speed    = segment.air_speed  
+    beta         = segment.sideslip_angle 
     t_nondim     = segment.state.numerics.dimensionless.control_points
     conditions   = segment.state.conditions  
     
@@ -117,11 +108,13 @@ def initialize_conditions(segment):
         
     # process velocity vector
     v_mag = air_speed
-    v_x   = v_mag * np.cos(-descent_angle)
+    v_x   = np.cos(beta) * v_mag * np.cos(-descent_angle)
+    v_y   = np.sin(beta) * v_mag * np.cos(-descent_angle)
     v_z   = -v_mag * np.sin(-descent_angle)
     
     # pack conditions    
     conditions.frames.inertial.velocity_vector[:,0] = v_x
+    conditions.frames.inertial.velocity_vector[:,1] = v_y
     conditions.frames.inertial.velocity_vector[:,2] = v_z
     conditions.frames.inertial.position_vector[:,2] = -alt[:,0] # z points down
     conditions.freestream.altitude[:,0]             =  alt[:,0] # positive altitude in this context    

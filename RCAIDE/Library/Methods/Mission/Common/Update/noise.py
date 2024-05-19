@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/noise.py
+## @ingroup Library-Methods-Missions-Segments-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/noise.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -8,7 +8,7 @@
 #  compute_noise
 # ----------------------------------------------------------------------------------------------------------------------
 
-## @ingroup Methods-Missions-Segments-Common-Update
+## @ingroup Library-Methods-Missions-Segments-Common-Update
 def noise(segment):
     """ Updates the noise produced by the vehicle
         

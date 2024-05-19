@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Noise
-# RCAIDE/Methods/Missions/Common/compute_point_to_point_geospacial_data.py
+## @ingroup Library-Plots-Noise
+# RCAIDE/Library/Methods/Missions/Common/compute_point_to_point_geospacial_data.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,7 +16,7 @@ from geopy.distance import geodesic as GD
 # ----------------------------------------------------------------------
 #  Compute Point to Point Geospacial Data
 # ---------------------------------------------------------------------
-## @ingroup Methods-Missions
+## @ingroup Library-Methods-Missions
 def compute_point_to_point_geospacial_data(topography_file                        = None,
                                             departure_tag                         = 'DEP',
                                             destination_tag                       = 'DES',

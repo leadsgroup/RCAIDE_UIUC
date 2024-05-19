@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/orientations.py
+## @ingroup Library-Methods-Missions-Segments-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/orientations.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -17,7 +17,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Orientations
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
 def orientations(segment):
     
     """ Updates the orientation of the vehicle throughout the mission for each relevant axis
@@ -56,7 +56,7 @@ def orientations(segment):
     # ------------------------------------------------------------------
 
     # body frame rotations
-    gamma = body_inertial_rotations[:,0,None] 
+    phi = body_inertial_rotations[:,0,None] 
 
     # body frame tranformation matrices
     T_inertial2body = angles_to_dcms(body_inertial_rotations,(2,1,0))
@@ -78,8 +78,8 @@ def orientations(segment):
 
     # pack aerodynamics angles
     conditions.aerodynamics.angles.alpha[:,0] = alpha[:,0]
-    conditions.aerodynamics.angles.beta[:,0]  = -beta[:,0]
-    conditions.aerodynamics.angles.gamma[:,0] = gamma[:,0]
+    conditions.aerodynamics.angles.beta[:,0]  = beta[:,0]
+    conditions.aerodynamics.angles.phi[:,0] = phi[:,0]
 
     # pack transformation tensor
     conditions.frames.body.transform_to_inertial = T_body2inertial 

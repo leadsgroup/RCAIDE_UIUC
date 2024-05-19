@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Vertical_Flight
-# RCAIDE/Analyses/Mission/Segments/Vertical_Flight/Hover.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Vertical_Flight/Hover.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -61,6 +61,6 @@ class Hover(Evaluate):
         initialize                         = self.process.initialize
         iterate                            = self.process.iterate 
         initialize.conditions              = Segments.Vertical_Flight.Hover.initialize_conditions
-        iterate.residuals.total_forces     = Common.Residuals.vertical_flight_forces        
+        iterate.residuals.flight_dynamics  = Common.Residuals.vertical_flight_dynamics
         return
 

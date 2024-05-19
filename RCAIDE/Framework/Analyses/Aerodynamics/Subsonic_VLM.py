@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Aerodynamics
-# RCAIDE/Analyses/Aerodynamics/Subsonic_VLM.py
+# RCAIDE/Framework/Analyses/Aerodynamics/Subsonic_VLM.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -10,12 +10,12 @@
 
 # RCAIDE imports  
 import RCAIDE
-from RCAIDE.Framework.Core                                          import Data
-from RCAIDE.Framework.Analyses                                      import Process 
-from RCAIDE.Library.Methods.Aerodynamics                          import Common
-from .Aerodynamics                                        import Aerodynamics 
-from RCAIDE.Framework.Analyses.Aerodynamics.Common.Process_Geometry import Process_Geometry
-from RCAIDE.Framework.Analyses.Aerodynamics.Common.Vortex_Lattice   import Vortex_Lattice
+from RCAIDE.Framework.Core                             import Data, Units
+from RCAIDE.Framework.Analyses                         import Process 
+from RCAIDE.Library.Methods.Aerodynamics               import Common
+from .Aerodynamics                                     import Aerodynamics 
+from RCAIDE.Framework.Analyses.Common.Process_Geometry import Process_Geometry 
+from RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM_Aerodynamics import *  
 
 # package imports 
 import numpy as np 
@@ -61,7 +61,7 @@ class Subsonic_VLM(Aerodynamics):
         Properties Used:
         N/A
         """          
-        self.tag                                    = 'Subsonic_Zero'  
+        self.tag                                    = 'Subsonic_Zero_VLM'  
         self.geometry                               = Data()  
         self.process                                = Process()
         self.process.initialize                     = Process()   
@@ -79,20 +79,84 @@ class Subsonic_VLM(Aerodynamics):
         settings.viscous_lift_dependent_drag_factor = 0.38
         settings.drag_coefficient_increment         = 0.0000
         settings.spoiler_drag_increment             = 0.00 
-        settings.maximum_lift_coefficient           = np.inf
-        settings.number_of_spanwise_vortices           = None 
-        settings.number_of_chordwise_vortices          = None 
+        settings.maximum_lift_coefficient           = np.inf 
         settings.use_surrogate                      = True
         settings.recalculate_total_wetted_area      = False
         settings.propeller_wake_model               = False 
         settings.discretize_control_surfaces        = False
         settings.model_fuselage                     = False
         settings.model_nacelle                      = False
+        
+      
+        self.settings.number_of_spanwise_vortices        = 15
+        self.settings.number_of_chordwise_vortices       = 5
+        self.settings.wing_spanwise_vortices          = None
+        self.settings.wing_chordwise_vortices         = None
+        self.settings.fuselage_spanwise_vortices      = None
+        self.settings.fuselage_chordwise_vortices     = None  
+        self.settings.spanwise_cosine_spacing         = True
+        self.settings.vortex_distribution             = Data()  
+        self.settings.leading_edge_suction_multiplier = 1.0  
+        self.settings.use_VORLAX_matrix_calculation   = False
+        self.settings.floating_point_precision        = np.float32 
+    
+        # conditions table, used for surrogate model training
+        self.training                                = Data()
+        self.training.angle_of_attack                = np.array([[-5., -2. , 0.0 , 2.0, 5.0, 8.0, 10.0 , 12., 45., 75.]]).T * Units.deg 
+        self.training.Mach                           = np.array([[0.0, 0.1  , 0.2 , 0.3,  0.5,  0.75 , 0.85 , 0.9,\
+                                                                      1.3, 1.35 , 1.5 , 2.0, 2.25 , 2.5  , 3.0  , 3.5]]).T       
+    
+        self.training.lift_coefficient_sub           = None
+        self.training.lift_coefficient_sup           = None
+        self.training.wing_lift_coefficient_sub      = None
+        self.training.wing_lift_coefficient_sup      = None
+        self.training.drag_coefficient_sub           = None
+        self.training.drag_coefficient_sup           = None
+        self.training.wing_drag_coefficient_sub      = None
+        self.training.wing_drag_coefficient_sup      = None
+    
+        # blending function 
+        self.hsub_min                                = 0.85
+        self.hsub_max                                = 0.95
+        self.hsup_min                                = 1.05
+        self.hsup_max                                = 1.25 
+    
+        # surrogoate models
+        self.surrogates                              = Data() 
+        self.surrogates.lift_coefficient_sub         = None
+        self.surrogates.lift_coefficient_sup         = None
+        self.surrogates.lift_coefficient_trans       = None
+        self.surrogates.wing_lift_coefficient_sub    = None
+        self.surrogates.wing_lift_coefficient_sup    = None
+        self.surrogates.wing_lift_coefficient_trans  = None
+        self.surrogates.drag_coefficient_sub         = None
+        self.surrogates.drag_coefficient_sup         = None
+        self.surrogates.drag_coefficient_trans       = None
+        self.surrogates.wing_drag_coefficient_sub    = None
+        self.surrogates.wing_drag_coefficient_sup    = None
+        self.surrogates.wing_drag_coefficient_trans  = None  
+        
 
+        
+
+    def initialize(self):  
+        use_surrogate             = self.settings.use_surrogate  
+
+        # If we are using the surrogate
+        if use_surrogate == True: 
+            # sample training data
+            sample_training(self)
+
+            # build surrogate
+            build_surrogate(self)  
+    
         # build the evaluation process
         compute                                    = Process() 
-        compute.lift                               = Process() 
-        compute.lift.inviscid_wings                = Vortex_Lattice() 
+        compute.lift                               = Process()
+        if use_surrogate == True: 
+            compute.lift.inviscid_wings                = evaluate_surrogate
+        else:
+            compute.lift.inviscid_wings  = evaluate_no_surrogate
         compute.lift.vortex                        = RCAIDE.Library.Methods.skip
         compute.lift.fuselage                      = Common.Lift.fuselage_correction
         compute.lift.total                         = Common.Lift.aircraft_total  
@@ -118,7 +182,10 @@ class Subsonic_VLM(Aerodynamics):
         compute.drag.trim                          = Common.Drag.trim
         compute.drag.spoiler                       = Common.Drag.spoiler_drag
         compute.drag.total                         = Common.Drag.total_aircraft 
-        self.process.compute                       = compute 
+        self.process.compute                       = compute            
+
+        return 
+    
          
     def evaluate(self,state):
         """The default evaluate function.

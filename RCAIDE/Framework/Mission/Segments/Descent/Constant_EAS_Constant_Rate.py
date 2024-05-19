@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Descent
-# RCAIDE/Analyses/Mission/Segments/Descent/Constant_EAS_Constant_Rate.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Descent/Constant_EAS_Constant_Rate.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -62,9 +62,10 @@ class Constant_EAS_Constant_Rate(Evaluate):
         initialize                         = self.process.initialize  
         initialize.differentials_altitude  = Common.Initialize.differentials_altitude
         initialize.conditions              = Segments.Descent.Constant_EAS_Constant_Rate.initialize_conditions  
-        iterate                            = self.process.iterate   
-        iterate.residuals.total_forces     = Common.Residuals.climb_descent_forces 
+        iterate                            = self.process.iterate
         iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation   
-        
+        iterate.unknowns.controls          = Common.Unpack_Unknowns.control_surfaces
+        iterate.residuals.flight_dynamics  = Common.Residuals.climb_descent_flight_dynamics
+
         return
        

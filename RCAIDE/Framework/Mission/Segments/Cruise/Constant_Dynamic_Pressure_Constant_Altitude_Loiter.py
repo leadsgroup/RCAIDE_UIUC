@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Cruise 
-# RCAIDE/Analyses/Mission/Segments/Cruise/Constant_Dynamic_Pressure_Constant_Altitude_Loiter.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Dynamic_Pressure_Constant_Altitude_Loiter.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -19,8 +19,7 @@ from RCAIDE.Library.Methods.Mission                      import Common,Segments
 
 ## @ingroup Analyses-Mission-Segments-Cruise
 class Constant_Dynamic_Pressure_Constant_Altitude_Loiter(Evaluate):
-    """ Vehicle flies at a constant dynamic pressure at a set altitude for a fixed time.
-        This is useful for HALE UAVs like a solar UAV.
+    """ Vehicle flies at a constant dynamic pressure at a set altitude for a fixed time. 
     
         Assumptions:
         Built off of a constant speed constant altitude segment
@@ -62,7 +61,8 @@ class Constant_Dynamic_Pressure_Constant_Altitude_Loiter(Evaluate):
         initialize                         = self.process.initialize  
         initialize.conditions              = Segments.Cruise.Constant_Dynamic_Pressure_Constant_Altitude_Loiter.initialize_conditions
         iterate                            = self.process.iterate   
-        iterate.residuals.total_forces     = Common.Residuals.level_flight_forces 
-        iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation        
+        iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation
+        iterate.unknowns.controls          = Common.Unpack_Unknowns.control_surfaces
+        iterate.residuals.flight_dynamics  = Common.Residuals.level_flight_dynamics
         return
 

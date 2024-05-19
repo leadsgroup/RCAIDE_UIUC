@@ -1,5 +1,5 @@
-## @defgroup Visualization-Geometry-Common Common 
-# RCAIDE/Visualization/Geometry/Common/__init__.py
+## @defgroup Library-Plots-Geometry-Common Common 
+# RCAIDE/Library/Plots/Geometry/Common/__init__.py
 # 
 
 """RCAIDE Package Setup

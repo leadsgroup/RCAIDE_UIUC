@@ -59,9 +59,9 @@ def Equivalent_noise_metric(noise_data, flight_times = ['12:00:00'],time_period 
         SPL[SPL == background_noise()] =  np.nan
         for i in range(number_of_flights): 
             # get start time of flight
-            t0  = int((np.float(flight_times[i].split(':')[0])*60*60 + \
-                      np.float(flight_times[i].split(':')[1])*60 + \
-                      np.float(flight_times[i].split(':')[2]) - 6*Units.hours)/time_step)    
+            t0  = int((float(flight_times[i].split(':')[0])*60*60 + \
+                      float(flight_times[i].split(':')[1])*60 + \
+                      float(flight_times[i].split(':')[2]) - 6*Units.hours)/time_step)    
             p_prefs_A               =  10**(TNE[t0:t0+len(t)][:,:,:,None]/10)
             p_prefs_B               =  10**(SPL[:,:,:,None]/10)
             C                       =  np.concatenate((p_prefs_A,p_prefs_B),axis = 3)

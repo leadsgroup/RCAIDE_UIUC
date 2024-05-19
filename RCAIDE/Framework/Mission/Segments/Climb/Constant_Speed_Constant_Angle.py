@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Climb
-# RCAIDE/Analyses/Mission/Segments/Climb/Constant_Speed_Constant_Angle.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Climb/Constant_Speed_Constant_Angle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -64,7 +64,7 @@ class Constant_Speed_Constant_Angle(Evaluate):
         initialize.differentials_altitude  = Common.Initialize.differentials_altitude
         initialize.conditions              = Segments.Climb.Constant_Speed_Constant_Angle.initialize_conditions  
         iterate                            = self.process.iterate
-        iterate.residuals.total_forces     = Common.Residuals.climb_descent_forces 
+        iterate.residuals.flight_dynamics  = Common.Residuals.climb_descent_flight_dynamics
         iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation   
     
         return

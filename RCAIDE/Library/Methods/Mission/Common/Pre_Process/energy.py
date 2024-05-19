@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Common-Pre_Process
-# RCAIDE/Methods/Missions/Common/Pre_Process/energy.py
+## @ingroup Library-Methods-Missions-Segments-Common-Pre_Process
+# RCAIDE/Library/Methods/Missions/Common/Pre_Process/energy.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  energy
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Methods-Missions-Segments-Common-Pre_Process
+## @ingroup Library-Methods-Missions-Segments-Common-Pre_Process
 def energy(mission):
     """ Appends all unknows and residuals to the network 
     

@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Aerodynamics
-# RCAIDE/Visualization/Performance/Aerodynamics/plot_aerodynamic_forces.py
+## @ingroup Library-Plots-Performance-Aerodynamics
+# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_aerodynamic_forces.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-## @ingroup Visualization-Performance-Aerodynamics
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_aerodynamic_forces(results,
                              save_figure = False,
                              show_legend = True,
@@ -34,8 +34,8 @@ def plot_aerodynamic_forces(results,
     Inputs:
     results.segments.condtions.frames
          body.thrust_force_vector
-         wind.lift_force_vector
-         wind.drag_force_vector
+         wind.force_vector
+         wind.force_vector
          
     Outputs:
     Plots
@@ -63,8 +63,8 @@ def plot_aerodynamic_forces(results,
         time   = results.segments[i].conditions.frames.inertial.time[:,0] / Units.min
         Power  = results.segments[i].conditions.energy.power[:,0] 
         Thrust = results.segments[i].conditions.frames.body.thrust_force_vector[:,0]
-        Lift   = -results.segments[i].conditions.frames.wind.lift_force_vector[:,2]
-        Drag   = -results.segments[i].conditions.frames.wind.drag_force_vector[:,0]
+        Lift   = -results.segments[i].conditions.frames.wind.force_vector[:,2]
+        Drag   = -results.segments[i].conditions.frames.wind.force_vector[:,0]
         
                        
         segment_tag  =  results.segments[i].tag

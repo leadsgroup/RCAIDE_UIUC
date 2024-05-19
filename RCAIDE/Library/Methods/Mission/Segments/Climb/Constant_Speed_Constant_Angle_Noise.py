@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Climb
-# RCAIDE/Methods/Missions/Segments/Climb/Constant_Speed_Constant_Angle_Noise.py
+## @ingroup Library-Methods-Missions-Segments-Climb
+# RCAIDE/Library/Methods/Missions/Segments/Climb/Constant_Speed_Constant_Angle_Noise.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,7 +14,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def expand_state(segment):
     
     """Makes all vectors in the state the same size. Determines the minimum amount of points needed to get data for noise certification.
@@ -60,7 +60,7 @@ def expand_state(segment):
 # ----------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------
-## @ingroup methods-missions-segments-climb
+## @ingroup Library-Methods-Missions-segments-climb
 def initialize_conditions(segment):
     """Gets the overall time step for the segment type.
     
@@ -91,7 +91,8 @@ def initialize_conditions(segment):
     
     # unpack
     climb_angle = segment.climb_angle
-    air_speed   = segment.air_speed   
+    air_speed   = segment.air_speed     
+    beta        = segment.sideslip_angle
     t_nondim    = segment.state.numerics.dimensionless.control_points
     conditions  = segment.state.conditions  
 
@@ -102,7 +103,8 @@ def initialize_conditions(segment):
         
     # process velocity vector
     v_mag = air_speed
-    v_x   = v_mag * np.cos(climb_angle)
+    v_x   = np.cos(beta)*v_mag * np.cos(climb_angle)
+    v_y   = np.sin(beta)*v_mag * np.cos(climb_angle)
     v_z   = -v_mag * np.sin(climb_angle)    
 
     #initial altitude
@@ -114,6 +116,7 @@ def initialize_conditions(segment):
     
     # pack conditions    
     conditions.frames.inertial.velocity_vector[:,0] = v_x
+    conditions.frames.inertial.velocity_vector[:,1] = v_y
     conditions.frames.inertial.velocity_vector[:,2] = v_z
     conditions.frames.inertial.position_vector[:,2] = -alt[:,0] # z points down
     conditions.freestream.altitude[:,0]             =  alt[:,0] # positive altitude in this context

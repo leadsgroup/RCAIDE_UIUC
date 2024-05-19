@@ -1,5 +1,5 @@
-## @defgroup Analyses-Stability Stability
-# RCAIDE/Analyses/Stability/__init__.py
+## @defgroup Framework-Analyses-Stability Stability
+# RCAIDE/Framework/Analyses/Stability/__init__.py
 # 
 
 """RCAIDE Package Setup
@@ -8,7 +8,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
-
-from Legacy.trunk.S.Analyses.Stability.Stability import Stability
-from Legacy.trunk.S.Analyses.Stability.Fidelity_Zero import Fidelity_Zero
-from Legacy.trunk.S.Analyses.Stability.AVL import AVL
+ 
+from .Stability                import Stability
+from .VLM_Perturbation_Method  import VLM_Perturbation_Method

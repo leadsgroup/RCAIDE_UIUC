@@ -1,5 +1,5 @@
-## @ingroup Visualization-Geometry
-# RCAIDE/Visualization/Geometry/plot_3d_vehicle_vlm_panelization.py
+## @ingroup Library-Plots-Geometry
+# RCAIDE/Library/Plots/Geometry/plot_3d_vehicle_vlm_panelization.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Visualization-Geometry
+## @ingroup Library-Plots-Geometry
 def plot_3d_vehicle_vlm_panelization(vehicle,
                                      alpha = 1.0,
                                      plot_axis = False,

@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Climb
-# RCAIDE/Methods/Missions/Segments/Climb/Constant_Throttle_Constant_Speed.py
+## @ingroup Library-Methods-Missions-Segments-Climb
+# RCAIDE/Library/Methods/Missions/Segments/Climb/Constant_Throttle_Constant_Speed.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,7 +14,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def unpack_body_angle(segment):
     """Unpacks and sets the proper value for body angle
 
@@ -43,7 +43,7 @@ def unpack_body_angle(segment):
 #  Initialize Conditions
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
     
@@ -81,7 +81,7 @@ def initialize_conditions(segment):
     # pack conditions   
     conditions.frames.inertial.velocity_vector[:,0] = air_speed # start up value
 
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def update_differentials_altitude(segment):
     """On each iteration creates the differentials and integration funcitons from knowns about the problem. Sets the time at each point. Must return in dimensional time, with t[0] = 0
     
@@ -108,7 +108,6 @@ def update_differentials_altitude(segment):
 
     # unpack
     t = segment.state.numerics.dimensionless.control_points
-    D = segment.state.numerics.dimensionless.differentiate
     I = segment.state.numerics.dimensionless.integrate
 
     
@@ -137,8 +136,8 @@ def update_differentials_altitude(segment):
     # pack
     t_initial = segment.state.conditions.frames.inertial.time[0,0]
     segment.state.conditions.frames.inertial.time[:,0] = t_initial + t[:,0]
-    conditions.frames.inertial.position_vector[:,2] = -alt[:,0] # z points down
-    conditions.freestream.altitude[:,0]             =  alt[:,0] # positive altitude in this context    
+    conditions.frames.inertial.position_vector[:,2]    = -alt[:,0] # z points down
+    conditions.freestream.altitude[:,0]                =  alt[:,0] # positive altitude in this context    
 
     return
 
@@ -146,12 +145,13 @@ def update_differentials_altitude(segment):
 #  Update Velocity Vector from Wind Angle
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def update_velocity_vector_from_wind_angle(segment):
     
     # unpack
     conditions = segment.state.conditions 
     v_mag      = segment.air_speed 
+    beta       = segment.sideslip_angle
     alpha      = segment.state.unknowns.wind_angle[:,0][:,None]
     theta      = segment.state.unknowns.body_angle[:,0][:,None]
     
@@ -159,11 +159,13 @@ def update_velocity_vector_from_wind_angle(segment):
     gamma = theta-alpha
 
     # process
-    v_x =  v_mag * np.cos(gamma)
+    v_x =   np.cos(beta) *v_mag * np.cos(gamma)
+    v_y =   np.sin(beta) *v_mag * np.cos(gamma)
     v_z = -v_mag * np.sin(gamma) # z points down
 
     # pack
     conditions.frames.inertial.velocity_vector[:,0] = v_x[:,0]
+    conditions.frames.inertial.velocity_vector[:,1] = v_y[:,0]
     conditions.frames.inertial.velocity_vector[:,2] = v_z[:,0]
 
     return conditions

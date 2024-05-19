@@ -1,5 +1,5 @@
 ## @defgroup Analyses-Mission-Segments-Transition Transition
-# RCAIDE/Analyses/Mission/Segments/Transition/__init__.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Transition/__init__.py
 # 
 
 """RCAIDE Package Setup

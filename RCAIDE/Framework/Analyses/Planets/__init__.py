@@ -1,5 +1,5 @@
 ## @defgroup Analyses-Planets Planets
-# RCAIDE/Analyses/Planets/__init__.py
+# RCAIDE/Framework/Analyses/Planets/__init__.py
 # 
 
 """RCAIDE Package Setup

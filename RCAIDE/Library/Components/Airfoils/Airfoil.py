@@ -34,5 +34,5 @@ class Airfoil(Component):
         self.polars                     = None
         self.prev                       = None
         self.next                       = None
-        self.number_of_points           = 200
+        self.number_of_points           = 201
        

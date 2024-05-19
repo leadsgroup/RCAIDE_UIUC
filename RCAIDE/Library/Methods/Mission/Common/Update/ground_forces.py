@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/ground_forces.py
+## @ingroup Library-Methods-Missions-Segments-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/ground_forces.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,7 +14,7 @@ from RCAIDE.Library.Methods.Mission.Common.Update.forces import forces
 # ----------------------------------------------------------------------------------------------------------------------
 #  Compute Ground Forces
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Ground
+## @ingroup Library-Methods-Missions-Segments-Ground
 def ground_forces(segment):
     """ Compute the rolling friction on the aircraft 
     
@@ -28,7 +28,7 @@ def ground_forces(segment):
     conditions:
         frames.inertial.gravity_force_vector       [meters/second^2]
         ground.friction_coefficient                [unitless]
-        frames.wind.lift_force_vector              [newtons]
+        frames.wind.force_vector                   [newtons]
     
     Outputs:
         conditions.frames.inertial.ground_force_vector [newtons]
@@ -41,13 +41,13 @@ def ground_forces(segment):
     conditions             = segment.state.conditions
     W                      = conditions.frames.inertial.gravity_force_vector[:,2,None]
     friction_coeff         = conditions.ground.friction_coefficient
-    wind_lift_force_vector = conditions.frames.wind.lift_force_vector
+    wind_force_vector      = conditions.frames.wind.force_vector
 
     #transformation matrix to get lift in inertial frame
     T_wind2inertial = conditions.frames.wind.transform_to_inertial
 
     # to inertial frame
-    L = orientation_product(T_wind2inertial,wind_lift_force_vector)[:,2,None]
+    L = orientation_product(T_wind2inertial,wind_force_vector)[:,2,None]
 
     #compute friction force
     N  = -(W + L)

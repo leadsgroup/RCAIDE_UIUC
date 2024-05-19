@@ -1,5 +1,5 @@
-## @defgroup Visualization-Performance-Mission 
-# RCAIDE/Visualization/Performance/Mission/plot_flight_conditions.py
+## @defgroup Library-Plots-Mission  
+# RCAIDE/Library/Plots/Performance/Mission/plot_flight_conditions.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -17,7 +17,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-## @defgroup Visualization-Performance-Mission 
+## @defgroup Library-Plots-Mission  
 def plot_flight_conditions(results,
                            save_figure = False,
                            show_legend=True,

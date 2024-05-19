@@ -1,5 +1,5 @@
 ## @defgroup Analyses-Atmospheric Atmospheric
-# RCAIDE/Analyses/Atmospheric/__init__.py
+# RCAIDE/Framework/Analyses/Atmospheric/__init__.py
 # 
 
 """RCAIDE Package Setup

@@ -1,4 +1,4 @@
-# Regression/scripts/Vehicles/Isolated_Battery_Cell.py
+# Regressions/Vehicles/Isolated_Battery_Cell.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 

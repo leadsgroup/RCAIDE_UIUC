@@ -18,7 +18,7 @@ import numpy as np
 # Compute boom weight
 # ----------------------------------------------------------------------------------------------------------------------
 ## @ingroup Methods-Weights-Buildups-Common 
-def compute_fuselage_weight(config,
+def compute_fuselage_weight(fuse,maxSpan, MTOW, 
              maximum_g_load = 3.8,
              landing_impact_factor = 3.5,
              safety_factor = 1.5):
@@ -48,14 +48,10 @@ def compute_fuselage_weight(config,
 
     #-------------------------------------------------------------------------------
     # Unpack Inputs
-    #-------------------------------------------------------------------------------
- 
-    fuse    = config.fuselages.fuselage 
+    #------------------------------------------------------------------------------- 
     fLength = fuse.lengths.total
     fWidth  = fuse.width
     fHeight = fuse.heights.maximum
-    maxSpan = config.wings["main_wing"].spans.projected 
-    MTOW    = config.mass_properties.max_takeoff
     G_max   = maximum_g_load
     LIF     = landing_impact_factor
     SF      = safety_factor

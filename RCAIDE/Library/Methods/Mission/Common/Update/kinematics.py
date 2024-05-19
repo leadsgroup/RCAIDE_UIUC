@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common Common-Update
-# RCAIDE/Methods/Missions/Common/Update/kinematics.py
+## @ingroup Library-Methods-Missions-Common Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/kinematics.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,7 +13,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Acceleration
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Common-Update
+## @ingroup Library-Methods-Missions-Segments-Common-Update
 def kinematics(segment):
     """ Updates the kinematics of the rigid body (aircraft) 
         

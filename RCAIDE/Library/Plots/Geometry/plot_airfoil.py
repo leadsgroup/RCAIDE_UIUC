@@ -1,5 +1,5 @@
-## @ingroup Visualization-Geometry
-# RCAIDE/Visualization/Geometry/plot_airfoil.py
+## @ingroup Library-Plots-Geometry
+# RCAIDE/Library/Plots/Geometry/plot_airfoil.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -9,7 +9,7 @@
 # ----------------------------------------------------------------------------------------------------------------------  
 # RCAIDE imports 
 from RCAIDE.Library.Plots.Common import plot_style
-from RCAIDE.Library.Methods.Geometry.Two_Dimensional.Airfoil  import import_airfoil_geometry  
+from RCAIDE.Library.Methods.Geometry.Airfoil  import import_airfoil_geometry  
 
 # package imports 
 import matplotlib.pyplot as plt 
@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Visualization-Geometry
+## @ingroup Library-Plots-Geometry
 def plot_airfoil(airfoil_paths,
                  save_figure = False, 
                  save_filename = "Airfoil_Geometry",

@@ -1,5 +1,5 @@
 ## @defgroup Visualization
-# RCAIDE/Visualization/__init__.py
+# RCAIDE/Library/Plots/__init__.py
 # 
 
 """ RCAIDE Package Setup
@@ -16,4 +16,5 @@ from .Energy       import *
 from .Mission      import *  
 from .Noise        import * 
 from .Topography   import * 
+from .Stability    import * 
 from .Weights      import * 

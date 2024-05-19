@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Climb
-# RCAIDE/Methods/Missions/Segments/Climb/Constant_Mach_Constant_Angle.py
+## @ingroup Library-Methods-Missions-Segments-Climb
+# RCAIDE/Library/Methods/Missions/Segments/Climb/Constant_Mach_Constant_Angle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------  
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
     
@@ -45,7 +45,8 @@ def initialize_conditions(segment):
     # unpack User Inputs
     climb_angle = segment.climb_angle
     mach_number = segment.mach_number
-    alt0        = segment.altitude_start  
+    alt0        = segment.altitude_start 
+    beta        = segment.sideslip_angle 
     conditions  = segment.state.conditions  
         
     # unpack unknowns  
@@ -70,17 +71,20 @@ def initialize_conditions(segment):
         
         # process velocity vector
         v_mag = mach_number * a
-    v_x   = v_mag * np.cos(climb_angle)
+    v_xy  = v_mag * np.cos(climb_angle)
     v_z   = -v_mag * np.sin(climb_angle)
+    v_x   = np.cos(beta)*v_xy
+    v_y   = np.sin(beta)*v_xy
     
     # pack conditions    
     conditions.frames.inertial.velocity_vector[:,0]              = v_x[:,0]
+    conditions.frames.inertial.velocity_vector[:,1]              = v_y[:,0]
     conditions.frames.inertial.velocity_vector[:,2]              = v_z[:,0]   
     
 # ----------------------------------------------------------------------------------------------------------------------  
 #  Residual Total Forces
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def residual_total_forces(segment):
     
     # Unpack results
@@ -105,7 +109,7 @@ def residual_total_forces(segment):
 # ----------------------------------------------------------------------------------------------------------------------  
 # Update Differentials
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Methods-Missions-Segments-Climb   
+## @ingroup Library-Methods-Missions-Segments-Climb   
 def update_differentials(segment):
     """ On each iteration creates the differentials and integration functions from knowns about the problem. 
       Sets the time at each point. Must return in dimensional time, with t[0] = 0.
@@ -162,7 +166,7 @@ def update_differentials(segment):
     numerics.time.control_points                    = x
     numerics.time.differentiate                     = D
     numerics.time.integrate                         = I
-    conditions.frames.inertial.time[1:,0]            = t_initial + x[1:,0]
+    conditions.frames.inertial.time[1:,0]           = t_initial + x[1:,0]
     conditions.frames.inertial.position_vector[:,2] = -alt[:,0]  
     conditions.freestream.altitude[:,0]             =  alt[:,0]  
 

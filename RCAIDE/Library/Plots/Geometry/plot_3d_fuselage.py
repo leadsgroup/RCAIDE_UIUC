@@ -1,5 +1,5 @@
-## @ingroup Visualization-Geometry 
-# RCAIDE/Visualization/Geometry/plot_3d_fuselage.py
+## @ingroup Library-Plots-Geometry 
+# RCAIDE/Library/Plots/Geometry/plot_3d_fuselage.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -15,7 +15,7 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Visualization-Geometry 
+## @ingroup Library-Plots-Geometry 
 def plot_3d_fuselage(plot_data,fuselage, tessellation = 24 ,color_map = 'teal'):
     """ This plots the fuselage surface
 

@@ -35,4 +35,4 @@ class Operating_Costs(Data):
         self.pilot_rate       = 0.0
         self.crew_rate        = 0.0
         self.inflator         = 0.0
-        self.reference_dollars= 0.0 
+        self.reference_dollars= 0.0

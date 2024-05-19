@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Descent
-# RCAIDE/Analyses/Mission/Segments/Descent/Constant_Speed_Constant_Angle_Noise.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Descent/Constant_Speed_Constant_Angle_Noise.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -70,7 +70,7 @@ class Constant_Speed_Constant_Angle_Noise(Evaluate):
         initialize.expand_state            = Segments.Descent.Constant_Speed_Constant_Angle_Noise.expand_state
         initialize.conditions              = Segments.Descent.Constant_Speed_Constant_Angle_Noise.initialize_conditions
         iterate                            = self.process.iterate   
-        iterate.residuals.total_forces     = Common.Residuals.climb_descent_forces 
+        iterate.residuals.flight_dynamics  = Common.Residuals.climb_descent_flight_dynamics
         iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation          
         
         return

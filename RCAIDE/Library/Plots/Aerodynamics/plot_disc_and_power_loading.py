@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Aerodynamics
-# RCAIDE/Visualization/Performance/Aerodynamics/plot_disc_and_power_loading.py
+## @ingroup Library-Plots-Performance-Aerodynamics
+# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_disc_and_power_loading.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -18,7 +18,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------      
-## @ingroup Visualization-Performance-Aerodynamics
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_disc_and_power_loading(results,
                             save_figure=False,
                             show_legend = True,

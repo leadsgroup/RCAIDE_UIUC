@@ -1,5 +1,5 @@
 ## @defgroup Analyses-Mission-Common Common
-# RCAIDE/Analyses/Mission/Common/__init__.py
+# RCAIDE/Framework/Analyses/Mission/Common/__init__.py
 # 
 
 """RCAIDE Package Setup

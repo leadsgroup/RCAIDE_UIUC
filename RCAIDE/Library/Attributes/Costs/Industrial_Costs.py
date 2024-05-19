@@ -50,5 +50,3 @@ class Industrial_Costs(Data):
         hourly_rates.tooling                = 0.0
         hourly_rates.manufacturing          = 0.0
         hourly_rates.quality_control        = 0.0
-
-        return

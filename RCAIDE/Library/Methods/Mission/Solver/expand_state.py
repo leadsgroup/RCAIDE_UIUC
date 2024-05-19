@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments 
-# RCAIDE/Methods/Missions/Segments/expand_state.py
+## @ingroup Library-Methods-Missions-Segments 
+# RCAIDE/Library/Methods/Missions/Segments/expand_state.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke   
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # Expand State
 # ---------------------------------------------------------------------------------------------------------------------- 
-## @ingroup Methods-Missions-Segments 
+## @ingroup Library-Methods-Missions-Segments 
 def expand_state(segment):
     
     """Makes all vectors in the state the same size.

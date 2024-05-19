@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common-Update
-# RCAIDE/Methods/Missions/Common/Update/Aerodynamics.py
+## @ingroup Library-Methods-Missions-Common-Update
+# RCAIDE/Library/Methods/Missions/Common/Update/Aerodynamics.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,7 +14,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Freestream
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
 def freestream(segment):
     """ Updates the freestream conditions 
         

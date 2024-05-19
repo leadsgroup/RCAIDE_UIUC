@@ -1,6 +1,6 @@
-## @defgroup Visualization-Weights Weights
+## @defgroup Library-Plots-WeightsWeights
 # @ingroup Visualization 
-# RCAIDE/Visualization/Weights/__init__.py
+# RCAIDE/Library/Plots/Weights/__init__.py
 # 
 
 """RCAIDE Package Setup

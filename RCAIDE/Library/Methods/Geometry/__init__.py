@@ -10,5 +10,5 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # @ingroup Methods
 
-from . import Two_Dimensional
-from . import Three_Dimensional
+from . import Airfoil
+from . import Planform

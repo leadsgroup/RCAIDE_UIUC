@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common  
-# RCAIDE/Methods/Missions/Common/helper_functions.py
+## @ingroup Library-Methods-Missions-Common  
+# RCAIDE/Library/Methods/Missions/Common/helper_functions.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke

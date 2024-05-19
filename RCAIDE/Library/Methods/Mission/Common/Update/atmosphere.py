@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Common/Update
-# RCAIDE/Methods/Missions/Common/Update/atmosphere.py
+## @ingroup Library-Methods-Missions-Common/Update
+# RCAIDE/Library/Methods/Missions/Common/Update/atmosphere.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Atmosphere
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Common-Update
+## @ingroup Library-Methods-Missions-Common-Update
 def atmosphere(segment):
     """ Computes conditions of the atmosphere at given altitudes
     

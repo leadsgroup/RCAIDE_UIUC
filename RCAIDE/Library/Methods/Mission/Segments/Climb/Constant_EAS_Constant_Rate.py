@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Climb
-# RCAIDE/Methods/Missions/Segments/Climb/Constant_EAS_Constant_Rate.py
+## @ingroup Library-Methods-Missions-Segments-Climb
+# RCAIDE/Library/Methods/Missions/Segments/Climb/Constant_EAS_Constant_Rate.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
     
@@ -45,7 +45,8 @@ def initialize_conditions(segment):
     
     # unpack
     climb_rate = segment.climb_rate
-    eas        = segment.equivalent_air_speed   
+    eas        = segment.equivalent_air_speed    
+    beta       = segment.sideslip_angle
     alt0       = segment.altitude_start 
     altf       = segment.altitude_end
     t_nondim   = segment.state.numerics.dimensionless.control_points
@@ -75,11 +76,14 @@ def initialize_conditions(segment):
         air_speed = eas/np.sqrt(density/MSL_data.density[0])    
     
     # process velocity vector
-    v_mag = air_speed
-    v_z   = -climb_rate # z points down
-    v_x   = np.sqrt( v_mag**2 - v_z**2 )
+    v_mag  = air_speed
+    v_z    = -climb_rate # z points down
+    v_xy   = np.sqrt( v_mag**2 - v_z**2 )
+    v_x    = np.cos(beta)*v_xy
+    v_y    = np.sin(beta)*v_xy
     
     # pack conditions    
     conditions.frames.inertial.velocity_vector[:,0] = v_x
+    conditions.frames.inertial.velocity_vector[:,1] = v_y
     conditions.frames.inertial.velocity_vector[:,2] = v_z
     conditions.frames.inertial.position_vector[:,2] = -alt[:,0] # z points down

@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Cruise
-# RCAIDE/Methods/Missions/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
+## @ingroup Library-Methods-Missions-Segments-Cruise
+# RCAIDE/Library/Methods/Missions/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,7 +13,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Cruise
+## @ingroup Library-Methods-Missions-Segments-Cruise
 def unpack_unknowns(segment):
     
     # unpack unknowns
@@ -47,15 +47,19 @@ def integrate_velocity(segment):
     
     # unpack 
     conditions = segment.state.conditions
-    v0         = segment.air_speed_start
+    v0         = segment.air_speed_start 
+    beta       = segment.sideslip_angle
     I          = segment.state.numerics.time.integrate
     a          = conditions.frames.inertial.acceleration_vector
     
     # compute x-velocity
-    velocity_x = v0 + np.dot(I, a)[:,0]   
+    velocity_xy = v0 + np.dot(I, a)[:,0]   
+    v_x         = np.cos(beta)*velocity_xy
+    v_y         = np.sin(beta)*velocity_xy
 
     # pack velocity
-    conditions.frames.inertial.velocity_vector[:,0] = velocity_x
+    conditions.frames.inertial.velocity_vector[:,0] = v_x
+    conditions.frames.inertial.velocity_vector[:,1] = v_y
     
     return
 
@@ -63,7 +67,7 @@ def integrate_velocity(segment):
 #  Initialize Conditions
 # ----------------------------------------------------------------------    
 
-## @ingroup Methods-Missions-Segments-Cruise
+## @ingroup Library-Methods-Missions-Segments-Cruise
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 
@@ -86,15 +90,11 @@ def initialize_conditions(segment):
 
     Properties Used:
     N/A
-    """   
-    
-    state      = segment.state 
-
+    """    
     # unpack inputs
     alt      = segment.altitude 
     v0       = segment.air_speed_start
-    vf       = segment.air_speed_end  
-    N        = segment.state.numerics.number_of_control_points   
+    vf       = segment.air_speed_end    
     
     # check for initial altitude
     if alt is None:
@@ -125,7 +125,7 @@ def initialize_conditions(segment):
 #  Solve Residuals
 # ----------------------------------------------------------------------    
 
-## @ingroup Methods-Missions-Segments-Cruise
+## @ingroup Library-Methods-Missions-Segments-Cruise
 def solve_velocity(segment):
     """ Calculates the additional velocity residual
     
@@ -153,6 +153,6 @@ def solve_velocity(segment):
     vf         = segment.air_speed_end
     v          = conditions.frames.inertial.velocity_vector 
     
-    segment.state.residuals.final_velocity_error = (v[-1,0] - vf)
+    segment.state.residuals.final_velocity_error = (np.linalg.norm(v[-1,:])- vf)
 
     return

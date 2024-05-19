@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Noise
-# RCAIDE/Visualization/Noise/plot_noise_hemisphere.py
+## @ingroup Library-Plots-Noise
+# RCAIDE/Library/Plots/Noise/plot_noise_hemisphere.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,7 +13,7 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Visualization-Performance-Noise
+## @ingroup Library-Plots-Noise
 def plot_noise_hemisphere(noise_data,
                           noise_level              = False,
                           min_noise_level          = 35,  

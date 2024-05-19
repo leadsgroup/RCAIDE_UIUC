@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Ground
-# RCAIDE/Analyses/Mission/Segments/Ground/Battery_Charge.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Ground/Battery_Charge.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke

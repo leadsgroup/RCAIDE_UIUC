@@ -1,5 +1,5 @@
-## @defgroup Visualization-Geometry Geometry
-# RCAIDE/Visualization/Geometry/__init__.py
+## @defgroup Library-Plots-Geometry Geometry
+# RCAIDE/Library/Plots/Geometry/__init__.py
 # 
 
 """ RCAIDE Package Setup

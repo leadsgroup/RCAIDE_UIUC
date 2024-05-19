@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Climb
-# RCAIDE/Methods/Missions/Segments/Climb/Constant_Mach_Linear_Altitude.py
+## @ingroup Library-Methods-Missions-Segments-Climb
+# RCAIDE/Library/Methods/Missions/Segments/Climb/Constant_Mach_Linear_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 
@@ -48,6 +48,7 @@ def initialize_conditions(segment):
     altf       = segment.altitude_end
     xf         = segment.distance
     mach       = segment.mach_number
+    beta       = segment.sideslip_angle
     conditions = segment.state.conditions  
     t_nondim   = segment.state.numerics.dimensionless.control_points
     
@@ -74,7 +75,8 @@ def initialize_conditions(segment):
         air_speed    = mach * a   
         
     climb_angle  = np.arctan((altf-alt0)/xf)
-    v_x          = np.cos(climb_angle)*air_speed
+    v_x          = np.cos(beta)*np.cos(climb_angle)*air_speed
+    v_y          = np.sin(beta)*np.cos(climb_angle)*air_speed
     v_z          = np.sin(climb_angle)*air_speed 
     t_nondim     = segment.state.numerics.dimensionless.control_points
     
@@ -85,4 +87,5 @@ def initialize_conditions(segment):
     conditions.freestream.altitude[:,0]             = alt[:,0]
     conditions.frames.inertial.position_vector[:,2] = -alt[:,0] # z points down 
     conditions.frames.inertial.velocity_vector[:,0] = v_x[:,0]
+    conditions.frames.inertial.velocity_vector[:,1] = v_y[:,0]
     conditions.frames.inertial.velocity_vector[:,2] = -v_z[:,0]      

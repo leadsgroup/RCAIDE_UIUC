@@ -1,5 +1,5 @@
-## @ingroup Visualization-Geometry
-# RCAIDE/Visualization/Geometry/plot_3d_wing.py
+## @ingroup Library-Plots-Geometry
+# RCAIDE/Library/Plots/Geometry/plot_3d_wing.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,7 +13,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Visualization-Geometry
+## @ingroup Library-Plots-Geometry
 def plot_3d_wing(plot_data,VD,color_map = 'greys',values = None, angle_of_attack = 0):
     """ This plots the wings of a vehicle
 

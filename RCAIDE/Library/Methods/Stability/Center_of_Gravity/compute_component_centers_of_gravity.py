@@ -10,10 +10,10 @@
 
 # RCAIDE 
 import RCAIDE
-from RCAIDE.Library.Methods.Geometry.Three_Dimensional import compute_span_location_from_chord_length
-from RCAIDE.Library.Methods.Geometry.Three_Dimensional import compute_chord_length_from_span_location
-from RCAIDE.Library.Methods.Stability.Static_Stability.Approximations.Supporting_Functions import convert_sweep
-from RCAIDE.Library.Components import Component  
+from RCAIDE.Library.Methods.Geometry.Planform import compute_span_location_from_chord_length
+from RCAIDE.Library.Methods.Geometry.Planform import compute_chord_length_from_span_location
+from RCAIDE.Library.Methods.Geometry.Planform import convert_sweep
+from RCAIDE.Library.Components import  Component
 
 # package imports 
 import numpy as np 
@@ -143,9 +143,7 @@ def compute_component_centers_of_gravity(vehicle, nose_load = 0.06):
         passengers.origin[0][0]                                    = 0.51 * length_scale  
         passengers.mass_properties.center_of_gravity[0][0]         = 0.0
     except:
-        pass         
-    
-    
+        pass      
 
     try:  
         baggage                                                    = vehicle.payload.baggage

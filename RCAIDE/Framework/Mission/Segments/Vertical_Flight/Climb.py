@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Vertical_Flight
-# RCAIDE/Analyses/Mission/Segments/Vertical_Flight/Climb.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Vertical_Flight/Climb.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -62,7 +62,7 @@ class Climb(Evaluate):
         initialize                         = self.process.initialize
         iterate                            = self.process.iterate 
         initialize.conditions              = Segments.Vertical_Flight.Climb.initialize_conditions
-        iterate.residuals.total_forces     = Common.Residuals.vertical_flight_forces
+        iterate.residuals.flight_dynamics  = Common.Residuals.vertical_flight_dynamics
     
         return
        

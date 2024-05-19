@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Climb
-# RCAIDE/Methods/Missions/Segments/Climb/Constant_Speed_Constant_Angle.py
+## @ingroup Library-Methods-Missions-Segments-Climb
+# RCAIDE/Library/Methods/Missions/Segments/Climb/Constant_Speed_Constant_Angle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,7 +14,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Climb
+## @ingroup Library-Methods-Missions-Segments-Climb
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
     
@@ -46,6 +46,7 @@ def initialize_conditions(segment):
     air_speed   = segment.air_speed   
     alt0        = segment.altitude_start 
     altf        = segment.altitude_end
+    beta        = segment.sideslip_angle
     t_nondim    = segment.state.numerics.dimensionless.control_points
     conditions  = segment.state.conditions  
 
@@ -64,11 +65,13 @@ def initialize_conditions(segment):
     
     # process velocity vector
     v_mag = air_speed
-    v_x   = v_mag * np.cos(climb_angle)
+    v_x   = np.cos(beta)*v_mag * np.cos(climb_angle)
+    v_y   = np.sin(beta)*v_mag * np.cos(climb_angle)
     v_z   = -v_mag * np.sin(climb_angle)
     
     # pack conditions    
     conditions.frames.inertial.velocity_vector[:,0] = v_x
+    conditions.frames.inertial.velocity_vector[:,1] = v_y
     conditions.frames.inertial.velocity_vector[:,2] = v_z
     conditions.frames.inertial.position_vector[:,2] = -alt[:,0] # z points down
     conditions.freestream.altitude[:,0]             =  alt[:,0] # positive altitude in this context

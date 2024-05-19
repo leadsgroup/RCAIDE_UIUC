@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Common
-# RCAIDE/Visualization/Performance/Common/plot_style.py
+## @ingroup Library-Plots-Performance-Common
+# RCAIDE/Library/Plots/Performance/Common/plot_style.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -12,7 +12,7 @@ from RCAIDE.Framework.Core import Data
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-## @ingroup Visualization-Performance-Common
+## @ingroup Library-Plots-Performance-Common
 def plot_style():
     """Helper function for automatically setting the style of plots to the
     RCAIDE standard style.

@@ -10,6 +10,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # @ingroup Methods-Mission-Segments-Common
    
-from .aerodynamics                 import aerodynamics 
-from .energy                       import energy
-from .flight_dynamics_and_controls import flight_dynamics_and_controls
+from .aerodynamics               import aerodynamics 
+from .stability                  import stability
+from .energy                     import energy
+from .set_residuals_and_unknowns import set_residuals_and_unknowns

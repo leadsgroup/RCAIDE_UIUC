@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Descent
-# RCAIDE/Methods/Missions/Segments/Descent/Linear_Mach_Constant_Rate.py
+ ## @ingroup Library-Methods-Missions-Segments-Descent
+# RCAIDE/Library/Methods/Missions/Segments/Descent/Linear_Mach_Constant_Rate.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,8 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------  
 #  IMPORT 
 # ----------------------------------------------------------------------------------------------------------------------  
-# RCAIDE imports 
-import RCAIDE
+# RCAIDE imports  
 from RCAIDE.Library.Methods.Mission.Common.Update.atmosphere import atmosphere
 
 # pacakge imports 
@@ -17,7 +16,7 @@ import numpy as np
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Methods-Missions-Segments-Descent
+## @ingroup Library-Methods-Missions-Segments-Descent
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 
@@ -51,7 +50,8 @@ def initialize_conditions(segment):
     M0           = segment.mach_number_start
     Mf           = segment.mach_number_end
     alt0         = segment.altitude_start 
-    altf         = segment.altitude_end
+    altf         = segment.altitude_end 
+    beta         = segment.sideslip_angle    
     t_nondim     = segment.state.numerics.dimensionless.control_points
     conditions   = segment.state.conditions  
 
@@ -75,12 +75,15 @@ def initialize_conditions(segment):
 
     # process velocity vector
     mach_number = (Mf-M0)*t_nondim + M0
-    v_mag       = mach_number * a
+    v_xy_mag    = mach_number * a
     v_z         = descent_rate # z points down
-    v_x         = np.sqrt( v_mag**2 - v_z**2 )
+    v_xy        = np.sqrt( v_xy_mag**2 - v_z**2 ) 
+    v_x         = np.cos(beta)*v_xy
+    v_y         = np.sin(beta)*v_xy
     
     # pack conditions    
     conditions.frames.inertial.velocity_vector[:,0] = v_x[:,0]
+    conditions.frames.inertial.velocity_vector[:,1] = v_y[:,0]
     conditions.frames.inertial.velocity_vector[:,2] = v_z
     conditions.frames.inertial.position_vector[:,2] = -alt[:,0] # z points down
     conditions.freestream.altitude[:,0]             =  alt[:,0] # positive altitude t

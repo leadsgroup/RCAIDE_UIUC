@@ -18,4 +18,5 @@ from .compute_RHS_matrix                      import compute_RHS_matrix
 from .compute_wing_induced_velocity           import compute_wing_induced_velocity 
 from .generate_vortex_distribution            import generate_vortex_distribution
 from .VLM                                     import VLM
+from .VLM_Aerodynamics import *  
 

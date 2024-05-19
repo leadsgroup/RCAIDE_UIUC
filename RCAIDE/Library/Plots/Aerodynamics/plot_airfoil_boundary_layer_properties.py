@@ -1,5 +1,5 @@
-## @ingroup Visualization-Performance-Aerodynamics  
-# RCAIDE/Visualization/Performance/Aerodynamics/plot_airfoil_boundary_layer_properties.py
+## @ingroup Library-Plots-Performance-Aerodynamics  
+# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_boundary_layer_properties.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -19,7 +19,7 @@ import numpy as np
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------     
 
-## @ingroup Visualization-Performance-Aerodynamics
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_airfoil_boundary_layer_properties(ap,
                                            save_figure = False,
                                            show_legend = False,
@@ -84,7 +84,7 @@ def plot_airfoil_boundary_layer_properties(ap,
 #  Plot Quantity
 # ----------------------------------------------------------------------  
 
-## @ingroup Visualization-Performance
+## @ingroup Library-Plots-Performance
 def plot_quantity(ap, q, qaxis, qname,ylim_low,ylim_high,file_type,show_legend,save_figure,width,height) :
     """Plots a quantity q over lower/upper/wake surfaces
     

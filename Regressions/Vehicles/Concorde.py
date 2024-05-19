@@ -1,4 +1,4 @@
-# Regression/scripts/Vehicles/Concorde.py
+# Regressions/Vehicles/Concorde.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -11,13 +11,13 @@ import RCAIDE
 from RCAIDE.Framework.Core                                           import Units , Data    
 from RCAIDE.Library.Methods.Energy.Propulsors.Turbojet_Propulsor   import design_turbojet
 from RCAIDE.Library.Methods.Geometry.Two_Dimensional.Planform      import wing_segmented_planform
-from RCAIDE.Library.Plots                 import *     
+from RCAIDE.Library.Plots     import *     
 
 # python imports 
 import numpy as np  
 from copy import deepcopy
 import os
-
+ 
 def vehicle_setup():
 
     # ------------------------------------------------------------------
@@ -485,7 +485,7 @@ def vehicle_setup():
     fuel_tank.mass_properties.center_of_gravity    = np.array([[40.2,0,0]])
     fuel_tank.mass_properties.fuel_mass_when_full  = 2225+2225
     fuel_tank.fuel_selector_ratio                  = 1/8
-    fuel_tank.fuel                            = RCAIDE.Library.Attributes.Propellants.Jet_A() 
+    fuel_tank.fuel                                 = RCAIDE.Library.Attributes.Propellants.Jet_A() 
     fuel_line.fuel_tanks.append(fuel_tank) 
     
     fuel_tank                                      = RCAIDE.Library.Components.Energy.Fuel_Tanks.Fuel_Tank()
@@ -493,7 +493,7 @@ def vehicle_setup():
     fuel_tank.mass_properties.center_of_gravity    = np.array([[40.2,0,0]])
     fuel_tank.mass_properties.fuel_mass_when_full  = 4570+4570
     fuel_tank.fuel_selector_ratio                  = 1/8
-    fuel_tank.fuel                            = RCAIDE.Library.Attributes.Propellants.Jet_A() 
+    fuel_tank.fuel                                 = RCAIDE.Library.Attributes.Propellants.Jet_A() 
     fuel_line.fuel_tanks.append(fuel_tank)  
  
     fuel_tank = RCAIDE.Library.Components.Energy.Fuel_Tanks.Fuel_Tank()

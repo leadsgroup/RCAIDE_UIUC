@@ -1,5 +1,5 @@
-## @defgroup Visualization-Performance-Mission Mission 
-# RCAIDE/Visualization/Performance/Mission/__init__.py
+## @defgroup Library-Plots-Mission  Mission 
+# RCAIDE/Library/Plots/Performance/Mission/__init__.py
 # 
 
 """RCAIDE Package Setup

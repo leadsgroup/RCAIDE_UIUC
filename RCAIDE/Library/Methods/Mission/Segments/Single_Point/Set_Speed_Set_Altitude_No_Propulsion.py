@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Single_Point
-# RCAIDE/Methods/Missions/Segments/Single_Point/Set_Speed_Set_Altitude_No_Propulsion.py
+## @ingroup Library-Methods-Missions-Segments-Single_Point
+# RCAIDE/Library/Methods/Missions/Segments/Single_Point/Set_Speed_Set_Altitude_No_Propulsion.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -13,7 +13,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------  
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------  
-## @ingroup Methods-Missions-Segments-Single_Point
+## @ingroup Library-Methods-Missions-Segments-Single_Point
 def initialize_conditions(segment):
     """Sets the specified conditions which are given for the segment type.
 
@@ -42,6 +42,7 @@ def initialize_conditions(segment):
     # unpack
     alt             = segment.altitude
     air_speed       = segment.air_speed  
+    sideslip        = segment.sideslip_angle
     acceleration_z  = segment.acceleration_z
     conditions      = segment.state.conditions 
     
@@ -50,9 +51,13 @@ def initialize_conditions(segment):
         if not segment.state.initials: raise AttributeError('altitude not set')
         alt = -1.0 *segment.state.initials.conditions.frames.inertial.position_vector[-1,2]
     
+    air_speed_x = np.cos(sideslip)*air_speed 
+    air_speed_y = np.sin(sideslip)*air_speed
+        
     # pack
     conditions.freestream.altitude[:,0]             = alt
     conditions.frames.inertial.position_vector[:,2] = -alt # z points down
-    conditions.frames.inertial.velocity_vector[:,0] = air_speed
+    conditions.frames.inertial.velocity_vector[:,0] = air_speed_x
+    conditions.frames.inertial.velocity_vector[:,1] = air_speed_y
     conditions.frames.inertial.acceleration_vector  = np.array([[0.0,0.0,acceleration_z]])   
      

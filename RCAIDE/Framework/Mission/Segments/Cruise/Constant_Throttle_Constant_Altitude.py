@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Cruise 
-# RCAIDE/Analyses/Mission/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -89,8 +89,9 @@ class Constant_Throttle_Constant_Altitude(Evaluate):
         iterate.conditions.stability       = Common.Update.stability
         iterate.conditions.weights         = Common.Update.weights
         iterate.conditions.forces          = Common.Update.forces
-        iterate.conditions.planet_position = Common.Update.planet_position    
-        iterate.residuals.total_forces     = Common.Residuals.level_flight_forces  
+        iterate.conditions.moments         = Common.Update.moments
+        iterate.conditions.planet_position = Common.Update.planet_position
+        iterate.residuals.flight_dynamics  = Common.Residuals.level_flight_dynamics
         iterate.residuals.velocity         = Segments.Cruise.Constant_Throttle_Constant_Altitude.solve_velocity
         iterate.unknowns.mission           = Common.Unpack_Unknowns.orientation  
         iterate.unknowns.acceleration      = Segments.Cruise.Constant_Throttle_Constant_Altitude.unpack_unknowns  

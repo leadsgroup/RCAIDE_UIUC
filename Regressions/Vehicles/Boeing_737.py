@@ -1,4 +1,4 @@
-# Regression/scripts/Vehicles/Embraer_E190.py
+# Regressions/Vehicles/Embraer_E190.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -10,10 +10,10 @@
 import RCAIDE
 from RCAIDE.Framework.Core import Units       
 from RCAIDE.Library.Methods.Geometry.Two_Dimensional.Planform      import segment_properties   
-from RCAIDE.Library.Methods.Energy.Propulsors.Turbofan_Propulsor   import design_turbofan , compute_nacelle_geometry
+from RCAIDE.Library.Methods.Energy.Propulsors.Turbofan_Propulsor   import design_turbofan , size_turbofan_nacelle
 from RCAIDE.Library.Methods.Stability.Center_of_Gravity            import compute_component_centers_of_gravity
-from RCAIDE.Library.Plots                                  import *     
-
+from RCAIDE.Library.Plots                                          import *     
+ 
 # python imports 
 import numpy as np  
 from copy import deepcopy 
@@ -629,7 +629,7 @@ def vehicle_setup():
     nac_segment.height                          = 1.7 
     nac_segment.width                           = 1.7
     nacelle.append_segment(nac_segment)           
-    compute_nacelle_geometry(turbofan, nacelle)
+    size_turbofan_nacelle(turbofan, nacelle)
     turbofan.nacelle                            = nacelle
     
     fuel_line.propulsors.append(turbofan)  

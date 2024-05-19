@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments
-# RCAIDE/Analyses/Mission/Segment/Segment.py
+# RCAIDE/Framework/Analyses/Mission/Segment/Segment.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -177,8 +177,13 @@ class Segment(Analysis):
         self.flight_controls.body_angle                                   = Data()
         self.flight_controls.body_angle.active                            = False                 
         self.flight_controls.body_angle.initial_guess                     = False             
-        self.flight_controls.body_angle.initial_guess_values              = None   
-    
+        self.flight_controls.body_angle.initial_guess_values              = None
+
+        self.flight_controls.bank_angle                                   = Data()
+        self.flight_controls.bank_angle.active                            = False
+        self.flight_controls.bank_angle.initial_guess                     = False
+        self.flight_controls.bank_angle.initial_guess_values              = None
+
         self.flight_controls.wind_angle                                   = Data()
         self.flight_controls.wind_angle.active                            = False                 
         self.flight_controls.wind_angle.initial_guess                     = False           
@@ -215,7 +220,13 @@ class Segment(Analysis):
         self.flight_controls.elevator_deflection.assigned_surfaces        = None
         self.flight_controls.elevator_deflection.initial_guess            = False 
         self.flight_controls.elevator_deflection.initial_guess_values     = None
-    
+
+        self.flight_controls.rudder_deflection                            = Data()
+        self.flight_controls.rudder_deflection.active                     = False
+        self.flight_controls.rudder_deflection.assigned_surfaces          = None
+        self.flight_controls.rudder_deflection.initial_guess              = False
+        self.flight_controls.rudder_deflection.initial_guess_values       = None
+
         self.flight_controls.flap_deflection                              = Data() 
         self.flight_controls.flap_deflection.active                       = False          
         self.flight_controls.flap_deflection.assigned_surfaces            = None

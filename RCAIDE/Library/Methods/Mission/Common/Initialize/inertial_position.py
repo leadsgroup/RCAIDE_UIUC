@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments-Common-Initialize
-# RCAIDE/Methods/Missions/Segments/Common/Initialize/inertial_position.py
+## @ingroup Library-Methods-Missions-Segments-Common-Initialize
+# RCAIDE/Library/Methods/Missions/Segments/Common/Initialize/inertial_position.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Initialize Inertial Position
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Missions-Segments-Common-Initialize
+## @ingroup Library-Methods-Missions-Segments-Common-Initialize
 def inertial_position(segment): 
     """ Initializes intertial positon of vehicle
     

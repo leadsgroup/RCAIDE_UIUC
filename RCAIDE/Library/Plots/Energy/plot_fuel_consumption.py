@@ -1,5 +1,5 @@
-## @ingroup Visualization-Energy
-# RCAIDE/Visualization/Energy/plot_fuel_consumption.py
+## @ingroup Library-Plots-Energy
+# RCAIDE/Library/Plots/Energy/plot_fuel_consumption.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,7 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-## @ingroup Visualization-Performance-Energy-Fuel
+## @ingroup Library-Plots-Performance-Energy-Fuel
 def plot_fuel_consumption(results,
                     save_figure = False,
                     show_legend=True,

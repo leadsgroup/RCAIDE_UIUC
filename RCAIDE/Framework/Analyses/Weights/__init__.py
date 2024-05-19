@@ -1,5 +1,5 @@
 ## @defgroup Analyses-Weights Weights
-# RCAIDE/Analyses/Weights/__init__.py
+# RCAIDE/Framework/Analyses/Weights/__init__.py
 # 
 
 """RCAIDE Package Setup

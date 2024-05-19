@@ -1,4 +1,4 @@
-# Regression/scripts/Vehicles/NASA_X57.py
+# Regressions/Vehicles/NASA_X57.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -342,49 +342,49 @@ def vehicle_setup():
     nacelle.origin             = [[2.5,2.5,1.0]]
     nacelle.flow_through       = False  
     
-    nac_segment                    = RCAIDE.Library.Components.Fuselages.Segment()
+    nac_segment                    = RCAIDE.Library.Components.Nacelles.Segment()
     nac_segment.tag                = 'segment_1'
     nac_segment.percent_x_location = 0.0  
     nac_segment.height             = 0.0
     nac_segment.width              = 0.0
     nacelle.append_segment(nac_segment)   
     
-    nac_segment                    = RCAIDE.Library.Components.Fuselages.Segment()
+    nac_segment                    = RCAIDE.Library.Components.Nacelles.Segment()
     nac_segment.tag                = 'segment_2'
     nac_segment.percent_x_location = 0.1  
     nac_segment.height             = 0.5
     nac_segment.width              = 0.65
     nacelle.append_segment(nac_segment)   
     
-    nac_segment                    = RCAIDE.Library.Components.Fuselages.Segment()
+    nac_segment                    = RCAIDE.Library.Components.Nacelles.Segment()
     nac_segment.tag                = 'segment_3'
     nac_segment.percent_x_location = 0.3  
     nac_segment.height             = 0.52
     nac_segment.width              = 0.7
     nacelle.append_segment(nac_segment)  
      
-    nac_segment                    = RCAIDE.Library.Components.Fuselages.Segment()
+    nac_segment                    = RCAIDE.Library.Components.Nacelles.Segment()
     nac_segment.tag                = 'segment_4'
     nac_segment.percent_x_location = 0.5  
     nac_segment.height             = 0.5
     nac_segment.width              = 0.65
     nacelle.append_segment(nac_segment)  
     
-    nac_segment                    = RCAIDE.Library.Components.Fuselages.Segment()
+    nac_segment                    = RCAIDE.Library.Components.Nacelles.Segment()
     nac_segment.tag                = 'segment_5'
     nac_segment.percent_x_location = 0.7 
     nac_segment.height             = 0.4
     nac_segment.width              = 0.6
     nacelle.append_segment(nac_segment)   
     
-    nac_segment                    = RCAIDE.Library.Components.Fuselages.Segment()
+    nac_segment                    = RCAIDE.Library.Components.Nacelles.Segment()
     nac_segment.tag                = 'segment_6'
     nac_segment.percent_x_location = 0.9 
     nac_segment.height             = 0.3
     nac_segment.width              = 0.5
     nacelle.append_segment(nac_segment)  
     
-    nac_segment                    = RCAIDE.Library.Components.Fuselages.Segment()
+    nac_segment                    = RCAIDE.Library.Components.Nacelles.Segment()
     nac_segment.tag                = 'segment_7'
     nac_segment.percent_x_location = 1.0  
     nac_segment.height             = 0.0

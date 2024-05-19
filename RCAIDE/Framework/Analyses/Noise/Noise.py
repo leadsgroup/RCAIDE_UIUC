@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Noise
-# RCAIDE/Analyses/Noise/Noise.py
+# RCAIDE/Framework/Analyses/Noise/Noise.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke

@@ -1,5 +1,5 @@
-## @ingroup Visualization-Energy
-# RCAIDE/Visualization/Energy/plot_battery_health_conditions.py
+## @ingroup Library-Plots-Energy
+# RCAIDE/Library/Plots/Energy/plot_battery_health_conditions.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -17,7 +17,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-## @ingroup Visualization-Energy
+## @ingroup Library-Plots-Energy
 def plot_battery_temperature(results,
                                   save_figure = False,
                                   show_legend = True,

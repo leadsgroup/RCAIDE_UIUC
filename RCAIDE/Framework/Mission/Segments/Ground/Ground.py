@@ -1,5 +1,5 @@
 ## @ingroup Analyses-Mission-Segments-Ground
-# RCAIDE/Analyses/Mission/Segments/Ground/Ground.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Ground/Ground.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -80,12 +80,12 @@ class Ground(Evaluate):
         #  Mission Specific Unknowns and Residuals 
         # --------------------------------------------------------------------------------------------------------------       
         iterate.unknowns.mission           = Unpack_Unknowns.ground
-        iterate.residuals.total_forces     = Residuals.ground_forces 
+        iterate.residuals.flight_dynamics  = Residuals.ground_flight_dynamics
         
         # -------------------------------------------------------------------------------------------------------------- 
         #  Mission specific processes 
         # -------------------------------------------------------------------------------------------------------------- 
         iterate                            = self.process.iterate    
-        iterate.conditions.forces_ground   = Update.ground_forces    
+        iterate.conditions.forces_ground   = Update.ground_forces
     
         return

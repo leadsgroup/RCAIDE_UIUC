@@ -1,5 +1,5 @@
-## @ingroup Methods-Missions-Segments
-# RCAIDE/Methods/Missions/Segments/converge_root.py
+## @ingroup Library-Methods-Missions-Segments
+# RCAIDE/Library/Methods/Missions/Segments/converge_root.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke  
@@ -14,7 +14,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # converge root
 # ---------------------------------------------------------------------------------------------------------------------- 
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def converge_root(segment):
     """Interfaces the mission to a numerical solver. The solver may be changed by using root_finder.
 
@@ -66,7 +66,7 @@ def converge_root(segment):
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Helper Functions
 # ---------------------------------------------------------------------------------------------------------------------- 
-## @ingroup Methods-Missions-Segments
+## @ingroup Library-Methods-Missions-Segments
 def iterate(unknowns, segment):
     
     """Runs one iteration of of all analyses for the mission.
