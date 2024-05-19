@@ -64,32 +64,20 @@ def plot_rotor_conditions(results,
     for network in results.segments[0].analyses.energy.networks:  
         if 'busses' in network: 
             for bus in network.busses:    
-                for p_i, propulsor in enumerate(bus.propulsors):
-                    if p_i == 0:
-                        axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
-                        axis_0.grid(False)
-                        axis_0.axis('off')
-                        plot_propulsor_data(results,bus,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi)
-                    elif (bus.identical_propulsors == False) and p_i !=0: 
-                        axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
-                        axis_0.grid(False)
-                        axis_0.axis('off')
-                        plot_propulsor_data(results,bus,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi)  
+                for propulsor in bus.propulsors: 
+                    axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
+                    axis_0.grid(False)
+                    axis_0.axis('off')
+                    plot_propulsor_data(results,bus,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi) 
                     pi += 1
              
         if 'fuel_lines' in network: 
             for fuel_line in network.fuel_lines:    
-                for p_i, propulsor in enumerate(fuel_line.propulsors):  
-                    if p_i == 0: 
-                        axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
-                        axis_0.grid(False)
-                        axis_0.axis('off')
-                        plot_propulsor_data(results,fuel_line,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi)
-                    elif (fuel_line.identical_propulsors == False) and p_i !=0: 
-                        axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
-                        axis_0.grid(False)
-                        axis_0.axis('off')
-                        plot_propulsor_data(results,fuel_line,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi)  
+                for propulsor in fuel_line.propulsors:   
+                    axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
+                    axis_0.grid(False)
+                    axis_0.axis('off')
+                    plot_propulsor_data(results,fuel_line,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi)  
                     pi += 1
     if show_legend:    
         h, l = axis_0.get_legend_handles_labels()

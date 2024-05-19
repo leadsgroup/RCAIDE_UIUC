@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Compute resultant temperature of the reservoir
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_mixing_temperature(RES,battery_conditions,state,dt,i,remove_heat):
+def compute_mixing_temperature(RES,battery_conditions,state,dt,i):
     
     """
      Computes the resultant temperature of the reservoir at each time step with coolant pouring in from the HAS and the HEX 
@@ -44,16 +44,9 @@ def compute_mixing_temperature(RES,battery_conditions,state,dt,i,remove_heat):
     mass_flow_HAS            =  battery_conditions.thermal_management_system.HAS.coolant_mass_flow_rate[i+1]    
     T_HAS                    =  battery_conditions.thermal_management_system.HAS.outlet_coolant_temperature[i+1] 
     
-    if remove_heat == True: 
-        mass_flow_HEX        =  battery_conditions.thermal_management_system.HEX.coolant_mass_flow_rate[i+1]  
-        T_HEX                =  battery_conditions.thermal_management_system.HEX.outlet_coolant_temperature[i+1]   
-    else:
-        mass_flow_HEX        = 0
-        T_HEX                = 0
-    
-     #Coolant Properties
-    
-    
+    mass_flow_HEX        =  battery_conditions.thermal_management_system.HEX.coolant_mass_flow_rate[i+1]  
+    T_HEX                =  battery_conditions.thermal_management_system.HEX.outlet_coolant_temperature[i+1]  
+      
     # Calculate mass coming into reservoir.
     mass_HAS                = mass_flow_HAS*dt
     mass_HEX                = mass_flow_HEX*dt

@@ -25,19 +25,19 @@ def compute_thermal_performance(HAS,HEX,RES,battery_conditions,battery,Q_heat_ce
            
     
     '''   
-    # compute heat transfer between coolant and battery pack 
-    HAS.compute_heat_removed(battery_conditions,battery,Q_heat_cell[i],state,delta_t[i],i)   
-    heat_removal = battery_conditions.thermal_management_system.heat_removal_flag
+    # compute heat transfer from the battery modules (pack) to the coolant 
+    HAS.compute_heat_removed(battery_conditions,battery,Q_heat_cell[i],state,delta_t[i],i)
     
-    if heat_removal == True: 
-        HEX.compute_heat_removed(battery_conditions,state,delta_t[i],i) 
-        # compute heat transfer between coolant and reservoir
-        RES.compute_reservior_coolant_temperature(battery_conditions,state,delta_t[i],i,heat_removal)          
+    # compute heat transfer between coolant and heat exchanger to the environment     
+    HEX.compute_heat_removed(battery_conditions,state,delta_t[i],i)
     
-    # Compute Heat loss/gain 
+    # compute heat transfer between coolant and reservoir
+    RES.compute_reservior_coolant_temperature(battery_conditions,state,delta_t[i],i)          
+    
+    # compute heat loss/gain within the reservour 
     RES.compute_reservior_heat_transfer(battery_conditions,state,delta_t[i],i)  
     
-    # compute total power 
+    # compute total power consumed by the battery thermal management system
     battery_conditions.thermal_management_system.power[i+1] = battery_conditions.thermal_management_system.HAS.power[i+1] +\
                                                               battery_conditions.thermal_management_system.HEX.power[i+1] 
                                                               

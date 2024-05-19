@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Compute resultant temperature of the reservoir
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_mixing_temperature(RES,battery_conditions,state,dt,i,remove_heat):
+def compute_mixing_temperature(RES,battery_conditions,state,dt,i):
     """
      Computes the resultant temperature of the reservoir at each time step with coolant pouring in from the HAS and the HEX 
           

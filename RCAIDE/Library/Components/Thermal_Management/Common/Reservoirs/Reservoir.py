@@ -50,11 +50,11 @@ class Reservoir(Component):
 
         return
 
-    def compute_reservior_coolant_temperature(RES,battery_conditions,state,dt,i,remove_heat):
+    def compute_reservior_coolant_temperature(RES,battery_conditions,state,dt,i):
         '''
       COMMENTS SAI 
       '''
-        compute_mixing_temperature(RES,battery_conditions,state,dt,i,remove_heat)   
+        compute_mixing_temperature(RES,battery_conditions,state,dt,i)   
         return
     
     def compute_reservior_heat_transfer(RES,battery_conditions,state,dt,i):
