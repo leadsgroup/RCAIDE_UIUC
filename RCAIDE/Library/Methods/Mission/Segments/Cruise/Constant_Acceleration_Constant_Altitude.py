@@ -63,9 +63,9 @@ def initialize_conditions(segment):
     t_final   = (vf-v0)/ax + t_initial
     t_nondim  = segment.state.numerics.dimensionless.control_points
     time      = t_nondim * (t_final-t_initial) + t_initial 
-    v_mag = v0+(time - t_initial)*ax
-    v_x   = np.cos(beta)*v_mag
-    v_y   = np.sin(beta)*v_mag
+    v_mag     = v0+(time - t_initial)*ax
+    v_x       = np.cos(beta)*v_mag
+    v_y       = np.sin(beta)*v_mag
     
     # pack
     segment.state.conditions.freestream.altitude[:,0]             = alt

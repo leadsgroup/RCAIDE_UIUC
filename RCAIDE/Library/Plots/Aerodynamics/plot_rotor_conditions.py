@@ -65,7 +65,7 @@ def plot_rotor_conditions(results,
         if 'busses' in network: 
             for bus in network.busses:    
                 for propulsor in bus.propulsors: 
-                    axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
+                    #axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
                     axis_0.grid(False)
                     axis_0.axis('off')
                     plot_propulsor_data(results,bus,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi) 
@@ -74,7 +74,7 @@ def plot_rotor_conditions(results,
         if 'fuel_lines' in network: 
             for fuel_line in network.fuel_lines:    
                 for propulsor in fuel_line.propulsors:   
-                    axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
+                    #axis_0.plot(np.zeros(2),np.zeros(2), color = line_colors[0], marker = ps.markers[pi], linewidth = ps.line_width,label= propulsor.tag) 
                     axis_0.grid(False)
                     axis_0.axis('off')
                     plot_propulsor_data(results,fuel_line,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,pi)  
