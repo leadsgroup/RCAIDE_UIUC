@@ -19,8 +19,8 @@ def main():
     import sys
     
     the_package = 'RCAIDE'
-    version     = '1.0.0'
-    date        = 'Aug 14th, 2024'
+    version     = '24.2.0'
+    date        = 'Sep 30th, 2024'
     
     if len(sys.argv) >= 2:
         command = sys.argv[1]
@@ -80,10 +80,10 @@ def install(the_package,version,date):
         name = the_package,
         version = version, 
         description = 'RCAIDE: Research Community Aerospace Interdisciplinary Design Environment',
-        author = 'RCAIDE Trust',
+        author = 'Laboratory of Electric Aircraft Design and Sustainability',
         #author_email = '',
         maintainer = 'The Developers',
-        url = 'rcaide.org',
+        url = 'leadsresearchgroup.com',
         packages = packages,
         include_package_data = True,
         #license = '',
@@ -184,7 +184,7 @@ def list_subpackages(package_trail,verbose=False):
     # include this package trail
     package_trails = [package_trail] + packages
 
-    # done!
+    # done!leadsresearchgroup.com
     return package_trails
 
 # ----------------------------------------------------------------------------------------------------------------------
