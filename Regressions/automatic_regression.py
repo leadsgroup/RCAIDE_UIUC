@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')
 import sys, os, traceback, time
-from src.Framework.Core import DataOrdered
+from RCAIDE.Framework.Core import DataOrdered
 
 sys.path.append(os.path.join(sys.path[0], 'Vehicles'))
 sys.path.append(os.path.join(sys.path[0], 'Vehicles' + os.sep + 'Rotors' )) 

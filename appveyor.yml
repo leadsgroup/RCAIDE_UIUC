@@ -25,6 +25,7 @@ install:
     - python3 -m pip install --upgrade plotly
     - python3 -m pip install --upgrade kaleido
     - python3 -m pip install --upgrade pandas
+    - python3 -m pip install -e .
     - PATH=$PATH:/home/appveyor/.local/bin
     - python3 -m pip install coveralls==3.2.0
     - python3 setup.py develop --user
