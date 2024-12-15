@@ -43,7 +43,8 @@ class Generic_Fuel_Cell_Stack(Component):
         Properties Used:
         None
         """           
-        self.tag                                        = 'fuel_cell'
+        self.tag                                        = 'fuel_cell'     
+        self.mass_properties.mass                       = 1.0
         self.energy_density                             = 0.0
         self.current_energy                             = 0.0
         self.current_capacitor_charge                   = 0.0
@@ -58,17 +59,31 @@ class Generic_Fuel_Cell_Stack(Component):
         self.orientation_euler_angles                   = [0.,0.,0.]  # vector of angles defining default orientation of rotor        
                      
         self.fuel_cell                                  = Data() 
+        self.fuel_cell.discharge_model                  = 'Simple' # or Larminie    
         self.fuel_cell.propellant                       = RCAIDE.Library.Attributes.Propellants.Gaseous_Hydrogen()
         self.fuel_cell.oxidizer                         = Air()
         self.fuel_cell.efficiency                       = .65                                 # normal fuel cell operating efficiency at sea level
         self.fuel_cell.specific_power                   = 2.08        *Units.kW/Units.kg      # specific power of fuel cell [kW/kg]; default is Nissan 2011 level
-        self.fuel_cell.mass_density                     = 1203.208556 *Units.kg/Units.m**3.   # take default as specs from Nissan 2011 fuel cell            
+        self.fuel_cell.mass_density                     = 1203.208556 *Units.kg/Units.m**3.   # take default as specs from Nissan 2011 fuel cell      
         self.fuel_cell.volume                           = 0.0
         self.fuel_cell.max_power                        = 0.0 
         self.fuel_cell.length                           = 0.02
         self.fuel_cell.width                            = 0.05
         self.fuel_cell.height                           = 0.1 
-        self.additional_weight_factor                   = 1.1   
+        self.fuel_cell.rated_current_density            = 1.0
+        self.fuel_cell.rated_power_density              = 1.0
+        self.additional_weight_factor                   = 1.1
+        
+        self.fuel_cell.interface_area                   = 875.*(Units.cm**2.)                  # area of the fuel cell interface
+        self.fuel_cell.r                                = (2.45E-4) *(Units.kohm*(Units.cm**2))# area specific resistance [k-Ohm-cm^2]
+        self.fuel_cell.Eoc                              = .931                                 # effective activation energy (V)
+        self.fuel_cell.A1                               = .03                                  # slope of the Tafel line (models activation losses) (V)
+        self.fuel_cell.m                                = 1.05E-4                              # constant in mass-transfer overvoltage equation (V)
+        self.fuel_cell.n                                = 8E-3                                 # constant in mass-transfer overvoltage equation
+        self.fuel_cell.ideal_voltage                    = 1.48
+        self.fuel_cell.wall_thickness                   = .0022224                             # thickness of cell wall in meters  
+        self.fuel_cell.cell_density                     =1988.                                 # cell density in kg/m^3
+        self.fuel_cell.porosity_coefficient             =.6                                    # porosity coefficient  
 
         self.electrical_configuration                   = Data()
         self.electrical_configuration.series            = 1
@@ -79,26 +94,9 @@ class Generic_Fuel_Cell_Stack(Component):
         self.geometrtic_configuration.parallel_count    = 1
         self.geometrtic_configuration.normal_spacing    = 0.02
         self.geometrtic_configuration.stacking_rows     = 3
-        self.geometrtic_configuration.parallel_spacing  = 0.02           
+        self.geometrtic_configuration.parallel_spacing  = 0.02
         
-    def energy_calc(self,state):
-        """This call the assigned discharge method.
-
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        see properties used
-
-        Outputs:
-        mdot     [kg/s] (units may change depending on selected model)
-
-        Properties Used:
-        self.discharge_model(self, conditions, numerics)
-        """
+         
     def energy_calc(self,state,bus,coolant_lines, t_idx, delta_t): 
         """Computes the state of the NMC battery cell.
            

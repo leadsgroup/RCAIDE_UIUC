@@ -36,8 +36,8 @@ def compute_stack_properties(fuel_cell_stack):
        mass_properties.    
         mass                  [kilograms] 
     """
+     
     
-
     series_e           = fuel_cell_stack.electrical_configuration.series
     parallel_e         = fuel_cell_stack.electrical_configuration.parallel 
     normal_count       = fuel_cell_stack.geometrtic_configuration.normal_count  
@@ -46,8 +46,7 @@ def compute_stack_properties(fuel_cell_stack):
 
     if int(parallel_e*series_e) != int(normal_count*parallel_count):
         pass #raise Exception('Number of cells in gemetric layout not equal to number of cells in electric circuit configuration ')
-        
-        
+         
     normal_spacing     = fuel_cell_stack.geometrtic_configuration.normal_spacing   
     parallel_spacing   = fuel_cell_stack.geometrtic_configuration.parallel_spacing
     volume_factor      = fuel_cell_stack.volume_packaging_factor 
@@ -83,14 +82,16 @@ def compute_stack_properties(fuel_cell_stack):
     fuel_cell_stack.width  = width
     fuel_cell_stack.height = height 
     
-    #amp_hour_rating                                = fuel_cell_stack.fuel_cell.nominal_capacity   
-    #total_battery_assemply_mass                    = fuel_cell_stack.fuel_cell.mass * series_e * parallel_e  
-    #fuel_cell_stack.mass_properties.mass           = total_battery_assemply_mass*weight_factor  
-    #fuel_cell_stack.specific_energy                = (amp_hour_rating*fuel_cell_stack.fuel_cell.maximum_voltage)/fuel_cell_stack.fuel_cell.mass  * Units.Wh/Units.kg
-    #fuel_cell_stack.maximum_energy                 = total_battery_assemply_mass*fuel_cell_stack.specific_energy    
-    #fuel_cell_stack.specific_power                 = fuel_cell_stack.specific_energy/fuel_cell_stack.fuel_cell.nominal_capacity 
-    #fuel_cell_stack.maximum_power                  = fuel_cell_stack.specific_power*fuel_cell_stack.mass_properties.mass  
-    #fuel_cell_stack.maximum_voltage                = fuel_cell_stack.fuel_cell.maximum_voltage  * series_e   
-    #fuel_cell_stack.initial_maximum_energy         = fuel_cell_stack.maximum_energy      
-    #fuel_cell_stack.nominal_capacity               = fuel_cell_stack.fuel_cell.nominal_capacity* parallel_e 
-    #fuel_cell_stack.voltage                        = fuel_cell_stack.maximum_voltage 
+    
+    P_fc    =  fuel_cell_stack.fuel_cell.rated_power_density *  fuel_cell_stack.fuel_cell.interface_area
+    I_fc    =  fuel_cell_stack.fuel_cell.rated_current_density *  fuel_cell_stack.fuel_cell.interface_area
+    I_stack = I_fc * parallel_e
+    V_fc    = P_fc / I_fc
+    V_stack = V_fc  * series_e
+    P_stack = V_stack * I_stack
+    
+    fuel_cell_stack.voltage         = V_stack
+    fuel_cell_stack.maximum_voltage = V_stack  
+    fuel_cell_stack.maximum_current = I_stack 
+    fuel_cell_stack.maximum_power   = P_stack   
+     

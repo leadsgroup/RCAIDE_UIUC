@@ -216,8 +216,7 @@ def vehicle_setup(new_regression=True):
     # Lift Bus 
     #====================================================================================================================================          
     bus                                                    = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
-    bus.tag                                                = 'bus'
-    bus.number_of_battery_modules                          =  10
+    bus.tag                                                = 'bus' 
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus Battery
@@ -229,7 +228,7 @@ def vehicle_setup(new_regression=True):
     bat.geometrtic_configuration.normal_count              = 20
     bat.geometrtic_configuration.parallel_count            = 24  
     
-    for _ in range(bus.number_of_battery_modules):
+    for _ in range(10):
         bus.battery_modules.append(deepcopy(bat))   
     bus.initialize_bus_properties()
     

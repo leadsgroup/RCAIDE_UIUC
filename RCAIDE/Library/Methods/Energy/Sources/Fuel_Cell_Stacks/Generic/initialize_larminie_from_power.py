@@ -19,7 +19,7 @@ import numpy as np
 # ----------------------------------------------------------------------
 
 ## @ingroup Methods-Power-Fuel_Cell-Sizing
-def initialize_larminie_from_power(fuel_cell,power): 
+def initialize_larminie_from_power(fuel_cell_stack,power): 
     '''
     Initializes extra paramters for the fuel cell when using the larminie method
     Determines the number of stacks
@@ -40,20 +40,19 @@ def initialize_larminie_from_power(fuel_cell,power):
             mass          [kg]
        
         
-    '''
+    ''' 
+    fuel_cell                            = fuel_cell_stack.fuel_cell 
+    lb                                   = .1*Units.mA/(Units.cm**2.)    #lower bound on fuel cell current density
+    ub                                   = 1200.0*Units.mA/(Units.cm**2.)
+    sign                                 = -1. #used to minimize -power
+    current_density                      = sp.optimize.fminbound(find_power_larminie, lb, ub, args=(fuel_cell, sign))
+    power_per_cell                       = find_power_larminie(current_density,fuel_cell)
     
+    fuel_cell.number_of_cells            = np.ceil(power/power_per_cell)
+    fuel_cell.max_power                  = fuel_cell.number_of_cells*power_per_cell
+    fuel_cell.volume                     = fuel_cell.number_of_cells*fuel_cell.interface_area*fuel_cell.wall_thickness
+    fuel_cell_stack.mass_properties.mass = fuel_cell.volume*fuel_cell.cell_density*fuel_cell.porosity_coefficient #fuel cell mass in kg
+    fuel_cell.mass_density               = fuel_cell_stack.mass_properties.mass/  fuel_cell.volume                      
+    fuel_cell.specific_power             = fuel_cell.max_power/fuel_cell_stack.mass_properties.mass #fuel cell specific power in W/kg
     
-    
-    fc                      = fuel_cell
-    lb                      = .1*Units.mA/(Units.cm**2.)    #lower bound on fuel cell current density
-    ub                      = 1200.0*Units.mA/(Units.cm**2.)
-    sign                    = -1. #used to minimize -power
-    current_density         = sp.optimize.fminbound(find_power_larminie, lb, ub, args=(fc, sign))
-    power_per_cell          = find_power_larminie(current_density,fc)
-    
-    fc.number_of_cells      = np.ceil(power/power_per_cell)
-    fc.max_power            = fc.number_of_cells*power_per_cell
-    fc.volume               = fc.number_of_cells*fc.interface_area*fc.wall_thickness
-    fc.mass_properties.mass = fc.volume*fc.cell_density*fc.porosity_coefficient #fuel cell mass in kg
-    fc.mass_density         = fc.mass_properties.mass/  fc.volume                      
-    fc.specific_power       = fc.max_power/fc.mass_properties.mass #fuel cell specific power in W/kg    
+    return 

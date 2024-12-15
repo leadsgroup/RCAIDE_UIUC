@@ -7,10 +7,8 @@
            
 # ----------------------------------------------------------------------
 #  Initialize from Power
-# ----------------------------------------------------------------------
-
-## @ingroup Methods-Power-Fuel_Cell-Sizing
-def initialize_from_power(fuel_cell,power):
+# ---------------------------------------------------------------------- 
+def initialize_from_power(fuel_cell_stack,power):
     '''
     assigns the mass of the fuel cell based on the power and specific power
     Assumptions:
@@ -27,4 +25,5 @@ def initialize_from_power(fuel_cell,power):
       mass_properties.
         mass         [kg]
     '''
-    fuel_cell.mass_properties.mass=power/fuel_cell.specific_power
+    fuel_cell =  fuel_cell_stack.fuel_cell
+    fuel_cell_stack.mass_properties.mass = power/fuel_cell.specific_power

@@ -58,11 +58,11 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
             The compressor expander module of the air supply system 
         maximum_deg: float 
             The maximum voltage drop due to degradation of the fuel cell at EOL
-        rated_cd: float 
+        rated_current_density: float 
             The rated current density for pressure drop calculations (typically the current density at max power)
             Can be calculated using the evaluate_max_PD method
             Defaults to None 
-        rated_pd: float 
+        rated_power_density: float 
             The rated power density of the fuel cell 
             Defaults to None 
         rated_p_drop_fc: Pressure 
@@ -112,37 +112,43 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
             The mass per active membrane area of the fuel cell (kg/m2)
         """ 
 
-        self.tag                          = 'pem_fuel_cell'        
-        self.fuel_cell.R                  = 8.31 # Universal gas constant (J / (mol*K))
-        self.fuel_cell.F                  = 96485  # Faraday constant (C / mol)
-        self.fuel_cell.E_C                = 66000 # Activation energy of ORR (J)
-        self.fuel_cell.MMH2               = 2.0 * 10 ** -3  # Molar mass of H2 (kg/mol) 
-        self.fuel_cell.MMO2               = 32 * 10 ** -3  # Molar mass of O2 (kg/mol)
-        
-        self.fuel_cell.O2_mass_frac       = 0.233          
-        self.fuel_cell.type               = "LT" 
-        self.fuel_cell.t_m                = 0.0024 #* Units.cm
-        self.fuel_cell.a_c                = 98
-        self.fuel_cell.L_c                = 0.1 
-        self.fuel_cell.A                  = 50  
-        self.fuel_cell.CEM                = CEM_Module() 
-        self.fuel_cell.maximum_deg        = 0 
-        self.fuel_cell.rated_cd           = None
-        self.fuel_cell.rated_pd           = None
-        self.fuel_cell.rated_p_drop_fc    = 0.240 
-        self.fuel_cell.rated_p_drop_hum   = 0.025 
-        self.fuel_cell.gamma_para         = 0.03 
-        self.fuel_cell.alpha              = 0.375
-        self.fuel_cell.gamma              = 0.45
-        self.fuel_cell.lambda_eff         = 20
-        self.fuel_cell.fuel_to_air_ratio =  0.5
-        self.fuel_cell.c1                 = 0.0435 
-        self.fuel_cell.c2                 = 0.0636 
-        self.fuel_cell.i0ref              = 9 * 10 ** -6
-        self.fuel_cell.i0ref_P_ref        = 1 
-        self.fuel_cell.i0ref_T_ref        = 353
-        self.fuel_cell.current_density_limit_multiplier   = 1
-        self.fuel_cell.area_specific_mass = 2.5 
+        self.tag                                = 'pem_fuel_cell'        
+        self.fuel_cell.R                        = 8.31 # Universal gas constant (J / (mol*K))
+        self.fuel_cell.F                        = 96485  # Faraday constant (C / mol)
+        self.fuel_cell.E_C                      = 66000 # Activation energy of ORR (J)
+        self.fuel_cell.MMH2                     = 2.0 * 10 ** -3  # Molar mass of H2 (kg/mol) 
+        self.fuel_cell.MMO2                     = 32 * 10 ** -3  # Molar mass of O2 (kg/mol)
+               
+        self.fuel_cell.O2_mass_frac             = 0.233          
+        self.fuel_cell.type                     = "LT" 
+        self.fuel_cell.t_m                      = 0.0024 #* Units.cm
+        self.fuel_cell.a_c                      = 98
+        self.fuel_cell.L_c                      = 0.1 
+        self.fuel_cell.CEM                      = Data() 
+        self.fuel_cell.CEM.compressor_efficiency = 0.71
+        self.fuel_cell.CEM.expander_efficiency   = 0.73 
+        self.fuel_cell.CEM.motor_efficiency      = 0.801025 
+        self.fuel_cell.CEM.generator_efficiency  = 1
+        self.fuel_cell.CEM.specific_weight       = None
+        self.fuel_cell.CEM.weight                = 0 
+        self.fuel_cell.maximum_deg              = 0 
+        self.fuel_cell.rated_p_drop_fc          = 0.240 
+        self.fuel_cell.rated_p_drop_hum         = 0.025 
+        self.fuel_cell.gamma_para               = 0.03 
+        self.fuel_cell.alpha                    = 0.375
+        self.fuel_cell.gamma                    = 0.45
+        self.fuel_cell.lambda_eff               = 20
+        self.fuel_cell.fuel_to_air_ratio        = 0.5
+        self.fuel_cell.c1                       = 0.0435 
+        self.fuel_cell.c2                       = 0.0636
+        self.fuel_cell.stack_temperature        = 353.15 
+        self.fuel_cell.air_excess_ratio         = 2
+        self.fuel_cell.oxygen_relative_humidity = 2
+        self.fuel_cell.i0ref                    = 9 * 10 ** -6
+        self.fuel_cell.i0ref_P_ref              = 1 
+        self.fuel_cell.i0ref_T_ref              = 353
+        self.fuel_cell.current_density_limit_multiplier = 1
+        self.fuel_cell.area_specific_mass       = 2.5 
         return 
         
     def energy_calc(self,state,bus,coolant_lines, t_idx, delta_t): 
@@ -180,14 +186,4 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
 
     def reuse_stored_data(self,state,bus,stored_results_flag, stored_fuel_cell_tag):
         reuse_stored_fuel_cell_data(self,state,bus,stored_results_flag, stored_fuel_cell_tag)
-        return      
- 
-class CEM_Module(): 
-    def __defaults__(self): 
-        self.compressor_efficiency = 0.71
-        self.expander_efficiency   = 0.73 
-        self.motor_efficiency      = 0.801025 
-        self.generator_efficiency  = 1
-        self.specific_weight       = None
-        self.weight                = 0 
-     
+        return       

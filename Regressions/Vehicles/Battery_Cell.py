@@ -37,7 +37,8 @@ def vehicle_setup(current,C_rat,cell_chemistry,electrical_config):
     elif cell_chemistry == 'lithium_ion_lfp': 
         battery = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP()    
     bus.battery_modules.append(battery)  
-    bus.initialize_bus_properties()    
+    bus.initialize_bus_properties()
+    
     #------------------------------------------------------------------------------------------------------------------------------------           
     # Payload 
     #------------------------------------------------------------------------------------------------------------------------------------  

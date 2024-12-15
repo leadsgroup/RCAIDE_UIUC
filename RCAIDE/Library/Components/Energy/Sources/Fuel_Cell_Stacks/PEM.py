@@ -47,8 +47,8 @@ class PEM_Cell:
                  A, 
                  CEM, 
                  maximum_deg=0,
-                 rated_cd = None,
-                 rated_pd = None,
+                 rated_current_density = None,
+                 rated_power_density = None,
                  rated_p_drop_fc= 0.240, 
                  rated_p_drop_hum=0.025, 
                  gamma_para = 0.03, 
@@ -82,11 +82,11 @@ class PEM_Cell:
             The compressor expander module of the air supply system 
         maximum_deg: float 
             The maximum voltage drop due to degradation of the fuel cell at EOL
-        rated_cd: float 
+        rated_current_density: float 
             The rated current density for pressure drop calculations (typically the current density at max power)
             Can be calculated using the evaluate_max_PD method
             Defaults to None 
-        rated_pd: float 
+        rated_power_density: float 
             The rated power density of the fuel cell 
             Defaults to None 
         rated_p_drop_fc: Pressure 
@@ -157,8 +157,8 @@ class PEM_Cell:
         self.c2 = c2
         self.CEM = CEM
         self.maximum_deg = maximum_deg
-        self.rated_cd = rated_cd
-        self.rated_pd = rated_pd
+        self.rated_current_density = rated_current_density
+        self.rated_power_density = rated_power_density
         self.rated_p_drop_fc = rated_p_drop_fc#*Units.bar
         self.rated_p_drop_hum = rated_p_drop_hum #* Units.bar
         self.gamma_para = gamma_para
@@ -168,7 +168,7 @@ class PEM_Cell:
         self.i_lim_multiplier = i_lim_multiplier
         self.area_specific_mass = area_specific_mass
 
-    def set_rated_cd(self, rated_cd, rated_pd): 
+    def set_rated_current_density(self, rated_current_density, rated_power_density): 
         """
         Sets the rated cd and pd of the fuel cell system 
 
@@ -176,11 +176,11 @@ class PEM_Cell:
         ----------
         rated_CD: float
             The current density (A/cm2) to set 
-        rated_pd: float 
+        rated_power_density: float 
             The power density (W/cm2) to set 
         """
-        self.rated_cd = rated_cd 
-        self.rated_pd = rated_pd
+        self.rated_current_density = rated_current_density 
+        self.rated_power_density = rated_power_density
 
     def calculate_P_drop_hum(self, i):
         """
@@ -196,7 +196,7 @@ class PEM_Cell:
         float 
             The Humidifier pressure drop in bar
         """
-        P_drop = (i/self.rated_cd) ** 2 * self.rated_p_drop_hum
+        P_drop = (i/self.rated_current_density) ** 2 * self.rated_p_drop_hum
         return P_drop
 
     def calculate_P_drop_stack(self, i):
@@ -213,7 +213,7 @@ class PEM_Cell:
         float 
             The stack pressure drop in bar 
         """
-        P_drop = (i/self.rated_cd) ** 2 * self.rated_p_drop_fc
+        P_drop = (i/self.rated_current_density) ** 2 * self.rated_p_drop_fc
         return P_drop
 
     def calculate_P_O2(self, P_air, stack_temperature, RH, air_excess_ratio, P_drop, i): 
@@ -542,9 +542,9 @@ class PEM_Cell:
             return PD
 
         res = minimize_scalar(evaluate_power, bounds = (0.2 * i_lim, 0.95 * i_lim))
-        rated_cd = res.x 
-        rated_pd = -res.fun 
-        return rated_cd, rated_pd
+        rated_current_density = res.x 
+        rated_power_density = -res.fun 
+        return rated_current_density, rated_power_density
     
     def evaluate_max_net_power(self, stack_temperature, p_H2, FC_air_p, RH, air_excess_ratio, thermo_state, degradation=0): 
         P_O2 = self.calculate_P_O2(FC_air_p, stack_temperature, RH, air_excess_ratio, self.rated_p_drop_fc, 0)
@@ -558,9 +558,9 @@ class PEM_Cell:
         
         res = minimize_scalar(evaluate_power, bounds = (0.2 * i_lim, 0.95 * i_lim))
         compressor_power = compressor_powers[-1]
-        rated_cd = res.x 
+        rated_current_density = res.x 
         rated_power = -res.fun 
-        return rated_cd, rated_power, compressor_power
+        return rated_current_density, rated_power, compressor_power
 
     def evaluate_CEM(self, FC_air_p, thermo_state_in, mdot_air_in, air_excess_ratio, p_drop_hum, p_drop_fc):
         """
