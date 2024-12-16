@@ -154,7 +154,7 @@ def low_fidelity_larminie_discharge_model():
 def medium_fidelity_discharge_model():
     
  
-    mdot_H2_true        = 5.182152666217547e-13
+    mdot_H2_true        = 1.0364305332435095e-12
     fuel_cell_model     =  'PEM'
     
     vehicle  = vehicle_setup(fuel_cell_model) 
