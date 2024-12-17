@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Library.Plots.Noise package &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>RCAIDE.Library.Plots.Noise package &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,11 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Plots.Noise';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Plots.Noise.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RCAIDE.Library.Plots.Stability package" href="RCAIDE.Library.Plots.Stability.html" />
-    <link rel="prev" title="RCAIDE.Library.Plots.Mission package" href="RCAIDE.Library.Plots.Mission.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +96,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +110,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +135,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +164,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +178,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +192,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +215,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +254,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +283,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +297,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -329,110 +330,118 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.html">RCAIDE package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
-<li class="toctree-l4 current active"><a class="current reference internal" href="#">RCAIDE.Library.Plots.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">RCAIDE.Library.Plots.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Framework.html">RCAIDE.Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Library.html">RCAIDE.Library</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.load.html">RCAIDE.load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.save.html">RCAIDE.save</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Vehicle.html">RCAIDE.Vehicle</a></li>
 </ul>
 </div>
 </nav></div>
@@ -473,18 +482,6 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">RCAIDE</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.html" class="nav-link">RCAIDE package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.html" class="nav-link">RCAIDE.Library package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Plots.html" class="nav-link">RCAIDE.Library.Plots package</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Plots.Noise package</span></li>
   </ul>
 </nav>
@@ -507,20 +504,171 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="rcaide-library-plots-noise-plot-2d-noise-contour-module">
-<h2>RCAIDE.Library.Plots.Noise.plot_2D_noise_contour module<a class="headerlink" href="#rcaide-library-plots-noise-plot-2d-noise-contour-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Plots.Noise.plot_2D_noise_contour">
+<span id="rcaide-library-plots-noise-plot-2d-noise-contour-module"></span><h2>RCAIDE.Library.Plots.Noise.plot_2D_noise_contour module<a class="headerlink" href="#module-RCAIDE.Library.Plots.Noise.plot_2D_noise_contour" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.plot_2D_noise_contour">
+<span class="sig-name descname"><span class="pre">plot_2D_noise_contour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_scale_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'2D_Noise_Contour'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_elevation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_lat_long_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jet'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_2D_noise_contour.html#plot_2D_noise_contour"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.plot_2D_noise_contour" title="Link to this definition">#</a></dt>
+<dd><p>This plots a 2D noise contour of a noise level</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>noise_data        - noise data structure
+noise_level       - noise level (dBA, DNL, SENEL etc)
+min_noise_level   - minimal noise level
+max_noise_level   - maximum noise level
+noise_scale_label - noise level label
+save_figure       - save figure
+show_figure       - show figure
+save_filename     - save file flag
+show_trajectory   - plot aircraft trajectory flag
+show_microphones  - show microhpone flag</p>
+</dd>
+<dt>Outputs:</dt><dd><p>Plots</p>
+</dd>
+</dl>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.truncate_colormap">
+<span class="sig-name descname"><span class="pre">truncate_colormap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_2D_noise_contour.html#truncate_colormap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.truncate_colormap" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FixPointNormalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sealevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.21875</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_2D_noise_contour.html#FixPointNormalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Normalize</span></code></p>
+<p>Inspired by <a class="reference external" href="https://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib">https://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib</a>
+Subclassing Normalize to obtain a colormap with a fixpoint
+somewhere in the middle of the colormap.
+This may be useful for a <cite>terrain</cite> map, to set the “sea level”
+to a color in the blue/turquise range.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sealevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.21875</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_2D_noise_contour.html#FixPointNormalize.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize.__init__" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vmin</strong> (<em>float</em><em> or </em><em>None</em>) – Values within the range <code class="docutils literal notranslate"><span class="pre">[vmin,</span> <span class="pre">vmax]</span></code> from the input data will be
+linearly mapped to <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. If either <em>vmin</em> or <em>vmax</em> is not
+provided, they default to the minimum and maximum values of the input,
+respectively.</p></li>
+<li><p><strong>vmax</strong> (<em>float</em><em> or </em><em>None</em>) – Values within the range <code class="docutils literal notranslate"><span class="pre">[vmin,</span> <span class="pre">vmax]</span></code> from the input data will be
+linearly mapped to <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. If either <em>vmin</em> or <em>vmax</em> is not
+provided, they default to the minimum and maximum values of the input,
+respectively.</p></li>
+<li><p><strong>clip</strong> (<em>bool</em><em>, </em><em>default: False</em>) – <p>Determines the behavior for mapping values outside the range
+<code class="docutils literal notranslate"><span class="pre">[vmin,</span> <span class="pre">vmax]</span></code>.</p>
+<p>If clipping is off, values outside the range <code class="docutils literal notranslate"><span class="pre">[vmin,</span> <span class="pre">vmax]</span></code> are
+also transformed, resulting in values outside <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>.  This
+behavior is usually desirable, as colormaps can mark these <em>under</em>
+and <em>over</em> values with specific colors.</p>
+<p>If clipping is on, values below <em>vmin</em> are mapped to 0 and values
+above <em>vmax</em> are mapped to 1. Such values become indistinguishable
+from regular boundary values, which may cause misinterpretation of
+the data.</p>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">vmin</span> <span class="pre">==</span> <span class="pre">vmax</span></code>, input data will be mapped to 0.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.colorax">
+<span class="sig-name descname"><span class="pre">colorax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_2D_noise_contour.html#colorax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.colorax" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="rcaide-library-plots-noise-plot-3d-noise-contour-module">
-<h2>RCAIDE.Library.Plots.Noise.plot_3D_noise_contour module<a class="headerlink" href="#rcaide-library-plots-noise-plot-3d-noise-contour-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Plots.Noise.plot_3D_noise_contour">
+<span id="rcaide-library-plots-noise-plot-3d-noise-contour-module"></span><h2>RCAIDE.Library.Plots.Noise.plot_3D_noise_contour module<a class="headerlink" href="#module-RCAIDE.Library.Plots.Noise.plot_3D_noise_contour" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.plot_3D_noise_contour">
+<span class="sig-name descname"><span class="pre">plot_3D_noise_contour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">90</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_scale_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Noise_Contour'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_lat_long_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_trajectory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_microphones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colormap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jet'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">background_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rgb(17,54,71)'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1400</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">800</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_3D_noise_contour.html#plot_3D_noise_contour"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.plot_3D_noise_contour" title="Link to this definition">#</a></dt>
+<dd><p>This plots a 3D noise contour of a noise level using plotly</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>noise_data        - noise data structure
+noise_level       - noise level (dBA, DNL, SENEL etc)
+min_noise_level   - minimal noise level
+max_noise_level   - maximum noise level
+noise_scale_label - noise level label
+save_figure       - save figure
+show_figure       - show figure
+save_filename     - save file flag
+show_trajectory   - plot aircraft trajectory flag
+show_microphones  - show microhpone flag</p>
+</dd>
+<dt>Outputs:</dt><dd><p>Plots</p>
+</dd>
+</dl>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.colorax">
+<span class="sig-name descname"><span class="pre">colorax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_3D_noise_contour.html#colorax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.colorax" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="rcaide-library-plots-noise-plot-noise-level-module">
-<h2>RCAIDE.Library.Plots.Noise.plot_noise_level module<a class="headerlink" href="#rcaide-library-plots-noise-plot-noise-level-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Plots.Noise.plot_noise_level">
+<span id="rcaide-library-plots-noise-plot-noise-level-module"></span><h2>RCAIDE.Library.Plots.Noise.plot_noise_level module<a class="headerlink" href="#module-RCAIDE.Library.Plots.Noise.plot_noise_level" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_noise_level.plot_noise_level">
+<span class="sig-name descname"><span class="pre">plot_noise_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Sideline_Noise_Levels'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/plot_noise_level.html#plot_noise_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_noise_level.plot_noise_level" title="Link to this definition">#</a></dt>
+<dd><p>This plots the A-weighted Sound Pressure Level as a function of time at various aximuthal angles
+on the ground</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<p>Inputs:
+results.segments.conditions.</p>
+<blockquote>
+<div><p>frames.inertial.position_vector   - position vector of aircraft
+noise.</p>
+<blockquote>
+<div><p>total_SPL_dBA                 - total SPL (dbA)
+relative_microphone_locations - microphone locations</p>
+</div></blockquote>
+</div></blockquote>
+<p>Outputs:
+Plots</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-plots-noise-post-process-noise-data-module">
-<h2>RCAIDE.Library.Plots.Noise.post_process_noise_data module<a class="headerlink" href="#rcaide-library-plots-noise-post-process-noise-data-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Plots.Noise.post_process_noise_data">
+<span id="rcaide-library-plots-noise-post-process-noise-data-module"></span><h2>RCAIDE.Library.Plots.Noise.post_process_noise_data module<a class="headerlink" href="#module-RCAIDE.Library.Plots.Noise.post_process_noise_data" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.post_process_noise_data.post_process_noise_data">
+<span class="sig-name descname"><span class="pre">post_process_noise_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flight_times</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array(['06:00:00',</span> <span class="pre">'06:30:00',</span> <span class="pre">'07:00:00',</span> <span class="pre">'07:30:00',</span> <span class="pre">'08:00:00',</span> <span class="pre">'08:30:00',</span> <span class="pre">'09:00:00',</span> <span class="pre">'09:30:00',</span> <span class="pre">'10:00:00',</span> <span class="pre">'10:30:00',</span> <span class="pre">'11:00:00',</span> <span class="pre">'11:30:00',</span> <span class="pre">'12:00:00',</span> <span class="pre">'12:30:00',</span> <span class="pre">'13:00:00',</span> <span class="pre">'13:30:00',</span> <span class="pre">'14:00:00',</span> <span class="pre">'14:30:00',</span> <span class="pre">'15:00:00'],</span> <span class="pre">dtype='&lt;U8')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['06:00:00',</span> <span class="pre">'20:00:00']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evalaute_noise_metrics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Plots/Noise/post_process_noise_data.html#post_process_noise_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.post_process_noise_data.post_process_noise_data" title="Link to this definition">#</a></dt>
+<dd><p>This translates all noise data into metadata for plotting</p>
+<p>Assumptions:
+None</p>
+<p>Source:</p>
+<p>Inputs: results</p>
+<p>Outputs: noise_data</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Plots.Noise">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Plots.Noise" title="Link to this heading">#</a></h2>
+<p>RCAIDE Package Setup</p>
 </section>
 </section>
 
@@ -534,24 +682,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="RCAIDE.Library.Plots.Mission.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Library.Plots.Mission package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="RCAIDE.Library.Plots.Stability.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Plots.Stability package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -572,11 +702,30 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-plots-noise-plot-2d-noise-contour-module">RCAIDE.Library.Plots.Noise.plot_2D_noise_contour module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-plots-noise-plot-3d-noise-contour-module">RCAIDE.Library.Plots.Noise.plot_3D_noise_contour module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-plots-noise-plot-noise-level-module">RCAIDE.Library.Plots.Noise.plot_noise_level module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-plots-noise-post-process-noise-data-module">RCAIDE.Library.Plots.Noise.post_process_noise_data module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Plots.Noise.plot_2D_noise_contour">RCAIDE.Library.Plots.Noise.plot_2D_noise_contour module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.plot_2D_noise_contour"><code class="docutils literal notranslate"><span class="pre">plot_2D_noise_contour()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.truncate_colormap"><code class="docutils literal notranslate"><span class="pre">truncate_colormap()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize"><code class="docutils literal notranslate"><span class="pre">FixPointNormalize</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize.__init__"><code class="docutils literal notranslate"><span class="pre">FixPointNormalize.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.colorax"><code class="docutils literal notranslate"><span class="pre">colorax()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Plots.Noise.plot_3D_noise_contour">RCAIDE.Library.Plots.Noise.plot_3D_noise_contour module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.plot_3D_noise_contour"><code class="docutils literal notranslate"><span class="pre">plot_3D_noise_contour()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.colorax"><code class="docutils literal notranslate"><span class="pre">colorax()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Plots.Noise.plot_noise_level">RCAIDE.Library.Plots.Noise.plot_noise_level module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.plot_noise_level.plot_noise_level"><code class="docutils literal notranslate"><span class="pre">plot_noise_level()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Plots.Noise.post_process_noise_data">RCAIDE.Library.Plots.Noise.post_process_noise_data module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Plots.Noise.post_process_noise_data.post_process_noise_data"><code class="docutils literal notranslate"><span class="pre">post_process_noise_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Plots.Noise">Module contents</a></li>
 </ul>
   </nav></div>
 

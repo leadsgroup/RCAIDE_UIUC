@@ -1,29 +1,67 @@
-Installation
-============
+.. _install:
 
-Requirements
-============
+##############
+Install
+##############
 
-- Python 3.x
-- Dependencies listed in requirements.txt
+This section provides instructions to install RCAIDE and its dependencies.
 
-Installation Steps
-==================
+**System Requirements**
+========================
+Before installing RCAIDE, ensure that your system meets the following requirements:
 
-1. Clone the repository:
+- Python >= 3.8
+- pip >= 20.0
+- Supported OS: Linux, macOS, Windows
+
+**Installing RCAIDE**
+========================
+
+Follow these steps to install RCAIDE:
+
+1. **Using pip**  
+  
+   Coming soon...
+
+
+
+2. **From Source**  
+
+   Alternatively, clone the RCAIDE repository and install it manually:
+   
+
+   .. code-block:: bash
+
+      git clone https://github.com/leadsgroup/RCAIDE_LEADS.git
+    
+   Install the dependencies:
+
+   .. code-block:: bash
+
+      pip install -r requirements.txt
+
+   Install RCAIDE:
+
+   .. code-block:: bash
+
+      cd RCAIDE
+      python3 setup.py develop
+     
+
+3. **Optional Dependencies**  
+   To enable additional features, install the following optional dependencies:
+
+   .. code-block:: bash
+
+      pip install -r requirements.txt
+
+**Verifying the Installation**
+===============================
+To confirm that RCAIDE has been successfully installed, run the following command:
 
 .. code-block:: bash
 
-    git clone https://github.com/yourusername/RCAIDE_LEADS.git
+   python -c "import RCAIDE; print(RCAIDE.__version__)"
 
-2. Install dependencies:
+If RCAIDE is installed correctly, it will print the installed version number.
 
-.. code-block:: bash
-
-    pip install -r requirements.txt
-
-3. Install RCAIDE_LEADS:
-
-.. code-block:: bash
-
-    pip install -e .

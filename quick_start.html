@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Quick Start Guide &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>Quick Start &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,13 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'quick_start';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/quick_start.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Contributing" href="contributing.html" />
-    <link rel="prev" title="Installation" href="install.html" />
+    <link rel="next" title="Tutorials" href="tutorials/tutorials.html" />
+    <link rel="prev" title="Install" href="install.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +98,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +112,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +137,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +166,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +180,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +194,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +217,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +256,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +285,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +299,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -367,7 +370,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quick Start Guide</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Quick Start</span></li>
   </ul>
 </nav>
 </div>
@@ -384,17 +387,161 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="quick-start-guide">
-<h1>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Link to this heading">#</a></h1>
+  <section id="quick-start">
+<span id="id1"></span><h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>RCAIDE (Research Computing for Aerospace Innovation and Design Environment) is an
+advanced, Python-based framework designed to revolutionize aerospace engineering
+analysis and design. This comprehensive guide introduces the framework’s core
+concepts, architecture, and capabilities, helping users seamlessly transition from
+SUAVE to RCAIDE’s enhanced environment.</p>
 </section>
-<section id="basic-usage">
-<h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Link to this heading">#</a></h1>
-<p>Here’s how to get started with RCAIDE_LEADS:</p>
-<ol class="arabic simple">
-<li><p>First steps</p></li>
-<li><p>Basic examples</p></li>
-<li><p>Common use cases</p></li>
+<section id="code-philosophy">
+<h2>Code Philosophy<a class="headerlink" href="#code-philosophy" title="Link to this heading">#</a></h2>
+<p>RCAIDE represents the next evolution in aerospace design software, built on the
+foundation that future aerospace innovations require sophisticated, collaborative
+software methodologies. By providing an integrated, open-source environment,
+RCAIDE empowers users to explore cutting-edge technologies, novel vehicle
+configurations, and their broader impacts on society, economy, and environment.</p>
+<section id="code-architecture">
+<h3>Code Architecture<a class="headerlink" href="#code-architecture" title="Link to this heading">#</a></h3>
+<p>The RCAIDE ecosystem consists of two primary branches:</p>
+<ol class="arabic">
+<li><p><strong>RCAIDE</strong>
+- <strong>Framework:</strong> Serves as the architectural backbone, integrating various</p>
+<blockquote>
+<div><p>components and providing core functionality.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Libraries:</strong> Houses modular, pure functions organized into logical domains.</p></li>
+</ul>
+</li>
+<li><p><strong>Regressions</strong>
+- Comprehensive test suite ensuring reliability and validation.
+- Automated verification of framework functionality.</p></li>
 </ol>
+<hr class="docutils" />
+<p>RCAIDE’s architecture follows a hierarchical structure optimized for clarity and
+efficiency:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Repository Root
+├── RCAIDE/
+│   ├── Framework/               # Core system integration
+│   │   ├── Analyses             # Analysis modules for different physics domains
+│   │   ├── Core                 # Essential framework functionality and base classes
+│   │   ├── External Interfaces  # Connectors to external tools and software
+│   │   ├── Missions             # Mission profile definitions and handlers
+│   │   ├── Networks             # Energy network and propulsion system modeling
+│   │   ├── Optimization         # Optimization algorithms and tools
+│   │   ├── Plugins              # Extension points for additional functionality
+│   └── Libraries/
+│       ├── Attributes           # Fundamental parameters
+│       ├── Components           # Physical system elements
+│       ├── Methods              # Discipline-specific algorithms
+│       ├── Mission              # Flight profile definitions
+│       └── Plots                # Visualization tools
+└── Regressions/        # Validation test suite
+</pre></div>
+</div>
+</section>
+</section>
+<section id="technical-capabilities">
+<h2>Technical Capabilities<a class="headerlink" href="#technical-capabilities" title="Link to this heading">#</a></h2>
+<p>RCAIDE supports multi-fidelity analysis across numerous domains:</p>
+<ul class="simple">
+<li><p>Mission-level vehicle analysis</p></li>
+<li><p>Aerodynamic performance evaluation</p></li>
+<li><p>Comprehensive vehicle performance metrics</p></li>
+<li><p>Mass properties analysis (weights, CG, inertia)</p></li>
+<li><p>Energy network optimization</p></li>
+<li><p>Design space exploration</p></li>
+<li><p>AI/ML integration</p></li>
+<li><p>Model-based systems engineering (MBSE)</p></li>
+</ul>
+<p>Each analysis type offers multiple fidelity levels, allowing users to balance
+computational cost with required accuracy.</p>
+</section>
+<section id="workflow-examples">
+<h2>Workflow Examples<a class="headerlink" href="#workflow-examples" title="Link to this heading">#</a></h2>
+<section id="vehicle-mission-analysis">
+<h3>1. Vehicle Mission Analysis<a class="headerlink" href="#vehicle-mission-analysis" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Vehicle Definition</span>
+    <span class="n">vehicle</span> <span class="o">=</span> <span class="n">vehicle_setup</span><span class="p">()</span>
+
+    <span class="c1"># Configuration Creation</span>
+    <span class="n">configs</span> <span class="o">=</span> <span class="n">configs_setup</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
+
+    <span class="c1"># Analysis Methods</span>
+    <span class="n">analyses</span> <span class="o">=</span> <span class="n">analyses_setup</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+
+    <span class="c1"># Mission Profile</span>
+    <span class="n">mission</span> <span class="o">=</span> <span class="n">mission_setup</span><span class="p">(</span><span class="n">analyses</span><span class="p">)</span>
+
+    <span class="c1"># Results Visualization</span>
+    <span class="n">plot_results</span><span class="p">(</span><span class="n">mission</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="performance-analysis">
+<h3>2. Performance Analysis<a class="headerlink" href="#performance-analysis" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">analyze_performance</span><span class="p">():</span>
+    <span class="c1"># Setup</span>
+    <span class="n">vehicle</span> <span class="o">=</span> <span class="n">vehicle_setup</span><span class="p">()</span>
+
+    <span class="c1"># Analysis</span>
+    <span class="n">payload_range</span> <span class="o">=</span> <span class="n">compute_payload_range</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
+    <span class="n">takeoff_performance</span> <span class="o">=</span> <span class="n">compute_takeoff</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
+
+    <span class="c1"># Visualization</span>
+    <span class="n">plot_performance_metrics</span><span class="p">(</span><span class="n">payload_range</span><span class="p">,</span> <span class="n">takeoff_performance</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="suave-transition-support">
+<h2>SUAVE Transition Support<a class="headerlink" href="#suave-transition-support" title="Link to this heading">#</a></h2>
+<p>To facilitate a smooth transition from SUAVE, RCAIDE includes:</p>
+<ul class="simple">
+<li><p>Compatible data structures and interfaces</p></li>
+<li><p>Legacy SUAVE support through an embedded, frozen version</p></li>
+<li><p>Enhanced terminology and organization while maintaining familiar workflows</p></li>
+<li><p>Backward compatibility layers for existing SUAVE scripts</p></li>
+</ul>
+</section>
+<section id="advanced-features">
+<h2>Advanced Features<a class="headerlink" href="#advanced-features" title="Link to this heading">#</a></h2>
+<p>RCAIDE extends beyond traditional aerospace analysis tools by incorporating:</p>
+<ul class="simple">
+<li><p>Modern software engineering practices</p></li>
+<li><p>Extensive Python ecosystem integration</p></li>
+<li><p>AI/ML capabilities for advanced optimization</p></li>
+<li><p>Comprehensive documentation and examples</p></li>
+<li><p>Built-in visualization tools</p></li>
+<li><p>Automated testing and validation</p></li>
+</ul>
+</section>
+<section id="best-practices">
+<h2>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading">#</a></h2>
+<p>When working with RCAIDE:</p>
+<ol class="arabic simple">
+<li><p>Utilize the hierarchical structure for organized code development.</p></li>
+<li><p>Leverage built-in multi-fidelity capabilities appropriately.</p></li>
+<li><p>Take advantage of the modular library system.</p></li>
+<li><p>Implement proper version control practices.</p></li>
+<li><p>Make use of the automated testing framework.</p></li>
+</ol>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>RCAIDE represents a significant advancement in aerospace engineering software,
+offering a robust, flexible, and future-proof environment for innovation. Its
+comprehensive capabilities, coupled with careful attention to user experience and
+software engineering principles, make it an ideal platform for both academic
+research and industrial applications.</p>
+<p>For detailed information, tutorials, and advanced examples, please refer to the
+main documentation and associated tutorials.</p>
+</section>
 </section>
 
 
@@ -413,15 +560,15 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation</p>
+        <p class="prev-next-title">Install</p>
       </div>
     </a>
     <a class="right-next"
-       href="contributing.html"
+       href="tutorials/tutorials.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Contributing</p>
+        <p class="prev-next-title">Tutorials</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -444,10 +591,22 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Quick Start Guide</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-usage">Basic Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-philosophy">Code Philosophy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-architecture">Code Architecture</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-capabilities">Technical Capabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-examples">Workflow Examples</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vehicle-mission-analysis">1. Vehicle Mission Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-analysis">2. Performance Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suave-transition-support">SUAVE Transition Support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-features">Advanced Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">Best Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">

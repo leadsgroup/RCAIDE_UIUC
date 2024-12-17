@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Library.Methods.Geometry.Planform package &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>RCAIDE.Library.Methods.Geometry.Planform package &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,11 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Methods.Geometry.Planform';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Methods.Geometry.Planform.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RCAIDE.Library.Methods.Noise package" href="RCAIDE.Library.Methods.Noise.html" />
-    <link rel="prev" title="RCAIDE.Library.Methods.Geometry.Airfoil package" href="RCAIDE.Library.Methods.Geometry.Airfoil.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +96,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +110,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +135,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +164,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +178,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +192,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +215,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +254,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +283,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +297,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -329,110 +330,118 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.html">RCAIDE package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
-<li class="toctree-l4 current active"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
+<li class="toctree-l3 current active"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Framework.html">RCAIDE.Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Library.html">RCAIDE.Library</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.load.html">RCAIDE.load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.save.html">RCAIDE.save</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Vehicle.html">RCAIDE.Vehicle</a></li>
 </ul>
 </div>
 </nav></div>
@@ -473,21 +482,6 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">RCAIDE</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.html" class="nav-link">RCAIDE package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.html" class="nav-link">RCAIDE.Library package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.html" class="nav-link">RCAIDE.Library.Methods package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.Geometry.html" class="nav-link">RCAIDE.Library.Methods.Geometry package</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Geometry.Planform package</span></li>
   </ul>
 </nav>
@@ -510,47 +504,522 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="rcaide-library-methods-geometry-planform-compute-chord-length-from-span-location-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-compute-chord-length-from-span-location-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location">
+<span id="rcaide-library-methods-geometry-planform-compute-chord-length-from-span-location-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location.compute_chord_length_from_span_location">
+<span class="sig-name descname"><span class="pre">compute_chord_length_from_span_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">span_location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/compute_chord_length_from_span_location.html#compute_chord_length_from_span_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location.compute_chord_length_from_span_location" title="Link to this definition">#</a></dt>
+<dd><p>Computes the chord length given a location along the half-span.</p>
+<p>Assumptions:
+Linear variation of chord with span.</p>
+<p>Source:
+None</p>
+<p>Inputs:
+wing.chords.</p>
+<blockquote>
+<div><p>root                [m]
+tip                 [m]</p>
+</div></blockquote>
+<p>wing.spans.projected  [m]
+span_location         [m]</p>
+<p>Outputs:
+chord_length          [m]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-compute-span-location-from-chord-length-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-compute-span-location-from-chord-length-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length">
+<span id="rcaide-library-methods-geometry-planform-compute-span-location-from-chord-length-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length.compute_span_location_from_chord_length">
+<span class="sig-name descname"><span class="pre">compute_span_location_from_chord_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chord_length</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/compute_span_location_from_chord_length.html#compute_span_location_from_chord_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length.compute_span_location_from_chord_length" title="Link to this definition">#</a></dt>
+<dd><p>Computes the location along the half-span given a chord length.</p>
+<p>Assumptions:
+Linear variation of chord with span. Returns 0 if constant chord wing.</p>
+<p>Source:
+None</p>
+<p>Inputs:
+wing.chords.</p>
+<blockquote>
+<div><p>root                [m]
+tip                 [m]</p>
+</div></blockquote>
+<p>wing.spans.projected  [m]
+chord_length          [m]</p>
+<p>Outputs:
+span_location         [m]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-convert-sweep-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.convert_sweep module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-convert-sweep-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.convert_sweep">
+<span id="rcaide-library-methods-geometry-planform-convert-sweep-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.convert_sweep module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.convert_sweep" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.convert_sweep.convert_sweep">
+<span class="sig-name descname"><span class="pre">convert_sweep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_ref_chord_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_ref_chord_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/convert_sweep.html#convert_sweep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.convert_sweep.convert_sweep" title="Link to this definition">#</a></dt>
+<dd><p>This method converts the sweep of a wing planform to refer to a new
+chord fraction. Defaults to converting from leading-edge sweep to
+quarter-chord sweep.</p>
+<dl>
+<dt>Assumptions:</dt><dd><p>Assumes a simple trapezoidal wing shape. If the input wing object does
+not have a simple trapezoidal shape, this function will convert sweeps
+for an equivalent trapezoid having the same reference sweep, aspect
+ratio, and taper ratio.</p>
+</dd>
+<dt>Source:</dt><dd><p>Unknown</p>
+</dd>
+<dt>Inputs:</dt><dd><dl class="simple">
+<dt>wing - a data dictionary with the fields:</dt><dd><p>apsect_ratio - wing aspect ratio                            [dimensionless]
+sweep        - wing sweep                                   [radians]
+taper        - wing taper ratio                             [dimensionless]</p>
+</dd>
+<dt>old_ref_chord_fraction - a float value between 0 and 1.0 that</dt><dd><p>tells what fraction of the local chord
+the sweep line follows. (For example,
+a value of 0.25 refers to quarter-chord
+sweep</p>
+</dd>
+<dt>new_ref_chord_fraction - a float value between 0 and 1.0 that</dt><dd><p>tells what fraction of the local chord
+is the new reference for sweep.</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><dl class="simple">
+<dt>output - a single float value, new_sweep, which is the sweep</dt><dd><p>angle referenced to the new_ref_chord_fraction.</p>
+</dd>
+</dl>
+</dd>
+<dt>Defaults:</dt><dd><blockquote>
+<div><p>Defaults to converting from leading edge sweep to quater-chord sweep.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.convert_sweep.convert_sweep_segments">
+<span class="sig-name descname"><span class="pre">convert_sweep_segments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_sweep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seg_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seg_b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_ref_chord_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_ref_chord_fraction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/convert_sweep.html#convert_sweep_segments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.convert_sweep.convert_sweep_segments" title="Link to this definition">#</a></dt>
+<dd><p>This method converts the sweep of a section of a wing between two segments
+to refer to a new chord fraction. More specifically, it converts the inboard
+segment’s (seg_a’s) outboard sweep. Defaults to converting from leading-edge sweep to
+quarter-chord sweep.</p>
+<dl>
+<dt>Assumptions:</dt><dd><p>Assumes a simple trapezoidal section shape. If the input section does
+not have a simple trapezoidal shape, this function will convert sweeps
+for an equivalent trapezoid having the same reference sweep, aspect
+ratio, and taper ratio.</p>
+</dd>
+<dt>Source:</dt><dd><p>Unknown</p>
+</dd>
+<dt>Inputs:</dt><dd><p>old_sweep - sweep angle to convert</p>
+<dl class="simple">
+<dt>seg_a and seg_b - two Segment() objects with:</dt><dd><p>root_chord_percent    - percent of the wing’s root chord</p>
+</dd>
+<dt>wing - a data dictionary with the fields:</dt><dd><p>chords.root  - root chord                              [m]
+span         - wingspan                                [m]
+symmetric    - symmetry                                [boolean]</p>
+</dd>
+<dt>old_ref_chord_fraction - a float value between 0 and 1.0 that</dt><dd><p>tells what fraction of the local chord
+the sweep line follows. (For example,
+a value of 0.25 refers to quarter-chord
+sweep</p>
+</dd>
+<dt>new_ref_chord_fraction - a float value between 0 and 1.0 that</dt><dd><p>tells what fraction of the local chord
+is the new reference for sweep.</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><dl class="simple">
+<dt>output - a single float value, new_sweep, which is the sweep</dt><dd><p>angle referenced to the new_ref_chord_fraction.</p>
+</dd>
+</dl>
+</dd>
+<dt>Defaults:</dt><dd><blockquote>
+<div><p>Defaults to converting from leading edge sweep to quater-chord sweep.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-estimate-wing-internal-volume-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-estimate-wing-internal-volume-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume">
+<span id="rcaide-library-methods-geometry-planform-estimate-wing-internal-volume-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume.estimate_wing_internal_volume">
+<span class="sig-name descname"><span class="pre">estimate_wing_internal_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/estimate_wing_internal_volume.html#estimate_wing_internal_volume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume.estimate_wing_internal_volume" title="Link to this definition">#</a></dt>
+<dd><p>Computes the volume of a wing with NACA 4-series airfoils.</p>
+<p>Assumptions:
+Wing has constant thickness to chord along the span
+Front spar is at 10%chord and rear spar is at 60% chord</p>
+<p>Source:
+Wikipedia, based on Moran, Jack (2003). An introduction to theoretical and</p>
+<blockquote>
+<div><p>computational aerodynamics. Dover.</p>
+</div></blockquote>
+<p>Inputs:
+m                       [-]  percent camber (.1 is 10%)
+p                       [-]  location of max camber (.1 is 10% along chord)
+wing.chords.</p>
+<blockquote>
+<div><p>root                  [m]
+tip                   [m]</p>
+</div></blockquote>
+<p>wing.taper              [-]
+wing.thickness_to_chord [-]
+wing.spans.projected    [m]
+chord_length            [m]</p>
+<p>Outputs:
+volume                  [m^3]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-fuselage-planform-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-fuselage-planform-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform">
+<span id="rcaide-library-methods-geometry-planform-fuselage-planform-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform.fuselage_planform">
+<span class="sig-name descname"><span class="pre">fuselage_planform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fuselage</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/fuselage_planform.html#fuselage_planform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform.fuselage_planform" title="Link to this definition">#</a></dt>
+<dd><p>Calculates fuselage geometry values</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+<a class="reference external" href="http://adg.stanford.edu/aa241/drag/wettedarea.html">http://adg.stanford.edu/aa241/drag/wettedarea.html</a></p>
+<p>Inputs:
+fuselage.</p>
+<blockquote>
+<div><p>num_coach_seats       [-]
+seat_pitch            [m]
+seats_abreast         [-]
+fineness.nose         [-]
+fineness.tail         [-]
+lengths.fore_space    [m]
+lengths.aft_space     [m]
+width                 [m]
+heights.maximum       [m]</p>
+</div></blockquote>
+<p>Outputs:
+fuselage.</p>
+<blockquote>
+<div><p>lengths.nose          [m]
+lengths.tail          [m]
+lengths.cabin         [m]
+lengths.total         [m]
+areas.wetted          [m]
+areas.front_projected [m]
+effective_diameter    [m]</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-horizontal-tail-planform-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-horizontal-tail-planform-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform">
+<span id="rcaide-library-methods-geometry-planform-horizontal-tail-planform-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform.horizontal_tail_planform">
+<span class="sig-name descname"><span class="pre">horizontal_tail_planform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/horizontal_tail_planform.html#horizontal_tail_planform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform.horizontal_tail_planform" title="Link to this definition">#</a></dt>
+<dd><p>Calls generic wing planform function to compute wing planform values</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<p>Inputs:
+Wing             [RCAIDE data structure]</p>
+<p>Outputs:
+Changes to Wing (see wing_planform)</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-horizontal-tail-planform-raymer-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-horizontal-tail-planform-raymer-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer">
+<span id="rcaide-library-methods-geometry-planform-horizontal-tail-planform-raymer-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer.horizontal_tail_planform_raymer">
+<span class="sig-name descname"><span class="pre">horizontal_tail_planform_raymer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">horizontal_stabilizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_ht</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_ht</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/horizontal_tail_planform_raymer.html#horizontal_tail_planform_raymer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer.horizontal_tail_planform_raymer" title="Link to this definition">#</a></dt>
+<dd><p>Adjusts reference area before calling generic wing planform function to compute wing planform values.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+Raymer</p>
+<p>Inputs:
+horizontal_stabilizer                  [RCAIDE data structure]
+wing                                   [RCAIDE data structure]  (should be the main wing)
+l_ht                                   [m] length from wing mean aerodynamic chord (MAC) to horizontal stabilizer MAC
+c_ht                                   [-] horizontal tail coefficient (Raymer specific) .5 = Sailplane, .5 = homebuilt,</p>
+<blockquote>
+<div><p>.7 = GA single engine, .8 = GA twin engine .5 = agricultural, .9 = twin turboprop,
+.7 = flying boat, .7 = jet trainer, .4 = jet fighter, 1. = military cargo/bomber,
+1. = jet transport</p>
+</div></blockquote>
+<p>Outputs:
+horizontal_stabilier.areas.reference   [m^2]
+Other changes to horizontal_stabilizer (see wing_planform)</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-populate-control-sections-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-populate-control-sections-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections">
+<span id="rcaide-library-methods-geometry-planform-populate-control-sections-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections.populate_control_sections">
+<span class="sig-name descname"><span class="pre">populate_control_sections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/populate_control_sections.html#populate_control_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections.populate_control_sections" title="Link to this definition">#</a></dt>
+<dd><p>This function takes the control surfaces defined on a wing and appends them to wing segments
+Conditional statements are used to determine where the control surface bounds are in relation
+to the wing segments. For example, If a control surface extends beyond a wing segment, the bounds
+on the control surface span fraction are set to be the bounds of the wing section</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+</dl>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-vertical-tail-planform-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-vertical-tail-planform-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform">
+<span id="rcaide-library-methods-geometry-planform-vertical-tail-planform-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform.vertical_tail_planform">
+<span class="sig-name descname"><span class="pre">vertical_tail_planform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Wing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/vertical_tail_planform.html#vertical_tail_planform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform.vertical_tail_planform" title="Link to this definition">#</a></dt>
+<dd><p>Calls generic wing planform function to compute wing planform values</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<p>Inputs:
+Wing             [RCAIDE data structure]</p>
+<p>Outputs:
+Changes to Wing (see wing_planform)</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-vertical-tail-planform-raymer-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-vertical-tail-planform-raymer-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer">
+<span id="rcaide-library-methods-geometry-planform-vertical-tail-planform-raymer-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer.vertical_tail_planform_raymer">
+<span class="sig-name descname"><span class="pre">vertical_tail_planform_raymer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertical_stabilizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l_vt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_vt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/vertical_tail_planform_raymer.html#vertical_tail_planform_raymer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer.vertical_tail_planform_raymer" title="Link to this definition">#</a></dt>
+<dd><p>Adjusts reference area before calling generic wing planform function to compute wing planform values.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+Raymer</p>
+<p>Inputs:
+vertical_stabilizer                    [RCAIDE data structure]
+wing                                   [RCAIDE data structure]  (should be the main wing)
+l_vt                                   [m] length from wing mean aerodynamic chord (MAC) to horizontal stabilizer MAC
+c_vt                                   [-] horizontal tail coefficient (Raymer specific) .02 = Sailplane, .04 = homebuilt,</p>
+<blockquote>
+<div><p>.04 = GA single engine, .07 = GA twin engine, .04 = agricultural,
+.08 = twin turboprop, .06 = flying boat, .06 = jet trainer, .07 = jet fighter
+.08 = military cargo/bomber, .09 = jet transport</p>
+</div></blockquote>
+<p>Outputs:
+vertical_stabilier.areas.reference     [m^2]
+Other changes to vertical_stabilizer (see wing_planform)</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-wing-fuel-volume-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-wing-fuel-volume-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume">
+<span id="rcaide-library-methods-geometry-planform-wing-fuel-volume-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume.wing_fuel_volume">
+<span class="sig-name descname"><span class="pre">wing_fuel_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/wing_fuel_volume.html#wing_fuel_volume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume.wing_fuel_volume" title="Link to this definition">#</a></dt>
+<dd><p>Calculates the available fuel volume in a wing.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+Torenbeek, E., “Advanced Aircraft Design”, 2013 (equation 10.30)</p>
+<p>Inputs:
+wing.</p>
+<blockquote>
+<div><p>areas.reference    [m^2]
+aspect_ratio       [-]
+thickness_to_chord [-]</p>
+</div></blockquote>
+<p>Outputs:
+wing.volume          [m^3]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-wing-planform-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.wing_planform module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-wing-planform-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.wing_planform">
+<span id="rcaide-library-methods-geometry-planform-wing-planform-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.wing_planform module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.wing_planform" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.wing_planform.wing_planform">
+<span class="sig-name descname"><span class="pre">wing_planform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/wing_planform.html#wing_planform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_planform.wing_planform" title="Link to this definition">#</a></dt>
+<dd><p>Computes standard wing planform values.</p>
+<p>Assumptions:
+Trapezoidal wing with no leading/trailing edge extensions</p>
+<p>Source:
+None</p>
+<p>Inputs:
+wing.</p>
+<blockquote>
+<div><p>areas.reference          [m^2]
+taper                    [-]
+sweeps.quarter_chord     [radians]
+aspect_ratio             [-]
+thickness_to_chord       [-]
+dihedral                 [radians]
+vertical                 &lt;boolean&gt; Determines if wing is vertical
+symmetric                &lt;boolean&gt; Determines if wing is symmetric
+origin                   [m]       x, y, and z position
+high_lift                &lt;boolean&gt; Determines if wing is in a high lift configuration
+flaps.                             Flap values are only used if high lift is True</p>
+<blockquote>
+<div><p>span_start             [-]       Span start position (.1 is 10% span)
+span_end               [-]       Span end position (.1 is 10% span)
+chord                  [-]       Portion of wing chord used (.1 is 10% chord)</p>
+</div></blockquote>
+</div></blockquote>
+<p>Outputs:
+wing.</p>
+<blockquote>
+<div><p>chords.root              [m]
+chords.tip               [m]
+chords.mean_aerodynamics [m]
+chords.mean_geometric    [m]
+areas.wetted             [m^2]
+areas.affected           [m^2]
+spans.projected          [m]
+aerodynamic_center       [m]      x, y, and z location
+flaps.chord_dimensional  [m]
+flaps.area               [m^2]</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-planform-wing-segmented-planform-module">
-<h2>RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform module<a class="headerlink" href="#rcaide-library-methods-geometry-planform-wing-segmented-planform-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform">
+<span id="rcaide-library-methods-geometry-planform-wing-segmented-planform-module"></span><h2>RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.wing_segmented_planform">
+<span class="sig-name descname"><span class="pre">wing_segmented_planform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite_reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/wing_segmented_planform.html#wing_segmented_planform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.wing_segmented_planform" title="Link to this definition">#</a></dt>
+<dd><p>Computes standard wing planform values.</p>
+<p>Assumptions:
+Multisegmented wing. There is no unexposed wetted area, ie wing area that
+intersects inside a fuselage. Aerodynamic center is at 25% mean aerodynamic chord.</p>
+<p>Source:
+None</p>
+<p>Inputs:
+overwrite_reference        &lt;boolean&gt; Determines if reference area, wetted area, and aspect</p>
+<blockquote>
+<div><p>ratio are overwritten based on the segment values.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>wing.</dt><dd><p>chords.root              [m]
+spans.projected          [m]
+symmetric                &lt;boolean&gt; Determines if wing is symmetric</p>
+</dd>
+</dl>
+<p>Outputs:
+wing.</p>
+<blockquote>
+<div><p>spans.total                [m]
+chords.tip                 [m]
+chords.mean_aerodynamics   [m]
+wing.chords.mean_geometric [m]
+areas.reference            [m^2]
+taper                      [-]
+sweeps.quarter_chord       [radians]
+aspect_ratio               [-]
+thickness_to_chord         [-]
+dihedral                   [radians]</p>
+<p>aerodynamic_center         [m]      x, y, and z location</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.segment_properties">
+<span class="sig-name descname"><span class="pre">segment_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_wet_areas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_ref_areas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/wing_segmented_planform.html#segment_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.segment_properties" title="Link to this definition">#</a></dt>
+<dd><p>Computes detailed segment properties. These are currently used for parasite drag calculations.</p>
+<p>Assumptions:
+Segments are trapezoids</p>
+<p>Source:
+<a class="reference external" href="http://aerodesign.stanford.edu/aircraftdesign/aircraftdesign.html">http://aerodesign.stanford.edu/aircraftdesign/aircraftdesign.html</a> (Stanford AA241 A/B Course Notes)</p>
+<p>Inputs:
+wing.</p>
+<blockquote>
+<div><p>exposed_root_chord_offset [m]
+symmetric                 [-]
+spans.projected           [m]
+thickness_to_chord        [-]
+areas.wetted              [m^2]
+chords.root               [m]
+Segments.</p>
+<blockquote>
+<div><p>percent_span_location   [-]
+root_chord_percent      [-]</p>
+</div></blockquote>
+</div></blockquote>
+<p>Outputs:
+wing.areas.wetted           [m^2]
+wing.areas.reference        [m^2]
+wing.Segments.</p>
+<blockquote>
+<div><p>taper                     [-]
+chords.mean_aerodynamic   [m]
+areas.</p>
+<blockquote>
+<div><p>reference               [m^2]
+exposed                 [m^2]
+wetted                  [m^2]</p>
+</div></blockquote>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.segment_centroid">
+<span class="sig-name descname"><span class="pre">segment_centroid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">le_sweep</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seg_span</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dihedral</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_chord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_chord</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Planform/wing_segmented_planform.html#segment_centroid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.segment_centroid" title="Link to this definition">#</a></dt>
+<dd><p>Computes the centroid of a trapezoidal segment</p>
+<p>Assumptions:
+Polygon</p>
+<p>Source:
+None</p>
+<p>Inputs:
+le_sweep      [rad]
+seg_span      [m]
+dx            [m]
+dy            [m]
+taper         [dimensionless]
+A             [m**2]
+dihedral      [radians]
+root_chord    [m]
+tip_chord     [m]</p>
+<p>Outputs:
+cx,cy         [m,m]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Planform">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Planform" title="Link to this heading">#</a></h2>
+<p>RCAIDE Package Setup</p>
 </section>
 </section>
 
@@ -564,24 +1033,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="RCAIDE.Library.Methods.Geometry.Airfoil.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Geometry.Airfoil package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="RCAIDE.Library.Methods.Noise.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Noise package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -602,20 +1053,62 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-compute-chord-length-from-span-location-module">RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-compute-span-location-from-chord-length-module">RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-convert-sweep-module">RCAIDE.Library.Methods.Geometry.Planform.convert_sweep module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-estimate-wing-internal-volume-module">RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-fuselage-planform-module">RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-horizontal-tail-planform-module">RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-horizontal-tail-planform-raymer-module">RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-populate-control-sections-module">RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-vertical-tail-planform-module">RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-vertical-tail-planform-raymer-module">RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-wing-fuel-volume-module">RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-wing-planform-module">RCAIDE.Library.Methods.Geometry.Planform.wing_planform module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-planform-wing-segmented-planform-module">RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location">RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location.compute_chord_length_from_span_location"><code class="docutils literal notranslate"><span class="pre">compute_chord_length_from_span_location()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length">RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length.compute_span_location_from_chord_length"><code class="docutils literal notranslate"><span class="pre">compute_span_location_from_chord_length()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.convert_sweep">RCAIDE.Library.Methods.Geometry.Planform.convert_sweep module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.convert_sweep.convert_sweep"><code class="docutils literal notranslate"><span class="pre">convert_sweep()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.convert_sweep.convert_sweep_segments"><code class="docutils literal notranslate"><span class="pre">convert_sweep_segments()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume">RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.estimate_wing_internal_volume.estimate_wing_internal_volume"><code class="docutils literal notranslate"><span class="pre">estimate_wing_internal_volume()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform">RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.fuselage_planform.fuselage_planform"><code class="docutils literal notranslate"><span class="pre">fuselage_planform()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform">RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform.horizontal_tail_planform"><code class="docutils literal notranslate"><span class="pre">horizontal_tail_planform()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer">RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.horizontal_tail_planform_raymer.horizontal_tail_planform_raymer"><code class="docutils literal notranslate"><span class="pre">horizontal_tail_planform_raymer()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections">RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.populate_control_sections.populate_control_sections"><code class="docutils literal notranslate"><span class="pre">populate_control_sections()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform">RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform.vertical_tail_planform"><code class="docutils literal notranslate"><span class="pre">vertical_tail_planform()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer">RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.vertical_tail_planform_raymer.vertical_tail_planform_raymer"><code class="docutils literal notranslate"><span class="pre">vertical_tail_planform_raymer()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume">RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_fuel_volume.wing_fuel_volume"><code class="docutils literal notranslate"><span class="pre">wing_fuel_volume()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.wing_planform">RCAIDE.Library.Methods.Geometry.Planform.wing_planform module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_planform.wing_planform"><code class="docutils literal notranslate"><span class="pre">wing_planform()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform">RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.wing_segmented_planform"><code class="docutils literal notranslate"><span class="pre">wing_segmented_planform()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.segment_properties"><code class="docutils literal notranslate"><span class="pre">segment_properties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Planform.wing_segmented_planform.segment_centroid"><code class="docutils literal notranslate"><span class="pre">segment_centroid()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Planform">Module contents</a></li>
 </ul>
   </nav></div>
 

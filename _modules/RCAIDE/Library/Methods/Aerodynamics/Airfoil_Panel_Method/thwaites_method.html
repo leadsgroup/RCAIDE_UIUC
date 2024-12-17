@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=467ccdcc" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Aerodynamics/Airfoil_Panel_Method/thwaites_method';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Aerodynamics/Airfoil_Panel_Method/thwaites_method.html" />
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method</h1><div class="highlight"><pre>
+<span></span><span class="c1"># RCAIDE/Methods/Aerodynamics/Airfoil_Panel_Method/thwaites_method_new.py</span>
+<span class="c1"># </span>
+<span class="c1"># </span>
+<span class="c1"># Created:  Apr 2024, Niranjan Nanjappa</span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  IMPORT</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1"># RCAIDE imports  </span>
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
+
+<span class="c1"># pacakge imports  </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  Thwaites Method</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="thwaites_method">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.thwaites_method">[docs]</a>
+<span class="k">def</span> <span class="nf">thwaites_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span><span class="n">NU</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">RE_L</span><span class="p">,</span><span class="n">X_I</span><span class="p">,</span><span class="n">VE_I</span><span class="p">,</span> <span class="n">DVE_I</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">THETA_0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the boundary layer characteristics in laminar </span>
+<span class="sd">    flow pressure gradients</span>
+<span class="sd">    </span>
+<span class="sd">    Source:</span>
+<span class="sd">    Thwaites, Bryan. &quot;Approximate calculation of the laminar boundary layer.&quot; </span>
+<span class="sd">    Aeronautical Quarterly 1.3 (1949): 245-280.</span>
+<span class="sd">    </span>
+<span class="sd">    Assumptions:</span>
+<span class="sd">    None  </span>
+
+<span class="sd">    Inputs:  </span>
+<span class="sd">    npanel         - number of points on surface                                                 [unitless]</span>
+<span class="sd">    ncases         - number of cases                                                             [unitless]</span>
+<span class="sd">    ncpts          - number of control points                                                    [unitless]</span>
+<span class="sd">    batch_analysis - flag for batch analysis                                                     [boolean]</span>
+<span class="sd">    THETA_0        - initial momentum thickness                                                  [m]</span>
+<span class="sd">    L              - normalized length of surface                                                [unitless]</span>
+<span class="sd">    RE_L           - Reynolds number                                                             [unitless]</span>
+<span class="sd">    X_I            - x coordinate on surface of airfoil                                          [unitless]</span>
+<span class="sd">    VE_I           - boundary layer velocity at transition location                              [m/s] </span>
+<span class="sd">    DVE_I          - initial derivative value of boundary layer velocity at transition location  [m/s-m] </span>
+<span class="sd">    tol            - boundary layer error correction tolerance                                   [unitless]</span>
+
+<span class="sd">    Outputs: </span>
+<span class="sd">    RESULTS.</span>
+<span class="sd">      X_T          - reshaped distance along airfoil surface             [unitless]</span>
+<span class="sd">      THETA_T      - momentum thickness                                  [m]</span>
+<span class="sd">      DELTA_STAR_T - displacement thickness                              [m] </span>
+<span class="sd">      H_T          - shape factor                                        [unitless]</span>
+<span class="sd">      CF_T         - friction coefficient                                [unitless]</span>
+<span class="sd">      RE_THETA_T   - Reynolds number as a function of momentum thickness [unitless]</span>
+<span class="sd">      RE_X_T       - Reynolds number as a function of distance           [unitless]</span>
+<span class="sd">      DELTA_T      - boundary layer thickness                            [m]</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    <span class="c1"># Initialize vectors</span>
+    <span class="n">X_T</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">))</span>
+    <span class="n">THETA_T</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_T</span><span class="p">)</span>
+    <span class="n">DELTA_STAR_T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_T</span><span class="p">)</span>
+    <span class="n">H_T</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_T</span><span class="p">)</span>
+    <span class="n">CF_T</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_T</span><span class="p">)</span>
+    <span class="n">RE_THETA_T</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_T</span><span class="p">)</span>
+    <span class="n">RE_X_T</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_T</span><span class="p">)</span>
+    <span class="n">DELTA_T</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_T</span><span class="p">)</span>  
+      
+    <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncases</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">cpt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncpts</span><span class="p">):</span>
+            
+            <span class="k">def</span> <span class="nf">dy_by_dx</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+                <span class="k">return</span> <span class="mf">0.45</span><span class="o">*</span><span class="n">nu</span><span class="o">*</span><span class="n">Ve_i</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">**</span><span class="mi">5</span>            
+            
+            <span class="n">l</span>              <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span>
+            <span class="n">theta_0</span>        <span class="o">=</span> <span class="n">THETA_0</span> 
+            <span class="n">Re_L</span>           <span class="o">=</span> <span class="n">RE_L</span><span class="p">[</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span>
+            <span class="n">x_i</span>            <span class="o">=</span> <span class="n">X_I</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">][</span><span class="n">X_I</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span> <span class="o">==</span><span class="kc">False</span><span class="p">]</span>
+            <span class="n">Ve_i</span>           <span class="o">=</span> <span class="n">VE_I</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">][</span><span class="n">VE_I</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span> <span class="o">==</span><span class="kc">False</span><span class="p">]</span>
+            <span class="n">dVe_i</span>          <span class="o">=</span> <span class="n">DVE_I</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">][</span><span class="n">DVE_I</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span> <span class="o">==</span><span class="kc">False</span><span class="p">]</span>
+            <span class="n">nu</span>             <span class="o">=</span> <span class="n">NU</span><span class="p">[</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span>
+            <span class="n">n</span>              <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_i</span><span class="p">)</span>
+            <span class="n">dx_i</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x_i</span><span class="p">)</span>
+            <span class="n">theta2_Ve6</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="n">theta2_Ve6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="p">(</span><span class="n">theta_0</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">Ve_i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">6</span>
+            
+            <span class="c1"># determine (Theta**2)*(Ve**6)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">theta2_Ve6</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">RK4</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dx_i</span><span class="p">,</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">theta2_Ve6</span><span class="p">,</span> <span class="n">dy_by_dx</span><span class="p">)</span>
+            
+            <span class="c1"># Compute momentum thickness</span>
+            <span class="n">theta</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">theta2_Ve6</span><span class="o">/</span><span class="n">Ve_i</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
+            
+            <span class="c1"># find theta values that do not converge and replace them with neighbor</span>
+            <span class="n">idx1</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">abs</span><span class="p">((</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">theta</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">theta</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx1</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  
+                <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">idx1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">theta</span><span class="p">[</span><span class="n">idx1</span><span class="p">])</span>
+                
+            <span class="c1"># Thwaites separation criteria </span>
+            <span class="n">lambda_val</span>  <span class="o">=</span> <span class="n">theta</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">dVe_i</span><span class="o">/</span><span class="n">nu</span> 
+            
+            <span class="c1"># Compute H </span>
+            <span class="n">H</span>           <span class="o">=</span> <span class="n">getH</span><span class="p">(</span><span class="n">lambda_val</span><span class="p">)</span>
+            <span class="n">H</span><span class="p">[</span><span class="n">H</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span>      <span class="o">=</span> <span class="mf">1E-6</span>   <span class="c1"># H cannot be negative </span>
+            <span class="c1"># find H values that do not converge and replace them with neighbor</span>
+            <span class="n">idx1</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">abs</span><span class="p">((</span><span class="n">H</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">H</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">H</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx1</span><span class="p">)</span><span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> 
+                <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">idx1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">H</span><span class="p">[</span><span class="n">idx1</span><span class="p">])</span> 
+            
+            <span class="c1"># Compute Reynolds numbers based on momentum thickness  </span>
+            <span class="n">Re_theta</span>    <span class="o">=</span> <span class="n">Ve_i</span><span class="o">*</span><span class="n">theta</span><span class="o">/</span><span class="n">nu</span>
+            
+            <span class="c1"># Compute Reynolds numbers based on distance along airfoil</span>
+            <span class="n">Re_x</span>        <span class="o">=</span> <span class="n">Ve_i</span><span class="o">*</span><span class="n">x_i</span><span class="o">/</span><span class="n">nu</span>
+            
+            <span class="c1"># Compute skin friction </span>
+            <span class="n">cf</span>          <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">getcf</span><span class="p">(</span><span class="n">lambda_val</span><span class="p">,</span> <span class="n">Re_theta</span><span class="p">))</span> 
+            
+            <span class="c1"># Compute displacement thickness</span>
+            <span class="n">del_star</span>    <span class="o">=</span> <span class="n">H</span><span class="o">*</span><span class="n">theta</span>   
+            
+            <span class="c1"># Compute boundary layer thickness </span>
+            <span class="n">delta</span>       <span class="o">=</span> <span class="mf">5.2</span><span class="o">*</span><span class="n">x_i</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Re_x</span><span class="p">)</span>
+            <span class="n">delta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="o">=</span> <span class="mi">0</span>   
+            
+            <span class="c1"># Reynolds number at x=0 cannot be negative </span>
+            <span class="n">Re_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>     <span class="o">=</span> <span class="mf">1E-5</span>
+            
+            <span class="c1"># Find where matrices are not masked </span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">X_I</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+            
+            <span class="c1"># Store results </span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">X_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span><span class="p">,</span><span class="n">x_i</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">THETA_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">DELTA_STAR_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span><span class="p">,</span><span class="n">del_star</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">H_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span><span class="p">,</span><span class="n">H</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">CF_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span> <span class="p">,</span><span class="n">cf</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">RE_THETA_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span><span class="p">,</span><span class="n">Re_theta</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">RE_X_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span><span class="p">,</span><span class="n">Re_x</span><span class="p">)</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">DELTA_T</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">],</span><span class="n">indices</span><span class="p">,</span><span class="n">delta</span><span class="p">)</span>
+    
+    <span class="n">RESULTS</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span>
+        <span class="n">X_T</span>          <span class="o">=</span> <span class="n">X_T</span><span class="p">,</span>      
+        <span class="n">THETA_T</span>      <span class="o">=</span> <span class="n">THETA_T</span><span class="p">,</span>   
+        <span class="n">DELTA_STAR_T</span> <span class="o">=</span> <span class="n">DELTA_STAR_T</span><span class="p">,</span>
+        <span class="n">H_T</span>          <span class="o">=</span> <span class="n">H_T</span><span class="p">,</span>       
+        <span class="n">CF_T</span>         <span class="o">=</span> <span class="n">CF_T</span><span class="p">,</span>      
+        <span class="n">RE_THETA_T</span>   <span class="o">=</span> <span class="n">RE_THETA_T</span><span class="p">,</span>   
+        <span class="n">RE_X_T</span>       <span class="o">=</span> <span class="n">RE_X_T</span><span class="p">,</span>    
+        <span class="n">DELTA_T</span>      <span class="o">=</span> <span class="n">DELTA_T</span><span class="p">,</span>  
+    <span class="p">)</span>    
+    
+    <span class="k">return</span> <span class="n">RESULTS</span></div>
+
+            
+
+
+
+<div class="viewcode-block" id="getH">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getH">[docs]</a>
+<span class="k">def</span> <span class="nf">getH</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">):</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the shape factor, H</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Inputs: </span>
+<span class="sd">    lamdda_val  - thwaites separation criteria [unitless]</span>
+
+<span class="sd">    Outputs:  </span>
+<span class="sd">    H           - shape factor [unitless]</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>       
+    <span class="n">H</span>       <span class="o">=</span> <span class="mf">0.0731</span><span class="o">/</span><span class="p">(</span><span class="mf">0.14</span> <span class="o">+</span> <span class="n">lambda_val</span> <span class="p">)</span> <span class="o">+</span> <span class="mf">2.088</span> 
+    <span class="n">idx1</span>    <span class="o">=</span> <span class="p">(</span><span class="n">lambda_val</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">)</span>  
+    <span class="n">H</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.61</span> <span class="o">-</span> <span class="mf">3.75</span><span class="o">*</span><span class="n">lambda_val</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span>  <span class="o">+</span> <span class="mf">5.24</span><span class="o">*</span><span class="n">lambda_val</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>   
+    <span class="k">return</span> <span class="n">H</span></div>
+
+
+
+<div class="viewcode-block" id="getcf">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getcf">[docs]</a>
+<span class="k">def</span> <span class="nf">getcf</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">,</span> <span class="n">Re_theta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the skin friction coefficient, cf</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Inputs: </span>
+<span class="sd">    lambda_val - thwaites separation criteria                        [unitless]</span>
+<span class="sd">    Re_theta   - Reynolds Number as a function of momentum thickness [unitless]</span>
+
+<span class="sd">    Outputs:  </span>
+<span class="sd">    cf         - skin friction coefficient [unitless]</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A </span>
+<span class="sd">    &quot;&quot;&quot;</span>        
+    <span class="n">l</span>       <span class="o">=</span> <span class="mf">0.22</span> <span class="o">+</span> <span class="mf">1.402</span><span class="o">*</span><span class="n">lambda_val</span>  <span class="o">+</span> <span class="p">(</span><span class="mf">0.018</span><span class="o">*</span><span class="n">lambda_val</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.107</span> <span class="o">+</span> <span class="n">lambda_val</span> <span class="p">)</span> 
+    <span class="n">idx1</span>    <span class="o">=</span> <span class="p">(</span><span class="n">lambda_val</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">)</span>   
+    <span class="n">l</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.22</span> <span class="o">+</span> <span class="mf">1.57</span><span class="o">*</span><span class="n">lambda_val</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.8</span><span class="o">*</span><span class="n">lambda_val</span><span class="p">[</span><span class="n">idx1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> 
+    <span class="n">cf</span>      <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">l</span><span class="o">/</span><span class="n">Re_theta</span>  
+    <span class="k">return</span> <span class="n">cf</span></div>
+
+
+
+<div class="viewcode-block" id="RK4">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.RK4">[docs]</a>
+<span class="k">def</span> <span class="nf">RK4</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Var</span><span class="p">,</span> <span class="n">Slope</span><span class="p">):</span>
+    <span class="n">m1</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+    <span class="n">m2</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">m1</span><span class="o">*</span><span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">m3</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">m2</span><span class="o">*</span><span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">m4</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">m3</span><span class="o">*</span><span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+    
+    <span class="n">change</span> <span class="o">=</span> <span class="p">(</span><span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">m2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">m3</span> <span class="o">+</span> <span class="n">m4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">change</span>            </div>
+
+            
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

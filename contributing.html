@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Contributing &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>Contributing Guide &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,13 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contributing';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/contributing.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="API Reference" href="api.html" />
-    <link rel="prev" title="Quick Start Guide" href="quick_start.html" />
+    <link rel="prev" title="Performance" href="tutorials/performance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +98,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +112,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +137,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +166,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +180,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +194,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +217,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +256,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +285,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +299,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -367,7 +370,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing Guide</span></li>
   </ul>
 </nav>
 </div>
@@ -384,21 +387,123 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="contributing">
-<h1>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h1>
+  <section id="contributing-guide">
+<span id="contributing"></span><h1>Contributing Guide<a class="headerlink" href="#contributing-guide" title="Link to this heading">#</a></h1>
+<p>Thank you for your interest in contributing to RCAIDE! This guide outlines how to propose changes, add new features, improve documentation, and ensure your code meets project standards.</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p></li>
+<li><p><a class="reference internal" href="#code-style-and-structure" id="id2">Code Style and Structure</a></p>
+<ul>
+<li><p><a class="reference internal" href="#naming-convention" id="id3">Naming Convention</a></p></li>
+<li><p><a class="reference internal" href="#verbosity-and-clarity" id="id4">Verbosity and Clarity</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#project-structure-and-modules" id="id5">Project Structure and Modules</a></p></li>
+<li><p><a class="reference internal" href="#development-life-cycle" id="id6">Development Life Cycle</a></p></li>
+<li><p><a class="reference internal" href="#testing-and-continuous-integration" id="id7">Testing and Continuous Integration</a></p></li>
+<li><p><a class="reference internal" href="#documentation-and-examples" id="id8">Documentation and Examples</a></p></li>
+<li><p><a class="reference internal" href="#submitting-a-pull-request" id="id9">Submitting a Pull Request</a></p></li>
+<li><p><a class="reference internal" href="#questions-and-support" id="id10">Questions and Support</a></p></li>
+</ul>
+</nav>
+<section id="overview">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Contributions to RCAIDE are welcome from anyone. Whether you’re fixing a bug, adding a new feature, or improving documentation, your work can help the community. Before getting started, please review this guide to ensure a smooth integration process.</p>
 </section>
-<section id="how-to-contribute">
-<h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading">#</a></h1>
-<ol class="arabic simple">
-<li><p>Fork the repository</p></li>
-<li><p>Create a new branch</p></li>
-<li><p>Make your changes</p></li>
-<li><p>Submit a pull request</p></li>
+<section id="code-style-and-structure">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Code Style and Structure</a><a class="headerlink" href="#code-style-and-structure" title="Link to this heading">#</a></h2>
+<p>RCAIDE uses a code style guide similar to <a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8</a> with some modifications for a more data-oriented structure. We encourage you to follow these conventions to maintain readability and consistency throughout the codebase.</p>
+<section id="naming-convention">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Naming Convention</a><a class="headerlink" href="#naming-convention" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Variables and fields</strong>:
+Use lowercase names with underscores, e.g. <code class="docutils literal notranslate"><span class="pre">any_variable_name</span></code> or <code class="docutils literal notranslate"><span class="pre">field_name</span></code>.</p></li>
+<li><p><strong>Functions</strong>:
+Use lowercase names with underscores, e.g. <code class="docutils literal notranslate"><span class="pre">function_name</span></code>.</p></li>
+<li><p><strong>Classes and Packages</strong>:
+Classes and package names follow a capitalized with underscores convention, e.g. <code class="docutils literal notranslate"><span class="pre">Class_Type</span></code> or <code class="docutils literal notranslate"><span class="pre">Package_Name</span></code>.</p>
+<p>Underscores are used in class names to allow for inclusion of acronyms if needed and maintain stylistic symmetry with field names.</p>
+</li>
+</ul>
+</section>
+<section id="verbosity-and-clarity">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Verbosity and Clarity</a><a class="headerlink" href="#verbosity-and-clarity" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Be explicit</strong>: Choose descriptive, specific names for variables, functions, and classes. Avoid opaque abbreviations or acronyms unless commonly understood in the field.</p></li>
+<li><p><strong>Group related fields</strong>: Whenever possible, group similar data fields under a containing attribute for organizational clarity. For example, group all aerodynamic parameters under a single data structure like <code class="docutils literal notranslate"><span class="pre">analysis.aerodynamics</span></code>.</p></li>
+</ul>
+<p>Following these conventions ensures that anyone reading the code will easily understand its purpose and functionality.</p>
+</section>
+</section>
+<section id="project-structure-and-modules">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Project Structure and Modules</a><a class="headerlink" href="#project-structure-and-modules" title="Link to this heading">#</a></h2>
+<p>RCAIDE uses a modular approach to keep code organized and flexible. Sub-packages often mirror the main branches of functionality to separate data structures, analysis, and methods:</p>
+<ul class="simple">
+<li><p><strong>RCAIDE.Methods</strong>: Contains Python functions used throughout the codebase.</p></li>
+<li><p><strong>RCAIDE.Analyses</strong>: Houses objects and classes that manage analysis tasks (e.g., aerodynamic performance evaluations).</p></li>
+<li><p><strong>RCAIDE.Components</strong>: Includes data structures representing physical components (e.g., wings, engines) or other major design elements.</p></li>
+<li><p><strong>RCAIDE.Attributes</strong>: Holds data storage containers and reference data (e.g., standard atmospheres, material properties).</p></li>
+</ul>
+<p>Aim to place your contributions in the most appropriate module. If you’re uncertain, consider opening a discussion or posting on the forum (if available) to seek guidance from maintainers or other contributors.</p>
+</section>
+<section id="development-life-cycle">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Development Life Cycle</a><a class="headerlink" href="#development-life-cycle" title="Link to this heading">#</a></h2>
+<p>Contributions typically evolve through these stages:</p>
+<ol class="arabic">
+<li><p><strong>Prototype</strong>
+Begin by experimenting in a separate branch or folder. Test your idea thoroughly before integrating it into RCAIDE’s main structure. Early on, you can focus on standalone functions or data structures using Python’s built-in types or a general-purpose data container.</p></li>
+<li><p><strong>Initial Integration</strong>
+After confirming that your feature works and is well-tested, place it in the correct location within the RCAIDE code tree:</p>
+<ul class="simple">
+<li><p>For standalone functions, consider placing them under <code class="docutils literal notranslate"><span class="pre">RCAIDE.Methods</span></code>.</p></li>
+<li><p>For analysis routines, use <code class="docutils literal notranslate"><span class="pre">RCAIDE.Analyses</span></code> and possibly create a new class or method that integrates with existing analyses.</p></li>
+<li><p>For new components, leverage or create classes in <code class="docutils literal notranslate"><span class="pre">RCAIDE.Components</span></code>.</p></li>
+<li><p>For data containers or reference conditions, use or add files under <code class="docutils literal notranslate"><span class="pre">RCAIDE.Attributes</span></code>.</p></li>
+</ul>
+<p>At this point, you may want to open a pull request (PR) on GitHub, including your tests and documentation. This allows maintainers and the community to review and provide feedback.</p>
+</li>
+<li><p><strong>Subpackages and Further Abstraction</strong>
+As your contributions grow in scope and complexity, you might factor them into a dedicated subpackage. Following the one-class-per-file rule and grouping related classes and methods is encouraged once your code reaches a level of maturity and abstraction that warrants its own modular structure.</p></li>
 </ol>
 </section>
-<section id="development-setup">
-<h1>Development Setup<a class="headerlink" href="#development-setup" title="Link to this heading">#</a></h1>
-<p>Instructions for setting up the development environment</p>
+<section id="testing-and-continuous-integration">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Testing and Continuous Integration</a><a class="headerlink" href="#testing-and-continuous-integration" title="Link to this heading">#</a></h2>
+<p>Before submitting a PR, ensure that your changes pass all existing tests and add new tests if introducing functionality. Testing helps maintain code quality, catches regressions, and ensures that the code works as intended. RCAIDE’s test suite can be run locally; check the project documentation on how to run tests and interpret results.</p>
+<p>The project uses continuous integration (CI) tools.</p>
+</section>
+<section id="documentation-and-examples">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Documentation and Examples</a><a class="headerlink" href="#documentation-and-examples" title="Link to this heading">#</a></h2>
+<p>All new features, functions, and classes should be documented. This includes:</p>
+<ul class="simple">
+<li><p><strong>Docstrings</strong>: Add clear, concise docstrings to all public classes, methods, and functions. Use <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">NumPy style docstrings</a> or <a class="reference external" href="https://google.github.io/styleguide/pyguide.html">Google style docstrings</a> for consistency.</p></li>
+<li><p><strong>User Guides and Tutorials</strong>: If your contribution introduces significant new features, consider adding or updating tutorials and user guides in the documentation.</p></li>
+<li><p><strong>Examples</strong>: Provide simple code snippets or example workflows demonstrating how to use your new features. This helps new users quickly understand how to apply your code to their problems.</p></li>
+</ul>
+</section>
+<section id="submitting-a-pull-request">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Submitting a Pull Request</a><a class="headerlink" href="#submitting-a-pull-request" title="Link to this heading">#</a></h2>
+<p>When you believe your contribution is ready:</p>
+<ol class="arabic simple">
+<li><p>Ensure your code follows the style guide and passes all tests.</p></li>
+<li><p>Add or update documentation to reflect your changes.</p></li>
+<li><p>Open a pull request on the project’s repository (e.g., GitHub). In your PR description:
+- Briefly summarize what your changes do.
+- Reference any related issues.
+- Provide guidance on how reviewers can test or evaluate your code.</p></li>
+</ol>
+<p>A project maintainer will review your contribution, provide feedback, and guide you through any required revisions.</p>
+</section>
+<section id="questions-and-support">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">Questions and Support</a><a class="headerlink" href="#questions-and-support" title="Link to this heading">#</a></h2>
+<p>If you have any questions or need help at any point in the contribution process, feel free to reach out through the project’s communication channels, such as:</p>
+<ul class="simple">
+<li><p>The project’s issue tracker on GitHub</p></li>
+<li><p>Github Discussions</p></li>
+<li><p>Slack</p></li>
+</ul>
+<p>Your contributions are greatly appreciated, and we’re excited to work with you to improve RCAIDE!</p>
+</section>
 </section>
 
 
@@ -412,12 +517,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="quick_start.html"
+       href="tutorials/performance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Quick Start Guide</p>
+        <p class="prev-next-title">Performance</p>
       </div>
     </a>
     <a class="right-next"
@@ -448,11 +553,19 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Contributing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-contribute">How to Contribute</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#development-setup">Development Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-style-and-structure">Code Style and Structure</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-convention">Naming Convention</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verbosity-and-clarity">Verbosity and Clarity</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-structure-and-modules">Project Structure and Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#development-life-cycle">Development Life Cycle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-and-continuous-integration">Testing and Continuous Integration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-and-examples">Documentation and Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-a-pull-request">Submitting a Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-and-support">Questions and Support</a></li>
+</ul>
   </nav></div>
 
   <div class="sidebar-secondary-item">

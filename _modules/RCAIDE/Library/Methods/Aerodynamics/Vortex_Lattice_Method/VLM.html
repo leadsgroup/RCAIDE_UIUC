@@ -1,0 +1,1069 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=467ccdcc" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Aerodynamics/Vortex_Lattice_Method/VLM';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Aerodynamics/Vortex_Lattice_Method/VLM.html" />
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM</h1><div class="highlight"><pre>
+<span></span>
+<span class="c1"># VLM.py</span>
+<span class="c1"># </span>
+<span class="c1"># Created:  Oct 2020, E. Botero</span>
+<span class="c1"># Modified: May 2021, E. Botero   </span>
+<span class="c1">#           Jul 2021, A. Blaufox     </span>
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  Imports</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+
+<span class="c1"># package imports </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">.compute_wing_induced_velocity</span>      <span class="kn">import</span> <span class="n">compute_wing_induced_velocity</span>
+<span class="kn">from</span> <span class="nn">.generate_vortex_distribution</span>       <span class="kn">import</span> <span class="n">generate_vortex_distribution</span> 
+<span class="kn">from</span> <span class="nn">.compute_RHS_matrix</span>                 <span class="kn">import</span> <span class="n">compute_RHS_matrix</span> 
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  Vortex Lattice</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="VLM">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.VLM">[docs]</a>
+<span class="k">def</span> <span class="nf">VLM</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">geometry</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Uses the vortex lattice method to compute the lift, induced drag and moment coefficients.</span>
+<span class="sd">    </span>
+<span class="sd">    The user has the option to discretize control surfaces using the boolean settings.discretize_control_surfaces.</span>
+<span class="sd">    The user should be forwarned that this will cause very slight differences in results for 0 deflection due to</span>
+<span class="sd">    the slightly different discretization.</span>
+<span class="sd">    </span>
+<span class="sd">    The user has the option to use the boundary conditions and induced velocities from either RCAIDE</span>
+<span class="sd">    or VORLAX. See build_RHS in compute_RHS_matrix.py for more details.</span>
+<span class="sd">    </span>
+<span class="sd">    By default in Vortex_Lattice, VLM performs calculations based on panel coordinates with float32 precision. </span>
+<span class="sd">    The user may also choose to use float16 or float64, but be warned that the latter can be memory intensive.</span>
+<span class="sd">    </span>
+<span class="sd">    The user should note that fully capitalized variables correspond to a VORLAX variable of the same name</span>
+<span class="sd">    </span>
+<span class="sd">    </span>
+<span class="sd">    Assumptions:</span>
+<span class="sd">    The user provides either global discretezation (number_spanwise/chordwise_vortices) or</span>
+<span class="sd">    separate discretization (wing/fuselage_spanwise/chordwise_vortices) in settings, not both.</span>
+<span class="sd">    The set of settings not being used should be set to None.</span>
+<span class="sd">    </span>
+<span class="sd">    The VLM requires that the user provide a non-zero velocity that matches mach number. For</span>
+<span class="sd">    surrogate training cases at mach 0, VLM uses a velocity of 1e-6 m/s</span>
+
+<span class="sd">    </span>
+<span class="sd">    Source:</span>
+<span class="sd">    1. Miranda, Luis R., Robert D. Elliot, and William M. Baker. &quot;A generalized vortex </span>
+<span class="sd">    lattice method for subsonic and supersonic flow applications.&quot; (1977). (NASA CR)</span>
+<span class="sd">    </span>
+<span class="sd">    2. VORLAX Source Code</span>
+
+<span class="sd">    </span>
+<span class="sd">    Inputs:</span>
+<span class="sd">    geometry.</span>
+<span class="sd">       reference_area                          [m^2]</span>
+<span class="sd">       wing.</span>
+<span class="sd">         spans.projected                       [m]</span>
+<span class="sd">         chords.root                           [m]</span>
+<span class="sd">         chords.tip                            [m]</span>
+<span class="sd">         sweeps.quarter_chord                  [radians]</span>
+<span class="sd">         taper                                 [Unitless]</span>
+<span class="sd">         twists.root                           [radians]</span>
+<span class="sd">         twists.tip                            [radians]</span>
+<span class="sd">         symmetric                             [Boolean]</span>
+<span class="sd">         aspect_ratio                          [Unitless]</span>
+<span class="sd">         areas.reference                       [m^2]</span>
+<span class="sd">         vertical                              [Boolean]</span>
+<span class="sd">         origin                                [m]</span>
+<span class="sd">       fuselage.</span>
+<span class="sd">        origin                                 [m]</span>
+<span class="sd">        width                                  [m]</span>
+<span class="sd">        heights.maximum                        [m]      </span>
+<span class="sd">        lengths.nose                           [m]    </span>
+<span class="sd">        lengths.tail                           [m]     </span>
+<span class="sd">        lengths.total                          [m]     </span>
+<span class="sd">        lengths.cabin                          [m]     </span>
+<span class="sd">        fineness.nose                          [Unitless]</span>
+<span class="sd">        fineness.tail                          [Unitless]</span>
+<span class="sd">        </span>
+<span class="sd">    settings.number_of_spanwise_vortices       [Unitless]  &lt;---|</span>
+<span class="sd">    settings.number_of_chordwise_vortices      [Unitless]  &lt;---|</span>
+<span class="sd">                                                               |--Either/or; see generate_vortex_distribution() for more details</span>
+<span class="sd">    settings.wing_spanwise_vortices            [Unitless]  &lt;---|</span>
+<span class="sd">    settings.wing_chordwise_vortices           [Unitless]  &lt;---|</span>
+<span class="sd">    settings.fuselage_spanwise_vortices        [Unitless]  &lt;---|</span>
+<span class="sd">    settings.fuselage_chordwise_vortices       [Unitless]  &lt;---|  </span>
+<span class="sd">       </span>
+<span class="sd">    settings.use_surrogate                     [Unitless]</span>
+<span class="sd">    settings.propeller_wake_model              [Unitless]</span>
+<span class="sd">    settings.discretize_control_surfaces       [Boolean], set to True to generate control surface panels</span>
+<span class="sd">    settings.use_VORLAX_matrix_calculation     [boolean]</span>
+<span class="sd">    settings.floating_point_precision          [float16/32/64]</span>
+<span class="sd">       </span>
+<span class="sd">    conditions.aerodynamics.angles.alpha    [radians]</span>
+<span class="sd">    conditions.aerodynamics.angles.beta   [radians]</span>
+<span class="sd">    conditions.freestream.mach_number          [Unitless]</span>
+<span class="sd">    conditions.freestream.velocity             [m/s]</span>
+<span class="sd">    conditions.static_stability.pitch_rate    [radians/s]</span>
+<span class="sd">    conditions.static_stability.roll_rate     [radians/s]</span>
+<span class="sd">    conditions.static_stability.yaw_rate      [radians/s]</span>
+<span class="sd">       </span>
+<span class="sd">    </span>
+<span class="sd">    Outputs:    </span>
+<span class="sd">    results.</span>
+<span class="sd">        CL                                     [Unitless], CLTOT in VORLAX</span>
+<span class="sd">        CDi                                    [Unitless], CDTOT in VORLAX</span>
+<span class="sd">        CM                                     [Unitless], CMTOT in VORLAX</span>
+<span class="sd">        CY                                  [Unitless], Total y force coeff</span>
+<span class="sd">        CRTOT                                  [Unitless], Rolling moment coeff (unscaled)</span>
+<span class="sd">        CL_mom                                 [Unitless], Rolling moment coeff (scaled by b_ref)</span>
+<span class="sd">        CNTOT                                  [Unitless], Yawing  moment coeff (unscaled)</span>
+<span class="sd">        CN                                 [Unitless], Yawing  moment coeff (scaled by b_ref)</span>
+<span class="sd">        CL_wing                                [Unitless], CL  of each wing</span>
+<span class="sd">        CDi_wing                               [Unitless], CDi of each wing</span>
+<span class="sd">        cl_y                                   [Unitless], CL  of each strip</span>
+<span class="sd">        cdi_y                                  [Unitless], CDi of each strip</span>
+<span class="sd">        alpha_i                                [radians] , Induced angle of each strip in each wing (array of numpy arrays)</span>
+<span class="sd">        CP                                     [Unitless], Pressure coefficient of each panel</span>
+<span class="sd">        gamma                                  [Unitless], Vortex strengths of each panel</span>
+
+<span class="sd">    </span>
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    <span class="c1"># unpack settings----------------------------------------------------------------</span>
+    <span class="n">pwm</span>        <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">propeller_wake_model</span>
+    <span class="n">K_SPC</span>      <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">leading_edge_suction_multiplier</span>
+    <span class="n">Sref</span>       <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">reference_area</span>              
+
+    <span class="c1"># unpack geometry----------------------------------------------------------------</span>
+    <span class="c1"># define point about which moment coefficient is computed</span>
+    <span class="k">if</span> <span class="s1">&#39;main_wing&#39;</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">:</span>
+        <span class="n">c_bar</span>      <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">[</span><span class="s1">&#39;main_wing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">chords</span><span class="o">.</span><span class="n">mean_aerodynamic</span>
+        <span class="n">x_mac</span>      <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">[</span><span class="s1">&#39;main_wing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">aerodynamic_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">[</span><span class="s1">&#39;main_wing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">z_mac</span>      <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">[</span><span class="s1">&#39;main_wing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">aerodynamic_center</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">[</span><span class="s1">&#39;main_wing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">b_ref</span>      <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">[</span><span class="s1">&#39;main_wing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">spans</span><span class="o">.</span><span class="n">projected</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">c_bar</span>  <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">x_mac</span>  <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">b_ref</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">for</span> <span class="n">wing</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">wings</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">wing</span><span class="o">.</span><span class="n">vertical</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">c_bar</span> <span class="o">&lt;=</span> <span class="n">wing</span><span class="o">.</span><span class="n">chords</span><span class="o">.</span><span class="n">mean_aerodynamic</span><span class="p">:</span>
+                    <span class="n">c_bar</span>  <span class="o">=</span> <span class="n">wing</span><span class="o">.</span><span class="n">chords</span><span class="o">.</span><span class="n">mean_aerodynamic</span>
+                    <span class="n">x_mac</span>  <span class="o">=</span> <span class="n">wing</span><span class="o">.</span><span class="n">aerodynamic_center</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">wing</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">z_mac</span>  <span class="o">=</span> <span class="n">wing</span><span class="o">.</span><span class="n">aerodynamic_center</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">wing</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+                    <span class="n">b_ref</span>  <span class="o">=</span> <span class="n">wing</span><span class="o">.</span><span class="n">spans</span><span class="o">.</span><span class="n">projected</span>
+
+    <span class="n">x_cg</span>       <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">center_of_gravity</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">z_cg</span>       <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">center_of_gravity</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">x_cg</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">x_m</span> <span class="o">=</span> <span class="n">x_mac</span> 
+        <span class="n">z_m</span> <span class="o">=</span> <span class="n">z_mac</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x_m</span> <span class="o">=</span> <span class="n">x_cg</span>
+        <span class="n">z_m</span> <span class="o">=</span> <span class="n">z_cg</span>
+        
+    <span class="c1"># unpack conditions--------------------------------------------------------------</span>
+    <span class="n">aoa</span>  <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">alpha</span>   <span class="c1"># angle of attack  </span>
+    <span class="n">mach</span> <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">mach_number</span>         <span class="c1"># mach number</span>
+    <span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">mach</span><span class="p">))</span> 
+    <span class="n">len_mach</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mach</span><span class="p">)</span>
+    
+    <span class="c1">#For angular values, VORLAX uses degrees by default to radians via DTR (degrees to rads). </span>
+    <span class="c1">#RCAIDE uses radians and its Units system. All algular variables will be in radians or var*Units.degrees</span>
+    <span class="n">PSI</span>       <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">beta</span>    
+    <span class="n">PITCHQ</span>    <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">pitch_rate</span>              
+    <span class="n">ROLLQ</span>     <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">roll_rate</span>             
+    <span class="n">YAWQ</span>      <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">yaw_rate</span> 
+    <span class="n">VINF</span>      <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>    
+       
+    <span class="c1">#freestream 0 velocity safeguard</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_surrogate</span><span class="p">:</span>
+            <span class="n">velocity</span>                       <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>
+            <span class="n">velocity</span><span class="p">[</span><span class="n">velocity</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">velocity</span><span class="p">[</span><span class="n">velocity</span><span class="o">==</span><span class="mi">0</span><span class="p">]))</span> <span class="o">*</span> <span class="mf">1e-6</span>
+            <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">velocity</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;VLM requires that conditions.freestream.velocity be specified and non-zero&quot;</span><span class="p">)</span>    
+
+    <span class="c1"># ---------------------------------------------------------------------------------------</span>
+    <span class="c1"># STEPS 1-9: Generate Panelization and Vortex Distribution</span>
+    <span class="c1"># ------------------ --------------------------------------------------------------------    </span>
+    <span class="c1"># generate vortex distribution (VLM steps 1-9)</span>
+    <span class="n">VD</span>   <span class="o">=</span> <span class="n">generate_vortex_distribution</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span><span class="n">settings</span><span class="p">)</span>  
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">VD</span><span class="o">.</span><span class="n">is_postprocessed</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;postprocess_VD has not been called since the panels have been modified&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Unpack vortex distribution</span>
+    <span class="n">n_cp</span>         <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">n_cp</span> 
+    <span class="n">n_sw</span>         <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">n_sw</span>
+    <span class="n">CHORD</span>        <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">chord_lengths</span>
+    <span class="n">chord_breaks</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">chordwise_breaks</span>
+    <span class="n">span_breaks</span>  <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">spanwise_breaks</span>
+    <span class="n">RNMAX</span>        <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">panels_per_strip</span>    
+    <span class="n">LE_ind</span>       <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">leading_edge_indices</span>
+    <span class="n">ZETA</span>         <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">tangent_incidence_angle</span>
+    <span class="n">RK</span>           <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">chordwise_panel_number</span>
+    
+    <span class="n">exposed_leading_edge_flag</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">exposed_leading_edge_flag</span>
+    
+    <span class="n">YAH</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">YAH</span><span class="o">*</span><span class="mf">1.</span>  
+    <span class="n">YBH</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">YBH</span><span class="o">*</span><span class="mf">1.</span>
+    
+    <span class="n">XA1</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">XA1</span><span class="o">*</span><span class="mf">1.</span>
+    <span class="n">XB1</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">XB1</span><span class="o">*</span><span class="mf">1.</span>
+    <span class="n">YA1</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">YA1</span>
+    <span class="n">YB1</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">YB1</span>    
+    <span class="n">ZA1</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">ZA1</span>
+    <span class="n">ZB1</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">ZB1</span>  
+    
+    <span class="n">XCH</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">XCH</span>
+    
+    <span class="n">XA_TE</span> <span class="o">=</span>  <span class="n">VD</span><span class="o">.</span><span class="n">XA_TE</span>
+    <span class="n">XB_TE</span> <span class="o">=</span>  <span class="n">VD</span><span class="o">.</span><span class="n">XB_TE</span>
+    <span class="n">YA_TE</span> <span class="o">=</span>  <span class="n">VD</span><span class="o">.</span><span class="n">YA_TE</span>
+    <span class="n">YB_TE</span> <span class="o">=</span>  <span class="n">VD</span><span class="o">.</span><span class="n">YB_TE</span>
+    <span class="n">ZA_TE</span> <span class="o">=</span>  <span class="n">VD</span><span class="o">.</span><span class="n">ZA_TE</span>
+    <span class="n">ZB_TE</span> <span class="o">=</span>  <span class="n">VD</span><span class="o">.</span><span class="n">ZB_TE</span>     
+     
+    <span class="n">SLOPE</span> <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">SLOPE</span>
+    <span class="n">SLE</span>   <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">SLE</span>
+    <span class="n">D</span>     <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">D</span>
+    
+    <span class="c1"># Compute X and Z BAR ouside of generate_vortex_distribution to avoid requiring x_m and z_m as inputs</span>
+    <span class="n">XBAR</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">LE_ind</span><span class="p">))</span> <span class="o">*</span> <span class="n">x_m</span>
+    <span class="n">ZBAR</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">LE_ind</span><span class="p">))</span> <span class="o">*</span> <span class="n">z_m</span>
+    <span class="n">VD</span><span class="o">.</span><span class="n">XBAR</span> <span class="o">=</span> <span class="n">XBAR</span>
+    <span class="n">VD</span><span class="o">.</span><span class="n">ZBAR</span> <span class="o">=</span> <span class="n">ZBAR</span>
+    
+    <span class="c1"># ---------------------------------------------------------------------------------------</span>
+    <span class="c1"># STEP 10: Generate A and RHS matrices from VD and geometry</span>
+    <span class="c1"># ------------------ --------------------------------------------------------------------    </span>
+    <span class="c1"># Compute flow tangency conditions</span>
+    <span class="n">phi</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">((</span><span class="n">VD</span><span class="o">.</span><span class="n">ZBC</span> <span class="o">-</span> <span class="n">VD</span><span class="o">.</span><span class="n">ZAC</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">VD</span><span class="o">.</span><span class="n">YBC</span> <span class="o">-</span> <span class="n">VD</span><span class="o">.</span><span class="n">YAC</span><span class="p">))</span><span class="o">*</span><span class="n">ones</span> <span class="c1"># dihedral angle </span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">((</span><span class="n">VD</span><span class="o">.</span><span class="n">ZC</span> <span class="o">-</span> <span class="n">VD</span><span class="o">.</span><span class="n">ZCH</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">VD</span><span class="o">.</span><span class="n">XC</span> <span class="o">-</span> <span class="n">VD</span><span class="o">.</span><span class="n">XCH</span><span class="p">)</span><span class="o">*</span><span class="n">ones</span><span class="p">))</span> <span class="c1"># mean camber surface angle </span>
+
+    <span class="c1"># Build the RHS vector    </span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">compute_RHS_matrix</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span><span class="n">phi</span><span class="p">,</span><span class="n">conditions</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">pwm</span><span class="p">)</span> 
+    <span class="n">RHS</span>     <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">RHS</span><span class="o">*</span><span class="mi">1</span>
+    <span class="n">ONSET</span>   <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">ONSET</span><span class="o">*</span><span class="mi">1</span>
+
+    <span class="c1"># Build induced velocity matrix, C_mn</span>
+    <span class="c1"># This is not affected by AoA, so we can use unique mach numbers only</span>
+    <span class="n">m_unique</span><span class="p">,</span> <span class="n">inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">mach</span><span class="p">,</span><span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">m_unique</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">m_unique</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">C_mn_small</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">RFLAG_small</span><span class="p">,</span> <span class="n">EW_small</span> <span class="o">=</span> <span class="n">compute_wing_induced_velocity</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">m_unique</span><span class="p">,</span><span class="n">compute_EW</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">C_mn</span>  <span class="o">=</span> <span class="n">C_mn_small</span><span class="p">[</span><span class="n">inv</span><span class="p">,:,:,:]</span>
+    <span class="n">RFLAG</span> <span class="o">=</span> <span class="n">RFLAG_small</span><span class="p">[</span><span class="n">inv</span><span class="p">,:]</span>
+    <span class="n">EW</span>    <span class="o">=</span> <span class="n">EW_small</span><span class="p">[</span><span class="n">inv</span><span class="p">,:,:]</span>
+
+    <span class="c1"># Turn off sonic vortices when Mach&gt;1</span>
+    <span class="n">RHS</span> <span class="o">=</span> <span class="n">RHS</span><span class="o">*</span><span class="n">RFLAG</span>
+    
+    <span class="c1"># Build Aerodynamic Influence Coefficient Matrix</span>
+    <span class="n">use_VORLAX_induced_velocity</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_VORLAX_matrix_calculation</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">use_VORLAX_induced_velocity</span><span class="p">:</span>
+        <span class="n">A</span> <span class="o">=</span>   <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">C_mn</span><span class="p">[:,:,:,</span><span class="mi">0</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_3d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)))</span> \
+            <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">C_mn</span><span class="p">[:,:,:,</span><span class="mi">1</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_3d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)))</span> \
+            <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">C_mn</span><span class="p">[:,:,:,</span><span class="mi">2</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_3d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)))</span>   <span class="c1"># validated from book eqn 7.42 </span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">EW</span>
+
+    <span class="c1"># Compute vortex strength</span>
+    <span class="n">GAMMA</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">RHS</span><span class="p">)</span>
+
+    <span class="c1"># ---------------------------------------------------------------------------------------</span>
+    <span class="c1"># STEP 11: Compute Pressure Coefficient</span>
+    <span class="c1"># ------------------ --------------------------------------------------------------------   </span>
+    <span class="c1">#VORLAX subroutine = PRESS</span>
+                  
+    <span class="c1"># spanwise strip exposure flag, always 0 for RCAIDE&#39;s infinitely thin airfoils. Needs to change if thick airfoils added</span>
+    <span class="n">RJTS</span> <span class="o">=</span> <span class="mi">0</span>                         
+    
+    <span class="c1"># COMPUTE FREE-STREAM AND ONSET FLOW PARAMETERS. Used throughout the remainder of VLM</span>
+    <span class="n">B2</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">((</span><span class="n">mach</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span><span class="n">n_cp</span><span class="p">)</span>
+    <span class="n">SINALF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">aoa</span><span class="p">)</span>
+    <span class="n">COSALF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">aoa</span><span class="p">)</span>
+    <span class="n">TANALF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">aoa</span><span class="p">)</span>
+    <span class="n">SINPSI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">PSI</span><span class="p">)</span>
+    <span class="n">COPSI</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">PSI</span><span class="p">)</span>
+    <span class="n">COSIN</span>  <span class="o">=</span> <span class="n">COSALF</span> <span class="o">*</span><span class="n">SINPSI</span> <span class="o">*</span><span class="mf">2.0</span>
+    <span class="n">COSINP</span> <span class="o">=</span> <span class="n">COSALF</span> <span class="o">*</span><span class="n">SINPSI</span>
+    <span class="n">COSCOS</span> <span class="o">=</span> <span class="n">COSALF</span> <span class="o">*</span><span class="n">COPSI</span>
+    <span class="n">PITCH</span>  <span class="o">=</span> <span class="n">PITCHQ</span> <span class="o">/</span><span class="n">VINF</span>
+    <span class="n">ROLL</span>   <span class="o">=</span> <span class="n">ROLLQ</span> <span class="o">/</span><span class="n">VINF</span>
+    <span class="n">YAW</span>    <span class="o">=</span> <span class="n">YAWQ</span> <span class="o">/</span><span class="n">VINF</span>    
+    
+    <span class="c1"># reshape CHORD</span>
+    <span class="n">CHORD</span>  <span class="o">=</span> <span class="n">CHORD</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+    <span class="n">CHORD_strip</span> <span class="o">=</span> <span class="n">CHORD</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span>
+
+    <span class="c1"># COMPUTE EFFECT OF SIDESLIP on DCP intermediate variables. needs change if cosine chorwise spacing added</span>
+    <span class="n">FORAXL</span> <span class="o">=</span> <span class="n">COSCOS</span>
+    <span class="n">FORLAT</span> <span class="o">=</span> <span class="n">COSIN</span>
+    
+    <span class="n">TAN_LE</span> <span class="o">=</span> <span class="p">(</span><span class="n">XB1</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span> <span class="o">-</span> <span class="n">XA1</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span><span class="o">/</span> \
+                <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ZB1</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span><span class="o">-</span><span class="n">ZA1</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> \
+                        <span class="p">(</span><span class="n">YB1</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span><span class="o">-</span><span class="n">YA1</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  
+    <span class="n">TAN_TE</span> <span class="o">=</span> <span class="p">(</span><span class="n">XB_TE</span> <span class="o">-</span> <span class="n">XA_TE</span><span class="p">)</span><span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">ZB_TE</span><span class="o">-</span><span class="n">ZA_TE</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">YB_TE</span><span class="o">-</span><span class="n">YA_TE</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># _TE variables already have np.repeat built in </span>
+    <span class="n">TAN_LE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">TAN_LE</span><span class="p">,</span><span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">B2</span><span class="p">))</span> 
+    <span class="n">TAN_TE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">TAN_TE</span>                         <span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">B2</span><span class="p">))</span>    
+    
+    <span class="n">TNL</span>    <span class="o">=</span> <span class="n">TAN_LE</span> <span class="o">*</span> <span class="mi">1</span> <span class="c1"># VORLAX&#39;s SIGN variable not needed, as these are taken directly from geometry</span>
+    <span class="n">TNT</span>    <span class="o">=</span> <span class="n">TAN_TE</span> <span class="o">*</span> <span class="mi">1</span>
+    <span class="n">XIA</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">((</span><span class="n">RK</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">RNMAX</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">B2</span><span class="p">))</span>
+    <span class="n">XIB</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">((</span><span class="n">RK</span>  <span class="p">)</span><span class="o">/</span><span class="n">RNMAX</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">B2</span><span class="p">))</span>
+    <span class="n">TANA</span>   <span class="o">=</span> <span class="n">TNL</span> <span class="o">*</span><span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">XIA</span><span class="p">)</span> <span class="o">+</span> <span class="n">TNT</span> <span class="o">*</span><span class="n">XIA</span>
+    <span class="n">TANB</span>   <span class="o">=</span> <span class="n">TNL</span> <span class="o">*</span><span class="p">(</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">XIB</span><span class="p">)</span> <span class="o">+</span> <span class="n">TNT</span> <span class="o">*</span><span class="n">XIB</span>
+    
+    <span class="c1"># cumsum GANT loop if KTOP &gt; 0 (don&#39;t actually need KTOP with vectorized arrays and np.roll)</span>
+    <span class="n">GFX</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">((</span><span class="mi">1</span> <span class="o">/</span><span class="n">CHORD</span><span class="p">),</span> <span class="p">(</span><span class="n">len_mach</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">GANT</span>   <span class="o">=</span> <span class="n">strip_cumsum</span><span class="p">(</span><span class="n">GFX</span><span class="o">*</span><span class="n">GAMMA</span><span class="p">,</span> <span class="n">chord_breaks</span><span class="p">,</span> <span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span>
+    <span class="n">GANT</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">GANT</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">GANT</span><span class="p">[:,</span><span class="n">LE_ind</span><span class="p">]</span>   <span class="o">=</span> <span class="mi">0</span> 
+    
+    <span class="n">GLAT</span>   <span class="o">=</span> <span class="n">GANT</span> <span class="o">*</span><span class="p">(</span><span class="n">TANA</span> <span class="o">-</span> <span class="n">TANB</span><span class="p">)</span> <span class="o">-</span> <span class="n">GFX</span> <span class="o">*</span><span class="n">GAMMA</span> <span class="o">*</span><span class="n">TANB</span>
+    <span class="n">COS_DL</span> <span class="o">=</span> <span class="p">(</span><span class="n">YBH</span><span class="o">-</span><span class="n">YAH</span><span class="p">)[</span><span class="n">LE_ind</span><span class="p">]</span><span class="o">/</span><span class="n">D</span>
+    <span class="n">cos_DL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">COS_DL</span><span class="p">,</span><span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">B2</span><span class="p">))</span>
+    <span class="n">DCPSID</span> <span class="o">=</span> <span class="n">FORLAT</span> <span class="o">*</span> <span class="n">cos_DL</span> <span class="o">*</span><span class="n">GLAT</span> <span class="o">/</span><span class="p">(</span><span class="n">XIB</span> <span class="o">-</span> <span class="n">XIA</span><span class="p">)</span>
+    <span class="n">FACTOR</span> <span class="o">=</span> <span class="n">FORAXL</span> <span class="o">+</span> <span class="n">ONSET</span>
+    
+    <span class="c1"># COMPUTE LOAD COEFFICIENT</span>
+    <span class="n">GNET</span> <span class="o">=</span> <span class="n">GAMMA</span><span class="o">*</span><span class="n">FACTOR</span>
+    <span class="n">GNET</span> <span class="o">=</span> <span class="n">GNET</span> <span class="o">*</span><span class="n">RNMAX</span> <span class="o">/</span><span class="n">CHORD</span>
+    <span class="n">DCP</span>  <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">GNET</span> <span class="o">+</span> <span class="n">DCPSID</span>
+    <span class="n">CP</span>   <span class="o">=</span> <span class="n">DCP</span>
+
+    <span class="c1"># ---------------------------------------------------------------------------------------</span>
+    <span class="c1"># STEP 12: Compute aerodynamic coefficients </span>
+    <span class="c1"># ------------------ -------------------------------------------------------------------- </span>
+    <span class="c1">#VORLAX subroutine = AERO</span>
+
+    <span class="c1"># Work panel by panel</span>
+    <span class="n">SURF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">VD</span><span class="o">.</span><span class="n">wing_areas</span><span class="p">)</span>
+    <span class="n">SREF</span> <span class="o">=</span> <span class="n">Sref</span>  
+
+    <span class="c1"># Flip coordinates on the other side of the wing</span>
+    <span class="n">boolean</span> <span class="o">=</span> <span class="n">YBH</span><span class="o">&lt;</span><span class="mf">0.</span> 
+    <span class="n">XA1</span><span class="p">[</span><span class="n">boolean</span><span class="p">],</span> <span class="n">XB1</span><span class="p">[</span><span class="n">boolean</span><span class="p">]</span> <span class="o">=</span> <span class="n">XB1</span><span class="p">[</span><span class="n">boolean</span><span class="p">],</span> <span class="n">XA1</span><span class="p">[</span><span class="n">boolean</span><span class="p">]</span>
+    <span class="n">YAH</span><span class="p">[</span><span class="n">boolean</span><span class="p">],</span> <span class="n">YBH</span><span class="p">[</span><span class="n">boolean</span><span class="p">]</span> <span class="o">=</span> <span class="n">YBH</span><span class="p">[</span><span class="n">boolean</span><span class="p">],</span> <span class="n">YAH</span><span class="p">[</span><span class="n">boolean</span><span class="p">]</span>
+
+    <span class="c1"># Leading edge sweep. VORLAX does it panel by panel. This will be spanwise.</span>
+    <span class="n">TLE</span>   <span class="o">=</span> <span class="n">TAN_LE</span><span class="p">[:,</span><span class="n">LE_ind</span><span class="p">]</span>
+    <span class="n">B2_LE</span> <span class="o">=</span> <span class="n">B2</span><span class="p">[:,</span><span class="n">LE_ind</span><span class="p">]</span>
+    <span class="n">T2</span>    <span class="o">=</span> <span class="n">TLE</span><span class="o">*</span><span class="n">TLE</span>
+    <span class="n">STB</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">B2_LE</span><span class="p">)</span>
+    <span class="n">STB</span><span class="p">[</span><span class="n">B2_LE</span><span class="o">&lt;</span><span class="n">T2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T2</span><span class="p">[</span><span class="n">B2_LE</span><span class="o">&lt;</span><span class="n">T2</span><span class="p">]</span><span class="o">-</span><span class="n">B2_LE</span><span class="p">[</span><span class="n">B2_LE</span><span class="o">&lt;</span><span class="n">T2</span><span class="p">])</span>
+    
+    <span class="c1"># DL IS THE DIHEDRAL ANGLE (WITH RESPECT TO THE X-Y PLANE) OF</span>
+    <span class="c1"># THE IR STREAMWISE STRIP OF HORSESHOE VORTICES. </span>
+    <span class="n">COD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">LE_ind</span><span class="p">])</span>  <span class="c1"># Just the LE values</span>
+    
+    <span class="n">SID</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">LE_ind</span><span class="p">])</span>  <span class="c1"># Just the LE values</span>
+
+    <span class="c1"># Now on to each strip</span>
+    <span class="n">PION</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span><span class="n">RNMAX</span>
+    <span class="n">ADC</span>  <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">PION</span>
+
+    <span class="c1"># XLE = LOCATION OF FIRST VORTEX MIDPOINT IN FRACTION OF CHORD.</span>
+    <span class="n">XLE</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span><span class="n">PION</span>
+    
+    <span class="n">GAF</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span><span class="n">RJTS</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># CORMED IS LENGTH OF STRIP CENTERLINE BETWEEN LOAD POINT</span>
+    <span class="c1"># AND TRAILING EDGE THIS PARAMETER IS USED IN THE COMPUTATION</span>
+    <span class="c1"># OF THE STRIP ROLLING COUPLE CONTRIBUTION DUE TO SIDESLIP.</span>
+    <span class="n">X</span>      <span class="o">=</span> <span class="n">XCH</span>                       <span class="c1">#x-coord of load point (horseshoe centroid)</span>
+    <span class="n">XTE</span>    <span class="o">=</span> <span class="p">(</span><span class="n">VD</span><span class="o">.</span><span class="n">XA_TE</span> <span class="o">+</span> <span class="n">VD</span><span class="o">.</span><span class="n">XB_TE</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>   <span class="c1">#Trailing edge x-coord behind the control point  </span>
+    <span class="n">CORMED</span> <span class="o">=</span> <span class="n">XTE</span> <span class="o">-</span> <span class="n">X</span>   
+
+    <span class="c1"># SINF REFERENCES THE LOAD CONTRIBUTION OF IRT-VORTEX TO THE</span>
+    <span class="c1"># STRIP NOMINAL AREA, I.E., AREA OF STRIP ASSUMING CONSTANT</span>
+    <span class="c1"># (CHORDWISE) HORSESHOE SPAN.    </span>
+    <span class="n">SINF</span> <span class="o">=</span> <span class="n">ADC</span> <span class="o">*</span> <span class="n">DCP</span> <span class="c1"># The horshoe span lengths have been removed since VST/VSS == 1 always</span>
+
+    <span class="c1"># Split into chordwise strengths and sum into strips    </span>
+    <span class="c1"># SICPLE = COUPLE (ABOUT STRIP CENTERLINE) DUE TO SIDESLIP.</span>
+    <span class="n">CNC</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">SINF</span>       <span class="p">,</span><span class="n">chord_breaks</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">SICPLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">SINF</span><span class="o">*</span><span class="n">CORMED</span><span class="p">,</span><span class="n">chord_breaks</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># COMPUTE SLOPE (TX) WITH RESPECT TO X-AXIS AT LOAD POINTS BY INTER</span>
+    <span class="c1"># POLATING BETWEEN CONTROL POINTS AND TAKING INTO ACCOUNT THE LOCAL</span>
+    <span class="c1"># INCIDENCE.    </span>
+    <span class="n">XX</span>   <span class="o">=</span> <span class="p">(</span><span class="n">RK</span> <span class="o">-</span> <span class="mf">.75</span><span class="p">)</span> <span class="o">*</span><span class="n">PION</span> <span class="o">/</span><span class="mf">2.0</span>
+    <span class="n">TX</span>    <span class="o">=</span> <span class="n">SLOPE</span> <span class="o">-</span> <span class="n">ZETA</span>
+    <span class="n">CAXL</span>  <span class="o">=</span> <span class="o">-</span><span class="n">SINF</span><span class="o">*</span><span class="n">TX</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">TX</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># These are the axial forces on each panel</span>
+    <span class="n">BMLE</span>  <span class="o">=</span> <span class="p">(</span><span class="n">XLE</span><span class="o">-</span><span class="n">XX</span><span class="p">)</span><span class="o">*</span><span class="n">SINF</span>        <span class="c1"># These are moment on each panel</span>
+    
+    <span class="c1"># Sum onto the panel</span>
+    <span class="n">CAXL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">CAXL</span><span class="p">,</span><span class="n">chord_breaks</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">BMLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">BMLE</span><span class="p">,</span><span class="n">chord_breaks</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">SICPLE</span> <span class="o">*=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">COSIN</span> <span class="o">*</span> <span class="n">COD</span> <span class="o">*</span> <span class="n">GAF</span>
+    <span class="n">DCP_LE</span> <span class="o">=</span> <span class="n">DCP</span><span class="p">[:,</span><span class="n">LE_ind</span><span class="p">]</span>
+    
+    <span class="c1"># COMPUTE LEADING EDGE THRUST COEFF. (CSUC) BY CALCULATING</span>
+    <span class="c1"># THE TOTAL INDUCED FLOW AT THE LEADING EDGE. THIS COMPUTATION</span>
+    <span class="c1"># ONLY PERFORMED FOR COSINE CHORDWISE SPACING (LAX = 0).    </span>
+    <span class="c1"># ** TO DO ** Add cosine spacing (earlier in VLM) to properly capture the magnitude of these earlier.</span>
+    <span class="c1"># Right now, this computation still happens with linear spacing, though its effects are underestimated.</span>
+    <span class="n">CLE</span> <span class="o">=</span> <span class="n">compute_rotation_effects</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">EW</span><span class="p">,</span> <span class="n">GAMMA</span><span class="p">,</span> <span class="n">len_mach</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">CHORD</span><span class="p">,</span> <span class="n">XLE</span><span class="p">,</span> <span class="n">XBAR</span><span class="p">,</span> 
+                                   <span class="n">rhs</span><span class="p">,</span> <span class="n">COSINP</span><span class="p">,</span> <span class="n">SINALF</span><span class="p">,</span><span class="n">COSCOS</span><span class="p">,</span> <span class="n">PITCH</span><span class="p">,</span> <span class="n">ROLL</span><span class="p">,</span> <span class="n">YAW</span><span class="p">,</span> <span class="n">STB</span><span class="p">,</span> <span class="n">RNMAX</span><span class="p">)</span>    
+    
+    <span class="c1"># Leading edge suction multiplier. See documentation. This is a negative integer if used</span>
+    <span class="c1"># Default to 1 unless specified otherwise</span>
+    <span class="n">SPC</span>  <span class="o">=</span> <span class="n">K_SPC</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">DCP_LE</span><span class="p">)</span>
+    
+    <span class="c1"># If the vehicle is subsonic and there is vortex lift enabled then SPC changes to -1</span>
+    <span class="n">VL</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">VD</span><span class="o">.</span><span class="n">vortex_lift</span><span class="p">,</span><span class="n">n_sw</span><span class="p">)</span>
+    <span class="n">m_b</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">mach</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">&lt;</span><span class="mf">1.</span><span class="p">)</span>
+    <span class="n">SPC_cond</span>      <span class="o">=</span> <span class="n">VL</span><span class="o">*</span><span class="n">m_b</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">SPC</span><span class="p">[</span><span class="n">SPC_cond</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span>
+    <span class="n">SPC</span>           <span class="o">=</span> <span class="n">SPC</span> <span class="o">*</span> <span class="n">exposed_leading_edge_flag</span>
+    
+    <span class="n">CLE</span>  <span class="o">=</span> <span class="n">CLE</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span> <span class="n">DCP_LE</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">XLE</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span>
+    <span class="n">CSUC</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">SPC</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">CLE</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">STB</span> 
+
+    <span class="c1"># TFX AND TFZ ARE THE COMPONENTS OF LEADING EDGE FORCE VECTOR ALONG</span>
+    <span class="c1"># ALONG THE X AND Z BODY AXES.   </span>
+    
+    <span class="n">SLE</span>  <span class="o">=</span> <span class="n">SLOPE</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span>
+    <span class="n">ZETA</span> <span class="o">=</span> <span class="n">ZETA</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span>
+    <span class="n">XCOS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">SLE</span><span class="o">-</span><span class="n">ZETA</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">DCP_LE</span><span class="p">))</span>
+    <span class="n">XSIN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">SLE</span><span class="o">-</span><span class="n">ZETA</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">DCP_LE</span><span class="p">))</span>
+    <span class="n">TFX</span>  <span class="o">=</span>  <span class="mf">1.</span><span class="o">*</span><span class="n">XCOS</span>
+    <span class="n">TFZ</span>  <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span><span class="o">*</span><span class="n">XSIN</span>
+
+    <span class="c1"># If a negative number is used for SPC a different correction is used. See VORLAX documentation for Lan reference</span>
+    <span class="n">TFX</span><span class="p">[</span><span class="n">SPC</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">XSIN</span><span class="p">[</span><span class="n">SPC</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">DCP_LE</span><span class="p">)[</span><span class="n">SPC</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">TFZ</span><span class="p">[</span><span class="n">SPC</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">XCOS</span><span class="p">)[</span><span class="n">SPC</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">DCP_LE</span><span class="p">)[</span><span class="n">SPC</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">CAXL</span> <span class="o">=</span> <span class="n">CAXL</span> <span class="o">-</span> <span class="n">TFX</span><span class="o">*</span><span class="n">CSUC</span>
+    
+    <span class="c1"># Add a dimension into the suction to be chordwise</span>
+    <span class="n">CNC</span>   <span class="o">=</span> <span class="n">CNC</span> <span class="o">+</span> <span class="n">CSUC</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">T2</span><span class="p">)</span><span class="o">*</span><span class="n">TFZ</span>
+    
+    <span class="c1"># FCOS AND FSIN ARE THE COSINE AND SINE OF THE ANGLE BETWEEN</span>
+    <span class="c1"># THE CHORDLINE OF THE IR-STRIP AND THE X-AXIS    </span>
+    <span class="n">FCOS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ZETA</span><span class="p">)</span>
+    <span class="n">FSIN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ZETA</span><span class="p">)</span>
+    
+    <span class="c1"># BFX, BFY, AND BFZ ARE THE COMPONENTS ALONG THE BODY AXES</span>
+    <span class="c1"># OF THE STRIP FORCE CONTRIBUTION.</span>
+    <span class="n">BFX</span> <span class="o">=</span> <span class="o">-</span>  <span class="n">CNC</span> <span class="o">*</span><span class="n">FSIN</span> <span class="o">+</span> <span class="n">CAXL</span> <span class="o">*</span><span class="n">FCOS</span>
+    <span class="n">BFY</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">CNC</span> <span class="o">*</span><span class="n">FCOS</span> <span class="o">+</span> <span class="n">CAXL</span> <span class="o">*</span><span class="n">FSIN</span><span class="p">)</span> <span class="o">*</span><span class="n">SID</span>
+    <span class="n">BFZ</span> <span class="o">=</span>   <span class="p">(</span><span class="n">CNC</span> <span class="o">*</span><span class="n">FCOS</span> <span class="o">+</span> <span class="n">CAXL</span> <span class="o">*</span><span class="n">FSIN</span><span class="p">)</span> <span class="o">*</span><span class="n">COD</span>
+
+    <span class="c1"># CONVERT CNC FROM CN INTO CNC (COEFF. *CHORD).</span>
+    <span class="n">CNC</span>  <span class="o">=</span> <span class="n">CNC</span>  <span class="o">*</span> <span class="n">CHORD_strip</span>
+    <span class="n">BMLE</span> <span class="o">=</span> <span class="n">BMLE</span> <span class="o">*</span> <span class="n">CHORD_strip</span>
+
+    <span class="c1"># BMX, BMY, AND BMZ ARE THE COMPONENTS ALONG THE BODY AXES</span>
+    <span class="c1"># OF THE STRIP MOMENT (ABOUT MOM. REF. POINT) CONTRIBUTION.</span>
+    <span class="n">X</span>      <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">XCH</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span>  <span class="c1"># These are all LE values</span>
+    <span class="n">Y</span>      <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">YCH</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span>  <span class="c1"># These are all LE values</span>
+    <span class="n">Z</span>      <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">ZCH</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span>  <span class="c1"># These are all LE values</span>
+    <span class="n">BMX</span>    <span class="o">=</span> <span class="n">BFZ</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">BFY</span> <span class="o">*</span> <span class="p">(</span><span class="n">Z</span> <span class="o">-</span> <span class="n">ZBAR</span><span class="p">)</span>
+    <span class="n">BMX</span>    <span class="o">=</span> <span class="n">BMX</span> <span class="o">+</span> <span class="n">SICPLE</span>
+    <span class="n">BMY</span>    <span class="o">=</span> <span class="n">BMLE</span> <span class="o">*</span> <span class="n">COD</span> <span class="o">+</span> <span class="n">BFX</span> <span class="o">*</span> <span class="p">(</span><span class="n">Z</span> <span class="o">-</span> <span class="n">ZBAR</span><span class="p">)</span> <span class="o">-</span> <span class="n">BFZ</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">XBAR</span><span class="p">)</span>
+    <span class="n">BMZ</span>    <span class="o">=</span> <span class="n">BMLE</span> <span class="o">*</span> <span class="n">SID</span> <span class="o">-</span> <span class="n">BFX</span> <span class="o">*</span> <span class="n">Y</span> <span class="o">+</span> <span class="n">BFY</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">XBAR</span><span class="p">)</span>
+    <span class="n">CDC</span>    <span class="o">=</span> <span class="n">BFZ</span> <span class="o">*</span> <span class="n">SINALF</span> <span class="o">+</span>  <span class="p">(</span><span class="n">BFX</span> <span class="o">*</span><span class="n">COPSI</span> <span class="o">+</span> <span class="n">BFY</span> <span class="o">*</span><span class="n">SINPSI</span><span class="p">)</span> <span class="o">*</span> <span class="n">COSALF</span>
+    <span class="n">CDC</span>    <span class="o">=</span> <span class="n">CDC</span> <span class="o">*</span> <span class="n">CHORD_strip</span> 
+
+    <span class="n">ES</span>     <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">LE_ind</span><span class="p">]</span>
+    <span class="n">STRIP</span>  <span class="o">=</span> <span class="n">ES</span> <span class="o">*</span><span class="n">CHORD_strip</span>
+    <span class="n">LIFT</span>   <span class="o">=</span> <span class="p">(</span><span class="n">BFZ</span> <span class="o">*</span><span class="n">COSALF</span> <span class="o">-</span> <span class="p">(</span><span class="n">BFX</span> <span class="o">*</span><span class="n">COPSI</span> <span class="o">+</span> <span class="n">BFY</span> <span class="o">*</span><span class="n">SINPSI</span><span class="p">)</span> <span class="o">*</span><span class="n">SINALF</span><span class="p">)</span><span class="o">*</span><span class="n">STRIP</span>   
+    <span class="n">DRAG</span>   <span class="o">=</span> <span class="n">CDC</span><span class="o">*</span><span class="n">ES</span> 
+    <span class="n">MOMENT</span> <span class="o">=</span> <span class="n">STRIP</span> <span class="o">*</span> <span class="p">(</span><span class="n">BMY</span> <span class="o">*</span><span class="n">COPSI</span> <span class="o">-</span> <span class="n">BMX</span> <span class="o">*</span><span class="n">SINPSI</span><span class="p">)</span>  
+    <span class="n">FY</span>     <span class="o">=</span> <span class="p">(</span><span class="n">BFY</span> <span class="o">*</span><span class="n">COPSI</span> <span class="o">-</span> <span class="n">BFX</span> <span class="o">*</span><span class="n">SINPSI</span><span class="p">)</span> <span class="o">*</span><span class="n">STRIP</span>
+    <span class="n">RM</span>     <span class="o">=</span> <span class="n">STRIP</span> <span class="o">*</span><span class="p">(</span><span class="n">BMX</span> <span class="o">*</span><span class="n">COSALF</span> <span class="o">*</span><span class="n">COPSI</span> <span class="o">+</span> <span class="n">BMY</span> <span class="o">*</span><span class="n">COSALF</span> <span class="o">*</span><span class="n">SINPSI</span> <span class="o">+</span> <span class="n">BMZ</span> <span class="o">*</span><span class="n">SINALF</span><span class="p">)</span>
+    <span class="n">YM</span>     <span class="o">=</span> <span class="n">STRIP</span> <span class="o">*</span><span class="p">(</span><span class="n">BMZ</span> <span class="o">*</span><span class="n">COSALF</span> <span class="o">-</span> <span class="p">(</span><span class="n">BMX</span> <span class="o">*</span><span class="n">COPSI</span> <span class="o">+</span> <span class="n">BMY</span> <span class="o">*</span><span class="n">SINPSI</span><span class="p">)</span> <span class="o">*</span><span class="n">SINALF</span><span class="p">)</span>
+
+    <span class="c1"># Now calculate the coefficients for each wing</span>
+    <span class="n">cl_y</span>     <span class="o">=</span> <span class="n">LIFT</span><span class="o">/</span><span class="n">CHORD_strip</span><span class="o">/</span><span class="n">ES</span>
+    <span class="n">cdi_y</span>    <span class="o">=</span> <span class="n">DRAG</span><span class="o">/</span><span class="n">CHORD_strip</span><span class="o">/</span><span class="n">ES</span>
+    <span class="n">CL_wing</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">LIFT</span><span class="p">,</span><span class="n">span_breaks</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SURF</span>
+    <span class="n">CDi_wing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">DRAG</span><span class="p">,</span><span class="n">span_breaks</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SURF</span>
+    <span class="n">alpha_i</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hsplit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">cdi_y</span><span class="o">/</span><span class="n">cl_y</span><span class="p">),</span><span class="n">span_breaks</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    
+    <span class="c1"># Now calculate total coefficients</span>
+    <span class="n">CL</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">LIFT</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SREF</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>          <span class="c1"># CLTOT in VORLAX</span>
+    <span class="n">CDi</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">DRAG</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SREF</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>          <span class="c1"># CDTOT in VORLAX</span>
+    <span class="n">CX</span>       <span class="o">=</span>  <span class="p">(</span> <span class="n">TANALF</span> <span class="o">*</span> <span class="n">CL</span> <span class="o">-</span> <span class="n">CDi</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">COSALF</span> <span class="o">-</span> <span class="n">SINALF</span><span class="o">*</span><span class="n">TANALF</span><span class="p">)</span>
+    <span class="n">CZ</span>       <span class="o">=</span> <span class="p">(</span><span class="n">CDi</span><span class="o">+</span> <span class="n">CX</span><span class="o">*</span><span class="n">COSALF</span><span class="p">)</span><span class="o">/</span><span class="n">SINALF</span> 
+    <span class="n">CM</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">MOMENT</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SREF</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">/</span><span class="n">c_bar</span>  <span class="c1"># CMTOT in VORLAX 1. check deflection is accounted for correctly. 2. check this is right</span>
+    <span class="n">CY</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">FY</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SREF</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>   <span class="c1"># total y force coeff</span>
+    <span class="n">CRTOT</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">RM</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SREF</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>   <span class="c1"># rolling moment coeff (unscaled)</span>
+    <span class="n">CL_mom</span>   <span class="o">=</span> <span class="n">CRTOT</span><span class="o">/</span><span class="n">b_ref</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                         <span class="c1"># rolling moment coeff</span>
+    <span class="n">CNTOT</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">YM</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">SREF</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>   <span class="c1"># yawing  moment coeff (unscaled)</span>
+    <span class="n">CN</span>       <span class="o">=</span> <span class="n">CNTOT</span><span class="o">/</span><span class="n">b_ref</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                         <span class="c1"># yawing  moment coeff</span>
+
+    <span class="c1"># ---------------------------------------------------------------------------------------</span>
+    <span class="c1"># STEP 13: Pack outputs</span>
+    <span class="c1"># ------------------ --------------------------------------------------------------------     </span>
+    <span class="n">precision</span>      <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">floating_point_precision</span>
+    
+    <span class="c1">#VORLAX _TOT outputs</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+    <span class="c1"># force coefficients</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">S_ref</span>      <span class="o">=</span> <span class="n">Sref</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">b_ref</span>      <span class="o">=</span> <span class="n">b_ref</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">c_ref</span>      <span class="o">=</span> <span class="n">c_bar</span>  
+    <span class="n">results</span><span class="o">.</span><span class="n">X_ref</span>      <span class="o">=</span> <span class="n">x_m</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">Y_ref</span>      <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">Z_ref</span>      <span class="o">=</span> <span class="n">z_m</span>
+    
+    <span class="n">results</span><span class="o">.</span><span class="n">CL</span>         <span class="o">=</span>  <span class="n">CL</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">CDi</span>        <span class="o">=</span>  <span class="n">CDi</span>
+    
+    <span class="n">results</span><span class="o">.</span><span class="n">CX</span>         <span class="o">=</span>  <span class="n">CX</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">CY</span>         <span class="o">=</span>  <span class="n">CY</span> 
+    <span class="n">results</span><span class="o">.</span><span class="n">CZ</span>         <span class="o">=</span> <span class="o">-</span><span class="n">CZ</span>
+    
+    <span class="n">results</span><span class="o">.</span><span class="n">CL_mom</span>     <span class="o">=</span>  <span class="n">CL_mom</span> 
+    <span class="n">results</span><span class="o">.</span><span class="n">CM</span>         <span class="o">=</span>  <span class="n">CM</span>  
+    <span class="n">results</span><span class="o">.</span><span class="n">CN</span>         <span class="o">=</span>  <span class="n">CN</span>
+    
+    <span class="c1">#other RCAIDE outputs</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">CL_wing</span>        <span class="o">=</span> <span class="n">CL_wing</span>   
+    <span class="n">results</span><span class="o">.</span><span class="n">CDi_wing</span>       <span class="o">=</span> <span class="n">CDi_wing</span> 
+    <span class="n">results</span><span class="o">.</span><span class="n">cl_y</span>           <span class="o">=</span> <span class="n">cl_y</span>   
+    <span class="n">results</span><span class="o">.</span><span class="n">cdi_y</span>          <span class="o">=</span> <span class="n">cdi_y</span>       
+    <span class="n">results</span><span class="o">.</span><span class="n">alpha_i</span>        <span class="o">=</span> <span class="n">alpha_i</span>  
+    <span class="n">results</span><span class="o">.</span><span class="n">CP</span>             <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">CP</span>    <span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">gamma</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">GAMMA</span> <span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">precision</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">VD</span>             <span class="o">=</span> <span class="n">VD</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">V_distribution</span> <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">V_distribution</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">V_x</span>            <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">Vx_ind_total</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">V_z</span>            <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">Vz_ind_total</span>
+    
+    <span class="k">return</span> <span class="n">results</span></div>
+
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  CLE rotation effects helper function</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+<div class="viewcode-block" id="compute_rotation_effects">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.compute_rotation_effects">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_rotation_effects</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">EW_small</span><span class="p">,</span> <span class="n">GAMMA</span><span class="p">,</span> <span class="n">len_mach</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">CHORD</span><span class="p">,</span> <span class="n">XLE</span><span class="p">,</span> <span class="n">XBAR</span><span class="p">,</span> 
+                             <span class="n">rhs</span><span class="p">,</span> <span class="n">COSINP</span><span class="p">,</span> <span class="n">SINALF</span><span class="p">,</span><span class="n">COSCOS</span><span class="p">,</span> <span class="n">PITCH</span><span class="p">,</span> <span class="n">ROLL</span><span class="p">,</span> <span class="n">YAW</span><span class="p">,</span> <span class="n">STB</span><span class="p">,</span> <span class="n">RNMAX</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This computes the effects of the freestream and aircraft rotation rate on </span>
+<span class="sd">    CLE, the induced flow at the leading edge</span>
+<span class="sd">    </span>
+<span class="sd">    Assumptions:</span>
+<span class="sd">    Several of the values needed in this calculation have been computed earlier and stored in VD</span>
+<span class="sd">    </span>
+<span class="sd">    Normally, VORLAX skips the calculation implemented in this function for linear </span>
+<span class="sd">    chordwise spacing (the if statement below). However, since the trends are correct, </span>
+<span class="sd">    albeit underestimated, this calculation is being forced here.    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LE_ind</span>      <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">leading_edge_indices</span>
+    <span class="n">RNMAX</span>       <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">panels_per_strip</span>
+
+    <span class="c1">##spacing = settings.spanwise_cosine_spacing</span>
+    <span class="c1">##if spacing == False: # linear spacing is LAX==1 in VORLAX</span>
+    <span class="c1">##    return 0 #CLE not calculated till later for linear spacing</span>
+    
+    <span class="c1"># Computate rotational effects (pitch, roll, yaw rates) on LE suction</span>
+    <span class="c1"># pick leading edge strip values for EW and reshape GAMMA -&gt; gamma accordingly</span>
+    <span class="n">EW</span>    <span class="o">=</span> <span class="n">EW_small</span><span class="p">[:</span> <span class="p">,</span><span class="n">LE_ind</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">n_tot_strips</span> <span class="o">=</span> <span class="n">EW</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">GAMMA</span><span class="p">,</span> <span class="n">n_tot_strips</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">len_mach</span><span class="p">))</span>
+    <span class="n">CLE</span> <span class="o">=</span> <span class="p">(</span><span class="n">EW</span><span class="o">*</span><span class="n">gamma</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Up till EFFINC, some of the following values were computed in compute_RHS_matrix().</span>
+    <span class="c1">#     EFFINC and ALOC are calculated the exact same way, except for the XGIRO term.</span>
+    <span class="c1"># LOCATE VORTEX LATTICE CONTROL POINT WITH RESPECT TO THE</span>
+    <span class="c1"># ROTATION CENTER (XBAR, 0, ZBAR). THE RELATIVE COORDINATES</span>
+    <span class="c1"># ARE XGIRO, YGIRO, AND ZGIRO. </span>
+    <span class="n">XGIRO</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">CHORD</span><span class="o">*</span><span class="n">XLE</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">XBAR</span><span class="p">,</span> <span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span>
+    <span class="n">YGIRO</span> <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">YGIRO</span>
+    <span class="n">ZGIRO</span> <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">ZGIRO</span>
+    
+    <span class="c1"># VX, VY, VZ ARE THE FLOW ONSET VELOCITY COMPONENTS AT THE LEADING</span>
+    <span class="c1"># EDGE (STRIP MIDPOINT). VX, VY, VZ AND THE ROTATION RATES ARE</span>
+    <span class="c1"># REFERENCED TO THE FREE STREAM VELOCITY.     </span>
+    <span class="n">VX</span> <span class="o">=</span> <span class="p">(</span><span class="n">COSCOS</span> <span class="o">-</span> <span class="n">PITCH</span><span class="o">*</span><span class="n">ZGIRO</span> <span class="o">+</span> <span class="n">YAW</span>  <span class="o">*</span><span class="n">YGIRO</span><span class="p">)</span>  
+    <span class="n">VY</span> <span class="o">=</span> <span class="p">(</span><span class="n">COSINP</span> <span class="o">-</span> <span class="n">YAW</span>  <span class="o">*</span><span class="n">XGIRO</span> <span class="o">+</span> <span class="n">ROLL</span> <span class="o">*</span><span class="n">ZGIRO</span><span class="p">)</span>  
+    <span class="n">VZ</span> <span class="o">=</span> <span class="p">(</span><span class="n">SINALF</span> <span class="o">-</span> <span class="n">ROLL</span> <span class="o">*</span><span class="n">YGIRO</span> <span class="o">+</span> <span class="n">PITCH</span><span class="o">*</span><span class="n">XGIRO</span><span class="p">)</span>
+
+    <span class="c1"># CCNTL, SCNTL, SID, and COD were computed in compute_RHS_matrix()</span>
+    
+    <span class="c1"># EFFINC = COMPONENT OF ONSET FLOW ALONG NORMAL TO CAMBERLINE AT</span>
+    <span class="c1">#          LEADING EDGE.</span>
+    <span class="n">EFFINC</span> <span class="o">=</span> <span class="n">VX</span> <span class="o">*</span><span class="n">rhs</span><span class="o">.</span><span class="n">SCNTL</span> <span class="o">+</span> <span class="n">VY</span> <span class="o">*</span><span class="n">rhs</span><span class="o">.</span><span class="n">CCNTL</span> <span class="o">*</span><span class="n">rhs</span><span class="o">.</span><span class="n">SID</span> <span class="o">-</span> <span class="n">VZ</span> <span class="o">*</span><span class="n">rhs</span><span class="o">.</span><span class="n">CCNTL</span> <span class="o">*</span><span class="n">rhs</span><span class="o">.</span><span class="n">COD</span> 
+    <span class="n">CLE</span> <span class="o">=</span> <span class="n">CLE</span> <span class="o">-</span> <span class="n">EFFINC</span><span class="p">[:,</span><span class="n">LE_ind</span><span class="p">]</span> 
+    <span class="n">CLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">STB</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">CLE</span> <span class="o">/</span><span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">]</span> <span class="o">/</span><span class="n">STB</span><span class="p">,</span> <span class="n">CLE</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">CLE</span></div>
+
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  Vectorized cumsum from indices</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+<div class="viewcode-block" id="strip_cumsum">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.strip_cumsum">[docs]</a>
+<span class="k">def</span> <span class="nf">strip_cumsum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">chord_breaks</span><span class="p">,</span> <span class="n">strip_lengths</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Uses numpy to to compute a cumsum that resets along</span>
+<span class="sd">    the leading edge of every strip.</span>
+<span class="sd">    </span>
+<span class="sd">    Assumptions:</span>
+<span class="sd">    chordwise_breaks always starts at 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">cumsum</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">offsets</span> <span class="o">=</span> <span class="n">cumsum</span><span class="p">[:,</span><span class="n">chord_breaks</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">offsets</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">offsets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">offsets</span><span class="p">,</span> <span class="n">strip_lengths</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cumsum</span> <span class="o">-</span> <span class="n">offsets</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice package &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice package &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,11 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects package" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html" />
-    <link rel="prev" title="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method package" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +96,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +110,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +135,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +164,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +178,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +192,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +215,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +254,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +283,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +297,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -329,110 +330,118 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.html">RCAIDE package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4 current active"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Framework.html">RCAIDE.Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Library.html">RCAIDE.Library</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.load.html">RCAIDE.load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.save.html">RCAIDE.save</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Vehicle.html">RCAIDE.Vehicle</a></li>
 </ul>
 </div>
 </nav></div>
@@ -473,21 +482,6 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">RCAIDE</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.html" class="nav-link">RCAIDE package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.html" class="nav-link">RCAIDE.Library package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.html" class="nav-link">RCAIDE.Library.Methods package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.Aerodynamics.html" class="nav-link">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice package</span></li>
   </ul>
 </nav>
@@ -513,13 +507,58 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-aircraft-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-body-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-configuration-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Configuration module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-inputs-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Inputs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-run-case-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-wing-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft.Aircraft"><code class="docutils literal notranslate"><span class="pre">Aircraft</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft.Aircraft.append_wing"><code class="docutils literal notranslate"><span class="pre">Aircraft.append_wing()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft.Aircraft.append_body"><code class="docutils literal notranslate"><span class="pre">Aircraft.append_body()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body.Body"><code class="docutils literal notranslate"><span class="pre">Body</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body.Body.append_section"><code class="docutils literal notranslate"><span class="pre">Body.append_section()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Configuration">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Configuration module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Configuration.Configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Inputs">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Inputs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Inputs.Inputs"><code class="docutils literal notranslate"><span class="pre">Inputs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case.Run_Case"><code class="docutils literal notranslate"><span class="pre">Run_Case</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case.Run_Case.Container"><code class="docutils literal notranslate"><span class="pre">Run_Case.Container</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case.Container"><code class="docutils literal notranslate"><span class="pre">Container</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case.Container.append_case"><code class="docutils literal notranslate"><span class="pre">Container.append_case()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Wing"><code class="docutils literal notranslate"><span class="pre">Wing</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Wing.append_section"><code class="docutils literal notranslate"><span class="pre">Wing.append_section()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Section"><code class="docutils literal notranslate"><span class="pre">Section</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Section.append_control_surface"><code class="docutils literal notranslate"><span class="pre">Section.append_control_surface()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface"><code class="docutils literal notranslate"><span class="pre">Control_Surface</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface_Data"><code class="docutils literal notranslate"><span class="pre">Control_Surface_Data</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface_Data.append_control_surface_result"><code class="docutils literal notranslate"><span class="pre">Control_Surface_Data.append_control_surface_result()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface_Results"><code class="docutils literal notranslate"><span class="pre">Control_Surface_Results</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -528,47 +567,743 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-build-avl-surrogates-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-build-avl-surrogates-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-build-avl-surrogates-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates.build_AVL_surrogates">
+<span class="sig-name descname"><span class="pre">build_AVL_surrogates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aerodynamics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/build_AVL_surrogates.html#build_AVL_surrogates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates.build_AVL_surrogates" title="Link to this definition">#</a></dt>
+<dd><p>Build a surrogate using sample evaluation results.</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aerodynamics</strong> – VLM analysis          [unitless]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-create-avl-datastructures-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-create-avl-datastructures-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-create-avl-datastructures-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_wing">
+<span class="sig-name descname"><span class="pre">translate_avl_wing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rcaide_wing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/create_avl_datastructures.html#translate_avl_wing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_wing" title="Link to this definition">#</a></dt>
+<dd><p>Translates wing geometry from the vehicle setup to AVL format</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>rcaide_wing.tag                                                          [-]
+rcaide_wing.symmetric                                                    [boolean]
+rcaide_wing.verical                                                      [boolean]
+rcaide_wing - passed into the populate_wing_sections function            [data stucture]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>w - aircraft wing in AVL format                                         [data stucture]</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_body">
+<span class="sig-name descname"><span class="pre">translate_avl_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rcaide_body</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/create_avl_datastructures.html#translate_avl_body"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_body" title="Link to this definition">#</a></dt>
+<dd><p>Translates body geometry from the vehicle setup to AVL format</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>body.tag                                                       [-]
+rcaide_wing.lengths.total                                       [meters]
+rcaide_body.lengths.nose                                        [meters]
+rcaide_body.lengths.tail                                        [meters]
+rcaide_wing.verical                                             [meters]
+rcaide_body.width                                               [meters]
+rcaide_body.heights.maximum                                     [meters]
+rcaide_wing - passed into the populate_body_sections function   [data stucture]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>b - aircraft body in AVL format                                [data stucture]</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_wing_sections">
+<span class="sig-name descname"><span class="pre">populate_wing_sections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcaide_wing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/create_avl_datastructures.html#populate_wing_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_wing_sections" title="Link to this definition">#</a></dt>
+<dd><p>Creates sections of wing geometry and populates the AVL wing data structure</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_wing.symmetric                         [boolean]
+rcaide_wing.spans.projected                 [meters]
+rcaide_wing.origin                          [meters]
+rcaide_wing.dihedral                        [radians]
+rcaide_wing.Segments.sweeps.leading_edge    [radians]
+rcaide_wing.Segments.root_chord_percent     [-]
+rcaide_wing.Segments.percent_span_location  [-]
+rcaide_wing.Segments.sweeps.quarter_chord   [radians]
+rcaide_wing.Segment.twist                   [radians]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>avl_wing - aircraft wing in AVL format     [data stucture]</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.append_avl_wing_control_surfaces">
+<span class="sig-name descname"><span class="pre">append_avl_wing_control_surfaces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rcaide_wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avl_wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">semispan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_chord_percent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_chord_percent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_percent_span</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_percent_span</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_twist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_twist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tip_airfoil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seg_tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dihedral</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sweep</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/create_avl_datastructures.html#append_avl_wing_control_surfaces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.append_avl_wing_control_surfaces" title="Link to this definition">#</a></dt>
+<dd><p>Converts control surfaces on a rcaide wing to sections in avl wing</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>rcaide_wing           [-]
+avl_wing             [-]
+semispan             [meters]
+root_chord_percent   [unitless]
+tip_chord_percent    [unitless]
+tip_percent_span     [unitless]
+root_percent_span    [unitless]
+root_twist           [radians]
+tip_twist            [radians]
+tip_airfoil          [unitless]
+seg_tag              [unitless]
+dihedral             [radians]
+origin               [meters]
+sweep                [radians]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>None</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_body_sections">
+<span class="sig-name descname"><span class="pre">populate_body_sections</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcaide_body</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/create_avl_datastructures.html#populate_body_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_body_sections" title="Link to this definition">#</a></dt>
+<dd><p>Creates sections of body geometry and populates the AVL body data structure</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_wing.symmetric                       [boolean]
+avl_body.widths.maximum                  [meters]
+avl_body.heights.maximum                 [meters]
+rcaide_body.fineness.nose                 [meters]
+rcaide_body.fineness.tail                 [meters]
+avl_body.lengths.total                   [meters]
+avl_body.lengths.nose                    [meters]
+avl_body.lengths.tail                    [meters]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>avl_body - aircraft body in AVL format   [data stucture]</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-evaluate-avl-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-evaluate-avl-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-evaluate-avl-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_surrogate">
+<span class="sig-name descname"><span class="pre">evaluate_AVL_surrogate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/evaluate_AVL.html#evaluate_AVL_surrogate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_surrogate" title="Link to this definition">#</a></dt>
+<dd><p>Evaluates surrogates forces and moments using built surrogates</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aerodynamics</strong> – VLM analysis  [unitless]</p></li>
+<li><p><strong>state</strong> – flight conditions     [unitless]</p></li>
+<li><p><strong>settings</strong> – VLM analysis settings [unitless]</p></li>
+<li><p><strong>vehicle</strong> – vehicle configuration [unitless]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_no_surrogate">
+<span class="sig-name descname"><span class="pre">evaluate_AVL_no_surrogate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/evaluate_AVL.html#evaluate_AVL_no_surrogate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_no_surrogate" title="Link to this definition">#</a></dt>
+<dd><p>Evaluates forces and moments directly using VLM.</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>aerodynamics</strong> – AVL analysis  [unitless]</p></li>
+<li><p><strong>state</strong> – flight conditions     [unitless]</p></li>
+<li><p><strong>vehicle</strong> – vehicle configuration [unitless]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-purge-files-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-purge-files-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-purge-files-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files.purge_files">
+<span class="sig-name descname"><span class="pre">purge_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filenames_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/purge_files.html#purge_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files.purge_files" title="Link to this definition">#</a></dt>
+<dd><p>Purges folder folder of conflicting files</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>Drela, M. and Youngren, H., AVL, <a class="reference external" href="http://web.mit.edu/drela/Public/web/avl">http://web.mit.edu/drela/Public/web/avl</a></p>
+</dd>
+<dt>Inputs:</dt><dd><p>None</p>
+</dd>
+<dt>Outputs:</dt><dd><p>None</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-read-results-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-read-results-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-read-results-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results.read_results">
+<span class="sig-name descname"><span class="pre">read_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/read_results.html#read_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results.read_results" title="Link to this definition">#</a></dt>
+<dd><p>This functions reads the results from the results text file created
+at the end of an AVL function call</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>Drela, M. and Youngren, H., AVL, <a class="reference external" href="http://web.mit.edu/drela/Public/web/avl">http://web.mit.edu/drela/Public/web/avl</a></p>
+</dd>
+<dt>Inputs:</dt><dd><p>None</p>
+</dd>
+<dt>Outputs:</dt><dd><p>results</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-run-avl-analysis-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-run-avl-analysis-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-run-avl-analysis-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.run_AVL_analysis">
+<span class="sig-name descname"><span class="pre">run_AVL_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aerodynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/run_AVL_analysis.html#run_AVL_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.run_AVL_analysis" title="Link to this definition">#</a></dt>
+<dd><p>Process vehicle to setup avl geometry, condititons, and configurations.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+run_conditions &lt;RCAIDE data type&gt; aerodynamic conditions; until input</p>
+<blockquote>
+<div><p>method is finalized, will assume mass_properties are always as
+defined in aerodynamics.features</p>
+</div></blockquote>
+<p>Outputs:
+results        &lt;RCAIDE data type&gt;</p>
+<p>Properties Used:
+aerodynamics.settings.filenames.</p>
+<blockquote>
+<div><p>run_folder
+output_template
+batch_template
+deck_template</p>
+</div></blockquote>
+<dl class="simple">
+<dt>aerodynamics.current_status.</dt><dd><p>batch_index
+batch_file
+deck_file
+cases</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.call_avl">
+<span class="sig-name descname"><span class="pre">call_avl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/run_AVL_analysis.html#call_avl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.call_avl" title="Link to this definition">#</a></dt>
+<dd><p>This function calls the AVL executable and executes analyses
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_object</p>
+</dd>
+<dt>Outputs:</dt><dd><p>exit_status</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-train-avl-surrogates-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-train-avl-surrogates-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-train-avl-surrogates-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates.train_AVL_surrogates">
+<span class="sig-name descname"><span class="pre">train_AVL_surrogates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">aerodynamics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/train_AVL_surrogates.html#train_AVL_surrogates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates.train_AVL_surrogates" title="Link to this definition">#</a></dt>
+<dd><p>Call methods to run VLM for sample point evaluation.</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>aerodynamics</strong> – VLM analysis          [unitless]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-translate-data-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-translate-data-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-translate-data-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_conditions_to_cases">
+<span class="sig-name descname"><span class="pre">translate_conditions_to_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/translate_data.html#translate_conditions_to_cases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_conditions_to_cases" title="Link to this definition">#</a></dt>
+<dd><p>Takes RCAIDE Conditions() data structure and translates to a Container of
+avl Run_Case()s.</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>Drela, M. and Youngren, H., AVL, <a class="reference external" href="http://web.mit.edu/drela/Public/web/avl">http://web.mit.edu/drela/Public/web/avl</a></p>
+</dd>
+<dt>Inputs:</dt><dd><p>conditions.aerodynamics.angles.alpha  [radians]
+conditions.freestream.mach_number        [-]
+conditions.freestream.density            [kilograms per meters**3]
+conditions.freestream.gravity            [meters per second**2]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>cases                                    [data structur]</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_results_to_conditions">
+<span class="sig-name descname"><span class="pre">translate_results_to_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/translate_data.html#translate_results_to_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_results_to_conditions" title="Link to this definition">#</a></dt>
+<dd><dl>
+<dt>Takes avl results structure containing the results of each run case stored</dt><dd><p>each in its own Data() object. Translates into the Conditions() data structure.</p>
+</dd>
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>Drela, M. and Youngren, H., AVL, <a class="reference external" href="http://web.mit.edu/drela/Public/web/avl">http://web.mit.edu/drela/Public/web/avl</a></p>
+</dd>
+<dt>Inputs:</dt><dd><blockquote>
+<div><p>case_res = results</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Outputs:</dt><dd><p>cases                        [data_structure]</p>
+</dd>
+</dl>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-avl-airfoil-file-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-avl-airfoil-file-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-avl-airfoil-file-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file.write_avl_airfoil_file">
+<span class="sig-name descname"><span class="pre">write_avl_airfoil_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rcaide_airfoil_filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_avl_airfoil_file.html#write_avl_airfoil_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file.write_avl_airfoil_file" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the standard airfoil file format from Airfoil tools
+to avl file format</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+</dl>
+<p>Source:</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>filename</p>
+</dd>
+<dt>Outputs:</dt><dd><p>airfoil.dat</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-geometry-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-geometry-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-geometry-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.write_geometry">
+<span class="sig-name descname"><span class="pre">write_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_script_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_geometry.html#write_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.write_geometry" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the translated aircraft geometry into text file read
+by AVL when it is called</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>Drela, M. and Youngren, H., AVL, <a class="reference external" href="http://web.mit.edu/drela/Public/web/avl">http://web.mit.edu/drela/Public/web/avl</a></p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_object</p>
+</dd>
+<dt>Outputs:</dt><dd><p>None</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_header_text">
+<span class="sig-name descname"><span class="pre">make_header_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_geometry.html#make_header_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_header_text" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the header using the template required for the AVL executable to read</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_object.settings.flow_symmetry.xz_plane                      [-]
+avl_object.settings.flow_symmetry.xy_parallel                   [-]
+avl_object.settings.flow_symmetry.z_symmetry_plane              [-]
+avl_object.vehicle.wings[‘main_wing’].areas.reference          [meters**2]
+avl_object.vehicle.wings[‘main_wing’].chords.mean_aerodynamic  [meters]
+avl_object.vehicle.wings[‘main_wing’].spans.projected          [meters]
+avl_object.vehicle.mass_properties.center_of_gravity           [meters]
+avl_object.vehicle.tag                                         [-]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>header_text                                                     [-]</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_surface_text">
+<span class="sig-name descname"><span class="pre">make_surface_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_spanwise_vortices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_chordwise_vortices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_geometry.html#make_surface_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_surface_text" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the surface text using the template required for the AVL executable to read</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_wing.symmetric
+avl_wing.tag</p>
+</dd>
+<dt>Outputs:</dt><dd><p>surface_text</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_text">
+<span class="sig-name descname"><span class="pre">make_body_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_body</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_chordwise_vortices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_geometry.html#make_body_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_text" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the body text using the template required for the AVL executable to read</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_body.sections.horizontal
+avl_body.sections.vertical</p>
+</dd>
+<dt>Outputs:</dt><dd><p>body_text</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_wing_section_text">
+<span class="sig-name descname"><span class="pre">make_wing_section_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_geometry.html#make_wing_section_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_wing_section_text" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the wing text using the template required for the AVL executable to read</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_section.origin             [meters]
+avl_section.chord              [meters]
+avl_section.twist              [radians]
+avl_section.airfoil_coord_file [-]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>wing_section_text</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_section_text">
+<span class="sig-name descname"><span class="pre">make_body_section_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_body_section</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_geometry.html#make_body_section_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_section_text" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the body text using the template required for the AVL executable to read</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_section.origin             [meters]
+avl_section.chord              [meters]
+avl_section.twist              [radians]
+avl_section.airfoil_coord_file [-]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>body_section_text</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_controls_text">
+<span class="sig-name descname"><span class="pre">make_controls_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_control_surface</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_geometry.html#make_controls_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_controls_text" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the control surface text using the template required
+for the AVL executable to read</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_control_surface.tag             [-]
+avl_control_surface.gain            [-]
+avl_control_surface.x_hinge         [-]
+avl_control_surface.hinge_vector    [-]
+avl_control_surface.sign_duplicate  [-]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>control_text</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-input-deck-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-input-deck-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-input-deck-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.write_input_deck">
+<span class="sig-name descname"><span class="pre">write_input_deck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_aircraft</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_surfaces</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_input_deck.html#write_input_deck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.write_input_deck" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the execution steps used in the AVL call
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>Drela, M. and Youngren, H., AVL, <a class="reference external" href="http://web.mit.edu/drela/Public/web/avl">http://web.mit.edu/drela/Public/web/avl</a></p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_object</p>
+</dd>
+<dt>Outputs:</dt><dd><p>None</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_case_command">
+<span class="sig-name descname"><span class="pre">make_case_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_aircraft</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_surfaces</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_input_deck.html#make_case_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_case_command" title="Link to this definition">#</a></dt>
+<dd><p>Makes commands for case execution in AVL
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>case.index
+case.tag
+case.result_filename</p>
+</dd>
+<dt>Outputs:</dt><dd><p>case_command</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_trim_text_command">
+<span class="sig-name descname"><span class="pre">make_trim_text_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_input_deck.html#make_trim_text_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_trim_text_command" title="Link to this definition">#</a></dt>
+<dd><p>Writes the trim command currently for a specified AoA or flight CL condition
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>case</p>
+</dd>
+<dt>Outputs:</dt><dd><p>trim_command</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_roll_rate_text_command">
+<span class="sig-name descname"><span class="pre">make_roll_rate_text_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_input_deck.html#make_roll_rate_text_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_roll_rate_text_command" title="Link to this definition">#</a></dt>
+<dd><p>Writes the roll rate command currently for a specified flight  condition
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>case</p>
+</dd>
+<dt>Outputs:</dt><dd><p>trim_command</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_pitch_rate_text_command">
+<span class="sig-name descname"><span class="pre">make_pitch_rate_text_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_input_deck.html#make_pitch_rate_text_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_pitch_rate_text_command" title="Link to this definition">#</a></dt>
+<dd><p>Writes the pitch rate command currently for a specified flight  condition
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>case</p>
+</dd>
+<dt>Outputs:</dt><dd><p>trim_command</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_beta_text_command">
+<span class="sig-name descname"><span class="pre">make_beta_text_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_input_deck.html#make_beta_text_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_beta_text_command" title="Link to this definition">#</a></dt>
+<dd><p>Writes the roll rate command currently for a specified flight  condition
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>case</p>
+</dd>
+<dt>Outputs:</dt><dd><p>trim_command</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.control_surface_deflection_command">
+<span class="sig-name descname"><span class="pre">control_surface_deflection_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_input_deck.html#control_surface_deflection_command"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.control_surface_deflection_command" title="Link to this definition">#</a></dt>
+<dd><p>Writes the control surface command template
+Assumptions:</p>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+<dl class="simple">
+<dt>Source:</dt><dd><p>None</p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_object
+case</p>
+</dd>
+<dt>Outputs:</dt><dd><p>em_case_command</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-mass-file-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-mass-file-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-mass-file-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file.write_mass_file">
+<span class="sig-name descname"><span class="pre">write_mass_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_mass_file.html#write_mass_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file.write_mass_file" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the translated aircraft mass into text file read
+by AVL when it is called</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-run-cases-module">
-<h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases module<a class="headerlink" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-run-cases-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases">
+<span id="rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-run-cases-module"></span><h2>RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.write_run_cases">
+<span class="sig-name descname"><span class="pre">write_run_cases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">avl_object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_aircraft</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_run_cases.html#write_run_cases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.write_run_cases" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the run cases used in the AVL batch analysis</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source:</dt><dd><p>Drela, M. and Youngren, H., AVL, <a class="reference external" href="http://web.mit.edu/drela/Public/web/avl">http://web.mit.edu/drela/Public/web/avl</a></p>
+</dd>
+<dt>Inputs:</dt><dd><p>avl_object.current_status.batch_file                    [-]
+avl_object.vehicle.mass_properties.center_of_gravity   [meters]</p>
+</dd>
+<dt>Outputs:</dt><dd><p>None</p>
+</dd>
+<dt>Properties Used:</dt><dd><p>N/A</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.make_controls_case_text">
+<span class="sig-name descname"><span class="pre">make_controls_case_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cs_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avl_aircraft</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Aerodynamics/Athena_Vortex_Lattice/write_run_cases.html#make_controls_case_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.make_controls_case_text" title="Link to this definition">#</a></dt>
+<dd><p>This function writes the text of the control surfaces in the AVL batch analysis.
+This tells AVL what control surface you want use to control a particular response.</p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice" title="Link to this heading">#</a></h2>
+<p>RCAIDE AVL Interface Package Setup</p>
 </section>
 </section>
 
@@ -582,24 +1317,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -621,20 +1338,79 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-build-avl-surrogates-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-create-avl-datastructures-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-evaluate-avl-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-purge-files-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-read-results-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-run-avl-analysis-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-train-avl-surrogates-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-translate-data-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-avl-airfoil-file-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-geometry-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-input-deck-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-mass-file-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-run-cases-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates.build_AVL_surrogates"><code class="docutils literal notranslate"><span class="pre">build_AVL_surrogates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_wing"><code class="docutils literal notranslate"><span class="pre">translate_avl_wing()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_body"><code class="docutils literal notranslate"><span class="pre">translate_avl_body()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_wing_sections"><code class="docutils literal notranslate"><span class="pre">populate_wing_sections()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.append_avl_wing_control_surfaces"><code class="docutils literal notranslate"><span class="pre">append_avl_wing_control_surfaces()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_body_sections"><code class="docutils literal notranslate"><span class="pre">populate_body_sections()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_surrogate"><code class="docutils literal notranslate"><span class="pre">evaluate_AVL_surrogate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_no_surrogate"><code class="docutils literal notranslate"><span class="pre">evaluate_AVL_no_surrogate()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files.purge_files"><code class="docutils literal notranslate"><span class="pre">purge_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results.read_results"><code class="docutils literal notranslate"><span class="pre">read_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.run_AVL_analysis"><code class="docutils literal notranslate"><span class="pre">run_AVL_analysis()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.call_avl"><code class="docutils literal notranslate"><span class="pre">call_avl()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates.train_AVL_surrogates"><code class="docutils literal notranslate"><span class="pre">train_AVL_surrogates()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_conditions_to_cases"><code class="docutils literal notranslate"><span class="pre">translate_conditions_to_cases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_results_to_conditions"><code class="docutils literal notranslate"><span class="pre">translate_results_to_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file.write_avl_airfoil_file"><code class="docutils literal notranslate"><span class="pre">write_avl_airfoil_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.write_geometry"><code class="docutils literal notranslate"><span class="pre">write_geometry()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_header_text"><code class="docutils literal notranslate"><span class="pre">make_header_text()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_surface_text"><code class="docutils literal notranslate"><span class="pre">make_surface_text()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_text"><code class="docutils literal notranslate"><span class="pre">make_body_text()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_wing_section_text"><code class="docutils literal notranslate"><span class="pre">make_wing_section_text()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_section_text"><code class="docutils literal notranslate"><span class="pre">make_body_section_text()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_controls_text"><code class="docutils literal notranslate"><span class="pre">make_controls_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.write_input_deck"><code class="docutils literal notranslate"><span class="pre">write_input_deck()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_case_command"><code class="docutils literal notranslate"><span class="pre">make_case_command()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_trim_text_command"><code class="docutils literal notranslate"><span class="pre">make_trim_text_command()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_roll_rate_text_command"><code class="docutils literal notranslate"><span class="pre">make_roll_rate_text_command()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_pitch_rate_text_command"><code class="docutils literal notranslate"><span class="pre">make_pitch_rate_text_command()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_beta_text_command"><code class="docutils literal notranslate"><span class="pre">make_beta_text_command()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.control_surface_deflection_command"><code class="docutils literal notranslate"><span class="pre">control_surface_deflection_command()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file.write_mass_file"><code class="docutils literal notranslate"><span class="pre">write_mass_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.write_run_cases"><code class="docutils literal notranslate"><span class="pre">write_run_cases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.make_controls_case_text"><code class="docutils literal notranslate"><span class="pre">make_controls_case_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice">Module contents</a></li>
 </ul>
   </nav></div>
 

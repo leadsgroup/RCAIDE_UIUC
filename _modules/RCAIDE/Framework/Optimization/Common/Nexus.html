@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Framework.Optimization.Common.Nexus &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=467ccdcc" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Framework/Optimization/Common/Nexus';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Framework/Optimization/Common/Nexus.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Framework.Optimization.Common.Nexus</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Framework.Optimization.Common.Nexus</h1><div class="highlight"><pre>
+<span></span><span class="c1"># RCAIDE/Framework/Optmizaition/Common/Nexus.py </span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------- </span>
+<span class="c1">#  IMPORT</span>
+<span class="c1"># --- ------------------------------------------------------------------------------------------------------------- </span>
+ 
+<span class="kn">import</span> <span class="nn">RCAIDE</span>
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span> <span class="kn">import</span> <span class="n">Process</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------- </span>
+<span class="c1">#  Nexus Class</span>
+<span class="c1"># --- ------------------------------------------------------------------------------------------------------------- </span>
+<span class="c1">## @ingroupFramework-Optimization-Common</span>
+<div class="viewcode-block" id="Nexus">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus">[docs]</a>
+<span class="k">class</span> <span class="nc">Nexus</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;noun (plural same or nexuses)</span>
+<span class="sd">        -a connection or series of connections linking two or more things</span>
+<span class="sd">        -a connected group or series: a nexus of ideas.</span>
+<span class="sd">        -the central and most important point or place</span>
+<span class="sd">        </span>
+<span class="sd">        This is the class that makes optimization possible. We put all the data and functions together to make</span>
+<span class="sd">        your future dreams come true.</span>
+<span class="sd">         </span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    
+    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="bp">self</span><span class="o">.</span><span class="n">vehicle_configurations</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">Configs</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">Container</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analyses</span>               <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Container</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">missions</span>               <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">procedure</span>              <span class="o">=</span> <span class="n">Process</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span>                <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">summary</span>                <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span>   <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fidelity_level</span>         <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_inputs</span>            <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_fidelity</span>          <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_count</span>       <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_evaluate</span>         <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hard_bounded_inputs</span>    <span class="o">=</span> <span class="kc">False</span>
+    
+<div class="viewcode-block" id="Nexus.evaluate">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function runs the problem you setup in RCAIDE</span>
+<span class="sd">            If the last time you ran this the inputs were the same, a cache is used.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x       [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">unpack_inputs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="c1"># Check if last call was the same</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">inputs</span><span class="o">==</span><span class="bp">self</span><span class="o">.</span><span class="n">last_inputs</span><span class="p">)</span> \
+           <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_fidelity</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">fidelity_level</span> \
+           <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_evaluate</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_really_evaluate</span><span class="p">()</span></div>
+
+        
+    
+    <span class="k">def</span> <span class="nf">_really_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tricky little function you&#39;re not supposed to use. Doesn&#39;t check if the last inputs were already run.</span>
+<span class="sd">            This steps through like a process through the nexus, and stores the results.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            Doesn&#39;t set values!</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        
+        <span class="n">nexus</span> <span class="o">=</span> <span class="bp">self</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">step</span> <span class="ow">in</span> <span class="n">nexus</span><span class="o">.</span><span class="n">procedure</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">step</span><span class="p">,</span><span class="s1">&#39;evaluate&#39;</span><span class="p">):</span>
+                <span class="bp">self</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">nexus</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nexus</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">nexus</span><span class="p">)</span>
+            <span class="bp">self</span> <span class="o">=</span> <span class="n">nexus</span>
+                
+        <span class="c1"># Store to cache</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_inputs</span>   <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_fidelity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fidelity_level</span>
+          
+    
+<div class="viewcode-block" id="Nexus.objective">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.objective">[docs]</a>
+    <span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the objective value for your function</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x       [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            scaled_objective [float]</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+    
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">aliases</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">aliases</span>
+        <span class="n">objective</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">objective</span>
+    
+        <span class="n">objective_value</span>  <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">get_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">objective</span><span class="p">,</span><span class="n">aliases</span><span class="p">)</span>  
+        <span class="n">scaled_objective</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">scale_obj_values</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span><span class="n">objective_value</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">scaled_objective</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span> </div>
+
+    
+<div class="viewcode-block" id="Nexus.inequality_constraint">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.inequality_constraint">[docs]</a>
+    <span class="k">def</span> <span class="nf">inequality_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the inequality constraint values for your function</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x                  [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            scaled_constraints [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">            &quot;&quot;&quot;</span>           
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">aliases</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">aliases</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">constraints</span> 
+        
+        <span class="c1"># Setup constraints  </span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">constraints</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">constraints</span><span class="p">[</span><span class="n">ii</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">):</span>
+                <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>        
+        <span class="n">iqconstraints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span><span class="n">indices</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">iqconstraints</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">scaled_constraints</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="c1"># get constaint values </span>
+            <span class="n">constraint_values</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">get_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">iqconstraints</span><span class="p">,</span><span class="n">aliases</span><span class="p">)</span>          
+            
+            <span class="c1"># scale bounds </span>
+            <span class="n">scaled_bnd_constraints</span>  <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">scale_const_bnds</span><span class="p">(</span><span class="n">iqconstraints</span><span class="p">)</span>
+            
+            <span class="c1"># scale constaits </span>
+            <span class="n">scaled_constraints</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">scale_const_values</span><span class="p">(</span><span class="n">iqconstraints</span><span class="p">,</span><span class="n">constraint_values</span><span class="p">)</span>
+            
+            <span class="c1"># determine difference between bounds and constaints </span>
+            <span class="n">constraint_evaluations</span> <span class="o">=</span> <span class="n">scaled_constraints</span>  <span class="o">-</span> <span class="n">scaled_bnd_constraints</span>
+            
+            <span class="c1"># coorect constaints based on sign </span>
+            <span class="n">constraint_evaluations</span><span class="p">[</span><span class="n">iqconstraints</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;&lt;&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">constraint_evaluations</span><span class="p">[</span><span class="n">iqconstraints</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;&lt;&#39;</span><span class="p">]</span>
+            
+        <span class="k">return</span> <span class="n">constraint_evaluations</span>       </div>
+
+    
+<div class="viewcode-block" id="Nexus.equality_constraint">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.equality_constraint">[docs]</a>
+    <span class="k">def</span> <span class="nf">equality_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the equality constraint values for your function</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x                  [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            scaled_constraints [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+    
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">aliases</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">aliases</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">constraints</span>
+        
+        <span class="c1"># Setup constraints  </span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">constraints</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">constraints</span><span class="p">[</span><span class="n">ii</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;&gt;&#39;</span><span class="p">:</span>
+                <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">constraints</span><span class="p">[</span><span class="n">ii</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;&lt;&#39;</span><span class="p">:</span>
+                <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+        <span class="n">eqconstraints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span><span class="n">indices</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">eqconstraints</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">scaled_constraints</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">constraint_values</span>  <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">get_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">eqconstraints</span><span class="p">,</span><span class="n">aliases</span><span class="p">)</span>
+            <span class="n">scaled_constraints</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">scale_const_values</span><span class="p">(</span><span class="n">eqconstraints</span><span class="p">,</span><span class="n">constraint_values</span><span class="p">)</span> <span class="o">-</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">scale_const_bnds</span><span class="p">(</span><span class="n">eqconstraints</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">scaled_constraints</span>   </div>
+
+        
+<div class="viewcode-block" id="Nexus.all_constraints">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.all_constraints">[docs]</a>
+    <span class="k">def</span> <span class="nf">all_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns both the inequality and equality constraint values for your function</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x                  [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            scaled_constraints [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">aliases</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">aliases</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">constraints</span>
+    
+        <span class="n">constraint_values</span>  <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">get_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">constraints</span><span class="p">,</span><span class="n">aliases</span><span class="p">)</span> 
+        <span class="n">scaled_constraints</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">scale_const_values</span><span class="p">(</span><span class="n">constraints</span><span class="p">,</span><span class="n">constraint_values</span><span class="p">)</span> 
+
+        <span class="k">return</span> <span class="n">scaled_constraints</span>     </div>
+
+    
+    
+<div class="viewcode-block" id="Nexus.unpack_inputs">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.unpack_inputs">[docs]</a>
+    <span class="k">def</span> <span class="nf">unpack_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Put&#39;s the values of the problem in the right place.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x                  [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>                 
+         
+        <span class="c1"># Scale the inputs if given</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">scale_input_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+            
+        <span class="c1"># Limit the values to the edges</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hard_bounded_inputs</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">limit_input_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>        
+            
+        <span class="c1"># Convert units</span>
+        <span class="n">converted_values</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">convert_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="c1"># Set the dictionary</span>
+        <span class="n">aliases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">aliases</span>
+        
+        <span class="bp">self</span>    <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">set_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inputs</span><span class="p">,</span><span class="n">converted_values</span><span class="p">,</span><span class="n">aliases</span><span class="p">)</span>     </div>
+
+
+    
+<div class="viewcode-block" id="Nexus.constraints_individual">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.constraints_individual">[docs]</a>
+    <span class="k">def</span> <span class="nf">constraints_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Put&#39;s the values of the problem in the right place.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x                  [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            None</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+        <span class="k">pass</span>     </div>
+
+
+<div class="viewcode-block" id="Nexus.finite_difference">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.finite_difference">[docs]</a>
+    <span class="k">def</span> <span class="nf">finite_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">diff_interval</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Finite difference gradients and jacobians of the problem.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x                  [vector]</span>
+<span class="sd">            diff_interval      [float]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            grad_obj           [vector]</span>
+<span class="sd">            jac_con            [array]</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+        
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">con</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_constraints</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">inpu</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="n">const</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">constraints</span>
+        
+        <span class="n">inplen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inpu</span><span class="p">)</span>
+        <span class="n">conlen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">const</span><span class="p">)</span>
+        
+        <span class="n">grad_obj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">inplen</span><span class="p">)</span>
+        <span class="n">jac_con</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">inplen</span><span class="p">,</span><span class="n">conlen</span><span class="p">))</span>
+        
+        <span class="n">con2</span> <span class="o">=</span> <span class="p">(</span><span class="n">con</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">jac_con</span><span class="p">))</span>
+        
+        <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">inplen</span><span class="p">):</span>
+            <span class="n">newx</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">1.0</span>
+            <span class="n">newx</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">newx</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+</span> <span class="n">diff_interval</span>
+            
+            <span class="n">grad_obj</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="n">newx</span><span class="p">)</span>
+            <span class="n">jac_con</span><span class="p">[</span><span class="n">ii</span><span class="p">,:]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_constraints</span><span class="p">(</span><span class="n">newx</span><span class="p">)</span>
+        
+        <span class="n">grad_obj</span> <span class="o">=</span> <span class="p">(</span><span class="n">grad_obj</span> <span class="o">-</span> <span class="n">obj</span><span class="p">)</span><span class="o">/</span><span class="n">diff_interval</span>
+        
+        <span class="n">jac_con</span> <span class="o">=</span> <span class="p">(</span><span class="n">jac_con</span> <span class="o">-</span> <span class="n">con2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">/</span><span class="n">diff_interval</span>
+        
+        <span class="n">grad_obj</span> <span class="o">=</span> <span class="n">grad_obj</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">jac_con</span>  <span class="o">=</span> <span class="n">jac_con</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">grad_obj</span><span class="p">,</span> <span class="n">jac_con</span></div>
+
+    
+    
+<div class="viewcode-block" id="Nexus.translate">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Optimization.Common.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.translate">[docs]</a>
+    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make a pretty table view of the problem with objective and constraints at the current inputs</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            x                  [vector]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            inpu               [array]</span>
+<span class="sd">            const_table        [array]</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        
+        <span class="c1"># Run the problem just in case</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="c1"># Pull out the inputs and print them</span>
+        <span class="n">inpu</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">inputs</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Design Variable Table:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">inpu</span><span class="p">)</span>
+        
+        <span class="c1"># Print the objective value</span>
+        <span class="n">obj</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">objective</span>
+        <span class="n">obj_val</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">obj_scale</span>   <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">unscale_const_values</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="n">obj_val</span><span class="p">)</span>
+        <span class="n">obj_table</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="n">obj_table</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">obj_table</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">obj_scale</span><span class="p">)</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Objective Table:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">obj_table</span><span class="p">)</span>
+        
+        <span class="c1"># Pull out the constraints</span>
+        <span class="n">const</span>       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">constraints</span>
+        <span class="n">const_vals</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_constraints</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">const_scale</span> <span class="o">=</span> <span class="n">help_fun</span><span class="o">.</span><span class="n">unscale_const_values</span><span class="p">(</span><span class="n">const</span><span class="p">,</span><span class="n">const_vals</span><span class="p">)</span>
+        
+        <span class="c1"># Make a new table</span>
+        <span class="n">const_table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">const</span><span class="p">)</span>
+        <span class="n">const_table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">const_table</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">const_scale</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constraint Table:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">const_table</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">inpu</span><span class="p">,</span><span class="n">const_table</span></div>
+</div>
+
+                               
+        
+    
+ 
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

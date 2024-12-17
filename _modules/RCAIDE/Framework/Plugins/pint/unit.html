@@ -1,0 +1,1689 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Framework.Plugins.pint.unit &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=467ccdcc" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Framework/Plugins/pint/unit';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Framework/Plugins/pint/unit.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../pint.html" class="nav-link">RCAIDE.Framework.Plugins.pint</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Framework.Plugins.pint.unit</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Framework.Plugins.pint.unit</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    pint.unit</span>
+<span class="sd">    ~~~~~~~~~</span>
+
+<span class="sd">    Functions and classes related to unit definitions and conversions.</span>
+
+<span class="sd">    :copyright: 2013 by Pint Authors, see AUTHORS for more details.</span>
+<span class="sd">    :license: BSD, see LICENSE for more details.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">unicode_literals</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">absolute_import</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">pkg_resources</span>
+<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="nb">open</span>
+<span class="kn">from</span> <span class="nn">numbers</span> <span class="kn">import</span> <span class="n">Number</span>
+<span class="kn">from</span> <span class="nn">tokenize</span> <span class="kn">import</span> <span class="n">untokenize</span><span class="p">,</span> <span class="n">NUMBER</span><span class="p">,</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">OP</span>
+
+<span class="kn">from</span> <span class="nn">.context</span> <span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">ContextChain</span>
+<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="n">logger</span><span class="p">,</span> <span class="n">NUMERIC_TYPES</span><span class="p">,</span> <span class="n">pi_theorem</span><span class="p">,</span> <span class="n">solve_dependencies</span><span class="p">,</span>
+                   <span class="n">ParserHelper</span><span class="p">,</span> <span class="n">string_types</span><span class="p">,</span> <span class="n">ptok</span><span class="p">,</span> <span class="n">string_preprocessor</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">find_shortest_path</span>
+
+
+<div class="viewcode-block" id="UndefinedUnitError">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError">[docs]</a>
+<span class="k">class</span> <span class="nc">UndefinedUnitError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the units are not defined in the unit registry.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UndefinedUnitError.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit_names</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span> <span class="o">=</span> <span class="n">unit_names</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; is not defined in the unit registry&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; is not defined in the unit registry&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">,</span> <span class="nb">set</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">uname</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">return</span> <span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39; is not defined in the unit registry&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">uname</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> are not defined in the unit registry&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="DimensionalityError">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionalityError">[docs]</a>
+<span class="k">class</span> <span class="nc">DimensionalityError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when trying to convert between incompatible units.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DimensionalityError.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionalityError.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units1</span><span class="p">,</span> <span class="n">units2</span><span class="p">,</span> <span class="n">dim1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DimensionalityError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">units1</span> <span class="o">=</span> <span class="n">units1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">units2</span> <span class="o">=</span> <span class="n">units2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dim1</span> <span class="o">=</span> <span class="n">dim1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dim2</span> <span class="o">=</span> <span class="n">dim2</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim1</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim2</span><span class="p">:</span>
+            <span class="n">dim1</span> <span class="o">=</span> <span class="s1">&#39; (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim1</span><span class="p">)</span>
+            <span class="n">dim2</span> <span class="o">=</span> <span class="s1">&#39; (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dim2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dim1</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">dim2</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">return</span> <span class="s2">&quot;Cannot convert from &#39;</span><span class="si">{}</span><span class="s2">&#39;</span><span class="si">{}</span><span class="s2"> to &#39;</span><span class="si">{}</span><span class="s2">&#39;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units1</span><span class="p">,</span> <span class="n">dim1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units2</span><span class="p">,</span> <span class="n">dim2</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Converter">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Converter">[docs]</a>
+<span class="k">class</span> <span class="nc">Converter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for value converters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Converter.to_reference">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Converter.to_reference">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="Converter.from_reference">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Converter.from_reference">[docs]</a>
+    <span class="k">def</span> <span class="nf">from_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ScaleConverter">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter">[docs]</a>
+<span class="k">class</span> <span class="nc">ScaleConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A linear transformation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ScaleConverter.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span></div>
+
+
+<div class="viewcode-block" id="ScaleConverter.to_reference">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.to_reference">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span></div>
+
+
+<div class="viewcode-block" id="ScaleConverter.from_reference">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.from_reference">[docs]</a>
+    <span class="k">def</span> <span class="nf">from_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="OffsetConverter">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter">[docs]</a>
+<span class="k">class</span> <span class="nc">OffsetConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An affine transformation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="OffsetConverter.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span></div>
+
+
+<div class="viewcode-block" id="OffsetConverter.to_reference">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.to_reference">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span></div>
+
+
+<div class="viewcode-block" id="OffsetConverter.from_reference">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.from_reference">[docs]</a>
+    <span class="k">def</span> <span class="nf">from_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Definition">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Definition">[docs]</a>
+<span class="k">class</span> <span class="nc">Definition</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for definitions.</span>
+
+<span class="sd">    :param name: name.</span>
+<span class="sd">    :param symbol: a short name or symbol for the definition</span>
+<span class="sd">    :param aliases: iterable of other names.</span>
+<span class="sd">    :param converter: an instance of Converter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Definition.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Definition.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span> <span class="o">=</span> <span class="n">symbol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_aliases</span> <span class="o">=</span> <span class="n">aliases</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_converter</span> <span class="o">=</span> <span class="n">converter</span></div>
+
+
+<div class="viewcode-block" id="Definition.from_string">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Definition.from_string">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">definition</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span><span class="p">,</span> <span class="n">definition</span> <span class="o">=</span> <span class="n">definition</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">res</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">definition</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)]</span>
+        <span class="n">value</span><span class="p">,</span> <span class="n">aliases</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span> <span class="o">=</span> <span class="p">(</span><span class="n">aliases</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">aliases</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">if</span> <span class="n">aliases</span> <span class="k">else</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">aliases</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">DimensionDefinition</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">PrefixDefinition</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">UnitDefinition</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">aliases</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_aliases</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">converter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_converter</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_is_dim</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PrefixDefinition">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition">[docs]</a>
+<span class="k">class</span> <span class="nc">PrefixDefinition</span><span class="p">(</span><span class="n">Definition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Definition of a prefix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PrefixDefinition.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">converter</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">converter</span> <span class="o">=</span> <span class="n">ScaleConverter</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">converter</span><span class="p">))</span>
+        <span class="n">aliases</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">alias</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="n">aliases</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">symbol</span><span class="p">:</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PrefixDefinition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="UnitDefinition">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitDefinition">[docs]</a>
+<span class="k">class</span> <span class="nc">UnitDefinition</span><span class="p">(</span><span class="n">Definition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Definition of a unit.</span>
+
+<span class="sd">    :param reference: Units container with reference units.</span>
+<span class="sd">    :param is_base: indicates if it is a base unit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UnitDefinition.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitDefinition.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">,</span>
+                 <span class="n">reference</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_base</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">reference</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_base</span> <span class="o">=</span> <span class="n">is_base</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">converter</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="k">if</span> <span class="s1">&#39;;&#39;</span> <span class="ow">in</span> <span class="n">converter</span><span class="p">:</span>
+                <span class="p">[</span><span class="n">converter</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">]</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">modifiers</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span> <span class="nb">eval</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span>
+                             <span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">))}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">modifiers</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="n">converter</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">converter</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">_is_dim</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">converter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">is_base</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">_is_dim</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">converter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">is_base</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Base units must be referenced only to dimensions. &#39;</span>
+                                 <span class="s1">&#39;Derived units must not be referenced to dimensions.&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">UnitsContainer</span><span class="p">(</span><span class="n">converter</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+            <span class="k">if</span> <span class="s1">&#39;offset&#39;</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+                <span class="n">converter</span> <span class="o">=</span> <span class="n">OffsetConverter</span><span class="p">(</span><span class="n">converter</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">[</span><span class="s1">&#39;offset&#39;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">converter</span> <span class="o">=</span> <span class="n">ScaleConverter</span><span class="p">(</span><span class="n">converter</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">UnitDefinition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DimensionDefinition">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition">[docs]</a>
+<span class="k">class</span> <span class="nc">DimensionDefinition</span><span class="p">(</span><span class="n">Definition</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Definition of a dimension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DimensionDefinition.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">,</span>
+                 <span class="n">reference</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_base</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">reference</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_base</span> <span class="o">=</span> <span class="n">is_base</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">converter</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">converter</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">converter</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">converter</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">is_base</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="nb">all</span><span class="p">(</span><span class="n">_is_dim</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">converter</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">is_base</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Base dimensions must be referenced to None. &#39;</span>
+                                 <span class="s1">&#39;Derived dimensions must only be referenced to dimensions.&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">UnitsContainer</span><span class="p">(</span><span class="n">converter</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">DimensionDefinition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="UnitsContainer">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer">[docs]</a>
+<span class="k">class</span> <span class="nc">UnitsContainer</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The UnitsContainer stores the product of units and their respective</span>
+<span class="sd">    exponent and implements the corresponding operations</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+<div class="viewcode-block" id="UnitsContainer.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">dict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;key must be a str, not </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Number</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value must be a number, not </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__missing__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;key must be a str, not </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">NUMERIC_TYPES</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;value must be a NUMERIC_TYPES, not </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+        <span class="nb">dict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+<div class="viewcode-block" id="UnitsContainer.add">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.add">[docs]</a>
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">newval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="n">newval</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">newval</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">other</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+            <span class="n">other</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;dimensionless&#39;</span>
+        <span class="k">return</span> <span class="n">formatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;&#39;</span><span class="si">{}</span><span class="s2">&#39;: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())])</span>
+        <span class="k">return</span> <span class="s1">&#39;&lt;UnitsContainer(</span><span class="si">{}</span><span class="s1">)&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s1">&#39;L&#39;</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                            <span class="sa">r</span><span class="s1">&#39; \cdot &#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;\frac[</span><span class="si">{}</span><span class="s1">][</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">^[</span><span class="si">{}</span><span class="s1">]&#39;</span><span class="p">,</span>
+                            <span class="sa">r</span><span class="s1">&#39;\left( </span><span class="si">{}</span><span class="s1"> \right)&#39;</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">,</span> <span class="s1">&#39;{&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">,</span> <span class="s1">&#39;}&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">tmp</span>
+        <span class="k">elif</span> <span class="s1">&#39;P&#39;</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">fmt_exponent</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+                <span class="n">PRETTY</span> <span class="o">=</span> <span class="s1">&#39;⁰¹²³⁴⁵⁶⁷⁸⁹&#39;</span>
+                <span class="n">ret</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:n}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;⁻&#39;</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+                    <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">PRETTY</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+                <span class="k">return</span> <span class="n">ret</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span>
+                            <span class="s1">&#39;·&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="p">,</span>
+                            <span class="s1">&#39;(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">fmt_exponent</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">tmp</span>
+        <span class="k">elif</span> <span class="s1">&#39;H&#39;</span> <span class="ow">in</span> <span class="n">spec</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span>
+                            <span class="sa">r</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&lt;sup&gt;</span><span class="si">{}</span><span class="s1">&lt;/sup&gt;&#39;</span><span class="p">,</span>
+                            <span class="sa">r</span><span class="s1">&#39;(</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">tmp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="k">def</span> <span class="fm">__imul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot multiply UnitsContainer by </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">value</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot multiply UnitsContainer by </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">*=</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="fm">__rmul__</span> <span class="o">=</span> <span class="fm">__mul__</span>
+
+    <span class="k">def</span> <span class="fm">__ipow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">NUMERIC_TYPES</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot power UnitsContainer by </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">*=</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">NUMERIC_TYPES</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot power UnitsContainer by </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">**=</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="k">def</span> <span class="fm">__itruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot divide UnitsContainer by </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">-=</span> <span class="n">value</span>
+
+        <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot divide UnitsContainer by </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">/=</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="k">def</span> <span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span> <span class="ow">and</span> <span class="n">other</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Cannot divide </span><span class="si">{}</span><span class="s1"> by UnitsContainer&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)))</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">**=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+
+
+
+<div class="viewcode-block" id="UnitRegistry">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry">[docs]</a>
+<span class="k">class</span> <span class="nc">UnitRegistry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The unit registry stores the definitions and relationships between</span>
+<span class="sd">    units.</span>
+
+<span class="sd">    :param filename: path of the units definition file to load.</span>
+<span class="sd">                     Empty to load the default definition file.</span>
+<span class="sd">                     None to leave the UnitRegistry empty.</span>
+<span class="sd">    :param force_ndarray: convert any input, scalar or not to a numpy.ndarray.</span>
+<span class="sd">    :param default_to_delta: In the context of a multiplication of units, interpret</span>
+<span class="sd">                             non-multiplicative units as their *delta* counterparts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="UnitRegistry.__init__">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">force_ndarray</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default_to_delta</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span> <span class="o">=</span> <span class="n">build_quantity_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force_ndarray</span><span class="p">)</span>
+
+        <span class="c1">#: Map dimension name (string) to its definition (DimensionDefinition).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dimensions</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1">#: Map unit name (string) to its definition (UnitDefinition).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_units</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1">#: Map prefix name (string) to its definition (PrefixDefinition).</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prefixes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;&#39;</span><span class="p">:</span> <span class="n">PrefixDefinition</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="mi">1</span><span class="p">)}</span>
+
+        <span class="c1">#: Map suffix name (string) to canonical , and unit alias to canonical unit name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_suffixes</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+
+        <span class="c1">#: Map context name (string) or abbreviation to context.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1">#: Stores active contexts.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span> <span class="o">=</span> <span class="n">ContextChain</span><span class="p">()</span>
+
+        <span class="c1">#: When performing a multiplication of units, interpret</span>
+        <span class="c1">#: non-multiplicative units as their *delta* counterparts.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_to_delta</span> <span class="o">=</span> <span class="n">default_to_delta</span>
+
+        <span class="k">if</span> <span class="n">filename</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s1">&#39;default_en.txt&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_definitions</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_definitions</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="n">UnitDefinition</span><span class="p">(</span><span class="s1">&#39;pi&#39;</span><span class="p">,</span> <span class="s1">&#39;π&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="n">ScaleConverter</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span></div>
+
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_expression</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__dir__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">+</span> \
+               <span class="p">[</span><span class="s1">&#39;define&#39;</span><span class="p">,</span> <span class="s1">&#39;load_definitions&#39;</span><span class="p">,</span> <span class="s1">&#39;get_name&#39;</span><span class="p">,</span> <span class="s1">&#39;get_symbol&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;get_dimensionality&#39;</span><span class="p">,</span> <span class="s1">&#39;Quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;wraps&#39;</span><span class="p">,</span> <span class="s1">&#39;parse_unit&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;parse_units&#39;</span><span class="p">,</span> <span class="s1">&#39;parse_expression&#39;</span><span class="p">,</span> <span class="s1">&#39;pi_theorem&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;convert&#39;</span><span class="p">,</span> <span class="s1">&#39;get_base_units&#39;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">default_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Default formatting string for quantities.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span><span class="o">.</span><span class="n">default_format</span>
+
+    <span class="nd">@default_format</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">default_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span><span class="o">.</span><span class="n">default_format</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="UnitRegistry.add_context">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.add_context">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a context object to the registry.</span>
+
+<span class="sd">        The context will be accessible by its name and aliases.</span>
+
+<span class="sd">        Notice that this method will NOT enable the context. Use `enable_contexts`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;The name </span><span class="si">%s</span><span class="s1"> was already registered for another context.&#39;</span><span class="p">,</span>
+                           <span class="n">context</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">context</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">aliases</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">alias</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;The name </span><span class="si">%s</span><span class="s1"> was already registered for another context&#39;</span><span class="p">,</span>
+                               <span class="n">context</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">alias</span><span class="p">]</span> <span class="o">=</span> <span class="n">context</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.remove_context">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.remove_context">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_or_alias</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove a context from the registry and return it.</span>
+
+<span class="sd">        Notice that this methods will not disable the context. Use `disable_contexts`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">name_or_alias</span><span class="p">]</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">name_or_alias</span><span class="p">]</span><span class="o">.</span><span class="n">aliases</span>
+        <span class="n">aliases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">aliases</span>
+
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="n">aliases</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">alias</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">context</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.enable_contexts">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.enable_contexts">[docs]</a>
+    <span class="k">def</span> <span class="nf">enable_contexts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">names_or_contexts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable contexts provided by name or by object.</span>
+
+<span class="sd">        :param names_or_contexts: sequence of the contexts or contexts names/alias</span>
+<span class="sd">        :param kwargs: keyword arguments for the context</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># If present, copy the defaults from the containing contexts</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span><span class="o">.</span><span class="n">defaults</span><span class="p">:</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span><span class="o">.</span><span class="n">defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># For each name, we first find the corresponding context</span>
+        <span class="n">ctxs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">string_types</span><span class="p">)</span> <span class="k">else</span> <span class="n">name</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names_or_contexts</span><span class="p">)</span>
+
+        <span class="c1"># Check if the contexts have been checked first, if not we make sure</span>
+        <span class="c1"># that dimensions are expressed in terms of base dimensions.</span>
+        <span class="k">for</span> <span class="n">ctx</span> <span class="ow">in</span> <span class="n">ctxs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s1">&#39;_checked&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">),</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">ctx</span><span class="o">.</span><span class="n">funcs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">src_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">src</span><span class="p">))</span>
+                <span class="n">dst_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">dst</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">src</span> <span class="o">!=</span> <span class="n">src_</span> <span class="ow">or</span> <span class="n">dst</span> <span class="o">!=</span> <span class="n">dst_</span><span class="p">:</span>
+                    <span class="n">ctx</span><span class="o">.</span><span class="n">remove_transformation</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+                    <span class="n">ctx</span><span class="o">.</span><span class="n">add_transformation</span><span class="p">(</span><span class="n">src_</span><span class="p">,</span> <span class="n">dst_</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+            <span class="n">ctx</span><span class="o">.</span><span class="n">_checked</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># and create a new one with the new defaults.</span>
+        <span class="n">ctxs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">Context</span><span class="o">.</span><span class="n">from_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                     <span class="k">for</span> <span class="n">ctx</span> <span class="ow">in</span> <span class="n">ctxs</span><span class="p">)</span>
+
+        <span class="c1"># Finally we add them to the active context.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span><span class="o">.</span><span class="n">insert_contexts</span><span class="p">(</span><span class="o">*</span><span class="n">ctxs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.disable_contexts">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.disable_contexts">[docs]</a>
+    <span class="k">def</span> <span class="nf">disable_contexts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Disable the last n enabled contexts.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_contexts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span><span class="o">.</span><span class="n">remove_contexts</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.context">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.context">[docs]</a>
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Used as a context manager, this function enables to activate a context</span>
+<span class="sd">        which is removed after usage.</span>
+
+<span class="sd">        :param names: name of the context.</span>
+<span class="sd">        :param kwargs: keyword arguments for the contexts.</span>
+
+<span class="sd">        Context are called by their name::</span>
+
+<span class="sd">            &gt;&gt;&gt; with ureg.context(&#39;one&#39;):</span>
+<span class="sd">            ...     pass</span>
+
+<span class="sd">        If the context has an argument, you can specify it&#39;s value as a keyword</span>
+<span class="sd">        argument::</span>
+
+<span class="sd">            &gt;&gt;&gt; with ureg.context(&#39;one&#39;, n=1):</span>
+<span class="sd">            ...     pass</span>
+
+<span class="sd">        Multiple contexts can be entered in single call:</span>
+
+<span class="sd">            &gt;&gt;&gt; with ureg.context(&#39;one&#39;, &#39;two&#39;, n=1):</span>
+<span class="sd">            ...     pass</span>
+
+<span class="sd">        or nested allowing you to give different values to the same keyword argument::</span>
+
+<span class="sd">            &gt;&gt;&gt; with ureg.context(&#39;one&#39;, n=1):</span>
+<span class="sd">            ...     with ureg.context(&#39;two&#39;, n=2):</span>
+<span class="sd">            ...         pass</span>
+
+<span class="sd">        A nested context inherits the defaults from the containing context::</span>
+
+<span class="sd">            &gt;&gt;&gt; with ureg.context(&#39;one&#39;, n=1):</span>
+<span class="sd">            ...     with ureg.context(&#39;two&#39;): # Here n takes the value of the upper context</span>
+<span class="sd">            ...         pass</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Enable the contexts.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enable_contexts</span><span class="p">(</span><span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># After adding the context and rebuilding the graph, the registry</span>
+            <span class="c1"># is ready to use.</span>
+            <span class="k">yield</span> <span class="bp">self</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Upon leaving the with statement,</span>
+            <span class="c1"># the added contexts are removed from the active one.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">disable_contexts</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.define">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.define">[docs]</a>
+    <span class="k">def</span> <span class="nf">define</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">definition</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add unit to the registry.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">definition</span> <span class="o">=</span> <span class="n">Definition</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">definition</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">DimensionDefinition</span><span class="p">):</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dimensions</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">UnitDefinition</span><span class="p">):</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span>
+            <span class="k">if</span> <span class="n">definition</span><span class="o">.</span><span class="n">is_base</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">dimension</span> <span class="ow">in</span> <span class="n">definition</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">dimension</span> <span class="o">!=</span> <span class="s1">&#39;[]&#39;</span> <span class="ow">and</span> <span class="n">dimension</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dimensions</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Only one unit per dimension can be a base unit.&#39;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="n">DimensionDefinition</span><span class="p">(</span><span class="n">dimension</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">is_base</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">definition</span><span class="p">,</span> <span class="n">PrefixDefinition</span><span class="p">):</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prefixes</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not a valid definition.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">definition</span><span class="p">))</span>
+
+        <span class="n">d</span><span class="p">[</span><span class="n">definition</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">definition</span>
+
+        <span class="k">if</span> <span class="n">definition</span><span class="o">.</span><span class="n">symbol</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">definition</span><span class="o">.</span><span class="n">symbol</span><span class="p">]</span> <span class="o">=</span> <span class="n">definition</span>
+
+        <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="n">definition</span><span class="o">.</span><span class="n">aliases</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39; &#39;</span> <span class="ow">in</span> <span class="n">alias</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Alias cannot contain a space: &#39;</span> <span class="o">+</span> <span class="n">alias</span><span class="p">)</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">alias</span><span class="p">]</span> <span class="o">=</span> <span class="n">definition</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">definition</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span> <span class="n">OffsetConverter</span><span class="p">):</span>
+            <span class="n">d_name</span> <span class="o">=</span> <span class="s1">&#39;delta_&#39;</span> <span class="o">+</span> <span class="n">definition</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">if</span> <span class="n">definition</span><span class="o">.</span><span class="n">symbol</span><span class="p">:</span>
+                <span class="n">d_symbol</span> <span class="o">=</span> <span class="s1">&#39;Δ&#39;</span> <span class="o">+</span> <span class="n">definition</span><span class="o">.</span><span class="n">symbol</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">d_symbol</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">d_aliases</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;Δ&#39;</span> <span class="o">+</span> <span class="n">alias</span> <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="n">definition</span><span class="o">.</span><span class="n">aliases</span><span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">prep</span><span class="p">(</span><span class="n">_name</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="s1">&#39;[delta_&#39;</span> <span class="o">+</span> <span class="n">_name</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+                <span class="k">return</span> <span class="s1">&#39;delta_&#39;</span> <span class="o">+</span> <span class="n">_name</span>
+
+            <span class="n">d_reference</span> <span class="o">=</span> <span class="n">UnitsContainer</span><span class="p">({</span><span class="n">prep</span><span class="p">(</span><span class="n">ref</span><span class="p">):</span> <span class="n">value</span>
+                                          <span class="k">for</span> <span class="n">ref</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">definition</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="n">UnitDefinition</span><span class="p">(</span><span class="n">d_name</span><span class="p">,</span> <span class="n">d_symbol</span><span class="p">,</span> <span class="n">d_aliases</span><span class="p">,</span>
+                                       <span class="n">ScaleConverter</span><span class="p">(</span><span class="n">definition</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">scale</span><span class="p">),</span>
+                                       <span class="n">d_reference</span><span class="p">,</span> <span class="n">definition</span><span class="o">.</span><span class="n">is_base</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.load_definitions">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.load_definitions">[docs]</a>
+    <span class="k">def</span> <span class="nf">load_definitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">is_resource</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add units and prefixes defined in a definition text file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Permit both filenames and line-iterables</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_definitions</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">is_resource</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;While opening </span><span class="si">{}</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">msg</span><span class="p">))</span>
+
+        <span class="n">ifile</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ifile</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;@import&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">is_resource</span><span class="p">:</span>
+                    <span class="n">path</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+                    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">normpath</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">7</span><span class="p">:]</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">load_definitions</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">is_resource</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;@context&#39;</span><span class="p">):</span>
+                <span class="n">context</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="p">,</span> <span class="p">]</span>
+                <span class="k">for</span> <span class="n">no</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ifile</span><span class="p">:</span>
+                    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;@end&#39;</span><span class="p">):</span>
+                        <span class="k">try</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">add_context</span><span class="p">(</span><span class="n">Context</span><span class="o">.</span><span class="n">from_lines</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">))</span>
+                        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown dimension </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+                        <span class="k">break</span>
+                    <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;In line </span><span class="si">{}</span><span class="s1">, cannot nest @ directives:</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">no</span><span class="p">,</span> <span class="n">line</span><span class="p">))</span>
+                    <span class="n">context</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">define</span><span class="p">(</span><span class="n">Definition</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;In line </span><span class="si">{}</span><span class="s2">, cannot add &#39;</span><span class="si">{}</span><span class="s2">&#39; </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">no</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">ex</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.validate">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.validate">[docs]</a>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Walk the registry and calculate for each unit definition</span>
+<span class="sd">        the corresponding base units and dimensionality.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">deps</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="n">definition</span><span class="o">.</span><span class="n">reference</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">definition</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+        <span class="k">for</span> <span class="n">unit_names</span> <span class="ow">in</span> <span class="n">solve_dependencies</span><span class="p">(</span><span class="n">deps</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">unit_name</span> <span class="ow">in</span> <span class="n">unit_names</span><span class="p">:</span>
+                <span class="n">bu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_base_units</span><span class="p">(</span><span class="n">unit_name</span><span class="p">)</span>
+                <span class="n">di</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">bu</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.get_name">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_or_alias</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the canonical name of a unit.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">name_or_alias</span> <span class="o">==</span> <span class="s1">&#39;dimensionless&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">name_or_alias</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="n">candidates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dedup_candidates</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_unit_name</span><span class="p">(</span><span class="n">name_or_alias</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">candidates</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">UndefinedUnitError</span><span class="p">(</span><span class="n">name_or_alias</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">prefix</span><span class="p">,</span> <span class="n">unit_name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Parsing </span><span class="si">{}</span><span class="s1"> yield multiple results. &#39;</span>
+                           <span class="s1">&#39;Options are: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name_or_alias</span><span class="p">,</span> <span class="n">candidates</span><span class="p">))</span>
+            <span class="n">prefix</span><span class="p">,</span> <span class="n">unit_name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">prefix</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">unit_name</span>
+            <span class="n">symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_symbol</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">prefix_def</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prefixes</span><span class="p">[</span><span class="n">prefix</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">UnitDefinition</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="p">(),</span> <span class="n">prefix_def</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span>
+                                               <span class="n">UnitsContainer</span><span class="p">({</span><span class="n">unit_name</span><span class="p">:</span> <span class="mi">1</span><span class="p">}))</span>
+            <span class="k">return</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">unit_name</span>
+
+        <span class="k">return</span> <span class="n">unit_name</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.get_symbol">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_symbol">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_or_alias</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the preferred alias for a unit</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dedup_candidates</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_unit_name</span><span class="p">(</span><span class="n">name_or_alias</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">candidates</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">UndefinedUnitError</span><span class="p">(</span><span class="n">name_or_alias</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">prefix</span><span class="p">,</span> <span class="n">unit_name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Parsing </span><span class="si">{}</span><span class="s1"> yield multiple results. &#39;</span>
+                           <span class="s1">&#39;Options are: </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name_or_alias</span><span class="p">,</span> <span class="n">candidates</span><span class="p">))</span>
+            <span class="n">prefix</span><span class="p">,</span> <span class="n">unit_name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prefixes</span><span class="p">[</span><span class="n">prefix</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">unit_name</span><span class="p">]</span><span class="o">.</span><span class="n">symbol</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.get_dimensionality">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_dimensionality">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_dimensionality</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_units</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert unit or dict of units or dimensions to a dict of base dimensions</span>
+
+<span class="sd">        :param input_units:</span>
+<span class="sd">        :return: dimensionality</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dims</span> <span class="o">=</span> <span class="n">UnitsContainer</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">input_units</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dims</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_units</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">input_units</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">input_units</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_units</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">input_units</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">_is_dim</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+                <span class="n">reg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dimensions</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">reg</span><span class="o">.</span><span class="n">is_base</span><span class="p">:</span>
+                    <span class="n">dims</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">dims</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span> <span class="o">**</span> <span class="n">value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">reg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="n">reg</span><span class="o">.</span><span class="n">is_base</span><span class="p">:</span>
+                    <span class="n">dims</span> <span class="o">*=</span> <span class="n">reg</span><span class="o">.</span><span class="n">reference</span> <span class="o">**</span> <span class="n">value</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">dims</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span> <span class="o">**</span> <span class="n">value</span>
+            <span class="k">if</span> <span class="s1">&#39;[]&#39;</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">dims</span><span class="p">[</span><span class="s1">&#39;[]&#39;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">dims</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">input_units</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">_is_dim</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+                <span class="n">reg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dimensions</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">reg</span><span class="o">.</span><span class="n">is_base</span><span class="p">:</span>
+                    <span class="n">dims</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">reg</span><span class="o">.</span><span class="n">converter</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span> <span class="n">ScaleConverter</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not a multiplicative unit&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reg</span><span class="p">))</span>
+                    <span class="n">dims</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span> <span class="o">**</span> <span class="n">value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">reg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span>
+                <span class="k">if</span> <span class="n">reg</span><span class="o">.</span><span class="n">is_base</span><span class="p">:</span>
+                    <span class="n">dims</span> <span class="o">*=</span> <span class="n">reg</span><span class="o">.</span><span class="n">reference</span> <span class="o">**</span> <span class="n">value</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span> <span class="n">ScaleConverter</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not a multiplicative unit&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reg</span><span class="p">))</span>
+                    <span class="n">dims</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span> <span class="o">**</span> <span class="n">value</span>
+
+        <span class="k">if</span> <span class="s1">&#39;[]&#39;</span> <span class="ow">in</span> <span class="n">dims</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">dims</span><span class="p">[</span><span class="s1">&#39;[]&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">dims</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.get_base_units">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_base_units">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_base_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_units</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert unit or dict of units to the base units.</span>
+
+<span class="sd">        If the unit is non multiplicative, None is returned as</span>
+<span class="sd">        the multiplicative factor.</span>
+
+<span class="sd">        :param input_units:</span>
+<span class="sd">        :return: multiplicative factor, base units</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">input_units</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">UnitsContainer</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_units</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">input_units</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">input_units</span><span class="p">)</span>
+
+        <span class="n">factor</span> <span class="o">=</span> <span class="mf">1.</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="n">UnitsContainer</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">input_units</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="n">reg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span> <span class="n">ScaleConverter</span><span class="p">):</span>
+                <span class="n">factor</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">reg</span><span class="o">.</span><span class="n">is_base</span><span class="p">:</span>
+                <span class="n">units</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">fac</span><span class="p">,</span> <span class="n">uni</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_base_units</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">factor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">factor</span> <span class="o">*=</span> <span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">scale</span> <span class="o">*</span> <span class="n">fac</span><span class="p">)</span> <span class="o">**</span> <span class="n">value</span>
+                <span class="n">units</span> <span class="o">*=</span> <span class="n">uni</span> <span class="o">**</span> <span class="n">value</span>
+
+        <span class="k">return</span> <span class="n">factor</span><span class="p">,</span> <span class="n">units</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.convert">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.convert">[docs]</a>
+    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert value from some source to destination units.</span>
+
+<span class="sd">        :param value: value</span>
+<span class="sd">        :param src: source units.</span>
+<span class="sd">        :type src: UnitsContainer or str</span>
+<span class="sd">        :param dst: destination units.</span>
+<span class="sd">        :type dst: UnitsContainer or str</span>
+
+<span class="sd">        :return: converted value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">src</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">dst</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">src</span> <span class="o">==</span> <span class="n">dst</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+        <span class="n">src_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+        <span class="n">dst_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span>
+
+        <span class="c1"># If there is an active context, we look for a path connecting source and</span>
+        <span class="c1"># destination dimensionality. If it exists, we transform the source value</span>
+        <span class="c1"># by applying sequentially each transformation of the path.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">find_shortest_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span>
+                                      <span class="o">*</span><span class="n">Context</span><span class="o">.</span><span class="n">__keytransform__</span><span class="p">(</span><span class="n">src_dim</span><span class="p">,</span> <span class="n">dst_dim</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+                <span class="n">src</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">path</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">path</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                    <span class="n">src</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_active_ctx</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span>
+
+                <span class="n">value</span><span class="p">,</span> <span class="n">src</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">magnitude</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">units</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">src_unit</span><span class="p">,</span> <span class="n">src_value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">src_unit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">src_unit</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">src_unit</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span> <span class="n">ScaleConverter</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">dst</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">DimensionalityError</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span>
+                                              <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">src</span><span class="p">),</span>
+                                              <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">dst</span><span class="p">))</span>
+                <span class="n">dst_unit</span><span class="p">,</span> <span class="n">dst_value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dst</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">dst_unit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">dst_unit</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">src_unit</span><span class="o">.</span><span class="n">converter</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="n">dst_unit</span><span class="o">.</span><span class="n">converter</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">DimensionalityError</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span>
+                                              <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">src</span><span class="p">),</span>
+                                              <span class="bp">self</span><span class="o">.</span><span class="n">get_dimensionality</span><span class="p">(</span><span class="n">dst</span><span class="p">))</span>
+
+                <span class="k">return</span> <span class="n">dst_unit</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">from_reference</span><span class="p">(</span><span class="n">src_unit</span><span class="o">.</span><span class="n">converter</span><span class="o">.</span><span class="n">to_reference</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+        <span class="n">factor</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_base_units</span><span class="p">(</span><span class="n">src</span> <span class="o">/</span> <span class="n">dst</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">DimensionalityError</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">src_dim</span><span class="p">,</span> <span class="n">dst_dim</span><span class="p">)</span>
+
+        <span class="c1"># factor is type float and if our magintude is type Decimal then</span>
+        <span class="c1"># must first convert to Decimal before we can &#39;*&#39; the values</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Decimal</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Decimal</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">factor</span><span class="p">))</span> <span class="o">*</span> <span class="n">value</span>
+        
+        <span class="k">return</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.pi_theorem">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.pi_theorem">[docs]</a>
+    <span class="k">def</span> <span class="nf">pi_theorem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantities</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds dimensionless quantities using the Buckingham π theorem</span>
+
+<span class="sd">        :param quantities: mapping between variable name and units</span>
+<span class="sd">        :type quantities: dict</span>
+<span class="sd">        :return: a list of dimensionless quantities expressed as dicts</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pi_theorem</span><span class="p">(</span><span class="n">quantities</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_dedup_candidates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">candidates</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Given a list of units, remove those with different names but equal value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">candidates</span>
+
+        <span class="n">unique</span> <span class="o">=</span> <span class="p">[</span><span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">[</span><span class="mi">2</span><span class="p">:]:</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">unique</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="n">u</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">unique</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">unique</span><span class="p">)</span>
+
+<div class="viewcode-block" id="UnitRegistry.parse_unit_name">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_unit_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse_unit_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a unit to identify prefix, unit name and suffix</span>
+<span class="sd">        by walking the list of prefix and suffix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_suffixes</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prefixes</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">unit_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span> <span class="ow">and</span> <span class="n">unit_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">suffix</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">unit_name</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">):]</span>
+                <span class="k">if</span> <span class="n">suffix</span><span class="p">:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">suffix</span><span class="p">)]</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_prefixes</span><span class="p">[</span><span class="n">prefix</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">_suffixes</span><span class="p">[</span><span class="n">suffix</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.parse_units">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_units">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_string</span><span class="p">,</span> <span class="n">to_delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a units expression and returns a UnitContainer with</span>
+<span class="sd">        the canonical names.</span>
+
+<span class="sd">        The expression can only contain products, ratios and powers of units.</span>
+
+<span class="sd">        :param to_delta: if the expression has multiple units, the parser will</span>
+<span class="sd">                         interpret non multiplicative units as their `delta_` counterparts.</span>
+
+<span class="sd">        :raises:</span>
+<span class="sd">            :class:`pint.UndefinedUnitError` if a unit is not in the registry</span>
+<span class="sd">            :class:`ValueError` if the expression is invalid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">to_delta</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">to_delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_to_delta</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">input_string</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">UnitsContainer</span><span class="p">()</span>
+
+        <span class="n">units</span> <span class="o">=</span> <span class="n">ParserHelper</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">units</span><span class="o">.</span><span class="n">scale</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unit expression cannot have a scaling factor.&#39;</span><span class="p">)</span>
+
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">UnitsContainer</span><span class="p">()</span>
+        <span class="n">many</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">units</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">cname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">cname</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">to_delta</span> <span class="ow">and</span> <span class="p">(</span><span class="n">many</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">many</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)):</span>
+                <span class="n">definition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">definition</span><span class="o">.</span><span class="n">converter</span><span class="p">,</span> <span class="n">ScaleConverter</span><span class="p">):</span>
+                    <span class="n">cname</span> <span class="o">=</span> <span class="s1">&#39;delta_&#39;</span> <span class="o">+</span> <span class="n">cname</span>
+            <span class="n">ret</span><span class="p">[</span><span class="n">cname</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">return</span> <span class="n">ret</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.parse_expression">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_expression">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse_expression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_string</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a mathematical expression including units and return a quantity object.</span>
+
+<span class="sd">        Numerical constants can be specified as keyword arguments and will take precedence</span>
+<span class="sd">        over the names defined in the registry.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">input_string</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">input_string</span> <span class="o">=</span> <span class="n">string_preprocessor</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
+        <span class="n">gen</span> <span class="o">=</span> <span class="n">ptok</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">unknown</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">toknum</span><span class="p">,</span> <span class="n">tokval</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">toknum</span> <span class="o">==</span> <span class="n">NAME</span><span class="p">:</span>
+                <span class="c1"># TODO: Integrate math better, Replace eval</span>
+                <span class="k">if</span> <span class="n">tokval</span> <span class="o">==</span> <span class="s1">&#39;pi&#39;</span> <span class="ow">or</span> <span class="n">tokval</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">toknum</span><span class="p">,</span> <span class="n">tokval</span><span class="p">))</span>
+                    <span class="k">continue</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">tokval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">(</span><span class="n">tokval</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">UndefinedUnitError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+                    <span class="n">unknown</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ex</span><span class="o">.</span><span class="n">unit_names</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">tokval</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                        <span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;Q_&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">NUMBER</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;U_&#39;</span><span class="p">),</span>  <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">STRING</span><span class="p">,</span> <span class="n">tokval</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">NUMBER</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
+                    <span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span>
+                        <span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;Q_&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">NUMBER</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">NAME</span><span class="p">,</span> <span class="s1">&#39;U_&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">OP</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
+                    <span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">toknum</span><span class="p">,</span> <span class="n">tokval</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">unknown</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">UndefinedUnitError</span><span class="p">(</span><span class="n">unknown</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">eval</span><span class="p">(</span><span class="n">untokenize</span><span class="p">(</span><span class="n">result</span><span class="p">),</span>
+                    <span class="p">{</span><span class="s1">&#39;__builtins__&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="s1">&#39;REGISTRY&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span><span class="p">,</span>
+                     <span class="s1">&#39;Q_&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span><span class="p">,</span>
+                     <span class="s1">&#39;U_&#39;</span><span class="p">:</span> <span class="n">UnitsContainer</span><span class="p">,</span>
+                     <span class="s1">&#39;pi&#39;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">},</span>
+                    <span class="n">values</span>
+                    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UnitRegistry.wraps">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.wraps">[docs]</a>
+    <span class="k">def</span> <span class="nf">wraps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps a function to become pint-aware.</span>
+
+<span class="sd">        Use it when a function requires a numerical value but in some specific</span>
+<span class="sd">        units. The wrapper function will take a pint quantity, convert to the units</span>
+<span class="sd">        specified in `args` and then call the wrapped function with the resulting</span>
+<span class="sd">        magnitude.</span>
+
+<span class="sd">        The value returned by the wrapped function will be converted to the units</span>
+<span class="sd">        specified in `ret`.</span>
+
+<span class="sd">        Use None to skip argument conversion.</span>
+<span class="sd">        Set strict to False, to accept also numerical values.</span>
+
+<span class="sd">        :param ret: output units.</span>
+<span class="sd">        :param args: iterable of input units.</span>
+<span class="sd">        :param strict: boolean to indicate that only quantities are accepted.</span>
+<span class="sd">        :return: the wrapped function.</span>
+<span class="sd">        :raises:</span>
+<span class="sd">            :class:`ValueError` if strict and one of the arguments is not a Quantity.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">Q_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">to_units</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_units</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Q_</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">units</span>
+            <span class="k">return</span> <span class="n">x</span>
+
+        <span class="n">units</span> <span class="o">=</span> <span class="p">[</span><span class="n">to_units</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="vm">__class__</span><span class="p">([</span><span class="n">to_units</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">ret</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_units</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+            <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">values</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+                <span class="n">new_args</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">unit</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">unit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Q_</span><span class="p">):</span>
+                        <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">magnitude</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="n">unit</span><span class="p">))</span>
+                    <span class="k">elif</span> <span class="ow">not</span> <span class="n">strict</span><span class="p">:</span>
+                        <span class="n">new_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;A wrapped function using strict=True requires &#39;</span>
+                                         <span class="s1">&#39;quantity for all arguments with not None units. &#39;</span>
+                                         <span class="s1">&#39;(error found for </span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+                <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                    <span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">res</span> <span class="k">if</span> <span class="n">unit</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Q_</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">unit</span><span class="p">)</span>
+                                         <span class="k">for</span> <span class="n">unit</span><span class="p">,</span> <span class="n">res</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">result</span><span class="p">))</span>
+                <span class="k">elif</span> <span class="n">ret</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">Q_</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>
+
+                <span class="k">return</span> <span class="n">result</span>
+            <span class="k">return</span> <span class="n">wrapper</span>
+        <span class="k">return</span> <span class="n">decorator</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="build_quantity_class">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.build_quantity_class">[docs]</a>
+<span class="k">def</span> <span class="nf">build_quantity_class</span><span class="p">(</span><span class="n">registry</span><span class="p">,</span> <span class="n">force_ndarray</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">.quantity</span> <span class="kn">import</span> <span class="n">_Quantity</span>
+
+    <span class="k">class</span> <span class="nc">Quantity</span><span class="p">(</span><span class="n">_Quantity</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="n">Quantity</span><span class="o">.</span><span class="n">_REGISTRY</span> <span class="o">=</span> <span class="n">registry</span>
+    <span class="n">Quantity</span><span class="o">.</span><span class="n">force_ndarray</span> <span class="o">=</span> <span class="n">force_ndarray</span>
+
+    <span class="k">return</span> <span class="n">Quantity</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

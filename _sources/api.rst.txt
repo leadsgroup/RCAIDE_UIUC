@@ -1,10 +1,7 @@
 API Reference
-============
+==============
 
-Core Modules
-===========
+:doc:`RCAIDE API Documentation <RCAIDE>`
 
-.. automodule:: RCAIDE
-   :members:
-   :undoc-members:
-   :show-inheritance: 
+
+

@@ -1,0 +1,1010 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=467ccdcc" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Aerodynamics/Airfoil_Panel_Method/airfoil_analysis';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Aerodynamics/Airfoil_Panel_Method/airfoil_analysis.html" />
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis</h1><div class="highlight"><pre>
+<span></span><span class="c1"># RCAIDE/Methods/Aerodynamics/Airfoil_Panel_Method/airfoil_analysis.py</span>
+<span class="c1"># </span>
+<span class="c1"># </span>
+<span class="c1"># Created:  Dec 2023, M. Clarke</span>
+<span class="c1"># Modified: Apr 2023, N. Nanjappa</span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  IMPORT</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1"># RCAIDE imports  </span>
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">.hess_smith</span>           <span class="kn">import</span> <span class="n">hess_smith</span>
+<span class="kn">from</span> <span class="nn">.thwaites_method</span>      <span class="kn">import</span> <span class="n">thwaites_method</span> 
+<span class="kn">from</span> <span class="nn">.heads_method</span>         <span class="kn">import</span> <span class="n">heads_method</span> 
+<span class="kn">from</span> <span class="nn">.aero_coeff</span>           <span class="kn">import</span> <span class="n">aero_coeff</span>
+<span class="kn">from</span> <span class="nn">.chordwise_distribution</span> <span class="kn">import</span> <span class="n">chordwise_distribution</span>
+<span class="kn">from</span> <span class="nn">.cf_filter</span>            <span class="kn">import</span> <span class="n">cf_filter</span>
+
+<span class="c1"># pacakge imports  </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1"># airfoil_analysis.py</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<div class="viewcode-block" id="airfoil_analysis">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.airfoil_analysis">[docs]</a>
+<span class="k">def</span> <span class="nf">airfoil_analysis</span><span class="p">(</span><span class="n">airfoil_geometry</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">Re_L</span><span class="p">,</span><span class="n">initial_momentum_thickness</span><span class="o">=</span><span class="mf">1E-5</span><span class="p">,</span><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E0</span><span class="p">,</span><span class="n">H_wake</span> <span class="o">=</span> <span class="mf">1.05</span><span class="p">,</span><span class="n">Ue_wake</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This computes the aerodynamic polars as well as the boundary layer properties of </span>
+<span class="sd">    an airfoil at a defined set of reynolds numbers and angle of attacks</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    Michel Criteria used for transition </span>
+<span class="sd">    </span>
+<span class="sd">    Squire-Young relation for total drag (exrapolates theta from end of wake). </span>
+<span class="sd">    However, since we do not have a wake we will assume H_wake = 1.05 and Ue_wake = 0.99</span>
+<span class="sd">    The freestream velocity is taken to be 1 m/s.</span>
+<span class="sd">    Airfoil has a unit chord length [1 m].</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs: </span>
+<span class="sd">    airfoil_geometry   - airfoil geometry points                                                             [unitless]</span>
+<span class="sd">    alpha              - angle of attacks                                                                    [radians]</span>
+<span class="sd">    Re_L               - Reynolds numbers                                                                    [unitless]</span>
+<span class="sd">    batch_analysis     - boolean : If True: the specified number of angle of attacks and Reynolds            [boolean]</span>
+<span class="sd">                                  numbers are used to create a table of 2-D results for each combination</span>
+<span class="sd">                                  Note: Can only accomodate one airfoil</span>
+<span class="sd">                                  </span>
+<span class="sd">                                  If False:The airfoils specified are run and corresponding angle of attacks </span>
+<span class="sd">                                  and Reynolds numbers</span>
+<span class="sd">                                  Note: The number of airfoils, angle of attacks and reynolds numbers must </span>
+<span class="sd">                                  all the same dimension                     </span>
+<span class="sd">    </span>
+<span class="sd">    Outputs: </span>
+<span class="sd">    airfoil_properties.</span>
+<span class="sd">        AoA            - angle of attack                                                   [radians</span>
+<span class="sd">        Re             - Reynolds number                                                   [unitless]</span>
+<span class="sd">        Cl             - lift coefficients                                                 [unitless]</span>
+<span class="sd">        Cd             - drag coefficients                                                 [unitless]</span>
+<span class="sd">        Cm             - moment coefficients                                               [unitless]</span>
+<span class="sd">        normals        - surface normals of airfoil                                        [unitless]</span>
+<span class="sd">        x              - x coordinate points on airfoil                                    [unitless]</span>
+<span class="sd">        y              - y coordinate points on airfoil                                    [unitless]</span>
+<span class="sd">        x_bl           - x coordinate points on airfoil adjusted to include boundary layer [unitless]</span>
+<span class="sd">        y_bl           - y coordinate points on airfoil adjusted to include boundary layer [unitless]</span>
+<span class="sd">        Cp             - pressure coefficient distribution                                 [unitless]</span>
+<span class="sd">        Ue_Vinf        - ratio of boundary layer edge velocity to freestream               [unitless]</span>
+<span class="sd">        dVe            - derivative of boundary layer velocity                             [m/s-m]</span>
+<span class="sd">        theta          - momentum thickness                                                [m]</span>
+<span class="sd">        delta_star     - displacement thickness                                            [m]</span>
+<span class="sd">        delta          - boundary layer thickness                                          [m]</span>
+<span class="sd">        H              - shape factor                                                      [unitless]</span>
+<span class="sd">        Cf             - local skin friction coefficient                                   [unitless]</span>
+<span class="sd">        Re_theta_t     - Reynolds Number as a function of theta transition location        [unitless]</span>
+<span class="sd">        tr_crit        - critical transition criteria                                      [unitless]</span>
+<span class="sd">                        </span>
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>     
+    <span class="n">ncases</span>       <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span> 
+    <span class="n">ncpts</span>        <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Re_L</span><span class="p">)</span>  
+    <span class="n">x_coord</span>      <span class="o">=</span> <span class="n">airfoil_geometry</span><span class="o">.</span><span class="n">x_coordinates</span>
+    <span class="n">y_coord</span>      <span class="o">=</span> <span class="n">airfoil_geometry</span><span class="o">.</span><span class="n">y_coordinates</span>
+    <span class="n">npanel</span>       <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_coord</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> 
+               
+    <span class="n">x_coord_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">x_coord</span><span class="p">[:,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">],(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">))</span> <span class="c1"># number of points, number of cases, number of control points </span>
+    <span class="n">y_coord_3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">y_coord</span><span class="p">[:,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">],(</span><span class="mi">1</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">))</span> <span class="c1"># number of points, number of cases, number of control points </span>
+        
+    <span class="c1"># Begin by solving for velocity distribution at airfoil surface using inviscid panel simulation</span>
+    <span class="c1"># these are the locations (faces) where things are computed , len = n panel</span>
+    <span class="c1"># dimension of vt = npanel x ncases x ncpts</span>
+    <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">vt</span><span class="p">,</span><span class="n">normals</span> <span class="o">=</span> <span class="n">hess_smith</span><span class="p">(</span><span class="n">x_coord_3d</span><span class="p">,</span><span class="n">y_coord_3d</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">Re_L</span><span class="p">,</span><span class="n">npanel</span><span class="p">)</span>  
+    
+    <span class="c1"># Reynolds number </span>
+    <span class="n">RE_L_VALS</span> <span class="o">=</span> <span class="n">Re_L</span><span class="o">.</span><span class="n">T</span> 
+    
+    <span class="c1"># kinematic coefficient of viscosity (assuming unit chord and unit inlet velocity)</span>
+    <span class="n">nu</span>           <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">RE_L_VALS</span>
+    
+    <span class="c1"># ---------------------------------------------------------------------</span>
+    <span class="c1"># Bottom surface of airfoil </span>
+    <span class="c1"># ---------------------------------------------------------------------     </span>
+    <span class="n">VT</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_greater</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span>
+    <span class="n">VT_mask</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_greater</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span><span class="o">.</span><span class="n">mask</span>
+    <span class="n">X_BOT_VALS</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_mask</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Y_BOT</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_mask</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+         
+    <span class="n">X_BOT</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_BOT_VALS</span><span class="p">)</span>
+    <span class="n">X_BOT</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X_BOT_VALS</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">X_BOT_VALS</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y_BOT</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">Y_BOT</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">first_idx</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count_masked</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mask_count</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">prev_index</span>      <span class="o">=</span> <span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">first_panel</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prev_index</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_panel</span>      <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_paneldve</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">2</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">aoas</span>            <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncases</span><span class="p">),</span><span class="n">ncpts</span><span class="p">))</span>
+    <span class="n">res</span>             <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncpts</span><span class="p">),</span><span class="n">ncases</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">X_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1"># flow velocity and pressure of on botton surface </span>
+    <span class="n">VE_BOT</span>          <span class="o">=</span> <span class="o">-</span><span class="n">VT</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  
+    
+    <span class="c1"># velocity gradients on bottom surface  </span>
+    <span class="n">DVE_BOT</span>                        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">))</span> 
+    <span class="n">DVE_BOT_TEMP</span>                   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">VE_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">a</span>                              <span class="o">=</span> <span class="n">X_BOT</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X_BOT</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">b</span>                              <span class="o">=</span> <span class="n">X_BOT</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>   <span class="o">-</span> <span class="n">X_BOT</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">DVE_BOT</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>                  <span class="o">=</span> <span class="p">((</span><span class="n">b</span><span class="o">*</span><span class="n">DVE_BOT_TEMP</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">DVE_BOT_TEMP</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">DVE_BOT</span><span class="o">.</span><span class="n">mask</span>                   <span class="o">=</span> <span class="n">X_BOT</span><span class="o">.</span><span class="n">mask</span>
+    <span class="n">DVE_BOT</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span>  <span class="o">=</span> <span class="n">DVE_BOT_TEMP</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span>
+    <span class="n">DVE_BOT</span><span class="p">[</span><span class="n">last_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span>   <span class="o">=</span> <span class="n">DVE_BOT_TEMP</span><span class="p">[</span><span class="n">last_paneldve</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span> 
+    
+    <span class="c1"># x - location of stagnation point </span>
+    <span class="n">L_BOT</span>                          <span class="o">=</span> <span class="n">X_BOT</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span>    
+        
+    <span class="c1"># laminar boundary layer properties using thwaites method  </span>
+    <span class="n">BOT_T_RESULTS</span>  <span class="o">=</span> <span class="n">thwaites_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">L_BOT</span> <span class="p">,</span> <span class="n">RE_L_VALS</span><span class="p">,</span> <span class="n">X_BOT</span><span class="p">,</span> <span class="n">VE_BOT</span><span class="p">,</span> <span class="n">DVE_BOT</span><span class="p">,</span><span class="n">tolerance</span><span class="p">,</span>
+                                      <span class="n">THETA_0</span><span class="o">=</span><span class="n">initial_momentum_thickness</span><span class="p">)</span>
+    
+    <span class="n">X_T_BOT</span>          <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">X_T</span>      
+    <span class="n">THETA_T_BOT</span>      <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">THETA_T</span>     
+    <span class="n">DELTA_STAR_T_BOT</span> <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">DELTA_STAR_T</span>  
+    <span class="n">H_T_BOT</span>          <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">H_T</span>         
+    <span class="n">CF_T_BOT</span>         <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">CF_T</span>   
+    <span class="n">RE_THETA_T_BOT</span>   <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">RE_THETA_T</span>    
+    <span class="n">RE_X_T_BOT</span>       <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">RE_X_T</span>      
+    <span class="n">DELTA_T_BOT</span>      <span class="o">=</span> <span class="n">BOT_T_RESULTS</span><span class="o">.</span><span class="n">DELTA_T</span>      
+     
+    <span class="c1"># transition location  </span>
+    <span class="n">TR_CRIT_BOT</span>      <span class="o">=</span> <span class="n">RE_THETA_T_BOT</span> <span class="o">-</span> <span class="mf">1.174</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">22400</span><span class="o">/</span><span class="n">RE_X_T_BOT</span><span class="p">)</span><span class="o">*</span><span class="n">RE_X_T_BOT</span><span class="o">**</span><span class="mf">0.46</span>  
+    <span class="n">CRITERION_BOT</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_greater</span><span class="p">(</span><span class="n">TR_CRIT_BOT</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span>  
+    <span class="n">mask_count</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">CRITERION_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>  
+    <span class="n">mask_count</span><span class="p">[</span><span class="n">mask_count</span> <span class="o">==</span> <span class="n">npanel</span><span class="p">]</span> <span class="o">=</span> <span class="n">npanel</span><span class="o">-</span><span class="mi">1</span> 
+    <span class="n">transition_panel</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mask_count</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span> 
+    <span class="n">aoas</span>             <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncases</span><span class="p">),</span><span class="n">ncpts</span><span class="p">))</span>
+    <span class="n">res</span>              <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncpts</span><span class="p">),</span><span class="n">ncases</span><span class="p">))</span>
+        
+    <span class="n">X_TR_BOT</span>          <span class="o">=</span> <span class="n">X_T_BOT</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">DELTA_STAR_TR_BOT</span> <span class="o">=</span> <span class="n">DELTA_STAR_T_BOT</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">THETA_TR_BOT</span>      <span class="o">=</span> <span class="n">THETA_T_BOT</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>    
+    <span class="n">DELTA_TR_BOT</span>      <span class="o">=</span> <span class="n">DELTA_T_BOT</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span> 
+    <span class="n">CF_TR_BOT</span>         <span class="o">=</span> <span class="n">CF_T_BOT</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">H_TR_BOT</span>          <span class="o">=</span> <span class="n">H_T_BOT</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    
+    <span class="c1"># TURBULENT_SURF  </span>
+    <span class="n">TURBULENT_SURF</span>    <span class="o">=</span> <span class="n">L_BOT</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">TURBULENT_COORD</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less</span><span class="p">(</span><span class="n">X_BOT</span><span class="o">.</span><span class="n">data</span>  <span class="o">-</span> <span class="n">X_TR_BOT</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> 
+    
+    <span class="c1"># turbulent boundary layer properties using heads method  </span>
+    <span class="n">BOT_H_RESULTS</span>     <span class="o">=</span> <span class="n">heads_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">DELTA_TR_BOT</span><span class="p">,</span> <span class="n">THETA_TR_BOT</span> <span class="p">,</span> <span class="n">DELTA_STAR_TR_BOT</span><span class="p">,</span> 
+                                         <span class="n">CF_TR_BOT</span><span class="p">,</span> <span class="n">H_TR_BOT</span><span class="p">,</span> <span class="n">RE_L_VALS</span><span class="p">,</span> <span class="n">TURBULENT_COORD</span><span class="p">,</span> <span class="n">VE_BOT</span><span class="p">,</span> <span class="n">DVE_BOT</span><span class="p">,</span> <span class="n">TURBULENT_SURF</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">)</span>
+    
+    <span class="n">X_H_BOT</span>          <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">X_H</span>      
+    <span class="n">THETA_H_BOT</span>      <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">THETA_H</span>   
+    <span class="n">DELTA_STAR_H_BOT</span> <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">DELTA_STAR_H</span>
+    <span class="n">H_H_BOT</span>          <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">H_H</span>       
+    <span class="n">CF_H_BOT</span>         <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">CF_H</span>    
+    <span class="n">RE_THETA_H_BOT</span>   <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">RE_THETA_H</span> 
+    <span class="n">RE_X_H_BOT</span>       <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">RE_X_H</span>         
+    <span class="n">DELTA_H_BOT</span>      <span class="o">=</span> <span class="n">BOT_H_RESULTS</span><span class="o">.</span><span class="n">DELTA_H</span>   
+    
+    <span class="c1"># Apply Masks to surface vectors  </span>
+    <span class="n">X_T_BOT</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_T_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    <span class="n">THETA_T_BOT</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">THETA_T_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+    <span class="n">DELTA_STAR_T_BOT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_STAR_T_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    <span class="n">H_T_BOT</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">H_T_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>       
+    <span class="n">CF_T_BOT</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">CF_T_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>      
+    <span class="n">RE_THETA_T_BOT</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_THETA_T_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> 
+    <span class="n">RE_X_T_BOT</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_X_T_BOT</span>  <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+    <span class="n">DELTA_T_BOT</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_T_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>    
+                       
+    <span class="n">X_H_BOT</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_H_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>       
+    <span class="n">THETA_H_BOT</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">THETA_H_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+    <span class="n">DELTA_STAR_H_BOT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_STAR_H_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    <span class="n">H_H_BOT</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">H_H_BOT</span>  <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>      
+    <span class="n">CF_H_BOT</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">CF_H_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>  
+    <span class="n">RE_THETA_H_BOT</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_THETA_H_BOT</span>  <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span> <span class="o">.</span><span class="n">mask</span><span class="p">)</span>    
+    <span class="n">RE_X_H_BOT</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_X_H_BOT</span>  <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span> <span class="o">.</span><span class="n">mask</span><span class="p">)</span>        
+    <span class="n">DELTA_H_BOT</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_H_BOT</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+        
+    
+    <span class="c1"># Concatenate vectors</span>
+    <span class="n">X_H_BOT_MOD</span> <span class="o">=</span> <span class="n">X_H_BOT</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">X_TR_BOT</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">X_H_BOT_MOD</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_H_BOT_MOD</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">X_H_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    
+    <span class="n">X_BOT_SURF</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X_T_BOT</span><span class="p">,</span> <span class="n">X_H_BOT_MOD</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span> 
+    <span class="n">THETA_BOT_SURF</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">THETA_T_BOT</span><span class="p">,</span><span class="n">THETA_H_BOT</span> <span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">DELTA_STAR_BOT_SURF</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">DELTA_STAR_T_BOT</span><span class="p">,</span><span class="n">DELTA_STAR_H_BOT</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">H_BOT_SURF</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">H_T_BOT</span><span class="p">,</span><span class="n">H_H_BOT</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">CF_BOT_SURF</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">CF_T_BOT</span><span class="p">,</span><span class="n">CF_H_BOT</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">RE_THETA_BOT_SURF</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">RE_THETA_T_BOT</span><span class="p">,</span><span class="n">RE_THETA_H_BOT</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">RE_X_BOT_SURF</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">RE_X_T_BOT</span><span class="p">,</span><span class="n">RE_X_H_BOT</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>    
+    <span class="n">DELTA_BOT_SURF</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">DELTA_T_BOT</span><span class="p">,</span><span class="n">DELTA_H_BOT</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> 
+    
+    <span class="c1"># Flatten array to extract values </span>
+    <span class="n">X_BOT_SURF_1</span>          <span class="o">=</span> <span class="n">X_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">THETA_BOT_SURF_1</span>      <span class="o">=</span> <span class="n">THETA_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">DELTA_STAR_BOT_SURF_1</span> <span class="o">=</span> <span class="n">DELTA_STAR_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">H_BOT_SURF_1</span>          <span class="o">=</span> <span class="n">H_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">CF_BOT_SURF_1</span>         <span class="o">=</span> <span class="n">CF_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">RE_THETA_BOT_SURF_1</span>   <span class="o">=</span> <span class="n">RE_THETA_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">RE_X_BOT_SURF_1</span>       <span class="o">=</span> <span class="n">RE_X_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">DELTA_BOT_SURF_1</span>      <span class="o">=</span> <span class="n">DELTA_BOT_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    
+    <span class="c1"># Extract values that are not masked </span>
+    <span class="n">X_BOT_SURF_2</span>           <span class="o">=</span> <span class="n">X_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">X_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">THETA_BOT_SURF_2</span>       <span class="o">=</span> <span class="n">THETA_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">THETA_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> 
+    <span class="n">DELTA_STAR_BOT_SURF_2</span>  <span class="o">=</span> <span class="n">DELTA_STAR_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">DELTA_STAR_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">H_BOT_SURF_2</span>           <span class="o">=</span> <span class="n">H_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">H_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">CF_BOT_SURF_2</span>          <span class="o">=</span> <span class="n">CF_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">CF_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">RE_THETA_BOT_SURF_2</span>    <span class="o">=</span> <span class="n">RE_THETA_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">RE_THETA_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> 
+    <span class="n">RE_X_BOT_SURF_2</span>        <span class="o">=</span> <span class="n">RE_X_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">RE_X_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">DELTA_BOT_SURF_2</span>       <span class="o">=</span> <span class="n">DELTA_BOT_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">DELTA_BOT_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    
+    <span class="n">X_BOT_SURF</span>           <span class="o">=</span> <span class="n">X_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>   
+    <span class="n">THETA_BOT_SURF</span>       <span class="o">=</span> <span class="n">THETA_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    <span class="n">DELTA_STAR_BOT_SURF</span>  <span class="o">=</span> <span class="n">DELTA_STAR_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    <span class="n">H_BOT_SURF</span>           <span class="o">=</span> <span class="n">H_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">CF_BOT_SURF</span>          <span class="o">=</span> <span class="n">CF_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">RE_THETA_BOT_SURF</span>    <span class="o">=</span> <span class="n">RE_THETA_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    <span class="n">RE_X_BOT_SURF</span>        <span class="o">=</span> <span class="n">RE_X_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    <span class="n">DELTA_BOT_SURF</span>       <span class="o">=</span> <span class="n">DELTA_BOT_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>          
+    
+    
+    <span class="c1"># ------------------------------------------------------------------------------------------------------</span>
+    <span class="c1"># Top surface of airfoil </span>
+    <span class="c1"># ------------------------------------------------------------------------------------------------------ </span>
+    <span class="n">VT</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span>
+    <span class="n">CP</span>              <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">vt</span><span class="o">**</span><span class="mi">2</span> 
+    <span class="n">VT_mask</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span><span class="o">.</span><span class="n">mask</span>
+    <span class="n">X_TOP_VALS</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_mask</span><span class="p">)</span> 
+    <span class="n">Y_TOP</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_mask</span><span class="p">)</span>  
+
+    <span class="n">X_TOP</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_TOP_VALS</span><span class="p">)</span>
+    <span class="n">X_TOP</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X_TOP_VALS</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">X_TOP_VALS</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y_TOP</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">Y_TOP</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">first_idx</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count_masked</span><span class="p">(</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mask_count</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">prev_index</span>      <span class="o">=</span> <span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">first_panel</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prev_index</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_panel</span>      <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_paneldve</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">2</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">aoas</span>            <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncases</span><span class="p">),</span><span class="n">ncpts</span><span class="p">))</span>
+    <span class="n">res</span>             <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncpts</span><span class="p">),</span><span class="n">ncases</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">X_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1"># flow velocity and pressure of on botton surface </span>
+    <span class="n">VE_TOP</span>          <span class="o">=</span> <span class="n">VT</span>    
+    
+    <span class="c1"># velocity gradients on bottom surface  </span>
+    <span class="n">DVE_TOP</span>                        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">X_TOP</span><span class="p">))</span> 
+    <span class="n">DVE_TOP_TEMP</span>                   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">VE_TOP</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">a</span>                              <span class="o">=</span> <span class="n">X_TOP</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">X_TOP</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">b</span>                              <span class="o">=</span> <span class="n">X_TOP</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>   <span class="o">-</span> <span class="n">X_TOP</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">DVE_TOP</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>                  <span class="o">=</span> <span class="p">((</span><span class="n">b</span><span class="o">*</span><span class="n">DVE_TOP_TEMP</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">DVE_TOP_TEMP</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">))</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">DVE_TOP</span><span class="o">.</span><span class="n">mask</span>                   <span class="o">=</span> <span class="n">X_TOP</span><span class="o">.</span><span class="n">mask</span>
+    <span class="n">DVE_TOP</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span>  <span class="o">=</span> <span class="n">DVE_TOP_TEMP</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span>
+    <span class="n">DVE_TOP</span><span class="p">[</span><span class="n">last_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span>   <span class="o">=</span> <span class="n">DVE_TOP_TEMP</span><span class="p">[</span><span class="n">last_paneldve</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span> 
+
+    <span class="c1"># x - location of stagnation point </span>
+    <span class="n">L_TOP</span>                          <span class="o">=</span> <span class="n">X_TOP</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span>    
+
+    <span class="c1"># laminar boundary layer properties using thwaites method </span>
+    <span class="n">TOP_T_RESULTS</span>    <span class="o">=</span> <span class="n">thwaites_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">L_TOP</span> <span class="p">,</span> <span class="n">RE_L_VALS</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">VE_TOP</span><span class="p">,</span> <span class="n">DVE_TOP</span><span class="p">,</span><span class="n">tolerance</span><span class="p">,</span>
+                                      <span class="n">THETA_0</span><span class="o">=</span><span class="n">initial_momentum_thickness</span><span class="p">)</span> 
+    
+    <span class="n">X_T_TOP</span>          <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">X_T</span>      
+    <span class="n">THETA_T_TOP</span>      <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">THETA_T</span>     
+    <span class="n">DELTA_STAR_T_TOP</span> <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">DELTA_STAR_T</span>  
+    <span class="n">H_T_TOP</span>          <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">H_T</span>         
+    <span class="n">CF_T_TOP</span>         <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">CF_T</span>      
+    <span class="n">RE_THETA_T_TOP</span>   <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">RE_THETA_T</span>    
+    <span class="n">RE_X_T_TOP</span>       <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">RE_X_T</span>      
+    <span class="n">DELTA_T_TOP</span>      <span class="o">=</span> <span class="n">TOP_T_RESULTS</span><span class="o">.</span><span class="n">DELTA_T</span>      
+
+    <span class="c1"># transition location  </span>
+    <span class="n">TR_CRIT_TOP</span>       <span class="o">=</span> <span class="n">RE_THETA_T_TOP</span> <span class="o">-</span> <span class="mf">1.174</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">22400</span><span class="o">/</span><span class="n">RE_X_T_TOP</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">RE_X_T_TOP</span><span class="o">**</span><span class="mf">0.46</span><span class="p">)</span>  
+    <span class="n">CRITERION_TOP</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_greater</span><span class="p">(</span><span class="n">TR_CRIT_TOP</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span> 
+    <span class="n">mask_count</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">CRITERION_TOP</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>  
+    <span class="n">mask_count</span><span class="p">[</span><span class="n">mask_count</span> <span class="o">==</span> <span class="n">npanel</span><span class="p">]</span> <span class="o">=</span> <span class="n">npanel</span><span class="o">-</span><span class="mi">1</span>  
+    <span class="n">transition_panel</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mask_count</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span> 
+    <span class="n">aoas</span>              <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncases</span><span class="p">),</span><span class="n">ncpts</span><span class="p">))</span>
+    <span class="n">res</span>               <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncpts</span><span class="p">),</span><span class="n">ncases</span><span class="p">)</span> <span class="p">)</span>
+  
+    <span class="n">X_TR_TOP</span>          <span class="o">=</span> <span class="n">X_T_TOP</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">DELTA_STAR_TR_TOP</span> <span class="o">=</span> <span class="n">DELTA_STAR_T_TOP</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">THETA_TR_TOP</span>      <span class="o">=</span> <span class="n">THETA_T_TOP</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>    
+    <span class="n">DELTA_TR_TOP</span>      <span class="o">=</span> <span class="n">DELTA_T_TOP</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">CF_TR_TOP</span>         <span class="o">=</span> <span class="n">CF_T_TOP</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">H_TR_TOP</span>          <span class="o">=</span> <span class="n">H_T_TOP</span><span class="p">[</span><span class="n">transition_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+   
+    <span class="n">TURBULENT_SURF</span>    <span class="o">=</span> <span class="n">L_TOP</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">TURBULENT_COORD</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less</span><span class="p">(</span> <span class="n">X_TOP</span><span class="o">.</span><span class="n">data</span>  <span class="o">-</span> <span class="n">X_TR_TOP</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># turbulent boundary layer properties using heads method  </span>
+    <span class="n">TOP_H_RESULTS</span>     <span class="o">=</span> <span class="n">heads_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">DELTA_TR_TOP</span><span class="p">,</span> <span class="n">THETA_TR_TOP</span> <span class="p">,</span> <span class="n">DELTA_STAR_TR_TOP</span><span class="p">,</span> 
+                                         <span class="n">CF_TR_TOP</span><span class="p">,</span> <span class="n">H_TR_TOP</span><span class="p">,</span> <span class="n">RE_L_VALS</span><span class="p">,</span> <span class="n">TURBULENT_COORD</span><span class="p">,</span> <span class="n">VE_TOP</span><span class="p">,</span> <span class="n">DVE_TOP</span><span class="p">,</span> <span class="n">TURBULENT_SURF</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">)</span>
+
+    <span class="n">X_H_TOP</span>          <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">X_H</span>      
+    <span class="n">THETA_H_TOP</span>      <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">THETA_H</span>   
+    <span class="n">DELTA_STAR_H_TOP</span> <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">DELTA_STAR_H</span>
+    <span class="n">H_H_TOP</span>          <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">H_H</span>       
+    <span class="n">CF_H_TOP</span>         <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">CF_H</span>        
+    <span class="n">RE_THETA_H_TOP</span>   <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">RE_THETA_H</span>  
+    <span class="n">RE_X_H_TOP</span>       <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">RE_X_H</span>     
+    <span class="n">DELTA_H_TOP</span>      <span class="o">=</span> <span class="n">TOP_H_RESULTS</span><span class="o">.</span><span class="n">DELTA_H</span> 
+    
+    <span class="c1"># Apply Masks to surface vectors  </span>
+    <span class="n">X_T_TOP</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_T_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    <span class="n">THETA_T_TOP</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">THETA_T_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+    <span class="n">DELTA_STAR_T_TOP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_STAR_T_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    <span class="n">H_T_TOP</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">H_T_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>       
+    <span class="n">CF_T_TOP</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">CF_T_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>      
+    <span class="n">RE_THETA_T_TOP</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_THETA_T_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> 
+    <span class="n">RE_X_T_TOP</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_X_T_TOP</span>  <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+    <span class="n">DELTA_T_TOP</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_T_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>    
+                       
+    <span class="n">X_H_TOP</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_H_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>       
+    <span class="n">THETA_H_TOP</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">THETA_H_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+    <span class="n">DELTA_STAR_H_TOP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_STAR_H_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    <span class="n">H_H_TOP</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">H_H_TOP</span>  <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>      
+    <span class="n">CF_H_TOP</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">CF_H_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>    
+    <span class="n">RE_THETA_H_TOP</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_THETA_H_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>    
+    <span class="n">RE_X_H_TOP</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">RE_X_H_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>    
+    <span class="n">DELTA_H_TOP</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">DELTA_H_TOP</span> <span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">CRITERION_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>   
+    
+    <span class="c1"># Concatenate laminar and turbulent vectors</span>
+    <span class="n">X_H_TOP_MOD</span>          <span class="o">=</span> <span class="n">X_H_TOP</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">X_TR_TOP</span><span class="o">.</span><span class="n">data</span>
+    <span class="n">X_H_TOP_MOD</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_H_TOP_MOD</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">X_H_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
+    
+    <span class="n">X_TOP_SURF</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X_T_TOP</span><span class="p">,</span> <span class="n">X_H_TOP_MOD</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span> 
+    <span class="n">THETA_TOP_SURF</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">THETA_T_TOP</span><span class="p">,</span><span class="n">THETA_H_TOP</span> <span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">DELTA_STAR_TOP_SURF</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">DELTA_STAR_T_TOP</span><span class="p">,</span><span class="n">DELTA_STAR_H_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">H_TOP_SURF</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">H_T_TOP</span><span class="p">,</span><span class="n">H_H_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">CF_TOP_SURF</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">CF_T_TOP</span><span class="p">,</span><span class="n">CF_H_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">RE_THETA_TOP_SURF</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">RE_THETA_T_TOP</span><span class="p">,</span><span class="n">RE_THETA_H_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">RE_X_TOP_SURF</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">RE_X_T_TOP</span><span class="p">,</span><span class="n">RE_X_H_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">DELTA_TOP_SURF</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">DELTA_T_TOP</span><span class="p">,</span><span class="n">DELTA_H_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> 
+    
+    <span class="c1"># Flatten array to extract values </span>
+    <span class="n">X_TOP_SURF_1</span>          <span class="o">=</span> <span class="n">X_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">THETA_TOP_SURF_1</span>      <span class="o">=</span> <span class="n">THETA_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">DELTA_STAR_TOP_SURF_1</span> <span class="o">=</span> <span class="n">DELTA_STAR_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">H_TOP_SURF_1</span>          <span class="o">=</span> <span class="n">H_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">CF_TOP_SURF_1</span>         <span class="o">=</span> <span class="n">CF_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">RE_THETA_TOP_SURF_1</span>   <span class="o">=</span> <span class="n">RE_THETA_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">RE_X_TOP_SURF_1</span>       <span class="o">=</span> <span class="n">RE_X_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">DELTA_TOP_SURF_1</span>      <span class="o">=</span> <span class="n">DELTA_TOP_SURF</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    
+    <span class="c1"># Extract values that are not masked </span>
+    <span class="n">X_TOP_SURF_2</span>           <span class="o">=</span> <span class="n">X_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">X_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">THETA_TOP_SURF_2</span>       <span class="o">=</span> <span class="n">THETA_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">THETA_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> 
+    <span class="n">DELTA_STAR_TOP_SURF_2</span>  <span class="o">=</span> <span class="n">DELTA_STAR_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">DELTA_STAR_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">H_TOP_SURF_2</span>           <span class="o">=</span> <span class="n">H_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">H_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">CF_TOP_SURF_2</span>          <span class="o">=</span> <span class="n">CF_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">CF_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">RE_THETA_TOP_SURF_2</span>    <span class="o">=</span> <span class="n">RE_THETA_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">RE_THETA_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> 
+    <span class="n">RE_X_TOP_SURF_2</span>        <span class="o">=</span> <span class="n">RE_X_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">RE_X_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">DELTA_TOP_SURF_2</span>       <span class="o">=</span> <span class="n">DELTA_TOP_SURF_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">DELTA_TOP_SURF_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    
+    <span class="n">X_TOP_SURF</span>           <span class="o">=</span> <span class="n">X_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">THETA_TOP_SURF</span>       <span class="o">=</span> <span class="n">THETA_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>   
+    <span class="n">DELTA_STAR_TOP_SURF</span>  <span class="o">=</span> <span class="n">DELTA_STAR_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">H_TOP_SURF</span>           <span class="o">=</span> <span class="n">H_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">CF_TOP_SURF</span>          <span class="o">=</span> <span class="n">CF_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">RE_THETA_TOP_SURF</span>    <span class="o">=</span> <span class="n">RE_THETA_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    <span class="n">RE_X_TOP_SURF</span>        <span class="o">=</span> <span class="n">RE_X_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    <span class="n">DELTA_TOP_SURF</span>       <span class="o">=</span> <span class="n">DELTA_TOP_SURF_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>          
+
+    
+    <span class="c1"># ------------------------------------------------------------------------------------------------------</span>
+    <span class="c1"># concatenate lower and upper surfaces   </span>
+    <span class="c1"># ------------------------------------------------------------------------------------------------------ </span>
+    <span class="n">THETA</span>      <span class="o">=</span> <span class="n">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">THETA_BOT_SURF</span><span class="p">,</span><span class="n">THETA_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>
+    <span class="n">DELTA_STAR</span> <span class="o">=</span> <span class="n">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">DELTA_STAR_BOT_SURF</span><span class="p">,</span><span class="n">DELTA_STAR_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span> 
+    <span class="n">H</span>          <span class="o">=</span> <span class="n">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">H_BOT_SURF</span><span class="p">,</span><span class="n">H_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>  
+    <span class="n">CF</span>         <span class="o">=</span> <span class="n">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">CF_BOT_SURF</span><span class="p">,</span><span class="n">CF_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span> 
+    <span class="n">RE_THETA</span>   <span class="o">=</span> <span class="n">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">RE_THETA_BOT_SURF</span><span class="p">,</span><span class="n">RE_THETA_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>  
+    <span class="n">RE_X</span>       <span class="o">=</span> <span class="n">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">RE_X_BOT_SURF</span><span class="p">,</span><span class="n">RE_X_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span> 
+    <span class="n">DELTA</span>      <span class="o">=</span> <span class="n">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">DELTA_BOT_SURF</span><span class="p">,</span><span class="n">DELTA_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">)</span>   
+     
+    <span class="n">VE_VALS</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">VE_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">),</span><span class="n">VE_TOP</span> <span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">DVE_VALS</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">DVE_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">),</span><span class="n">DVE_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>    
+    <span class="n">VE_VALS_1</span>  <span class="o">=</span> <span class="n">VE_VALS</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+    <span class="n">DVE_VALS_1</span> <span class="o">=</span> <span class="n">DVE_VALS</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>   
+    <span class="n">VE_VALS_2</span>  <span class="o">=</span> <span class="n">VE_VALS_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">VE_VALS_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">DVE_VALS_2</span> <span class="o">=</span> <span class="n">DVE_VALS_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">DVE_VALS_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>  
+    <span class="n">VE</span>         <span class="o">=</span> <span class="n">VE_VALS_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span> 
+    <span class="n">DVE</span>        <span class="o">=</span> <span class="n">DVE_VALS_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    
+    
+    <span class="c1"># ------------------------------------------------------------------------------------------------------</span>
+    <span class="c1"># Filter Skin Friction Coeffiecient</span>
+    <span class="c1"># ------------------------------------------------------------------------------------------------------</span>
+    <span class="n">CF</span>         <span class="o">=</span> <span class="n">cf_filter</span><span class="p">(</span><span class="n">ncpts</span><span class="p">,</span> <span class="n">ncases</span><span class="p">,</span> <span class="n">npanel</span><span class="p">,</span> <span class="n">CF</span><span class="p">)</span>
+    
+    
+    <span class="c1"># ------------------------------------------------------------------------------------------------------</span>
+    <span class="c1"># Compute effective surface of airfoil with boundary layer and recompute aerodynamic properties  </span>
+    <span class="c1"># ------------------------------------------------------------------------------------------------------   </span>
+    <span class="n">DELTA</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">DELTA</span><span class="p">)</span> <span class="c1"># make sure no nans   </span>
+    <span class="n">y_coord_3d_bl</span>  <span class="o">=</span> <span class="n">Y</span> <span class="o">+</span> <span class="n">DELTA</span><span class="o">*</span><span class="n">normals</span><span class="p">[:,</span><span class="mi">1</span><span class="p">,:,:]</span>
+    <span class="n">x_coord_3d_bl</span>  <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">DELTA</span><span class="o">*</span><span class="n">normals</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,:,:]</span>
+    <span class="n">npanel_mod</span>     <span class="o">=</span> <span class="n">npanel</span><span class="o">-</span><span class="mi">1</span> 
+    
+    <span class="n">X_BL</span><span class="p">,</span><span class="n">Y_BL</span><span class="p">,</span><span class="n">vt_bl</span><span class="p">,</span><span class="n">normals_bl</span> <span class="o">=</span> <span class="n">hess_smith</span><span class="p">(</span><span class="n">x_coord_3d_bl</span><span class="p">,</span><span class="n">y_coord_3d_bl</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">Re_L</span><span class="p">,</span><span class="n">npanel_mod</span><span class="p">)</span>      
+      
+    <span class="c1"># ---------------------------------------------------------------------</span>
+    <span class="c1"># Bottom surface of airfoil with boundary layer </span>
+    <span class="c1"># ---------------------------------------------------------------------       </span>
+    <span class="n">VT_BL</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_greater</span><span class="p">(</span><span class="n">vt_bl</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span>
+    <span class="n">VT_BL_mask</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_greater</span><span class="p">(</span><span class="n">vt_bl</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span><span class="o">.</span><span class="n">mask</span>
+    <span class="n">X_BL_BOT_VALS</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_BL</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_BL_mask</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Y_BL_BOT</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y_BL</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_BL_mask</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+    <span class="n">X_BL_BOT</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_BL_BOT_VALS</span><span class="p">)</span>
+    <span class="n">X_BL_BOT</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X_BL_BOT_VALS</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">X_BL_BOT_VALS</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y_BL_BOT</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">Y_BL_BOT</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">first_idx</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count_masked</span><span class="p">(</span><span class="n">X_BL_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mask_count</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">X_BL_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">prev_index</span>      <span class="o">=</span> <span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">first_panel</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prev_index</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_panel</span>      <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_paneldve</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">2</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">aoas</span>            <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncases</span><span class="p">),</span><span class="n">ncpts</span><span class="p">))</span>
+    <span class="n">res</span>             <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncpts</span><span class="p">),</span><span class="n">ncases</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">X_BL_BOT</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1"># flow velocity and pressure of on bottom surface </span>
+    <span class="n">VE_BL_BOT</span>          <span class="o">=</span> <span class="o">-</span><span class="n">VT_BL</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+    <span class="n">CP_BL_BOT</span>          <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">VE_BL_BOT</span><span class="o">**</span><span class="mi">2</span>   
+         
+    <span class="c1"># ---------------------------------------------------------------------</span>
+    <span class="c1"># Top surface of airfoil with boundary layer </span>
+    <span class="c1"># ---------------------------------------------------------------------    </span>
+    <span class="n">VT_BL</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less</span><span class="p">(</span><span class="n">vt_bl</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span>
+    <span class="n">VT_BL_mask</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_less</span><span class="p">(</span><span class="n">vt_bl</span><span class="p">,</span><span class="mi">0</span> <span class="p">)</span><span class="o">.</span><span class="n">mask</span>
+    <span class="n">X_BL_TOP_VALS</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_BL</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_BL_mask</span><span class="p">)</span> 
+    <span class="n">Y_BL_TOP</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Y_BL</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">VT_BL_mask</span><span class="p">)</span>  
+ 
+    <span class="n">X_BL_TOP</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X_BL_TOP_VALS</span><span class="p">)</span>
+    <span class="n">X_BL_TOP</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X_BL_TOP_VALS</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">X_BL_TOP_VALS</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y_BL_TOP</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">Y_BL_TOP</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">first_idx</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count_masked</span><span class="p">(</span><span class="n">X_BL_TOP</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">mask_count</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">X_BL_TOP</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">prev_index</span>      <span class="o">=</span> <span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">first_panel</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">prev_index</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_panel</span>      <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">last_paneldve</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">first_idx</span><span class="o">-</span><span class="mi">2</span> <span class="o">+</span> <span class="n">mask_count</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">aoas</span>            <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncases</span><span class="p">),</span><span class="n">ncpts</span><span class="p">))</span>
+    <span class="n">res</span>             <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncpts</span><span class="p">),</span><span class="n">ncases</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">X_BL_TOP</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="n">first_panel</span><span class="p">,</span><span class="n">aoas</span><span class="p">,</span><span class="n">res</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1"># flow velocity and pressure of on botton surface </span>
+    <span class="n">VE_BL_TOP</span>    <span class="o">=</span> <span class="n">VT_BL</span>
+    <span class="n">CP_BL_TOP</span>    <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">VE_BL_TOP</span><span class="o">**</span><span class="mi">2</span>     
+    
+    <span class="n">CP_BL_VALS</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">CP_BL_BOT</span><span class="p">,</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">),</span><span class="n">CP_BL_TOP</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">)</span>  
+    <span class="n">CP_BL_VALS_1</span> <span class="o">=</span> <span class="n">CP_BL_VALS</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>  
+    <span class="n">CP_BL_VALS_2</span> <span class="o">=</span> <span class="n">CP_BL_VALS_1</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">CP_BL_VALS_1</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span> 
+    <span class="n">CP_BL</span>        <span class="o">=</span> <span class="n">CP_BL_VALS_2</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">npanel_mod</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">),</span><span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>    
+    <span class="n">DCP_DX</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">CP_BL</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">X_BL</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+ 
+    <span class="n">AERO_RES</span>     <span class="o">=</span> <span class="n">aero_coeff</span><span class="p">(</span><span class="n">x_coord_3d</span><span class="p">,</span><span class="n">y_coord_3d</span><span class="p">,</span><span class="n">CP</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">npanel</span><span class="p">)</span> 
+    
+    <span class="c1"># Squire-Young relation for total drag</span>
+    <span class="n">del2_inf_l</span>   <span class="o">=</span> <span class="n">THETA</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:]</span><span class="o">*</span><span class="n">VE</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:]</span><span class="o">**</span><span class="p">((</span><span class="mi">5</span><span class="o">+</span><span class="n">H</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">del2_inf_u</span>   <span class="o">=</span> <span class="n">THETA</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span><span class="o">*</span><span class="n">VE</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:]</span><span class="o">**</span><span class="p">((</span><span class="mi">5</span><span class="o">+</span><span class="n">H</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:,:])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">del2_inf</span>     <span class="o">=</span> <span class="n">del2_inf_u</span> <span class="o">+</span> <span class="n">del2_inf_l</span>
+    <span class="n">cd_sqy</span>        <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">del2_inf</span><span class="o">.</span><span class="n">T</span>
+    
+    <span class="c1"># chordwise distribution of lift and drag</span>
+    <span class="n">fL</span><span class="p">,</span> <span class="n">fD</span> <span class="o">=</span> <span class="n">chordwise_distribution</span><span class="p">(</span><span class="n">x_coord_3d</span><span class="p">,</span><span class="n">y_coord_3d</span><span class="p">,</span><span class="n">CP</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">CF</span><span class="p">,</span><span class="n">vt</span><span class="p">)</span>
+    
+    <span class="n">airfoil_properties_old</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span>
+        <span class="n">AoA</span>            <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span>
+        <span class="n">Re</span>             <span class="o">=</span> <span class="n">Re_L</span><span class="p">,</span>
+        <span class="n">cl_invisc</span>      <span class="o">=</span> <span class="n">AERO_RES</span><span class="o">.</span><span class="n">cl</span><span class="p">,</span>  
+        <span class="n">cd_invisc</span>      <span class="o">=</span> <span class="n">AERO_RES</span><span class="o">.</span><span class="n">cdpi</span><span class="p">,</span> 
+        <span class="n">cm_invisc</span>      <span class="o">=</span> <span class="n">AERO_RES</span><span class="o">.</span><span class="n">cm</span><span class="p">,</span>
+        <span class="n">cd_visc</span>        <span class="o">=</span> <span class="n">cd_sqy</span><span class="p">,</span>
+        <span class="n">normals</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">normals</span><span class="p">,(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>
+        <span class="n">x</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">y</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Y</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">x_bl</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">X_BL</span> <span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">y_bl</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Y_BL</span> <span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">cp</span>             <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">CP_BL</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>  
+        <span class="n">dcp_dx</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">DCP_DX</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>            
+        <span class="n">Ue_Vinf</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">VE</span>   <span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>         
+        <span class="n">dVe</span>            <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">DVE</span>  <span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>   
+        <span class="n">theta</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">THETA</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>      
+        <span class="n">delta_star</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">DELTA_STAR</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>  
+        <span class="n">delta</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">DELTA</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>  
+        <span class="n">Re_theta</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">RE_THETA</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>  
+        <span class="n">Re_x</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">RE_X</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>  
+        <span class="n">H</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">H</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>            
+        <span class="n">cf</span>             <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">CF</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>
+        <span class="n">fL</span>             <span class="o">=</span> <span class="n">fL</span><span class="p">,</span>
+        <span class="n">fD</span>             <span class="o">=</span> <span class="n">fD</span>
+        <span class="p">)</span>  
+        
+    <span class="k">return</span>  <span class="n">airfoil_properties_old</span></div>
+
+
+
+<div class="viewcode-block" id="concatenate_surfaces">
+<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.concatenate_surfaces">[docs]</a>
+<span class="k">def</span> <span class="nf">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">FUNC_BOT_SURF</span><span class="p">,</span><span class="n">FUNC_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Interpolation of airfoil properties   </span>
+<span class="sd">    </span>
+<span class="sd">    Assumptions:</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    None                                                                    </span>
+<span class="sd">                                                                   </span>
+<span class="sd">    Inputs:                                    </span>
+<span class="sd">    X_BOT          - bottom surface of airfoil                                     [unitless]</span>
+<span class="sd">    X_TOP          - top surface of airfoil                                        [unitless]</span>
+<span class="sd">    FUNC_BOT_SURF  - airfoil property computation discretization on bottom surface [multiple units]</span>
+<span class="sd">    FUNC_TOP_SURF  - airfoil property computation discretization on top surface    [multiple units]</span>
+<span class="sd">    npanel         - number of panels                                              [unitless]</span>
+<span class="sd">    ncases         - number of angle of attacks                                    [unitless]</span>
+<span class="sd">    ncpts          - number of Reynolds numbers                                    [unitless]</span>
+<span class="sd">                                                                 </span>
+<span class="sd">    Outputs:                                           </span>
+<span class="sd">    FUNC           - airfoil property in user specified discretization on entire</span>
+<span class="sd">                     surface of airfoil                                            [multiple units]</span>
+<span class="sd">      </span>
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A  </span>
+<span class="sd">    &#39;&#39;&#39;</span>  
+    <span class="n">FUNC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">))</span>  
+    
+    <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncases</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">cpt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncpts</span><span class="p">):</span>   
+            <span class="n">top_func</span>          <span class="o">=</span> <span class="n">FUNC_TOP_SURF</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">][</span><span class="n">X_TOP</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span> 
+            <span class="n">bot_func</span>          <span class="o">=</span> <span class="n">FUNC_BOT_SURF</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">][</span><span class="n">X_BOT</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span><span class="o">.</span><span class="n">mask</span> <span class="o">==</span> <span class="kc">False</span><span class="p">]</span>                  
+            <span class="n">FUNC</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">bot_func</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">top_func</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">FUNC</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

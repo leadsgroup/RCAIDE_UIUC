@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Library.Methods.Aerodynamics package &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>RCAIDE.Library.Methods.Aerodynamics package &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,11 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Methods.Aerodynamics';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Methods.Aerodynamics.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RCAIDE.Library.Methods.Aerodynamics.AERODAS package" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html" />
-    <link rel="prev" title="RCAIDE.Library.Methods package" href="RCAIDE.Library.Methods.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +96,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +110,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +135,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +164,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +178,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +192,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +215,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +254,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +283,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +297,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -329,110 +330,118 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.html">RCAIDE package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4 current active"><a class="current reference internal" href="#">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">RCAIDE.Library.Methods.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Framework.html">RCAIDE.Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Library.html">RCAIDE.Library</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.load.html">RCAIDE.load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.save.html">RCAIDE.save</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Vehicle.html">RCAIDE.Vehicle</a></li>
 </ul>
 </div>
 </nav></div>
@@ -473,18 +482,6 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">RCAIDE</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.html" class="nav-link">RCAIDE package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.html" class="nav-link">RCAIDE.Library package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.html" class="nav-link">RCAIDE.Library.Methods package</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Aerodynamics package</span></li>
   </ul>
 </nav>
@@ -510,130 +507,313 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html">RCAIDE.Library.Methods.Aerodynamics.AERODAS package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#rcaide-library-methods-aerodynamics-aerodas-aerodas-setup-module">RCAIDE.Library.Methods.Aerodynamics.AERODAS.AERODAS_setup module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#rcaide-library-methods-aerodynamics-aerodas-finite-aspect-ratio-module">RCAIDE.Library.Methods.Aerodynamics.AERODAS.finite_aspect_ratio module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#rcaide-library-methods-aerodynamics-aerodas-post-stall-coefficients-module">RCAIDE.Library.Methods.Aerodynamics.AERODAS.post_stall_coefficients module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#rcaide-library-methods-aerodynamics-aerodas-pre-stall-coefficients-module">RCAIDE.Library.Methods.Aerodynamics.AERODAS.pre_stall_coefficients module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#rcaide-library-methods-aerodynamics-aerodas-section-properties-module">RCAIDE.Library.Methods.Aerodynamics.AERODAS.section_properties module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#module-RCAIDE.Library.Methods.Aerodynamics.AERODAS.AERODAS_setup">RCAIDE.Library.Methods.Aerodynamics.AERODAS.AERODAS_setup module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#RCAIDE.Library.Methods.Aerodynamics.AERODAS.AERODAS_setup.setup_data"><code class="docutils literal notranslate"><span class="pre">setup_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#RCAIDE.Library.Methods.Aerodynamics.AERODAS.AERODAS_setup.lift_drag_total"><code class="docutils literal notranslate"><span class="pre">lift_drag_total()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#RCAIDE.Library.Methods.Aerodynamics.AERODAS.AERODAS_setup.drag_total"><code class="docutils literal notranslate"><span class="pre">drag_total()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#module-RCAIDE.Library.Methods.Aerodynamics.AERODAS.finite_aspect_ratio">RCAIDE.Library.Methods.Aerodynamics.AERODAS.finite_aspect_ratio module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#RCAIDE.Library.Methods.Aerodynamics.AERODAS.finite_aspect_ratio.finite_aspect_ratio"><code class="docutils literal notranslate"><span class="pre">finite_aspect_ratio()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#module-RCAIDE.Library.Methods.Aerodynamics.AERODAS.post_stall_coefficients">RCAIDE.Library.Methods.Aerodynamics.AERODAS.post_stall_coefficients module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#RCAIDE.Library.Methods.Aerodynamics.AERODAS.post_stall_coefficients.post_stall_coefficients"><code class="docutils literal notranslate"><span class="pre">post_stall_coefficients()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#module-RCAIDE.Library.Methods.Aerodynamics.AERODAS.pre_stall_coefficients">RCAIDE.Library.Methods.Aerodynamics.AERODAS.pre_stall_coefficients module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#RCAIDE.Library.Methods.Aerodynamics.AERODAS.pre_stall_coefficients.pre_stall_coefficients"><code class="docutils literal notranslate"><span class="pre">pre_stall_coefficients()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#module-RCAIDE.Library.Methods.Aerodynamics.AERODAS.section_properties">RCAIDE.Library.Methods.Aerodynamics.AERODAS.section_properties module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#RCAIDE.Library.Methods.Aerodynamics.AERODAS.section_properties.section_properties"><code class="docutils literal notranslate"><span class="pre">section_properties()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html#module-RCAIDE.Library.Methods.Aerodynamics.AERODAS">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-aero-coeff-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.aero_coeff module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-airfoil-analysis-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-cf-filter-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.cf_filter module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-chordwise-distribution-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.chordwise_distribution module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-heads-method-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-hess-smith-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.hess_smith module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-infl-coeff-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.infl_coeff module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-panel-geometry-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.panel_geometry module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-thwaites-method-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#rcaide-library-methods-aerodynamics-airfoil-panel-method-velocity-distribution-module">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.velocity_distribution module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.aero_coeff">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.aero_coeff module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.aero_coeff.aero_coeff"><code class="docutils literal notranslate"><span class="pre">aero_coeff()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.airfoil_analysis"><code class="docutils literal notranslate"><span class="pre">airfoil_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.concatenate_surfaces"><code class="docutils literal notranslate"><span class="pre">concatenate_surfaces()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.cf_filter">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.cf_filter module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.cf_filter.cf_filter"><code class="docutils literal notranslate"><span class="pre">cf_filter()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.chordwise_distribution">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.chordwise_distribution module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.chordwise_distribution.chordwise_distribution"><code class="docutils literal notranslate"><span class="pre">chordwise_distribution()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method.heads_method"><code class="docutils literal notranslate"><span class="pre">heads_method()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method.RK4"><code class="docutils literal notranslate"><span class="pre">RK4()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.hess_smith">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.hess_smith module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.hess_smith.hess_smith"><code class="docutils literal notranslate"><span class="pre">hess_smith()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.infl_coeff">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.infl_coeff module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.infl_coeff.infl_coeff"><code class="docutils literal notranslate"><span class="pre">infl_coeff()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.panel_geometry">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.panel_geometry module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.panel_geometry.panel_geometry"><code class="docutils literal notranslate"><span class="pre">panel_geometry()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.thwaites_method"><code class="docutils literal notranslate"><span class="pre">thwaites_method()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getH"><code class="docutils literal notranslate"><span class="pre">getH()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getcf"><code class="docutils literal notranslate"><span class="pre">getcf()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.RK4"><code class="docutils literal notranslate"><span class="pre">RK4()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.velocity_distribution">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.velocity_distribution module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.velocity_distribution.velocity_distribution"><code class="docutils literal notranslate"><span class="pre">velocity_distribution()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-aircraft-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-body-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-configuration-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Configuration module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-inputs-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Inputs module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-run-case-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-avl-objects-wing-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Aircraft module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Body module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Configuration">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Configuration module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Inputs">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Inputs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Run_Case module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-build-avl-surrogates-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-create-avl-datastructures-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-evaluate-avl-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-purge-files-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-read-results-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-run-avl-analysis-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-train-avl-surrogates-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-translate-data-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-avl-airfoil-file-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-geometry-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-input-deck-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-mass-file-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#rcaide-library-methods-aerodynamics-athena-vortex-lattice-write-run-cases-module">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.build_AVL_surrogates.build_AVL_surrogates"><code class="docutils literal notranslate"><span class="pre">build_AVL_surrogates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_wing"><code class="docutils literal notranslate"><span class="pre">translate_avl_wing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_body"><code class="docutils literal notranslate"><span class="pre">translate_avl_body()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_wing_sections"><code class="docutils literal notranslate"><span class="pre">populate_wing_sections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.append_avl_wing_control_surfaces"><code class="docutils literal notranslate"><span class="pre">append_avl_wing_control_surfaces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_body_sections"><code class="docutils literal notranslate"><span class="pre">populate_body_sections()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_surrogate"><code class="docutils literal notranslate"><span class="pre">evaluate_AVL_surrogate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.evaluate_AVL.evaluate_AVL_no_surrogate"><code class="docutils literal notranslate"><span class="pre">evaluate_AVL_no_surrogate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files.purge_files"><code class="docutils literal notranslate"><span class="pre">purge_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.read_results.read_results"><code class="docutils literal notranslate"><span class="pre">read_results()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.run_AVL_analysis"><code class="docutils literal notranslate"><span class="pre">run_AVL_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.run_AVL_analysis.call_avl"><code class="docutils literal notranslate"><span class="pre">call_avl()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.train_AVL_surrogates.train_AVL_surrogates"><code class="docutils literal notranslate"><span class="pre">train_AVL_surrogates()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_conditions_to_cases"><code class="docutils literal notranslate"><span class="pre">translate_conditions_to_cases()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.translate_data.translate_results_to_conditions"><code class="docutils literal notranslate"><span class="pre">translate_results_to_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file.write_avl_airfoil_file"><code class="docutils literal notranslate"><span class="pre">write_avl_airfoil_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.write_geometry"><code class="docutils literal notranslate"><span class="pre">write_geometry()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_header_text"><code class="docutils literal notranslate"><span class="pre">make_header_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_surface_text"><code class="docutils literal notranslate"><span class="pre">make_surface_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_text"><code class="docutils literal notranslate"><span class="pre">make_body_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_wing_section_text"><code class="docutils literal notranslate"><span class="pre">make_wing_section_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_section_text"><code class="docutils literal notranslate"><span class="pre">make_body_section_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_controls_text"><code class="docutils literal notranslate"><span class="pre">make_controls_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.write_input_deck"><code class="docutils literal notranslate"><span class="pre">write_input_deck()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_case_command"><code class="docutils literal notranslate"><span class="pre">make_case_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_trim_text_command"><code class="docutils literal notranslate"><span class="pre">make_trim_text_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_roll_rate_text_command"><code class="docutils literal notranslate"><span class="pre">make_roll_rate_text_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_pitch_rate_text_command"><code class="docutils literal notranslate"><span class="pre">make_pitch_rate_text_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.make_beta_text_command"><code class="docutils literal notranslate"><span class="pre">make_beta_text_command()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_input_deck.control_surface_deflection_command"><code class="docutils literal notranslate"><span class="pre">control_surface_deflection_command()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_mass_file.write_mass_file"><code class="docutils literal notranslate"><span class="pre">write_mass_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.write_run_cases"><code class="docutils literal notranslate"><span class="pre">write_run_cases()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_run_cases.make_controls_case_text"><code class="docutils literal notranslate"><span class="pre">make_controls_case_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.html#module-RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.html">RCAIDE.Library.Methods.Aerodynamics.Common package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html">RCAIDE.Library.Methods.Aerodynamics.Common.Drag package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-asymmetry-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.asymmetry_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-compressibility-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-compressible-mixed-flat-plate-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressible_mixed_flat_plate module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-compressible-turbulent-flat-plate-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressible_turbulent_flat_plate module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-cooling-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.cooling_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-drag-divergence-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.drag_divergence module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-estimate-2ndseg-lift-drag-ratio-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.estimate_2ndseg_lift_drag_ratio module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-induced-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.induced_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-lift-wave-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.lift_wave_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-miscellaneous-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.miscellaneous_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-parasite-drag-fuselage-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_fuselage module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-parasite-drag-nacelle-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_nacelle module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-parasite-drag-pylon-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_pylon module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-parasite-drag-wing-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_wing module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-parasite-total-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_total module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-spoiler-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.spoiler_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-supersonic-wave-drag-volume-raymer-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_raymer module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-supersonic-wave-drag-volume-sears-haack-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_sears_haack module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-total-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.total_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-wave-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.wave_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-wave-drag-lift-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.wave_drag_lift module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#rcaide-library-methods-aerodynamics-common-drag-windmilling-drag-module">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.windmilling_drag module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.asymmetry_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.asymmetry_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressible_mixed_flat_plate">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressible_mixed_flat_plate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressible_turbulent_flat_plate">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressible_turbulent_flat_plate module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.cooling_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.cooling_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.drag_divergence">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.drag_divergence module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.estimate_2ndseg_lift_drag_ratio">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.estimate_2ndseg_lift_drag_ratio module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.induced_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.induced_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.lift_wave_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.lift_wave_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.miscellaneous_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.miscellaneous_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_fuselage">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_fuselage module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_nacelle">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_nacelle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_pylon">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_pylon module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_wing">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_drag_wing module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_total">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.parasite_total module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.spoiler_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.spoiler_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_raymer">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_raymer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_sears_haack">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_sears_haack module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.total_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.total_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.wave_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.wave_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.wave_drag_lift">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.wave_drag_lift module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag.windmilling_drag">RCAIDE.Library.Methods.Aerodynamics.Common.Drag.windmilling_drag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Drag.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Drag">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html">RCAIDE.Library.Methods.Aerodynamics.Common.Lift package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-bet-calculations-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.BET_calculations module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-compute-flap-lift-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_flap_lift module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-compute-max-lift-coeff-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_max_lift_coeff module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-compute-propeller-nonuniform-freestream-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_propeller_nonuniform_freestream module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-compute-slat-lift-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_slat_lift module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-compute-wing-wake-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_wing_wake module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.BET_calculations">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.BET_calculations module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_flap_lift">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_flap_lift module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_max_lift_coeff">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_max_lift_coeff module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_propeller_nonuniform_freestream">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_propeller_nonuniform_freestream module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_slat_lift">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_slat_lift module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_wing_wake">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_wing_wake module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-deflect-control-surface-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.deflect_control_surface module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-fuselage-correction-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.fuselage_correction module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#rcaide-library-methods-aerodynamics-common-lift-generate-wing-wake-grid-module">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.generate_wing_wake_grid module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.fuselage_correction">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.fuselage_correction module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift.generate_wing_wake_grid">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.generate_wing_wake_grid module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.Lift.html#module-RCAIDE.Library.Methods.Aerodynamics.Common.Lift">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Common.html#module-RCAIDE.Library.Methods.Aerodynamics.Common">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-vlm-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-build-vlm-surrogates-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.build_VLM_surrogates module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-compute-rhs-matrix-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-compute-wing-induced-velocity-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-deflect-control-surface-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-evaluate-vlm-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-extract-wing-collocation-points-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.extract_wing_collocation_points module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-generate-vd-helpers-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-generate-vortex-distribution-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-make-vlm-wings-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#rcaide-library-methods-aerodynamics-vortex-lattice-method-train-vlm-surrogates-module">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.train_VLM_surrogates module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.VLM"><code class="docutils literal notranslate"><span class="pre">VLM()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.compute_rotation_effects"><code class="docutils literal notranslate"><span class="pre">compute_rotation_effects()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.strip_cumsum"><code class="docutils literal notranslate"><span class="pre">strip_cumsum()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.build_VLM_surrogates">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.build_VLM_surrogates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.build_VLM_surrogates.build_VLM_surrogates"><code class="docutils literal notranslate"><span class="pre">build_VLM_surrogates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.build_VLM_surrogates.build_surrogate"><code class="docutils literal notranslate"><span class="pre">build_surrogate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix.compute_RHS_matrix"><code class="docutils literal notranslate"><span class="pre">compute_RHS_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix.build_RHS"><code class="docutils literal notranslate"><span class="pre">build_RHS()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.compute_wing_induced_velocity"><code class="docutils literal notranslate"><span class="pre">compute_wing_induced_velocity()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.subsonic"><code class="docutils literal notranslate"><span class="pre">subsonic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.supersonic"><code class="docutils literal notranslate"><span class="pre">supersonic()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.supersonic_in_plane"><code class="docutils literal notranslate"><span class="pre">supersonic_in_plane()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surfaces"><code class="docutils literal notranslate"><span class="pre">deflect_control_surfaces()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surface"><code class="docutils literal notranslate"><span class="pre">deflect_control_surface()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surface_strip"><code class="docutils literal notranslate"><span class="pre">deflect_control_surface_strip()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.make_hinge_quaternion"><code class="docutils literal notranslate"><span class="pre">make_hinge_quaternion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.rotate_points_with_quaternion"><code class="docutils literal notranslate"><span class="pre">rotate_points_with_quaternion()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.flip_1"><code class="docutils literal notranslate"><span class="pre">flip_1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.flip_2"><code class="docutils literal notranslate"><span class="pre">flip_2()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM.evaluate_surrogate"><code class="docutils literal notranslate"><span class="pre">evaluate_surrogate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM.evaluate_no_surrogate"><code class="docutils literal notranslate"><span class="pre">evaluate_no_surrogate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM.compute_stability_derivative"><code class="docutils literal notranslate"><span class="pre">compute_stability_derivative()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM.compute_coefficients"><code class="docutils literal notranslate"><span class="pre">compute_coefficients()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM.compute_coefficient"><code class="docutils literal notranslate"><span class="pre">compute_coefficient()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM.call_VLM"><code class="docutils literal notranslate"><span class="pre">call_VLM()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.extract_wing_collocation_points">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.extract_wing_collocation_points module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.extract_wing_collocation_points.extract_wing_collocation_points"><code class="docutils literal notranslate"><span class="pre">extract_wing_collocation_points()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers.postprocess_VD"><code class="docutils literal notranslate"><span class="pre">postprocess_VD()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers.compute_panel_area"><code class="docutils literal notranslate"><span class="pre">compute_panel_area()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers.compute_unit_normal"><code class="docutils literal notranslate"><span class="pre">compute_unit_normal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.generate_vortex_distribution"><code class="docutils literal notranslate"><span class="pre">generate_vortex_distribution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.generate_wing_vortex_distribution"><code class="docutils literal notranslate"><span class="pre">generate_wing_vortex_distribution()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.generate_fuselage_and_nacelle_vortex_distribution"><code class="docutils literal notranslate"><span class="pre">generate_fuselage_and_nacelle_vortex_distribution()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.make_VLM_wings"><code class="docutils literal notranslate"><span class="pre">make_VLM_wings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.copy_wings"><code class="docutils literal notranslate"><span class="pre">copy_wings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.copy_large_container"><code class="docutils literal notranslate"><span class="pre">copy_large_container()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.copy_data_from_paths"><code class="docutils literal notranslate"><span class="pre">copy_data_from_paths()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.recursive_set"><code class="docutils literal notranslate"><span class="pre">recursive_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.get_paths"><code class="docutils literal notranslate"><span class="pre">get_paths()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.make_cs_wing_from_cs"><code class="docutils literal notranslate"><span class="pre">make_cs_wing_from_cs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.convert_to_segmented_wing"><code class="docutils literal notranslate"><span class="pre">convert_to_segmented_wing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.add_span_break"><code class="docutils literal notranslate"><span class="pre">add_span_break()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.reprocess_span_breaks"><code class="docutils literal notranslate"><span class="pre">reprocess_span_breaks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.make_span_break_from_segment"><code class="docutils literal notranslate"><span class="pre">make_span_break_from_segment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.make_span_breaks_from_cs"><code class="docutils literal notranslate"><span class="pre">make_span_breaks_from_cs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.make_span_break"><code class="docutils literal notranslate"><span class="pre">make_span_break()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings.make_span_break_tag"><code class="docutils literal notranslate"><span class="pre">make_span_break_tag()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.train_VLM_surrogates">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.train_VLM_surrogates module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.train_VLM_surrogates.train_VLM_surrogates"><code class="docutils literal notranslate"><span class="pre">train_VLM_surrogates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.train_VLM_surrogates.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.train_VLM_surrogates.train_trasonic_model"><code class="docutils literal notranslate"><span class="pre">train_trasonic_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.train_VLM_surrogates.call_VLM"><code class="docutils literal notranslate"><span class="pre">call_VLM()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.html#module-RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Aerodynamics">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Methods.Aerodynamics" title="Link to this heading">#</a></h2>
+<p>RCAIDE Package Setup</p>
 </section>
 </section>
 
@@ -647,24 +827,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="RCAIDE.Library.Methods.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="RCAIDE.Library.Methods.Aerodynamics.AERODAS.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Aerodynamics.AERODAS package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -685,7 +847,7 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Aerodynamics">Module contents</a></li>
 </ul>
   </nav></div>
 

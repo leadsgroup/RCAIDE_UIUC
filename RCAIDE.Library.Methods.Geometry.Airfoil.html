@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Library.Methods.Geometry.Airfoil package &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>RCAIDE.Library.Methods.Geometry.Airfoil package &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,11 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Methods.Geometry.Airfoil';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Methods.Geometry.Airfoil.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RCAIDE.Library.Methods.Geometry.Planform package" href="RCAIDE.Library.Methods.Geometry.Planform.html" />
-    <link rel="prev" title="RCAIDE.Library.Methods.Geometry package" href="RCAIDE.Library.Methods.Geometry.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +96,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +110,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +135,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +164,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +178,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +192,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +215,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +254,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +283,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +297,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -329,110 +330,118 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.html">RCAIDE package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
-<li class="toctree-l4 current active"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
+<li class="toctree-l3 current active"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Framework.html">RCAIDE.Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Library.html">RCAIDE.Library</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.load.html">RCAIDE.load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.save.html">RCAIDE.save</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Vehicle.html">RCAIDE.Vehicle</a></li>
 </ul>
 </div>
 </nav></div>
@@ -473,21 +482,6 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">RCAIDE</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.html" class="nav-link">RCAIDE package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.html" class="nav-link">RCAIDE.Library package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.html" class="nav-link">RCAIDE.Library.Methods package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.Geometry.html" class="nav-link">RCAIDE.Library.Methods.Geometry package</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Geometry.Airfoil package</span></li>
   </ul>
 </nav>
@@ -510,29 +504,250 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="rcaide-library-methods-geometry-airfoil-compute-airfoil-properties-module">
-<h2>RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties module<a class="headerlink" href="#rcaide-library-methods-geometry-airfoil-compute-airfoil-properties-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties">
+<span id="rcaide-library-methods-geometry-airfoil-compute-airfoil-properties-module"></span><h2>RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_airfoil_properties">
+<span class="sig-name descname"><span class="pre">compute_airfoil_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airfoil_polar_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_pre_stall_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/compute_airfoil_properties.html#compute_airfoil_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_airfoil_properties" title="Link to this definition">#</a></dt>
+<dd><p>This computes the aerodynamic properties and coefficients of an airfoil in stall regimes using pre-stall
+characterstics and AERODAS formation for post stall characteristics. This is useful for
+obtaining a more accurate prediction of wing and blade loading as well as aeroacoustics. Pre stall characteristics
+are obtained in the form of a text file of airfoil polar data obtained from airfoiltools.com</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>None</p>
+</dd>
+<dt>Source</dt><dd><p>None</p>
+</dd>
+</dl>
+<p>Inputs:
+airfoil_geometry                        &lt;data_structure&gt;
+airfoil_polar_files                     &lt;string&gt;
+boundary_layer_files                    &lt;string&gt;
+use_pre_stall_data                      [Boolean]
+Outputs:
+airfoil_data.</p>
+<blockquote>
+<div><p>cl_polars                           [unitless]
+cd_polars                           [unitless]
+aoa_sweep                           [unitless]</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_extended_polars">
+<span class="sig-name descname"><span class="pre">compute_extended_polars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_cl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airfoil_cd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airfoil_aoa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AoA_sweep_deg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_pre_stall_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/compute_airfoil_properties.html#compute_extended_polars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_extended_polars" title="Link to this definition">#</a></dt>
+<dd><p>Computes the aerodynamic polars of an airfoil over an extended angle of attack range</p>
+<p>Assumptions:
+Uses AERODAS formulation for post stall characteristics
+Source:
+Models of Lift and Drag Coefficients of Stalled and Unstalled Airfoils in Wind Turbines and Wind Tunnels
+by D Spera, 2008</p>
+<p>Inputs:
+airfoil_cl          [unitless]
+airfoil_cd          [unitless]
+airfoil_aoa         [degrees]
+AoA_sweep_deg       [unitless]
+geometry            [N/A]
+use_pre_stall_data  [boolean]
+Outputs:
+CL                  [unitless]
+CD                  [unitless]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.apply_pre_stall_data">
+<span class="sig-name descname"><span class="pre">apply_pre_stall_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">AoA_sweep_deg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airfoil_aoa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airfoil_cl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">airfoil_cd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CD</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/compute_airfoil_properties.html#apply_pre_stall_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.apply_pre_stall_data" title="Link to this definition">#</a></dt>
+<dd><p>Applies prestall data to lift and drag curve slopes</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<p>Inputs:
+AoA_sweep_deg  [degrees]
+airfoil_aoa    [degrees]
+airfoil_cl     [unitless]
+airfoil_cd     [unitless]
+CL             [unitless]
+CD             [unitless]</p>
+<p>Outputs
+CL             [unitless]
+CD             [unitless]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_boundary_layer_properties">
+<span class="sig-name descname"><span class="pre">compute_boundary_layer_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Airfoil_Data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/compute_airfoil_properties.html#compute_boundary_layer_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_boundary_layer_properties" title="Link to this definition">#</a></dt>
+<dd><p>Computes the boundary layer properties of an airfoil for a sweep of Reynolds numbers
+and angle of attacks.</p>
+<p>Source:
+None</p>
+<p>Assumptions:
+None</p>
+<p>Inputs:
+airfoil_geometry   &lt;data_structure&gt;
+Airfoil_Data       &lt;data_structure&gt;</p>
+<p>Outputs:
+Airfoil_Data       &lt;data_structure&gt;</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-airfoil-compute-naca-4series-module">
-<h2>RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series module<a class="headerlink" href="#rcaide-library-methods-geometry-airfoil-compute-naca-4series-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series">
+<span id="rcaide-library-methods-geometry-airfoil-compute-naca-4series-module"></span><h2>RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series.compute_naca_4series">
+<span class="sig-name descname"><span class="pre">compute_naca_4series</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_geometry_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">201</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leading_and_trailing_edge_resolution_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/compute_naca_4series.html#compute_naca_4series"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series.compute_naca_4series" title="Link to this definition">#</a></dt>
+<dd><p>Computes the points of NACA 4-series airfoil</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>airfoils                                     &lt;string&gt;
+npoints                                      [unitless]
+leading_and_trailing_edge_resolution_factor  [unitless]</p>
+</dd>
+</dl>
+<p>Outputs:
+airfoil_data.</p>
+<blockquote>
+<div><p>thickness_to_chord                           [unitless]
+x_coordinates                                [meters]
+y_coordinates                                [meters]
+x_upper_surface                              [meters]
+x_lower_surface                              [meters]
+y_upper_surface                              [meters]
+y_lower_surface                              [meters]
+camber_coordinates                           [meters]</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-airfoil-convert-airfoil-to-meshgrid-module">
-<h2>RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid module<a class="headerlink" href="#rcaide-library-methods-geometry-airfoil-convert-airfoil-to-meshgrid-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid">
+<span id="rcaide-library-methods-geometry-airfoil-convert-airfoil-to-meshgrid-module"></span><h2>RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid.convert_airfoil_to_meshgrid">
+<span class="sig-name descname"><span class="pre">convert_airfoil_to_meshgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_geometry</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/convert_airfoil_to_meshgrid.html#convert_airfoil_to_meshgrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid.convert_airfoil_to_meshgrid" title="Link to this definition">#</a></dt>
+<dd><p>Converts a RCAIDE airfoil geometry representation to a Numpy meshgrid
+array mask of boolean values.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+None</p>
+<p>Inputs:
+airfoil_geometry                [RCAIDE Data Structure]</p>
+<blockquote>
+<div><p>.x_lower_surface            [Numpy Array, float32]
+.y_lower_surface            [Numpy Array, float32]
+.y_upper_surface            [Numpy Array, float32]</p>
+</div></blockquote>
+<p>Outputs:</p>
+<p>airfoil_meshgrid                [Numpy Array, bool]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-airfoil-generate-interpolated-airfoils-module">
-<h2>RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils module<a class="headerlink" href="#rcaide-library-methods-geometry-airfoil-generate-interpolated-airfoils-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils">
+<span id="rcaide-library-methods-geometry-airfoil-generate-interpolated-airfoils-module"></span><h2>RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils.generate_interpolated_airfoils">
+<span class="sig-name descname"><span class="pre">generate_interpolated_airfoils</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nairfoils</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Transition'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/generate_interpolated_airfoils.html#generate_interpolated_airfoils"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils.generate_interpolated_airfoils" title="Link to this definition">#</a></dt>
+<dd><p>Takes in two airfoils, interpolates between their coordinates to generate new
+airfoil geometries and saves new airfoil files.</p>
+<p>Assumptions: Linear geometric transition between airfoils</p>
+<p>Source: None</p>
+<p>Inputs:
+a1                 first airfoil                                [ airfoil ]
+a2                 second airfoil                               [ airfoil ]
+nairfoils          number of airfoils                           [ unitless ]</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-airfoil-import-airfoil-dat-module">
-<h2>RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat module<a class="headerlink" href="#rcaide-library-methods-geometry-airfoil-import-airfoil-dat-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat">
+<span id="rcaide-library-methods-geometry-airfoil-import-airfoil-dat-module"></span><h2>RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat.import_airfoil_dat">
+<span class="sig-name descname"><span class="pre">import_airfoil_dat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/import_airfoil_dat.html#import_airfoil_dat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat.import_airfoil_dat" title="Link to this definition">#</a></dt>
+<dd><p>Import an airfoil data file and stores it in a numpy array.</p>
+<p>Assumptions:
+Airfoil file in Lednicer format</p>
+<p>Source:
+None</p>
+<p>Inputs:
+filename   &lt;string&gt;</p>
+<p>Outputs:
+data       numpy array with airfoil data</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-airfoil-import-airfoil-geometry-module">
-<h2>RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry module<a class="headerlink" href="#rcaide-library-methods-geometry-airfoil-import-airfoil-geometry-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry">
+<span id="rcaide-library-methods-geometry-airfoil-import-airfoil-geometry-module"></span><h2>RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry.import_airfoil_geometry">
+<span class="sig-name descname"><span class="pre">import_airfoil_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_geometry_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">201</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cubic'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/import_airfoil_geometry.html#import_airfoil_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry.import_airfoil_geometry" title="Link to this definition">#</a></dt>
+<dd><p>This imports an airfoil geometry from a text file  and store
+the coordinates of upper and lower surfaces as well as the mean
+camberline</p>
+<p>Assumptions:
+Works for Selig and Lednicer airfoil formats. Automatically detects which format based off first line of data. Assumes it is one of those two.
+Source:
+airfoiltools.com/airfoil/index - method for determining format and basic error checking
+Inputs:
+airfoil_geometry_files   &lt;list of strings&gt;
+surface_interpolation   - type of interpolation used in the SciPy function. Preferable options are linear, quardratic and cubic.
+Full list of options can be found here :
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html#scipy.interpolate.interp1d">https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.interp1d.html#scipy.interpolate.interp1d</a>
+Outputs:
+airfoil_data.</p>
+<blockquote>
+<div><p>thickness_to_chord
+x_coordinates
+y_coordinates
+x_upper_surface
+x_lower_surface
+y_upper_surface
+y_lower_surface
+camber_coordinates</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-methods-geometry-airfoil-import-airfoil-polars-module">
-<h2>RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars module<a class="headerlink" href="#rcaide-library-methods-geometry-airfoil-import-airfoil-polars-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars">
+<span id="rcaide-library-methods-geometry-airfoil-import-airfoil-polars-module"></span><h2>RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars module<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars.import_airfoil_polars">
+<span class="sig-name descname"><span class="pre">import_airfoil_polars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_polar_files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angel_of_attack_discretization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">89</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Geometry/Airfoil/import_airfoil_polars.html#import_airfoil_polars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars.import_airfoil_polars" title="Link to this definition">#</a></dt>
+<dd><p>This imports airfoil polars from a text file output from XFOIL or Airfoiltools.com</p>
+<p>Assumptions:
+Input airfoil polars file is obtained from XFOIL or from Airfoiltools.com
+Source:
+<a class="reference external" href="http://airfoiltools.com/">http://airfoiltools.com/</a>
+Inputs:
+airfoil polar files   &lt;list of strings&gt;
+Outputs:
+data       numpy array with airfoil data
+Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Methods.Geometry.Airfoil">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil" title="Link to this heading">#</a></h2>
+<p>RCAIDE Package Setup</p>
 </section>
 </section>
 
@@ -546,24 +761,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="RCAIDE.Library.Methods.Geometry.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Geometry package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="RCAIDE.Library.Methods.Geometry.Planform.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Geometry.Planform package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -584,14 +781,38 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-airfoil-compute-airfoil-properties-module">RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-airfoil-compute-naca-4series-module">RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-airfoil-convert-airfoil-to-meshgrid-module">RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-airfoil-generate-interpolated-airfoils-module">RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-airfoil-import-airfoil-dat-module">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-airfoil-import-airfoil-geometry-module">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-methods-geometry-airfoil-import-airfoil-polars-module">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties">RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_airfoil_properties"><code class="docutils literal notranslate"><span class="pre">compute_airfoil_properties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_extended_polars"><code class="docutils literal notranslate"><span class="pre">compute_extended_polars()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.apply_pre_stall_data"><code class="docutils literal notranslate"><span class="pre">apply_pre_stall_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_boundary_layer_properties"><code class="docutils literal notranslate"><span class="pre">compute_boundary_layer_properties()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series">RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series.compute_naca_4series"><code class="docutils literal notranslate"><span class="pre">compute_naca_4series()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid">RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.convert_airfoil_to_meshgrid.convert_airfoil_to_meshgrid"><code class="docutils literal notranslate"><span class="pre">convert_airfoil_to_meshgrid()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils">RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.generate_interpolated_airfoils.generate_interpolated_airfoils"><code class="docutils literal notranslate"><span class="pre">generate_interpolated_airfoils()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_dat.import_airfoil_dat"><code class="docutils literal notranslate"><span class="pre">import_airfoil_dat()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry.import_airfoil_geometry"><code class="docutils literal notranslate"><span class="pre">import_airfoil_geometry()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars.import_airfoil_polars"><code class="docutils literal notranslate"><span class="pre">import_airfoil_polars()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Geometry.Airfoil">Module contents</a></li>
 </ul>
   </nav></div>
 

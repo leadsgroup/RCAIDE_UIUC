@@ -1,0 +1,46 @@
+.navbar-header-items {
+    justify-content: flex-end; /* Align items to the right */
+}
+.tutorial-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .tutorial-card {
+    flex: 1 1 300px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1rem;
+    transition: box-shadow 0.3s;
+  }
+  
+  .tutorial-card:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .tutorial-card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tutorial-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tutorial-card-description {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .section-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  

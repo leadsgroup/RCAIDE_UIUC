@@ -1,0 +1,1152 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=467ccdcc" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Framework/External_Interfaces/OpenVSP/vsp_fuselage';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Framework/External_Interfaces/OpenVSP/vsp_fuselage.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage</h1><div class="highlight"><pre>
+<span></span><span class="c1">## @ingroup Input_Output-OpenVSP</span>
+<span class="c1"># vsp_fuselage.py</span>
+
+<span class="c1"># Created:  Jun 2018, T. St Francis</span>
+<span class="c1"># Modified: Aug 2018, T. St Francis</span>
+<span class="c1">#           Jan 2020, T. MacDonald</span>
+<span class="c1">#           Jul 2020, E. Botero</span>
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  Imports</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+
+<span class="kn">import</span> <span class="nn">RCAIDE</span>
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span>  
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">vsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">openvsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="c1"># This allows RCAIDE to build without OpenVSP</span>
+        <span class="k">pass</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  vsp read fuselage</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+
+<span class="c1">## @ingroup Input_Output-OpenVSP</span>
+<div class="viewcode-block" id="read_vsp_fuselage">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.External_Interfaces.OpenVSP.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.read_vsp_fuselage">[docs]</a>
+<span class="k">def</span> <span class="nf">read_vsp_fuselage</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">,</span><span class="n">fux_idx</span><span class="p">,</span><span class="n">sym_flag</span><span class="p">,</span> <span class="n">units_type</span><span class="o">=</span><span class="s1">&#39;SI&#39;</span><span class="p">,</span> <span class="n">fineness</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_scaling</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This reads an OpenVSP fuselage geometry and writes it to a RCAIDE fuselage format.</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    1. OpenVSP fuselage is &quot;conventionally shaped&quot; (generally narrow at nose and tail, wider in center). </span>
+<span class="sd">    2. Fuselage is designed in VSP as it appears in real life. That is, the VSP model does not rely on</span>
+<span class="sd">       superficial elements such as canopies, stacks, or additional fuselages to cover up internal lofting oddities.</span>
+<span class="sd">    3. This program will NOT account for multiple geometries comprising the fuselage. For example: a wingbox mounted beneath</span>
+<span class="sd">       is a separate geometry and will NOT be processed.</span>
+<span class="sd">    4. Fuselage origin is located at nose. VSP file origin can be located anywhere, preferably at the forward tip</span>
+<span class="sd">       of the vehicle or in front (to make all X-coordinates of vehicle positive).</span>
+<span class="sd">    5. Written for OpenVSP 3.21.1</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    0. Pre-loaded VSP vehicle in memory, via vsp_read.</span>
+<span class="sd">    1. VSP 10-digit geom ID for fuselage.</span>
+<span class="sd">    2. Units_type set to &#39;SI&#39; (default) or &#39;Imperial&#39;.</span>
+<span class="sd">    3. Boolean for whether or not to compute fuselage finenesses (default = True).</span>
+<span class="sd">    4. Boolean for whether or not to use the scaling from OpenVSP (default = True).</span>
+
+<span class="sd">    Outputs:</span>
+
+<span class="sd">    Writes RCAIDE fuselage, with these geometries:           (all defaults are SI, but user may specify Imperial)</span>
+
+<span class="sd">    	Fuselages.Fuselage.			</span>
+<span class="sd">    		origin                                  [m] in all three dimensions</span>
+<span class="sd">    		width                                   [m]</span>
+<span class="sd">    		lengths.</span>
+<span class="sd">    		  total                                 [m]</span>
+<span class="sd">    		  nose                                  [m]</span>
+<span class="sd">    		  tail                                  [m]</span>
+<span class="sd">    		heights.</span>
+<span class="sd">    		  maximum                               [m]</span>
+<span class="sd">    		  at_quarter_length                     [m]</span>
+<span class="sd">    		  at_three_quarters_length              [m]</span>
+<span class="sd">    		effective_diameter                      [m]</span>
+<span class="sd">    		fineness.nose                           [-] ratio of nose section length to fuselage effective diameter</span>
+<span class="sd">    		fineness.tail                           [-] ratio of tail section length to fuselage effective diameter</span>
+<span class="sd">    		areas.wetted                            [m^2]</span>
+<span class="sd">    		tag                                     &lt;string&gt;</span>
+<span class="sd">    		segment[].   (segments are in ordered container and callable by number)</span>
+<span class="sd">    		  vsp.shape                               [point,circle,round_rect,general_fuse,fuse_file]</span>
+<span class="sd">    		  vsp.xsec_id                             &lt;10 digit string&gt;</span>
+<span class="sd">    		  percent_x_location</span>
+<span class="sd">    		  percent_z_location</span>
+<span class="sd">    		  height</span>
+<span class="sd">    		  width</span>
+<span class="sd">    		  length</span>
+<span class="sd">    		  effective_diameter</span>
+<span class="sd">    		  tag</span>
+<span class="sd">    		vsp.xsec_num                              &lt;integer of fuselage segment quantity&gt;</span>
+<span class="sd">    		vsp.xsec_surf_id                          &lt;10 digit string&gt;</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>  	
+    <span class="n">fuselage</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">Fuselages</span><span class="o">.</span><span class="n">Fuselage</span><span class="p">()</span>	
+
+    <span class="k">if</span> <span class="n">units_type</span> <span class="o">==</span> <span class="s1">&#39;SI&#39;</span><span class="p">:</span>
+        <span class="n">units_factor</span> <span class="o">=</span> <span class="n">Units</span><span class="o">.</span><span class="n">meter</span> <span class="o">*</span> <span class="mf">1.</span>
+    <span class="k">elif</span> <span class="n">units_type</span> <span class="o">==</span> <span class="s1">&#39;imperial&#39;</span><span class="p">:</span>
+        <span class="n">units_factor</span> <span class="o">=</span> <span class="n">Units</span><span class="o">.</span><span class="n">foot</span> <span class="o">*</span> <span class="mf">1.</span>
+    <span class="k">elif</span> <span class="n">units_type</span> <span class="o">==</span> <span class="s1">&#39;inches&#39;</span><span class="p">:</span>
+        <span class="n">units_factor</span> <span class="o">=</span> <span class="n">Units</span><span class="o">.</span><span class="n">inch</span> <span class="o">*</span> <span class="mf">1.</span>	 
+     
+    <span class="k">if</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetGeomName</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">):</span>
+        <span class="n">fuselage</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetGeomName</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">fux_idx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">fuselage</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;FuselageGeom&#39;</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">fux_idx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>	
+        
+    <span class="k">if</span> <span class="n">use_scaling</span><span class="p">:</span>
+        <span class="n">scaling</span>       <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">,</span> <span class="s1">&#39;Scale&#39;</span><span class="p">,</span> <span class="s1">&#39;XForm&#39;</span><span class="p">)</span>  
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">scaling</span>       <span class="o">=</span> <span class="mf">1.</span>
+    <span class="n">units_factor</span>      <span class="o">=</span> <span class="n">units_factor</span><span class="o">*</span><span class="n">scaling</span>
+
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">,</span> <span class="s1">&#39;X_Location&#39;</span><span class="p">,</span> <span class="s1">&#39;XForm&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">units_factor</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">,</span> <span class="s1">&#39;Y_Location&#39;</span><span class="p">,</span> <span class="s1">&#39;XForm&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">units_factor</span><span class="o">*</span><span class="n">sym_flag</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">,</span> <span class="s1">&#39;Z_Location&#39;</span><span class="p">,</span> <span class="s1">&#39;XForm&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">units_factor</span>
+
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">total</span>         <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Design&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">units_factor</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_surf_id</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecSurf</span><span class="p">(</span><span class="n">fuselage_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 			        <span class="c1"># There is only one XSecSurf in geom.</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_num</span>     <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetNumXSec</span><span class="p">(</span><span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_surf_id</span><span class="p">)</span> 		<span class="c1"># Number of xsecs in fuselage.	 </span>
+
+        
+    <span class="n">x_locs</span>    <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">heights</span>   <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">widths</span>    <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">eff_diams</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">lengths</span>   <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># -----------------</span>
+    <span class="c1"># Fuselage segments</span>
+    <span class="c1"># -----------------</span>
+
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_num</span><span class="p">):</span> 
+        <span class="c1"># Create the segment</span>
+        <span class="n">x_sec</span>                     <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSec</span><span class="p">(</span><span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_surf_id</span><span class="p">,</span> <span class="n">ii</span><span class="p">)</span> <span class="c1"># VSP XSec ID.</span>
+        <span class="n">segment</span>                   <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">Fuselages</span><span class="o">.</span><span class="n">Segment</span><span class="p">()</span>
+        <span class="n">segment</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_id</span>  <span class="o">=</span> <span class="n">x_sec</span> 
+        <span class="n">segment</span><span class="o">.</span><span class="n">tag</span>               <span class="o">=</span> <span class="s1">&#39;segment_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+
+        <span class="c1"># Pull out Parms that will be needed</span>
+        <span class="n">X_Loc_P</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecParm</span><span class="p">(</span><span class="n">x_sec</span><span class="p">,</span> <span class="s1">&#39;XLocPercent&#39;</span><span class="p">)</span>
+        <span class="n">Z_Loc_P</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecParm</span><span class="p">(</span><span class="n">x_sec</span><span class="p">,</span> <span class="s1">&#39;ZLocPercent&#39;</span><span class="p">)</span>
+
+        <span class="n">segment</span><span class="o">.</span><span class="n">percent_x_location</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">X_Loc_P</span><span class="p">)</span> <span class="c1"># Along fuselage length.</span>
+        <span class="n">segment</span><span class="o">.</span><span class="n">percent_z_location</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">Z_Loc_P</span> <span class="p">)</span> <span class="c1"># Vertical deviation of fuselage center.</span>
+        <span class="n">segment</span><span class="o">.</span><span class="n">height</span>             <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecHeight</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">units_factor</span>
+        <span class="n">segment</span><span class="o">.</span><span class="n">width</span>              <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecWidth</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_id</span><span class="p">)</span> <span class="o">*</span> <span class="n">units_factor</span>
+        <span class="n">segment</span><span class="o">.</span><span class="n">effective_diameter</span> <span class="o">=</span> <span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">height</span><span class="o">+</span><span class="n">segment</span><span class="o">.</span><span class="n">width</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span> 
+
+        <span class="n">x_locs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">percent_x_location</span><span class="p">)</span>	 <span class="c1"># Save into arrays for later computation.</span>
+        <span class="n">heights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">eff_diams</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">effective_diameter</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ii</span> <span class="o">!=</span> <span class="p">(</span><span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_num</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># Segment length: stored as length since previous segment. (last segment will have length 0.0.)</span>
+            <span class="n">next_xsec</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSec</span><span class="p">(</span><span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_surf_id</span><span class="p">,</span> <span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">X_Loc_P_p</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecParm</span><span class="p">(</span><span class="n">next_xsec</span><span class="p">,</span> <span class="s1">&#39;XLocPercent&#39;</span><span class="p">)</span>
+            <span class="n">percent_x_loc_p1</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">X_Loc_P_p</span><span class="p">)</span> 
+            <span class="n">segment</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">total</span><span class="o">*</span><span class="p">(</span><span class="n">percent_x_loc_p1</span> <span class="o">-</span> <span class="n">segment</span><span class="o">.</span><span class="n">percent_x_location</span><span class="p">)</span> <span class="o">*</span> <span class="n">units_factor</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">segment</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+
+        <span class="n">shape</span>	   <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecShape</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_id</span><span class="p">)</span>
+        <span class="n">shape_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;point&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39;circle&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="s1">&#39;ellipse&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="s1">&#39;super ellipse&#39;</span><span class="p">,</span><span class="mi">4</span><span class="p">:</span><span class="s1">&#39;rounded rectangle&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">:</span><span class="s1">&#39;general fuse&#39;</span><span class="p">,</span><span class="mi">6</span><span class="p">:</span><span class="s1">&#39;fuse file&#39;</span><span class="p">}</span>
+        <span class="n">segment</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape_dict</span><span class="p">[</span><span class="n">shape</span><span class="p">]</span>	
+
+        <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
+
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">at_quarter_length</span>          <span class="o">=</span> <span class="n">get_fuselage_height</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span> <span class="mf">.25</span><span class="p">)</span>  <span class="c1"># Calls get_fuselage_height function (below).</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">at_three_quarters_length</span>   <span class="o">=</span> <span class="n">get_fuselage_height</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span> <span class="mf">.75</span><span class="p">)</span> 
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">at_wing_root_quarter_chord</span> <span class="o">=</span> <span class="n">get_fuselage_height</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span> <span class="mf">.4</span><span class="p">)</span> 
+
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">maximum</span>    <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span>          <span class="c1"># Max segment height.	</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">width</span>              <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">widths</span><span class="p">)</span>           <span class="c1"># Max segment width.</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">effective_diameter</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">eff_diams</span><span class="p">)</span>        <span class="c1"># Max segment effective diam.</span>
+
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">front_projected</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">((</span><span class="n">fuselage</span><span class="o">.</span><span class="n">effective_diameter</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="n">eff_diam_gradients_fwd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eff_diams</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eff_diams</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>		<span class="c1"># Compute gradients of segment effective diameters.</span>
+    <span class="n">eff_diam_gradients_fwd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">eff_diam_gradients_fwd</span><span class="p">,</span> <span class="n">lengths</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">fuselage</span> <span class="o">=</span> <span class="n">compute_fuselage_fineness</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span> <span class="n">x_locs</span><span class="p">,</span> <span class="n">eff_diams</span><span class="p">,</span> <span class="n">eff_diam_gradients_fwd</span><span class="p">)</span>	
+
+    <span class="k">return</span> <span class="n">fuselage</span></div>
+
+
+
+<span class="c1">## @ingroup Input_Output-OpenVSP</span>
+<div class="viewcode-block" id="write_vsp_fuselage">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.External_Interfaces.OpenVSP.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.write_vsp_fuselage">[docs]</a>
+<span class="k">def</span> <span class="nf">write_vsp_fuselage</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span><span class="n">area_tags</span><span class="p">,</span> <span class="n">main_wing</span><span class="p">,</span> <span class="n">fuel_tank_set_ind</span><span class="p">,</span> <span class="n">OML_set_ind</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This writes a fuselage into OpenVSP format.</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    fuselage</span>
+<span class="sd">      width                                   [m]</span>
+<span class="sd">      lengths.total                           [m]</span>
+<span class="sd">      heights.</span>
+<span class="sd">        maximum                               [m]</span>
+<span class="sd">        at_quarter_length                     [m]</span>
+<span class="sd">        at_wing_root_quarter_chord            [m]</span>
+<span class="sd">        at_three_quarters_length              [m]</span>
+<span class="sd">      effective_diameter                      [m]</span>
+<span class="sd">      fineness.nose                           [-] ratio of nose section length to fuselage width</span>
+<span class="sd">      fineness.tail                           [-] ratio of tail section length to fuselage width</span>
+<span class="sd">      tag                                     &lt;string&gt;</span>
+<span class="sd">      OpenVSP_values.  (optional)</span>
+<span class="sd">        nose.top.angle                        [degrees]</span>
+<span class="sd">        nose.top.strength                     [-] this determines how much the specified angle influences that shape</span>
+<span class="sd">        nose.side.angle                       [degrees]</span>
+<span class="sd">        nose.side.strength                    [-]</span>
+<span class="sd">        nose.TB_Sym                           &lt;boolean&gt; determines if top angle is mirrored on bottom</span>
+<span class="sd">        nose.z_pos                            [-] z position of the nose as a percentage of fuselage length (.1 is 10%)</span>
+<span class="sd">        tail.top.angle                        [degrees]</span>
+<span class="sd">        tail.top.strength                     [-]</span>
+<span class="sd">        tail.z_pos (optional, 0.02 default)   [-] z position of the tail as a percentage of fuselage length (.1 is 10%)</span>
+<span class="sd">      Segments. (optional)</span>
+<span class="sd">        width                                 [m]</span>
+<span class="sd">        height                                [m]</span>
+<span class="sd">        percent_x_location                    [-] .1 is 10% length</span>
+<span class="sd">        percent_z_location                    [-] .1 is 10% length</span>
+<span class="sd">    area_tags                                 &lt;dict&gt; used to keep track of all tags needed in wetted area computation           </span>
+<span class="sd">    main_wing.origin                          [m]</span>
+<span class="sd">    main_wing.chords.root                     [m]</span>
+<span class="sd">    fuel_tank_set_index                       &lt;int&gt; OpenVSP object set containing the fuel tanks    </span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    Operates on the active OpenVSP model, no direct output</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>     
+
+    <span class="n">num_segs</span>           <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">)</span>
+    <span class="n">length</span>             <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">total</span>
+    <span class="n">fuse_x</span>             <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    
+    <span class="n">fuse_y</span>             <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">fuse_z</span>             <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">fuse_x_rotation</span>    <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">x_rotation</span>   
+    <span class="n">fuse_y_rotation</span>    <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">y_rotation</span>
+    <span class="n">fuse_z_rotation</span>    <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">z_rotation</span>    
+    <span class="k">if</span> <span class="n">num_segs</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># RCAIDE default fuselage shaping</span>
+
+        <span class="n">width</span>    <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">width</span>
+        <span class="n">hmax</span>     <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">maximum</span>
+        <span class="n">height1</span>  <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">at_quarter_length</span>
+        <span class="n">height2</span>  <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">at_wing_root_quarter_chord</span> 
+        <span class="n">height3</span>  <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">heights</span><span class="o">.</span><span class="n">at_three_quarters_length</span>
+        <span class="n">effdia</span>   <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">effective_diameter</span>
+        <span class="n">n_fine</span>   <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">fineness</span><span class="o">.</span><span class="n">nose</span> 
+        <span class="n">t_fine</span>   <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">fineness</span><span class="o">.</span><span class="n">tail</span>  
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">main_wing</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>                
+                <span class="n">w_origin</span> <span class="o">=</span> <span class="n">main_wing</span><span class="o">.</span><span class="n">origin</span>
+                <span class="n">w_c_4</span>    <span class="o">=</span> <span class="n">main_wing</span><span class="o">.</span><span class="n">chords</span><span class="o">.</span><span class="n">root</span><span class="o">/</span><span class="mf">4.</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">w_origin</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">length</span>
+                <span class="n">w_c_4</span>    <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">length</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Main wing not detected. Fuselage must have specified sections in this configuration.&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Figure out the location x location of each section, 3 sections, end of nose, wing origin, and start of tail</span>
+
+        <span class="n">x1</span> <span class="o">=</span> <span class="n">n_fine</span><span class="o">*</span><span class="n">width</span><span class="o">/</span><span class="n">length</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="n">w_origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">w_c_4</span><span class="p">)</span><span class="o">/</span><span class="n">length</span>
+        <span class="n">x3</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">t_fine</span><span class="o">*</span><span class="n">width</span><span class="o">/</span><span class="n">length</span>
+
+        <span class="n">end_ind</span> <span class="o">=</span> <span class="mi">4</span>
+
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># Fuselage shaping based on sections</span>
+        <span class="n">widths</span>  <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">heights</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">x_poses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">z_poses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">segs</span> <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span>
+        <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="n">segs</span><span class="p">:</span>
+            <span class="n">widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seg</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
+            <span class="n">heights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seg</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+            <span class="n">x_poses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seg</span><span class="o">.</span><span class="n">percent_x_location</span><span class="p">)</span>
+            <span class="n">z_poses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seg</span><span class="o">.</span><span class="n">percent_z_location</span><span class="p">)</span>
+
+        <span class="n">end_ind</span> <span class="o">=</span> <span class="n">num_segs</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">fuse_id</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">AddGeom</span><span class="p">(</span><span class="s2">&quot;FUSELAGE&quot;</span><span class="p">)</span> 
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetGeomName</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+    <span class="n">area_tags</span><span class="p">[</span><span class="n">fuselage</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fuselages&#39;</span><span class="p">,</span><span class="n">fuselage</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
+
+    <span class="n">tail_z_pos</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="c1"># default value</span>
+
+    <span class="c1"># set fuselage relative location and rotation</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span> <span class="n">fuse_id</span><span class="p">,</span><span class="s1">&#39;X_Rel_Rotation&#39;</span><span class="p">,</span><span class="s1">&#39;XForm&#39;</span><span class="p">,</span><span class="n">fuse_x_rotation</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span> <span class="n">fuse_id</span><span class="p">,</span><span class="s1">&#39;Y_Rel_Rotation&#39;</span><span class="p">,</span><span class="s1">&#39;XForm&#39;</span><span class="p">,</span><span class="n">fuse_y_rotation</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span> <span class="n">fuse_id</span><span class="p">,</span><span class="s1">&#39;Z_Rel_Rotation&#39;</span><span class="p">,</span><span class="s1">&#39;XForm&#39;</span><span class="p">,</span><span class="n">fuse_z_rotation</span><span class="p">)</span>
+
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span> <span class="n">fuse_id</span><span class="p">,</span><span class="s1">&#39;X_Rel_Location&#39;</span><span class="p">,</span><span class="s1">&#39;XForm&#39;</span><span class="p">,</span><span class="n">fuse_x</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span> <span class="n">fuse_id</span><span class="p">,</span><span class="s1">&#39;Y_Rel_Location&#39;</span><span class="p">,</span><span class="s1">&#39;XForm&#39;</span><span class="p">,</span><span class="n">fuse_y</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span> <span class="n">fuse_id</span><span class="p">,</span><span class="s1">&#39;Z_Rel_Location&#39;</span><span class="p">,</span><span class="s1">&#39;XForm&#39;</span><span class="p">,</span><span class="n">fuse_z</span><span class="p">)</span>
+
+
+    <span class="k">if</span> <span class="s1">&#39;OpenVSP_values&#39;</span> <span class="ow">in</span> <span class="n">fuselage</span><span class="p">:</span>        
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">OpenVSP_values</span>
+
+        <span class="c1"># for wave drag testing</span>
+        <span class="n">fuselage</span><span class="o">.</span><span class="n">OpenVSP_ID</span> <span class="o">=</span> <span class="n">fuse_id</span>
+
+        <span class="c1"># Nose</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopLAngle&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">strength</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;RightLAngle&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">side</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;RightLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">side</span><span class="o">.</span><span class="n">strength</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TBSym&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">TB_Sym</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;ZLocPercent&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">z_pos</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">TB_Sym</span><span class="p">:</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;BottomLAngle&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;BottomLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_0&quot;</span><span class="p">,</span><span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">strength</span><span class="p">)</span>           
+
+        <span class="c1"># Tail</span>
+        <span class="c1"># Below can be enabled if AllSym (below) is removed</span>
+        <span class="c1">#vsp.SetParmVal(fuse_id,&quot;RightLAngle&quot;,&quot;XSec_4&quot;,vals.tail.side.angle)</span>
+        <span class="c1">#vsp.SetParmVal(fuse_id,&quot;RightLStrength&quot;,&quot;XSec_4&quot;,vals.tail.side.strength)</span>
+        <span class="c1">#vsp.SetParmVal(fuse_id,&quot;TBSym&quot;,&quot;XSec_4&quot;,vals.tail.TB_Sym)</span>
+        <span class="c1">#vsp.SetParmVal(fuse_id,&quot;BottomLAngle&quot;,&quot;XSec_4&quot;,vals.tail.bottom.angle)</span>
+        <span class="c1">#vsp.SetParmVal(fuse_id,&quot;BottomLStrength&quot;,&quot;XSec_4&quot;,vals.tail.bottom.strength)</span>
+        <span class="k">if</span> <span class="s1">&#39;z_pos&#39;</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="p">:</span>
+            <span class="n">tail_z_pos</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">z_pos</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c1"># use above default</span>
+
+
+    <span class="k">if</span> <span class="n">num_segs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span><span class="s2">&quot;Design&quot;</span><span class="p">,</span><span class="n">length</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;Diameter&quot;</span><span class="p">,</span><span class="s2">&quot;Design&quot;</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_1&quot;</span><span class="p">,</span><span class="n">x1</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_2&quot;</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_3&quot;</span><span class="p">,</span><span class="n">x3</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;ZLocPercent&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_4&quot;</span><span class="p">,</span><span class="n">tail_z_pos</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Width&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_1&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Width&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_2&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Width&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_3&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Height&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_1&quot;</span><span class="p">,</span> <span class="n">height1</span><span class="p">);</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Height&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_2&quot;</span><span class="p">,</span> <span class="n">height2</span><span class="p">);</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Height&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_3&quot;</span><span class="p">,</span> <span class="n">height3</span><span class="p">);</span>  
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># OpenVSP vals do not exist:</span>
+        <span class="n">vals</span>                   <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="n">vals</span><span class="o">.</span><span class="n">nose</span>              <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="n">vals</span><span class="o">.</span><span class="n">tail</span>              <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">top</span>          <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+
+        <span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">z_pos</span>        <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">angle</span>    <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">strength</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="c1">#if len(np.unique(x_poses)) != len(x_poses):</span>
+            <span class="c1">#raise ValueError(&#39;Duplicate fuselage section positions detected.&#39;)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span><span class="s2">&quot;Design&quot;</span><span class="p">,</span><span class="n">length</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">num_segs</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span> <span class="c1"># reduce to only nose and tail</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">CutXSec</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># remove extra default section</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">CutXSec</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># remove extra default section</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">CutXSec</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># remove extra default section</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_segs</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span> <span class="c1"># add back the required number of sections</span>
+                <span class="n">vsp</span><span class="o">.</span><span class="n">InsertXSec</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vsp</span><span class="o">.</span><span class="n">XS_ELLIPSE</span><span class="p">)</span>           
+                <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_segs</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+            <span class="c1"># Bunch sections to allow proper length settings in the next step</span>
+            <span class="c1"># This is necessary because OpenVSP will not move a section past an adjacent section</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mf">1e-6</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">x_poses</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">num_segs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-6</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning: Second fuselage section is too close to the nose. OpenVSP model may not be accurate.&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">num_segs</span><span class="o">-</span><span class="mi">2</span><span class="p">)):</span>
+            <span class="c1"># order is reversed because sections are initially bunched in the front and cannot be extended passed the next</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">x_poses</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;ZLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">z_poses</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Width&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">widths</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Height&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>   
+            <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>             
+            <span class="n">set_section_angles</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">vals</span><span class="o">.</span><span class="n">nose</span><span class="o">.</span><span class="n">z_pos</span><span class="p">,</span> <span class="n">tail_z_pos</span><span class="p">,</span> <span class="n">x_poses</span><span class="p">,</span> <span class="n">z_poses</span><span class="p">,</span> <span class="n">heights</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span><span class="n">length</span><span class="p">,</span><span class="n">end_ind</span><span class="p">,</span><span class="n">fuse_id</span><span class="p">)</span>            
+
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">x_poses</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;ZLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">z_poses</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">end_ind</span><span class="p">),</span><span class="n">x_poses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;ZLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">end_ind</span><span class="p">),</span><span class="n">z_poses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>    
+
+        <span class="c1"># Tail</span>
+        <span class="k">if</span> <span class="n">heights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.</span><span class="p">:</span>
+            <span class="n">stdout</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">cvar</span><span class="o">.</span><span class="n">cstdout</span>
+            <span class="n">errorMgr</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">ErrorMgrSingleton_getInstance</span><span class="p">()</span>
+            <span class="n">errorMgr</span><span class="o">.</span><span class="n">PopErrorAndPrint</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
+
+            <span class="n">pos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">heights</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">InsertXSec</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="n">pos</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vsp</span><span class="o">.</span><span class="n">XS_ELLIPSE</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Width&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="n">widths</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;Ellipse_Height&quot;</span><span class="p">,</span> <span class="s2">&quot;XSecCurve_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="n">heights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span><span class="n">x_poses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;ZLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span><span class="n">z_poses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>              
+
+            <span class="n">xsecsurf</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetXSecSurf</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">ChangeXSecShape</span><span class="p">(</span><span class="n">xsecsurf</span><span class="p">,</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">vsp</span><span class="o">.</span><span class="n">XS_POINT</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>           
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;XLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">x_poses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="s2">&quot;ZLocPercent&quot;</span><span class="p">,</span> <span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">z_poses</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>     
+
+            <span class="c1"># update strengths to make end flat</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopRStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="mf">0.</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;RightRStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="mf">0.</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;BottomRStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="mf">0.</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mf">0.</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;RightLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mf">0.</span><span class="p">)</span>            
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopLAngle&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">end_ind</span><span class="p">),</span><span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">end_ind</span><span class="p">),</span><span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">strength</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;AllSym&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">end_ind</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+
+
+        <span class="k">if</span> <span class="s1">&#39;z_pos&#39;</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="p">:</span>
+            <span class="n">tail_z_pos</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">tail</span><span class="o">.</span><span class="n">z_pos</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span> <span class="c1"># use above default         </span>
+
+    <span class="k">if</span> <span class="s1">&#39;Fuel_Tanks&#39;</span> <span class="ow">in</span> <span class="n">fuselage</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">tank</span> <span class="ow">in</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Fuel_Tanks</span><span class="p">:</span>
+            <span class="n">write_fuselage_conformal_fuel_tank</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="n">tank</span><span class="p">,</span> <span class="n">fuel_tank_set_ind</span><span class="p">)</span>    
+
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetSetFlag</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span> <span class="n">OML_set_ind</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">area_tags</span></div>
+
+
+<span class="c1">## ingroup Input_Output-OpenVSP</span>
+<div class="viewcode-block" id="set_section_angles">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.External_Interfaces.OpenVSP.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.set_section_angles">[docs]</a>
+<span class="k">def</span> <span class="nf">set_section_angles</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">nose_z</span><span class="p">,</span><span class="n">tail_z</span><span class="p">,</span><span class="n">x_poses</span><span class="p">,</span><span class="n">z_poses</span><span class="p">,</span><span class="n">heights</span><span class="p">,</span><span class="n">widths</span><span class="p">,</span><span class="n">length</span><span class="p">,</span><span class="n">end_ind</span><span class="p">,</span><span class="n">fuse_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set fuselage section angles to create a smooth (in the non-technical sense) fuselage shape.</span>
+<span class="sd">    Note that i of 0 corresponds to the first section that is not the end point.</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    May fail to give reasonable angles for very irregularly shaped fuselages</span>
+<span class="sd">    Does not work on the nose and tail sections.</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs:  </span>
+<span class="sd">    nose_z   [-] # 0.1 is 10% of the fuselage length</span>
+<span class="sd">    widths   np.array of [m]</span>
+<span class="sd">    heights  np.array of [m]</span>
+<span class="sd">    tail_z   [-] # 0.1 is 10% of the fuselage length</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    Operates on the active OpenVSP model, no direct output</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="n">w0</span> <span class="o">=</span> <span class="n">widths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">h0</span> <span class="o">=</span> <span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x_poses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">z0</span> <span class="o">=</span> <span class="n">z_poses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>   
+    <span class="n">w2</span> <span class="o">=</span> <span class="n">widths</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">h2</span> <span class="o">=</span> <span class="n">heights</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x_poses</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">z2</span> <span class="o">=</span> <span class="n">z_poses</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">length</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x2</span><span class="o">*</span><span class="n">length</span>
+    <span class="n">z0</span> <span class="o">=</span> <span class="n">z0</span><span class="o">*</span><span class="n">length</span>
+    <span class="n">z2</span> <span class="o">=</span> <span class="n">z2</span><span class="o">*</span><span class="n">length</span>
+
+    <span class="n">top_z_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">h2</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">z2</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">h0</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="n">z0</span><span class="p">)</span>
+    <span class="n">bot_z_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">z2</span><span class="o">-</span><span class="n">h2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">z0</span><span class="o">-</span><span class="n">h0</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">y_diff</span>     <span class="o">=</span> <span class="n">w2</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">w0</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">x_diff</span>     <span class="o">=</span> <span class="n">x2</span><span class="o">-</span><span class="n">x0</span>
+
+    <span class="n">top_angle</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">top_z_diff</span><span class="o">/</span><span class="n">x_diff</span><span class="p">)</span><span class="o">/</span><span class="n">Units</span><span class="o">.</span><span class="n">deg</span>
+    <span class="n">bot_angle</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="o">-</span><span class="n">bot_z_diff</span><span class="o">/</span><span class="n">x_diff</span><span class="p">)</span><span class="o">/</span><span class="n">Units</span><span class="o">.</span><span class="n">deg</span>
+    <span class="n">side_angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">y_diff</span><span class="o">/</span><span class="n">x_diff</span><span class="p">)</span><span class="o">/</span><span class="n">Units</span><span class="o">.</span><span class="n">deg</span>
+
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TBSym&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopLAngle&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">top_angle</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;TopLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;BottomLAngle&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">bot_angle</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;BottomLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mf">0.75</span><span class="p">)</span>   
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;RightLAngle&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">side_angle</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="s2">&quot;RightLStrength&quot;</span><span class="p">,</span><span class="s2">&quot;XSec_&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mf">0.75</span><span class="p">)</span>   
+
+    <span class="k">return</span>  </div>
+
+
+<div class="viewcode-block" id="compute_fuselage_fineness">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.External_Interfaces.OpenVSP.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.compute_fuselage_fineness">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_fuselage_fineness</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span> <span class="n">x_locs</span><span class="p">,</span> <span class="n">eff_diams</span><span class="p">,</span> <span class="n">eff_diam_gradients_fwd</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This computes fuselage finenesses for nose and tail.</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    Written for OpenVSP 3.16.1</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    0. Pre-loaded VSP vehicle in memory, via vsp_read.</span>
+<span class="sd">    1. RCAIDE fuselage [object].</span>
+<span class="sd">    2. Array of x_locations of fuselage segments. (length = L)</span>
+<span class="sd">    3. Array of effective diameters of fuselage segments. (length = L)</span>
+<span class="sd">    4. Array of effective diameter gradients from nose to tail. (length = L-1)</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    Writes fineness values to RCAIDE fuselage, returns fuselage.</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span> 	
+    <span class="c1"># Compute nose fineness.    </span>
+    <span class="n">x_locs</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_locs</span><span class="p">)</span>					<span class="c1"># Make numpy arrays.</span>
+    <span class="n">eff_diams</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">eff_diams</span><span class="p">)</span>
+    <span class="n">min_val</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">eff_diam_gradients_fwd</span><span class="p">[</span><span class="n">x_locs</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">&lt;=</span><span class="mf">0.5</span><span class="p">])</span>	<span class="c1"># Computes smallest eff_diam gradient value in front 50% of fuselage.</span>
+    <span class="n">x_loc</span>     <span class="o">=</span> <span class="n">x_locs</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">eff_diam_gradients_fwd</span><span class="o">==</span><span class="n">min_val</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>		<span class="c1"># Determines x-location of the first instance of that value (if gradient=0, gets frontmost x-loc).</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">nose</span>  <span class="o">=</span> <span class="p">(</span><span class="n">x_loc</span><span class="o">-</span><span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">percent_x_location</span><span class="p">)</span><span class="o">*</span><span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">total</span>	<span class="c1"># Subtracts first segment x-loc in case not at global origin.</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">fineness</span><span class="o">.</span><span class="n">nose</span> <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">nose</span><span class="o">/</span><span class="p">(</span><span class="n">eff_diams</span><span class="p">[</span><span class="n">x_locs</span><span class="o">==</span><span class="n">x_loc</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Compute tail fineness.</span>
+    <span class="n">x_locs_tail</span>		    <span class="o">=</span> <span class="n">x_locs</span><span class="o">&gt;=</span><span class="mf">0.5</span>						<span class="c1"># Searches aft 50% of fuselage.</span>
+    <span class="n">eff_diam_gradients_fwd_tail</span> <span class="o">=</span> <span class="n">eff_diam_gradients_fwd</span><span class="p">[</span><span class="n">x_locs_tail</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>			<span class="c1"># Smaller array of tail gradients.</span>
+    <span class="n">min_val</span> 		    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="o">-</span><span class="n">eff_diam_gradients_fwd_tail</span><span class="p">)</span>			<span class="c1"># Computes min gradient, where fuselage tapers (minus sign makes positive).</span>
+    <span class="n">x_loc</span> <span class="o">=</span> <span class="n">x_locs</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span><span class="o">-</span><span class="n">eff_diam_gradients_fwd</span><span class="o">==</span><span class="n">min_val</span><span class="p">])][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>			<span class="c1"># Saves aft-most value (useful for straight fuselage with multiple zero gradients.)</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">tail</span>       <span class="o">=</span> <span class="p">(</span><span class="mf">1.</span><span class="o">-</span><span class="n">x_loc</span><span class="p">)</span><span class="o">*</span><span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">total</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">fineness</span><span class="o">.</span><span class="n">tail</span>      <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">lengths</span><span class="o">.</span><span class="n">tail</span><span class="o">/</span><span class="p">(</span><span class="n">eff_diams</span><span class="p">[</span><span class="n">x_locs</span><span class="o">==</span><span class="n">x_loc</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>	<span class="c1"># Minus sign converts tail fineness to positive value.</span>
+
+    <span class="k">return</span> <span class="n">fuselage</span></div>
+
+
+<div class="viewcode-block" id="get_fuselage_height">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.External_Interfaces.OpenVSP.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.get_fuselage_height">[docs]</a>
+<span class="k">def</span> <span class="nf">get_fuselage_height</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This linearly estimates fuselage height at any percentage point (0,100) along fuselage length.</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    Written for OpenVSP 3.16.1</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    0. Pre-loaded VSP vehicle in memory, via vsp_read.</span>
+<span class="sd">    1. RCAIDE fuselage [object], containing fuselage.vsp_data.xsec_num in its data structure.</span>
+<span class="sd">    2. Fuselage percentage point [float].</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    height [m]</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_num</span><span class="p">):</span>		<span class="c1"># Begin at second section, working toward tail.</span>
+        <span class="k">if</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">[</span><span class="n">jj</span><span class="p">]</span><span class="o">.</span><span class="n">percent_x_location</span><span class="o">&gt;=</span><span class="n">location</span> <span class="ow">and</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">[</span><span class="n">jj</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">percent_x_location</span><span class="o">&lt;</span><span class="n">location</span><span class="p">:</span>  
+            <span class="c1"># Find two sections on either side (or including) the desired fuselage length percentage.</span>
+            <span class="n">a</span>        <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">[</span><span class="n">jj</span><span class="p">]</span><span class="o">.</span><span class="n">percent_x_location</span>							
+            <span class="n">b</span>        <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">[</span><span class="n">jj</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">percent_x_location</span>
+            <span class="n">a_height</span> <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">[</span><span class="n">jj</span><span class="p">]</span><span class="o">.</span><span class="n">height</span>		<span class="c1"># Linear approximation.</span>
+            <span class="n">b_height</span> <span class="o">=</span> <span class="n">fuselage</span><span class="o">.</span><span class="n">Segments</span><span class="p">[</span><span class="n">jj</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">height</span>
+            <span class="n">slope</span>    <span class="o">=</span> <span class="p">(</span><span class="n">a_height</span> <span class="o">-</span> <span class="n">b_height</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
+            <span class="n">height</span>   <span class="o">=</span> <span class="p">((</span><span class="n">location</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">slope</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">b_height</span><span class="p">)</span>	
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">height</span></div>
+
+
+<span class="c1">## @ingroup Input_Output-OpenVSP</span>
+<div class="viewcode-block" id="find_fuse_u_coordinate">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.External_Interfaces.OpenVSP.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.find_fuse_u_coordinate">[docs]</a>
+<span class="k">def</span> <span class="nf">find_fuse_u_coordinate</span><span class="p">(</span><span class="n">x_target</span><span class="p">,</span><span class="n">fuse_id</span><span class="p">,</span><span class="n">fuel_tank_tag</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determines the u coordinate of an OpenVSP fuselage that matches an x coordinate</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    Fuselage is aligned with the x axis</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    x_target      [m]</span>
+<span class="sd">    fuse_id       &lt;str&gt;</span>
+<span class="sd">    fuel_tank_tag &lt;str&gt;</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    u_current     [-] u coordinate for the requests x position</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>     
+    <span class="n">tol</span>   <span class="o">=</span> <span class="mf">1e-3</span>
+    <span class="n">diff</span>  <span class="o">=</span> <span class="mi">1000</span>    
+    <span class="n">u_min</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">u_max</span> <span class="o">=</span> <span class="mi">1</span>    
+    <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="n">u_current</span> <span class="o">=</span> <span class="p">(</span><span class="n">u_max</span><span class="o">+</span><span class="n">u_min</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+        <span class="n">probe_id</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">AddProbe</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">u_current</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">fuel_tank_tag</span><span class="o">+</span><span class="s1">&#39;_probe&#39;</span><span class="p">)</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+        <span class="n">x_id</span>  <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">FindParm</span><span class="p">(</span><span class="n">probe_id</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Measure&#39;</span><span class="p">)</span>
+        <span class="n">x_pos</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">x_id</span><span class="p">)</span> 
+        <span class="n">diff</span> <span class="o">=</span> <span class="n">x_target</span><span class="o">-</span><span class="n">x_pos</span>
+        <span class="k">if</span> <span class="n">diff</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">u_min</span> <span class="o">=</span> <span class="n">u_current</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">u_max</span> <span class="o">=</span> <span class="n">u_current</span>
+        <span class="n">vsp</span><span class="o">.</span><span class="n">DelProbe</span><span class="p">(</span><span class="n">probe_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">u_current</span></div>
+
+
+
+<span class="c1">## @ingroup Input_Output-OpenVSP</span>
+<div class="viewcode-block" id="write_fuselage_conformal_fuel_tank">
+<a class="viewcode-back" href="../../../../../RCAIDE.Framework.External_Interfaces.OpenVSP.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.write_fuselage_conformal_fuel_tank">[docs]</a>
+<span class="k">def</span> <span class="nf">write_fuselage_conformal_fuel_tank</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="n">fuel_tank</span><span class="p">,</span><span class="n">fuel_tank_set_ind</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This writes a conformal fuel tank in a fuselage.</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    Fuselage is aligned with the x axis</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    N/A</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    fuse_id                                     &lt;str&gt;</span>
+<span class="sd">    fuel_tank.</span>
+<span class="sd">      inward_offset                             [m]</span>
+<span class="sd">      start_length_percent                      [-] .1 is 10%</span>
+<span class="sd">      end_length_percent                        [-]</span>
+<span class="sd">      fuel_type.density                         [kg/m^3]</span>
+<span class="sd">    fuel_tank_set_ind                           &lt;int&gt;</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    Operates on the active OpenVSP model, no direct output</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>        
+
+
+    <span class="c1">#stdout = vsp.cvar.cstdout</span>
+    <span class="c1">#errorMgr = vsp.ErrorMgrSingleton_getInstance()</span>
+    <span class="c1">#errorMgr.PopErrorAndPrint(stdout)</span>
+
+    <span class="c1"># Unpack</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">offset</span>         <span class="o">=</span> <span class="n">fuel_tank</span><span class="o">.</span><span class="n">inward_offset</span>
+        <span class="n">len_trim_max</span>   <span class="o">=</span> <span class="n">fuel_tank</span><span class="o">.</span><span class="n">end_length_percent</span>
+        <span class="n">len_trim_min</span>   <span class="o">=</span> <span class="n">fuel_tank</span><span class="o">.</span><span class="n">start_length_percent</span>  
+        <span class="n">density</span>        <span class="o">=</span> <span class="n">fuel_tank</span><span class="o">.</span><span class="n">fuel_type</span><span class="o">.</span><span class="n">density</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fuel tank does not contain parameters needed for OpenVSP geometry. Tag: &#39;</span><span class="o">+</span><span class="n">fuel_tank</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">return</span>        
+
+    <span class="n">tank_id</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">AddGeom</span><span class="p">(</span><span class="s1">&#39;CONFORMAL&#39;</span><span class="p">,</span><span class="n">fuse_id</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetGeomName</span><span class="p">(</span><span class="n">tank_id</span><span class="p">,</span> <span class="n">fuel_tank</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>    
+
+    <span class="c1"># Search for proper x position</span>
+    <span class="c1"># Get min x</span>
+    <span class="n">probe_id</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">AddProbe</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">fuel_tank</span><span class="o">.</span><span class="n">tag</span><span class="o">+</span><span class="s1">&#39;_probe&#39;</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+    <span class="n">x_id</span>  <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">FindParm</span><span class="p">(</span><span class="n">probe_id</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Measure&#39;</span><span class="p">)</span>
+    <span class="n">x_pos</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">x_id</span><span class="p">)</span>    
+    <span class="n">fuse_x_min</span> <span class="o">=</span> <span class="n">x_pos</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">DelProbe</span><span class="p">(</span><span class="n">probe_id</span><span class="p">)</span>
+    <span class="c1"># Get min x</span>
+    <span class="n">probe_id</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">AddProbe</span><span class="p">(</span><span class="n">fuse_id</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">fuel_tank</span><span class="o">.</span><span class="n">tag</span><span class="o">+</span><span class="s1">&#39;_probe&#39;</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+    <span class="n">x_id</span>  <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">FindParm</span><span class="p">(</span><span class="n">probe_id</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Measure&#39;</span><span class="p">)</span>
+    <span class="n">x_pos</span> <span class="o">=</span> <span class="n">vsp</span><span class="o">.</span><span class="n">GetParmVal</span><span class="p">(</span><span class="n">x_id</span><span class="p">)</span>    
+    <span class="n">fuse_x_max</span> <span class="o">=</span> <span class="n">x_pos</span> 
+    <span class="n">vsp</span><span class="o">.</span><span class="n">DelProbe</span><span class="p">(</span><span class="n">probe_id</span><span class="p">)</span>
+    <span class="c1"># Search for u values</span>
+    <span class="n">x_target_start</span>  <span class="o">=</span> <span class="p">(</span><span class="n">fuse_x_max</span><span class="o">-</span><span class="n">fuse_x_min</span><span class="p">)</span><span class="o">*</span><span class="n">fuel_tank</span><span class="o">.</span><span class="n">start_length_percent</span>
+    <span class="n">x_target_end</span>    <span class="o">=</span> <span class="p">(</span><span class="n">fuse_x_max</span><span class="o">-</span><span class="n">fuse_x_min</span><span class="p">)</span><span class="o">*</span><span class="n">fuel_tank</span><span class="o">.</span><span class="n">end_length_percent</span>
+    <span class="n">u_start</span> <span class="o">=</span> <span class="n">find_fuse_u_coordinate</span><span class="p">(</span><span class="n">x_target_start</span><span class="p">,</span> <span class="n">fuse_id</span><span class="p">,</span> <span class="n">fuel_tank</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+    <span class="n">u_end</span>   <span class="o">=</span> <span class="n">find_fuse_u_coordinate</span><span class="p">(</span><span class="n">x_target_end</span><span class="p">,</span> <span class="n">fuse_id</span><span class="p">,</span> <span class="n">fuel_tank</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
+    <span class="c1"># Offset</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">tank_id</span><span class="p">,</span><span class="s1">&#39;Offset&#39;</span><span class="p">,</span><span class="s1">&#39;Design&#39;</span><span class="p">,</span><span class="n">offset</span><span class="p">)</span>      
+
+    <span class="c1"># Fuel tank length bounds</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">tank_id</span><span class="p">,</span><span class="s1">&#39;UTrimFlag&#39;</span><span class="p">,</span><span class="s1">&#39;Design&#39;</span><span class="p">,</span><span class="mf">1.</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">tank_id</span><span class="p">,</span><span class="s1">&#39;UTrimMax&#39;</span><span class="p">,</span><span class="s1">&#39;Design&#39;</span><span class="p">,</span><span class="n">u_end</span><span class="p">)</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">tank_id</span><span class="p">,</span><span class="s1">&#39;UTrimMin&#39;</span><span class="p">,</span><span class="s1">&#39;Design&#39;</span><span class="p">,</span><span class="n">u_start</span><span class="p">)</span>  
+
+    <span class="c1"># Set density</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetParmVal</span><span class="p">(</span><span class="n">tank_id</span><span class="p">,</span><span class="s1">&#39;Density&#39;</span><span class="p">,</span><span class="s1">&#39;Mass_Props&#39;</span><span class="p">,</span><span class="n">density</span><span class="p">)</span>  
+
+    <span class="c1"># Add to the full fuel tank set</span>
+    <span class="n">vsp</span><span class="o">.</span><span class="n">SetSetFlag</span><span class="p">(</span><span class="n">tank_id</span><span class="p">,</span> <span class="n">fuel_tank_set_ind</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

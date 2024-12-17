@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Library.Mission.Segments.Climb package &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>RCAIDE.Library.Mission.Segments.Climb package &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,11 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Mission.Segments.Climb';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Mission.Segments.Climb.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RCAIDE.Library.Mission.Segments.Cruise package" href="RCAIDE.Library.Mission.Segments.Cruise.html" />
-    <link rel="prev" title="RCAIDE.Library.Mission.Segments package" href="RCAIDE.Library.Mission.Segments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +96,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +110,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +135,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +164,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +178,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +192,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +215,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +254,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +283,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +297,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -329,110 +330,118 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.html">RCAIDE package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Core.html">RCAIDE.Framework.Core package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 current active has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
-<li class="toctree-l4 current active"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
+<li class="toctree-l3 current active"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Framework.html">RCAIDE.Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Library.html">RCAIDE.Library</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.load.html">RCAIDE.load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.save.html">RCAIDE.save</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Vehicle.html">RCAIDE.Vehicle</a></li>
 </ul>
 </div>
 </nav></div>
@@ -473,21 +482,6 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">RCAIDE</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.html" class="nav-link">RCAIDE package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.html" class="nav-link">RCAIDE.Library package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Mission.html" class="nav-link">RCAIDE.Library.Mission package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Library.Mission.Segments.html" class="nav-link">RCAIDE.Library.Mission.Segments package</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Mission.Segments.Climb package</span></li>
   </ul>
 </nav>
@@ -510,50 +504,493 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-cas-constant-rate-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-cas-constant-rate-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate">
+<span id="rcaide-library-mission-segments-climb-constant-cas-constant-rate-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_CAS_Constant_Rate.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant CAS airspeed with a constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_rate                                  [meters/second]
+segment.calibrated_air_speed                        [meters/second]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-angle-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-angle-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle">
+<span id="rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-angle-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.initialize_conditions_unpack_unknowns">
+<span class="sig-name descname"><span class="pre">initialize_conditions_unpack_unknowns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Dynamic_Pressure_Constant_Angle.html#initialize_conditions_unpack_unknowns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.initialize_conditions_unpack_unknowns" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constrant dynamic pressure and constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_angle                                 [radians]
+segment.dynamic_pressure                            [pascals]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.energy.throttle              [unitless]
+conditions.frames.body.inertial_rotations   [radians]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.residual_altitude">
+<span class="sig-name descname"><span class="pre">residual_altitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Dynamic_Pressure_Constant_Angle.html#residual_altitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.residual_altitude" title="Link to this definition">#</a></dt>
+<dd><p>Computes the altitude residual</p>
+<p>Assumptions:
+No higher order terms.</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.state.conditions.frames.inertial.total_force_vector   [Newtons]
+segment.state.conditions.frames.inertial.acceleration_vector  [meter/second^2]
+segment.state.conditions.weights.total_mass                   [kilogram]
+segment.state.conditions.freestream.altitude                  [meter]</p>
+<p>Outputs:
+segment.state.residuals.altitude                              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.update_differentials">
+<span class="sig-name descname"><span class="pre">update_differentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Dynamic_Pressure_Constant_Angle.html#update_differentials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.update_differentials" title="Link to this definition">#</a></dt>
+<dd><p>On each iteration creates the differentials and integration functions from knowns about the problem.
+Sets the time at each point. Must return in dimensional time, with t[0] = 0.
+This is different from the common method as it also includes the scaling of operators.</p>
+<blockquote>
+<div><p>Assumptions:
+Works with a segment discretized in vertical position, altitude</p>
+<p>Inputs:
+state.numerics.dimensionless.control_points      [Unitless]
+state.numerics.dimensionless.differentiate       [Unitless]
+state.numerics.dimensionless.integrate           [Unitless]
+state.conditions.frames.inertial.position_vector [meter]
+state.conditions.frames.inertial.velocity_vector [meter/second]</p>
+<p>Outputs:
+state.conditions.frames.inertial.time            [second]</p>
+</div></blockquote>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-rate-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-rate-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate">
+<span id="rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-rate-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Dynamic_Pressure_Constant_Rate.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant dynamic pressure and constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_rate                                  [meters/second]
+segment.dynamic_pressure                            [pascals]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-eas-constant-rate-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-eas-constant-rate-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate">
+<span id="rcaide-library-mission-segments-climb-constant-eas-constant-rate-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_EAS_Constant_Rate.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant true airspeed with a constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_rate                                  [meters/second]
+segment.equivalent_air_speed                        [meters/second]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-mach-constant-angle-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-mach-constant-angle-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle">
+<span id="rcaide-library-mission-segments-climb-constant-mach-constant-angle-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Mach_Constant_Angle.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant Mach number, with a constant angle of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_angle                                 [radians]
+segment.mach_number                                 [Unitless]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.residual_total_forces">
+<span class="sig-name descname"><span class="pre">residual_total_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Mach_Constant_Angle.html#residual_total_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.residual_total_forces" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.update_differentials">
+<span class="sig-name descname"><span class="pre">update_differentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Mach_Constant_Angle.html#update_differentials"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.update_differentials" title="Link to this definition">#</a></dt>
+<dd><p>On each iteration creates the differentials and integration functions from knowns about the problem.
+Sets the time at each point. Must return in dimensional time, with t[0] = 0.
+This is different from the common method as it also includes the scaling of operators.</p>
+<blockquote>
+<div><p>Assumptions:
+Works with a segment discretized in vertical position, altitude</p>
+<p>Inputs:
+state.numerics.dimensionless.control_points      [Unitless]
+state.numerics.dimensionless.differentiate       [Unitless]
+state.numerics.dimensionless.integrate           [Unitless]
+state.conditions.frames.inertial.position_vector [meter]
+state.conditions.frames.inertial.velocity_vector [meter/second]</p>
+<p>Outputs:
+state.conditions.frames.inertial.time            [second]</p>
+</div></blockquote>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-mach-constant-rate-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-mach-constant-rate-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate">
+<span id="rcaide-library-mission-segments-climb-constant-mach-constant-rate-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Mach_Constant_Rate.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant Mach number, with a constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_rate                                  [meters/second]
+segment.mach_number                                 [Unitless]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-mach-linear-altitude-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-mach-linear-altitude-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude">
+<span id="rcaide-library-mission-segments-climb-constant-mach-linear-altitude-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Mach_Linear_Altitude.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constrant dynamic pressure and constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.mach_number                         [unitless]
+segment.dynamic_pressure                    [pascals]
+segment.altitude_start                      [meters]
+segment.altitude_end                        [meters]
+segment.distance                            [meters]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]
+conditions.frames.inertial.time             [seconds]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-speed-constant-angle-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-speed-constant-angle-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle">
+<span id="rcaide-library-mission-segments-climb-constant-speed-constant-angle-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Speed_Constant_Angle.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant true airspeed, with a constant climb angle</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_angle                         [radians]
+segment.air_speed                           [meter/second]
+segment.altitude_start                      [meters]
+segment.altitude_end                        [meters]
+state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density               [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-speed-constant-angle-noise-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-speed-constant-angle-noise-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise">
+<span id="rcaide-library-mission-segments-climb-constant-speed-constant-angle-noise-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise.expand_state">
+<span class="sig-name descname"><span class="pre">expand_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Speed_Constant_Angle_Noise.html#expand_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise.expand_state" title="Link to this definition">#</a></dt>
+<dd><p>Makes all vectors in the state the same size. Determines the minimum amount of points needed to get data for noise certification.</p>
+<p>Assumptions:
+Half second intervals for certification requirements. Fixed microphone position</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+state.numerics.number_of_control_points  [Unitless]</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+Position of the flyover microphone is 6500 meters</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Speed_Constant_Angle_Noise.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Gets the overall time step for the segment type.</p>
+<p>Assumptions:
+Constant true airspeed, with a constant climb angle. This segment is specically created for noise calculations.</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_angle                         [radians]
+segment.air_speed                           [meter/second]
+segment.altitude_start                      [meters]
+segment.altitude_end                        [meters]
+state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density               [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-speed-constant-rate-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-speed-constant-rate-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate">
+<span id="rcaide-library-mission-segments-climb-constant-speed-constant-rate-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Speed_Constant_Rate.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant true airspeed, with a constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_rate                                  [meters/second]
+segment.air_speed                                   [meters/second]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-speed-linear-altitude-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-speed-linear-altitude-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude">
+<span id="rcaide-library-mission-segments-climb-constant-speed-linear-altitude-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Speed_Linear_Altitude.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constrant dynamic pressure and constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.air_speed                           [meters/second]
+segment.altitude_start                      [meters]
+segment.altitude_end                        [meters]
+segment.distance                            [meters]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]
+conditions.frames.inertial.time             [seconds]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-constant-throttle-constant-speed-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed module<a class="headerlink" href="#rcaide-library-mission-segments-climb-constant-throttle-constant-speed-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed">
+<span id="rcaide-library-mission-segments-climb-constant-throttle-constant-speed-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.unpack_body_angle">
+<span class="sig-name descname"><span class="pre">unpack_body_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.html#unpack_body_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.unpack_body_angle" title="Link to this definition">#</a></dt>
+<dd><p>Unpacks and sets the proper value for body angle</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+state.unknowns.body_angle                      [Radians]</p>
+<p>Outputs:
+state.conditions.frames.body.inertial_rotation [Radians]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Constant throttle estting, with a constant true airspeed</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.air_speed                                   [meters/second]
+segment.altitude_start                              [meters]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector          [meters/second]
+conditions.energy.throttle                          [Unitless]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.update_differentials_altitude">
+<span class="sig-name descname"><span class="pre">update_differentials_altitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.html#update_differentials_altitude"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.update_differentials_altitude" title="Link to this definition">#</a></dt>
+<dd><p>On each iteration creates the differentials and integration funcitons from knowns about the problem. Sets the time at each point. Must return in dimensional time, with t[0] = 0</p>
+<p>Assumptions:
+Constant throttle setting, with a constant true airspeed.</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_angle                         [radians]
+state.conditions.frames.inertial.velocity_vector [meter/second]
+segment.altitude_start                      [meters]
+segment.altitude_end                        [meters]</p>
+<p>Outputs:
+state.conditions.frames.inertial.time       [seconds]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.update_velocity_vector_from_wind_angle">
+<span class="sig-name descname"><span class="pre">update_velocity_vector_from_wind_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.html#update_velocity_vector_from_wind_angle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.update_velocity_vector_from_wind_angle" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-linear-mach-constant-rate-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate module<a class="headerlink" href="#rcaide-library-mission-segments-climb-linear-mach-constant-rate-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate">
+<span id="rcaide-library-mission-segments-climb-linear-mach-constant-rate-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Linear_Mach_Constant_Rate.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Linearly changing mach number, with a constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_rate                                  [meters/second]
+segment.mach_number_start                                  [Unitless]
+segment.mach_number_end                                    [Unitless]
+segment.altitude_end                                [meters]
+segment.state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density                       [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-library-mission-segments-climb-linear-speed-constant-rate-module">
-<h2>RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate module<a class="headerlink" href="#rcaide-library-mission-segments-climb-linear-speed-constant-rate-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate">
+<span id="rcaide-library-mission-segments-climb-linear-speed-constant-rate-module"></span><h2>RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate module<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate.initialize_conditions">
+<span class="sig-name descname"><span class="pre">initialize_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Mission/Segments/Climb/Linear_Speed_Constant_Rate.html#initialize_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate.initialize_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Sets the specified conditions which are given for the segment type.</p>
+<p>Assumptions:
+Linearly changing airspeed, with a constant rate of climb</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+segment.climb_rate                          [meters/second]
+segment.air_speed_start                     [meters/second]
+segment.air_speed_end                       [meters/second]
+segment.altitude_end                        [meters]
+state.numerics.dimensionless.control_points [Unitless]
+conditions.freestream.density               [kilograms/meter^3]</p>
+<p>Outputs:
+conditions.frames.inertial.velocity_vector  [meters/second]
+conditions.frames.inertial.position_vector  [meters]
+conditions.freestream.altitude              [meters]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Library.Mission.Segments.Climb">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Mission.Segments.Climb" title="Link to this heading">#</a></h2>
+<p>RCAIDE Package Setup</p>
 </section>
 </section>
 
@@ -567,24 +1004,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="RCAIDE.Library.Mission.Segments.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Library.Mission.Segments package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="RCAIDE.Library.Mission.Segments.Cruise.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Mission.Segments.Cruise package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -605,21 +1024,71 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-cas-constant-rate-module">RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-angle-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-dynamic-pressure-constant-rate-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-eas-constant-rate-module">RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-mach-constant-angle-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-mach-constant-rate-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-mach-linear-altitude-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-speed-constant-angle-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-speed-constant-angle-noise-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-speed-constant-rate-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-speed-linear-altitude-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-constant-throttle-constant-speed-module">RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-linear-mach-constant-rate-module">RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-library-mission-segments-climb-linear-speed-constant-rate-module">RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate">RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_CAS_Constant_Rate.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle">RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.initialize_conditions_unpack_unknowns"><code class="docutils literal notranslate"><span class="pre">initialize_conditions_unpack_unknowns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.residual_altitude"><code class="docutils literal notranslate"><span class="pre">residual_altitude()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.update_differentials"><code class="docutils literal notranslate"><span class="pre">update_differentials()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate">RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Rate.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate">RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_EAS_Constant_Rate.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle">RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.residual_total_forces"><code class="docutils literal notranslate"><span class="pre">residual_total_forces()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Angle.update_differentials"><code class="docutils literal notranslate"><span class="pre">update_differentials()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate">RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Constant_Rate.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude">RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Mach_Linear_Altitude.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise.expand_state"><code class="docutils literal notranslate"><span class="pre">expand_state()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Angle_Noise.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Constant_Rate.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude">RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Speed_Linear_Altitude.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed">RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.unpack_body_angle"><code class="docutils literal notranslate"><span class="pre">unpack_body_angle()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.update_differentials_altitude"><code class="docutils literal notranslate"><span class="pre">update_differentials_altitude()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.update_velocity_vector_from_wind_angle"><code class="docutils literal notranslate"><span class="pre">update_velocity_vector_from_wind_angle()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate">RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Linear_Mach_Constant_Rate.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate">RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Mission.Segments.Climb.Linear_Speed_Constant_Rate.initialize_conditions"><code class="docutils literal notranslate"><span class="pre">initialize_conditions()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Mission.Segments.Climb">Module contents</a></li>
 </ul>
   </nav></div>
 

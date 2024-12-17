@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Framework.Core package &#8212; RCAIDE 1.0.0 documentation</title>
+    <title>RCAIDE.Framework.Core package &#8212; RCAIDE</title>
   
   
   
@@ -31,7 +31,7 @@
 <link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=467ccdcc" />
   
   <!-- So that users can add custom icons -->
   <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -42,12 +42,11 @@
     <script src="_static/documentation_options.js?v=8d563738"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Framework.Core';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Framework.Core.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="RCAIDE.Framework.External_Interfaces package" href="RCAIDE.Framework.External_Interfaces.html" />
-    <link rel="prev" title="RCAIDE.Framework.Analyses.Weights package" href="RCAIDE.Framework.Analyses.Weights.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -97,7 +96,7 @@
   </button>
   
   
-  <div class="col-lg-3 navbar-header-items__start">
+  <div class=" navbar-header-items__start">
     
       <div class="navbar-item">
 
@@ -111,14 +110,22 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
   
-    <p class="title logo__title">RCAIDE 1.0.0 documentation</p>
+  
+    <p class="title logo__title">RCAIDE</p>
   
 </a></div>
     
   </div>
   
-  <div class="col-lg-9 navbar-header-items">
+  <div class=" navbar-header-items">
     
     <div class="me-auto navbar-header-items__center">
       
@@ -128,21 +135,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -150,13 +164,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -171,30 +178,11 @@
         <div class="navbar-item navbar-persistent--container">
           
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
         </div>
       
-      
-        <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
       
         <div class="navbar-item">
 
@@ -204,6 +192,22 @@
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
       
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
     </div>
     
   </div>
@@ -211,10 +215,8 @@
   
     <div class="navbar-persistent--mobile">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
     </div>
   
@@ -252,21 +254,28 @@
     
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="install.html">
-    Installation
+    Install
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="quick_start.html">
-    Quick Start Guide
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials/tutorials.html">
+    Tutorials
   </a>
 </li>
 
 
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="contributing.html">
-    Contributing
+    Contributing Guide
   </a>
 </li>
 
@@ -274,13 +283,6 @@
 <li class="nav-item ">
   <a class="nav-link nav-internal" href="api.html">
     API Reference
-  </a>
-</li>
-
-
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="modules.html">
-    RCAIDE
   </a>
 </li>
 
@@ -295,29 +297,28 @@
       <div class="sidebar-header-items__end">
         
           <div class="navbar-item">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-        
-          <div class="navbar-item">
 
 <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
   <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
   <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
   <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
 </button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
         
       </div>
     
@@ -329,110 +330,118 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.html">RCAIDE package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="RCAIDE.Framework.html">RCAIDE.Framework package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Analyses.html">RCAIDE.Framework.Analyses package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html">RCAIDE.Framework.Analyses.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Atmospheric.html">RCAIDE.Framework.Analyses.Atmospheric package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Common.html">RCAIDE.Framework.Analyses.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Emissions.html">RCAIDE.Framework.Analyses.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Energy.html">RCAIDE.Framework.Analyses.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Geodesics.html">RCAIDE.Framework.Analyses.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Noise.html">RCAIDE.Framework.Analyses.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Planets.html">RCAIDE.Framework.Analyses.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Propulsion.html">RCAIDE.Framework.Analyses.Propulsion package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Stability.html">RCAIDE.Framework.Analyses.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Analyses.Weights.html">RCAIDE.Framework.Analyses.Weights package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">RCAIDE.Framework.Core package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">RCAIDE.Framework.Core package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.html">RCAIDE.Framework.External_Interfaces package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.External_Interfaces.OpenVSP.html">RCAIDE.Framework.External_Interfaces.OpenVSP package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Mission.html">RCAIDE.Framework.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Common.html">RCAIDE.Framework.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Mission.Segments.html">RCAIDE.Framework.Mission.Segments package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Framework.Networks.html">RCAIDE.Framework.Networks package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Optimization.html">RCAIDE.Framework.Optimization package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Common.html">RCAIDE.Framework.Optimization.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Optimization.Packages.html">RCAIDE.Framework.Optimization.Packages package</a></li>
 </ul>
 </details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
-</ul>
-</details></li>
-<li class="toctree-l3 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Framework.Plugins.html">RCAIDE.Framework.Plugins package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Framework.Plugins.pint.html">RCAIDE.Framework.Plugins.pint package</a></li>
 </ul>
 </details></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="RCAIDE.Library.html">RCAIDE.Library package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Attributes.html">RCAIDE.Library.Attributes package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Atmospheres.html">RCAIDE.Library.Attributes.Atmospheres package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Coolants.html">RCAIDE.Library.Attributes.Coolants package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.html">RCAIDE.Library.Attributes.Cryogens package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Gases.html">RCAIDE.Library.Attributes.Gases package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Materials.html">RCAIDE.Library.Attributes.Materials package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Planets.html">RCAIDE.Library.Attributes.Planets package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Attributes.Propellants.html">RCAIDE.Library.Attributes.Propellants package</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Components.html">RCAIDE.Library.Components package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html">RCAIDE.Library.Components.Airfoils package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Booms.html">RCAIDE.Library.Components.Booms package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Configs.html">RCAIDE.Library.Components.Configs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Energy.html">RCAIDE.Library.Components.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html">RCAIDE.Library.Components.Fuselages package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Landing_Gear.html">RCAIDE.Library.Components.Landing_Gear package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.html">RCAIDE.Library.Components.Nacelles package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Payloads.html">RCAIDE.Library.Components.Payloads package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.html">RCAIDE.Library.Components.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Systems.html">RCAIDE.Library.Components.Systems package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.html">RCAIDE.Library.Components.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Components.Wings.html">RCAIDE.Library.Components.Wings package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Methods.html">RCAIDE.Library.Methods package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html">RCAIDE.Library.Methods.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.html">RCAIDE.Library.Methods.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Energy.html">RCAIDE.Library.Methods.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Gas_Dynamics.html">RCAIDE.Library.Methods.Gas_Dynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geodesics.html">RCAIDE.Library.Methods.Geodesics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Geometry.html">RCAIDE.Library.Methods.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html">RCAIDE.Library.Methods.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Performance.html">RCAIDE.Library.Methods.Performance package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.html">RCAIDE.Library.Methods.Propulsors package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Stability.html">RCAIDE.Library.Methods.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Thermal_Management.html">RCAIDE.Library.Methods.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Utilities.html">RCAIDE.Library.Methods.Utilities package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Weights.html">RCAIDE.Library.Methods.Weights package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Mission.html">RCAIDE.Library.Mission package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Common.html">RCAIDE.Library.Mission.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Segments.html">RCAIDE.Library.Mission.Segments package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Mission.Solver.html">RCAIDE.Library.Mission.Solver package</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="RCAIDE.Library.Plots.html">RCAIDE.Library.Plots package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.html">RCAIDE.Library.Plots.Aerodynamics package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Common.html">RCAIDE.Library.Plots.Common package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Emissions.html">RCAIDE.Library.Plots.Emissions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html">RCAIDE.Library.Plots.Energy package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.html">RCAIDE.Library.Plots.Geometry package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html">RCAIDE.Library.Plots.Mission package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Noise.html">RCAIDE.Library.Plots.Noise package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Stability.html">RCAIDE.Library.Plots.Stability package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.html">RCAIDE.Library.Plots.Thermal_Management package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Topography.html">RCAIDE.Library.Plots.Topography package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Plots.Weights.html">RCAIDE.Library.Plots.Weights package</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Framework.html">RCAIDE.Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Library.html">RCAIDE.Library</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.load.html">RCAIDE.load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.save.html">RCAIDE.save</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="generated/RCAIDE.Vehicle.html">RCAIDE.Vehicle</a></li>
 </ul>
 </div>
 </nav></div>
@@ -473,15 +482,6 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    
-    <li class="breadcrumb-item"><a href="modules.html" class="nav-link">RCAIDE</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.html" class="nav-link">RCAIDE package</a></li>
-    
-    
-    <li class="breadcrumb-item"><a href="RCAIDE.Framework.html" class="nav-link">RCAIDE.Framework package</a></li>
-    
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Framework.Core package</span></li>
   </ul>
 </nav>
@@ -504,35 +504,1332 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
 </section>
-<section id="rcaide-framework-core-arrays-module">
-<h2>RCAIDE.Framework.Core.Arrays module<a class="headerlink" href="#rcaide-framework-core-arrays-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.Arrays">
+<span id="rcaide-framework-core-arrays-module"></span><h2>RCAIDE.Framework.Core.Arrays module<a class="headerlink" href="#module-RCAIDE.Framework.Core.Arrays" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Arrays.atleast_2d_col">
+<span class="sig-name descname"><span class="pre">atleast_2d_col</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Arrays.html#atleast_2d_col"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Arrays.atleast_2d_col" title="Link to this definition">#</a></dt>
+<dd><p>Makes a 2D array in column format</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+A      [1-D Array]</p>
+<p>Outputs:
+A      [2-D Array]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Arrays.atleast_2d_row">
+<span class="sig-name descname"><span class="pre">atleast_2d_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Arrays.html#atleast_2d_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Arrays.atleast_2d_row" title="Link to this definition">#</a></dt>
+<dd><p>Makes a 2D array in row format</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+A      [1-D Array]</p>
+<p>Outputs:
+A      [2-D Array]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Arrays.atleast_2d">
+<span class="sig-name descname"><span class="pre">atleast_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oned_as</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'row'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Arrays.html#atleast_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Arrays.atleast_2d" title="Link to this definition">#</a></dt>
+<dd><p>ensures A is an array and at least of rank 2</p>
+<p>Assumptions:
+Defaults as row</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+A      [1-D Array]</p>
+<p>Outputs:
+A      [2-D Array]</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Arrays.append_array">
+<span class="sig-name descname"><span class="pre">append_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Arrays.html#append_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Arrays.append_array" title="Link to this definition">#</a></dt>
+<dd><p>A stacking operation used by merged to put together data structures</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+A [array]
+B [array]</p>
+<p>Outputs:
+array</p>
+<p>Properties Used:
+None</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-framework-core-container-module">
-<h2>RCAIDE.Framework.Core.Container module<a class="headerlink" href="#rcaide-framework-core-container-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.Container">
+<span id="rcaide-framework-core-container-module"></span><h2>RCAIDE.Framework.Core.Container module<a class="headerlink" href="#module-RCAIDE.Framework.Core.Container" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>A dict-type container with attribute, item and index style access
+intended to hold a attribute-accessible list of Data(). This is unordered.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialization that builds the container</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.append" title="Link to this definition">#</a></dt>
+<dd><p>Appends the value to the containers
+This overrides the Data class append by allowing for duplicate named components
+The following components will get new names.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.extend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.extend" title="Link to this definition">#</a></dt>
+<dd><p>Append things regressively depending on what is inside.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.get_children">
+<span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.get_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.get_children" title="Link to this definition">#</a></dt>
+<dd><p>Returns the components that can go inside</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+None</p>
+<p>Outputs:
+None</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="rcaide-framework-core-containerordered-module">
-<h2>RCAIDE.Framework.Core.ContainerOrdered module<a class="headerlink" href="#rcaide-framework-core-containerordered-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.ContainerOrdered">
+<span id="rcaide-framework-core-containerordered-module"></span><h2>RCAIDE.Framework.Core.ContainerOrdered module<a class="headerlink" href="#module-RCAIDE.Framework.Core.ContainerOrdered" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ContainerOrdered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/ContainerOrdered.html#ContainerOrdered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered" title="RCAIDE.Framework.Core.DataOrdered.DataOrdered"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataOrdered</span></code></a></p>
+<p>A dict-type container with attribute, item and index style access
+intended to hold a attribute-accessible list of DataOrdered(). This is ordered.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/ContainerOrdered.html#ContainerOrdered.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialization that builds the container</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/ContainerOrdered.html#ContainerOrdered.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.append" title="Link to this definition">#</a></dt>
+<dd><p>Appends the value to the containers</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/ContainerOrdered.html#ContainerOrdered.extend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.extend" title="Link to this definition">#</a></dt>
+<dd><p>Append things regressively depending on what is inside.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.get_children">
+<span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/ContainerOrdered.html#ContainerOrdered.get_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.get_children" title="Link to this definition">#</a></dt>
+<dd><p>Returns the components that can go inside</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+None</p>
+<p>Outputs:
+None</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="rcaide-framework-core-data-module">
-<h2>RCAIDE.Framework.Core.Data module<a class="headerlink" href="#rcaide-framework-core-data-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.Data">
+<span id="rcaide-framework-core-data-module"></span><h2>RCAIDE.Framework.Core.Data module<a class="headerlink" href="#module-RCAIDE.Framework.Core.Data" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.dictgetitem">
+<span class="sig-name descname"><span class="pre">dictgetitem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Data.dictgetitem" title="Link to this definition">#</a></dt>
+<dd><p>Return self[key].</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.objgetattrib">
+<span class="sig-name descname"><span class="pre">objgetattrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Data.objgetattrib" title="Link to this definition">#</a></dt>
+<dd><p>Return getattr(self, name).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>An extension of the Python dict which allows for both tag and ‘.’ usage.
+This is an unordered dictionary. So indexing it will not produce deterministic results.
+This has less overhead than ordering. If ordering is needed use DataOrdered().</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.typestring">
+<span class="sig-name descname"><span class="pre">typestring</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.typestring"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.typestring" title="Link to this definition">#</a></dt>
+<dd><p>This function makes the .key.key structure in string form of Data()</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.dataname">
+<span class="sig-name descname"><span class="pre">dataname</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.dataname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.dataname" title="Link to this definition">#</a></dt>
+<dd><p>This function is used for printing the class</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initializes a new Data() class</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.itervalues">
+<span class="sig-name descname"><span class="pre">itervalues</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.itervalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.itervalues" title="Link to this definition">#</a></dt>
+<dd><p>Finds all the values that can be iterated over.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.values" title="Link to this definition">#</a></dt>
+<dd><p>Returns all values inside the Data() class.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+values</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.update" title="Link to this definition">#</a></dt>
+<dd><p>Updates the internal values of a dictionary with given data</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+other</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.append_or_update">
+<span class="sig-name descname"><span class="pre">append_or_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.append_or_update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.append_or_update" title="Link to this definition">#</a></dt>
+<dd><p>Appends an array or updates the internal values of a dictionary with given data</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+other</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.get_bases">
+<span class="sig-name descname"><span class="pre">get_bases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.get_bases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.get_bases" title="Link to this definition">#</a></dt>
+<dd><p>Finds the higher classes that may be built off of data</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+klasses</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.append" title="Link to this definition">#</a></dt>
+<dd><p>Adds new values to the classes. Can also change an already appended key</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+value
+key</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.deep_set">
+<span class="sig-name descname"><span class="pre">deep_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.deep_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.deep_set" title="Link to this definition">#</a></dt>
+<dd><p>Regresses through a list of keys the same value in various places in a dictionary.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+keys  - The keys to iterate over
+val   - The value to be set</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.deep_get">
+<span class="sig-name descname"><span class="pre">deep_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.deep_get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.deep_get" title="Link to this definition">#</a></dt>
+<dd><p>Regresses through a list of keys to pull a specific value out</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+keys  - The keys to iterate over</p>
+<p>Outputs:
+value - The value to be retrieved</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.pack_array">
+<span class="sig-name descname"><span class="pre">pack_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'vector'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.pack_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.pack_array" title="Link to this definition">#</a></dt>
+<dd><p>maps the data dict to a 1D vector or 2D column array</p>
+<dl class="simple">
+<dt>Assumptions:</dt><dd><p>will only pack int, float, np.array and np.matrix (max rank 2)
+if using output = ‘matrix’, all data values must have
+same length (if 1D) or number of rows (if 2D), otherwise is skipped</p>
+</dd>
+</dl>
+<p>Source:
+N/A</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><dl class="simple">
+<dt>output - either ‘vector’ (default), or ‘array’</dt><dd><p>chooses whether to output a 1d vector or
+2d column array</p>
+</dd>
+</dl>
+</dd>
+<dt>Outputs:</dt><dd><p>array - the packed array</p>
+</dd>
+</dl>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.unpack_array">
+<span class="sig-name descname"><span class="pre">unpack_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.unpack_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.unpack_array" title="Link to this definition">#</a></dt>
+<dd><p>unpacks an input 1d vector or 2d column array into the data dictionary
+important that the structure of the data dictionary, and the shapes
+of the contained values are the same as the data from which the array was packed</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+M - either a 1D vector or 2D column array</p>
+<p>Outputs:
+a reference to self, updates self in place</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.do_recursive">
+<span class="sig-name descname"><span class="pre">do_recursive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.do_recursive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.do_recursive" title="Link to this definition">#</a></dt>
+<dd><p>Recursively applies a method of the class.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+method  - name of the method to access</p>
+<p>Outputs:
+Result  - the results of the method</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="rcaide-framework-core-dataordered-module">
-<h2>RCAIDE.Framework.Core.DataOrdered module<a class="headerlink" href="#rcaide-framework-core-dataordered-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.DataOrdered">
+<span id="rcaide-framework-core-dataordered-module"></span><h2>RCAIDE.Framework.Core.DataOrdered module<a class="headerlink" href="#module-RCAIDE.Framework.Core.DataOrdered" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.Property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#Property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.Property" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Used to create the root map essential to the linking in DataOrdered()</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.Property.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#Property.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.Property.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initializes a property</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataOrdered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">OrderedDict</span></code></p>
+<p>An extension of the Python dict which allows for both tag and ‘.’ usage.
+This is an ordered dictionary. So indexing it will produce deterministic results.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.append" title="Link to this definition">#</a></dt>
+<dd><p>Adds new values to the classes. Can also change an already appended key</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+value
+key</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.hasattr">
+<span class="sig-name descname"><span class="pre">hasattr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.hasattr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.hasattr" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initializes a new Data() class</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.get_bases">
+<span class="sig-name descname"><span class="pre">get_bases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.get_bases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get_bases" title="Link to this definition">#</a></dt>
+<dd><p>Finds the higher classes that may be built off of data</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+klasses</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.typestring">
+<span class="sig-name descname"><span class="pre">typestring</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.typestring"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.typestring" title="Link to this definition">#</a></dt>
+<dd><p>This function makes the .key.key structure in string form of Data()</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.dataname">
+<span class="sig-name descname"><span class="pre">dataname</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.dataname"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.dataname" title="Link to this definition">#</a></dt>
+<dd><p>This function is used for printing the class</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_set">
+<span class="sig-name descname"><span class="pre">deep_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.deep_set"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_set" title="Link to this definition">#</a></dt>
+<dd><p>Regresses through a list of keys the same value in various places in a dictionary.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+keys  - The keys to iterate over
+val   - The value to be set</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_get">
+<span class="sig-name descname"><span class="pre">deep_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.deep_get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_get" title="Link to this definition">#</a></dt>
+<dd><p>Regresses through a list of keys to pull a specific value out</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+keys  - The keys to iterate over</p>
+<p>Outputs:
+value - The value to be retrieved</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.update" title="Link to this definition">#</a></dt>
+<dd><p>Updates the internal values of a dictionary with given data</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+other</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.clear" title="Link to this definition">#</a></dt>
+<dd><p>Empties a dictionary</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get" title="Link to this definition">#</a></dt>
+<dd><p>Returns the values from k</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+k</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.has_key">
+<span class="sig-name descname"><span class="pre">has_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.has_key"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.has_key" title="Link to this definition">#</a></dt>
+<dd><p>Checks if the dictionary has the key, k</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+k</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.keys" title="Link to this definition">#</a></dt>
+<dd><p>Returns a list of keys</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.values" title="Link to this definition">#</a></dt>
+<dd><p>Returns all values inside the Data() class.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+values</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.items" title="Link to this definition">#</a></dt>
+<dd><p>Returns all the items inside the data class</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+values</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.iterkeys">
+<span class="sig-name descname"><span class="pre">iterkeys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.iterkeys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iterkeys" title="Link to this definition">#</a></dt>
+<dd><p>Returns all the keys which may be iterated over</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.itervalues">
+<span class="sig-name descname"><span class="pre">itervalues</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.itervalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.itervalues" title="Link to this definition">#</a></dt>
+<dd><p>Finds all the values that can be iterated over.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.DataOrdered.DataOrdered.iteritems">
+<span class="sig-name descname"><span class="pre">iteritems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/DataOrdered.html#DataOrdered.iteritems"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iteritems" title="Link to this definition">#</a></dt>
+<dd><p>All items that may be iterated over</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="rcaide-framework-core-diffed-data-module">
-<h2>RCAIDE.Framework.Core.Diffed_Data module<a class="headerlink" href="#rcaide-framework-core-diffed-data-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.Diffed_Data">
+<span id="rcaide-framework-core-diffed-data-module"></span><h2>RCAIDE.Framework.Core.Diffed_Data module<a class="headerlink" href="#module-RCAIDE.Framework.Core.Diffed_Data" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Diffed_Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Diffed_Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>This is for creating a data new class where a different copy is saved.
+This is useful for creating a new configuration of a vehicle.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Diffed_Data.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initializes the new Diffed_Data() class through a deepcopy</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.store_diff">
+<span class="sig-name descname"><span class="pre">store_diff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Diffed_Data.store_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.store_diff" title="Link to this definition">#</a></dt>
+<dd><p>Finds the differences and saves them</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.pull_base">
+<span class="sig-name descname"><span class="pre">pull_base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Diffed_Data.pull_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.pull_base" title="Link to this definition">#</a></dt>
+<dd><p>Updates the differences</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.finalize">
+<span class="sig-name descname"><span class="pre">finalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Diffed_Data.finalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.finalize" title="Link to this definition">#</a></dt>
+<dd><p>This just does a pull_base()</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
+<p>A dict-type container with attribute, item and index style access
+intended to hold a attribute-accessible list of Data(). This is unordered.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.append" title="Link to this definition">#</a></dt>
+<dd><p>Appends the value to the containers</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.finalize">
+<span class="sig-name descname"><span class="pre">finalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.finalize" title="Link to this definition">#</a></dt>
+<dd><p>This just does a pull_base()</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.pull_base">
+<span class="sig-name descname"><span class="pre">pull_base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.pull_base" title="Link to this definition">#</a></dt>
+<dd><p>Updates the differences</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.store_diff">
+<span class="sig-name descname"><span class="pre">store_diff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.store_diff" title="Link to this definition">#</a></dt>
+<dd><p>Finds the differences and saves them</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Container">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Container" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
+<p>A dict-type container with attribute, item and index style access
+intended to hold a attribute-accessible list of Data(). This is unordered.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Container.append">
+<span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Container.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Container.append" title="Link to this definition">#</a></dt>
+<dd><p>Appends the value to the containers</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+self</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Container.pull_base">
+<span class="sig-name descname"><span class="pre">pull_base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Container.pull_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Container.pull_base" title="Link to this definition">#</a></dt>
+<dd><p>Updates the differences</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Container.store_diff">
+<span class="sig-name descname"><span class="pre">store_diff</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Container.store_diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Container.store_diff" title="Link to this definition">#</a></dt>
+<dd><p>Finds the differences and saves them</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Container.finalize">
+<span class="sig-name descname"><span class="pre">finalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Container.finalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Container.finalize" title="Link to this definition">#</a></dt>
+<dd><p>This just does a pull_base()</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.diff">
+<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#diff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.diff" title="Link to this definition">#</a></dt>
+<dd><p>The magic diff function that makes Diffed_Data() work</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+A
+B</p>
+<p>Outputs:
+Result</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-framework-core-units-module">
-<h2>RCAIDE.Framework.Core.Units module<a class="headerlink" href="#rcaide-framework-core-units-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.Units">
+<span id="rcaide-framework-core-units-module"></span><h2>RCAIDE.Framework.Core.Units module<a class="headerlink" href="#module-RCAIDE.Framework.Core.Units" title="Link to this heading">#</a></h2>
 </section>
-<section id="rcaide-framework-core-utilities-module">
-<h2>RCAIDE.Framework.Core.Utilities module<a class="headerlink" href="#rcaide-framework-core-utilities-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.Utilities">
+<span id="rcaide-framework-core-utilities-module"></span><h2>RCAIDE.Framework.Core.Utilities module<a class="headerlink" href="#module-RCAIDE.Framework.Core.Utilities" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.interp2d">
+<span class="sig-name descname"><span class="pre">interp2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#interp2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.interp2d" title="Link to this definition">#</a></dt>
+<dd><p>Bilinear interpolation on a grid. <code class="docutils literal notranslate"><span class="pre">CartesianGrid</span></code> is much faster if the data
+lies on a regular grid.
+:param x: 1D arrays of point at which to interpolate. Any out-of-bounds</p>
+<blockquote>
+<div><p>coordinates will be clamped to lie in-bounds.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> – 1D arrays of point at which to interpolate. Any out-of-bounds
+coordinates will be clamped to lie in-bounds.</p></li>
+<li><p><strong>xp</strong> – 1D arrays of points specifying grid points where function values
+are provided.</p></li>
+<li><p><strong>yp</strong> – 1D arrays of points specifying grid points where function values
+are provided.</p></li>
+<li><p><strong>zp</strong> – 2D array of function values. For a function <cite>f(x, y)</cite> this must
+satisfy <cite>zp[i, j] = f(xp[i], yp[j])</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>1D array <cite>z</cite> satisfying <cite>z[i] = f(x[i], y[i])</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.orientation_product">
+<span class="sig-name descname"><span class="pre">orientation_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bb</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#orientation_product"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.orientation_product" title="Link to this definition">#</a></dt>
+<dd><p>Computes the product of a tensor and a vector.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+T         [-] 3-dimensional array with rotation matrix</p>
+<blockquote>
+<div><p>patterned along dimension zero</p>
+</div></blockquote>
+<p>Bb        [-] 3-dimensional vector</p>
+<p>Outputs:
+C         [-] transformed vector</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.orientation_transpose">
+<span class="sig-name descname"><span class="pre">orientation_transpose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#orientation_transpose"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.orientation_transpose" title="Link to this definition">#</a></dt>
+<dd><p>Computes the transpose of a tensor.</p>
+<p>Assumptions:
+None</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+T         [-] 3-dimensional array with rotation matrix</p>
+<blockquote>
+<div><p>patterned along dimension zero</p>
+</div></blockquote>
+<p>Outputs:
+Tt        [-] transformed tensor</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.angles_to_dcms">
+<span class="sig-name descname"><span class="pre">angles_to_dcms</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#angles_to_dcms"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.angles_to_dcms" title="Link to this definition">#</a></dt>
+<dd><p>Builds an euler angle rotation matrix</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+rotations     [radians]  [r1s r2s r3s], column array of rotations
+sequence      [-]        (2,1,0) (default), (2,1,2), etc.. a combination of three column indices</p>
+<p>Outputs:
+transform     [-]        3-dimensional array with direction cosine matrices</p>
+<blockquote>
+<div><p>patterned along dimension zero</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.T0">
+<span class="sig-name descname"><span class="pre">T0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#T0"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.T0" title="Link to this definition">#</a></dt>
+<dd><p>Rotation matrix about first axis</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+a        [radians] angle of rotation</p>
+<p>Outputs:
+T        [-]       rotation matrix</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.T1">
+<span class="sig-name descname"><span class="pre">T1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#T1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.T1" title="Link to this definition">#</a></dt>
+<dd><p>Rotation matrix about second axis</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+a        [radians] angle of rotation</p>
+<p>Outputs:
+T        [-]       rotation matrix</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.T2">
+<span class="sig-name descname"><span class="pre">T2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#T2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.T2" title="Link to this definition">#</a></dt>
+<dd><p>Rotation matrix about third axis</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+a        [radians] angle of rotation</p>
+<p>Outputs:
+T        [-]       rotation matrix</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Utilities.new_tensor">
+<span class="sig-name descname"><span class="pre">new_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Utilities.html#new_tensor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Utilities.new_tensor" title="Link to this definition">#</a></dt>
+<dd><p>Initializes the required tensor. Able to handle imaginary values.</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+a        [radians] angle of rotation</p>
+<p>Outputs:
+T        [-]       3-dimensional array with identity matrix</p>
+<blockquote>
+<div><p>patterned along dimension zero</p>
+</div></blockquote>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
 </section>
-<section id="rcaide-framework-core-redirect-module">
-<h2>RCAIDE.Framework.Core.redirect module<a class="headerlink" href="#rcaide-framework-core-redirect-module" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core.redirect">
+<span id="rcaide-framework-core-redirect-module"></span><h2>RCAIDE.Framework.Core.redirect module<a class="headerlink" href="#module-RCAIDE.Framework.Core.redirect" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.redirect.output">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stdout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/redirect.html#output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.redirect.output" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Temporarily redirects sys.stdout and sys.stderr when used in
+a ‘with’ contextmanager</p>
+<p>Example:
+with SU2.io.redirect_output(‘stdout.txt’,’stderr.txt’):</p>
+<blockquote>
+<div><p>sys.stdout.write(“standard out”)
+sys.stderr.write(“stanrard error”)
+# code</p>
+</div></blockquote>
+<p>#: with output redirection</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>stdout - None, a filename, or a file stream
+stderr - None, a filename, or a file stream</p>
+</dd>
+</dl>
+<p>None will not redirect outptut</p>
+<p>Source:
+<a class="reference external" href="http://stackoverflow.com/questions/6796492/python-temporarily-redirect-stdout-stderr">http://stackoverflow.com/questions/6796492/python-temporarily-redirect-stdout-stderr</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.redirect.output.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stdout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stderr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/redirect.html#output.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.redirect.output.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initializes a new output() class</p>
+<p>Assumptions:
+N/A</p>
+<p>Source:
+N/A</p>
+<p>Inputs:
+N/A</p>
+<p>Outputs:
+N/A</p>
+<p>Properties Used:
+N/A</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.redirect.folder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/redirect.html#folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.redirect.folder" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Temporarily redirects to a working folder, pulling
+and pushing needed files</p>
+<p>Example:</p>
+<p>folder = ‘temp’
+pull   = [‘file1.txt’,’file2.txt’]
+link   = [‘file3.big’]
+force  = True</p>
+<p># original path
+import os
+print os.getcwd()</p>
+<p># enter folder
+with SU2.io.redirect_folder(folder,pull,link,force) as push:</p>
+<blockquote>
+<div><p>print os.getcwd()
+# code
+push.append(‘file4.txt’)</p>
+</div></blockquote>
+<p>#: with folder redirection</p>
+<p># returned to original path
+print os.getcwd()</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>folder - working folder, relative or absolute
+pull   - list of files to pull (copy to working folder)
+link   - list of files to link (symbolic link in working folder)
+force  - True/False overwrite existing files in working folder</p>
+</dd>
+<dt>Targets:</dt><dd><p>push   - list of files to push (copy to originating path)</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>push must be appended or extended, not overwritten
+links in Windows not supported, will simply copy</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.redirect.folder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pull</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">link</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/redirect.html#folder.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.redirect.folder.__init__" title="Link to this definition">#</a></dt>
+<dd><p>folder redirection initialization
+see help( folder ) for more info</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RCAIDE.Framework.Core.redirect.make_link">
+<span class="sig-name descname"><span class="pre">make_link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/redirect.html#make_link"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.redirect.make_link" title="Link to this definition">#</a></dt>
+<dd><p>makes a relative link
+Inputs:</p>
+<blockquote>
+<div><p>src - source file
+dst - destination to place link</p>
+</div></blockquote>
+<p>Windows links currently unsupported, will copy file instead</p>
+</dd></dl>
+
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading">#</a></h2>
+<section id="module-RCAIDE.Framework.Core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Framework.Core" title="Link to this heading">#</a></h2>
+<p>RCAIDE Package Setup</p>
 </section>
 </section>
 
@@ -546,24 +1843,6 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="RCAIDE.Framework.Analyses.Weights.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Framework.Analyses.Weights package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="RCAIDE.Framework.External_Interfaces.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Framework.External_Interfaces package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -584,16 +1863,133 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-arrays-module">RCAIDE.Framework.Core.Arrays module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-container-module">RCAIDE.Framework.Core.Container module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-containerordered-module">RCAIDE.Framework.Core.ContainerOrdered module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-data-module">RCAIDE.Framework.Core.Data module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-dataordered-module">RCAIDE.Framework.Core.DataOrdered module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-diffed-data-module">RCAIDE.Framework.Core.Diffed_Data module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-units-module">RCAIDE.Framework.Core.Units module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-utilities-module">RCAIDE.Framework.Core.Utilities module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rcaide-framework-core-redirect-module">RCAIDE.Framework.Core.redirect module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.Arrays">RCAIDE.Framework.Core.Arrays module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Arrays.atleast_2d_col"><code class="docutils literal notranslate"><span class="pre">atleast_2d_col()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Arrays.atleast_2d_row"><code class="docutils literal notranslate"><span class="pre">atleast_2d_row()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Arrays.atleast_2d"><code class="docutils literal notranslate"><span class="pre">atleast_2d()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Arrays.append_array"><code class="docutils literal notranslate"><span class="pre">append_array()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.Container">RCAIDE.Framework.Core.Container module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Container.Container"><code class="docutils literal notranslate"><span class="pre">Container</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Container.Container.__init__"><code class="docutils literal notranslate"><span class="pre">Container.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Container.Container.append"><code class="docutils literal notranslate"><span class="pre">Container.append()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Container.Container.extend"><code class="docutils literal notranslate"><span class="pre">Container.extend()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Container.Container.get_children"><code class="docutils literal notranslate"><span class="pre">Container.get_children()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.ContainerOrdered">RCAIDE.Framework.Core.ContainerOrdered module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered"><code class="docutils literal notranslate"><span class="pre">ContainerOrdered</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.__init__"><code class="docutils literal notranslate"><span class="pre">ContainerOrdered.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.append"><code class="docutils literal notranslate"><span class="pre">ContainerOrdered.append()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.extend"><code class="docutils literal notranslate"><span class="pre">ContainerOrdered.extend()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered.get_children"><code class="docutils literal notranslate"><span class="pre">ContainerOrdered.get_children()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.Data">RCAIDE.Framework.Core.Data module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.dictgetitem"><code class="docutils literal notranslate"><span class="pre">dictgetitem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.objgetattrib"><code class="docutils literal notranslate"><span class="pre">objgetattrib()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.typestring"><code class="docutils literal notranslate"><span class="pre">Data.typestring()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.dataname"><code class="docutils literal notranslate"><span class="pre">Data.dataname()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.itervalues"><code class="docutils literal notranslate"><span class="pre">Data.itervalues()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.values"><code class="docutils literal notranslate"><span class="pre">Data.values()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.update"><code class="docutils literal notranslate"><span class="pre">Data.update()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.append_or_update"><code class="docutils literal notranslate"><span class="pre">Data.append_or_update()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.get_bases"><code class="docutils literal notranslate"><span class="pre">Data.get_bases()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.append"><code class="docutils literal notranslate"><span class="pre">Data.append()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.deep_set"><code class="docutils literal notranslate"><span class="pre">Data.deep_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.deep_get"><code class="docutils literal notranslate"><span class="pre">Data.deep_get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.pack_array"><code class="docutils literal notranslate"><span class="pre">Data.pack_array()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.unpack_array"><code class="docutils literal notranslate"><span class="pre">Data.unpack_array()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.do_recursive"><code class="docutils literal notranslate"><span class="pre">Data.do_recursive()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.DataOrdered">RCAIDE.Framework.Core.DataOrdered module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.Property"><code class="docutils literal notranslate"><span class="pre">Property</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.Property.__init__"><code class="docutils literal notranslate"><span class="pre">Property.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered"><code class="docutils literal notranslate"><span class="pre">DataOrdered</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.append"><code class="docutils literal notranslate"><span class="pre">DataOrdered.append()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.hasattr"><code class="docutils literal notranslate"><span class="pre">DataOrdered.hasattr()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.__init__"><code class="docutils literal notranslate"><span class="pre">DataOrdered.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get_bases"><code class="docutils literal notranslate"><span class="pre">DataOrdered.get_bases()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.typestring"><code class="docutils literal notranslate"><span class="pre">DataOrdered.typestring()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.dataname"><code class="docutils literal notranslate"><span class="pre">DataOrdered.dataname()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_set"><code class="docutils literal notranslate"><span class="pre">DataOrdered.deep_set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_get"><code class="docutils literal notranslate"><span class="pre">DataOrdered.deep_get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.update"><code class="docutils literal notranslate"><span class="pre">DataOrdered.update()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.clear"><code class="docutils literal notranslate"><span class="pre">DataOrdered.clear()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get"><code class="docutils literal notranslate"><span class="pre">DataOrdered.get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.has_key"><code class="docutils literal notranslate"><span class="pre">DataOrdered.has_key()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.keys"><code class="docutils literal notranslate"><span class="pre">DataOrdered.keys()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.values"><code class="docutils literal notranslate"><span class="pre">DataOrdered.values()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.items"><code class="docutils literal notranslate"><span class="pre">DataOrdered.items()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iterkeys"><code class="docutils literal notranslate"><span class="pre">DataOrdered.iterkeys()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.itervalues"><code class="docutils literal notranslate"><span class="pre">DataOrdered.itervalues()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iteritems"><code class="docutils literal notranslate"><span class="pre">DataOrdered.iteritems()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.Diffed_Data">RCAIDE.Framework.Core.Diffed_Data module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data"><code class="docutils literal notranslate"><span class="pre">Diffed_Data</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.__init__"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.__init__()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.store_diff"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.store_diff()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.pull_base"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.pull_base()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.finalize"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.finalize()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.Container</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.append"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.Container.append()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.finalize"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.Container.finalize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.pull_base"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.Container.pull_base()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container.store_diff"><code class="docutils literal notranslate"><span class="pre">Diffed_Data.Container.store_diff()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Container"><code class="docutils literal notranslate"><span class="pre">Container</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Container.append"><code class="docutils literal notranslate"><span class="pre">Container.append()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Container.pull_base"><code class="docutils literal notranslate"><span class="pre">Container.pull_base()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Container.store_diff"><code class="docutils literal notranslate"><span class="pre">Container.store_diff()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.Container.finalize"><code class="docutils literal notranslate"><span class="pre">Container.finalize()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Diffed_Data.diff"><code class="docutils literal notranslate"><span class="pre">diff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.Units">RCAIDE.Framework.Core.Units module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.Utilities">RCAIDE.Framework.Core.Utilities module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.interp2d"><code class="docutils literal notranslate"><span class="pre">interp2d()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.orientation_product"><code class="docutils literal notranslate"><span class="pre">orientation_product()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.orientation_transpose"><code class="docutils literal notranslate"><span class="pre">orientation_transpose()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.angles_to_dcms"><code class="docutils literal notranslate"><span class="pre">angles_to_dcms()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.T0"><code class="docutils literal notranslate"><span class="pre">T0()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.T1"><code class="docutils literal notranslate"><span class="pre">T1()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.T2"><code class="docutils literal notranslate"><span class="pre">T2()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Utilities.new_tensor"><code class="docutils literal notranslate"><span class="pre">new_tensor()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core.redirect">RCAIDE.Framework.Core.redirect module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.redirect.output"><code class="docutils literal notranslate"><span class="pre">output</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.redirect.output.__init__"><code class="docutils literal notranslate"><span class="pre">output.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.redirect.folder"><code class="docutils literal notranslate"><span class="pre">folder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.redirect.folder.__init__"><code class="docutils literal notranslate"><span class="pre">folder.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.redirect.make_link"><code class="docutils literal notranslate"><span class="pre">make_link()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Framework.Core">Module contents</a></li>
 </ul>
   </nav></div>
 

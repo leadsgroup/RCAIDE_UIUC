@@ -7,7 +7,7 @@ Submodules
 RCAIDE.Library.Methods.Performance.V\_n\_diagram module
 -------------------------------------------------------
 
-.. automodule:: RCAIDE.Library.Methods.Performance.generate_V_n_diagram
+.. automodule:: RCAIDE.Library.Methods.Performance.V_n_diagram
    :members:
    :undoc-members:
    :show-inheritance:
@@ -63,7 +63,7 @@ RCAIDE.Library.Methods.Performance.maximum\_lift\_to\_drag module
 RCAIDE.Library.Methods.Performance.payload\_range\_diagram module
 -----------------------------------------------------------------
 
-.. automodule:: RCAIDE.Library.Methods.Performance.compute_payload_range_diagram
+.. automodule:: RCAIDE.Library.Methods.Performance.payload_range_diagram
    :members:
    :undoc-members:
    :show-inheritance:
