@@ -391,15 +391,58 @@
 <span class="c1">#  Propeller</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------     </span>
 <div class="viewcode-block" id="Propeller">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Propeller.Propeller">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Propeller.html#RCAIDE.Library.Components.Propulsors.Converters.Propeller.Propeller">[docs]</a>
 <span class="k">class</span> <span class="nc">Propeller</span><span class="p">(</span><span class="n">Rotor</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a propeller component, and is a sub-class of rotor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A propeller component model for aircraft propulsion, inheriting from the base Rotor class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the propeller. Default is &#39;propeller&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    orientation_euler_angles : list</span>
+<span class="sd">        Vector of angles [rad] defining propeller orientation [θ, φ, ψ]. </span>
+<span class="sd">        Default is [0., 0., 0.] for X-direction thrust in vehicle frame.</span>
+<span class="sd">        </span>
+<span class="sd">    use_2d_analysis : bool</span>
+<span class="sd">        Flag for using 2D aerodynamic analysis. Default is False.</span>
+<span class="sd">        </span>
+<span class="sd">    variable_pitch : bool</span>
+<span class="sd">        Flag indicating if propeller has variable pitch capability. Default is False.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Propeller class models fixed or variable pitch propellers for aircraft</span>
+<span class="sd">    propulsion. It includes capabilities for:</span>
+
+<span class="sd">    * Forward flight performance analysis</span>
+<span class="sd">    * Fixed and variable pitch operation</span>
+<span class="sd">    * Blade element momentum theory calculations</span>
+<span class="sd">    * Efficiency optimization</span>
+<span class="sd">    * Acoustic analysis</span>
+
+<span class="sd">    The model assumes:</span>
+
+<span class="sd">    * Axial inflow (unless modified by orientation angles)</span>
+<span class="sd">    * Rigid blades</span>
+<span class="sd">    * Quasi-steady aerodynamics</span>
+<span class="sd">    * No blade-to-blade aerodynamic interference</span>
+<span class="sd">    * No compressibility effects (unless explicitly modeled)</span>
+
+<span class="sd">    **Definitions**</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    &#39;Variable Pitch&#39;</span>
+<span class="sd">        Capability to change blade pitch angle during operation</span>
+<span class="sd">    &#39;Euler Angles&#39;</span>
+<span class="sd">        Set of three angles defining propeller orientation relative to vehicle frame</span>
+<span class="sd">    &#39;2D Analysis&#39;</span>
+<span class="sd">        Use of two-dimensional airfoil data for blade section analysis</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Converters.Rotor</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor</span>
 <span class="sd">    &quot;&quot;&quot;</span>     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
@@ -467,7 +510,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

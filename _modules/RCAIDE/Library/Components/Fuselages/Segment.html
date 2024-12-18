@@ -393,8 +393,43 @@
 <span class="c1">#  Segment</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="Segment">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Segment.Segment">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Segment.html#RCAIDE.Library.Components.Fuselages.Segment.Segment">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A component representing a single cross-sectional segment of a fuselage</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the segment, defaults to &#39;segment&#39;</span>
+<span class="sd">    prev : Component</span>
+<span class="sd">        Link to the previous segment in the fuselage chain</span>
+<span class="sd">    next : Component</span>
+<span class="sd">        Link to the next segment in the fuselage chain</span>
+<span class="sd">    percent_x_location : float</span>
+<span class="sd">        Longitudinal position as percentage of fuselage length</span>
+<span class="sd">    percent_y_location : float</span>
+<span class="sd">        Lateral position as percentage of fuselage width</span>
+<span class="sd">    percent_z_location : float</span>
+<span class="sd">        Vertical position as percentage of fuselage height</span>
+<span class="sd">    height : float</span>
+<span class="sd">        Vertical dimension of the segment cross-section</span>
+<span class="sd">    width : float</span>
+<span class="sd">        Lateral dimension of the segment cross-section</span>
+<span class="sd">    curvature : float</span>
+<span class="sd">        Shape parameter controlling cross-section corner rounding, defaults to 2</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Segments are the building blocks of a fuselage, defining its shape through</span>
+<span class="sd">    a series of connected cross-sections. Each segment&#39;s position is defined</span>
+<span class="sd">    relative to the overall fuselage dimensions.</span>
+
+<span class="sd">    **Definitions**</span>
+<span class="sd">    &#39;Curvature&#39;</span>
+<span class="sd">        Parameter controlling the smoothness of transition between vertical</span>
+<span class="sd">        and horizontal surfaces at the corners of the cross-section</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for fuselage segments in RCAIDE.</span>
 
@@ -425,7 +460,7 @@
 
          
 <div class="viewcode-block" id="Segment_Container">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Segment.Segment_Container">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Segment.html#RCAIDE.Library.Components.Fuselages.Segment.Segment_Container">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment_Container</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Container for fuselage segment</span>
 <span class="sd">    </span>
@@ -446,7 +481,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>     
 
 <div class="viewcode-block" id="Segment_Container.get_children">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Segment.Segment_Container.get_children">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Segment.html#RCAIDE.Library.Components.Fuselages.Segment.Segment_Container.get_children">[docs]</a>
     <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
 <span class="sd">        </span>
@@ -510,7 +545,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

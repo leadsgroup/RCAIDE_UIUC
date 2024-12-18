@@ -396,15 +396,70 @@
 <span class="c1">#  Fuselage</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Fuselage">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage">[docs]</a>
 <span class="k">class</span> <span class="nc">Fuselage</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This is a standard fuselage for a tube and wing aircraft.</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    Conventional fuselage</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A standard fuselage component for tube and wing aircraft configurations.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the fuselage component, defaults to &#39;fuselage&#39;</span>
+<span class="sd">    origin : list</span>
+<span class="sd">        Origin coordinates of the fuselage, defaults to [[0.0,0.0,0.0]]</span>
+<span class="sd">    aerodynamic_center : list</span>
+<span class="sd">        Location of the aerodynamic center, defaults to [0.0,0.0,0.0]</span>
+<span class="sd">    differential_pressure : float</span>
+<span class="sd">        Pressure differential between cabin and external atmosphere, defaults to 0.0</span>
+<span class="sd">    seats_abreast : float</span>
+<span class="sd">        Number of seats side by side in the cabin, defaults to 0.0</span>
+<span class="sd">    seat_pitch : float</span>
+<span class="sd">        Distance between seats, defaults to 0.0</span>
+<span class="sd">    number_coach_seats : float</span>
+<span class="sd">        Total number of coach seats, defaults to 0.0</span>
+<span class="sd">    areas : Data</span>
+<span class="sd">        Container for area-related parameters including front_projected, side_projected, and wetted areas</span>
+<span class="sd">    effective_diameter : float</span>
+<span class="sd">        Effective diameter of the fuselage, defaults to 0.0</span>
+<span class="sd">    width : float</span>
+<span class="sd">        Width of the fuselage, defaults to 0.0</span>
+<span class="sd">    heights : Data</span>
+<span class="sd">        Container for height measurements at maximum, quarter length, three quarters length, </span>
+<span class="sd">        wing root quarter chord, and vertical root quarter chord</span>
+<span class="sd">    lengths : Data</span>
+<span class="sd">        Container for length measurements including nose, tail, total, cabin, fore_space, and aft_space</span>
+<span class="sd">    x_rotation : float</span>
+<span class="sd">        Rotation angle around x-axis, defaults to 0.0</span>
+<span class="sd">    y_rotation : float</span>
+<span class="sd">        Rotation angle around y-axis, defaults to 0.0</span>
+<span class="sd">    z_rotation : float</span>
+<span class="sd">        Rotation angle around z-axis, defaults to 0.0</span>
+<span class="sd">    fineness : Data</span>
+<span class="sd">        Container for fineness ratios of nose and tail</span>
+<span class="sd">    nose_curvature : float</span>
+<span class="sd">        Curvature parameter for the nose section, defaults to 1.5</span>
+<span class="sd">    tail_curvature : float</span>
+<span class="sd">        Curvature parameter for the tail section, defaults to 1.5</span>
+<span class="sd">    fuel_tanks : Container</span>
+<span class="sd">        Container for fuel tank components</span>
+<span class="sd">    vsp_data : Data</span>
+<span class="sd">        Container for OpenVSP-related parameters including xsec_surf_id and xsec_num</span>
+<span class="sd">    Segments : Container</span>
+<span class="sd">        Container for fuselage segments</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This class represents a conventional tube and wing aircraft fuselage component.</span>
+<span class="sd">    It provides functionality for defining the geometry, structural properties, and</span>
+<span class="sd">    configuration of an aircraft fuselage.</span>
+
+<span class="sd">    **Assumptions:**</span>
+<span class="sd">        Conventional fuselage configuration</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -475,7 +530,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span>                               <span class="o">=</span> <span class="n">Container</span><span class="p">()</span>
         
 <div class="viewcode-block" id="Fuselage.append_segment">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_segment">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_segment">[docs]</a>
     <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a segment to the fuselage. </span>
 <span class="sd">    </span>
@@ -502,7 +557,7 @@
 
     
 <div class="viewcode-block" id="Fuselage.append_fuel_tank">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_fuel_tank">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_fuel_tank">[docs]</a>
     <span class="k">def</span> <span class="nf">append_fuel_tank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fuel_tank</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a fuel tank to the fuselage </span>
 <span class="sd">    </span>
@@ -529,7 +584,7 @@
 
 
 <div class="viewcode-block" id="Fuselage.compute_moment_of_inertia">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.compute_moment_of_inertia">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.compute_moment_of_inertia">[docs]</a>
     <span class="k">def</span> <span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span> 
         <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_fuselage_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span>    </div>
@@ -576,7 +631,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

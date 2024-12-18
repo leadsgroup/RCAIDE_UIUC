@@ -71,8 +71,9 @@ Key Features
 - **Extensible Architecture**: Plugin system for adding custom functionality
 - **Cross-platform**: Works on Windows, macOS, and Linux
 
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
    :hidden:
 

@@ -43,6 +43,8 @@
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -509,23 +511,269 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.evaluate_correlation_emissions_indices">
 <span class="sig-name descname"><span class="pre">evaluate_correlation_emissions_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Methods/Emissions/Emission_Index_Empirical_Method/evaluate_correlation_emissions_indices.html#evaluate_correlation_emissions_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.evaluate_correlation_emissions_indices" title="Link to this definition">#</a></dt>
-<dd><p>Computes the CO2 equivalent emissions from aircraft propulsors with combustor compoments
-using emissions indices correlated to various fuels</p>
-<p>Assumtion:
-None</p>
-<p>Source
-None</p>
-<p>Args:
-emissions_analysis
-segment</p>
-<p>Returns:
-None</p>
+<dd><p>Computes emission indices using empirical correlations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segment</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Mission segment data container</p>
+<ul>
+<li><dl class="simple">
+<dt>state<span class="classifier">Data</span></dt><dd><p>Current state of the system</p>
+<ul>
+<li><dl class="simple">
+<dt>numerics<span class="classifier">Data</span></dt><dd><p>Numerical integration parameters</p>
+<ul>
+<li><dl class="simple">
+<dt>time<span class="classifier">Data</span></dt><dd><p>Time integration settings</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>conditions<span class="classifier">Data</span></dt><dd><p>Flight conditions and component states</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ones_row<span class="classifier">function</span></dt><dd><p>Creates array of ones with specified size</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>settings</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Configuration settings for the simulation</p></li>
+<li><p><strong>vehicle</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Vehicle configuration data</p>
+<ul>
+<li><dl class="simple">
+<dt>networks<span class="classifier">list</span></dt><dd><p>List of propulsion system networks</p>
+<ul>
+<li><dl class="simple">
+<dt>fuel_lines<span class="classifier">list</span></dt><dd><p>Fuel distribution systems</p>
+<ul>
+<li><dl class="simple">
+<dt>active<span class="classifier">bool</span></dt><dd><p>Flag indicating if fuel line is in use</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>fuel_tanks<span class="classifier">list</span></dt><dd><p>Fuel storage units</p>
+<ul>
+<li><dl class="simple">
+<dt>tag<span class="classifier">str</span></dt><dd><p>Identifier for the fuel tank</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>fuel<span class="classifier">Data</span></dt><dd><p>Fuel properties</p>
+<ul>
+<li><dl class="simple">
+<dt>emission_indices<span class="classifier">Data</span></dt><dd><p>Empirical emission indices</p>
+<ul>
+<li><dl class="simple">
+<dt>NOx<span class="classifier">float</span></dt><dd><p>NOx emission index [kg_NOx/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CO2<span class="classifier">float</span></dt><dd><p>CO2 emission index [kg_CO2/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>H2O<span class="classifier">float</span></dt><dd><p>H2O emission index [kg_H2O/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SO2<span class="classifier">float</span></dt><dd><p>SO2 emission index [kg_SO2/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Soot<span class="classifier">float</span></dt><dd><p>Soot emission index [kg_soot/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>global_warming_potential_100<span class="classifier">Data</span></dt><dd><p>100-year global warming potentials</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>propulsors<span class="classifier">list</span></dt><dd><p>Propulsion units (turbofans, turbojets, etc.)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>Updates segment.state.conditions.emissions with:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>total<span class="classifier">Data</span></dt><dd><p>Total emissions over segment</p>
+<ul>
+<li><dl class="simple">
+<dt>NOx<span class="classifier">float</span></dt><dd><p>Total NOx emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CO2<span class="classifier">float</span></dt><dd><p>Total CO2 emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>H2O<span class="classifier">float</span></dt><dd><p>Total H2O emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SO2<span class="classifier">float</span></dt><dd><p>Total SO2 emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Soot<span class="classifier">float</span></dt><dd><p>Total soot emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Contrails<span class="classifier">float</span></dt><dd><p>Total contrail effect [kg CO2 equivalent]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>index<span class="classifier">Data</span></dt><dd><p>Emission indices</p>
+<ul>
+<li><dl class="simple">
+<dt>NOx<span class="classifier">ndarray</span></dt><dd><p>NOx emission index [kg_NOx/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>CO2<span class="classifier">ndarray</span></dt><dd><p>CO2 emission index [kg_CO2/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>H2O<span class="classifier">ndarray</span></dt><dd><p>H2O emission index [kg_H2O/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SO2<span class="classifier">ndarray</span></dt><dd><p>SO2 emission index [kg_SO2/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Soot<span class="classifier">ndarray</span></dt><dd><p>Soot emission index [kg_soot/kg_fuel]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This function uses pre-defined emission indices for each fuel type and integrates
+them over the mission segment based on fuel flow rates.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Emission indices are constant for each fuel type</p></li>
+<li><p>Indices are independent of operating conditions</p></li>
+<li><p>Linear scaling with fuel flow rate</p></li>
+</ul>
+<p><strong>Theory</strong>
+Total emissions are computed by:</p>
+<div class="math notranslate nohighlight">
+\[E_{i,total} = \int \dot{m}_{fuel}(t) \cdot EI_i \cdot GWP_i \, dt\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E_{i,total}\)</span> = Total emissions for species i</p></li>
+<li><p><span class="math notranslate nohighlight">\(\dot{m}_{fuel}\)</span> = Fuel mass flow rate</p></li>
+<li><p><span class="math notranslate nohighlight">\(EI_i\)</span> = Emission index for species i</p></li>
+<li><p><span class="math notranslate nohighlight">\(GWP_i\)</span> = Global warming potential for species i</p></li>
+</ul>
+<p>Contrail effects are estimated by:</p>
+<div class="math notranslate nohighlight">
+\[E_{contrails} = \Delta R \cdot GWP_{contrails}\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta R\)</span> = Flight range [km]</p></li>
+<li><p><span class="math notranslate nohighlight">\(GWP_{contrails}\)</span> = Contrail global warming potential</p></li>
+</ul>
+<p><strong>Extra modules required</strong></p>
+<ul class="simple">
+<li><p>numpy</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.html#module-RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method" title="RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method</span></code></a></p>
+</div>
+<p class="rubric">References</p>
+<p>[1] Lee, D. S., et al. (2021). The contribution of global aviation to anthropogenic climate forcing for 2000 to 2018. Atmospheric Environment, 244, 117834.</p>
 </dd></dl>
 
 </section>
 <section id="module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>Emission Index Empirical Method</p>
+<p>This module provides functionality for evaluating emission indices using empirical correlations.</p>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>evaluate_correlation_emissions_indices</dt><dd><p>Computes emission indices using empirical correlations</p>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Correlations are valid within the operating range</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="_autosummary/RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.html#module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices" title="RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices</span></code></a></p>
+</div>
+</section>
 </section>
 </section>
 
@@ -563,7 +811,10 @@ None</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.evaluate_correlation_emissions_indices"><code class="docutils literal notranslate"><span class="pre">evaluate_correlation_emissions_indices()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method">Module contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method">Module contents</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -601,7 +852,7 @@ None</p>
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

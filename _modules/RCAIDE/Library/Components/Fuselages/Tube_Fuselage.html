@@ -393,15 +393,30 @@
 <span class="c1">#  Tube_Fuselage</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Tube_Fuselage">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Tube_Fuselage.Tube_Fuselage">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Tube_Fuselage.html#RCAIDE.Library.Components.Fuselages.Tube_Fuselage.Tube_Fuselage">[docs]</a>
 <span class="k">class</span> <span class="nc">Tube_Fuselage</span><span class="p">(</span><span class="n">Fuselage</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This is a standard fuselage for a tube and wing aircraft.</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    Conventional fuselage</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A conventional tube-shaped fuselage component for standard aircraft configurations</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the fuselage component, defaults to &#39;tube_fuselage&#39;</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This class represents a conventional tube and wing aircraft fuselage.</span>
+<span class="sd">    Implementation inherits all base geometric and structural properties from</span>
+<span class="sd">    the parent Fuselage class.</span>
+
+<span class="sd">    **Definitions**</span>
+<span class="sd">    &#39;Tube Fuselage&#39;</span>
+<span class="sd">        Standard cylindrical fuselage configuration with tapered ends,</span>
+<span class="sd">        commonly used in commercial and general aviation aircraft</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    None</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -425,7 +440,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                                    <span class="o">=</span> <span class="s1">&#39;tube_fuselage&#39;</span>
         
 <div class="viewcode-block" id="Tube_Fuselage.compute_moment_of_inertia">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Tube_Fuselage.Tube_Fuselage.compute_moment_of_inertia">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Tube_Fuselage.html#RCAIDE.Library.Components.Fuselages.Tube_Fuselage.Tube_Fuselage.compute_moment_of_inertia">[docs]</a>
     <span class="k">def</span> <span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span> 
         <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_fuselage_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span>        </div>
@@ -473,7 +488,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

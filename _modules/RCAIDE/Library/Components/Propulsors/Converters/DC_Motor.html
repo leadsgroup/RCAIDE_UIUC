@@ -393,15 +393,77 @@
 <span class="c1">#  DC_Motor  </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------           </span>
 <div class="viewcode-block" id="DC_Motor">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.DC_Motor.DC_Motor">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.DC_Motor.html#RCAIDE.Library.Components.Propulsors.Converters.DC_Motor.DC_Motor">[docs]</a>
 <span class="k">class</span> <span class="nc">DC_Motor</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a motor component.</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A direct current (DC) electric motor component model for electric propulsion systems.</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the motor. Default is &#39;motor&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    resistance : float</span>
+<span class="sd">        Internal electrical resistance of the motor [Ω]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    no_load_current : float</span>
+<span class="sd">        Current drawn by the motor with no mechanical load [A]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    speed_constant : float</span>
+<span class="sd">        Motor speed constant (Kv). Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    rotor_radius : float</span>
+<span class="sd">        Radius of the motor&#39;s rotor [m]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    rotor_Cp : float</span>
+<span class="sd">        Specific heat capacity of the rotor [J/kg/K]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    efficiency : float</span>
+<span class="sd">        Overall motor efficiency. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    gear_ratio : float</span>
+<span class="sd">        Ratio of output shaft speed to motor speed. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    gearbox_efficiency : float</span>
+<span class="sd">        Efficiency of the gearbox. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    expected_current : float</span>
+<span class="sd">        Expected operating current [A]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    power_split_ratio : float</span>
+<span class="sd">        Ratio of power distribution when motor drives multiple loads. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    design_torque : float</span>
+<span class="sd">        Design point torque output [N·m]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    interpolated_func : callable</span>
+<span class="sd">        Function for interpolating motor performance. Default is None.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The DC_Motor class models a direct current electric motor&#39;s performance</span>
+<span class="sd">    characteristics. It accounts for electrical, mechanical, and thermal effects</span>
+<span class="sd">    including:</span>
+<span class="sd">    * Internal resistance losses</span>
+<span class="sd">    * No-load current losses</span>
+<span class="sd">    * Gearbox losses</span>
+<span class="sd">    * Speed-torque relationships</span>
+<span class="sd">    * Power distribution for multiple loads</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Kv&#39;</span>
+<span class="sd">        Motor velocity constant, relating voltage to unloaded motor speed</span>
+
+<span class="sd">    &#39;No-load Current&#39;</span>
+<span class="sd">        Current drawn by motor to overcome internal friction when unloaded</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Power Split Ratio&#39;</span>
+<span class="sd">        Fraction of total power delivered to primary load in multi-load applications</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor</span>
 <span class="sd">    &quot;&quot;&quot;</span>      
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
@@ -436,7 +498,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">interpolated_func</span>  <span class="o">=</span> <span class="kc">None</span>
         
 <div class="viewcode-block" id="DC_Motor.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.DC_Motor.DC_Motor.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.DC_Motor.html#RCAIDE.Library.Components.Propulsors.Converters.DC_Motor.DC_Motor.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span>
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_motor_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
@@ -485,7 +547,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

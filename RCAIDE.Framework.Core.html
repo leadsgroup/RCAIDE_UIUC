@@ -577,41 +577,25 @@ None</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
-<p>A dict-type container with attribute, item and index style access
-intended to hold a attribute-accessible list of Data(). This is unordered.</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
+<dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.__init__" title="Link to this definition">#</a></dt>
-<dd><p>Initialization that builds the container</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-self</p>
-<p>Outputs:
-N/A</p>
-<p>Properties Used:
-N/A</p>
+<dd><dl class="field-list simple">
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.append">
 <span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.append"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.append" title="Link to this definition">#</a></dt>
-<dd><p>Appends the value to the containers
-This overrides the Data class append by allowing for duplicate named components
-The following components will get new names.</p>
+<dd><p>Adds new values to the classes. Can also change an already appended key</p>
 <p>Assumptions:
-None</p>
+N/A</p>
 <p>Source:
 N/A</p>
 <p>Inputs:
-self</p>
+value
+key</p>
 <p>Outputs:
 N/A</p>
 <p>Properties Used:
@@ -621,34 +605,12 @@ N/A</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.extend">
 <span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.extend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.extend" title="Link to this definition">#</a></dt>
-<dd><p>Append things regressively depending on what is inside.</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-self</p>
-<p>Outputs:
-N/A</p>
-<p>Properties Used:
-N/A</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Container.Container.get_children">
 <span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Container.html#Container.get_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Container.Container.get_children" title="Link to this definition">#</a></dt>
-<dd><p>Returns the components that can go inside</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -658,7 +620,7 @@ N/A</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ContainerOrdered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/ContainerOrdered.html#ContainerOrdered"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.ContainerOrdered.ContainerOrdered" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.DataOrdered.DataOrdered" title="RCAIDE.Framework.Core.DataOrdered.DataOrdered"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataOrdered</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered" title="RCAIDE.Framework.Core.DataOrdered.DataOrdered"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataOrdered</span></code></a></p>
 <p>A dict-type container with attribute, item and index style access
 intended to hold a attribute-accessible list of DataOrdered(). This is ordered.</p>
 <p>Assumptions:
@@ -792,65 +754,8 @@ N/A</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.__init__" title="Link to this definition">#</a></dt>
-<dd><p>Initializes a new Data() class</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-N/A</p>
-<p>Outputs:
-N/A</p>
-<p>Properties Used:
-N/A</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.itervalues">
-<span class="sig-name descname"><span class="pre">itervalues</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.itervalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.itervalues" title="Link to this definition">#</a></dt>
-<dd><p>Finds all the values that can be iterated over.</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-N/A</p>
-<p>Outputs:
-N/A</p>
-<p>Properties Used:
-N/A</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.values">
-<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.values" title="Link to this definition">#</a></dt>
-<dd><p>Returns all values inside the Data() class.</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-N/A</p>
-<p>Outputs:
-values</p>
-<p>Properties Used:
-N/A</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Framework.Core.Data.Data.update">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Data.html#Data.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Data.Data.update" title="Link to this definition">#</a></dt>
-<dd><p>Updates the internal values of a dictionary with given data</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-other</p>
-<p>Outputs:
-N/A</p>
-<p>Properties Used:
-N/A</p>
+<dd><dl class="field-list simple">
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1324,7 +1229,7 @@ N/A</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Diffed_Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Diffed_Data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
 <p>This is for creating a data new class where a different copy is saved.
 This is useful for creating a new configuration of a vehicle.</p>
 <p>Assumptions:
@@ -1398,7 +1303,7 @@ N/A</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.Container" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Container.html#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
 <p>A dict-type container with attribute, item and index style access
 intended to hold a attribute-accessible list of Data(). This is unordered.</p>
 <p>Assumptions:
@@ -1476,7 +1381,7 @@ N/A</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Framework.Core.Diffed_Data.Container">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Framework/Core/Diffed_Data.html#Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Core.Diffed_Data.Container" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Container.html#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
 <p>A dict-type container with attribute, item and index style access
 intended to hold a attribute-accessible list of Data(). This is unordered.</p>
 <p>Assumptions:
@@ -1897,9 +1802,6 @@ dst - destination to place link</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.typestring"><code class="docutils literal notranslate"><span class="pre">Data.typestring()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.dataname"><code class="docutils literal notranslate"><span class="pre">Data.dataname()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.__init__"><code class="docutils literal notranslate"><span class="pre">Data.__init__()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.itervalues"><code class="docutils literal notranslate"><span class="pre">Data.itervalues()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.values"><code class="docutils literal notranslate"><span class="pre">Data.values()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.update"><code class="docutils literal notranslate"><span class="pre">Data.update()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.append_or_update"><code class="docutils literal notranslate"><span class="pre">Data.append_or_update()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.get_bases"><code class="docutils literal notranslate"><span class="pre">Data.get_bases()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Core.Data.Data.append"><code class="docutils literal notranslate"><span class="pre">Data.append()</span></code></a></li>
@@ -2027,7 +1929,7 @@ dst - destination to place link</p>
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

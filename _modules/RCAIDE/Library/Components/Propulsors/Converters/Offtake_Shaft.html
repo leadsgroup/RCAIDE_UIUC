@@ -393,10 +393,47 @@
 <span class="c1"># Shaft_Power_Offtake</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Offtake_Shaft">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Offtake_Shaft.Offtake_Shaft">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Offtake_Shaft.html#RCAIDE.Library.Components.Propulsors.Converters.Offtake_Shaft.Offtake_Shaft">[docs]</a>
 <span class="k">class</span> <span class="nc">Offtake_Shaft</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a component representing the power draw from the shaft. </span>
-<span class="sd">    &quot;&quot;&quot;</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A power offtake shaft component model for extracting power from rotating machinery.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    power_draw : float</span>
+<span class="sd">        Amount of power extracted from the shaft [W]. Default is 0.0.</span>
+<span class="sd">    reference_temperature : float</span>
+<span class="sd">        Reference temperature for performance calculations [K]. Default is 288.15.</span>
+<span class="sd">    reference_pressure : float</span>
+<span class="sd">        Reference pressure for performance calculations [Pa]. Default is 1.01325e5.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Offtake_Shaft class models power extraction from rotating shafts in </span>
+<span class="sd">    propulsion systems. It is typically used to simulate:</span>
+<span class="sd">    * Accessory power extraction</span>
+<span class="sd">    * Generator drives</span>
+<span class="sd">    * Hydraulic pump drives</span>
+<span class="sd">    * Air conditioning system drives</span>
+<span class="sd">    * Other mechanical power requirements</span>
+
+<span class="sd">    The model accounts for:</span>
+<span class="sd">    * Power extraction effects on main shaft</span>
+<span class="sd">    * Temperature effects on performance</span>
+<span class="sd">    * Pressure effects on performance</span>
+<span class="sd">    * Impact on engine thermodynamic cycle</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Power Draw&#39;</span>
+<span class="sd">        Amount of mechanical power extracted from the main shaft</span>
+<span class="sd">    &#39;Reference Conditions&#39;</span>
+<span class="sd">        Standard day conditions used for performance normalization</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Propulsors.Converters.Offtake_Shaft</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
 
@@ -411,7 +448,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">reference_pressure</span>    <span class="o">=</span> <span class="mf">1.01325</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">5</span> 
 
 <div class="viewcode-block" id="Offtake_Shaft.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Offtake_Shaft.Offtake_Shaft.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Offtake_Shaft.html#RCAIDE.Library.Components.Propulsors.Converters.Offtake_Shaft.Offtake_Shaft.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_offtake_shaft_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
@@ -459,7 +496,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

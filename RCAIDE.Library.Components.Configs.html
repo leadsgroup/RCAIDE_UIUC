@@ -509,14 +509,90 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Configs.Config.Config">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Configs/Config.html#Config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Configs.Config.Config" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data" title="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Diffed_Data</span></code></a>, <a class="reference internal" href="RCAIDE.html#RCAIDE.Vehicle.Vehicle" title="RCAIDE.Vehicle.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a></p>
-<p>The top level configuration class.</p>
+<dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data" title="RCAIDE.Framework.Core.Diffed_Data.Diffed_Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Diffed_Data</span></code></a>, <a class="reference internal" href="RCAIDE.html#RCAIDE.Vehicle.Vehicle" title="RCAIDE.Vehicle.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Vehicle</span></code></a></p>
+<p>The top-level configuration management class for vehicle definition and analysis.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Configs.Config.Config.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Configs.Config.Config.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the configuration. Default is ‘config’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Configs.Config.Config._base">
+<span class="sig-name descname"><span class="pre">_base</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Configs.Config.Config._base" title="Link to this definition">#</a></dt>
+<dd><p>Base vehicle configuration containing default settings. Default is empty Vehicle().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="generated/RCAIDE.Vehicle.html#RCAIDE.Vehicle" title="RCAIDE.Vehicle">Vehicle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Configs.Config.Config._diff">
+<span class="sig-name descname"><span class="pre">_diff</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Configs.Config.Config._diff" title="Link to this definition">#</a></dt>
+<dd><p>Differential vehicle configuration containing changes from base. Default is empty Vehicle().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="generated/RCAIDE.Vehicle.html#RCAIDE.Vehicle" title="RCAIDE.Vehicle">Vehicle</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The Config class manages vehicle configurations through a differential approach,
+providing:
+* Base configuration management
+* Configuration differencing
+* Component relationship tracking
+* Mass properties aggregation
+* Multi-configuration support
+* Dynamic configuration switching</p>
+<p>The class uses a base-diff pattern where:
+* Base configuration (_base) contains default settings
+* Differential configuration (_diff) contains changes
+* Final configuration is computed by applying diff to base</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Base Configuration’</dt><dd><p>Complete reference configuration from which others are derived</p>
+</dd>
+<dt>‘Differential Configuration’</dt><dd><p>Set of changes applied to base configuration</p>
+</dd>
+<dt>‘Configuration Switching’</dt><dd><p>Process of changing between different configurations</p>
+</dd>
+<dt>‘Component Relationships’</dt><dd><p>Connections and dependencies between components</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
 <section id="module-RCAIDE.Library.Components.Configs">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Components.Configs" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>RCAIDE Package Setup for Configuration Components</p>
+<p>This module initializes the configuration components package, providing access to
+vehicle configuration management and definition tools.</p>
+<p class="rubric">Notes</p>
+<p>The package structure includes:
+* Base Config class for vehicle configuration management
+* Support for multiple configuration types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Aircraft configurations</p></li>
+<li><p>Propulsion system layouts</p></li>
+<li><p>Control system arrangements</p></li>
+<li><p>Structural configurations</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Configuration switching capabilities</p></li>
+<li><p>Mass properties management</p></li>
+<li><p>Component relationship handling</p></li>
+</ul>
 </section>
 </section>
 
@@ -551,7 +627,12 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Configs.Config">RCAIDE.Library.Components.Configs.Config module</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Configs.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Configs.Config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Configs.Config.Config.tag"><code class="docutils literal notranslate"><span class="pre">Config.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Configs.Config.Config._base"><code class="docutils literal notranslate"><span class="pre">Config._base</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Configs.Config.Config._diff"><code class="docutils literal notranslate"><span class="pre">Config._diff</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Configs">Module contents</a></li>
@@ -592,7 +673,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

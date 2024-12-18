@@ -393,9 +393,118 @@
 <span class="c1">#  Combustor</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Combustor">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Combustor.Combustor">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Combustor.html#RCAIDE.Library.Components.Propulsors.Converters.Combustor.Combustor">[docs]</a>
 <span class="k">class</span> <span class="nc">Combustor</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a combustor compoment class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A combustor component model for gas turbine engines that simulates the combustion process.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the combustor. Default is &#39;Combustor&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    alphac : float</span>
+<span class="sd">        Combustor entrance angle [rad]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    turbine_inlet_temperature : float</span>
+<span class="sd">        Temperature at turbine inlet [K]. Default is 1500.</span>
+<span class="sd">        </span>
+<span class="sd">    area_ratio : float</span>
+<span class="sd">        Ratio of combustor exit to inlet area. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    axial_fuel_velocity_ratio : float</span>
+<span class="sd">        Ratio of axial fuel velocity to inlet velocity. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    fuel_velocity_ratio : float</span>
+<span class="sd">        Ratio of fuel velocity to inlet velocity. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    burner_drag_coefficient : float</span>
+<span class="sd">        Drag coefficient of the burner. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    absolute_sensible_enthalpy : float</span>
+<span class="sd">        Absolute sensible enthalpy [J/kg]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    diameter : float</span>
+<span class="sd">        Combustor diameter [m]. Default is 0.2.</span>
+<span class="sd">        </span>
+<span class="sd">    length : float</span>
+<span class="sd">        Combustor length [m]. Default is 0.3.</span>
+<span class="sd">        </span>
+<span class="sd">    fuel_equivalency_ratio : float</span>
+<span class="sd">        Fuel-to-air equivalency ratio. Default is 0.3.</span>
+<span class="sd">        </span>
+<span class="sd">    number_of_combustors : int</span>
+<span class="sd">        Number of combustor cans. Default is 30.</span>
+<span class="sd">        </span>
+<span class="sd">    f_air_PZ : float</span>
+<span class="sd">        Fraction of total air entering Primary Zone. Default is 0.18.</span>
+<span class="sd">        </span>
+<span class="sd">    FAR_st : float</span>
+<span class="sd">        Stoichiometric Fuel to Air ratio. Default is 0.068.</span>
+<span class="sd">        </span>
+<span class="sd">    N_comb : int</span>
+<span class="sd">        Number of can-annular combustors. Default is 10.</span>
+<span class="sd">        </span>
+<span class="sd">    N_PZ : int</span>
+<span class="sd">        Number of PSR in the Primary Zone. Default is 8.</span>
+<span class="sd">        </span>
+<span class="sd">    A_PZ : float</span>
+<span class="sd">        Primary Zone cross-sectional area [m²]. Default is 0.15.</span>
+<span class="sd">        </span>
+<span class="sd">    L_PZ : float</span>
+<span class="sd">        Primary Zone length [m]. Default is 0.0153.</span>
+<span class="sd">        </span>
+<span class="sd">    N_SZ : int</span>
+<span class="sd">        Number of dilution air inlets in the Secondary Zone. Default is 3.</span>
+<span class="sd">        </span>
+<span class="sd">    A_SZ : float</span>
+<span class="sd">        Secondary Zone cross-sectional area [m²]. Default is 0.15.</span>
+<span class="sd">        </span>
+<span class="sd">    L_SZ : float</span>
+<span class="sd">        Secondary Zone length [m]. Default is 0.075.</span>
+<span class="sd">        </span>
+<span class="sd">    phi_SZ : float</span>
+<span class="sd">        Equivalence Ratio in the Secondary Zone. Default is 0.2.</span>
+<span class="sd">        </span>
+<span class="sd">    S_PZ : float</span>
+<span class="sd">        Mixing parameter in the Primary Zone. Default is 0.6.</span>
+<span class="sd">        </span>
+<span class="sd">    F_SC : float</span>
+<span class="sd">        Fuel scaler. Default is 0.425.</span>
+<span class="sd">        </span>
+<span class="sd">    number_of_assigned_PSR_1st_mixers : int</span>
+<span class="sd">        Number of assigned PSRs to first row mixers. Default is 2.</span>
+<span class="sd">        </span>
+<span class="sd">    number_of_assigned_PSR_2nd_mixers : int</span>
+<span class="sd">        Number of assigned mixers to second row mixers. Default is 2.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Combustor class models the combustion process in gas turbine engines,</span>
+<span class="sd">    splitting the combustor into primary and secondary zones. It uses a Chemical</span>
+<span class="sd">    Reactor Network (CRN) approach with Perfectly Stirred Reactors (PSR) and Plug Flow Reactors (PFR) for</span>
+<span class="sd">    modeling the combustion process.</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;PSR&#39;</span>
+<span class="sd">        Perfectly Stirred Reactor - A reactor model assuming perfect mixing</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;PZ&#39;</span>
+<span class="sd">        Primary Zone - Initial combustion region</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;SZ&#39;</span>
+<span class="sd">        Secondary Zone - Dilution region where the combustion is completed</span>
+
+<span class="sd">    &#39;FAR&#39;</span>
+<span class="sd">        Fuel-to-Air Ratio</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;PFR&#39;</span>
+<span class="sd">        Plug Flow Reactor - A reactor model assuming no mixing in axial direction</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Emissions.Chemical_Reaction_Network.evaluate_cantera</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -437,8 +546,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">number_of_assigned_PSR_2nd_mixers</span> <span class="o">=</span> <span class="mi">2</span>                                                     <span class="c1"># [-]       Number of assigned mixers to each mixer in the second row of mixers (CRN network model)</span>
     
 <div class="viewcode-block" id="Combustor.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Combustor.Combustor.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Combustor.html#RCAIDE.Library.Components.Propulsors.Converters.Combustor.Combustor.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Appends operating conditions to the combustor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_combustor_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
         <span class="k">return</span></div>
@@ -485,7 +597,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

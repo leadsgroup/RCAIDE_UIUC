@@ -43,6 +43,8 @@
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'RCAIDE.Library.Methods.Emissions';</script>
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/RCAIDE.Library.Methods.Emissions.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -534,7 +536,10 @@
 <li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.html#RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.evaluate_correlation_emissions_indices"><code class="docutils literal notranslate"><span class="pre">evaluate_correlation_emissions_indices()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.html#module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.html#module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.html#functions">Functions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -542,7 +547,46 @@
 </section>
 <section id="module-RCAIDE.Library.Methods.Emissions">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Methods.Emissions" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>Aircraft Emissions Analysis Package</p>
+<p>This module provides functionality for evaluating aircraft emissions using both empirical
+and physics-based methods.</p>
+<p class="rubric">Notes</p>
+<p>The Emissions package contains two main approaches for emissions calculation:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Chemical Reactor Network (CRN) Method:</dt><dd><ul class="simple">
+<li><p>Detailed chemical kinetics using Cantera</p></li>
+<li><p>Primary and secondary combustion zone modeling</p></li>
+<li><p>Species-specific emission indices computation</p></li>
+<li><p>Surrogate model capabilities</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Empirical Index Method:</dt><dd><ul class="simple">
+<li><p>Quick estimation utilizing pre-defined empirical correlations</p></li>
+<li><p>Global Warming Potential considerations</p></li>
+<li><p>Contrail effects estimation</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Emission Index (EI)’</dt><dd><p>Mass of pollutant emitted per unit mass of fuel burned [kg_pollutant/kg_fuel]</p>
+</dd>
+<dt>‘Global Warming Potential (GWP)’</dt><dd><p>Relative measure of heat trapped by a greenhouse gas compared to CO2</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="_autosummary/RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.html#module-RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method" title="RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method</span></code></a>, <a class="reference internal" href="_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.html#module-RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method" title="RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method</span></code></a></p>
+</div>
+<p class="rubric">References</p>
+<p>[1] Goodwin, D. G., Speth, R. L., Moffat, H. K., &amp; Weber, B. W. (2023). Cantera: An object-oriented software toolkit for chemical kinetics, thermodynamics, and transport processes (Version 3.0.0) [Computer software]. <a class="reference external" href="https://www.cantera.org">https://www.cantera.org</a></p>
+<p>[2] Lee, D. S., et al. (2021). The contribution of global aviation to anthropogenic climate forcing for 2000 to 2018. Atmospheric Environment, 244, 117834.</p>
 </section>
 </section>
 
@@ -614,7 +658,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

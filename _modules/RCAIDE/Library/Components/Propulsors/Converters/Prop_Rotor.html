@@ -393,15 +393,119 @@
 <span class="c1">#  PROP-ROTOR CLASS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------           </span>
 <div class="viewcode-block" id="Prop_Rotor">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor.Prop_Rotor">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor.html#RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor.Prop_Rotor">[docs]</a>
 <span class="k">class</span> <span class="nc">Prop_Rotor</span><span class="p">(</span><span class="n">Rotor</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a prop_rotor component, and is a sub-class of rotor.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A prop-rotor component model for tiltrotor and convertible aircraft applications, inheriting from the base Rotor class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the prop-rotor. Default is &#39;prop_rotor&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    orientation_euler_angles : list</span>
+<span class="sd">        Vector of angles [rad] defining rotor orientation [θ, φ, ψ]. </span>
+<span class="sd">        Default is [0., 0., 0.] for X-direction thrust in vehicle frame.</span>
+<span class="sd">        </span>
+<span class="sd">    use_2d_analysis : bool</span>
+<span class="sd">        Flag for using 2D aerodynamic analysis. Default is False.</span>
+<span class="sd">        </span>
+<span class="sd">    variable_pitch : bool</span>
+<span class="sd">        Flag indicating if rotor has variable pitch capability. Default is True.</span>
+<span class="sd">        </span>
+<span class="sd">    hover : Data</span>
+<span class="sd">        Hover mode performance parameters</span>
+<span class="sd">        </span>
+<span class="sd">        - design_thrust : float</span>
+<span class="sd">            Design point thrust [N]. Default is None.</span>
+<span class="sd">        - design_torque : float</span>
+<span class="sd">            Design point torque [N·m]. Default is None.</span>
+<span class="sd">        - design_power : float</span>
+<span class="sd">            Design point power [W]. Default is None.</span>
+<span class="sd">        - design_angular_velocity : float</span>
+<span class="sd">            Design point rotational speed [rad/s]. Default is None.</span>
+<span class="sd">        - design_tip_mach : float</span>
+<span class="sd">            Design point blade tip Mach number. Default is None.</span>
+<span class="sd">        - design_acoustics : Data</span>
+<span class="sd">            Acoustic characteristics at design point. Default is None.</span>
+<span class="sd">        - design_performance : Data</span>
+<span class="sd">            Performance metrics at design point. Default is None.</span>
+<span class="sd">        - design_freestream_velocity : float</span>
+<span class="sd">            Design point forward velocity [m/s]. Default is None.</span>
+<span class="sd">        - design_SPL_dBA : float</span>
+<span class="sd">            Design point sound pressure level [dBA]. Default is None.</span>
+<span class="sd">        - design_pitch_command : float</span>
+<span class="sd">            Design point blade pitch command [rad]. Default is 0.0.</span>
+<span class="sd">        - design_Cl : float</span>
+<span class="sd">            Design point lift coefficient. Default is None.</span>
+<span class="sd">        - design_thrust_coefficient : float</span>
+<span class="sd">            Design point thrust coefficient. Default is None.</span>
+<span class="sd">        - design_power_coefficient : float</span>
+<span class="sd">            Design point power coefficient. Default is None.</span>
+<span class="sd">            </span>
+<span class="sd">    cruise : Data</span>
+<span class="sd">        Cruise mode performance parameters</span>
+<span class="sd">        </span>
+<span class="sd">        - design_thrust : float</span>
+<span class="sd">            Design point thrust [N]. Default is None.</span>
+<span class="sd">        - design_torque : float</span>
+<span class="sd">            Design point torque [N·m]. Default is None.</span>
+<span class="sd">        - design_power : float</span>
+<span class="sd">            Design point power [W]. Default is None.</span>
+<span class="sd">        - design_angular_velocity : float</span>
+<span class="sd">            Design point rotational speed [rad/s]. Default is None.</span>
+<span class="sd">        - design_tip_mach : float</span>
+<span class="sd">            Design point blade tip Mach number. Default is None.</span>
+<span class="sd">        - design_acoustics : Data</span>
+<span class="sd">            Acoustic characteristics at design point. Default is None.</span>
+<span class="sd">        - design_performance : Data</span>
+<span class="sd">            Performance metrics at design point. Default is None.</span>
+<span class="sd">        - design_SPL_dBA : float</span>
+<span class="sd">            Design point sound pressure level [dBA]. Default is None.</span>
+<span class="sd">        - design_pitch_command : float</span>
+<span class="sd">            Design point blade pitch command [rad]. Default is 0.0.</span>
+<span class="sd">        - design_Cl : float</span>
+<span class="sd">            Design point lift coefficient. Default is None.</span>
+<span class="sd">        - design_thrust_coefficient : float</span>
+<span class="sd">            Design point thrust coefficient. Default is None.</span>
+<span class="sd">        - design_power_coefficient : float</span>
+<span class="sd">            Design point power coefficient. Default is None.</span>
+<span class="sd">            </span>
+<span class="sd">    oei : Data</span>
+<span class="sd">        One engine inoperative performance parameters</span>
+<span class="sd">        (Similar structure to hover and cruise attributes)</span>
+
+<span class="sd">    optimization_parameters : Data</span>
+<span class="sd">        - multiobjective_performance_weight : float</span>
+<span class="sd">            Weight factor for multi-objective optimization. Default is 0.5.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Prop_Rotor class models rotors designed for both hover and forward flight,</span>
+<span class="sd">    typical of tiltrotor aircraft. It includes capabilities for:</span>
+
+<span class="sd">    * Hover and cruise performance analysis</span>
+<span class="sd">    * One engine inoperative (OEI) conditions</span>
+<span class="sd">    * Variable pitch operation</span>
+<span class="sd">    * Acoustic analysis</span>
+<span class="sd">    * Performance optimization</span>
+<span class="sd">    * Multi-mode operation</span>
+
+<span class="sd">    **Definitions**</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    &#39;OEI&#39;</span>
+<span class="sd">        One Engine Inoperative - emergency condition where one engine fails</span>
+<span class="sd">    &#39;SPL&#39;</span>
+<span class="sd">        Sound Pressure Level - measure of acoustic intensity</span>
+<span class="sd">    &#39;Tip Mach&#39;</span>
+<span class="sd">        Mach number at the blade tip, including rotational and forward flight effects</span>
+<span class="sd">    &#39;Multi-objective Performance&#39;</span>
+<span class="sd">        Combined optimization of multiple performance metrics</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Converters.Rotor</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor</span>
 <span class="sd">    &quot;&quot;&quot;</span>     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
@@ -515,7 +619,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

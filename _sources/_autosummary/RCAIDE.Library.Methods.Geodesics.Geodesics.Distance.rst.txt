@@ -1,0 +1,32 @@
+﻿RCAIDE.Library.Methods.Geodesics.Geodesics.Distance
+===================================================
+
+.. currentmodule:: RCAIDE.Library.Methods.Geodesics.Geodesics
+
+.. autoclass:: Distance
+   :members: 
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Distance.__init__
+      ~Distance.destination
+      ~Distance.measure
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Distance.kilometers
+      ~Distance.km
+   
+   

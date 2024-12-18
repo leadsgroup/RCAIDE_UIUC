@@ -397,7 +397,7 @@
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="plot_2D_noise_contour">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Plots.Noise.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.plot_2D_noise_contour">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.plot_2D_noise_contour">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_2D_noise_contour</span><span class="p">(</span><span class="n">noise_data</span><span class="p">,</span>
                        <span class="n">noise_level</span>              <span class="o">=</span> <span class="kc">None</span> <span class="p">,</span>
                        <span class="n">min_noise_level</span>          <span class="o">=</span> <span class="mi">35</span><span class="p">,</span>  
@@ -489,7 +489,7 @@
 <span class="c1"># Truncate colormaps</span>
 <span class="c1"># ------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="truncate_colormap">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Plots.Noise.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.truncate_colormap">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.truncate_colormap">[docs]</a>
 <span class="k">def</span> <span class="nf">truncate_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="p">,</span> <span class="n">minval</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">new_cmap</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span>
         <span class="s1">&#39;trunc(</span><span class="si">{n}</span><span class="s1">,</span><span class="si">{a:.2f}</span><span class="s1">,</span><span class="si">{b:.2f}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">cmap</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">minval</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">maxval</span><span class="p">),</span>
@@ -499,7 +499,7 @@
 
 
 <div class="viewcode-block" id="FixPointNormalize">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Plots.Noise.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize">[docs]</a>
 <span class="k">class</span> <span class="nc">FixPointNormalize</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Inspired by https://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib</span>
@@ -509,7 +509,7 @@
 <span class="sd">    to a color in the blue/turquise range. </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="FixPointNormalize.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Plots.Noise.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.FixPointNormalize.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sealevel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col_val</span> <span class="o">=</span> <span class="mf">0.21875</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="c1"># sealevel is the fix point of the colormap (in data units)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sealevel</span> <span class="o">=</span> <span class="n">sealevel</span>
@@ -524,7 +524,7 @@
 
 
 <div class="viewcode-block" id="colorax">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Plots.Noise.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.colorax">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.html#RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.colorax">[docs]</a>
 <span class="k">def</span> <span class="nf">colorax</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">cmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span></div>
 
@@ -569,7 +569,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

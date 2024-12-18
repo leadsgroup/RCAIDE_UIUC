@@ -412,13 +412,13 @@
 
 
 <div class="viewcode-block" id="UndefinedUnitError">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError.html#RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError">[docs]</a>
 <span class="k">class</span> <span class="nc">UndefinedUnitError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the units are not defined in the unit registry.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="UndefinedUnitError.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError.html#RCAIDE.Framework.Plugins.pint.unit.UndefinedUnitError.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit_names</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">unit_names</span> <span class="o">=</span> <span class="n">unit_names</span></div>
@@ -438,13 +438,13 @@
 
 
 <div class="viewcode-block" id="DimensionalityError">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionalityError">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.DimensionalityError.html#RCAIDE.Framework.Plugins.pint.unit.DimensionalityError">[docs]</a>
 <span class="k">class</span> <span class="nc">DimensionalityError</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when trying to convert between incompatible units.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DimensionalityError.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionalityError.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.DimensionalityError.html#RCAIDE.Framework.Plugins.pint.unit.DimensionalityError.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units1</span><span class="p">,</span> <span class="n">units2</span><span class="p">,</span> <span class="n">dim1</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dim2</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DimensionalityError</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">units1</span> <span class="o">=</span> <span class="n">units1</span>
@@ -465,19 +465,19 @@
 
 
 <div class="viewcode-block" id="Converter">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Converter">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.Converter.html#RCAIDE.Framework.Plugins.pint.unit.Converter">[docs]</a>
 <span class="k">class</span> <span class="nc">Converter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for value converters.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Converter.to_reference">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Converter.to_reference">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.Converter.html#RCAIDE.Framework.Plugins.pint.unit.Converter.to_reference">[docs]</a>
     <span class="k">def</span> <span class="nf">to_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">value</span></div>
 
 
 <div class="viewcode-block" id="Converter.from_reference">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Converter.from_reference">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.Converter.html#RCAIDE.Framework.Plugins.pint.unit.Converter.from_reference">[docs]</a>
     <span class="k">def</span> <span class="nf">from_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">value</span></div>
 </div>
@@ -485,25 +485,25 @@
 
 
 <div class="viewcode-block" id="ScaleConverter">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter">[docs]</a>
 <span class="k">class</span> <span class="nc">ScaleConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A linear transformation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="ScaleConverter.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span></div>
 
 
 <div class="viewcode-block" id="ScaleConverter.to_reference">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.to_reference">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.to_reference">[docs]</a>
     <span class="k">def</span> <span class="nf">to_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span></div>
 
 
 <div class="viewcode-block" id="ScaleConverter.from_reference">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.from_reference">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.html#RCAIDE.Framework.Plugins.pint.unit.ScaleConverter.from_reference">[docs]</a>
     <span class="k">def</span> <span class="nf">from_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span></div>
 </div>
@@ -511,26 +511,26 @@
 
 
 <div class="viewcode-block" id="OffsetConverter">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter">[docs]</a>
 <span class="k">class</span> <span class="nc">OffsetConverter</span><span class="p">(</span><span class="n">Converter</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;An affine transformation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="OffsetConverter.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span></div>
 
 
 <div class="viewcode-block" id="OffsetConverter.to_reference">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.to_reference">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.to_reference">[docs]</a>
     <span class="k">def</span> <span class="nf">to_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">value</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span></div>
 
 
 <div class="viewcode-block" id="OffsetConverter.from_reference">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.from_reference">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.html#RCAIDE.Framework.Plugins.pint.unit.OffsetConverter.from_reference">[docs]</a>
     <span class="k">def</span> <span class="nf">from_reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span></div>
 </div>
@@ -538,7 +538,7 @@
 
 
 <div class="viewcode-block" id="Definition">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Definition">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.Definition.html#RCAIDE.Framework.Plugins.pint.unit.Definition">[docs]</a>
 <span class="k">class</span> <span class="nc">Definition</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for definitions.</span>
 
@@ -549,7 +549,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Definition.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Definition.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.Definition.html#RCAIDE.Framework.Plugins.pint.unit.Definition.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span> <span class="o">=</span> <span class="n">symbol</span>
@@ -558,7 +558,7 @@
 
 
 <div class="viewcode-block" id="Definition.from_string">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.Definition.from_string">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.Definition.html#RCAIDE.Framework.Plugins.pint.unit.Definition.from_string">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">definition</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a definition</span>
@@ -605,13 +605,13 @@
 
 
 <div class="viewcode-block" id="PrefixDefinition">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition.html#RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition">[docs]</a>
 <span class="k">class</span> <span class="nc">PrefixDefinition</span><span class="p">(</span><span class="n">Definition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Definition of a prefix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="PrefixDefinition.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition.html#RCAIDE.Framework.Plugins.pint.unit.PrefixDefinition.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">converter</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
             <span class="n">converter</span> <span class="o">=</span> <span class="n">ScaleConverter</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">converter</span><span class="p">))</span>
@@ -624,7 +624,7 @@
 
 
 <div class="viewcode-block" id="UnitDefinition">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitDefinition">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitDefinition.html#RCAIDE.Framework.Plugins.pint.unit.UnitDefinition">[docs]</a>
 <span class="k">class</span> <span class="nc">UnitDefinition</span><span class="p">(</span><span class="n">Definition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Definition of a unit.</span>
 
@@ -633,7 +633,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="UnitDefinition.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitDefinition.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitDefinition.html#RCAIDE.Framework.Plugins.pint.unit.UnitDefinition.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">,</span>
                  <span class="n">reference</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_base</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">reference</span>
@@ -666,13 +666,13 @@
 
 
 <div class="viewcode-block" id="DimensionDefinition">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition.html#RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition">[docs]</a>
 <span class="k">class</span> <span class="nc">DimensionDefinition</span><span class="p">(</span><span class="n">Definition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Definition of a dimension.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="DimensionDefinition.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition.html#RCAIDE.Framework.Plugins.pint.unit.DimensionDefinition.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">converter</span><span class="p">,</span>
                  <span class="n">reference</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_base</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">reference</span>
@@ -694,7 +694,7 @@
 
 
 <div class="viewcode-block" id="UnitsContainer">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer">[docs]</a>
 <span class="k">class</span> <span class="nc">UnitsContainer</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The UnitsContainer stores the product of units and their respective</span>
 <span class="sd">    exponent and implements the corresponding operations</span>
@@ -702,7 +702,7 @@
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
 
 <div class="viewcode-block" id="UnitsContainer.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">dict</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -725,7 +725,7 @@
         <span class="nb">dict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
 
 <div class="viewcode-block" id="UnitsContainer.add">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.add">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.html#RCAIDE.Framework.Plugins.pint.unit.UnitsContainer.add">[docs]</a>
     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">newval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="n">value</span>
         <span class="k">if</span> <span class="n">newval</span><span class="p">:</span>
@@ -846,7 +846,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry">[docs]</a>
 <span class="k">class</span> <span class="nc">UnitRegistry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The unit registry stores the definitions and relationships between</span>
 <span class="sd">    units.</span>
@@ -860,7 +860,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="UnitRegistry.__init__">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.__init__">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">force_ndarray</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">default_to_delta</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span> <span class="o">=</span> <span class="n">build_quantity_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force_ndarray</span><span class="p">)</span>
 
@@ -919,7 +919,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">Quantity</span><span class="o">.</span><span class="n">default_format</span> <span class="o">=</span> <span class="n">value</span>
 
 <div class="viewcode-block" id="UnitRegistry.add_context">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.add_context">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.add_context">[docs]</a>
     <span class="k">def</span> <span class="nf">add_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a context object to the registry.</span>
 
@@ -939,7 +939,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.remove_context">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.remove_context">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.remove_context">[docs]</a>
     <span class="k">def</span> <span class="nf">remove_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_or_alias</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove a context from the registry and return it.</span>
 
@@ -957,7 +957,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.enable_contexts">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.enable_contexts">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.enable_contexts">[docs]</a>
     <span class="k">def</span> <span class="nf">enable_contexts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">names_or_contexts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Enable contexts provided by name or by object.</span>
 
@@ -995,7 +995,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.disable_contexts">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.disable_contexts">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.disable_contexts">[docs]</a>
     <span class="k">def</span> <span class="nf">disable_contexts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Disable the last n enabled contexts.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1005,7 +1005,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.context">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.context">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.context">[docs]</a>
     <span class="nd">@contextmanager</span>
     <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">names</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Used as a context manager, this function enables to activate a context</span>
@@ -1058,7 +1058,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.define">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.define">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.define">[docs]</a>
     <span class="k">def</span> <span class="nf">define</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">definition</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add unit to the registry.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1111,7 +1111,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.load_definitions">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.load_definitions">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.load_definitions">[docs]</a>
     <span class="k">def</span> <span class="nf">load_definitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">is_resource</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add units and prefixes defined in a definition text file.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1160,7 +1160,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.validate">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.validate">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.validate">[docs]</a>
     <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Walk the registry and calculate for each unit definition</span>
 <span class="sd">        the corresponding base units and dimensionality.</span>
@@ -1176,7 +1176,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.get_name">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_name">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_name">[docs]</a>
     <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_or_alias</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the canonical name of a unit.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1211,7 +1211,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.get_symbol">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_symbol">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_symbol">[docs]</a>
     <span class="k">def</span> <span class="nf">get_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name_or_alias</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the preferred alias for a unit</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1229,7 +1229,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.get_dimensionality">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_dimensionality">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_dimensionality">[docs]</a>
     <span class="k">def</span> <span class="nf">get_dimensionality</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_units</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert unit or dict of units or dimensions to a dict of base dimensions</span>
 
@@ -1286,7 +1286,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.get_base_units">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_base_units">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.get_base_units">[docs]</a>
     <span class="k">def</span> <span class="nf">get_base_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_units</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert unit or dict of units to the base units.</span>
 
@@ -1321,7 +1321,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.convert">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.convert">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.convert">[docs]</a>
     <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert value from some source to destination units.</span>
 
@@ -1386,7 +1386,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.pi_theorem">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.pi_theorem">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.pi_theorem">[docs]</a>
     <span class="k">def</span> <span class="nf">pi_theorem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">quantities</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds dimensionless quantities using the Buckingham π theorem</span>
 
@@ -1415,7 +1415,7 @@
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">unique</span><span class="p">)</span>
 
 <div class="viewcode-block" id="UnitRegistry.parse_unit_name">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_unit_name">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_unit_name">[docs]</a>
     <span class="k">def</span> <span class="nf">parse_unit_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">unit_name</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a unit to identify prefix, unit name and suffix</span>
 <span class="sd">        by walking the list of prefix and suffix.</span>
@@ -1434,7 +1434,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.parse_units">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_units">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_units">[docs]</a>
     <span class="k">def</span> <span class="nf">parse_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_string</span><span class="p">,</span> <span class="n">to_delta</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a units expression and returns a UnitContainer with</span>
 <span class="sd">        the canonical names.</span>
@@ -1474,7 +1474,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.parse_expression">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_expression">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.parse_expression">[docs]</a>
     <span class="k">def</span> <span class="nf">parse_expression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_string</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse a mathematical expression including units and return a quantity object.</span>
 
@@ -1527,7 +1527,7 @@
 
 
 <div class="viewcode-block" id="UnitRegistry.wraps">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.wraps">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.html#RCAIDE.Framework.Plugins.pint.unit.UnitRegistry.wraps">[docs]</a>
     <span class="k">def</span> <span class="nf">wraps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Wraps a function to become pint-aware.</span>
 
@@ -1601,7 +1601,7 @@
 
 
 <div class="viewcode-block" id="build_quantity_class">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Plugins.pint.html#RCAIDE.Framework.Plugins.pint.unit.build_quantity_class">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Plugins.pint.unit.build_quantity_class.html#RCAIDE.Framework.Plugins.pint.unit.build_quantity_class">[docs]</a>
 <span class="k">def</span> <span class="nf">build_quantity_class</span><span class="p">(</span><span class="n">registry</span><span class="p">,</span> <span class="n">force_ndarray</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">.quantity</span> <span class="kn">import</span> <span class="n">_Quantity</span>
 
@@ -1654,7 +1654,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

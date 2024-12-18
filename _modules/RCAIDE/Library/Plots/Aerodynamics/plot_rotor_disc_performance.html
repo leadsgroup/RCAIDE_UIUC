@@ -395,7 +395,7 @@
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------      </span>
 <div class="viewcode-block" id="plot_rotor_disc_performance">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Plots.Aerodynamics.html#RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance.plot_rotor_disc_performance">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance.html#RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance.plot_rotor_disc_performance">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_rotor_disc_performance</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span><span class="n">outputs</span><span class="p">,</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">save_figure</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots rotor disc performance</span>
@@ -441,7 +441,7 @@
     <span class="n">cm</span>  <span class="o">=</span> <span class="s1">&#39;jet&#39;</span>
     
     <span class="c1"># plot the grid point velocities</span>
-    <span class="n">fig</span>  <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">fig</span>  <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">ax0</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">231</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">p0</span>   <span class="o">=</span> <span class="n">ax0</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span><span class="n">lev</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">)</span>
     <span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Thrust Distribution&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>      
@@ -465,18 +465,18 @@
  
     <span class="n">ax3</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">234</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       
     <span class="n">p3</span>   <span class="o">=</span> <span class="n">ax3</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">va</span><span class="p">,</span><span class="n">lev</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">)</span> 
-    <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Axial Velocity&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> 
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Va&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> 
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_rorigin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">ax3</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">p3</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">)</span>    
      
     <span class="n">ax4</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">235</span><span class="p">,</span> <span class="n">polar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>       
     <span class="n">p4</span>   <span class="o">=</span> <span class="n">ax4</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">vt</span><span class="p">,</span><span class="n">lev</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">)</span> 
-    <span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Tangential Velocity&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> 
+    <span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Vt&#39;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> 
     <span class="n">ax4</span><span class="o">.</span><span class="n">set_rorigin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">ax4</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">p4</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>    
-  
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">p4</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>   
+ 
     <span class="k">return</span> <span class="n">fig</span> </div>
 
 </pre></div>
@@ -520,7 +520,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

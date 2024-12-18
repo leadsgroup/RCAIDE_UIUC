@@ -393,9 +393,41 @@
 <span class="c1">#  Compressor </span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Compressor">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Compressor.Compressor">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Compressor.html#RCAIDE.Library.Components.Propulsors.Converters.Compressor.Compressor">[docs]</a>
 <span class="k">class</span> <span class="nc">Compressor</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a compressor component typically used in a turbofan or turbojet.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A compressor component model for gas turbine engines.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the compressor. Default is &#39;Compressor&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    polytropic_efficiency : float</span>
+<span class="sd">        Efficiency of the compression process accounting for losses. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    pressure_ratio : float</span>
+<span class="sd">        Ratio of outlet to inlet total pressure. Default is 1.0.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Compressor class models the compression process in gas turbine engines.</span>
+<span class="sd">    It calculates the work required to increase the pressure of the working fluid</span>
+<span class="sd">    while accounting for losses through the polytropic efficiency.</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Polytropic Efficiency&#39;</span>
+<span class="sd">        A measure of compression efficiency that accounts for the continuous</span>
+<span class="sd">        nature of the compression process and real gas effects</span>
+
+<span class="sd">    &#39;Pressure Ratio&#39;</span>
+<span class="sd">        Ratio of exit to inlet total pressure, a key parameter determining</span>
+<span class="sd">        the compressor&#39;s performance and work input required</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Propulsors.Converters.Compressor</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -413,7 +445,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pressure_ratio</span>                  <span class="o">=</span> <span class="mf">1.0</span>
 
 <div class="viewcode-block" id="Compressor.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Compressor.Compressor.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Compressor.html#RCAIDE.Library.Components.Propulsors.Converters.Compressor.Compressor.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_compressor_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
@@ -461,7 +493,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

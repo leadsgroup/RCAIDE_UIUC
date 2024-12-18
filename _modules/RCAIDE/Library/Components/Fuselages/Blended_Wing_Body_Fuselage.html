@@ -395,14 +395,31 @@
 <span class="c1">#  Blended_Wing_Body_Fuselage</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Blended_Wing_Body_Fuselage">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.html#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage">[docs]</a>
 <span class="k">class</span> <span class="nc">Blended_Wing_Body_Fuselage</span><span class="p">(</span><span class="n">Fuselage</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This is a blended wing body fuselage class </span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions: </span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A blended wing body fuselage component that inherits from the base Fuselage class.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the fuselage component, defaults to &#39;bwb_fuselage&#39;</span>
+<span class="sd">    aft_centerbody_area : float</span>
+<span class="sd">        Area of the aft centerbody section, defaults to 0.0</span>
+<span class="sd">    aft_centerbody_taper : float</span>
+<span class="sd">        Taper ratio of the aft centerbody section, defaults to 0.0</span>
+<span class="sd">    cabin_area : float</span>
+<span class="sd">        Total cabin area, defaults to 0.0</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This class extends the base Fuselage class to represent a blended wing body configuration,</span>
+<span class="sd">    where the fuselage smoothly transitions into the wing structure.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -430,7 +447,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">cabin_area</span>            <span class="o">=</span> <span class="mf">0.0</span>
         
 <div class="viewcode-block" id="Blended_Wing_Body_Fuselage.compute_moment_of_inertia">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Fuselages.html#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.compute_moment_of_inertia">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.html#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.compute_moment_of_inertia">[docs]</a>
     <span class="k">def</span> <span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span> 
         <span class="n">I</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> 
         <span class="k">return</span> <span class="n">I</span>        </div>
@@ -477,7 +494,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

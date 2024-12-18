@@ -393,19 +393,138 @@
 <span class="c1">#  BOOM</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Boom">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Booms.html#RCAIDE.Library.Components.Booms.Boom.Boom">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Booms.Boom.html#RCAIDE.Library.Components.Booms.Boom.Boom">[docs]</a>
 <span class="k">class</span> <span class="nc">Boom</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a standard boom for a rotor&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A structural boom component model for aircraft and rotorcraft applications.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the boom component. Default is &#39;boom&#39;.</span>
+
+<span class="sd">    origin : list</span>
+<span class="sd">        3D coordinates of the boom origin [m]. Default is [[0.0,0.0,0.0]].</span>
+
+<span class="sd">    aerodynamic_center : list</span>
+<span class="sd">        3D coordinates of the aerodynamic center [m]. Default is [0.0,0.0,0.0].</span>
+
+<span class="sd">    areas : Data</span>
+<span class="sd">        Collection of area measurements</span>
+
+<span class="sd">        - front_projected : float</span>
+<span class="sd">            Front projected area [m²]. Default is 0.0.</span>
+<span class="sd">        - side_projected : float</span>
+<span class="sd">            Side projected area [m²]. Default is 0.0.</span>
+<span class="sd">        - wetted : float</span>
+<span class="sd">            Wetted area of the boom [m²]. Default is 0.0.</span>
+
+<span class="sd">    effective_diameter : float</span>
+<span class="sd">        Effective diameter of the boom [m]. Default is 0.0.</span>
+
+<span class="sd">    width : float</span>
+<span class="sd">        Width of the boom [m]. Default is 0.0.</span>
+
+<span class="sd">    heights : Data</span>
+<span class="sd">        Collection of height measurements</span>
+
+<span class="sd">        - maximum : float</span>
+<span class="sd">            Maximum height of the boom [m]. Default is 0.0.</span>
+<span class="sd">        - at_quarter_length : float</span>
+<span class="sd">            Height at 25% of boom length [m]. Default is 0.0.</span>
+<span class="sd">        - at_three_quarters_length : float</span>
+<span class="sd">            Height at 75% of boom length [m]. Default is 0.0.</span>
+<span class="sd">        - at_wing_root_quarter_chord : float</span>
+<span class="sd">            Height at wing root quarter chord [m]. Default is 0.0.</span>
+<span class="sd">        - at_vertical_root_quarter_chord : float</span>
+<span class="sd">            Height at vertical root quarter chord [m]. Default is 0.0.</span>
+
+<span class="sd">    x_rotation : float</span>
+<span class="sd">        Rotation angle around x-axis [rad]. Default is 0.0.</span>
+
+<span class="sd">    y_rotation : float</span>
+<span class="sd">        Rotation angle around y-axis [rad]. Default is 0.0.</span>
+
+<span class="sd">    z_rotation : float</span>
+<span class="sd">        Rotation angle around z-axis [rad]. Default is 0.0.</span>
+
+<span class="sd">    lengths : Data</span>
+<span class="sd">        Collection of length measurements</span>
+
+<span class="sd">        - nose : float</span>
+<span class="sd">            Length of the nose section [m]. Default is 0.0.</span>
+<span class="sd">        - total : float</span>
+<span class="sd">            Total length of the boom [m]. Default is 0.0.</span>
+<span class="sd">        - cabin : float</span>
+<span class="sd">            Length of the cabin section [m]. Default is 0.0.</span>
+<span class="sd">        - fore_space : float</span>
+<span class="sd">            Length of space in front [m]. Default is 0.0.</span>
+<span class="sd">        - aft_space : float</span>
+<span class="sd">            Length of space in rear [m]. Default is 0.0.</span>
+
+<span class="sd">    fineness : Data</span>
+<span class="sd">        Fineness ratios</span>
+
+<span class="sd">        - nose : float</span>
+<span class="sd">            Fineness ratio of nose. Default is 0.0.</span>
+<span class="sd">        - tail : float</span>
+<span class="sd">            Fineness ratio of tail. Default is 0.0.</span>
+
+<span class="sd">    differential_pressure : float</span>
+<span class="sd">        Pressure differential across the boom [Pa]. Default is 0.0.</span>
+
+<span class="sd">    vsp_data : Data</span>
+<span class="sd">        Vehicle Sketch Pad related data</span>
+
+<span class="sd">        - xsec_surf_id : str</span>
+<span class="sd">            VSP cross-section surface identifier. Default is &#39;&#39;.</span>
+<span class="sd">        - xsec_num : int</span>
+<span class="sd">            Number of cross-sections in boom geometry. Default is None.</span>
+
+<span class="sd">    Segments : Container</span>
+<span class="sd">        Container for boom segments. Default is empty container.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Boom class provides a comprehensive framework for modeling structural</span>
+<span class="sd">    booms in aircraft and rotorcraft, including:</span>
+
+<span class="sd">    * Geometric definition</span>
+<span class="sd">    * Cross-sectional properties</span>
+<span class="sd">    * Aerodynamic characteristics</span>
+<span class="sd">    * Structural interfaces</span>
+<span class="sd">    * VSP integration</span>
+<span class="sd">    * Segmentation capabilities</span>
+
+<span class="sd">    **Major Assumptions**</span>
+
+<span class="sd">    * Rigid structure</span>
+<span class="sd">    * Linear elastic material behavior</span>
+<span class="sd">    * Small deflections</span>
+<span class="sd">    * Quasi-steady aerodynamics</span>
+<span class="sd">    * Uniform material properties</span>
+<span class="sd">    * No thermal effects</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Fineness Ratio&#39;</span>
+<span class="sd">        Ratio of length to maximum diameter</span>
+<span class="sd">    &#39;Wetted Area&#39;</span>
+<span class="sd">        Total surface area exposed to airflow</span>
+<span class="sd">    &#39;Differential Pressure&#39;</span>
+<span class="sd">        Pressure difference between inside and outside of boom</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
-<span class="sd">        &quot;&quot;&quot;</span>       
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; :meta private:&quot;&quot;&quot;</span>
+        <span class="c1">#This sets the default values.</span>
+    
+        <span class="c1">#Assumptions:</span>
+        <span class="c1">#    None</span>
+        
+        <span class="c1">#Source:</span>
+        <span class="c1">#    None</span>
+              
         
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                                    <span class="o">=</span> <span class="s1">&#39;boom&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>                                 <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]]</span>
@@ -451,23 +570,22 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span>                               <span class="o">=</span> <span class="n">Container</span><span class="p">()</span>
         
 <div class="viewcode-block" id="Boom.append_segment">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Booms.html#RCAIDE.Library.Components.Booms.Boom.Boom.append_segment">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Booms.Boom.html#RCAIDE.Library.Components.Booms.Boom.Boom.append_segment">[docs]</a>
     <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a segment to the rotor_boom. </span>
-<span class="sd">    </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
+<span class="sd">           None</span>
 <span class="sd">            </span>
 <span class="sd">        Source:</span>
-<span class="sd">            None</span>
+<span class="sd">           None</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
-<span class="sd">            self       : boom                  [unitless]</span>
-<span class="sd">            segment    : cross-section of boom [unitless]   </span>
+<span class="sd">           self       : boom                  [unitless]</span>
+<span class="sd">           segment    : cross-section of boom [unitless]   </span>
 <span class="sd">            </span>
 <span class="sd">        Outputs:</span>
-<span class="sd">            None </span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="sd">           None </span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Assert database type</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
@@ -481,27 +599,25 @@
 
 
 <div class="viewcode-block" id="Container">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Booms.html#RCAIDE.Library.Components.Booms.Boom.Container">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Booms.Boom.html#RCAIDE.Library.Components.Booms.Boom.Container">[docs]</a>
 <span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
-<div class="viewcode-block" id="Container.get_children">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Booms.html#RCAIDE.Library.Components.Booms.Boom.Container.get_children">[docs]</a>
     <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">            </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            self       : container of booms [unitless]    </span>
-<span class="sd">            </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">            Boom       : boom               [unitless] </span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; :meta private: &quot;&quot;&quot;</span>
+        <span class="c1">#Returns the components that can go inside</span>
+    
+        <span class="c1">#Assumptions:</span>
+        <span class="c1">#    None</span>
+            
+        <span class="c1">#Source:</span>
+        <span class="c1">#    None</span>
+
+        <span class="c1">#Args:</span>
+        <span class="c1">#    self       : container of booms [unitless]    </span>
+            
+        <span class="c1">#Outputs:</span>
+        <span class="c1">#    Boom       : boom               [unitless] </span>
+        
         <span class="k">return</span> <span class="p">[</span><span class="n">Boom</span><span class="p">]</span></div>
-</div>
 
 
 <span class="c1"># ------------------------------------------------------------</span>
@@ -549,7 +665,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

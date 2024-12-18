@@ -395,7 +395,7 @@
 <span class="c1">#  Thwaites Method</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="thwaites_method">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.thwaites_method">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.thwaites_method">[docs]</a>
 <span class="k">def</span> <span class="nf">thwaites_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span><span class="n">NU</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">RE_L</span><span class="p">,</span><span class="n">X_I</span><span class="p">,</span><span class="n">VE_I</span><span class="p">,</span> <span class="n">DVE_I</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">THETA_0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the boundary layer characteristics in laminar </span>
 <span class="sd">    flow pressure gradients</span>
@@ -535,7 +535,7 @@
 
 
 <div class="viewcode-block" id="getH">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getH">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getH">[docs]</a>
 <span class="k">def</span> <span class="nf">getH</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the shape factor, H</span>
 
@@ -562,7 +562,7 @@
 
 
 <div class="viewcode-block" id="getcf">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getcf">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getcf">[docs]</a>
 <span class="k">def</span> <span class="nf">getcf</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">,</span> <span class="n">Re_theta</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the skin friction coefficient, cf</span>
 
@@ -591,7 +591,7 @@
 
 
 <div class="viewcode-block" id="RK4">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.RK4">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.RK4">[docs]</a>
 <span class="k">def</span> <span class="nf">RK4</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Var</span><span class="p">,</span> <span class="n">Slope</span><span class="p">):</span>
     <span class="n">m1</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
     <span class="n">m2</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">m1</span><span class="o">*</span><span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
@@ -643,7 +643,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

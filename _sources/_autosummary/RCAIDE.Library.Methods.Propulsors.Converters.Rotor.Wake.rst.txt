@@ -1,0 +1,33 @@
+RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake
+=======================================================
+
+.. automodule:: RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   Momentum_Theory_Wake
+   Perscribed_Vortex_Wake
+

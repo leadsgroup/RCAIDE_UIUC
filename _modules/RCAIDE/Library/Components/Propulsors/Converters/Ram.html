@@ -394,9 +394,63 @@
 <span class="c1">#  Fan Component</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Ram">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Ram.Ram">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ram.html#RCAIDE.Library.Components.Propulsors.Converters.Ram.Ram">[docs]</a>
 <span class="k">class</span> <span class="nc">Ram</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This represent the compression of incoming air flow. </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A ram air compression component model that simulates the compression of incoming air flow.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the ram component. Default is &#39;Ram&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    working_fluid : Data</span>
+<span class="sd">        Container for working fluid properties and conditions. Default is empty Data().</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Ram class models the compression of incoming air due to the ram effect</span>
+<span class="sd">    in high-speed flight. It calculates:</span>
+
+<span class="sd">    * Total pressure rise due to flow deceleration</span>
+<span class="sd">    * Temperature increase from compression</span>
+<span class="sd">    * Changes in fluid properties</span>
+<span class="sd">    * Ram recovery efficiency</span>
+<span class="sd">    * Compressibility effects</span>
+
+<span class="sd">    The model assumes:</span>
+
+<span class="sd">    * Quasi-one-dimensional flow</span>
+<span class="sd">    * Adiabatic process (no heat transfer)</span>
+<span class="sd">    * Perfect gas behavior</span>
+<span class="sd">    * Steady flow conditions</span>
+<span class="sd">    * No boundary layer effects</span>
+<span class="sd">    * No shock waves (unless explicitly modeled)</span>
+
+<span class="sd">    **Theory**</span>
+<span class="sd">    The ram compression process follows isentropic flow relations for subsonic flow</span>
+<span class="sd">    and includes normal shock relations for supersonic flow. The total pressure </span>
+<span class="sd">    recovery depends on the flight Mach number and inlet geometry.</span>
+
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Ram Effect&#39;</span>
+<span class="sd">        Pressure rise due to deceleration of high-speed flow</span>
+<span class="sd">    &#39;Recovery Factor&#39;</span>
+<span class="sd">        Ratio of actual to ideal pressure rise</span>
+<span class="sd">    &#39;Working Fluid&#39;</span>
+<span class="sd">        Fluid medium undergoing compression (typically air)</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Mattingly, J. D., &amp; Boyer, K. M. (2016). Elements of propulsion: Gas </span>
+<span class="sd">        turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. </span>
+<span class="sd">        American Institute of Aeronautics and Astronautics.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Component</span>
+<span class="sd">    RCAIDE.Library.Methods.Propulsors.Converters.Ram.append_ram_conditions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -406,7 +460,9 @@
 <span class="sd">            None</span>
 
 <span class="sd">        Source:</span>
-<span class="sd">            https://web.stanford.edu/~cantwell/AA283_Course_Material/AA283_Course_Notes/ </span>
+<span class="sd">        [1] Mattingly, J. D., &amp; Boyer, K. M. (2016). Elements of propulsion: Gas </span>
+<span class="sd">            turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. </span>
+<span class="sd">            American Institute of Aeronautics and Astronautics.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#set the deafult values</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                      <span class="o">=</span> <span class="s1">&#39;Ram&#39;</span> 
@@ -414,7 +470,7 @@
 
 
 <div class="viewcode-block" id="Ram.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Ram.Ram.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ram.html#RCAIDE.Library.Components.Propulsors.Converters.Ram.Ram.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_ram_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
@@ -462,7 +518,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

@@ -393,15 +393,51 @@
 <span class="c1">#  Avionics</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------              </span>
 <div class="viewcode-block" id="Payload">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Payloads.html#RCAIDE.Library.Components.Payloads.Payload.Payload">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Payloads.Payload.html#RCAIDE.Library.Components.Payloads.Payload.Payload">[docs]</a>
 <span class="k">class</span> <span class="nc">Payload</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class representing a payload.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A payload component model for representing mission cargo and equipment.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the payload. Default is &#39;payload&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    power_draw : float</span>
+<span class="sd">        Power consumption of the payload. Default is 0.0.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Payload class models mission-specific cargo and equipment, including:</span>
+
+<span class="sd">    * Mass properties</span>
+<span class="sd">    * Power requirements</span>
+<span class="sd">    * Location in vehicle</span>
+<span class="sd">    * Energy consumption</span>
+<span class="sd">    * Operating conditions</span>
+
+<span class="sd">    The model can represent:</span>
+
+<span class="sd">    * Scientific instruments</span>
+<span class="sd">    * Cargo containers</span>
+<span class="sd">    * Passenger accommodations</span>
+<span class="sd">    * Mission-specific equipment</span>
+<span class="sd">    * Sensor packages</span>
+<span class="sd">    * Communication systems</span>
+
+<span class="sd">    **Major Assumptions**</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    * Constant power draw during operation</span>
+<span class="sd">    * Fixed mass and volume</span>
+<span class="sd">    * Rigid mounting to vehicle</span>
+<span class="sd">    * No thermal effects on vehicle</span>
+<span class="sd">    * No aerodynamic effects</span>
+<span class="sd">    * Steady-state operation</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Component</span>
+<span class="sd">    RCAIDE.Library.Methods.Propulsors.Common.append_payload_conditions</span>
 <span class="sd">    &quot;&quot;&quot;</span>          
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default power draw.</span>
@@ -425,14 +461,14 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">power_draw</span> <span class="o">=</span> <span class="mf">0.0</span>
          
 <div class="viewcode-block" id="Payload.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Payloads.html#RCAIDE.Library.Components.Payloads.Payload.Payload.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Payloads.Payload.html#RCAIDE.Library.Components.Payloads.Payload.Payload.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">bus</span><span class="p">):</span> 
         <span class="n">append_payload_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">bus</span><span class="p">)</span>
         <span class="k">return</span> </div>
 
         
 <div class="viewcode-block" id="Payload.power">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Payloads.html#RCAIDE.Library.Components.Payloads.Payload.Payload.power">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Payloads.Payload.html#RCAIDE.Library.Components.Payloads.Payload.Payload.power">[docs]</a>
     <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This gives the power draw from a payload.</span>
 
@@ -497,7 +533,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

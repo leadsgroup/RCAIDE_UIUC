@@ -395,7 +395,7 @@
 <span class="c1"># fuselage Weight </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="compute_fuselage_weight">
-<a class="viewcode-back" href="../../../../../../../RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_fuselage_weight.compute_fuselage_weight">[docs]</a>
+<a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_fuselage_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_fuselage_weight.compute_fuselage_weight">[docs]</a>
 <span class="k">def</span> <span class="nf">compute_fuselage_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">fuselage</span><span class="p">,</span> <span class="n">W_wing</span><span class="p">,</span> <span class="n">W_propulsion</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate the weight of a fuselage in the state tube and wing configuration</span>
 <span class="sd">    </span>
@@ -439,7 +439,7 @@
 
     <span class="c1"># Calculate fuselage indices</span>
     <span class="n">I_p</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="o">-</span><span class="mf">3.</span> <span class="o">*</span> <span class="n">differential_pressure</span> <span class="o">*</span> <span class="n">width</span>
-    <span class="n">I_b</span> <span class="o">=</span> <span class="mf">1.91</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="o">-</span><span class="mf">4.</span> <span class="o">*</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">positive_limit_load</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">length</span> <span class="o">/</span> <span class="n">height</span> <span class="o">**</span> <span class="mf">2.</span>
+    <span class="n">I_b</span> <span class="o">=</span> <span class="mf">1.91</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="o">-</span><span class="mf">4.</span> <span class="o">*</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">limit_load</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">length</span> <span class="o">/</span> <span class="n">height</span> <span class="o">**</span> <span class="mf">2.</span>
 
     <span class="k">if</span> <span class="n">I_p</span> <span class="o">&gt;</span> <span class="n">I_b</span><span class="p">:</span>
         <span class="n">I_f</span> <span class="o">=</span> <span class="n">I_p</span>
@@ -492,7 +492,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

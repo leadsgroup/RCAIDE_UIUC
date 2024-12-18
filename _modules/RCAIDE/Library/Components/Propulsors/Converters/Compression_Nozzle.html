@@ -393,9 +393,61 @@
 <span class="c1">#  Compression Nozzle </span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Compression_Nozzle">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle.Compression_Nozzle">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle.html#RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle.Compression_Nozzle">[docs]</a>
 <span class="k">class</span> <span class="nc">Compression_Nozzle</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a nozzle component intended for use in compression. </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A compression nozzle component model for propulsion systems that converts flow energy into pressure.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the nozzle. Default is &#39;Nozzle&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    polytropic_efficiency : float</span>
+<span class="sd">        Efficiency of the compression process. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    pressure_ratio : float</span>
+<span class="sd">        Ratio of outlet to inlet pressure. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    pressure_recovery : float</span>
+<span class="sd">        Pressure recovery factor. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    compressibility_effects : bool</span>
+<span class="sd">        Flag for including compressibility effects. Default is False.</span>
+<span class="sd">        </span>
+<span class="sd">    compression_levels : float</span>
+<span class="sd">        Number of compression stages. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    theta : float</span>
+<span class="sd">        Nozzle angle [rad]. Default is 0.0.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Compression_Nozzle class models a nozzle that increases the pressure of the flow.</span>
+<span class="sd">    The model assumes:</span>
+<span class="sd">    * Pressure ratio and efficiency do not change with varying conditions</span>
+<span class="sd">    * Flow is either subsonic or choked</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Polytropic Efficiency&#39;</span>
+<span class="sd">        Measure of compression process efficiency accounting for real gas effects</span>
+
+<span class="sd">    &#39;Pressure Recovery&#39;</span>
+<span class="sd">        Ratio of actual to ideal pressure rise</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Choked Flow&#39;</span>
+<span class="sd">        Condition where flow reaches sonic velocity at the throat</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Mattingly, J. D., &amp; Boyer, K. M. (2016). Elements of propulsion: Gas </span>
+<span class="sd">        turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. </span>
+<span class="sd">        American Institute of Aeronautics and Astronautics.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
@@ -406,7 +458,7 @@
 <span class="sd">            2. Subsonic or choked output.</span>
 
 <span class="sd">        Source:</span>
-<span class="sd">            https://web.stanford.edu/~cantwell/AA283_Course_Material/AA283_Course_Notes/</span>
+<span class="sd">            Mattingly, J. D., &amp; Boyer, K. M. (2016). Elements of propulsion: Gas turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. American Institute of Aeronautics and Astronautics. </span>
 <span class="sd">        &quot;&quot;&quot;</span>    
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                             <span class="o">=</span> <span class="s1">&#39;Nozzle&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">polytropic_efficiency</span>           <span class="o">=</span> <span class="mf">1.0</span>
@@ -417,7 +469,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">theta</span>                           <span class="o">=</span> <span class="mf">0.0</span>
 
 <div class="viewcode-block" id="Compression_Nozzle.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle.Compression_Nozzle.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle.html#RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle.Compression_Nozzle.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_compression_nozzle_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
@@ -465,7 +517,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

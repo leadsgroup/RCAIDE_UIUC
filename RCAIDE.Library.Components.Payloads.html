@@ -509,12 +509,61 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Payloads.Payload.Payload">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Payload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Payloads/Payload.html#Payload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Payloads.Payload.Payload" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>A class representing a payload.</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
+<dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
+<p>A payload component model for representing mission cargo and equipment.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Payloads.Payload.Payload.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Payloads.Payload.Payload.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the payload. Default is ‘payload’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Payloads.Payload.Payload.power_draw">
+<span class="sig-name descname"><span class="pre">power_draw</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Payloads.Payload.Payload.power_draw" title="Link to this definition">#</a></dt>
+<dd><p>Power consumption of the payload. Default is 0.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The Payload class models mission-specific cargo and equipment, including:</p>
+<ul class="simple">
+<li><p>Mass properties</p></li>
+<li><p>Power requirements</p></li>
+<li><p>Location in vehicle</p></li>
+<li><p>Energy consumption</p></li>
+<li><p>Operating conditions</p></li>
+</ul>
+<p>The model can represent:</p>
+<ul class="simple">
+<li><p>Scientific instruments</p></li>
+<li><p>Cargo containers</p></li>
+<li><p>Passenger accommodations</p></li>
+<li><p>Mission-specific equipment</p></li>
+<li><p>Sensor packages</p></li>
+<li><p>Communication systems</p></li>
+</ul>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Constant power draw during operation</p></li>
+<li><p>Fixed mass and volume</p></li>
+<li><p>Rigid mounting to vehicle</p></li>
+<li><p>No thermal effects on vehicle</p></li>
+<li><p>No aerodynamic effects</p></li>
+<li><p>Steady-state operation</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#module-RCAIDE.Library.Components.Component" title="RCAIDE.Library.Components.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Component</span></code></a>, <a class="reference internal" href="_autosummary/RCAIDE.Library.Methods.Propulsors.Common.append_payload_conditions.html#module-RCAIDE.Library.Methods.Propulsors.Common.append_payload_conditions" title="RCAIDE.Library.Methods.Propulsors.Common.append_payload_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Propulsors.Common.append_payload_conditions</span></code></a></p>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Payloads.Payload.Payload.append_operating_conditions">
 <span class="sig-name descname"><span class="pre">append_operating_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Payloads/Payload.html#Payload.append_operating_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Payloads.Payload.Payload.append_operating_conditions" title="Link to this definition">#</a></dt>
@@ -541,7 +590,8 @@ self.power_draw</p>
 </section>
 <section id="module-RCAIDE.Library.Components.Payloads">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Components.Payloads" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>RCAIDE Package Setup for Payload Components. This module initializes the payload components package, providing access to various
+payload-related classes and functionalities.</p>
 </section>
 </section>
 
@@ -577,6 +627,8 @@ self.power_draw</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Payloads.Payload">RCAIDE.Library.Components.Payloads.Payload module</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Payloads.Payload.Payload"><code class="docutils literal notranslate"><span class="pre">Payload</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Payloads.Payload.Payload.tag"><code class="docutils literal notranslate"><span class="pre">Payload.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Payloads.Payload.Payload.power_draw"><code class="docutils literal notranslate"><span class="pre">Payload.power_draw</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Payloads.Payload.Payload.append_operating_conditions"><code class="docutils literal notranslate"><span class="pre">Payload.append_operating_conditions()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Payloads.Payload.Payload.power"><code class="docutils literal notranslate"><span class="pre">Payload.power()</span></code></a></li>
 </ul>
@@ -621,7 +673,7 @@ self.power_draw</p>
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

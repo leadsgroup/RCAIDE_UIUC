@@ -379,24 +379,104 @@
   <h1>Source code for RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Library/Methods/Emissions/Chemical_Reactor_Network_Method/evaluate_CRN_emission_indices.py</span>
 <span class="c1">#  </span>
-<span class="c1"># Created:  Jul 2024, M. Clarke</span>
+<span class="c1"># Created: Jul 2024, M. Clarke, M. Guidotti</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="kn">import</span>  <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera</span> <span class="kn">import</span> <span class="n">evaluate_cantera</span> 
+<span class="kn">from</span>    <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span>    <span class="nn">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera</span> <span class="kn">import</span> <span class="n">evaluate_cantera</span> 
  
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  evaluate_correlation_emissions_indices</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="evaluate_CRN_emission_indices_no_surrogate">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_no_surrogate">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_no_surrogate.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_no_surrogate">[docs]</a>
 <span class="k">def</span> <span class="nf">evaluate_CRN_emission_indices_no_surrogate</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes emission indices directly using Chemical Reactor Network without surrogate models.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    segment : Data</span>
+<span class="sd">        Mission segment data container</span>
+<span class="sd">        </span>
+<span class="sd">        - state : Data</span>
+<span class="sd">            Current state </span>
+
+<span class="sd">            - numerics : Data</span>
+<span class="sd">                Numerical integration parameters</span>
+
+<span class="sd">                - time : Data</span>
+<span class="sd">                    Time integration settings</span>
+<span class="sd">            - conditions : Data</span>
+<span class="sd">                Flight conditions and component states</span>
+<span class="sd">            - ones_row : function</span>
+<span class="sd">                Creates array of ones with specified size</span>
+<span class="sd">                </span>
+<span class="sd">    settings : Data</span>
+<span class="sd">        Configuration settings for the simulation</span>
+<span class="sd">        </span>
+<span class="sd">    vehicle : Data</span>
+<span class="sd">        Vehicle configuration data</span>
+
+<span class="sd">        - networks : list</span>
+<span class="sd">            List of propulsion system networks</span>
+
+<span class="sd">            - fuel_lines : list</span>
+<span class="sd">                Fuel distribution systems</span>
+<span class="sd">            - propulsors : list</span>
+<span class="sd">                Propulsion units </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        Updates segment.state.conditions.emissions with:</span>
+<span class="sd">        </span>
+<span class="sd">        total : Data</span>
+<span class="sd">            Total emissions over segment</span>
+
+<span class="sd">            - CO2 : float</span>
+<span class="sd">                Total CO2 emissions [kg]</span>
+<span class="sd">            - H2O : float</span>
+<span class="sd">                Total H2O emissions [kg]</span>
+<span class="sd">            - NOx : float</span>
+<span class="sd">                Total NOx emissions [kg]</span>
+<span class="sd">        index : Data</span>
+<span class="sd">            Emission indices</span>
+
+<span class="sd">            - CO2 : ndarray</span>
+<span class="sd">                CO2 emission index [kg_CO2/kg_fuel]</span>
+<span class="sd">            - CO : ndarray</span>
+<span class="sd">                CO emission index [kg_CO/kg_fuel]</span>
+<span class="sd">            - H2O : ndarray</span>
+<span class="sd">                H2O emission index [kg_H2O/kg_fuel]</span>
+<span class="sd">            - NO : ndarray</span>
+<span class="sd">                NO emission index [kg_NO/kg_fuel]</span>
+<span class="sd">            - NO2 : ndarray</span>
+<span class="sd">                NO2 emission index [kg_NO2/kg_fuel]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Computes emissions by directly evaluating the chemical kinetics at each time step</span>
+<span class="sd">    using Cantera. </span>
+
+<span class="sd">    **Extra modules required**</span>
+
+<span class="sd">    * numpy</span>
+<span class="sd">    * Cantera (through evaluate_cantera function)</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera </span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Goodwin, D. G., Speth, R. L., Moffat, H. K., &amp; Weber, B. W. (2023). Cantera: An object-oriented software toolkit for chemical kinetics, thermodynamics, and transport processes (Version 3.0.0) [Computer software]. https://www.cantera.org</span>
+<span class="sd">    &quot;&quot;&quot;</span>
   
     <span class="c1"># unpack</span>
     <span class="n">state</span>     <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">state</span>
@@ -484,8 +564,95 @@
     
 
 <div class="viewcode-block" id="evaluate_CRN_emission_indices_surrogate">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_surrogate">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_surrogate.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_surrogate">[docs]</a>
 <span class="k">def</span> <span class="nf">evaluate_CRN_emission_indices_surrogate</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">):</span> 
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes emission indices using pre-trained Chemical Reactor Network surrogate models.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    segment : Data</span>
+<span class="sd">        Mission segment data container</span>
+<span class="sd">        </span>
+<span class="sd">        - state : Data</span>
+<span class="sd">            Current state of the system</span>
+
+<span class="sd">            - numerics : Data</span>
+<span class="sd">                Numerical integration parameters</span>
+<span class="sd">            - conditions : Data</span>
+<span class="sd">                Flight conditions and component states</span>
+<span class="sd">        - analyses : Data</span>
+<span class="sd">            Analysis settings and models</span>
+
+<span class="sd">            - emissions : Data</span>
+<span class="sd">                Emissions analysis settings</span>
+
+<span class="sd">                - surrogates : Data</span>
+<span class="sd">                    Trained surrogate models for each species</span>
+<span class="sd">                </span>
+<span class="sd">    settings : Data</span>
+<span class="sd">        Configuration settings for the simulation</span>
+<span class="sd">        </span>
+<span class="sd">    vehicle : Data</span>
+<span class="sd">        Vehicle configuration data</span>
+
+<span class="sd">        - networks : list</span>
+<span class="sd">            List of propulsion system networks</span>
+
+<span class="sd">            - propulsors : list</span>
+<span class="sd">                Propulsion units </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Updates segment.state.conditions.emissions with:</span>
+<span class="sd">        </span>
+<span class="sd">    total : Data</span>
+<span class="sd">        Total emissions over segment</span>
+
+<span class="sd">        - CO2 : float</span>
+<span class="sd">            Total CO2 emissions [kg]</span>
+<span class="sd">        - H2O : float</span>
+<span class="sd">            Total H2O emissions [kg]</span>
+<span class="sd">        - NOx : float</span>
+<span class="sd">            Total NOx emissions [kg]</span>
+<span class="sd">    index : Data</span>
+<span class="sd">        Emission indices</span>
+
+<span class="sd">        - CO2 : ndarray</span>
+<span class="sd">            CO2 emission index [kg_CO2/kg_fuel]</span>
+<span class="sd">        - CO : ndarray</span>
+<span class="sd">            CO emission index [kg_CO/kg_fuel]</span>
+<span class="sd">        - H2O : ndarray</span>
+<span class="sd">            H2O emission index [kg_H2O/kg_fuel]</span>
+<span class="sd">        - NO : ndarray</span>
+<span class="sd">            NO emission index [kg_NO/kg_fuel]</span>
+<span class="sd">        - NO2 : ndarray</span>
+<span class="sd">            NO2 emission index [kg_NO2/kg_fuel]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Uses pre-trained surrogate models to estimate emission indices.</span>
+
+<span class="sd">    **Extra modules required**</span>
+
+<span class="sd">    * numpy</span>
+
+<span class="sd">    **Major Assumptions**</span>
+
+<span class="sd">    * Operating conditions fall within the training data range</span>
+<span class="sd">    * Linear interpolation can be employed between training points</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.train_CRN_EI_surrogates</span>
+<span class="sd">    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.build_CRN_EI_surrogates</span>
+<span class="sd">    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera </span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Goodwin, D. G., Speth, R. L., Moffat, H. K., &amp; Weber, B. W. (2023). Cantera: An object-oriented software toolkit for chemical kinetics, thermodynamics, and transport processes (Version 3.0.0) [Computer software]. https://www.cantera.org</span>
+<span class="sd">    &quot;&quot;&quot;</span>
   
     <span class="n">I</span>          <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">numerics</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">integrate</span>
     <span class="n">surrogates</span> <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">analyses</span><span class="o">.</span><span class="n">emissions</span><span class="o">.</span><span class="n">surrogates</span>
@@ -587,7 +754,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

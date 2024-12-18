@@ -397,15 +397,128 @@
 <span class="c1">#  Turboshaft</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Turboshaft">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Propulsors.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Turboshaft.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft">[docs]</a>
 <span class="k">class</span> <span class="nc">Turboshaft</span><span class="p">(</span><span class="n">Propulsor</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a turboshaft propulsor</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A turboshaft propulsion system model that simulates the performance of a turboshaft engine.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the turboshaft engine. Default is &#39;Turboshaft&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    fuel_type : Propellant</span>
+<span class="sd">        Type of fuel used in the engine. Default is Jet_A1.</span>
+<span class="sd">        </span>
+<span class="sd">    active_fuel_tanks : list</span>
+<span class="sd">        List with names of active fuel tanks. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    nacelle : Component</span>
+<span class="sd">        Nacelle component of the engine. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    ram : Component</span>
+<span class="sd">        Ram inlet component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    inlet_nozzle : Component</span>
+<span class="sd">        Inlet nozzle component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    compressor : Component</span>
+<span class="sd">        Compressor component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    low_pressure_turbine : Component</span>
+<span class="sd">        Low pressure turbine component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    high_pressure_turbine : Component</span>
+<span class="sd">        High pressure turbine component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    combustor : Component</span>
+<span class="sd">        Combustor component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    afterburner : Component</span>
+<span class="sd">        Afterburner component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    core_nozzle : Component</span>
+<span class="sd">        Core exhaust nozzle component. Default is None.</span>
+<span class="sd">        </span>
+<span class="sd">    engine_length : float</span>
+<span class="sd">        Length of the engine [m]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    bypass_ratio : float</span>
+<span class="sd">        Engine bypass ratio. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    design_isa_deviation : float</span>
+<span class="sd">        ISA temperature deviation at design point [K]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    design_altitude : float</span>
+<span class="sd">        Design altitude of the engine [m]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    afterburner_active : bool</span>
+<span class="sd">        Flag indicating if afterburner is in use. Default is False.</span>
+<span class="sd">        </span>
+<span class="sd">    SFC_adjustment : float</span>
+<span class="sd">        Specific fuel consumption adjustment factor (Less than 1 is a reduction). Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    reference_temperature : float</span>
+<span class="sd">        Reference temperature for calculations [K]. Default is 288.15.</span>
+<span class="sd">        </span>
+<span class="sd">    reference_pressure : float</span>
+<span class="sd">        Reference pressure for calculations [Pa]. Default is 101325.0.</span>
+<span class="sd">        </span>
+<span class="sd">    design_thrust : float</span>
+<span class="sd">        Design thrust of the engine [N]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    design_power : float</span>
+<span class="sd">        Design shaft power output [W]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    mass_flow_rate_design : float</span>
+<span class="sd">        Design mass flow rate [kg/s]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    conversion_efficiency : float</span>
+<span class="sd">        Efficiency of power conversion. Default is 0.5.</span>
+<span class="sd">        </span>
+<span class="sd">    compressor_nondimensional_massflow : float</span>
+<span class="sd">        Non-dimensional mass flow through the compressor. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    OpenVSP_flow_through : bool</span>
+<span class="sd">        Flag for OpenVSP flow-through analysis. Default is False.</span>
+<span class="sd">        </span>
+<span class="sd">    areas : Data</span>
+<span class="sd">        Collection of engine areas</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">        - wetted : float</span>
+<span class="sd">            Wetted area [m²]. Default is 0.0.</span>
+
+<span class="sd">        - maximum : float</span>
+<span class="sd">            Maximum cross-sectional area [m²]. Default is 0.0.</span>
+
+<span class="sd">        - exit : float</span>
+<span class="sd">            Exit area [m²]. Default is 0.0.</span>
+
+<span class="sd">        - inflow : float</span>
+<span class="sd">            Inflow area [m²]. Default is 0.0.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Turboshaft class inherits from the Propulsor base class and implements</span>
+<span class="sd">    methods for computing turboshaft engine performance. Unlike other gas turbine</span>
+<span class="sd">    engines that produce thrust, a turboshaft engine&#39;s primary output is shaft</span>
+<span class="sd">    power, typically used to drive a helicopter rotor or other mechanical systems.</span>
+
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;ISA&#39;</span>
+<span class="sd">        International Standard Atmosphere - standard atmospheric model</span>
+
+<span class="sd">    &#39;SFC&#39;</span>
+<span class="sd">        Specific Fuel Consumption - fuel efficiency metric</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;OpenVSP&#39;</span>
+<span class="sd">        Open Vehicle Sketch Pad - open-source parametric aircraft geometry tool</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Propulsor</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Turboprop</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># setting the default values</span>
@@ -445,39 +558,45 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">inflow</span>                                     <span class="o">=</span> <span class="mf">0.0</span> 
 
 <div class="viewcode-block" id="Turboshaft.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Propulsors.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Turboshaft.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Appends operating conditions to the segment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">append_turboshaft_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">)</span>
         <span class="k">return</span></div>
 
 
 <div class="viewcode-block" id="Turboshaft.unpack_propulsor_unknowns">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Propulsors.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.unpack_propulsor_unknowns">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Turboshaft.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.unpack_propulsor_unknowns">[docs]</a>
     <span class="k">def</span> <span class="nf">unpack_propulsor_unknowns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>   
         <span class="k">return</span> </div>
 
 
 <div class="viewcode-block" id="Turboshaft.pack_propulsor_residuals">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Propulsors.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.pack_propulsor_residuals">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Turboshaft.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.pack_propulsor_residuals">[docs]</a>
     <span class="k">def</span> <span class="nf">pack_propulsor_residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span> 
         <span class="k">return</span>    </div>
 
 
 <div class="viewcode-block" id="Turboshaft.append_propulsor_unknowns_and_residuals">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Propulsors.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.append_propulsor_unknowns_and_residuals">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Turboshaft.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.append_propulsor_unknowns_and_residuals">[docs]</a>
     <span class="k">def</span> <span class="nf">append_propulsor_unknowns_and_residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span> 
         <span class="k">return</span></div>
 
     
 <div class="viewcode-block" id="Turboshaft.compute_performance">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Propulsors.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.compute_performance">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Turboshaft.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.compute_performance">[docs]</a>
     <span class="k">def</span> <span class="nf">compute_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes turboshaft performance including thrust, moment, and power.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">thrust</span><span class="p">,</span><span class="n">moment</span><span class="p">,</span><span class="n">power</span><span class="p">,</span><span class="n">stored_results_flag</span><span class="p">,</span><span class="n">stored_propulsor_tag</span> <span class="o">=</span>  <span class="n">compute_turboshaft_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">thrust</span><span class="p">,</span><span class="n">moment</span><span class="p">,</span><span class="n">power</span><span class="p">,</span><span class="n">stored_results_flag</span><span class="p">,</span><span class="n">stored_propulsor_tag</span></div>
 
     
 <div class="viewcode-block" id="Turboshaft.reuse_stored_data">
-<a class="viewcode-back" href="../../../../../RCAIDE.Library.Components.Propulsors.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.reuse_stored_data">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Turboshaft.html#RCAIDE.Library.Components.Propulsors.Turboshaft.Turboshaft.reuse_stored_data">[docs]</a>
     <span class="k">def</span> <span class="nf">reuse_stored_data</span><span class="p">(</span><span class="n">turboshaft</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">network</span><span class="p">,</span><span class="n">stored_propulsor_tag</span><span class="p">,</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span>
         <span class="n">thrust</span><span class="p">,</span><span class="n">moment</span><span class="p">,</span><span class="n">power</span>  <span class="o">=</span> <span class="n">reuse_stored_turboshaft_data</span><span class="p">(</span><span class="n">turboshaft</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">network</span><span class="p">,</span><span class="n">stored_propulsor_tag</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">thrust</span><span class="p">,</span><span class="n">moment</span><span class="p">,</span><span class="n">power</span> </div>
@@ -524,7 +643,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

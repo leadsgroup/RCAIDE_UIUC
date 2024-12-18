@@ -393,16 +393,72 @@
 <span class="c1">#  Compressor </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Supersonic_Nozzle">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Supersonic_Nozzle.Supersonic_Nozzle">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Supersonic_Nozzle.html#RCAIDE.Library.Components.Propulsors.Converters.Supersonic_Nozzle.Supersonic_Nozzle">[docs]</a>
 <span class="k">class</span> <span class="nc">Supersonic_Nozzle</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a nozzle component that allows for supersonic outflow.</span>
-<span class="sd">    Calling this class calls the compute function.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A supersonic nozzle component model for propulsion systems capable of supersonic outflow.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the nozzle. Default is &#39;Supersonic_Nozzle&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    polytropic_efficiency : float</span>
+<span class="sd">        Efficiency of the expansion process accounting for losses. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    pressure_ratio : float</span>
+<span class="sd">        Ratio of outlet to inlet pressure. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    pressure_recovery : float</span>
+<span class="sd">        Ratio of recovered to ideal total pressure. Default is 1.0.</span>
+<span class="sd">        </span>
+<span class="sd">    max_area_ratio : float</span>
+<span class="sd">        Maximum allowable exit to throat area ratio. Default is 1000.0.</span>
+<span class="sd">        </span>
+<span class="sd">    min_area_ratio : float</span>
+<span class="sd">        Minimum allowable exit to throat area ratio. Default is 0.0.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Supersonic_Nozzle class models a convergent-divergent nozzle that can </span>
+<span class="sd">    achieve supersonic exit flow. The model includes:</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    Pressure ratio and efficiency do not change with varying conditions.</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    https://web.stanford.edu/~cantwell/AA283_Course_Material/AA283_Course_Notes/</span>
+<span class="sd">    * Isentropic flow relations</span>
+<span class="sd">    * Shock wave effects</span>
+<span class="sd">    * Variable area ratio capabilities</span>
+<span class="sd">    * Real gas effects through efficiency terms</span>
+<span class="sd">    * Pressure recovery modeling</span>
+
+<span class="sd">    **Major Assumptions**</span>
+
+<span class="sd">    * Pressure ratio and efficiency do not change with varying conditions</span>
+<span class="sd">    * One-dimensional flow</span>
+<span class="sd">    * Perfect gas behavior</span>
+<span class="sd">    * Adiabatic process</span>
+<span class="sd">    * No boundary layer separation</span>
+<span class="sd">    * Steady flow conditions</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Polytropic Efficiency&#39;</span>
+<span class="sd">        Measure of expansion process efficiency accounting for losses</span>
+<span class="sd">    &#39;Pressure Ratio&#39;</span>
+<span class="sd">        Ratio of exit static pressure to inlet total pressure</span>
+<span class="sd">    &#39;Pressure Recovery&#39;</span>
+<span class="sd">        Measure of total pressure preservation through the nozzle</span>
+<span class="sd">    &#39;Area Ratio&#39;</span>
+<span class="sd">        Ratio of exit area to throat area</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Mattingly, J. D., &amp; Boyer, K. M. (2016). Elements of propulsion: Gas </span>
+<span class="sd">        turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. </span>
+<span class="sd">        American Institute of Aeronautics and Astronautics.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Component</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Converters.Expansion_Nozzle</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -433,7 +489,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">min_area_ratio</span>                  <span class="o">=</span> <span class="mf">0.</span>
 
 <div class="viewcode-block" id="Supersonic_Nozzle.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Supersonic_Nozzle.Supersonic_Nozzle.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Supersonic_Nozzle.html#RCAIDE.Library.Components.Propulsors.Converters.Supersonic_Nozzle.Supersonic_Nozzle.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_supersonic_nozzle_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
@@ -481,7 +537,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

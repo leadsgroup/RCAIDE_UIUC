@@ -386,17 +386,63 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span>    <span class="kn">import</span> <span class="n">Process</span> 
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method</span> <span class="kn">import</span> <span class="o">*</span>  
-<span class="kn">from</span> <span class="nn">.Emissions</span>            <span class="kn">import</span> <span class="n">Emissions</span> 
+<span class="kn">from</span> <span class="nn">.Emissions</span>                   <span class="kn">import</span> <span class="n">Emissions</span> 
   
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Correlation_Buildup</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Emission_Index_Correlation_Method">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Analyses.Emissions.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method">[docs]</a>
 <span class="k">class</span> <span class="nc">Emission_Index_Correlation_Method</span><span class="p">(</span><span class="n">Emissions</span><span class="p">):</span> 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">    Emissions Index Correlation Method</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Analysis class for computing aircraft emissions using empirical correlation methods.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    process : Process</span>
+<span class="sd">        Container for computational processes</span>
+<span class="sd">        - compute : Process</span>
+<span class="sd">            Computation process container</span>
+<span class="sd">            - emissions : function</span>
+<span class="sd">                Function handle for emissions calculation</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This class implements an emissions analysis method based on empirical correlations</span>
+<span class="sd">    and pre-defined emission indices.</span>
+
+<span class="sd">    The analysis follows these steps:</span>
+<span class="sd">    1. Initialization of computation processes</span>
+<span class="sd">    2. Assignment of empirical correlation functions</span>
+<span class="sd">    3. Evaluation of emissions for given mission segments</span>
+
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    * Emission indices are constant for each fuel type</span>
+<span class="sd">    * Linear scaling with fuel flow rate</span>
+<span class="sd">    * Well-mixed combustion products</span>
+<span class="sd">    * Steady-state operation</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Emission Index (EI)&#39;</span>
+<span class="sd">        Mass of pollutant emitted per unit mass of fuel burned [g/kg_fuel]</span>
+
+<span class="sd">    &#39;Process&#39;</span>
+<span class="sd">        Container for computational methods and their settings</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Framework.Analyses.Emissions : Parent emissions analysis class</span>
+<span class="sd">    RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method : Implementation methods</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Norman, P. D., et al. (2003). Development of the technical basis for a new emissions </span>
+<span class="sd">        parameter covering the whole AIRcraft operation: NEPAIR (ENV.C.1/ETU/2000/0094). </span>
+<span class="sd">        Final Technical Report.</span>
+<span class="sd">    [2] Dopelheuer, A., &amp; Lecht, M. (1999). Influence of engine performance on emission </span>
+<span class="sd">        characteristics. RTO MP-14, paper 20.</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
@@ -419,7 +465,7 @@
         <span class="k">return</span>
             
 <div class="viewcode-block" id="Emission_Index_Correlation_Method.initialize">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Analyses.Emissions.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method.initialize">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method.initialize">[docs]</a>
     <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function computes the emissions of different species from the Emission Indices </span>
@@ -439,7 +485,7 @@
 
 
 <div class="viewcode-block" id="Emission_Index_Correlation_Method.evaluate">
-<a class="viewcode-back" href="../../../../../RCAIDE.Framework.Analyses.Emissions.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method.evaluate">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method.evaluate">[docs]</a>
     <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The default evaluate function.</span>
@@ -508,7 +554,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

@@ -393,9 +393,60 @@
 <span class="c1">#  Engine Class</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Engine">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Engine.Engine">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Engine.html#RCAIDE.Library.Components.Propulsors.Converters.Engine.Engine">[docs]</a>
 <span class="k">class</span> <span class="nc">Engine</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is an internal combustion engine component. </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An internal combustion engine component model for propulsion systems.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the engine. Default is &#39;internal_combustion_engine&#39;.</span>
+<span class="sd">        </span>
+<span class="sd">    sea_level_power : float</span>
+<span class="sd">        Maximum power output at sea level conditions [W]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    flat_rate_altitude : float</span>
+<span class="sd">        Altitude up to which engine maintains sea level power [m]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    rated_speed : float</span>
+<span class="sd">        Engine speed at rated power [rad/s]. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    power_split_ratio : float</span>
+<span class="sd">        Ratio of power distribution when engine drives multiple loads. Default is 0.0.</span>
+<span class="sd">        </span>
+<span class="sd">    power_specific_fuel_consumption : float</span>
+<span class="sd">        Fuel consumption per unit power output [kg/W/s]. Default is 0.36.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Engine class models an internal combustion engine&#39;s performance characteristics</span>
+<span class="sd">    including:</span>
+<span class="sd">    * Sea level power rating</span>
+<span class="sd">    * Power lapse with altitude</span>
+<span class="sd">    * Fuel consumption characteristics</span>
+<span class="sd">    * Power distribution capabilities</span>
+<span class="sd">    * Operating speed effects</span>
+
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    * Constant power specific fuel consumption</span>
+<span class="sd">    * Fuel properties remain constant</span>
+<span class="sd">    * Steady-state operation (no transient effects)</span>
+
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Flat Rate Altitude&#39;</span>
+<span class="sd">        Maximum altitude at which the engine can maintain sea level power output</span>
+
+<span class="sd">    &#39;Power Specific Fuel Consumption&#39;</span>
+<span class="sd">        Amount of fuel consumed per unit of power output per unit time</span>
+
+<span class="sd">    &#39;Power Split Ratio&#39;</span>
+<span class="sd">        Fraction of total power delivered to primary load in multi-load applications</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Propulsors.Converters.Engine</span>
 <span class="sd">    &quot;&quot;&quot;</span>           
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
@@ -414,7 +465,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">power_specific_fuel_consumption</span> <span class="o">=</span> <span class="mf">0.36</span>
 
 <div class="viewcode-block" id="Engine.append_operating_conditions">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Components.Propulsors.Converters.html#RCAIDE.Library.Components.Propulsors.Converters.Engine.Engine.append_operating_conditions">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Engine.html#RCAIDE.Library.Components.Propulsors.Converters.Engine.Engine.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span>  
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> 
         <span class="n">append_engine_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span> 
@@ -463,7 +514,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>

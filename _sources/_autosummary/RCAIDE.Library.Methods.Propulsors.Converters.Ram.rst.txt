@@ -1,0 +1,33 @@
+RCAIDE.Library.Methods.Propulsors.Converters.Ram
+================================================
+
+.. automodule:: RCAIDE.Library.Methods.Propulsors.Converters.Ram
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :template: custom-module-template.rst
+   :recursive:
+
+   append_ram_conditions
+   compute_ram_performance
+

@@ -385,33 +385,158 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="kn">import</span>  <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
+<span class="kn">from</span>    <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
  
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  evaluate_correlation_emissions_indices</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="evaluate_correlation_emissions_indices">
-<a class="viewcode-back" href="../../../../../../RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.html#RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.evaluate_correlation_emissions_indices">[docs]</a>
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.html#RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method.evaluate_correlation_emissions_indices.evaluate_correlation_emissions_indices">[docs]</a>
 <span class="k">def</span> <span class="nf">evaluate_correlation_emissions_indices</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the CO2 equivalent emissions from aircraft propulsors with combustor compoments</span>
-<span class="sd">    using emissions indices correlated to various fuels</span>
-<span class="sd">    </span>
-<span class="sd">    Assumtion:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes emission indices using empirical correlations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    segment : Data</span>
+<span class="sd">        Mission segment data container</span>
+<span class="sd">        </span>
+<span class="sd">        - state : Data</span>
+<span class="sd">            Current state of the system</span>
+
+<span class="sd">            - numerics : Data</span>
+<span class="sd">                Numerical integration parameters</span>
+
+<span class="sd">                - time : Data</span>
+<span class="sd">                    Time integration settings</span>
+<span class="sd">            - conditions : Data</span>
+<span class="sd">                Flight conditions and component states</span>
+<span class="sd">            - ones_row : function</span>
+<span class="sd">                Creates array of ones with specified size</span>
+<span class="sd">                </span>
+<span class="sd">    settings : Data</span>
+<span class="sd">        Configuration settings for the simulation</span>
+<span class="sd">        </span>
+<span class="sd">    vehicle : Data</span>
+<span class="sd">        Vehicle configuration data</span>
+
+<span class="sd">        - networks : list</span>
+<span class="sd">            List of propulsion system networks</span>
+
+<span class="sd">            - fuel_lines : list</span>
+<span class="sd">                Fuel distribution systems</span>
+
+<span class="sd">                - active : bool</span>
+<span class="sd">                    Flag indicating if fuel line is in use</span>
+<span class="sd">                - fuel_tanks : list</span>
+<span class="sd">                    Fuel storage units</span>
+
+<span class="sd">                    - tag : str</span>
+<span class="sd">                        Identifier for the fuel tank</span>
+<span class="sd">                    - fuel : Data</span>
+<span class="sd">                        Fuel properties</span>
+
+<span class="sd">                        - emission_indices : Data</span>
+<span class="sd">                            Empirical emission indices</span>
+
+<span class="sd">                            - NOx : float</span>
+<span class="sd">                                NOx emission index [kg_NOx/kg_fuel]</span>
+<span class="sd">                            - CO2 : float</span>
+<span class="sd">                                CO2 emission index [kg_CO2/kg_fuel]</span>
+<span class="sd">                            - H2O : float</span>
+<span class="sd">                                H2O emission index [kg_H2O/kg_fuel]</span>
+<span class="sd">                            - SO2 : float</span>
+<span class="sd">                                SO2 emission index [kg_SO2/kg_fuel]</span>
+<span class="sd">                            - Soot : float</span>
+<span class="sd">                                Soot emission index [kg_soot/kg_fuel]</span>
+<span class="sd">                        - global_warming_potential_100 : Data</span>
+<span class="sd">                            100-year global warming potentials</span>
+<span class="sd">            - propulsors : list</span>
+<span class="sd">                Propulsion units (turbofans, turbojets, etc.)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
 <span class="sd">    None</span>
+<span class="sd">        Updates segment.state.conditions.emissions with:</span>
+<span class="sd">        </span>
+<span class="sd">        - total : Data</span>
+<span class="sd">            Total emissions over segment</span>
+
+<span class="sd">            - NOx : float</span>
+<span class="sd">                Total NOx emissions [kg]</span>
+<span class="sd">            - CO2 : float</span>
+<span class="sd">                Total CO2 emissions [kg]</span>
+<span class="sd">            - H2O : float</span>
+<span class="sd">                Total H2O emissions [kg]</span>
+<span class="sd">            - SO2 : float</span>
+<span class="sd">                Total SO2 emissions [kg]</span>
+<span class="sd">            - Soot : float</span>
+<span class="sd">                Total soot emissions [kg]</span>
+<span class="sd">            - Contrails : float</span>
+<span class="sd">                Total contrail effect [kg CO2 equivalent]</span>
+<span class="sd">        - index : Data</span>
+<span class="sd">            Emission indices</span>
+
+<span class="sd">            - NOx : ndarray</span>
+<span class="sd">                NOx emission index [kg_NOx/kg_fuel]</span>
+<span class="sd">            - CO2 : ndarray</span>
+<span class="sd">                CO2 emission index [kg_CO2/kg_fuel]</span>
+<span class="sd">            - H2O : ndarray</span>
+<span class="sd">                H2O emission index [kg_H2O/kg_fuel]</span>
+<span class="sd">            - SO2 : ndarray</span>
+<span class="sd">                SO2 emission index [kg_SO2/kg_fuel]</span>
+<span class="sd">            - Soot : ndarray</span>
+<span class="sd">                Soot emission index [kg_soot/kg_fuel]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This function uses pre-defined emission indices for each fuel type and integrates</span>
+<span class="sd">    them over the mission segment based on fuel flow rates.</span>
+
+<span class="sd">    **Major Assumptions**</span>
+
+<span class="sd">    * Emission indices are constant for each fuel type</span>
+<span class="sd">    * Indices are independent of operating conditions</span>
+<span class="sd">    * Linear scaling with fuel flow rate</span>
+
+<span class="sd">    **Theory**</span>
+<span class="sd">    Total emissions are computed by:</span>
 <span class="sd">    </span>
-<span class="sd">    Source</span>
-<span class="sd">    None</span>
+<span class="sd">    .. math::</span>
+<span class="sd">        E_{i,total} = \int \dot{m}_{fuel}(t) \cdot EI_i \cdot GWP_i \, dt</span>
+
+<span class="sd">    Where:</span>
+
+<span class="sd">    * :math:`E_{i,total}` = Total emissions for species i</span>
+<span class="sd">    * :math:`\dot{m}_{fuel}` = Fuel mass flow rate</span>
+<span class="sd">    * :math:`EI_i` = Emission index for species i</span>
+<span class="sd">    * :math:`GWP_i` = Global warming potential for species i</span>
 <span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">    emissions_analysis </span>
-<span class="sd">    segment</span>
+<span class="sd">    Contrail effects are estimated by:</span>
 <span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">    None  </span>
-<span class="sd">    &quot;&quot;&quot;</span>    
+<span class="sd">    .. math::</span>
+<span class="sd">        E_{contrails} = \Delta R \cdot GWP_{contrails}</span>
+
+<span class="sd">    Where:</span>
+
+<span class="sd">    * :math:`\Delta R` = Flight range [km]</span>
+<span class="sd">    * :math:`GWP_{contrails}` = Contrail global warming potential</span>
+
+<span class="sd">    **Extra modules required**</span>
+
+<span class="sd">    * numpy</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Lee, D. S., et al. (2021). The contribution of global aviation to anthropogenic climate forcing for 2000 to 2018. Atmospheric Environment, 244, 117834.</span>
+<span class="sd">    &quot;&quot;&quot;</span>  
     <span class="c1"># unpack</span>
     <span class="n">state</span>      <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">state</span>
     <span class="n">I</span>          <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">numerics</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">integrate</span>
@@ -515,7 +640,7 @@
 
   <p class="copyright">
     
-      © Copyright 2024, Laboratory of Electric Aircraft Design and Sustainavility.
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
       <br/>
     
   </p>
