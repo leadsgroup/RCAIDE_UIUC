@@ -1,4 +1,4 @@
-RCAIDE.Library.Methods.Performance
+﻿RCAIDE.Library.Methods.Performance
 ==================================
 
 .. automodule:: RCAIDE.Library.Methods.Performance
@@ -28,14 +28,12 @@ RCAIDE.Library.Methods.Performance
    :template: custom-module-template.rst
    :recursive:
 
-   V_n_diagram
-   electric_V_h_diagram
+   aircraft_aerodynamic_analysis
+   compute_payload_range_diagram
    estimate_landing_field_length
    estimate_stall_speed
    estimate_take_off_field_length
    find_take_off_weight_given_tofl
-   maximum_lift_to_drag
-   payload_range_diagram
-   propeller_range_endurance_speeds
-   propeller_single_point
+   generate_V_n_diagram
+   propeller_aerodynamic_analysis
 

@@ -1,4 +1,4 @@
-RCAIDE.Library.Plots.Aerodynamics
+﻿RCAIDE.Library.Plots.Aerodynamics
 =================================
 
 .. automodule:: RCAIDE.Library.Plots.Aerodynamics
@@ -30,6 +30,7 @@ RCAIDE.Library.Plots.Aerodynamics
 
    plot_aerodynamic_coefficients
    plot_aerodynamic_forces
+   plot_aircraft_aerodynamics
    plot_airfoil_boundary_layer_properties
    plot_airfoil_polar_files
    plot_airfoil_polars

@@ -47,7 +47,7 @@
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_autosummary/RCAIDE.Library.Methods.Performance.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="RCAIDE.Library.Methods.Performance.V_n_diagram" href="RCAIDE.Library.Methods.Performance.V_n_diagram.html" />
+    <link rel="next" title="RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis" href="RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.html" />
     <link rel="prev" title="RCAIDE.Library.Methods.Noise.Metrics.compute_noise_metrics" href="RCAIDE.Library.Methods.Noise.Metrics.compute_noise_metrics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -535,11 +535,11 @@
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.V_n_diagram.html#module-RCAIDE.Library.Methods.Performance.V_n_diagram" title="RCAIDE.Library.Methods.Performance.V_n_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">V_n_diagram</span></code></a>(vehicle, analyses, weight, ...)</p></td>
-<td><p>Computes a V-n diagram for a given aircraft and given regulations for ISA conditions</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.html#module-RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis" title="RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aircraft_aerodynamic_analysis</span></code></a>(vehicle, ...)</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.electric_V_h_diagram.html#module-RCAIDE.Library.Methods.Performance.electric_V_h_diagram" title="RCAIDE.Library.Methods.Performance.electric_V_h_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">electric_V_h_diagram</span></code></a>(vehicle, analyses, CL_max)</p></td>
-<td><p>electric_V_h_diagram(vehicle,</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#module-RCAIDE.Library.Methods.Performance.compute_payload_range_diagram" title="RCAIDE.Library.Methods.Performance.compute_payload_range_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_payload_range_diagram</span></code></a>(vehicle, ...)</p></td>
+<td><p>Calculates and plots the payload range diagram for an aircraft by modifying the cruise segment and weights of the aicraft .</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.estimate_landing_field_length.html#module-RCAIDE.Library.Methods.Performance.estimate_landing_field_length" title="RCAIDE.Library.Methods.Performance.estimate_landing_field_length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_landing_field_length</span></code></a>(vehicle, analyses)</p></td>
 <td><p>Computes the landing field length for a given vehicle configuration in a given airport.</p></td>
@@ -553,17 +553,11 @@
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.html#module-RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl" title="RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_take_off_weight_given_tofl</span></code></a>(vehicle, ...)</p></td>
 <td><p>Estimates the takeoff weight given a certain takeoff field length.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.maximum_lift_to_drag.html#module-RCAIDE.Library.Methods.Performance.maximum_lift_to_drag" title="RCAIDE.Library.Methods.Performance.maximum_lift_to_drag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">maximum_lift_to_drag</span></code></a>(analyses, altitude, ...)</p></td>
-<td><p>Computes L/D max at give altitude.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#module-RCAIDE.Library.Methods.Performance.generate_V_n_diagram" title="RCAIDE.Library.Methods.Performance.generate_V_n_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_V_n_diagram</span></code></a>(vehicle, analyses, ...)</p></td>
+<td><p>Computes a V-n diagram for a given aircraft and given regulations for ISA conditions</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.payload_range_diagram.html#module-RCAIDE.Library.Methods.Performance.payload_range_diagram" title="RCAIDE.Library.Methods.Performance.payload_range_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">payload_range_diagram</span></code></a>(vehicle, mission, ...)</p></td>
-<td><p>Calculates and plots the payload range diagram for an aircraft by modifying the cruise segment and weights of the aicraft .</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.propeller_range_endurance_speeds.html#module-RCAIDE.Library.Methods.Performance.propeller_range_endurance_speeds" title="RCAIDE.Library.Methods.Performance.propeller_range_endurance_speeds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propeller_range_endurance_speeds</span></code></a>(analyses, ...)</p></td>
-<td><p>Computes L/D max and CL^3/2 / CD max at a given altitude.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.propeller_single_point.html#module-RCAIDE.Library.Methods.Performance.propeller_single_point" title="RCAIDE.Library.Methods.Performance.propeller_single_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propeller_single_point</span></code></a>(prop, pitch, omega, ...)</p></td>
-<td><p>propeller_single_point(prop,</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Performance.propeller_aerodynamic_analysis.html#module-RCAIDE.Library.Methods.Performance.propeller_aerodynamic_analysis" title="RCAIDE.Library.Methods.Performance.propeller_aerodynamic_analysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">propeller_aerodynamic_analysis</span></code></a>(propeller, ...)</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -590,11 +584,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="RCAIDE.Library.Methods.Performance.V_n_diagram.html"
+       href="RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Performance.V_n_diagram</p>
+        <p class="prev-next-title">RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RCAIDE.Library.Methods.Performance.V_n_diagram &#8212; RCAIDE</title>
+    <title>RCAIDE.Library.Methods.Performance.generate_V_n_diagram &#8212; RCAIDE</title>
   
   
   
@@ -42,8 +42,8 @@
     <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Performance/V_n_diagram';</script>
-    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Performance/V_n_diagram.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Performance/generate_V_n_diagram';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Performance/generate_V_n_diagram.html" />
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -359,7 +359,7 @@
     
     <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Performance.V_n_diagram</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Performance.generate_V_n_diagram</span></li>
   </ul>
 </nav>
 </div>
@@ -376,9 +376,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>Source code for RCAIDE.Library.Methods.Performance.V_n_diagram</h1><div class="highlight"><pre>
+  <h1>Source code for RCAIDE.Library.Methods.Performance.generate_V_n_diagram</h1><div class="highlight"><pre>
 <span></span><span class="c1">## @ingroup Methods-Performance</span>
-<span class="c1"># V_n_diagram.py</span>
+<span class="c1"># generate_V_n_diagram.py</span>
 <span class="c1">#</span>
 <span class="c1"># Created:  Nov 2018, S. Karpuk</span>
 <span class="c1"># Modified:</span>
@@ -391,8 +391,7 @@
 <span class="kn">import</span> <span class="nn">RCAIDE</span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>  <span class="kn">import</span> <span class="n">Results</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Common.Lift</span> <span class="kn">import</span> <span class="n">compute_max_lift_coeff</span> 
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>  <span class="kn">import</span> <span class="n">Results</span>  
 
 <span class="c1"># package imports</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -403,9 +402,9 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 
 <span class="c1">## @ingroup Methods-Performance</span>
-<div class="viewcode-block" id="V_n_diagram">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.V_n_diagram">[docs]</a>
-<span class="k">def</span> <span class="nf">V_n_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">analyses</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">delta_ISA</span><span class="p">):</span>
+<div class="viewcode-block" id="generate_V_n_diagram">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.generate_V_n_diagram">[docs]</a>
+<span class="k">def</span> <span class="nf">generate_V_n_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">analyses</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">delta_ISA</span><span class="p">):</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes a V-n diagram for a given aircraft and given regulations for ISA conditions</span>
 
@@ -422,8 +421,8 @@
 <span class="sd">      minimum_lift_coefficient             [Unitless]</span>
 <span class="sd">      chords.mean_aerodynamic              [m]</span>
 <span class="sd">      envelope.FARpart_number              [Unitless]</span>
-<span class="sd">        limit_loads.positive               [Unitless]</span>
-<span class="sd">        limit_loads.negative               [Unitless]</span>
+<span class="sd">        positive_limit_load               [Unitless]</span>
+<span class="sd">        negative_limit_load               [Unitless]</span>
 <span class="sd">        cruise_mach                        [Unitless]</span>
 <span class="sd">    weight                                 [kg]</span>
 <span class="sd">    altitude                               [m]</span>
@@ -438,34 +437,22 @@
 <span class="sd">    Description:</span>
 <span class="sd">    The script creates an aircraft V-n diagram based on the input parameters specified by the user.</span>
 <span class="sd">    Depending on the certification flag, an appropriate diagram, output and log files are created.</span>
-<span class="sd">    &quot;&quot;&quot;</span>        
-
-    <span class="c1">#------------------------</span>
-    <span class="c1"># Create a log - file</span>
-    <span class="c1">#------------------------</span>
-    <span class="n">flog</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;V_n_diagram_&quot;</span> <span class="o">+</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="s2">&quot;.log&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Running the V-n diagram calculation...&#39;</span><span class="p">)</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Running the V-n diagram calculation...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Aircraft: &#39;</span> <span class="o">+</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Category: &#39;</span> <span class="o">+</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">category</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;FAR certification: Part &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">FAR_part_number</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    
+    <span class="n">weight</span> <span class="o">=</span>  <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">max_takeoff</span>
+ 
     <span class="c1"># ----------------------------------------------</span>
     <span class="c1"># Unpack</span>
-    <span class="c1"># ----------------------------------------------</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Unpacking the input and calculating required inputs...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># ---------------------------------------------- </span>
     <span class="n">FAR_part_number</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">FAR_part_number</span>
     <span class="n">atmo</span>            <span class="o">=</span> <span class="n">analyses</span><span class="o">.</span><span class="n">atmosphere</span>
-    <span class="n">Mc</span>              <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">cruise_mach</span>
+    <span class="n">Mc</span>              <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">design_mach_number</span>
 
     <span class="k">for</span> <span class="n">wing</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">wings</span><span class="p">:</span> 
         <span class="n">reference_area</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">reference_area</span> 
-        <span class="n">Cmac</span>            <span class="o">=</span> <span class="n">wing</span><span class="o">.</span><span class="n">chords</span><span class="o">.</span><span class="n">mean_aerodynamic</span>
-
-    <span class="k">for</span> <span class="n">envelope</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="p">:</span>
-        <span class="n">pos_limit_load</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">positive</span>
-        <span class="n">neg_limit_load</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">negative</span>
+        <span class="n">Cmac</span>            <span class="o">=</span> <span class="n">wing</span><span class="o">.</span><span class="n">chords</span><span class="o">.</span><span class="n">mean_aerodynamic</span> 
+        <span class="n">pos_limit_load</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">positive_limit_load</span>
+        <span class="n">neg_limit_load</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">positive_limit_load</span>
 
     <span class="n">category_tag</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">category</span>
     
@@ -485,32 +472,20 @@
     <span class="c1"># Computing lift-curve slope</span>
     <span class="c1"># ------------------------------ </span>
     <span class="n">results</span> <span class="o">=</span>  <span class="n">evalaute_aircraft</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">Vc</span><span class="p">)</span> 
-    <span class="n">CLa</span>     <span class="o">=</span>  <span class="n">results</span><span class="o">.</span><span class="n">segments</span><span class="o">.</span><span class="n">cruise</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">derivatives</span><span class="o">.</span><span class="n">CLift_alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> 
+    <span class="n">CLa</span>     <span class="o">=</span>  <span class="n">results</span><span class="o">.</span><span class="n">segments</span><span class="o">.</span><span class="n">cruise</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">derivatives</span><span class="o">.</span><span class="n">Clift_alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> 
 
     <span class="c1"># -----------------------------------------------------------</span>
     <span class="c1"># Determining vehicle minimum and maximum lift coefficients</span>
     <span class="c1"># -----------------------------------------------------------</span>
-    <span class="k">try</span><span class="p">:</span>   <span class="c1"># aircraft maximum lift informed by user</span>
-        <span class="n">maximum_lift_coefficient</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">maximum_lift_coefficient</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="c1"># Condition to CLmax calculation: 0.333 * Vc @ specified altitude, ISA</span>
-        <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span>                   <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
-        <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">density</span>           <span class="o">=</span> <span class="n">atmo_values</span><span class="o">.</span><span class="n">density</span>
-        <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">dynamic_viscosity</span> <span class="o">=</span> <span class="n">atmo_values</span><span class="o">.</span><span class="n">dynamic_viscosity</span>
-        <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>          <span class="o">=</span> <span class="mf">0.333</span> <span class="o">*</span> <span class="n">Vc</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">max_lift_coefficient</span><span class="p">,</span> <span class="n">induced_drag_high_lift</span> \
-                                             <span class="o">=</span> <span class="n">compute_max_lift_coeff</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">conditions</span><span class="p">)</span>
-            <span class="n">maximum_lift_coefficient</span>         <span class="o">=</span> <span class="n">max_lift_coefficient</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">vehicle</span><span class="o">.</span><span class="n">maximum_lift_coefficient</span> <span class="o">=</span> <span class="n">maximum_lift_coefficient</span>
-            
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Maximum lift coefficient calculation error. Please, check inputs&quot;</span><span class="p">)</span>
-        
-    <span class="k">try</span><span class="p">:</span>    <span class="c1"># aircraft minimum lift informed by user</span>
-        <span class="n">minimum_lift_coefficient</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">minimum_lift_coefficient</span> 
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The value not found. Specify minimum lift coefficient&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">maximum_lift_coefficient</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">maximum_lift_coefficient</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">maximum_lift_coefficient</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Maximum lift coefficient not specified.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">minimum_lift_coefficient</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">minimum_lift_coefficient</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">minimum_lift_coefficient</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Minimum lift coefficient not specified.&quot;</span><span class="p">)</span>
              
     <span class="c1"># -----------------------------------------------------------------------------</span>
     <span class="c1"># Convert all terms to English (Used for FAR) and remove elements from arrays</span>
@@ -535,65 +510,51 @@
         
     <span class="c1"># --------------------------------------------------</span>
     <span class="c1"># Establish limit maneuver load factors n+ and n- </span>
-    <span class="c1"># --------------------------------------------------</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Establish limit maneuver load factors n+ and n-...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># -------------------------------------------------- </span>
     <span class="c1"># CFR Part 25</span>
     <span class="c1"># Positive and negative limits</span>
-    <span class="k">if</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
-        <span class="c1"># Positive limit</span>
-        <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Estimating n+...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="s1">&#39;25&#39;</span><span class="p">:</span>
+        <span class="c1"># Positive limit </span>
         <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.1</span> <span class="o">+</span> <span class="mi">24000</span> <span class="o">/</span> <span class="p">(</span><span class="n">weight</span> <span class="o">+</span> <span class="mi">10000</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">2.5</span><span class="p">:</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Defined positive limit load factor &lt; 2.5. Setting 2.5...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">2.5</span><span class="p">:</span> 
             <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.5</span>
         <span class="k">elif</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pos_limit_load</span><span class="p">:</span>
             <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_limit_load</span>
-        <span class="k">elif</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.8</span><span class="p">:</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Defined positive limit load factor &gt; 3.8. Setting 3.8...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.8</span><span class="p">:</span> 
             <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.8</span>
 
-        <span class="c1"># Negative limit</span>
-        <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Estimating n-...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="c1"># Negative limit </span>
         <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_limit_load</span>
-        <span class="k">if</span> <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Negative limit load factor magnitude is too small. Setting to -1...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> 
             <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 
-    <span class="k">elif</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="mi">23</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="s1">&#39;23&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">category_tag</span> <span class="o">==</span> <span class="s1">&#39;normal&#39;</span> <span class="ow">or</span> <span class="n">category_tag</span> <span class="o">==</span> <span class="s1">&#39;commuter&#39;</span><span class="p">:</span>
-            <span class="c1"># Positive limit</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Estimating n+...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Positive limit </span>
             <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.1</span> <span class="o">+</span> <span class="mi">24000</span> <span class="o">/</span> <span class="p">(</span><span class="n">weight</span> <span class="o">+</span> <span class="mi">10000</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">2.5</span><span class="p">:</span>
-                <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Defined positive limit load factor &lt; 2.5. Setting 2.5...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">2.5</span><span class="p">:</span> 
                 <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.5</span>
             <span class="k">elif</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pos_limit_load</span><span class="p">:</span>
                 <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_limit_load</span>
-            <span class="k">elif</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.8</span><span class="p">:</span>
-                <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Defined positive limit load factor &gt; 3.8. Setting 3.8...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">3.8</span><span class="p">:</span> 
                 <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.8</span>
 
-            <span class="c1"># Negative limit</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Estimating n-...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Negative limit </span>
             <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
             
         <span class="k">elif</span> <span class="n">category_tag</span> <span class="o">==</span> <span class="s1">&#39;utility&#39;</span><span class="p">:</span>
-            <span class="c1"># Positive limit</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Estimating n+...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Positive limit </span>
             <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span>  <span class="n">pos_limit_load</span>
-            <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">4.4</span><span class="p">:</span>
-                 <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Defined positive limit load factor &lt; 4.4. Setting 4.4...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                 <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.4</span>
+            <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">4.4</span><span class="p">:</span> 
+                <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.4</span>
                  
-            <span class="c1"># Negative limit</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Estimating n-...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># Negative limit </span>
             <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4</span> <span class="o">*</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
             
         <span class="k">elif</span> <span class="n">category_tag</span> <span class="o">==</span> <span class="s1">&#39;acrobatic&#39;</span><span class="p">:</span>
             <span class="c1"># Positive limit</span>
             <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">pos_limit_load</span>
-            <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">6.0</span><span class="p">:</span>
-                <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Defined positive limit load factor &lt; 6.0. Setting 6.0...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">6.0</span><span class="p">:</span> 
                 <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">6.0</span>
 
             <span class="c1"># Negative limit    </span>
@@ -607,7 +568,7 @@
 
     <span class="c1"># Check input of the limit load</span>
     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">neg_limit_load</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
-        <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">neg_limit_load</span>
+        <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">neg_limit_load</span>
 
     <span class="c1">#----------------------------------------</span>
     <span class="c1"># Generate a V-n diagram data structure</span>
@@ -635,16 +596,14 @@
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">reference_area</span>           <span class="o">=</span> <span class="n">reference_area</span>
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">maximum_lift_coefficient</span> <span class="o">=</span> <span class="n">maximum_lift_coefficient</span>
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">minimum_lift_coefficient</span> <span class="o">=</span> <span class="n">minimum_lift_coefficient</span>
-    <span class="n">V_n_data</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">positive</span>     <span class="o">=</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">V_n_data</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">negative</span>     <span class="o">=</span> <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">V_n_data</span><span class="o">.</span><span class="n">positive_limit_load</span>      <span class="o">=</span> <span class="n">load_factors_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">V_n_data</span><span class="o">.</span><span class="n">negative_limit_load</span>      <span class="o">=</span> <span class="n">load_factors_neg</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
     
     <span class="c1"># --------------------------------------------------</span>
     <span class="c1"># Computing critical speeds (Va, Vc, Vb, Vd, Vs1)</span>
-    <span class="c1"># --------------------------------------------------</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Computing critical speeds (Va, Vc, Vb, Vd, Vs1)...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># -------------------------------------------------- </span>
     
-    <span class="c1"># Calculate Stall and Maneuver speeds</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Computing Vs1 and Va...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># Calculate Stall and Maneuver speeds </span>
     <span class="n">stall_maneuver_speeds</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">)</span>  
         
     <span class="c1"># convert speeds to KEAS for future calculations </span>
@@ -658,20 +617,17 @@
     <span class="n">Va_neg</span>        <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">Va</span><span class="o">.</span><span class="n">negative</span>
     <span class="n">Va_pos</span>        <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">Va</span><span class="o">.</span><span class="n">positive</span> 
     <span class="n">Va_neg</span>        <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">Va</span><span class="o">.</span><span class="n">negative</span> 
-
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Checking Vc wrt Va...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">Va_neg</span> <span class="o">&gt;</span> <span class="n">Vc</span> <span class="ow">and</span> <span class="n">Va_neg</span> <span class="o">&gt;</span> <span class="n">Va_pos</span><span class="p">:</span>
-        <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Negative Va &gt; Vc. Setting Vc = 1.15 * Va...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+ 
+    <span class="k">if</span> <span class="n">Va_neg</span> <span class="o">&gt;</span> <span class="n">Vc</span> <span class="ow">and</span> <span class="n">Va_neg</span> <span class="o">&gt;</span> <span class="n">Va_pos</span><span class="p">:</span> 
         <span class="n">Vc</span> <span class="o">=</span> <span class="mf">1.15</span> <span class="o">*</span> <span class="n">Va_neg</span>
-    <span class="k">elif</span> <span class="n">Va_pos</span> <span class="o">&gt;</span> <span class="n">Vc</span> <span class="ow">and</span> <span class="n">Va_neg</span> <span class="o">&lt;</span> <span class="n">Va_pos</span><span class="p">:</span>
-        <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Positive Va &gt; Vc. Setting Vc = 1.15 * Va...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">Va_pos</span> <span class="o">&gt;</span> <span class="n">Vc</span> <span class="ow">and</span> <span class="n">Va_neg</span> <span class="o">&lt;</span> <span class="n">Va_pos</span><span class="p">:</span> 
         <span class="n">Vc</span> <span class="o">=</span> <span class="mf">1.15</span> <span class="o">*</span> <span class="n">Va_pos</span>
     
     <span class="c1"># Gust speeds between Vb and Vc (EAS) and minimum Vc</span>
     <span class="n">miu</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">wing_loading</span> <span class="o">/</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">Cmac</span> <span class="o">*</span> <span class="n">CLa</span> <span class="o">*</span> <span class="n">sea_level_gravity</span><span class="p">)</span>
     <span class="n">Kg</span>  <span class="o">=</span> <span class="mf">0.88</span> <span class="o">*</span> <span class="n">miu</span> <span class="o">/</span> <span class="p">(</span><span class="mf">5.3</span> <span class="o">+</span> <span class="n">miu</span><span class="p">)</span>
           
-    <span class="k">if</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="s1">&#39;25&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">altitude</span> <span class="o">&lt;</span> <span class="mi">15000</span><span class="p">:</span>
             <span class="n">Uref_cruise</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.0008</span> <span class="o">*</span> <span class="n">altitude</span> <span class="o">+</span> <span class="mi">56</span><span class="p">)</span>
             <span class="n">Uref_rough</span>  <span class="o">=</span> <span class="n">Uref_cruise</span>
@@ -685,7 +641,7 @@
         <span class="n">coefs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">Uref_cruise</span> <span class="o">*</span> <span class="p">(</span><span class="mf">2.64</span> <span class="o">+</span> <span class="p">(</span><span class="n">Kg</span> <span class="o">*</span> <span class="n">CLa</span> <span class="o">*</span> <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">498</span> <span class="o">*</span> <span class="n">wing_loading</span><span class="p">)),</span> <span class="mf">1.72424</span> <span class="o">*</span> <span class="n">Uref_cruise</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">Vc1</span>   <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">(</span><span class="n">coefs</span><span class="p">))</span>
         
-    <span class="k">elif</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="mi">23</span><span class="p">:</span>           
+    <span class="k">elif</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="s1">&#39;23&#39;</span><span class="p">:</span>           
         <span class="k">if</span> <span class="n">altitude</span> <span class="o">&lt;</span> <span class="mi">20000</span><span class="p">:</span>
             <span class="n">Uref_cruise</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
             <span class="n">Uref_dive</span>   <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
@@ -711,17 +667,14 @@
             <span class="k">if</span> <span class="n">wing_loading</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>       
                 <span class="n">Vc1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.055</span> <span class="o">*</span> <span class="n">wing_loading</span> <span class="o">+</span> <span class="mf">34.1</span><span class="p">)</span> <span class="o">*</span> <span class="n">wing_loading</span> <span class="o">**</span><span class="mf">0.5</span>
 
-    <span class="c1"># checking input Cruise speed</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Checking Vc wrt Vcmin... </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">Vc1</span> <span class="o">&gt;</span> <span class="n">Vc</span><span class="p">:</span>
-        <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Specified cruise speed is less than the minimum required. Setting th minimum required value...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># checking input Cruise speed </span>
+    <span class="k">if</span> <span class="n">Vc1</span> <span class="o">&gt;</span> <span class="n">Vc</span><span class="p">:</span> 
         <span class="n">Vc</span> <span class="o">=</span> <span class="n">Vc1</span>
 
-    <span class="c1"># Dive speed</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;    Computing Vd...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>        
+    <span class="c1"># Dive speed </span>
+    <span class="k">if</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="s1">&#39;25&#39;</span><span class="p">:</span>        
         <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.25</span> <span class="o">*</span> <span class="n">Vc</span>
-    <span class="k">elif</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="mi">23</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">FAR_part_number</span> <span class="o">==</span> <span class="s1">&#39;23&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">category_tag</span> <span class="o">==</span> <span class="s1">&#39;acrobatic&#39;</span><span class="p">:</span>
             <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.55</span> <span class="o">*</span> <span class="n">Vc1</span>
             <span class="k">if</span> <span class="n">wing_loading</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
@@ -733,10 +686,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.4</span> <span class="o">*</span> <span class="n">Vc1</span>
             <span class="k">if</span> <span class="n">wing_loading</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
-                <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.000625</span> <span class="o">*</span> <span class="n">wing_loading</span> <span class="o">+</span> <span class="mf">1.4125</span><span class="p">)</span> <span class="o">*</span> <span class="n">Vc1</span>
-            
-        <span class="k">if</span> <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.15</span> <span class="o">*</span> <span class="n">Vc</span><span class="p">:</span>
-            <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;        Based on min Vc, Vd is too close Vc. Setting Vd = 1.15 Vc...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.000625</span> <span class="o">*</span> <span class="n">wing_loading</span> <span class="o">+</span> <span class="mf">1.4125</span><span class="p">)</span> <span class="o">*</span> <span class="n">Vc1</span> 
+        <span class="k">if</span> <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">1.15</span> <span class="o">*</span> <span class="n">Vc</span><span class="p">:</span> 
             <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.15</span> <span class="o">*</span> <span class="n">Vc</span>
    
     <span class="n">Vd</span>               <span class="o">=</span> <span class="n">airspeeds_pos</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
@@ -763,8 +714,7 @@
 
     <span class="c1">#------------------------</span>
     <span class="c1"># Create Stall lines</span>
-    <span class="c1">#------------------------</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Creating stall lines...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1">#------------------------ </span>
     <span class="n">Num_of_points</span> <span class="o">=</span> <span class="mi">20</span>                                            <span class="c1"># number of points for the stall line</span>
     <span class="n">upper_bound</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
     <span class="n">lower_bound</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -773,8 +723,7 @@
 
     <span class="c1"># ----------------------------------------------</span>
     <span class="c1"># Determine Gust loads</span>
-    <span class="c1"># ----------------------------------------------</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Calculating gust loads...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># ---------------------------------------------- </span>
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span>           <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span><span class="o">.</span><span class="n">airspeeds</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
     
@@ -794,23 +743,16 @@
 
     <span class="c1"># ----------------------------------------------</span>
     <span class="c1"># Post-processing the V-n diagram</span>
-    <span class="c1"># ----------------------------------------------</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Post-Processing...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">V_n_data</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">positive</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">V_n_data</span><span class="o">.</span><span class="n">load_factors</span><span class="o">.</span><span class="n">positive</span><span class="p">)</span>
-    <span class="n">V_n_data</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">negative</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">V_n_data</span><span class="o">.</span><span class="n">load_factors</span><span class="o">.</span><span class="n">negative</span><span class="p">)</span>
-    
-    <span class="n">post_processing</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">Uref_rough</span><span class="p">,</span> <span class="n">Uref_cruise</span><span class="p">,</span> <span class="n">Uref_dive</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">vehicle</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calculation complete...&#39;</span><span class="p">)</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Calculation complete</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">flog</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-  
+    <span class="c1"># ---------------------------------------------- </span>
+    <span class="n">V_n_data</span><span class="o">.</span><span class="n">positive_limit_load</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">V_n_data</span><span class="o">.</span><span class="n">load_factors</span><span class="o">.</span><span class="n">positive</span><span class="p">)</span>
+    <span class="n">V_n_data</span><span class="o">.</span><span class="n">negative_limit_load</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">V_n_data</span><span class="o">.</span><span class="n">load_factors</span><span class="o">.</span><span class="n">negative</span><span class="p">)</span> 
+    <span class="n">post_processing</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">Uref_rough</span><span class="p">,</span> <span class="n">Uref_cruise</span><span class="p">,</span> <span class="n">Uref_dive</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">vehicle</span><span class="p">)</span> 
     <span class="k">return</span> <span class="n">V_n_data</span></div>
 
 
       
 <div class="viewcode-block" id="evalaute_aircraft">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.evalaute_aircraft">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.evalaute_aircraft">[docs]</a>
 <span class="k">def</span> <span class="nf">evalaute_aircraft</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">Vc</span><span class="p">):</span> 
     
     <span class="c1"># Set up vehicle configs</span>
@@ -832,7 +774,7 @@
 
  
 <div class="viewcode-block" id="analyses_setup">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.analyses_setup">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.analyses_setup">[docs]</a>
 <span class="k">def</span> <span class="nf">analyses_setup</span><span class="p">(</span><span class="n">configs</span><span class="p">):</span>
 
     <span class="n">analyses</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Container</span><span class="p">()</span>
@@ -846,7 +788,7 @@
 
 
 <div class="viewcode-block" id="base_analysis">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.base_analysis">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.base_analysis">[docs]</a>
 <span class="k">def</span> <span class="nf">base_analysis</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span>
 
        <span class="c1"># ------------------------------------------------------------------</span>
@@ -897,7 +839,7 @@
 
   
 <div class="viewcode-block" id="configs_setup">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.configs_setup">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.configs_setup">[docs]</a>
 <span class="k">def</span> <span class="nf">configs_setup</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span> 
     <span class="c1"># ------------------------------------------------------------------</span>
     <span class="c1">#   Initialize Configurations</span>
@@ -910,7 +852,7 @@
 
  
 <div class="viewcode-block" id="base_mission_setup">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.base_mission_setup">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.base_mission_setup">[docs]</a>
 <span class="k">def</span> <span class="nf">base_mission_setup</span><span class="p">(</span><span class="n">analyses</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">Vc</span><span class="p">):</span>   
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This sets up the nominal cruise of the aircraft</span>
@@ -942,7 +884,7 @@
 
 
 <div class="viewcode-block" id="missions_setup">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.missions_setup">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.missions_setup">[docs]</a>
 <span class="k">def</span> <span class="nf">missions_setup</span><span class="p">(</span><span class="n">mission</span><span class="p">):</span> 
  
     <span class="n">missions</span>     <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Missions</span><span class="p">()</span>
@@ -960,7 +902,7 @@
 <span class="c1">#------------------------------------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="stall_maneuver_speeds">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.stall_maneuver_speeds">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.stall_maneuver_speeds">[docs]</a>
 <span class="k">def</span> <span class="nf">stall_maneuver_speeds</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes stall and maneuver speeds for positive and negative halves of the the V-n diagram</span>
@@ -1034,7 +976,7 @@
 <span class="c1">#------------------------------------------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="stall_line">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.stall_line">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.stall_line">[docs]</a>
 <span class="k">def</span> <span class="nf">stall_line</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">Num_of_points</span><span class="p">,</span> <span class="n">sign_flag</span><span class="p">):</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates Stall lines of positive and negative halves of the V-n diagram</span>
@@ -1111,7 +1053,7 @@
 <span class="c1">#--------------------------------------------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="gust_loads">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.gust_loads">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.gust_loads">[docs]</a>
 <span class="k">def</span> <span class="nf">gust_loads</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">Kg</span><span class="p">,</span> <span class="n">CLa</span><span class="p">,</span> <span class="n">Num_of_points</span><span class="p">,</span> <span class="n">FAR_part_number</span><span class="p">,</span> <span class="n">sign_flag</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates airspeeds and load factors for gust loads and modifies the V-n diagram</span>
@@ -1125,7 +1067,7 @@
 <span class="sd">            negative                            [kts]</span>
 <span class="sd">        load_factors.positive                   [Unitless]</span>
 <span class="sd">            negative                            [Unitless]</span>
-<span class="sd">        limit_loads.positive                    [Unitless]</span>
+<span class="sd">        positive_limit_load                    [Unitless]</span>
 <span class="sd">            negative                            [Unitless]</span>
 <span class="sd">        weight                                  [lb]</span>
 <span class="sd">        wing_loading                            [lb/ft**2]</span>
@@ -1173,7 +1115,7 @@
         <span class="n">airspeeds</span>        <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">positive</span>
         <span class="n">load_factors</span>     <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">load_factors</span><span class="o">.</span><span class="n">positive</span>
         <span class="n">lift_coefficient</span> <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">maximum_lift_coefficient</span>
-        <span class="n">limit_load</span>       <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">positive</span>
+        <span class="n">limit_load</span>       <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">positive_limit_load</span>
         <span class="n">Uref_rough</span>       <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">rough_gust</span>
         <span class="n">Uref_cruise</span>      <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">cruise_gust</span>
         <span class="n">Uref_dive</span>        <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">dive_gust</span>
@@ -1182,7 +1124,7 @@
         <span class="n">airspeeds</span>        <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">negative</span>
         <span class="n">load_factors</span>     <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">load_factors</span><span class="o">.</span><span class="n">negative</span>
         <span class="n">lift_coefficient</span> <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">minimum_lift_coefficient</span>
-        <span class="n">limit_load</span>       <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">limit_loads</span><span class="o">.</span><span class="n">negative</span>
+        <span class="n">limit_load</span>       <span class="o">=</span> <span class="n">V_n_data</span><span class="o">.</span><span class="n">negative_limit_load</span>
         <span class="n">Uref_rough</span>       <span class="o">=</span> <span class="o">-</span><span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">rough_gust</span>
         <span class="n">Uref_cruise</span>      <span class="o">=</span> <span class="o">-</span><span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">cruise_gust</span>
         <span class="n">Uref_dive</span>        <span class="o">=</span> <span class="o">-</span><span class="n">V_n_data</span><span class="o">.</span><span class="n">gust_data</span><span class="o">.</span><span class="n">airspeeds</span><span class="o">.</span><span class="n">dive_gust</span>
@@ -1318,7 +1260,7 @@
 <span class="c1">#------------------------------------------------------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="gust_dive_speed_intersection">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.gust_dive_speed_intersection">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.gust_dive_speed_intersection">[docs]</a>
 <span class="k">def</span> <span class="nf">gust_dive_speed_intersection</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">load_factors</span><span class="p">,</span> <span class="n">gust_load_factors</span><span class="p">,</span> <span class="n">airspeeds</span><span class="p">,</span> <span class="n">element_num</span><span class="p">,</span> <span class="n">Vc</span><span class="p">,</span> <span class="n">Vd</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates intersection between the general V-n diagram and the gust load for Vd</span>
@@ -1371,7 +1313,7 @@
 <span class="c1">#--------------------------------------------------------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="post_processing">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.post_processing">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.post_processing">[docs]</a>
 <span class="k">def</span> <span class="nf">post_processing</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">Uref_rough</span><span class="p">,</span> <span class="n">Uref_cruise</span><span class="p">,</span> <span class="n">Uref_dive</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">vehicle</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plot graph, save the final figure, and create results output file</span>
@@ -1447,8 +1389,7 @@
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Load Factor&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;  Weight=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;lb  &#39;</span> <span class="o">+</span> <span class="s1">&#39; Altitude=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">altitude</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;ft &#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Vn_diagram_&#39;</span><span class="o">+</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span> 
 
     <span class="c1">#---------------------------------</span>
     <span class="c1"># Creating results output file</span>
@@ -1458,7 +1399,7 @@
     <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;-------------------</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Aircraft: &#39;</span> <span class="o">+</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;category: &#39;</span> <span class="o">+</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">category</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;FAR certification: Part &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">FAR_part_number</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;FAR certification: Part &#39;</span> <span class="o">+</span>  <span class="n">vehicle</span><span class="o">.</span><span class="n">flight_envelope</span><span class="o">.</span><span class="n">FAR_part_number</span>  <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Weight = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">weight</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; lb</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Altitude = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">altitude</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; ft</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">fres</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;---------------------------------------------------------------</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -1480,7 +1421,7 @@
 <span class="c1">#------------------------------------------------------------------------------------------------------------------------</span>
 
 <div class="viewcode-block" id="convert_keas">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.V_n_diagram.html#RCAIDE.Library.Methods.Performance.V_n_diagram.convert_keas">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.convert_keas">[docs]</a>
 <span class="k">def</span> <span class="nf">convert_keas</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Convert speed to KEAS</span>
@@ -1541,10 +1482,11 @@
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">Va</span><span class="o">.</span><span class="n">positive</span>        <span class="o">=</span> <span class="n">Va_pos</span>
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">Va</span><span class="o">.</span><span class="n">negative</span>        <span class="o">=</span> <span class="n">Va_neg</span>
     <span class="n">V_n_data</span><span class="o">.</span><span class="n">Vs1</span><span class="o">.</span><span class="n">negative</span>       <span class="o">=</span> <span class="n">Vs1_neg</span>
-    <span class="n">V_n_data</span><span class="o">.</span><span class="n">Vs1</span><span class="o">.</span><span class="n">positive</span>       <span class="o">=</span> <span class="n">Vs1_pos</span></div>
+    <span class="n">V_n_data</span><span class="o">.</span><span class="n">Vs1</span><span class="o">.</span><span class="n">positive</span>       <span class="o">=</span> <span class="n">Vs1_pos</span>
+    
+    
+    <span class="k">return</span></div>
 
-    
-    
 </pre></div>
 
                 </article>

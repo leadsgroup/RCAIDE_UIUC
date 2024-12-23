@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl &#8212; RCAIDE</title>
+    <title>RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis &#8212; RCAIDE</title>
   
   
   
@@ -43,12 +43,12 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl';</script>
-    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_autosummary/RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_autosummary/RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_autosummary/RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="RCAIDE.Library.Methods.Performance.generate_V_n_diagram" href="RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html" />
-    <link rel="prev" title="RCAIDE.Library.Methods.Performance.estimate_take_off_field_length" href="RCAIDE.Library.Methods.Performance.estimate_take_off_field_length.html" />
+    <link rel="next" title="RCAIDE.Library.Methods.Performance.compute_payload_range_diagram" href="RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html" />
+    <link rel="prev" title="RCAIDE.Library.Methods.Performance" href="RCAIDE.Library.Methods.Performance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -515,7 +515,7 @@
     
     <li class="breadcrumb-item"><a href="RCAIDE.Library.Methods.Performance.html" class="nav-link">RCAIDE.Library.Methods.Performance</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis</span></li>
   </ul>
 </nav>
 </div>
@@ -532,30 +532,12 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="module-RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl">
-<span id="rcaide-library-methods-performance-find-take-off-weight-given-tofl"></span><h1>RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl<a class="headerlink" href="#module-RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl" title="Link to this heading">#</a></h1>
+  <section id="module-RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis">
+<span id="rcaide-library-methods-performance-aircraft-aerodynamic-analysis"></span><h1>RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis<a class="headerlink" href="#module-RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.find_take_off_weight_given_tofl">
-<span class="sig-name descname"><span class="pre">find_take_off_weight_given_tofl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analyses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_tofl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">altitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_isa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Performance/find_take_off_weight_given_tofl.html#find_take_off_weight_given_tofl"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.find_take_off_weight_given_tofl" title="Link to this definition">#</a></dt>
-<dd><p>Estimates the takeoff weight given a certain takeoff field length.</p>
-<p>Assumptions:
-assumptions per estimate_take_off_field_length()</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-vehicle.mass_properties.</p>
-<blockquote>
-<div><p>operating_empty         [kg]
-max_takeoff             [kg]
-analyses                [RCAIDE data structure]
-airport                 [RCAIDE data structure]
-target_tofl             [m]</p>
-</div></blockquote>
-<p>Outputs:
-max_tow                   [kg]</p>
-<p>Properties Used:
-N/A</p>
-</dd></dl>
+<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.aircraft_aerodynamic_analysis">
+<span class="sig-name descname"><span class="pre">aircraft_aerodynamic_analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle_of_attack_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mach_number_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_surface_deflection_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([[0]])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">altitude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_ISA</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_surrogate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_fuselage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Performance/aircraft_aerodynamic_analysis.html#aircraft_aerodynamic_analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.aircraft_aerodynamic_analysis" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 
@@ -570,20 +552,20 @@ N/A</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="RCAIDE.Library.Methods.Performance.estimate_take_off_field_length.html"
+       href="RCAIDE.Library.Methods.Performance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Performance.estimate_take_off_field_length</p>
+        <p class="prev-next-title">RCAIDE.Library.Methods.Performance</p>
       </div>
     </a>
     <a class="right-next"
-       href="RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html"
+       href="RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RCAIDE.Library.Methods.Performance.generate_V_n_diagram</p>
+        <p class="prev-next-title">RCAIDE.Library.Methods.Performance.compute_payload_range_diagram</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -606,7 +588,7 @@ N/A</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.find_take_off_weight_given_tofl"><code class="docutils literal notranslate"><span class="pre">find_take_off_weight_given_tofl()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.aircraft_aerodynamic_analysis"><code class="docutils literal notranslate"><span class="pre">aircraft_aerodynamic_analysis()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -614,7 +596,7 @@ N/A</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/_autosummary/RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.rst.txt"
+      <li><a href="../_sources/_autosummary/RCAIDE.Library.Methods.Performance.aircraft_aerodynamic_analysis.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div></div>

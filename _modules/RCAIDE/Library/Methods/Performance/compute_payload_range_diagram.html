@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RCAIDE.Library.Methods.Performance.payload_range_diagram &#8212; RCAIDE</title>
+    <title>RCAIDE.Library.Methods.Performance.compute_payload_range_diagram &#8212; RCAIDE</title>
   
   
   
@@ -42,8 +42,8 @@
     <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Performance/payload_range_diagram';</script>
-    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Performance/payload_range_diagram.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Performance/compute_payload_range_diagram';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Performance/compute_payload_range_diagram.html" />
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -359,7 +359,7 @@
     
     <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Performance.payload_range_diagram</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Performance.compute_payload_range_diagram</span></li>
   </ul>
 </nav>
 </div>
@@ -376,8 +376,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>Source code for RCAIDE.Library.Methods.Performance.payload_range_diagram</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Methods/Performance/payload_range_diagram.py</span>
+  <h1>Source code for RCAIDE.Library.Methods.Performance.compute_payload_range_diagram</h1><div class="highlight"><pre>
+<span></span><span class="c1"># RCAIDE/Library/Methods/Performance/compute_payload_range_diagram.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -398,9 +398,9 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Calculate vehicle Payload Range Diagram</span>
 <span class="c1"># ----------------------------------------------------------------------  </span>
-<div class="viewcode-block" id="payload_range_diagram">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.payload_range_diagram.html#RCAIDE.Library.Methods.Performance.payload_range_diagram.payload_range_diagram">[docs]</a>
-<span class="k">def</span> <span class="nf">payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mission</span><span class="p">,</span><span class="n">cruise_segment_tag</span><span class="p">,</span><span class="n">reserves</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">plot_diagram</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">fuel_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  
+<div class="viewcode-block" id="compute_payload_range_diagram">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.compute_payload_range_diagram">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">assigned_propulsors</span><span class="p">,</span><span class="n">weights_analysis</span><span class="p">,</span><span class="n">aerodynamics_analysis</span><span class="p">,</span><span class="n">cruise_airspeed</span> <span class="o">=</span> <span class="mi">515</span><span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">mph</span><span class="p">,</span> <span class="n">cruise_altitude</span><span class="o">=</span> <span class="mi">35000</span><span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">feet</span><span class="p">,</span><span class="n">max_range_guess</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">nmi</span><span class="p">,</span> <span class="n">reserves</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">plot_diagram</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">fuel_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates and plots the payload range diagram for an aircraft by modifying the cruise segment and weights of the aicraft .</span>
 
 <span class="sd">        Sources:</span>
@@ -418,17 +418,38 @@
 <span class="sd">        Outputs: </span>
 <span class="sd">            payload_range       data structure of payload range properties   [m/s]</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
-      
+
+    <span class="n">configs</span>  <span class="o">=</span>  <span class="n">configs_setup</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
+
+    <span class="c1"># create analyses</span>
+    <span class="n">analyses</span> <span class="o">=</span>  <span class="n">analyses_setup</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span><span class="n">weights_analysis</span><span class="p">,</span><span class="n">aerodynamics_analysis</span><span class="p">)</span>              
+    
     <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">network</span><span class="p">)</span> <span class="o">==</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Networks</span><span class="o">.</span><span class="n">Fuel</span><span class="p">:</span>
-            <span class="n">payload_range</span>  <span class="o">=</span>  <span class="n">conventional_payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mission</span><span class="p">,</span><span class="n">cruise_segment_tag</span><span class="p">,</span><span class="n">reserves</span><span class="p">,</span><span class="n">plot_diagram</span><span class="p">,</span><span class="n">fuel_name</span><span class="p">)</span> 
+            <span class="n">electric_aircraft</span> <span class="o">=</span>  <span class="kc">False</span>
+            
+            <span class="c1"># mission analyses </span>
+            <span class="n">mission</span> <span class="o">=</span>  <span class="n">mission_setup</span><span class="p">(</span><span class="n">analyses</span><span class="p">,</span><span class="n">electric_aircraft</span><span class="p">,</span><span class="n">assigned_propulsors</span><span class="p">,</span><span class="n">cruise_airspeed</span><span class="p">,</span> <span class="n">cruise_altitude</span><span class="p">,</span> <span class="n">max_range_guess</span><span class="p">)</span>
+            
+            <span class="c1"># create mission instances (for multiple types of missions)</span>
+            <span class="n">missions</span> <span class="o">=</span> <span class="n">missions_setup</span><span class="p">(</span><span class="n">mission</span><span class="p">)</span> 
+            <span class="n">cruise_segment_tag</span> <span class="o">=</span> <span class="s1">&#39;cruise&#39;</span>
+            <span class="n">payload_range</span>  <span class="o">=</span>  <span class="n">conventional_payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">missions</span><span class="o">.</span><span class="n">base_mission</span><span class="p">,</span><span class="n">cruise_segment_tag</span><span class="p">,</span><span class="n">reserves</span><span class="p">,</span><span class="n">plot_diagram</span><span class="p">,</span><span class="n">fuel_name</span><span class="p">)</span> 
         <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">network</span><span class="p">)</span> <span class="o">==</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Networks</span><span class="o">.</span><span class="n">Electric</span><span class="p">:</span>
-            <span class="n">payload_range</span>  <span class="o">=</span>  <span class="n">electric_payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mission</span><span class="p">,</span><span class="n">cruise_segment_tag</span><span class="p">,</span><span class="n">plot_diagram</span><span class="p">)</span>
+            <span class="n">electric_aircraft</span> <span class="o">=</span>  <span class="kc">True</span>
+             
+            <span class="c1"># mission analyses </span>
+            <span class="n">mission</span> <span class="o">=</span>  <span class="n">mission_setup</span><span class="p">(</span><span class="n">analyses</span><span class="p">,</span><span class="n">electric_aircraft</span><span class="p">,</span><span class="n">assigned_propulsors</span><span class="p">,</span><span class="n">cruise_airspeed</span><span class="p">,</span> <span class="n">cruise_altitude</span><span class="p">,</span> <span class="n">max_range_guess</span><span class="p">)</span>
+            
+            <span class="c1"># create mission instances (for multiple types of missions)</span>
+            <span class="n">missions</span> <span class="o">=</span> <span class="n">missions_setup</span><span class="p">(</span><span class="n">mission</span><span class="p">)</span> 
+            <span class="n">cruise_segment_tag</span> <span class="o">=</span> <span class="s1">&#39;cruise&#39;</span>
+            <span class="n">payload_range</span>  <span class="o">=</span>  <span class="n">electric_payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">missions</span><span class="o">.</span><span class="n">base_mission</span><span class="p">,</span><span class="n">cruise_segment_tag</span><span class="p">,</span><span class="n">plot_diagram</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">payload_range</span> </div>
 
              
 <div class="viewcode-block" id="conventional_payload_range_diagram">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.payload_range_diagram.html#RCAIDE.Library.Methods.Performance.payload_range_diagram.conventional_payload_range_diagram">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.conventional_payload_range_diagram">[docs]</a>
 <span class="k">def</span> <span class="nf">conventional_payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mission</span><span class="p">,</span><span class="n">cruise_segment_tag</span><span class="p">,</span><span class="n">reserves</span><span class="p">,</span><span class="n">plot_diagram</span><span class="p">,</span> <span class="n">fuel_name</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates and plots the payload range diagram for a fuel-bases aircraft by modifying the</span>
 <span class="sd">    cruise segment range and weights of the aicraft .</span>
@@ -451,30 +472,27 @@
     <span class="c1">#unpack</span>
     <span class="n">mass</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mass</span><span class="o">.</span><span class="n">operating_empty</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error calculating Payload Range Diagram: Vehicle Operating Empty not defined&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Error calculating Payload Range Diagram: Vehicle Operating Empty not defined&quot;</span><span class="p">)</span> 
     <span class="k">else</span><span class="p">:</span>
         <span class="n">OEW</span> <span class="o">=</span> <span class="n">mass</span><span class="o">.</span><span class="n">operating_empty</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mass</span><span class="o">.</span><span class="n">max_zero_fuel</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error calculating Payload Range Diagram: Vehicle MZFW not defined&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Error calculating Payload Range Diagram: Vehicle MZFW not defined&quot;</span><span class="p">)</span> 
     <span class="k">else</span><span class="p">:</span>
         <span class="n">MZFW</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">max_zero_fuel</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">mass</span><span class="o">.</span><span class="n">max_takeoff</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error calculating Payload Range Diagram: Vehicle MTOW not defined&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Error calculating Payload Range Diagram: Vehicle MTOW not defined&quot;</span><span class="p">)</span> 
     <span class="k">else</span><span class="p">:</span>
         <span class="n">MTOW</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">max_takeoff</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">mass</span><span class="o">.</span><span class="n">max_payload</span><span class="p">:</span>
-        <span class="n">MaxPLD</span> <span class="o">=</span> <span class="n">MZFW</span> <span class="o">-</span> <span class="n">OEW</span>  <span class="c1"># If payload max not defined, calculate based in design weights</span>
+    <span class="k">if</span> <span class="n">mass</span><span class="o">.</span><span class="n">max_payload</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">MaxPLD</span> <span class="o">=</span> <span class="n">MZFW</span> <span class="o">-</span> <span class="n">OEW</span>  
     <span class="k">else</span><span class="p">:</span>
         <span class="n">MaxPLD</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">max_payload</span>
         <span class="n">MaxPLD</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">MaxPLD</span> <span class="p">,</span> <span class="n">MZFW</span> <span class="o">-</span> <span class="n">OEW</span><span class="p">)</span> <span class="c1">#limit in structural capability</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">mass</span><span class="o">.</span><span class="n">max_fuel</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mass</span><span class="o">.</span><span class="n">max_fuel</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">MaxFuel</span> <span class="o">=</span> <span class="n">MTOW</span> <span class="o">-</span> <span class="n">OEW</span> <span class="c1"># If not defined, calculate based in design weights</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">MaxFuel</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">max_fuel</span>  <span class="c1"># If max fuel capacity not defined</span>
@@ -485,7 +503,8 @@
     <span class="c1">#Point  = [ RANGE WITH MAX. PLD   , RANGE WITH MAX. FUEL , FERRY RANGE   ]</span>
     <span class="n">TOW</span>     <span class="o">=</span> <span class="p">[</span> <span class="n">MTOW</span>                               <span class="p">,</span> <span class="n">MTOW</span>                   <span class="p">,</span> <span class="n">OEW</span> <span class="o">+</span> <span class="n">MaxFuel</span> <span class="p">]</span>
     <span class="n">FUEL</span>    <span class="o">=</span> <span class="p">[</span> <span class="nb">min</span><span class="p">(</span><span class="n">TOW</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">OEW</span> <span class="o">-</span> <span class="n">MaxPLD</span><span class="p">,</span><span class="n">MaxFuel</span><span class="p">)</span> <span class="p">,</span> <span class="n">MaxFuel</span>                <span class="p">,</span> <span class="n">MaxFuel</span>       <span class="p">]</span>
-    <span class="n">PLD</span>     <span class="o">=</span> <span class="p">[</span> <span class="n">MaxPLD</span>                             <span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">MTOW</span> <span class="o">-</span> <span class="n">MaxFuel</span> <span class="o">-</span> <span class="n">OEW</span><span class="p">,</span> <span class="n">MaxPLD</span><span class="p">)</span>   <span class="p">,</span> <span class="mf">0.</span>            <span class="p">]</span>
+    <span class="n">PLD</span>     <span class="o">=</span> <span class="p">[</span> <span class="n">MaxPLD</span>                             <span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">MTOW</span> <span class="o">-</span> <span class="n">MaxFuel</span> <span class="o">-</span> <span class="n">OEW</span><span class="p">,</span> <span class="n">MaxPLD</span><span class="p">)</span>   <span class="p">,</span> <span class="mf">0.</span>   <span class="p">]</span>
+    
     <span class="c1"># allocating Range array</span>
     <span class="n">R</span>       <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 
@@ -579,7 +598,7 @@
 
  
 <div class="viewcode-block" id="electric_payload_range_diagram">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.payload_range_diagram.html#RCAIDE.Library.Methods.Performance.payload_range_diagram.electric_payload_range_diagram">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.electric_payload_range_diagram">[docs]</a>
 <span class="k">def</span> <span class="nf">electric_payload_range_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mission</span><span class="p">,</span><span class="n">cruise_segment_tag</span><span class="p">,</span><span class="n">plot_diagram</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates and plots the payload range diagram for an electric aircraft by modifying the</span>
 <span class="sd">    cruise segment distance and payload weight of the aicraft .</span>
@@ -664,6 +683,138 @@
         <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">payload_range</span></div>
+
+
+<span class="c1"># ---------------------------------------------------------------------</span>
+<span class="c1">#   Define the Configurations</span>
+<span class="c1"># ---------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="configs_setup">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.configs_setup">[docs]</a>
+<span class="k">def</span> <span class="nf">configs_setup</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span>
+ 
+    
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#   Initialize Configurations</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+    <span class="n">configs</span>     <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">Configs</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">Container</span><span class="p">()</span> 
+    <span class="n">base_config</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">Configs</span><span class="o">.</span><span class="n">Config</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
+    <span class="n">base_config</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;base&#39;</span>  
+    <span class="n">configs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">base_config</span><span class="p">)</span>
+ 
+    <span class="k">return</span> <span class="n">configs</span></div>
+
+  
+<div class="viewcode-block" id="analyses_setup">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.analyses_setup">[docs]</a>
+<span class="k">def</span> <span class="nf">analyses_setup</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">aerodynamics</span><span class="p">):</span>
+
+    <span class="n">analyses</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Container</span><span class="p">()</span>
+
+    <span class="c1"># build a base analysis for each config</span>
+    <span class="k">for</span> <span class="n">tag</span><span class="p">,</span><span class="n">config</span> <span class="ow">in</span> <span class="n">configs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">analysis</span> <span class="o">=</span> <span class="n">base_analysis</span><span class="p">(</span><span class="n">config</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">aerodynamics</span><span class="p">)</span>
+        <span class="n">analyses</span><span class="p">[</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">analysis</span>
+
+    <span class="k">return</span> <span class="n">analyses</span></div>
+
+
+<div class="viewcode-block" id="base_analysis">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.base_analysis">[docs]</a>
+<span class="k">def</span> <span class="nf">base_analysis</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">aerodynamics</span><span class="p">):</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#   Initialize the Analyses</span>
+    <span class="c1"># ------------------------------------------------------------------     </span>
+    <span class="n">analyses</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">()</span> 
+    
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#  Weights </span>
+    <span class="n">analyses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#  Aerodynamics Analysis    </span>
+    <span class="n">analyses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">aerodynamics</span><span class="p">)</span>   
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#  Energy</span>
+    <span class="n">energy</span>          <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Energy</span><span class="o">.</span><span class="n">Energy</span><span class="p">()</span>
+    <span class="n">energy</span><span class="o">.</span><span class="n">vehicle</span>  <span class="o">=</span> <span class="n">vehicle</span> 
+    <span class="n">analyses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#  Planet Analysis</span>
+    <span class="n">planet</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Planets</span><span class="o">.</span><span class="n">Earth</span><span class="p">()</span>
+    <span class="n">analyses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">planet</span><span class="p">)</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#  Atmosphere Analysis</span>
+    <span class="n">atmosphere</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Atmospheric</span><span class="o">.</span><span class="n">US_Standard_1976</span><span class="p">()</span>
+    <span class="n">atmosphere</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">planet</span> <span class="o">=</span> <span class="n">planet</span><span class="o">.</span><span class="n">features</span>
+    <span class="n">analyses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atmosphere</span><span class="p">)</span>   
+
+    <span class="c1"># done!</span>
+    <span class="k">return</span> <span class="n">analyses</span>    </div>
+
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#   Define the Mission</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+ 
+<div class="viewcode-block" id="mission_setup">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.mission_setup">[docs]</a>
+<span class="k">def</span> <span class="nf">mission_setup</span><span class="p">(</span><span class="n">analyses</span><span class="p">,</span><span class="n">electric_aircraft</span><span class="p">,</span><span class="n">assigned_propulsors</span><span class="p">,</span> <span class="n">cruise_airspeed</span><span class="p">,</span> <span class="n">cruise_altitude</span><span class="p">,</span> <span class="n">max_range_guess</span><span class="p">):</span> 
+    
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#   Initialize the Mission</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+    <span class="n">mission</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Sequential_Segments</span><span class="p">()</span>
+    <span class="n">mission</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;mission&#39;</span>
+  
+    <span class="n">Segments</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Segments</span> 
+    <span class="n">base_segment</span> <span class="o">=</span> <span class="n">Segments</span><span class="o">.</span><span class="n">Segment</span><span class="p">()</span>
+    <span class="n">base_segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">numerics</span><span class="o">.</span><span class="n">number_of_control_points</span>  <span class="o">=</span> <span class="mi">3</span>   
+
+    <span class="c1"># ------------------------------------------------------------------    </span>
+    <span class="c1">#   Cruise Segment </span>
+    <span class="c1"># ------------------------------------------------------------------    </span>
+
+    <span class="n">segment</span> <span class="o">=</span> <span class="n">Segments</span><span class="o">.</span><span class="n">Cruise</span><span class="o">.</span><span class="n">Constant_Speed_Constant_Altitude</span><span class="p">(</span><span class="n">base_segment</span><span class="p">)</span>
+    <span class="n">segment</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;cruise&quot;</span> 
+    <span class="n">segment</span><span class="o">.</span><span class="n">analyses</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span> <span class="n">analyses</span><span class="o">.</span><span class="n">base</span> <span class="p">)</span>
+    <span class="k">if</span> <span class="n">electric_aircraft</span><span class="p">:</span> 
+        <span class="n">segment</span><span class="o">.</span><span class="n">initial_battery_state_of_charge</span>               <span class="o">=</span> <span class="mf">1.0</span>
+     
+    <span class="n">segment</span><span class="o">.</span><span class="n">altitude</span>  <span class="o">=</span> <span class="n">cruise_altitude</span>
+    <span class="n">segment</span><span class="o">.</span><span class="n">air_speed</span> <span class="o">=</span> <span class="n">cruise_airspeed</span>
+    <span class="n">segment</span><span class="o">.</span><span class="n">distance</span>  <span class="o">=</span> <span class="n">max_range_guess</span>
+    
+    <span class="c1"># define flight dynamics to model </span>
+    <span class="n">segment</span><span class="o">.</span><span class="n">flight_dynamics</span><span class="o">.</span><span class="n">force_x</span>                      <span class="o">=</span> <span class="kc">True</span>  
+    <span class="n">segment</span><span class="o">.</span><span class="n">flight_dynamics</span><span class="o">.</span><span class="n">force_z</span>                      <span class="o">=</span> <span class="kc">True</span>     
+    
+    <span class="c1"># define flight controls </span>
+    <span class="n">segment</span><span class="o">.</span><span class="n">assigned_control_variables</span><span class="o">.</span><span class="n">throttle</span><span class="o">.</span><span class="n">active</span>               <span class="o">=</span> <span class="kc">True</span>           
+    <span class="n">segment</span><span class="o">.</span><span class="n">assigned_control_variables</span><span class="o">.</span><span class="n">throttle</span><span class="o">.</span><span class="n">assigned_propulsors</span>  <span class="o">=</span> <span class="n">assigned_propulsors</span>
+    <span class="n">segment</span><span class="o">.</span><span class="n">assigned_control_variables</span><span class="o">.</span><span class="n">body_angle</span><span class="o">.</span><span class="n">active</span>             <span class="o">=</span> <span class="kc">True</span>                
+    
+    <span class="n">mission</span><span class="o">.</span><span class="n">append_segment</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span> 
+ 
+
+    <span class="k">return</span> <span class="n">mission</span></div>
+
+
+<div class="viewcode-block" id="missions_setup">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.html#RCAIDE.Library.Methods.Performance.compute_payload_range_diagram.missions_setup">[docs]</a>
+<span class="k">def</span> <span class="nf">missions_setup</span><span class="p">(</span><span class="n">mission</span><span class="p">):</span> 
+ 
+    <span class="n">missions</span>     <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Missions</span><span class="p">()</span> 
+    <span class="n">mission</span><span class="o">.</span><span class="n">tag</span>  <span class="o">=</span> <span class="s1">&#39;base_mission&#39;</span>
+    <span class="n">missions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mission</span><span class="p">)</span>
+ 
+    <span class="k">return</span> <span class="n">missions</span>   </div>
 
 </pre></div>
 
