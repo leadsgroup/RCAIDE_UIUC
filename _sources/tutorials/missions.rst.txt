@@ -9,7 +9,7 @@ These tutorials are designed to help you get started with RCAIDE. Set up basic a
 
    .. raw:: html
 
-      <div class="tutorial-container" style="padding: 25px; background: linear-gradient(145deg, #1a1f36, #2d3555); color: white; border-radius: 12px; transition: transform 0.2s;">
+      <div class="tutorial-container" style="padding: 25px; background: linear-gradient(145deg, #1a1f36, #2d3555); color: white; border-radius: 12px; transition: transform 0.2s; max-width: 100%; overflow-x: auto;">
         <h3 style="margin-top:0; font-family:sans-serif;">Available Tutorials</h3>
         <p style="font-family:sans-serif; font-size:0.9em;">
           Click on a tutorial to get started.

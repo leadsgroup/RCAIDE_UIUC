@@ -43,4 +43,8 @@
     color: inherit;
     display: block;
   }
-  
+  .scrollable-container {
+    overflow-x: auto;
+    max-width: 100%;
+    scroll-behavior: smooth;
+}

@@ -20,6 +20,14 @@ RCAIDE.Library.Plots.Aerodynamics.plot\_aerodynamic\_forces module
    :undoc-members:
    :show-inheritance:
 
+RCAIDE.Library.Plots.Aerodynamics.plot\_aircraft\_aerodynamics module
+---------------------------------------------------------------------
+
+.. automodule:: RCAIDE.Library.Plots.Aerodynamics.plot_aircraft_aerodynamics
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 RCAIDE.Library.Plots.Aerodynamics.plot\_airfoil\_boundary\_layer\_properties module
 -----------------------------------------------------------------------------------
 

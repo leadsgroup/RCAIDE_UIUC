@@ -1,5 +1,4 @@
-
 Optimization
 ==============================
 
-Coming soon
+Tutorials on optimization techniques is coming soon!
