@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Landing_Gear.Landing_Gear</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Landing_Gear/Landing_Gear.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Nov 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -387,41 +386,74 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE imports     </span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Component</span>    
+
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Landing_Gear</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Landing_Gear">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Landing_Gear.Landing_Gear.html#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear">[docs]</a>
 <span class="k">class</span> <span class="nc">Landing_Gear</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; The Top Landing Gear Component Class</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for aircraft landing gear components providing core functionality for </span>
+<span class="sd">    both main and nose gear configurations.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the landing gear component, defaults to &#39;landing_gear&#39;</span>
 <span class="sd">        </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">            </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
+<span class="sd">    tire_diameter : float</span>
+<span class="sd">        Diameter of the landing gear tire, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    strut_length : float</span>
+<span class="sd">        Length of the landing gear strut assembly, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    units : int</span>
+<span class="sd">        Number of landing gear units in the assembly, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    gear_extended : bool</span>
+<span class="sd">        Flag indicating whether the landing gear is in extended position, </span>
+<span class="sd">        defaults to False</span>
+<span class="sd">        </span>
+<span class="sd">    wheels : int</span>
+<span class="sd">        Number of wheels per landing gear unit, defaults to 0</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This class serves as the foundation for specific landing gear types, providing:</span>
 <span class="sd">    </span>
+<span class="sd">    * Basic geometric properties</span>
+<span class="sd">    * Configuration parameters</span>
+<span class="sd">    * State tracking (extended/retracted)</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Landing gear components are rigid bodies</span>
+<span class="sd">    * Tire and strut properties are uniform within each unit</span>
+<span class="sd">    * Gear state is binary (either fully extended or fully retracted)</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Strut&#39;</span>
+<span class="sd">        The main structural member of the landing gear that absorbs landing loads</span>
+<span class="sd">        and supports the wheel assembly</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Unit&#39;</span>
+<span class="sd">        A complete landing gear assembly including strut, wheels, and associated </span>
+<span class="sd">        mechanisms</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear</span>
+<span class="sd">        Implementation for main landing gear</span>
+<span class="sd">    RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear</span>
+<span class="sd">        Implementation for nose landing gear</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component attributes.</span>
-<span class="sd">        </span>
-<span class="sd">                Assumptions:</span>
-<span class="sd">                None</span>
-<span class="sd">                </span>
-<span class="sd">                Source:</span>
-<span class="sd">                N/A</span>
-<span class="sd">                </span>
-<span class="sd">                Inputs:</span>
-<span class="sd">                None</span>
-<span class="sd">                </span>
-<span class="sd">                Outputs:</span>
-<span class="sd">                None</span>
-<span class="sd">                </span>
-<span class="sd">                Properties Used:</span>
-<span class="sd">                N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the landing gear attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-       
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>            <span class="o">=</span> <span class="s1">&#39;landing_gear&#39;</span>   
         <span class="bp">self</span><span class="o">.</span><span class="n">tire_diameter</span>  <span class="o">=</span> <span class="mi">0</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">strut_length</span>   <span class="o">=</span> <span class="mi">0</span> 

@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Nacelles.Segment</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Fuselage/Segment.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Nacelles/Segment.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -395,24 +394,65 @@
 <div class="viewcode-block" id="Segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Segment.html#RCAIDE.Library.Components.Nacelles.Segment.Segment">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A component representing a single cross-sectional segment of a nacelle. Used to build</span>
+<span class="sd">    up complex nacelle geometries through a series of connected sections.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the segment, defaults to &#39;segment&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    orientation_euler_angles : list</span>
+<span class="sd">        Rotation angles [roll, pitch, yaw], defaults to [0.0, 0.0, 0.0]</span>
+<span class="sd">        </span>
+<span class="sd">    percent_x_location : float</span>
+<span class="sd">        Longitudinal position as percentage of nacelle length, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    percent_y_location : float</span>
+<span class="sd">        Lateral position as percentage of nacelle width, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    percent_z_location : float</span>
+<span class="sd">        Vertical position as percentage of nacelle height, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    height : float</span>
+<span class="sd">        Vertical dimension of the segment cross-section, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    width : float</span>
+<span class="sd">        Lateral dimension of the segment cross-section, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    curvature : float</span>
+<span class="sd">        Shape parameter controlling cross-section corner rounding using super-ellipse </span>
+<span class="sd">        formulation, defaults to 2</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Segments are used to build up the complete nacelle geometry through a series of </span>
+<span class="sd">    cross-sections. Each segment&#39;s position is defined as a percentage of the overall </span>
+<span class="sd">    nacelle dimensions, allowing for flexible scaling and positioning.</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Segments are connected in sequence to form a continuous surface</span>
+<span class="sd">    * Cross-sections are defined by height, width, and curvature parameters</span>
+<span class="sd">    * Super-ellipse formulation used for cross-section shape</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Super-ellipse&#39;</span>
+<span class="sd">        Mathematical curve used to create smooth, rounded rectangular shapes with</span>
+<span class="sd">        controllable corner curvature</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Nacelles.Stack_Nacelle</span>
+<span class="sd">        Nacelle type that uses multiple segments</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for fuselage segments in RCAIDE.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the nacelle segment attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                      <span class="o">=</span> <span class="s1">&#39;segment&#39;</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">orientation_euler_angles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]</span>  
         <span class="bp">self</span><span class="o">.</span><span class="n">percent_x_location</span>       <span class="o">=</span> <span class="mi">0</span>  
@@ -426,45 +466,35 @@
 <div class="viewcode-block" id="Segment_Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Segment.html#RCAIDE.Library.Components.Nacelles.Segment.Segment_Container">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment_Container</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Container for fuselage segment</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Container class for managing nacelle segments. Provides organization and </span>
+<span class="sd">    access methods for segment components.</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This container is designed to hold and manage Segment objects that define </span>
+<span class="sd">    the nacelle shape. It inherits from the base Container class and provides </span>
+<span class="sd">    specialized functionality for nacelle segments.</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Framework.Core.Container</span>
+<span class="sd">        Base container class providing core functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Nacelles.Segment</span>
+<span class="sd">        The segment components stored in this container</span>
 <span class="sd">    &quot;&quot;&quot;</span>     
 
 <div class="viewcode-block" id="Segment_Container.get_children">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Segment.html#RCAIDE.Library.Components.Nacelles.Segment.Segment_Container.get_children">[docs]</a>
     <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of allowable child component types for the segment container.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            Empty list as segments do not contain child components</span>
 <span class="sd">        &quot;&quot;&quot;</span>       
-        
         <span class="k">return</span> <span class="p">[]</span></div>
 </div>
 

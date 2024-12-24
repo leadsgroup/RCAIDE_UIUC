@@ -393,37 +393,62 @@
 <div class="viewcode-block" id="System">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Systems.System.html#RCAIDE.Library.Components.Systems.System.System">[docs]</a>
 <span class="k">class</span> <span class="nc">System</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class representing an aircraft system/systems.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for aircraft systems providing core functionality for modeling </span>
+<span class="sd">    onboard equipment and subsystems.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the system component, defaults to &#39;System&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    origin : list</span>
+<span class="sd">        3D coordinates [x, y, z] defining the system&#39;s reference point, </span>
+<span class="sd">        defaults to [[0.0, 0.0, 0.0]]</span>
+<span class="sd">        </span>
+<span class="sd">    control : Data</span>
+<span class="sd">        Control system interface parameters, defaults to None</span>
+<span class="sd">        </span>
+<span class="sd">    accessories : Data</span>
+<span class="sd">        Associated auxiliary components and equipment, defaults to None</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The system class serves as the foundation for modeling various aircraft systems:</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    * Avionics and electronics</span>
+<span class="sd">    * Environmental control systems</span>
+<span class="sd">    * Hydraulic systems</span>
+<span class="sd">    * Fuel systems</span>
+<span class="sd">    * Auxiliary power units</span>
 <span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Systems are treated as point masses at their origin</span>
+<span class="sd">    * Control interfaces are simplified</span>
+<span class="sd">    * No dynamic response modeling</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Origin&#39;</span>
+<span class="sd">        Reference point for system location and mass properties</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Control Interface&#39;</span>
+<span class="sd">        Parameters defining how the system interacts with aircraft controls</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Systems.Avionics</span>
+<span class="sd">        Implementation for aircraft avionics</span>
 <span class="sd">    &quot;&quot;&quot;</span>  
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the system.</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the system attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>             <span class="o">=</span> <span class="s1">&#39;System&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>          <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">control</span>         <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">accessories</span>     <span class="o">=</span> <span class="kc">None</span> </div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>         <span class="o">=</span> <span class="s1">&#39;System&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>      <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">control</span>     <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accessories</span> <span class="o">=</span> <span class="kc">None</span> </div>
 
 </pre></div>
 

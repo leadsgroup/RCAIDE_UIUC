@@ -544,16 +544,254 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Generic_Battery_Module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Generic_Battery_Module.html#Generic_Battery_Module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Default battery module class.</p>
+<p>Base class for battery module implementations</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.energy_density">
+<span class="sig-name descname"><span class="pre">energy_density</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.energy_density" title="Link to this definition">#</a></dt>
+<dd><p>Energy stored per unit volume [J/m^3] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.current_energy">
+<span class="sig-name descname"><span class="pre">current_energy</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.current_energy" title="Link to this definition">#</a></dt>
+<dd><p>Current energy stored in battery [J] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.current_capacitor_charge">
+<span class="sig-name descname"><span class="pre">current_capacitor_charge</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.current_capacitor_charge" title="Link to this definition">#</a></dt>
+<dd><p>Current charge level of capacitor [C] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.capacity">
+<span class="sig-name descname"><span class="pre">capacity</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.capacity" title="Link to this definition">#</a></dt>
+<dd><p>Total energy capacity [J] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.length">
+<span class="sig-name descname"><span class="pre">length</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.length" title="Link to this definition">#</a></dt>
+<dd><p>Physical length of battery module [m] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.width">
+<span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.width" title="Link to this definition">#</a></dt>
+<dd><p>Physical width of battery module [m] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.height" title="Link to this definition">#</a></dt>
+<dd><p>Physical height of battery module [m] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.volume_packaging_factor">
+<span class="sig-name descname"><span class="pre">volume_packaging_factor</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.volume_packaging_factor" title="Link to this definition">#</a></dt>
+<dd><p>Factor accounting for packaging volume (default: 1.05)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.BMS_additional_weight_factor">
+<span class="sig-name descname"><span class="pre">BMS_additional_weight_factor</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.BMS_additional_weight_factor" title="Link to this definition">#</a></dt>
+<dd><p>Factor for battery management system weight (default: 1.42)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.orientation_euler_angles">
+<span class="sig-name descname"><span class="pre">orientation_euler_angles</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.orientation_euler_angles" title="Link to this definition">#</a></dt>
+<dd><p>Euler angles defining battery orientation [rad] (default: [0,0,0])</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.cell">
+<span class="sig-name descname"><span class="pre">cell</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.cell" title="Link to this definition">#</a></dt>
+<dd><p>Container for cell-specific attributes</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>chemistry<span class="classifier">str</span></dt><dd><p>Battery chemistry type (default: None)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>discharge_performance_map<span class="classifier">Data</span></dt><dd><p>Discharge performance characteristics</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>ragone<span class="classifier">Data</span></dt><dd><p>Ragone plot parameters</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.electrical_configuration">
+<span class="sig-name descname"><span class="pre">electrical_configuration</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.electrical_configuration" title="Link to this definition">#</a></dt>
+<dd><p>Battery electrical arrangement</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>series<span class="classifier">int</span></dt><dd><p>Number of cells in series (default: 1)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>parallel<span class="classifier">int</span></dt><dd><p>Number of parallel strings (default: 1)</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.geometrtic_configuration">
+<span class="sig-name descname"><span class="pre">geometrtic_configuration</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.geometrtic_configuration" title="Link to this definition">#</a></dt>
+<dd><p>Physical arrangement of cells</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>normal_count<span class="classifier">int</span></dt><dd><p>Cells in normal direction (default: 1)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>parallel_count<span class="classifier">int</span></dt><dd><p>Cells in parallel direction (default: 1)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>normal_spacing<span class="classifier">float</span></dt><dd><p>Spacing between normal cells [m] (default: 0.02)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>stacking_rows<span class="classifier">int</span></dt><dd><p>Number of stacking rows (default: 3)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>parallel_spacing<span class="classifier">float</span></dt><dd><p>Spacing between parallel cells [m] (default: 0.02)</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>This base class provides the framework for implementing specific battery types.
+It includes physical, electrical, and geometric parameters needed to model
+battery performance and integration.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Battery Management System (BMS)’</dt><dd><p>System that monitors and controls battery operation, adding weight
+accounted for by BMS_additional_weight_factor</p>
+</dd>
+<dt>‘Volume Packaging Factor’</dt><dd><p>Ratio of total battery volume to cell volume, accounting for
+structural components and thermal management</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#module-RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC</span></code></a></dt><dd><p>Example implementation of a specific battery type</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_operating_conditions">
 <span class="sig-name descname"><span class="pre">append_operating_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Generic_Battery_Module.html#Generic_Battery_Module.append_operating_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_operating_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Append battery operating conditions for a flight segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment" title="RCAIDE.Framework.Mission.Segments.Segment.Segment"><em>Segment</em></a>) – Flight segment containing state conditions</p></li>
+<li><p><strong>bus</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Electrical bus connected to this battery</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_battery_segment_conditions">
 <span class="sig-name descname"><span class="pre">append_battery_segment_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Generic_Battery_Module.html#Generic_Battery_Module.append_battery_segment_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_battery_segment_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Append segment-specific battery conditions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bus</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Electrical bus connected to this battery</p></li>
+<li><p><strong>conditions</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Container for segment conditions</p></li>
+<li><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment" title="RCAIDE.Framework.Mission.Segments.Segment.Segment"><em>Segment</em></a>) – Flight segment data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -607,6 +845,19 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.energy_density"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.energy_density</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.current_energy"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.current_energy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.current_capacitor_charge"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.current_capacitor_charge</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.capacity"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.capacity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.length"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.length</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.width"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.width</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.height"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.height</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.volume_packaging_factor"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.volume_packaging_factor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.BMS_additional_weight_factor"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.BMS_additional_weight_factor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.orientation_euler_angles"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.orientation_euler_angles</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.cell"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.cell</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.electrical_configuration"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.electrical_configuration</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.geometrtic_configuration"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.geometrtic_configuration</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_operating_conditions"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.append_operating_conditions()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_battery_segment_conditions"><code class="docutils literal notranslate"><span class="pre">Generic_Battery_Module.append_battery_segment_conditions()</span></code></a></li>
 </ul>

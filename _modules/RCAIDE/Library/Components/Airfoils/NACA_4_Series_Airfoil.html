@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil</h1><div class="highlight"><pre>
-<span></span>
-<span class="c1"># RCAIDE/Compoments/Airfoils/NACA_4_Series_Airfoil.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Airfoils/NACA_4_Series_Airfoil.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
@@ -396,7 +395,39 @@
 <div class="viewcode-block" id="NACA_4_Series_Airfoil">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.html#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil">[docs]</a>
 <span class="k">class</span> <span class="nc">NACA_4_Series_Airfoil</span><span class="p">(</span><span class="n">Airfoil</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;NACA 4-Series airfoil class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for generating NACA 4-series airfoil geometries.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the airfoil (default: &#39;NACA_4_Series&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    NACA_4_Series_code : str</span>
+<span class="sd">        Four-digit NACA designation (default: &#39;0012&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Inherits all attributes from the base Airfoil class. The geometry is generated</span>
+<span class="sd">    based on the NACA 4-series equations using the specified four-digit code.</span>
+<span class="sd">    </span>
+<span class="sd">    The NACA 4-series airfoils are defined by four digits that specify the camber,</span>
+<span class="sd">    position of maximum camber, and thickness. For example, in a NACA 2412:</span>
+<span class="sd">    - First digit (2) specifies maximum camber in percentage of chord</span>
+<span class="sd">    - Second digit (4) specifies position of maximum camber in tenths of chord</span>
+<span class="sd">    - Last two digits (12) specify maximum thickness in percentage of chord</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;NACA Code Format&#39;</span>
+<span class="sd">        MPXX where:</span>
+<span class="sd">        - M is the maximum camber in percentage of chord</span>
+<span class="sd">        - P is the position of maximum camber in tenths of chord</span>
+<span class="sd">        - XX is the maximum thickness in percentage of chord</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Airfoils.Airfoil</span>
+<span class="sd">        Base airfoil class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>

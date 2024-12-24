@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Energy/Thermal_Management/Batteries/Air_Cooled.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
 <span class="c1"># Modified: Aug 2024, S. Shekar </span>
@@ -386,67 +385,172 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-  
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Component</span>  
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Thermal_Management.Batteries.Air_Cooled</span> <span class="kn">import</span> <span class="n">append_air_cooled_conditions</span><span class="p">,</span> <span class="n">air_cooled_performance</span><span class="p">,</span> <span class="n">append_air_cooled_segment_conditions</span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Attributes.Gases</span> <span class="kn">import</span> <span class="n">Air</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions</span> <span class="kn">import</span>  <span class="n">plot_air_cooled_conditions</span>
+<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions</span> <span class="kn">import</span> <span class="n">plot_air_cooled_conditions</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">#  Air_Cooled_Heat_Acquisition_System</span>
+<span class="c1">#  Air_Cooled</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Air_Cooled">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.html#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled">[docs]</a>
 <span class="k">class</span> <span class="nc">Air_Cooled</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This provides output values for a direct convention heat acquisition of a bettery pack</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an air-cooled thermal management system for battery packs using </span>
+<span class="sd">    direct convection cooling.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the cooling system, defaults to &#39;air_cooled_heat_acquisition&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    cooling_fluid : Air</span>
+<span class="sd">        Air properties for cooling calculations, defaults to standard Air()</span>
+<span class="sd">        </span>
+<span class="sd">    cooling_fluid.flowspeed : float</span>
+<span class="sd">        Air flow velocity through the cooling channels, defaults to 0.01</span>
+<span class="sd">        </span>
+<span class="sd">    convective_heat_transfer_coefficient : float</span>
+<span class="sd">        Heat transfer coefficient between air and battery surface, defaults to 35.0</span>
+<span class="sd">        </span>
+<span class="sd">    heat_transfer_efficiency : float</span>
+<span class="sd">        Overall efficiency of the heat transfer process, defaults to 1.0</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The air-cooled system provides direct convective cooling for battery thermal </span>
+<span class="sd">    management. It includes functionality for:</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    * Operating condition analysis</span>
+<span class="sd">    * Thermal performance calculation</span>
+<span class="sd">    * Condition plotting and visualization</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Convective Heat Transfer Coefficient&#39;</span>
+<span class="sd">        Rate of heat transfer between the battery surface and cooling air</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Heat Transfer Efficiency&#39;</span>
+<span class="sd">        Ratio of actual to theoretical maximum heat transfer</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel</span>
+<span class="sd">        Alternative cooling approach using liquid coolant</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler</span>
+<span class="sd">        Alternative cooling approach for extreme temperatures</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the air cooling system attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>                 
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                                      <span class="o">=</span> <span class="s1">&#39;air_cooled_heat_acquisition&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cooling_fluid</span>                            <span class="o">=</span> <span class="n">Air</span><span class="p">()</span>    
-        <span class="bp">self</span><span class="o">.</span><span class="n">cooling_fluid</span><span class="o">.</span><span class="n">flowspeed</span>                  <span class="o">=</span> <span class="mf">0.01</span>                                          
-        <span class="bp">self</span><span class="o">.</span><span class="n">convective_heat_transfer_coefficient</span>     <span class="o">=</span> <span class="mf">35.</span>     <span class="c1"># [W/m^2K] </span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">heat_transfer_efficiency</span>                 <span class="o">=</span> <span class="mf">1.0</span>      
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                                  <span class="o">=</span> <span class="s1">&#39;air_cooled_heat_acquisition&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cooling_fluid</span>                        <span class="o">=</span> <span class="n">Air</span><span class="p">()</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">cooling_fluid</span><span class="o">.</span><span class="n">flowspeed</span>              <span class="o">=</span> <span class="mf">0.01</span>                                          
+        <span class="bp">self</span><span class="o">.</span><span class="n">convective_heat_transfer_coefficient</span> <span class="o">=</span> <span class="mf">35.</span>     
+        <span class="bp">self</span><span class="o">.</span><span class="n">heat_transfer_efficiency</span>             <span class="o">=</span> <span class="mf">1.0</span>      
    
-    
 <div class="viewcode-block" id="Air_Cooled.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.html#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">):</span>
-        <span class="n">append_air_cooled_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds operating conditions for the cooling system to a mission segment.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Mission segment to which conditions are being added</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">append_air_cooled_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">)</span>
         <span class="k">return</span></div>
+
 
 <div class="viewcode-block" id="Air_Cooled.append_segment_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.html#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_segment_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
-        <span class="n">append_air_cooled_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds specific segment conditions to the cooling system analysis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Mission segment being analyzed</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        conditions : Data</span>
+<span class="sd">            Operating conditions for the segment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">append_air_cooled_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
         <span class="k">return</span></div>
 
     
 <div class="viewcode-block" id="Air_Cooled.compute_thermal_performance">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.html#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.compute_thermal_performance">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_thermal_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">battery</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">Q_heat_gen</span><span class="p">,</span><span class="n">T_cell</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">delta_t</span><span class="p">,</span><span class="n">t_idx</span><span class="p">):</span> 
-        <span class="n">T_battery_current</span> <span class="o">=</span> <span class="n">air_cooled_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">battery</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span> <span class="n">Q_heat_gen</span><span class="p">,</span><span class="n">T_cell</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">delta_t</span><span class="p">,</span><span class="n">t_idx</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">compute_thermal_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">battery</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">Q_heat_gen</span><span class="p">,</span> <span class="n">T_cell</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates thermal performance of the air cooling system.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        battery : Data</span>
+<span class="sd">            Battery pack information</span>
+<span class="sd">        bus : Data</span>
+<span class="sd">            Electrical bus data</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        Q_heat_gen : float</span>
+<span class="sd">            Heat generation rate</span>
+<span class="sd">        T_cell : float</span>
+<span class="sd">            Current cell temperature</span>
+<span class="sd">        state : Data</span>
+<span class="sd">            Current system state</span>
+<span class="sd">        delta_t : float</span>
+<span class="sd">            Time step size</span>
+<span class="sd">        t_idx : int</span>
+<span class="sd">            Time index in the simulation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Updated battery temperature</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">T_battery_current</span> <span class="o">=</span> <span class="n">air_cooled_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">battery</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> 
+                                                 <span class="n">Q_heat_gen</span><span class="p">,</span> <span class="n">T_cell</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">T_battery_current</span></div>
 
 
 <div class="viewcode-block" id="Air_Cooled.plot_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.html#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.plot_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span><span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span><span class="p">,</span><span class="n">file_type</span> <span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="n">plot_air_cooled_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span><span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span><span class="p">,</span><span class="n">file_type</span> <span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span> 
+                                <span class="n">show_legend</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates visualization plots of the cooling system operating conditions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        results : Data</span>
+<span class="sd">            Simulation results data</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        save_filename : str</span>
+<span class="sd">            Path for saving the plot</span>
+<span class="sd">        save_figure : bool</span>
+<span class="sd">            Flag to save the figure</span>
+<span class="sd">        show_legend : bool</span>
+<span class="sd">            Flag to display plot legend</span>
+<span class="sd">        file_type : str</span>
+<span class="sd">            Output file format</span>
+<span class="sd">        width : float</span>
+<span class="sd">            Plot width</span>
+<span class="sd">        height : float</span>
+<span class="sd">            Plot height</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plot_air_cooled_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span> 
+                                 <span class="n">save_figure</span><span class="p">,</span> <span class="n">show_legend</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="k">return</span></div>
 </div>
 

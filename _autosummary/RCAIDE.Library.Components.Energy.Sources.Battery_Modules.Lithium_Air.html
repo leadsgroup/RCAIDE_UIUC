@@ -544,8 +544,51 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Lithium_Air</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Air.html#Lithium_Air"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic_Battery_Module</span></code></a></p>
-<p>Lithium-Air battery cell.Specifies specific energy characteristics specific to
-lithium-air batteries. Also includes parameters related to consumption of oxygen</p>
+<p>Class for modeling lithium-air battery characteristics and performance</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.specific_energy">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">specific_energy</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.specific_energy" title="Link to this definition">#</a></dt>
+<dd><p>Energy capacity per unit mass [J/kg] (default: 2000 Wh/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.specific_power">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">specific_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.specific_power" title="Link to this definition">#</a></dt>
+<dd><p>Maximum power output per unit mass [W/kg] (default: 0.66 kW/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.mass_gain_factor">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">mass_gain_factor</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.mass_gain_factor" title="Link to this definition">#</a></dt>
+<dd><p>Rate of mass increase from oxygen absorption [kg/Wh] (default: 1.92E-4)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Lithium-air batteries use ambient oxygen as the cathode material, which is
+absorbed during discharge, leading to mass gain. They offer very high specific
+energy but have power density limitations.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#module-RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span></code></a></dt><dd><p>Base battery module class</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -597,7 +640,12 @@ lithium-air batteries. Also includes parameters related to consumption of oxygen
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air"><code class="docutils literal notranslate"><span class="pre">Lithium_Air</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air"><code class="docutils literal notranslate"><span class="pre">Lithium_Air</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.specific_energy"><code class="docutils literal notranslate"><span class="pre">Lithium_Air.cell.specific_energy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.specific_power"><code class="docutils literal notranslate"><span class="pre">Lithium_Air.cell.specific_power</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air.cell.mass_gain_factor"><code class="docutils literal notranslate"><span class="pre">Lithium_Air.cell.mass_gain_factor</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

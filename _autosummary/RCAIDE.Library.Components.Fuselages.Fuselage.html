@@ -538,11 +538,12 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Fuselage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Fuselages/Fuselage.html#Fuselage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>A standard fuselage component for tube and wing aircraft configurations.</p>
+<p>Base class for aircraft fuselage components providing core functionality for
+geometric definition and analysis.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.tag">
 <span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.tag" title="Link to this definition">#</a></dt>
-<dd><p>Identifier for the fuselage component, defaults to ‘fuselage’</p>
+<dd><p>Unique identifier for the fuselage component, defaults to ‘fuselage’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
@@ -553,7 +554,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.origin">
 <span class="sig-name descname"><span class="pre">origin</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.origin" title="Link to this definition">#</a></dt>
-<dd><p>Origin coordinates of the fuselage, defaults to [[0.0,0.0,0.0]]</p>
+<dd><p>3D coordinates [x, y, z] defining the fuselage’s reference point,
+defaults to [[0.0, 0.0, 0.0]]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list</p>
@@ -564,7 +566,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.aerodynamic_center">
 <span class="sig-name descname"><span class="pre">aerodynamic_center</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.aerodynamic_center" title="Link to this definition">#</a></dt>
-<dd><p>Location of the aerodynamic center, defaults to [0.0,0.0,0.0]</p>
+<dd><p>3D coordinates [x, y, z] of the fuselage’s aerodynamic center,
+defaults to [0.0, 0.0, 0.0]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list</p>
@@ -575,7 +578,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.differential_pressure">
 <span class="sig-name descname"><span class="pre">differential_pressure</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.differential_pressure" title="Link to this definition">#</a></dt>
-<dd><p>Pressure differential between cabin and external atmosphere, defaults to 0.0</p>
+<dd><p>Cabin pressurization differential, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -586,7 +589,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.seats_abreast">
 <span class="sig-name descname"><span class="pre">seats_abreast</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.seats_abreast" title="Link to this definition">#</a></dt>
-<dd><p>Number of seats side by side in the cabin, defaults to 0.0</p>
+<dd><p>Number of passenger seats arranged side-by-side, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -597,7 +600,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.seat_pitch">
 <span class="sig-name descname"><span class="pre">seat_pitch</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.seat_pitch" title="Link to this definition">#</a></dt>
-<dd><p>Distance between seats, defaults to 0.0</p>
+<dd><p>Longitudinal distance between seat rows in meters, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -608,7 +611,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.number_coach_seats">
 <span class="sig-name descname"><span class="pre">number_coach_seats</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.number_coach_seats" title="Link to this definition">#</a></dt>
-<dd><p>Total number of coach seats, defaults to 0.0</p>
+<dd><p>Total number of economy class seats, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -619,7 +622,24 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.areas">
 <span class="sig-name descname"><span class="pre">areas</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.areas" title="Link to this definition">#</a></dt>
-<dd><p>Container for area-related parameters including front_projected, side_projected, and wetted areas</p>
+<dd><p>Collection of fuselage area measurements</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>front_projected<span class="classifier">float</span></dt><dd><p>Frontal area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>side_projected<span class="classifier">float</span></dt><dd><p>Side profile area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>wetted<span class="classifier">float</span></dt><dd><p>Total wetted surface area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
@@ -630,7 +650,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.effective_diameter">
 <span class="sig-name descname"><span class="pre">effective_diameter</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.effective_diameter" title="Link to this definition">#</a></dt>
-<dd><p>Effective diameter of the fuselage, defaults to 0.0</p>
+<dd><p>Equivalent circular diameter, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -641,7 +661,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.width">
 <span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.width" title="Link to this definition">#</a></dt>
-<dd><p>Width of the fuselage, defaults to 0.0</p>
+<dd><p>Maximum fuselage width, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -652,8 +672,34 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.heights">
 <span class="sig-name descname"><span class="pre">heights</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.heights" title="Link to this definition">#</a></dt>
-<dd><p>Container for height measurements at maximum, quarter length, three quarters length,
-wing root quarter chord, and vertical root quarter chord</p>
+<dd><p>Collection of height measurements along the fuselage</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>maximum<span class="classifier">float</span></dt><dd><p>Maximum height in meters, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>at_quarter_length<span class="classifier">float</span></dt><dd><p>Height at 25% of fuselage length, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>at_three_quarters_length<span class="classifier">float</span></dt><dd><p>Height at 75% of fuselage length, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>at_wing_root_quarter_chord<span class="classifier">float</span></dt><dd><p>Height at wing root quarter chord, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>at_vertical_root_quarter_chord<span class="classifier">float</span></dt><dd><p>Height at vertical tail root quarter chord, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
@@ -664,7 +710,39 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.lengths">
 <span class="sig-name descname"><span class="pre">lengths</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.lengths" title="Link to this definition">#</a></dt>
-<dd><p>Container for length measurements including nose, tail, total, cabin, fore_space, and aft_space</p>
+<dd><p>Collection of length measurements</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>nose<span class="classifier">float</span></dt><dd><p>Length of nose section, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tail<span class="classifier">float</span></dt><dd><p>Length of tail section, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>total<span class="classifier">float</span></dt><dd><p>Total fuselage length, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cabin<span class="classifier">float</span></dt><dd><p>Length of passenger cabin, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>fore_space<span class="classifier">float</span></dt><dd><p>Length of forward equipment bay, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>aft_space<span class="classifier">float</span></dt><dd><p>Length of aft equipment bay, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
@@ -675,7 +753,7 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.x_rotation">
 <span class="sig-name descname"><span class="pre">x_rotation</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.x_rotation" title="Link to this definition">#</a></dt>
-<dd><p>Rotation angle around x-axis, defaults to 0.0</p>
+<dd><p>Rotation angle about x-axis, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -686,7 +764,7 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.y_rotation">
 <span class="sig-name descname"><span class="pre">y_rotation</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.y_rotation" title="Link to this definition">#</a></dt>
-<dd><p>Rotation angle around y-axis, defaults to 0.0</p>
+<dd><p>Rotation angle about y-axis, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -697,7 +775,7 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.z_rotation">
 <span class="sig-name descname"><span class="pre">z_rotation</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.z_rotation" title="Link to this definition">#</a></dt>
-<dd><p>Rotation angle around z-axis, defaults to 0.0</p>
+<dd><p>Rotation angle about z-axis, defaults to 0.0</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -708,7 +786,19 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.fineness">
 <span class="sig-name descname"><span class="pre">fineness</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.fineness" title="Link to this definition">#</a></dt>
-<dd><p>Container for fineness ratios of nose and tail</p>
+<dd><p>Fineness ratio parameters</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>nose<span class="classifier">float</span></dt><dd><p>Ratio of nose length to maximum diameter, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tail<span class="classifier">float</span></dt><dd><p>Ratio of tail length to maximum diameter, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
@@ -719,7 +809,7 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.nose_curvature">
 <span class="sig-name descname"><span class="pre">nose_curvature</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.nose_curvature" title="Link to this definition">#</a></dt>
-<dd><p>Curvature parameter for the nose section, defaults to 1.5</p>
+<dd><p>Shape parameter defining nose profile curvature, defaults to 1.5</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -730,7 +820,7 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.tail_curvature">
 <span class="sig-name descname"><span class="pre">tail_curvature</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.tail_curvature" title="Link to this definition">#</a></dt>
-<dd><p>Curvature parameter for the tail section, defaults to 1.5</p>
+<dd><p>Shape parameter defining tail profile curvature, defaults to 1.5</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -741,7 +831,7 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.fuel_tanks">
 <span class="sig-name descname"><span class="pre">fuel_tanks</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.fuel_tanks" title="Link to this definition">#</a></dt>
-<dd><p>Container for fuel tank components</p>
+<dd><p>Collection of fuel tank components within the fuselage, initialized empty</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
@@ -752,7 +842,19 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.vsp_data">
 <span class="sig-name descname"><span class="pre">vsp_data</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.vsp_data" title="Link to this definition">#</a></dt>
-<dd><p>Container for OpenVSP-related parameters including xsec_surf_id and xsec_num</p>
+<dd><p>OpenVSP-specific geometry parameters</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>xsec_surf_id<span class="classifier">str</span></dt><dd><p>OpenVSP cross-section surface identifier</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>xsec_num<span class="classifier">int</span></dt><dd><p>Number of cross-sections in OpenVSP model, defaults to None</p>
+</dd>
+</dl>
+</li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
@@ -763,7 +865,7 @@ wing root quarter chord, and vertical root quarter chord</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.Segments">
 <span class="sig-name descname"><span class="pre">Segments</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.Segments" title="Link to this definition">#</a></dt>
-<dd><p>Container for fuselage segments</p>
+<dd><p>Collection of fuselage segment components, initialized empty</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
@@ -771,55 +873,77 @@ wing root quarter chord, and vertical root quarter chord</p>
 </dl>
 </dd></dl>
 
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
 <p class="rubric">Notes</p>
-<p>This class represents a conventional tube and wing aircraft fuselage component.
-It provides functionality for defining the geometry, structural properties, and
-configuration of an aircraft fuselage.</p>
+<p>This class serves as the foundation for all fuselage types in RCAIDE, providing:</p>
+<ul class="simple">
+<li><p>Geometric definition capabilities</p></li>
+<li><p>Integration with OpenVSP for visualization and analysis</p></li>
+<li><p>Support for fuel tank and segment management</p></li>
+<li><p>Basic structural configuration parameters</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
 <dl class="simple">
-<dt><strong>Assumptions:</strong></dt><dd><p>Conventional fuselage configuration</p>
+<dt>‘Fineness Ratio’</dt><dd><p>Ratio of length to maximum diameter, important for drag characteristics</p>
+</dd>
+<dt>‘Wetted Area’</dt><dd><p>Total surface area exposed to airflow</p>
+</dd>
+<dt>‘Equipment Bay’</dt><dd><p>Non-pressurized volume for systems and equipment storage</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.Tube_Fuselage.html#module-RCAIDE.Library.Components.Fuselages.Tube_Fuselage" title="RCAIDE.Library.Components.Fuselages.Tube_Fuselage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Fuselages.Tube_Fuselage</span></code></a></dt><dd><p>Implementation for conventional tube-and-wing aircraft</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.html#module-RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage" title="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage</span></code></a></dt><dd><p>Implementation for blended wing body aircraft</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_segment">
 <span class="sig-name descname"><span class="pre">append_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Fuselages/Fuselage.html#Fuselage.append_segment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_segment" title="Link to this definition">#</a></dt>
-<dd><p>Adds a segment to the fuselage.</p>
-<p>Assumptions:
-None
-Source:
-N/A
-Inputs:
-None
-Outputs:
-None
-Properties Used:
-N/A</p>
+<dd><p>Adds a new segment to the fuselage’s segment container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Fuselage segment to be added</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_fuel_tank">
 <span class="sig-name descname"><span class="pre">append_fuel_tank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fuel_tank</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Fuselages/Fuselage.html#Fuselage.append_fuel_tank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_fuel_tank" title="Link to this definition">#</a></dt>
-<dd><p>Adds a fuel tank to the fuselage</p>
-<p>Assumptions:
-None
-Source:
-N/A
-Inputs:
-None
-Outputs:
-None
-Properties Used:
-N/A</p>
+<dd><p>Adds a new fuel tank to the fuselage’s fuel tank container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fuel_tank</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Fuel tank component to be added</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.compute_moment_of_inertia">
 <span class="sig-name descname"><span class="pre">compute_moment_of_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_of_gravity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[[0,</span> <span class="pre">0,</span> <span class="pre">0]]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Fuselages/Fuselage.html#Fuselage.compute_moment_of_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.compute_moment_of_inertia" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Computes the moment of inertia tensor for the fuselage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>center_of_gravity</strong> (<em>list</em><em>, </em><em>optional</em>) – Reference point coordinates for moment calculation, defaults to [[0, 0, 0]]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>I</strong> – 3x3 moment of inertia tensor in kg*m^2</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia.html#module-RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia" title="RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia</span></code></a></dt><dd><p>Implementation of the moment of inertia calculation</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
 
 </dd></dl>
 

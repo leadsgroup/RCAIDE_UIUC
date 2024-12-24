@@ -541,19 +541,76 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Fan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Thermal_Management/Accessories/Fan.html#Fan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
-<p>Holds values for a model Fan</p>
-<blockquote>
-<div><p>Assumptions:</p>
-</div></blockquote>
-<p>Power</p>
-<blockquote>
-<div><p>Source:
-None</p>
-</div></blockquote>
+<p>A class representing a cooling fan for thermal management systems.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the fan component, defaults to ‘Fan’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Overall fan efficiency including mechanical and electrical losses,
+defaults to 1.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The fan class models forced air movement devices used in thermal management
+systems. It provides functionality for:</p>
+<ul class="simple">
+<li><p>Power consumption calculation</p></li>
+<li><p>Performance modeling based on operating conditions</p></li>
+<li><p>Integration with cooling system analysis</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Pressure Differential’</dt><dd><p>The difference in pressure across the fan</p>
+</dd>
+<dt>‘Mass Flow Rate’</dt><dd><p>Rate of air mass flow through the fan</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.Accessories.Pump.html#module-RCAIDE.Library.Components.Thermal_Management.Accessories.Pump" title="RCAIDE.Library.Components.Thermal_Management.Accessories.Pump"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Accessories.Pump</span></code></a></dt><dd><p>Similar component for liquid cooling systems</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.compute_power_consumed">
 <span class="sig-name descname"><span class="pre">compute_power_consumed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass_flow_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">efficiency</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Thermal_Management/Accessories/Fan.html#Fan.compute_power_consumed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.compute_power_consumed" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Calculates the power consumed by the fan.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pressure_differential</strong> (<em>float</em>) – Pressure rise across the fan</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – Fluid density</p></li>
+<li><p><strong>mass_flow_rate</strong> (<em>float</em>) – Mass flow rate through the fan</p></li>
+<li><p><strong>efficiency</strong> (<em>float</em>) – Overall fan efficiency</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Power consumed by the fan</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Uses the standard fan power equation:
+Power = (mass_flow_rate * pressure_differential) / (density * efficiency)</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -607,6 +664,8 @@ None</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan"><code class="docutils literal notranslate"><span class="pre">Fan</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.tag"><code class="docutils literal notranslate"><span class="pre">Fan.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.efficiency"><code class="docutils literal notranslate"><span class="pre">Fan.efficiency</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.compute_power_consumed"><code class="docutils literal notranslate"><span class="pre">Fan.compute_power_consumed()</span></code></a></li>
 </ul>
 </li>

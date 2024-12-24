@@ -538,11 +538,12 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Blended_Wing_Body_Fuselage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Fuselages/Blended_Wing_Body_Fuselage.html#Blended_Wing_Body_Fuselage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage" title="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fuselage</span></code></a></p>
-<p>A blended wing body fuselage component that inherits from the base Fuselage class.</p>
+<p>A blended wing body (BWB) fuselage design that smoothly integrates the wing and fuselage
+into a single lifting body configuration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.tag">
 <span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.tag" title="Link to this definition">#</a></dt>
-<dd><p>Identifier for the fuselage component, defaults to ‘bwb_fuselage’</p>
+<dd><p>Unique identifier for the BWB fuselage component, defaults to ‘bwb_fuselage’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
@@ -553,7 +554,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.aft_centerbody_area">
 <span class="sig-name descname"><span class="pre">aft_centerbody_area</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.aft_centerbody_area" title="Link to this definition">#</a></dt>
-<dd><p>Area of the aft centerbody section, defaults to 0.0</p>
+<dd><p>Cross-sectional area of the aft centerbody section in square meters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -564,7 +565,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.aft_centerbody_taper">
 <span class="sig-name descname"><span class="pre">aft_centerbody_taper</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.aft_centerbody_taper" title="Link to this definition">#</a></dt>
-<dd><p>Taper ratio of the aft centerbody section, defaults to 0.0</p>
+<dd><p>Taper ratio of the aft centerbody section, defined as the ratio of tip
+to root chord lengths</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -575,7 +577,7 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.cabin_area">
 <span class="sig-name descname"><span class="pre">cabin_area</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.cabin_area" title="Link to this definition">#</a></dt>
-<dd><p>Total cabin area, defaults to 0.0</p>
+<dd><p>Total available cabin floor area in square meters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
@@ -583,18 +585,50 @@
 </dl>
 </dd></dl>
 
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
+<p class="rubric">Notes</p>
+<p>The blended wing body design offers several advantages over conventional tube-and-wing
+configurations:</p>
+<ul class="simple">
+<li><p>Reduced wetted area leading to lower skin friction drag</p></li>
+<li><p>Improved lift-to-drag ratio due to the lifting body design</p></li>
+<li><p>Potential for increased internal volume and better weight distribution</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Centerbody’</dt><dd><p>The central section of the BWB that houses the passenger cabin and cargo hold</p>
+</dd>
+<dt>‘Aft Centerbody’</dt><dd><p>The rear section of the centerbody that transitions into the outer wing sections</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>This class extends the base Fuselage class to represent a blended wing body configuration,
-where the fuselage smoothly transitions into the wing structure.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.Fuselage.html#module-RCAIDE.Library.Components.Fuselages.Fuselage" title="RCAIDE.Library.Components.Fuselages.Fuselage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Fuselages.Fuselage</span></code></a></dt><dd><p>Base fuselage class that provides common functionality</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.Tube_Fuselage.html#module-RCAIDE.Library.Components.Fuselages.Tube_Fuselage" title="RCAIDE.Library.Components.Fuselages.Tube_Fuselage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Fuselages.Tube_Fuselage</span></code></a></dt><dd><p>Conventional tube fuselage design for comparison</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.compute_moment_of_inertia">
 <span class="sig-name descname"><span class="pre">compute_moment_of_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_of_gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Fuselages/Blended_Wing_Body_Fuselage.html#Blended_Wing_Body_Fuselage.compute_moment_of_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.compute_moment_of_inertia" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Computes the moment of inertia tensor for the BWB fuselage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>center_of_gravity</strong> (<em>array-like</em>) – The (x, y, z) coordinates of the center of gravity about which to compute
+the moment of inertia</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>I</strong> – 3x3 moment of inertia tensor in kg*m^2</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Currently returns a zero matrix. This is a placeholder that should be implemented
+with actual BWB moment of inertia calculations.</p>
+</dd></dl>
 
 </dd></dl>
 

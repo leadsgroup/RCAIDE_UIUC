@@ -393,42 +393,80 @@
 <div class="viewcode-block" id="Fan">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.html#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan">[docs]</a>
 <span class="k">class</span> <span class="nc">Fan</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Holds values for a model Fan </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a cooling fan for thermal management systems.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">   Power </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the fan component, defaults to &#39;Fan&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    efficiency : float</span>
+<span class="sd">        Overall fan efficiency including mechanical and electrical losses, </span>
+<span class="sd">        defaults to 1.0</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The fan class models forced air movement devices used in thermal management </span>
+<span class="sd">    systems. It provides functionality for:</span>
+<span class="sd">    </span>
+<span class="sd">    * Power consumption calculation</span>
+<span class="sd">    * Performance modeling based on operating conditions</span>
+<span class="sd">    * Integration with cooling system analysis</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Pressure Differential&#39;</span>
+<span class="sd">        The difference in pressure across the fan</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Mass Flow Rate&#39;</span>
+<span class="sd">        Rate of air mass flow through the fan</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Accessories.Pump</span>
+<span class="sd">        Similar component for liquid cooling systems</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the fan attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                       <span class="o">=</span> <span class="s1">&#39;Fan&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">efficiency</span>                <span class="o">=</span> <span class="mf">1.0</span>
-        
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>        <span class="o">=</span> <span class="s1">&#39;Fan&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">efficiency</span> <span class="o">=</span> <span class="mf">1.0</span>
         <span class="k">return</span>
    
 <div class="viewcode-block" id="Fan.compute_power_consumed">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.html#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.compute_power_consumed">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_power_consumed</span> <span class="p">(</span><span class="n">pressure_differerntial</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">mass_flow_rate</span><span class="p">,</span><span class="n">efficiency</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">mass_flow_rate</span><span class="o">*</span><span class="n">pressure_differerntial</span><span class="o">/</span><span class="p">(</span><span class="n">density</span><span class="o">*</span><span class="n">efficiency</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">compute_power_consumed</span><span class="p">(</span><span class="n">pressure_differential</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">mass_flow_rate</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the power consumed by the fan.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pressure_differential : float</span>
+<span class="sd">            Pressure rise across the fan</span>
+<span class="sd">            </span>
+<span class="sd">        density : float</span>
+<span class="sd">            Fluid density</span>
+<span class="sd">            </span>
+<span class="sd">        mass_flow_rate : float</span>
+<span class="sd">            Mass flow rate through the fan</span>
+<span class="sd">            </span>
+<span class="sd">        efficiency : float</span>
+<span class="sd">            Overall fan efficiency</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Power consumed by the fan</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Uses the standard fan power equation:</span>
+<span class="sd">        Power = (mass_flow_rate * pressure_differential) / (density * efficiency)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">mass_flow_rate</span> <span class="o">*</span> <span class="n">pressure_differential</span> <span class="o">/</span> <span class="p">(</span><span class="n">density</span> <span class="o">*</span> <span class="n">efficiency</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Fuel_Tanks/Central_Fuel_Tank.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Sources/Fuel_Tanks/Central_Fuel_Tank.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  September 2024, A. Molloy and M. Clarke </span>
@@ -396,16 +396,51 @@
 <div class="viewcode-block" id="Central_Fuel_Tank">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.html#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank">[docs]</a>
 <span class="k">class</span> <span class="nc">Central_Fuel_Tank</span><span class="p">(</span><span class="n">Fuel_Tank</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Central Fuel tank compoment.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling central fuel tank characteristics and behavior</span>
 <span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the fuel tank (default: &#39;Central_fuel_tank&#39;)</span>
 <span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
+<span class="sd">    fuel_selector_ratio : float</span>
+<span class="sd">        Ratio of fuel flow allocation (default: 1.0)</span>
+<span class="sd">        </span>
+<span class="sd">    mass_properties.empty_mass : float</span>
+<span class="sd">        Mass of empty tank structure [kg] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    secondary_fuel_flow : float</span>
+<span class="sd">        Secondary fuel flow rate [kg/s] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    length : float</span>
+<span class="sd">        Tank length [m] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float</span>
+<span class="sd">        Tank width [m] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float</span>
+<span class="sd">        Tank height [m] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    fuel : Component, optional</span>
+<span class="sd">        Fuel type stored in tank (default: None)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The central fuel tank is located in the aircraft&#39;s center section,</span>
+<span class="sd">    often integrated with the wing box or fuselage structure. </span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank</span>
+<span class="sd">        Base fuel tank class</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Wing_Fuel_Tank</span>
+<span class="sd">        Wing-mounted fuel tank class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for central fuel tank attributes</span>
 <span class="sd">        &quot;&quot;&quot;</span>          
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                         <span class="o">=</span> <span class="s1">&#39;Central_fuel_tank&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fuel_selector_ratio</span>         <span class="o">=</span> <span class="mf">1.0</span> 
@@ -420,6 +455,16 @@
 <div class="viewcode-block" id="Central_Fuel_Tank.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.html#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">fuel_line</span><span class="p">):</span>  
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Append fuel tank operating conditions for a flight segment</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Segment</span>
+<span class="sd">            Flight segment containing state conditions</span>
+<span class="sd">        fuel_line : Component</span>
+<span class="sd">            Connected fuel line component</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">append_fuel_tank_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span> <span class="n">fuel_line</span><span class="p">)</span>  
         <span class="k">return</span>                                          </div>
 </div>

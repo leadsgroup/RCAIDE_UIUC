@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Nacelles.Stack_Nacelle</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Nacelles/Stack_Nacelle.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -390,59 +389,76 @@
 <span class="kn">from</span> <span class="nn">.Nacelle</span> <span class="kn">import</span> <span class="n">Nacelle</span>
   
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="c1">#  Nacalle</span>
+<span class="c1">#  Stack_Nacelle</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Stack_Nacelle">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Stack_Nacelle.html#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle">[docs]</a>
 <span class="k">class</span> <span class="nc">Stack_Nacelle</span><span class="p">(</span><span class="n">Nacelle</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This is a stacked nacelle for a generic aircraft.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A nacelle design built up from a series of stacked cross-sectional segments, </span>
+<span class="sd">    allowing for complex, non-axisymmetric shapes.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the nacelle component, defaults to &#39;stack_nacelle&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    Segments : Container</span>
+<span class="sd">        Collection of cross-sectional segments defining the nacelle shape, </span>
+<span class="sd">        initialized empty</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The stack nacelle approach provides flexibility in designing complex nacelle </span>
+<span class="sd">    shapes through the use of multiple cross-sections. This is particularly useful for:</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    * Non-axisymmetric designs</span>
+<span class="sd">    * Complex inlet and nozzle geometries</span>
+<span class="sd">    * Integration with adjacent structures</span>
 <span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Segments are ordered from front to back</span>
+<span class="sd">    * Adjacent segments form smooth transitions</span>
+<span class="sd">    * Cross-sections are defined using super-ellipse parameters</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Stack&#39;</span>
+<span class="sd">        Series of cross-sectional segments arranged longitudinally to define </span>
+<span class="sd">        the nacelle shape</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Cross-section&#39;</span>
+<span class="sd">        Individual segment defining the nacelle shape at a specific longitudinal station</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Nacelles.Nacelle</span>
+<span class="sd">        Base nacelle class</span>
+<span class="sd">    RCAIDE.Library.Components.Nacelles.Segment</span>
+<span class="sd">        Individual segments used to build the stack</span>
+<span class="sd">    RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle</span>
+<span class="sd">        Alternative nacelle design approach</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component to function.</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the stack nacelle attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                       <span class="o">=</span> <span class="s1">&#39;stack_nacelle&#39;</span>  
-        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span>                  <span class="o">=</span> <span class="n">Container</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>      <span class="o">=</span> <span class="s1">&#39;stack_nacelle&#39;</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span> <span class="o">=</span> <span class="n">Container</span><span class="p">()</span> 
         
 <div class="viewcode-block" id="Stack_Nacelle.append_segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Stack_Nacelle.html#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.append_segment">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a segment to the nacelle. </span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+    <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a new segment to the nacelle&#39;s segment container.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Cross-sectional segment to be added to the nacelle definition</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Assert database type</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;input component must be of type Data()&#39;</span><span class="p">)</span>

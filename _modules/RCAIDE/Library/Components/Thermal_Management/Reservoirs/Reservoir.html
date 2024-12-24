@@ -379,13 +379,11 @@
   <h1>Source code for RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Library/Compoments/Thermal_Management/Reservoirs/Reservoir.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, S. Shekar</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
- 
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span>                                                      <span class="kn">import</span> <span class="n">Component</span> 
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Attributes.Coolants.Glycol_Water</span>                                <span class="kn">import</span> <span class="n">Glycol_Water</span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Attributes.Materials.Polyetherimide</span>                             <span class="kn">import</span> <span class="n">Polyetherimide</span>
@@ -398,63 +396,168 @@
 <div class="viewcode-block" id="Reservoir">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.html#RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.Reservoir">[docs]</a>
 <span class="k">class</span> <span class="nc">Reservoir</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Holds values for a coolant reservoir</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a coolant storage reservoir for thermal management systems.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the reservoir, defaults to &#39;coolant_reservoir&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    material : Material</span>
+<span class="sd">        Reservoir construction material, defaults to Polyetherimide()</span>
+<span class="sd">        </span>
+<span class="sd">    coolant : Coolant</span>
+<span class="sd">        Fluid stored in reservoir, defaults to Glycol_Water()</span>
+<span class="sd">        </span>
+<span class="sd">    length : float</span>
+<span class="sd">        Reservoir length in meters, defaults to 0.3</span>
+<span class="sd">        </span>
+<span class="sd">    width : float</span>
+<span class="sd">        Reservoir width in meters, defaults to 0.3</span>
+<span class="sd">        </span>
+<span class="sd">    height : float</span>
+<span class="sd">        Reservoir height in meters, defaults to 0.3</span>
+<span class="sd">        </span>
+<span class="sd">    thickness : float</span>
+<span class="sd">        Wall thickness in meters, defaults to 5e-3</span>
+<span class="sd">        </span>
+<span class="sd">    surface_area : float</span>
+<span class="sd">        Total surface area in square meters, calculated from dimensions</span>
+<span class="sd">        </span>
+<span class="sd">    volume : float</span>
+<span class="sd">        Internal volume in cubic meters, calculated from dimensions</span>
+<span class="sd">        </span>
+<span class="sd">    mass_properties.mass : float</span>
+<span class="sd">        Total mass including coolant, calculated from volume and coolant density</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The reservoir serves as a thermal buffer and coolant storage system. It provides:</span>
 <span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    * Coolant storage and thermal mass</span>
+<span class="sd">    * Temperature stabilization through mixing</span>
+<span class="sd">    * Volume compensation for thermal expansion</span>
+<span class="sd">    * Air separation and pressure control</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Mixing Temperature&#39;</span>
+<span class="sd">        Temperature resulting from combining flows of different temperatures</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Surface Area&#39;</span>
+<span class="sd">        Total area for heat transfer with environment</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger</span>
+<span class="sd">        Heat exchanger that interfaces with reservoir</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Accessories.Pump</span>
+<span class="sd">        Pump for circulating coolant from reservoir</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        Values commonly available  </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the reservoir attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                          <span class="o">=</span> <span class="s1">&#39;coolant_reservoir&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">material</span>                     <span class="o">=</span> <span class="n">Polyetherimide</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">coolant</span>                      <span class="o">=</span> <span class="n">Glycol_Water</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">length</span>                       <span class="o">=</span> <span class="mf">0.3</span>                                      <span class="c1"># [m]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">width</span>                        <span class="o">=</span> <span class="mf">0.3</span>                                      <span class="c1"># [m]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">height</span>                       <span class="o">=</span> <span class="mf">0.3</span>                                      <span class="c1"># [m]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thickness</span>                    <span class="o">=</span> <span class="mf">5e-3</span>                                     <span class="c1"># [m] </span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">surface_area</span>                 <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">*</span>
-                                               <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>  <span class="c1"># [m^2]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">volume</span>                       <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span>       <span class="c1"># [m^3]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">mass</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coolant</span><span class="o">.</span><span class="n">density</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>              <span class="o">=</span> <span class="s1">&#39;coolant_reservoir&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">material</span>         <span class="o">=</span> <span class="n">Polyetherimide</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coolant</span>          <span class="o">=</span> <span class="n">Glycol_Water</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span>           <span class="o">=</span> <span class="mf">0.3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span>            <span class="o">=</span> <span class="mf">0.3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span>           <span class="o">=</span> <span class="mf">0.3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thickness</span>        <span class="o">=</span> <span class="mf">5e-3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">surface_area</span>     <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">+</span> 
+                                  <span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">volume</span>           <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coolant</span><span class="o">.</span><span class="n">density</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">volume</span>
         <span class="k">return</span>
     
 <div class="viewcode-block" id="Reservoir.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.html#RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.Reservoir.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">):</span>
-        <span class="n">append_reservoir_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds operating conditions for the reservoir to a mission segment.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Mission segment to which conditions are being added</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">append_reservoir_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">)</span>
         <span class="k">return</span></div>
 
     
 <div class="viewcode-block" id="Reservoir.append_segment_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.html#RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.Reservoir.append_segment_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
-        <span class="n">append_reservoir_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">conditions</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds specific segment conditions to the reservoir analysis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Mission segment being analyzed</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        conditions : Data</span>
+<span class="sd">            Operating conditions for the segment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">append_reservoir_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
         <span class="k">return</span>    </div>
 
 
 <div class="viewcode-block" id="Reservoir.compute_reservior_coolant_temperature">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.html#RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.Reservoir.compute_reservior_coolant_temperature">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_reservior_coolant_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">delta_t</span><span class="p">,</span><span class="n">t_idx</span><span class="p">):</span>
-        <span class="n">compute_mixing_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">delta_t</span><span class="p">,</span><span class="n">t_idx</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">compute_reservior_coolant_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the mixed coolant temperature in the reservoir.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state : Data</span>
+<span class="sd">            Current system state</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        delta_t : float</span>
+<span class="sd">            Time step size</span>
+<span class="sd">        t_idx : int</span>
+<span class="sd">            Time index in the simulation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">compute_mixing_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">)</span>
         <span class="k">return</span></div>
 
     
 <div class="viewcode-block" id="Reservoir.plot_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.html#RCAIDE.Library.Components.Thermal_Management.Reservoirs.Reservoir.Reservoir.plot_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span><span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span><span class="p">,</span><span class="n">file_type</span><span class="p">,</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="n">plot_reservoir_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span><span class="n">save_filename</span><span class="p">,</span><span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span><span class="p">,</span><span class="n">file_type</span><span class="p">,</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span> 
+                                <span class="n">show_legend</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates visualization plots of the reservoir operating conditions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        results : Data</span>
+<span class="sd">            Simulation results data</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        save_filename : str</span>
+<span class="sd">            Path for saving the plot</span>
+<span class="sd">        save_figure : bool</span>
+<span class="sd">            Flag to save the figure</span>
+<span class="sd">        show_legend : bool</span>
+<span class="sd">            Flag to display plot legend</span>
+<span class="sd">        file_type : str</span>
+<span class="sd">            Output file format</span>
+<span class="sd">        width : float</span>
+<span class="sd">            Plot width</span>
+<span class="sd">        height : float</span>
+<span class="sd">            Plot height</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plot_reservoir_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span> 
+                                <span class="n">save_figure</span><span class="p">,</span> <span class="n">show_legend</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
         <span class="k">return</span>    </div>
 </div>
 

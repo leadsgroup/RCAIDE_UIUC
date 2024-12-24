@@ -398,31 +398,41 @@
 <div class="viewcode-block" id="Component">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component">[docs]</a>
 <span class="k">class</span> <span class="nc">Component</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; the base component class</span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all physical components in an aircraft configuration.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the component, defaults to &#39;Component&#39;</span>
 <span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">        None</span>
+<span class="sd">    mass_properties : Mass_Properties</span>
+<span class="sd">        Mass and inertia properties, initialized empty</span>
+<span class="sd">        </span>
+<span class="sd">    origin : ndarray</span>
+<span class="sd">        3D coordinates [x, y, z] defining component&#39;s reference point, </span>
+<span class="sd">        defaults to [0.0, 0.0, 0.0]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Component class serves as the foundation for all physical parts in RCAIDE. </span>
+<span class="sd">    It provides:</span>
+<span class="sd">    </span>
+<span class="sd">    * Basic geometric positioning</span>
+<span class="sd">    * Mass properties tracking</span>
+<span class="sd">    * Container functionality for sub-components</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Mass_Properties</span>
+<span class="sd">        Class containing mass and inertia data</span>
+<span class="sd">    RCAIDE.Framework.Core.Data</span>
+<span class="sd">        Parent class providing data structure functionality</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            None</span>
-<span class="sd">            &quot;&quot;&quot;</span>         
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the component attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>         
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>             <span class="o">=</span> <span class="s1">&#39;Component&#39;</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">mass_properties</span> <span class="o">=</span> <span class="n">Mass_Properties</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]])</span></div>
@@ -435,36 +445,42 @@
 <div class="viewcode-block" id="Container">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Container">[docs]</a>
 <span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">ContainerBase</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; the base component container class</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Container class for managing collections of components.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Container class provides organization and mass calculation functionality </span>
+<span class="sd">    for groups of components. Key features include:</span>
 <span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">        None</span>
+<span class="sd">    * Recursive mass summation</span>
+<span class="sd">    * Moment calculation about reference points</span>
+<span class="sd">    * Component hierarchy management</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Framework.Core.Container</span>
+<span class="sd">        Parent class providing base container functionality</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span> 
  
 <div class="viewcode-block" id="Container.sum_mass">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Container.sum_mass">[docs]</a>
     <span class="k">def</span> <span class="nf">sum_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; will recursively search the data tree and sum</span>
-<span class="sd">            any Comp.Mass_Properties.mass, and return the total sum</span>
-<span class="sd">            </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            mass  [kg]</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recursively calculates total mass of all contained components.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Total mass in kg</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Traverses the component tree and sums mass_properties.mass values from:</span>
+<span class="sd">        </span>
+<span class="sd">        * Individual components</span>
+<span class="sd">        * Nested component containers (recursive)</span>
 <span class="sd">        &quot;&quot;&quot;</span>   
         <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">Comp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -479,23 +495,21 @@
 <div class="viewcode-block" id="Container.total_moment">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Container.total_moment">[docs]</a>
     <span class="k">def</span> <span class="nf">total_moment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; will recursively search the data tree and sum</span>
-<span class="sd">            any Comp.Mass_Properties.mass, and return the total sum of moments</span>
-<span class="sd">            </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            total moment [kg*m]</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Recursively calculates total moment of all contained components.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            Total moment vector [kg*m] about the origin</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Calculates moments considering:</span>
+<span class="sd">        * Component masses</span>
+<span class="sd">        * Component origins</span>
+<span class="sd">        * Component centers of gravity</span>
+<span class="sd">        * Nested containers (recursive)</span>
 <span class="sd">        &quot;&quot;&quot;</span>   
         <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]])</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">Comp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>

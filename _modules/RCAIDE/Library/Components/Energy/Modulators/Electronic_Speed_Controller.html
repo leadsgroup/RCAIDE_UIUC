@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Components/Propulsors/Modulators/Electronic_Speed_Controller.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Modulators/Electronic_Speed_Controller.py</span>
 <span class="c1">#  </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -395,25 +395,38 @@
 <div class="viewcode-block" id="Electronic_Speed_Controller">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.html#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller">[docs]</a>
 <span class="k">class</span> <span class="nc">Electronic_Speed_Controller</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling electronic speed controllers in electric propulsion systems</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the ESC (default: &#39;electronic_speed_controller&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    efficiency : float</span>
+<span class="sd">        Power conversion efficiency of the ESC (default: 0.0)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Electronic Speed Controller (ESC) regulates power delivery to electric motors,</span>
+<span class="sd">    controlling motor speed and torque. The efficiency attribute accounts for power</span>
+<span class="sd">    losses during voltage and current modulation.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors.Converters.DC_Motor</span>
+<span class="sd">        Electric motor components controlled by the ESC</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values.</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            None</span>
-<span class="sd">            &quot;&quot;&quot;</span>         
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for ESC attributes</span>
+<span class="sd">        </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Initializes the ESC with a default tag and zero efficiency. The efficiency</span>
+<span class="sd">        should be set to an appropriate value based on the specific ESC being modeled.</span>
+<span class="sd">        &quot;&quot;&quot;</span>         
 
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>              <span class="o">=</span> <span class="s1">&#39;electronic_speed_controller&#39;</span>  
         <span class="bp">self</span><span class="o">.</span><span class="n">efficiency</span>       <span class="o">=</span> <span class="mf">0.0</span> 
@@ -421,6 +434,21 @@
 <div class="viewcode-block" id="Electronic_Speed_Controller.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.html#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Append ESC operating conditions for a flight segment</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Segment</span>
+<span class="sd">            Flight segment containing state conditions</span>
+<span class="sd">        propulsor : Component</span>
+<span class="sd">            Propulsor component associated with this ESC</span>
+<span class="sd">            </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Updates the segment conditions with ESC-specific parameters including</span>
+<span class="sd">        power throughput and losses.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">propulsor_conditions</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_esc_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">)</span>
         <span class="k">return</span> </div>

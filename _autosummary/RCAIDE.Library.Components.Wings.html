@@ -531,36 +531,48 @@
                   
   <section id="module-RCAIDE.Library.Components.Wings">
 <span id="rcaide-library-components-wings"></span><h1>RCAIDE.Library.Components.Wings<a class="headerlink" href="#module-RCAIDE.Library.Components.Wings" title="Link to this heading">#</a></h1>
-<p>RCAIDE Package Setup</p>
+<p>Module containing wing and lifting surface components for aircraft design and analysis.
+This module provides classes for various wing types including main wings, vertical and
+horizontal tails, and all-moving surfaces.</p>
+<p>The module also includes a Control_Surfaces subpackage for various control surface types.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.html#module-RCAIDE.Library.Components.Airfoils" title="RCAIDE.Library.Components.Airfoils"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Airfoils</span></code></a></dt><dd><p>Related module for airfoil definitions used in wing design</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Fuselages.html#module-RCAIDE.Library.Components.Fuselages" title="RCAIDE.Library.Components.Fuselages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Fuselages</span></code></a></dt><dd><p>Related module for fuselage components that interface with wings</p>
+</dd>
+</dl>
+</div>
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.All_Moving_Surface.html#module-RCAIDE.Library.Components.Wings.All_Moving_Surface" title="RCAIDE.Library.Components.Wings.All_Moving_Surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">All_Moving_Surface</span></code></a>(*args, **kwarg)</p></td>
-<td><p>This class is used to allow every all-moving control surface class (e.g. Stabilator) to inherit from both a type of Wing (Horizontal_Tail in the case of a Stabilator) and this class.</p></td>
+<td><p>A base class for control surfaces that pivot as complete aerodynamic surfaces.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces" title="RCAIDE.Library.Components.Wings.Control_Surfaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Control_Surfaces</span></code></a></p></td>
-<td><p>RCAIDE Package Setup</p></td>
+<td><p>Module containing control surface components for aircraft wing systems.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Horizontal_Tail.html#module-RCAIDE.Library.Components.Wings.Horizontal_Tail" title="RCAIDE.Library.Components.Wings.Horizontal_Tail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Horizontal_Tail</span></code></a>(*args, **kwarg)</p></td>
-<td><p>This is the horizontal stabilizer class</p></td>
+<td><p>A class representing a horizontal stabilizer surface for aircraft pitch control and longitudinal stability.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Main_Wing.html#module-RCAIDE.Library.Components.Wings.Main_Wing" title="RCAIDE.Library.Components.Wings.Main_Wing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Main_Wing</span></code></a>(*args, **kwarg)</p></td>
-<td><p>This class is used to define main wings RCAIDE</p></td>
+<td><p>A class representing the primary lifting surface of an aircraft.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Segment.html#module-RCAIDE.Library.Components.Wings.Segment" title="RCAIDE.Library.Components.Wings.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Segment</span></code></a>(*args, **kwarg)</p></td>
-<td><p></p></td>
+<td><p>A class representing a wing segment that defines a portion of a wing's geometry.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Stabilator.html#module-RCAIDE.Library.Components.Wings.Stabilator" title="RCAIDE.Library.Components.Wings.Stabilator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Stabilator</span></code></a>(*args, **kwarg)</p></td>
-<td><p>This class is used to define stabilators in RCAIDE.</p></td>
+<td><p>A class representing an all-moving horizontal tail (stabilator) that provides pitch control and longitudinal stability.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Vertical_Tail.html#module-RCAIDE.Library.Components.Wings.Vertical_Tail" title="RCAIDE.Library.Components.Wings.Vertical_Tail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vertical_Tail</span></code></a>(*args, **kwarg)</p></td>
-<td><p>This class is used to define vertical tails RCAIDE</p></td>
+<td><p>A class representing a vertical stabilizer surface for aircraft directional control and stability.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.html#module-RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving" title="RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Vertical_Tail_All_Moving</span></code></a>(*args, **kwarg)</p></td>
-<td><p>This class is used to define all-moving vertical tails in RCAIDE.</p></td>
+<td><p>A class representing an all-moving vertical tail that provides directional control and stability.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Wings.Wing.html#module-RCAIDE.Library.Components.Wings.Wing" title="RCAIDE.Library.Components.Wings.Wing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wing</span></code></a>(*args, **kwarg)</p></td>
-<td><p>This class defines the wing in RCAIDE</p></td>
+<td><p>Base class for aircraft lifting surfaces providing core functionality for geometric definition and analysis.</p></td>
 </tr>
 </tbody>
 </table>

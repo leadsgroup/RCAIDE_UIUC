@@ -401,27 +401,134 @@
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger">[docs]</a>
 <span class="k">class</span> <span class="nc">Cross_Flow_Heat_Exchanger</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This provides outlet fluid properties from a cross flow heat exchanger</span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">         Coolant being used is Glycol Water 50-50</span>
-<span class="sd">         Assume a constant Kc and Kp </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a cross-flow heat exchanger with strip fins for thermal </span>
+<span class="sd">    management systems.</span>
 
-<span class="sd">    Source: N/A</span>
-<span class="sd">   </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the heat exchanger, defaults to &#39;cross_flow_heat_exchanger&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    coolant : Glycol_Water</span>
+<span class="sd">        Coolant properties for calculations, defaults to Glycol_Water()</span>
+<span class="sd">        </span>
+<span class="sd">    air : Air</span>
+<span class="sd">        Air properties for calculations, defaults to Air()</span>
+<span class="sd">        </span>
+<span class="sd">    design_heat_removed : float</span>
+<span class="sd">        Design heat removal capacity, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    minimum_air_speed : float</span>
+<span class="sd">        Minimum air velocity through exchanger, defaults to 105 knots</span>
+<span class="sd">        </span>
+<span class="sd">    heat_exchanger_efficiency : float</span>
+<span class="sd">        Overall heat transfer effectiveness, defaults to 0.8381</span>
+<span class="sd">        </span>
+<span class="sd">    density : float</span>
+<span class="sd">        Material density in kg/m^3, defaults to 8440</span>
+<span class="sd">        </span>
+<span class="sd">    thermal_conductivity : float</span>
+<span class="sd">        Material thermal conductivity in W/m.K, defaults to 121</span>
+<span class="sd">        </span>
+<span class="sd">    specific_heat_capacity : float</span>
+<span class="sd">        Material specific heat in J/kg.K, defaults to 871</span>
+<span class="sd">        </span>
+<span class="sd">    stack_length : float</span>
+<span class="sd">        Length of heat exchanger core, defaults to 1</span>
+<span class="sd">        </span>
+<span class="sd">    stack_width : float</span>
+<span class="sd">        Width of heat exchanger core, defaults to 1</span>
+<span class="sd">        </span>
+<span class="sd">    stack_height : float</span>
+<span class="sd">        Height of heat exchanger core, defaults to 1</span>
+<span class="sd">        </span>
+<span class="sd">    t_w : float</span>
+<span class="sd">        Plate thickness in meters, defaults to 5e-4</span>
+<span class="sd">        </span>
+<span class="sd">    t_f : float</span>
+<span class="sd">        Fin thickness in meters, defaults to 1e-4</span>
+<span class="sd">        </span>
+<span class="sd">    fin_spacing_cold : float</span>
+<span class="sd">        Cold side fin spacing in meters, defaults to 2.54e-3</span>
+<span class="sd">        </span>
+<span class="sd">    fin_spacing_hot : float</span>
+<span class="sd">        Hot side fin spacing in meters, defaults to 2.54e-3</span>
+<span class="sd">        </span>
+<span class="sd">    fin_metal_thickness_hot : float</span>
+<span class="sd">        Hot side fin metal thickness in meters, defaults to 0.102e-3</span>
+<span class="sd">        </span>
+<span class="sd">    fin_metal_thickness_cold : float</span>
+<span class="sd">        Cold side fin metal thickness in meters, defaults to 0.102e-3</span>
+<span class="sd">        </span>
+<span class="sd">    fin_exposed_strip_edge_hot : float</span>
+<span class="sd">        Hot side exposed strip edge in meters, defaults to 3.175e-3</span>
+<span class="sd">        </span>
+<span class="sd">    fin_exposed_strip_edge_cold : float</span>
+<span class="sd">        Cold side exposed strip edge in meters, defaults to 3.175e-3</span>
+<span class="sd">        </span>
+<span class="sd">    fin_area_density_hot : float</span>
+<span class="sd">        Hot side fin area density in m^2/m^3, defaults to 2254</span>
+<span class="sd">        </span>
+<span class="sd">    fin_area_density_cold : float</span>
+<span class="sd">        Cold side fin area density in m^2/m^3, defaults to 2254</span>
+<span class="sd">        </span>
+<span class="sd">    finned_area_to_total_area_hot : float</span>
+<span class="sd">        Hot side fin area ratio, defaults to 0.785</span>
+<span class="sd">        </span>
+<span class="sd">    finned_area_to_total_area_cold : float</span>
+<span class="sd">        Cold side fin area ratio, defaults to 0.785</span>
+<span class="sd">        </span>
+<span class="sd">    coolant_hydraulic_diameter : float</span>
+<span class="sd">        Coolant passage hydraulic diameter in meters, defaults to 1.54e-3</span>
+<span class="sd">        </span>
+<span class="sd">    air_hydraulic_diameter : float</span>
+<span class="sd">        Air passage hydraulic diameter in meters, defaults to 1.54e-3</span>
+<span class="sd">        </span>
+<span class="sd">    fin_conductivity : float</span>
+<span class="sd">        Fin thermal conductivity in W/m.K, defaults to 121</span>
+<span class="sd">        </span>
+<span class="sd">    wall_conductivity : float</span>
+<span class="sd">        Wall thermal conductivity in W/m.K, defaults to 121</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The cross-flow heat exchanger uses strip fins and is based on the 1/8-19.86 </span>
+<span class="sd">    surface designation. The design includes:</span>
+<span class="sd">    </span>
+<span class="sd">    * Liquid coolant passages with strip fins</span>
+<span class="sd">    * Air passages with strip fins</span>
+<span class="sd">    * Counter-flow arrangement for maximum effectiveness</span>
+
+<span class="sd">    **Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Coolant is 50-50 Glycol Water mixture</span>
+<span class="sd">    * Constant entrance and exit loss coefficients</span>
+<span class="sd">    * Surface designation of 1/8-19.86 with strip fins</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Strip Fin&#39;</span>
+<span class="sd">        Interrupted fin design that enhances heat transfer while reducing pressure drop</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Hydraulic Diameter&#39;</span>
+<span class="sd">        Characteristic dimension for internal flow calculations</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Kays, W.M. and London, A.L. (1998) Compact Heat Exchangers. 3rd Edition, </span>
+<span class="sd">        McGraw-Hill, New York.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger</span>
+<span class="sd">        Alternative heat exchanger for cryogenic applications</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        Surface Designation of 1/8-19.86 with strip fins. </span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        Kays, W.M. and London, A.L. (1998) Compact Heat Exchangers. 3rd Edition, McGraw-Hill, New York.</span>
-<span class="sd">        </span>
-<span class="sd">       </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the cross-flow heat exchanger attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>         
-
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                                                    <span class="o">=</span> <span class="s1">&#39;cross_flow_heat_exchanger&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">coolant</span>                                                <span class="o">=</span> <span class="n">Glycol_Water</span><span class="p">()</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">air</span>                                                    <span class="o">=</span> <span class="n">Air</span><span class="p">()</span> 
@@ -505,48 +612,131 @@
 
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">):</span>
-        <span class="n">append_cross_flow_heat_exchanger_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds operating conditions for the heat exchanger to a mission segment.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Mission segment to which conditions are being added</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">append_cross_flow_heat_exchanger_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">)</span>
         <span class="k">return</span></div>
 
   
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.append_segment_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.append_segment_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
-        <span class="n">append_cross_flow_hex_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">conditions</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds specific segment conditions to the heat exchanger analysis.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Mission segment being analyzed</span>
+<span class="sd">        bus : Data</span>
+<span class="sd">            Electrical bus data</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        conditions : Data</span>
+<span class="sd">            Operating conditions for the segment</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">append_cross_flow_hex_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">)</span>
         <span class="k">return</span></div>
 
        
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.compute_heat_exchanger_performance">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.compute_heat_exchanger_performance">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_heat_exchanger_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span><span class="n">t_idx</span><span class="p">):</span>
-        <span class="n">cross_flow_hex_rating_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span><span class="n">t_idx</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">compute_heat_exchanger_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates thermal performance of the heat exchanger.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state : Data</span>
+<span class="sd">            Current system state</span>
+<span class="sd">        bus : Data</span>
+<span class="sd">            Electrical bus data</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        delta_t : float</span>
+<span class="sd">            Time step size</span>
+<span class="sd">        t_idx : int</span>
+<span class="sd">            Time index in the simulation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cross_flow_hex_rating_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">)</span>
         <span class="k">return</span></div>
+
 
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.plot_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.plot_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span><span class="n">save_filename</span><span class="p">,</span><span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span><span class="p">,</span><span class="n">file_type</span> <span class="p">,</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-        <span class="n">plot_cross_flow_heat_exchanger_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">results</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">save_filename</span><span class="p">,</span><span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span><span class="p">,</span><span class="n">file_type</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">)</span>     
+    <span class="k">def</span> <span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span> 
+                                <span class="n">show_legend</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates visualization plots of the heat exchanger operating conditions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        results : Data</span>
+<span class="sd">            Simulation results data</span>
+<span class="sd">        coolant_line : Data</span>
+<span class="sd">            Cooling system flow path information</span>
+<span class="sd">        save_filename : str</span>
+<span class="sd">            Path for saving the plot</span>
+<span class="sd">        save_figure : bool</span>
+<span class="sd">            Flag to save the figure</span>
+<span class="sd">        show_legend : bool</span>
+<span class="sd">            Flag to display plot legend</span>
+<span class="sd">        file_type : str</span>
+<span class="sd">            Output file format</span>
+<span class="sd">        width : float</span>
+<span class="sd">            Plot width</span>
+<span class="sd">        height : float</span>
+<span class="sd">            Plot height</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plot_cross_flow_heat_exchanger_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span>
+                                                <span class="n">save_figure</span><span class="p">,</span> <span class="n">show_legend</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>     
         <span class="k">return</span>    </div>
 
 
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.load_kc_values">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.load_kc_values">[docs]</a>
     <span class="k">def</span> <span class="nf">load_kc_values</span><span class="p">():</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Loads entrance loss coefficient data from file.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            Array of entrance loss coefficients</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ospath</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
         <span class="n">separator</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span>
         <span class="n">rel_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">ospath</span><span class="p">)</span> <span class="o">+</span> <span class="n">separator</span>   
-        <span class="n">x</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">rel_path</span> <span class="o">+</span> <span class="s1">&#39;rectangular_passage_Kc.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;Kc&#39;</span><span class="p">)</span> 
+        <span class="n">x</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">rel_path</span> <span class="o">+</span> <span class="s1">&#39;rectangular_passage_Kc.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> 
+                             <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;Kc&#39;</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">x</span> </div>
 
     
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.load_ke_values">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.load_ke_values">[docs]</a>
     <span class="k">def</span> <span class="nf">load_ke_values</span><span class="p">():</span>  
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Loads exit loss coefficient data from file.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            Array of exit loss coefficients</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ospath</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
         <span class="n">separator</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span>
         <span class="n">rel_path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">ospath</span><span class="p">)</span> <span class="o">+</span> <span class="n">separator</span> 
-        <span class="n">x</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">rel_path</span> <span class="o">+</span><span class="s1">&#39;rectangular_passage_Ke.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;Ke&#39;</span><span class="p">)</span>
+        <span class="n">x</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">rel_path</span> <span class="o">+</span><span class="s1">&#39;rectangular_passage_Ke.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> 
+                             <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">comments</span><span class="o">=</span><span class="s1">&#39;Ke&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">x</span> </div>
 </div>
 

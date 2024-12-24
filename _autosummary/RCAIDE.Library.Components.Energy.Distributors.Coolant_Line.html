@@ -541,18 +541,120 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Coolant_Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Distributors/Coolant_Line.html#Coolant_Line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Coolant line class.</p>
+<p>Class for modeling coolant distribution lines in thermal management systems</p>
+<p>This class represents coolant distribution lines that connect various thermal
+management components like heat exchangers, reservoirs, and battery cooling systems.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the coolant line (default: ‘coolant_line’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.heat_exchangers">
+<span class="sig-name descname"><span class="pre">heat_exchangers</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.heat_exchangers" title="Link to this definition">#</a></dt>
+<dd><p>Collection of heat exchangers connected to the coolant line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.reservoirs">
+<span class="sig-name descname"><span class="pre">reservoirs</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.reservoirs" title="Link to this definition">#</a></dt>
+<dd><p>Collection of coolant reservoirs in the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.active">
+<span class="sig-name descname"><span class="pre">active</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.active" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if the coolant line is operational (default: True)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Distribution efficiency of the coolant line (default: 1.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.battery_modules">
+<span class="sig-name descname"><span class="pre">battery_modules</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.battery_modules" title="Link to this definition">#</a></dt>
+<dd><p>Collection of battery cooling systems, created when batteries are present</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a>, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.identical_battery_modules">
+<span class="sig-name descname"><span class="pre">identical_battery_modules</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.identical_battery_modules" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if all battery modules use identical cooling systems</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The coolant line serves as a connection framework between thermal management
+components. It manages the routing of coolant between heat sources (like batteries)
+and heat sinks (like heat exchangers and reservoirs).</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Container’</dt><dd><p>A specialized dictionary-like object for storing RCAIDE components</p>
+</dd>
+<dt>‘Heat Acquisition System’</dt><dd><p>Components and geometry for removing heat from battery modules</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Distributors.Heat_Exchanger</span></code></dt><dd><p>Heat exchanger components for thermal management</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Distributors.Reservoir</span></code></dt><dd><p>Coolant reservoir components</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distributor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Distributors/Coolant_Line.html#Coolant_Line.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.__init__" title="Link to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>This initializes empty containers to add heat acqusition systems</dt><dd><p>for battery modules that are present on a particular bus.</p>
-</dd>
-<dt>Assumptions:</dt><dd><p>None</p>
-</dd>
-<dt>Source:</dt><dd><p>None</p>
+<dd><p>Initialize coolant line and set up containers for thermal management components</p>
+<p>This method initializes empty containers for heat acquisition systems for battery
+modules present on a particular bus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distributor</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a><em>, </em><em>optional</em>) – Component containing battery modules that need thermal management</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>When a distributor with battery modules is provided, the method creates
+containers to store the cooling system components for each battery.</p>
 </dd></dl>
 
 </dd></dl>
@@ -607,6 +709,13 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line"><code class="docutils literal notranslate"><span class="pre">Coolant_Line</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.tag"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.heat_exchangers"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.heat_exchangers</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.reservoirs"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.reservoirs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.active"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.active</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.efficiency"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.efficiency</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.battery_modules"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.battery_modules</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.identical_battery_modules"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.identical_battery_modules</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.__init__"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.__init__()</span></code></a></li>
 </ul>
 </li>

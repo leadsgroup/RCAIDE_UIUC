@@ -538,45 +538,102 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Vertical_Tail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Vertical_Tail.html#Vertical_Tail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing" title="RCAIDE.Library.Components.Wings.Wing.Wing"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wing</span></code></a></p>
-<p>This class is used to define vertical tails RCAIDE</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<p>A class representing a vertical stabilizer surface for aircraft directional control
+and stability.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the vertical tail, defaults to ‘vertical_tail’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.vertical">
+<span class="sig-name descname"><span class="pre">vertical</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.vertical" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating vertical orientation, defaults to True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.symmetric">
+<span class="sig-name descname"><span class="pre">symmetric</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.symmetric" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if tail is symmetric about x-z plane, defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The vertical tail provides directional stability and serves as a mounting surface
+for the rudder. It inherits all geometric and aerodynamic functionality from the
+Wing class and adds specific attributes for vertical tail operation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Wing.html#module-RCAIDE.Library.Components.Wings.Wing" title="RCAIDE.Library.Components.Wings.Wing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Wing</span></code></a></dt><dd><p>Base wing class providing core functionality</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder</span></code></a></dt><dd><p>Control surface typically mounted on vertical tail</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.html#module-RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving" title="RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving</span></code></a></dt><dd><p>All-moving vertical tail variant</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.make_x_z_reflection">
 <span class="sig-name descname"><span class="pre">make_x_z_reflection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Vertical_Tail.html#Vertical_Tail.make_x_z_reflection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.make_x_z_reflection" title="Link to this definition">#</a></dt>
-<dd><p>This returns a Vertical_Tail class or subclass object that is the reflection
-of this object over the x-z plane. This is useful since if Vertical_Tail’s symmetric
-attribute is True, the symmetric wing gets reflected over the x-y plane.</p>
+<dd><p>Creates a reflected copy of the vertical tail over the x-z plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Reflected vertical tail with appropriate sign conventions</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component">Component</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Used when vertical tail’s symmetric attribute is True</p></li>
+<li><p>Reflects dihedral angles and origin location</p></li>
+<li><p>Control surface deflections are reflected according to sign_duplicate</p></li>
+<li><p>Should be called after setting control surface deflections</p></li>
+</ul>
 <p>WARNING: this uses deepcopy to achieve its purpose. If this copies too many unwanted
 attributes, it is recommended that the user should write their own code, taking
 after the form of this function.</p>
 <p>It is also recommended that the user call this function after they set control surface
 or all moving surface deflections. This way the deflection is also properly reflected
 to the other side</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.moment_of_inertia">
 <span class="sig-name descname"><span class="pre">moment_of_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_of_gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Vertical_Tail.html#Vertical_Tail.moment_of_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.moment_of_inertia" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Computes the moment of inertia tensor for the vertical tail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wing</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Wing component data</p></li>
+<li><p><strong>center_of_gravity</strong> (<em>list</em>) – Reference point coordinates for moment calculation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3x3 moment of inertia tensor</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -630,6 +687,9 @@ N/A</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail"><code class="docutils literal notranslate"><span class="pre">Vertical_Tail</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.tag"><code class="docutils literal notranslate"><span class="pre">Vertical_Tail.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.vertical"><code class="docutils literal notranslate"><span class="pre">Vertical_Tail.vertical</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.symmetric"><code class="docutils literal notranslate"><span class="pre">Vertical_Tail.symmetric</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.make_x_z_reflection"><code class="docutils literal notranslate"><span class="pre">Vertical_Tail.make_x_z_reflection()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.moment_of_inertia"><code class="docutils literal notranslate"><span class="pre">Vertical_Tail.moment_of_inertia()</span></code></a></li>
 </ul>

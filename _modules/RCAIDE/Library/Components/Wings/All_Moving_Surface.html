@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Wings.All_Moving_Surface</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Compoments/Wings/All_Moving_Surface.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Wings/All_Moving_Surface.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -397,65 +396,63 @@
 <div class="viewcode-block" id="All_Moving_Surface">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.All_Moving_Surface.html#RCAIDE.Library.Components.Wings.All_Moving_Surface.All_Moving_Surface">[docs]</a>
 <span class="k">class</span> <span class="nc">All_Moving_Surface</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This class is used to allow every all-moving control surface class</span>
-<span class="sd">    (e.g. Stabilator) to inherit from both a type of Wing (Horizontal_Tail</span>
-<span class="sd">    in the case of a Stabilator) and this class. This, way All_Moving_Surface</span>
-<span class="sd">    subclasses can inherit necessary functionality without code bloat or </span>
-<span class="sd">    lengthy type checking if-statements.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A base class for control surfaces that pivot as complete aerodynamic surfaces. This class </span>
+<span class="sd">    provides common functionality for surfaces like stabilators and all-moving vertical tails.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the surface, defaults to &#39;All_Moving_Surface_Data_Object&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    sign_duplicate : float</span>
+<span class="sd">        Sign convention for duplicate surface deflection, defaults to 1.0</span>
+<span class="sd">        </span>
+<span class="sd">    hinge_fraction : float</span>
+<span class="sd">        Location of the hinge line as fraction of chord, defaults to 0.25</span>
+<span class="sd">        </span>
+<span class="sd">    deflection : float</span>
+<span class="sd">        Surface deflection angle, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    Segments : DataOrdered</span>
+<span class="sd">        Collection of surface segments, initialized empty</span>
+<span class="sd">        </span>
+<span class="sd">    use_constant_hinge_fraction : bool</span>
+<span class="sd">        Flag to use constant chord fraction for hinge line, defaults to False</span>
+<span class="sd">        </span>
+<span class="sd">    hinge_vector : ndarray</span>
+<span class="sd">        Vector defining hinge line orientation in body frame, defaults to [0.0, 0.0, 0.0]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This class is designed to be inherited alongside a Wing-derived class to create </span>
+<span class="sd">    specific all-moving control surfaces. It provides:</span>
 <span class="sd">    </span>
-<span class="sd">    In general, this class should not be used directly, and should only exist</span>
-<span class="sd">    as one of the parents of another class that also inherits from Wing  </span>
+<span class="sd">    * Hinge line definition options</span>
+<span class="sd">    * Deflection handling</span>
+<span class="sd">    * Moment of inertia calculations</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    **Definitions**</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    &#39;Hinge Vector&#39;</span>
+<span class="sd">        Three-dimensional vector defining the orientation of the surface&#39;s hinge line </span>
+<span class="sd">        in the body frame. Default [0,0,0] indicates hinge normal to root chord</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Hinge Fraction&#39;</span>
+<span class="sd">        Location of hinge line as fraction of chord when using constant fraction mode</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Stabilator</span>
+<span class="sd">        All-moving horizontal stabilizer implementation</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving</span>
+<span class="sd">        All-moving vertical stabilizer implementation</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for All_Moving_Surface objects in RCAIDE.</span>
-<span class="sd">        </span>
-<span class="sd">        Attributes also found in Control_Surface:</span>
-<span class="sd">            see Control_Surface().__defaults__ for an explanation of attributes. Any</span>
-<span class="sd">            attributes used by this class that are shared with Control_Surface should </span>
-<span class="sd">            always adhere to the convention established in Control_Surface.py</span>
-<span class="sd">    </span>
-<span class="sd">        Attributes unique to All_Moving_Surface:</span>
-<span class="sd">        - use_constant_hinge_fraction: false by default. If this is true, the hinge vector </span>
-<span class="sd">            will follow a constant chord_fraction allong the wing, regardless of what is set</span>
-<span class="sd">            for hinge_vector. Note that constant hinge fractions are how hinges are handled for </span>
-<span class="sd">            Control_Surfaces. If this attribute is false, the hinge vector is described by</span>
-<span class="sd">            the hinge_vector attribute</span>
-<span class="sd">        - hinge_vector: The vector in body-frame that the hingeline points along. By default, </span>
-<span class="sd">            it is [0,0,0], and this is taken to mean that the hinge line is normal to the root</span>
-<span class="sd">            chord, in-plane with the wing. This attribute does nothing if use_constant_hinge_fraction</span>
-<span class="sd">            is set to True.</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the all-moving surface attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                         <span class="o">=</span> <span class="s1">&#39;All_Moving_Surface_Data_Object&#39;</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span>              <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hinge_fraction</span>              <span class="o">=</span> <span class="mf">0.25</span>
@@ -467,8 +464,23 @@
 
 <div class="viewcode-block" id="All_Moving_Surface.moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.All_Moving_Surface.html#RCAIDE.Library.Components.Wings.All_Moving_Surface.All_Moving_Surface.moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">):</span>
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
+    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the all-moving surface.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wing : Component</span>
+<span class="sd">            Wing component data</span>
+<span class="sd">        center_of_gravity : list</span>
+<span class="sd">            Reference point coordinates for moment calculation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span> </div>
 </div>
 

@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Fuselages.Fuselage</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Fuselages/Fuselage.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -391,7 +390,6 @@
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span>            <span class="kn">import</span> <span class="n">Component</span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia</span> <span class="kn">import</span>  <span class="n">compute_fuselage_moment_of_inertia</span>
 
- 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Fuselage</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
@@ -399,86 +397,148 @@
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage">[docs]</a>
 <span class="k">class</span> <span class="nc">Fuselage</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A standard fuselage component for tube and wing aircraft configurations.</span>
+<span class="sd">    Base class for aircraft fuselage components providing core functionality for </span>
+<span class="sd">    geometric definition and analysis.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
 <span class="sd">    tag : str</span>
-<span class="sd">        Identifier for the fuselage component, defaults to &#39;fuselage&#39;</span>
+<span class="sd">        Unique identifier for the fuselage component, defaults to &#39;fuselage&#39;</span>
+<span class="sd">        </span>
 <span class="sd">    origin : list</span>
-<span class="sd">        Origin coordinates of the fuselage, defaults to [[0.0,0.0,0.0]]</span>
+<span class="sd">        3D coordinates [x, y, z] defining the fuselage&#39;s reference point, </span>
+<span class="sd">        defaults to [[0.0, 0.0, 0.0]]</span>
+<span class="sd">        </span>
 <span class="sd">    aerodynamic_center : list</span>
-<span class="sd">        Location of the aerodynamic center, defaults to [0.0,0.0,0.0]</span>
+<span class="sd">        3D coordinates [x, y, z] of the fuselage&#39;s aerodynamic center, </span>
+<span class="sd">        defaults to [0.0, 0.0, 0.0]</span>
+<span class="sd">        </span>
 <span class="sd">    differential_pressure : float</span>
-<span class="sd">        Pressure differential between cabin and external atmosphere, defaults to 0.0</span>
+<span class="sd">        Cabin pressurization differential, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    seats_abreast : float</span>
-<span class="sd">        Number of seats side by side in the cabin, defaults to 0.0</span>
+<span class="sd">        Number of passenger seats arranged side-by-side, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    seat_pitch : float</span>
-<span class="sd">        Distance between seats, defaults to 0.0</span>
+<span class="sd">        Longitudinal distance between seat rows in meters, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    number_coach_seats : float</span>
-<span class="sd">        Total number of coach seats, defaults to 0.0</span>
+<span class="sd">        Total number of economy class seats, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    areas : Data</span>
-<span class="sd">        Container for area-related parameters including front_projected, side_projected, and wetted areas</span>
+<span class="sd">        Collection of fuselage area measurements</span>
+<span class="sd">        </span>
+<span class="sd">        - front_projected : float</span>
+<span class="sd">            Frontal area, defaults to 0.0</span>
+<span class="sd">        - side_projected : float</span>
+<span class="sd">            Side profile area, defaults to 0.0</span>
+<span class="sd">        - wetted : float</span>
+<span class="sd">            Total wetted surface area, defaults to 0.0</span>
+<span class="sd">            </span>
 <span class="sd">    effective_diameter : float</span>
-<span class="sd">        Effective diameter of the fuselage, defaults to 0.0</span>
+<span class="sd">        Equivalent circular diameter, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    width : float</span>
-<span class="sd">        Width of the fuselage, defaults to 0.0</span>
+<span class="sd">        Maximum fuselage width, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    heights : Data</span>
-<span class="sd">        Container for height measurements at maximum, quarter length, three quarters length, </span>
-<span class="sd">        wing root quarter chord, and vertical root quarter chord</span>
+<span class="sd">        Collection of height measurements along the fuselage</span>
+<span class="sd">        </span>
+<span class="sd">        - maximum : float</span>
+<span class="sd">            Maximum height in meters, defaults to 0.0</span>
+<span class="sd">        - at_quarter_length : float</span>
+<span class="sd">            Height at 25% of fuselage length, defaults to 0.0</span>
+<span class="sd">        - at_three_quarters_length : float</span>
+<span class="sd">            Height at 75% of fuselage length, defaults to 0.0</span>
+<span class="sd">        - at_wing_root_quarter_chord : float</span>
+<span class="sd">            Height at wing root quarter chord, defaults to 0.0</span>
+<span class="sd">        - at_vertical_root_quarter_chord : float</span>
+<span class="sd">            Height at vertical tail root quarter chord, defaults to 0.0</span>
+<span class="sd">            </span>
 <span class="sd">    lengths : Data</span>
-<span class="sd">        Container for length measurements including nose, tail, total, cabin, fore_space, and aft_space</span>
+<span class="sd">        Collection of length measurements</span>
+<span class="sd">        </span>
+<span class="sd">        - nose : float</span>
+<span class="sd">            Length of nose section, defaults to 0.0</span>
+<span class="sd">        - tail : float</span>
+<span class="sd">            Length of tail section, defaults to 0.0</span>
+<span class="sd">        - total : float</span>
+<span class="sd">            Total fuselage length, defaults to 0.0</span>
+<span class="sd">        - cabin : float</span>
+<span class="sd">            Length of passenger cabin, defaults to 0.0</span>
+<span class="sd">        - fore_space : float</span>
+<span class="sd">            Length of forward equipment bay, defaults to 0.0</span>
+<span class="sd">        - aft_space : float</span>
+<span class="sd">            Length of aft equipment bay, defaults to 0.0</span>
+<span class="sd">            </span>
 <span class="sd">    x_rotation : float</span>
-<span class="sd">        Rotation angle around x-axis, defaults to 0.0</span>
+<span class="sd">        Rotation angle about x-axis, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    y_rotation : float</span>
-<span class="sd">        Rotation angle around y-axis, defaults to 0.0</span>
+<span class="sd">        Rotation angle about y-axis, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    z_rotation : float</span>
-<span class="sd">        Rotation angle around z-axis, defaults to 0.0</span>
+<span class="sd">        Rotation angle about z-axis, defaults to 0.0</span>
+<span class="sd">        </span>
 <span class="sd">    fineness : Data</span>
-<span class="sd">        Container for fineness ratios of nose and tail</span>
+<span class="sd">        Fineness ratio parameters</span>
+<span class="sd">        </span>
+<span class="sd">        - nose : float</span>
+<span class="sd">            Ratio of nose length to maximum diameter, defaults to 0.0</span>
+<span class="sd">        - tail : float</span>
+<span class="sd">            Ratio of tail length to maximum diameter, defaults to 0.0</span>
+<span class="sd">            </span>
 <span class="sd">    nose_curvature : float</span>
-<span class="sd">        Curvature parameter for the nose section, defaults to 1.5</span>
+<span class="sd">        Shape parameter defining nose profile curvature, defaults to 1.5</span>
+<span class="sd">        </span>
 <span class="sd">    tail_curvature : float</span>
-<span class="sd">        Curvature parameter for the tail section, defaults to 1.5</span>
+<span class="sd">        Shape parameter defining tail profile curvature, defaults to 1.5</span>
+<span class="sd">        </span>
 <span class="sd">    fuel_tanks : Container</span>
-<span class="sd">        Container for fuel tank components</span>
+<span class="sd">        Collection of fuel tank components within the fuselage, initialized empty</span>
+<span class="sd">        </span>
 <span class="sd">    vsp_data : Data</span>
-<span class="sd">        Container for OpenVSP-related parameters including xsec_surf_id and xsec_num</span>
+<span class="sd">        OpenVSP-specific geometry parameters</span>
+<span class="sd">        </span>
+<span class="sd">        - xsec_surf_id : str</span>
+<span class="sd">            OpenVSP cross-section surface identifier</span>
+<span class="sd">        - xsec_num : int</span>
+<span class="sd">            Number of cross-sections in OpenVSP model, defaults to None</span>
+<span class="sd">            </span>
 <span class="sd">    Segments : Container</span>
-<span class="sd">        Container for fuselage segments</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    None</span>
+<span class="sd">        Collection of fuselage segment components, initialized empty</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This class represents a conventional tube and wing aircraft fuselage component.</span>
-<span class="sd">    It provides functionality for defining the geometry, structural properties, and</span>
-<span class="sd">    configuration of an aircraft fuselage.</span>
+<span class="sd">    This class serves as the foundation for all fuselage types in RCAIDE, providing:</span>
+<span class="sd">    </span>
+<span class="sd">    * Geometric definition capabilities</span>
+<span class="sd">    * Integration with OpenVSP for visualization and analysis</span>
+<span class="sd">    * Support for fuel tank and segment management</span>
+<span class="sd">    * Basic structural configuration parameters</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
 
-<span class="sd">    **Assumptions:**</span>
-<span class="sd">        Conventional fuselage configuration</span>
+<span class="sd">    &#39;Fineness Ratio&#39;</span>
+<span class="sd">        Ratio of length to maximum diameter, important for drag characteristics</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Wetted Area&#39;</span>
+<span class="sd">        Total surface area exposed to airflow</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Equipment Bay&#39;</span>
+<span class="sd">        Non-pressurized volume for systems and equipment storage</span>
 
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Tube_Fuselage</span>
+<span class="sd">        Implementation for conventional tube-and-wing aircraft</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage</span>
+<span class="sd">        Implementation for blended wing body aircraft</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component to function.</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for all fuselage attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
         
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                                    <span class="o">=</span> <span class="s1">&#39;fuselage&#39;</span>
@@ -532,19 +592,14 @@
 <div class="viewcode-block" id="Fuselage.append_segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_segment">[docs]</a>
     <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a segment to the fuselage. </span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a new segment to the fuselage&#39;s segment container.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Fuselage segment to be added</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Assert database type</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
@@ -559,19 +614,14 @@
 <div class="viewcode-block" id="Fuselage.append_fuel_tank">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.append_fuel_tank">[docs]</a>
     <span class="k">def</span> <span class="nf">append_fuel_tank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fuel_tank</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a fuel tank to the fuselage </span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a new fuel tank to the fuselage&#39;s fuel tank container.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        fuel_tank : Data</span>
+<span class="sd">            Fuel tank component to be added</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c1"># Assert database type</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fuel_tank</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
@@ -586,7 +636,25 @@
 <div class="viewcode-block" id="Fuselage.compute_moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage.compute_moment_of_inertia">[docs]</a>
     <span class="k">def</span> <span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span> 
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_fuselage_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the fuselage.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        center_of_gravity : list, optional</span>
+<span class="sd">            Reference point coordinates for moment calculation, defaults to [[0, 0, 0]]</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        I : ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor in kg*m^2</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia</span>
+<span class="sd">            Implementation of the moment of inertia calculation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">compute_fuselage_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span>    </div>
 </div>
 

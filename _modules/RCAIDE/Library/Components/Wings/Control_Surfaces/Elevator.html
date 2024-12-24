@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Wings/Control_Surfaces/Elevator.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -389,52 +388,61 @@
 <span class="kn">from</span> <span class="nn">.Control_Surface</span> <span class="kn">import</span> <span class="n">Control_Surface</span> 
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="c1">#  Attribute</span>
-<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- -Control_Surfaces</span>
+<span class="c1">#  Elevator</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Elevator">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator.html#RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator.Elevator">[docs]</a>
 <span class="k">class</span> <span class="nc">Elevator</span><span class="p">(</span><span class="n">Control_Surface</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class is used to define slats in RCAIDE</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an elevator control surface for aircraft pitch control.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
-
-<span class="sd">    Inputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
-<span class="sd">    &quot;&quot;&quot;</span> 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for slats in RCAIDE.</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the elevator, defaults to &#39;elevator&#39;</span>
 <span class="sd">        </span>
-<span class="sd">        see Control_Surface().__defaults__ for an explanation of attributes</span>
+<span class="sd">    hinge_fraction : float</span>
+<span class="sd">        Location of the hinge line as fraction of chord, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    sign_duplicate : float</span>
+<span class="sd">        Sign convention for duplicate elevator deflection, defaults to 1.0</span>
+<span class="sd">        (synchronized deflection for pitch control)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The elevator is a trailing edge control surface used primarily for pitch control. </span>
+<span class="sd">    It inherits basic control surface functionality from the Control_Surface class </span>
+<span class="sd">    and adds specific attributes for elevator operation.</span>
 <span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
+<span class="sd">    **Definitions**</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
+<span class="sd">    &#39;Hinge Fraction&#39;</span>
+<span class="sd">        The chordwise location of the elevator hinge line, measured from the leading </span>
+<span class="sd">        edge as a fraction of local chord</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Sign Duplicate&#39;</span>
+<span class="sd">        Determines whether paired elevators deflect in the same or opposite directions. </span>
+<span class="sd">        1.0 indicates synchronized deflection for pitch control</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface</span>
+<span class="sd">        Base class providing common control surface functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Stabilator</span>
+<span class="sd">        Alternative pitch control using all-moving horizontal tail</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
 
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                   <span class="o">=</span> <span class="s1">&#39;elevator&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hinge_fraction</span>        <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span>        <span class="o">=</span> <span class="mf">1.0</span>        
+    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the elevator attributes.</span>
+<span class="sd">        </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        See Control_Surface.__defaults__ for additional inherited attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>            <span class="o">=</span> <span class="s1">&#39;elevator&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hinge_fraction</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span> <span class="o">=</span> <span class="mf">1.0</span>
         
         <span class="k">pass</span> </div>
 

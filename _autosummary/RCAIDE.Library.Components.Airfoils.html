@@ -531,15 +531,30 @@
                   
   <section id="module-RCAIDE.Library.Components.Airfoils">
 <span id="rcaide-library-components-airfoils"></span><h1>RCAIDE.Library.Components.Airfoils<a class="headerlink" href="#module-RCAIDE.Library.Components.Airfoils" title="Link to this heading">#</a></h1>
-<p>RCAIDE Package Setup</p>
+<p>Airfoils module providing classes and methods for defining and analyzing aircraft airfoil geometries</p>
+<p>This module contains implementations of various airfoil types including general airfoils
+and specific NACA series airfoils. It provides functionality for defining airfoil geometry.</p>
+<p class="rubric">Notes</p>
+<p>The airfoil classes in this module are designed to work with RCAIDE’s aerodynamic analysis
+tools and can be integrated into complete aircraft configurations. Airfoil data can be
+imported from external sources or generated using geometric definitions.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.html#module-RCAIDE.Library.Components.Wings" title="RCAIDE.Library.Components.Wings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings</span></code></a></dt><dd><p>Wing components that utilize airfoil definitions</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Framework.Analyses.Aerodynamics.html#module-RCAIDE.Framework.Analyses.Aerodynamics" title="RCAIDE.Framework.Analyses.Aerodynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Framework.Analyses.Aerodynamics</span></code></a></dt><dd><p>Aerodynamic analysis tools that work with airfoil components</p>
+</dd>
+</dl>
+</div>
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.Airfoil.html#module-RCAIDE.Library.Components.Airfoils.Airfoil" title="RCAIDE.Library.Components.Airfoils.Airfoil"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Airfoil</span></code></a>(*args, **kwarg)</p></td>
-<td><p>Generic airfoil class.</p></td>
+<td><p>Base class for defining airfoil geometries and their aerodynamic characteristics</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.html#module-RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil" title="RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NACA_4_Series_Airfoil</span></code></a>(*args, **kwarg)</p></td>
-<td><p>NACA 4-Series airfoil class.</p></td>
+<td><p>Class for generating NACA 4-series airfoil geometries.</p></td>
 </tr>
 </tbody>
 </table>

@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Landing_Gear/Nose_Landing_Gear.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Nov 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -394,33 +393,54 @@
 <div class="viewcode-block" id="Nose_Landing_Gear">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.html#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear">[docs]</a>
 <span class="k">class</span> <span class="nc">Nose_Landing_Gear</span><span class="p">(</span><span class="n">Landing_Gear</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Nose Landing Gear Component</span>
-<span class="sd">          </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">            </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A        </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Nose landing gear component that provides directional control during ground operations </span>
+<span class="sd">    and supports a portion of the aircraft&#39;s forward weight.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the nose landing gear component, defaults to &#39;nose_gear&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    tire_diameter : float</span>
+<span class="sd">        Diameter of the nose gear tires, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    strut_length : float</span>
+<span class="sd">        Length of the nose gear strut assembly, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    units : float</span>
+<span class="sd">        Number of nose landing gear units, typically 1, defaults to 0</span>
+<span class="sd">        </span>
+<span class="sd">    wheels : float</span>
+<span class="sd">        Number of wheels per nose gear unit, defaults to 0</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The nose landing gear typically carries 10-20% of the aircraft weight and provides </span>
+<span class="sd">    steering capability during taxi, takeoff, and landing.</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Located on aircraft centerline</span>
+<span class="sd">    * Provides steering capability</span>
+<span class="sd">    * Designed for lower loads than main gear</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Steering Angle&#39;</span>
+<span class="sd">        Maximum deflection angle available for directional control</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Landing_Gear.Landing_Gear</span>
+<span class="sd">        Base landing gear class</span>
+<span class="sd">    RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear</span>
+<span class="sd">        Main gear component that works in conjunction with nose gear</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
-<span class="w">        </span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component attributes.</span>
-<span class="sd">        </span>
-<span class="sd">                Assumptions:</span>
-<span class="sd">                None</span>
-<span class="sd">                </span>
-<span class="sd">                Source:</span>
-<span class="sd">                N/A</span>
-<span class="sd">                </span>
-<span class="sd">                Inputs:</span>
-<span class="sd">                None</span>
-<span class="sd">                </span>
-<span class="sd">                Output:</span>
-<span class="sd">                None</span>
-<span class="sd">                </span>
-<span class="sd">                Properties Used:</span>
-<span class="sd">                N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the nose landing gear attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>           <span class="o">=</span> <span class="s1">&#39;nose_gear&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tire_diameter</span> <span class="o">=</span> <span class="mf">0.</span>    

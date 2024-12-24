@@ -510,30 +510,161 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Air_Cooled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.html#Air_Cooled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>This provides output values for a direct convention heat acquisition of a bettery pack</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
+<p>A class representing an air-cooled thermal management system for battery packs using
+direct convection cooling.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the cooling system, defaults to ‘air_cooled_heat_acquisition’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.cooling_fluid">
+<span class="sig-name descname"><span class="pre">cooling_fluid</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.cooling_fluid" title="Link to this definition">#</a></dt>
+<dd><p>Air properties for cooling calculations, defaults to standard Air()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Library.Attributes.Gases.Air.html#RCAIDE.Library.Attributes.Gases.Air.Air" title="RCAIDE.Library.Attributes.Gases.Air.Air">Air</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.cooling_fluid.flowspeed">
+<span class="sig-prename descclassname"><span class="pre">cooling_fluid.</span></span><span class="sig-name descname"><span class="pre">flowspeed</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.cooling_fluid.flowspeed" title="Link to this definition">#</a></dt>
+<dd><p>Air flow velocity through the cooling channels, defaults to 0.01</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.convective_heat_transfer_coefficient">
+<span class="sig-name descname"><span class="pre">convective_heat_transfer_coefficient</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.convective_heat_transfer_coefficient" title="Link to this definition">#</a></dt>
+<dd><p>Heat transfer coefficient between air and battery surface, defaults to 35.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.heat_transfer_efficiency">
+<span class="sig-name descname"><span class="pre">heat_transfer_efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.heat_transfer_efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Overall efficiency of the heat transfer process, defaults to 1.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The air-cooled system provides direct convective cooling for battery thermal
+management. It includes functionality for:</p>
+<ul class="simple">
+<li><p>Operating condition analysis</p></li>
+<li><p>Thermal performance calculation</p></li>
+<li><p>Condition plotting and visualization</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Convective Heat Transfer Coefficient’</dt><dd><p>Rate of heat transfer between the battery surface and cooling air</p>
+</dd>
+<dt>‘Heat Transfer Efficiency’</dt><dd><p>Ratio of actual to theoretical maximum heat transfer</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel.html#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel" title="RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel</span></code></a></dt><dd><p>Alternative cooling approach using liquid coolant</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.html#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler" title="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler</span></code></a></dt><dd><p>Alternative cooling approach for extreme temperatures</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_operating_conditions">
 <span class="sig-name descname"><span class="pre">append_operating_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coolant_line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.html#Air_Cooled.append_operating_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_operating_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Adds operating conditions for the cooling system to a mission segment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segment</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Mission segment to which conditions are being added</p></li>
+<li><p><strong>coolant_line</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Cooling system flow path information</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_segment_conditions">
 <span class="sig-name descname"><span class="pre">append_segment_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coolant_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.html#Air_Cooled.append_segment_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_segment_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Adds specific segment conditions to the cooling system analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segment</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Mission segment being analyzed</p></li>
+<li><p><strong>coolant_line</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Cooling system flow path information</p></li>
+<li><p><strong>conditions</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Operating conditions for the segment</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.compute_thermal_performance">
 <span class="sig-name descname"><span class="pre">compute_thermal_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">battery</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coolant_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q_heat_gen</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_cell</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_idx</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.html#Air_Cooled.compute_thermal_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.compute_thermal_performance" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Calculates thermal performance of the air cooling system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>battery</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Battery pack information</p></li>
+<li><p><strong>bus</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Electrical bus data</p></li>
+<li><p><strong>coolant_line</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Cooling system flow path information</p></li>
+<li><p><strong>Q_heat_gen</strong> (<em>float</em>) – Heat generation rate</p></li>
+<li><p><strong>T_cell</strong> (<em>float</em>) – Current cell temperature</p></li>
+<li><p><strong>state</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Current system state</p></li>
+<li><p><strong>delta_t</strong> (<em>float</em>) – Time step size</p></li>
+<li><p><strong>t_idx</strong> (<em>int</em>) – Time index in the simulation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated battery temperature</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.plot_operating_conditions">
 <span class="sig-name descname"><span class="pre">plot_operating_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coolant_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.html#Air_Cooled.plot_operating_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.plot_operating_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Creates visualization plots of the cooling system operating conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Simulation results data</p></li>
+<li><p><strong>coolant_line</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Cooling system flow path information</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em>) – Path for saving the plot</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em>) – Flag to save the figure</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em>) – Flag to display plot legend</p></li>
+<li><p><strong>file_type</strong> (<em>str</em>) – Output file format</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – Plot width</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – Plot height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -544,32 +675,141 @@ N/A</p>
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Cryocooler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Cryocooler.html#Cryocooler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Cryocooler provides cooling power to cryogenic components.
-Energy is used by this component to provide the cooling, despite the cooling power provided also being an energy inflow.</p>
+<p>A class representing a cryogenic cooling system for maintaining extremely low
+temperatures in battery or other systems.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.cooler_type">
+<span class="sig-name descname"><span class="pre">cooler_type</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.cooler_type" title="Link to this definition">#</a></dt>
+<dd><p>Type of cryocooler system being used, defaults to None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.rated_power">
+<span class="sig-name descname"><span class="pre">rated_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.rated_power" title="Link to this definition">#</a></dt>
+<dd><p>Maximum power rating of the cryocooler, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.min_cryo_temp">
+<span class="sig-name descname"><span class="pre">min_cryo_temp</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.min_cryo_temp" title="Link to this definition">#</a></dt>
+<dd><p>Minimum achievable cryogenic temperature, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.ambient_temp">
+<span class="sig-name descname"><span class="pre">ambient_temp</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.ambient_temp" title="Link to this definition">#</a></dt>
+<dd><p>Ambient temperature for heat rejection, defaults to 300.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cooling_power">
+<span class="sig-prename descclassname"><span class="pre">inputs.</span></span><span class="sig-name descname"><span class="pre">cooling_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cooling_power" title="Link to this definition">#</a></dt>
+<dd><p>Required cooling power at cryogenic temperature, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cryo_temp">
+<span class="sig-prename descclassname"><span class="pre">inputs.</span></span><span class="sig-name descname"><span class="pre">cryo_temp</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cryo_temp" title="Link to this definition">#</a></dt>
+<dd><p>Target cryogenic temperature, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.mass_properties.mass">
+<span class="sig-prename descclassname"><span class="pre">mass_properties.</span></span><span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.mass_properties.mass" title="Link to this definition">#</a></dt>
+<dd><p>Mass of the cryocooler system, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.outputs.input_power">
+<span class="sig-prename descclassname"><span class="pre">outputs.</span></span><span class="sig-name descname"><span class="pre">input_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.outputs.input_power" title="Link to this definition">#</a></dt>
+<dd><p>Power required by the cryocooler, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The cryocooler provides cooling power at cryogenic temperatures. It requires
+electrical power input to provide cooling, with the required input power
+depending on:</p>
+<ul class="simple">
+<li><p>Operating temperature differential</p></li>
+<li><p>Required cooling power</p></li>
+<li><p>System efficiency</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Cooling Power’</dt><dd><p>Heat removal capacity at the cryogenic temperature</p>
+</dd>
+<dt>‘Input Power’</dt><dd><p>Electrical power required to achieve the cooling effect</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.html#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled" title="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled</span></code></a></dt><dd><p>Alternative cooling approach for moderate temperatures</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel.html#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel" title="RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel</span></code></a></dt><dd><p>Alternative cooling approach using liquid coolant</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.energy_calc">
 <span class="sig-name descname"><span class="pre">energy_calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Cryocooler.html#Cryocooler.energy_calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.energy_calc" title="Link to this definition">#</a></dt>
-<dd><p>Calculate the instantaneous required energy input</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-self.inputs</p>
-<blockquote>
-<div><p>cryo_temp       [K]
-cooling_power   [W]</p>
-</div></blockquote>
-<p>Outputs:
-self.outputs.</p>
-<blockquote>
-<div><p>input_power     [W]</p>
-</div></blockquote>
-<p>Properties Used:</p>
-<dl class="simple">
-<dt>self.</dt><dd><p>cooler_type</p>
+<dd><p>Calculates the required input power for the cryocooler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>conditions</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Operating conditions for the calculation</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Required input power in Watts</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Uses the cryocooler model to determine power requirements based on:
+* Target cryogenic temperature
+* Required cooling power
+* Cooler type and characteristics</p>
 </dd></dl>
 
 </dd></dl>
@@ -620,7 +860,18 @@ self.outputs.</p>
 </section>
 <section id="module-RCAIDE.Library.Components.Thermal_Management.Batteries">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Components.Thermal_Management.Batteries" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>Module containing thermal management components specifically for battery systems. This module
+provides classes for different battery cooling approaches including air cooling, cryogenic
+cooling, and liquid cooling with wavy channels.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.html#module-RCAIDE.Library.Components.Energy.Sources.Battery_Modules" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Battery_Modules</span></code></a></dt><dd><p>Related module for battery system modeling</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.html#module-RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers" title="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers</span></code></a></dt><dd><p>Related module for heat exchanger components used in battery cooling</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -656,6 +907,11 @@ self.outputs.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled">RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled module</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled"><code class="docutils literal notranslate"><span class="pre">Air_Cooled</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.tag"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.cooling_fluid"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.cooling_fluid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.cooling_fluid.flowspeed"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.cooling_fluid.flowspeed</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.convective_heat_transfer_coefficient"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.convective_heat_transfer_coefficient</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.heat_transfer_efficiency"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.heat_transfer_efficiency</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_operating_conditions"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.append_operating_conditions()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.append_segment_conditions"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.append_segment_conditions()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.Air_Cooled.compute_thermal_performance"><code class="docutils literal notranslate"><span class="pre">Air_Cooled.compute_thermal_performance()</span></code></a></li>
@@ -666,6 +922,14 @@ self.outputs.</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler">RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler module</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler"><code class="docutils literal notranslate"><span class="pre">Cryocooler</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.cooler_type"><code class="docutils literal notranslate"><span class="pre">Cryocooler.cooler_type</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.rated_power"><code class="docutils literal notranslate"><span class="pre">Cryocooler.rated_power</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.min_cryo_temp"><code class="docutils literal notranslate"><span class="pre">Cryocooler.min_cryo_temp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.ambient_temp"><code class="docutils literal notranslate"><span class="pre">Cryocooler.ambient_temp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cooling_power"><code class="docutils literal notranslate"><span class="pre">Cryocooler.inputs.cooling_power</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cryo_temp"><code class="docutils literal notranslate"><span class="pre">Cryocooler.inputs.cryo_temp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.mass_properties.mass"><code class="docutils literal notranslate"><span class="pre">Cryocooler.mass_properties.mass</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.outputs.input_power"><code class="docutils literal notranslate"><span class="pre">Cryocooler.outputs.input_power</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.energy_calc"><code class="docutils literal notranslate"><span class="pre">Cryocooler.energy_calc()</span></code></a></li>
 </ul>
 </li>

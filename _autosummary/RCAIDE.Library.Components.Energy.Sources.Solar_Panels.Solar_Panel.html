@@ -544,11 +544,39 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Solar_Panel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Solar_Panels/Solar_Panel.html#Solar_Panel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>This is a solar cell component.</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
+<p>Class for modeling photovoltaic solar panels in aircraft applications</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel.area">
+<span class="sig-name descname"><span class="pre">area</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel.area" title="Link to this definition">#</a></dt>
+<dd><p>Solar panel surface area [m^2] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel.efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Solar energy conversion efficiency [-] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The solar panel model provides basic functionality for converting solar
+radiation into electrical power based on panel area and efficiency.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Modulators.Solar_Logic.html#module-RCAIDE.Library.Components.Energy.Modulators.Solar_Logic" title="RCAIDE.Library.Components.Energy.Modulators.Solar_Logic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Modulators.Solar_Logic</span></code></a></dt><dd><p>Solar power management and control</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -600,7 +628,11 @@ None</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel"><code class="docutils literal notranslate"><span class="pre">Solar_Panel</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel"><code class="docutils literal notranslate"><span class="pre">Solar_Panel</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel.area"><code class="docutils literal notranslate"><span class="pre">Solar_Panel.area</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel.efficiency"><code class="docutils literal notranslate"><span class="pre">Solar_Panel.efficiency</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

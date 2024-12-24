@@ -541,6 +541,158 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Control_Surface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Control_Surfaces/Control_Surface.html#Control_Surface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
+<p>Base class for aircraft control surfaces providing core functionality for geometric
+definition and operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the control surface, defaults to ‘control_surface’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span">
+<span class="sig-name descname"><span class="pre">span</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span" title="Link to this definition">#</a></dt>
+<dd><p>Spanwise length of the control surface in meters, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span_fraction_start">
+<span class="sig-name descname"><span class="pre">span_fraction_start</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span_fraction_start" title="Link to this definition">#</a></dt>
+<dd><p>Spanwise location where control surface begins as fraction of wing span,
+defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span_fraction_end">
+<span class="sig-name descname"><span class="pre">span_fraction_end</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span_fraction_end" title="Link to this definition">#</a></dt>
+<dd><p>Spanwise location where control surface ends as fraction of wing span,
+defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.hinge_fraction">
+<span class="sig-name descname"><span class="pre">hinge_fraction</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.hinge_fraction" title="Link to this definition">#</a></dt>
+<dd><p>Chordwise location of hinge line as fraction of control surface chord,
+defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.chord_fraction">
+<span class="sig-name descname"><span class="pre">chord_fraction</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.chord_fraction" title="Link to this definition">#</a></dt>
+<dd><p>Fraction of wing chord occupied by control surface, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.sign_duplicate">
+<span class="sig-name descname"><span class="pre">sign_duplicate</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.sign_duplicate" title="Link to this definition">#</a></dt>
+<dd><p>Sign convention for duplicate control surface deflection (1.0 or -1.0),
+defaults to 1.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.deflection">
+<span class="sig-name descname"><span class="pre">deflection</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.deflection" title="Link to this definition">#</a></dt>
+<dd><p>Control surface deflection angle, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.configuration_type">
+<span class="sig-name descname"><span class="pre">configuration_type</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.configuration_type" title="Link to this definition">#</a></dt>
+<dd><p>Type of control surface construction (e.g., ‘single_slotted’),
+defaults to ‘single_slotted’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.gain">
+<span class="sig-name descname"><span class="pre">gain</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.gain" title="Link to this definition">#</a></dt>
+<dd><p>Deflection multiplier used for AVL analysis, defaults to 1.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The control surface class provides the foundation for all movable aerodynamic
+surfaces. Key features include:</p>
+<ul class="simple">
+<li><p>Geometric definition relative to parent wing</p></li>
+<li><p>Deflection and hinge line specification</p></li>
+<li><p>Configuration type specification</p></li>
+<li><p>Duplicate surface handling</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Span Fraction’</dt><dd><p>Location along wing span measured as fraction from root (0.0) to tip (1.0)</p>
+</dd>
+<dt>‘Chord Fraction’</dt><dd><p>Portion of local wing chord occupied by control surface</p>
+</dd>
+<dt>‘Hinge Fraction’</dt><dd><p>Location of hinge line measured as fraction of control surface chord</p>
+</dd>
+<dt>‘Sign Duplicate’</dt><dd><p>Determines deflection relationship between paired surfaces:
+* 1.0 for synchronized deflection (e.g., flaps)
+* -1.0 for opposite deflection (e.g., ailerons)</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Flap" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Flap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Flap</span></code></a></dt><dd><p>High-lift device implementation</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron</span></code></a></dt><dd><p>Roll control implementation</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator</span></code></a></dt><dd><p>Pitch control implementation</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder</span></code></a></dt><dd><p>Yaw control implementation</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -592,7 +744,19 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface"><code class="docutils literal notranslate"><span class="pre">Control_Surface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface"><code class="docutils literal notranslate"><span class="pre">Control_Surface</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.tag"><code class="docutils literal notranslate"><span class="pre">Control_Surface.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span"><code class="docutils literal notranslate"><span class="pre">Control_Surface.span</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span_fraction_start"><code class="docutils literal notranslate"><span class="pre">Control_Surface.span_fraction_start</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.span_fraction_end"><code class="docutils literal notranslate"><span class="pre">Control_Surface.span_fraction_end</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.hinge_fraction"><code class="docutils literal notranslate"><span class="pre">Control_Surface.hinge_fraction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.chord_fraction"><code class="docutils literal notranslate"><span class="pre">Control_Surface.chord_fraction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.sign_duplicate"><code class="docutils literal notranslate"><span class="pre">Control_Surface.sign_duplicate</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.deflection"><code class="docutils literal notranslate"><span class="pre">Control_Surface.deflection</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.configuration_type"><code class="docutils literal notranslate"><span class="pre">Control_Surface.configuration_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface.gain"><code class="docutils literal notranslate"><span class="pre">Control_Surface.gain</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

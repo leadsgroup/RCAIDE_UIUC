@@ -510,7 +510,111 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Airfoil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Airfoils/Airfoil.html#Airfoil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Generic airfoil class.</p>
+<p>Base class for defining airfoil geometries and their aerodynamic characteristics</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the airfoil (default: ‘Airfoil’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.coordinate_file">
+<span class="sig-name descname"><span class="pre">coordinate_file</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.coordinate_file" title="Link to this definition">#</a></dt>
+<dd><p>Path to file containing airfoil coordinates (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.geometry">
+<span class="sig-name descname"><span class="pre">geometry</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.geometry" title="Link to this definition">#</a></dt>
+<dd><p>Array containing x,y coordinates defining the airfoil shape (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>array_like, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.polar_files">
+<span class="sig-name descname"><span class="pre">polar_files</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.polar_files" title="Link to this definition">#</a></dt>
+<dd><p>Paths to files containing aerodynamic polar data (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.polars">
+<span class="sig-name descname"><span class="pre">polars</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.polars" title="Link to this definition">#</a></dt>
+<dd><p>Dictionary containing aerodynamic coefficient data (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.prev">
+<span class="sig-name descname"><span class="pre">prev</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.prev" title="Link to this definition">#</a></dt>
+<dd><p>Reference to previous airfoil in a wing (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Airfoils.Airfoil.html#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil" title="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil">Airfoil</a>, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.next">
+<span class="sig-name descname"><span class="pre">next</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.next" title="Link to this definition">#</a></dt>
+<dd><p>Reference to next airfoil in a wing (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Airfoils.Airfoil.html#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil" title="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil">Airfoil</a>, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.number_of_points">
+<span class="sig-name descname"><span class="pre">number_of_points</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.number_of_points" title="Link to this definition">#</a></dt>
+<dd><p>Number of points used to discretize the airfoil geometry (default: 201)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The Airfoil class serves as a base class for more specific airfoil implementations.
+It provides basic structure for storing geometry and aerodynamic data, which can be
+loaded from files or generated programmatically.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Polar Data’</dt><dd><p>Aerodynamic coefficient data (typically cl, cd, cm) as a function of angle of attack</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.html#module-RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil" title="RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil</span></code></a></dt><dd><p>Implementation for NACA 4-series airfoils</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -520,13 +624,72 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NACA_4_Series_Airfoil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Airfoils/NACA_4_Series_Airfoil.html#NACA_4_Series_Airfoil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Airfoils.Airfoil.html#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil" title="RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil"><code class="xref py py-class docutils literal notranslate"><span class="pre">Airfoil</span></code></a></p>
-<p>NACA 4-Series airfoil class.</p>
+<p>Class for generating NACA 4-series airfoil geometries.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the airfoil (default: ‘NACA_4_Series’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil.NACA_4_Series_code">
+<span class="sig-name descname"><span class="pre">NACA_4_Series_code</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil.NACA_4_Series_code" title="Link to this definition">#</a></dt>
+<dd><p>Four-digit NACA designation (default: ‘0012’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Inherits all attributes from the base Airfoil class. The geometry is generated
+based on the NACA 4-series equations using the specified four-digit code.</p>
+<p>The NACA 4-series airfoils are defined by four digits that specify the camber,
+position of maximum camber, and thickness. For example, in a NACA 2412:
+- First digit (2) specifies maximum camber in percentage of chord
+- Second digit (4) specifies position of maximum camber in tenths of chord
+- Last two digits (12) specify maximum thickness in percentage of chord</p>
+<dl class="simple">
+<dt>‘NACA Code Format’</dt><dd><p>MPXX where:
+- M is the maximum camber in percentage of chord
+- P is the position of maximum camber in tenths of chord
+- XX is the maximum thickness in percentage of chord</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Airfoils.Airfoil.html#module-RCAIDE.Library.Components.Airfoils.Airfoil" title="RCAIDE.Library.Components.Airfoils.Airfoil"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Airfoils.Airfoil</span></code></a></dt><dd><p>Base airfoil class</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
 <section id="module-RCAIDE.Library.Components.Airfoils">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Components.Airfoils" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>Airfoils module providing classes and methods for defining and analyzing aircraft airfoil geometries</p>
+<p>This module contains implementations of various airfoil types including general airfoils
+and specific NACA series airfoils. It provides functionality for defining airfoil geometry.</p>
+<p class="rubric">Notes</p>
+<p>The airfoil classes in this module are designed to work with RCAIDE’s aerodynamic analysis
+tools and can be integrated into complete aircraft configurations. Airfoil data can be
+imported from external sources or generated using geometric definitions.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Wings.html#module-RCAIDE.Library.Components.Wings" title="RCAIDE.Library.Components.Wings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings</span></code></a></dt><dd><p>Wing components that utilize airfoil definitions</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Framework.Analyses.Aerodynamics.html#module-RCAIDE.Framework.Analyses.Aerodynamics" title="RCAIDE.Framework.Analyses.Aerodynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Framework.Analyses.Aerodynamics</span></code></a></dt><dd><p>Aerodynamic analysis tools that work with airfoil components</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -561,11 +724,25 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Airfoils.Airfoil">RCAIDE.Library.Components.Airfoils.Airfoil module</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil"><code class="docutils literal notranslate"><span class="pre">Airfoil</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil"><code class="docutils literal notranslate"><span class="pre">Airfoil</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.tag"><code class="docutils literal notranslate"><span class="pre">Airfoil.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.coordinate_file"><code class="docutils literal notranslate"><span class="pre">Airfoil.coordinate_file</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.geometry"><code class="docutils literal notranslate"><span class="pre">Airfoil.geometry</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.polar_files"><code class="docutils literal notranslate"><span class="pre">Airfoil.polar_files</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.polars"><code class="docutils literal notranslate"><span class="pre">Airfoil.polars</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.prev"><code class="docutils literal notranslate"><span class="pre">Airfoil.prev</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.next"><code class="docutils literal notranslate"><span class="pre">Airfoil.next</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil.number_of_points"><code class="docutils literal notranslate"><span class="pre">Airfoil.number_of_points</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil">RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil module</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil"><code class="docutils literal notranslate"><span class="pre">NACA_4_Series_Airfoil</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil"><code class="docutils literal notranslate"><span class="pre">NACA_4_Series_Airfoil</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil.tag"><code class="docutils literal notranslate"><span class="pre">NACA_4_Series_Airfoil.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil.NACA_4_Series_Airfoil.NACA_4_Series_code"><code class="docutils literal notranslate"><span class="pre">NACA_4_Series_Airfoil.NACA_4_Series_code</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Airfoils">Module contents</a></li>

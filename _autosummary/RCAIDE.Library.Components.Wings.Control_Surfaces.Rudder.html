@@ -541,17 +541,63 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Rudder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Control_Surfaces/Rudder.html#Rudder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.html#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Control_Surface</span></code></a></p>
-<p>This class is used to define slats in RCAIDE</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<p>A class representing a rudder control surface for aircraft directional control.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the rudder, defaults to ‘rudder’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.hinge_fraction">
+<span class="sig-name descname"><span class="pre">hinge_fraction</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.hinge_fraction" title="Link to this definition">#</a></dt>
+<dd><p>Location of the hinge line as fraction of chord, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.sign_duplicate">
+<span class="sig-name descname"><span class="pre">sign_duplicate</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.sign_duplicate" title="Link to this definition">#</a></dt>
+<dd><p>Sign convention for duplicate rudder deflection, defaults to 1.0
+(typically only one rudder per aircraft)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The rudder is a trailing edge control surface mounted on the vertical tail, used
+primarily for yaw control. It inherits basic control surface functionality from
+the Control_Surface class and adds specific attributes for rudder operation.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Hinge Fraction’</dt><dd><p>The chordwise location of the rudder hinge line, measured from the leading
+edge as a fraction of local chord</p>
+</dd>
+<dt>‘Sign Duplicate’</dt><dd><p>Determines whether paired rudders (if present) deflect in the same or
+opposite directions. Typically 1.0 as most aircraft have a single rudder</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface</span></code></a></dt><dd><p>Base class providing common control surface functionality</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.html#module-RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving" title="RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving</span></code></a></dt><dd><p>Alternative yaw control using all-moving vertical tail</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -603,7 +649,12 @@ N/A</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder"><code class="docutils literal notranslate"><span class="pre">Rudder</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder"><code class="docutils literal notranslate"><span class="pre">Rudder</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.tag"><code class="docutils literal notranslate"><span class="pre">Rudder.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.hinge_fraction"><code class="docutils literal notranslate"><span class="pre">Rudder.hinge_fraction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder.Rudder.sign_duplicate"><code class="docutils literal notranslate"><span class="pre">Rudder.sign_duplicate</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Sources/Batteries/Lithium_Air.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Air.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
@@ -396,18 +396,35 @@
 <div class="viewcode-block" id="Lithium_Air">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air.Lithium_Air">[docs]</a>
 <span class="k">class</span> <span class="nc">Lithium_Air</span><span class="p">(</span><span class="n">Generic_Battery_Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lithium-Air battery cell.Specifies specific energy characteristics specific to</span>
-<span class="sd">    lithium-air batteries. Also includes parameters related to consumption of oxygen</span>
-<span class="sd">    &quot;&quot;&quot;</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling lithium-air battery characteristics and performance</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cell.specific_energy : float</span>
+<span class="sd">        Energy capacity per unit mass [J/kg] (default: 2000 Wh/kg)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.specific_power : float</span>
+<span class="sd">        Maximum power output per unit mass [W/kg] (default: 0.66 kW/kg)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.mass_gain_factor : float</span>
+<span class="sd">        Rate of mass increase from oxygen absorption [kg/Wh] (default: 1.92E-4)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Lithium-air batteries use ambient oxygen as the cathode material, which is</span>
+<span class="sd">    absorbed during discharge, leading to mass gain. They offer very high specific</span>
+<span class="sd">    energy but have power density limitations.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span>
+<span class="sd">        Base battery module class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for lithium-air battery attributes</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
         <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">specific_energy</span>  <span class="o">=</span> <span class="mf">2000.</span>     <span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">Wh</span><span class="o">/</span><span class="n">Units</span><span class="o">.</span><span class="n">kg</span>    <span class="c1"># convert to Joules/kg</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">specific_power</span>   <span class="o">=</span> <span class="mf">0.66</span>      <span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">kW</span><span class="o">/</span><span class="n">Units</span><span class="o">.</span><span class="n">kg</span>    <span class="c1"># convert to W/kg</span>

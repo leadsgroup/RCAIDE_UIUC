@@ -538,85 +538,497 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Wing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Wing.html#Wing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>This class defines the wing in RCAIDE</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<p>Base class for aircraft lifting surfaces providing core functionality for geometric
+definition and analysis.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the wing, defaults to ‘wing’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.mass_properties">
+<span class="sig-name descname"><span class="pre">mass_properties</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.mass_properties" title="Link to this definition">#</a></dt>
+<dd><p>Mass and inertia properties, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Library.Components.Mass_Properties.html#RCAIDE.Library.Components.Mass_Properties.Mass_Properties" title="RCAIDE.Library.Components.Mass_Properties.Mass_Properties">Mass_Properties</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.origin" title="Link to this definition">#</a></dt>
+<dd><p>3D coordinates [x, y, z] defining wing’s reference point, defaults to [0.0, 0.0, 0.0]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.symmetric">
+<span class="sig-name descname"><span class="pre">symmetric</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.symmetric" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if wing is symmetric about x-z plane, defaults to True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.vertical">
+<span class="sig-name descname"><span class="pre">vertical</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.vertical" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if wing is vertically oriented, defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.t_tail">
+<span class="sig-name descname"><span class="pre">t_tail</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.t_tail" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if wing is mounted on vertical tail, defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.taper">
+<span class="sig-name descname"><span class="pre">taper</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.taper" title="Link to this definition">#</a></dt>
+<dd><p>Wing taper ratio, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.dihedral">
+<span class="sig-name descname"><span class="pre">dihedral</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.dihedral" title="Link to this definition">#</a></dt>
+<dd><p>Wing dihedral angle, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.aspect_ratio">
+<span class="sig-name descname"><span class="pre">aspect_ratio</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.aspect_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Wing aspect ratio, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.thickness_to_chord">
+<span class="sig-name descname"><span class="pre">thickness_to_chord</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.thickness_to_chord" title="Link to this definition">#</a></dt>
+<dd><p>Average thickness-to-chord ratio, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.aerodynamic_center">
+<span class="sig-name descname"><span class="pre">aerodynamic_center</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.aerodynamic_center" title="Link to this definition">#</a></dt>
+<dd><p>Location of aerodynamic center [x, y, z], defaults to [0.0, 0.0, 0.0]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.exposed_root_chord_offset">
+<span class="sig-name descname"><span class="pre">exposed_root_chord_offset</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.exposed_root_chord_offset" title="Link to this definition">#</a></dt>
+<dd><p>Offset of exposed root from centerline, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.total_length">
+<span class="sig-name descname"><span class="pre">total_length</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.total_length" title="Link to this definition">#</a></dt>
+<dd><p>Total length of wing, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.spans">
+<span class="sig-name descname"><span class="pre">spans</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.spans" title="Link to this definition">#</a></dt>
+<dd><p>Collection of span measurements</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>projected<span class="classifier">float</span></dt><dd><p>Projected span, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>total<span class="classifier">float</span></dt><dd><p>Total span including dihedral effects, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.areas">
+<span class="sig-name descname"><span class="pre">areas</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.areas" title="Link to this definition">#</a></dt>
+<dd><p>Collection of area measurements</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>reference<span class="classifier">float</span></dt><dd><p>Reference area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>exposed<span class="classifier">float</span></dt><dd><p>Exposed area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>affected<span class="classifier">float</span></dt><dd><p>Area affected by high-lift devices, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>wetted<span class="classifier">float</span></dt><dd><p>Wetted area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.chords">
+<span class="sig-name descname"><span class="pre">chords</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.chords" title="Link to this definition">#</a></dt>
+<dd><p>Collection of chord measurements</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>mean_aerodynamic<span class="classifier">float</span></dt><dd><p>Mean aerodynamic chord, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mean_geometric<span class="classifier">float</span></dt><dd><p>Mean geometric chord, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>root<span class="classifier">float</span></dt><dd><p>Root chord, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tip<span class="classifier">float</span></dt><dd><p>Tip chord, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.sweeps">
+<span class="sig-name descname"><span class="pre">sweeps</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.sweeps" title="Link to this definition">#</a></dt>
+<dd><p>Collection of sweep angles</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>quarter_chord<span class="classifier">float</span></dt><dd><p>Quarter-chord sweep angle, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>leading_edge<span class="classifier">float</span></dt><dd><p>Leading edge sweep angle, defaults to None</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>half_chord<span class="classifier">float</span></dt><dd><p>Half-chord sweep angle, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.twists">
+<span class="sig-name descname"><span class="pre">twists</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.twists" title="Link to this definition">#</a></dt>
+<dd><p>Collection of twist angles</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>root<span class="classifier">float</span></dt><dd><p>Root section twist angle, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tip<span class="classifier">float</span></dt><dd><p>Tip section twist angle, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.high_lift">
+<span class="sig-name descname"><span class="pre">high_lift</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.high_lift" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating presence of high-lift devices, defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.symbolic">
+<span class="sig-name descname"><span class="pre">symbolic</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.symbolic" title="Link to this definition">#</a></dt>
+<dd><p>Flag for symbolic computation mode, defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.high_mach">
+<span class="sig-name descname"><span class="pre">high_mach</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.high_mach" title="Link to this definition">#</a></dt>
+<dd><p>Flag for high Mach number flow, defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.vortex_lift">
+<span class="sig-name descname"><span class="pre">vortex_lift</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.vortex_lift" title="Link to this definition">#</a></dt>
+<dd><p>Flag for vortex lift modeling, defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.transition_x_upper">
+<span class="sig-name descname"><span class="pre">transition_x_upper</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.transition_x_upper" title="Link to this definition">#</a></dt>
+<dd><p>Upper surface transition location, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.transition_x_lower">
+<span class="sig-name descname"><span class="pre">transition_x_lower</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.transition_x_lower" title="Link to this definition">#</a></dt>
+<dd><p>Lower surface transition location, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.dynamic_pressure_ratio">
+<span class="sig-name descname"><span class="pre">dynamic_pressure_ratio</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.dynamic_pressure_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Local to freestream dynamic pressure ratio, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.Airfoil">
+<span class="sig-name descname"><span class="pre">Airfoil</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Airfoil" title="Link to this definition">#</a></dt>
+<dd><p>Collection of airfoil definitions, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Container" title="RCAIDE.Library.Components.Wings.Wing.Wing.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.Segments">
+<span class="sig-name descname"><span class="pre">Segments</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Segments" title="Link to this definition">#</a></dt>
+<dd><p>Collection of wing segments, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Container" title="RCAIDE.Library.Components.Wings.Wing.Wing.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.control_surfaces">
+<span class="sig-name descname"><span class="pre">control_surfaces</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.control_surfaces" title="Link to this definition">#</a></dt>
+<dd><p>Collection of control surfaces, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Container" title="RCAIDE.Library.Components.Wings.Wing.Wing.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.fuel_tanks">
+<span class="sig-name descname"><span class="pre">fuel_tanks</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.fuel_tanks" title="Link to this definition">#</a></dt>
+<dd><p>Collection of fuel tanks, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Container" title="RCAIDE.Library.Components.Wings.Wing.Wing.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The Wing class serves as the foundation for all lifting surfaces in RCAIDE.
+It provides:</p>
+<ul class="simple">
+<li><p>Geometric definition capabilities</p></li>
+<li><p>Segment management</p></li>
+<li><p>Control surface integration</p></li>
+<li><p>Fuel tank integration</p></li>
+<li><p>Mass properties computation</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Main_Wing.html#module-RCAIDE.Library.Components.Wings.Main_Wing" title="RCAIDE.Library.Components.Wings.Main_Wing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Main_Wing</span></code></a></dt><dd><p>Primary lifting surface implementation</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Horizontal_Tail.html#module-RCAIDE.Library.Components.Wings.Horizontal_Tail" title="RCAIDE.Library.Components.Wings.Horizontal_Tail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Horizontal_Tail</span></code></a></dt><dd><p>Horizontal stabilizer implementation</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Vertical_Tail.html#module-RCAIDE.Library.Components.Wings.Vertical_Tail" title="RCAIDE.Library.Components.Wings.Vertical_Tail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Vertical_Tail</span></code></a></dt><dd><p>Vertical stabilizer implementation</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.append_segment">
 <span class="sig-name descname"><span class="pre">append_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Wing.html#Wing.append_segment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.append_segment" title="Link to this definition">#</a></dt>
-<dd><p>Adds a segment to the wing</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Adds a new segment to the wing’s segment container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Wing segment to be added</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.append_airfoil">
 <span class="sig-name descname"><span class="pre">append_airfoil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Wing.html#Wing.append_airfoil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.append_airfoil" title="Link to this definition">#</a></dt>
-<dd><p>Adds an airfoil to the segment</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Adds an airfoil definition to the wing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airfoil</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Airfoil data to be added</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.append_control_surface">
 <span class="sig-name descname"><span class="pre">append_control_surface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control_surface</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Wing.html#Wing.append_control_surface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.append_control_surface" title="Link to this definition">#</a></dt>
-<dd><p>Adds a component to vehicle</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Adds a control surface to the wing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>control_surface</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Control surface to be added</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.append_fuel_tank">
 <span class="sig-name descname"><span class="pre">append_fuel_tank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fuel_tank</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Wing.html#Wing.append_fuel_tank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.append_fuel_tank" title="Link to this definition">#</a></dt>
-<dd><p>Adds a fuel tank to the wing</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Adds a fuel tank to the wing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fuel_tank</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Fuel tank to be added</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.compute_moment_of_inertia">
 <span class="sig-name descname"><span class="pre">compute_moment_of_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_of_gravity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[[0,</span> <span class="pre">0,</span> <span class="pre">0]]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_flag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Wing.html#Wing.compute_moment_of_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Wing.Wing.compute_moment_of_inertia" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Computes the moment of inertia tensor for the wing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mass</strong> (<em>float</em>) – Wing mass</p></li>
+<li><p><strong>center_of_gravity</strong> (<em>list</em><em>, </em><em>optional</em>) – Reference point coordinates, defaults to [[0, 0, 0]]</p></li>
+<li><p><strong>fuel_flag</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to include fuel mass, defaults to False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3x3 moment of inertia tensor</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Wing.Wing.Container">
@@ -714,6 +1126,35 @@ N/A</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing"><code class="docutils literal notranslate"><span class="pre">Wing</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.tag"><code class="docutils literal notranslate"><span class="pre">Wing.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.mass_properties"><code class="docutils literal notranslate"><span class="pre">Wing.mass_properties</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.origin"><code class="docutils literal notranslate"><span class="pre">Wing.origin</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.symmetric"><code class="docutils literal notranslate"><span class="pre">Wing.symmetric</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.vertical"><code class="docutils literal notranslate"><span class="pre">Wing.vertical</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.t_tail"><code class="docutils literal notranslate"><span class="pre">Wing.t_tail</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.taper"><code class="docutils literal notranslate"><span class="pre">Wing.taper</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.dihedral"><code class="docutils literal notranslate"><span class="pre">Wing.dihedral</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.aspect_ratio"><code class="docutils literal notranslate"><span class="pre">Wing.aspect_ratio</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.thickness_to_chord"><code class="docutils literal notranslate"><span class="pre">Wing.thickness_to_chord</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.aerodynamic_center"><code class="docutils literal notranslate"><span class="pre">Wing.aerodynamic_center</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.exposed_root_chord_offset"><code class="docutils literal notranslate"><span class="pre">Wing.exposed_root_chord_offset</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.total_length"><code class="docutils literal notranslate"><span class="pre">Wing.total_length</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.spans"><code class="docutils literal notranslate"><span class="pre">Wing.spans</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.areas"><code class="docutils literal notranslate"><span class="pre">Wing.areas</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.chords"><code class="docutils literal notranslate"><span class="pre">Wing.chords</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.sweeps"><code class="docutils literal notranslate"><span class="pre">Wing.sweeps</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.twists"><code class="docutils literal notranslate"><span class="pre">Wing.twists</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.high_lift"><code class="docutils literal notranslate"><span class="pre">Wing.high_lift</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.symbolic"><code class="docutils literal notranslate"><span class="pre">Wing.symbolic</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.high_mach"><code class="docutils literal notranslate"><span class="pre">Wing.high_mach</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.vortex_lift"><code class="docutils literal notranslate"><span class="pre">Wing.vortex_lift</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.transition_x_upper"><code class="docutils literal notranslate"><span class="pre">Wing.transition_x_upper</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.transition_x_lower"><code class="docutils literal notranslate"><span class="pre">Wing.transition_x_lower</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.dynamic_pressure_ratio"><code class="docutils literal notranslate"><span class="pre">Wing.dynamic_pressure_ratio</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Airfoil"><code class="docutils literal notranslate"><span class="pre">Wing.Airfoil</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.Segments"><code class="docutils literal notranslate"><span class="pre">Wing.Segments</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.control_surfaces"><code class="docutils literal notranslate"><span class="pre">Wing.control_surfaces</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.fuel_tanks"><code class="docutils literal notranslate"><span class="pre">Wing.fuel_tanks</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.append_segment"><code class="docutils literal notranslate"><span class="pre">Wing.append_segment()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.append_airfoil"><code class="docutils literal notranslate"><span class="pre">Wing.append_airfoil()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Wing.Wing.append_control_surface"><code class="docutils literal notranslate"><span class="pre">Wing.append_control_surface()</span></code></a></li>

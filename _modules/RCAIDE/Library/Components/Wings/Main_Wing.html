@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Wings.Main_Wing</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Compoments/Wings/Main_Wing.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Wings/Main_Wing.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -392,53 +391,64 @@
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia</span> <span class="kn">import</span>  <span class="n">compute_wing_moment_of_inertia</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="c1">#  Main Wing </span>
+<span class="c1">#  Main_Wing</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Main_Wing">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Main_Wing.html#RCAIDE.Library.Components.Wings.Main_Wing.Main_Wing">[docs]</a>
 <span class="k">class</span> <span class="nc">Main_Wing</span><span class="p">(</span><span class="n">Wing</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class is used to define main wings RCAIDE</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing the primary lifting surface of an aircraft.</span>
 
-<span class="sd">    Assumptions:Container()</span>
-<span class="sd">    None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the main wing, defaults to &#39;main_wing&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    Segments : Segment_Container</span>
+<span class="sd">        Collection of wing segments defining the wing geometry, initialized empty</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The main wing provides primary lift generation for the aircraft. It inherits all </span>
+<span class="sd">    geometric and aerodynamic functionality from the Wing class and adds specific </span>
+<span class="sd">    attributes for main wing operation.</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    None</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Wing</span>
+<span class="sd">        Base wing class providing core functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Segment</span>
+<span class="sd">        Wing segment components used to build the wing</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces</span>
+<span class="sd">        Control surfaces that can be mounted on the wing</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
 
-<span class="sd">    Outputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for main wings in RCAIDE.</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                 <span class="o">=</span> <span class="s1">&#39;main_wing&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span>            <span class="o">=</span> <span class="n">Segment_Container</span><span class="p">()</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the main wing attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>      <span class="o">=</span> <span class="s1">&#39;main_wing&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span> <span class="o">=</span> <span class="n">Segment_Container</span><span class="p">()</span>
          
 <div class="viewcode-block" id="Main_Wing.moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Main_Wing.html#RCAIDE.Library.Components.Wings.Main_Wing.Main_Wing.moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">):</span>
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
+    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the main wing.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wing : Component</span>
+<span class="sd">            Wing component data</span>
+<span class="sd">        center_of_gravity : list</span>
+<span class="sd">            Reference point coordinates for moment calculation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span> </div>
 </div>
 
@@ -446,71 +456,52 @@
 <div class="viewcode-block" id="Segment_Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Main_Wing.html#RCAIDE.Library.Components.Wings.Main_Wing.Segment_Container">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment_Container</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Container for wing segment</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Container class for managing wing segments. Provides organization and </span>
+<span class="sd">    access methods for segment components.</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This container is designed to hold and manage Segment objects that define </span>
+<span class="sd">    the wing geometry. It inherits from the base Container class and provides </span>
+<span class="sd">    specialized functionality for wing segments.</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Segment</span>
+<span class="sd">        The segment components stored in this container</span>
 <span class="sd">    &quot;&quot;&quot;</span>     
 
 <div class="viewcode-block" id="Segment_Container.get_children">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Main_Wing.html#RCAIDE.Library.Components.Wings.Main_Wing.Segment_Container.get_children">[docs]</a>
     <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of allowable child component types for the segment container.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            List containing the Segment class as the only allowable child type</span>
 <span class="sd">        &quot;&quot;&quot;</span>       
-        
         <span class="k">return</span> <span class="p">[</span><span class="n">Segment</span><span class="p">]</span> </div>
 
     
 <div class="viewcode-block" id="Segment_Container.append">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Main_Wing.html#RCAIDE.Library.Components.Wings.Main_Wing.Segment_Container.append">[docs]</a>
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Appends the value to the containers</span>
-<span class="sd">          This overrides the basic data class append</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            self</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A</span>
-<span class="sd">            &quot;&quot;&quot;</span>          
-        
-        
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Appends a segment to the container with automatic name handling.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        val : Segment</span>
+<span class="sd">            Wing segment to be added</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Automatically modifies segment tags to avoid duplicates by appending </span>
+<span class="sd">        numbers to repeated tags</span>
+<span class="sd">        &quot;&quot;&quot;</span>          
         <span class="c1"># See if the component exists, if it does modify the name</span>
         <span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">tag</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
@@ -518,7 +509,7 @@
             <span class="n">n_comps</span> <span class="o">=</span> <span class="n">string_of_keys</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
             <span class="n">val</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_comps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>    
             
-        <span class="n">Container</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">val</span><span class="p">)</span> </div>
+        <span class="n">Container</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> </div>
 </div>
 
 </pre></div>

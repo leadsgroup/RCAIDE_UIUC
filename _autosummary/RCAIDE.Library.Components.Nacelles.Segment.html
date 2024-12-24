@@ -538,37 +538,153 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Nacelles/Segment.html#Segment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
+<p>A component representing a single cross-sectional segment of a nacelle. Used to build
+up complex nacelle geometries through a series of connected sections.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the segment, defaults to ‘segment’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.orientation_euler_angles">
+<span class="sig-name descname"><span class="pre">orientation_euler_angles</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.orientation_euler_angles" title="Link to this definition">#</a></dt>
+<dd><p>Rotation angles [roll, pitch, yaw], defaults to [0.0, 0.0, 0.0]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_x_location">
+<span class="sig-name descname"><span class="pre">percent_x_location</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_x_location" title="Link to this definition">#</a></dt>
+<dd><p>Longitudinal position as percentage of nacelle length, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_y_location">
+<span class="sig-name descname"><span class="pre">percent_y_location</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_y_location" title="Link to this definition">#</a></dt>
+<dd><p>Lateral position as percentage of nacelle width, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_z_location">
+<span class="sig-name descname"><span class="pre">percent_z_location</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_z_location" title="Link to this definition">#</a></dt>
+<dd><p>Vertical position as percentage of nacelle height, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.height" title="Link to this definition">#</a></dt>
+<dd><p>Vertical dimension of the segment cross-section, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.width">
+<span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.width" title="Link to this definition">#</a></dt>
+<dd><p>Lateral dimension of the segment cross-section, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment.curvature">
+<span class="sig-name descname"><span class="pre">curvature</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.curvature" title="Link to this definition">#</a></dt>
+<dd><p>Shape parameter controlling cross-section corner rounding using super-ellipse
+formulation, defaults to 2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Segments are used to build up the complete nacelle geometry through a series of
+cross-sections. Each segment’s position is defined as a percentage of the overall
+nacelle dimensions, allowing for flexible scaling and positioning.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Segments are connected in sequence to form a continuous surface</p></li>
+<li><p>Cross-sections are defined by height, width, and curvature parameters</p></li>
+<li><p>Super-ellipse formulation used for cross-section shape</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Super-ellipse’</dt><dd><p>Mathematical curve used to create smooth, rounded rectangular shapes with
+controllable corner curvature</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Stack_Nacelle.html#module-RCAIDE.Library.Components.Nacelles.Stack_Nacelle" title="RCAIDE.Library.Components.Nacelles.Stack_Nacelle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Nacelles.Stack_Nacelle</span></code></a></dt><dd><p>Nacelle type that uses multiple segments</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment_Container">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Segment_Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Nacelles/Segment.html#Segment_Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment_Container" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.Container.html#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
-<p>Container for fuselage segment</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<p>Container class for managing nacelle segments. Provides organization and
+access methods for segment components.</p>
+<p class="rubric">Notes</p>
+<p>This container is designed to hold and manage Segment objects that define
+the nacelle shape. It inherits from the base Container class and provides
+specialized functionality for nacelle segments.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Framework.Core.Container.html#module-RCAIDE.Framework.Core.Container" title="RCAIDE.Framework.Core.Container"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Framework.Core.Container</span></code></a></dt><dd><p>Base container class providing core functionality</p>
+</dd>
+<dt><a class="reference internal" href="#module-RCAIDE.Library.Components.Nacelles.Segment" title="RCAIDE.Library.Components.Nacelles.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Nacelles.Segment</span></code></a></dt><dd><p>The segment components stored in this container</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Segment.Segment_Container.get_children">
 <span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Nacelles/Segment.html#Segment_Container.get_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment_Container.get_children" title="Link to this definition">#</a></dt>
-<dd><p>Returns the components that can go inside</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Returns a list of allowable child component types for the segment container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Empty list as segments do not contain child components</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -622,7 +738,17 @@ N/A</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment"><code class="docutils literal notranslate"><span class="pre">Segment</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment"><code class="docutils literal notranslate"><span class="pre">Segment</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.tag"><code class="docutils literal notranslate"><span class="pre">Segment.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.orientation_euler_angles"><code class="docutils literal notranslate"><span class="pre">Segment.orientation_euler_angles</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_x_location"><code class="docutils literal notranslate"><span class="pre">Segment.percent_x_location</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_y_location"><code class="docutils literal notranslate"><span class="pre">Segment.percent_y_location</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.percent_z_location"><code class="docutils literal notranslate"><span class="pre">Segment.percent_z_location</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.height"><code class="docutils literal notranslate"><span class="pre">Segment.height</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.width"><code class="docutils literal notranslate"><span class="pre">Segment.width</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment.curvature"><code class="docutils literal notranslate"><span class="pre">Segment.curvature</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment_Container"><code class="docutils literal notranslate"><span class="pre">Segment_Container</span></code></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Segment.Segment_Container.get_children"><code class="docutils literal notranslate"><span class="pre">Segment_Container.get_children()</span></code></a></li>
 </ul>

@@ -377,15 +377,13 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Energy/Thermal_Management/Cryogenics/Cryogenic_Heat_Exchange.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Thermal_Management/Heat_Exchangers/Cryogenic_Heat_Exchange.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-
 <span class="c1"># RCAIDE imports  </span>
 <span class="kn">import</span> <span class="nn">RCAIDE</span> 
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Component</span>  
@@ -397,89 +395,108 @@
 <div class="viewcode-block" id="Cryogenic_Heat_Exchanger">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger">[docs]</a>
 <span class="k">class</span> <span class="nc">Cryogenic_Heat_Exchanger</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This provides output values for a heat exchanger used to cool cryogenic components</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a heat exchanger designed for cryogenic cooling applications, </span>
+<span class="sd">    using cryogenic fluids to maintain extremely low temperatures.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the heat exchanger, defaults to &#39;Cryogenic_Heat_Exchanger&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    cryogen : Cryogen</span>
+<span class="sd">        Cryogenic fluid properties, defaults to Liquid_H2()</span>
+<span class="sd">        </span>
+<span class="sd">    cryogen_inlet_temperature : float</span>
+<span class="sd">        Temperature of cryogen at inlet in K, defaults to 300.0</span>
+<span class="sd">        </span>
+<span class="sd">    cryogen_outlet_temperature : float</span>
+<span class="sd">        Temperature of cryogen at outlet in K, defaults to 300.0</span>
+<span class="sd">        </span>
+<span class="sd">    cryogen_pressure : float</span>
+<span class="sd">        Operating pressure of cryogen in Pa, defaults to 100000.0</span>
+<span class="sd">        </span>
+<span class="sd">    cryogen_is_fuel : float</span>
+<span class="sd">        Proportion of cryogen used as fuel, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    inputs.cooling_power : float</span>
+<span class="sd">        Required cooling power in W, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    outputs.mdot : float</span>
+<span class="sd">        Mass flow rate of cryogen in kg/s, defaults to 0.0</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The cryogenic heat exchanger provides cooling at extremely low temperatures using </span>
+<span class="sd">    cryogenic fluids. The system:</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    * Manages heat transfer between cryogen and cooled equipment</span>
+<span class="sd">    * Controls cryogen flow based on cooling demand</span>
+<span class="sd">    * Maintains equipment at cryogenic temperatures</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Cryogen&#39;</span>
+<span class="sd">        Fluid used to achieve very low temperatures, typically below 120K</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Cooling Power&#39;</span>
+<span class="sd">        Heat removal capacity at cryogenic temperature</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger</span>
+<span class="sd">        Alternative heat exchanger for moderate temperature applications</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the cryogenic heat exchanger attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>         
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;Cryogenic_Heat_Exchanger&#39;</span>
-        
-        <span class="c1">#-----setting the default values for the different components</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen</span>                        <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Attributes</span><span class="o">.</span><span class="n">Cryogens</span><span class="o">.</span><span class="n">Liquid_H2</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_inlet_temperature</span>      <span class="o">=</span>    <span class="mf">300.0</span>      <span class="c1"># [K]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_outlet_temperature</span>     <span class="o">=</span>    <span class="mf">300.0</span>      <span class="c1"># [K]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_pressure</span>               <span class="o">=</span> <span class="mf">100000.0</span>      <span class="c1"># [Pa]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_is_fuel</span>                <span class="o">=</span>      <span class="mf">0.0</span>      <span class="c1"># Proportion of cryogen that is burned as fuel. Assumes the cryogen is the same as the fuel, e.g. that both are hydrogen.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cooling_power</span>           <span class="o">=</span>      <span class="mf">0.0</span>      <span class="c1"># [W]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">mdot</span>                   <span class="o">=</span>      <span class="mf">0.0</span>      <span class="c1">#[kg/s]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                       <span class="o">=</span> <span class="s1">&#39;Cryogenic_Heat_Exchanger&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen</span>                   <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Attributes</span><span class="o">.</span><span class="n">Cryogens</span><span class="o">.</span><span class="n">Liquid_H2</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_inlet_temperature</span> <span class="o">=</span> <span class="mf">300.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_outlet_temperature</span><span class="o">=</span> <span class="mf">300.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_pressure</span>         <span class="o">=</span> <span class="mf">100000.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_is_fuel</span>          <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cooling_power</span>     <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">mdot</span>             <span class="o">=</span> <span class="mf">0.0</span>
 
 <div class="viewcode-block" id="Cryogenic_Heat_Exchanger.energy_calc">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.energy_calc">[docs]</a>
     <span class="k">def</span> <span class="nf">energy_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates required cryogen mass flow rate for desired cooling power.</span>
 
-<span class="w">        </span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This calculates the mass of cryogen required to achieve the desired cooling power given the temperature of the cryogen supplied, and the desired temperature of the cryogenic equipment.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        conditions : Data</span>
+<span class="sd">            Operating conditions for the calculation</span>
 
-<span class="sd">        Assumptions:</span>
-<span class="sd">        Perfect thermal conduction of the cryogen to the cooled equipment.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Required cryogen mass flow rate in kg/s</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        self.inputs</span>
-<span class="sd">            cooling_power      [W]</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        self.outputs.</span>
-<span class="sd">            mdot                   [kg/s]</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        self.</span>
-<span class="sd">            cryogen_inlet_temperature       [K]</span>
-<span class="sd">            cryogen_outlet_temperature      [K]</span>
-<span class="sd">            cryogen_pressure                [Pa]</span>
-
-<span class="sd">        </span>
-<span class="sd">        &quot;&quot;&quot;</span>         
-        <span class="c1"># unpack the values from self</span>
-        <span class="n">temp_in</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_inlet_temperature</span> 
-        <span class="n">temp_out</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_outlet_temperature</span>
-        <span class="n">pressure</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_pressure</span>
-        <span class="n">cryogen</span>         <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen</span>        
-
-        <span class="n">cooling_power</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cooling_power</span> 
-
-        <span class="c1"># If the heat exchanger does not vent to ambient, set the system pressure.</span>
-        <span class="n">vent_pressure</span>   <span class="o">=</span> <span class="n">pressure</span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Calculation considers:</span>
+<span class="sd">        * Inlet and outlet temperatures</span>
+<span class="sd">        * Required cooling power</span>
+<span class="sd">        * Cryogen properties</span>
+<span class="sd">        * System pressure</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># unpack the values</span>
+        <span class="n">temp_in</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_inlet_temperature</span> 
+        <span class="n">temp_out</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_outlet_temperature</span>
+        <span class="n">pressure</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen_pressure</span>
+        <span class="n">cryogen</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cryogen</span>        
+        <span class="n">cooling_power</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cooling_power</span> 
+        <span class="n">vent_pressure</span><span class="o">=</span> <span class="n">pressure</span>
 
         <span class="c1"># calculate the cryogen mass flow</span>
-        <span class="n">mdot</span> <span class="o">=</span> <span class="n">compute_cryogen_mass_flow_rate</span><span class="p">(</span><span class="n">cryogen</span><span class="p">,</span><span class="n">temp_in</span><span class="p">,</span><span class="n">temp_out</span><span class="p">,</span><span class="n">cooling_power</span><span class="p">,</span><span class="n">vent_pressure</span><span class="p">)</span>
+        <span class="n">mdot</span> <span class="o">=</span> <span class="n">compute_cryogen_mass_flow_rate</span><span class="p">(</span><span class="n">cryogen</span><span class="p">,</span> <span class="n">temp_in</span><span class="p">,</span> <span class="n">temp_out</span><span class="p">,</span> 
+                                            <span class="n">cooling_power</span><span class="p">,</span> <span class="n">vent_pressure</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">mdot</span> <span class="o">=</span> <span class="n">mdot</span>
-    
         <span class="k">return</span> <span class="n">mdot</span></div>
 </div>
 

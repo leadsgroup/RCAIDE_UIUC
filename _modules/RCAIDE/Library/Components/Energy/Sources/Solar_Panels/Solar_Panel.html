@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Sources/Solar_Panels/Solar_Panel.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Sources/Solar_Panels/Solar_Panel.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Oct 2024, M. Clarke </span>
@@ -394,31 +394,30 @@
 <div class="viewcode-block" id="Solar_Panel">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.html#RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel.Solar_Panel">[docs]</a>
 <span class="k">class</span> <span class="nc">Solar_Panel</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a solar cell component.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling photovoltaic solar panels in aircraft applications</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    area : float</span>
+<span class="sd">        Solar panel surface area [m^2] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    efficiency : float</span>
+<span class="sd">        Solar energy conversion efficiency [-] (default: 0.0)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The solar panel model provides basic functionality for converting solar</span>
+<span class="sd">    radiation into electrical power based on panel area and efficiency.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Modulators.Solar_Logic</span>
+<span class="sd">        Solar power management and control</span>
 <span class="sd">    &quot;&quot;&quot;</span>       
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for solar panel attributes</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
         <span class="bp">self</span><span class="o">.</span><span class="n">area</span>       <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">efficiency</span> <span class="o">=</span> <span class="mf">0.0</span></div>

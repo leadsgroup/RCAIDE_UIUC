@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Fuselages.Segment</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Library/Compoments/Fuselage/Segment.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -396,58 +395,70 @@
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Segment.html#RCAIDE.Library.Components.Fuselages.Segment.Segment">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A component representing a single cross-sectional segment of a fuselage</span>
+<span class="sd">    A component representing a single cross-sectional segment of a fuselage. Segments are used </span>
+<span class="sd">    to define the shape and dimensions of the fuselage through a series of connected cross-sections.</span>
+
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
 <span class="sd">    tag : str</span>
 <span class="sd">        Identifier for the segment, defaults to &#39;segment&#39;</span>
+<span class="sd">        </span>
 <span class="sd">    prev : Component</span>
-<span class="sd">        Link to the previous segment in the fuselage chain</span>
+<span class="sd">        Link to the previous segment in the fuselage chain, defaults to None</span>
+<span class="sd">        </span>
 <span class="sd">    next : Component</span>
-<span class="sd">        Link to the next segment in the fuselage chain</span>
+<span class="sd">        Link to the next segment in the fuselage chain, defaults to None</span>
+<span class="sd">        </span>
 <span class="sd">    percent_x_location : float</span>
-<span class="sd">        Longitudinal position as percentage of fuselage length</span>
+<span class="sd">        Longitudinal position as percentage of fuselage length, defaults to 0</span>
+<span class="sd">        </span>
 <span class="sd">    percent_y_location : float</span>
-<span class="sd">        Lateral position as percentage of fuselage width</span>
+<span class="sd">        Lateral position as percentage of fuselage width, defaults to 0</span>
+<span class="sd">        </span>
 <span class="sd">    percent_z_location : float</span>
-<span class="sd">        Vertical position as percentage of fuselage height</span>
+<span class="sd">        Vertical position as percentage of fuselage height, defaults to 0</span>
+<span class="sd">        </span>
 <span class="sd">    height : float</span>
-<span class="sd">        Vertical dimension of the segment cross-section</span>
+<span class="sd">        Vertical dimension of the segment cross-section, defaults to 0</span>
+<span class="sd">        </span>
 <span class="sd">    width : float</span>
-<span class="sd">        Lateral dimension of the segment cross-section</span>
+<span class="sd">        Lateral dimension of the segment cross-section, defaults to 0</span>
+<span class="sd">        </span>
 <span class="sd">    curvature : float</span>
 <span class="sd">        Shape parameter controlling cross-section corner rounding, defaults to 2</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    Segments are the building blocks of a fuselage, defining its shape through</span>
-<span class="sd">    a series of connected cross-sections. Each segment&#39;s position is defined</span>
-<span class="sd">    relative to the overall fuselage dimensions.</span>
+<span class="sd">    Segments are used to build up the complete fuselage geometry through a series of </span>
+<span class="sd">    cross-sections. Each segment&#39;s position is defined as a percentage of the overall </span>
+<span class="sd">    fuselage dimensions, allowing for flexible scaling and positioning.</span>
 
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Segments are connected in sequence to form a continuous surface</span>
+<span class="sd">    * Cross-sections are symmetric about the vertical plane</span>
+<span class="sd">    * Transitions between segments are smooth</span>
+<span class="sd">    </span>
 <span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Cross-section&#39;</span>
+<span class="sd">        The 2D shape formed by intersecting the fuselage with a plane perpendicular </span>
+<span class="sd">        to its longitudinal axis</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;Curvature&#39;</span>
-<span class="sd">        Parameter controlling the smoothness of transition between vertical</span>
-<span class="sd">        and horizontal surfaces at the corners of the cross-section</span>
+<span class="sd">        Parameter controlling the smoothness of transition between vertical and </span>
+<span class="sd">        horizontal surfaces at the corners of the cross-section</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Fuselage</span>
+<span class="sd">        Parent container for fuselage segments</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for fuselage segments in RCAIDE.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the fuselage segment attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                     <span class="o">=</span> <span class="s1">&#39;segment&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prev</span>                    <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">next</span>                    <span class="o">=</span> <span class="kc">None</span>    
@@ -462,45 +473,35 @@
 <div class="viewcode-block" id="Segment_Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Segment.html#RCAIDE.Library.Components.Fuselages.Segment.Segment_Container">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment_Container</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Container for fuselage segment</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Container class for managing fuselage segments. Provides organization and </span>
+<span class="sd">    access methods for segment components.</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This container is designed to hold and manage Segment objects that define </span>
+<span class="sd">    the fuselage shape. It inherits from the base Container class and provides </span>
+<span class="sd">    specialized functionality for fuselage segments.</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Framework.Core.Container</span>
+<span class="sd">        Base container class providing core functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Segment</span>
+<span class="sd">        The segment components stored in this container</span>
 <span class="sd">    &quot;&quot;&quot;</span>     
 
 <div class="viewcode-block" id="Segment_Container.get_children">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Segment.html#RCAIDE.Library.Components.Fuselages.Segment.Segment_Container.get_children">[docs]</a>
     <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of allowable child component types for the segment container.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            Empty list as segments do not contain child components</span>
 <span class="sd">        &quot;&quot;&quot;</span>       
-        
         <span class="k">return</span> <span class="p">[]</span></div>
 </div>
 

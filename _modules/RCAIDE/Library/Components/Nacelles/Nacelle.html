@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Nacelles.Nacelle</h1><div class="highlight"><pre>
-<span></span> <span class="c1"># RCAIDE/Compoments/Nacelles/Nacelle.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Compoments/Nacelles/Nacelle.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -392,150 +391,199 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
  
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="c1">#  Nacalle</span>
+<span class="c1">#  Nacelle</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Nacelle">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle">[docs]</a>
 <span class="k">class</span> <span class="nc">Nacelle</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This is a nacelle for a generic aircraft.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for aircraft engine nacelles providing core functionality for geometric </span>
+<span class="sd">    definition and analysis.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the nacelle component, defaults to &#39;nacelle&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    origin : list</span>
+<span class="sd">        3D coordinates [x, y, z] defining the nacelle&#39;s reference point, </span>
+<span class="sd">        defaults to [[0.0, 0.0, 0.0]]</span>
+<span class="sd">        </span>
+<span class="sd">    aerodynamic_center : list</span>
+<span class="sd">        3D coordinates [x, y, z] of the nacelle&#39;s aerodynamic center, </span>
+<span class="sd">        defaults to [0.0, 0.0, 0.0]</span>
+<span class="sd">        </span>
+<span class="sd">    areas : Data</span>
+<span class="sd">        Collection of nacelle area measurements</span>
+<span class="sd">        </span>
+<span class="sd">        - front_projected : float</span>
+<span class="sd">            Frontal area, defaults to 0.0</span>
+<span class="sd">        - side_projected : float</span>
+<span class="sd">            Side profile area, defaults to 0.0</span>
+<span class="sd">        - wetted : float</span>
+<span class="sd">            Total wetted surface area, defaults to 0.0</span>
+<span class="sd">            </span>
+<span class="sd">    diameter : float</span>
+<span class="sd">        Maximum diameter of the nacelle, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    inlet_diameter : float</span>
+<span class="sd">        Diameter of the engine inlet, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    length : float</span>
+<span class="sd">        Total length of the nacelle, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    orientation_euler_angles : list</span>
+<span class="sd">        Rotation angles [roll, pitch, yaw] in radians, defaults to [0.0, 0.0, 0.0]</span>
+<span class="sd">        </span>
+<span class="sd">    flow_through : bool</span>
+<span class="sd">        Flag indicating if nacelle has flow passing through it, defaults to True</span>
+<span class="sd">        </span>
+<span class="sd">    has_pylon : bool</span>
+<span class="sd">        Flag indicating if nacelle is mounted on a pylon, defaults to True</span>
+<span class="sd">        </span>
+<span class="sd">    differential_pressure : float</span>
+<span class="sd">        Pressure differential between internal and external flow, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    cowling_airfoil_angle : float</span>
+<span class="sd">        Angle of the cowling lip airfoil section, defaults to 0.0</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The nacelle class provides the foundation for engine installation design, including:</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    * Geometric definition capabilities</span>
+<span class="sd">    * Coordinate transformation utilities</span>
+<span class="sd">    * Integration with propulsion system analysis</span>
 <span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Rigid body for structural analysis</span>
+<span class="sd">    * Quasi-steady aerodynamics</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Nacelle Frame&#39;</span>
+<span class="sd">        Local coordinate system with X out the nose, Z towards the ground, </span>
+<span class="sd">        and Y out the right side</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Vehicle Frame&#39;</span>
+<span class="sd">        Aircraft coordinate system with X towards the tail, Z towards the ceiling, </span>
+<span class="sd">        and Y out the right wing</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle</span>
+<span class="sd">        Implementation for axisymmetric nacelles</span>
+<span class="sd">    RCAIDE.Library.Components.Nacelles.Stack_Nacelle</span>
+<span class="sd">        Implementation for stacked segment nacelles</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component to function.</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the nacelle attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                       <span class="o">=</span> <span class="s1">&#39;nacelle&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>                    <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">aerodynamic_center</span>        <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span>  
-        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span>                     <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">front_projected</span>     <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">side_projected</span>      <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">wetted</span>              <span class="o">=</span> <span class="mf">0.0</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span>                  <span class="o">=</span> <span class="mf">0.0</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">inlet_diameter</span>            <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">length</span>                    <span class="o">=</span> <span class="mf">0.0</span>   
-        <span class="bp">self</span><span class="o">.</span><span class="n">orientation_euler_angles</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]</span>    
-        <span class="bp">self</span><span class="o">.</span><span class="n">flow_through</span>              <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_pylon</span>                 <span class="o">=</span> <span class="kc">True</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">differential_pressure</span>     <span class="o">=</span> <span class="mf">0.0</span>    
-        <span class="bp">self</span><span class="o">.</span><span class="n">cowling_airfoil_angle</span>     <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                      <span class="o">=</span> <span class="s1">&#39;nacelle&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>                   <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aerodynamic_center</span>       <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span>                    <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">front_projected</span>    <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">side_projected</span>     <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">wetted</span>             <span class="o">=</span> <span class="mf">0.0</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">diameter</span>                 <span class="o">=</span> <span class="mf">0.0</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">inlet_diameter</span>           <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span>                   <span class="o">=</span> <span class="mf">0.0</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">orientation_euler_angles</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow_through</span>             <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_pylon</span>                <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">differential_pressure</span>    <span class="o">=</span> <span class="mf">0.0</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">cowling_airfoil_angle</span>    <span class="o">=</span> <span class="mf">0.0</span>
 
 <div class="viewcode-block" id="Nacelle.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">propulsor</span><span class="p">):</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Placeholder for adding operating conditions to the nacelle.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Data</span>
+<span class="sd">            Flight segment data</span>
+<span class="sd">        propulsor : Data</span>
+<span class="sd">            Propulsion system data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span></div>
 
 
 <div class="viewcode-block" id="Nacelle.nac_vel_to_body">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.nac_vel_to_body">[docs]</a>
     <span class="k">def</span> <span class="nf">nac_vel_to_body</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This rotates from the systems body frame to the nacelles velocity frame</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes rotation matrix from nacelle velocity frame to body frame.</span>
 
-<span class="sd">        Assumptions:</span>
-<span class="sd">        There are two nacelle frames, the vehicle frame describing the location and the nacelle velocity frame</span>
-<span class="sd">        velocity frame is X out the nose, Z towards the ground, and Y out the right wing</span>
-<span class="sd">        vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 rotation matrix</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Assumes two nacelle frames:</span>
+<span class="sd">        * Vehicle frame describing location</span>
+<span class="sd">        * Velocity frame for aerodynamic calculations</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
         <span class="n">body2nacvel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">body_to_nac_vel</span><span class="p">()</span>
-        
         <span class="n">r</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">Rotation</span><span class="o">.</span><span class="n">from_matrix</span><span class="p">(</span><span class="n">body2nacvel</span><span class="p">)</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">inv</span><span class="p">()</span>
         <span class="n">rot_mat</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
-
         <span class="k">return</span> <span class="n">rot_mat</span></div>
 
     
 <div class="viewcode-block" id="Nacelle.body_to_nac_vel">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.body_to_nac_vel">[docs]</a>
     <span class="k">def</span> <span class="nf">body_to_nac_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This rotates from the systems body frame to the nacelles velocity frame</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes rotation matrix from body frame to nacelle velocity frame.</span>
 
-<span class="sd">        Assumptions:</span>
-<span class="sd">        There are two nacelle frames, the vehicle frame describing the location and the nacelle velocity frame</span>
-<span class="sd">        velocity frame is X out the nose, Z towards the ground, and Y out the right wing</span>
-<span class="sd">        vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 rotation matrix</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Transformation sequence:</span>
+<span class="sd">        1. Body to vehicle frame</span>
+<span class="sd">        2. Vehicle to nacelle vehicle frame</span>
+<span class="sd">        3. Nacelle vehicle to nacelle velocity frame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
         <span class="c1"># Go from body to vehicle frame</span>
         <span class="n">body_2_vehicle</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">Rotation</span><span class="o">.</span><span class="n">from_rotvec</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
         
-        <span class="c1"># Go from vehicle frame to nacelle vehicle frame: rot 1 including the extra body rotation</span>
-        <span class="n">rots</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">orientation_euler_angles</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.</span> 
+        <span class="c1"># Go from vehicle frame to nacelle vehicle frame</span>
+        <span class="n">rots</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">orientation_euler_angles</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.</span> 
         <span class="n">vehicle_2_nac_vec</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">Rotation</span><span class="o">.</span><span class="n">from_rotvec</span><span class="p">(</span><span class="n">rots</span><span class="p">)</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>        
         
-        <span class="c1"># GO from the nacelle vehicle frame to the nacelle velocity frame: rot 2</span>
+        <span class="c1"># Go from nacelle vehicle frame to nacelle velocity frame</span>
         <span class="n">nac_vec_2_nac_vel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vec_to_vel</span><span class="p">()</span>
         
-        <span class="c1"># Do all the matrix multiplies</span>
-        <span class="n">rot1</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">body_2_vehicle</span><span class="p">,</span><span class="n">vehicle_2_nac_vec</span><span class="p">)</span>
+        <span class="c1"># Combine transformations</span>
+        <span class="n">rot1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">body_2_vehicle</span><span class="p">,</span><span class="n">vehicle_2_nac_vec</span><span class="p">)</span>
         <span class="n">rot_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">rot1</span><span class="p">,</span><span class="n">nac_vec_2_nac_vel</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">rot_mat</span>    </div>
 
     
-    
-
 <div class="viewcode-block" id="Nacelle.vec_to_vel">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.vec_to_vel">[docs]</a>
     <span class="k">def</span> <span class="nf">vec_to_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This rotates from the nacelles vehicle frame to the nacelles velocity frame</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes rotation matrix from nacelle vehicle frame to nacelle velocity frame.</span>
 
-<span class="sd">        Assumptions:</span>
-<span class="sd">        There are two nacelle frames, the vehicle frame describing the location and the nacelle velocity frame</span>
-<span class="sd">        velocity frame is X out the nose, Z towards the ground, and Y out the right wing</span>
-<span class="sd">        vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 rotation matrix</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        
         <span class="n">rot_mat</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">Rotation</span><span class="o">.</span><span class="n">from_rotvec</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span>
-        
         <span class="k">return</span> <span class="n">rot_mat</span></div>
 </div>
 

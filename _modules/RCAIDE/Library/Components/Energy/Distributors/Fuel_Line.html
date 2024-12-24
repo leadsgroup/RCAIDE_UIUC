@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Distributors.Fuel_Line</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Networks/Distribution/Fuel_Line.py </span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Networks/Distribution/Fuel_Line.py </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke </span>
 
@@ -395,7 +395,38 @@
 <div class="viewcode-block" id="Fuel_Line">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.html#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line">[docs]</a>
 <span class="k">class</span> <span class="nc">Fuel_Line</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Fuel line class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for managing fuel distribution between aircraft fuel system components</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the fuel line (default: &#39;fuel_line&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    fuel_tanks : Container</span>
+<span class="sd">        Collection of fuel tanks connected to this line</span>
+<span class="sd">        </span>
+<span class="sd">    assigned_propulsors : list</span>
+<span class="sd">        List of propulsion systems supplied by this fuel line</span>
+<span class="sd">        </span>
+<span class="sd">    active : bool</span>
+<span class="sd">        Flag indicating if the fuel line is operational (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    efficiency : float</span>
+<span class="sd">        Fuel transfer efficiency (default: 1.0)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The fuel line manages fuel distribution between tanks and engines, handling</span>
+<span class="sd">    fuel transfer and flow control. It supports multiple fuel tanks and propulsors</span>
+<span class="sd">    in various aircraft configurations.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks</span>
+<span class="sd">        Fuel tank components</span>
+<span class="sd">    RCAIDE.Library.Components.Propulsors</span>
+<span class="sd">        Aircraft propulsion system components</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

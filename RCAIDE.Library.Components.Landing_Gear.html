@@ -510,11 +510,106 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Landing_Gear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Landing_Gear/Landing_Gear.html#Landing_Gear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>The Top Landing Gear Component Class</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
+<p>Base class for aircraft landing gear components providing core functionality for
+both main and nose gear configurations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the landing gear component, defaults to ‘landing_gear’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.tire_diameter">
+<span class="sig-name descname"><span class="pre">tire_diameter</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.tire_diameter" title="Link to this definition">#</a></dt>
+<dd><p>Diameter of the landing gear tire, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.strut_length">
+<span class="sig-name descname"><span class="pre">strut_length</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.strut_length" title="Link to this definition">#</a></dt>
+<dd><p>Length of the landing gear strut assembly, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.units">
+<span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.units" title="Link to this definition">#</a></dt>
+<dd><p>Number of landing gear units in the assembly, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.gear_extended">
+<span class="sig-name descname"><span class="pre">gear_extended</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.gear_extended" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating whether the landing gear is in extended position,
+defaults to False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.wheels">
+<span class="sig-name descname"><span class="pre">wheels</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.wheels" title="Link to this definition">#</a></dt>
+<dd><p>Number of wheels per landing gear unit, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>This class serves as the foundation for specific landing gear types, providing:</p>
+<ul class="simple">
+<li><p>Basic geometric properties</p></li>
+<li><p>Configuration parameters</p></li>
+<li><p>State tracking (extended/retracted)</p></li>
+</ul>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Landing gear components are rigid bodies</p></li>
+<li><p>Tire and strut properties are uniform within each unit</p></li>
+<li><p>Gear state is binary (either fully extended or fully retracted)</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Strut’</dt><dd><p>The main structural member of the landing gear that absorbs landing loads
+and supports the wheel assembly</p>
+</dd>
+<dt>‘Unit’</dt><dd><p>A complete landing gear assembly including strut, wheels, and associated
+mechanisms</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.html#module-RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear</span></code></a></dt><dd><p>Implementation for main landing gear</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.html#module-RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear</span></code></a></dt><dd><p>Implementation for nose landing gear</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -524,7 +619,88 @@ N/A</p>
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Main_Landing_Gear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Landing_Gear/Main_Landing_Gear.html#Main_Landing_Gear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Landing_Gear.html#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear"><code class="xref py py-class docutils literal notranslate"><span class="pre">Landing_Gear</span></code></a></p>
-<p>Main Landing Gear Component</p>
+<p>Main landing gear component that handles the primary loads during landing, takeoff,
+and ground operations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the main landing gear component, defaults to ‘main_gear’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.units">
+<span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.units" title="Link to this definition">#</a></dt>
+<dd><p>Number of main landing gear units in the assembly, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.strut_length">
+<span class="sig-name descname"><span class="pre">strut_length</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.strut_length" title="Link to this definition">#</a></dt>
+<dd><p>Length of the main gear strut assembly, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.tire_diameter">
+<span class="sig-name descname"><span class="pre">tire_diameter</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.tire_diameter" title="Link to this definition">#</a></dt>
+<dd><p>Diameter of the main gear tires, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.wheels">
+<span class="sig-name descname"><span class="pre">wheels</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.wheels" title="Link to this definition">#</a></dt>
+<dd><p>Number of wheels per main landing gear unit, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The main landing gear typically carries 80-90% of the aircraft weight and is
+designed to handle the primary impact loads during landing.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Symmetrical arrangement about aircraft centerline</p></li>
+<li><p>All units in an assembly have identical properties</p></li>
+<li><p>Load distribution is uniform across all wheels in a unit</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Multi-Bogey’</dt><dd><p>Configuration with multiple wheels per strut to distribute loads</p>
+</dd>
+<dt>‘Track Width’</dt><dd><p>Lateral distance between main gear units, critical for aircraft stability</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Landing_Gear.html#module-RCAIDE.Library.Components.Landing_Gear.Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Landing_Gear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Landing_Gear.Landing_Gear</span></code></a></dt><dd><p>Base landing gear class</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.html#module-RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear</span></code></a></dt><dd><p>Nose gear component that works in conjunction with main gear</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -534,17 +710,102 @@ N/A</p>
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Nose_Landing_Gear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Landing_Gear/Nose_Landing_Gear.html#Nose_Landing_Gear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Landing_Gear.html#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear"><code class="xref py py-class docutils literal notranslate"><span class="pre">Landing_Gear</span></code></a></p>
-<p>Nose Landing Gear Component</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
+<p>Nose landing gear component that provides directional control during ground operations
+and supports a portion of the aircraft’s forward weight.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the nose landing gear component, defaults to ‘nose_gear’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.tire_diameter">
+<span class="sig-name descname"><span class="pre">tire_diameter</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.tire_diameter" title="Link to this definition">#</a></dt>
+<dd><p>Diameter of the nose gear tires, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.strut_length">
+<span class="sig-name descname"><span class="pre">strut_length</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.strut_length" title="Link to this definition">#</a></dt>
+<dd><p>Length of the nose gear strut assembly, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.units">
+<span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.units" title="Link to this definition">#</a></dt>
+<dd><p>Number of nose landing gear units, typically 1, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.wheels">
+<span class="sig-name descname"><span class="pre">wheels</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.wheels" title="Link to this definition">#</a></dt>
+<dd><p>Number of wheels per nose gear unit, defaults to 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The nose landing gear typically carries 10-20% of the aircraft weight and provides
+steering capability during taxi, takeoff, and landing.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Located on aircraft centerline</p></li>
+<li><p>Provides steering capability</p></li>
+<li><p>Designed for lower loads than main gear</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Steering Angle’</dt><dd><p>Maximum deflection angle available for directional control</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Landing_Gear.html#module-RCAIDE.Library.Components.Landing_Gear.Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Landing_Gear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Landing_Gear.Landing_Gear</span></code></a></dt><dd><p>Base landing gear class</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.html#module-RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear" title="RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear</span></code></a></dt><dd><p>Main gear component that works in conjunction with nose gear</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
 <section id="module-RCAIDE.Library.Components.Landing_Gear">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Components.Landing_Gear" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>Module containing landing gear components for aircraft design and analysis. This module
+provides classes for both main and nose landing gear configurations.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Fuselages.html#module-RCAIDE.Library.Components.Fuselages" title="RCAIDE.Library.Components.Fuselages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Fuselages</span></code></a></dt><dd><p>Related module for fuselage components that interface with landing gear</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Airfoils.html#module-RCAIDE.Library.Components.Airfoils" title="RCAIDE.Library.Components.Airfoils"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Airfoils</span></code></a></dt><dd><p>Related module for airfoil definitions that may affect gear bay design</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -579,15 +840,37 @@ N/A</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Landing_Gear.Landing_Gear">RCAIDE.Library.Components.Landing_Gear.Landing_Gear module</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear"><code class="docutils literal notranslate"><span class="pre">Landing_Gear</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear"><code class="docutils literal notranslate"><span class="pre">Landing_Gear</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.tag"><code class="docutils literal notranslate"><span class="pre">Landing_Gear.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.tire_diameter"><code class="docutils literal notranslate"><span class="pre">Landing_Gear.tire_diameter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.strut_length"><code class="docutils literal notranslate"><span class="pre">Landing_Gear.strut_length</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.units"><code class="docutils literal notranslate"><span class="pre">Landing_Gear.units</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.gear_extended"><code class="docutils literal notranslate"><span class="pre">Landing_Gear.gear_extended</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Landing_Gear.Landing_Gear.wheels"><code class="docutils literal notranslate"><span class="pre">Landing_Gear.wheels</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear">RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear module</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear"><code class="docutils literal notranslate"><span class="pre">Main_Landing_Gear</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear"><code class="docutils literal notranslate"><span class="pre">Main_Landing_Gear</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.tag"><code class="docutils literal notranslate"><span class="pre">Main_Landing_Gear.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.units"><code class="docutils literal notranslate"><span class="pre">Main_Landing_Gear.units</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.strut_length"><code class="docutils literal notranslate"><span class="pre">Main_Landing_Gear.strut_length</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.tire_diameter"><code class="docutils literal notranslate"><span class="pre">Main_Landing_Gear.tire_diameter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear.Main_Landing_Gear.wheels"><code class="docutils literal notranslate"><span class="pre">Main_Landing_Gear.wheels</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear">RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear module</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear"><code class="docutils literal notranslate"><span class="pre">Nose_Landing_Gear</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear"><code class="docutils literal notranslate"><span class="pre">Nose_Landing_Gear</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.tag"><code class="docutils literal notranslate"><span class="pre">Nose_Landing_Gear.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.tire_diameter"><code class="docutils literal notranslate"><span class="pre">Nose_Landing_Gear.tire_diameter</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.strut_length"><code class="docutils literal notranslate"><span class="pre">Nose_Landing_Gear.strut_length</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.units"><code class="docutils literal notranslate"><span class="pre">Nose_Landing_Gear.units</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear.Nose_Landing_Gear.wheels"><code class="docutils literal notranslate"><span class="pre">Nose_Landing_Gear.wheels</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Landing_Gear">Module contents</a></li>

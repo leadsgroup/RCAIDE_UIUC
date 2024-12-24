@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Sources/Batteries/Aluminum_Air.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Aluminum_Air.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
@@ -396,18 +396,66 @@
 <div class="viewcode-block" id="Aluminum_Air">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air">[docs]</a>
 <span class="k">class</span> <span class="nc">Aluminum_Air</span><span class="p">(</span><span class="n">Generic_Battery_Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Aluminum-Air battery cell. Specifies discharge/specific energy characteristics specific to</span>
-<span class="sd">    aluminum-air batteries. Also includes parameters related to consumption of aluminum, oxygen, and water</span>
-<span class="sd">    &quot;&quot;&quot;</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling aluminum-air battery characteristics and performance</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the battery module (default: &#39;Aluminum Air&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.specific_energy : float</span>
+<span class="sd">        Energy capacity per unit mass [J/kg] (default: 1300 Wh/kg)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.specific_power : float</span>
+<span class="sd">        Maximum power output per unit mass [W/kg] (default: 0.2 kW/kg)</span>
+<span class="sd">        </span>
+<span class="sd">    mass_gain_factor : float</span>
+<span class="sd">        Rate of mass increase during discharge [kg/Wh] (default: 0.000110145 kg/Wh)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.water_mass_gain_factor : float</span>
+<span class="sd">        Rate of water consumption [kg/Wh] (default: 0.000123913 kg/Wh)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.aluminum_mass_factor : float</span>
+<span class="sd">        Rate of aluminum consumption [kg/Wh] (default: 0.000123828 kg/Wh)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.ragone.const_1 : float</span>
+<span class="sd">        First constant in Ragone curve fit [kW/kg] (default: 0.8439 kW/kg)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.ragone.const_2 : float</span>
+<span class="sd">        Second constant in Ragone curve fit [1/(Wh/kg)] (default: -4.8647e-4)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.ragone.lower_bound : float</span>
+<span class="sd">        Minimum specific energy on Ragone plot [Wh/kg] (default: 1100 Wh/kg)</span>
+<span class="sd">        </span>
+<span class="sd">    cell.ragone.upper_bound : float</span>
+<span class="sd">        Maximum specific energy on Ragone plot [Wh/kg] (default: 1600 Wh/kg)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Aluminum-air batteries are a type of metal-air battery that uses aluminum</span>
+<span class="sd">    as the anode and ambient oxygen as the cathode. During discharge, the battery</span>
+<span class="sd">    consumes aluminum and water while gaining mass from the reaction products.</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Ragone Plot&#39;</span>
+<span class="sd">        Graph showing the relationship between specific power and specific energy,</span>
+<span class="sd">        characterized by constants that define the performance envelope</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Mass Gain Factor&#39;</span>
+<span class="sd">        Rate at which the battery gains mass during discharge due to the</span>
+<span class="sd">        conversion of aluminum to aluminum hydroxide</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span>
+<span class="sd">        Base battery module class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for aluminum-air battery attributes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                         <span class="o">=</span> <span class="s1">&#39;Aluminum Air&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">specific_energy</span>        <span class="o">=</span> <span class="mf">1300.</span><span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">Wh</span><span class="o">/</span><span class="n">Units</span><span class="o">.</span><span class="n">kg</span>    <span class="c1"># convert to Joules/kg</span>

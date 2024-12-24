@@ -538,20 +538,207 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Segment.html#Segment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
+<p>A class representing a wing segment that defines a portion of a wing’s geometry.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the segment, defaults to ‘segment’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.prev">
+<span class="sig-name descname"><span class="pre">prev</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.prev" title="Link to this definition">#</a></dt>
+<dd><p>Link to previous segment in wing, defaults to None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component">Component</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.next">
+<span class="sig-name descname"><span class="pre">next</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.next" title="Link to this definition">#</a></dt>
+<dd><p>Link to next segment in wing, defaults to None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component">Component</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.percent_span_location">
+<span class="sig-name descname"><span class="pre">percent_span_location</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.percent_span_location" title="Link to this definition">#</a></dt>
+<dd><p>Spanwise location as fraction of wing span, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.twist">
+<span class="sig-name descname"><span class="pre">twist</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.twist" title="Link to this definition">#</a></dt>
+<dd><p>Local twist angle, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.taper">
+<span class="sig-name descname"><span class="pre">taper</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.taper" title="Link to this definition">#</a></dt>
+<dd><p>Local taper ratio, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.root_chord_percent">
+<span class="sig-name descname"><span class="pre">root_chord_percent</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.root_chord_percent" title="Link to this definition">#</a></dt>
+<dd><p>Root chord as fraction of wing root chord, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.dihedral_outboard">
+<span class="sig-name descname"><span class="pre">dihedral_outboard</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.dihedral_outboard" title="Link to this definition">#</a></dt>
+<dd><p>Dihedral angle of outboard section, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.thickness_to_chord">
+<span class="sig-name descname"><span class="pre">thickness_to_chord</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.thickness_to_chord" title="Link to this definition">#</a></dt>
+<dd><p>Local thickness-to-chord ratio, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.sweeps">
+<span class="sig-name descname"><span class="pre">sweeps</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.sweeps" title="Link to this definition">#</a></dt>
+<dd><p>Collection of sweep angles</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>quarter_chord<span class="classifier">float</span></dt><dd><p>Quarter-chord sweep angle, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>leading_edge<span class="classifier">float</span></dt><dd><p>Leading edge sweep angle, defaults to None</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.chords">
+<span class="sig-name descname"><span class="pre">chords</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.chords" title="Link to this definition">#</a></dt>
+<dd><p>Collection of chord lengths</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>mean_aerodynamic<span class="classifier">float</span></dt><dd><p>Mean aerodynamic chord, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.areas">
+<span class="sig-name descname"><span class="pre">areas</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.areas" title="Link to this definition">#</a></dt>
+<dd><p>Collection of area measurements</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>reference<span class="classifier">float</span></dt><dd><p>Reference area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>exposed<span class="classifier">float</span></dt><dd><p>Exposed area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>wetted<span class="classifier">float</span></dt><dd><p>Wetted area, defaults to 0.0</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.Airfoil">
+<span class="sig-name descname"><span class="pre">Airfoil</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.Airfoil" title="Link to this definition">#</a></dt>
+<dd><p>Collection of airfoil definitions, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Wing segments are used to build up complete wing geometries by defining
+local properties at various spanwise locations.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Wing.html#module-RCAIDE.Library.Components.Wings.Wing" title="RCAIDE.Library.Components.Wings.Wing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Wing</span></code></a></dt><dd><p>Parent wing class that uses segments</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Main_Wing.html#module-RCAIDE.Library.Components.Wings.Main_Wing" title="RCAIDE.Library.Components.Wings.Main_Wing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Main_Wing</span></code></a></dt><dd><p>Main wing implementation using segments</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment.append_airfoil">
 <span class="sig-name descname"><span class="pre">append_airfoil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Segment.html#Segment.append_airfoil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment.append_airfoil" title="Link to this definition">#</a></dt>
-<dd><p>Adds an airfoil to the segment</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Adds an airfoil definition to the segment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>airfoil</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Airfoil data to be added to the segment</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -560,31 +747,27 @@ N/A</p>
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment_Container">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Segment_Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Segment.html#Segment_Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment_Container" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.Container.html#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
-<p>Container for wing segment</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<p>Container class for managing wing segments. Provides organization and
+access methods for segment components.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#module-RCAIDE.Library.Components.Wings.Segment" title="RCAIDE.Library.Components.Wings.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Segment</span></code></a></dt><dd><p>The segment components stored in this container</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Segment.Segment_Container.get_children">
 <span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Segment.html#Segment_Container.get_children"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Segment.Segment_Container.get_children" title="Link to this definition">#</a></dt>
-<dd><p>Returns the components that can go inside</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Returns a list of allowable child component types for the segment container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Empty list as segments do not contain child components</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -639,6 +822,19 @@ N/A</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment"><code class="docutils literal notranslate"><span class="pre">Segment</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.tag"><code class="docutils literal notranslate"><span class="pre">Segment.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.prev"><code class="docutils literal notranslate"><span class="pre">Segment.prev</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.next"><code class="docutils literal notranslate"><span class="pre">Segment.next</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.percent_span_location"><code class="docutils literal notranslate"><span class="pre">Segment.percent_span_location</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.twist"><code class="docutils literal notranslate"><span class="pre">Segment.twist</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.taper"><code class="docutils literal notranslate"><span class="pre">Segment.taper</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.root_chord_percent"><code class="docutils literal notranslate"><span class="pre">Segment.root_chord_percent</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.dihedral_outboard"><code class="docutils literal notranslate"><span class="pre">Segment.dihedral_outboard</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.thickness_to_chord"><code class="docutils literal notranslate"><span class="pre">Segment.thickness_to_chord</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.sweeps"><code class="docutils literal notranslate"><span class="pre">Segment.sweeps</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.chords"><code class="docutils literal notranslate"><span class="pre">Segment.chords</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.areas"><code class="docutils literal notranslate"><span class="pre">Segment.areas</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.Airfoil"><code class="docutils literal notranslate"><span class="pre">Segment.Airfoil</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Segment.Segment.append_airfoil"><code class="docutils literal notranslate"><span class="pre">Segment.append_airfoil()</span></code></a></li>
 </ul>
 </li>

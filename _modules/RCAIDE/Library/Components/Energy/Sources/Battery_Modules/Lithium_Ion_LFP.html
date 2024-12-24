@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Sources/Batteries/Lithium_Ion_LFP</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Ion_LFP.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created: Nov 2024, S. Shekar</span>
@@ -403,23 +403,88 @@
 <div class="viewcode-block" id="Lithium_Ion_LFP">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.Lithium_Ion_LFP">[docs]</a>
 <span class="k">class</span> <span class="nc">Lithium_Ion_LFP</span><span class="p">(</span><span class="n">Generic_Battery_Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; 26650 A123 Lithium Ion LFP cell.  </span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling A123 26650 lithium iron phosphate battery characteristics</span>
 <span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the battery module (default: &#39;lithium_ion_lfp&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    power_split_ratio : float, optional</span>
+<span class="sd">        Power distribution ratio for multiple battery systems</span>
+<span class="sd">        </span>
+<span class="sd">    number_of_cells : int</span>
+<span class="sd">        Number of cells in the module (default: 1)</span>
+<span class="sd">        </span>
+<span class="sd">    maximum_energy : float</span>
+<span class="sd">        Maximum energy storage capacity [J] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    maximum_power : float</span>
+<span class="sd">        Maximum power output [W] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    maximum_voltage : float</span>
+<span class="sd">        Maximum voltage output [V] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    cell : Data</span>
+<span class="sd">        Cell-specific properties</span>
+<span class="sd">        </span>
+<span class="sd">        - chemistry : str</span>
+<span class="sd">            Battery chemistry type (default: &#39;LiFePO4&#39;)</span>
+<span class="sd">        - diameter : float</span>
+<span class="sd">            Cell diameter [m] (default: 0.0185)</span>
+<span class="sd">        - height : float</span>
+<span class="sd">            Cell height [m] (default: 0.0653)</span>
+<span class="sd">        - mass : float</span>
+<span class="sd">            Cell mass [kg] (default: 0.03)</span>
+<span class="sd">        - surface_area : float</span>
+<span class="sd">            Total cell surface area [m^2]</span>
+<span class="sd">        - volume : float</span>
+<span class="sd">            Cell volume [m^3]</span>
+<span class="sd">        - density : float</span>
+<span class="sd">            Cell density [kg/m^3]</span>
+<span class="sd">        - electrode_area : float</span>
+<span class="sd">            Active electrode area [m^2] (default: 0.0342)</span>
+<span class="sd">        - maximum_voltage : float</span>
+<span class="sd">            Maximum cell voltage [V] (default: 3.6)</span>
+<span class="sd">        - nominal_capacity : float</span>
+<span class="sd">            Rated capacity [Ah] (default: 2.6)</span>
+<span class="sd">        - nominal_voltage : float</span>
+<span class="sd">            Nominal operating voltage [V] (default: 3.6)</span>
+<span class="sd">        - resistance : float</span>
+<span class="sd">            Internal resistance [Ohms] (default: 0.022)</span>
+<span class="sd">        - specific_heat_capacity : float</span>
+<span class="sd">            Cell specific heat [J/kgK] (default: 1115)</span>
+<span class="sd">        - radial_thermal_conductivity : float</span>
+<span class="sd">            Radial thermal conductivity [W/mK] (default: 0.475)</span>
+<span class="sd">        - axial_thermal_conductivity : float</span>
+<span class="sd">            Axial thermal conductivity [W/mK] (default: 37.6)</span>
+<span class="sd">        - discharge_performance_map : NearestNDInterpolator</span>
+<span class="sd">            Interpolator for voltage vs discharge characteristics</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">         # Cell Information </span>
-<span class="sd">           Datasheet: https://a123batteries.com/product_images/uploaded_images/26650.pdf</span>
-<span class="sd">            </span>
-<span class="sd">            Arora, Shashank, and Ajay Kapoor. “Experimental Study of Heat Generation </span>
-<span class="sd">            Rate during Discharge of LiFePO4 Pouch Cells of Different Nominal Capacities</span>
-<span class="sd">            and Thickness.” Batteries 5, no. 4 (November 11, 2019): 70. </span>
-<span class="sd">            https://doi.org/10.3390/batteries5040070.        </span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The LFP cell model includes detailed thermal and electrical characteristics</span>
+<span class="sd">    based on the A123 26650 cell. Performance data is interpolated from</span>
+<span class="sd">    experimental measurements.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] LithiumWerks (2019).A123 26650 Datasheet</span>
+<span class="sd">        https://a123batteries.com/product_images/uploaded_images/26650.pdf</span>
+<span class="sd">        </span>
+<span class="sd">    [2] Arora, S., &amp; Kapoor, A. (2019). Experimental Study of Heat Generation </span>
+<span class="sd">        Rate during Discharge of LiFePO4 Pouch Cells. Batteries, 5(4), 70.</span>
+<span class="sd">        https://doi.org/10.3390/batteries5040070</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span>
+<span class="sd">        Base battery module class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    
         <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
         <span class="c1">#  Module Level Properties</span>
         <span class="c1"># ----------------------------------------------------------------------------------------------------------------------        </span>
@@ -465,22 +530,28 @@
 <div class="viewcode-block" id="Lithium_Ion_LFP.energy_calc">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.Lithium_Ion_LFP.energy_calc">[docs]</a>
     <span class="k">def</span> <span class="nf">energy_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span> 
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the state of the LFP battery cell.</span>
-<span class="sd">           </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the state of the LFP battery cell</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state : Data</span>
+<span class="sd">            Current system state</span>
+<span class="sd">        bus : Component</span>
+<span class="sd">            Connected electrical bus</span>
+<span class="sd">        coolant_lines : Component</span>
+<span class="sd">            Connected cooling system</span>
+<span class="sd">        t_idx : int</span>
+<span class="sd">            Time index</span>
+<span class="sd">        delta_t : float</span>
+<span class="sd">            Time step [s]</span>
 <span class="sd">            </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">        Args:</span>
-<span class="sd">            self               : battery        [unitless]</span>
-<span class="sd">            state              : temperature    [K]</span>
-<span class="sd">            bus                : pressure       [Pa]</span>
-<span class="sd">            discharge (boolean): discharge flag [unitless]</span>
-<span class="sd">            </span>
-<span class="sd">        Returns: </span>
-<span class="sd">            None</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        stored_results_flag : bool</span>
+<span class="sd">            Flag indicating if results were stored</span>
+<span class="sd">        stored_battery_tag : str</span>
+<span class="sd">            Identifier for stored results</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
         <span class="n">stored_results_flag</span><span class="p">,</span> <span class="n">stored_battery_tag</span> <span class="o">=</span>  <span class="n">compute_lfp_cell_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span><span class="n">delta_t</span><span class="p">)</span> 
                         
@@ -490,6 +561,26 @@
 <div class="viewcode-block" id="Lithium_Ion_LFP.reuse_stored_data">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.Lithium_Ion_LFP.reuse_stored_data">[docs]</a>
     <span class="k">def</span> <span class="nf">reuse_stored_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span><span class="n">stored_results_flag</span><span class="p">,</span> <span class="n">stored_battery_tag</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reuses previously stored battery performance data</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state : Data</span>
+<span class="sd">            Current system state</span>
+<span class="sd">        bus : Component</span>
+<span class="sd">            Connected electrical bus</span>
+<span class="sd">        coolant_lines : Component</span>
+<span class="sd">            Connected cooling system</span>
+<span class="sd">        t_idx : int</span>
+<span class="sd">            Time index</span>
+<span class="sd">        delta_t : float</span>
+<span class="sd">            Time step [s]</span>
+<span class="sd">        stored_results_flag : bool</span>
+<span class="sd">            Flag indicating stored results exist</span>
+<span class="sd">        stored_battery_tag : str</span>
+<span class="sd">            Identifier for stored results</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">reuse_stored_lfp_cell_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span><span class="n">stored_results_flag</span><span class="p">,</span> <span class="n">stored_battery_tag</span><span class="p">)</span>
         <span class="k">return</span>    </div>
 
@@ -497,6 +588,18 @@
 <div class="viewcode-block" id="Lithium_Ion_LFP.update_battery_age">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.Lithium_Ion_LFP.update_battery_age">[docs]</a>
     <span class="k">def</span> <span class="nf">update_battery_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span> <span class="n">battery_conditions</span><span class="p">,</span><span class="n">increment_battery_age_by_one_day</span><span class="p">):</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates battery age and degradation parameters</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Segment</span>
+<span class="sd">            Flight segment data</span>
+<span class="sd">        battery_conditions : Data</span>
+<span class="sd">            Battery operating conditions</span>
+<span class="sd">        increment_battery_age_by_one_day : bool</span>
+<span class="sd">            Flag to increment battery age</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">update_lfp_cell_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span> <span class="n">battery_conditions</span><span class="p">,</span><span class="n">increment_battery_age_by_one_day</span><span class="p">)</span>
         <span class="k">return</span> </div>
 </div>
@@ -505,24 +608,42 @@
 <div class="viewcode-block" id="create_discharge_performance_map">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP.create_discharge_performance_map">[docs]</a>
 <span class="k">def</span> <span class="nf">create_discharge_performance_map</span><span class="p">(</span><span class="n">raw_data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Creates multiple surfaces from the data generated from </span>
-<span class="sd">        </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">        </span>
-<span class="sd">        </span>
-<span class="sd">    Source:</span>
-<span class="sd">         Lin, Xinfan, Hector Perez, Jason B. Siegel, and Anna G. Stefanopoulou.</span>
-<span class="sd">        “An Electro-Thermal Model for the A123 26650 LiFePO4 Battery.” </span>
-<span class="sd">        University of Michigan. Accessed November 11, 2024. </span>
-<span class="sd">        https://hdl.handle.net/2027.42/97341.</span>
-<span class="sd">        </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates an interpolator for battery discharge voltage characteristics</span>
 <span class="sd">    </span>
-<span class="sd">    Args: </span>
-<span class="sd">        None</span>
-<span class="sd">        </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        battery_data: ]</span>
-<span class="sd">    &#39;&#39;&#39;</span>    
+<span class="sd">    This function processes raw battery test data to create an interpolation</span>
+<span class="sd">    function that predicts battery voltage based on C-rate, temperature,</span>
+<span class="sd">    and discharge capacity.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    raw_data : dict</span>
+<span class="sd">        Dictionary containing battery test data with structure:</span>
+<span class="sd">        {c_rate: {temperature: {&#39;discharge&#39;: [...], &#39;voltage&#39;: [...]}}}</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    battery_data : NearestNDInterpolator</span>
+<span class="sd">        Interpolator function that takes [C-rate, temperature, discharge_capacity]</span>
+<span class="sd">        and returns voltage</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates a 3D interpolation of voltage as a function of:</span>
+<span class="sd">    - C-rate (discharge current relative to capacity)</span>
+<span class="sd">    - Temperature</span>
+<span class="sd">    - Discharge capacity (state of charge)</span>
+<span class="sd">    </span>
+<span class="sd">    Uses nearest neighbor interpolation for computational efficiency. Linear</span>
+<span class="sd">    interpolation is possible but increases computation time by ~30x.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Lin, X., Perez, H., Siegel, J. B., &amp; Stefanopoulou, A. G. (2024).</span>
+<span class="sd">        &quot;An Electro-Thermal Model for the A123 26650 LiFePO4 Battery.&quot;</span>
+<span class="sd">        University of Michigan.</span>
+<span class="sd">        https://hdl.handle.net/2027.42/97341</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
     <span class="c1"># Prepare lists for the data needed for interpolation</span>
     <span class="n">c_rates</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">temperatures</span> <span class="o">=</span> <span class="p">[]</span>
@@ -549,7 +670,7 @@
     <span class="c1"># Create the interpolant</span>
     <span class="n">battery_data</span> <span class="o">=</span> <span class="n">NearestNDInterpolator</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="c1"># Can be replaced by a Linear Interpolator for a better fit but computation time increases by 30 times. </span>
 
-    <span class="k">return</span> <span class="n">battery_data</span>  </div>
+    <span class="k">return</span> <span class="n">battery_data</span></div>
 
 
 <div class="viewcode-block" id="load_battery_results">

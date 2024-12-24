@@ -544,11 +544,120 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Central_Fuel_Tank</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Fuel_Tanks/Central_Fuel_Tank.html#Central_Fuel_Tank"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank.html#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank.Fuel_Tank" title="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank.Fuel_Tank"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fuel_Tank</span></code></a></p>
-<p>Central Fuel tank compoment.</p>
+<p>Class for modeling central fuel tank characteristics and behavior</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the fuel tank (default: ‘Central_fuel_tank’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.fuel_selector_ratio">
+<span class="sig-name descname"><span class="pre">fuel_selector_ratio</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.fuel_selector_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Ratio of fuel flow allocation (default: 1.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.mass_properties.empty_mass">
+<span class="sig-prename descclassname"><span class="pre">mass_properties.</span></span><span class="sig-name descname"><span class="pre">empty_mass</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.mass_properties.empty_mass" title="Link to this definition">#</a></dt>
+<dd><p>Mass of empty tank structure [kg] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.secondary_fuel_flow">
+<span class="sig-name descname"><span class="pre">secondary_fuel_flow</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.secondary_fuel_flow" title="Link to this definition">#</a></dt>
+<dd><p>Secondary fuel flow rate [kg/s] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.length">
+<span class="sig-name descname"><span class="pre">length</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.length" title="Link to this definition">#</a></dt>
+<dd><p>Tank length [m] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.width">
+<span class="sig-name descname"><span class="pre">width</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.width" title="Link to this definition">#</a></dt>
+<dd><p>Tank width [m] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.height">
+<span class="sig-name descname"><span class="pre">height</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.height" title="Link to this definition">#</a></dt>
+<dd><p>Tank height [m] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.fuel">
+<span class="sig-name descname"><span class="pre">fuel</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.fuel" title="Link to this definition">#</a></dt>
+<dd><p>Fuel type stored in tank (default: None)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component">Component</a>, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The central fuel tank is located in the aircraft’s center section,
+often integrated with the wing box or fuselage structure.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank.html#module-RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank" title="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank</span></code></a></dt><dd><p>Base fuel tank class</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Wing_Fuel_Tank.html#module-RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Wing_Fuel_Tank" title="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Wing_Fuel_Tank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Wing_Fuel_Tank</span></code></a></dt><dd><p>Wing-mounted fuel tank class</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.append_operating_conditions">
 <span class="sig-name descname"><span class="pre">append_operating_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuel_line</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Fuel_Tanks/Central_Fuel_Tank.html#Central_Fuel_Tank.append_operating_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.append_operating_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Append fuel tank operating conditions for a flight segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment" title="RCAIDE.Framework.Mission.Segments.Segment.Segment"><em>Segment</em></a>) – Flight segment containing state conditions</p></li>
+<li><p><strong>fuel_line</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Connected fuel line component</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -602,6 +711,14 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.tag"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.fuel_selector_ratio"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.fuel_selector_ratio</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.mass_properties.empty_mass"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.mass_properties.empty_mass</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.secondary_fuel_flow"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.secondary_fuel_flow</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.length"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.length</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.width"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.width</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.height"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.height</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.fuel"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.fuel</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Central_Fuel_Tank.Central_Fuel_Tank.append_operating_conditions"><code class="docutils literal notranslate"><span class="pre">Central_Fuel_Tank.append_operating_conditions()</span></code></a></li>
 </ul>
 </li>

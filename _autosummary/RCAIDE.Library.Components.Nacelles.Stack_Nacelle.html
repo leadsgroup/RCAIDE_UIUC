@@ -538,25 +538,73 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Stack_Nacelle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Nacelles/Stack_Nacelle.html#Stack_Nacelle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle" title="RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Nacelle</span></code></a></p>
-<p>This is a stacked nacelle for a generic aircraft.</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
+<p>A nacelle design built up from a series of stacked cross-sectional segments,
+allowing for complex, non-axisymmetric shapes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the nacelle component, defaults to ‘stack_nacelle’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.Segments">
+<span class="sig-name descname"><span class="pre">Segments</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.Segments" title="Link to this definition">#</a></dt>
+<dd><p>Collection of cross-sectional segments defining the nacelle shape,
+initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The stack nacelle approach provides flexibility in designing complex nacelle
+shapes through the use of multiple cross-sections. This is particularly useful for:</p>
+<ul class="simple">
+<li><p>Non-axisymmetric designs</p></li>
+<li><p>Complex inlet and nozzle geometries</p></li>
+<li><p>Integration with adjacent structures</p></li>
+</ul>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Segments are ordered from front to back</p></li>
+<li><p>Adjacent segments form smooth transitions</p></li>
+<li><p>Cross-sections are defined using super-ellipse parameters</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Stack’</dt><dd><p>Series of cross-sectional segments arranged longitudinally to define
+the nacelle shape</p>
+</dd>
+<dt>‘Cross-section’</dt><dd><p>Individual segment defining the nacelle shape at a specific longitudinal station</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Nacelle.html#module-RCAIDE.Library.Components.Nacelles.Nacelle" title="RCAIDE.Library.Components.Nacelles.Nacelle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Nacelles.Nacelle</span></code></a></dt><dd><p>Base nacelle class</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Segment.html#module-RCAIDE.Library.Components.Nacelles.Segment" title="RCAIDE.Library.Components.Nacelles.Segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Nacelles.Segment</span></code></a></dt><dd><p>Individual segments used to build the stack</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle.html#module-RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle" title="RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle</span></code></a></dt><dd><p>Alternative nacelle design approach</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.append_segment">
 <span class="sig-name descname"><span class="pre">append_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Nacelles/Stack_Nacelle.html#Stack_Nacelle.append_segment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.append_segment" title="Link to this definition">#</a></dt>
-<dd><p>Adds a segment to the nacelle.</p>
-<p>Assumptions:
-None
-Source:
-N/A
-Inputs:
-None
-Outputs:
-None
-Properties Used:
-N/A</p>
+<dd><p>Adds a new segment to the nacelle’s segment container.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Cross-sectional segment to be added to the nacelle definition</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -611,6 +659,8 @@ N/A</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle"><code class="docutils literal notranslate"><span class="pre">Stack_Nacelle</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.tag"><code class="docutils literal notranslate"><span class="pre">Stack_Nacelle.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.Segments"><code class="docutils literal notranslate"><span class="pre">Stack_Nacelle.Segments</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.append_segment"><code class="docutils literal notranslate"><span class="pre">Stack_Nacelle.append_segment()</span></code></a></li>
 </ul>
 </li>

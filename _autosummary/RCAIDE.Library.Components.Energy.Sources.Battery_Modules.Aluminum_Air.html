@@ -544,8 +544,137 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Aluminum_Air</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Aluminum_Air.html#Aluminum_Air"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic_Battery_Module</span></code></a></p>
-<p>Aluminum-Air battery cell. Specifies discharge/specific energy characteristics specific to
-aluminum-air batteries. Also includes parameters related to consumption of aluminum, oxygen, and water</p>
+<p>Class for modeling aluminum-air battery characteristics and performance</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the battery module (default: ‘Aluminum Air’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.specific_energy">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">specific_energy</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.specific_energy" title="Link to this definition">#</a></dt>
+<dd><p>Energy capacity per unit mass [J/kg] (default: 1300 Wh/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.specific_power">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">specific_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.specific_power" title="Link to this definition">#</a></dt>
+<dd><p>Maximum power output per unit mass [W/kg] (default: 0.2 kW/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.mass_gain_factor">
+<span class="sig-name descname"><span class="pre">mass_gain_factor</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.mass_gain_factor" title="Link to this definition">#</a></dt>
+<dd><p>Rate of mass increase during discharge [kg/Wh] (default: 0.000110145 kg/Wh)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.water_mass_gain_factor">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">water_mass_gain_factor</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.water_mass_gain_factor" title="Link to this definition">#</a></dt>
+<dd><p>Rate of water consumption [kg/Wh] (default: 0.000123913 kg/Wh)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.aluminum_mass_factor">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">aluminum_mass_factor</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.aluminum_mass_factor" title="Link to this definition">#</a></dt>
+<dd><p>Rate of aluminum consumption [kg/Wh] (default: 0.000123828 kg/Wh)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.const_1">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">const_1</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.const_1" title="Link to this definition">#</a></dt>
+<dd><p>First constant in Ragone curve fit [kW/kg] (default: 0.8439 kW/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.const_2">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">const_2</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.const_2" title="Link to this definition">#</a></dt>
+<dd><p>Second constant in Ragone curve fit [1/(Wh/kg)] (default: -4.8647e-4)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.lower_bound">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">lower_bound</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.lower_bound" title="Link to this definition">#</a></dt>
+<dd><p>Minimum specific energy on Ragone plot [Wh/kg] (default: 1100 Wh/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.upper_bound">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">upper_bound</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.upper_bound" title="Link to this definition">#</a></dt>
+<dd><p>Maximum specific energy on Ragone plot [Wh/kg] (default: 1600 Wh/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Aluminum-air batteries are a type of metal-air battery that uses aluminum
+as the anode and ambient oxygen as the cathode. During discharge, the battery
+consumes aluminum and water while gaining mass from the reaction products.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Ragone Plot’</dt><dd><p>Graph showing the relationship between specific power and specific energy,
+characterized by constants that define the performance envelope</p>
+</dd>
+<dt>‘Mass Gain Factor’</dt><dd><p>Rate at which the battery gains mass during discharge due to the
+conversion of aluminum to aluminum hydroxide</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#module-RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span></code></a></dt><dd><p>Base battery module class</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -597,7 +726,19 @@ aluminum-air batteries. Also includes parameters related to consumption of alumi
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.tag"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.specific_energy"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.specific_energy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.specific_power"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.specific_power</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.mass_gain_factor"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.mass_gain_factor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.water_mass_gain_factor"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.water_mass_gain_factor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.aluminum_mass_factor"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.aluminum_mass_factor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.const_1"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.ragone.const_1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.const_2"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.ragone.const_2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.lower_bound"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.ragone.lower_bound</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air.Aluminum_Air.cell.ragone.upper_bound"><code class="docutils literal notranslate"><span class="pre">Aluminum_Air.cell.ragone.upper_bound</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

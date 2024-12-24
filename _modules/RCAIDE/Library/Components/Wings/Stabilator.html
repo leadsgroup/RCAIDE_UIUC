@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Wings.Stabilator</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Compoments/Wings/Stabilator.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Wings/Stabilator.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -396,54 +395,66 @@
 <div class="viewcode-block" id="Stabilator">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Stabilator.html#RCAIDE.Library.Components.Wings.Stabilator.Stabilator">[docs]</a>
 <span class="k">class</span> <span class="nc">Stabilator</span><span class="p">(</span><span class="n">Horizontal_Tail</span><span class="p">,</span> <span class="n">All_Moving_Surface</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This class is used to define stabilators in RCAIDE. Note that it </span>
-<span class="sd">    inherits from both Horizontal_Tail and All_Moving_Surface</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an all-moving horizontal tail (stabilator) that provides </span>
+<span class="sd">    pitch control and longitudinal stability.</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the stabilator, defaults to &#39;stabilator&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    sign_duplicate : float</span>
+<span class="sd">        Sign convention for duplicate stabilator deflection, defaults to 1.0</span>
+<span class="sd">        (synchronized deflection for pitch control)</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The stabilator combines the functions of a horizontal stabilizer and elevator </span>
+<span class="sd">    by pivoting as a complete surface. It inherits from both Horizontal_Tail and </span>
+<span class="sd">    All_Moving_Surface to combine their functionality.</span>
 
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Horizontal_Tail</span>
+<span class="sd">        Base class providing horizontal tail functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.All_Moving_Surface</span>
+<span class="sd">        Base class providing pivoting surface functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator</span>
+<span class="sd">        Alternative pitch control using conventional elevator</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for stabilators in RCAIDE.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the stabilator attributes.</span>
 <span class="sd">        </span>
-<span class="sd">        See All_Moving_Surface().__defaults__ and Wing().__defaults__ for </span>
-<span class="sd">        an explanation of attributes</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                <span class="o">=</span> <span class="s1">&#39;stabilator&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span>     <span class="o">=</span> <span class="mf">1.0</span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        See All_Moving_Surface.__defaults__ and Wing.__defaults__ for </span>
+<span class="sd">        additional inherited attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>            <span class="o">=</span> <span class="s1">&#39;stabilator&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span> <span class="o">=</span> <span class="mf">1.0</span>
 
 <div class="viewcode-block" id="Stabilator.moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Stabilator.html#RCAIDE.Library.Components.Wings.Stabilator.Stabilator.moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">):</span>
-        
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
+    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the stabilator.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wing : Component</span>
+<span class="sd">            Wing component data</span>
+<span class="sd">        center_of_gravity : list</span>
+<span class="sd">            Reference point coordinates for moment calculation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span>  </div>
 </div>
 

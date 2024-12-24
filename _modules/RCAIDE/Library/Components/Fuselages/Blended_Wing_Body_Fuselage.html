@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Fuselages/Blended_Wing_Body_Fuselage.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -398,47 +397,57 @@
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.html#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage">[docs]</a>
 <span class="k">class</span> <span class="nc">Blended_Wing_Body_Fuselage</span><span class="p">(</span><span class="n">Fuselage</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A blended wing body fuselage component that inherits from the base Fuselage class.</span>
+<span class="sd">    A blended wing body (BWB) fuselage design that smoothly integrates the wing and fuselage </span>
+<span class="sd">    into a single lifting body configuration.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
 <span class="sd">    tag : str</span>
-<span class="sd">        Identifier for the fuselage component, defaults to &#39;bwb_fuselage&#39;</span>
+<span class="sd">        Unique identifier for the BWB fuselage component, defaults to &#39;bwb_fuselage&#39;</span>
+<span class="sd">    </span>
 <span class="sd">    aft_centerbody_area : float</span>
-<span class="sd">        Area of the aft centerbody section, defaults to 0.0</span>
+<span class="sd">        Cross-sectional area of the aft centerbody section in square meters</span>
+<span class="sd">        </span>
 <span class="sd">    aft_centerbody_taper : float</span>
-<span class="sd">        Taper ratio of the aft centerbody section, defaults to 0.0</span>
+<span class="sd">        Taper ratio of the aft centerbody section, defined as the ratio of tip </span>
+<span class="sd">        to root chord lengths</span>
+<span class="sd">        </span>
 <span class="sd">    cabin_area : float</span>
-<span class="sd">        Total cabin area, defaults to 0.0</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    None</span>
+<span class="sd">        Total available cabin floor area in square meters</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This class extends the base Fuselage class to represent a blended wing body configuration,</span>
-<span class="sd">    where the fuselage smoothly transitions into the wing structure.</span>
+<span class="sd">    The blended wing body design offers several advantages over conventional tube-and-wing</span>
+<span class="sd">    configurations:</span>
+<span class="sd">    </span>
+<span class="sd">    * Reduced wetted area leading to lower skin friction drag</span>
+<span class="sd">    * Improved lift-to-drag ratio due to the lifting body design</span>
+<span class="sd">    * Potential for increased internal volume and better weight distribution</span>
 
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Centerbody&#39;</span>
+<span class="sd">        The central section of the BWB that houses the passenger cabin and cargo hold</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Aft Centerbody&#39;</span>
+<span class="sd">        The rear section of the centerbody that transitions into the outer wing sections</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Fuselage</span>
+<span class="sd">        Base fuselage class that provides common functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Tube_Fuselage</span>
+<span class="sd">        Conventional tube fuselage design for comparison</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component to function.</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the default values for the BWB fuselage component attributes.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        This method initializes all required attributes with default values. Users should </span>
+<span class="sd">        modify these values based on their specific design requirements after instantiation.</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
           
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                   <span class="o">=</span> <span class="s1">&#39;bwb_fuselage&#39;</span>
@@ -449,7 +458,26 @@
 <div class="viewcode-block" id="Blended_Wing_Body_Fuselage.compute_moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.html#RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage.Blended_Wing_Body_Fuselage.compute_moment_of_inertia">[docs]</a>
     <span class="k">def</span> <span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span> 
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the BWB fuselage.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        center_of_gravity : array-like</span>
+<span class="sd">            The (x, y, z) coordinates of the center of gravity about which to compute</span>
+<span class="sd">            the moment of inertia</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        I : ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor in kg*m^2</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Currently returns a zero matrix. This is a placeholder that should be implemented</span>
+<span class="sd">        with actual BWB moment of inertia calculations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> 
         <span class="k">return</span> <span class="n">I</span>        </div>
 </div>
 

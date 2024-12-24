@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Compoments/Wings/Vertical_Tail_All_Moving.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Wings/Vertical_Tail_All_Moving.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -396,78 +395,63 @@
 <div class="viewcode-block" id="Vertical_Tail_All_Moving">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.html#RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.Vertical_Tail_All_Moving">[docs]</a>
 <span class="k">class</span> <span class="nc">Vertical_Tail_All_Moving</span><span class="p">(</span><span class="n">Vertical_Tail</span><span class="p">,</span> <span class="n">All_Moving_Surface</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This class is used to define all-moving vertical tails in RCAIDE. Note that it </span>
-<span class="sd">    inherits from both Horizontal_Tail and All_Moving_Surface</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an all-moving vertical tail that provides directional control </span>
+<span class="sd">    and stability.</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the surface, defaults to &#39;vertical_tail_all_moving&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    sign_duplicate : float</span>
+<span class="sd">        Sign convention for duplicate surface deflection, defaults to -1.0</span>
+<span class="sd">        (opposite deflection for yaw control)</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The all-moving vertical tail combines the functions of a vertical stabilizer and </span>
+<span class="sd">    rudder by pivoting as a complete surface. It inherits from both Vertical_Tail and </span>
+<span class="sd">    All_Moving_Surface to combine their functionality.</span>
 
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Vertical_Tail</span>
+<span class="sd">        Base class providing vertical tail functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.All_Moving_Surface</span>
+<span class="sd">        Base class providing pivoting surface functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder</span>
+<span class="sd">        Alternative yaw control using conventional rudder</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for all moving-vertical tails in RCAIDE.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the all-moving vertical tail attributes.</span>
 <span class="sd">        </span>
-<span class="sd">        See All_Moving_Surface().__defaults__ and Wing().__defaults__ for an explanation </span>
-<span class="sd">        of attributes</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;vertical_tail_all_moving&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span>        <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>   
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        See All_Moving_Surface.__defaults__ and Wing.__defaults__ for </span>
+<span class="sd">        additional inherited attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>            <span class="o">=</span> <span class="s1">&#39;vertical_tail_all_moving&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>   
     
 <div class="viewcode-block" id="Vertical_Tail_All_Moving.make_x_z_reflection">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.html#RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.Vertical_Tail_All_Moving.make_x_z_reflection">[docs]</a>
     <span class="k">def</span> <span class="nf">make_x_z_reflection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This returns a Vertical_Tail class or subclass object that is the reflection</span>
-<span class="sd">        of this object over the x-z plane. This is useful since if Vertical_Tail&#39;s symmetric </span>
-<span class="sd">        attribute is True, the symmetric wing gets reflected over the x-y plane.</span>
-<span class="sd">        </span>
-<span class="sd">        This function uses deepcopy to achieve its purpose. If this copies too many unwanted </span>
-<span class="sd">        attributes, it is recommended that the user should write their own code, taking </span>
-<span class="sd">        after the form of this function.</span>
-<span class="sd">        </span>
-<span class="sd">        It is also recommended that the user call this function after they set control surface</span>
-<span class="sd">        or all moving surface deflections. This way the deflection is also properly reflected </span>
-<span class="sd">        to the other side</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a reflected copy of the vertical tail over the x-z plane.</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Component</span>
+<span class="sd">            Reflected vertical tail with appropriate deflection sign</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        * Used when vertical tail&#39;s symmetric attribute is True</span>
+<span class="sd">        * Deflection is reflected according to sign_duplicate convention</span>
+<span class="sd">        * Should be called after setting control surface deflections</span>
 <span class="sd">        &quot;&quot;&quot;</span>       
         <span class="n">wing</span>                  <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">make_x_z_reflection</span><span class="p">()</span>
         <span class="n">wing</span><span class="o">.</span><span class="n">deflection</span>      <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span>
@@ -477,9 +461,23 @@
     
 <div class="viewcode-block" id="Vertical_Tail_All_Moving.moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.html#RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving.Vertical_Tail_All_Moving.moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">):</span>
-        
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
+    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the vertical tail.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wing : Component</span>
+<span class="sd">            Wing component data</span>
+<span class="sd">        center_of_gravity : list</span>
+<span class="sd">            Reference point coordinates for moment calculation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span>  </div>
 </div>
 

@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Wings.Horizontal_Tail</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Compoments/Wings/Horizontal_Tail.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Wings/Horizontal_Tail.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -390,54 +389,61 @@
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia</span> <span class="kn">import</span>  <span class="n">compute_wing_moment_of_inertia</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="c1">#  Main Wing </span>
-<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-   
+<span class="c1">#  Horizontal_Tail</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <div class="viewcode-block" id="Horizontal_Tail">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Horizontal_Tail.html#RCAIDE.Library.Components.Wings.Horizontal_Tail.Horizontal_Tail">[docs]</a>
 <span class="k">class</span> <span class="nc">Horizontal_Tail</span><span class="p">(</span><span class="n">Wing</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This is the horizontal stabilizer class  </span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a horizontal stabilizer surface for aircraft pitch control </span>
+<span class="sd">    and longitudinal stability.</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the horizontal tail, defaults to &#39;horizontal_tail&#39;</span>
 
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The horizontal tail provides pitch stability and control. It inherits all geometric </span>
+<span class="sd">    and aerodynamic functionality from the Wing class and adds specific attributes for </span>
+<span class="sd">    horizontal tail operation. </span>
 
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Wing</span>
+<span class="sd">        Base wing class providing core functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Stabilator</span>
+<span class="sd">        All-moving horizontal tail variant</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator</span>
+<span class="sd">        Control surface typically mounted on horizontal tail</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
 
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for horizontal tails.</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the horizontal tail attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;horizontal_tail&#39;</span>
     
 <div class="viewcode-block" id="Horizontal_Tail.moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Horizontal_Tail.html#RCAIDE.Library.Components.Wings.Horizontal_Tail.Horizontal_Tail.moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">):</span>
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
+    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the horizontal tail.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        wing : Component</span>
+<span class="sd">            Wing component data</span>
+<span class="sd">        center_of_gravity : list</span>
+<span class="sd">            Reference point coordinates for moment calculation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">compute_wing_moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span> </div>
 </div>
 

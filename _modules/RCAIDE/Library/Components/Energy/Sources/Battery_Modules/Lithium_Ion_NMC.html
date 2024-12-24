@@ -401,7 +401,85 @@
 <div class="viewcode-block" id="Lithium_Ion_NMC">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC">[docs]</a>
 <span class="k">class</span> <span class="nc">Lithium_Ion_NMC</span><span class="p">(</span><span class="n">Generic_Battery_Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; 18650 lithium-nickel-manganese-cobalt-oxide battery cellc.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling 18650-format lithium nickel manganese cobalt oxide batteries</span>
+<span class="sd">    </span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the battery module (default: &#39;lithium_ion_nmc&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    maximum_energy : float</span>
+<span class="sd">        Maximum energy storage capacity [J] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    maximum_power : float</span>
+<span class="sd">        Maximum power output [W] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    maximum_voltage : float</span>
+<span class="sd">        Maximum voltage output [V] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    cell : Data</span>
+<span class="sd">        Cell-specific properties</span>
+<span class="sd">        </span>
+<span class="sd">        - chemistry : str</span>
+<span class="sd">            Battery chemistry type (default: &#39;LiNiMnCoO2&#39;)</span>
+<span class="sd">        - diameter : float</span>
+<span class="sd">            Cell diameter [m] (default: 0.0185)</span>
+<span class="sd">        - height : float</span>
+<span class="sd">            Cell height [m] (default: 0.0653)</span>
+<span class="sd">        - mass : float</span>
+<span class="sd">            Cell mass [kg] (default: 0.048)</span>
+<span class="sd">        - surface_area : float</span>
+<span class="sd">            Total cell surface area [m^2]</span>
+<span class="sd">        - volume : float</span>
+<span class="sd">            Cell volume [m^3]</span>
+<span class="sd">        - density : float</span>
+<span class="sd">            Cell density [kg/m^3]</span>
+<span class="sd">        - electrode_area : float</span>
+<span class="sd">            Active electrode area [m^2] (default: 0.0342)</span>
+<span class="sd">        - maximum_voltage : float</span>
+<span class="sd">            Maximum cell voltage [V] (default: 4.2)</span>
+<span class="sd">        - nominal_capacity : float</span>
+<span class="sd">            Rated capacity [Ah] (default: 3.8)</span>
+<span class="sd">        - nominal_voltage : float</span>
+<span class="sd">            Nominal operating voltage [V] (default: 3.6)</span>
+<span class="sd">        - charging_voltage : float</span>
+<span class="sd">            Charging voltage [V] (default: nominal_voltage)</span>
+<span class="sd">        - resistance : float</span>
+<span class="sd">            Internal resistance [Ohms] (default: 0.025)</span>
+<span class="sd">        - specific_heat_capacity : float</span>
+<span class="sd">            Cell specific heat [J/kgK] (default: 1108)</span>
+<span class="sd">        - radial_thermal_conductivity : float</span>
+<span class="sd">            Radial thermal conductivity [W/mK] (default: 0.4)</span>
+<span class="sd">        - axial_thermal_conductivity : float</span>
+<span class="sd">            Axial thermal conductivity [W/mK] (default: 32.2)</span>
+<span class="sd">        - discharge_performance_map : RegularGridInterpolator</span>
+<span class="sd">            Interpolator for voltage vs discharge characteristics</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The NMC cell model includes detailed thermal and electrical characteristics</span>
+<span class="sd">    based on 18650-format cells. The model includes forced air cooling assumptions</span>
+<span class="sd">    with a convective heat transfer coefficient for 35 m/s airflow.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [1] Jeon, D. H., &amp; Baek, S. M. (2011). Thermal modeling of cylindrical </span>
+<span class="sd">        lithium ion battery during discharge cycle. Energy Conversion and Management,</span>
+<span class="sd">        52(8-9), 2973-2981.</span>
+<span class="sd">        </span>
+<span class="sd">    [2] Yang, S., et al. (2019). A Review of Lithium-Ion Battery Thermal Management </span>
+<span class="sd">        System Strategies and the Evaluate Criteria. Int. J. Electrochem. Sci, 14,</span>
+<span class="sd">        6077-6107.</span>
+<span class="sd">        </span>
+<span class="sd">    [3] Muenzel, V., et al. (2015). A comparative testing study of commercial</span>
+<span class="sd">        18650-format lithium-ion battery cells. Journal of The Electrochemical</span>
+<span class="sd">        Society, 162(8), A1592.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span>
+<span class="sd">        Base battery module class</span>
 <span class="sd">    &quot;&quot;&quot;</span>       
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   
@@ -478,22 +556,54 @@
 <div class="viewcode-block" id="Lithium_Ion_NMC.energy_calc">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.energy_calc">[docs]</a>
     <span class="k">def</span> <span class="nf">energy_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span> 
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Computes the state of the NMC battery cell.</span>
-<span class="sd">           </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the state of the NMC battery cell</span>
+<span class="sd">        </span>
+<span class="sd">        This method calculates the battery&#39;s electrical performance and thermal</span>
+<span class="sd">        behavior during operation, including voltage, current, power, and </span>
+<span class="sd">        temperature distributions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state : Data</span>
+<span class="sd">            Current system state containing:</span>
+<span class="sd">            - Temperature distributions</span>
+<span class="sd">            - Power demands</span>
+<span class="sd">            - Operating conditions</span>
 <span class="sd">            </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">        Args:</span>
-<span class="sd">            self               : battery        [unitless]</span>
-<span class="sd">            state              : temperature    [K]</span>
-<span class="sd">            bus                : pressure       [Pa]</span>
-<span class="sd">            discharge (boolean): discharge flag [unitless]</span>
+<span class="sd">        bus : Component</span>
+<span class="sd">            Connected electrical bus containing:</span>
+<span class="sd">            - Voltage requirements</span>
+<span class="sd">            - Power requirements</span>
+<span class="sd">            - Load characteristics</span>
 <span class="sd">            </span>
-<span class="sd">        Returns: </span>
-<span class="sd">            None</span>
+<span class="sd">        coolant_lines : Component</span>
+<span class="sd">            Thermal management system containing:</span>
+<span class="sd">            - Coolant properties</span>
+<span class="sd">            - Flow conditions</span>
+<span class="sd">            - Heat exchanger parameters</span>
+<span class="sd">            </span>
+<span class="sd">        t_idx : int</span>
+<span class="sd">            Current time index in the simulation</span>
+<span class="sd">            </span>
+<span class="sd">        delta_t : float</span>
+<span class="sd">            Time step size [s]</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        stored_results_flag : bool</span>
+<span class="sd">            Flag indicating if results were stored for future reuse</span>
+<span class="sd">            </span>
+<span class="sd">        stored_battery_tag : str</span>
+<span class="sd">            Identifier for stored battery state data</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The calculation includes:</span>
+<span class="sd">        - Voltage and current based on load demand</span>
+<span class="sd">        - Heat generation from internal resistance</span>
+<span class="sd">        - Thermal distribution with cooling effects</span>
+<span class="sd">        - State of charge tracking</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
         <span class="n">stored_results_flag</span><span class="p">,</span> <span class="n">stored_battery_tag</span> <span class="o">=</span>  <span class="n">compute_nmc_cell_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span><span class="n">delta_t</span><span class="p">)</span> 
         
@@ -510,21 +620,36 @@
 <div class="viewcode-block" id="Lithium_Ion_NMC.update_battery_age">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.update_battery_age">[docs]</a>
     <span class="k">def</span> <span class="nf">update_battery_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">battery_conditions</span><span class="p">,</span><span class="n">increment_battery_age_by_one_day</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>  
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This is an aging model for 18650 lithium-nickel-manganese-cobalt-oxide batteries.   </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates battery aging parameters based on usage and environmental conditions</span>
 <span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">        Args:</span>
-<span class="sd">            self                                      : battery            [unitless] </span>
-<span class="sd">            battery_conditions                        : state of battery   [unitless]</span>
-<span class="sd">            increment_battery_age_by_one_day (boolean): day increment flag [unitless]  </span>
+<span class="sd">        This method tracks battery degradation by considering factors such as:</span>
+<span class="sd">        cycle count, depth of discharge, temperature exposure, and calendar aging.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Segment</span>
+<span class="sd">            Flight segment containing:</span>
+<span class="sd">            - Duration</span>
+<span class="sd">            - Operating conditions</span>
+<span class="sd">            - Power profile</span>
 <span class="sd">            </span>
-<span class="sd">        Returns: </span>
-<span class="sd">            None</span>
+<span class="sd">        battery_conditions : Data</span>
+<span class="sd">            Battery state data including:</span>
+<span class="sd">            - Temperature history</span>
+<span class="sd">            - Current rates</span>
+<span class="sd">            - State of charge history</span>
+<span class="sd">            </span>
+<span class="sd">        increment_battery_age_by_one_day : bool, optional</span>
+<span class="sd">            Flag to increment calendar age (default: False)</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The aging model accounts for:</span>
+<span class="sd">        - Capacity fade from cycling</span>
+<span class="sd">        - Calendar aging effects</span>
+<span class="sd">        - Temperature-dependent degradation</span>
+<span class="sd">        - Current rate impacts</span>
 <span class="sd">        &quot;&quot;&quot;</span>        
         <span class="n">update_nmc_cell_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">battery_conditions</span><span class="p">,</span><span class="n">increment_battery_age_by_one_day</span><span class="p">)</span> 
         
@@ -535,20 +660,35 @@
 <div class="viewcode-block" id="create_discharge_performance_map">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.create_discharge_performance_map">[docs]</a>
 <span class="k">def</span> <span class="nf">create_discharge_performance_map</span><span class="p">(</span><span class="n">raw_data</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Creates discharge and charge response surface for a LiNiMnCoO2 battery cell   </span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
-<span class="sd">            </span>
-<span class="sd">        Args:</span>
-<span class="sd">            raw_data     : cell discharge curves                  [unitless]   </span>
-<span class="sd">            </span>
-<span class="sd">        Returns: </span>
-<span class="sd">            battery_data : response surface of battery properties [unitless]  </span>
-<span class="sd">        &quot;&quot;&quot;</span>   
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates discharge and charge response surface for a LiNiMnCoO2 battery cell   </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    raw_data : Data</span>
+<span class="sd">        Container with experimental battery data including:</span>
+<span class="sd">        - Voltage : array</span>
+<span class="sd">            Discharge voltage curves at different currents and temperatures</span>
+<span class="sd">        - Temperature : array</span>
+<span class="sd">            Cell temperature profiles during discharge</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    battery_data : Data</span>
+<span class="sd">        Container with interpolation functions:</span>
+<span class="sd">        - Voltage : RegularGridInterpolator</span>
+<span class="sd">            Predicts voltage based on [current, temperature, SOC]</span>
+<span class="sd">        - Temperature : RegularGridInterpolator</span>
+<span class="sd">            Predicts cell temperature based on [current, temperature, SOC]</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates 3D interpolations for:</span>
+<span class="sd">    - Voltage as function of current (0-8A), temperature (0-50°C), and SOC (0-1)</span>
+<span class="sd">    - Temperature rise as function of same parameters</span>
+<span class="sd">    </span>
+<span class="sd">    Uses regular grid interpolation for smooth predictions across the operating space.</span>
+<span class="sd">    &quot;&quot;&quot;</span>   
     <span class="c1"># Process raw data   </span>
     <span class="n">processed_data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span> 
     <span class="n">processed_data</span><span class="o">.</span><span class="n">Voltage</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># current , operating temperature , state_of_charge vs voltage      </span>
@@ -581,7 +721,7 @@
     <span class="c1"># Create performance maps  </span>
     <span class="n">battery_data</span>             <span class="o">=</span> <span class="n">Data</span><span class="p">()</span> 
     <span class="n">amps</span>                    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">temp</span>                    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span>  <span class="mf">272.65</span>
+    <span class="n">temp</span>                    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span>  <span class="mf">272.65</span>  <span class="c1"># Convert to Kelvin</span>
     <span class="n">SOC</span>                     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
     <span class="n">battery_data</span><span class="o">.</span><span class="n">Voltage</span>     <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">((</span><span class="n">amps</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">SOC</span><span class="p">),</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">Voltage</span><span class="p">,</span><span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">battery_data</span><span class="o">.</span><span class="n">Temperature</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">((</span><span class="n">amps</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">SOC</span><span class="p">),</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">Temperature</span><span class="p">,</span><span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> 

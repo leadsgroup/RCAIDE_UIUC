@@ -538,24 +538,65 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Stabilator.Stabilator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Stabilator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Stabilator.html#Stabilator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Wings.Horizontal_Tail.html#RCAIDE.Library.Components.Wings.Horizontal_Tail.Horizontal_Tail" title="RCAIDE.Library.Components.Wings.Horizontal_Tail.Horizontal_Tail"><code class="xref py py-class docutils literal notranslate"><span class="pre">Horizontal_Tail</span></code></a>, <a class="reference internal" href="RCAIDE.Library.Components.Wings.All_Moving_Surface.html#RCAIDE.Library.Components.Wings.All_Moving_Surface.All_Moving_Surface" title="RCAIDE.Library.Components.Wings.All_Moving_Surface.All_Moving_Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">All_Moving_Surface</span></code></a></p>
-<p>This class is used to define stabilators in RCAIDE. Note that it
-inherits from both Horizontal_Tail and All_Moving_Surface</p>
-<blockquote>
-<div><p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
-</div></blockquote>
+<p>A class representing an all-moving horizontal tail (stabilator) that provides
+pitch control and longitudinal stability.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Stabilator.Stabilator.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the stabilator, defaults to ‘stabilator’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Stabilator.Stabilator.sign_duplicate">
+<span class="sig-name descname"><span class="pre">sign_duplicate</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator.sign_duplicate" title="Link to this definition">#</a></dt>
+<dd><p>Sign convention for duplicate stabilator deflection, defaults to 1.0
+(synchronized deflection for pitch control)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The stabilator combines the functions of a horizontal stabilizer and elevator
+by pivoting as a complete surface. It inherits from both Horizontal_Tail and
+All_Moving_Surface to combine their functionality.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Horizontal_Tail.html#module-RCAIDE.Library.Components.Wings.Horizontal_Tail" title="RCAIDE.Library.Components.Wings.Horizontal_Tail"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Horizontal_Tail</span></code></a></dt><dd><p>Base class providing horizontal tail functionality</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.All_Moving_Surface.html#module-RCAIDE.Library.Components.Wings.All_Moving_Surface" title="RCAIDE.Library.Components.Wings.All_Moving_Surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.All_Moving_Surface</span></code></a></dt><dd><p>Base class providing pivoting surface functionality</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator</span></code></a></dt><dd><p>Alternative pitch control using conventional elevator</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Stabilator.Stabilator.moment_of_inertia">
 <span class="sig-name descname"><span class="pre">moment_of_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_of_gravity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Stabilator.html#Stabilator.moment_of_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator.moment_of_inertia" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Computes the moment of inertia tensor for the stabilator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wing</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Wing component data</p></li>
+<li><p><strong>center_of_gravity</strong> (<em>list</em>) – Reference point coordinates for moment calculation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>3x3 moment of inertia tensor</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -609,6 +650,8 @@ N/A</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator"><code class="docutils literal notranslate"><span class="pre">Stabilator</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator.tag"><code class="docutils literal notranslate"><span class="pre">Stabilator.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator.sign_duplicate"><code class="docutils literal notranslate"><span class="pre">Stabilator.sign_duplicate</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Stabilator.Stabilator.moment_of_inertia"><code class="docutils literal notranslate"><span class="pre">Stabilator.moment_of_inertia()</span></code></a></li>
 </ul>
 </li>

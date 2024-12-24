@@ -544,30 +544,212 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Lithium_Ion_NMC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Ion_NMC.html#Lithium_Ion_NMC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic_Battery_Module</span></code></a></p>
-<p>18650 lithium-nickel-manganese-cobalt-oxide battery cellc.</p>
+<p>Class for modeling 18650-format lithium nickel manganese cobalt oxide batteries</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the battery module (default: ‘lithium_ion_nmc’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_energy">
+<span class="sig-name descname"><span class="pre">maximum_energy</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_energy" title="Link to this definition">#</a></dt>
+<dd><p>Maximum energy storage capacity [J] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_power">
+<span class="sig-name descname"><span class="pre">maximum_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_power" title="Link to this definition">#</a></dt>
+<dd><p>Maximum power output [W] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_voltage">
+<span class="sig-name descname"><span class="pre">maximum_voltage</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_voltage" title="Link to this definition">#</a></dt>
+<dd><p>Maximum voltage output [V] (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.cell">
+<span class="sig-name descname"><span class="pre">cell</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.cell" title="Link to this definition">#</a></dt>
+<dd><p>Cell-specific properties</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>chemistry<span class="classifier">str</span></dt><dd><p>Battery chemistry type (default: ‘LiNiMnCoO2’)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>diameter<span class="classifier">float</span></dt><dd><p>Cell diameter [m] (default: 0.0185)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>height<span class="classifier">float</span></dt><dd><p>Cell height [m] (default: 0.0653)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mass<span class="classifier">float</span></dt><dd><p>Cell mass [kg] (default: 0.048)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>surface_area<span class="classifier">float</span></dt><dd><p>Total cell surface area [m^2]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>volume<span class="classifier">float</span></dt><dd><p>Cell volume [m^3]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>density<span class="classifier">float</span></dt><dd><p>Cell density [kg/m^3]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>electrode_area<span class="classifier">float</span></dt><dd><p>Active electrode area [m^2] (default: 0.0342)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>maximum_voltage<span class="classifier">float</span></dt><dd><p>Maximum cell voltage [V] (default: 4.2)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>nominal_capacity<span class="classifier">float</span></dt><dd><p>Rated capacity [Ah] (default: 3.8)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>nominal_voltage<span class="classifier">float</span></dt><dd><p>Nominal operating voltage [V] (default: 3.6)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>charging_voltage<span class="classifier">float</span></dt><dd><p>Charging voltage [V] (default: nominal_voltage)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>resistance<span class="classifier">float</span></dt><dd><p>Internal resistance [Ohms] (default: 0.025)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>specific_heat_capacity<span class="classifier">float</span></dt><dd><p>Cell specific heat [J/kgK] (default: 1108)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>radial_thermal_conductivity<span class="classifier">float</span></dt><dd><p>Radial thermal conductivity [W/mK] (default: 0.4)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>axial_thermal_conductivity<span class="classifier">float</span></dt><dd><p>Axial thermal conductivity [W/mK] (default: 32.2)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>discharge_performance_map<span class="classifier">RegularGridInterpolator</span></dt><dd><p>Interpolator for voltage vs discharge characteristics</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The NMC cell model includes detailed thermal and electrical characteristics
+based on 18650-format cells. The model includes forced air cooling assumptions
+with a convective heat transfer coefficient for 35 m/s airflow.</p>
+<p class="rubric">References</p>
+<dl class="simple">
+<dt>[1] Jeon, D. H., &amp; Baek, S. M. (2011). Thermal modeling of cylindrical</dt><dd><p>lithium ion battery during discharge cycle. Energy Conversion and Management,
+52(8-9), 2973-2981.</p>
+</dd>
+<dt>[2] Yang, S., et al. (2019). A Review of Lithium-Ion Battery Thermal Management</dt><dd><p>System Strategies and the Evaluate Criteria. Int. J. Electrochem. Sci, 14,
+6077-6107.</p>
+</dd>
+<dt>[3] Muenzel, V., et al. (2015). A comparative testing study of commercial</dt><dd><p>18650-format lithium-ion battery cells. Journal of The Electrochemical
+Society, 162(8), A1592.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#module-RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span></code></a></dt><dd><p>Base battery module class</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.energy_calc">
 <span class="sig-name descname"><span class="pre">energy_calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coolant_lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Ion_NMC.html#Lithium_Ion_NMC.energy_calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.energy_calc" title="Link to this definition">#</a></dt>
-<dd><p>Computes the state of the NMC battery cell.</p>
-<dl class="simple">
-<dt>Assumptions:</dt><dd><p>None</p>
-</dd>
-<dt>Source:</dt><dd><p>None</p>
-</dd>
-</dl>
+<dd><p>Computes the state of the NMC battery cell</p>
+<p>This method calculates the battery’s electrical performance and thermal
+behavior during operation, including voltage, current, power, and
+temperature distributions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>self</strong> – battery        [unitless]</p></li>
-<li><p><strong>state</strong> – temperature    [K]</p></li>
-<li><p><strong>bus</strong> – pressure       [Pa]</p></li>
-<li><p><strong>discharge</strong> (<em>boolean</em>) – discharge flag [unitless]</p></li>
+<li><p><strong>state</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Current system state containing:
+- Temperature distributions
+- Power demands
+- Operating conditions</p></li>
+<li><p><strong>bus</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Connected electrical bus containing:
+- Voltage requirements
+- Power requirements
+- Load characteristics</p></li>
+<li><p><strong>coolant_lines</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Thermal management system containing:
+- Coolant properties
+- Flow conditions
+- Heat exchanger parameters</p></li>
+<li><p><strong>t_idx</strong> (<em>int</em>) – Current time index in the simulation</p></li>
+<li><p><strong>delta_t</strong> (<em>float</em>) – Time step size [s]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>stored_results_flag</strong> (<em>bool</em>) – Flag indicating if results were stored for future reuse</p></li>
+<li><p><strong>stored_battery_tag</strong> (<em>str</em>) – Identifier for stored battery state data</p></li>
+</ul>
+</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The calculation includes:
+- Voltage and current based on load demand
+- Heat generation from internal resistance
+- Thermal distribution with cooling effects
+- State of charge tracking</p>
 </dd></dl>
 
 <dl class="py method">
@@ -578,25 +760,30 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.update_battery_age">
 <span class="sig-name descname"><span class="pre">update_battery_age</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">battery_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">increment_battery_age_by_one_day</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Ion_NMC.html#Lithium_Ion_NMC.update_battery_age"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.update_battery_age" title="Link to this definition">#</a></dt>
-<dd><p>This is an aging model for 18650 lithium-nickel-manganese-cobalt-oxide batteries.</p>
-<dl class="simple">
-<dt>Assumptions:</dt><dd><p>None</p>
-</dd>
-<dt>Source:</dt><dd><p>None</p>
-</dd>
-</dl>
+<dd><p>Updates battery aging parameters based on usage and environmental conditions</p>
+<p>This method tracks battery degradation by considering factors such as:
+cycle count, depth of discharge, temperature exposure, and calendar aging.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>self</strong> – battery            [unitless]</p></li>
-<li><p><strong>battery_conditions</strong> – state of battery   [unitless]</p></li>
-<li><p><strong>increment_battery_age_by_one_day</strong> (<em>boolean</em>) – day increment flag [unitless]</p></li>
+<li><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment" title="RCAIDE.Framework.Mission.Segments.Segment.Segment"><em>Segment</em></a>) – Flight segment containing:
+- Duration
+- Operating conditions
+- Power profile</p></li>
+<li><p><strong>battery_conditions</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Battery state data including:
+- Temperature history
+- Current rates
+- State of charge history</p></li>
+<li><p><strong>increment_battery_age_by_one_day</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to increment calendar age (default: False)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>The aging model accounts for:
+- Capacity fade from cycling
+- Calendar aging effects
+- Temperature-dependent degradation
+- Current rate impacts</p>
 </dd></dl>
 
 </dd></dl>
@@ -605,23 +792,46 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.create_discharge_performance_map">
 <span class="sig-name descname"><span class="pre">create_discharge_performance_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Ion_NMC.html#create_discharge_performance_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.create_discharge_performance_map" title="Link to this definition">#</a></dt>
 <dd><p>Creates discharge and charge response surface for a LiNiMnCoO2 battery cell</p>
-<dl class="simple">
-<dt>Assumptions:</dt><dd><p>None</p>
-</dd>
-<dt>Source:</dt><dd><p>None</p>
-</dd>
-</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>raw_data</strong> – cell discharge curves                  [unitless]</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>response surface of battery properties [unitless]</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>battery_data</p>
+<dd class="field-odd"><p><strong>raw_data</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Container with experimental battery data including:
+- Voltage : array</p>
+<blockquote>
+<div><p>Discharge voltage curves at different currents and temperatures</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Temperature<span class="classifier">array</span></dt><dd><p>Cell temperature profiles during discharge</p>
 </dd>
 </dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>battery_data</strong> – Container with interpolation functions:
+- Voltage : RegularGridInterpolator</p>
+<blockquote>
+<div><p>Predicts voltage based on [current, temperature, SOC]</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Temperature<span class="classifier">RegularGridInterpolator</span></dt><dd><p>Predicts cell temperature based on [current, temperature, SOC]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The function creates 3D interpolations for:
+- Voltage as function of current (0-8A), temperature (0-50°C), and SOC (0-1)
+- Temperature rise as function of same parameters</p>
+<p>Uses regular grid interpolation for smooth predictions across the operating space.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -698,6 +908,11 @@ NCR18650G, URL <a class="reference external" href="https://www.imrbatteries.com/
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.tag"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_energy"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.maximum_energy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_power"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.maximum_power</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.maximum_voltage"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.maximum_voltage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.cell"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.cell</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.energy_calc"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.energy_calc()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.reuse_stored_data"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.reuse_stored_data()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.update_battery_age"><code class="docutils literal notranslate"><span class="pre">Lithium_Ion_NMC.update_battery_age()</span></code></a></li>

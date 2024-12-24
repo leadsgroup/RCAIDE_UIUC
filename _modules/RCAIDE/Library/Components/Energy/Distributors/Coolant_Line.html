@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Distributors.Coolant_Line</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Networks/Distribution/Coolant_Line.py </span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Networks/Distribution/Coolant_Line.py </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Aug 2024, S. Shekar</span>
 
@@ -394,8 +394,56 @@
 <div class="viewcode-block" id="Coolant_Line">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.html#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line">[docs]</a>
 <span class="k">class</span> <span class="nc">Coolant_Line</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Coolant line class.</span>
-<span class="sd">    &quot;&quot;&quot;</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for modeling coolant distribution lines in thermal management systems</span>
+<span class="sd">    </span>
+<span class="sd">    This class represents coolant distribution lines that connect various thermal </span>
+<span class="sd">    management components like heat exchangers, reservoirs, and battery cooling systems.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the coolant line (default: &#39;coolant_line&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    heat_exchangers : Container</span>
+<span class="sd">        Collection of heat exchangers connected to the coolant line</span>
+<span class="sd">        </span>
+<span class="sd">    reservoirs : Container</span>
+<span class="sd">        Collection of coolant reservoirs in the system</span>
+<span class="sd">        </span>
+<span class="sd">    active : bool</span>
+<span class="sd">        Flag indicating if the coolant line is operational (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    efficiency : float</span>
+<span class="sd">        Distribution efficiency of the coolant line (default: 1.0)</span>
+<span class="sd">        </span>
+<span class="sd">    battery_modules : Container, optional</span>
+<span class="sd">        Collection of battery cooling systems, created when batteries are present</span>
+<span class="sd">        </span>
+<span class="sd">    identical_battery_modules : bool, optional</span>
+<span class="sd">        Flag indicating if all battery modules use identical cooling systems</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The coolant line serves as a connection framework between thermal management</span>
+<span class="sd">    components. It manages the routing of coolant between heat sources (like batteries)</span>
+<span class="sd">    and heat sinks (like heat exchangers and reservoirs).</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Container&#39;</span>
+<span class="sd">        A specialized dictionary-like object for storing RCAIDE components</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Heat Acquisition System&#39;</span>
+<span class="sd">        Components and geometry for removing heat from battery modules</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Distributors.Heat_Exchanger</span>
+<span class="sd">        Heat exchanger components for thermal management</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Distributors.Reservoir</span>
+<span class="sd">        Coolant reservoir components</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
@@ -414,15 +462,21 @@
 <div class="viewcode-block" id="Coolant_Line.__init__">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.html#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.__init__">[docs]</a>
     <span class="k">def</span> <span class="fm">__init__</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distributor</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This initializes empty containers to add heat acqusition systems</span>
-<span class="sd">           for battery modules that are present on a particular bus.</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize coolant line and set up containers for thermal management components</span>
 <span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
+<span class="sd">        This method initializes empty containers for heat acquisition systems for battery</span>
+<span class="sd">        modules present on a particular bus.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        distributor : Component, optional</span>
+<span class="sd">            Component containing battery modules that need thermal management</span>
+<span class="sd">            </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        When a distributor with battery modules is provided, the method creates</span>
+<span class="sd">        containers to store the cooling system components for each battery.</span>
 <span class="sd">        &quot;&quot;&quot;</span>               
         <span class="bp">self</span><span class="o">.</span><span class="n">active</span>                        <span class="o">=</span> <span class="kc">True</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">efficiency</span>                    <span class="o">=</span> <span class="mf">1.0</span>

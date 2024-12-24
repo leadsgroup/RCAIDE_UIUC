@@ -544,7 +544,84 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Lithium_Sulfur</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Sulfur.html#Lithium_Sulfur"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic_Battery_Module</span></code></a></p>
-<p>Lithium-Sulphur battery.</p>
+<p>Class for modeling lithium-sulfur battery characteristics and performance</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.specific_energy">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">specific_energy</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.specific_energy" title="Link to this definition">#</a></dt>
+<dd><p>Energy capacity per unit mass [J/kg] (default: 500 Wh/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.specific_power">
+<span class="sig-prename descclassname"><span class="pre">cell.</span></span><span class="sig-name descname"><span class="pre">specific_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.specific_power" title="Link to this definition">#</a></dt>
+<dd><p>Maximum power output per unit mass [W/kg] (default: 1 kW/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.const_1">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">const_1</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.const_1" title="Link to this definition">#</a></dt>
+<dd><p>First constant in Ragone curve fit [kW/kg] (default: 245.848 kW/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.const_2">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">const_2</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.const_2" title="Link to this definition">#</a></dt>
+<dd><p>Second constant in Ragone curve fit [1/(Wh/kg)] (default: -0.00478 kg/Wh)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.lower_bound">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">lower_bound</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.lower_bound" title="Link to this definition">#</a></dt>
+<dd><p>Minimum specific energy on Ragone plot [Wh/kg] (default: 300 Wh/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.upper_bound">
+<span class="sig-prename descclassname"><span class="pre">cell.ragone.</span></span><span class="sig-name descname"><span class="pre">upper_bound</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.upper_bound" title="Link to this definition">#</a></dt>
+<dd><p>Maximum specific energy on Ragone plot [Wh/kg] (default: 700 Wh/kg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Lithium-sulfur batteries offer higher specific energy than conventional
+lithium-ion batteries but typically have lower power density. The Ragone
+plot parameters define the relationship between specific power and energy.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#module-RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</span></code></a></dt><dd><p>Base battery module class</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -596,7 +673,15 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.specific_energy"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur.cell.specific_energy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.specific_power"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur.cell.specific_power</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.const_1"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur.cell.ragone.const_1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.const_2"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur.cell.ragone.const_2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.lower_bound"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur.cell.ragone.lower_bound</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur.Lithium_Sulfur.cell.ragone.upper_bound"><code class="docutils literal notranslate"><span class="pre">Lithium_Sulfur.cell.ragone.upper_bound</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

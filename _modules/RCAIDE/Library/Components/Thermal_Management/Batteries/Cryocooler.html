@@ -377,15 +377,13 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Energy/Thermal_Management/Cryogenics/Cryocooler.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Thermal_Management/Batteries/Cryocooler.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-
 <span class="c1"># RCAIDE imports  </span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Component</span>  
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Thermal_Management.Cryogenics.cryocooler_model</span> <span class="kn">import</span> <span class="n">cryocooler_model</span>
@@ -396,51 +394,99 @@
 <div class="viewcode-block" id="Cryocooler">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.html#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler">[docs]</a>
 <span class="k">class</span> <span class="nc">Cryocooler</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Cryocooler provides cooling power to cryogenic components.</span>
-<span class="sd">    Energy is used by this component to provide the cooling, despite the cooling power provided also being an energy inflow.</span>
+<span class="sd">    A class representing a cryogenic cooling system for maintaining extremely low </span>
+<span class="sd">    temperatures in battery or other systems.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cooler_type : str</span>
+<span class="sd">        Type of cryocooler system being used, defaults to None</span>
+<span class="sd">        </span>
+<span class="sd">    rated_power : float</span>
+<span class="sd">        Maximum power rating of the cryocooler, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    min_cryo_temp : float</span>
+<span class="sd">        Minimum achievable cryogenic temperature, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    ambient_temp : float</span>
+<span class="sd">        Ambient temperature for heat rejection, defaults to 300.0</span>
+<span class="sd">        </span>
+<span class="sd">    inputs.cooling_power : float</span>
+<span class="sd">        Required cooling power at cryogenic temperature, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    inputs.cryo_temp : float</span>
+<span class="sd">        Target cryogenic temperature, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    mass_properties.mass : float</span>
+<span class="sd">        Mass of the cryocooler system, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    outputs.input_power : float</span>
+<span class="sd">        Power required by the cryocooler, defaults to 0.0</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The cryocooler provides cooling power at cryogenic temperatures. It requires </span>
+<span class="sd">    electrical power input to provide cooling, with the required input power </span>
+<span class="sd">    depending on:</span>
+<span class="sd">    </span>
+<span class="sd">    * Operating temperature differential</span>
+<span class="sd">    * Required cooling power</span>
+<span class="sd">    * System efficiency</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Cooling Power&#39;</span>
+<span class="sd">        Heat removal capacity at the cryogenic temperature</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Input Power&#39;</span>
+<span class="sd">        Electrical power required to achieve the cooling effect</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled</span>
+<span class="sd">        Alternative cooling approach for moderate temperatures</span>
+<span class="sd">    RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel</span>
+<span class="sd">        Alternative cooling approach using liquid coolant</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        
-        <span class="c1"># Initialise cryocooler properties as null values</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cooler_type</span>                    <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rated_power</span>                    <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">min_cryo_temp</span>                  <span class="o">=</span> <span class="mf">0.0</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ambient_temp</span>                   <span class="o">=</span> <span class="mf">300.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cooling_power</span>           <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cryo_temp</span>               <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">mass</span>           <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">rated_power</span>                    <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">input_power</span>            <span class="o">=</span> <span class="mf">0.0</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the cryocooler attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cooler_type</span>          <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rated_power</span>          <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_cryo_temp</span>        <span class="o">=</span> <span class="mf">0.0</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">ambient_temp</span>         <span class="o">=</span> <span class="mf">300.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cooling_power</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">cryo_temp</span>     <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rated_power</span>          <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">input_power</span>  <span class="o">=</span> <span class="mf">0.0</span>
 
 <div class="viewcode-block" id="Cryocooler.energy_calc">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.html#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.energy_calc">[docs]</a>
     <span class="k">def</span> <span class="nf">energy_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the required input power for the cryocooler.</span>
 
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the instantaneous required energy input</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        conditions : Data</span>
+<span class="sd">            Operating conditions for the calculation</span>
 
-<span class="sd">        Assumptions:</span>
-<span class="sd">        N/A</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            Required input power in Watts</span>
 
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        self.inputs</span>
-<span class="sd">            cryo_temp       [K]</span>
-<span class="sd">            cooling_power   [W]</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        self.outputs.</span>
-<span class="sd">            input_power     [W]</span>
-
-<span class="sd">        Properties Used:</span>
-
-<span class="sd">        self.</span>
-<span class="sd">            cooler_type </span>
-
-<span class="sd">    &quot;&quot;&quot;</span> 
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Uses the cryocooler model to determine power requirements based on:</span>
+<span class="sd">        * Target cryogenic temperature</span>
+<span class="sd">        * Required cooling power</span>
+<span class="sd">        * Cooler type and characteristics</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">output</span> <span class="o">=</span> <span class="n">cryocooler_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">input_power</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 

@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Compoments/Energy/Sources/Battery_Modules/Generic_Battery_Module.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Generic_Battery_Module.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke</span>
@@ -397,18 +397,99 @@
 <div class="viewcode-block" id="Generic_Battery_Module">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module">[docs]</a>
 <span class="k">class</span> <span class="nc">Generic_Battery_Module</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Default battery module class.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for battery module implementations</span>
 <span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">            None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    energy_density : float</span>
+<span class="sd">        Energy stored per unit volume [J/m^3] (default: 0.0)</span>
 <span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">            None</span>
+<span class="sd">    current_energy : float</span>
+<span class="sd">        Current energy stored in battery [J] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    current_capacitor_charge : float</span>
+<span class="sd">        Current charge level of capacitor [C] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    capacity : float</span>
+<span class="sd">        Total energy capacity [J] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    length : float</span>
+<span class="sd">        Physical length of battery module [m] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float</span>
+<span class="sd">        Physical width of battery module [m] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float</span>
+<span class="sd">        Physical height of battery module [m] (default: 0.0)</span>
+<span class="sd">        </span>
+<span class="sd">    volume_packaging_factor : float</span>
+<span class="sd">        Factor accounting for packaging volume (default: 1.05)</span>
+<span class="sd">        </span>
+<span class="sd">    BMS_additional_weight_factor : float</span>
+<span class="sd">        Factor for battery management system weight (default: 1.42)</span>
+<span class="sd">        </span>
+<span class="sd">    orientation_euler_angles : list</span>
+<span class="sd">        Euler angles defining battery orientation [rad] (default: [0,0,0])</span>
+<span class="sd">        </span>
+<span class="sd">    cell : Data</span>
+<span class="sd">        Container for cell-specific attributes</span>
+<span class="sd">        </span>
+<span class="sd">        - chemistry : str</span>
+<span class="sd">            Battery chemistry type (default: None)</span>
+<span class="sd">        - discharge_performance_map : Data</span>
+<span class="sd">            Discharge performance characteristics</span>
+<span class="sd">        - ragone : Data</span>
+<span class="sd">            Ragone plot parameters</span>
+<span class="sd">            </span>
+<span class="sd">    electrical_configuration : Data</span>
+<span class="sd">        Battery electrical arrangement</span>
+<span class="sd">        </span>
+<span class="sd">        - series : int</span>
+<span class="sd">            Number of cells in series (default: 1)</span>
+<span class="sd">        - parallel : int</span>
+<span class="sd">            Number of parallel strings (default: 1)</span>
+<span class="sd">            </span>
+<span class="sd">    geometrtic_configuration : Data</span>
+<span class="sd">        Physical arrangement of cells</span>
+<span class="sd">        </span>
+<span class="sd">        - normal_count : int</span>
+<span class="sd">            Cells in normal direction (default: 1)</span>
+<span class="sd">        - parallel_count : int</span>
+<span class="sd">            Cells in parallel direction (default: 1)</span>
+<span class="sd">        - normal_spacing : float</span>
+<span class="sd">            Spacing between normal cells [m] (default: 0.02)</span>
+<span class="sd">        - stacking_rows : int</span>
+<span class="sd">            Number of stacking rows (default: 3)</span>
+<span class="sd">        - parallel_spacing : float</span>
+<span class="sd">            Spacing between parallel cells [m] (default: 0.02)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This base class provides the framework for implementing specific battery types.</span>
+<span class="sd">    It includes physical, electrical, and geometric parameters needed to model</span>
+<span class="sd">    battery performance and integration.</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Battery Management System (BMS)&#39;</span>
+<span class="sd">        System that monitors and controls battery operation, adding weight</span>
+<span class="sd">        accounted for by BMS_additional_weight_factor</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Volume Packaging Factor&#39;</span>
+<span class="sd">        Ratio of total battery volume to cell volume, accounting for</span>
+<span class="sd">        structural components and thermal management</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC</span>
+<span class="sd">        Example implementation of a specific battery type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for battery module attributes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-      
-       
         <span class="bp">self</span><span class="o">.</span><span class="n">energy_density</span>                                    <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_energy</span>                                    <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_capacitor_charge</span>                          <span class="o">=</span> <span class="mf">0.0</span>
@@ -445,6 +526,16 @@
 <div class="viewcode-block" id="Generic_Battery_Module.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_operating_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">bus</span><span class="p">):</span>  
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Append battery operating conditions for a flight segment</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        segment : Segment</span>
+<span class="sd">            Flight segment containing state conditions</span>
+<span class="sd">        bus : Component</span>
+<span class="sd">            Electrical bus connected to this battery</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">append_battery_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">bus</span><span class="p">)</span>  
         <span class="k">return</span></div>
 
@@ -452,6 +543,18 @@
 <div class="viewcode-block" id="Generic_Battery_Module.append_battery_segment_conditions">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module.Generic_Battery_Module.append_battery_segment_conditions">[docs]</a>
     <span class="k">def</span> <span class="nf">append_battery_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Append segment-specific battery conditions</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bus : Component</span>
+<span class="sd">            Electrical bus connected to this battery</span>
+<span class="sd">        conditions : Data</span>
+<span class="sd">            Container for segment conditions</span>
+<span class="sd">        segment : Segment</span>
+<span class="sd">            Flight segment data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">append_battery_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">segment</span><span class="p">)</span>
         <span class="k">return</span></div>
 </div>

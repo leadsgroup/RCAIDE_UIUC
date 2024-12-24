@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Wings/Control_Surfaces/Control_Surface.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -389,46 +388,94 @@
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Component</span> 
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="c1">#  Control Surfaces</span>
-<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- -Control_Surfaces </span>
+<span class="c1">#  Control Surface</span>
+<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Control_Surface">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.html#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface">[docs]</a>
 <span class="k">class</span> <span class="nc">Control_Surface</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for aircraft control surfaces providing core functionality for geometric </span>
+<span class="sd">    definition and operation.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the control surface, defaults to &#39;control_surface&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    span : float</span>
+<span class="sd">        Spanwise length of the control surface in meters, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    span_fraction_start : float</span>
+<span class="sd">        Spanwise location where control surface begins as fraction of wing span, </span>
+<span class="sd">        defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    span_fraction_end : float</span>
+<span class="sd">        Spanwise location where control surface ends as fraction of wing span, </span>
+<span class="sd">        defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    hinge_fraction : float</span>
+<span class="sd">        Chordwise location of hinge line as fraction of control surface chord, </span>
+<span class="sd">        defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    chord_fraction : float</span>
+<span class="sd">        Fraction of wing chord occupied by control surface, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    sign_duplicate : float</span>
+<span class="sd">        Sign convention for duplicate control surface deflection (1.0 or -1.0), </span>
+<span class="sd">        defaults to 1.0</span>
+<span class="sd">        </span>
+<span class="sd">    deflection : float</span>
+<span class="sd">        Control surface deflection angle, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    configuration_type : str</span>
+<span class="sd">        Type of control surface construction (e.g., &#39;single_slotted&#39;), </span>
+<span class="sd">        defaults to &#39;single_slotted&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    gain : float</span>
+<span class="sd">        Deflection multiplier used for AVL analysis, defaults to 1.0</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The control surface class provides the foundation for all movable aerodynamic </span>
+<span class="sd">    surfaces. Key features include:</span>
+<span class="sd">    </span>
+<span class="sd">    * Geometric definition relative to parent wing</span>
+<span class="sd">    * Deflection and hinge line specification</span>
+<span class="sd">    * Configuration type specification</span>
+<span class="sd">    * Duplicate surface handling</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Span Fraction&#39;</span>
+<span class="sd">        Location along wing span measured as fraction from root (0.0) to tip (1.0)</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Chord Fraction&#39;</span>
+<span class="sd">        Portion of local wing chord occupied by control surface</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Hinge Fraction&#39;</span>
+<span class="sd">        Location of hinge line measured as fraction of control surface chord</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;Sign Duplicate&#39;</span>
+<span class="sd">        Determines deflection relationship between paired surfaces:</span>
+<span class="sd">        * 1.0 for synchronized deflection (e.g., flaps)</span>
+<span class="sd">        * -1.0 for opposite deflection (e.g., ailerons)</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Flap</span>
+<span class="sd">        High-lift device implementation</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron</span>
+<span class="sd">        Roll control implementation</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator</span>
+<span class="sd">        Pitch control implementation</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder</span>
+<span class="sd">        Yaw control implementation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values of control surfaces defined in RCAIDE. </span>
-<span class="sd">        </span>
-<span class="sd">        - span: the span of the control surface in meters        </span>
-<span class="sd">        - span_fraction_start: % span of the wing where the control surface starts        </span>
-<span class="sd">        - span_fraction_start: % span of the wing where the control surface starts</span>
-<span class="sd">        </span>
-<span class="sd">        - hinge_fraction: number between 0.0 and 1.0. This corresponds to the location of the </span>
-<span class="sd">            hingeline, where 0 and 1 correspond to the leading and trailing edges, respectively, </span>
-<span class="sd">            of the CONTROL SURFACE (NOT the wing).</span>
-<span class="sd">        - chord_fraction: number between 0.0 and 1.0 describing the fraction of the wing&#39;s chord</span>
-<span class="sd">            that is &#39;cut&#39; out by the control surface</span>
-<span class="sd">        </span>
-<span class="sd">        - sign_duplicate: 1.0 or -1.0 - the sign of the duplicate control on the mirror wing.        </span>
-<span class="sd">            Use 1.0 for a mirrored control surface, like an elevator. Use -1.0 for an aileron.</span>
-<span class="sd">        - deflection: the angle the control surface is deflected. </span>
-<span class="sd">        - configuration_type: the kind of control surface (e.g. single_slotted)</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        - for chord_fraction, Slats are always cut out from the leading edge and everything else</span>
-<span class="sd">            os cut out from the trailing edge.</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span>         
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the control surface attributes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                   <span class="o">=</span> <span class="s1">&#39;control_surface&#39;</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">span</span>                  <span class="o">=</span> <span class="mf">0.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">span_fraction_start</span>   <span class="o">=</span> <span class="mf">0.0</span>

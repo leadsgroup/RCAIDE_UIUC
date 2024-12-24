@@ -379,7 +379,6 @@
   <h1>Source code for RCAIDE.Library.Components.Fuselages.Tube_Fuselage</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Compoments/Fuselages/Tube_Fuselage.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -396,53 +395,66 @@
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Tube_Fuselage.html#RCAIDE.Library.Components.Fuselages.Tube_Fuselage.Tube_Fuselage">[docs]</a>
 <span class="k">class</span> <span class="nc">Tube_Fuselage</span><span class="p">(</span><span class="n">Fuselage</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A conventional tube-shaped fuselage component for standard aircraft configurations</span>
+<span class="sd">    A conventional cylindrical fuselage design commonly used in commercial and general </span>
+<span class="sd">    aviation aircraft.</span>
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
 <span class="sd">    tag : str</span>
-<span class="sd">        Identifier for the fuselage component, defaults to &#39;tube_fuselage&#39;</span>
+<span class="sd">        Unique identifier for the fuselage component, defaults to &#39;tube_fuselage&#39;</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This class represents a conventional tube and wing aircraft fuselage.</span>
-<span class="sd">    Implementation inherits all base geometric and structural properties from</span>
-<span class="sd">    the parent Fuselage class.</span>
-
+<span class="sd">    The tube fuselage is the most common configuration in modern aircraft design.</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Cross-sections are primarily circular or near-circular</span>
+<span class="sd">    * Smooth transitions between different diameter sections</span>
+<span class="sd">    </span>
 <span class="sd">    **Definitions**</span>
-<span class="sd">    &#39;Tube Fuselage&#39;</span>
-<span class="sd">        Standard cylindrical fuselage configuration with tapered ends,</span>
-<span class="sd">        commonly used in commercial and general aviation aircraft</span>
 
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-<span class="sd">    None</span>
+<span class="sd">    &#39;Tube Fuselage&#39;</span>
+<span class="sd">        A fuselage design with predominantly circular cross-sections, typically</span>
+<span class="sd">        consisting of a constant-diameter center section with tapered nose and</span>
+<span class="sd">        tail sections</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Fuselage</span>
+<span class="sd">        Base class providing core fuselage functionality</span>
+<span class="sd">    RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage</span>
+<span class="sd">        Alternative fuselage design for comparison</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component to function.</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the tube fuselage attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                                    <span class="o">=</span> <span class="s1">&#39;tube_fuselage&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;tube_fuselage&#39;</span>
         
 <div class="viewcode-block" id="Tube_Fuselage.compute_moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Fuselages.Tube_Fuselage.html#RCAIDE.Library.Components.Fuselages.Tube_Fuselage.Tube_Fuselage.compute_moment_of_inertia">[docs]</a>
     <span class="k">def</span> <span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span> 
-        <span class="n">I</span> <span class="o">=</span>  <span class="n">compute_fuselage_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the moment of inertia tensor for the tube fuselage.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        center_of_gravity : list</span>
+<span class="sd">            Reference point coordinates [x, y, z] for moment calculation</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        I : ndarray</span>
+<span class="sd">            3x3 moment of inertia tensor in kg*m^2</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia</span>
+<span class="sd">            Implementation of the moment of inertia calculation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">compute_fuselage_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">I</span>        </div>
 </div>
 

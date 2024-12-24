@@ -541,10 +541,56 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Electronic_Speed_Controller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Modulators/Electronic_Speed_Controller.html#Electronic_Speed_Controller"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
+<p>Class for modeling electronic speed controllers in electric propulsion systems</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the ESC (default: ‘electronic_speed_controller’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Power conversion efficiency of the ESC (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The Electronic Speed Controller (ESC) regulates power delivery to electric motors,
+controlling motor speed and torque. The efficiency attribute accounts for power
+losses during voltage and current modulation.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Propulsors.Converters.DC_Motor.html#module-RCAIDE.Library.Components.Propulsors.Converters.DC_Motor" title="RCAIDE.Library.Components.Propulsors.Converters.DC_Motor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Propulsors.Converters.DC_Motor</span></code></a></dt><dd><p>Electric motor components controlled by the ESC</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.append_operating_conditions">
 <span class="sig-name descname"><span class="pre">append_operating_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">propulsor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Energy/Modulators/Electronic_Speed_Controller.html#Electronic_Speed_Controller.append_operating_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.append_operating_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Append ESC operating conditions for a flight segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segment</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment" title="RCAIDE.Framework.Mission.Segments.Segment.Segment"><em>Segment</em></a>) – Flight segment containing state conditions</p></li>
+<li><p><strong>propulsor</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – Propulsor component associated with this ESC</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Updates the segment conditions with ESC-specific parameters including
+power throughput and losses.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -598,6 +644,8 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller"><code class="docutils literal notranslate"><span class="pre">Electronic_Speed_Controller</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.tag"><code class="docutils literal notranslate"><span class="pre">Electronic_Speed_Controller.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.efficiency"><code class="docutils literal notranslate"><span class="pre">Electronic_Speed_Controller.efficiency</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller.Electronic_Speed_Controller.append_operating_conditions"><code class="docutils literal notranslate"><span class="pre">Electronic_Speed_Controller.append_operating_conditions()</span></code></a></li>
 </ul>
 </li>

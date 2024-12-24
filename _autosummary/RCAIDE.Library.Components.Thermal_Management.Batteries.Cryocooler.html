@@ -541,32 +541,141 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Cryocooler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Cryocooler.html#Cryocooler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Cryocooler provides cooling power to cryogenic components.
-Energy is used by this component to provide the cooling, despite the cooling power provided also being an energy inflow.</p>
+<p>A class representing a cryogenic cooling system for maintaining extremely low
+temperatures in battery or other systems.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.cooler_type">
+<span class="sig-name descname"><span class="pre">cooler_type</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.cooler_type" title="Link to this definition">#</a></dt>
+<dd><p>Type of cryocooler system being used, defaults to None</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.rated_power">
+<span class="sig-name descname"><span class="pre">rated_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.rated_power" title="Link to this definition">#</a></dt>
+<dd><p>Maximum power rating of the cryocooler, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.min_cryo_temp">
+<span class="sig-name descname"><span class="pre">min_cryo_temp</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.min_cryo_temp" title="Link to this definition">#</a></dt>
+<dd><p>Minimum achievable cryogenic temperature, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.ambient_temp">
+<span class="sig-name descname"><span class="pre">ambient_temp</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.ambient_temp" title="Link to this definition">#</a></dt>
+<dd><p>Ambient temperature for heat rejection, defaults to 300.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cooling_power">
+<span class="sig-prename descclassname"><span class="pre">inputs.</span></span><span class="sig-name descname"><span class="pre">cooling_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cooling_power" title="Link to this definition">#</a></dt>
+<dd><p>Required cooling power at cryogenic temperature, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cryo_temp">
+<span class="sig-prename descclassname"><span class="pre">inputs.</span></span><span class="sig-name descname"><span class="pre">cryo_temp</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cryo_temp" title="Link to this definition">#</a></dt>
+<dd><p>Target cryogenic temperature, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.mass_properties.mass">
+<span class="sig-prename descclassname"><span class="pre">mass_properties.</span></span><span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.mass_properties.mass" title="Link to this definition">#</a></dt>
+<dd><p>Mass of the cryocooler system, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.outputs.input_power">
+<span class="sig-prename descclassname"><span class="pre">outputs.</span></span><span class="sig-name descname"><span class="pre">input_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.outputs.input_power" title="Link to this definition">#</a></dt>
+<dd><p>Power required by the cryocooler, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The cryocooler provides cooling power at cryogenic temperatures. It requires
+electrical power input to provide cooling, with the required input power
+depending on:</p>
+<ul class="simple">
+<li><p>Operating temperature differential</p></li>
+<li><p>Required cooling power</p></li>
+<li><p>System efficiency</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Cooling Power’</dt><dd><p>Heat removal capacity at the cryogenic temperature</p>
+</dd>
+<dt>‘Input Power’</dt><dd><p>Electrical power required to achieve the cooling effect</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled.html#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled" title="RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled</span></code></a></dt><dd><p>Alternative cooling approach for moderate temperatures</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel.html#module-RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel" title="RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel</span></code></a></dt><dd><p>Alternative cooling approach using liquid coolant</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.energy_calc">
 <span class="sig-name descname"><span class="pre">energy_calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Thermal_Management/Batteries/Cryocooler.html#Cryocooler.energy_calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.energy_calc" title="Link to this definition">#</a></dt>
-<dd><p>Calculate the instantaneous required energy input</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-self.inputs</p>
-<blockquote>
-<div><p>cryo_temp       [K]
-cooling_power   [W]</p>
-</div></blockquote>
-<p>Outputs:
-self.outputs.</p>
-<blockquote>
-<div><p>input_power     [W]</p>
-</div></blockquote>
-<p>Properties Used:</p>
-<dl class="simple">
-<dt>self.</dt><dd><p>cooler_type</p>
+<dd><p>Calculates the required input power for the cryocooler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>conditions</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Operating conditions for the calculation</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Required input power in Watts</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Uses the cryocooler model to determine power requirements based on:
+* Target cryogenic temperature
+* Required cooling power
+* Cooler type and characteristics</p>
 </dd></dl>
 
 </dd></dl>
@@ -621,6 +730,14 @@ self.outputs.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler"><code class="docutils literal notranslate"><span class="pre">Cryocooler</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.cooler_type"><code class="docutils literal notranslate"><span class="pre">Cryocooler.cooler_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.rated_power"><code class="docutils literal notranslate"><span class="pre">Cryocooler.rated_power</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.min_cryo_temp"><code class="docutils literal notranslate"><span class="pre">Cryocooler.min_cryo_temp</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.ambient_temp"><code class="docutils literal notranslate"><span class="pre">Cryocooler.ambient_temp</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cooling_power"><code class="docutils literal notranslate"><span class="pre">Cryocooler.inputs.cooling_power</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.inputs.cryo_temp"><code class="docutils literal notranslate"><span class="pre">Cryocooler.inputs.cryo_temp</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.mass_properties.mass"><code class="docutils literal notranslate"><span class="pre">Cryocooler.mass_properties.mass</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.outputs.input_power"><code class="docutils literal notranslate"><span class="pre">Cryocooler.outputs.input_power</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler.Cryocooler.energy_calc"><code class="docutils literal notranslate"><span class="pre">Cryocooler.energy_calc()</span></code></a></li>
 </ul>
 </li>

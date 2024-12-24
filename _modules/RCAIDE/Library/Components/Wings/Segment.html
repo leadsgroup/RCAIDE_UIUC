@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Wings.Segment</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Compoments/Wings/Segment.py</span>
-<span class="c1"># </span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Wings/Segment.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -395,23 +394,81 @@
 <div class="viewcode-block" id="Segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Segment.html#RCAIDE.Library.Components.Wings.Segment.Segment">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a wing segment that defines a portion of a wing&#39;s geometry.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Unique identifier for the segment, defaults to &#39;segment&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    prev : Component</span>
+<span class="sd">        Link to previous segment in wing, defaults to None</span>
+<span class="sd">        </span>
+<span class="sd">    next : Component</span>
+<span class="sd">        Link to next segment in wing, defaults to None</span>
+<span class="sd">        </span>
+<span class="sd">    percent_span_location : float</span>
+<span class="sd">        Spanwise location as fraction of wing span, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    twist : float</span>
+<span class="sd">        Local twist angle, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    taper : float</span>
+<span class="sd">        Local taper ratio, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    root_chord_percent : float</span>
+<span class="sd">        Root chord as fraction of wing root chord, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    dihedral_outboard : float</span>
+<span class="sd">        Dihedral angle of outboard section, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    thickness_to_chord : float</span>
+<span class="sd">        Local thickness-to-chord ratio, defaults to 0.0</span>
+<span class="sd">        </span>
+<span class="sd">    sweeps : Data</span>
+<span class="sd">        Collection of sweep angles</span>
+<span class="sd">        </span>
+<span class="sd">        - quarter_chord : float</span>
+<span class="sd">            Quarter-chord sweep angle, defaults to 0.0</span>
+<span class="sd">        - leading_edge : float</span>
+<span class="sd">            Leading edge sweep angle, defaults to None</span>
+<span class="sd">            </span>
+<span class="sd">    chords : Data</span>
+<span class="sd">        Collection of chord lengths</span>
+<span class="sd">        </span>
+<span class="sd">        - mean_aerodynamic : float</span>
+<span class="sd">            Mean aerodynamic chord, defaults to 0.0</span>
+<span class="sd">            </span>
+<span class="sd">    areas : Data</span>
+<span class="sd">        Collection of area measurements</span>
+<span class="sd">        </span>
+<span class="sd">        - reference : float</span>
+<span class="sd">            Reference area, defaults to 0.0</span>
+<span class="sd">        - exposed : float</span>
+<span class="sd">            Exposed area, defaults to 0.0</span>
+<span class="sd">        - wetted : float</span>
+<span class="sd">            Wetted area, defaults to 0.0</span>
+<span class="sd">            </span>
+<span class="sd">    Airfoil : Container</span>
+<span class="sd">        Collection of airfoil definitions, initialized empty</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Wing segments are used to build up complete wing geometries by defining </span>
+<span class="sd">    local properties at various spanwise locations.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Wing</span>
+<span class="sd">        Parent wing class that uses segments</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Main_Wing</span>
+<span class="sd">        Main wing implementation using segments</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default for wing segments in RCAIDE.</span>
-
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for the wing segment attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>         
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                     <span class="o">=</span> <span class="s1">&#39;segment&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prev</span>                    <span class="o">=</span> <span class="kc">None</span>
@@ -436,31 +493,20 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">wetted</span>            <span class="o">=</span> <span class="mf">0.0</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">Airfoil</span>                 <span class="o">=</span> <span class="n">Container</span><span class="p">()</span>    
-   
-        
         
 <div class="viewcode-block" id="Segment.append_airfoil">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Segment.html#RCAIDE.Library.Components.Wings.Segment.Segment.append_airfoil">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">airfoil</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds an airfoil to the segment</span>
+    <span class="k">def</span> <span class="nf">append_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">airfoil</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds an airfoil definition to the segment.</span>
 
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        airfoil : Data</span>
+<span class="sd">            Airfoil data to be added to the segment</span>
 <span class="sd">        &quot;&quot;&quot;</span>  
         <span class="c1"># assert database type</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">airfoil</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">airfoil</span><span class="p">,</span> <span class="n">Data</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;input component must be of type Data()&#39;</span><span class="p">)</span>
 
         <span class="c1"># store data</span>
@@ -472,45 +518,27 @@
 <div class="viewcode-block" id="Segment_Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Segment.html#RCAIDE.Library.Components.Wings.Segment.Segment_Container">[docs]</a>
 <span class="k">class</span> <span class="nc">Segment_Container</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Container for wing segment</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Container class for managing wing segments. Provides organization and </span>
+<span class="sd">    access methods for segment components.</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    N/A</span>
-
-<span class="sd">    Inputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Wings.Segment</span>
+<span class="sd">        The segment components stored in this container</span>
 <span class="sd">    &quot;&quot;&quot;</span>     
 
 <div class="viewcode-block" id="Segment_Container.get_children">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Segment.html#RCAIDE.Library.Components.Wings.Segment.Segment_Container.get_children">[docs]</a>
     <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
-<span class="sd">        </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        None</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of allowable child component types for the segment container.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            Empty list as segments do not contain child components</span>
 <span class="sd">        &quot;&quot;&quot;</span>       
-        
         <span class="k">return</span> <span class="p">[]</span></div>
 </div>
 

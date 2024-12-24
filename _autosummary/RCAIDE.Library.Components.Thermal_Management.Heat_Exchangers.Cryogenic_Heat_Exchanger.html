@@ -541,36 +541,139 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Cryogenic_Heat_Exchanger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Thermal_Management/Heat_Exchangers/Cryogenic_Heat_Exchanger.html#Cryogenic_Heat_Exchanger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>This provides output values for a heat exchanger used to cool cryogenic components</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
+<p>A class representing a heat exchanger designed for cryogenic cooling applications,
+using cryogenic fluids to maintain extremely low temperatures.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the heat exchanger, defaults to ‘Cryogenic_Heat_Exchanger’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen">
+<span class="sig-name descname"><span class="pre">cryogen</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen" title="Link to this definition">#</a></dt>
+<dd><p>Cryogenic fluid properties, defaults to Liquid_H2()</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Library.Attributes.Cryogens.Cryogen.html#RCAIDE.Library.Attributes.Cryogens.Cryogen.Cryogen" title="RCAIDE.Library.Attributes.Cryogens.Cryogen.Cryogen">Cryogen</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_inlet_temperature">
+<span class="sig-name descname"><span class="pre">cryogen_inlet_temperature</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_inlet_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Temperature of cryogen at inlet in K, defaults to 300.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_outlet_temperature">
+<span class="sig-name descname"><span class="pre">cryogen_outlet_temperature</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_outlet_temperature" title="Link to this definition">#</a></dt>
+<dd><p>Temperature of cryogen at outlet in K, defaults to 300.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_pressure">
+<span class="sig-name descname"><span class="pre">cryogen_pressure</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_pressure" title="Link to this definition">#</a></dt>
+<dd><p>Operating pressure of cryogen in Pa, defaults to 100000.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_is_fuel">
+<span class="sig-name descname"><span class="pre">cryogen_is_fuel</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_is_fuel" title="Link to this definition">#</a></dt>
+<dd><p>Proportion of cryogen used as fuel, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.inputs.cooling_power">
+<span class="sig-prename descclassname"><span class="pre">inputs.</span></span><span class="sig-name descname"><span class="pre">cooling_power</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.inputs.cooling_power" title="Link to this definition">#</a></dt>
+<dd><p>Required cooling power in W, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.outputs.mdot">
+<span class="sig-prename descclassname"><span class="pre">outputs.</span></span><span class="sig-name descname"><span class="pre">mdot</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.outputs.mdot" title="Link to this definition">#</a></dt>
+<dd><p>Mass flow rate of cryogen in kg/s, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The cryogenic heat exchanger provides cooling at extremely low temperatures using
+cryogenic fluids. The system:</p>
+<ul class="simple">
+<li><p>Manages heat transfer between cryogen and cooled equipment</p></li>
+<li><p>Controls cryogen flow based on cooling demand</p></li>
+<li><p>Maintains equipment at cryogenic temperatures</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Cryogen’</dt><dd><p>Fluid used to achieve very low temperatures, typically below 120K</p>
+</dd>
+<dt>‘Cooling Power’</dt><dd><p>Heat removal capacity at cryogenic temperature</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#module-RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger" title="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger</span></code></a></dt><dd><p>Alternative heat exchanger for moderate temperature applications</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.energy_calc">
 <span class="sig-name descname"><span class="pre">energy_calc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Thermal_Management/Heat_Exchangers/Cryogenic_Heat_Exchanger.html#Cryogenic_Heat_Exchanger.energy_calc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.energy_calc" title="Link to this definition">#</a></dt>
-<dd><p>This calculates the mass of cryogen required to achieve the desired cooling power given the temperature of the cryogen supplied, and the desired temperature of the cryogenic equipment.</p>
-<p>Assumptions:
-Perfect thermal conduction of the cryogen to the cooled equipment.</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-self.inputs</p>
-<blockquote>
-<div><p>cooling_power      [W]</p>
-</div></blockquote>
-<p>Outputs:
-self.outputs.</p>
-<blockquote>
-<div><p>mdot                   [kg/s]</p>
-</div></blockquote>
-<p>Properties Used:
-self.</p>
-<blockquote>
-<div><p>cryogen_inlet_temperature       [K]
-cryogen_outlet_temperature      [K]
-cryogen_pressure                [Pa]</p>
-</div></blockquote>
+<dd><p>Calculates required cryogen mass flow rate for desired cooling power.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>conditions</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Operating conditions for the calculation</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Required cryogen mass flow rate in kg/s</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Calculation considers:
+* Inlet and outlet temperatures
+* Required cooling power
+* Cryogen properties
+* System pressure</p>
 </dd></dl>
 
 </dd></dl>
@@ -625,6 +728,14 @@ cryogen_pressure                [Pa]</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.tag"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.cryogen</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_inlet_temperature"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.cryogen_inlet_temperature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_outlet_temperature"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.cryogen_outlet_temperature</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_pressure"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.cryogen_pressure</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.cryogen_is_fuel"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.cryogen_is_fuel</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.inputs.cooling_power"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.inputs.cooling_power</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.outputs.mdot"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.outputs.mdot</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger.Cryogenic_Heat_Exchanger.energy_calc"><code class="docutils literal notranslate"><span class="pre">Cryogenic_Heat_Exchanger.energy_calc()</span></code></a></li>
 </ul>
 </li>

@@ -535,52 +535,140 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Network.html#Network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
-<p>the base component class
-Assumptions:
-None</p>
-<p>Source:
-None</p>
+<p>Base class for component networks that manage connections and interactions between
+system components.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the network, defaults to ‘Network’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.mass_properties">
+<span class="sig-name descname"><span class="pre">mass_properties</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.mass_properties" title="Link to this definition">#</a></dt>
+<dd><p>Mass and inertia properties, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Library.Components.Mass_Properties.html#RCAIDE.Library.Components.Mass_Properties.Mass_Properties" title="RCAIDE.Library.Components.Mass_Properties.Mass_Properties">Mass_Properties</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.origin">
+<span class="sig-name descname"><span class="pre">origin</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.origin" title="Link to this definition">#</a></dt>
+<dd><p>3D coordinates [x, y, z] defining network’s reference point,
+defaults to [0.0, 0.0, 0.0]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.inputs">
+<span class="sig-name descname"><span class="pre">inputs</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.inputs" title="Link to this definition">#</a></dt>
+<dd><p>Collection of network input parameters, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.outputs">
+<span class="sig-name descname"><span class="pre">outputs</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.outputs" title="Link to this definition">#</a></dt>
+<dd><p>Collection of network output parameters, initialized empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The Network class serves as a framework for managing interconnected components.
+It provides:</p>
+<ul class="simple">
+<li><p>Input/output parameter management</p></li>
+<li><p>Mass tracking for network components</p></li>
+<li><p>Spatial positioning capabilities</p></li>
+<li><p>Container functionality for sub-networks</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Mass_Properties.html#module-RCAIDE.Library.Components.Mass_Properties" title="RCAIDE.Library.Components.Mass_Properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Mass_Properties</span></code></a></dt><dd><p>Class containing mass and inertia data</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#module-RCAIDE.Framework.Core.Data" title="RCAIDE.Framework.Core.Data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Framework.Core.Data</span></code></a></dt><dd><p>Parent class providing data structure functionality</p>
+</dd>
+</dl>
+</div>
 <dl class="py class">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.Container">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.Container" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.Container.html#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
-<p>the base component container class</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
+<p>Container class for managing collections of networks.</p>
+<p class="rubric">Notes</p>
+<p>The Container class provides organization and mass calculation functionality
+for groups of networks. Key features include:</p>
+<ul class="simple">
+<li><p>Recursive mass summation</p></li>
+<li><p>Moment calculation about reference points</p></li>
+<li><p>Network hierarchy management</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Framework.Core.Container.html#module-RCAIDE.Framework.Core.Container" title="RCAIDE.Framework.Core.Container"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Framework.Core.Container</span></code></a></dt><dd><p>Parent class providing base container functionality</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.Container.sum_mass">
 <span class="sig-name descname"><span class="pre">sum_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.Container.sum_mass" title="Link to this definition">#</a></dt>
-<dd><p>will recursively search the data tree and sum
-any Comp.Mass_Properties.mass, and return the total sum</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-mass  [kg]</p>
-<p>Properties Used:
-None</p>
+<dd><p>Recursively calculates total mass of all contained networks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Total mass in kg</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Traverses the network tree and sums mass_properties.mass values from:</p>
+<ul class="simple">
+<li><p>Individual networks</p></li>
+<li><p>Nested network containers (recursive)</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.Container.total_moment">
 <span class="sig-name descname"><span class="pre">total_moment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.Container.total_moment" title="Link to this definition">#</a></dt>
-<dd><p>will recursively search the data tree and sum
-any Comp.Mass_Properties.mass, and return the total sum of moments</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-total moment [kg*m]</p>
-<p>Properties Used:
-None</p>
+<dd><p>Recursively calculates total moment of all contained networks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Total moment vector about the origin</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Calculates moments considering:
+* Network masses
+* Network origins
+* Network centers of gravity
+* Nested containers (recursive)</p>
 </dd></dl>
 
 </dd></dl>
@@ -591,43 +679,60 @@ None</p>
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Container">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Network.html#Container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Network.Container" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.Container.html#RCAIDE.Framework.Core.Container.Container" title="RCAIDE.Framework.Core.Container.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p>
-<p>the base component container class</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
+<p>Container class for managing collections of networks.</p>
+<p class="rubric">Notes</p>
+<p>The Container class provides organization and mass calculation functionality
+for groups of networks. Key features include:</p>
+<ul class="simple">
+<li><p>Recursive mass summation</p></li>
+<li><p>Moment calculation about reference points</p></li>
+<li><p>Network hierarchy management</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Framework.Core.Container.html#module-RCAIDE.Framework.Core.Container" title="RCAIDE.Framework.Core.Container"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Framework.Core.Container</span></code></a></dt><dd><p>Parent class providing base container functionality</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Container.sum_mass">
 <span class="sig-name descname"><span class="pre">sum_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Network.html#Container.sum_mass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Network.Container.sum_mass" title="Link to this definition">#</a></dt>
-<dd><p>will recursively search the data tree and sum
-any Comp.Mass_Properties.mass, and return the total sum</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-mass  [kg]</p>
-<p>Properties Used:
-None</p>
+<dd><p>Recursively calculates total mass of all contained networks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Total mass in kg</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Traverses the network tree and sums mass_properties.mass values from:</p>
+<ul class="simple">
+<li><p>Individual networks</p></li>
+<li><p>Nested network containers (recursive)</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Container.total_moment">
 <span class="sig-name descname"><span class="pre">total_moment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Network.html#Container.total_moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Network.Container.total_moment" title="Link to this definition">#</a></dt>
-<dd><p>will recursively search the data tree and sum
-any Comp.Mass_Properties.mass, and return the total sum of moments</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-total moment [kg*m]</p>
-<p>Properties Used:
-None</p>
+<dd><p>Recursively calculates total moment of all contained networks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Total moment vector about the origin</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Calculates moments considering:
+* Network masses
+* Network origins
+* Network centers of gravity
+* Nested containers (recursive)</p>
 </dd></dl>
 
 </dd></dl>
@@ -682,6 +787,11 @@ None</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network"><code class="docutils literal notranslate"><span class="pre">Network</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.tag"><code class="docutils literal notranslate"><span class="pre">Network.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.mass_properties"><code class="docutils literal notranslate"><span class="pre">Network.mass_properties</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.origin"><code class="docutils literal notranslate"><span class="pre">Network.origin</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.inputs"><code class="docutils literal notranslate"><span class="pre">Network.inputs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.outputs"><code class="docutils literal notranslate"><span class="pre">Network.outputs</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.Container"><code class="docutils literal notranslate"><span class="pre">Network.Container</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.Container.sum_mass"><code class="docutils literal notranslate"><span class="pre">Network.Container.sum_mass()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.Container.total_moment"><code class="docutils literal notranslate"><span class="pre">Network.Container.total_moment()</span></code></a></li>

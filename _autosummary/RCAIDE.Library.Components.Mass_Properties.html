@@ -535,11 +535,84 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Mass_Properties.Mass_Properties">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Mass_Properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Mass_Properties.html#Mass_Properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
-<p>Mass properties for a physical component</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
+<p>A class containing mass and inertial properties for physical components.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Mass_Properties.Mass_Properties.mass">
+<span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.mass" title="Link to this definition">#</a></dt>
+<dd><p>Total mass of the component, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Mass_Properties.Mass_Properties.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.volume" title="Link to this definition">#</a></dt>
+<dd><p>Volume of the component, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Mass_Properties.Mass_Properties.center_of_gravity">
+<span class="sig-name descname"><span class="pre">center_of_gravity</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.center_of_gravity" title="Link to this definition">#</a></dt>
+<dd><p>3D coordinates [x, y, z] of the component’s center of gravity,
+defaults to [0.0, 0.0, 0.0]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Mass_Properties.Mass_Properties.moments_of_inertia">
+<span class="sig-name descname"><span class="pre">moments_of_inertia</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.moments_of_inertia" title="Link to this definition">#</a></dt>
+<dd><p>Collection of inertial properties</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>center<span class="classifier">ndarray</span></dt><dd><p>Reference point for inertia calculations [x, y, z],
+defaults to [0.0, 0.0, 0.0]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>tensor<span class="classifier">ndarray</span></dt><dd><p>3x3 inertia tensor about the reference point,
+defaults to zero matrix</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The Mass_Properties class provides a standardized structure for tracking mass-related
+properties of components. It includes:</p>
+<ul class="simple">
+<li><p>Basic mass and volume</p></li>
+<li><p>Center of gravity location</p></li>
+<li><p>Full inertia tensor definition</p></li>
+<li><p>Reference point specification</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Component.html#module-RCAIDE.Library.Components.Component" title="RCAIDE.Library.Components.Component"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Component</span></code></a></dt><dd><p>Parent class that uses Mass_Properties</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#module-RCAIDE.Framework.Core.Data" title="RCAIDE.Framework.Core.Data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Framework.Core.Data</span></code></a></dt><dd><p>Base class providing data structure functionality</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -591,7 +664,13 @@ None</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties"><code class="docutils literal notranslate"><span class="pre">Mass_Properties</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties"><code class="docutils literal notranslate"><span class="pre">Mass_Properties</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.mass"><code class="docutils literal notranslate"><span class="pre">Mass_Properties.mass</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.volume"><code class="docutils literal notranslate"><span class="pre">Mass_Properties.volume</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.center_of_gravity"><code class="docutils literal notranslate"><span class="pre">Mass_Properties.center_of_gravity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Mass_Properties.Mass_Properties.moments_of_inertia"><code class="docutils literal notranslate"><span class="pre">Mass_Properties.moments_of_inertia</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

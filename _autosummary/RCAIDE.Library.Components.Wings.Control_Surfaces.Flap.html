@@ -541,17 +541,64 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Flap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Wings/Control_Surfaces/Flap.html#Flap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.html#RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.Control_Surface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Control_Surface</span></code></a></p>
-<p>This class is used to define slats in RCAIDE</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-None</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<p>A class representing a flap control surface for high-lift generation during takeoff
+and landing.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.tag" title="Link to this definition">#</a></dt>
+<dd><p>Unique identifier for the flap, defaults to ‘flap’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.hinge_fraction">
+<span class="sig-name descname"><span class="pre">hinge_fraction</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.hinge_fraction" title="Link to this definition">#</a></dt>
+<dd><p>Location of the hinge line as fraction of chord, defaults to 0.0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.sign_duplicate">
+<span class="sig-name descname"><span class="pre">sign_duplicate</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.sign_duplicate" title="Link to this definition">#</a></dt>
+<dd><p>Sign convention for duplicate flap deflection, defaults to 1.0
+(synchronized deflection for lift generation)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The flap is a trailing edge high-lift device used to increase lift coefficient
+at low speeds. It inherits basic control surface functionality from the
+Control_Surface class and adds specific attributes for flap operation.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Hinge Fraction’</dt><dd><p>The chordwise location of the flap hinge line, measured from the leading
+edge as a fraction of local chord</p>
+</dd>
+<dt>‘Sign Duplicate’</dt><dd><p>Determines whether paired flaps deflect in the same or opposite directions.
+1.0 indicates synchronized deflection for lift generation</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface</span></code></a></dt><dd><p>Base class providing common control surface functionality</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Components.Wings.Control_Surfaces.Slat.html#module-RCAIDE.Library.Components.Wings.Control_Surfaces.Slat" title="RCAIDE.Library.Components.Wings.Control_Surfaces.Slat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Wings.Control_Surfaces.Slat</span></code></a></dt><dd><p>Leading edge high-lift device</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
@@ -603,7 +650,12 @@ N/A</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap"><code class="docutils literal notranslate"><span class="pre">Flap</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap"><code class="docutils literal notranslate"><span class="pre">Flap</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.tag"><code class="docutils literal notranslate"><span class="pre">Flap.tag</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.hinge_fraction"><code class="docutils literal notranslate"><span class="pre">Flap.hinge_fraction</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Wings.Control_Surfaces.Flap.Flap.sign_duplicate"><code class="docutils literal notranslate"><span class="pre">Flap.sign_duplicate</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

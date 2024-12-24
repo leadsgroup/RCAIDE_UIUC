@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Energy.Modulators.Solar_Logic</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Components/Propulsors/Modulators/Solar_Logic.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Components/Energy/Modulators/Solar_Logic.py</span>
 <span class="c1">#  </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
 
@@ -394,35 +394,46 @@
 <div class="viewcode-block" id="Solar_Logic">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Modulators.Solar_Logic.html#RCAIDE.Library.Components.Energy.Modulators.Solar_Logic.Solar_Logic">[docs]</a>
 <span class="k">class</span> <span class="nc">Solar_Logic</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; The distributor is a component unique to a solar aircraft. This controls the flow of energy in to and from the battery.</span>
-<span class="sd">        This includes the basic logic of the maximum power point tracker that modifies the voltage of the panels to</span>
-<span class="sd">        extract maximum power.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for managing solar power extraction using Maximum Power Point Tracking</span>
 <span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    MPPT_efficiency : float</span>
+<span class="sd">        Efficiency of the Maximum Power Point Tracking system (default: 0.0)</span>
 <span class="sd">        </span>
-<span class="sd">        Source:</span>
-<span class="sd">        None</span>
+<span class="sd">    system_voltage : float</span>
+<span class="sd">        Operating voltage of the electrical system (default: 0.0)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Solar Logic component manages the complex power flow in solar aircraft,</span>
+<span class="sd">    including:</span>
+<span class="sd">    - Maximum power point tracking for solar panels</span>
+<span class="sd">    - System voltage</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Maximum Power Point Tracking (MPPT)&#39;</span>
+<span class="sd">        Control strategy that adjusts solar panel voltage to extract maximum</span>
+<span class="sd">        available power under varying conditions</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Solar_Panels</span>
+<span class="sd">        Solar panel components</span>
+<span class="sd">    RCAIDE.Library.Components.Energy.Sources.Battery_Modules</span>
+<span class="sd">        Battery storage components</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values.</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            None</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets default values for solar logic attributes</span>
+<span class="sd">        </span>
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Initializes MPPT efficiency and system voltage to zero. These should be</span>
+<span class="sd">        set to appropriate values based on the specific system configuration.</span>
 <span class="sd">        &quot;&quot;&quot;</span>         
         
         <span class="bp">self</span><span class="o">.</span><span class="n">MPPT_efficiency</span> <span class="o">=</span> <span class="mf">0.0</span>

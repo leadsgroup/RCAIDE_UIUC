@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Components.Airfoils.Airfoil</h1><div class="highlight"><pre>
-<span></span>
-<span class="c1"># RCAIDE/Compoments/Airfoils/Airfoil.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Compoments/Airfoils/Airfoil.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Mar 2024, M. Clarke </span>
@@ -396,7 +395,51 @@
 <div class="viewcode-block" id="Airfoil">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Airfoils.Airfoil.html#RCAIDE.Library.Components.Airfoils.Airfoil.Airfoil">[docs]</a>
 <span class="k">class</span> <span class="nc">Airfoil</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic airfoil class.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for defining airfoil geometries and their aerodynamic characteristics</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tag : str</span>
+<span class="sd">        Identifier for the airfoil (default: &#39;Airfoil&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    coordinate_file : str, optional</span>
+<span class="sd">        Path to file containing airfoil coordinates (default: None)</span>
+<span class="sd">        </span>
+<span class="sd">    geometry : array_like, optional</span>
+<span class="sd">        Array containing x,y coordinates defining the airfoil shape (default: None)</span>
+<span class="sd">        </span>
+<span class="sd">    polar_files : list of str, optional</span>
+<span class="sd">        Paths to files containing aerodynamic polar data (default: None)</span>
+<span class="sd">        </span>
+<span class="sd">    polars : dict, optional</span>
+<span class="sd">        Dictionary containing aerodynamic coefficient data (default: None)</span>
+<span class="sd">        </span>
+<span class="sd">    prev : Airfoil, optional</span>
+<span class="sd">        Reference to previous airfoil in a wing (default: None)</span>
+<span class="sd">        </span>
+<span class="sd">    next : Airfoil, optional</span>
+<span class="sd">        Reference to next airfoil in a wing (default: None)</span>
+<span class="sd">        </span>
+<span class="sd">    number_of_points : int</span>
+<span class="sd">        Number of points used to discretize the airfoil geometry (default: 201)</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The Airfoil class serves as a base class for more specific airfoil implementations.</span>
+<span class="sd">    It provides basic structure for storing geometry and aerodynamic data, which can be</span>
+<span class="sd">    loaded from files or generated programmatically.</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Polar Data&#39;</span>
+<span class="sd">        Aerodynamic coefficient data (typically cl, cd, cm) as a function of angle of attack</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil</span>
+<span class="sd">        Implementation for NACA 4-series airfoils</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>

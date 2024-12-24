@@ -510,18 +510,120 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Coolant_Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Coolant_Line.html#Coolant_Line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Coolant line class.</p>
+<p>Class for modeling coolant distribution lines in thermal management systems</p>
+<p>This class represents coolant distribution lines that connect various thermal
+management components like heat exchangers, reservoirs, and battery cooling systems.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the coolant line (default: ‘coolant_line’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.heat_exchangers">
+<span class="sig-name descname"><span class="pre">heat_exchangers</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.heat_exchangers" title="Link to this definition">#</a></dt>
+<dd><p>Collection of heat exchangers connected to the coolant line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.reservoirs">
+<span class="sig-name descname"><span class="pre">reservoirs</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.reservoirs" title="Link to this definition">#</a></dt>
+<dd><p>Collection of coolant reservoirs in the system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.active">
+<span class="sig-name descname"><span class="pre">active</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.active" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if the coolant line is operational (default: True)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Distribution efficiency of the coolant line (default: 1.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.battery_modules">
+<span class="sig-name descname"><span class="pre">battery_modules</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.battery_modules" title="Link to this definition">#</a></dt>
+<dd><p>Collection of battery cooling systems, created when batteries are present</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a>, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.identical_battery_modules">
+<span class="sig-name descname"><span class="pre">identical_battery_modules</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.identical_battery_modules" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if all battery modules use identical cooling systems</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The coolant line serves as a connection framework between thermal management
+components. It manages the routing of coolant between heat sources (like batteries)
+and heat sinks (like heat exchangers and reservoirs).</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Container’</dt><dd><p>A specialized dictionary-like object for storing RCAIDE components</p>
+</dd>
+<dt>‘Heat Acquisition System’</dt><dd><p>Components and geometry for removing heat from battery modules</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Distributors.Heat_Exchanger</span></code></dt><dd><p>Heat exchanger components for thermal management</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Distributors.Reservoir</span></code></dt><dd><p>Coolant reservoir components</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distributor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Coolant_Line.html#Coolant_Line.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.__init__" title="Link to this definition">#</a></dt>
-<dd><dl class="simple">
-<dt>This initializes empty containers to add heat acqusition systems</dt><dd><p>for battery modules that are present on a particular bus.</p>
-</dd>
-<dt>Assumptions:</dt><dd><p>None</p>
-</dd>
-<dt>Source:</dt><dd><p>None</p>
+<dd><p>Initialize coolant line and set up containers for thermal management components</p>
+<p>This method initializes empty containers for heat acquisition systems for battery
+modules present on a particular bus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distributor</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a><em>, </em><em>optional</em>) – Component containing battery modules that need thermal management</p>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>When a distributor with battery modules is provided, the method creates
+containers to store the cooling system components for each battery.</p>
 </dd></dl>
 
 </dd></dl>
@@ -533,26 +635,239 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Electrical_Bus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Electrical_Bus.html#Electrical_Bus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Electrical bus component.</p>
+<p>Class for managing power distribution between aircraft electrical components</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the electrical bus (default: ‘bus’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.battery_modules">
+<span class="sig-name descname"><span class="pre">battery_modules</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.battery_modules" title="Link to this definition">#</a></dt>
+<dd><p>Collection of battery modules connected to this bus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.assigned_propulsors">
+<span class="sig-name descname"><span class="pre">assigned_propulsors</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.assigned_propulsors" title="Link to this definition">#</a></dt>
+<dd><p>List of propulsion systems powered by this bus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.solar_panel">
+<span class="sig-name descname"><span class="pre">solar_panel</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.solar_panel" title="Link to this definition">#</a></dt>
+<dd><p>Solar panel system connected to this bus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component">Component</a>, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.avionics">
+<span class="sig-name descname"><span class="pre">avionics</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.avionics" title="Link to this definition">#</a></dt>
+<dd><p>Aircraft avionics system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component">Component</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.payload">
+<span class="sig-name descname"><span class="pre">payload</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.payload" title="Link to this definition">#</a></dt>
+<dd><p>Aircraft payload system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component">Component</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.identical_battery_modules">
+<span class="sig-name descname"><span class="pre">identical_battery_modules</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.identical_battery_modules" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if all battery modules are identical (default: True)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.active">
+<span class="sig-name descname"><span class="pre">active</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.active" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if the bus is operational (default: True)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Power distribution efficiency (default: 1.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.voltage">
+<span class="sig-name descname"><span class="pre">voltage</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.voltage" title="Link to this definition">#</a></dt>
+<dd><p>Bus voltage in volts (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.power_split_ratio">
+<span class="sig-name descname"><span class="pre">power_split_ratio</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.power_split_ratio" title="Link to this definition">#</a></dt>
+<dd><p>Ratio of power distribution between multiple buses (default: 1.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.nominal_capacity">
+<span class="sig-name descname"><span class="pre">nominal_capacity</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.nominal_capacity" title="Link to this definition">#</a></dt>
+<dd><p>Total capacity of connected batteries (default: 0.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.charging_c_rate">
+<span class="sig-name descname"><span class="pre">charging_c_rate</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.charging_c_rate" title="Link to this definition">#</a></dt>
+<dd><p>Battery charging rate in C (default: 1.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.number_of_battery_modules">
+<span class="sig-name descname"><span class="pre">number_of_battery_modules</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.number_of_battery_modules" title="Link to this definition">#</a></dt>
+<dd><p>Number of battery modules on this bus (default: 1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.battery_module_electric_configuration">
+<span class="sig-name descname"><span class="pre">battery_module_electric_configuration</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.battery_module_electric_configuration" title="Link to this definition">#</a></dt>
+<dd><p>Configuration of battery modules (‘Series’ or ‘Parallel’) (default: ‘Series’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The electrical bus manages power distribution between sources and consumers,
+handling voltage regulation, power splitting, and battery management. It supports
+both series and parallel battery configurations.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘C-rate’</dt><dd><p>Rate at which a battery is charged/discharged relative to its capacity</p>
+</dd>
+<dt>‘Power Split Ratio’</dt><dd><p>Fraction of total power handled by this bus in multi-bus configurations</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.html#module-RCAIDE.Library.Components.Energy.Sources.Battery_Modules" title="RCAIDE.Library.Components.Energy.Sources.Battery_Modules"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Battery_Modules</span></code></a></dt><dd><p>Battery module components</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Energy.Sources.Solar_Panels.html#module-RCAIDE.Library.Components.Energy.Sources.Solar_Panels" title="RCAIDE.Library.Components.Energy.Sources.Solar_Panels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Solar_Panels</span></code></a></dt><dd><p>Solar panel components</p>
+</dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_operating_conditions">
 <span class="sig-name descname"><span class="pre">append_operating_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Electrical_Bus.html#Electrical_Bus.append_operating_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_operating_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Append operating conditions for a flight segment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>segment</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment" title="RCAIDE.Framework.Mission.Segments.Segment.Segment"><em>Segment</em></a>) – Flight segment containing operating conditions</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_segment_conditions">
 <span class="sig-name descname"><span class="pre">append_segment_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Electrical_Bus.html#Electrical_Bus.append_segment_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_segment_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Append segment-specific conditions to the bus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conditions</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Container for segment conditions</p></li>
+<li><p><strong>segment</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment" title="RCAIDE.Framework.Mission.Segments.Segment.Segment"><em>Segment</em></a>) – Flight segment data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.initialize_bus_properties">
 <span class="sig-name descname"><span class="pre">initialize_bus_properties</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Electrical_Bus.html#Electrical_Bus.initialize_bus_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.initialize_bus_properties" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Initialize electrical bus properties</p>
+<p>Sets up initial values for bus voltage, capacity, and other electrical
+properties based on connected components.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.compute_distributor_conditions">
 <span class="sig-name descname"><span class="pre">compute_distributor_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Electrical_Bus.html#Electrical_Bus.compute_distributor_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.compute_distributor_conditions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Compute electrical conditions during operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state</strong> (<a class="reference internal" href="_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Current system state</p></li>
+<li><p><strong>t_idx</strong> (<em>int</em>) – Time index</p></li>
+<li><p><strong>delta_t</strong> (<em>float</em>) – Time step</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -563,13 +878,93 @@
 <dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Fuel_Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwarg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/RCAIDE/Library/Components/Energy/Distributors/Fuel_Line.html#Fuel_Line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code></a></p>
-<p>Fuel line class.</p>
+<p>Class for managing fuel distribution between aircraft fuel system components</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.tag">
+<span class="sig-name descname"><span class="pre">tag</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.tag" title="Link to this definition">#</a></dt>
+<dd><p>Identifier for the fuel line (default: ‘fuel_line’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.fuel_tanks">
+<span class="sig-name descname"><span class="pre">fuel_tanks</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.fuel_tanks" title="Link to this definition">#</a></dt>
+<dd><p>Collection of fuel tanks connected to this line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.Container" title="RCAIDE.Framework.Analyses.Analysis.Analysis.Container">Container</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.assigned_propulsors">
+<span class="sig-name descname"><span class="pre">assigned_propulsors</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.assigned_propulsors" title="Link to this definition">#</a></dt>
+<dd><p>List of propulsion systems supplied by this fuel line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.active">
+<span class="sig-name descname"><span class="pre">active</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.active" title="Link to this definition">#</a></dt>
+<dd><p>Flag indicating if the fuel line is operational (default: True)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.efficiency">
+<span class="sig-name descname"><span class="pre">efficiency</span></span><a class="headerlink" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.efficiency" title="Link to this definition">#</a></dt>
+<dd><p>Fuel transfer efficiency (default: 1.0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The fuel line manages fuel distribution between tanks and engines, handling
+fuel transfer and flow control. It supports multiple fuel tanks and propulsors
+in various aircraft configurations.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.html#module-RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks" title="RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks</span></code></a></dt><dd><p>Fuel tank components</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Propulsors.html#module-RCAIDE.Library.Components.Propulsors" title="RCAIDE.Library.Components.Propulsors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Propulsors</span></code></a></dt><dd><p>Aircraft propulsion system components</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>
 <section id="module-RCAIDE.Library.Components.Energy.Distributors">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-RCAIDE.Library.Components.Energy.Distributors" title="Link to this heading">#</a></h2>
-<p>RCAIDE Package Setup</p>
+<p>Energy sources module providing components for aircraft power generation and storage</p>
+<p>This module contains implementations for various energy source components including
+batteries, fuel tanks, and other power generation systems. These components serve
+as the primary energy providers in aircraft propulsion systems.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Energy.Modulators.html#module-RCAIDE.Library.Components.Energy.Modulators" title="RCAIDE.Library.Components.Energy.Modulators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Modulators</span></code></a></dt><dd><p>Energy control systems</p>
+</dd>
+<dt><a class="reference internal" href="_autosummary/RCAIDE.Library.Components.Energy.Sources.html#module-RCAIDE.Library.Components.Energy.Sources" title="RCAIDE.Library.Components.Energy.Sources"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Components.Energy.Sources</span></code></a></dt><dd><p>Fuel storage and delivery systems</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -605,6 +1000,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Energy.Distributors.Coolant_Line">RCAIDE.Library.Components.Energy.Distributors.Coolant_Line module</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line"><code class="docutils literal notranslate"><span class="pre">Coolant_Line</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.tag"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.heat_exchangers"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.heat_exchangers</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.reservoirs"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.reservoirs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.active"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.active</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.efficiency"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.efficiency</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.battery_modules"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.battery_modules</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.identical_battery_modules"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.identical_battery_modules</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Coolant_Line.Coolant_Line.__init__"><code class="docutils literal notranslate"><span class="pre">Coolant_Line.__init__()</span></code></a></li>
 </ul>
 </li>
@@ -612,6 +1014,21 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus">RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus module</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.tag"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.battery_modules"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.battery_modules</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.assigned_propulsors"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.assigned_propulsors</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.solar_panel"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.solar_panel</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.avionics"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.avionics</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.payload"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.payload</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.identical_battery_modules"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.identical_battery_modules</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.active"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.active</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.efficiency"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.efficiency</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.voltage"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.voltage</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.power_split_ratio"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.power_split_ratio</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.nominal_capacity"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.nominal_capacity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.charging_c_rate"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.charging_c_rate</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.number_of_battery_modules"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.number_of_battery_modules</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.battery_module_electric_configuration"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.battery_module_electric_configuration</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_operating_conditions"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.append_operating_conditions()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_segment_conditions"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.append_segment_conditions()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.initialize_bus_properties"><code class="docutils literal notranslate"><span class="pre">Electrical_Bus.initialize_bus_properties()</span></code></a></li>
@@ -621,7 +1038,14 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Energy.Distributors.Fuel_Line">RCAIDE.Library.Components.Energy.Distributors.Fuel_Line module</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line"><code class="docutils literal notranslate"><span class="pre">Fuel_Line</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line"><code class="docutils literal notranslate"><span class="pre">Fuel_Line</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.tag"><code class="docutils literal notranslate"><span class="pre">Fuel_Line.tag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.fuel_tanks"><code class="docutils literal notranslate"><span class="pre">Fuel_Line.fuel_tanks</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.assigned_propulsors"><code class="docutils literal notranslate"><span class="pre">Fuel_Line.assigned_propulsors</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.active"><code class="docutils literal notranslate"><span class="pre">Fuel_Line.active</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Energy.Distributors.Fuel_Line.Fuel_Line.efficiency"><code class="docutils literal notranslate"><span class="pre">Fuel_Line.efficiency</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-RCAIDE.Library.Components.Energy.Distributors">Module contents</a></li>

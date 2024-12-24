@@ -546,17 +546,21 @@
 
 <p class="rubric">Notes</p>
 <p>The Config class manages vehicle configurations through a differential approach,
-providing:
-* Base configuration management
-* Configuration differencing
-* Component relationship tracking
-* Mass properties aggregation
-* Multi-configuration support
-* Dynamic configuration switching</p>
-<p>The class uses a base-diff pattern where:
-* Base configuration (_base) contains default settings
-* Differential configuration (_diff) contains changes
-* Final configuration is computed by applying diff to base</p>
+providing:</p>
+<ul class="simple">
+<li><p>Base configuration management</p></li>
+<li><p>Configuration differencing</p></li>
+<li><p>Component relationship tracking</p></li>
+<li><p>Mass properties aggregation</p></li>
+<li><p>Multi-configuration support</p></li>
+<li><p>Dynamic configuration switching</p></li>
+</ul>
+<p>The class uses a base-diff pattern where:</p>
+<ul class="simple">
+<li><p>Base configuration (_base) contains default settings</p></li>
+<li><p>Differential configuration (_diff) contains changes</p></li>
+<li><p>Final configuration is computed by applying diff to base</p></li>
+</ul>
 <p><strong>Definitions</strong></p>
 <dl class="simple">
 <dt>‘Base Configuration’</dt><dd><p>Complete reference configuration from which others are derived</p>
@@ -576,23 +580,6 @@ providing:
 <p>RCAIDE Package Setup for Configuration Components</p>
 <p>This module initializes the configuration components package, providing access to
 vehicle configuration management and definition tools.</p>
-<p class="rubric">Notes</p>
-<p>The package structure includes:
-* Base Config class for vehicle configuration management
-* Support for multiple configuration types:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Aircraft configurations</p></li>
-<li><p>Propulsion system layouts</p></li>
-<li><p>Control system arrangements</p></li>
-<li><p>Structural configurations</p></li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li><p>Configuration switching capabilities</p></li>
-<li><p>Mass properties management</p></li>
-<li><p>Component relationship handling</p></li>
-</ul>
 </section>
 </section>
 
