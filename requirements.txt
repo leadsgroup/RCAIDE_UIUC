@@ -18,6 +18,7 @@ python-dateutil
 pytz
 scikit-learn
 scipy
+setuptools
 six
 tenacity
 threadpoolctl
