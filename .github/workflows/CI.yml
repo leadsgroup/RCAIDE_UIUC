@@ -31,14 +31,13 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pytest
+          python3 -m pip install pytest pytest-cov
           python3 -m pip install -e .
-
 
       - name: Run Tests
         run: |
           cd Regressions
-          pytest --cov=RCAIDE_LEADS --cov-config=../.coveragerc --disable-warnings
+          pytest --cov=RCAIDE_LEADS --cov-config=.coveragerc --disable-warnings
 
       - name: Submit to Coveralls
         if: success() 
