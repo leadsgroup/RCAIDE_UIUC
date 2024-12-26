@@ -31,20 +31,18 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install numpy
-          pip install sphinx sphinx_rtd_theme
-          pip install sphinx
-          pip install sphinx-rtd-theme
-          pip install sphinx-autobuild
-          pip install sphinx-autoapi
-          pip install nbsphinx
-          pip install sphinx-copybutton
-          pip install myst-nb
-          pip install -r requirements.txt
-          pip install setuptools
-          pip install pandoc
-          pip install Pint
+           python3 -m pip install --upgrade pip
+           python3 -m pip install -e .
+           python3 -m pip install sphinx sphinx_rtd_theme
+           python3 -m pip install sphinx
+           python3 -m pip install sphinx-rtd-theme
+           python3 -m pip install sphinx-autobuild
+           python3 -m pip install sphinx-autoapi
+           python3 -m pip install nbsphinx
+           python3 -m pip install sphinx-copybutton
+           python3 -m pip install myst-nb
+           python3 -m pip install pandoc
+
 
       - name: Generate API Documentation
         run: |
@@ -55,9 +53,11 @@ jobs:
           make html
 
       - name: Add Custom Domain
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
         run: echo "www.docs.rcaide.leadsresearchgroup.com" > docs/build/html/CNAME
         
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
