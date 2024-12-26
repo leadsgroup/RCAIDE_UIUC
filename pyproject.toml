@@ -25,8 +25,8 @@ license = {text = "GNU Affero General Public License v3.0"}
 
 dependencies = [
     # Use older numpy for Python 3.8, newer for other versions
-    'numpy==1.24.4; python_version == "3.8"',
-    'numpy==1.26.4; python_version > "3.8"',
+    "numpy==1.24.4; python_version == \"3.8\"",
+    "numpy==1.26.4; python_version > \"3.8\"",
     "scipy",
     "matplotlib",
     "scikit-learn",
@@ -46,7 +46,7 @@ dependencies = [
     "six",
     "tenacity",
     "threadpoolctl",
-    "zipp",
+    "zipp"
 ]
 
 [project.urls]
