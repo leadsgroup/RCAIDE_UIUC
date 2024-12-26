@@ -16,12 +16,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest] #, windows-latest, macos-latest]
-        python-version: ["3.8"] #, "3.9", "3.10", "3.11", "3.12"]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -30,26 +32,19 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install pytest pytest-cov
-          python3 -m pip install -e .
+          python -m pip install --upgrade pip
+          python -m pip install pytest pytest-cov
+          python -m pip install -e .
 
       - name: Run Tests with Coverage
         run: |
-          pytest Regressions/test_automatic_regression.py --cov=RCAIDE_LEADS --cov-report=xml --cov-report=term-missing --disable-warnings
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings \
+           --cov=RCAIDE \
+            --cov-config=.coveragerc \
+            --cov-report=lcov:coverage.lcov \
 
-      - name: Debug Coverage
-        run: |
-            ls -la
-            cat .coverage || true
-            cat coverage.xml || true
-  
-      - name: Install and run Coveralls
-        if: success()
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-            COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
-        run: |
-            python -m pip install coveralls
-            python -m coveralls --service=github
+      - name: Upload Coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage.lcov
