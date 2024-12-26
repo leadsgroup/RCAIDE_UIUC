@@ -1,9 +1,14 @@
 name: Documentation
 
 on:
-    push:
-      branches:
-        - develop  
+  pull_request:
+    branches:
+      - develop
+      - master
+  push:
+    branches:
+      - develop
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
