@@ -1,0 +1,74 @@
+[build-system]
+requires = [
+    "setuptools>=67.8.0",
+    "wheel>=0.40.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "RCAIDE"
+version = "1.0.0"
+description = "RCAIDE: Research Community Aerospace Interdisciplinary Design Environment"
+authors = [
+    {name = "Laboratory of Electric Aircraft Design and Sustainability"}
+]
+readme = "README.md"
+requires-python = ">=3.8, <3.14"
+license = {text = "GNU Affero General Public License v3.0"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy==1.26.4",
+    "scipy",
+    "matplotlib",
+    "scikit-learn",
+    "plotly",
+    "kaleido",
+    "pandas",
+    "contourpy",
+    "cycler",
+    "fonttools",
+    "geographiclib",
+    "geopy",
+    "importlib_metadata",
+    "joblib",
+    "pillow",
+    "python-dateutil",
+    "pytz",
+    "six",
+    "tenacity",
+    "threadpoolctl",
+    "zipp",
+]
+
+[project.urls]
+Homepage = "https://rcaide.org"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "flake8",
+    "black",
+]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["RCAIDE*"]
+
