@@ -1,5 +1,4 @@
-# RCAIDE/Compoments/Wings/Segment.py
-# 
+# RCAIDE/Library/Compoments/Wings/Segment.py
 # 
 # Created:  Mar 2024, M. Clarke 
 
@@ -14,23 +13,81 @@ from RCAIDE.Library.Components import Component
 #  Segment
 # ----------------------------------------------------------------------------------------------------------------------   
 class Segment(Component):
+    """
+    A class representing a wing segment that defines a portion of a wing's geometry.
+
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the segment, defaults to 'segment'
+        
+    prev : Component
+        Link to previous segment in wing, defaults to None
+        
+    next : Component
+        Link to next segment in wing, defaults to None
+        
+    percent_span_location : float
+        Spanwise location as fraction of wing span, defaults to 0.0
+        
+    twist : float
+        Local twist angle, defaults to 0.0
+        
+    taper : float
+        Local taper ratio, defaults to 0.0
+        
+    root_chord_percent : float
+        Root chord as fraction of wing root chord, defaults to 0.0
+        
+    dihedral_outboard : float
+        Dihedral angle of outboard section, defaults to 0.0
+        
+    thickness_to_chord : float
+        Local thickness-to-chord ratio, defaults to 0.0
+        
+    sweeps : Data
+        Collection of sweep angles
+        
+        - quarter_chord : float
+            Quarter-chord sweep angle, defaults to 0.0
+        - leading_edge : float
+            Leading edge sweep angle, defaults to None
+            
+    chords : Data
+        Collection of chord lengths
+        
+        - mean_aerodynamic : float
+            Mean aerodynamic chord, defaults to 0.0
+            
+    areas : Data
+        Collection of area measurements
+        
+        - reference : float
+            Reference area, defaults to 0.0
+        - exposed : float
+            Exposed area, defaults to 0.0
+        - wetted : float
+            Wetted area, defaults to 0.0
+            
+    Airfoil : Container
+        Collection of airfoil definitions, initialized empty
+
+    Notes
+    -----
+    Wing segments are used to build up complete wing geometries by defining 
+    local properties at various spanwise locations.
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Wing
+        Parent wing class that uses segments
+    RCAIDE.Library.Components.Wings.Main_Wing
+        Main wing implementation using segments
+    """ 
+
     def __defaults__(self):
-        """This sets the default for wing segments in RCAIDE.
-
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
+        """
+        Sets default values for the wing segment attributes.
         """         
         self.tag                     = 'segment'
         self.prev                    = None
@@ -55,29 +112,18 @@ class Segment(Component):
         self.areas.wetted            = 0.0
 
         self.Airfoil                 = Container()    
-   
         
-        
-    def append_airfoil(self,airfoil):
-        """ Adds an airfoil to the segment
+    def append_airfoil(self, airfoil):
+        """
+        Adds an airfoil definition to the segment.
 
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
+        Parameters
+        ----------
+        airfoil : Data
+            Airfoil data to be added to the segment
         """  
         # assert database type
-        if not isinstance(airfoil,Data):
+        if not isinstance(airfoil, Data):
             raise Exception('input component must be of type Data()')
 
         # store data
@@ -85,41 +131,23 @@ class Segment(Component):
 
          
 class Segment_Container(Container):
-    """ Container for wing segment
-    
-    Assumptions:
-    None
+    """
+    Container class for managing wing segments. Provides organization and 
+    access methods for segment components.
 
-    Source:
-    N/A
-
-    Inputs:
-    None
-
-    Outputs:
-    None
-
-    Properties Used:
-    N/A
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Segment
+        The segment components stored in this container
     """     
 
     def get_children(self):
-        """ Returns the components that can go inside
-        
-        Assumptions:
-        None
-    
-        Source:
-        N/A
-    
-        Inputs:
-        None
-    
-        Outputs:
-        None
-    
-        Properties Used:
-        N/A
+        """
+        Returns a list of allowable child component types for the segment container.
+
+        Returns
+        -------
+        list
+            Empty list as segments do not contain child components
         """       
-        
         return []

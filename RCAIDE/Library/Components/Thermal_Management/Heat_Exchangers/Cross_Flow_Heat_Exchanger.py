@@ -20,27 +20,134 @@ import numpy as np
 #  Cross Flow Heat Exchanger 
 # ----------------------------------------------------------------------------------------------------------------------  
 class Cross_Flow_Heat_Exchanger(Component):
-    """ This provides outlet fluid properties from a cross flow heat exchanger
-    Assumptions:
-         Coolant being used is Glycol Water 50-50
-         Assume a constant Kc and Kp 
+    """
+    A class representing a cross-flow heat exchanger with strip fins for thermal 
+    management systems.
 
-    Source: N/A
-   
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the heat exchanger, defaults to 'cross_flow_heat_exchanger'
+        
+    coolant : Glycol_Water
+        Coolant properties for calculations, defaults to Glycol_Water()
+        
+    air : Air
+        Air properties for calculations, defaults to Air()
+        
+    design_heat_removed : float
+        Design heat removal capacity, defaults to 0.0
+        
+    minimum_air_speed : float
+        Minimum air velocity through exchanger, defaults to 105 knots
+        
+    heat_exchanger_efficiency : float
+        Overall heat transfer effectiveness, defaults to 0.8381
+        
+    density : float
+        Material density in kg/m^3, defaults to 8440
+        
+    thermal_conductivity : float
+        Material thermal conductivity in W/m.K, defaults to 121
+        
+    specific_heat_capacity : float
+        Material specific heat in J/kg.K, defaults to 871
+        
+    stack_length : float
+        Length of heat exchanger core, defaults to 1
+        
+    stack_width : float
+        Width of heat exchanger core, defaults to 1
+        
+    stack_height : float
+        Height of heat exchanger core, defaults to 1
+        
+    t_w : float
+        Plate thickness in meters, defaults to 5e-4
+        
+    t_f : float
+        Fin thickness in meters, defaults to 1e-4
+        
+    fin_spacing_cold : float
+        Cold side fin spacing in meters, defaults to 2.54e-3
+        
+    fin_spacing_hot : float
+        Hot side fin spacing in meters, defaults to 2.54e-3
+        
+    fin_metal_thickness_hot : float
+        Hot side fin metal thickness in meters, defaults to 0.102e-3
+        
+    fin_metal_thickness_cold : float
+        Cold side fin metal thickness in meters, defaults to 0.102e-3
+        
+    fin_exposed_strip_edge_hot : float
+        Hot side exposed strip edge in meters, defaults to 3.175e-3
+        
+    fin_exposed_strip_edge_cold : float
+        Cold side exposed strip edge in meters, defaults to 3.175e-3
+        
+    fin_area_density_hot : float
+        Hot side fin area density in m^2/m^3, defaults to 2254
+        
+    fin_area_density_cold : float
+        Cold side fin area density in m^2/m^3, defaults to 2254
+        
+    finned_area_to_total_area_hot : float
+        Hot side fin area ratio, defaults to 0.785
+        
+    finned_area_to_total_area_cold : float
+        Cold side fin area ratio, defaults to 0.785
+        
+    coolant_hydraulic_diameter : float
+        Coolant passage hydraulic diameter in meters, defaults to 1.54e-3
+        
+    air_hydraulic_diameter : float
+        Air passage hydraulic diameter in meters, defaults to 1.54e-3
+        
+    fin_conductivity : float
+        Fin thermal conductivity in W/m.K, defaults to 121
+        
+    wall_conductivity : float
+        Wall thermal conductivity in W/m.K, defaults to 121
+
+    Notes
+    -----
+    The cross-flow heat exchanger uses strip fins and is based on the 1/8-19.86 
+    surface designation. The design includes:
+    
+    * Liquid coolant passages with strip fins
+    * Air passages with strip fins
+    * Counter-flow arrangement for maximum effectiveness
+
+    **Assumptions**
+    
+    * Coolant is 50-50 Glycol Water mixture
+    * Constant entrance and exit loss coefficients
+    * Surface designation of 1/8-19.86 with strip fins
+
+    **Definitions**
+
+    'Strip Fin'
+        Interrupted fin design that enhances heat transfer while reducing pressure drop
+        
+    'Hydraulic Diameter'
+        Characteristic dimension for internal flow calculations
+
+    References
+    ----------
+    [1] Kays, W.M. and London, A.L. (1998) Compact Heat Exchangers. 3rd Edition, 
+        McGraw-Hill, New York.
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cryogenic_Heat_Exchanger
+        Alternative heat exchanger for cryogenic applications
     """
 
     def __defaults__(self):
-        """This sets the default values for the component to function.
-
-        Assumptions:
-        Surface Designation of 1/8-19.86 with strip fins. 
-
-        Source:
-        Kays, W.M. and London, A.L. (1998) Compact Heat Exchangers. 3rd Edition, McGraw-Hill, New York.
-        
-       
+        """
+        Sets default values for the cross-flow heat exchanger attributes.
         """         
-
         self.tag                                                    = 'cross_flow_heat_exchanger'
         self.coolant                                                = Glycol_Water() 
         self.air                                                    = Air() 
@@ -122,31 +229,114 @@ class Cross_Flow_Heat_Exchanger(Component):
         self.ke_values                                              = load_ke_values()
         return  
 
-    def append_operating_conditions(self,segment,coolant_line):
-        append_cross_flow_heat_exchanger_conditions(self,segment,coolant_line)
+    def append_operating_conditions(self, segment, coolant_line):
+        """
+        Adds operating conditions for the heat exchanger to a mission segment.
+
+        Parameters
+        ----------
+        segment : Data
+            Mission segment to which conditions are being added
+        coolant_line : Data
+            Cooling system flow path information
+        """
+        append_cross_flow_heat_exchanger_conditions(self, segment, coolant_line)
         return
   
-    def append_segment_conditions(self,segment,bus,coolant_line,conditions):
-        append_cross_flow_hex_segment_conditions(self,segment,bus,coolant_line,conditions)
+    def append_segment_conditions(self, segment, bus, coolant_line, conditions):
+        """
+        Adds specific segment conditions to the heat exchanger analysis.
+
+        Parameters
+        ----------
+        segment : Data
+            Mission segment being analyzed
+        bus : Data
+            Electrical bus data
+        coolant_line : Data
+            Cooling system flow path information
+        conditions : Data
+            Operating conditions for the segment
+        """
+        append_cross_flow_hex_segment_conditions(self, segment, bus, coolant_line, conditions)
         return
        
-    def compute_heat_exchanger_performance(self,state,bus,coolant_line, delta_t,t_idx):
-        cross_flow_hex_rating_model(self,state,bus,coolant_line, delta_t,t_idx)
+    def compute_heat_exchanger_performance(self, state, bus, coolant_line, delta_t, t_idx):
+        """
+        Calculates thermal performance of the heat exchanger.
+
+        Parameters
+        ----------
+        state : Data
+            Current system state
+        bus : Data
+            Electrical bus data
+        coolant_line : Data
+            Cooling system flow path information
+        delta_t : float
+            Time step size
+        t_idx : int
+            Time index in the simulation
+        """
+        cross_flow_hex_rating_model(self, state, bus, coolant_line, delta_t, t_idx)
         return
-    def plot_operating_conditions(self,results, coolant_line,save_filename,save_figure,show_legend,file_type ,width, height):
-        plot_cross_flow_heat_exchanger_conditions(self,results,coolant_line,save_filename,save_figure,show_legend,file_type,width,height)     
+
+    def plot_operating_conditions(self, results, coolant_line, save_filename, save_figure, 
+                                show_legend, file_type, width, height):
+        """
+        Creates visualization plots of the heat exchanger operating conditions.
+
+        Parameters
+        ----------
+        results : Data
+            Simulation results data
+        coolant_line : Data
+            Cooling system flow path information
+        save_filename : str
+            Path for saving the plot
+        save_figure : bool
+            Flag to save the figure
+        show_legend : bool
+            Flag to display plot legend
+        file_type : str
+            Output file format
+        width : float
+            Plot width
+        height : float
+            Plot height
+        """
+        plot_cross_flow_heat_exchanger_conditions(self, results, coolant_line, save_filename,
+                                                save_figure, show_legend, file_type, width, height)     
         return    
 
     def load_kc_values(): 
+        """
+        Loads entrance loss coefficient data from file.
+
+        Returns
+        -------
+        ndarray
+            Array of entrance loss coefficients
+        """
         ospath    = os.path.abspath(__file__)
         separator = os.path.sep
         rel_path  = os.path.dirname(ospath) + separator   
-        x         = np.loadtxt(rel_path + 'rectangular_passage_Kc.csv', dtype=float, delimiter=',', comments='Kc') 
+        x         = np.loadtxt(rel_path + 'rectangular_passage_Kc.csv', dtype=float, 
+                             delimiter=',', comments='Kc') 
         return x 
     
     def load_ke_values():  
+        """
+        Loads exit loss coefficient data from file.
+
+        Returns
+        -------
+        ndarray
+            Array of exit loss coefficients
+        """
         ospath    = os.path.abspath(__file__)
         separator = os.path.sep
         rel_path  = os.path.dirname(ospath) + separator 
-        x         = np.loadtxt(rel_path +'rectangular_passage_Ke.csv', dtype=float, delimiter=',', comments='Ke')
+        x         = np.loadtxt(rel_path +'rectangular_passage_Ke.csv', dtype=float, 
+                             delimiter=',', comments='Ke')
         return x 

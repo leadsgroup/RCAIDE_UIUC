@@ -1,5 +1,4 @@
-# RCAIDE/Compoments/Wings/Vertical_Tail_All_Moving.py
-# 
+# RCAIDE/Library/Compoments/Wings/Vertical_Tail_All_Moving.py
 # 
 # Created:  Mar 2024, M. Clarke 
 
@@ -15,84 +14,83 @@ from RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_ine
 #  Vertical_Tail_All_Moving
 # ----------------------------------------------------------------------------------------------------------------------     
 class Vertical_Tail_All_Moving(Vertical_Tail, All_Moving_Surface):
-    """ This class is used to define all-moving vertical tails in RCAIDE. Note that it 
-    inherits from both Horizontal_Tail and All_Moving_Surface
-    
-        Assumptions:
-        None
+    """
+    A class representing an all-moving vertical tail that provides directional control 
+    and stability.
 
-        Source:
-        N/A
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the surface, defaults to 'vertical_tail_all_moving'
+        
+    sign_duplicate : float
+        Sign convention for duplicate surface deflection, defaults to -1.0
+        (opposite deflection for yaw control)
 
-        Inputs:
-        None
+    Notes
+    -----
+    The all-moving vertical tail combines the functions of a vertical stabilizer and 
+    rudder by pivoting as a complete surface. It inherits from both Vertical_Tail and 
+    All_Moving_Surface to combine their functionality.
 
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Vertical_Tail
+        Base class providing vertical tail functionality
+    RCAIDE.Library.Components.Wings.All_Moving_Surface
+        Base class providing pivoting surface functionality
+    RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder
+        Alternative yaw control using conventional rudder
+    """ 
 
     def __defaults__(self):
-        """This sets the default for all moving-vertical tails in RCAIDE.
+        """
+        Sets default values for the all-moving vertical tail attributes.
         
-        See All_Moving_Surface().__defaults__ and Wing().__defaults__ for an explanation 
-        of attributes
-    
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
-        self.tag = 'vertical_tail_all_moving'
-        self.sign_duplicate        = -1.0   
+        Notes
+        -----
+        See All_Moving_Surface.__defaults__ and Wing.__defaults__ for 
+        additional inherited attributes.
+        """
+        self.tag            = 'vertical_tail_all_moving'
+        self.sign_duplicate = -1.0   
     
     def make_x_z_reflection(self):
-        """This returns a Vertical_Tail class or subclass object that is the reflection
-        of this object over the x-z plane. This is useful since if Vertical_Tail's symmetric 
-        attribute is True, the symmetric wing gets reflected over the x-y plane.
-        
-        This function uses deepcopy to achieve its purpose. If this copies too many unwanted 
-        attributes, it is recommended that the user should write their own code, taking 
-        after the form of this function.
-        
-        It is also recommended that the user call this function after they set control surface
-        or all moving surface deflections. This way the deflection is also properly reflected 
-        to the other side
-    
-        Assumptions:
-        None
+        """
+        Creates a reflected copy of the vertical tail over the x-z plane.
 
-        Source:
-        N/A
+        Returns
+        -------
+        Component
+            Reflected vertical tail with appropriate deflection sign
 
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
+        Notes
+        -----
+        * Used when vertical tail's symmetric attribute is True
+        * Deflection is reflected according to sign_duplicate convention
+        * Should be called after setting control surface deflections
         """       
         wing                  = super().make_x_z_reflection()
         wing.deflection      *= -1*self.sign_duplicate
         wing.hinge_vector[1] *= -1
         return wing
     
-    def moment_of_inertia(wing,center_of_gravity):
-        
-        I =  compute_wing_moment_of_inertia(wing,center_of_gravity) 
+    def moment_of_inertia(wing, center_of_gravity):
+        """
+        Computes the moment of inertia tensor for the vertical tail.
+
+        Parameters
+        ----------
+        wing : Component
+            Wing component data
+        center_of_gravity : list
+            Reference point coordinates for moment calculation
+
+        Returns
+        -------
+        ndarray
+            3x3 moment of inertia tensor
+        """
+        I = compute_wing_moment_of_inertia(wing, center_of_gravity) 
         return I  
         

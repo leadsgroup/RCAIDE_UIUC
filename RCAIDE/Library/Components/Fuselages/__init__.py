@@ -1,7 +1,16 @@
 # RCAIDE/Library/Components/Fuselages/__init__.py
-# 
 
-"""RCAIDE Package Setup
+"""
+Module containing fuselage components for aircraft design and analysis. This module provides 
+different fuselage configurations including traditional tube fuselages, blended wing body 
+designs, and basic fuselage segments.
+
+See Also
+--------
+RCAIDE.Library.Components.Airfoils
+    Related module for airfoil definitions used in aerodynamic surfaces
+RCAIDE.Library.Components.Booms
+    Related module for boom components that may connect to fuselage sections
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

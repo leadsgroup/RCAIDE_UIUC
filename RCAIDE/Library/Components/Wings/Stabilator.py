@@ -1,5 +1,4 @@
-# RCAIDE/Compoments/Wings/Stabilator.py
-# 
+# RCAIDE/Library/Compoments/Wings/Stabilator.py
 # 
 # Created:  Mar 2024, M. Clarke 
 
@@ -15,50 +14,62 @@ from RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_ine
 #  Stabilator
 # ----------------------------------------------------------------------------------------------------------------------     
 class Stabilator(Horizontal_Tail, All_Moving_Surface):
-    """ This class is used to define stabilators in RCAIDE. Note that it 
-    inherits from both Horizontal_Tail and All_Moving_Surface
-    
-        Assumptions:
-        None
+    """
+    A class representing an all-moving horizontal tail (stabilator) that provides 
+    pitch control and longitudinal stability.
 
-        Source:
-        N/A
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the stabilator, defaults to 'stabilator'
+        
+    sign_duplicate : float
+        Sign convention for duplicate stabilator deflection, defaults to 1.0
+        (synchronized deflection for pitch control)
 
-        Inputs:
-        None
+    Notes
+    -----
+    The stabilator combines the functions of a horizontal stabilizer and elevator 
+    by pivoting as a complete surface. It inherits from both Horizontal_Tail and 
+    All_Moving_Surface to combine their functionality.
 
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Horizontal_Tail
+        Base class providing horizontal tail functionality
+    RCAIDE.Library.Components.Wings.All_Moving_Surface
+        Base class providing pivoting surface functionality
+    RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator
+        Alternative pitch control using conventional elevator
+    """ 
 
     def __defaults__(self):
-        """This sets the default for stabilators in RCAIDE.
+        """
+        Sets default values for the stabilator attributes.
         
-        See All_Moving_Surface().__defaults__ and Wing().__defaults__ for 
-        an explanation of attributes
-    
-        Assumptions:
-        None
+        Notes
+        -----
+        See All_Moving_Surface.__defaults__ and Wing.__defaults__ for 
+        additional inherited attributes.
+        """
+        self.tag            = 'stabilator'
+        self.sign_duplicate = 1.0
 
-        Source:
-        N/A
+    def moment_of_inertia(wing, center_of_gravity):
+        """
+        Computes the moment of inertia tensor for the stabilator.
 
-        Inputs:
-        None
+        Parameters
+        ----------
+        wing : Component
+            Wing component data
+        center_of_gravity : list
+            Reference point coordinates for moment calculation
 
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
-        self.tag                = 'stabilator'
-        self.sign_duplicate     = 1.0
-
-    def moment_of_inertia(wing,center_of_gravity):
-        
-        I =  compute_wing_moment_of_inertia(wing,center_of_gravity) 
+        Returns
+        -------
+        ndarray
+            3x3 moment of inertia tensor
+        """
+        I = compute_wing_moment_of_inertia(wing, center_of_gravity) 
         return I  

@@ -1,6 +1,5 @@
 # RCAIDE/Compoments/Nacelles/Stack_Nacelle.py
 # 
-# 
 # Created:  Mar 2024, M. Clarke 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -11,55 +10,72 @@ from RCAIDE.Framework.Core              import Data, Container
 from .Nacelle import Nacelle
   
 # ---------------------------------------------------------------------------------------------------------------------- 
-#  Nacalle
+#  Stack_Nacelle
 # ----------------------------------------------------------------------------------------------------------------------  
 class Stack_Nacelle(Nacelle):
-    """ This is a stacked nacelle for a generic aircraft.
+    """
+    A nacelle design built up from a series of stacked cross-sectional segments, 
+    allowing for complex, non-axisymmetric shapes.
+
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the nacelle component, defaults to 'stack_nacelle'
+        
+    Segments : Container
+        Collection of cross-sectional segments defining the nacelle shape, 
+        initialized empty
+
+    Notes
+    -----
+    The stack nacelle approach provides flexibility in designing complex nacelle 
+    shapes through the use of multiple cross-sections. This is particularly useful for:
     
-    Assumptions:
-    None
+    * Non-axisymmetric designs
+    * Complex inlet and nozzle geometries
+    * Integration with adjacent structures
     
-    Source:
-    N/A
+    **Major Assumptions**
+    
+    * Segments are ordered from front to back
+    * Adjacent segments form smooth transitions
+    * Cross-sections are defined using super-ellipse parameters
+    
+    **Definitions**
+
+    'Stack'
+        Series of cross-sectional segments arranged longitudinally to define 
+        the nacelle shape
+        
+    'Cross-section'
+        Individual segment defining the nacelle shape at a specific longitudinal station
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Nacelles.Nacelle
+        Base nacelle class
+    RCAIDE.Library.Components.Nacelles.Segment
+        Individual segments used to build the stack
+    RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle
+        Alternative nacelle design approach
     """
     
     def __defaults__(self):
-        """ This sets the default values for the component to function.
-        
-        Assumptions:
-        None
-    
-        Source:
-        N/A
-    
-        Inputs:
-        None
-    
-        Outputs:
-        None
-    
-        Properties Used:
-        None
+        """
+        Sets default values for the stack nacelle attributes.
         """      
+        self.tag      = 'stack_nacelle'  
+        self.Segments = Container() 
         
-        self.tag                       = 'stack_nacelle'  
-        self.Segments                  = Container() 
-        
-    def append_segment(self,segment):
-        """ Adds a segment to the nacelle. 
-    
-        Assumptions:
-        None
-        Source:
-        N/A
-        Inputs:
-        None
-        Outputs:
-        None
-        Properties Used:
-        N/A
-        """ 
+    def append_segment(self, segment):
+        """
+        Adds a new segment to the nacelle's segment container.
 
+        Parameters
+        ----------
+        segment : Data
+            Cross-sectional segment to be added to the nacelle definition
+        """
         # Assert database type
         if not isinstance(segment,Data):
             raise Exception('input component must be of type Data()')

@@ -115,15 +115,6 @@ class Boom(Component):
     * VSP integration
     * Segmentation capabilities
 
-    **Major Assumptions**
-
-    * Rigid structure
-    * Linear elastic material behavior
-    * Small deflections
-    * Quasi-steady aerodynamics
-    * Uniform material properties
-    * No thermal effects
-
     **Definitions**
 
     'Fineness Ratio'

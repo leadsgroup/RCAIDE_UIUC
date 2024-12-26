@@ -1,7 +1,19 @@
-# RCAIDE/Library/Compoments/Energy/Sources/Fuel_Tanks/__init__.py
+# RCAIDE/Library/Components/Energy/Sources/Fuel_Tanks/__init__.py
 # 
 
-""" RCAIDE Package Setup
+"""
+Fuel tank components for aircraft fuel storage and distribution
+
+This module provides implementations for various aircraft fuel tank types including
+wing tanks, central tanks, and generic fuel tanks. Each tank type has specific
+characteristics for fuel storage, weight distribution, and system integration.
+
+See Also
+--------
+RCAIDE.Library.Components.Energy.Distributors.Fuel_Line
+    Fuel distribution components
+RCAIDE.Library.Components.Energy.Modulators.Fuel_Selector
+    Fuel flow control components
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

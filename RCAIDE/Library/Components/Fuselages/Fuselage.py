@@ -1,6 +1,5 @@
 # RCAIDE/Compoments/Fuselages/Fuselage.py
 # 
-# 
 # Created:  Mar 2024, M. Clarke 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -12,92 +11,153 @@ from RCAIDE.Library.Components.Component  import Container
 from RCAIDE.Library.Components            import Component
 from RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia import  compute_fuselage_moment_of_inertia
 
- 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Fuselage
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Fuselage(Component):
     """
-    A standard fuselage component for tube and wing aircraft configurations.
+    Base class for aircraft fuselage components providing core functionality for 
+    geometric definition and analysis.
 
     Attributes
     ----------
     tag : str
-        Identifier for the fuselage component, defaults to 'fuselage'
+        Unique identifier for the fuselage component, defaults to 'fuselage'
+        
     origin : list
-        Origin coordinates of the fuselage, defaults to [[0.0,0.0,0.0]]
+        3D coordinates [x, y, z] defining the fuselage's reference point, 
+        defaults to [[0.0, 0.0, 0.0]]
+        
     aerodynamic_center : list
-        Location of the aerodynamic center, defaults to [0.0,0.0,0.0]
+        3D coordinates [x, y, z] of the fuselage's aerodynamic center, 
+        defaults to [0.0, 0.0, 0.0]
+        
     differential_pressure : float
-        Pressure differential between cabin and external atmosphere, defaults to 0.0
+        Cabin pressurization differential, defaults to 0.0
+        
     seats_abreast : float
-        Number of seats side by side in the cabin, defaults to 0.0
+        Number of passenger seats arranged side-by-side, defaults to 0.0
+        
     seat_pitch : float
-        Distance between seats, defaults to 0.0
+        Longitudinal distance between seat rows in meters, defaults to 0.0
+        
     number_coach_seats : float
-        Total number of coach seats, defaults to 0.0
+        Total number of economy class seats, defaults to 0.0
+        
     areas : Data
-        Container for area-related parameters including front_projected, side_projected, and wetted areas
+        Collection of fuselage area measurements
+        
+        - front_projected : float
+            Frontal area, defaults to 0.0
+        - side_projected : float
+            Side profile area, defaults to 0.0
+        - wetted : float
+            Total wetted surface area, defaults to 0.0
+            
     effective_diameter : float
-        Effective diameter of the fuselage, defaults to 0.0
+        Equivalent circular diameter, defaults to 0.0
+        
     width : float
-        Width of the fuselage, defaults to 0.0
+        Maximum fuselage width, defaults to 0.0
+        
     heights : Data
-        Container for height measurements at maximum, quarter length, three quarters length, 
-        wing root quarter chord, and vertical root quarter chord
+        Collection of height measurements along the fuselage
+        
+        - maximum : float
+            Maximum height in meters, defaults to 0.0
+        - at_quarter_length : float
+            Height at 25% of fuselage length, defaults to 0.0
+        - at_three_quarters_length : float
+            Height at 75% of fuselage length, defaults to 0.0
+        - at_wing_root_quarter_chord : float
+            Height at wing root quarter chord, defaults to 0.0
+        - at_vertical_root_quarter_chord : float
+            Height at vertical tail root quarter chord, defaults to 0.0
+            
     lengths : Data
-        Container for length measurements including nose, tail, total, cabin, fore_space, and aft_space
+        Collection of length measurements
+        
+        - nose : float
+            Length of nose section, defaults to 0.0
+        - tail : float
+            Length of tail section, defaults to 0.0
+        - total : float
+            Total fuselage length, defaults to 0.0
+        - cabin : float
+            Length of passenger cabin, defaults to 0.0
+        - fore_space : float
+            Length of forward equipment bay, defaults to 0.0
+        - aft_space : float
+            Length of aft equipment bay, defaults to 0.0
+            
     x_rotation : float
-        Rotation angle around x-axis, defaults to 0.0
+        Rotation angle about x-axis, defaults to 0.0
+        
     y_rotation : float
-        Rotation angle around y-axis, defaults to 0.0
+        Rotation angle about y-axis, defaults to 0.0
+        
     z_rotation : float
-        Rotation angle around z-axis, defaults to 0.0
+        Rotation angle about z-axis, defaults to 0.0
+        
     fineness : Data
-        Container for fineness ratios of nose and tail
+        Fineness ratio parameters
+        
+        - nose : float
+            Ratio of nose length to maximum diameter, defaults to 0.0
+        - tail : float
+            Ratio of tail length to maximum diameter, defaults to 0.0
+            
     nose_curvature : float
-        Curvature parameter for the nose section, defaults to 1.5
+        Shape parameter defining nose profile curvature, defaults to 1.5
+        
     tail_curvature : float
-        Curvature parameter for the tail section, defaults to 1.5
+        Shape parameter defining tail profile curvature, defaults to 1.5
+        
     fuel_tanks : Container
-        Container for fuel tank components
+        Collection of fuel tank components within the fuselage, initialized empty
+        
     vsp_data : Data
-        Container for OpenVSP-related parameters including xsec_surf_id and xsec_num
+        OpenVSP-specific geometry parameters
+        
+        - xsec_surf_id : str
+            OpenVSP cross-section surface identifier
+        - xsec_num : int
+            Number of cross-sections in OpenVSP model, defaults to None
+            
     Segments : Container
-        Container for fuselage segments
-
-    Returns
-    -------
-    None
+        Collection of fuselage segment components, initialized empty
 
     Notes
     -----
-    This class represents a conventional tube and wing aircraft fuselage component.
-    It provides functionality for defining the geometry, structural properties, and
-    configuration of an aircraft fuselage.
+    This class serves as the foundation for all fuselage types in RCAIDE, providing:
+    
+    * Geometric definition capabilities
+    * Integration with OpenVSP for visualization and analysis
+    * Support for fuel tank and segment management
+    * Basic structural configuration parameters
+    
+    **Definitions**
 
-    **Assumptions:**
-        Conventional fuselage configuration
+    'Fineness Ratio'
+        Ratio of length to maximum diameter, important for drag characteristics
+        
+    'Wetted Area'
+        Total surface area exposed to airflow
+        
+    'Equipment Bay'
+        Non-pressurized volume for systems and equipment storage
 
+    See Also
+    --------
+    RCAIDE.Library.Components.Fuselages.Tube_Fuselage
+        Implementation for conventional tube-and-wing aircraft
+    RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage
+        Implementation for blended wing body aircraft
     """
     
     def __defaults__(self):
-        """ This sets the default values for the component to function.
-        
-        Assumptions:
-        None
-    
-        Source:
-        N/A
-    
-        Inputs:
-        None
-    
-        Outputs:
-        None
-    
-        Properties Used:
-        None
+        """
+        Sets default values for all fuselage attributes.
         """      
         
         self.tag                                    = 'fuselage'
@@ -149,19 +209,14 @@ class Fuselage(Component):
         self.Segments                               = Container()
         
     def append_segment(self,segment):
-        """ Adds a segment to the fuselage. 
-    
-        Assumptions:
-        None
-        Source:
-        N/A
-        Inputs:
-        None
-        Outputs:
-        None
-        Properties Used:
-        N/A
-        """ 
+        """
+        Adds a new segment to the fuselage's segment container.
+
+        Parameters
+        ----------
+        segment : Data
+            Fuselage segment to be added
+        """
 
         # Assert database type
         if not isinstance(segment,Data):
@@ -173,19 +228,14 @@ class Fuselage(Component):
         return
     
     def append_fuel_tank(self,fuel_tank):
-        """ Adds a fuel tank to the fuselage 
-    
-        Assumptions:
-        None
-        Source:
-        N/A
-        Inputs:
-        None
-        Outputs:
-        None
-        Properties Used:
-        N/A
-        """ 
+        """
+        Adds a new fuel tank to the fuselage's fuel tank container.
+
+        Parameters
+        ----------
+        fuel_tank : Data
+            Fuel tank component to be added
+        """
 
         # Assert database type
         if not isinstance(fuel_tank,Data):
@@ -197,5 +247,23 @@ class Fuselage(Component):
         return 
 
     def compute_moment_of_inertia(self, center_of_gravity=[[0, 0, 0]]): 
-        I =  compute_fuselage_moment_of_inertia(self,center_of_gravity) 
+        """
+        Computes the moment of inertia tensor for the fuselage.
+
+        Parameters
+        ----------
+        center_of_gravity : list, optional
+            Reference point coordinates for moment calculation, defaults to [[0, 0, 0]]
+
+        Returns
+        -------
+        I : ndarray
+            3x3 moment of inertia tensor in kg*m^2
+
+        See Also
+        --------
+        RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_fuselage_moment_of_inertia
+            Implementation of the moment of inertia calculation
+        """
+        I = compute_fuselage_moment_of_inertia(self,center_of_gravity) 
         return I    

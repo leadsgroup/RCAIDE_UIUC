@@ -6,7 +6,7 @@
 <div align="center">
   
 [![Build status](https://ci.appveyor.com/api/projects/status/17mgaohuuexb301j?svg=true)](https://ci.appveyor.com/project/mclarke2/rcaide-leads)
-[![Coverage Status](https://coveralls.io/repos/github/leadsgroup/RCAIDE/badge.svg?branch=develop)](https://coveralls.io/github/leadsgroup/RCAIDE?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/leadsgroup/RCAIDE_LEADS/badge.svg)](https://coveralls.io/github/leadsgroup/RCAIDE_LEADS)
 
 </div>
 

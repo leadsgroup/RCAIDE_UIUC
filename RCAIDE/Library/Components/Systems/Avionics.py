@@ -13,58 +13,80 @@ from RCAIDE.Library.Methods.Propulsors.Common.append_avionics_conditions import 
 #  Avionics
 # ----------------------------------------------------------------------------------------------------------------------            
 class Avionics(Component):
-    """A class representing avionics.
+    """
+    A class representing aircraft avionics systems and their power requirements.
+
+    Attributes
+    ----------
+    power_draw : float
+        Power consumption of the avionics system, defaults to 0.0
+        
+    tag : str
+        Unique identifier for the avionics system, defaults to 'Avionics'
+
+    Notes
+    -----
+    The avionics class models the electrical power requirements of aircraft 
+    electronics and instruments. This includes:
     
-    Assumptions:
-    None
+    * Flight management systems
+    * Navigation equipment
+    * Communication systems
+    * Display systems
     
-    Source:
-    N/A
+    **Major Assumptions**
+    
+    * Constant power draw during operation
+    * Instantaneous power availability
+    * No thermal management considerations
+    
+    **Definitions**
+
+    'Power Draw'
+        The electrical power required by the avionics system during operation
+        
+    'Bus'
+        The electrical distribution system supplying power to the avionics
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Systems.System
+        Base system class
     """        
     def __defaults__(self):
-        """This sets the default power draw.
-
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
+        """
+        Sets default values for the avionics system attributes.
         """                 
         self.power_draw = 0.0
         self.tag        = 'Avionics'
 
-    def append_operating_conditions(self,segment,bus): 
-        append_avionics_conditions(self,segment,bus)
+    def append_operating_conditions(self, segment, bus): 
+        """
+        Adds operating conditions for the avionics system to a mission segment.
+
+        Parameters
+        ----------
+        segment : Data
+            Mission segment to which conditions are being added
+        bus : Data
+            Electrical bus supplying power to the avionics
+        """
+        append_avionics_conditions(self, segment, bus)
         return
             
-        
     def power(self):
-        """This gives the power draw from avionics.
+        """
+        Calculates the power draw from the avionics system.
 
-        Assumptions:
-        None
+        Returns
+        -------
+        float
+            Power draw in Watts
 
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        self.outputs.power_draw          [Watts]
-                                           
-        Properties Used:
-        self.power_draw    
+        Notes
+        -----
+        Sets both the input power and returns the power draw value for use
+        in energy calculations.
         """                 
         self.inputs.power = self.power_draw
-        
         return self.power_draw

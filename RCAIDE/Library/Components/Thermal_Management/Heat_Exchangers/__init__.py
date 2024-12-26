@@ -1,7 +1,16 @@
-# RCAIDE/Energy/Thermal_Management/Heat_Exchangers/__init__.py
-# 
+# RCAIDE/Library/Components/Thermal_Management/Heat_Exchangers/__init__.py
 
-""" RCAIDE Package Setup
+"""
+Module containing heat exchanger components for thermal management systems. This module 
+provides classes for different heat exchanger configurations including cross-flow and 
+cryogenic designs.
+
+See Also
+--------
+RCAIDE.Library.Components.Thermal_Management.Batteries
+    Related module for battery cooling applications
+RCAIDE.Library.Components.Thermal_Management.Accessories
+    Related module for pumps and fans used with heat exchangers
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

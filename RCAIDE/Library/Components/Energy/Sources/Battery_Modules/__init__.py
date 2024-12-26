@@ -1,7 +1,13 @@
-# RCAIDE/Library/Compoments/Energy/Sources/Batteries/__init__.py
+# RCAIDE/Library/Components/Energy/Sources/Battery_Modules/__init__.py
 # 
 
-""" RCAIDE Package Setup
+"""
+Battery module components for aircraft energy storage systems
+
+This module provides implementations of various battery technologies including
+lithium-ion, lithium-sulfur, lithium-air, and aluminum-air batteries. Each battery
+type has specific characteristics for energy density, power density, and lifecycle
+performance.
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
