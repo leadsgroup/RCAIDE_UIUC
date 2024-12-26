@@ -1,5 +1,6 @@
 contourpy
 cycler
+distutils
 fonttools
 geographiclib
 geopy
@@ -23,4 +24,5 @@ six
 tenacity
 threadpoolctl
 tzdata
+wheel
 zipp
