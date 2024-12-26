@@ -2,6 +2,7 @@
 source = RCAIDE
 omit =
     */site-packages/*
+    */RCAIDE_LEADS/docs/*
 branch = True
 
 [report]
