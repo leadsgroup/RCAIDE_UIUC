@@ -1,6 +1,5 @@
 contourpy
 cycler
-distutils
 fonttools
 geographiclib
 geopy
