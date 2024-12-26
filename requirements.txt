@@ -8,7 +8,7 @@ joblib
 kaleido
 kiwisolver
 matplotlib
-numpy ==1.26.0
+numpy ==1.25.2
 packaging
 pandas
 pillow
