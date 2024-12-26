@@ -35,7 +35,7 @@ modules = [
     'Tests/mission_segments/transition_segment_test.py', 
     'Tests/network_electric/electric_btms_test.py', 
     'Tests/network_ducted_fan/electric_ducted_fan_network_test.py',
-    'Tests/network_turbofan/turbofan_network_test.py',
+     'Tests/network_turbofan/turbofan_network_test.py',
     'Tests/network_turbojet/turbojet_network_test.py',
     'Tests/network_turboprop/turboprop_network_test.py',
     'Tests/network_turboshaft/turboshaft_network_test.py',
