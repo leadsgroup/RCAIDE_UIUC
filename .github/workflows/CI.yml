@@ -41,7 +41,6 @@ jobs:
           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov:coverage.lcov
 
       - name: Save Coverage Report
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
         uses: actions/upload-artifact@v3
         with:
           name: coverage-lcov
