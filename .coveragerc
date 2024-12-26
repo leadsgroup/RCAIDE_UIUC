@@ -1,2 +1,17 @@
 [run]
-source = RCAIDE
+source = RCAIDE_LEADS
+branch = True
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    pass
+    raise ImportError
+    
+[paths]
+source =
+    RCAIDE_LEADS/
+    */RCAIDE_LEADS/*

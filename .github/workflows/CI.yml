@@ -38,12 +38,18 @@ jobs:
         run: |
           pytest Regressions/test_automatic_regression.py --cov=RCAIDE_LEADS --cov-report=xml --cov-report=term-missing --disable-warnings
 
+      - name: Debug Coverage
+        run: |
+            ls -la
+            cat .coverage || true
+            cat coverage.xml || true
+  
       - name: Install and run Coveralls
         if: success()
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+            COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
         run: |
-          python -m pip install coveralls
-          python -m coveralls --service=github
+            python -m pip install coveralls
+            python -m coveralls --service=github
