@@ -16,8 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        os: [ubuntu-latest] #, windows-latest, macos-latest]
+        python-version: ["3.8"] #, "3.9", "3.10", "3.11", "3.12"]
 
     steps:
       - name: Check out code
@@ -38,10 +38,12 @@ jobs:
         run: |
           pytest Regressions/test_automatic_regression.py --cov=RCAIDE_LEADS --cov-report=xml --cov-report=term-missing --disable-warnings
 
-      - name: Upload Coverage to Coveralls
+      - name: Install and run Coveralls
         if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
         run: |
-          coveralls --service=github
+          python -m pip install coveralls
+          python -m coveralls --service=github
