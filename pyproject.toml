@@ -5,33 +5,28 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["RCAIDE*"]
+
 [project]
-name = "RCAIDE"
+name = "RCAIDE_LEADS"
 version = "1.0.0"
 description = "RCAIDE: Research Community Aerospace Interdisciplinary Design Environment"
 authors = [
     {name = "Laboratory of Electric Aircraft Design and Sustainability"}
 ]
 readme = "README.md"
-requires-python = ">=3.8, <3.14"
+requires-python = ">=3.8"
 license = {text = "GNU Affero General Public License v3.0"}
-classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Education",
-    "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: GNU Affero General Public License v3",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Topic :: Scientific/Engineering",
-]
+
 dependencies = [
-    "numpy==1.26.4",
+    # Use older numpy for Python 3.8, newer for other versions
+    'numpy==1.24.4; python_version == "3.8"',
+    'numpy==1.26.4; python_version > "3.8"',
     "scipy",
     "matplotlib",
     "scikit-learn",
@@ -65,10 +60,18 @@ dev = [
     "black",
 ]
 
-[tool.setuptools]
-package-dir = {"" = "."}
-
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["RCAIDE*"]
+[project.classifiers]
+Development Status :: 4 - Beta
+Intended Audience :: Developers
+Intended Audience :: Education
+Intended Audience :: Science/Research
+License :: OSI Approved :: GNU Affero General Public License v3
+Programming Language :: Python :: 3
+Programming Language :: Python :: 3.8
+Programming Language :: Python :: 3.9
+Programming Language :: Python :: 3.10
+Programming Language :: Python :: 3.11
+Programming Language :: Python :: 3.12
+Programming Language :: Python :: 3.13
+Topic :: Scientific/Engineering
 
