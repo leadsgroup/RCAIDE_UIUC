@@ -23,9 +23,10 @@ jobs:
       with:
         python-version: 3.x
 
-    - name: pip install
-      run: pip install -e .
-           pip install pytest pytest-cov coverage
+    - name: Install dependencies
+      run: |
+        pip install -e .
+        pip install pytest pytest-cov coverage
 
     - name: Test ${{ matrix.test_number }}
       run: coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
