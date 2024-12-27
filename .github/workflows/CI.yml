@@ -42,6 +42,7 @@ jobs:
          with:
            parallel: true
            flag-name: run-${{ matrix.os }}-${{ matrix.python-version }}
+           path-to-lcov: coverage.lcov
 
   finish:
     needs: matrix-test
