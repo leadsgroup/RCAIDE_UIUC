@@ -1,5 +1,4 @@
-name: Coveralls check
-
+name: CI
 on:
   pull_request:
     branches:
@@ -9,84 +8,48 @@ on:
     branches:
       - develop
       - master
-
 jobs:
-  test:
+  matrix-test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        include:
-          # Ubuntu Python versions
-          - os: ubuntu-latest
-            python-version: "3.8"
-            job-name: "UBUNTU-LATEST-PYTHON-3.8"
-          - os: ubuntu-latest
-            python-version: "3.9"
-            job-name: "UBUNTU-LATEST-PYTHON-3.9"
-          - os: ubuntu-latest
-            python-version: "3.10"
-            job-name: "UBUNTU-LATEST-PYTHON-3.10"
-          - os: ubuntu-latest
-            python-version: "3.11"
-            job-name: "UBUNTU-LATEST-PYTHON-3.11"
-          - os: ubuntu-latest
-            python-version: "3.12"
-            job-name: "UBUNTU-LATEST-PYTHON-3.12"
-          # macOS Python versions
-          - os: macos-latest
-            python-version: "3.8"
-            job-name: "MACOS-LATEST-PYTHON-3.8"
-          - os: macos-latest
-            python-version: "3.9"
-            job-name: "MACOS-LATEST-PYTHON-3.9"
-          - os: macos-latest
-            python-version: "3.10"
-            job-name: "MACOS-LATEST-PYTHON-3.10"
-          - os: macos-latest
-            python-version: "3.11"
-            job-name: "MACOS-LATEST-PYTHON-3.11"
-          - os: macos-latest
-            python-version: "3.12"
-            job-name: "MACOS-LATEST-PYTHON-3.12"
-    
-    name: ${{ matrix.job-name }}
-    
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-          
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install pytest pytest-cov coveralls
-          python -m pip install -e .
-          
-      - name: Run Tests with Coverage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          COVERALLS_PARALLEL: true
-          COVERALLS_FLAG_NAME: ${{ matrix.job-name }}
-        run: |
-          python -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc
-          python -m coveralls
+       - name: Check out code
+         uses: actions/checkout@v4
+         with:
+           fetch-depth: 0
+
+       - name: Set up Python
+         uses: actions/setup-python@v4
+         with:
+           python-version: ${{ matrix.python-version }}
+
+       - name: Install dependencies
+         run: |
+           python -m pip install --upgrade pip
+           python -m pip install pytest pytest-cov
+           python -m pip install -e .
+       - name: Run Tests with Coverage
+         run: |
+           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc  --cov-report=lcov:coverage.lcov 
+       
+       - name: Send coverage to Coveralls (parallel)
+         uses: coverallsapp/github-action@v1
+         with:
+           parallel: true
+           flag-name: run-${{ matrix.os }}-${{ matrix.python-version }}
 
   finish:
-    needs: test
+    needs: matrix-test
+ 
     runs-on: ubuntu-latest
-    if: ${{ always() }}
-    
     steps:
-      - name: Finish Coveralls Parallel Build
-        uses: coverallsapp/github-action@v2
+      - name: Close parallel build
+        uses: coverallsapp/github-action@v1
         with:
           parallel-finished: true
-          carryforward: "UBUNTU-LATEST-PYTHON-3.8,UBUNTU-LATEST-PYTHON-3.9,UBUNTU-LATEST-PYTHON-3.10,UBUNTU-LATEST-PYTHON-3.11,UBUNTU-LATEST-PYTHON-3.12,MACOS-LATEST-PYTHON-3.8,MACOS-LATEST-PYTHON-3.9,MACOS-LATEST-PYTHON-3.10,MACOS-LATEST-PYTHON-3.11,MACOS-LATEST-PYTHON-3.12"
+         
