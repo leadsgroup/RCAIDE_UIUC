@@ -5,8 +5,8 @@
 # 
 <div align="center">
   
-[![Build status](https://ci.appveyor.com/api/projects/status/17mgaohuuexb301j?svg=true)](https://ci.appveyor.com/project/mclarke2/rcaide-leads)
-[![Coverage Status](https://coveralls.io/repos/github/leadsgroup/RCAIDE_LEADS/badge.svg)](https://coveralls.io/github/leadsgroup/RCAIDE_LEADS)
+[![CI](https://github.com/ssankalp26/RCAIDE_Test/actions/workflows/CI.yml/badge.svg)](https://github.com/ssankalp26/RCAIDE_Test/actions/workflows/CI.yml)
+[![codecov](https://codecov.io/gh/ssankalp26/RCAIDE_Test/graph/badge.svg?token=OU2BXRIS8V)](https://codecov.io/gh/ssankalp26/RCAIDE_Test)
 
 </div>
 
