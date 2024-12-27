@@ -1,35 +1,46 @@
-on: ["pull_request"]
-name: Test Coveralls
+on: ["push", "pull_request"]
+
+name: Test Coveralls Parallel
 
 jobs:
-  build:
-    name: Build
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test_number:
+          - 1
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Use python 3.x
-        uses: actions/setup-python@v4
-        with:
+    - uses: actions/checkout@v4 
+    - name: Use python 3.x
+      uses: actions/setup-python@v4
+      with:
           python-version: 3.x
-          
-      - name: Install dependencies
-        run: |
+
+    - name: pip install
+      run: |
           pip install -e .
           pip install pytest pytest-cov coverage coveralls
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
-          
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          flag-name: pytest
-          parallel: true
-          carryforward: "pytest"
+    - name: Test ${{ matrix.test_number }}
+      run: coverage run --rcfile=.coveragerc Regressions/test_automatic_regression.py 
+    - name: Coveralls Parallel
+      uses: coverallsapp/github-action@v2
+      with:
+        flag-name: run-${{ join(matrix.*, '-') }}
+        parallel: true
 
-      - name: Finish Coveralls
-        run: |
-          coveralls done --build-number ${{ github.run_id }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+  finish:
+    needs: test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@v2
+      with:
+        parallel-finished: true
+        carryforward: "run-1"
+  
+    - name: Finish Coveralls CLI
+      run: |
+        coveralls done --build-number ${{ github.run_id }}
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
