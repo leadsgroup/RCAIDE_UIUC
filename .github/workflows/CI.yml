@@ -35,7 +35,8 @@ jobs:
         run: |
           echo "Running on Linux"
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -e .
+          pip install pytest pytest-cov coverage
 
       - name: Set up environment (MacOS)
         if: ${{ matrix.os == 'macos-latest' }}
@@ -43,7 +44,8 @@ jobs:
         run: |
           echo "Running on macOS"
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -e .
+          pip install pytest pytest-cov coverage  
 
       - name: Set up environment (Windows)
         if: ${{ matrix.os == 'windows-latest' }}
@@ -51,7 +53,8 @@ jobs:
         run: |
           echo "Running on Windows"
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -e .
+          pip install pytest pytest-cov coverage  
 
       # 3. Run your Pytest tests. 
       # Adjust the "run" commands as needed if your tests need coverage or other arguments.
