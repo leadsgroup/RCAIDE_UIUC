@@ -38,20 +38,10 @@ jobs:
 
       - name: Run Tests with Coverage
         run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc  --cov-report=lcov:coverage.lcov 
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov:coverage.lcov 
 
       - name: Upload Coverage to Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: coverage.lcov
-          parallel: true   
-  finish:
-    runs-on: ubuntu-latest
-    needs: matrix-test  # Ensure this job runs after all matrix-test jobs
-    steps:
-      - name: Finalize Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
