@@ -35,14 +35,4 @@ jobs:
         uses: coverallsapp/github-action@v1
         with:
           path-to-lcov: coverage.lcov
-
-  finish:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Close parallel build
-        uses: coverallsapp/github-action@v1
-        with:
-          parallel-finished: true
-          carryforward: "*"
          
