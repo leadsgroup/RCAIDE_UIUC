@@ -44,7 +44,6 @@ jobs:
 
       # Step 5: Upload coverage to Coveralls (only for Python 3.11 on Ubuntu)
       - name: Upload coverage to Coveralls
-        if: ${{ success() && matrix.python-version == '3.11' }}
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN}}
         run: |
