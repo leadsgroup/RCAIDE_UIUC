@@ -50,6 +50,7 @@ jobs:
     - run : pip install -e .
     - run: pip install pytest pytest-cov coverage
     - run: coverage run -m pytest Regressions/test_automatic_regression.py -v --cov=RCAIDE --cov-report=xml --disable-warnings
+    - run: coverage xml -o coverage/coverage.xml
     - name: Coveralls
       id: coveralls
       if: ${{ inputs.upload_coverage }}
@@ -62,4 +63,4 @@ jobs:
       if: ${{ inputs.store_coverage }}
       with:
         name: coverage-data-${{ inputs.os }}-${{ matrix.test_number }}
-        path: coverage/
+        path: coverage/coverage.xml
