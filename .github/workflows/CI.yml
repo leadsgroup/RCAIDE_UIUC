@@ -30,6 +30,7 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install pytest pytest-cov coveralls
           python3 -m pip install -e .
+          python3 -m pip install pyyaml
 
       - name: Run Tests
         run: |
