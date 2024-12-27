@@ -40,7 +40,7 @@ jobs:
       # sdif: #{{ success() && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' }}
       # Conditional coveralls upload: only run if success AND on ubuntu-latest + Python 3.12
       - name: Upload coverage to Coveralls
-        if: ${{ success() }}
+        if: ${{ success()}}
         env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN_ID }}
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: coveralls
