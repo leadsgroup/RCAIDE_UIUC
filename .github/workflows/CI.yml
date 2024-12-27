@@ -1,4 +1,4 @@
-name: CI with Parallel Coverage
+name: CI with Direct Webhook Coverage
 
 on:
   pull_request:
@@ -43,12 +43,11 @@ jobs:
       - name: Upload Coverage to Coveralls
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
           COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
           COVERALLS_PARALLEL: true
-        uses: coverallsapp/github-action@v1
-        with:
-          parallel: true
-          flag-name: ${{ matrix.os }}-python-${{ matrix.python-version }}
+        run: |
+          coveralls coverage.lcov
 
   finish:
     needs: matrix-test
@@ -56,8 +55,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Close parallel build
-        uses: coverallsapp/github-action@v1
-        with:
-          parallel-finished: true
-          carryforward: "ubuntu-latest-python-3.8,ubuntu-latest-python-3.9,ubuntu-latest-python-3.10,ubuntu-latest-python-3.11,ubuntu-latest-python-3.12,windows-latest-python-3.8,windows-latest-python-3.9,windows-latest-python-3.10,windows-latest-python-3.11,windows-latest-python-3.12,macos-latest-python-3.8,macos-latest-python-3.9,macos-latest-python-3.10,macos-latest-python-3.11,macos-latest-python-3.12"
+      - name: Notify Coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: |
+          curl --location "https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN&carryforward=ubuntu-latest-python-3.8,ubuntu-latest-python-3.9,ubuntu-latest-python-3.10,ubuntu-latest-python-3.11,ubuntu-latest-python-3.12,windows-latest-python-3.8,windows-latest-python-3.9,windows-latest-python-3.10,windows-latest-python-3.11,windows-latest-python-3.12,macos-latest-python-3.8,macos-latest-python-3.9,macos-latest-python-3.10,macos-latest-python-3.11,macos-latest-python-3.12" \
+          --header "Content-Type: application/json" \
+          --data '{
+              "payload": {
+                  "build_num": "${{ github.run_id }}",
+                  "status": "done"
+              }
+          }'
