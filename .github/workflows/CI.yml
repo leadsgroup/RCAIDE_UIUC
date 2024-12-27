@@ -38,11 +38,12 @@ jobs:
 
       - name: Run Tests with Coverage
         run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov:coverage.lcov
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
-      - name: Upload Coverage to Coveralls
-        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: coverage.lcov
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc  --cov-report=lcov:coverage.lcov 
+
+      - name: Submit to Coveralls
+        if: success() 
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: |
+          pip install coveralls
+          coveralls
