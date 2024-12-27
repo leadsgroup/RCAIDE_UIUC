@@ -1,86 +1,47 @@
-name: CI
-
-on:
+on: 
   push:
     branches:
-      - master
       - develop
   pull_request:
     branches:
-      - master
       - develop
+
+name: Test Coveralls Parallel
+
 jobs:
-  test-action:
-    runs-on: ${{ matrix.os }}
+  test:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        action: [report, done, build-number-report, build-number-done]  # Also testing "install" since it's implicit
-        fail_on_error: [true, false]
-        coverage_reporter_version: ['v0.6.14', 'latest', '']
+        test_number:
+          - 1
+          - 2
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+    - name: Use python 3.x
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
 
-      # 1. (Optional) Set up Python on each OS (if not already available or if you need a specific version)
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.9'  # Or whichever version(s) you need
+    - name: pip install
+      run: pip install -e .
+           pip install pytest pytest-cov coverage
 
-      # 2. Environment setup per OS
-      - name: Set up environment (Linux)
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        shell: bash
-        run: |
-          echo "Running on Linux"
-          python -m pip install --upgrade pip
-          pip install -e .
-          pip install pytest pytest-cov coverage
+    - name: Test ${{ matrix.test_number }}
+      run: coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
+    - name: Coveralls Parallel
+      uses: coverallsapp/github-action@v2
+      with:
+        flag-name: run-${{ join(matrix.*, '-') }}
+        parallel: true
 
-      - name: Set up environment (MacOS)
-        if: ${{ matrix.os == 'macos-latest' }}
-        shell: bash
-        run: |
-          echo "Running on macOS"
-          python -m pip install --upgrade pip
-          pip install -e .
-          pip install pytest pytest-cov coverage  
-
-      - name: Set up environment (Windows)
-        if: ${{ matrix.os == 'windows-latest' }}
-        shell: pwsh
-        run: |
-          echo "Running on Windows"
-          python -m pip install --upgrade pip
-          pip install -e .
-          pip install pytest pytest-cov coverage  
-
-      # 3. Run your Pytest tests. 
-      # Adjust the "run" commands as needed if your tests need coverage or other arguments.
-      - name: Run Regression Tests
-        shell: bash
-        if: ${{ matrix.os != 'windows-latest' }}
-        run: |
-          pytest Regressions/test_automatic_regression.py
-
-      - name: Run Regression Tests (Windows)
-        if: ${{ matrix.os == 'windows-latest' }}
-        shell: pwsh
-        run: |
-          pytest Regressions/test_automatic_regression.py
-
-      # 4. Run your custom "Test Action"
-      - name: Test Action
-        uses: ./
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          debug: true
-          fail-on-error: ${{ matrix.fail_on_error }}
-          build-number: ${{ (matrix.action == 'build-number-report' || matrix.action == 'build-number-done') && github.sha || '' }}
-          parallel-finished: ${{ matrix.action == 'done' || matrix.action == 'build-number-done' }}
-          coverage-reporter-version: ${{ matrix.coverage_reporter_version != '' && matrix.coverage_reporter_version || '' }}
-          coverage-reporter-platform: ${{ matrix.coverage_reporter_platform }}
-        env:
-          CI: true
-        continue-on-error: true
+  finish:
+    needs: test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@v2
+      with:
+        parallel-finished: true
+        carryforward: "run-1,run-2"
