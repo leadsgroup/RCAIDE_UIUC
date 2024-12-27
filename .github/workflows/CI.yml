@@ -19,17 +19,9 @@ jobs:
           pip install pytest pytest-cov coverage coveralls
           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
           
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          flag-name: pytest
-          parallel: true
-          carryforward: "pytest"
-
-      - name: Finish Coveralls
-        run: |
-          coveralls done --build-number ${{ github.run_id }}
+      - name: Submit to Coveralls
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+          COVERALLS_SERVICE_NAME: github-ci
+        run: |
+          coveralls
