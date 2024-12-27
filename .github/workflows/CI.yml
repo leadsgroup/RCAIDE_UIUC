@@ -1,13 +1,9 @@
 name: CI
 on:
   pull_request:
-    branches:
-      - develop
-      - master
+    branches: [develop, master]
   push:
-    branches:
-      - develop
-      - master
+    branches: [develop, master]
 
 jobs:
   matrix-test:
@@ -17,72 +13,32 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-    
+
     steps:
       - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pytest pytest-cov
+          python3 -m pip install pytest pytest-cov coveralls
           python3 -m pip install -e .
-          
-      - name: Run Tests with Coverage
-        run: |
-          pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov
-          
-      - name: Save Coverage Data
-        if: success()
-        run: |
-          cp coverage.lcov coverage.${{ matrix.os }}.${{ matrix.python-version }}.lcov
-          
-      - name: Upload Coverage Data
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-data
-          path: coverage.*.lcov
 
-  coveralls:
-    needs: matrix-test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Download Coverage Data
-        uses: actions/download-artifact@v3
-        with:
-          name: coverage-data
-          path: coverage
-          
-      - name: Combine LCOV files
+      - name: Run Tests
         run: |
-          sudo apt-get install -y lcov
-          cd coverage
-          lcov $(for file in *.lcov; do echo "--add-tracefile $file "; done) --output-file ../coverage.lcov
-          cd ..
-          
-      - name: Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: coverage.lcov
-          fail-on-error: true # This will make the action fail if Coveralls reports an error
+          pytest Regressions/test_automatic_regression.py -v --disable-warnings \
+            --cov=RCAIDE \
+            --cov-config=.coveragerc \
+            --cov-report=lcov
 
-  finish:
-    needs: coveralls
-    runs-on: ubuntu-latest
-    steps:
-      - name: Coveralls Finished
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
+      # Conditional coveralls upload: only run if success AND on ubuntu-latest + Python 3.12
+      - name: Upload coverage to Coveralls
+        if: ${{ success() && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' }}
+        run: coveralls
