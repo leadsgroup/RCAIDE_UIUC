@@ -1,22 +1,16 @@
-on: 
-  push:
-    branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+on: ["pull_request"]
 
-name: Test Coveralls Parallel
+name: Test Coveralls
 
 jobs:
-  test:
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        test_number:
-          - 1
     steps:
+
     - uses: actions/checkout@v4
+
     - name: Use python 3.x
       uses: actions/setup-python@v4
       with:
@@ -26,22 +20,7 @@ jobs:
       run: |
         pip install -e .
         pip install pytest pytest-cov coverage
+        coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
 
-    - name: Test ${{ matrix.test_number }}
-      run: coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
-    - name: Coveralls Parallel
+    - name: Coveralls
       uses: coverallsapp/github-action@v2
-      with:
-        flag-name: run-${{ join(matrix.*, '-') }}
-        parallel: true
-
-  finish:
-    needs: test
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-    steps:
-    - name: Coveralls Finished
-      uses: coverallsapp/github-action@v2
-      with:
-        parallel-finished: true
-        carryforward: "run-1"
