@@ -45,3 +45,14 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: coverage.lcov
+          parallel: true
+
+  notify-coveralls:
+    needs: matrix-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Coveralls of Build Completion
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
