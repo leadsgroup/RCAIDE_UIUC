@@ -1,6 +1,5 @@
 on: ["pull_request"]
 name: Test Coveralls
-
 jobs:
   build:
     name: Build
@@ -19,10 +18,18 @@ jobs:
           pip install pytest pytest-cov coverage coveralls
           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
           
-      - name: Submit to Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          COVERALLS_SERVICE_NAME: github-ci
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: pytest
+          parallel: true
+         
+      - name: Finish Coveralls
         run: |
-          coveralls
-          coveralls done --build-number ${{ github.run_id }}
+            parallel-finished
+            carryforward: "pytest" 
+            coveralls done --build-number ${{ github.run_id }}
+            
+        env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
