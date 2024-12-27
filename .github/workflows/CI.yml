@@ -18,12 +18,13 @@ jobs:
           pip install -e .
           pip install pytest pytest-cov coverage
           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
-          coverage xml
           coverage report
           
       - name: Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: coverage.xml
-          finished: true
+          base-path: ${{ github.workspace }}
+          git-branch: ${{ github.ref }}
+          git-commit: ${{ github.sha }}
+          fail-on-error: false
