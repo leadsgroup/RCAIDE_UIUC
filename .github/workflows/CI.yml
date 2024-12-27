@@ -16,16 +16,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -e .
-          pip install pytest pytest-cov coverage
+          pip install pytest pytest-cov coverage coveralls
           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
           
-      - name: Coveralls Upload
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Mark as Finished
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
+      - name: Submit to Coveralls
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          coveralls --service=github
