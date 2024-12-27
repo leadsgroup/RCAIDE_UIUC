@@ -47,6 +47,7 @@ jobs:
       with:
         python-version: "3.x"
     - run: python -m pip install --upgrade pip
+    - run : pip install -e .
     - run: pip install pytest pytest-cov coverage
     - run: coverage run -m pytest Regressions/test_automatic_regression.py -v --cov=RCAIDE --cov-report=xml --disable-warnings
     - name: Coveralls
