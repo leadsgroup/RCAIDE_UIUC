@@ -15,43 +15,52 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest,  macos-latest] # windows-latest,
+        os: [ubuntu-latest, macos-latest]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
     steps:
       - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install pytest pytest-cov
           python3 -m pip install -e .
-          
+
       - name: Run Tests with Coverage
         run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov:coverage.lcov
-          
-      - name: Upload Coverage to Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: coverage.lcov
-          flag-name: run-${{ matrix.os }}-${{ matrix.python-version }}
-          parallel: true
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc
+          coverage lcov -o coverage.lcov
 
-  finish:
-    needs: matrix-test
+      - name: Upload Coverage to Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-${{ matrix.os }}-${{ matrix.python-version }}
+          path: coverage.lcov
+
+  combine-coverage:
     runs-on: ubuntu-latest
+    needs: matrix-test
     steps:
-      - name: Finalize Coveralls
+      - name: Download Coverage Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-*
+
+      - name: Combine Coverage Reports
+        run: |
+          coverage combine
+          coverage lcov -o combined-coverage.lcov
+
+      - name: Upload Combined Coverage to Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
+          file: combined-coverage.lcov
