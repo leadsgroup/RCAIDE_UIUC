@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pytest pytest-cov coveralls
+          python3 -m pip install pytest pytest-cov
           python3 -m pip install -e .
           
       - name: Run Tests with Coverage
@@ -42,7 +42,6 @@ jobs:
       - name: Save Coverage Data
         if: success()
         run: |
-          cp .coverage .coverage.${{ matrix.os }}.${{ matrix.python-version }}
           cp coverage.lcov coverage.${{ matrix.os }}.${{ matrix.python-version }}.lcov
           
       - name: Upload Coverage Data
@@ -50,9 +49,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: coverage-data
-          path: |
-            .coverage.*
-            coverage.*.lcov
+          path: coverage.*.lcov
 
   coveralls:
     needs: matrix-test
@@ -60,38 +57,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-          
-      - name: Install coverage tools
-        run: |
-          python -m pip install --upgrade pip
-          pip install coverage coveralls
-          
       - name: Download Coverage Data
         uses: actions/download-artifact@v3
         with:
           name: coverage-data
           path: coverage
           
-      - name: Debug Coverage Files
+      - name: Combine LCOV files
         run: |
-          ls -la coverage/
-          
-      - name: Combine Coverage
-        run: |
+          sudo apt-get install -y lcov
           cd coverage
-          coverage combine
-          cp .coverage ../.coverage
+          lcov $(for file in *.lcov; do echo "--add-tracefile $file "; done) --output-file ../coverage.lcov
           cd ..
           
-      - name: Upload to Coveralls
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_PARALLEL: true
-        run: coveralls --service=github
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage.lcov
 
   finish:
     needs: coveralls
