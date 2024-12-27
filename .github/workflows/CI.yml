@@ -25,3 +25,4 @@ jobs:
           COVERALLS_SERVICE_NAME: github-ci
         run: |
           coveralls
+          coveralls done --build-number ${{ github.run_id }}
