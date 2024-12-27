@@ -1,4 +1,4 @@
-name: CI with Direct Webhook Coverage
+name: Coveralls check
 
 on:
   pull_request:
@@ -11,13 +11,46 @@ on:
       - master
 
 jobs:
-  matrix-test:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        include:
+          # Ubuntu Python versions
+          - os: ubuntu-latest
+            python-version: "3.8"
+            job-name: "UBUNTU-LATEST-PYTHON-3.8"
+          - os: ubuntu-latest
+            python-version: "3.9"
+            job-name: "UBUNTU-LATEST-PYTHON-3.9"
+          - os: ubuntu-latest
+            python-version: "3.10"
+            job-name: "UBUNTU-LATEST-PYTHON-3.10"
+          - os: ubuntu-latest
+            python-version: "3.11"
+            job-name: "UBUNTU-LATEST-PYTHON-3.11"
+          - os: ubuntu-latest
+            python-version: "3.12"
+            job-name: "UBUNTU-LATEST-PYTHON-3.12"
+          # macOS Python versions
+          - os: macos-latest
+            python-version: "3.8"
+            job-name: "MACOS-LATEST-PYTHON-3.8"
+          - os: macos-latest
+            python-version: "3.9"
+            job-name: "MACOS-LATEST-PYTHON-3.9"
+          - os: macos-latest
+            python-version: "3.10"
+            job-name: "MACOS-LATEST-PYTHON-3.10"
+          - os: macos-latest
+            python-version: "3.11"
+            job-name: "MACOS-LATEST-PYTHON-3.11"
+          - os: macos-latest
+            python-version: "3.12"
+            job-name: "MACOS-LATEST-PYTHON-3.12"
+    
+    name: ${{ matrix.job-name }}
     
     steps:
       - name: Check out code
@@ -40,27 +73,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
           COVERALLS_PARALLEL: true
+          COVERALLS_FLAG_NAME: ${{ matrix.job-name }}
         run: |
           python -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc
           python -m coveralls
 
   finish:
-    needs: matrix-test
-    if: ${{ always() }}
+    needs: test
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     
     steps:
-      - name: Notify Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        run: |
-          curl --location "https://coveralls.io/webhook?repo_token=$COVERALLS_REPO_TOKEN&carryforward=ubuntu-latest-python-3.8,ubuntu-latest-python-3.9,ubuntu-latest-python-3.10,ubuntu-latest-python-3.11,ubuntu-latest-python-3.12,windows-latest-python-3.8,windows-latest-python-3.9,windows-latest-python-3.10,windows-latest-python-3.11,windows-latest-python-3.12,macos-latest-python-3.8,macos-latest-python-3.9,macos-latest-python-3.10,macos-latest-python-3.11,macos-latest-python-3.12" \
-          --header "Content-Type: application/json" \
-          --data '{
-              "payload": {
-                  "build_num": "${{ github.run_id }}",
-                  "status": "done"
-              }
-          }'
+      - name: Finish Coveralls Parallel Build
+        uses: coverallsapp/github-action@v2
+        with:
+          parallel-finished: true
+          carryforward: "UBUNTU-LATEST-PYTHON-3.8,UBUNTU-LATEST-PYTHON-3.9,UBUNTU-LATEST-PYTHON-3.10,UBUNTU-LATEST-PYTHON-3.11,UBUNTU-LATEST-PYTHON-3.12,MACOS-LATEST-PYTHON-3.8,MACOS-LATEST-PYTHON-3.9,MACOS-LATEST-PYTHON-3.10,MACOS-LATEST-PYTHON-3.11,MACOS-LATEST-PYTHON-3.12"
