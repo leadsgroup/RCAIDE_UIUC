@@ -9,7 +9,6 @@ jobs:
       matrix:
         test_number:
           - 1
-          - 2
     steps:
     - uses: actions/checkout@v4 
     - name: Use python 3.x
@@ -38,7 +37,7 @@ jobs:
       uses: coverallsapp/github-action@v2
       with:
         parallel-finished: true
-        carryforward: "run-1,run-2"
+        carryforward: "run-1"
   
     - name: Finish Coveralls CLI
       run: |
