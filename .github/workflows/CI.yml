@@ -42,16 +42,17 @@ jobs:
       - name: Save Coverage Data
         if: success()
         run: |
-          mkdir -p coverage
-          mv .coverage coverage/.coverage.${{ matrix.os }}.${{ matrix.python-version }}
-          mv coverage.lcov coverage/coverage.${{ matrix.os }}.${{ matrix.python-version }}.lcov
+          cp .coverage .coverage.${{ matrix.os }}.${{ matrix.python-version }}
+          cp coverage.lcov coverage.${{ matrix.os }}.${{ matrix.python-version }}.lcov
           
       - name: Upload Coverage Data
         if: success()
         uses: actions/upload-artifact@v3
         with:
           name: coverage-data
-          path: coverage/
+          path: |
+            .coverage.*
+            coverage.*.lcov
 
   coveralls:
     needs: matrix-test
@@ -75,17 +76,20 @@ jobs:
           name: coverage-data
           path: coverage
           
+      - name: Debug Coverage Files
+        run: |
+          ls -la coverage/
+          
       - name: Combine Coverage
         run: |
           cd coverage
-          coverage combine .coverage.*
-          mv .coverage ../.coverage
+          coverage combine
+          cp .coverage ../.coverage
           cd ..
           
       - name: Upload to Coveralls
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_FLAG_NAME: ${{ matrix.test-name }}
           COVERALLS_PARALLEL: true
         run: coveralls --service=github
 
