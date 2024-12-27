@@ -29,7 +29,6 @@ jobs:
 
       - name: Finish Coveralls
         run: |
-          parallel-finished: true
           coveralls done --build-number ${{ github.run_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
