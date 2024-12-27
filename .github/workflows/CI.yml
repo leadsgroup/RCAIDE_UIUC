@@ -75,6 +75,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           file: coverage.lcov
+          fail-on-error: true # This will make the action fail if Coveralls reports an error
 
   finish:
     needs: coveralls
