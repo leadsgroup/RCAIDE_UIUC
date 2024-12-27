@@ -1,47 +1,51 @@
-name: CI
+name: CI with Coverage
+
 on:
-  pull_request:
-    branches: [develop, master]
   push:
-    branches: [develop, master]
+    branches:
+      - develop
+      - master
+  pull_request:
+    branches:
+      - develop
+      - master
 
 jobs:
-  matrix-test:
-    runs-on: ${{ matrix.os }}
+  build:
+    runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     steps:
+      # Step 1: Check out the repository
       - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v2
 
+      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
+      # Step 3: Install Python dependencies
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pytest pytest-cov coveralls
+          python3 -m pip install pytest pytest-cov coveralls pyyaml
           python3 -m pip install -e .
-          python3 -m pip install pyyaml
 
+      # Step 4: Run tests and collect coverage
       - name: Run Tests
         run: |
           pytest Regressions/test_automatic_regression.py -v --disable-warnings \
             --cov=RCAIDE \
-            --cov-config=.coveragerc \
-            --cov-report=lcov
-      # sdif: #{{ success() && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' }}
-      # Conditional coveralls upload: only run if success AND on ubuntu-latest + Python 3.12
+            --cov-config=.coveragerc
+
+      # Step 5: Upload coverage to Coveralls (only for Python 3.11 on Ubuntu)
       - name: Upload coverage to Coveralls
-        if: ${{ success()}}
+        if: ${{ success() && matrix.python-version == '3.11' }}
         env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: coveralls
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN}}
+        run: |
+          coveralls
