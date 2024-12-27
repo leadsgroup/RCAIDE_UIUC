@@ -37,10 +37,9 @@ jobs:
             --cov=RCAIDE \
             --cov-config=.coveragerc \
             --cov-report=lcov
-
+      # sdif: #{{ success() && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' }}
       # Conditional coveralls upload: only run if success AND on ubuntu-latest + Python 3.12
       - name: Upload coverage to Coveralls
-        if: ${{ success() && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: coveralls
