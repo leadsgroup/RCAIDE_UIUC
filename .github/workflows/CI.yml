@@ -1,4 +1,4 @@
-name: CI with Coveralls Parallel Build
+name: CI with Parallel Coverage
 
 on:
   pull_request:
@@ -18,58 +18,46 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-
+    
     steps:
       - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Set up Python
+          
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest pytest-cov coveralls
+          python -m pip install pytest pytest-cov coverage coveralls
           python -m pip install -e .
-
-      - name: Run Tests with Coverage for ${{ matrix.run }}
-        env:
-          COVERALLS_PARALLEL: true
+          
+      - name: Run Tests with Coverage
         run: |
-          coverage run -m pytest Regressions/test_${{ matrix.run }}.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov:coverage.lcov
-
-      - name: Send Coverage to Coveralls for ${{ matrix.run }}
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov:coverage.lcov
+          
+      - name: Upload Coverage to Coveralls
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
+          COVERALLS_PARALLEL: true
         uses: coverallsapp/github-action@v1
         with:
           parallel: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          flag-name: "os-${{ matrix.os }}-python-${{ matrix.python-version }}"
+          flag-name: ${{ matrix.os }}-python-${{ matrix.python-version }}
 
   finish:
     needs: matrix-test
+    if: ${{ always() }}
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Notify Coveralls to Close Parallel Build
+      - name: Close parallel build
         uses: coverallsapp/github-action@v1
         with:
           parallel-finished: true
-          carryforward: |
-            os-ubuntu-latest-python-3.8,
-            os-ubuntu-latest-python-3.9,
-            os-ubuntu-latest-python-3.10,
-            os-ubuntu-latest-python-3.11,
-            os-ubuntu-latest-python-3.12,
-            os-windows-latest-python-3.8,
-            os-windows-latest-python-3.9,
-            os-windows-latest-python-3.10,
-            os-windows-latest-python-3.11,
-            os-windows-latest-python-3.12,
-            os-macos-latest-python-3.8,
-            os-macos-latest-python-3.9,
-            os-macos-latest-python-3.10,
-            os-macos-latest-python-3.11,
-            os-macos-latest-python-3.12
+          carryforward: "ubuntu-latest-python-3.8,ubuntu-latest-python-3.9,ubuntu-latest-python-3.10,ubuntu-latest-python-3.11,ubuntu-latest-python-3.12,windows-latest-python-3.8,windows-latest-python-3.9,windows-latest-python-3.10,windows-latest-python-3.11,windows-latest-python-3.12,macos-latest-python-3.8,macos-latest-python-3.9,macos-latest-python-3.10,macos-latest-python-3.11,macos-latest-python-3.12"
