@@ -28,6 +28,6 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          coverage run --rcfile=.coveragerc pytest Regressions/test_automatic_regression.py -v --disable-warnings
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
           coveralls
       
