@@ -7,30 +7,31 @@ on:
     branches: [main, develop]
 
 jobs:
-  build:
-    name: Build and Test
+  test-linux:
+    uses: ./.github/workflows/test.yml
+    secrets:
+      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+  test-macos:
+    uses: ./.github/workflows/test.yml
+    with:
+      os: macos
+    secrets:
+      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+  test-windows:
+    uses: ./.github/workflows/test.yml
+    with:
+      os: windows
+    secrets:
+      token: ${{ secrets.COVERALLS_REPO_TOKEN }}
+
+  coveralls:
     runs-on: ubuntu-latest
-
+    if: ${{ always() }}
+    needs: [test-linux, test-macos, test-windows]
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e .
-          pip install pytest pytest-cov coveralls
-
-      - name: Run tests with coverage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_FLAG_NAME: "Unit Tests"
-        run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --cov=RCAIDE --cov-report=xml --disable-warnings
-          coveralls
-      
+    - uses: coverallsapp/github-action@v2
+      with:
+        carryforward: "linux-1,linux-2,macos-2,macos-2,windows-1,windows-1"
+        parallel-finished: true
