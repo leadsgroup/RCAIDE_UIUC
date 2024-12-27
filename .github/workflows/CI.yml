@@ -31,6 +31,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_FLAG_NAME: "Unit Tests"
         run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --cov=RCAIDE --cov-report=xml --disable-warnings
           coveralls
       
