@@ -47,7 +47,7 @@ jobs:
           COVERALLS_FLAG_NAME: ${{ matrix.os }}-python-${{ matrix.python-version }}
           COVERALLS_PARALLEL: true
         run: |
-          coveralls coverage.lcov
+          coveralls --file coverage.lcov
 
   finish:
     needs: matrix-test
