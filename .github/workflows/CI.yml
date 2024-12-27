@@ -1,38 +1,38 @@
-name: CI
+name: Python CI with Coverage
+
 on:
-  pull_request:
-    branches:
-      - develop
-      - master
   push:
     branches:
+      - main
       - develop
-      - master
+  pull_request:
+    branches:
+      - main
+      - develop
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: Setup Python 3.12
         uses: actions/setup-python@v4
         with:
-          python-version: 3.12
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install pytest pytest-cov
-          python -m pip install -e .
-      - name: Run Tests with Coverage
+          pip install pytest pytest-cov coveralls
+
+      - name: Run tests with coverage
         run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc  --cov-report=lcov:coverage.lcov 
-      
-      - name: Send coverage to Coveralls
-        uses: coverallsapp/github-action@v1
-        with:
-          path-to-lcov: coverage.lcov
-         
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc
+          coverage report
+
+      - name: Upload coverage to Coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: coveralls
