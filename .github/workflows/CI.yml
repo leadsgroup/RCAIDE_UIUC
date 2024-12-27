@@ -27,7 +27,7 @@ jobs:
          
       - name: Finish Coveralls
         run: |
-            parallel-finished
+            parallel-finished: true
             carryforward: "pytest" 
             coveralls done --build-number ${{ github.run_id }}
             
