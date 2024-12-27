@@ -1,1 +1,2 @@
 service_name: github
+parallel: true
