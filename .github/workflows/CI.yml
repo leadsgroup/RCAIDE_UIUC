@@ -29,6 +29,7 @@ jobs:
       - name: Run tests with coverage
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_FLAG_NAME: "Unit Tests"
         run: |
           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
           coveralls
