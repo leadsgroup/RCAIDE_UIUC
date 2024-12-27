@@ -22,7 +22,7 @@ jobs:
           pip install -e .
           pip install pytest pytest-cov coverage coveralls
     - name: Test ${{ matrix.test_number }}
-      run: coverage run --rcfile=../.coveragerc pytest Regressions/test_automatic_regression.py -v --disable-warnings
+      run: coverage run --rcfile=.coveragerc Regressions/test_automatic_regression.py 
     - name: Coveralls Parallel
       uses: coverallsapp/github-action@v2
       with:
