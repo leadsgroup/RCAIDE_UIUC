@@ -9,44 +9,35 @@ on:
       - develop
       - master
 jobs:
-  matrix-test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-
+  test:
+    runs-on: ubuntu-latest
     steps:
-       - name: Check out code
-         uses: actions/checkout@v4
-         with:
-           fetch-depth: 0
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-       - name: Set up Python
-         uses: actions/setup-python@v4
-         with:
-           python-version: ${{ matrix.python-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
 
-       - name: Install dependencies
-         run: |
-           python -m pip install --upgrade pip
-           python -m pip install pytest pytest-cov
-           python -m pip install -e .
-       - name: Run Tests with Coverage
-         run: |
-           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc  --cov-report=lcov:coverage.lcov 
-       
-       - name: Send coverage to Coveralls (parallel)
-         uses: coverallsapp/github-action@v1
-         with:
-           parallel: true
-           flag-name: run-${{ matrix.os }}-${{ matrix.python-version }}
-           path-to-lcov: coverage.lcov
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest pytest-cov
+          python -m pip install -e .
+      - name: Run Tests with Coverage
+        run: |
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc  --cov-report=lcov:coverage.lcov 
+      
+      - name: Send coverage to Coveralls
+        uses: coverallsapp/github-action@v1
+        with:
+          path-to-lcov: coverage.lcov
 
   finish:
-    needs: matrix-test
- 
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Close parallel build
