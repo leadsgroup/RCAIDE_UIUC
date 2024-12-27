@@ -11,18 +11,19 @@ on:
       - master
 
 jobs:
-  test:
+  matrix-test:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
+      fail-fast: false # Change to true to fail fast
       matrix:
-        os: [ubuntu-latest,  macos-latest]  # windows-latest, apply later
+        os: [ubuntu-latest, macos-latest] # windows-latest,
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-        test_number: [1, 2] # Adjust based on the number of parallel tests
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -35,25 +36,13 @@ jobs:
           python3 -m pip install pytest pytest-cov
           python3 -m pip install -e .
 
-      - name: Run Tests and Generate Coverage
+      - name: Run Tests with Coverage
         run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov:coverage.lcov --splits ${{ matrix.test_number }}
-
-      - name: Upload Coverage to Coveralls (Parallel Job)
+          pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc --cov-report=lcov
+          ls -la 
+      - name: Upload Coverage to Coveralls
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          flag-name: run-${{ join(matrix.*, '-') }}
-          parallel: true
           file: coverage.lcov
-
-  finish:
-    needs: test
-    runs-on: ubuntu-latest
-    if: ${{ always() }}
-    steps:
-      - name: Notify Coveralls Parallel Finished
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
