@@ -1,26 +1,29 @@
 on: ["pull_request"]
-
 name: Test Coveralls
 
 jobs:
-
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-
-    - uses: actions/checkout@v4
-
-    - name: Use python 3.x
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.x
-
-    - name: Install dependencies
-      run: |
-        pip install -e .
-        pip install pytest pytest-cov coverage
-        coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
-
-    - name: Coveralls
-      uses: coverallsapp/github-action@v2
+      - uses: actions/checkout@v4
+      
+      - name: Use python 3.x
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+          
+      - name: Install dependencies
+        run: |
+          pip install -e .
+          pip install pytest pytest-cov coverage
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
+          coverage xml
+          coverage report
+          
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage.xml
+          finished: true
