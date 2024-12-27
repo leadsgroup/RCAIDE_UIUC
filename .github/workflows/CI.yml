@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -e .
-          pip install pytest pytest-cov coverage
+          pip install pytest pytest-cov coverage coveralls
           coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
           
       - name: Coveralls
@@ -28,7 +28,7 @@ jobs:
           carryforward: "pytest"
 
       - name: Finish Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
+        run: |
+          coveralls done --build-number ${{ github.run_id }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
