@@ -1,39 +1,35 @@
-name: Python CI with Coverage
-
-on:
-  push:
-    branches:
-      - main
-      - develop
-  pull_request:
-    branches:
-      - main
-      - develop
+on: ["pull_request"]
+name: Test Coveralls
 
 jobs:
-  test:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Python 3.12
+      - uses: actions/checkout@v4
+      
+      - name: Use python 3.x
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
-
+          python-version: 3.x
+          
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -e .
-          pip install pytest pytest-cov coveralls
+          pip install pytest pytest-cov coverage coveralls
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings
+          
+      - name: Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: pytest
+          parallel: true
+          carryforward: "pytest"
 
-      - name: Run tests with coverage
+      - name: Finish Coveralls
         run: |
-          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc
-          coverage report
-
-      - name: Upload coverage to Coveralls
+          coveralls done --build-number ${{ github.run_id }}
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        run: coveralls
