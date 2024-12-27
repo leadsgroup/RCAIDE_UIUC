@@ -1,50 +1,47 @@
-name: CI with Coverage
+name: CI
 
 on:
-  push:
+  pull_request:
     branches:
       - develop
       - master
-  pull_request:
+  push:
     branches:
       - develop
       - master
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  matrix-test:
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
     steps:
-      # Step 1: Check out the repository
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
-      # Step 3: Install Python dependencies
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pytest pytest-cov coveralls pyyaml
+          python3 -m pip install pytest pytest-cov
           python3 -m pip install -e .
 
-      # Step 4: Run tests and collect coverage
-      - name: Run Tests
+      - name: Run Tests with Coverage
         run: |
-          pytest Regressions/test_automatic_regression.py -v --disable-warnings \
-            --cov=RCAIDE \
-            --cov-config=.coveragerc
+          coverage run -m pytest Regressions/test_automatic_regression.py -v --disable-warnings --cov=RCAIDE --cov-config=.coveragerc  --cov-report=lcov:coverage.lcov 
 
-      # Step 5: Upload coverage to Coveralls (only for Python 3.11 on Ubuntu)
-      - name: Upload coverage to Coveralls
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN}}
-        run: |
-          coveralls
+      - name: Upload Coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: coverage.lcov
