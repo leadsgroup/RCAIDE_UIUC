@@ -17,7 +17,7 @@ name = "RCAIDE_LEADS"
 version = "1.0.0"
 description = "RCAIDE: Research Community Aerospace Interdisciplinary Design Environment"
 authors = [
-    {name = "Laboratory for Electric Aircraft Design and Sustainability"}
+    {name = "Laboratory of Electric Aircraft Design and Sustainability"}
 ]
 readme = "README.md"
 requires-python = ">=3.8"
@@ -34,6 +34,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering"
 ]
 dependencies = [
@@ -43,8 +44,23 @@ dependencies = [
     "scipy",
     "matplotlib",
     "scikit-learn",
+    "plotly",
+    "kaleido",
     "pandas",
-    "plotly"
+    "contourpy",
+    "cycler",
+    "fonttools",
+    "geographiclib",
+    "geopy",
+    "importlib_metadata",
+    "joblib",
+    "pillow",
+    "python-dateutil",
+    "pytz",
+    "six",
+    "tenacity",
+    "threadpoolctl",
+    "zipp"
 ]
 
 [project.urls]
@@ -54,14 +70,13 @@ Homepage = "https://rcaide.leadsresearchgroup.com"
 dev = [
     "pytest",
     "pytest-cov",
+    "coverage",
     "flake8",
-    "sphinx",
     "sphinx-rtd-theme",
     "sphinx-autobuild",
     "sphinx-autoapi",
     "nbsphinx",
     "sphinx-copybutton",
     "myst-nb",
-    "setuptools",
     "pandoc"
 ]
