@@ -4,9 +4,11 @@
 
 # 
 <div align="center">
-  
-[![CI](https://github.com/ssankalp26/RCAIDE_Test/actions/workflows/CI.yml/badge.svg)](https://github.com/ssankalp26/RCAIDE_Test/actions/workflows/CI.yml)
-[![codecov](https://codecov.io/gh/ssankalp26/RCAIDE_Test/graph/badge.svg?token=OU2BXRIS8V)](https://codecov.io/gh/ssankalp26/RCAIDE_Test)
+
+[![CI](https://github.com/leadsgroup/RCAIDE_LEADS/actions/workflows/CI.yml/badge.svg)](https://github.com/leadsgroup/RCAIDE_LEADS/actions/workflows/CI.yml)  
+[![Documentation](https://github.com/leadsgroup/RCAIDE_LEADS/actions/workflows/sphinx_docs.yml/badge.svg)](https://github.com/leadsgroup/RCAIDE_LEADS/actions/workflows/sphinx_docs.yml)
+[![codecov](https://codecov.io/gh/leadsgroup/RCAIDE_LEADS/graph/badge.svg?token=WZOFW5EKWJ)](https://codecov.io/gh/leadsgroup/RCAIDE_LEADS)
+
 
 </div>
 
