@@ -17,7 +17,7 @@ name = "RCAIDE_LEADS"
 version = "1.0.0"
 description = "RCAIDE: Research Community Aerospace Interdisciplinary Design Environment"
 authors = [
-    {name = "Laboratory of Electric Aircraft Design and Sustainability"}
+    {name = "Laboratory for Electric Aircraft Design and Sustainability"}
 ]
 readme = "README.md"
 requires-python = ">=3.8"
@@ -64,7 +64,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://rcaide.org"
+Homepage = "https://rcaide.leadsresearch.com"
 
 [project.optional-dependencies]
 dev = [

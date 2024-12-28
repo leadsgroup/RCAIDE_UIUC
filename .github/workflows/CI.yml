@@ -42,5 +42,5 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: ssankalp26/RCAIDE_Test
+          slug: leadsgroup/RCAIDE_LEADS
 
