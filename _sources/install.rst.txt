@@ -25,7 +25,7 @@ Follow these steps to install RCAIDE:
 
 
 
-2. **From Source**  
+2. **From Source (editable mode)**  
 
    Alternatively, clone the RCAIDE repository and install it manually:
    
@@ -33,27 +33,13 @@ Follow these steps to install RCAIDE:
    .. code-block:: bash
 
       git clone https://github.com/leadsgroup/RCAIDE_LEADS.git
+      cd RCAIDE_LEADS
     
-   Install the dependencies:
+   Install the dependencies and RCAIDE in editable mode:
 
    .. code-block:: bash
 
-      pip install -r requirements.txt
-
-   Install RCAIDE:
-
-   .. code-block:: bash
-
-      cd RCAIDE
-      python3 setup.py develop
-     
-
-3. **Optional Dependencies**  
-   To enable additional features, install the following optional dependencies:
-
-   .. code-block:: bash
-
-      pip install -r requirements.txt
+      pip install -e .
 
 **Verifying the Installation**
 ===============================

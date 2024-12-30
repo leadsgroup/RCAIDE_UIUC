@@ -406,24 +406,14 @@
 <li><p><strong>Using pip</strong></p>
 <p>Coming soon…</p>
 </li>
-<li><p><strong>From Source</strong></p>
+<li><p><strong>From Source (editable mode)</strong></p>
 <p>Alternatively, clone the RCAIDE repository and install it manually:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/leadsgroup/RCAIDE_LEADS.git
+<span class="nb">cd</span><span class="w"> </span>RCAIDE_LEADS
 </pre></div>
 </div>
-<p>Install the dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</pre></div>
-</div>
-<p>Install RCAIDE:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>RCAIDE
-python3<span class="w"> </span>setup.py<span class="w"> </span>develop
-</pre></div>
-</div>
-</li>
-<li><p><strong>Optional Dependencies</strong>
-To enable additional features, install the following optional dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<p>Install the dependencies and RCAIDE in editable mode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
 </li>

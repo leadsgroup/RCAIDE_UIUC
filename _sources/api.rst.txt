@@ -1,14 +1,17 @@
 API Reference
-==============
+=============
 
-RCAIDE API Documentation
+.. autosummary::
+   :toctree: _autosummary
+   :template: custom-module-template.rst
+   :recursive:
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    RCAIDE.Framework
+    RCAIDE.Library
+    RCAIDE.load
+    RCAIDE.save
+    RCAIDE.Vehicle
 
-   _autosummary/RCAIDE.Framework
-   _autosummary/RCAIDE.Library
 
 
 

@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Library.Methods.Performance.estimate_take_off_field_length &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Performance/estimate_take_off_field_length';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Performance/estimate_take_off_field_length.html" />
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Performance.estimate_take_off_field_length</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Library.Methods.Performance.estimate_take_off_field_length</h1><div class="highlight"><pre>
+<span></span><span class="c1">## @ingroup Methods-Performance</span>
+<span class="c1"># estimate_take_off_field_length.py</span>
+<span class="c1">#</span>
+<span class="c1"># Created:  Jun 2014, T. Orra, C. Ilario, Celso, </span>
+<span class="c1"># Modified: Apr 2015, M. Vegh </span>
+<span class="c1">#           Jan 2016, E. Botero</span>
+<span class="c1">#           Mar 2020, M. Clarke</span>
+<span class="c1">#           May 2020, E. Botero</span>
+<span class="c1">#           Jul 2020, E. Botero </span>
+
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  Imports</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+
+<span class="c1"># RCAIDE Imports</span>
+<span class="kn">import</span> <span class="nn">RCAIDE</span>
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>            <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Units</span>     
+<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Common.Drag</span> <span class="kn">import</span> <span class="o">*</span> 
+<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Common.Lift</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># package imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#  Compute field length required for takeoff</span>
+<span class="c1"># ----------------------------------------------------------------------</span>
+
+<span class="c1">## @ingroup Methods-Performance</span>
+<div class="viewcode-block" id="estimate_take_off_field_length">
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.estimate_take_off_field_length.html#RCAIDE.Library.Methods.Performance.estimate_take_off_field_length.estimate_take_off_field_length">[docs]</a>
+<span class="k">def</span> <span class="nf">estimate_take_off_field_length</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">analyses</span><span class="p">,</span><span class="n">altitude</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">delta_isa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">compute_2nd_seg_climb</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the takeoff field length for a given vehicle configuration in a given airport.</span>
+<span class="sd">    Also optionally computes the second segment climb gradient.</span>
+
+<span class="sd">    Assumptions:</span>
+<span class="sd">    For second segment climb gradient:</span>
+<span class="sd">    One engine inoperative</span>
+<span class="sd">    Only validated for two engine aircraft</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    http://adg.stanford.edu/aa241/AircraftDesign.html</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    analyses.base.atmosphere               [RCAIDE data type]</span>
+<span class="sd">    airport.</span>
+<span class="sd">      altitude                             [m]</span>
+<span class="sd">      delta_isa                            [K]</span>
+<span class="sd">    vehicle.</span>
+<span class="sd">      mass_properties.takeoff              [kg]</span>
+<span class="sd">      reference_area                       [m^2]</span>
+<span class="sd">      V2_VS_ratio (optional)               [Unitless]</span>
+<span class="sd">      maximum_lift_coefficient (optional)  [Unitless]</span>
+<span class="sd">      networks.*.number_of_engines       [Unitless]</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    takeoff_field_length                   [m]</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>        
+
+    <span class="c1"># ==============================================</span>
+        <span class="c1"># Unpack</span>
+    <span class="c1"># ==============================================</span>
+    <span class="n">atmo</span>            <span class="o">=</span> <span class="n">analyses</span><span class="o">.</span><span class="n">atmosphere</span> 
+    <span class="n">weight</span>          <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">takeoff</span>
+    <span class="n">reference_area</span>  <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">reference_area</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">V2_VS_ratio</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">V2_VS_ratio</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">V2_VS_ratio</span> <span class="o">=</span> <span class="mf">1.20</span>
+        
+        
+    
+
+    <span class="c1"># ==============================================</span>
+    <span class="c1"># Computing atmospheric conditions</span>
+    <span class="c1"># ==============================================</span>
+    <span class="n">atmo_values</span>       <span class="o">=</span> <span class="n">atmo</span><span class="o">.</span><span class="n">compute_values</span><span class="p">(</span><span class="n">altitude</span><span class="p">,</span><span class="n">delta_isa</span><span class="p">)</span>
+    <span class="n">conditions</span>        <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Common</span><span class="o">.</span><span class="n">Results</span><span class="p">()</span>
+    
+    <span class="n">p</span>   <span class="o">=</span> <span class="n">atmo_values</span><span class="o">.</span><span class="n">pressure</span>
+    <span class="n">T</span>   <span class="o">=</span> <span class="n">atmo_values</span><span class="o">.</span><span class="n">temperature</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">atmo_values</span><span class="o">.</span><span class="n">density</span>
+    <span class="n">a</span>   <span class="o">=</span> <span class="n">atmo_values</span><span class="o">.</span><span class="n">speed_of_sound</span>
+    <span class="n">mu</span>  <span class="o">=</span> <span class="n">atmo_values</span><span class="o">.</span><span class="n">dynamic_viscosity</span>
+    <span class="n">sea_level_gravity</span> <span class="o">=</span> <span class="n">atmo</span><span class="o">.</span><span class="n">planet</span><span class="o">.</span><span class="n">sea_level_gravity</span>
+    
+    <span class="c1"># ==============================================</span>
+    <span class="c1"># Determining vehicle maximum lift coefficient</span>
+    <span class="c1"># ==============================================</span>
+    <span class="c1"># Condition to CLmax calculation: 90KTAS @ airport</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">conditions</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Common</span><span class="o">.</span><span class="n">Results</span><span class="p">()</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">density</span>           <span class="o">=</span> <span class="n">rho</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>          <span class="o">=</span> <span class="mf">90.</span> <span class="o">*</span> <span class="n">Units</span><span class="o">.</span><span class="n">knots</span>
+    <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">dynamic_viscosity</span> <span class="o">=</span> <span class="n">mu</span>
+    
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">analyses</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">settings</span>
+
+    <span class="n">maximum_lift_coefficient</span><span class="p">,</span> <span class="n">induced_drag_high_lift</span> <span class="o">=</span> <span class="n">compute_max_lift_coeff</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span>
+
+    <span class="c1"># ==============================================</span>
+    <span class="c1"># Computing speeds (Vs, V2, 0.7*V2)</span>
+    <span class="c1"># ==============================================</span>
+    <span class="n">stall_speed</span>       <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">sea_level_gravity</span> <span class="o">/</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">reference_area</span> <span class="o">*</span> <span class="n">maximum_lift_coefficient</span><span class="p">))</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="n">V2_speed</span>          <span class="o">=</span> <span class="n">V2_VS_ratio</span> <span class="o">*</span> <span class="n">stall_speed</span>
+    <span class="n">speed_for_thrust</span>  <span class="o">=</span> <span class="mf">0.70</span> <span class="o">*</span> <span class="n">V2_speed</span>
+
+    <span class="c1"># ==============================================</span>
+    <span class="c1"># Determining vehicle number of engines</span>
+    <span class="c1"># ==============================================</span>
+    <span class="n">engine_number</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">networks</span> <span class="p">:</span> <span class="c1"># may have than one network</span>
+        <span class="n">engine_number</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">propulsors</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">engine_number</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No engine found in the vehicle&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ==============================================</span>
+    <span class="c1"># Getting engine thrust</span>
+    <span class="c1"># ==============================================</span>
+    
+
+    <span class="c1"># Step 28: Static Sea Level Thrust  </span>
+    <span class="n">planet</span>                                            <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Attributes</span><span class="o">.</span><span class="n">Planets</span><span class="o">.</span><span class="n">Earth</span><span class="p">()</span>
+    <span class="n">atmosphere_sls</span>                                    <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Atmospheric</span><span class="o">.</span><span class="n">US_Standard_1976</span><span class="p">()</span>
+    <span class="n">atmo_data</span>                                         <span class="o">=</span> <span class="n">atmosphere_sls</span><span class="o">.</span><span class="n">compute_values</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+                                                      
+    <span class="n">p</span>                                                 <span class="o">=</span> <span class="n">atmo_data</span><span class="o">.</span><span class="n">pressure</span>          
+    <span class="n">T</span>                                                 <span class="o">=</span> <span class="n">atmo_data</span><span class="o">.</span><span class="n">temperature</span>       
+    <span class="n">rho</span>                                               <span class="o">=</span> <span class="n">atmo_data</span><span class="o">.</span><span class="n">density</span>          
+    <span class="n">a</span>                                                 <span class="o">=</span> <span class="n">atmo_data</span><span class="o">.</span><span class="n">speed_of_sound</span>    
+    <span class="n">mu</span>                                                <span class="o">=</span> <span class="n">atmo_data</span><span class="o">.</span><span class="n">dynamic_viscosity</span> 
+    
+    <span class="n">conditions</span>                                        <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Common</span><span class="o">.</span><span class="n">Results</span><span class="p">()</span> 
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">altitude</span>                    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">mach_number</span>                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">pressure</span>                    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">temperature</span>                 <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">density</span>                     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span>
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">dynamic_viscosity</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">gravity</span>                     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">planet</span><span class="o">.</span><span class="n">sea_level_gravity</span><span class="p">)</span> 
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">speed_of_sound</span>              <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>                    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mf">0.01</span><span class="p">)</span>   
+
+    <span class="c1"># setup conditions   </span>
+    <span class="n">segment</span>                                           <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Segments</span><span class="o">.</span><span class="n">Segment</span><span class="p">()</span>  
+    <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span>                          <span class="o">=</span> <span class="n">conditions</span>
+    
+    <span class="n">thrust</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
+     
+    <span class="n">analysis</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Vehicle</span><span class="p">()</span> 
+    <span class="n">energy</span>   <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Energy</span><span class="o">.</span><span class="n">Energy</span><span class="p">()</span>
+    <span class="n">energy</span><span class="o">.</span><span class="n">vehicle</span>  <span class="o">=</span> <span class="n">vehicle</span> 
+    <span class="n">analysis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">energy</span><span class="p">)</span>            
+    <span class="n">segment</span><span class="o">.</span><span class="n">analyses</span> <span class="o">=</span> <span class="n">analysis</span>      
+    
+    <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">add_unknowns_and_residuals_to_segment</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">propulsor</span> <span class="ow">in</span>  <span class="n">network</span><span class="o">.</span><span class="n">propulsors</span><span class="p">:</span> 
+            <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span><span class="o">.</span><span class="n">throttle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">]])</span>
+        
+        <span class="n">network</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">center_of_gravity</span><span class="p">)</span>
+        
+        <span class="n">thrust</span> <span class="o">+=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">thrust_force_vector</span>
+         
+    <span class="c1"># ==============================================</span>
+    <span class="c1"># Calculate takeoff distance</span>
+    <span class="c1"># ==============================================</span>
+
+    <span class="c1"># Defining takeoff distance equations coefficients </span>
+    <span class="n">takeoff_constants</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">engine_number</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">857.4</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">2.476</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">0.00014</span>
+    <span class="k">elif</span> <span class="n">engine_number</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">667.9</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">2.343</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">0.000093</span>
+    <span class="k">elif</span> <span class="n">engine_number</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">486.7</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">2.282</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">0.0000705</span>
+    <span class="k">elif</span> <span class="n">engine_number</span> <span class="o">&gt;</span>  <span class="mi">4</span><span class="p">:</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">486.7</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">2.282</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">0.0000705</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The vehicle has more than 4 engines. Using 4 engine correlation. Result may not be correct.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">857.4</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">2.476</span>
+        <span class="n">takeoff_constants</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span>   <span class="mf">0.00014</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Incorrect number of engines: </span><span class="si">{0:.1f}</span><span class="s1">. Using twin engine correlation.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">engine_number</span><span class="p">))</span>
+
+    <span class="c1"># Define takeoff index   (V2^2 / (T/W)</span>
+    <span class="n">takeoff_index</span> <span class="o">=</span> <span class="n">V2_speed</span><span class="o">**</span><span class="mf">2.</span> <span class="o">/</span> <span class="p">(</span><span class="n">thrust</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">weight</span><span class="p">)</span>
+    
+    <span class="c1"># Calculating takeoff field length</span>
+    <span class="n">takeoff_field_length</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">constant</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">takeoff_constants</span><span class="p">):</span>
+        <span class="n">takeoff_field_length</span> <span class="o">+=</span> <span class="n">constant</span> <span class="o">*</span> <span class="n">takeoff_index</span><span class="o">**</span><span class="n">idx</span>
+    <span class="n">takeoff_field_length</span> <span class="o">=</span> <span class="n">takeoff_field_length</span> <span class="o">*</span> <span class="n">Units</span><span class="o">.</span><span class="n">ft</span>
+    
+    <span class="c1"># calculating second segment climb gradient, if required by user input</span>
+    <span class="k">if</span> <span class="n">compute_2nd_seg_climb</span><span class="p">:</span>
+        
+        <span class="c1"># Getting engine thrust at V2 (update only speed related conditions)</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">dynamic_pressure</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">V2_speed</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">V2_speed</span><span class="p">))</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">mach_number</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">V2_speed</span><span class="o">/</span> <span class="n">a</span><span class="p">))</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">dynamic_viscosity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">mu</span><span class="p">))</span>
+        <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">density</span>           <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="n">rho</span><span class="p">))</span>
+        
+        <span class="c1"># engine condition</span>
+        <span class="n">num_propulsors</span> <span class="o">=</span>  <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
+            <span class="n">num_propulsors</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">propulsors</span><span class="p">)</span> 
+            <span class="k">for</span> <span class="n">propulsor</span> <span class="ow">in</span>  <span class="n">network</span><span class="o">.</span><span class="n">propulsors</span><span class="p">:</span> 
+                <span class="n">engine_out_location</span> <span class="o">=</span> <span class="n">propulsor</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> 
+        <span class="n">thrust</span>  <span class="o">=</span> <span class="n">thrust</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_propulsors</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)</span><span class="o">/</span><span class="n">num_propulsors</span>
+        <span class="n">single_engine_thrust</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">thrust</span> <span class="o">/</span><span class="n">num_propulsors</span><span class="p">)</span>
+
+        <span class="c1"># Compute windmilling drag</span>
+        <span class="n">windmilling_drag_coefficient</span> <span class="o">=</span> <span class="n">windmilling_drag</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">state</span><span class="p">)</span>
+
+        <span class="c1"># Compute asymmetry drag   </span>
+        <span class="n">asymmetry_drag_coefficient</span> <span class="o">=</span> <span class="n">asymmetry_drag</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">vehicle</span><span class="p">,</span><span class="n">engine_out_location</span><span class="p">,</span> <span class="n">single_engine_thrust</span><span class="p">,</span> <span class="n">windmilling_drag_coefficient</span><span class="p">)</span>
+           
+        <span class="c1"># Compute l over d ratio for takeoff condition, NO engine failure</span>
+        <span class="n">l_over_d</span> <span class="o">=</span> <span class="n">estimate_2ndseg_lift_drag_ratio</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">)</span> 
+        
+        <span class="c1"># Compute L over D ratio for takeoff condition, WITH engine failure</span>
+        <span class="n">clv2</span>            <span class="o">=</span> <span class="n">maximum_lift_coefficient</span> <span class="o">/</span> <span class="p">(</span><span class="n">V2_VS_ratio</span><span class="p">)</span> <span class="o">**</span><span class="mi">2</span>
+        <span class="n">cdv2_all_engine</span> <span class="o">=</span> <span class="n">clv2</span> <span class="o">/</span> <span class="n">l_over_d</span>
+        <span class="n">cdv2</span>            <span class="o">=</span> <span class="n">cdv2_all_engine</span> <span class="o">+</span> <span class="n">asymmetry_drag_coefficient</span> <span class="o">+</span> <span class="n">windmilling_drag_coefficient</span>
+        <span class="n">l_over_d_v2</span>     <span class="o">=</span> <span class="n">clv2</span> <span class="o">/</span> <span class="n">cdv2</span>
+    
+        <span class="c1"># Compute 2nd segment climb gradient</span>
+        <span class="n">second_seg_climb_gradient</span> <span class="o">=</span> <span class="n">thrust</span> <span class="o">/</span> <span class="p">(</span><span class="n">weight</span><span class="o">*</span><span class="n">sea_level_gravity</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">l_over_d_v2</span>
+
+        <span class="k">return</span> <span class="n">takeoff_field_length</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">second_seg_climb_gradient</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># return only takeoff_field_length</span>
+        <span class="k">return</span> <span class="n">takeoff_field_length</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

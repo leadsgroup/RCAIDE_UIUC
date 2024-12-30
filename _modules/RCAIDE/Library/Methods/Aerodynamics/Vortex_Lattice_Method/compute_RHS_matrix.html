@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Library/Methods/Aerodynamics/Vortex_Lattice_Method/compute_RHS_matrix';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Library/Methods/Aerodynamics/Vortex_Lattice_Method/compute_RHS_matrix.html" />
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix</h1><div class="highlight"><pre>
+<span></span><span class="c1"># RCAIDE/Methods/Aerodynamics/Common/Lift/compute_RHS_matrix.py</span>
+<span class="c1"># </span>
+<span class="c1"># </span>
+<span class="c1"># Created:  Jul 2023, M. Clarke </span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  IMPORT</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+ 
+<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
+
+<span class="c1"># package imports </span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  Compute RHS matrix </span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
+<div class="viewcode-block" id="compute_RHS_matrix">
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix.compute_RHS_matrix">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_RHS_matrix</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span><span class="n">phi</span><span class="p">,</span><span class="n">conditions</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">propeller_wake_model</span><span class="p">):</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This computes the right hand side matrix for the VLM. In this</span>
+<span class="sd">    function, induced velocites from propeller wake are also included</span>
+<span class="sd">    when relevent and where specified</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    1. Low-Speed Aerodynamics, Second Edition by Joseph Katz, Allen Plotkin</span>
+<span class="sd">    Pgs. 331-338</span>
+
+<span class="sd">    2. VORLAX Source Code</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    geometry</span>
+<span class="sd">        networks                                 [Unitless]</span>
+<span class="sd">        vehicle vortex distribution              [Unitless]</span>
+
+<span class="sd">    conditions.aerodynamics.angles.alpha      [radians]</span>
+<span class="sd">    conditions.aerodynamics.angles.beta     [radians]</span>
+<span class="sd">    conditions.freestream.velocity               [m/s]</span>
+<span class="sd">    conditions.static_stability.pitch_rate      [radians/s]</span>
+<span class="sd">    conditions.static_stability.roll_rate       [radians/s]</span>
+<span class="sd">    conditions.static_stability.yaw_rate        [radians/s]</span>
+
+<span class="sd">    sur_flag    - use_surrogate flag             [Unitless]</span>
+<span class="sd">    slipstream  - propeller_wake_model flag      [Unitless]</span>
+<span class="sd">    delta, phi  - flow tangency angles           [radians]</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    rhs.</span>
+<span class="sd">        RHS</span>
+<span class="sd">        ONSET</span>
+<span class="sd">        Vx_ind_total</span>
+<span class="sd">        Vz_ind_total</span>
+<span class="sd">        V_distribution</span>
+<span class="sd">        dt</span>
+<span class="sd">        YGIRO</span>
+<span class="sd">        ZGIRO</span>
+<span class="sd">        VX</span>
+<span class="sd">        SCNTL</span>
+<span class="sd">        CCNTL</span>
+<span class="sd">        COD</span>
+<span class="sd">        SID</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># unpack</span>
+    <span class="n">VD</span>               <span class="o">=</span> <span class="n">geometry</span><span class="o">.</span><span class="n">vortex_distribution</span>
+
+    <span class="n">aoa</span>              <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">alpha</span>
+    <span class="n">aoa_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">aoa</span><span class="p">,</span> <span class="n">VD</span><span class="o">.</span><span class="n">n_cp</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">PSI</span>              <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">beta</span>
+    <span class="n">PSI_distribution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">PSI</span><span class="p">,</span> <span class="n">VD</span><span class="o">.</span><span class="n">n_cp</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">V_inf</span>            <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>
+    <span class="n">V_distribution</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">V_inf</span> <span class="p">,</span> <span class="n">VD</span><span class="o">.</span><span class="n">n_cp</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">rot_V_wake_ind</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">aoa</span><span class="p">),</span> <span class="n">VD</span><span class="o">.</span><span class="n">n_cp</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">prop_V_wake_ind</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">aoa</span><span class="p">),</span> <span class="n">VD</span><span class="o">.</span><span class="n">n_cp</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">Vx_ind_total</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">V_distribution</span><span class="p">)</span>
+    <span class="n">Vy_ind_total</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">V_distribution</span><span class="p">)</span>
+    <span class="n">Vz_ind_total</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">V_distribution</span><span class="p">)</span>
+
+    <span class="n">dt</span>               <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">num_ctrl_pts</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">aoa</span><span class="p">)</span> <span class="c1"># number of control points</span>
+    <span class="n">num_eval_pts</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">VD</span><span class="o">.</span><span class="n">XC</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">propeller_wake_model</span><span class="p">:</span>
+            <span class="c1"># include the propeller wake effect on the wing</span>
+            <span class="k">if</span> <span class="s1">&#39;propellers&#39;</span> <span class="ow">in</span> <span class="n">network</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> 
+                <span class="c1"># extract the propeller wake and compute resulting induced velocities data structure</span>
+                <span class="n">props</span>           <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">propellers</span>
+                <span class="n">prop_V_wake_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_ctrl_pts</span><span class="p">,</span><span class="n">num_eval_pts</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+                
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">props</span><span class="p">:</span>
+                    <span class="n">prop_V_wake_ind</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">Wake</span><span class="o">.</span><span class="n">evaluate_slipstream</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">num_ctrl_pts</span><span class="p">)</span>
+                    
+                    
+            <span class="k">if</span> <span class="s1">&#39;lift_rotors&#39;</span> <span class="ow">in</span> <span class="n">network</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> 
+                <span class="c1"># extract the rotor wake and compute resulting induced velocities data structure</span>
+                <span class="n">rots</span>           <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">lift_rotors</span>
+                <span class="n">rot_V_wake_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_ctrl_pts</span><span class="p">,</span><span class="n">num_eval_pts</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+                
+                <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rots</span><span class="p">:</span>
+                    <span class="n">rot_V_wake_ind</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">Wake</span><span class="o">.</span><span class="n">evaluate_slipstream</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">num_ctrl_pts</span><span class="p">)</span>
+                    
+                    
+            <span class="c1"># update the total induced velocity distribution</span>
+            <span class="n">Vx_ind_total</span> <span class="o">=</span> <span class="n">Vx_ind_total</span> <span class="o">+</span> <span class="n">prop_V_wake_ind</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">rot_V_wake_ind</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">Vy_ind_total</span> <span class="o">=</span> <span class="n">Vy_ind_total</span> <span class="o">+</span> <span class="n">prop_V_wake_ind</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">rot_V_wake_ind</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">Vz_ind_total</span> <span class="o">=</span> <span class="n">Vz_ind_total</span> <span class="o">+</span> <span class="n">prop_V_wake_ind</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">rot_V_wake_ind</span><span class="p">[:,:,</span><span class="mi">2</span><span class="p">]</span>
+
+            <span class="n">rhs</span> <span class="o">=</span> <span class="n">build_RHS</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">aoa_distribution</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">PSI_distribution</span><span class="p">,</span>
+                            <span class="n">Vx_ind_total</span><span class="p">,</span> <span class="n">Vy_ind_total</span><span class="p">,</span> <span class="n">Vz_ind_total</span><span class="p">,</span> <span class="n">V_distribution</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>           
+            
+            <span class="k">return</span>  <span class="n">rhs</span>
+
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">build_RHS</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">aoa_distribution</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">PSI_distribution</span><span class="p">,</span>
+                    <span class="n">Vx_ind_total</span><span class="p">,</span> <span class="n">Vy_ind_total</span><span class="p">,</span> <span class="n">Vz_ind_total</span><span class="p">,</span> <span class="n">V_distribution</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">rhs</span> </div>
+
+
+<div class="viewcode-block" id="build_RHS">
+<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_RHS_matrix.build_RHS">[docs]</a>
+<span class="k">def</span> <span class="nf">build_RHS</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">aoa_distribution</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">PSI_distribution</span><span class="p">,</span>
+              <span class="n">Vx_ind_total</span><span class="p">,</span> <span class="n">Vy_ind_total</span><span class="p">,</span> <span class="n">Vz_ind_total</span><span class="p">,</span> <span class="n">V_distribution</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This uses freestream conditions, induced wake velocities, and rotation</span>
+<span class="sd">    rates (pitch, roll, yaw) to find the boundary conditions (RHS) needed to</span>
+<span class="sd">    compute gamma. The function defaults to a classical boundary condition</span>
+<span class="sd">    equation, RHS = V dot N, where V is the unit velocity vector only the panel</span>
+<span class="sd">    and N is the panel unit normal. However, the user may also define</span>
+<span class="sd">    settings.use_VORLAX_matrix_calculation to use the boundary condition equation</span>
+<span class="sd">    from VORLAX, the code on which this VLM is based. This is useful for future</span>
+<span class="sd">    developers who need to compare numbers 1:1 with VORLAX.</span>
+
+<span class="sd">    Note if using VORLAX boundary conditions:</span>
+<span class="sd">    VORLAX does not take induced wake velocity into account. Additionally,</span>
+<span class="sd">    VORLAX uses the camber, twist, and dihedral values of a strip&#39;s leading</span>
+<span class="sd">    edge panel for every panel in that strip when calculating panel normals.</span>
+
+<span class="sd">    Source:</span>
+<span class="sd">    1. Low-Speed Aerodynamics, Second Edition by Joseph Katz, Allen Plotkin Pgs. 331-338</span>
+
+<span class="sd">    2. VORLAX Source Code</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    settings.use_VORLAX_matrix_calculation  - RHS equation switch               [boolean]</span>
+<span class="sd">    conditions.static_stability.pitch_rate -                                   [radians/s]</span>
+<span class="sd">    conditions.static_stability.roll_rate  -                                   [radians/s]</span>
+<span class="sd">    conditions.static_stability.yaw_rate   -                                   [radians/s]</span>
+<span class="sd">    aoa_distribution                        - angle of attack                   [radians]</span>
+<span class="sd">    PSI_distribution                        - sideslip angle                    [radians]</span>
+<span class="sd">    V[]_ind_total                           - component induced wake velocities [m/s]</span>
+<span class="sd">    V_distribution                          - freestream velocity magnitude     [m/s]</span>
+<span class="sd">    delta, phi                              - flow tangency angles              [radians]</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    rhs  -  a Data object used to hold several values including RHS</span>
+
+<span class="sd">    Properties Used:</span>
+<span class="sd">    N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LE_ind</span>      <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">leading_edge_indices</span>
+    <span class="n">RNMAX</span>       <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">panels_per_strip</span>
+
+
+    <span class="c1"># VORLAX frame RHS calculation---------------------------------------------------------</span>
+    <span class="c1">#VORLAX subroutine = BOUNDY</span>
+    <span class="c1">#unpack conditions</span>
+    <span class="n">ALFA</span>   <span class="o">=</span> <span class="n">aoa_distribution</span>
+    <span class="n">PSIRAD</span> <span class="o">=</span> <span class="n">PSI_distribution</span>
+    <span class="n">PITCHQ</span> <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">pitch_rate</span>
+    <span class="n">ROLLQ</span>  <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">roll_rate</span>
+    <span class="n">YAWQ</span>   <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">yaw_rate</span>
+    <span class="n">VINF</span>   <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">velocity</span>
+
+    <span class="n">SINALF</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ALFA</span><span class="p">)</span>
+    <span class="n">COSIN</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ALFA</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">PSIRAD</span><span class="p">)</span>
+    <span class="n">COSCOS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ALFA</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">PSIRAD</span><span class="p">)</span>
+    <span class="n">PITCH</span>  <span class="o">=</span> <span class="n">PITCHQ</span> <span class="o">/</span> <span class="n">VINF</span>
+    <span class="n">ROLL</span>   <span class="o">=</span> <span class="n">ROLLQ</span>  <span class="o">/</span> <span class="n">VINF</span>
+    <span class="n">YAW</span>    <span class="o">=</span> <span class="n">YAWQ</span>   <span class="o">/</span> <span class="n">VINF</span>
+
+    <span class="c1">#unpack/rename variables from VD</span>
+    <span class="n">X</span>      <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">XCH</span>
+    <span class="n">YY</span>     <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">YCH</span>
+    <span class="n">ZZ</span>     <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">ZCH</span>
+    <span class="n">XBAR</span>   <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">XBAR</span>
+    <span class="n">ZBAR</span>   <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">ZBAR</span>
+
+    <span class="n">CHORD</span>  <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">chord_lengths</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
+    <span class="n">DELTAX</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">/</span><span class="n">RNMAX</span>
+
+    <span class="c1"># LOCATE VORTEX LATTICE CONTROL POINT WITH RESPECT TO THE</span>
+    <span class="c1"># ROTATION CENTER (XBAR, 0, ZBAR). THE RELATIVE COORDINATES</span>
+    <span class="c1"># ARE XGIRO, YGIRO, AND ZGIRO.</span>
+    <span class="n">XGIRO</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="n">CHORD</span><span class="o">*</span><span class="n">DELTAX</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">XBAR</span><span class="p">,</span> <span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span>
+    <span class="n">YGIRO</span> <span class="o">=</span> <span class="n">YY</span>
+    <span class="n">ZGIRO</span> <span class="o">=</span> <span class="n">ZZ</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">ZBAR</span><span class="p">,</span> <span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">])</span>
+
+    <span class="c1"># VX, VY, VZ ARE THE FLOW ONSET VELOCITY COMPONENTS AT THE LEADING</span>
+    <span class="c1"># EDGE (STRIP MIDPOINT). VX, VY, VZ AND THE ROTATION RATES ARE</span>
+    <span class="c1"># REFERENCED TO THE FREE STREAM VELOCITY.</span>
+    <span class="n">VX</span> <span class="o">=</span> <span class="p">(</span><span class="n">COSCOS</span> <span class="o">-</span> <span class="n">PITCH</span><span class="o">*</span><span class="n">ZGIRO</span> <span class="o">+</span> <span class="n">YAW</span>  <span class="o">*</span><span class="n">YGIRO</span><span class="p">)</span>
+    <span class="n">VY</span> <span class="o">=</span> <span class="p">(</span><span class="n">COSIN</span>  <span class="o">-</span> <span class="n">YAW</span>  <span class="o">*</span><span class="n">XGIRO</span> <span class="o">+</span> <span class="n">ROLL</span> <span class="o">*</span><span class="n">ZGIRO</span><span class="p">)</span>
+    <span class="n">VZ</span> <span class="o">=</span> <span class="p">(</span><span class="n">SINALF</span> <span class="o">-</span> <span class="n">ROLL</span> <span class="o">*</span><span class="n">YGIRO</span> <span class="o">+</span> <span class="n">PITCH</span><span class="o">*</span><span class="n">XGIRO</span><span class="p">)</span>
+    
+    <span class="c1">#COMPUTE DIRECTION COSINES.</span>
+    <span class="n">SCNTL</span>  <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">SLOPE</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">VD</span><span class="o">.</span><span class="n">SLOPE</span> <span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">CCNTL</span>  <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">SCNTL</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">phi_LE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">phi</span><span class="p">[:,</span><span class="n">LE_ind</span><span class="p">]</span>  <span class="p">,</span> <span class="n">RNMAX</span><span class="p">[</span><span class="n">LE_ind</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">COD</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_LE</span><span class="p">)</span>
+    <span class="n">SID</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_LE</span><span class="p">)</span>
+
+    <span class="c1"># COMPUTE ONSET FLOW COMPONENT ALONG THE OUTWARD NORMAL TO</span>
+    <span class="c1"># THE SURFACE AT THE CONTROL POINT, ALOC.</span>
+    <span class="n">ALOC</span>  <span class="o">=</span> <span class="n">VX</span> <span class="o">*</span><span class="n">SCNTL</span> <span class="o">+</span> <span class="n">VY</span> <span class="o">*</span><span class="n">CCNTL</span> <span class="o">*</span><span class="n">SID</span> <span class="o">-</span> <span class="n">VZ</span> <span class="o">*</span><span class="n">CCNTL</span> <span class="o">*</span><span class="n">COD</span>
+
+    <span class="c1"># COMPUTE VELOCITY COMPONENT ALONG X-AXIS INDUCED BY THE RIGID</span>
+    <span class="c1"># BODY ROTATION, ONSET.</span>
+    <span class="n">ONSET</span> <span class="o">=</span> <span class="o">-</span> <span class="n">PITCH</span> <span class="o">*</span><span class="n">ZGIRO</span> <span class="o">+</span> <span class="n">YAW</span> <span class="o">*</span><span class="n">YGIRO</span>
+
+    <span class="c1"># Body-Frame RHS calculation----------------------------------------------------------</span>
+    <span class="c1"># Add wake and rotation effects to the freestream</span>
+    <span class="n">Vx_rotation</span>       <span class="o">=</span> <span class="o">-</span><span class="n">PITCHQ</span><span class="o">*</span><span class="n">ZGIRO</span> <span class="o">+</span> <span class="n">YAWQ</span>  <span class="o">*</span><span class="n">YGIRO</span>
+    <span class="n">Vy_rotation</span>       <span class="o">=</span> <span class="o">-</span><span class="n">YAWQ</span>  <span class="o">*</span><span class="n">XGIRO</span> <span class="o">+</span> <span class="n">ROLLQ</span> <span class="o">*</span><span class="n">ZGIRO</span>
+    <span class="n">Vz_rotation</span>       <span class="o">=</span> <span class="o">-</span><span class="n">ROLLQ</span> <span class="o">*</span><span class="n">YGIRO</span> <span class="o">+</span> <span class="n">PITCHQ</span><span class="o">*</span><span class="n">XGIRO</span>
+
+    <span class="n">Vx</span>                <span class="o">=</span> <span class="n">V_distribution</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">aoa_distribution</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">PSI_distribution</span><span class="p">)</span> <span class="o">+</span> <span class="n">Vx_rotation</span> <span class="o">+</span> <span class="n">Vx_ind_total</span>
+    <span class="n">Vy</span>                <span class="o">=</span> <span class="n">V_distribution</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">aoa_distribution</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">PSI_distribution</span><span class="p">)</span> <span class="o">+</span> <span class="n">Vy_rotation</span> <span class="o">+</span> <span class="n">Vy_ind_total</span>
+    <span class="n">Vz</span>                <span class="o">=</span> <span class="n">V_distribution</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">aoa_distribution</span><span class="p">)</span>                          <span class="o">+</span> <span class="n">Vz_rotation</span> <span class="o">+</span> <span class="n">Vz_ind_total</span>    
+    
+    <span class="n">aoa_distribution</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">Vz</span><span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Vx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Vy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">PSI_distribution</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">Vy</span> <span class="o">/</span> <span class="n">Vx</span><span class="p">)</span>
+
+    <span class="c1"># compute RHS: dot(v, panel_normals)</span>
+    <span class="n">V_unit_vector</span>    <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Vx</span><span class="p">,</span><span class="n">Vy</span><span class="p">,</span><span class="n">Vz</span><span class="p">])</span><span class="o">/</span><span class="n">V_distribution</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">panel_normals</span>    <span class="o">=</span> <span class="n">VD</span><span class="o">.</span><span class="n">normals</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,:]</span>
+    <span class="n">RHS_from_normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">V_unit_vector</span><span class="o">*</span><span class="n">panel_normals</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>    
+
+    <span class="c1">#pack values--------------------------------------------------------------------------</span>
+    <span class="n">use_VORLAX_RHS</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">use_VORLAX_matrix_calculation</span>
+
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">RHS</span>            <span class="o">=</span> <span class="n">RHS_from_normals</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">use_VORLAX_RHS</span> <span class="k">else</span> <span class="n">ALOC</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">ONSET</span>          <span class="o">=</span> <span class="n">ONSET</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">Vx_ind_total</span>   <span class="o">=</span> <span class="n">Vx_ind_total</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">Vz_ind_total</span>   <span class="o">=</span> <span class="n">Vz_ind_total</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">V_distribution</span> <span class="o">=</span> <span class="n">V_distribution</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">dt</span>             <span class="o">=</span> <span class="n">dt</span>
+
+    <span class="c1">#these values will be used later to calculate EFFINC</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">YGIRO</span>  <span class="o">=</span> <span class="n">YGIRO</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">ZGIRO</span>  <span class="o">=</span> <span class="n">ZGIRO</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">VX</span>     <span class="o">=</span> <span class="n">VX</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">SCNTL</span>  <span class="o">=</span> <span class="n">SCNTL</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">CCNTL</span>  <span class="o">=</span> <span class="n">CCNTL</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">COD</span>    <span class="o">=</span> <span class="n">COD</span>
+    <span class="n">rhs</span><span class="o">.</span><span class="n">SID</span>    <span class="o">=</span> <span class="n">SID</span>
+
+    <span class="k">return</span> <span class="n">rhs</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

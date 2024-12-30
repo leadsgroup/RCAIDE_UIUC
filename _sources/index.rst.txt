@@ -34,7 +34,7 @@
             <div style="font-size: 2em; margin-bottom: 15px;">🔍</div>
             <h3 style="margin: 0 0 10px 0; color: #7dd3fc;">API Reference</h3>
             <p style="margin: 0; opacity: 0.9;">Explore detailed documentation of RCAIDE's API and features.</p>
-            <a href="RCAIDE.html" style="color: #7dd3fc; text-decoration: none; display: inline-block; margin-top: 15px;">View API →</a>
+            <a href="api.html" style="color: #7dd3fc; text-decoration: none; display: inline-block; margin-top: 15px;">View API →</a>
         </div>
 
         <div class="box" style="padding: 25px; background: linear-gradient(145deg, #1a1f36, #2d3555); color: white; border-radius: 12px; transition: transform 0.2s;">

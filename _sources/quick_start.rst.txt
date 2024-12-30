@@ -6,11 +6,11 @@ Quick Start
 
 Introduction
 ============
-RCAIDE (Research Computing for Aerospace Innovation and Design Environment) is an
+RCAIDE (Research Community Aircraft Interdisciplinary Design Environment) is an
 advanced, Python-based framework designed to revolutionize aerospace engineering
 analysis and design. This comprehensive guide introduces the framework's core
 concepts, architecture, and capabilities, helping users seamlessly transition from
-SUAVE to RCAIDE's enhanced environment.
+`SUAVE <https://suave.stanford.edu/>`_ to RCAIDE's enhanced environment.
 
 Code Philosophy
 ==================

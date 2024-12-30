@@ -1,0 +1,1499 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RCAIDE.Framework.Core.DataOrdered &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=d103512f" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/RCAIDE/Framework/Core/DataOrdered';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_modules/RCAIDE/Framework/Core/DataOrdered.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../install.html">
+    Install
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../tutorials/tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">RCAIDE.Framework.Core.DataOrdered</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for RCAIDE.Framework.Core.DataOrdered</h1><div class="highlight"><pre>
+<span></span><span class="c1">## @ingroup Core</span>
+<span class="c1"># DataOrdered.py</span>
+<span class="c1">#</span>
+<span class="c1"># Created:  Jul 2016, E. Botero</span>
+<span class="c1"># Modified: Sep 2016, E. Botero</span>
+<span class="c1">#           May 2020, E. Botero</span>
+<span class="c1">#           Jul 2020, E. Botero </span>
+<span class="c1">#           Jul 2021, E. Botero</span>
+
+   
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#   Imports</span>
+<span class="c1"># ----------------------------------------------------------------------  </span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="c1"># for enforcing attribute style access names</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">whitespace</span>
+<span class="n">t_table</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span> <span class="n">chars</span>          <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="p">,</span> 
+                            <span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#   Property Class</span>
+<span class="c1"># ----------------------------------------------------------------------   </span>
+
+<div class="viewcode-block" id="Property">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.Property">[docs]</a>
+<span class="k">class</span> <span class="nc">Property</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Used to create the root map essential to the linking in DataOrdered()</span>
+<span class="sd">       </span>
+<span class="sd">        Assumptions:</span>
+<span class="sd">        N/A</span>
+<span class="sd">        </span>
+<span class="sd">        Source:</span>
+<span class="sd">        N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    
+<div class="viewcode-block" id="Property.__init__">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.Property.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Initializes a property</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+        <span class="bp">self</span><span class="o">.</span><span class="n">_key</span> <span class="o">=</span> <span class="n">key</span></div>
+
+        
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">kls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Gets a property</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            obj</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            self.key</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">else</span>          <span class="p">:</span> <span class="k">return</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets a property</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            obj</span>
+<span class="sd">            value</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="nb">dict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Deletes a property</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="nb">dict</span><span class="o">.</span><span class="fm">__delitem__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">)</span></div>
+
+
+    
+<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1">#   DataOrdered</span>
+<span class="c1"># ----------------------------------------------------------------------        </span>
+
+<span class="c1">## @ingroup Core</span>
+<div class="viewcode-block" id="DataOrdered">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered">[docs]</a>
+<span class="k">class</span> <span class="nc">DataOrdered</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; An extension of the Python dict which allows for both tag and &#39;.&#39; usage.</span>
+<span class="sd">        This is an ordered dictionary. So indexing it will produce deterministic results.</span>
+<span class="sd">       </span>
+<span class="sd">        Assumptions:</span>
+<span class="sd">        N/A</span>
+<span class="sd">        </span>
+<span class="sd">        Source:</span>
+<span class="sd">        N/A</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    
+    <span class="n">_root</span> <span class="o">=</span> <span class="n">Property</span><span class="p">(</span><span class="s1">&#39;_root&#39;</span><span class="p">)</span>
+    <span class="n">_map</span>  <span class="o">=</span> <span class="n">Property</span><span class="p">(</span><span class="s1">&#39;_map&#39;</span><span class="p">)</span>    
+    
+<div class="viewcode-block" id="DataOrdered.append">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.append">[docs]</a>
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds new values to the classes. Can also change an already appended key</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            value</span>
+<span class="sd">            key</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">key</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">tag</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">t_table</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">key</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">tag</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;key &quot;</span><span class="si">%s</span><span class="s1">&quot; already exists&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>    </div>
+
+
+    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; A stub for all classes that come later</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Retrieves an attribute set by a key k</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DataOrdered</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DataOrdered</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="n">k</span><span class="p">])</span>
+    
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Creates a new Data() class</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="c1"># Make the new:</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hasattr</span><span class="p">(</span><span class="s1">&#39;_root&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_root</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># sentinel node</span>
+            <span class="n">root</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">root</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+            <span class="nb">dict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s1">&#39;_root&#39;</span><span class="p">,</span><span class="n">root</span><span class="p">)</span>
+            <span class="nb">dict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s1">&#39;_map&#39;</span> <span class="p">,{})</span>        
+        
+        <span class="c1"># Use the base init</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__init2</span><span class="p">()</span>
+        
+        <span class="c1"># get base class list</span>
+        <span class="n">klasses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_bases</span><span class="p">()</span>
+                
+        <span class="c1"># fill in defaults trunk to leaf</span>
+        <span class="k">for</span> <span class="n">klass</span> <span class="ow">in</span> <span class="n">klasses</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">klass</span><span class="o">.</span><span class="vm">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="bp">self</span>
+    
+<div class="viewcode-block" id="DataOrdered.hasattr">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.hasattr">[docs]</a>
+    <span class="k">def</span> <span class="nf">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+            
+    
+<div class="viewcode-block" id="DataOrdered.__init__">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Initializes a new Data() class</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+
+        <span class="c1"># handle input data (ala class factory)</span>
+        <span class="n">input_data</span> <span class="o">=</span> <span class="n">DataOrdered</span><span class="o">.</span><span class="n">__base__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">)</span>
+        
+        <span class="c1"># update this data with inputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">input_data</span><span class="p">)</span></div>
+
+        
+        
+    <span class="k">def</span> <span class="nf">__init2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; A helper that allows __init_ to complete the new Data() class</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="k">def</span> <span class="nf">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>  
+            
+            <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>            
+        
+        <span class="c1"># a dictionary</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="s1">&#39;iterkeys&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">items</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="s1">&#39;keys&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">items</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">items</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+                
+        <span class="c1"># items lists</span>
+        <span class="k">elif</span> <span class="n">items</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+                <span class="n">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>
+                
+        <span class="c1"># key words</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>     
+
+    <span class="c1"># iterate on values, not keys</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the iterable values. Can be used in a for loop.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+            
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This function is used for printing the class. This starts the first line of printing.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="n">new_indent</span> <span class="o">=</span> <span class="s1">&#39;  &#39;</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        
+        <span class="c1"># trunk data name</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">indent</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataname</span><span class="p">()</span>  <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="s1">&#39;&#39;</span>
+            
+        <span class="n">args</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__str2</span><span class="p">(</span><span class="n">indent</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">args</span>
+    
+<div class="viewcode-block" id="DataOrdered.get_bases">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get_bases">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_bases</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Finds the higher classes that may be built off of data</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            klasses</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="c1"># Get the Method Resolution Order, i.e. the ancestor tree</span>
+        <span class="n">klasses</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">)</span>
+        
+        <span class="c1"># Make sure that this is a Data object, otherwise throw an error.</span>
+        <span class="k">if</span> <span class="n">DataOrdered</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">klasses</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;class </span><span class="si">%s</span><span class="s1"> is not of type Data()&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>    
+        
+        <span class="c1"># Remove the last two items, dict and object. Since the line before ensures this is a data object this won&#39;t break</span>
+        <span class="n">klasses</span> <span class="o">=</span> <span class="n">klasses</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">klasses</span> </div>
+
+    
+<div class="viewcode-block" id="DataOrdered.typestring">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.typestring">[docs]</a>
+    <span class="k">def</span> <span class="nf">typestring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This function makes the .key.key structure in string form of Data()</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+        <span class="n">typestring</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">typestring</span> <span class="o">=</span> <span class="n">typestring</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">typestring</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">typestring</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="k">del</span> <span class="n">typestring</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">typestring</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">typestring</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="n">typestring</span></div>
+
+    
+<div class="viewcode-block" id="DataOrdered.dataname">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.dataname">[docs]</a>
+    <span class="k">def</span> <span class="nf">dataname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This function is used for printing the class</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="k">return</span> <span class="s2">&quot;&lt;data object &#39;&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">typestring</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;&#39;&gt;&quot;</span></div>
+
+
+<div class="viewcode-block" id="DataOrdered.deep_set">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_set">[docs]</a>
+    <span class="k">def</span> <span class="nf">deep_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Regresses through a list of keys the same value in various places in a dictionary.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            keys  - The keys to iterate over</span>
+<span class="sd">            val   - The value to be set</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span>
+         
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        
+        <span class="n">data</span><span class="p">[</span> <span class="n">keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="DataOrdered.deep_get">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_get">[docs]</a>
+    <span class="k">def</span> <span class="nf">deep_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Regresses through a list of keys to pull a specific value out</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            keys  - The keys to iterate over</span>
+<span class="sd">            </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            value - The value to be retrieved</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="n">keys</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span>
+         
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        
+        <span class="n">value</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span> <span class="n">keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">]</span>
+        
+        <span class="k">return</span> <span class="n">value</span>   </div>
+
+    
+<div class="viewcode-block" id="DataOrdered.update">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Updates the internal values of a dictionary with given data</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            other</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span><span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;input is not a dictionary type&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># recurse only if self&#39;s value is a Dict()</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+        
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">return</span> </div>
+
+
+    <span class="k">def</span> <span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; An override of the standard __delattr_ in Python. This deletes whatever is called by k</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            This one tries to treat k as an object, if that fails it treats it as a key.</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>            
+        <span class="c1"># Deleting an existing item uses self._map to find the link which is</span>
+        <span class="c1"># then removed by updating the links in the predecessor and successor nodes.</span>
+        <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">link_prev</span><span class="p">,</span> <span class="n">link_next</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">link_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_next</span>
+        <span class="n">link_next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_prev</span>
+        
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This is overrides the Python function for checking for equality</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="n">DataOrdered</span><span class="p">,</span><span class="n">OrderedDict</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This is overrides the Python function for checking length</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>   
+
+    <span class="k">def</span> <span class="nf">__iter_basic__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the iterable values. Can be used in a for loop.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>           
+        <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span>
+        <span class="n">curr</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">curr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">curr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            
+    <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Reduction function used for making configs</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[(</span> <span class="n">k</span><span class="p">,</span> <span class="n">DataOrdered</span><span class="o">.</span><span class="n">__getitem2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">)</span> <span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">DataOrdered</span><span class="o">.</span><span class="n">iterkeys</span><span class="p">(</span><span class="bp">self</span><span class="p">)]</span>
+        <span class="n">inst_dict</span> <span class="o">=</span> <span class="nb">vars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">(</span><span class="n">DataOrdered</span><span class="p">()):</span>
+            <span class="n">inst_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">_reconstructor</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span><span class="n">items</span><span class="p">,),</span> <span class="n">inst_dict</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; An override of the standard __setattr_ in Python.</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            This one tries to treat k as an object, if that fails it treats it as a key.</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            key        [key]</span>
+<span class="sd">            value        [value]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="c1"># Setting a new item creates a new link which goes at the end of the linked</span>
+        <span class="c1"># list, and the inherited dictionary is updated with the new key/value pair.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="c1">#if not self.has_key(key) and not hasattr(self.__class__,key):</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s1">&#39;_root&#39;</span><span class="p">)</span>
+            <span class="n">last</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="nb">map</span>  <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="s1">&#39;_map&#39;</span><span class="p">)</span>
+            <span class="n">last</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">last</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">]</span>
+        <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; An override of the standard __setattr_ in Python.</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            This one tries to treat k as an object, if that fails it treats it as a key.</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            k        [key]</span>
+<span class="sd">            v        [value]</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">__str2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; This regresses through and does the rest of printing that __str__ missed</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        
+        <span class="n">new_indent</span> <span class="o">=</span> <span class="s1">&#39;  &#39;</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        
+        <span class="c1"># trunk data name</span>
+        <span class="k">if</span> <span class="n">indent</span><span class="p">:</span> <span class="n">args</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        
+        <span class="c1"># print values   </span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            
+            <span class="c1"># skip &#39;hidden&#39; items</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
+                <span class="k">continue</span>
+            
+            <span class="c1"># recurse into other dict types</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">OrderedDict</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">__str2</span><span class="p">(</span><span class="n">indent</span><span class="o">+</span><span class="n">new_indent</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span> <span class="c1"># recursion limit</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="n">indent</span><span class="o">+</span><span class="n">new_indent</span><span class="p">)</span>                                    
+                        
+            <span class="c1"># everything else</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                
+            <span class="c1"># this key-value, indented</span>
+            <span class="n">args</span><span class="o">+=</span> <span class="n">indent</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; : &#39;</span> <span class="o">+</span> <span class="n">val</span>
+            
+        <span class="k">return</span> <span class="n">args</span>     
+
+<div class="viewcode-block" id="DataOrdered.clear">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.clear">[docs]</a>
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Empties a dictionary</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>        
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">del</span> <span class="n">node</span><span class="p">[:]</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_root</span>
+            <span class="n">root</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">root</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_map</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span></div>
+
+        
+<div class="viewcode-block" id="DataOrdered.get">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get">[docs]</a>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the values from k</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            k</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">d</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="DataOrdered.has_key">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.has_key">[docs]</a>
+    <span class="k">def</span> <span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Checks if the dictionary has the key, k</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            k</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>             
+        <span class="k">return</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span></div>
+
+
+    <span class="c1"># allow override of iterators</span>
+    <span class="n">__iter</span> <span class="o">=</span> <span class="fm">__iter__</span>
+    <span class="n">__getitem2</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__getattribute__</span> 
+
+<div class="viewcode-block" id="DataOrdered.keys">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.keys">[docs]</a>
+    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns a list of keys</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">())</span></div>
+
+    
+<div class="viewcode-block" id="DataOrdered.values">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.values">[docs]</a>
+    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all values inside the Data() class.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            values</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>             
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">()]</span></div>
+
+    
+<div class="viewcode-block" id="DataOrdered.items">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.items">[docs]</a>
+    <span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the items inside the data class</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            values</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">return</span> <span class="p">[(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">()]</span></div>
+
+    
+<div class="viewcode-block" id="DataOrdered.iterkeys">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iterkeys">[docs]</a>
+    <span class="k">def</span> <span class="nf">iterkeys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the keys which may be iterated over</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>         
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">()</span></div>
+
+    
+<div class="viewcode-block" id="DataOrdered.itervalues">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.itervalues">[docs]</a>
+    <span class="k">def</span> <span class="nf">itervalues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Finds all the values that can be iterated over.</span>
+<span class="sd">    </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">():</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></div>
+
+    
+<div class="viewcode-block" id="DataOrdered.iteritems">
+<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iteritems">[docs]</a>
+    <span class="k">def</span> <span class="nf">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; All items that may be iterated over</span>
+<span class="sd">            </span>
+<span class="sd">            Assumptions:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Source:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Inputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Outputs:</span>
+<span class="sd">            N/A</span>
+<span class="sd">    </span>
+<span class="sd">            Properties Used:</span>
+<span class="sd">            N/A    </span>
+<span class="sd">        &quot;&quot;&quot;</span>          
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter</span><span class="p">():</span>
+            <span class="k">yield</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>   </div>
+</div>
+
+
+
+<span class="c1"># for rebuilding dictionaries with attributes</span>
+<span class="k">def</span> <span class="nf">_reconstructor</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span><span class="n">items</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; For rebuilding dictionaries with attributes</span>
+<span class="sd">        </span>
+<span class="sd">        Assumptions:</span>
+<span class="sd">        N/A</span>
+
+<span class="sd">        Source:</span>
+<span class="sd">        N/A</span>
+
+<span class="sd">        Inputs:</span>
+<span class="sd">        N/A</span>
+
+<span class="sd">        Outputs:</span>
+<span class="sd">        N/A</span>
+
+<span class="sd">        Properties Used:</span>
+<span class="sd">        N/A    </span>
+<span class="sd">    &quot;&quot;&quot;</span>        
+    <span class="bp">self</span> <span class="o">=</span> <span class="n">DataOrdered</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="n">klass</span><span class="p">)</span>
+    <span class="n">DataOrdered</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

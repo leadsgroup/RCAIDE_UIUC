@@ -14,23 +14,24 @@ These tutorials are designed to help you get started with RCAIDE. Set up basic a
         <p style="font-family:sans-serif; font-size:0.9em;">
           Click on a tutorial to get started.
         </p>
-        <div class="tutorial-links" style="margin-top: 15px;">
+        <div class="tutorial-links" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
           <!-- Just add a new line for each new tutorial. Make sure the filename matches the pattern section1_tutorial_X.rst -->
-          <a href="tutorial_01_turbofan_aircraft.html" class="tutorial-link" style="display:inline-block; margin: 10px; color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
+          <a href="Missions/Tutorial_01_turbofan_aircraft.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
             Tutorial 1 - Boeing 737-800 (Turbofan Aircraft)
           </a>
 
           <!-- Future tutorials can be added like this:
-          <a href="section1_tutorial_2.html" class="tutorial-link" style="display:inline-block; margin: 10px; color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
-            Tutorial 2 - Another Exampleasss
+          <a href="section1_tutorial_2.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
+            Tutorial 2 - Another Example
           </a>
           -->
         </div>
       </div>
+
 
 .. toctree::
    :maxdepth: 2
    :hidden:
    :glob:
 
-   tutorial_01_turbofan_aircraft
+   Missions/Tutorial_01_turbofan_aircraft
