@@ -553,14 +553,21 @@
         <span class="k">for</span> <span class="n">ctrl_surf</span> <span class="ow">in</span> <span class="n">wing</span><span class="o">.</span><span class="n">control_surfaces</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">ctrl_surf</span><span class="p">)</span> <span class="o">==</span> <span class="n">Aileron</span><span class="p">:</span>
                 <span class="n">control</span> <span class="o">=</span> <span class="s1">&#39;RM&#39;</span>
+                <span class="n">cs_command</span> <span class="o">=</span> <span class="n">cs_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cs_idx</span><span class="p">,</span><span class="n">control</span><span class="p">)</span>
+                <span class="n">cs_commands</span> <span class="o">=</span> <span class="n">cs_commands</span> <span class="o">+</span> <span class="n">cs_command</span>
+                <span class="n">cs_idx</span> <span class="o">+=</span> <span class="mi">1</span>   
             <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">ctrl_surf</span><span class="p">)</span> <span class="o">==</span> <span class="n">Elevator</span><span class="p">:</span>
                 <span class="n">control</span> <span class="o">=</span> <span class="s1">&#39;PM&#39;</span> 
+                <span class="n">cs_command</span> <span class="o">=</span> <span class="n">cs_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cs_idx</span><span class="p">,</span><span class="n">control</span><span class="p">)</span>
+                <span class="n">cs_commands</span> <span class="o">=</span> <span class="n">cs_commands</span> <span class="o">+</span> <span class="n">cs_command</span>
+                <span class="n">cs_idx</span> <span class="o">+=</span> <span class="mi">1</span>   
             <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">ctrl_surf</span><span class="p">)</span> <span class="o">==</span> <span class="n">Rudder</span><span class="p">:</span>
                 <span class="n">control</span> <span class="o">=</span> <span class="s1">&#39;YM&#39;</span> 
-            <span class="n">cs_command</span> <span class="o">=</span> <span class="n">cs_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cs_idx</span><span class="p">,</span><span class="n">control</span><span class="p">)</span>
-            <span class="n">cs_commands</span> <span class="o">=</span> <span class="n">cs_commands</span> <span class="o">+</span> <span class="n">cs_command</span>
-            <span class="n">cs_idx</span> <span class="o">+=</span> <span class="mi">1</span>   
-    
+                <span class="n">cs_command</span> <span class="o">=</span> <span class="n">cs_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cs_idx</span><span class="p">,</span><span class="n">control</span><span class="p">)</span>
+                <span class="n">cs_commands</span> <span class="o">=</span> <span class="n">cs_commands</span> <span class="o">+</span> <span class="n">cs_command</span>
+                <span class="n">cs_idx</span> <span class="o">+=</span> <span class="mi">1</span>   
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cs_idx</span> <span class="o">+=</span> <span class="mi">1</span>   
     <span class="n">base_trim_command</span> <span class="o">=</span> \
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">c1</span>

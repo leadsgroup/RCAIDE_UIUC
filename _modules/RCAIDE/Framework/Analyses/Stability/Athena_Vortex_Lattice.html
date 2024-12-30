@@ -492,9 +492,8 @@
         <span class="n">settings</span><span class="o">.</span><span class="n">trim_aircraft</span>                                       <span class="o">=</span> <span class="kc">False</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">model_fuselage</span>                                      <span class="o">=</span> <span class="kc">False</span> 
         <span class="n">settings</span><span class="o">.</span><span class="n">print_output</span>                                        <span class="o">=</span> <span class="kc">False</span> 
-        <span class="n">settings</span><span class="o">.</span><span class="n">keep_files</span>                                          <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">settings</span><span class="o">.</span><span class="n">save_regression_results</span>                             <span class="o">=</span> <span class="kc">False</span>          
-        <span class="n">settings</span><span class="o">.</span><span class="n">regression_flag</span>                                     <span class="o">=</span> <span class="kc">False</span>  
+        <span class="n">settings</span><span class="o">.</span><span class="n">keep_files</span>                                          <span class="o">=</span> <span class="kc">False</span>  
+        <span class="n">settings</span><span class="o">.</span><span class="n">new_regression_results</span>                              <span class="o">=</span> <span class="kc">False</span>  
         <span class="n">settings</span><span class="o">.</span><span class="n">side_slip_angle</span>                                     <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">roll_rate_coefficient</span>                               <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">pitch_rate_coefficient</span>                              <span class="o">=</span> <span class="mf">0.0</span> 
@@ -510,7 +509,15 @@
         <span class="n">settings</span><span class="o">.</span><span class="n">supersonic</span><span class="o">.</span><span class="n">fuselage_parasite_drag_begin_blend_mach</span> <span class="o">=</span> <span class="mf">0.91</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">supersonic</span><span class="o">.</span><span class="n">fuselage_parasite_drag_end_blend_mach</span>   <span class="o">=</span> <span class="mf">0.99</span>    
         <span class="n">settings</span><span class="o">.</span><span class="n">supersonic</span><span class="o">.</span><span class="n">cross_sectional_area_calculation_type</span>   <span class="o">=</span> <span class="s1">&#39;Fixed&#39;</span>     
-        <span class="n">settings</span><span class="o">.</span><span class="n">supersonic</span><span class="o">.</span><span class="n">wave_drag_type</span>                          <span class="o">=</span> <span class="s1">&#39;Raymer&#39;</span>   
+        <span class="n">settings</span><span class="o">.</span><span class="n">supersonic</span><span class="o">.</span><span class="n">wave_drag_type</span>                          <span class="o">=</span> <span class="s1">&#39;Raymer&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span>                       <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">S_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">c_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">b_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">X_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">Y_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">Z_ref</span>                 <span class="o">=</span> <span class="mi">0</span>          
     
         <span class="c1"># conditions table, used for surrogate model training</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">training</span>                                               <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>

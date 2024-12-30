@@ -483,87 +483,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>          
         <span class="n">delta</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_diff</span> <span class="o">=</span> <span class="n">delta</span></div>
-
-        
-<div class="viewcode-block" id="Diffed_Data.pull_base">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.pull_base">[docs]</a>
-    <span class="k">def</span> <span class="nf">pull_base</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Updates the differences</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>          
-        <span class="k">try</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">pull_base</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="k">pass</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_diff</span><span class="p">)</span></div>
-
-    
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This function is used for printing the class.</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>         
-        <span class="k">try</span><span class="p">:</span> 
-            <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diff</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="n">indent</span><span class="p">)</span>
-            <span class="n">args</span> <span class="o">+=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;_base : &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-            <span class="n">args</span> <span class="o">+=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;  tag : &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base</span><span class="o">.</span><span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-            <span class="k">return</span> <span class="n">args</span>
-        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>     
-            <span class="k">return</span> <span class="n">Data</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">indent</span><span class="p">)</span>
-    
-<div class="viewcode-block" id="Diffed_Data.finalize">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.finalize">[docs]</a>
-    <span class="k">def</span> <span class="nf">finalize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This just does a pull_base()</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>          
-        <span class="c1">## dont do this here, breaks down stream dependencies</span>
-        <span class="c1"># self.store_diff </span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">pull_base</span><span class="p">()</span></div>
 </div>
 
-
+         
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Config Container</span>
 <span class="c1"># ----------------------------------------------------------------------</span>

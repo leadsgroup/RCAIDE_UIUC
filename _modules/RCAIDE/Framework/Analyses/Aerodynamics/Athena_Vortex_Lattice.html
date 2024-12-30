@@ -484,15 +484,14 @@
         <span class="n">settings</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">case_template</span>                             <span class="o">=</span> <span class="s1">&#39;case_</span><span class="si">{0:04d}</span><span class="s1">_</span><span class="si">{1:04d}</span><span class="s1">&#39;</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">log_filename</span>                              <span class="o">=</span> <span class="s1">&#39;avl_log.txt&#39;</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">err_filename</span>                              <span class="o">=</span> <span class="s1">&#39;avl_err.txt&#39;</span>        
-        <span class="n">settings</span><span class="o">.</span><span class="n">number_of_spanwise_vortices</span>                         <span class="o">=</span> <span class="mi">20</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">number_of_spanwise_vortices</span>                         <span class="o">=</span> <span class="mi">30</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">number_of_chordwise_vortices</span>                        <span class="o">=</span> <span class="mi">10</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">use_surrogate</span>                                       <span class="o">=</span> <span class="kc">True</span> 
         <span class="n">settings</span><span class="o">.</span><span class="n">trim_aircraft</span>                                       <span class="o">=</span> <span class="kc">False</span> 
         <span class="n">settings</span><span class="o">.</span><span class="n">model_fuselage</span>                                      <span class="o">=</span> <span class="kc">False</span> 
         <span class="n">settings</span><span class="o">.</span><span class="n">print_output</span>                                        <span class="o">=</span> <span class="kc">False</span> 
-        <span class="n">settings</span><span class="o">.</span><span class="n">keep_files</span>                                          <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">settings</span><span class="o">.</span><span class="n">save_regression_results</span>                             <span class="o">=</span> <span class="kc">False</span>          
-        <span class="n">settings</span><span class="o">.</span><span class="n">regression_flag</span>                                     <span class="o">=</span> <span class="kc">False</span>  
+        <span class="n">settings</span><span class="o">.</span><span class="n">keep_files</span>                                          <span class="o">=</span> <span class="kc">False</span>        
+        <span class="n">settings</span><span class="o">.</span><span class="n">new_regression_results</span>                              <span class="o">=</span> <span class="kc">False</span>  
         <span class="n">settings</span><span class="o">.</span><span class="n">side_slip_angle</span>                                     <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">roll_rate_coefficient</span>                               <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">pitch_rate_coefficient</span>                              <span class="o">=</span> <span class="mf">0.0</span> 
@@ -534,7 +533,15 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">surrogates</span><span class="o">.</span><span class="n">moment_coefficient</span>          <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surrogates</span><span class="o">.</span><span class="n">Cm_alpha_moment_coefficient</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">surrogates</span><span class="o">.</span><span class="n">Cn_beta_moment_coefficient</span>  <span class="o">=</span> <span class="kc">None</span>      
-        <span class="bp">self</span><span class="o">.</span><span class="n">surrogates</span><span class="o">.</span><span class="n">neutral_point</span>               <span class="o">=</span> <span class="kc">None</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">surrogates</span><span class="o">.</span><span class="n">neutral_point</span>               <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span>                       <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">S_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">c_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">b_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">X_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">Y_ref</span>                 <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_values</span><span class="o">.</span><span class="n">Z_ref</span>                 <span class="o">=</span> <span class="mi">0</span>        
 
         <span class="c1"># build the evaluation process</span>
         <span class="n">compute</span>                                    <span class="o">=</span> <span class="n">Process</span><span class="p">()</span> 

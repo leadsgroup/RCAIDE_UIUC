@@ -738,37 +738,6 @@
 <span class="sd">            N/A    </span>
 <span class="sd">        &quot;&quot;&quot;</span>          
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-            
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This function is used for printing the class. This starts the first line of printing.</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>         
-        <span class="n">new_indent</span> <span class="o">=</span> <span class="s1">&#39;  &#39;</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        
-        <span class="c1"># trunk data name</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">indent</span><span class="p">:</span>
-            <span class="n">args</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataname</span><span class="p">()</span>  <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">args</span> <span class="o">+=</span> <span class="s1">&#39;&#39;</span>
-            
-        <span class="n">args</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__str2</span><span class="p">(</span><span class="n">indent</span><span class="p">)</span>
-        
-        <span class="k">return</span> <span class="n">args</span>
     
 <div class="viewcode-block" id="DataOrdered.get_bases">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get_bases">[docs]</a>
@@ -982,29 +951,7 @@
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">)</span>
         <span class="n">link_prev</span><span class="p">,</span> <span class="n">link_next</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="n">link_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_next</span>
-        <span class="n">link_next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_prev</span>
-        
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This is overrides the Python function for checking for equality</span>
-<span class="sd">            </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>           
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="p">(</span><span class="n">DataOrdered</span><span class="p">,</span><span class="n">OrderedDict</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="k">return</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+        <span class="n">link_next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_prev</span> 
         
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This is overrides the Python function for checking length</span>
@@ -1123,59 +1070,7 @@
 <span class="sd">            N/A    </span>
 <span class="sd">        &quot;&quot;&quot;</span>        
         <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">__str2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This regresses through and does the rest of printing that __str__ missed</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>        
-        
-        <span class="n">new_indent</span> <span class="o">=</span> <span class="s1">&#39;  &#39;</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        
-        <span class="c1"># trunk data name</span>
-        <span class="k">if</span> <span class="n">indent</span><span class="p">:</span> <span class="n">args</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-        
-        <span class="c1"># print values   </span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            
-            <span class="c1"># skip &#39;hidden&#39; items</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>
-                <span class="k">continue</span>
-            
-            <span class="c1"># recurse into other dict types</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">OrderedDict</span><span class="p">):</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
-                    <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">try</span><span class="p">:</span>
-                        <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">__str2</span><span class="p">(</span><span class="n">indent</span><span class="o">+</span><span class="n">new_indent</span><span class="p">)</span>
-                    <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span> <span class="c1"># recursion limit</span>
-                        <span class="n">val</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-                    <span class="k">except</span><span class="p">:</span>
-                        <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="n">indent</span><span class="o">+</span><span class="n">new_indent</span><span class="p">)</span>                                    
-                        
-            <span class="c1"># everything else</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
-                
-            <span class="c1"># this key-value, indented</span>
-            <span class="n">args</span><span class="o">+=</span> <span class="n">indent</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; : &#39;</span> <span class="o">+</span> <span class="n">val</span>
-            
-        <span class="k">return</span> <span class="n">args</span>     
+         
 
 <div class="viewcode-block" id="DataOrdered.clear">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.clear">[docs]</a>
@@ -1348,57 +1243,8 @@
 <span class="sd">            Properties Used:</span>
 <span class="sd">            N/A    </span>
 <span class="sd">        &quot;&quot;&quot;</span>         
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">()</span></div>
-
-    
-<div class="viewcode-block" id="DataOrdered.itervalues">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.itervalues">[docs]</a>
-    <span class="k">def</span> <span class="nf">itervalues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Finds all the values that can be iterated over.</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>          
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">():</span>
-            <span class="k">yield</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></div>
-
-    
-<div class="viewcode-block" id="DataOrdered.iteritems">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iteritems">[docs]</a>
-    <span class="k">def</span> <span class="nf">iteritems</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; All items that may be iterated over</span>
-<span class="sd">            </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>          
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter</span><span class="p">():</span>
-            <span class="k">yield</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>   </div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__iter_basic__</span><span class="p">()</span> </div>
 </div>
-
 
 
 <span class="c1"># for rebuilding dictionaries with attributes</span>

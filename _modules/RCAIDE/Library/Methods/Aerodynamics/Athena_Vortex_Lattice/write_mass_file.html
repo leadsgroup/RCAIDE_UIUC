@@ -447,8 +447,8 @@
 
         <span class="c1"># Unpack inputs</span>
         <span class="n">name</span>    <span class="o">=</span> <span class="n">avl_object</span><span class="o">.</span><span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span>
-        <span class="n">density</span> <span class="o">=</span> <span class="n">run_conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">density</span> 
-        <span class="n">gravity</span> <span class="o">=</span> <span class="n">run_conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">gravity</span>
+        <span class="n">density</span> <span class="o">=</span> <span class="n">run_conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">density</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="n">gravity</span> <span class="o">=</span> <span class="n">run_conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">gravity</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 
         
         <span class="k">if</span> <span class="n">aircraft</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">mass</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">mass</span> <span class="o">=</span> <span class="n">aircraft</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">max_takeoff</span>

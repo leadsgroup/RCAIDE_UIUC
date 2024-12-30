@@ -455,9 +455,9 @@
 <span class="sd">        None</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        aerodynamics       : AVL analysis  [unitless]</span>
-<span class="sd">        state      : flight conditions     [unitless] </span>
-<span class="sd">        vehicle    : vehicle configuration [unitless] </span>
+<span class="sd">        aerodynamics    : AVL analysis  [unitless]</span>
+<span class="sd">        state           : flight conditions     [unitless] </span>
+<span class="sd">        vehicle         : vehicle configuration [unitless] </span>
 <span class="sd">        </span>
 <span class="sd">    Returns: </span>
 <span class="sd">        None  </span>
@@ -466,18 +466,8 @@
     <span class="c1"># unpack </span>
     <span class="n">conditions</span>     <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">conditions</span>
     <span class="n">aerodynamics</span>   <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">analyses</span><span class="o">.</span><span class="n">aerodynamics</span>   
-    <span class="n">results</span>        <span class="o">=</span> <span class="n">run_AVL_analysis</span><span class="p">(</span><span class="n">aerodynamics</span><span class="p">,</span><span class="n">conditions</span><span class="p">)</span>
-    
-    <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">coefficients</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">total</span>                   <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">coefficients</span><span class="o">.</span><span class="n">lift</span><span class="o">.</span><span class="n">total</span>                 
-    <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">coefficients</span><span class="o">.</span><span class="n">drag</span><span class="o">.</span><span class="n">induced</span><span class="o">.</span><span class="n">inviscid</span>        <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">coefficients</span><span class="o">.</span><span class="n">drag</span><span class="o">.</span><span class="n">induced</span><span class="o">.</span><span class="n">inviscid</span>      
-    <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">span_efficiency</span>                           <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">span_efficiency</span>                         
-    <span class="n">conditions</span><span class="o">.</span><span class="n">control_surfaces</span><span class="o">.</span><span class="n">slat</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">coefficients</span><span class="o">.</span><span class="n">M</span>  <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">control_surfaces</span><span class="o">.</span><span class="n">slat</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">coefficients</span><span class="o">.</span><span class="n">M</span>
-    <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">derivatives</span><span class="o">.</span><span class="n">CM_alpha</span>                  <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">derivatives</span><span class="o">.</span><span class="n">CM_alpha</span>                
-    <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">derivatives</span><span class="o">.</span><span class="n">CN_beta</span>                   <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">derivatives</span><span class="o">.</span><span class="n">CN_beta</span>                 
-    <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">neutral_point</span>                         <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">neutral_point</span>                       
-    <span class="n">conditions</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">static_margin</span>                         <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">static_stability</span><span class="o">.</span><span class="n">static_margin</span>   
-    <span class="n">aerodynamics</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">span_efficiency</span>                             <span class="o">=</span> <span class="n">conditions</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">span_efficiency</span>         
-      
+    <span class="n">run_AVL_analysis</span><span class="p">(</span><span class="n">aerodynamics</span><span class="p">,</span><span class="n">conditions</span><span class="p">)</span>
+                       
     <span class="k">return</span></div>
 
 

@@ -377,13 +377,16 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties</h1><div class="highlight"><pre>
-<span></span><span class="c1">## @ingroup Input_Output-OpenVSP</span>
-<span class="c1"># get_fuel_tank_properties.py</span>
+<span></span><span class="c1"># RCAIDE/Framework/External_Interfaces/OpenVSP/get_fuel_tank_properties.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Sep 2018, T. MacDonald</span>
 <span class="c1"># Modified: Oct 2018, T. MacDonald</span>
 <span class="c1">#           Jan 2020, T. MacDonald</span>
 
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  IMPORT</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
+<span class="c1"># RCAIDE imports </span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">vsp</span> <span class="k">as</span> <span class="nn">vsp</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
@@ -395,9 +398,11 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
 
-<span class="c1">## @ingroup Input_Output-OpenVSP</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  Get Fuel Tank Properties</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="get_fuel_tank_properties">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.get_fuel_tank_properties.html#RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.get_fuel_tank_properties">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.html#RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.get_fuel_tank_properties">[docs]</a>
 <span class="k">def</span> <span class="nf">get_fuel_tank_properties</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">fuel_tank_set_index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">slices_for_calculation</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function computes the center of gravity, total possible fuel mass,</span>
 <span class="sd">    the available volume of each fuel tank in the vehicle through a mass</span>
@@ -436,7 +441,7 @@
     <span class="c1"># Extract fuel tanks from vehicle</span>
     <span class="n">fuel_tanks</span> <span class="o">=</span> <span class="n">get_fuel_tanks</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
     
-    <span class="n">num_slices</span> <span class="o">=</span> <span class="n">slices_for_calculation</span> <span class="c1"># Slices used to estimate mass distribution from areas in OpenVSP</span>
+    <span class="n">num_slices</span>             <span class="o">=</span> <span class="n">slices_for_calculation</span> <span class="c1"># Slices used to estimate mass distribution from areas in OpenVSP</span>
     <span class="n">mass_props_output_file</span> <span class="o">=</span> <span class="n">tag</span> <span class="o">+</span> <span class="s1">&#39;_mass_props.txt&#39;</span>
     <span class="n">vsp</span><span class="o">.</span><span class="n">SetComputationFileName</span><span class="p">(</span><span class="n">vsp</span><span class="o">.</span><span class="n">MASS_PROP_TXT_TYPE</span><span class="p">,</span><span class="n">mass_props_output_file</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Computing Fuel Tank Mass Properties... &#39;</span><span class="p">)</span>
@@ -475,9 +480,11 @@
     <span class="k">return</span> <span class="n">vehicle</span></div>
 
 
-<span class="c1">## @ingroup Input_Output-OpenVSP</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1"># Apply Properties</span>
+<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="apply_properties">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.apply_properties.html#RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.apply_properties">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.html#RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.apply_properties">[docs]</a>
 <span class="k">def</span> <span class="nf">apply_properties</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">fuel_tanks</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply fuel tank properties from OpenVSP to the RCAIDE vehicle.</span>
 <span class="sd">    </span>
@@ -526,9 +533,12 @@
     <span class="k">return</span> <span class="n">vehicle</span></div>
 
     
-<span class="c1">## @ingroup Input_Output-OpenVSP</span>
+
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1"># Get Fuel Tanks</span>
+<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="get_fuel_tanks">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.get_fuel_tanks.html#RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.get_fuel_tanks">[docs]</a>
+<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.html#RCAIDE.Framework.External_Interfaces.OpenVSP.get_fuel_tank_properties.get_fuel_tanks">[docs]</a>
 <span class="k">def</span> <span class="nf">get_fuel_tanks</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a data structure with fuel tanks based on </span>
 <span class="sd">    fuel tanks present in the vehicle</span>
@@ -549,17 +559,14 @@
 <span class="sd">    Properties Used:</span>
 <span class="sd">    N/A</span>
 <span class="sd">    &quot;&quot;&quot;</span>       
-    <span class="n">fuel_tanks</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
-    
-    <span class="k">for</span> <span class="n">wing</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">wings</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">tank</span> <span class="ow">in</span> <span class="n">wing</span><span class="o">.</span><span class="n">Fuel_Tanks</span><span class="p">:</span>
-            <span class="n">fuel_tanks</span><span class="p">[</span><span class="n">tank</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
+    <span class="n">vsp_fuel_tanks</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>  
+
+    <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>  
+        <span class="k">for</span> <span class="n">fuel_line</span> <span class="ow">in</span>  <span class="n">network</span><span class="o">.</span><span class="n">fuel_lines</span><span class="p">:</span> 
+            <span class="k">for</span> <span class="n">fuel_tank</span> <span class="ow">in</span> <span class="n">fuel_line</span><span class="o">.</span><span class="n">fuel_tanks</span><span class="p">:</span> 
+                <span class="n">vsp_fuel_tanks</span><span class="p">[</span><span class="n">fuel_tank</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
                     
-    <span class="k">for</span> <span class="n">fuse</span> <span class="ow">in</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">fuselages</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">tank</span> <span class="ow">in</span> <span class="n">fuse</span><span class="o">.</span><span class="n">Fuel_Tanks</span><span class="p">:</span>
-            <span class="n">fuel_tanks</span><span class="p">[</span><span class="n">tank</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
-                    
-    <span class="k">return</span> <span class="n">fuel_tanks</span></div>
+    <span class="k">return</span> <span class="n">vsp_fuel_tanks</span></div>
 
 </pre></div>
 

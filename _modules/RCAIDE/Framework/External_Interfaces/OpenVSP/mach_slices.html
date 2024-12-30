@@ -377,16 +377,14 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Framework.External_Interfaces.OpenVSP.mach_slices</h1><div class="highlight"><pre>
-<span></span><span class="c1">## @ingroup Input_Output-OpenVSP</span>
-<span class="c1"># mach_slices.py</span>
-<span class="c1"># Created:  May 2021, E. Botero</span>
-<span class="c1"># Modified: </span>
-
-<span class="c1"># ----------------------------------------------------------------------</span>
-<span class="c1">#  Imports</span>
-<span class="c1"># ----------------------------------------------------------------------</span>
-
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">write</span>
+<span></span><span class="c1"># RCAIDE/Framework/External_Interfaces/OpenVSP/mach_slices.py</span>
+<span class="c1"># Created:  May 2021, E. Botero </span>
+ 
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1">#  IMPORT</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
+<span class="c1"># RCAIDE imports </span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">export_vsp_vehicle</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">vsp</span> <span class="k">as</span> <span class="nn">vsp</span>
@@ -398,10 +396,9 @@
         <span class="k">pass</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># ----------------------------------------------------------------------</span>
+<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Mach Slices</span>
-<span class="c1"># ----------------------------------------------------------------------</span>
-
+<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="mach_slices">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.mach_slices.html#RCAIDE.Framework.External_Interfaces.OpenVSP.mach_slices.mach_slices">[docs]</a>
 <span class="k">def</span> <span class="nf">mach_slices</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mach</span><span class="p">,</span><span class="n">angle_of_attack</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">],</span><span class="n">number_slices</span> <span class="o">=</span> <span class="mi">99</span><span class="p">):</span>
@@ -433,7 +430,7 @@
     
 
     <span class="c1"># Write the vehicle</span>
-    <span class="n">write</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span><span class="n">write_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">export_vsp_vehicle</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">vehicle</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span><span class="n">write_file</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     
     <span class="n">X_locs_all</span>       <span class="o">=</span> <span class="p">[]</span>
     <span class="n">slice_areas_all</span> <span class="o">=</span> <span class="p">[]</span>

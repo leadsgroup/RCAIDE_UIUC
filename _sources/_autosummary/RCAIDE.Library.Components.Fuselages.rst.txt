@@ -32,6 +32,6 @@ Fuselages
 
    Blended_Wing_Body_Fuselage
    Fuselage
-   Segment
+   Segments
    Tube_Fuselage
 

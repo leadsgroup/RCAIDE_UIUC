@@ -48,7 +48,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.compute_fuselage_fineness" href="RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage.compute_fuselage_fineness.html" />
-    <link rel="prev" title="mach_slices" href="RCAIDE.Framework.External_Interfaces.OpenVSP.mach_slices.html" />
+    <link rel="prev" title="RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_boom.write_vsp_boom" href="RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_boom.write_vsp_boom.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -579,7 +579,7 @@ of the vehicle or in front (to make all X-coordinates of vehicle positive).</p><
 <p>Source:
 N/A</p>
 <p>Inputs:
-0. Pre-loaded VSP vehicle in memory, via vsp_read.
+0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
 1. VSP 10-digit geom ID for fuselage.
 2. Units_type set to ‘SI’ (default) or ‘Imperial’.
 3. Boolean for whether or not to compute fuselage finenesses (default = True).
@@ -712,7 +712,7 @@ Written for OpenVSP 3.16.1</p>
 <p>Source:
 N/A</p>
 <p>Inputs:
-0. Pre-loaded VSP vehicle in memory, via vsp_read.
+0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
 1. RCAIDE fuselage [object].
 2. Array of x_locations of fuselage segments. (length = L)
 3. Array of effective diameters of fuselage segments. (length = L)
@@ -732,7 +732,7 @@ Written for OpenVSP 3.16.1</p>
 <p>Source:
 N/A</p>
 <p>Inputs:
-0. Pre-loaded VSP vehicle in memory, via vsp_read.
+0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
 1. RCAIDE fuselage [object], containing fuselage.vsp_data.xsec_num in its data structure.
 2. Fuselage percentage point [float].</p>
 <p>Outputs:
@@ -796,12 +796,12 @@ N/A</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="RCAIDE.Framework.External_Interfaces.OpenVSP.mach_slices.html"
+       href="RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_boom.write_vsp_boom.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">mach_slices</p>
+        <p class="prev-next-title">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_boom.write_vsp_boom</p>
       </div>
     </a>
     <a class="right-next"

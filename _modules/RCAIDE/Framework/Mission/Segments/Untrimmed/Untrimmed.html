@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Framework.Mission.Segments.Untrimmed.Untrimmed</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Acceleration_Constant_Altitude.py</span>
+<span></span><span class="c1"># RCAIDE/Framework/Analyses/Mission/Segments/Untrimmed/Untrimmed.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -395,7 +395,7 @@
 <span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.skip</span>               <span class="kn">import</span> <span class="n">skip</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1">#  Constant_Acceleration_Constant_Altitude</span>
+<span class="c1">#  Untrimmed</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 
 <div class="viewcode-block" id="Untrimmed">
@@ -454,6 +454,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pitch_rate</span>                              <span class="o">=</span> <span class="mf">0.</span>  
         <span class="bp">self</span><span class="o">.</span><span class="n">yaw_rate</span>                                <span class="o">=</span> <span class="mf">0.</span>  
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">numerics</span><span class="o">.</span><span class="n">number_of_control_points</span> <span class="o">=</span> <span class="mi">2</span>     
+        <span class="bp">self</span><span class="o">.</span><span class="n">trim_lift_coefficient</span>                   <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">Results</span><span class="p">())</span>
         
         <span class="c1"># ---------------------------------------------------------------</span>
@@ -488,8 +489,8 @@
         <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span> <span class="o">=</span> <span class="n">Process</span><span class="p">()</span>
         <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">differentials</span>         <span class="o">=</span> <span class="n">Common</span><span class="o">.</span><span class="n">Update</span><span class="o">.</span><span class="n">differentials_time</span>
         <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">orientations</span>          <span class="o">=</span> <span class="n">Common</span><span class="o">.</span><span class="n">Update</span><span class="o">.</span><span class="n">orientations</span>
-        <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">acceleration</span>          <span class="o">=</span> <span class="n">skip</span> <span class="c1"># Common.Update.acceleration</span>
-        <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">angular_acceleration</span>  <span class="o">=</span> <span class="n">skip</span> <span class="c1"># Common.Update.angular_acceleration</span>
+        <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">acceleration</span>          <span class="o">=</span> <span class="n">skip</span> 
+        <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">angular_acceleration</span>  <span class="o">=</span> <span class="n">skip</span> 
         <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">altitude</span>              <span class="o">=</span> <span class="n">Common</span><span class="o">.</span><span class="n">Update</span><span class="o">.</span><span class="n">altitude</span>
         <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">atmosphere</span>            <span class="o">=</span> <span class="n">Common</span><span class="o">.</span><span class="n">Update</span><span class="o">.</span><span class="n">atmosphere</span>
         <span class="n">iterate</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">gravity</span>               <span class="o">=</span> <span class="n">Common</span><span class="o">.</span><span class="n">Update</span><span class="o">.</span><span class="n">gravity</span>

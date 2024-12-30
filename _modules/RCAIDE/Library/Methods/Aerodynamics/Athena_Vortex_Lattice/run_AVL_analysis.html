@@ -543,10 +543,8 @@
 <span class="sd">        N/A</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">print_output</span> <span class="o">=</span>  <span class="kc">True</span> 
-    <span class="n">avl_regression_flag</span> <span class="o">=</span> <span class="n">avl_object</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">regression_flag</span>
-    <span class="k">if</span> <span class="n">avl_regression_flag</span><span class="p">:</span>
-        <span class="n">exit_status</span> <span class="o">=</span> <span class="mi">0</span> 
-    <span class="k">else</span><span class="p">:</span>
+    <span class="n">new_regression_results</span> <span class="o">=</span> <span class="n">avl_object</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">new_regression_results</span>
+    <span class="k">if</span> <span class="n">new_regression_results</span><span class="p">:</span>
         <span class="n">log_file</span> <span class="o">=</span> <span class="n">avl_object</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">log_filename</span>
         <span class="n">err_file</span> <span class="o">=</span> <span class="n">avl_object</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">filenames</span><span class="o">.</span><span class="n">err_filename</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span><span class="nb">str</span><span class="p">):</span>
@@ -582,7 +580,8 @@
     
             <span class="n">exit_status</span> <span class="o">=</span> <span class="n">avl_run</span><span class="o">.</span><span class="n">returncode</span>
             <span class="n">ctime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">()</span>
-
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">exit_status</span> <span class="o">=</span> <span class="mi">0</span>        
     <span class="k">return</span> <span class="n">exit_status</span></div>
 
 
