@@ -33,6 +33,6 @@ Thermal\_Management
    plot_air_cooled_conditions
    plot_cross_flow_heat_exchanger_conditions
    plot_reservoir_conditions
-   plot_thermal_management_components
+   plot_thermal_management_performance
    plot_wavy_channel_conditions
 

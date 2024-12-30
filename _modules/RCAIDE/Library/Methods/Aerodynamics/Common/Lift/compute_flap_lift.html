@@ -458,41 +458,6 @@
 
     <span class="k">return</span> <span class="n">dcl_max_flaps</span></div>
 
-
-
-<span class="c1"># ----------------------------------------------------------------------</span>
-<span class="c1">#   Module Tests</span>
-<span class="c1"># ----------------------------------------------------------------------</span>
-<span class="c1"># this will run from command line, put simple tests for your code here</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-
-    <span class="c1">#imports</span>
-    <span class="kn">from</span>  <span class="nn">RCAIDE</span> <span class="kn">import</span>  <span class="o">*</span> 
-    <span class="kn">from</span>  <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span>
-
-    <span class="c1"># Test case</span>
-    <span class="n">t_c</span>             <span class="o">=</span> <span class="mf">0.11</span>
-    <span class="n">flap_type</span>       <span class="o">=</span> <span class="s1">&#39;single_slotted&#39;</span>
-    <span class="n">flap_chord</span>      <span class="o">=</span> <span class="mf">0.28</span>
-    <span class="n">flap_angle</span>      <span class="o">=</span> <span class="mf">30.</span> <span class="o">*</span> <span class="n">Units</span><span class="o">.</span><span class="n">deg</span>
-    <span class="n">sweep</span>           <span class="o">=</span> <span class="mf">30.</span> <span class="o">*</span> <span class="n">Units</span><span class="o">.</span><span class="n">deg</span>
-    <span class="n">wing_Sref</span>       <span class="o">=</span> <span class="mf">120.</span>
-    <span class="n">wing_flap_area</span>  <span class="o">=</span> <span class="mf">120.</span> <span class="o">*</span> <span class="mf">.6</span>
-
-    <span class="n">dcl_flap</span> <span class="o">=</span> <span class="n">compute_flap_lift</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span><span class="n">flap_type</span><span class="p">,</span><span class="n">flap_chord</span><span class="p">,</span><span class="n">flap_angle</span><span class="p">,</span><span class="n">sweep</span><span class="p">,</span><span class="n">wing_Sref</span><span class="p">,</span><span class="n">wing_flap_area</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Delta CL due to Flaps: &#39;</span><span class="p">,</span> <span class="n">dcl_flap</span><span class="p">)</span>
-
-    <span class="c1"># Test case</span>
-    <span class="n">t_c</span>             <span class="o">=</span> <span class="mf">0.11</span>
-    <span class="n">flap_type</span>       <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
-    <span class="n">flap_chord</span>      <span class="o">=</span> <span class="mf">0.</span>
-    <span class="n">flap_angle</span>      <span class="o">=</span> <span class="mf">0.</span> <span class="o">*</span> <span class="n">Units</span><span class="o">.</span><span class="n">deg</span>
-    <span class="n">sweep</span>           <span class="o">=</span> <span class="mf">25.</span> <span class="o">*</span> <span class="n">Units</span><span class="o">.</span><span class="n">deg</span>
-    <span class="n">wing_Sref</span>       <span class="o">=</span> <span class="mf">120.</span>
-    <span class="n">wing_flap_area</span>  <span class="o">=</span> <span class="mf">0.</span>
-
-    <span class="n">dcl_flap</span> <span class="o">=</span> <span class="n">compute_flap_lift</span><span class="p">(</span><span class="n">t_c</span><span class="p">,</span><span class="n">flap_type</span><span class="p">,</span><span class="n">flap_chord</span><span class="p">,</span><span class="n">flap_angle</span><span class="p">,</span><span class="n">sweep</span><span class="p">,</span><span class="n">wing_Sref</span><span class="p">,</span><span class="n">wing_flap_area</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Delta CL due to Flaps: &#39;</span><span class="p">,</span> <span class="n">dcl_flap</span><span class="p">)</span>
 </pre></div>
 
                 </article>

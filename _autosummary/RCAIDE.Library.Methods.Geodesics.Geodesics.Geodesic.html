@@ -558,31 +558,10 @@
 <p class="rubric">Methods</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirect" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArcDirect</span></code></a>(lat1, lon1, azi1, a12[, outmask])</p></td>
-<td><p>Solve the direct geodesic problem in terms of spherical arc length</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirectLine" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirectLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArcDirectLine</span></code></a>(lat1, lon1, azi1, a12[, caps])</p></td>
-<td><p>Define a GeodesicLine object in terms of the direct geodesic problem specified in terms of spherical arc length</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Direct" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Direct"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Direct</span></code></a>(lat1, lon1, azi1, s12[, outmask])</p></td>
-<td><p>Solve the direct geodesic problem</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.DirectLine" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.DirectLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DirectLine</span></code></a>(lat1, lon1, azi1, s12[, caps])</p></td>
-<td><p>Define a GeodesicLine object in terms of the direct geodesic problem specified in terms of spherical arc length</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Inverse" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Inverse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Inverse</span></code></a>(lat1, lon1, lat2, lon2[, outmask])</p></td>
 <td><p>Solve the inverse geodesic problem</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.InverseLine" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.InverseLine"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InverseLine</span></code></a>(lat1, lon1, lat2, lon2[, caps])</p></td>
-<td><p>Define a GeodesicLine object in terms of the invese geodesic problem</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Line" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Line</span></code></a>(lat1, lon1, azi1[, caps])</p></td>
-<td><p>Return a GeodesicLine object</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Polygon" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Polygon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Polygon</span></code></a>([polyline])</p></td>
-<td><p>Return a PolygonArea object</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#id0" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(a, f)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#id0" title="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(a, f)</p></td>
 <td><p>Construct a Geodesic object</p></td>
 </tr>
 </tbody>
@@ -931,170 +910,6 @@ The default value of <em>outmask</em> is STANDARD, i.e., the <em>lat1</em>,
 returned.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Direct">
-<span class="sig-name descname"><span class="pre">Direct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outmask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1929</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Geodesics/Geodesics.html#Geodesic.Direct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Direct" title="Link to this definition">#</a></dt>
-<dd><p>Solve the direct geodesic problem</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> – latitude of the first point in degrees</p></li>
-<li><p><strong>lon1</strong> – longitude of the first point in degrees</p></li>
-<li><p><strong>azi1</strong> – azimuth at the first point in degrees</p></li>
-<li><p><strong>s12</strong> – the distance from the first point to the second in
-meters</p></li>
-<li><p><strong>outmask</strong> – the <span class="xref std std-ref">output mask</span></p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <span class="xref std std-ref">dict</span></p>
-</dd>
-</dl>
-<p>Compute geodesic starting at (<em>lat1</em>, <em>lon1</em>) with azimuth <em>azi1</em>
-and length <em>s12</em>.  The default value of <em>outmask</em> is STANDARD, i.e.,
-the <em>lat1</em>, <em>lon1</em>, <em>azi1</em>, <em>lat2</em>, <em>lon2</em>, <em>azi2</em>, <em>s12</em>, <em>a12</em>
-entries are returned.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirect">
-<span class="sig-name descname"><span class="pre">ArcDirect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outmask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1929</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Geodesics/Geodesics.html#Geodesic.ArcDirect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirect" title="Link to this definition">#</a></dt>
-<dd><p>Solve the direct geodesic problem in terms of spherical arc length</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> – latitude of the first point in degrees</p></li>
-<li><p><strong>lon1</strong> – longitude of the first point in degrees</p></li>
-<li><p><strong>azi1</strong> – azimuth at the first point in degrees</p></li>
-<li><p><strong>a12</strong> – spherical arc length from the first point to the second
-in degrees</p></li>
-<li><p><strong>outmask</strong> – the <span class="xref std std-ref">output mask</span></p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <span class="xref std std-ref">dict</span></p>
-</dd>
-</dl>
-<p>Compute geodesic starting at (<em>lat1</em>, <em>lon1</em>) with azimuth <em>azi1</em>
-and arc length <em>a12</em>.  The default value of <em>outmask</em> is STANDARD,
-i.e., the <em>lat1</em>, <em>lon1</em>, <em>azi1</em>, <em>lat2</em>, <em>lon2</em>, <em>azi2</em>, <em>s12</em>,
-<em>a12</em> entries are returned.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Line">
-<span class="sig-name descname"><span class="pre">Line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3979</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Geodesics/Geodesics.html#Geodesic.Line"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Line" title="Link to this definition">#</a></dt>
-<dd><p>Return a GeodesicLine object</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> – latitude of the first point in degrees</p></li>
-<li><p><strong>lon1</strong> – longitude of the first point in degrees</p></li>
-<li><p><strong>azi1</strong> – azimuth at the first point in degrees</p></li>
-<li><p><strong>caps</strong> – the <span class="xref std std-ref">capabilities</span></p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">GeodesicLine</span></code></p>
-</dd>
-</dl>
-<p>This allows points along a geodesic starting at (<em>lat1</em>, <em>lon1</em>),
-with azimuth <em>azi1</em> to be found.  The default value of <em>caps</em> is
-STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-solved.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.DirectLine">
-<span class="sig-name descname"><span class="pre">DirectLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3979</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Geodesics/Geodesics.html#Geodesic.DirectLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.DirectLine" title="Link to this definition">#</a></dt>
-<dd><p>Define a GeodesicLine object in terms of the direct geodesic
-problem specified in terms of spherical arc length</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> – latitude of the first point in degrees</p></li>
-<li><p><strong>lon1</strong> – longitude of the first point in degrees</p></li>
-<li><p><strong>azi1</strong> – azimuth at the first point in degrees</p></li>
-<li><p><strong>s12</strong> – the distance from the first point to the second in
-meters</p></li>
-<li><p><strong>caps</strong> – the <span class="xref std std-ref">capabilities</span></p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">GeodesicLine</span></code></p>
-</dd>
-</dl>
-<p>This function sets point 3 of the GeodesicLine to correspond to
-point 2 of the direct geodesic problem.  The default value of <em>caps</em>
-is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-solved.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirectLine">
-<span class="sig-name descname"><span class="pre">ArcDirectLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">azi1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3979</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Geodesics/Geodesics.html#Geodesic.ArcDirectLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirectLine" title="Link to this definition">#</a></dt>
-<dd><p>Define a GeodesicLine object in terms of the direct geodesic
-problem specified in terms of spherical arc length</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> – latitude of the first point in degrees</p></li>
-<li><p><strong>lon1</strong> – longitude of the first point in degrees</p></li>
-<li><p><strong>azi1</strong> – azimuth at the first point in degrees</p></li>
-<li><p><strong>a12</strong> – spherical arc length from the first point to the second
-in degrees</p></li>
-<li><p><strong>caps</strong> – the <span class="xref std std-ref">capabilities</span></p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">GeodesicLine</span></code></p>
-</dd>
-</dl>
-<p>This function sets point 3 of the GeodesicLine to correspond to
-point 2 of the direct geodesic problem.  The default value of <em>caps</em>
-is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-solved.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.InverseLine">
-<span class="sig-name descname"><span class="pre">InverseLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lat1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">caps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3979</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Geodesics/Geodesics.html#Geodesic.InverseLine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.InverseLine" title="Link to this definition">#</a></dt>
-<dd><p>Define a GeodesicLine object in terms of the invese geodesic problem</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>lat1</strong> – latitude of the first point in degrees</p></li>
-<li><p><strong>lon1</strong> – longitude of the first point in degrees</p></li>
-<li><p><strong>lat2</strong> – latitude of the second point in degrees</p></li>
-<li><p><strong>lon2</strong> – longitude of the second point in degrees</p></li>
-<li><p><strong>caps</strong> – the <span class="xref std std-ref">capabilities</span></p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">GeodesicLine</span></code></p>
-</dd>
-</dl>
-<p>This function sets point 3 of the GeodesicLine to correspond to
-point 2 of the inverse geodesic problem.  The default value of <em>caps</em>
-is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-solved.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Polygon">
-<span class="sig-name descname"><span class="pre">Polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Geodesics/Geodesics.html#Geodesic.Polygon"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Polygon" title="Link to this definition">#</a></dt>
-<dd><p>Return a PolygonArea object</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>polyline</strong> – if True then the object describes a polyline
-instead of a polygon</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">PolygonArea</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.EMPTY">
 <span class="sig-name descname"><span class="pre">EMPTY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.EMPTY" title="Link to this definition">#</a></dt>
@@ -1261,13 +1076,6 @@ problem.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.a"><code class="docutils literal notranslate"><span class="pre">Geodesic.a</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.f"><code class="docutils literal notranslate"><span class="pre">Geodesic.f</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Inverse"><code class="docutils literal notranslate"><span class="pre">Geodesic.Inverse()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Direct"><code class="docutils literal notranslate"><span class="pre">Geodesic.Direct()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirect"><code class="docutils literal notranslate"><span class="pre">Geodesic.ArcDirect()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Line"><code class="docutils literal notranslate"><span class="pre">Geodesic.Line()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.DirectLine"><code class="docutils literal notranslate"><span class="pre">Geodesic.DirectLine()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirectLine"><code class="docutils literal notranslate"><span class="pre">Geodesic.ArcDirectLine()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.InverseLine"><code class="docutils literal notranslate"><span class="pre">Geodesic.InverseLine()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Polygon"><code class="docutils literal notranslate"><span class="pre">Geodesic.Polygon()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.EMPTY"><code class="docutils literal notranslate"><span class="pre">Geodesic.EMPTY</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.LATITUDE"><code class="docutils literal notranslate"><span class="pre">Geodesic.LATITUDE</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.LONGITUDE"><code class="docutils literal notranslate"><span class="pre">Geodesic.LONGITUDE</span></code></a></li>

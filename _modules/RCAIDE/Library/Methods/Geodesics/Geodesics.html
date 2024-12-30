@@ -595,28 +595,9 @@
         <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mf">0.0</span>
         <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">s</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span></div>
-
-
-<div class="viewcode-block" id="Math.atan2d">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.atan2d">[docs]</a>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">atan2d</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;compute atan2(y, x) with the result in degrees&quot;&quot;&quot;</span>
-
-        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">q</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">q</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span>
-        <span class="n">ang</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
-        <span class="k">if</span>   <span class="n">q</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">ang</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">ang</span>
-        <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="n">ang</span> <span class="o">=</span>                <span class="mi">90</span>      <span class="o">-</span> <span class="n">ang</span>
-        <span class="k">elif</span> <span class="n">q</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span> <span class="n">ang</span> <span class="o">=</span>               <span class="o">-</span><span class="mi">90</span>     <span class="o">+</span> <span class="n">ang</span>
-        <span class="k">return</span> <span class="n">ang</span></div>
 </div>
 
-
+ 
 <div class="viewcode-block" id="GeodesicCapability">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.GeodesicCapability.html#RCAIDE.Library.Methods.Geodesics.Geodesics.GeodesicCapability">[docs]</a>
 <span class="k">class</span> <span class="nc">GeodesicCapability</span><span class="p">:</span>
@@ -724,53 +705,7 @@
             <span class="n">k</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">ar</span> <span class="o">*</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">y0</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
         <span class="k">return</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sinx</span> <span class="o">*</span> <span class="n">cosx</span> <span class="o">*</span> <span class="n">y0</span> <span class="k">if</span> <span class="n">sinp</span> <span class="c1"># sin(2 * x) * y0</span>
              <span class="k">else</span> <span class="n">cosx</span> <span class="o">*</span> <span class="p">(</span><span class="n">y0</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span> <span class="p">)</span>      <span class="c1"># cos(x) * (y0 - y1)</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_Astroid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: solve astroid equation.&quot;&quot;&quot;</span>
-        <span class="c1"># Solve k^4+2*k^3-(x^2+y^2-1)*k^2-2*y^2*k-y^2 = 0 for positive root k.</span>
-        <span class="c1"># This solution is adapted from Geocentric::Reverse.</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">q</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span>
-        <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">q</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">):</span>
-            <span class="c1"># Avoid possible division by zero when r = 0 by multiplying equations</span>
-            <span class="c1"># for s and t by r^3 and r, resp.</span>
-            <span class="n">S</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span> <span class="o">/</span> <span class="mi">4</span>            <span class="c1"># S = r^3 * s</span>
-            <span class="n">r2</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-            <span class="n">r3</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r2</span>
-            <span class="c1"># The discriminant of the quadratic equation for T3.  This is zero on</span>
-            <span class="c1"># the evolute curve p^(1/3)+q^(1/3) = 1</span>
-            <span class="n">disc</span> <span class="o">=</span> <span class="n">S</span> <span class="o">*</span> <span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r3</span><span class="p">)</span>
-            <span class="n">u</span> <span class="o">=</span> <span class="n">r</span>
-            <span class="k">if</span> <span class="n">disc</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">T3</span> <span class="o">=</span> <span class="n">S</span> <span class="o">+</span> <span class="n">r3</span>
-                <span class="c1"># Pick the sign on the sqrt to maximize abs(T3).  This minimizes loss</span>
-                <span class="c1"># of precision due to cancellation.  The result is unchanged because</span>
-                <span class="c1"># of the way the T is used in definition of u.</span>
-                <span class="n">T3</span> <span class="o">+=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">disc</span><span class="p">)</span> <span class="k">if</span> <span class="n">T3</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">disc</span><span class="p">)</span> <span class="c1"># T3 = (r * t)^3</span>
-                <span class="c1"># N.B. cbrt always returns the real root.  cbrt(-8) = -2.</span>
-                <span class="n">T</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">cbrt</span><span class="p">(</span><span class="n">T3</span><span class="p">)</span>       <span class="c1"># T = r * t</span>
-                <span class="c1"># T can be zero; but then r2 / T -&gt; 0.</span>
-                <span class="n">u</span> <span class="o">+=</span> <span class="n">T</span> <span class="o">+</span> <span class="p">(</span><span class="n">r2</span> <span class="o">/</span> <span class="n">T</span> <span class="k">if</span> <span class="n">T</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># T is complex, but the way u is defined the result is real.</span>
-                <span class="n">ang</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">disc</span><span class="p">),</span> <span class="o">-</span><span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="n">r3</span><span class="p">))</span>
-                <span class="c1"># There are three possible cube roots.  We choose the root which</span>
-                <span class="c1"># avoids cancellation.  Note that disc &lt; 0 implies that r &lt; 0.</span>
-                <span class="n">u</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
-            <span class="n">v</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">q</span><span class="p">)</span> <span class="c1"># guaranteed positive</span>
-            <span class="c1"># Avoid loss of accuracy when u &lt; 0.</span>
-            <span class="n">uv</span> <span class="o">=</span> <span class="n">q</span> <span class="o">/</span> <span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span> <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span> <span class="c1"># u+v, guaranteed positive</span>
-            <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">uv</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>               <span class="c1"># positive?</span>
-            <span class="c1"># Rearrange expression for k to avoid loss of accuracy due to</span>
-            <span class="c1"># subtraction.  Division by 0 not possible because uv &gt; 0, w &gt;= 0.</span>
-            <span class="n">k</span> <span class="o">=</span> <span class="n">uv</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">uv</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">w</span><span class="p">))</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span> <span class="c1"># guaranteed positive</span>
-        <span class="k">else</span><span class="p">:</span>                                       <span class="c1"># q == 0 &amp;&amp; r &lt;= 0</span>
-            <span class="c1"># y = 0 with |x| &lt;= 1.  Handle this case directly.</span>
-            <span class="c1"># for y small, positive root is k = abs(y)/sqrt(1-x^2)</span>
-            <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">return</span> <span class="n">k</span>
+ 
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_A1m1f</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
@@ -801,27 +736,7 @@
             <span class="n">c</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">eps2</span><span class="p">)</span> <span class="o">/</span> <span class="n">coeff</span><span class="p">[</span><span class="n">o</span> <span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
             <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2</span>
             <span class="n">d</span> <span class="o">*=</span> <span class="n">eps</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_C1pf</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return C1&#39;&quot;&quot;&quot;</span>
-        <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="mi">205</span><span class="p">,</span> <span class="o">-</span><span class="mi">432</span><span class="p">,</span> <span class="mi">768</span><span class="p">,</span> <span class="mi">1536</span><span class="p">,</span>
-      <span class="mi">4005</span><span class="p">,</span> <span class="o">-</span><span class="mi">4736</span><span class="p">,</span> <span class="mi">3840</span><span class="p">,</span> <span class="mi">12288</span><span class="p">,</span>
-      <span class="o">-</span><span class="mi">225</span><span class="p">,</span> <span class="mi">116</span><span class="p">,</span> <span class="mi">384</span><span class="p">,</span>
-      <span class="o">-</span><span class="mi">7173</span><span class="p">,</span> <span class="mi">2695</span><span class="p">,</span> <span class="mi">7680</span><span class="p">,</span>
-      <span class="mi">3467</span><span class="p">,</span> <span class="mi">7680</span><span class="p">,</span>
-      <span class="mi">38081</span><span class="p">,</span> <span class="mi">61440</span><span class="p">,</span>
-    <span class="p">]</span>
-        <span class="n">eps2</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">eps</span>
-        <span class="n">o</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">nC1p_</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span> <span class="c1"># l is index of C1p[l]</span>
-            <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">Geodesic</span><span class="o">.</span><span class="n">nC1p_</span> <span class="o">-</span> <span class="n">l</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="c1"># order of polynomial in eps^2</span>
-            <span class="n">c</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">coeff</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">eps2</span><span class="p">)</span> <span class="o">/</span> <span class="n">coeff</span><span class="p">[</span><span class="n">o</span> <span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-            <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2</span>
-            <span class="n">d</span> <span class="o">*=</span> <span class="n">eps</span>
-
+            
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_A2m1f</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return A2-1&quot;&quot;&quot;</span>
@@ -995,19 +910,7 @@
             <span class="n">m</span> <span class="o">=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">nC3_</span> <span class="o">-</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span>       <span class="c1"># order of polynomial in eps</span>
             <span class="n">mult</span> <span class="o">*=</span> <span class="n">eps</span>
             <span class="n">c</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">mult</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_C3x</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">eps</span><span class="p">)</span>
-            <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
-
-    <span class="k">def</span> <span class="nf">_C4f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return C4&quot;&quot;&quot;</span>
-        <span class="c1"># Evaluate C4 coeffs by Horner&#39;s method</span>
-        <span class="c1"># Elements c[0] thru c[nC4_ - 1] are set</span>
-        <span class="n">mult</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">o</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Geodesic</span><span class="o">.</span><span class="n">nC4_</span><span class="p">):</span> <span class="c1"># l is index of C4[l]</span>
-            <span class="n">m</span> <span class="o">=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">nC4_</span> <span class="o">-</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span>    <span class="c1"># order of polynomial in eps</span>
-            <span class="n">c</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">mult</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_C4x</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">eps</span><span class="p">)</span>
-            <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span>
-            <span class="n">mult</span> <span class="o">*=</span> <span class="n">eps</span>
+            <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span> 
 
     <span class="c1"># return s12b, m12b, m0, M12, M21</span>
     <span class="k">def</span> <span class="nf">_Lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">sig12</span><span class="p">,</span>
@@ -1646,223 +1549,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">arcmode</span><span class="p">:</span> <span class="n">outmask</span> <span class="o">|=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">DISTANCE_IN</span>
         <span class="n">line</span> <span class="o">=</span> <span class="n">GeodesicLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">outmask</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">line</span><span class="o">.</span><span class="n">_GenPosition</span><span class="p">(</span><span class="n">arcmode</span><span class="p">,</span> <span class="n">s12_a12</span><span class="p">,</span> <span class="n">outmask</span><span class="p">)</span>
-
-<div class="viewcode-block" id="Geodesic.Direct">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Direct">[docs]</a>
-    <span class="k">def</span> <span class="nf">Direct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span>
-             <span class="n">outmask</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solve the direct geodesic problem</span>
-
-<span class="sd">        :param lat1: latitude of the first point in degrees</span>
-<span class="sd">        :param lon1: longitude of the first point in degrees</span>
-<span class="sd">        :param azi1: azimuth at the first point in degrees</span>
-<span class="sd">        :param s12: the distance from the first point to the second in</span>
-<span class="sd">          meters</span>
-<span class="sd">        :param outmask: the :ref:`output mask &lt;outmask&gt;`</span>
-<span class="sd">        :return: a :ref:`dict`</span>
-
-<span class="sd">        Compute geodesic starting at (*lat1*, *lon1*) with azimuth *azi1*</span>
-<span class="sd">        and length *s12*.  The default value of *outmask* is STANDARD, i.e.,</span>
-<span class="sd">        the *lat1*, *lon1*, *azi1*, *lat2*, *lon2*, *azi2*, *s12*, *a12*</span>
-<span class="sd">        entries are returned.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">a12</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">azi2</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">M12</span><span class="p">,</span> <span class="n">M21</span><span class="p">,</span> <span class="n">S12</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GenDirect</span><span class="p">(</span>
-        <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span> <span class="n">outmask</span><span class="p">)</span>
-        <span class="n">outmask</span> <span class="o">&amp;=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">OUT_MASK</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lat1&#39;</span><span class="p">:</span> <span class="n">Math</span><span class="o">.</span><span class="n">LatFix</span><span class="p">(</span><span class="n">lat1</span><span class="p">),</span>
-              <span class="s1">&#39;lon1&#39;</span><span class="p">:</span> <span class="n">lon1</span> <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">LONG_UNROLL</span> <span class="k">else</span>
-              <span class="n">Math</span><span class="o">.</span><span class="n">AngNormalize</span><span class="p">(</span><span class="n">lon1</span><span class="p">),</span>
-              <span class="s1">&#39;azi1&#39;</span><span class="p">:</span> <span class="n">Math</span><span class="o">.</span><span class="n">AngNormalize</span><span class="p">(</span><span class="n">azi1</span><span class="p">),</span>
-              <span class="s1">&#39;s12&#39;</span><span class="p">:</span> <span class="n">s12</span><span class="p">}</span>
-        <span class="n">result</span><span class="p">[</span><span class="s1">&#39;a12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">a12</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">LATITUDE</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lat2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lat2</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">LONGITUDE</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lon2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lon2</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">AZIMUTH</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;azi2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">azi2</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">REDUCEDLENGTH</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;m12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m12</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">GEODESICSCALE</span><span class="p">:</span>
-            <span class="n">result</span><span class="p">[</span><span class="s1">&#39;M12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">M12</span><span class="p">;</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;M21&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">M21</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">AREA</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;S12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">S12</span>
-        <span class="k">return</span> <span class="n">result</span></div>
-
-
-<div class="viewcode-block" id="Geodesic.ArcDirect">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirect">[docs]</a>
-    <span class="k">def</span> <span class="nf">ArcDirect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span>
-                <span class="n">outmask</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solve the direct geodesic problem in terms of spherical arc length</span>
-
-<span class="sd">        :param lat1: latitude of the first point in degrees</span>
-<span class="sd">        :param lon1: longitude of the first point in degrees</span>
-<span class="sd">        :param azi1: azimuth at the first point in degrees</span>
-<span class="sd">        :param a12: spherical arc length from the first point to the second</span>
-<span class="sd">          in degrees</span>
-<span class="sd">        :param outmask: the :ref:`output mask &lt;outmask&gt;`</span>
-<span class="sd">        :return: a :ref:`dict`</span>
-
-<span class="sd">        Compute geodesic starting at (*lat1*, *lon1*) with azimuth *azi1*</span>
-<span class="sd">        and arc length *a12*.  The default value of *outmask* is STANDARD,</span>
-<span class="sd">        i.e., the *lat1*, *lon1*, *azi1*, *lat2*, *lon2*, *azi2*, *s12*,</span>
-<span class="sd">        *a12* entries are returned.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">a12</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">azi2</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">M12</span><span class="p">,</span> <span class="n">M21</span><span class="p">,</span> <span class="n">S12</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GenDirect</span><span class="p">(</span>
-        <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">outmask</span><span class="p">)</span>
-        <span class="n">outmask</span> <span class="o">&amp;=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">OUT_MASK</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lat1&#39;</span><span class="p">:</span> <span class="n">Math</span><span class="o">.</span><span class="n">LatFix</span><span class="p">(</span><span class="n">lat1</span><span class="p">),</span>
-              <span class="s1">&#39;lon1&#39;</span><span class="p">:</span> <span class="n">lon1</span> <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">LONG_UNROLL</span> <span class="k">else</span>
-              <span class="n">Math</span><span class="o">.</span><span class="n">AngNormalize</span><span class="p">(</span><span class="n">lon1</span><span class="p">),</span>
-              <span class="s1">&#39;azi1&#39;</span><span class="p">:</span> <span class="n">Math</span><span class="o">.</span><span class="n">AngNormalize</span><span class="p">(</span><span class="n">azi1</span><span class="p">),</span>
-              <span class="s1">&#39;a12&#39;</span><span class="p">:</span> <span class="n">a12</span><span class="p">}</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">DISTANCE</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;s12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s12</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">LATITUDE</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lat2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lat2</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">LONGITUDE</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;lon2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lon2</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">AZIMUTH</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;azi2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">azi2</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">REDUCEDLENGTH</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;m12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m12</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">GEODESICSCALE</span><span class="p">:</span>
-            <span class="n">result</span><span class="p">[</span><span class="s1">&#39;M12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">M12</span><span class="p">;</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;M21&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">M21</span>
-        <span class="k">if</span> <span class="n">outmask</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">AREA</span><span class="p">:</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;S12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">S12</span>
-        <span class="k">return</span> <span class="n">result</span></div>
-
-
-<div class="viewcode-block" id="Geodesic.Line">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Line">[docs]</a>
-    <span class="k">def</span> <span class="nf">Line</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span>
-           <span class="n">caps</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span> <span class="o">|</span>
-           <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">DISTANCE_IN</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a GeodesicLine object</span>
-
-<span class="sd">        :param lat1: latitude of the first point in degrees</span>
-<span class="sd">        :param lon1: longitude of the first point in degrees</span>
-<span class="sd">        :param azi1: azimuth at the first point in degrees</span>
-<span class="sd">        :param caps: the :ref:`capabilities &lt;outmask&gt;`</span>
-<span class="sd">        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`</span>
-
-<span class="sd">        This allows points along a geodesic starting at (*lat1*, *lon1*),</span>
-<span class="sd">        with azimuth *azi1* to be found.  The default value of *caps* is</span>
-<span class="sd">        STANDARD | DISTANCE_IN, allowing direct geodesic problem to be</span>
-<span class="sd">        solved.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="kn">from</span> <span class="nn">geographiclib.geodesicline</span> <span class="kn">import</span> <span class="n">GeodesicLine</span>
-        <span class="k">return</span> <span class="n">GeodesicLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">caps</span><span class="p">)</span></div>
-
-
-    <span class="k">def</span> <span class="nf">_GenDirectLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">arcmode</span><span class="p">,</span> <span class="n">s12_a12</span><span class="p">,</span>
-                     <span class="n">caps</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span> <span class="o">|</span>
-                     <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">DISTANCE_IN</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: general form of DirectLine&quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">geographiclib.geodesicline</span> <span class="kn">import</span> <span class="n">GeodesicLine</span>
-        <span class="c1"># Automatically supply DISTANCE_IN if necessary</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">arcmode</span><span class="p">:</span> <span class="n">caps</span> <span class="o">|=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">DISTANCE_IN</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">GeodesicLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">caps</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">arcmode</span><span class="p">:</span>
-            <span class="n">line</span><span class="o">.</span><span class="n">SetArc</span><span class="p">(</span><span class="n">s12_a12</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">line</span><span class="o">.</span><span class="n">SetDistance</span><span class="p">(</span><span class="n">s12_a12</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">line</span>
-
-<div class="viewcode-block" id="Geodesic.DirectLine">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.DirectLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">DirectLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span>
-                 <span class="n">caps</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span> <span class="o">|</span>
-                 <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">DISTANCE_IN</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define a GeodesicLine object in terms of the direct geodesic</span>
-<span class="sd">        problem specified in terms of spherical arc length</span>
-
-<span class="sd">        :param lat1: latitude of the first point in degrees</span>
-<span class="sd">        :param lon1: longitude of the first point in degrees</span>
-<span class="sd">        :param azi1: azimuth at the first point in degrees</span>
-<span class="sd">        :param s12: the distance from the first point to the second in</span>
-<span class="sd">          meters</span>
-<span class="sd">        :param caps: the :ref:`capabilities &lt;outmask&gt;`</span>
-<span class="sd">        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`</span>
-
-<span class="sd">        This function sets point 3 of the GeodesicLine to correspond to</span>
-<span class="sd">        point 2 of the direct geodesic problem.  The default value of *caps*</span>
-<span class="sd">        is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be</span>
-<span class="sd">        solved.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GenDirectLine</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">s12</span><span class="p">,</span> <span class="n">caps</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Geodesic.ArcDirectLine">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.ArcDirectLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">ArcDirectLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span>
-                    <span class="n">caps</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span> <span class="o">|</span>
-                 <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">DISTANCE_IN</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define a GeodesicLine object in terms of the direct geodesic</span>
-<span class="sd">        problem specified in terms of spherical arc length</span>
-
-<span class="sd">        :param lat1: latitude of the first point in degrees</span>
-<span class="sd">        :param lon1: longitude of the first point in degrees</span>
-<span class="sd">        :param azi1: azimuth at the first point in degrees</span>
-<span class="sd">        :param a12: spherical arc length from the first point to the second</span>
-<span class="sd">          in degrees</span>
-<span class="sd">        :param caps: the :ref:`capabilities &lt;outmask&gt;`</span>
-<span class="sd">        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`</span>
-
-<span class="sd">        This function sets point 3 of the GeodesicLine to correspond to</span>
-<span class="sd">        point 2 of the direct geodesic problem.  The default value of *caps*</span>
-<span class="sd">        is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be</span>
-<span class="sd">        solved.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GenDirectLine</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">a12</span><span class="p">,</span> <span class="n">caps</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="Geodesic.InverseLine">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.InverseLine">[docs]</a>
-    <span class="k">def</span> <span class="nf">InverseLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span>
-                  <span class="n">caps</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span> <span class="o">|</span>
-                  <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">DISTANCE_IN</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define a GeodesicLine object in terms of the invese geodesic problem</span>
-
-<span class="sd">        :param lat1: latitude of the first point in degrees</span>
-<span class="sd">        :param lon1: longitude of the first point in degrees</span>
-<span class="sd">        :param lat2: latitude of the second point in degrees</span>
-<span class="sd">        :param lon2: longitude of the second point in degrees</span>
-<span class="sd">        :param caps: the :ref:`capabilities &lt;outmask&gt;`</span>
-<span class="sd">        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`</span>
-
-<span class="sd">        This function sets point 3 of the GeodesicLine to correspond to</span>
-<span class="sd">        point 2 of the inverse geodesic problem.  The default value of *caps*</span>
-<span class="sd">        is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be</span>
-<span class="sd">        solved.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="kn">from</span> <span class="nn">geographiclib.geodesicline</span> <span class="kn">import</span> <span class="n">GeodesicLine</span>
-        <span class="n">a12</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">salp1</span><span class="p">,</span> <span class="n">calp1</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_GenInverse</span><span class="p">(</span>
-        <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">azi1</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">atan2d</span><span class="p">(</span><span class="n">salp1</span><span class="p">,</span> <span class="n">calp1</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">caps</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Geodesic</span><span class="o">.</span><span class="n">OUT_MASK</span> <span class="o">&amp;</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">DISTANCE_IN</span><span class="p">):</span>
-            <span class="n">caps</span> <span class="o">|=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">DISTANCE</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">GeodesicLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">caps</span><span class="p">,</span> <span class="n">salp1</span><span class="p">,</span> <span class="n">calp1</span><span class="p">)</span>
-        <span class="n">line</span><span class="o">.</span><span class="n">SetArc</span><span class="p">(</span><span class="n">a12</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">line</span></div>
-
-
-<div class="viewcode-block" id="Geodesic.Polygon">
-<a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Polygon">[docs]</a>
-    <span class="k">def</span> <span class="nf">Polygon</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polyline</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a PolygonArea object</span>
-
-<span class="sd">        :param polyline: if True then the object describes a polyline</span>
-<span class="sd">          instead of a polygon</span>
-<span class="sd">        :return: a :class:`~geographiclib.polygonarea.PolygonArea`</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="kn">from</span> <span class="nn">geographiclib.polygonarea</span> <span class="kn">import</span> <span class="n">PolygonArea</span>
-        <span class="k">return</span> <span class="n">PolygonArea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">polyline</span><span class="p">)</span></div>
-
+ 
 
     <span class="n">EMPTY</span>         <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">EMPTY</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;No capabilities, no output.&quot;&quot;&quot;</span>

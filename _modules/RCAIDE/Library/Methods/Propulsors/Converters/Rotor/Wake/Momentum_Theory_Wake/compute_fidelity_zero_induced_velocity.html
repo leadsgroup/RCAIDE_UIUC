@@ -393,7 +393,7 @@
 <span class="c1">## @defgroup Methods-Propulsion-Rotor_Wake-Fidelity_Zero</span>
 <div class="viewcode-block" id="compute_fidelity_zero_induced_velocity">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.compute_fidelity_zero_induced_velocity.compute_fidelity_zero_induced_velocity.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.compute_fidelity_zero_induced_velocity.compute_fidelity_zero_induced_velocity">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_fidelity_zero_induced_velocity</span><span class="p">(</span><span class="n">evaluation_points</span><span class="p">,</span> <span class="n">props</span><span class="p">,</span> <span class="n">ctrl_pts</span><span class="p">,</span> <span class="n">identical_flag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  
+<span class="k">def</span> <span class="nf">compute_fidelity_zero_induced_velocity</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">evaluation_points</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">,</span> <span class="n">identical_flag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This computes the velocity induced by the fidelity zero wake</span>
 <span class="sd">    on specified evaluation points.</span>
 
@@ -418,62 +418,55 @@
     <span class="c1"># extract vortex distribution</span>
     <span class="n">n_cp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">evaluation_points</span><span class="o">.</span><span class="n">XC</span><span class="p">)</span>
     
-    <span class="c1"># initialize propeller wake induced velocities</span>
-    <span class="n">prop_V_wake_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ctrl_pts</span><span class="p">,</span><span class="n">n_cp</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    <span class="c1"># initialize rotor wake induced velocities</span>
+    <span class="n">rotor_V_wake_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ctrl_pts</span><span class="p">,</span><span class="n">n_cp</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+       
+    <span class="n">R</span>            <span class="o">=</span> <span class="n">rotor</span><span class="o">.</span><span class="n">tip_radius</span>
+    <span class="n">r</span>            <span class="o">=</span> <span class="n">rotor_conditions</span><span class="o">.</span><span class="n">disc_radial_distribution</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">]</span>
     
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">prop</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">props</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">identical_flag</span><span class="p">:</span>
-            <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">idx</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="n">prop_key</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">props</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">idx</span><span class="p">]</span>
-        <span class="n">prop_outputs</span> <span class="o">=</span> <span class="n">props</span><span class="p">[</span><span class="n">prop_key</span><span class="p">]</span><span class="o">.</span><span class="n">outputs</span>
-        <span class="n">R</span>            <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">tip_radius</span>
-        <span class="n">r</span>            <span class="o">=</span> <span class="n">prop_outputs</span><span class="o">.</span><span class="n">disc_radial_distribution</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">0</span><span class="p">]</span>
-        
-        <span class="c1"># Ignore points within hub or outside tip radius</span>
-        <span class="n">hub_y_center</span> <span class="o">=</span> <span class="n">prop</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">inboard_r</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">hub_y_center</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> 
-        <span class="n">outboard_r</span>   <span class="o">=</span> <span class="n">hub_y_center</span> <span class="o">+</span> <span class="n">r</span> 
-        <span class="n">prop_y_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inboard_r</span><span class="p">,</span> <span class="n">outboard_r</span><span class="p">)</span>
+    <span class="c1"># Ignore points within hub or outside tip radius</span>
+    <span class="n">hub_y_center</span> <span class="o">=</span> <span class="n">rotor</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">inboard_r</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">hub_y_center</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> 
+    <span class="n">outboard_r</span>   <span class="o">=</span> <span class="n">hub_y_center</span> <span class="o">+</span> <span class="n">r</span> 
+    <span class="n">rotor_y_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inboard_r</span><span class="p">,</span> <span class="n">outboard_r</span><span class="p">)</span>
+
+    <span class="c1"># within this range, add an induced x- and z- velocity from rotor wake</span>
+    <span class="n">bool_inboard</span>  <span class="o">=</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&gt;</span> <span class="n">inboard_r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>  <span class="o">*</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&lt;</span> <span class="n">inboard_r</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">bool_outboard</span> <span class="o">=</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&gt;</span> <span class="n">outboard_r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&lt;</span> <span class="n">outboard_r</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+    <span class="n">bool_in_range</span> <span class="o">=</span> <span class="n">bool_inboard</span> <span class="o">+</span> <span class="n">bool_outboard</span>
+    <span class="n">YC_in_range</span>   <span class="o">=</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span><span class="p">[</span><span class="n">bool_in_range</span><span class="p">]</span>
+
+    <span class="n">y_vals</span>  <span class="o">=</span> <span class="n">YC_in_range</span>
+    <span class="n">val_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bool_in_range</span><span class="o">==</span><span class="kc">True</span><span class="p">)</span>
     
-        <span class="c1"># within this range, add an induced x- and z- velocity from propeller wake</span>
-        <span class="n">bool_inboard</span>  <span class="o">=</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&gt;</span> <span class="n">inboard_r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>  <span class="o">*</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&lt;</span> <span class="n">inboard_r</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
-        <span class="n">bool_outboard</span> <span class="o">=</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&gt;</span> <span class="n">outboard_r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">*</span> <span class="p">(</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span> <span class="o">&lt;</span> <span class="n">outboard_r</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
-        <span class="n">bool_in_range</span> <span class="o">=</span> <span class="n">bool_inboard</span> <span class="o">+</span> <span class="n">bool_outboard</span>
-        <span class="n">YC_in_range</span>   <span class="o">=</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">YC</span><span class="p">[</span><span class="n">bool_in_range</span><span class="p">]</span>
+    <span class="n">s</span>  <span class="o">=</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">XC</span><span class="p">[</span><span class="n">val_ids</span><span class="p">]</span> <span class="o">-</span> <span class="n">rotor</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">kd</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>    
 
-        <span class="n">y_vals</span>  <span class="o">=</span> <span class="n">YC_in_range</span>
-        <span class="n">val_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">bool_in_range</span><span class="o">==</span><span class="kc">True</span><span class="p">)</span>
-        
-        <span class="n">s</span>  <span class="o">=</span> <span class="n">evaluation_points</span><span class="o">.</span><span class="n">XC</span><span class="p">[</span><span class="n">val_ids</span><span class="p">]</span> <span class="o">-</span> <span class="n">prop</span><span class="o">.</span><span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">kd</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>    
-
-        <span class="c1"># extract radial and azimuthal velocities at blade</span>
-        <span class="n">va</span> <span class="o">=</span> <span class="n">prop_outputs</span><span class="o">.</span><span class="n">blade_axial_induced_velocity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">vt</span> <span class="o">=</span> <span class="n">prop_outputs</span><span class="o">.</span><span class="n">blade_tangential_induced_velocity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        
-        
-        <span class="n">va_y_range</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">va</span><span class="p">),</span> <span class="n">va</span><span class="p">)</span>
-        <span class="n">vt_y_range</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">vt</span><span class="p">),</span> <span class="n">vt</span><span class="p">)</span><span class="o">*</span><span class="n">prop</span><span class="o">.</span><span class="n">rotation</span>
-        <span class="n">va_interp</span>   <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">prop_y_range</span><span class="p">,</span> <span class="n">va_y_range</span><span class="p">)</span>
-        <span class="n">vt_interp</span>   <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">prop_y_range</span><span class="p">,</span> <span class="n">vt_y_range</span><span class="p">)</span>
-        
-        
-        <span class="c1"># preallocate va_new and vt_new</span>
-        <span class="n">va_new</span> <span class="o">=</span> <span class="n">kd</span><span class="o">*</span><span class="n">va_interp</span><span class="p">((</span><span class="n">y_vals</span><span class="p">))</span>
-        <span class="n">vt_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">val_ids</span><span class="p">))</span>
-        
-        <span class="c1"># invert inboard vt values</span>
-        <span class="n">inboard_bools</span>                <span class="o">=</span> <span class="p">(</span><span class="n">y_vals</span> <span class="o">&lt;</span> <span class="n">hub_y_center</span><span class="p">)</span>
-        <span class="n">vt_new</span><span class="p">[</span><span class="n">inboard_bools</span><span class="p">]</span>        <span class="o">=</span> <span class="o">-</span><span class="n">kd</span><span class="p">[</span><span class="n">inboard_bools</span><span class="p">]</span><span class="o">*</span><span class="n">vt_interp</span><span class="p">((</span><span class="n">y_vals</span><span class="p">[</span><span class="n">inboard_bools</span><span class="p">]))</span>
-        <span class="n">vt_new</span><span class="p">[</span><span class="n">inboard_bools</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="n">kd</span><span class="p">[</span><span class="n">inboard_bools</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="n">vt_interp</span><span class="p">((</span><span class="n">y_vals</span><span class="p">[</span><span class="n">inboard_bools</span><span class="o">==</span><span class="kc">False</span><span class="p">]))</span>
-        
-        <span class="n">prop_V_wake_ind</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">val_ids</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">va_new</span>  <span class="c1"># axial induced velocity</span>
-        <span class="n">prop_V_wake_ind</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">val_ids</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>       <span class="c1"># spanwise induced velocity; in line with prop, so 0</span>
-        <span class="n">prop_V_wake_ind</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">val_ids</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vt_new</span>  <span class="c1"># vertical induced velocity     </span>
-        
-    <span class="k">return</span> <span class="n">prop_V_wake_ind</span></div>
+    <span class="c1"># extract radial and azimuthal velocities at blade</span>
+    <span class="n">va</span> <span class="o">=</span> <span class="n">rotor_conditions</span><span class="o">.</span><span class="n">blade_axial_induced_velocity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">vt</span> <span class="o">=</span> <span class="n">rotor_conditions</span><span class="o">.</span><span class="n">blade_tangential_induced_velocity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+    
+    <span class="n">va_y_range</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">va</span><span class="p">),</span> <span class="n">va</span><span class="p">)</span>
+    <span class="n">vt_y_range</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">vt</span><span class="p">),</span> <span class="n">vt</span><span class="p">)</span><span class="o">*</span><span class="n">rotor</span><span class="o">.</span><span class="n">rotation</span>
+    <span class="n">va_interp</span>   <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">rotor_y_range</span><span class="p">,</span> <span class="n">va_y_range</span><span class="p">)</span>
+    <span class="n">vt_interp</span>   <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">rotor_y_range</span><span class="p">,</span> <span class="n">vt_y_range</span><span class="p">)</span>
+    
+    
+    <span class="c1"># preallocate va_new and vt_new</span>
+    <span class="n">va_new</span> <span class="o">=</span> <span class="n">kd</span><span class="o">*</span><span class="n">va_interp</span><span class="p">((</span><span class="n">y_vals</span><span class="p">))</span>
+    <span class="n">vt_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">val_ids</span><span class="p">))</span>
+    
+    <span class="c1"># invert inboard vt values</span>
+    <span class="n">inboard_bools</span>                <span class="o">=</span> <span class="p">(</span><span class="n">y_vals</span> <span class="o">&lt;</span> <span class="n">hub_y_center</span><span class="p">)</span>
+    <span class="n">vt_new</span><span class="p">[</span><span class="n">inboard_bools</span><span class="p">]</span>        <span class="o">=</span> <span class="o">-</span><span class="n">kd</span><span class="p">[</span><span class="n">inboard_bools</span><span class="p">]</span><span class="o">*</span><span class="n">vt_interp</span><span class="p">((</span><span class="n">y_vals</span><span class="p">[</span><span class="n">inboard_bools</span><span class="p">]))</span>
+    <span class="n">vt_new</span><span class="p">[</span><span class="n">inboard_bools</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="n">kd</span><span class="p">[</span><span class="n">inboard_bools</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span><span class="o">*</span><span class="n">vt_interp</span><span class="p">((</span><span class="n">y_vals</span><span class="p">[</span><span class="n">inboard_bools</span><span class="o">==</span><span class="kc">False</span><span class="p">]))</span>
+    
+    <span class="n">rotor_V_wake_ind</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">val_ids</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">va_new</span>  <span class="c1"># axial induced velocity</span>
+    <span class="n">rotor_V_wake_ind</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">val_ids</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>       <span class="c1"># spanwise induced velocity; in line with rotor, so 0</span>
+    <span class="n">rotor_V_wake_ind</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">val_ids</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vt_new</span>  <span class="c1"># vertical induced velocity     </span>
+    
+    <span class="k">return</span> <span class="n">rotor_V_wake_ind</span></div>
 
   
   

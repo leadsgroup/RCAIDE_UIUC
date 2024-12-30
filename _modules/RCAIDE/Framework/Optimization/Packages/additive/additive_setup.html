@@ -564,11 +564,9 @@
                     <span class="n">xb</span><span class="p">,</span> <span class="n">shgo_cons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialize_opt_vals_SHGO</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="n">x_low_bound</span><span class="p">,</span> <span class="n">x_up_bound</span><span class="p">,</span> <span class="n">con_low_edge</span><span class="p">,</span> <span class="n">con_up_edge</span><span class="p">,</span> <span class="n">nam</span><span class="p">,</span> <span class="n">con</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">g_additive_surrogate</span><span class="p">)</span>
                 
                     <span class="c1">#self.global_optimizer = &#39;SHGO&#39;</span>
-                    <span class="n">options</span> <span class="o">=</span> <span class="p">{}</span>
-                    <span class="c1">#options[&#39;maxfev&#39;] = 1</span>
-                    <span class="c1">#self.expected_improvement_carpet(x_low_bound, x_up_bound, problem, f_additive_surrogate, g_additive_surrogate, fstar) </span>
+                    <span class="n">options</span> <span class="o">=</span> <span class="p">{}</span> 
                     <span class="n">res</span> <span class="o">=</span> <span class="n">shgo</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">evaluate_expected_improvement</span><span class="p">,</span> <span class="n">xb</span><span class="p">,</span> <span class="n">iters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span><span class="n">f_additive_surrogate</span><span class="p">,</span><span class="n">g_additive_surrogate</span><span class="p">,</span><span class="n">fstar</span><span class="p">),</span><span class="n">constraints</span><span class="o">=</span><span class="n">shgo_cons</span><span class="p">,</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
-                    <span class="c1">#self.global_optimizer = &#39;ALPSO&#39;</span>
+                   
                     
                     <span class="n">fOpt</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> 
                     <span class="n">imOpt</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;fun&#39;</span><span class="p">]</span>
@@ -875,93 +873,6 @@
             <span class="k">return</span> <span class="o">-</span><span class="n">EI</span></div>
 
     
-    <span class="c1">## @ingroup Optimization-Package_Setups</span>
-<div class="viewcode-block" id="Additive_Solver.expected_improvement_carpet">
-<a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.expected_improvement_carpet">[docs]</a>
-    <span class="k">def</span> <span class="nf">expected_improvement_carpet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">lbs</span><span class="p">,</span><span class="n">ubs</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">obj_surrogate</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="p">,</span><span class="n">fstar</span><span class="p">,</span><span class="n">show_log_improvement</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a carpet plot of the expected improvement</span>
-<span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Source:</span>
-<span class="sd">        N/A</span>
-<span class="sd">    </span>
-<span class="sd">        Inputs:</span>
-<span class="sd">        lbs                  [array]</span>
-<span class="sd">        lbs                  [array]</span>
-<span class="sd">        problem              [nexus()]</span>
-<span class="sd">        obj_surrogate        [fun()]</span>
-<span class="sd">        cons_surrogate       [fun()]</span>
-<span class="sd">        fstar                [float]</span>
-<span class="sd">        show_log_improvement [bool]</span>
-<span class="sd">        </span>
-<span class="sd">        Outputs:</span>
-<span class="sd">        Alluring plots that you could only dream of</span>
-<span class="sd">    </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A    </span>
-<span class="sd">        </span>
-<span class="sd">        &quot;&quot;&quot;</span>       
-    
-        <span class="c1"># Assumes 2D</span>
-        <span class="c1"># To use before global opt:</span>
-        <span class="c1"># self.expected_improvement_carpet(x_low_bound, x_up_bound, problem, f_additive_surrogate, g_additive_surrogate, fstar)  </span>
-    
-        <span class="n">problem</span><span class="o">.</span><span class="n">fidelity_level</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">linspace_num</span> <span class="o">=</span> <span class="mi">40</span>
-        
-        <span class="n">x0s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lbs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ubs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">linspace_num</span><span class="p">)</span>
-        <span class="n">x1s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lbs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">ubs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">linspace_num</span><span class="p">)</span> 
-            
-        <span class="n">EI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">linspace_num</span><span class="p">,</span><span class="n">linspace_num</span><span class="p">])</span>        
-            
-        <span class="k">for</span> <span class="n">ii</span><span class="p">,</span><span class="n">x0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x0s</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">jj</span><span class="p">,</span><span class="n">x1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x1s</span><span class="p">):</span>
-                <span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x0</span><span class="p">,</span><span class="n">x1</span><span class="p">]]</span>
-                <span class="n">obj</span>   <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">objective</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-                <span class="n">const</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">all_constraints</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>    
-            
-                <span class="n">obj_addition</span><span class="p">,</span> <span class="n">obj_sigma</span>   <span class="o">=</span> <span class="n">obj_surrogate</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">return_std</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                <span class="n">cons_addition</span><span class="p">,</span> <span class="n">cons_sigma</span> <span class="o">=</span> <span class="n">cons_surrogate</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">return_std</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-                
-                <span class="n">fhat</span>      <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">obj_addition</span>
-                <span class="n">EI</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">fstar</span><span class="o">-</span><span class="n">fhat</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">((</span><span class="n">fstar</span><span class="o">-</span><span class="n">fhat</span><span class="p">)</span><span class="o">/</span><span class="n">obj_sigma</span><span class="p">)</span> <span class="o">+</span> <span class="n">obj_sigma</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">((</span><span class="n">fstar</span><span class="o">-</span><span class="n">fhat</span><span class="p">)</span><span class="o">/</span><span class="n">obj_sigma</span><span class="p">)</span>
-                <span class="n">EI</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">EI</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">])</span>
-                <span class="k">if</span> <span class="n">EI</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
-                    <span class="n">EI</span><span class="p">[</span><span class="n">jj</span><span class="p">,</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
-                <span class="n">const</span>     <span class="o">=</span> <span class="n">const</span> <span class="o">+</span> <span class="n">cons_addition</span>
-                <span class="n">const</span>     <span class="o">=</span> <span class="n">const</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-                
-                <span class="nb">print</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">jj</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Expected Improvement: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">EI</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span><span class="n">jj</span><span class="p">]))</span>
-                
-        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-                
-        <span class="n">num_levels</span> <span class="o">=</span> <span class="mi">20</span>
-                
-        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">levals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">EI</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">EI</span><span class="p">),</span><span class="n">num_levels</span><span class="p">)</span>
-        <span class="n">CS</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x0s</span><span class="p">,</span> <span class="n">x1s</span><span class="p">,</span> <span class="n">EI</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="n">levals</span><span class="p">)</span>
-        <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">)</span>
-        <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Expected Improvement&#39;</span><span class="p">)</span>
-        
-        <span class="k">if</span> <span class="n">show_log_improvement</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span> <span class="c1"># Display log expected information as well</span>
-            <span class="n">EI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">EI</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">EI</span><span class="p">[</span><span class="n">EI</span><span class="o">!=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]))</span>
-            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">EI</span><span class="p">[</span><span class="n">EI</span><span class="o">!=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">100</span><span class="p">:</span>
-                <span class="n">levals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">EI</span><span class="p">[</span><span class="n">EI</span><span class="o">!=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">EI</span><span class="p">),</span><span class="n">num_levels</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">levals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">EI</span><span class="p">),</span><span class="n">num_levels</span><span class="p">)</span>    
-            <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-            <span class="n">CS</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">x0s</span><span class="p">,</span> <span class="n">x1s</span><span class="p">,</span> <span class="n">EI</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="n">levals</span><span class="p">)</span>
-            <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">)</span>
-            <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Log Expected Improvement&#39;</span><span class="p">)</span>    
-        
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
-
-        
     <span class="c1">## @ingroup Optimization-Package_Setups    </span>
 <div class="viewcode-block" id="Additive_Solver.scale_vals">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals">[docs]</a>

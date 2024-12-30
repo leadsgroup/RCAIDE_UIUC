@@ -19,7 +19,6 @@ RCAIDE.Framework.Optimization.Packages.additive.additive\_setup.Additive\_Solver
       ~Additive_Solver.evaluate_corrected_model
       ~Additive_Solver.evaluate_expected_improvement
       ~Additive_Solver.evaluate_model
-      ~Additive_Solver.expected_improvement_carpet
       ~Additive_Solver.initialize_opt_vals
       ~Additive_Solver.initialize_opt_vals_SHGO
       ~Additive_Solver.initialize_opt_vals_SLSQP

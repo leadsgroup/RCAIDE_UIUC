@@ -412,7 +412,7 @@
             <span class="c1"># ensure all properties of wing are computed before drag calculations  </span>
             <span class="n">vehicle</span> <span class="o">=</span>  <span class="n">segment</span><span class="o">.</span><span class="n">analyses</span><span class="o">.</span><span class="n">stability</span><span class="o">.</span><span class="n">vehicle</span>
             <span class="k">for</span> <span class="n">wing</span> <span class="ow">in</span>  <span class="n">vehicle</span><span class="o">.</span><span class="n">wings</span><span class="p">:</span> 
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wing</span><span class="o">.</span><span class="n">Segments</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> 
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wing</span><span class="o">.</span><span class="n">segments</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> 
                     <span class="n">wing_segmented_planform</span><span class="p">(</span><span class="n">wing</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">wing_planform</span><span class="p">(</span><span class="n">wing</span><span class="p">)</span>

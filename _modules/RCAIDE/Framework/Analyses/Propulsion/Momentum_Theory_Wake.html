@@ -474,7 +474,7 @@
     
 <div class="viewcode-block" id="Momentum_Theory_Wake.evaluate_slipstream">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.html#RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.Momentum_Theory_Wake.evaluate_slipstream">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_slipstream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">,</span><span class="n">wing_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">evaluate_slipstream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">,</span><span class="n">wing_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates the velocities induced by the rotor on a specified wing of the vehicle.</span>
 <span class="sd">        If no wing instance is specified, uses main wing or last available wing in geometry.</span>
@@ -518,7 +518,7 @@
         <span class="n">wing_CPs</span><span class="p">,</span> <span class="n">slipstream_vd_ids</span> <span class="o">=</span> <span class="n">extract_wing_collocation_points</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">wing_instance_idx</span><span class="p">)</span>
         
         <span class="c1"># Evaluate rotor slipstream effect on specified wing instance</span>
-        <span class="n">rot_V_wake_ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_wake_velocities</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">wing_CPs</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">)</span>
+        <span class="n">rot_V_wake_ind</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_wake_velocities</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">wing_CPs</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">)</span>
         
         <span class="c1"># Expand</span>
         <span class="n">wake_V_ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ctrl_pts</span><span class="p">,</span><span class="n">geometry</span><span class="o">.</span><span class="n">vortex_distribution</span><span class="o">.</span><span class="n">n_cp</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -530,7 +530,7 @@
     
 <div class="viewcode-block" id="Momentum_Theory_Wake.evaluate_wake_velocities">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.html#RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.Momentum_Theory_Wake.evaluate_wake_velocities">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_wake_velocities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">evaluation_points</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">evaluate_wake_velocities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">evaluation_points</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Links the rotor wake to compute the wake-induced velocities at the specified</span>
 <span class="sd">        evaluation points.</span>
@@ -552,10 +552,8 @@
 <span class="sd">        Properties Used:</span>
 <span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>  
-        
-        <span class="n">rots</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
-        <span class="n">rots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rotor</span><span class="p">)</span>
-        <span class="n">rot_V_wake_ind</span> <span class="o">=</span> <span class="n">compute_fidelity_zero_induced_velocity</span><span class="p">(</span><span class="n">evaluation_points</span><span class="p">,</span><span class="n">rots</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">)</span>  
+         
+        <span class="n">rot_V_wake_ind</span> <span class="o">=</span> <span class="n">compute_fidelity_zero_induced_velocity</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">evaluation_points</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">)</span>  
         
         <span class="k">return</span> <span class="n">rot_V_wake_ind</span></div>
 </div>

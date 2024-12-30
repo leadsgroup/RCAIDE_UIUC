@@ -25,10 +25,10 @@
    "execution_count": 1,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:49:20.139064Z",
-     "iopub.status.busy": "2024-12-30T05:49:20.138877Z",
-     "iopub.status.idle": "2024-12-30T05:49:20.545465Z",
-     "shell.execute_reply": "2024-12-30T05:49:20.544977Z"
+     "iopub.execute_input": "2024-12-30T23:24:22.996848Z",
+     "iopub.status.busy": "2024-12-30T23:24:22.996670Z",
+     "iopub.status.idle": "2024-12-30T23:24:23.404461Z",
+     "shell.execute_reply": "2024-12-30T23:24:23.403806Z"
     }
    },
    "outputs": [],
@@ -60,10 +60,10 @@
    "execution_count": 2,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:49:20.547594Z",
-     "iopub.status.busy": "2024-12-30T05:49:20.547358Z",
-     "iopub.status.idle": "2024-12-30T05:49:21.353767Z",
-     "shell.execute_reply": "2024-12-30T05:49:21.353228Z"
+     "iopub.execute_input": "2024-12-30T23:24:23.406611Z",
+     "iopub.status.busy": "2024-12-30T23:24:23.406355Z",
+     "iopub.status.idle": "2024-12-30T23:24:24.207443Z",
+     "shell.execute_reply": "2024-12-30T23:24:24.206759Z"
     }
    },
    "outputs": [],
@@ -92,10 +92,10 @@
    "execution_count": 3,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:49:21.356611Z",
-     "iopub.status.busy": "2024-12-30T05:49:21.356353Z",
-     "iopub.status.idle": "2024-12-30T05:49:21.451457Z",
-     "shell.execute_reply": "2024-12-30T05:49:21.450945Z"
+     "iopub.execute_input": "2024-12-30T23:24:24.210423Z",
+     "iopub.status.busy": "2024-12-30T23:24:24.210159Z",
+     "iopub.status.idle": "2024-12-30T23:24:24.305387Z",
+     "shell.execute_reply": "2024-12-30T23:24:24.304740Z"
     }
    },
    "outputs": [],
@@ -423,7 +423,7 @@
     "    segment.percent_z_location                  = -0.00144 \n",
     "    segment.height                              = 0.0100 \n",
     "    segment.width                               = 0.0100  \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment  \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -432,7 +432,7 @@
     "    segment.percent_z_location                  = -0.00144 \n",
     "    segment.height                              = 0.7500\n",
     "    segment.width                               = 0.6500\n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -441,7 +441,7 @@
     "    segment.percent_z_location                  = 0.00000 \n",
     "    segment.height                              = 1.52783 \n",
     "    segment.width                               = 1.20043 \n",
-    "    fuselage.Segments.append(segment)      \n",
+    "    fuselage.segments.append(segment)      \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -450,7 +450,7 @@
     "    segment.percent_z_location                  = 0.00000 \n",
     "    segment.height                              = 1.96435 \n",
     "    segment.width                               = 1.52783 \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "\n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -459,7 +459,7 @@
     "    segment.percent_z_location                  = 0.00431 \n",
     "    segment.height                              = 2.72826 \n",
     "    segment.width                               = 1.96435 \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -468,7 +468,7 @@
     "    segment.percent_z_location                  = 0.00861 \n",
     "    segment.height                              = 3.49217 \n",
     "    segment.width                               = 2.61913 \n",
-    "    fuselage.Segments.append(segment)     \n",
+    "    fuselage.segments.append(segment)     \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -477,7 +477,7 @@
     "    segment.percent_z_location                  = 0.01005 \n",
     "    segment.height                              = 3.70130 \n",
     "    segment.width                               = 3.05565 \n",
-    "    fuselage.Segments.append(segment)             \n",
+    "    fuselage.segments.append(segment)             \n",
     "     \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -486,7 +486,7 @@
     "    segment.percent_z_location                  = 0.01148 \n",
     "    segment.height                              = 3.92870 \n",
     "    segment.width                               = 3.71043 \n",
-    "    fuselage.Segments.append(segment)    \n",
+    "    fuselage.segments.append(segment)    \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -495,7 +495,7 @@
     "    segment.percent_z_location                  = 0.01148 \n",
     "    segment.height                              = 3.92870 \n",
     "    segment.width                               = 3.92870 \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -504,7 +504,7 @@
     "    segment.percent_z_location                  = 0.01292\n",
     "    segment.height                              = 3.81957\n",
     "    segment.width                               = 3.81957\n",
-    "    fuselage.Segments.append(segment)     \n",
+    "    fuselage.segments.append(segment)     \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -513,7 +513,7 @@
     "    segment.percent_z_location                  = 0.01292\n",
     "    segment.height                              = 3.81957\n",
     "    segment.width                               = 3.81957\n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -522,7 +522,7 @@
     "    segment.percent_z_location                  = 0.01722\n",
     "    segment.height                              = 3.49217\n",
     "    segment.width                               = 3.71043\n",
-    "    fuselage.Segments.append(segment)    \n",
+    "    fuselage.segments.append(segment)    \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -531,7 +531,7 @@
     "    segment.percent_z_location                  = 0.02296\n",
     "    segment.height                              = 3.05565\n",
     "    segment.width                               = 3.16478\n",
-    "    fuselage.Segments.append(segment)             \n",
+    "    fuselage.segments.append(segment)             \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -540,7 +540,7 @@
     "    segment.percent_z_location                  = 0.03157\n",
     "    segment.height                              = 2.40087\n",
     "    segment.width                               = 1.96435\n",
-    "    fuselage.Segments.append(segment)               \n",
+    "    fuselage.segments.append(segment)               \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -549,7 +549,7 @@
     "    segment.percent_z_location                  = 0.04593\n",
     "    segment.height                              = 1.09130\n",
     "    segment.width                               = 0.21826\n",
-    "    fuselage.Segments.append(segment)       \n",
+    "    fuselage.segments.append(segment)       \n",
     "    \n",
     "    # add to vehicle\n",
     "    vehicle.append_component(fuselage)\n",
@@ -744,10 +744,10 @@
    "execution_count": 4,
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:49:21.453575Z",
-     "iopub.status.busy": "2024-12-30T05:49:21.453212Z",
-     "iopub.status.idle": "2024-12-30T05:49:34.814875Z",
-     "shell.execute_reply": "2024-12-30T05:49:34.814218Z"
+     "iopub.execute_input": "2024-12-30T23:24:24.307454Z",
+     "iopub.status.busy": "2024-12-30T23:24:24.307154Z",
+     "iopub.status.idle": "2024-12-30T23:24:37.805307Z",
+     "shell.execute_reply": "2024-12-30T23:24:37.804266Z"
     }
    },
    "outputs": [

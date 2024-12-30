@@ -414,7 +414,7 @@
 <span class="sd">    deflection : float</span>
 <span class="sd">        Surface deflection angle, defaults to 0.0</span>
 <span class="sd">        </span>
-<span class="sd">    Segments : DataOrdered</span>
+<span class="sd">    segments : Container</span>
 <span class="sd">        Collection of surface segments, initialized empty</span>
 <span class="sd">        </span>
 <span class="sd">    use_constant_hinge_fraction : bool</span>
@@ -457,7 +457,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">sign_duplicate</span>              <span class="o">=</span> <span class="mf">1.0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hinge_fraction</span>              <span class="o">=</span> <span class="mf">0.25</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deflection</span>                  <span class="o">=</span> <span class="mf">0.0</span>   
-        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span>                    <span class="o">=</span> <span class="n">DataOrdered</span><span class="p">()</span>   
+        <span class="bp">self</span><span class="o">.</span><span class="n">segments</span>                    <span class="o">=</span> <span class="n">Container</span><span class="p">()</span>   
         
         <span class="bp">self</span><span class="o">.</span><span class="n">use_constant_hinge_fraction</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hinge_vector</span>                <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>

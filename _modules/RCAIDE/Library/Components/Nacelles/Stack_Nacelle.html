@@ -384,7 +384,8 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="c1"># RCAIDE imports    </span>
+<span class="c1"># RCAIDE imports</span>
+<span class="kn">import</span> <span class="nn">RCAIDE</span>
 <span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>              <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Container</span>  
 <span class="kn">from</span> <span class="nn">.Nacelle</span> <span class="kn">import</span> <span class="n">Nacelle</span>
   
@@ -403,7 +404,7 @@
 <span class="sd">    tag : str</span>
 <span class="sd">        Unique identifier for the nacelle component, defaults to &#39;stack_nacelle&#39;</span>
 <span class="sd">        </span>
-<span class="sd">    Segments : Container</span>
+<span class="sd">    segments : Container</span>
 <span class="sd">        Collection of cross-sectional segments defining the nacelle shape, </span>
 <span class="sd">        initialized empty</span>
 
@@ -446,7 +447,7 @@
 <span class="sd">        Sets default values for the stack nacelle attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>      <span class="o">=</span> <span class="s1">&#39;stack_nacelle&#39;</span>  
-        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span> <span class="o">=</span> <span class="n">Container</span><span class="p">()</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">segments</span> <span class="o">=</span> <span class="n">Container</span><span class="p">()</span> 
         
 <div class="viewcode-block" id="Stack_Nacelle.append_segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Stack_Nacelle.html#RCAIDE.Library.Components.Nacelles.Stack_Nacelle.Stack_Nacelle.append_segment">[docs]</a>
@@ -460,11 +461,11 @@
 <span class="sd">            Cross-sectional segment to be added to the nacelle definition</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Assert database type</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;input component must be of type Data()&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Components</span><span class="o">.</span><span class="n">Nacelles</span><span class="o">.</span><span class="n">Segments</span><span class="o">.</span><span class="n">Segment</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;input component must be of type Segment&#39;</span><span class="p">)</span>
 
         <span class="c1"># Store data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span>
 
         <span class="k">return</span>  </div>
 </div>

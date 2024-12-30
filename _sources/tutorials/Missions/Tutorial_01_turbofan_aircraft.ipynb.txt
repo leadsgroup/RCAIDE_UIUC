@@ -28,10 +28,10 @@
    "id": "240295e0-7be5-40b7-ba3a-c1754fbd604a",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:38.378387Z",
-     "iopub.status.busy": "2024-12-30T05:48:38.378200Z",
-     "iopub.status.idle": "2024-12-30T05:48:39.058256Z",
-     "shell.execute_reply": "2024-12-30T05:48:39.057697Z"
+     "iopub.execute_input": "2024-12-30T23:23:41.002139Z",
+     "iopub.status.busy": "2024-12-30T23:23:41.001679Z",
+     "iopub.status.idle": "2024-12-30T23:23:41.688046Z",
+     "shell.execute_reply": "2024-12-30T23:23:41.687416Z"
     }
    },
    "outputs": [],
@@ -66,10 +66,10 @@
    "id": "3ba2ac60-625b-42b7-b247-4991fd479b6d",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:39.060912Z",
-     "iopub.status.busy": "2024-12-30T05:48:39.060386Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.491177Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.490644Z"
+     "iopub.execute_input": "2024-12-30T23:23:41.690489Z",
+     "iopub.status.busy": "2024-12-30T23:23:41.690238Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.089774Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.089140Z"
     },
     "scrolled": true
    },
@@ -169,10 +169,10 @@
    "id": "7a804f20-6182-4036-94d5-571e1d7da8ba",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.493851Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.493562Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.591189Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.590656Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.092534Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.092268Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.186065Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.185426Z"
     }
    },
    "outputs": [],
@@ -500,7 +500,7 @@
     "    segment.percent_z_location                  = -0.00144 \n",
     "    segment.height                              = 0.0100 \n",
     "    segment.width                               = 0.0100  \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment  \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -509,7 +509,7 @@
     "    segment.percent_z_location                  = -0.00144 \n",
     "    segment.height                              = 0.7500\n",
     "    segment.width                               = 0.6500\n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -518,7 +518,7 @@
     "    segment.percent_z_location                  = 0.00000 \n",
     "    segment.height                              = 1.52783 \n",
     "    segment.width                               = 1.20043 \n",
-    "    fuselage.Segments.append(segment)      \n",
+    "    fuselage.segments.append(segment)      \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -527,7 +527,7 @@
     "    segment.percent_z_location                  = 0.00000 \n",
     "    segment.height                              = 1.96435 \n",
     "    segment.width                               = 1.52783 \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "\n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -536,7 +536,7 @@
     "    segment.percent_z_location                  = 0.00431 \n",
     "    segment.height                              = 2.72826 \n",
     "    segment.width                               = 1.96435 \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -545,7 +545,7 @@
     "    segment.percent_z_location                  = 0.00861 \n",
     "    segment.height                              = 3.49217 \n",
     "    segment.width                               = 2.61913 \n",
-    "    fuselage.Segments.append(segment)     \n",
+    "    fuselage.segments.append(segment)     \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -554,7 +554,7 @@
     "    segment.percent_z_location                  = 0.01005 \n",
     "    segment.height                              = 3.70130 \n",
     "    segment.width                               = 3.05565 \n",
-    "    fuselage.Segments.append(segment)             \n",
+    "    fuselage.segments.append(segment)             \n",
     "     \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -563,7 +563,7 @@
     "    segment.percent_z_location                  = 0.01148 \n",
     "    segment.height                              = 3.92870 \n",
     "    segment.width                               = 3.71043 \n",
-    "    fuselage.Segments.append(segment)    \n",
+    "    fuselage.segments.append(segment)    \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -572,7 +572,7 @@
     "    segment.percent_z_location                  = 0.01148 \n",
     "    segment.height                              = 3.92870 \n",
     "    segment.width                               = 3.92870 \n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "    \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -581,7 +581,7 @@
     "    segment.percent_z_location                  = 0.01292\n",
     "    segment.height                              = 3.81957\n",
     "    segment.width                               = 3.81957\n",
-    "    fuselage.Segments.append(segment)     \n",
+    "    fuselage.segments.append(segment)     \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -590,7 +590,7 @@
     "    segment.percent_z_location                  = 0.01292\n",
     "    segment.height                              = 3.81957\n",
     "    segment.width                               = 3.81957\n",
-    "    fuselage.Segments.append(segment)   \n",
+    "    fuselage.segments.append(segment)   \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -599,7 +599,7 @@
     "    segment.percent_z_location                  = 0.01722\n",
     "    segment.height                              = 3.49217\n",
     "    segment.width                               = 3.71043\n",
-    "    fuselage.Segments.append(segment)    \n",
+    "    fuselage.segments.append(segment)    \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -608,7 +608,7 @@
     "    segment.percent_z_location                  = 0.02296\n",
     "    segment.height                              = 3.05565\n",
     "    segment.width                               = 3.16478\n",
-    "    fuselage.Segments.append(segment)             \n",
+    "    fuselage.segments.append(segment)             \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()\n",
@@ -617,7 +617,7 @@
     "    segment.percent_z_location                  = 0.03157\n",
     "    segment.height                              = 2.40087\n",
     "    segment.width                               = 1.96435\n",
-    "    fuselage.Segments.append(segment)               \n",
+    "    fuselage.segments.append(segment)               \n",
     "        \n",
     "    # Segment                                   \n",
     "    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() \n",
@@ -626,7 +626,7 @@
     "    segment.percent_z_location                  = 0.04593\n",
     "    segment.height                              = 1.09130\n",
     "    segment.width                               = 0.21826\n",
-    "    fuselage.Segments.append(segment)       \n",
+    "    fuselage.segments.append(segment)       \n",
     "    \n",
     "    # add to vehicle\n",
     "    vehicle.append_component(fuselage)\n",
@@ -846,10 +846,10 @@
    "id": "40b6618a-2300-4934-9959-76275669406b",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.593438Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.593074Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.600590Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.600166Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.188560Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.188369Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.196060Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.195582Z"
     }
    },
    "outputs": [],
@@ -1022,10 +1022,10 @@
    "id": "e368c067-09c1-4def-8aa6-7d592af8ae61",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.602506Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.602154Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.606173Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.605732Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.198022Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.197605Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.202021Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.201445Z"
     }
    },
    "outputs": [],
@@ -1131,10 +1131,10 @@
    "id": "0dcaa85a-5ade-465a-9ccd-14ae6c9d6261",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.608005Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.607636Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.610868Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.610388Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.204052Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.203727Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.206979Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.206409Z"
     }
    },
    "outputs": [],
@@ -1202,10 +1202,10 @@
    "id": "e0ff2c51-2b38-464a-a47d-9e1976d3e1e7",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.612980Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.612816Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.626129Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.625698Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.209077Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.208901Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.222890Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.222428Z"
     }
    },
    "outputs": [],
@@ -1486,10 +1486,10 @@
    "id": "b380bfb9-64a0-4d65-9e66-c74ff025c6b4",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.627877Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.627541Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.630567Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.630018Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.224741Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.224395Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.227120Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.226658Z"
     }
    },
    "outputs": [],
@@ -1520,10 +1520,10 @@
    "id": "1edc8815-56a3-4ce9-9357-0b3e45910d84",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.632568Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.632229Z",
-     "iopub.status.idle": "2024-12-30T05:48:40.635246Z",
-     "shell.execute_reply": "2024-12-30T05:48:40.634797Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.228928Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.228576Z",
+     "iopub.status.idle": "2024-12-30T23:23:43.231538Z",
+     "shell.execute_reply": "2024-12-30T23:23:43.231075Z"
     }
    },
    "outputs": [],
@@ -1560,10 +1560,10 @@
    "id": "a81c45f1",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2024-12-30T05:48:40.636966Z",
-     "iopub.status.busy": "2024-12-30T05:48:40.636633Z",
-     "iopub.status.idle": "2024-12-30T05:49:17.323286Z",
-     "shell.execute_reply": "2024-12-30T05:49:17.321914Z"
+     "iopub.execute_input": "2024-12-30T23:23:43.233457Z",
+     "iopub.status.busy": "2024-12-30T23:23:43.233023Z",
+     "iopub.status.idle": "2024-12-30T23:24:20.207978Z",
+     "shell.execute_reply": "2024-12-30T23:24:20.207419Z"
     }
    },
    "outputs": [

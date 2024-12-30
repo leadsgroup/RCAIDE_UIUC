@@ -47,7 +47,7 @@
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ipopt" href="RCAIDE.Framework.Optimization.Packages.ipopt.html" />
+    <link rel="next" title="particle_swarm" href="RCAIDE.Framework.Optimization.Packages.particle_swarm.html" />
     <link rel="prev" title="additive_setup" href="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -564,25 +564,22 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_model" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate_model</span></code></a>(problem, x, cons)</p></td>
 <td><p>Solves the optimization problem to get the objective and constraints</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.expected_improvement_carpet" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.expected_improvement_carpet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">expected_improvement_carpet</span></code></a>(lbs, ubs, ...[, ...])</p></td>
-<td><p>Makes a carpet plot of the expected improvement</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_opt_vals</span></code></a>(opt_prob, obj, inp, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_opt_vals</span></code></a>(opt_prob, obj, inp, ...)</p></td>
 <td><p>Sets up the optimization values</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SHGO" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SHGO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_opt_vals_SHGO</span></code></a>(obj, inp, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SHGO" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SHGO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_opt_vals_SHGO</span></code></a>(obj, inp, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SLSQP" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SLSQP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_opt_vals_SLSQP</span></code></a>(obj, inp, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SLSQP" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SLSQP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_opt_vals_SLSQP</span></code></a>(obj, inp, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.run_objective_optimization" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.run_objective_optimization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_objective_optimization</span></code></a>(opt_prob, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.run_objective_optimization" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.run_objective_optimization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_objective_optimization</span></code></a>(opt_prob, ...)</p></td>
 <td><p>Runs SNOPT to optimize</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_vals</span></code></a>(inp, con, ini, bnd, scl)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_vals</span></code></a>(inp, con, ini, bnd, scl)</p></td>
 <td><p>Scales values to help setup the problem</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.unpack_constraints_slsqp" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.unpack_constraints_slsqp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unpack_constraints_slsqp</span></code></a>(x, con_ind, sign, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.unpack_constraints_slsqp" title="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.unpack_constraints_slsqp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unpack_constraints_slsqp</span></code></a>(x, con_ind, sign, ...)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -675,28 +672,6 @@ cons           [vector]</p>
 -EI            [float]
 const          [array]
 fail           [bool]</p>
-<p>Properties Used:
-N/A</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.expected_improvement_carpet">
-<span class="sig-name descname"><span class="pre">expected_improvement_carpet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lbs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ubs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj_surrogate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cons_surrogate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fstar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_log_improvement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Framework/Optimization/Packages/additive/additive_setup.html#Additive_Solver.expected_improvement_carpet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.expected_improvement_carpet" title="Link to this definition">#</a></dt>
-<dd><p>Makes a carpet plot of the expected improvement</p>
-<p>Assumptions:
-N/A</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-lbs                  [array]
-lbs                  [array]
-problem              [nexus()]
-obj_surrogate        [fun()]
-cons_surrogate       [fun()]
-fstar                [float]
-show_log_improvement [bool]</p>
-<p>Outputs:
-Alluring plots that you could only dream of</p>
 <p>Properties Used:
 N/A</p>
 </dd></dl>
@@ -815,11 +790,11 @@ N/A</p>
       </div>
     </a>
     <a class="right-next"
-       href="RCAIDE.Framework.Optimization.Packages.ipopt.html"
+       href="RCAIDE.Framework.Optimization.Packages.particle_swarm.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ipopt</p>
+        <p class="prev-next-title">particle_swarm</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -849,7 +824,6 @@ N/A</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_model"><code class="docutils literal notranslate"><span class="pre">Additive_Solver.evaluate_model()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_corrected_model"><code class="docutils literal notranslate"><span class="pre">Additive_Solver.evaluate_corrected_model()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_expected_improvement"><code class="docutils literal notranslate"><span class="pre">Additive_Solver.evaluate_expected_improvement()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.expected_improvement_carpet"><code class="docutils literal notranslate"><span class="pre">Additive_Solver.expected_improvement_carpet()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals"><code class="docutils literal notranslate"><span class="pre">Additive_Solver.scale_vals()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals"><code class="docutils literal notranslate"><span class="pre">Additive_Solver.initialize_opt_vals()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.unpack_constraints_slsqp"><code class="docutils literal notranslate"><span class="pre">Additive_Solver.unpack_constraints_slsqp()</span></code></a></li>

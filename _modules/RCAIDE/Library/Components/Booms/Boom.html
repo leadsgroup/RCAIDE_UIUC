@@ -481,7 +481,7 @@
 <span class="sd">        - xsec_num : int</span>
 <span class="sd">            Number of cross-sections in boom geometry. Default is None.</span>
 
-<span class="sd">    Segments : Container</span>
+<span class="sd">    segments : Container</span>
 <span class="sd">        Container for boom segments. Default is empty container.</span>
 
 <span class="sd">    Notes</span>
@@ -558,7 +558,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_surf_id</span>                  <span class="o">=</span> <span class="s1">&#39;&#39;</span>    <span class="c1"># There is only one XSecSurf in each VSP geom.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">vsp_data</span><span class="o">.</span><span class="n">xsec_num</span>                      <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Number if XSecs in rotor_boom geom.</span>
                         
-        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span>                               <span class="o">=</span> <span class="n">Container</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">segments</span>                               <span class="o">=</span> <span class="n">Container</span><span class="p">()</span>
         
 <div class="viewcode-block" id="Boom.append_segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Booms.Boom.html#RCAIDE.Library.Components.Booms.Boom.Boom.append_segment">[docs]</a>
@@ -583,7 +583,7 @@
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;input component must be of type Data()&#39;</span><span class="p">)</span>
 
         <span class="c1"># Store data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">Segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span> 
         
         <span class="k">return</span> </div>
 </div>
