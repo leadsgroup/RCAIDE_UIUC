@@ -95,17 +95,19 @@ jobs:
                 echo "Error: On develop, major.minor must stay the same ($BASE_MAJOR.$BASE_MINOR)"
                 exit 1
               fi
-              if [ "$CURRENT_PATCH" != "$((BASE_PATCH + 1))" ]; then
-                echo "Error: Patch must increment by 1 (expected: $((BASE_PATCH + 1)), got: $CURRENT_PATCH)"
+              if [ "$CURRENT_PATCH" -le "$BASE_PATCH" ]; then
+                echo "Error: Patch version must be greater than base version"
                 exit 1
               fi
             fi
             
           elif [ "$TARGET_BRANCH" == "master" ]; then
-            # For master: patch must be 0
-            if [ "$CURRENT_PATCH" != "0" ]; then
-              echo "Error: On master, patch version must be 0"
-              exit 1
+            # Skip version check if VERSION doesn't exist in base branch
+            if [ "${{ steps.base_version_exists.outputs.exists }}" == "true" ]; then
+              if [ "$CURRENT_VERSION" \< "$BASE_VERSION" ]; then
+                echo "Error: Version must be greater than the base version"
+                exit 1
+              fi
             fi
             
           else
