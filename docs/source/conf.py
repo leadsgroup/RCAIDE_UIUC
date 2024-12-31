@@ -1,51 +1,44 @@
 # Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 import os
 import sys
-
 from unittest.mock import Mock
-os.environ['SPHINX_BUILD'] = 'sphinx'
 
-# Add all potential module paths
+# Mock modules to prevent import errors
+sys.modules['RCAIDE.Framework.Plugins.load_plugin'] = Mock()
+
+# -- Path setup --------------------------------------------------------------
 sys.path.insert(0, os.path.abspath('../..'))  # Root directory
 sys.path.insert(0, os.path.abspath('../../RCAIDE'))  # RCAIDE directory
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath('.'))))  # Parent of docs
 
+# -- Project information -----------------------------------------------------
 project = 'RCAIDE'
 copyright = '2024, Laboratory for Electric Aircraft Design and Sustainability'
-author = ' Laboratory for Electric Aircraft Design and Sustainability'
+author = 'Laboratory for Electric Aircraft Design and Sustainability'
 release = '1.0.0'
 
-# Add these lines for the logo
-html_logo = 'source/_static/leads_logo.png'  # Add your logo file to the _static directory
+# Add logo configuration
+html_logo = 'source/_static/leads_logo.png'
 html_title = "RCAIDE"
 
-
 # -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
     'sphinx.ext.autosummary',
-    'sphinx.ext.napoleon'  ,
+    'sphinx.ext.napoleon',
     'nbsphinx',
     'sphinx.ext.mathjax',
+    'sphinx_multiversion',  # Add sphinx-multiversion
 ]
 
 templates_path = ['_templates']
 exclude_patterns = []
 toctree_maxdepth = 40
-# Autosummary settings
-autosummary_generate = True  # Generate stub pages for autosummary directives
-add_module_names = False     # Remove module names from generated documentation
+autosummary_generate = True
+add_module_names = False
 
 # Autodoc settings
 autodoc_default_options = {
@@ -58,23 +51,7 @@ autodoc_default_options = {
     'show-inheritance': False
 }
 
-# Napoleon settings
-# napoleon_google_docstring = False #True
-# napoleon_numpy_docstring = True
-# napoleon_include_init_with_doc = False
-# napoleon_include_private_with_doc = False
-# napoleon_include_special_with_doc = False
-# napoleon_use_admonition_for_examples = False
-# napoleon_use_admonition_for_notes = False
-# napoleon_use_admonition_for_references = False
-# napoleon_use_ivar = False
-# napoleon_use_param = True
-# napoleon_use_rtype = True
-# napoleon_type_aliases = None
-
 # -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
 html_static_path = ['_static']
 html_theme = 'pydata_sphinx_theme'
 
@@ -98,13 +75,12 @@ html_theme_options = {
             "type": "fontawesome",
         }
     ],
-    # Add these logo-related options
     "logo": {
-        "image_dark": "_static/leads_logo.png",  
+        "image_dark": "_static/leads_logo.png",
         "image_light": "_static/leads_logo.png",
         "image_dark_alt": "_static/leads_logo.png",
         "image_light_alt": "_static/leads_logo.png",
-        "text": "RCAIDE",  # Optional: text to appear next to the logo
+        "text": "RCAIDE",
     },
     "default_mode": "dark",
 }
@@ -121,11 +97,21 @@ html_context = {
 html_theme = 'pydata_sphinx_theme'
 
 html_context = {
-    "default_mode": "auto",  # Default to light/dark mode based on user preference
+    "default_mode": "auto",
 }
 
-html_css_files = ['custom.css']  # Add custom styles (optional)
+html_css_files = ['custom.css']
 
+# -- sphinx-multiversion configuration ---------------------------------------
+smv_branch_whitelist = r'^master$|^develop$'
+smv_remote_whitelist = r'^origin$'
+smv_outputdir_format = '{ref.name}'
+smv_retain_merges = False
+smv_prefer_remote_refs = True
 
-# Mock load_plugin to avoid runtime errors
-sys.modules['RCAIDE.Framework.Plugins.load_plugin'] = Mock()
+# Override the 'release' version based on the branch
+if 'smv_tag_prefix' not in globals():
+    if os.environ.get('SMV_REF_NAME') == 'develop':
+        release = 'development'
+    else:
+        release = 'stable'
