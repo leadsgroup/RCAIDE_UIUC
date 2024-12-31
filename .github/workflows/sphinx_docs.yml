@@ -1,72 +1,102 @@
 name: Docs
 
 on:
-  push:
-    branches:
-      - develop
-      - master
   pull_request:
     branches:
       - develop
       - master
-
+  push:
+    branches:
+      - develop
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Necessary for sphinx-multiversion to access all branches
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
 
       - name: Install System Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Install Python Dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install sphinx pydata-sphinx-theme sphinx-multiversion nbsphinx sphinx-copybutton myst-nb nbconvert nbformat jupyter
+          pip install sphinx pydata-sphinx-theme
 
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -e .
+          python3 -m pip install sphinx
+          python3 -m pip install sphinx_rtd_theme
+          python3 -m pip install sphinx-autobuild
+          python3 -m pip install sphinx-autoapi
+          python3 -m pip install nbsphinx
+          python3 -m pip install sphinx-copybutton
+          python3 -m pip install myst-nb
+          python3 -m pip install pandoc
+          python3 -m pip install nbconvert nbformat jupyter
+       
+          
       - name: Execute Notebooks
         run: |
           for notebook in Tutorials/*/*.ipynb; do
             echo "Running $notebook"
             if [ -f "$notebook" ]; then
-              jupyter nbconvert --to notebook --execute "$notebook" --output "$notebook" --ExecutePreprocessor.timeout=600
+              # Create temporary directory for execution
+              tmp_dir=$(mktemp -d)
+              
+              # Get the notebook name without path
+              notebook_name=$(basename "$notebook")
+              
+              # Execute notebook and save to temporary location
+              jupyter nbconvert --to notebook --execute "$notebook" \
+                --output "$tmp_dir/$notebook_name" \
+                --ExecutePreprocessor.timeout=600 \
+                || { echo "Error executing notebook $notebook"; exit 1; }
+              
+              # If execution succeeded, move the executed notebook back
+              mv "$tmp_dir/$notebook_name" "$notebook" \
+                || { echo "Error moving executed notebook $notebook"; exit 1; }
+              
+              # Clean up
+              rm -rf "$tmp_dir"
             else
               echo "Notebook $notebook not found."
             fi
           done
-
+        
       - name: Clean Old Docs
         run: |
-          rm -rf docs/source/_autosummary
-          rm -rf docs/source/tutorials/Optimization docs/source/tutorials/Missions docs/source/tutorials/Performance
-
-      - name: Copy tutorials to Docs
+             # Clean old build files
+             rm -rf docs/source/_autosummary
+             rm -rf docs/source/tutorials/Optimization docs/source/tutorials/Missions docs/source/tutorials/Performance
+  
+      - name:  Copy tutorials to Docs
         run: |
-          cp -r Tutorials/* docs/source/tutorials/
-
-      - name: Build Multiversion Docs
+             cp -r Tutorials/* docs/source/tutorials/
+   
+      - name: Build Docs
         run: |
-          sphinx-multiversion docs/source docs/build/html
+             make -C docs clean html
 
       - name: Add Custom Domain
-        run: |
-          echo "www.docs.rcaide.leadsresearchgroup.com" > docs/build/html/CNAME
-
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
+        run: echo "www.docs.rcaide.leadsresearchgroup.com" > docs/build/html/CNAME
+        
       - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build/html
-          # Optionally, set a custom branch for GitHub Pages
-          # publish_branch: gh-pages
+
+
+          
+          
