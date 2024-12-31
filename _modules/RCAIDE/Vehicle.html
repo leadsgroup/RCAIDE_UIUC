@@ -580,107 +580,6 @@
 
         <span class="k">return</span></div>
 
-
-    <span class="k">def</span> <span class="nf">find_energy_network_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">energy_network</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Find pointer to energy network data root.</span>
-<span class="sd">        </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">                None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">                None</span>
-<span class="sd">        &quot;&quot;&quot;</span>  
-        <span class="c1"># find energy network root by type, allow subclasses</span>
-        <span class="k">for</span> <span class="n">energy_network_type</span><span class="p">,</span> <span class="n">energy_network_root</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_energy_network_root_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">energy_network</span><span class="p">,</span><span class="n">energy_network_type</span><span class="p">):</span>
-                <span class="k">break</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unable to place energy_network type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">energy_network</span><span class="o">.</span><span class="n">typestring</span><span class="p">())</span>
-
-        <span class="k">return</span> <span class="n">energy_network_root</span>
-
-<div class="viewcode-block" id="Vehicle.sum_mass">
-<a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.sum_mass">[docs]</a>
-    <span class="k">def</span> <span class="nf">sum_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Regresses through the vehicle and sums the masses</span>
-<span class="sd">        </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">                None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">                None</span>
-<span class="sd">        &quot;&quot;&quot;</span>  
-
-        <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
-        
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">Components</span><span class="o">.</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
-                <span class="n">total</span> <span class="o">+=</span> <span class="n">item</span><span class="o">.</span><span class="n">sum_mass</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="n">total</span></div>
-
-    
-    
-<div class="viewcode-block" id="Vehicle.center_of_gravity">
-<a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.center_of_gravity">[docs]</a>
-    <span class="k">def</span> <span class="nf">center_of_gravity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; will recursively search the data tree and sum</span>
-<span class="sd">            any Comp.Mass_Properties.mass, and return the total sum</span>
-<span class="sd">        </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">                None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">                None</span>
-<span class="sd">        &quot;&quot;&quot;</span>   
-        <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]])</span>
-
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="n">Components</span><span class="o">.</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
-                <span class="n">total</span> <span class="o">+=</span> <span class="n">item</span><span class="o">.</span><span class="n">total_moment</span><span class="p">()</span>
-                
-        <span class="n">mass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sum_mass</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">mass</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
-            <span class="n">mass</span> <span class="o">=</span> <span class="mf">1.</span>
-                
-        <span class="n">CG</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="n">mass</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="n">CG</span>
-                
-        <span class="k">return</span> <span class="n">CG</span></div>
-
-    
-<div class="viewcode-block" id="Vehicle.moment_of_inertia">
-<a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;  </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-        <span class="n">center_of_gravity</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">center_of_gravity</span> 
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> 
-            <span class="n">M</span> <span class="o">+=</span> <span class="n">item</span><span class="o">.</span><span class="n">moment_of_inertia</span><span class="p">(</span><span class="n">center_of_gravity</span><span class="p">)</span> 
-                
-        <span class="k">return</span> <span class="n">M</span></div>
-
-     
-<div class="viewcode-block" id="Vehicle.operating_empty_weight">
-<a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.operating_empty_weight">[docs]</a>
-    <span class="k">def</span> <span class="nf">operating_empty_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Compute operating empty weight  </span>
-<span class="sd">        </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">                None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">                None</span>
-<span class="sd">        &quot;&quot;&quot;</span>  
-        <span class="n">outputs</span> <span class="o">=</span> <span class="n">compute_operating_empty_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  
-                
-        <span class="k">return</span> <span class="n">outputs</span>     </div>
-
     
 <div class="viewcode-block" id="Vehicle.append_energy_network">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.append_energy_network">[docs]</a>
@@ -795,21 +694,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">key</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="Vehicle_Mass_Container.get_children">
-<a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle_Mass_Container.get_children">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
-<span class="sd">        </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">                None</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">                None</span>
-<span class="sd">        &quot;&quot;&quot;</span>       
-        
-        <span class="k">return</span> <span class="p">[</span><span class="n">Vehicle_Mass_Properties</span><span class="p">]</span></div>
 </div>
 
 </pre></div>

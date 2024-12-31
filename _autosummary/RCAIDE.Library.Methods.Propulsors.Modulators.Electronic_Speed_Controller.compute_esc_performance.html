@@ -544,12 +544,6 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_current_in_from_throttle.html#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_current_in_from_throttle" title="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_current_in_from_throttle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_current_in_from_throttle</span></code></a>(esc, ...)</p></td>
 <td><p>The current going into the speed controller</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_throttle_from_voltages.html#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_throttle_from_voltages" title="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_throttle_from_voltages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_throttle_from_voltages</span></code></a>(esc, ...)</p></td>
-<td><p>The voltage out of the electronic speed controller</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_in_from_throttle.html#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_in_from_throttle" title="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_in_from_throttle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_voltage_in_from_throttle</span></code></a>(esc, ...)</p></td>
-<td><p>The voltage out of the electronic speed controller</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_out_from_throttle.html#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_out_from_throttle" title="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_out_from_throttle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_voltage_out_from_throttle</span></code></a>(esc, ...)</p></td>
 <td><p>The voltage out of the electronic speed controller</p></td>
 </tr>
@@ -559,42 +553,6 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_out_from_throttle">
 <span class="sig-name descname"><span class="pre">compute_voltage_out_from_throttle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">esc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esc_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Propulsors/Modulators/Electronic_Speed_Controller/compute_esc_performance.html#compute_voltage_out_from_throttle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_out_from_throttle" title="Link to this definition">#</a></dt>
-<dd><p>The voltage out of the electronic speed controller</p>
-<p>Assumptions:
-The ESC’s output voltage is linearly related to throttle setting</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-conditions.energy.throttle     [0-1]
-esc_conditions.inputs.voltage            [volts]</p>
-<p>Outputs:
-voltsout                       [volts]
-esc_conditions.outputs.voltageout        [volts]</p>
-<p>Properties Used:
-None</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_in_from_throttle">
-<span class="sig-name descname"><span class="pre">compute_voltage_in_from_throttle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">esc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esc_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Propulsors/Modulators/Electronic_Speed_Controller/compute_esc_performance.html#compute_voltage_in_from_throttle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_in_from_throttle" title="Link to this definition">#</a></dt>
-<dd><p>The voltage out of the electronic speed controller</p>
-<p>Assumptions:
-The ESC’s output voltage is linearly related to throttle setting</p>
-<p>Source:
-N/A</p>
-<p>Inputs:
-conditions.energy.throttle     [0-1]
-esc_conditions.inputs.voltage            [volts]</p>
-<p>Outputs:
-voltsout                       [volts]
-esc_conditions.outputs.voltageout        [volts]</p>
-<p>Properties Used:
-None</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_throttle_from_voltages">
-<span class="sig-name descname"><span class="pre">compute_throttle_from_voltages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">esc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esc_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Propulsors/Modulators/Electronic_Speed_Controller/compute_esc_performance.html#compute_throttle_from_voltages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_throttle_from_voltages" title="Link to this definition">#</a></dt>
 <dd><p>The voltage out of the electronic speed controller</p>
 <p>Assumptions:
 The ESC’s output voltage is linearly related to throttle setting</p>
@@ -676,8 +634,6 @@ None</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_out_from_throttle"><code class="docutils literal notranslate"><span class="pre">compute_voltage_out_from_throttle()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_voltage_in_from_throttle"><code class="docutils literal notranslate"><span class="pre">compute_voltage_in_from_throttle()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_throttle_from_voltages"><code class="docutils literal notranslate"><span class="pre">compute_throttle_from_voltages()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance.compute_current_in_from_throttle"><code class="docutils literal notranslate"><span class="pre">compute_current_in_from_throttle()</span></code></a></li>
 </ul>
   </nav></div>

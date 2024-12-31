@@ -31,6 +31,5 @@ Supersonic\_Nozzle
    :recursive:
 
    append_supersonic_nozzle_conditions
-   compute_limited_geometry
    compute_supersonic_nozzle_performance
 

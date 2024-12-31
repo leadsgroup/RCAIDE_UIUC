@@ -387,60 +387,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <span class="c1"># package imports </span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1"># compute_Q_from_omega_and_V</span>
-<span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<div class="viewcode-block" id="compute_torque_from_RPM_and_voltage">
-<a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_torque_from_RPM_and_voltage</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span><span class="n">motor_conditions</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the motor&#39;s torque based on RPM (angular velocity) and voltage.  </span>
-<span class="sd">    The following perperties of the motor are computed</span>
-<span class="sd">    </span>
-<span class="sd">    motor_conditions.torque  (numpy.ndarray): torque  [Nm]</span>
-<span class="sd">    motor_conditions.omega   (numpy.ndarray): omega   [radian/s]</span>
-<span class="sd">      </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">       None </span>
-
-<span class="sd">    Source:</span>
-<span class="sd">       None</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        motor.</span>
-<span class="sd">          gear_ratio                  (float): gear ratio                [unitless]</span>
-<span class="sd">          speed_constant              (float): motor speed constant      [radian/s/V]</span>
-<span class="sd">          resistance                  (float): motor internal resistnace [ohm]</span>
-<span class="sd">          outputs.omega       (numpy.ndarray): angular velocity          [radian/s]</span>
-<span class="sd">          gearbox_efficiency          (float): gearbox efficiency        [unitless]</span>
-<span class="sd">          expected_current            (float): current                   [A]</span>
-<span class="sd">          no_load_current             (float): no-load current           [A]</span>
-<span class="sd">          inputs.volage       (numpy.ndarray): operating voltage         [V]</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        None </span>
-<span class="sd"> </span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    
-    <span class="n">Res</span>   <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">resistance</span>
-    <span class="n">eta_G</span> <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">gearbox_efficiency</span>
-    <span class="n">exp_I</span> <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">expected_current</span>
-    <span class="n">I0</span>    <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">no_load_current</span> <span class="o">+</span> <span class="n">exp_I</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">eta_G</span><span class="p">)</span>
-    <span class="n">G</span>     <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">gear_ratio</span>
-    <span class="n">KV</span>    <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">speed_constant</span><span class="o">/</span><span class="n">G</span>
-    <span class="n">v</span>     <span class="o">=</span> <span class="n">motor_conditions</span><span class="o">.</span><span class="n">voltage</span>
-    <span class="n">omega</span> <span class="o">=</span> <span class="n">motor_conditions</span><span class="o">.</span><span class="n">omega</span>
-    
-    <span class="c1"># Torque</span>
-    <span class="n">Q</span> <span class="o">=</span> <span class="p">((</span><span class="n">v</span><span class="o">-</span><span class="n">omega</span><span class="o">/</span><span class="n">KV</span><span class="p">)</span><span class="o">/</span><span class="n">Res</span> <span class="o">-</span><span class="n">I0</span><span class="p">)</span><span class="o">/</span><span class="n">KV</span>
-    
-    <span class="n">motor_conditions</span><span class="o">.</span><span class="n">torque</span> <span class="o">=</span> <span class="n">Q</span>
-    <span class="n">motor_conditions</span><span class="o">.</span><span class="n">omega</span>  <span class="o">=</span> <span class="n">omega</span>
-
-    <span class="k">return</span></div>
-
-
-
+ 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  compute_omega_and_Q_from_Cp_and_V</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
@@ -553,61 +500,6 @@
     <span class="c1"># Pack results </span>
     <span class="n">motor_conditions</span><span class="o">.</span><span class="n">current</span>    <span class="o">=</span> <span class="n">I</span>
     <span class="n">motor_conditions</span><span class="o">.</span><span class="n">efficiency</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">I0</span><span class="o">/</span><span class="n">I</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">Res</span><span class="o">/</span><span class="n">V</span><span class="p">)</span>
-    <span class="k">return</span></div>
-
-
-
-
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-<span class="c1"># compute_V_and_I_from_omega_and_Kv</span>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------      </span>
-<div class="viewcode-block" id="compute_voltage_and_current_from_RPM_and_speed_constant">
-<a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_voltage_and_current_from_RPM_and_speed_constant</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">motor_conditions</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the motor&#39;s voltage and current from its RPM and speed constant</span>
-<span class="sd">    The following perperties of the motor are computed    </span>
-<span class="sd">        motor_conditions.current     (numpy.ndarray): current    [A] </span>
-<span class="sd">        motor_conditions.volage      (numpy.ndarray): volage     [V] </span>
-<span class="sd">        motor_conditions.efficiency  (numpy.ndarray): efficiency [unitless]</span>
-<span class="sd">        </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">        None </span>
-
-<span class="sd">    Source:</span>
-<span class="sd">        None</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        gear_ratio                  (float): gear ratio                [unitless]</span>
-<span class="sd">        speed_constant              (float): motor speed constant      [radian/s/V]</span>
-<span class="sd">        resistance                  (float): motor internal resistnace [ohm]</span>
-<span class="sd">        inputs.omega        (numpy.ndarray): angular velocity          [radian/s]</span>
-<span class="sd">        gearbox_efficiency          (float): gearbox efficiency        [unitless]</span>
-<span class="sd">        expected_current            (float): current                   [A]</span>
-<span class="sd">        no_load_current             (float): no-load current           [A]</span>
-<span class="sd">        inputs.volage       (numpy.ndarray): operating voltage         [V] </span>
-<span class="sd">        rotor_radius                (float): rotor radius              [m]</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">       None  </span>
-<span class="sd">    &quot;&quot;&quot;</span>                      
-           
-    <span class="n">G</span>      <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">gear_ratio</span>
-    <span class="n">KV</span>     <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">speed_constant</span><span class="o">/</span><span class="n">G</span>
-    <span class="n">Q</span>      <span class="o">=</span> <span class="n">motor_conditions</span><span class="o">.</span><span class="n">torque</span>
-    <span class="n">omega</span>  <span class="o">=</span> <span class="n">motor_conditions</span><span class="o">.</span><span class="n">omega</span>   
-    <span class="n">Res</span>    <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">resistance</span>     
-    <span class="n">eta_G</span>  <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">gearbox_efficiency</span>
-    <span class="n">exp_I</span>  <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">expected_current</span>
-    <span class="n">I0</span>     <span class="o">=</span> <span class="n">motor</span><span class="o">.</span><span class="n">no_load_current</span> <span class="o">+</span> <span class="n">exp_I</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">eta_G</span><span class="p">)</span>
-     
-    <span class="n">V</span> <span class="o">=</span> <span class="p">(</span><span class="n">Q</span><span class="o">*</span><span class="n">KV</span><span class="o">+</span><span class="n">I0</span><span class="p">)</span><span class="o">*</span><span class="n">Res</span> <span class="o">+</span> <span class="n">omega</span><span class="o">/</span><span class="n">KV</span>
-    <span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="n">V</span><span class="o">-</span><span class="n">omega</span><span class="o">/</span><span class="n">KV</span><span class="p">)</span><span class="o">/</span><span class="n">Res</span>
-    
-    <span class="c1"># Store results </span>
-    <span class="n">motor_conditions</span><span class="o">.</span><span class="n">current</span>    <span class="o">=</span> <span class="n">I</span>
-    <span class="n">motor_conditions</span><span class="o">.</span><span class="n">efficiency</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">I0</span><span class="o">/</span><span class="n">I</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">I</span><span class="o">*</span><span class="n">Res</span><span class="o">/</span><span class="n">V</span><span class="p">)</span>
-    <span class="n">motor_conditions</span><span class="o">.</span><span class="n">voltage</span>    <span class="o">=</span> <span class="n">V</span>
-    
     <span class="k">return</span></div>
 
 </pre></div>

@@ -34,7 +34,5 @@ Lift
    compute_flap_lift
    compute_max_lift_coeff
    compute_slat_lift
-   deflect_control_surface
    fuselage_correction
-   generate_wing_wake_grid
 

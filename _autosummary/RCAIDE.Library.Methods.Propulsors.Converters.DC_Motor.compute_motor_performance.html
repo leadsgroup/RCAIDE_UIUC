@@ -547,45 +547,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_current_from_RPM_and_voltage.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_current_from_RPM_and_voltage" title="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_current_from_RPM_and_voltage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_current_from_RPM_and_voltage</span></code></a>(motor, ...)</p></td>
 <td><p>Calculates the motor's current from its RPM and voltage.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage" title="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_torque_from_RPM_and_voltage</span></code></a>(motor, ...)</p></td>
-<td><p>Calculates the motor's torque based on RPM (angular velocity) and voltage.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant" title="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_voltage_and_current_from_RPM_and_speed_constant</span></code></a>(...)</p></td>
-<td><p>Calculates the motor's voltage and current from its RPM and speed constant The following perperties of the motor are computed     motor_conditions.current     (numpy.ndarray): current    [A]     motor_conditions.volage      (numpy.ndarray): volage     [V]     motor_conditions.efficiency  (numpy.ndarray): efficiency [unitless]</p></td>
-</tr>
 </tbody>
 </table>
 </div>
-<dl class="py function">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage">
-<span class="sig-name descname"><span class="pre">compute_torque_from_RPM_and_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">motor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">motor_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Propulsors/Converters/DC_Motor/compute_motor_performance.html#compute_torque_from_RPM_and_voltage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage" title="Link to this definition">#</a></dt>
-<dd><p>Calculates the motor’s torque based on RPM (angular velocity) and voltage.
-The following perperties of the motor are computed</p>
-<p>motor_conditions.torque  (numpy.ndarray): torque  [Nm]
-motor_conditions.omega   (numpy.ndarray): omega   [radian/s]</p>
-<dl class="simple">
-<dt>Assumptions:</dt><dd><p>None</p>
-</dd>
-<dt>Source:</dt><dd><p>None</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>motor.</strong> – gear_ratio                  (float): gear ratio                [unitless]
-speed_constant              (float): motor speed constant      [radian/s/V]
-resistance                  (float): motor internal resistnace [ohm]
-outputs.omega       (numpy.ndarray): angular velocity          [radian/s]
-gearbox_efficiency          (float): gearbox efficiency        [unitless]
-expected_current            (float): current                   [A]
-no_load_current             (float): no-load current           [A]
-inputs.volage       (numpy.ndarray): operating voltage         [V]</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_RPM_and_torque_from_power_coefficent_and_voltage">
 <span class="sig-name descname"><span class="pre">compute_RPM_and_torque_from_power_coefficent_and_voltage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">motor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">motor_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Propulsors/Converters/DC_Motor/compute_motor_performance.html#compute_RPM_and_torque_from_power_coefficent_and_voltage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_RPM_and_torque_from_power_coefficent_and_voltage" title="Link to this definition">#</a></dt>
@@ -655,42 +619,6 @@ motor_conditions.efficiency  (numpy.ndarray): efficiency   [unitless]</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant">
-<span class="sig-name descname"><span class="pre">compute_voltage_and_current_from_RPM_and_speed_constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">motor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">motor_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conditions</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Methods/Propulsors/Converters/DC_Motor/compute_motor_performance.html#compute_voltage_and_current_from_RPM_and_speed_constant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant" title="Link to this definition">#</a></dt>
-<dd><p>Calculates the motor’s voltage and current from its RPM and speed constant
-The following perperties of the motor are computed</p>
-<blockquote>
-<div><p>motor_conditions.current     (numpy.ndarray): current    [A]
-motor_conditions.volage      (numpy.ndarray): volage     [V]
-motor_conditions.efficiency  (numpy.ndarray): efficiency [unitless]</p>
-</div></blockquote>
-<dl class="simple">
-<dt>Assumptions:</dt><dd><p>None</p>
-</dd>
-<dt>Source:</dt><dd><p>None</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>gear_ratio</strong> (<em>float</em>) – gear ratio                [unitless]</p></li>
-<li><p><strong>speed_constant</strong> (<em>float</em>) – motor speed constant      [radian/s/V]</p></li>
-<li><p><strong>resistance</strong> (<em>float</em>) – motor internal resistnace [ohm]</p></li>
-<li><p><strong>inputs.omega</strong> (<em>numpy.ndarray</em>) – angular velocity          [radian/s]</p></li>
-<li><p><strong>gearbox_efficiency</strong> (<em>float</em>) – gearbox efficiency        [unitless]</p></li>
-<li><p><strong>expected_current</strong> (<em>float</em>) – current                   [A]</p></li>
-<li><p><strong>no_load_current</strong> (<em>float</em>) – no-load current           [A]</p></li>
-<li><p><strong>inputs.volage</strong> (<em>numpy.ndarray</em>) – operating voltage         [V]</p></li>
-<li><p><strong>rotor_radius</strong> (<em>float</em>) – rotor radius              [m]</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 
 
@@ -740,10 +668,8 @@ motor_conditions.efficiency  (numpy.ndarray): efficiency [unitless]</p>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_torque_from_RPM_and_voltage"><code class="docutils literal notranslate"><span class="pre">compute_torque_from_RPM_and_voltage()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_RPM_and_torque_from_power_coefficent_and_voltage"><code class="docutils literal notranslate"><span class="pre">compute_RPM_and_torque_from_power_coefficent_and_voltage()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_current_from_RPM_and_voltage"><code class="docutils literal notranslate"><span class="pre">compute_current_from_RPM_and_voltage()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_voltage_and_current_from_RPM_and_speed_constant"><code class="docutils literal notranslate"><span class="pre">compute_voltage_and_current_from_RPM_and_speed_constant()</span></code></a></li>
 </ul>
   </nav></div>
 

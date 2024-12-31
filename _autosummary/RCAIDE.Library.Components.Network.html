@@ -629,46 +629,6 @@ for groups of networks. Key features include:</p>
 </dd>
 </dl>
 </div>
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.Container.sum_mass">
-<span class="sig-name descname"><span class="pre">sum_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.Container.sum_mass" title="Link to this definition">#</a></dt>
-<dd><p>Recursively calculates total mass of all contained networks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Total mass in kg</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Traverses the network tree and sums mass_properties.mass values from:</p>
-<ul class="simple">
-<li><p>Individual networks</p></li>
-<li><p>Nested network containers (recursive)</p></li>
-</ul>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Network.Container.total_moment">
-<span class="sig-name descname"><span class="pre">total_moment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RCAIDE.Library.Components.Network.Network.Container.total_moment" title="Link to this definition">#</a></dt>
-<dd><p>Recursively calculates total moment of all contained networks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Total moment vector about the origin</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>ndarray</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Calculates moments considering:
-* Network masses
-* Network origins
-* Network centers of gravity
-* Nested containers (recursive)</p>
-</dd></dl>
-
 </dd></dl>
 
 </dd></dl>
@@ -693,46 +653,6 @@ for groups of networks. Key features include:</p>
 </dd>
 </dl>
 </div>
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Container.sum_mass">
-<span class="sig-name descname"><span class="pre">sum_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Network.html#Container.sum_mass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Network.Container.sum_mass" title="Link to this definition">#</a></dt>
-<dd><p>Recursively calculates total mass of all contained networks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Total mass in kg</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>float</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Traverses the network tree and sums mass_properties.mass values from:</p>
-<ul class="simple">
-<li><p>Individual networks</p></li>
-<li><p>Nested network containers (recursive)</p></li>
-</ul>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="RCAIDE.Library.Components.Network.Container.total_moment">
-<span class="sig-name descname"><span class="pre">total_moment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Components/Network.html#Container.total_moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Components.Network.Container.total_moment" title="Link to this definition">#</a></dt>
-<dd><p>Recursively calculates total moment of all contained networks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Total moment vector about the origin</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>ndarray</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Calculates moments considering:
-* Network masses
-* Network origins
-* Network centers of gravity
-* Nested containers (recursive)</p>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -790,18 +710,10 @@ for groups of networks. Key features include:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.origin"><code class="docutils literal notranslate"><span class="pre">Network.origin</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.inputs"><code class="docutils literal notranslate"><span class="pre">Network.inputs</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.outputs"><code class="docutils literal notranslate"><span class="pre">Network.outputs</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.Container"><code class="docutils literal notranslate"><span class="pre">Network.Container</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.Container.sum_mass"><code class="docutils literal notranslate"><span class="pre">Network.Container.sum_mass()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.Container.total_moment"><code class="docutils literal notranslate"><span class="pre">Network.Container.total_moment()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Network.Container"><code class="docutils literal notranslate"><span class="pre">Network.Container</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Container"><code class="docutils literal notranslate"><span class="pre">Container</span></code></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Container.sum_mass"><code class="docutils literal notranslate"><span class="pre">Container.sum_mass()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Container.total_moment"><code class="docutils literal notranslate"><span class="pre">Container.total_moment()</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#RCAIDE.Library.Components.Network.Container"><code class="docutils literal notranslate"><span class="pre">Container</span></code></a></li>
 </ul>
   </nav></div>
 

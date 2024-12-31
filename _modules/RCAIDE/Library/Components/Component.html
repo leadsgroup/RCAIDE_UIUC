@@ -462,64 +462,7 @@
 <span class="sd">    RCAIDE.Framework.Core.Container</span>
 <span class="sd">        Parent class providing base container functionality</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">pass</span> 
- 
-<div class="viewcode-block" id="Container.sum_mass">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Container.sum_mass">[docs]</a>
-    <span class="k">def</span> <span class="nf">sum_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Recursively calculates total mass of all contained components.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        float</span>
-<span class="sd">            Total mass in kg</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        Traverses the component tree and sums mass_properties.mass values from:</span>
-<span class="sd">        </span>
-<span class="sd">        * Individual components</span>
-<span class="sd">        * Nested component containers (recursive)</span>
-<span class="sd">        &quot;&quot;&quot;</span>   
-        <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">Comp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Comp</span><span class="p">,</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
-                <span class="n">total</span> <span class="o">+=</span> <span class="n">Comp</span><span class="o">.</span><span class="n">sum_mass</span><span class="p">()</span> <span class="c1"># recursive!</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Comp</span><span class="p">,</span><span class="n">Component</span><span class="p">):</span>
-                <span class="n">total</span> <span class="o">+=</span> <span class="n">Comp</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">mass</span>
-                
-        <span class="k">return</span> <span class="n">total</span></div>
-
-    
-<div class="viewcode-block" id="Container.total_moment">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Container.total_moment">[docs]</a>
-    <span class="k">def</span> <span class="nf">total_moment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Recursively calculates total moment of all contained components.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        ndarray</span>
-<span class="sd">            Total moment vector [kg*m] about the origin</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        Calculates moments considering:</span>
-<span class="sd">        * Component masses</span>
-<span class="sd">        * Component origins</span>
-<span class="sd">        * Component centers of gravity</span>
-<span class="sd">        * Nested containers (recursive)</span>
-<span class="sd">        &quot;&quot;&quot;</span>   
-        <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]])</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">Comp</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Comp</span><span class="p">,</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
-                <span class="n">total</span> <span class="o">+=</span> <span class="n">Comp</span><span class="o">.</span><span class="n">total_moment</span><span class="p">()</span>  
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">Comp</span><span class="p">,</span><span class="n">Component</span><span class="p">):</span>
-                <span class="n">total</span> <span class="o">+=</span> <span class="n">Comp</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Comp</span><span class="o">.</span><span class="n">origin</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">Comp</span><span class="o">.</span><span class="n">origin</span><span class="p">)</span><span class="o">+</span><span class="n">Comp</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">center_of_gravity</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">total</span>  </div>
-</div>
+    <span class="k">pass</span> </div>
 
     
 <span class="c1"># ------------------------------------------------------------</span>

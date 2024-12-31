@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Framework.Optimization.Packages.additive.additive_setup</h1><div class="highlight"><pre>
-<span></span><span class="c1">## @ingroup Optimization-Package_Setups</span>
+<span></span>
 <span class="c1"># additive_setup.py</span>
 <span class="c1">#</span>
 <span class="c1"># Created:  Apr 2017, T. MacDonald</span>
@@ -423,7 +423,7 @@
         <span class="k">return</span></div>
 
 
-    <span class="c1">## @ingroup Optimization-Package_Setups</span>
+    
 <div class="viewcode-block" id="Additive_Solver.Additive_Solve">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.Additive_Solve">[docs]</a>
     <span class="k">def</span> <span class="nf">Additive_Solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">num_fidelity_levels</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">num_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">max_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
@@ -708,7 +708,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">FOpt</span><span class="p">,</span><span class="n">xOpt</span><span class="p">)</span></div>
 
         
-    <span class="c1">## @ingroup Optimization-Package_Setups    </span>
+        
 <div class="viewcode-block" id="Additive_Solver.evaluate_model">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_model">[docs]</a>
     <span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">cons</span><span class="p">):</span>
@@ -741,7 +741,7 @@
         <span class="k">return</span> <span class="n">f</span><span class="p">,</span><span class="n">g</span></div>
 
     
-    <span class="c1">## @ingroup Optimization-Package_Setups    </span>
+        
 <div class="viewcode-block" id="Additive_Solver.evaluate_corrected_model">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_corrected_model">[docs]</a>
     <span class="k">def</span> <span class="nf">evaluate_corrected_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">obj_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -797,7 +797,7 @@
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Selected local optimizer is not implemented.&#39;</span><span class="p">)</span></div>
 
     
-    <span class="c1">## @ingroup Optimization-Package_Setups</span>
+    
 <div class="viewcode-block" id="Additive_Solver.evaluate_expected_improvement">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_expected_improvement">[docs]</a>
     <span class="k">def</span> <span class="nf">evaluate_expected_improvement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">obj_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">fstar</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="n">cons</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -873,7 +873,7 @@
             <span class="k">return</span> <span class="o">-</span><span class="n">EI</span></div>
 
     
-    <span class="c1">## @ingroup Optimization-Package_Setups    </span>
+        
 <div class="viewcode-block" id="Additive_Solver.scale_vals">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals">[docs]</a>
     <span class="k">def</span> <span class="nf">scale_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">ini</span><span class="p">,</span><span class="n">bnd</span><span class="p">,</span><span class="n">scl</span><span class="p">):</span>
@@ -941,7 +941,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">scaled_constraints</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">)</span>    </div>
 
     
-    <span class="c1">## @ingroup Optimization-Package_Setups</span>
+    
 <div class="viewcode-block" id="Additive_Solver.initialize_opt_vals">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals">[docs]</a>
     <span class="k">def</span> <span class="nf">initialize_opt_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">opt_prob</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">nam</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">x_eval</span><span class="p">):</span>
@@ -1061,7 +1061,7 @@
         <span class="k">return</span> <span class="n">bound_list</span><span class="p">,</span><span class="n">slsqp_con_list</span>    </div>
 
     
-    <span class="c1">## @ingroup Optimization-Package_Setups</span>
+    
 <div class="viewcode-block" id="Additive_Solver.run_objective_optimization">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.run_objective_optimization">[docs]</a>
     <span class="k">def</span> <span class="nf">run_objective_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">opt_prob</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">f_additive_surrogate</span><span class="p">,</span><span class="n">g_additive_surrogate</span><span class="p">):</span>

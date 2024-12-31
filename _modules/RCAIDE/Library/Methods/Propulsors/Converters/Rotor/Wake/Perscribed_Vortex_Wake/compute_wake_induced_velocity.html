@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity</h1><div class="highlight"><pre>
-<span></span><span class="c1">## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One</span>
-<span class="c1"># compute_wake_induced_velocity.py</span>
+<span></span><span class="c1"># compute_wake_induced_velocity.py</span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Sep 2020, M. Clarke </span>
 <span class="c1"># Modified: Dec 2021, R. Erhard</span>
@@ -388,9 +387,11 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1">## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
+<span class="c1"># compute_wake_induced_velocity</span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="compute_wake_induced_velocity">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.compute_wake_induced_velocity.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.compute_wake_induced_velocity">[docs]</a>
 <span class="k">def</span> <span class="nf">compute_wake_induced_velocity</span><span class="p">(</span><span class="n">WD</span><span class="p">,</span><span class="n">VD</span><span class="p">,</span><span class="n">cpts</span><span class="p">,</span><span class="n">azi_start_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sigma</span><span class="o">=</span><span class="mf">0.11</span><span class="p">,</span><span class="n">suppress_root</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  
@@ -470,7 +471,6 @@
 <span class="c1"># -------------------------------------------------------------------------------</span>
 <span class="c1"># vortex strength computation</span>
 <span class="c1"># -------------------------------------------------------------------------------</span>
-<span class="c1">## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One</span>
 <div class="viewcode-block" id="vortex">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.vortex.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.vortex">[docs]</a>
 <span class="k">def</span> <span class="nf">vortex</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Z1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">Z2</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span> <span class="n">GAMMA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bv</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">WD</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">use_regularization_kernal</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -549,7 +549,6 @@
     <span class="k">return</span> <span class="n">sum_res</span></div>
 
 
-<span class="c1">## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One</span>
 <div class="viewcode-block" id="regularization_kernel">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.regularization_kernel.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.regularization_kernel">[docs]</a>
 <span class="k">def</span> <span class="nf">regularization_kernel</span><span class="p">(</span><span class="n">COEF_in</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>

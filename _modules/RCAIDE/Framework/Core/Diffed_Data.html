@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Framework.Core.Diffed_Data</h1><div class="highlight"><pre>
-<span></span><span class="c1">## @ingroup Core</span>
-<span class="c1"># DiffedData.py</span>
+<span></span><span class="c1"># DiffedData.py</span>
 <span class="c1">#</span>
 <span class="c1"># Created:  Feb 2015, T. Lukacyzk</span>
 <span class="c1"># Modified: Feb 2016, T. MacDonald</span>
@@ -398,7 +397,6 @@
 <span class="c1">#  Config</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 
-<span class="c1">## @ingroup Core</span>
 <div class="viewcode-block" id="Diffed_Data">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data">[docs]</a>
 <span class="k">class</span> <span class="nc">Diffed_Data</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
@@ -527,31 +525,6 @@
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="k">pass</span>
         <span class="n">ContainerBase</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">)</span></div>
 
-        
-<div class="viewcode-block" id="Container.pull_base">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Container.pull_base">[docs]</a>
-    <span class="k">def</span> <span class="nf">pull_base</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Updates the differences</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>          
-        <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">pull_base</span><span class="p">()</span>
-            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="k">pass</span></div>
-
 
 <div class="viewcode-block" id="Container.store_diff">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Container.store_diff">[docs]</a>
@@ -575,32 +548,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>          
         <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">store_diff</span><span class="p">()</span>
-            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="k">pass</span></div>
-
-    
-<div class="viewcode-block" id="Container.finalize">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Container.finalize">[docs]</a>
-    <span class="k">def</span> <span class="nf">finalize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; This just does a pull_base()</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span> <span class="n">config</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
-            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="k">pass</span></div>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span> <span class="k">pass</span> </div>
 </div>
 
 

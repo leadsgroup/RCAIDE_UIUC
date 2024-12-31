@@ -377,8 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Framework.Core.Data</h1><div class="highlight"><pre>
-<span></span><span class="c1">## @ingroup Core</span>
-<span class="c1"># Data.py</span>
+<span></span><span class="c1"># Data.py</span>
 <span class="c1">#</span>
 <span class="c1"># Created:  Jun 2016, E. Botero</span>
 <span class="c1"># Modified: Jan 2020, M. Clarke</span>
@@ -410,8 +409,6 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#   Data</span>
 <span class="c1"># ----------------------------------------------------------------------        </span>
-
-<span class="c1">## @ingroup Core</span>
 <div class="viewcode-block" id="Data">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data">[docs]</a>
 <span class="k">class</span> <span class="nc">Data</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
@@ -474,31 +471,6 @@
             <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
         <span class="k">else</span><span class="p">:</span>          
             <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> 
-            
-    <span class="k">def</span> <span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; An override of the standard __delattr_ in Python. This deletes whatever is called by k</span>
-<span class="sd">            </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            This one tries to treat k as an object, if that fails it treats it as a key.</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>        
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">objgetattrib</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">del</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">object</span><span class="o">.</span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; A stub for all classes that come later</span>
@@ -746,28 +718,7 @@
         <span class="c1">#     N/A    </span>
         <span class="c1"># &quot;&quot;&quot;           </span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    
-    <span class="k">def</span> <span class="nf">itervalues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; :meta private:&quot;&quot;&quot;</span>
-        <span class="c1"># &quot;&quot;&quot; Finds all the values that can be iterated over.</span>
-    
-        <span class="c1">#     Assumptions:</span>
-        <span class="c1">#     N/A</span>
-    
-        <span class="c1">#     Source:</span>
-        <span class="c1">#     N/A</span>
-    
-        <span class="c1">#     Inputs:</span>
-        <span class="c1">#     N/A</span>
-    
-        <span class="c1">#     Outputs:</span>
-        <span class="c1">#     N/A</span>
-    
-        <span class="c1">#     Properties Used:</span>
-        <span class="c1">#     N/A    </span>
-        <span class="c1"># &quot;&quot;&quot;             </span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">super</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__iter__</span><span class="p">():</span>
-            <span class="k">yield</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>   
+       
     
     <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; :meta private:&quot;&quot;&quot;</span>
@@ -1173,67 +1124,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;did not unpack all values&#39;</span><span class="p">,</span><span class="ne">RuntimeWarning</span><span class="p">)</span>
          
         <span class="c1"># done!</span>
-        <span class="k">return</span> <span class="bp">self</span>     </div>
-
-    
-<div class="viewcode-block" id="Data.do_recursive">
-<a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data.do_recursive">[docs]</a>
-    <span class="k">def</span> <span class="nf">do_recursive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">method</span><span class="p">,</span><span class="n">other</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Recursively applies a method of the class.</span>
-<span class="sd">    </span>
-<span class="sd">            Assumptions:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Source:</span>
-<span class="sd">            N/A</span>
-<span class="sd">    </span>
-<span class="sd">            Inputs:</span>
-<span class="sd">            method  - name of the method to access</span>
-<span class="sd">    </span>
-<span class="sd">            Outputs:</span>
-<span class="sd">            Result  - the results of the method</span>
-<span class="sd">    </span>
-<span class="sd">            Properties Used:</span>
-<span class="sd">            N/A    </span>
-<span class="sd">        &quot;&quot;&quot;</span>          
-    
-        <span class="c1"># result data structure</span>
-        <span class="n">klass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
-            <span class="n">klass</span> <span class="o">=</span> <span class="n">Data</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">klass</span><span class="p">()</span>
-    
-        <span class="c1"># the update function</span>
-        <span class="k">def</span> <span class="nf">do_operation</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">a</span> <span class="ow">in</span> <span class="n">A</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">B</span><span class="p">:</span>
-                        <span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-                    <span class="k">else</span><span class="p">:</span> 
-                        <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
-                        <span class="k">continue</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">b</span> <span class="o">=</span> <span class="n">B</span>
-                <span class="c1"># recursion</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">Data</span><span class="p">):</span>
-                    <span class="n">c</span> <span class="o">=</span> <span class="n">klass</span><span class="p">()</span>
-                    <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
-                    <span class="n">do_operation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
-                <span class="c1"># method</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                        <span class="n">c</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">c</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                        <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
-                <span class="c1">#: if type</span>
-            <span class="c1">#: for each key,value</span>
-    
-        <span class="c1"># do the update!</span>
-        <span class="n">do_operation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">,</span><span class="n">result</span><span class="p">)</span>    
-    
-        <span class="k">return</span> <span class="n">result</span></div>
+        <span class="k">return</span> <span class="bp">self</span>      </div>
 </div>
 
 </pre></div>
