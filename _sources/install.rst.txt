@@ -1,53 +1,84 @@
 .. _install:
 
 ##############
-Install
+Installation
 ##############
 
-This section provides instructions to install RCAIDE and its dependencies.
+This guide will help you install RCAIDE and its dependencies.
 
-**System Requirements**
-========================
-Before installing RCAIDE, ensure that your system meets the following requirements:
+System Requirements
+==================
+Before installing RCAIDE, ensure your system meets these requirements:
 
-- Python >= 3.8
-- pip >= 20.0
-- Supported OS: Linux, macOS, Windows
+* **Python**: Version 3.8 to 3.12
+* **pip**: Version 20.0 or higher
+* **Operating Systems**: Linux, macOS, Windows
 
-**Installing RCAIDE**
-========================
+Installation Methods
+==================
 
-Follow these steps to install RCAIDE:
+Method 1: Using pip (Recommended)
+--------------------------------
 
-1. **Using pip**  
-  
-   Coming soon...
+The simplest way to install RCAIDE is via pip:
 
+.. code-block:: bash
 
+    pip install RCAIDE-LEADS
 
-2. **From Source (editable mode)**  
+Method 2: From Source
+--------------------
 
-   Alternatively, clone the RCAIDE repository and install it manually:
-   
+For developers or users who need the latest features, install from source:
+
+1. Clone the repository:
 
    .. code-block:: bash
 
       git clone https://github.com/leadsgroup/RCAIDE_LEADS.git
       cd RCAIDE_LEADS
-    
-   Install the dependencies and RCAIDE in editable mode:
+      git checkout develop
+
+2. Install in editable mode with dependencies:
 
    .. code-block:: bash
 
       pip install -e .
 
-**Verifying the Installation**
-===============================
-To confirm that RCAIDE has been successfully installed, run the following command:
+Verification
+===========
+
+Verify your installation:
 
 .. code-block:: bash
 
-   python -c "import RCAIDE; print(RCAIDE.__version__)"
+    python3 -c "import RCAIDE; print(RCAIDE.__version__)"
 
-If RCAIDE is installed correctly, it will print the installed version number.
+The command should display the current version number without errors.
+
+Troubleshooting
+==============
+
+If you encounter issues:
+
+1. Ensure your Python version is compatible:
+
+   .. code-block:: bash
+
+      python3 --version
+
+2. Update pip to the latest version:
+
+   .. code-block:: bash
+
+      python3 -m pip install --upgrade pip
+
+3. If you see dependency conflicts, try installing in a fresh virtual environment:
+
+   .. code-block:: bash
+
+      python3 -m venv rcaide-env
+      source rcaide-env/bin/activate  # On Windows: rcaide-env\Scripts\activate
+      pip install RCAIDE-LEADS
+
 

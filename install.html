@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Install &#8212; RCAIDE</title>
+    <title>Installation &#8212; RCAIDE</title>
   
   
   
@@ -137,7 +137,7 @@
     
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    Install
+    Installation
   </a>
 </li>
 
@@ -256,7 +256,7 @@
     
 <li class="nav-item current active">
   <a class="nav-link nav-internal" href="#">
-    Install
+    Installation
   </a>
 </li>
 
@@ -370,7 +370,7 @@
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Install</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installation</span></li>
   </ul>
 </nav>
 </div>
@@ -387,45 +387,76 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="install">
-<span id="id1"></span><h1>Install<a class="headerlink" href="#install" title="Link to this heading">#</a></h1>
-<p>This section provides instructions to install RCAIDE and its dependencies.</p>
+  <section id="installation">
+<span id="install"></span><h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
+<p>This guide will help you install RCAIDE and its dependencies.</p>
 <section id="system-requirements">
-<h2><strong>System Requirements</strong><a class="headerlink" href="#system-requirements" title="Link to this heading">#</a></h2>
-<p>Before installing RCAIDE, ensure that your system meets the following requirements:</p>
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Link to this heading">#</a></h2>
+<p>Before installing RCAIDE, ensure your system meets these requirements:</p>
 <ul class="simple">
-<li><p>Python &gt;= 3.8</p></li>
-<li><p>pip &gt;= 20.0</p></li>
-<li><p>Supported OS: Linux, macOS, Windows</p></li>
+<li><p><strong>Python</strong>: Version 3.8 to 3.12</p></li>
+<li><p><strong>pip</strong>: Version 20.0 or higher</p></li>
+<li><p><strong>Operating Systems</strong>: Linux, macOS, Windows</p></li>
 </ul>
 </section>
-<section id="installing-rcaide">
-<h2><strong>Installing RCAIDE</strong><a class="headerlink" href="#installing-rcaide" title="Link to this heading">#</a></h2>
-<p>Follow these steps to install RCAIDE:</p>
-<ol class="arabic">
-<li><p><strong>Using pip</strong></p>
-<p>Coming soon…</p>
-</li>
-<li><p><strong>From Source (editable mode)</strong></p>
-<p>Alternatively, clone the RCAIDE repository and install it manually:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/leadsgroup/RCAIDE_LEADS.git
-<span class="nb">cd</span><span class="w"> </span>RCAIDE_LEADS
+<section id="installation-methods">
+<h2>Installation Methods<a class="headerlink" href="#installation-methods" title="Link to this heading">#</a></h2>
+<section id="method-1-using-pip-recommended">
+<h3>Method 1: Using pip (Recommended)<a class="headerlink" href="#method-1-using-pip-recommended" title="Link to this heading">#</a></h3>
+<p>The simplest way to install RCAIDE is via pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>RCAIDE-LEADS
 </pre></div>
 </div>
-<p>Install the dependencies and RCAIDE in editable mode:</p>
+</section>
+<section id="method-2-from-source">
+<h3>Method 2: From Source<a class="headerlink" href="#method-2-from-source" title="Link to this heading">#</a></h3>
+<p>For developers or users who need the latest features, install from source:</p>
+<ol class="arabic">
+<li><p>Clone the repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/leadsgroup/RCAIDE_LEADS.git
+<span class="nb">cd</span><span class="w"> </span>RCAIDE_LEADS
+git<span class="w"> </span>checkout<span class="w"> </span>develop
+</pre></div>
+</div>
+</li>
+<li><p>Install in editable mode with dependencies:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
 </li>
 </ol>
 </section>
-<section id="verifying-the-installation">
-<h2><strong>Verifying the Installation</strong><a class="headerlink" href="#verifying-the-installation" title="Link to this heading">#</a></h2>
-<p>To confirm that RCAIDE has been successfully installed, run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import RCAIDE; print(RCAIDE.__version__)&quot;</span>
+</section>
+<section id="verification">
+<h2>Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
+<p>Verify your installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import RCAIDE; print(RCAIDE.__version__)&quot;</span>
 </pre></div>
 </div>
-<p>If RCAIDE is installed correctly, it will print the installed version number.</p>
+<p>The command should display the current version number without errors.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<p>If you encounter issues:</p>
+<ol class="arabic">
+<li><p>Ensure your Python version is compatible:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>--version
+</pre></div>
+</div>
+</li>
+<li><p>Update pip to the latest version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</pre></div>
+</div>
+</li>
+<li><p>If you see dependency conflicts, try installing in a fresh virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>rcaide-env
+<span class="nb">source</span><span class="w"> </span>rcaide-env/bin/activate<span class="w">  </span><span class="c1"># On Windows: rcaide-env\Scripts\activate</span>
+pip<span class="w"> </span>install<span class="w"> </span>RCAIDE-LEADS
+</pre></div>
+</div>
+</li>
+</ol>
 </section>
 </section>
 
@@ -476,9 +507,14 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-requirements"><strong>System Requirements</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-rcaide"><strong>Installing RCAIDE</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-the-installation"><strong>Verifying the Installation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-requirements">System Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-methods">Installation Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-using-pip-recommended">Method 1: Using pip (Recommended)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-from-source">Method 2: From Source</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
   </nav></div>
 
