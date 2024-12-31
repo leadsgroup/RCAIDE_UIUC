@@ -146,3 +146,34 @@ jobs:
         run: |
           twine upload dist/*
 
+  sync-version:
+    name: Sync Develop Version
+    needs: publish
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure full history is fetched
+
+      - name: Set Up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch Develop Branch
+        run: git fetch origin develop:develop
+
+      - name: Update Develop Branch Version
+        run: |
+          # Check out develop
+          git checkout develop
+
+          # Cherry-pick VERSION file from master
+          git checkout master -- VERSION
+
+          # Commit and push the update
+          git add VERSION
+          git commit -m "Update VERSION to match master"
+          git push origin develop
