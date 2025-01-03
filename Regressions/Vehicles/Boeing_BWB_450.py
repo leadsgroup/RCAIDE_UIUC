@@ -10,7 +10,6 @@ import RCAIDE
 from RCAIDE.Framework.Core import Units, Data       
 from RCAIDE.Library.Methods.Geometry.Planform               import segment_properties    
 from RCAIDE.Library.Methods.Propulsors.Turbofan_Propulsor   import design_turbofan   
-from RCAIDE.Library.Methods.Weights.Center_of_Gravity       import compute_component_centers_of_gravity
 from RCAIDE.Library.Plots                                   import *     
  
 # python imports 
@@ -179,6 +178,34 @@ def vehicle_setup():
     
     # Fill out more segment properties automatically
     wing = segment_properties(wing)        
+
+
+    # control surfaces -------------------------------------------
+    slat                          = RCAIDE.Library.Components.Wings.Control_Surfaces.Slat()
+    slat.tag                      = 'slat'
+    slat.span_fraction_start      = 0.2
+    slat.span_fraction_end        = 0.963
+    slat.deflection               = 0.0 * Units.degrees
+    slat.chord_fraction           = 0.075
+    wing.append_control_surface(slat)
+
+    flap                          = RCAIDE.Library.Components.Wings.Control_Surfaces.Flap()
+    flap.tag                      = 'flap'
+    flap.span_fraction_start      = 0.2
+    flap.span_fraction_end        = 0.7
+    flap.deflection               = 0.0 * Units.degrees
+    flap.configuration_type       = 'double_slotted'
+    flap.chord_fraction           = 0.30
+    wing.append_control_surface(flap)
+
+    aileron                       = RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron()
+    aileron.tag                   = 'aileron'
+    aileron.span_fraction_start   = 0.7
+    aileron.span_fraction_end     = 0.963
+    aileron.deflection            = 30.0 * Units.degrees
+    aileron.chord_fraction        = 0.16
+    wing.append_control_surface(aileron)
+
 
     # add to vehicle
     vehicle.append_component(wing)

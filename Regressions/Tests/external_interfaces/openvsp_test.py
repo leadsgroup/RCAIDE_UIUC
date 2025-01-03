@@ -12,7 +12,8 @@ from Boeing_BWB_450         import vehicle_setup as bwb_setup
 from Stopped_Rotor_EVTOL    import vehicle_setup as evtol_setup
 
 from RCAIDE.Framework.External_Interfaces.OpenVSP.export_vsp_vehicle import export_vsp_vehicle 
-from RCAIDE.Framework.External_Interfaces.OpenVSP.import_vsp_vehicle import import_vsp_vehicle 
+from RCAIDE.Framework.External_Interfaces.OpenVSP.import_vsp_vehicle import import_vsp_vehicle
+from RCAIDE.Library.Plots import  *  
 
 def main():
     try:
@@ -36,7 +37,20 @@ def Transport_Aircraft_Test():
     network_type   = RCAIDE.Framework.Networks.Fuel()
     
     vsp_vehicle  = import_vsp_vehicle('Boeing_737.vsp3',network_type=network_type,propulsor_type=propulsor_type) 
-    return 
+    return
+
+        
+def BWB_Aircraft_Test(): 
+    vehicle  = bwb_setup() 
+    
+    export_vsp_vehicle(vehicle, 'BWB')
+
+    propulsor_type = RCAIDE.Library.Components.Propulsors.Turbofan()
+    network_type   = RCAIDE.Framework.Networks.Fuel()
+    vsp_vehicle  = import_vsp_vehicle('BWB.vsp3',network_type=network_type,propulsor_type=propulsor_type)
+    
+    return
+
 
 def General_Aviation_Test():
       
@@ -46,15 +60,6 @@ def General_Aviation_Test():
     propulsor_type = RCAIDE.Library.Components.Propulsors.ICE_Propeller()
     network_type   = RCAIDE.Framework.Networks.Fuel()
     vsp_vehicle  = import_vsp_vehicle('Cessna_172.vsp3',network_type=network_type,propulsor_type=propulsor_type)     
-    return 
-        
-def BWB_Aircraft_Test(): 
-    vehicle  = bwb_setup()
-    export_vsp_vehicle(vehicle, 'BWB')
-
-    propulsor_type = RCAIDE.Library.Components.Propulsors.Turbofan()
-    network_type   = RCAIDE.Framework.Networks.Fuel()
-    vsp_vehicle  = import_vsp_vehicle('BWB.vsp3',network_type=network_type,propulsor_type=propulsor_type)     
     return
 
 def EVTOL_Aircraft_Test():  

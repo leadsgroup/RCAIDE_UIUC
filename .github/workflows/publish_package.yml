@@ -39,17 +39,17 @@ jobs:
       - name: Read Version from Current Branch
         id: current_version
         run: |
-          if [ ! -f VERSION ]; then
+          if [ ! -f RCAIDE/VERSION ]; then
             echo "VERSION file not found in the current branch."
             exit 1
           fi
-          VERSION=$(cat VERSION)
+          VERSION=$(cat RCAIDE/VERSION)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Check if Base VERSION Exists
         id: base_version_exists
         run: |
-          BASE_VERSION_FILE="VERSION"
+          BASE_VERSION_FILE="RCAIDE/VERSION"
           if [[ "${{ steps.determine_base.outputs.base_branch }}" != "unknown" ]]; then
             # Try to fetch the branch first
             git fetch origin "${{ steps.determine_base.outputs.base_branch }}" || true
@@ -69,7 +69,7 @@ jobs:
         id: base_version
         if: steps.base_version_exists.outputs.exists == 'true'
         run: |
-          BASE_VERSION=$(git show "${{ steps.determine_base.outputs.base_branch }}:VERSION")
+          BASE_VERSION=$(git show "${{ steps.determine_base.outputs.base_branch }}:RCAIDE/VERSION")
           echo "version=$BASE_VERSION" >> $GITHUB_OUTPUT
 
       - name: Compare Versions Based on Target Branch

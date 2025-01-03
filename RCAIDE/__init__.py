@@ -59,7 +59,7 @@ from pathlib import Path
 import os
 
 def read_version():
-    version_file = Path(__file__).parent.parent / 'VERSION'
+    version_file = Path(__file__).parent / 'VERSION'
     if version_file.exists():
         with open(version_file, 'r') as f:
             return f.read().strip()

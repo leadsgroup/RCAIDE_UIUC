@@ -27,7 +27,6 @@ classifiers = [
     "Topic :: Scientific/Engineering"
 ]
 dependencies = [
-    "numpy==1.24.4; python_version == '3.8'",
     "numpy==1.26.4; python_version > '3.8'",
     "scipy",
     "matplotlib",
@@ -52,7 +51,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://rcaide.leadsresearch.com"
+Homepage = "https://www.rcaide.leadsresearchgroup.com"
 
 [project.optional-dependencies]
 dev = [
@@ -66,7 +65,7 @@ dev = [
 package-dir = {"" = "."}
 
 [tool.setuptools.dynamic]
-version = {file = "VERSION"}
+version = {file = "RCAIDE/VERSION"}
 
 [tool.setuptools.packages.find]
 where = ["."]
