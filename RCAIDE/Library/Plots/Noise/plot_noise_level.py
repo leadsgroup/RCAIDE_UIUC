@@ -19,30 +19,75 @@ import numpy as np
 def plot_noise_level(noise_data,
                      noise_level = False,
                      save_figure = False,
-                     save_filename="Sideline_Noise_Levels",
-                     file_type=".png",
-                     width = 11, height = 7): 
-    """This plots the A-weighted Sound Pressure Level as a function of time at various aximuthal angles
-    on the ground
+                     save_filename = "Sideline_Noise_Levels",
+                     file_type = ".png",
+                     width = 11, height = 7):
+    """
+    Creates a visualization of A-weighted Sound Pressure Levels at various sideline distances.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    noise_data : NoiseData
+        RCAIDE noise data structure containing:
+        
+        - microphone_y_resolution : int
+            Number of sideline measurement positions
+        - microphone_locations : ndarray
+            3D array of microphone positions where:
+                - [:,:,0] : x-positions (longitudinal)
+                - [:,:,1] : y-positions (sideline)
+                - [:,:,2] : z-positions (vertical)
+            
+    noise_level : ndarray, optional
+        2D array of noise levels at measurement points (default: False)
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Sideline_Noise_Levels")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure showing noise levels vs range
 
-    Inputs:
-    results.segments.conditions.
-        frames.inertial.position_vector   - position vector of aircraft
-        noise.
-            total_SPL_dBA                 - total SPL (dbA)
-            relative_microphone_locations - microphone locations
-
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates visualization showing:
+        * Noise level variation with distance
+        * Multiple sideline measurement positions
+        * Color-coded sideline distances
+        * Customizable appearance
+    
+    **Major Assumptions**
+        * Noise levels are A-weighted SPL in dBA
+        * Microphones are in a regular grid
+        * Range is in nautical miles
+        * Sideline distances are in meters
+    
+    **Definitions**
+    
+    'Sound Pressure Level'
+        A-weighted acoustic pressure level in dBA
+    'Sideline Distance'
+        Perpendicular distance from flight path
+    'Range'
+        Distance along flight path
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Noise.plot_2D_noise_contour : 2D contour visualization
+    RCAIDE.Library.Plots.Noise.plot_3D_noise_contour : 3D noise field visualization
     """      
     N_gm_y       = noise_data.microphone_y_resolution 
     gm           = noise_data.microphone_locations    

@@ -18,45 +18,99 @@ import matplotlib.colors as colors
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
 def plot_2D_noise_contour(noise_data,
-                       noise_level              = None ,
-                       min_noise_level          = 35,  
-                       max_noise_level          = 90, 
-                       noise_scale_label        = None,
-                       save_figure              = False,
-                       show_figure              = True,
-                       save_filename            = "2D_Noise_Contour",
-                       show_elevation           = False,
+                       noise_level = None,
+                       min_noise_level = 35,  
+                       max_noise_level = 90, 
+                       noise_scale_label = None,
+                       save_figure = False,
+                       show_figure = True,
+                       save_filename = "2D_Noise_Contour",
+                       show_elevation = False,
                        use_lat_long_coordinates = True,  
-                       colormap                 = 'jet',
-                       file_type                = ".png",
-                       width                    = 10, 
-                       height                   = 7,
-                       *args, **kwargs): 
-    """This plots a 2D noise contour of a noise level 
+                       colormap = 'jet',
+                       file_type = ".png",
+                       width = 10, 
+                       height = 7):
+    """
+    Creates a 2D contour plot of noise levels with optional terrain elevation.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    noise_data : NoiseData
+        RCAIDE noise data structure containing:
+        
+        - microphone_locations[:,:,0:3]
+            3D array of microphone positions
+        - microphone_coordinates[:,:,0:2]
+            Latitude and longitude of measurement points
+        - topography_file
+            Optional path to terrain elevation data
+            
+    noise_level : ndarray, optional
+        2D array of noise levels at measurement points
+        
+    min_noise_level : float, optional
+        Minimum noise level for contour scale (default: 35 dB)
+        
+    max_noise_level : float, optional
+        Maximum noise level for contour scale (default: 90 dB)
+        
+    noise_scale_label : str, optional
+        Label for noise metric (e.g., "dBA", "EPNL", etc.)
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_figure : bool, optional
+        Flag to display the figure (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "2D_Noise_Contour")
+        
+    show_elevation : bool, optional
+        Flag to display terrain elevation contours (default: False)
+        
+    use_lat_long_coordinates : bool, optional
+        Flag to use geographic coordinates (default: True)
+        
+    colormap : str, optional
+        Colormap specification for noise contours (default: 'jet')
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 10)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : plotly.graph_objects.Figure
+        Handle to the generated figure
 
-    Inputs: 
-       noise_data        - noise data structure 
-       noise_level       - noise level (dBA, DNL, SENEL etc)
-       min_noise_level   - minimal noise level 
-       max_noise_level   - maximum noise level 
-       noise_scale_label - noise level label 
-       save_figure       - save figure 
-       show_figure       - show figure 
-       save_filename     - save file flag
-       show_trajectory   - plot aircraft trajectory flag
-       show_microphones  - show microhpone flag 
-
-    Outputs:
-       Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates visualization showing:
+        - Noise level contours
+        - Optional terrain elevation
+        - Geographic or Cartesian coordinates
+        - Customizable color scales
+    
+    **Definitions**
+    
+    'Noise Level'
+        Sound pressure level or derived metric
+    'Terrain Elevation'
+        Height above sea level
+    'Geographic Coordinates'
+        Latitude and longitude positions
+    
+    See Also
+    --------
+    plot_3D_noise_contour : 3D visualization of noise field
+    post_process_noise_data : Data preparation for plotting
     """      
     
     elevation       = noise_data.microphone_locations[:,:,2]/Units.ft      

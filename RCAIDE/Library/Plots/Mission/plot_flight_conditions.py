@@ -18,35 +18,94 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------   
 def plot_flight_conditions(results,
                            save_figure = False,
-                           show_legend=True,
+                           show_legend = True,
                            save_filename = "Flight Conditions",
                            file_type = ".png",
-                           width = 11, height = 7): 
+                           width = 11, height = 7):
+    """
+    Creates a multi-panel visualization of flight conditions over a mission profile.
 
-    """This plots the flights the conditions
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
+        
+        - segments[i].conditions.frames.inertial.time[:,0]
+            Time history for each segment
+        - segments[i].conditions.freestream.velocity[:,0]
+            Airspeed history for each segment
+        - segments[i].conditions.frames.body.inertial_rotations[:,1,None]
+            Pitch angle history for each segment
+        - segments[i].conditions.frames.inertial.aircraft_range[:,0]
+            Range history for each segment
+        - segments[i].conditions.freestream.altitude[:,0]
+            Altitude history for each segment
+        - segments[i].tag
+            Name/identifier of each segment
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Flight Conditions")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Assumptions:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure containing four subplots:
+            - Altitude vs time
+            - Airspeed vs time
+            - Range vs time
+            - Pitch angle vs time
 
-    Source:
-    None
-
-    Inputs:
-    results.segments.conditions.
-         frames
-             body.inertial_rotations
-             inertial.position_vector
-         freestream.velocity
-         aerodynamics.
-             lift_coefficient
-             drag_coefficient
-             angle_of_attack
-
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates a four-panel plot showing:
+        1. Altitude profile
+        2. Airspeed variation
+        3. Range covered
+        4. Aircraft pitch attitude
+    
+    Requires the following data in results:
+        - frames.inertial.time
+        - frames.inertial.position_vector
+        - frames.body.inertial_rotations
+        - freestream.velocity
+        - freestream.altitude
+    
+    **Major Assumptions**
+    
+    * Time is in minutes
+    * Altitude is in feet
+    * Airspeed is in mph
+    * Range is in nautical miles
+    * Pitch angle is in degrees
+    
+    **Definitions**
+    
+    'Altitude'
+        Height above reference plane
+    'Range'
+        Ground distance covered
+    'Pitch Angle'
+        Nose-up/down attitude relative to horizon
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Mission.plot_aircraft_velocities : Detailed velocity analysis
+    RCAIDE.Library.Plots.Mission.plot_flight_trajectory : 3D trajectory visualization
     """
  
 

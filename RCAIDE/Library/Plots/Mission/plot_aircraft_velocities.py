@@ -18,30 +18,75 @@ import numpy as np
 def plot_aircraft_velocities(results,
                              save_figure = False,
                              show_legend = True,
-                             save_filename = "Aircraft Velocities" ,
+                             save_filename = "Aircraft Velocities",
                              file_type = ".png",
-                             width = 11, height = 7): 
+                             width = 11, height = 7):
+    """
+    Creates a multi-panel visualization of aircraft velocity components over a mission.
 
-    """This plots true, equivalent, and calibrated airspeeds along with mach
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing segment conditions
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Aircraft Velocities")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Assumptions:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure containing four subplots:
+            - True airspeed
+            - Equivalent airspeed
+            - Calibrated airspeed
+            - Mach number
 
-    Source:
-    None
+    Notes
+    -----
+    Creates a four-panel plot showing:
+        1. True airspeed vs time
+        2. Equivalent airspeed vs time
+        3. Calibrated airspeed vs time
+        4. Mach number vs time
+    
+    **Major Assumptions**
+    
+    * Results contain freestream conditions
+    * Time is in minutes
+    * Velocities are in knots
+    * Standard atmosphere density used as reference
 
-    Inputs:
-    results.segments.condtions.freestream.
-        velocity
-        density
-        mach_number
-
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
-    """ 
+    **Definitions**
+    
+    'True Airspeed'
+        Actual aircraft velocity relative to airmass
+    'Equivalent Airspeed'
+        Velocity at sea level producing same dynamic pressure
+    'Calibrated Airspeed'
+        Indicated airspeed corrected for instrument and position errors
+    'Mach Number'
+        Ratio of true airspeed to local speed of sound
+    
+    See Also
+    --------
+    plot_flight_conditions : Related atmospheric conditions
+    plot_flight_trajectory : Complete trajectory visualization
+    """
 
     # get plotting style 
     ps      = plot_style()  
