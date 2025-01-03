@@ -71,10 +71,10 @@ def plot_flight_trajectory(results,
     -------
     fig : matplotlib.figure.Figure
         Handle to the generated figure containing four subplots:
-        - Range vs time
-        - Top view (x-y plane)
-        - Altitude vs time
-        - 3D trajectory
+            - Range vs time
+            - Top view (x-y plane)
+            - Altitude vs time
+            - 3D trajectory
 
     Notes
     -----
@@ -102,8 +102,8 @@ def plot_flight_trajectory(results,
     
     See Also
     --------
-    plot_flight_conditions : Detailed flight condition analysis
-    plot_aircraft_velocities : Aircraft speed profiles
+    RCAIDE.Library.Plots.Mission.plot_flight_conditions : Detailed flight condition analysis
+    RCAIDE.Library.Plots.Mission.plot_aircraft_velocities : Aircraft speed profiles
     """	     
 
     # get plotting style 

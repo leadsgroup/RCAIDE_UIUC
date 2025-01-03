@@ -25,21 +25,19 @@ def plot_lift_distribution(results, vehicle,
     ----------
     results : Data
         Mission results data structure containing:
-        results.segments.conditions.aerodynamics.coefficients.lift with fields:
-
-            - inviscid_wings_sectional : array
-                Sectional lift coefficients at control points
+            - results.segments.conditions.aerodynamics.coefficients.lift with fields:
+                - inviscid_wings_sectional : array
+                    Sectional lift coefficients at control points
 
     vehicle : Data
         Vehicle data structure containing:
-        vehicle.vortex_distribution with fields:
-
-            - n_sw : array
-                Number of spanwise vortices per wing
-            - n_w : int
-                Total number of wings
-            - Y_SW : array
-                Spanwise control point locations
+            - vehicle.vortex_distribution with fields:
+                - n_sw : array
+                    Number of spanwise vortices per wing
+                - n_w : int
+                    Total number of wings
+                - Y_SW : array
+                    Spanwise control point locations
 
     save_figure : bool, optional
         Save figure to file if True, default False
@@ -64,14 +62,12 @@ def plot_lift_distribution(results, vehicle,
     Notes
     -----
     Creates figures showing:
-
-    - Sectional lift coefficient (CLy) vs spanwise location
-    - Separate plot for each timestep in each segment
-    - Different wings distinguished by line colors:
-
-        - Blue: Main wings
-        - Red: Horizontal tails
-        - Black: Other surfaces
+        - Sectional lift coefficient (CLy) vs spanwise location
+        - Separate plot for each timestep in each segment
+        - Different wings distinguished by line colors:
+            - Blue: Main wings
+            - Red: Horizontal tails
+            - Black: Other surfaces
 
     **Definitions**
 

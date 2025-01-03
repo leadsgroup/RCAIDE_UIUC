@@ -33,29 +33,28 @@ def plot_airfoil_boundary_layer_properties(ap,
     ----------
     ap : Data
         Airfoil properties data structure containing:
-
-        - x, y : arrays
-            Airfoil surface coordinates
-        - y_bl : array
-            Boundary layer displacement thickness coordinates
-        - Ue_Vinf : array
-            Edge velocity ratio (Ue/U∞)
-        - H : array
-            Shape factor
-        - delta_star : array
-            Displacement thickness
-        - delta : array
-            Boundary layer thickness
-        - theta : array
-            Momentum thickness
-        - cf : array
-            Skin friction coefficient
-        - Re_theta : array
-            Momentum thickness Reynolds number
-        - AoA : array
-            Angles of attack [rad]
-        - Re : array
-            Reynolds numbers
+            - x, y : arrays
+                Airfoil surface coordinates
+            - y_bl : array
+                Boundary layer displacement thickness coordinates
+            - Ue_Vinf : array
+                Edge velocity ratio (Ue/U∞)
+            - H : array
+                Shape factor
+            - delta_star : array
+                Displacement thickness
+            - delta : array
+                Boundary layer thickness
+            - theta : array
+                Momentum thickness
+            - cf : array
+                Skin friction coefficient
+            - Re_theta : array
+                Momentum thickness Reynolds number
+            - AoA : array
+                Angles of attack [rad]
+            - Re : array
+                Reynolds numbers
 
     save_figure : bool, optional
         Save figures to files if True, default False
@@ -83,15 +82,14 @@ def plot_airfoil_boundary_layer_properties(ap,
     Notes
     -----
     Creates multiple figures showing:
-
-    - Airfoil profile with boundary layer thickness
-    - Edge velocity distribution
-    - Shape factor distribution
-    - Displacement thickness distribution
-    - Boundary layer thickness distribution
-    - Momentum thickness distribution
-    - Skin friction distribution
-    - Momentum thickness Reynolds number distribution
+        - Airfoil profile with boundary layer thickness
+        - Edge velocity distribution
+        - Shape factor distribution
+        - Displacement thickness distribution
+        - Boundary layer thickness distribution
+        - Momentum thickness distribution
+        - Skin friction distribution
+        - Momentum thickness Reynolds number distribution
 
     Each case (combination of AoA and Re) is plotted in a different color.
     Upper and lower surfaces are distinguished by line style.
@@ -161,13 +159,12 @@ def plot_quantity(ap, q, qaxis, qname, ylim_low, ylim_high, file_type, show_lege
     ----------
     ap : Data
         Airfoil properties data structure containing:
-        
-        - x : array
-            Airfoil surface coordinates
-        - AoA : array
-            Angles of attack [rad]
-        - Re : array
-            Reynolds numbers
+            - x : array
+                Airfoil surface coordinates
+            - AoA : array
+                Angles of attack [rad]
+            - Re : array
+                Reynolds numbers
 
     q : array
         Values of quantity to plot along airfoil surface
@@ -217,7 +214,7 @@ def plot_quantity(ap, q, qaxis, qname, ylim_low, ylim_high, file_type, show_lege
     --------
     RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
     RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
-    plot_airfoil_boundary_layer_properties : Main plotting function
+    RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties : Main plotting function
     """
 
     # get plotting style 

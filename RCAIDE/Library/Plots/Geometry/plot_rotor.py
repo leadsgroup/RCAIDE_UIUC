@@ -47,17 +47,10 @@ def plot_rotor(prop, face_color = 'red', edge_color = 'black', show_figure = Tru
     Returns
     -------
     fig : plotly.graph_objects.Figure
-        Handle to the generated figure containing four subplots:
-
-        - Twist distribution
-        - Chord distribution
-        - Thickness distribution
-        - Mid-chord alignment
 
     Notes
     -----
     Creates a four-panel plot showing:
-
         1. Twist angle vs radial position
         2. Chord length vs radial position
         3. Maximum thickness vs radial position

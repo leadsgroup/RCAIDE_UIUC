@@ -46,7 +46,6 @@ def plot_3d_wing(plot_data, wing, number_of_airfoil_points = 21, color_map='grey
     Notes
     -----
     Creates wing visualization by:
-
         - Generating points for each segment
         - Creating surface panels between sections
         - Adding symmetric wing if specified
@@ -125,20 +124,18 @@ def generate_3d_wing_points(wing, n_points, dim):
     -------
     G : Data
         Data structure containing generated points with attributes:
-        
-        - X, Y, Z : ndarray
-            Raw coordinate points
-        - PTS : ndarray
-            Combined coordinate array
-        - XA1, YA1, ZA1, XA2, YA2, ZA2 : ndarray
-            Leading edge surface points
-        - XB1, YB1, ZB1, XB2, YB2, ZB2 : ndarray
-            Trailing edge surface points
+            - X, Y, Z : ndarray
+                Raw coordinate points
+            - PTS : ndarray
+                Combined coordinate array
+            - XA1, YA1, ZA1, XA2, YA2, ZA2 : ndarray
+                Leading edge surface points
+            - XB1, YB1, ZB1, XB2, YB2, ZB2 : ndarray
+                Trailing edge surface points
 
     Notes
     -----
     Generates wing geometry by:
-
         1. Creating airfoil sections at specified span positions
         2. Applying twist, sweep, and dihedral
         3. Scaling sections by local chord

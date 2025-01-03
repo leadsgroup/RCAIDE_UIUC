@@ -13,7 +13,7 @@ from plotly.subplots import make_subplots
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------      
-def plot_rotor_performance(rotor, title=None, show_figure = True, save_figure=False, save_filename='Rotor_Performance', file_type=".png"):
+def plot_rotor_performance(rotor, outputs,title=None, show_figure = True, save_figure=False, save_filename='Rotor_Performance', file_type=".png"):
     """
     Generate plots summarizing rotor aerodynamic performance distributions.
 

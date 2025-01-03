@@ -38,13 +38,12 @@ def plot_2D_noise_contour(noise_data,
     ----------
     noise_data : NoiseData
         RCAIDE noise data structure containing:
-        
-        - microphone_locations[:,:,0:3]
-            3D array of microphone positions
-        - microphone_coordinates[:,:,0:2]
-            Latitude and longitude of measurement points
-        - topography_file
-            Optional path to terrain elevation data
+            - microphone_locations[:,:,0:3]
+                3D array of microphone positions
+            - microphone_coordinates[:,:,0:2]
+                Latitude and longitude of measurement points
+            - topography_file
+                Optional path to terrain elevation data
             
     noise_level : ndarray, optional
         2D array of noise levels at measurement points
@@ -109,8 +108,8 @@ def plot_2D_noise_contour(noise_data,
     
     See Also
     --------
-    plot_3D_noise_contour : 3D visualization of noise field
-    post_process_noise_data : Data preparation for plotting
+    RCAIDE.Library.Plots.Noise.plot_3D_noise_contour : 3D visualization of noise field
+    RCAIDE.Library.Plots.Noise.post_process_noise_data : Data preparation for plotting
     """      
     
     elevation       = noise_data.microphone_locations[:,:,2]/Units.ft      

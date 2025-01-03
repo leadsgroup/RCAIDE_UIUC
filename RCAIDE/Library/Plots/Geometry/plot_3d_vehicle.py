@@ -104,7 +104,6 @@ def plot_3d_vehicle(vehicle,
     Notes
     -----
     Creates an interactive 3D visualization showing:
-
         - Wings and control surfaces
         - Fuselage sections
         - Propulsion systems

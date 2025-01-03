@@ -30,7 +30,6 @@ def plot_CO2e_emissions(results,
     results : Data
         Mission results data structure containing:
         results.segments[i].conditions.emissions.total with fields:
-
             - CO2 : array
                 Carbon dioxide emissions [kg]
             - NOx : array
@@ -70,11 +69,10 @@ def plot_CO2e_emissions(results,
     Notes
     -----
     Creates a stacked area plot showing:
-
-    - Individual contributions from each emission type
-    - Cumulative total CO2-equivalent impact
-    - Breakdown by mission segment
-    - Time history of emissions
+        - Individual contributions from each emission type
+        - Cumulative total CO2-equivalent impact
+        - Breakdown by mission segment
+        - Time history of emissions
 
     Different emission types are distinguished by fill colors
     and segments use different shades from the inferno colormap.

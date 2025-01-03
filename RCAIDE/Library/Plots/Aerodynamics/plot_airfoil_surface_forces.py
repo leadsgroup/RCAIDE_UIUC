@@ -27,19 +27,18 @@ def plot_airfoil_surface_forces(ap,
     ----------
     ap : Data
         Airfoil properties data structure containing:
-        
-        - x : array
-            Airfoil surface x-coordinates
-        - y : array
-            Airfoil surface y-coordinates
-        - cp : array
-            Pressure coefficients at surface points
-        - normals : array
-            Surface normal vectors [nx, ny]
-        - AoA : array
-            Angles of attack [rad]
-        - Re : array
-            Reynolds numbers
+            - x : array
+                Airfoil surface x-coordinates
+            - y : array
+                Airfoil surface y-coordinates
+            - cp : array
+                Pressure coefficients at surface points
+            - normals : array
+                Surface normal vectors [nx, ny]
+            - AoA : array
+                Angles of attack [rad]
+            - Re : array
+                Reynolds numbers
 
     save_figure : bool, optional
         Save figure to file if True, default False
@@ -59,17 +58,15 @@ def plot_airfoil_surface_forces(ap,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure showing airfoil with pressure force arrows
 
     Notes
     -----
     Creates a figure showing:
-
-    - Airfoil profile
-    - Pressure force vectors as arrows normal to surface
-    - Arrow length proportional to local pressure coefficient
-    - Arrows point inward for negative Cp (suction)
-    - Arrows point outward for positive Cp (pressure)
+        - Airfoil profile
+        - Pressure force vectors as arrows normal to surface
+        - Arrow length proportional to local pressure coefficient
+        - Arrows point inward for negative Cp (suction)
+        - Arrows point outward for positive Cp (pressure)
 
     A separate figure is created for each combination of angle of
     attack and Reynolds number.

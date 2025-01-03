@@ -83,13 +83,11 @@ def plot_3d_vehicle_vlm_panelization(vehicle,
     Notes
     -----
     Creates an interactive 3D visualization showing:
-
         - VLM panels on lifting surfaces
         - Control points (optional)
         - Customizable view and axis limits
     
     If vehicle's vortex distribution is not available, generates a new one with:
-
         - 25 spanwise vortices
         - 5 chordwise vortices
         - Linear spanwise spacing

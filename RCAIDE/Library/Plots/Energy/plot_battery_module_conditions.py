@@ -53,12 +53,10 @@ def plot_battery_module_conditions(results,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure handle containing the generated plots
 
     Notes
     -----
     The function creates a 3x2 subplot containing:
-
         1. State of Charge (SOC) vs time
         2. Module energy vs time
         3. Module current vs time

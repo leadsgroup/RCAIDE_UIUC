@@ -38,19 +38,17 @@ def post_process_noise_data(results,
     ----------
     results : Results
         RCAIDE results data structure containing:
-        
-        - segments[i].analyses.noise.settings
-            Noise analysis settings including:
-                - number_of_microphone_in_stencil
-                - microphone_x_resolution
-                - microphone_y_resolution
-                - topography_file
-                - noise_times_steps
-                
-        - segments[i].state.conditions
-            Flight conditions including:
-                - frames.inertial.time
-                - noise.hemisphere_SPL_dBA
+            - segments[i].analyses.noise.settings
+                Noise analysis settings including:
+                    - number_of_microphone_in_stencil
+                    - microphone_x_resolution
+                    - microphone_y_resolution
+                    - topography_file
+                    - noise_times_steps
+            - segments[i].state.conditions
+                Flight conditions including:
+                    - frames.inertial.time
+                    - noise.hemisphere_SPL_dBA
                 
     flight_times : ndarray of str, optional
         Array of time strings for noise evaluation (default: hourly from 06:00 to 15:00)
@@ -65,19 +63,18 @@ def post_process_noise_data(results,
     -------
     noise_data : Data
         Processed noise data structure containing:
-        
-        - SPL_dBA : ndarray
-            Sound pressure levels at each grid point
-        - time : ndarray
-            Time history array
-        - aircraft_position : ndarray
-            Aircraft trajectory points
-        - microphone_locations : ndarray
-            Measurement grid coordinates
-        - topography_file : str, optional
-            Path to terrain data if used
-        - microphone_coordinates : ndarray, optional
-            Geographic coordinates if terrain used
+            - SPL_dBA : ndarray
+                Sound pressure levels at each grid point
+            - time : ndarray
+                Time history array
+            - aircraft_position : ndarray
+                Aircraft trajectory points
+            - microphone_locations : ndarray
+                Measurement grid coordinates
+            - topography_file : str, optional
+                Path to terrain data if used
+            - microphone_coordinates : ndarray, optional
+                Geographic coordinates if terrain used
 
     Notes
     -----

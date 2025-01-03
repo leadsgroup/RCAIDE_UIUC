@@ -31,17 +31,16 @@ def plot_airfoil_polar_files(polar_data,
     ----------
     polar_data : Data
         Airfoil polar data structure containing:
-
-        - lift_coefficients : array
-            CL values for each Reynolds number and angle of attack
-        - drag_coefficients : array
-            CD values for each Reynolds number and angle of attack
-        - angle_of_attacks : array
-            Angles of attack [rad]
-        - reynolds_numbers : array
-            Reynolds numbers
-        - re_from_polar : array
-            List of Reynolds numbers from polar files
+            - lift_coefficients : array
+                CL values for each Reynolds number and angle of attack
+            - drag_coefficients : array
+                CD values for each Reynolds number and angle of attack
+            - angle_of_attacks : array
+                Angles of attack [rad]
+            - reynolds_numbers : array
+                Reynolds numbers
+            - re_from_polar : array
+                List of Reynolds numbers from polar files
 
     save_figure : bool, optional
         Save figure to file if True, default False
@@ -61,21 +60,14 @@ def plot_airfoil_polar_files(polar_data,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure containing four subplots:
-
-        - CL vs alpha
-        - CD vs alpha
-        - CL vs CD
-        - CL/CD vs alpha
 
     Notes
     -----
     Creates a 2x2 subplot figure showing airfoil performance:
-    
-    - Top left: Lift coefficient vs angle of attack
-    - Top right: Drag coefficient vs angle of attack
-    - Bottom left: Drag polar (CL vs CD)
-    - Bottom right: Lift-to-drag ratio vs angle of attack
+        - Top left: Lift coefficient vs angle of attack
+        - Top right: Drag coefficient vs angle of attack
+        - Bottom left: Drag polar (CL vs CD)
+        - Bottom right: Lift-to-drag ratio vs angle of attack
 
     Each Reynolds number case is plotted in a different color using
     the inferno colormap. Legend entries show Reynolds numbers in

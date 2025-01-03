@@ -53,12 +53,10 @@ def plot_battery_temperature(results,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure handle containing the generated plots
 
     Notes
     -----
     The function creates a 2x2 subplot containing:
-
         1. Cell temperature vs time
         2. Charge throughput vs time
         3. Heat generation rate vs time

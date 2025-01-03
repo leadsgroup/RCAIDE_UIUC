@@ -54,12 +54,10 @@ def plot_battery_module_C_rates(results,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure handle containing the generated plots
 
     Notes
     -----
     The function creates a 1x2 subplot showing:
-
         1. Instantaneous C-rate vs time
         2. Nominal C-rate vs time
     

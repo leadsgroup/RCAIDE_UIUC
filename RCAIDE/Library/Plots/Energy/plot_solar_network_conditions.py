@@ -58,7 +58,6 @@ def plot_solar_network_conditions(results,
     Notes
     -----
     The function creates a 2x2 subplot containing:
-
         1. Solar flux vs time
         2. Battery charging power vs time
         3. Battery current vs time

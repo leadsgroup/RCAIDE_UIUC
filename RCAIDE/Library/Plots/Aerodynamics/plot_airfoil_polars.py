@@ -28,17 +28,16 @@ def plot_airfoil_polars(polar_data,
     ----------
     polar_data : Data
         Airfoil analysis results containing:
-        
-        - cl_invisc[0] : array
-            Inviscid lift coefficients
-        - cd_invisc[0] : array
-            Inviscid drag coefficients
-        - cm_invisc[0] : array
-            Inviscid moment coefficients
-        - AoA[0] : array
-            Angles of attack [rad]
-        - Re[0] : array
-            Reynolds numbers
+            - cl_invisc[0] : array
+                Inviscid lift coefficients
+            - cd_invisc[0] : array
+                Inviscid drag coefficients
+            - cm_invisc[0] : array
+                Inviscid moment coefficients
+            - AoA[0] : array
+                Angles of attack [rad]
+            - Re[0] : array
+                Reynolds numbers
 
     save_figure : bool, optional
         Save figure to file if True, default False
@@ -58,21 +57,14 @@ def plot_airfoil_polars(polar_data,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure containing four subplots:
-
-        - CL vs alpha
-        - CD vs alpha
-        - CM vs alpha
-        - L/D vs alpha
 
     Notes
     -----
     Creates a 2x2 subplot figure showing inviscid airfoil characteristics:
-
-    - Top left: Lift coefficient vs angle of attack
-    - Top right: Drag coefficient vs angle of attack
-    - Bottom left: Moment coefficient vs angle of attack
-    - Bottom right: Lift-to-drag ratio vs angle of attack
+        - Top left: Lift coefficient vs angle of attack
+        - Top right: Drag coefficient vs angle of attack
+        - Bottom left: Moment coefficient vs angle of attack
+        - Bottom right: Lift-to-drag ratio vs angle of attack
 
     Results are plotted for a single Reynolds number case, with the
     Reynolds number shown in the legend (e.g., "Re=1.0e6").
@@ -82,7 +74,7 @@ def plot_airfoil_polars(polar_data,
     RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
     RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
     RCAIDE.Library.Analysis.Aerodynamics.compute_airfoil_inviscid : Analysis module
-    plot_airfoil_polar_files : Viscous polar plotting function
+    RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files : Viscous polar plotting function
     """ 
  
     # Get raw data polars 

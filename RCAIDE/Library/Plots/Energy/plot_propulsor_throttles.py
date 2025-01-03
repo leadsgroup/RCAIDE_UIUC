@@ -57,7 +57,6 @@ def plot_propulsor_throttles(results,
     Notes
     -----
     The function creates a single plot showing:
-
         - Throttle settings vs time for each propulsor
         - Different flight segments distinguished by different colors
         - Different propulsors distinguished in the legend

@@ -57,7 +57,6 @@ def plot_fuel_consumption(results,
     Notes
     -----
     The function plots three curves when additional fuel is present:
-
         1. Standard fuel consumption
         2. Additional fuel consumption
         3. Total fuel consumption (sum of standard and additional)

@@ -54,7 +54,6 @@ def plot_airfoil(airfoil_paths,
     Notes
     -----
     Creates a plot showing:
-
         - Airfoil surface coordinates
         - Equal axis scaling
         - Optional figure saving

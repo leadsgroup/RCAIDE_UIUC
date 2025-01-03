@@ -16,28 +16,87 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #   plot_wavy_channel_conditions
 # ----------------------------------------------------------------------------------------------------------------------   
-def plot_wavy_channel_conditions(wavy_channel, results, coolant_line, save_figure,show_legend ,save_filename,file_type , width, height):
-    """Plots the Wavy Channel Heat Acqusition conditions throughout flight.
+def plot_wavy_channel_conditions(wavy_channel, results, coolant_line,
+                             save_figure = False,
+                             show_legend = True,
+                             save_filename = "Wavy_Channel_Conditions",
+                             file_type = ".png",
+                             width = 11, height = 7):
+    """
+    Creates a multi-panel visualization of wavy channel heat exchanger performance.
+
+    Parameters
+    ----------
+    wavy_channel : Component
+        Wavy channel heat exchanger component containing:
+            - tag : str
+                Unique identifier for the heat exchanger
+            
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.frames.inertial.time[:,0]
+                Time history for each segment
+            - segments[i].conditions.energy[coolant_line.tag][wavy_channel.tag]
+                Heat exchanger data containing:
+                    - outlet_coolant_temperature[:,0]
+                        Coolant outlet temperature in K
+                    - coolant_mass_flow_rate[:,0]
+                        Coolant flow rate in kg/s
+                    - power[:,0]
+                        Heat transfer rate in watts
+                    
+    coolant_line : Component
+        Coolant line component containing:
+            - tag : str
+                Unique identifier for the coolant circuit
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Wavy_Channel_Conditions")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure containing three subplots
+        
+    Notes
+    -----
+    Creates visualization showing:
+        * Thermal performance metrics
+        * Flow conditions
+        * Heat transfer characteristics
+        * Time history for each segment
     
-     Assumptions:
-     None
+    **Definitions**
     
-     Source:
-     None
+    'Wavy Channel'
+        Heat exchanger with sinusoidal flow paths
+    'Hydraulic Diameter'
+        4 × (flow area) / (wetted perimeter)
+    'Heat Transfer Rate'
+        Rate of thermal energy transfer
+    'Mass Flow Rate'
+        Mass of fluid flowing per unit time
     
-     Inputs:
-     results.segments.conditions.energy[coolant_line.tag][wavy_channel.tag].
-                                                                       outlet_coolant_temperature
-                                                                       coolant_mass_flow_rate
-                                                                       power
-                                                                
-                                                                       
-     Outputs:
-     Plots
-    
-     Properties Used:
-     N/A	
-     """ 
+    See Also
+    --------
+    RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance : Overall system performance
+    RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions : Cross-flow heat exchanger analysis
+    """
     
     # get plotting style 
     ps      = plot_style()  

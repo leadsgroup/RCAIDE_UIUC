@@ -21,8 +21,72 @@ def plot_flight_forces_and_moments(results,
                              save_filename = "Intertial_Forces_and_Moments",
                              file_type = ".png",
                              width = 12, height = 8):
-    """This plots the aerodynamic forces 
-    """ 
+    """
+    Creates a multi-panel visualization of aircraft forces and moments in the inertial frame.
+
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.frames.inertial.time[:,0]
+                Time history for each segment
+            - segments[i].conditions.frames.inertial.total_force_vector[:,0:3]
+                Force components [X, Y, Z] in inertial frame
+            - segments[i].conditions.frames.inertial.total_moment_vector[:,0:3]
+                Moment components [L, M, N] in inertial frame
+            - segments[i].tag
+                Name/identifier of each segment
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Inertial_Forces_and_Moments")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 12)
+        
+    height : float, optional
+        Figure height in inches (default: 8)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+
+    Notes
+    -----
+    Creates visualization showing:
+        * All force components in inertial frame
+        * All moment components in inertial frame
+        * Time history for each segment
+        * Color-coded flight segments
+    
+    **Major Assumptions**
+        * Forces are in Newtons
+        * Moments are in Newton-meters
+        * Time is in minutes
+        * Forces/moments are total (aerodynamic + propulsive + gravity)
+
+    **Definitions**
+    
+    'Inertial Forces'
+        Forces in earth-fixed reference frame
+    'Inertial Moments'
+        Moments in earth-fixed reference frame
+    'Flight Segment'
+        Distinct portion of mission profile
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Stability.plot_longitudinal_stability : Longitudinal dynamics analysis
+    RCAIDE.Library.Plots.Stability.plot_lateral_stability : Lateral-directional dynamics analysis
+    """
 
     # get plotting style 
     ps      = plot_style()  

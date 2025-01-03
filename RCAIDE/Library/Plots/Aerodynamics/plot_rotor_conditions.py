@@ -31,16 +31,7 @@ def plot_rotor_conditions(results,
     ----------
     results : Data
         Mission results data structure containing:
-        results.segments[i].conditions.energy[propulsor_tag][rotor_tag] with fields:
-
-            - rpm : array
-                Rotor rotational speed
-            - thrust : array
-                Rotor thrust vector
-            - torque : array
-                Rotor torque
-            - commanded_thrust_vector_angle : array
-                Commanded rotor tilt angle [rad]
+            - results.segments[0].analyses.energy.vehicle.networks
 
     save_figure : bool, optional
         Save figure to file if True, default False
@@ -63,21 +54,14 @@ def plot_rotor_conditions(results,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure containing four subplots:
-
-        - RPM vs time
-        - Rotor angle vs time
-        - Thrust vs time
-        - Torque vs time
 
     Notes
     -----
     Creates a 2x2 subplot figure showing:
-
-    - Top left: RPM vs time (minutes)
-    - Top right: Rotor tilt angle (degrees) vs time
-    - Bottom left: Thrust (N) vs time
-    - Bottom right: Torque (N-m) vs time
+        - Top left: RPM vs time (minutes)
+        - Top right: Rotor tilt angle (degrees) vs time
+        - Bottom left: Thrust (N) vs time
+        - Bottom right: Torque (N-m) vs time
 
     Each mission segment uses a different color from the inferno colormap.
     Multiple rotors are distinguished by different markers.
@@ -144,13 +128,12 @@ def plot_propulsor_data(results, propulsor, axis_1, axis_2, axis_3, axis_4, line
     ----------
     results : Data
         Mission results data structure containing:
-        results.segments[i].conditions with fields:
-
-            - energy[propulsor_tag][thrustor_tag].rpm
-            - energy[propulsor_tag][thrustor_tag].thrust
-            - energy[propulsor_tag][thrustor_tag].torque
-            - energy[propulsor_tag].commanded_thrust_vector_angle
-            - frames.inertial.time
+            - results.segments[i].conditions with fields:
+                - energy[propulsor_tag][thrustor_tag].rpm
+                - energy[propulsor_tag][thrustor_tag].thrust
+                - energy[propulsor_tag][thrustor_tag].torque
+                - energy[propulsor_tag].commanded_thrust_vector_angle
+                - frames.inertial.time
 
     propulsor : Data
         Propulsor data structure containing:
@@ -195,17 +178,16 @@ def plot_propulsor_data(results, propulsor, axis_1, axis_2, axis_3, axis_4, line
     segments.
 
     The function:
-
-    - Identifies thrustor type (rotor vs propeller)
-    - Extracts time histories for each segment
-    - Plots RPM, angle, thrust, and torque vs time
-    - Applies consistent styling
-    - Adds legend for first segment only
-    - Converts units as needed (time to minutes, angles to degrees)
+        - Identifies thrustor type (rotor vs propeller)
+        - Extracts time histories for each segment
+        - Plots RPM, angle, thrust, and torque vs time
+        - Applies consistent styling
+        - Adds legend for first segment only
+        - Converts units as needed (time to minutes, angles to degrees)
 
     See Also
     --------
-    plot_rotor_conditions : Main plotting function
+    RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions : Main plotting function
     """
     if 'rotor' in  propulsor:
         thrustor = propulsor.rotor

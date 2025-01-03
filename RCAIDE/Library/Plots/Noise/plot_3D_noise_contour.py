@@ -40,11 +40,10 @@ def plot_3D_noise_contour(noise_data,
     ----------
     noise_data : NoiseData
         RCAIDE noise data structure containing:
-        
-        - microphone_locations[:,:,0:3]
-            3D array of microphone positions in (nmi, nmi, ft)
-        - aircraft_position[:,0:3]
-            Aircraft trajectory points in (nmi, nmi, ft)
+            - microphone_locations[:,:,0:3]
+                3D array of microphone positions in (nmi, nmi, ft)
+            - aircraft_position[:,0:3]
+                Aircraft trajectory points in (nmi, nmi, ft)
             
     noise_level : ndarray
         2D array of noise levels at measurement points

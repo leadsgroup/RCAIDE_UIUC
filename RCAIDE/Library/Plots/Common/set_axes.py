@@ -20,18 +20,16 @@ def set_axes(axes):
     Returns
     -------
     None
-        Modifies axes object in place
 
     Notes
     -----
     Applies the following formatting:
-
-    - Minor tick marks enabled
-    - Major grid lines: solid grey, width 0.5
-    - Minor grid lines: dotted grey, width 0.5
-    - Grid lines enabled
-    - Scientific notation disabled for y-axis
-    - Axis offset disabled for y-axis
+        - Minor tick marks enabled
+        - Major grid lines: solid grey, width 0.5
+        - Minor grid lines: dotted grey, width 0.5
+        - Grid lines enabled
+        - Scientific notation disabled for y-axis
+        - Axis offset disabled for y-axis
 
     This function ensures consistent axis appearance across all RCAIDE plots
     and should be called after plotting data but before displaying the figure.
@@ -50,7 +48,6 @@ def set_axes(axes):
     See Also
     --------
     RCAIDE.Library.Plots.Common.plot_style : Complementary plot styling
-    matplotlib.axes : Underlying axes object documentation
     """
 
     axes.minorticks_on()

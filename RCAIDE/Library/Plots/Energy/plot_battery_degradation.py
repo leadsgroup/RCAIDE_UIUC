@@ -62,12 +62,11 @@ def plot_battery_degradation(results,
     -----
     The function creates a 3x2 subplot showing:
         Left column (Capacity fade vs):
-
             1. Charge throughput (Ah)
             2. Time (hours)
             3. Time (days)
-        Right column (Resistance growth vs):
 
+        Right column (Resistance growth vs):
             1. Charge throughput (Ah)
             2. Time (hours)
             3. Time (days)

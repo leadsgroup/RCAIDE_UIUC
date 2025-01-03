@@ -65,7 +65,6 @@ def plot_3d_rotor(rotor, save_filename = "Rotor", save_figure = False, plot_data
     Notes
     -----
     Creates an interactive 3D visualization with:
-
         - Multiple blades at specified angular positions
         - Airfoil sections properly twisted and scaled
         - Optional coordinate axes
@@ -156,30 +155,22 @@ def generate_3d_blade_points(rotor, n_points, dim, i, aircraftRefFrame = True):
     -------
     G : Data
         Data structure containing generated points with attributes:
-        
-        - X, Y, Z : ndarray
-            Raw coordinate points
-        - PTS : ndarray
-            Combined coordinate array
-        - XA1, YA1, ZA1, XA2, YA2, ZA2 : ndarray
-            Leading edge surface points
-        - XB1, YB1, ZB1, XB2, YB2, ZB2 : ndarray
-            Trailing edge surface points
+            - X, Y, Z : ndarray
+                Raw coordinate points
+            - PTS : ndarray
+                Combined coordinate array
+            - XA1, YA1, ZA1, XA2, YA2, ZA2 : ndarray
+                Leading edge surface points
+            - XB1, YB1, ZB1, XB2, YB2, ZB2 : ndarray
+                Trailing edge surface points
 
     Notes
     -----
     Generates blade geometry by:
-
         1. Creating airfoil sections at specified radial positions
         2. Applying twist, chord, and thickness distributions
         3. Rotating to proper azimuthal position
         4. Converting to aircraft frame if requested
-    
-    **Major Assumptions**
-    
-    * Airfoils are either from file or NACA 2410 default
-    * Blade rotation is clockwise or counter-clockwise
-    * Mid-chord alignment point specified
     
     **Definitions**
     

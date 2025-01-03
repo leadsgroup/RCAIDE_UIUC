@@ -53,12 +53,10 @@ def plot_electric_propulsor_efficiencies(results,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure handle containing the generated plots
 
     Notes
     -----
     The function creates a 2x2 subplot containing:
-
         1. Propulsor efficiency vs time (rotor or ducted fan)
         2. Figure of Merit vs time
         3. Motor efficiency vs time

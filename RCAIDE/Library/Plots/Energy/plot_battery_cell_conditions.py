@@ -58,7 +58,6 @@ def plot_battery_cell_conditions(results,
     Notes
     -----
     The function creates a 3x2 subplot containing:
-
         1. State of Charge (SOC) vs time
         2. Cell energy vs time
         3. Cell current vs time

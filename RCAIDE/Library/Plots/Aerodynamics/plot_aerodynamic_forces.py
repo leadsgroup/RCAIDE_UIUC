@@ -23,25 +23,75 @@ def plot_aerodynamic_forces(results,
                              save_filename = "Aerodynamic_Forces",
                              file_type = ".png",
                              width = 11, height = 7):
-    """This plots the aerodynamic forces
+    """
+    Creates a multi-panel visualization of aerodynamic forces throughout flight.
+
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.frames
+                Frame data containing:
+                    - body.thrust_force_vector[:,0]
+                        Thrust force in body frame [N]
+                    - wind.force_vector[:,0]
+                        Drag force in wind frame [N]
+                    - wind.force_vector[:,2]
+                        Lift force in wind frame [N]
+            - segments[i].conditions.energy
+                Energy data containing:
+                    - power[:,0]
+                        Total power in watts
+            - segments[i].conditions.frames.inertial.time[:,0]
+                Time history for each segment
+            - segments[i].tag
+                Segment identifier string
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Aerodynamic_Forces")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+
+    Notes
+    -----
+    Creates visualization showing:
+        - Aerodynamic force magnitudes
+        - Power requirements
+        - Force balance evolution
+        - Time history of forces
     
-    Assumptions:
-    None
+    **Definitions**
     
-    Source:
-    None
+    'Lift'
+        Force perpendicular to airflow
+    'Drag'
+        Force parallel to airflow
+    'Thrust'
+        Propulsive force
+    'Power'
+        Rate of energy use
     
-    Inputs:
-    results.segments.condtions.frames
-         body.thrust_force_vector
-         wind.force_vector
-         wind.force_vector
-         
-    Outputs:
-    Plots
-    
-    Properties Used:
-    N/A
+    See Also
+    --------
+    RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients : Non-dimensional force plots
+    RCAIDE.Library.Plots.Aerodynamics.plot_drag_components : Drag breakdown analysis
     """ 
 
     # get plotting style 

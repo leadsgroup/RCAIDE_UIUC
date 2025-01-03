@@ -29,14 +29,13 @@ def plot_noise_level(noise_data,
     ----------
     noise_data : NoiseData
         RCAIDE noise data structure containing:
-        
-        - microphone_y_resolution : int
-            Number of sideline measurement positions
-        - microphone_locations : ndarray
-            3D array of microphone positions where:
-                - [:,:,0] : x-positions (longitudinal)
-                - [:,:,1] : y-positions (sideline)
-                - [:,:,2] : z-positions (vertical)
+            - microphone_y_resolution : int
+                Number of sideline measurement positions
+            - microphone_locations : ndarray
+                3D array of microphone positions where:
+                    - [:,:,0] : x-positions (longitudinal)
+                    - [:,:,1] : y-positions (sideline)
+                    - [:,:,2] : z-positions (vertical)
             
     noise_level : ndarray, optional
         2D array of noise levels at measurement points (default: False)

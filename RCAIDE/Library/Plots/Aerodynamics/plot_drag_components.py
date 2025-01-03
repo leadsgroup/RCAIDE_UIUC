@@ -30,7 +30,6 @@ def plot_drag_components(results,
     results : Data
         Mission results data structure containing:
         results.segments[i].conditions.aerodynamics.coefficients.drag with fields:
-
             - parasite.total : array
                 Total parasite drag coefficient
             - induced.total : array
@@ -63,17 +62,15 @@ def plot_drag_components(results,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure showing drag component time histories
-
+    
     Notes
     -----
     Creates a single plot showing:
-
-    - Parasite drag coefficient (CDp)
-    - Induced drag coefficient (CDi)
-    - Compressibility drag coefficient (CDc)
-    - Miscellaneous drag coefficient (CDm)
-    - Total drag coefficient (CD)
+        - Parasite drag coefficient (CDp)
+        - Induced drag coefficient (CDi)
+        - Compressibility drag coefficient (CDc)
+        - Miscellaneous drag coefficient (CDm)
+        - Total drag coefficient (CD)
 
     Each mission segment uses a different color from the inferno colormap.
     Components are distinguished by different markers.

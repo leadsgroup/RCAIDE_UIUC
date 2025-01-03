@@ -84,8 +84,8 @@ def plot_aircraft_velocities(results,
     
     See Also
     --------
-    plot_flight_conditions : Related atmospheric conditions
-    plot_flight_trajectory : Complete trajectory visualization
+    RCAIDE.Library.Plots.Mission.plot_flight_conditions : Related atmospheric conditions
+    RCAIDE.Library.Plots.Mission.plot_flight_trajectory : Complete trajectory visualization
     """
 
     # get plotting style 

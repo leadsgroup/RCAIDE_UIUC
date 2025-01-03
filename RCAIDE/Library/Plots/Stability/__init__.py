@@ -1,7 +1,15 @@
 # RCAIDE/Library/Plots/Stability/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+RCAIDE Stability Plotting Package
+
+This package contains modules for visualizing aircraft stability characteristics 
+and dynamic behavior.
+
+See Also
+--------
+RCAIDE.Library.Methods.Stability : Stability analysis tools
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

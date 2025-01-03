@@ -58,19 +58,17 @@ def plot_disc_and_power_loading(results,
     Returns
     -------
     fig : matplotlib.figure.Figure
-        Figure containing two subplots:
-        - Disc loading vs time
-        - Power loading vs time
 
     Notes
     -----
     Creates a figure with two vertically stacked subplots showing:
-    - Top: Disc loading (N/m²) vs time (minutes)
-    - Bottom: Power loading (N/W) vs time (minutes)
+        - Top: Disc loading (N/m²) vs time (minutes)
+        - Bottom: Power loading (N/W) vs time (minutes)
 
     Each mission segment is plotted in a different color using the
     inferno colormap. Multiple rotors/propellers are distinguished
     by different markers.
+    
     **Definitions**
 
     'Disc Loading'

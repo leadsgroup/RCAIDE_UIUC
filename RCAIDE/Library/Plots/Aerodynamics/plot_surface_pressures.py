@@ -14,29 +14,78 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ---------------------------------------------------------------------------------------------------------------------- 
-def plot_surface_pressures(results, save_figure = False, save_filename = "Surface_Pressure", file_type = ".png"):
-    """This plots the surface pressure distrubtion at all control points
-    on all lifting surfaces of the aircraft
+def plot_surface_pressures(results, 
+                          save_figure = False, 
+                          save_filename = "Surface_Pressure", 
+                          file_type = ".png"):
+    """
+    Creates contour plots of surface pressure distributions on aircraft lifting surfaces.
 
-    Assumptions:
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.aerodynamics
+                Aerodynamic data containing:
+                    - coefficients.surface_pressure[ti]
+                        Pressure coefficient at each control point
+            - segments[i].analyses.aerodynamics.vehicle
+                Vehicle data containing:
+                    - vortex_distribution
+                        Distribution data with:
+                            - n_cw : array
+                                Number of chordwise panels per wing
+                            - n_sw : array
+                                Number of spanwise panels per wing
+                            - n_w : int
+                                Number of wings
+                            - XC, YC : arrays
+                                Control point coordinates
+                            - X : array
+                                Surface point x-coordinates
+                - wings : list
+                    Wing components with:
+                        - vertical : bool
+                            Flag for vertical surfaces
+                        - symmetric : bool
+                            Flag for symmetric surfaces
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Surface_Pressure")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+
+    Returns
+    -------
     None
 
-    Source:
-    None
-
-    Inputs:
-    results.segments.aerodynamics.
-        pressure_coefficient
-    vehicle.vortex_distribution.
-       n_cw
-       n_sw
-       n_w
-
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates visualization showing:
+        - Surface pressure distributions
+        - Spanwise pressure variations
+        - Chordwise pressure variations
+        - Wing geometry outlines
+    
+    **Definitions**
+    
+    'Pressure Coefficient'
+        Non-dimensional pressure difference
+    'Control Point'
+        Location where pressure is evaluated
+    'Lifting Surface'
+        Wing, tail, or other aerodynamic surface
+    'Planform'
+        Top-view shape of lifting surface
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution : Spanwise lift analysis
+    RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients : Overall coefficient plots
     """
     
     vehicle    = results.segments[0].analyses.aerodynamics.vehicle

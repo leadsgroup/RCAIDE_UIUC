@@ -21,32 +21,30 @@ def plot_style():
     -------
     plot_parameters : Data
         Style parameters with fields:
-
-        - line_width : int
-            Width of plot lines, default 2
-        - line_style : str
-            Style of plot lines, default '-'
-        - marker_size : int
-            Size of plot markers, default 8
-        - legend_font_size : int
-            Font size for legends, default 12
-        - axis_font_size : int
-            Font size for axis labels, default 14
-        - title_font_size : int
-            Font size for plot titles, default 18
-        - markers : list
-            Collection of marker styles for distinguishing data series
-        - color : str
-            Default line color, default 'black'
+            - line_width : int
+                Width of plot lines, default 2
+            - line_style : str
+               Style of plot lines, default '-'
+            - marker_size : int
+                  Size of plot markers, default 8
+            - legend_font_size : int
+                  Font size for legends, default 12
+            - axis_font_size : int
+                  Font size for axis labels, default 14
+            - title_font_size : int
+                  Font size for plot titles, default 18
+            - markers : list
+                  Collection of marker styles for distinguishing data series
+            - color : str
+                  Default line color, default 'black'
 
     Notes
     -----
     Provides consistent styling across all RCAIDE plots including:
-
-    - Line properties (width, style)
-    - Marker properties (size, styles)
-    - Text properties (font sizes)
-    - Color schemes
+         - Line properties (width, style)
+         - Marker properties (size, styles)
+         - Text properties (font sizes)
+         - Color schemes
 
     The marker list includes a comprehensive set of matplotlib markers
     for distinguishing multiple data series on the same plot.

@@ -17,11 +17,79 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------   
 def plot_longitudinal_stability(results,
                              save_figure = False,
-                             show_legend=True,
+                             show_legend = True,
                              save_filename = "Longitudinal_Stability",
                              file_type = ".png",
                              width = 11, height = 7):
-    """This plots the static stability characteristics of an aircraft 
+    """
+    Creates a multi-panel visualization of longitudinal stability characteristics.
+
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.frames.inertial.time[:,0]
+                Time history for each segment
+            - segments[i].conditions.aerodynamics.angles.theta[:,0]
+                Pitch angle history
+            - segments[i].conditions.aerodynamics.angles.alpha[:,0]
+                Angle of attack history
+            - segments[i].conditions.control_surfaces.elevator.deflection[:,0]
+                Elevator deflection history
+            - segments[i].tag
+                Name/identifier of each segment
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Longitudinal_Stability")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+
+    Notes
+    -----
+    Creates visualization showing:
+        * Pitch attitude response
+        * Aerodynamic angle evolution
+        * Longitudinal control inputs
+        * Trajectory angle history
+        * Time history for each segment
+    
+    **Major Assumptions**
+        * Angles are in degrees
+        * Time is in minutes
+        * Positive deflections follow right-hand rule
+   
+    **Definitions**
+    
+    'Pitch Angle'
+        Nose-up/down attitude relative to horizon
+    'Angle of Attack'
+        Angle between velocity vector and body reference line
+    'Flight Path Angle'
+        Angle between velocity vector and horizon
+    'Elevator Deflection'
+        Pitch control surface position
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Stability.plot_lateral_stability : Lateral-directional stability analysis
+    RCAIDE.Library.Plots.Stability.plot_flight_forces_and_moments : Force/moment visualization
     """  
 
     # get plotting style 

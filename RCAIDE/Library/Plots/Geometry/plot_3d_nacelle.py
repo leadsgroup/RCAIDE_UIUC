@@ -46,16 +46,15 @@ def plot_3d_nacelle(plot_data, nacelle, tessellation = 24, number_of_airfoil_poi
     Notes
     -----
     Supports three types of nacelles:
-
         1. Stack nacelle (built from stacked segments)
         2. Body of Revolution nacelle (built from an airfoil profile)
         3. Basic nacelle (built from simple geometric parameters)
     
     See Also
     --------
-    generate_3d_stack_nacelle_points : Points generation for stack nacelle
-    generate_3d_BOR_nacelle_points : Points generation for body of revolution
-    generate_3d_basic_nacelle_points : Points generation for basic nacelle
+    RCAIDE.Library.Plots.Geometry.generate_3d_stack_nacelle_points : Points generation for stack nacelle
+    RCAIDE.Library.Plots.Geometry.generate_3d_BOR_nacelle_points : Points generation for body of revolution
+    RCAIDE.Library.Plots.Geometry.generate_3d_basic_nacelle_points : Points generation for basic nacelle
     """
     
     if type(nacelle) == RCAIDE.Library.Components.Nacelles.Stack_Nacelle: 
@@ -102,15 +101,13 @@ def generate_3d_stack_nacelle_points(nac, tessellation = 24, number_of_airfoil_p
     -------
     G : Data
         Data structure containing generated points
-        
-        - PTS : ndarray
-            Array of shape (num_segments, tessellation, 3) containing 
-            x,y,z coordinates of surface points
+            - PTS : ndarray
+                Array of shape (num_segments, tessellation, 3) containing 
+                x,y,z coordinates of surface points
 
     Notes
     -----
     Creates nacelle from stacked super-elliptical cross-sections with:
-
         - Specified width and height
         - Controllable curvature
         - Individual segment orientation
@@ -201,10 +198,9 @@ def generate_3d_BOR_nacelle_points(nac, tessellation = 24, number_of_airfoil_poi
     -------
     G : Data
         Data structure containing generated points
-        
-        - PTS : ndarray
-            Array of shape (num_sections, tessellation, 3) containing 
-            x,y,z coordinates of surface points
+            - PTS : ndarray
+                Array of shape (num_sections, tessellation, 3) containing 
+                x,y,z coordinates of surface points
 
     Notes
     -----
@@ -277,15 +273,13 @@ def generate_3d_basic_nacelle_points(nac, tessellation, number_of_airfoil_points
     -------
     G : Data
         Data structure containing generated points
-        
-        - PTS : ndarray
-            Array of shape (num_sections, tessellation, 3) containing 
-            x,y,z coordinates of surface points
+            - PTS : ndarray
+                Array of shape (num_sections, tessellation, 3) containing 
+                x,y,z coordinates of surface points
 
     Notes
     -----
     Creates a simple nacelle shape using basic geometric parameters:
-
         - Length
         - Diameter
         - Inlet diameter (for flow-through nacelles)
