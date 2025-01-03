@@ -217,8 +217,7 @@ def generate_3d_BOR_nacelle_points(nac, tessellation = 24, number_of_airfoil_poi
     theta        = np.linspace(0,2*np.pi,tessellation)  
     num_nac_segs = int(np.ceil(number_of_airfoil_points/2))
     nac_pts      = np.zeros((num_nac_segs,tessellation,3))
-    af_tag       = list(nac.Airfoil.keys())[0]
-    naf          =  nac.Airfoil[af_tag]
+    naf          =  nac.airfoil
     
     if type(naf) == RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil: 
         a_geo        = compute_naca_4series(naf.NACA_4_Series_code,num_nac_segs)

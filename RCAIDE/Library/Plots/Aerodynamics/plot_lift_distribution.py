@@ -13,7 +13,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-def plot_lift_distribution(results, vehicle,
+def plot_lift_distribution(results,
                            save_figure = False,
                            save_filename = "Lift_Distribution",
                            file_type = ".png",
@@ -28,16 +28,6 @@ def plot_lift_distribution(results, vehicle,
             - results.segments.conditions.aerodynamics.coefficients.lift with fields:
                 - inviscid_wings_sectional : array
                     Sectional lift coefficients at control points
-
-    vehicle : Data
-        Vehicle data structure containing:
-            - vehicle.vortex_distribution with fields:
-                - n_sw : array
-                    Number of spanwise vortices per wing
-                - n_w : int
-                    Total number of wings
-                - Y_SW : array
-                    Spanwise control point locations
 
     save_figure : bool, optional
         Save figure to file if True, default False

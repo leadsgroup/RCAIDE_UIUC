@@ -181,7 +181,7 @@ def generate_3d_blade_points(rotor, n_points, dim, i, aircraftRefFrame = True):
     """
     # unpack 
     num_B        = rotor.number_of_blades
-    airfoils     = rotor.Airfoils 
+    airfoils     = rotor.airfoils 
     beta         = rotor.twist_distribution 
     a_o          = rotor.start_angle
     b            = rotor.chord_distribution

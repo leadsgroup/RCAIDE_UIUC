@@ -100,25 +100,12 @@ def plot_propulsor_throttles(results,
         axis_1.set_ylabel(r'Throttle')
         set_axes(axis_1)               
         for network in results.segments[i].analyses.energy.vehicle.networks: 
-            busses      = network.busses
-            fuel_lines  = network.fuel_lines 
-            for bus in busses:
-                for j ,  propulsor in enumerate(bus.propulsors):
-                    eta = results.segments[i].conditions.energy[bus.tag][propulsor.tag].throttle[:,0]  
-                    if j == 0 and i ==0:               
-                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width, label = segment_name + ': '+ propulsor.tag )
-                    else:
-                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width) 
-                            
-            for fuel_line in fuel_lines:  
-                for j ,  propulsor in enumerate(fuel_line.propulsors):
-                    eta = results.segments[i].conditions.energy[fuel_line.tag][propulsor.tag].throttle[:,0]
-                    eta = results.segments[i].conditions.energy[fuel_line.tag][propulsor.tag].throttle[:,0]  
-                    if j == 0 and i ==0:              
-                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width, label = segment_name + ': '+ propulsor.tag )
-                    else:
-                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width)
-                                 
+            for j ,  propulsor in enumerate(network.propulsors):
+                eta = results.segments[i].conditions.energy[propulsor.tag].throttle[:,0]  
+                if j == 0 and i ==0:               
+                    axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width, label = segment_name + ': '+ propulsor.tag )
+                else:
+                    axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width)     
     
     if show_legend:
         leg =  fig.legend(bbox_to_anchor=(0.5, 0.95), loc='upper center', ncol = 4) 
