@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_battery_cell_conditions.py
 # 
 # 
@@ -16,32 +17,64 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_battery_cell_conditions(results,
                                   save_figure = False,
                                   show_legend = True,
                                   save_filename = "Battery_Cell_Conditions_",
                                   file_type = ".png",
                                   width = 11, height = 7):
-    """Plots the cell-level conditions of the battery throughout flight.
+    """
+    Creates a six-panel plot showing various battery cell-level conditions throughout flight.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and battery conditions
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Base name of file for saved figure (default: "Battery_Cell_Conditions_")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated plots
 
-    Inputs:
-    results.segments.conditions.
-        freestream.altitude
-        weights.total_mass
-        weights.vehicle_mass_rate
-        frames.body.thrust_force_vector
+    Notes
+    -----
+    The function creates a 3x2 subplot containing:
 
-    Outputs: 
-    Plots
-
-    Properties Used:
-    N/A	
+        1. State of Charge (SOC) vs time
+        2. Cell energy vs time
+        3. Cell current vs time
+        4. Cell power vs time
+        5. Cell voltage vs time
+        6. Cell temperature vs time
+    
+    Each segment is plotted with a different color from the inferno colormap.
+    For multiple battery modules, each module is distinguished by different markers.
+    
+    **Definitions**
+    
+    'SOC'
+        State of Charge - the level of charge of a battery relative to its capacity
+    'Open Circuit Voltage'
+        The voltage across the battery terminals with no load applied
     """ 
     
     # get plotting style 

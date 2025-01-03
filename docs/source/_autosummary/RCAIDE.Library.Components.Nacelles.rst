@@ -32,6 +32,6 @@ Nacelles
 
    Body_of_Revolution_Nacelle
    Nacelle
-   Segment
+   Segments
    Stack_Nacelle
 

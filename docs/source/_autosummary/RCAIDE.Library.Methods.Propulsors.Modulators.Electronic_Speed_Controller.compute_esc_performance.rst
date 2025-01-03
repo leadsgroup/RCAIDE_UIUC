@@ -17,8 +17,6 @@ compute\_esc\_performance
       :toctree:
    
       compute_current_in_from_throttle
-      compute_throttle_from_voltages
-      compute_voltage_in_from_throttle
       compute_voltage_out_from_throttle
    
    

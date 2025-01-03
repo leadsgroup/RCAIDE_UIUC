@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_altitude_sfc_weight.py
 # 
 # 
@@ -15,31 +16,64 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Performance-Energy-Fuel
 def plot_propulsor_throttles(results,
                              save_figure = False,
                              show_legend = True,
                              save_filename = "Propulsor_Throttles" ,
                              file_type = ".png",
                              width = 11, height = 7):
-    """This plots the altitude, specific fuel consumption and vehicle weight.
+    """
+    Creates a plot showing throttle settings for all propulsors throughout the flight mission.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and propulsor throttle settings
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Propulsor_Throttles")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated plot
 
-    Inputs:
-    results.segments.conditions.
-        freestream.altitude
-        weights.total_mass
-        weights.vehicle_mass_rate
-        frames.body.thrust_force_vector
+    Notes
+    -----
+    The function creates a single plot showing:
 
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+        - Throttle settings vs time for each propulsor
+        - Different flight segments distinguished by different colors
+        - Different propulsors distinguished in the legend
+    
+    **Major Assumptions**
+    
+    * Throttle values are normalized between 0 and 1
+    * Time is converted from seconds to minutes for plotting
+    * All propulsors have throttle data available
+    
+    **Definitions**
+    
+    'Throttle'
+        Normalized control input that determines propulsor power setting
+    'Flight Segment'
+        Distinct phase of the mission with specific throttle requirements
     """
  
     # get plotting style 
@@ -67,14 +101,26 @@ def plot_propulsor_throttles(results,
         axis_1.set_ylabel(r'Throttle')
         set_axes(axis_1)               
         for network in results.segments[i].analyses.energy.vehicle.networks: 
-            for j ,  propulsor in enumerate(network.propulsors):
-                eta = results.segments[i].conditions.energy[propulsor.tag].throttle[:,0]  
-                if j == 0 and i ==0:               
-                    axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width, label = segment_name + ': '+ propulsor.tag )
-                else:
-                    axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width) 
-                        
-          
+            busses      = network.busses
+            fuel_lines  = network.fuel_lines 
+            for bus in busses:
+                for j ,  propulsor in enumerate(bus.propulsors):
+                    eta = results.segments[i].conditions.energy[bus.tag][propulsor.tag].throttle[:,0]  
+                    if j == 0 and i ==0:               
+                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width, label = segment_name + ': '+ propulsor.tag )
+                    else:
+                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width) 
+                            
+            for fuel_line in fuel_lines:  
+                for j ,  propulsor in enumerate(fuel_line.propulsors):
+                    eta = results.segments[i].conditions.energy[fuel_line.tag][propulsor.tag].throttle[:,0]
+                    eta = results.segments[i].conditions.energy[fuel_line.tag][propulsor.tag].throttle[:,0]  
+                    if j == 0 and i ==0:              
+                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width, label = segment_name + ': '+ propulsor.tag )
+                    else:
+                        axis_1.plot(time, eta, color = line_colors[i], marker = ps.markers[0], linewidth = ps.line_width)
+                                 
+    
     if show_legend:
         leg =  fig.legend(bbox_to_anchor=(0.5, 0.95), loc='upper center', ncol = 4) 
         leg.set_title('Propulsor', prop={'size': ps.legend_font_size, 'weight': 'heavy'})    

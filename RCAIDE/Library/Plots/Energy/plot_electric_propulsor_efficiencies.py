@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_electric_propulsor_efficiencies.py
 # 
 # 
@@ -16,31 +17,69 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_electric_propulsor_efficiencies(results,
                                   save_figure = False,
-                                  show_legend=True,
+                                  show_legend = True,
                                   save_filename = "Electric_Efficiencies",
                                   file_type = ".png",
                                   width = 11, height = 7):
-    """This plots the electric driven network propeller efficiencies 
+    """
+    Creates a three-panel plot showing efficiencies of electric propulsion system components.
 
-    Assumptions:
-    None
-
-    Source:
-    None
-
-    Inputs:
-    results.segments.conditions.propulsion. 
-         etap
-         etam
-         fom
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and propulsion system efficiencies
         
-    Outputs: 
-    Plots
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Electric_Efficiencies")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Properties Used:
-    N/A	
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated plots
+
+    Notes
+    -----
+    The function creates a 2x2 subplot containing:
+
+        1. Propulsor efficiency vs time (rotor or ducted fan)
+        2. Figure of Merit vs time
+        3. Motor efficiency vs time
+    
+    Each segment is plotted with a different color from the inferno colormap.
+    Different propulsors are distinguished by different markers.
+    
+    **Major Assumptions**
+    
+    * For identical propulsors, only the first propulsor's data is plotted
+    * Time is converted from seconds to minutes for plotting
+    * Efficiencies are normalized between 0 and 1
+   
+    **Definitions**
+    
+    'Figure of Merit'
+        Measure of rotor efficiency comparing actual power to ideal power
+    'Motor Efficiency'
+        Ratio of mechanical power output to electrical power input
+    'Propulsor Efficiency'
+        Ratio of useful thrust power to shaft power input
     """	   
     # get plotting style 
     ps      = plot_style()  

@@ -31,8 +31,4 @@ Gas\_Dynamics
    :recursive:
 
    fm_id
-   fm_solver
-   nozzle_calculations
-   oblique_shock
-   rayleigh
 

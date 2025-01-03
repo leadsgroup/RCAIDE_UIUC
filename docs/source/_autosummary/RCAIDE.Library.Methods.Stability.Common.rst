@@ -31,5 +31,4 @@ Common
    :recursive:
 
    compute_dynamic_flight_modes
-   estimate_wing_CL_alpha
 

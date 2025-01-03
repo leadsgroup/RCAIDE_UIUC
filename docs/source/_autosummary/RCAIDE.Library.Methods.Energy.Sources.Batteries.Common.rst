@@ -32,7 +32,6 @@ Common
 
    append_battery_conditions
    compute_module_properties
-   compute_net_generated_battery_heat
    find_mass_gain_rate
    find_ragone_properties
    find_specific_power

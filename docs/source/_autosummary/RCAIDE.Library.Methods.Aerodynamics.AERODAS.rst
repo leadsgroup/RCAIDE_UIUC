@@ -30,9 +30,6 @@ AERODAS
    :template: custom-module-template.rst
    :recursive:
 
-   AERODAS_setup
-   finite_aspect_ratio
    post_stall_coefficients
    pre_stall_coefficients
-   section_properties
 

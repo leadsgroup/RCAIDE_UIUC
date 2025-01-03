@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_fuel_consumption.py
 # 
 # 
@@ -15,32 +16,71 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Performance-Energy-Fuel
 def plot_fuel_consumption(results,
                     save_figure = False,
                     show_legend=True,
                     save_filename = "Aircraft_Fuel_Burnt",
                     file_type = ".png",
-                    width = 11, height = 7): 
+                    width = 11, height = 7):
+    """
+    Creates a plot showing aircraft fuel consumption over time, including standard and additional fuel if present.
 
-    """This plots aircraft fuel usage
-    
-    
-    Assumptions:
-    None
-
-    Source: 
-  
-    Inputs:
-    results.segments.condtions.
-        frames.inertial.time
-        weights.fuel_mass
-        weights.additional_fuel_mass
-        weights.total_mass
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and fuel consumption information
         
-    Outputs:
-    Plots
-    Properties Used:
-    N/A	"""
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Aircraft_Fuel_Burnt")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated plot
+
+    Notes
+    -----
+    The function plots three curves when additional fuel is present:
+
+        1. Standard fuel consumption
+        2. Additional fuel consumption
+        3. Total fuel consumption (sum of standard and additional)
+    
+    When no additional fuel is present, only total fuel consumption is plotted.
+    Different flight segments are distinguished by different colors.
+    
+    **Major Assumptions**
+    
+    * Fuel consumption is plotted as negative values to show depletion
+    * Time is converted from seconds to minutes for plotting
+    * Fuel mass is measured in kilograms
+    * Previous segment fuel values are accumulated for continuous plotting
+    
+    **Definitions**
+    
+    'Standard Fuel'
+        Primary fuel used for propulsion
+    'Additional Fuel'
+        Secondary or auxiliary fuel source if present
+    'Total Fuel'
+        Combined mass of all fuel types consumed
+    """
 
     # get plotting style 
     ps      = plot_style()  

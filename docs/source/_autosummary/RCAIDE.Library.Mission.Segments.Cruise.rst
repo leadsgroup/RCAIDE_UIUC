@@ -40,5 +40,4 @@ Cruise
    Constant_Speed_Constant_Altitude_Loiter
    Constant_Throttle_Constant_Altitude
    Curved_Constant_Radius_Constant_Speed_Constant_Altitude
-   Variable_Cruise_Distance
 
