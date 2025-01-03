@@ -97,9 +97,9 @@ RCAIDE currently possesses the ability to perform various analyses at multiple f
 * **Geometry**
   * Advanced parameterization
   * 3D visualization
-  <div style="float: right; margin: 10px;">
+  <p align="center">
     <img src="https://github.com/leadsgroup/RCAIDE_Website/blob/main/assets/img/Boeing_737.png" width=50% height=50%> 
-  </div>
+  </p>
 
 * **Mission Analysis**
   * Complete flight vehicle simulation
@@ -118,9 +118,9 @@ RCAIDE currently possesses the ability to perform various analyses at multiple f
   * Component-level weight breakdown
   * Center of gravity analysis
   * Moment of inertia calculations
-  <div style="float: right; margin: 10px;">
+  <p align="center">
     <img src="https://github.com/leadsgroup/RCAIDE_Website/blob/main/assets/img/Boeing_737_Weight_Breakdown.png" width=50% height=50%> 
-  </div>
+  </p>
 
 ### Advanced Capabilities
 * **Optimization**
