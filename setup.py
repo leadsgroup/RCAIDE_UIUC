@@ -1,4 +1,7 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 if __name__ == "__main__":
-    setup()
+    setup(include_package_data=True,
+    packages=find_packages(),
+    package_data={"RCAIDE": ["VERSION"]},
+    data_files=[("RCAIDE", ["RCAIDE/VERSION"])],)

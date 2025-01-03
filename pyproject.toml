@@ -49,17 +49,8 @@ dependencies = [
     "threadpoolctl",
     "zipp"
 ]
-
-[project.urls]
-Homepage = "https://www.rcaide.leadsresearchgroup.com"
-
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-    "flake8",
-    "black"
-]
+# Dynamic version configuration
+dynamic = ["version"]
 
 [tool.setuptools]
 package-dir = {"" = "."}
