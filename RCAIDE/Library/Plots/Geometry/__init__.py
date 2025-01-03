@@ -1,12 +1,23 @@
+## @defgroup Library-Plots-Geometry Geometry
 # RCAIDE/Library/Plots/Geometry/__init__.py
 # 
 
-""" RCAIDE Package Setup
+"""
+RCAIDE Package Setup for Geometry Plotting Functions
+
+This module provides a collection of functions for visualizing vehicle geometry and components in 2D and 3D.
+
+See Also
+--------
+RCAIDE.Library.Plots.Energy : Energy system visualization functions
+RCAIDE.Library.Plots.Performance : Vehicle performance visualization functions
+RCAIDE.Library.Plots.Mission : Mission profile visualization functions
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
-# ---------------------------------------------------------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------------------------------------------------
+# @ingroup Visualization
 
 from .Common            import * 
 from .plot_3d_vehicle                  import plot_3d_vehicle

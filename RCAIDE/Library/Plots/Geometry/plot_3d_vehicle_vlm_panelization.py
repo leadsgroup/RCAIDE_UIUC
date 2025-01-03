@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Geometry
 # RCAIDE/Library/Plots/Geometry/plot_3d_vehicle_vlm_panelization.py
 # 
 # 
@@ -16,9 +17,10 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
+## @ingroup Library-Plots-Geometry
 def plot_3d_vehicle_vlm_panelization(vehicle,
                                      alpha = 1.0,
-                                     plot_axis   = False,
+                                     plot_axis = False,
                                      save_figure = False,
                                      show_wing_control_points = True,
                                      save_filename = "VLM_Panelization",
@@ -29,24 +31,84 @@ def plot_3d_vehicle_vlm_panelization(vehicle,
                                      min_z_axis_limit            =  -20,
                                      max_z_axis_limit            =  20, 
                                      show_figure = True):
-                                  
-    """This plots vortex lattice panels created when Fidelity Zero  Aerodynamics 
-    Routine is initialized
+    """
+    Creates a 3D visualization of vehicle vortex lattice method (VLM) panelization.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    vehicle : Vehicle
+        RCAIDE vehicle data structure containing geometry information
+        
+    alpha : float, optional
+        Transparency value between 0 and 1 (default: 1.0)
+        
+    plot_axis : bool, optional
+        Flag to show coordinate axes (default: False)
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_wing_control_points : bool, optional
+        Flag to display VLM control points (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "VLM_Panelization")
+        
+    min_x_axis_limit : float, optional
+        Minimum x-axis plot limit (default: -5)
+        
+    max_x_axis_limit : float, optional
+        Maximum x-axis plot limit (default: 40)
+        
+    min_y_axis_limit : float, optional
+        Minimum y-axis plot limit (default: -20)
+        
+    max_y_axis_limit : float, optional
+        Maximum y-axis plot limit (default: 20)
+        
+    min_z_axis_limit : float, optional
+        Minimum z-axis plot limit (default: -20)
+        
+    max_z_axis_limit : float, optional
+        Maximum z-axis plot limit (default: 20)
+        
+    show_figure : bool, optional
+        Flag to display the figure (default: True)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : plotly.graph_objects.Figure
+        Figure handle containing the generated plot
 
-    Inputs:
-    vehicle.vortex_distribution
+    Notes
+    -----
+    Creates an interactive 3D visualization showing:
 
-    Outputs: 
-    Plots
+        - VLM panels on lifting surfaces
+        - Control points (optional)
+        - Customizable view and axis limits
+    
+    If vehicle's vortex distribution is not available, generates a new one with:
 
-    Properties Used:
-    N/A	
+        - 25 spanwise vortices
+        - 5 chordwise vortices
+        - Linear spanwise spacing
+        - No fuselage or nacelle modeling
+    
+    **Major Assumptions**
+    
+    * Lifting surfaces are represented by flat panels
+    * Control points are at 3/4 chord of each panel
+    * Vortex lines are at 1/4 chord of each panel
+    
+    **Definitions**
+    
+    'Control Point'
+        Location where boundary condition is enforced
+    'Vortex Line'
+        Line of bound vorticity representing lift
+    'Panel'
+        Discrete element of lifting surface
     """
 
     # unpack vortex distribution
