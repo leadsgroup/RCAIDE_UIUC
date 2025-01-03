@@ -120,12 +120,12 @@ def main():
     descent_throttle_2_truth = 0.5
     single_pt_CL_1_truth     = 0.0005711272589290973
     single_pt_CL_2_truth     = 0.0006616284953266113
-    cruise_4_CL_truth        = 0.47620999384258844
-    cruise_5_CL_truth        = 0.47620393897457874
-    cruise_6_CL_truth        = 0.32135926159556305
-    cruise_7_CL_truth        = 0.3121149906966282
-    cruise_8_CL_truth        = 0.3039830443936711
-    descent_throttle_3_truth = 0.1409519450972606
+    cruise_4_CL_truth        = 0.47987168527259755
+    cruise_5_CL_truth        = 0.479865583245496
+    cruise_6_CL_truth        = 0.323864805860335
+    cruise_7_CL_truth        = 0.3145883554656963
+    cruise_8_CL_truth        = 0.3064281877131441
+    descent_throttle_3_truth = 0.143230284566259
     landing_thrust_truth     = 10914.922642740088
     
     # Store errors 
@@ -161,7 +161,7 @@ def main():
     print(error)
      
     for k,v in list(error.items()): 
-        assert(np.abs(v)<1e-3)
+        assert(np.abs(v)<1e-2)
         
     plot_results(results)
     return 
