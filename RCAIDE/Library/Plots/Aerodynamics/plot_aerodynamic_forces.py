@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Performance-Aerodynamics
 # RCAIDE/Library/Plots/Performance/Aerodynamics/plot_aerodynamic_forces.py
 # 
 # 
@@ -15,6 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_aerodynamic_forces(results,
                              save_figure = False,
                              show_legend = True,

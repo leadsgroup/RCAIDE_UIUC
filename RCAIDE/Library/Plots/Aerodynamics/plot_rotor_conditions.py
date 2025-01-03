@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Performance-Aerodynamics
 # RCAIDE/Library/Plots/Performance/Aerodynamics/plot_rotor_conditions.py
 # 
 # 
@@ -16,28 +17,84 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------      
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_rotor_conditions(results,
                         save_figure = False,
                         show_legend=True,
                         save_filename = "Rotor_Conditions",
                         file_type = ".png",
                         width = 11, height = 7):
-    """This plots the electric driven network propeller efficiencies 
+    """
+    Generate plots of key rotor operating conditions over time.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Data
+        Mission results data structure containing:
+        results.segments[i].conditions.energy[propulsor_tag][rotor_tag] with fields:
 
-    Source:
-    None
+            - rpm : array
+                Rotor rotational speed
+            - thrust : array
+                Rotor thrust vector
+            - torque : array
+                Rotor torque
+            - commanded_thrust_vector_angle : array
+                Commanded rotor tilt angle [rad]
 
-    Inputs:
-    results.segments.conditions.propulsion.  
-        
-    Outputs: 
-    Plots
+    save_figure : bool, optional
+        Save figure to file if True, default False
 
-    Properties Used:
-    N/A	
+    show_legend : bool, optional
+        Display segment legend if True, default True
+
+    save_filename : str, optional
+        Name for saved figure file, default "Rotor_Conditions"
+
+    file_type : str, optional
+        File extension for saved figure, default ".png"
+
+    width : float, optional
+        Figure width in inches, default 11
+
+    height : float, optional
+        Figure height in inches, default 7
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure containing four subplots:
+
+        - RPM vs time
+        - Rotor angle vs time
+        - Thrust vs time
+        - Torque vs time
+
+    Notes
+    -----
+    Creates a 2x2 subplot figure showing:
+
+    - Top left: RPM vs time (minutes)
+    - Top right: Rotor tilt angle (degrees) vs time
+    - Bottom left: Thrust (N) vs time
+    - Bottom right: Torque (N-m) vs time
+
+    Each mission segment uses a different color from the inferno colormap.
+    Multiple rotors are distinguished by different markers.
+
+    **Definitions**
+
+    'RPM'
+        Rotor rotational speed in revolutions per minute
+    
+    'Thrust Vector Angle'
+        Angle between rotor thrust vector and vertical
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
+    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
+    RCAIDE.Library.Analysis.Performance.propulsion : Analysis modules
     """	   
     # get plotting style 
     ps      = plot_style()  
@@ -79,7 +136,77 @@ def plot_rotor_conditions(results,
                  
     return fig 
 
-def plot_propulsor_data(results,propulsor,axis_1,axis_2,axis_3,axis_4,line_colors,ps,p_i):
+def plot_propulsor_data(results, propulsor, axis_1, axis_2, axis_3, axis_4, line_colors, ps, p_i):
+    """
+    Plot operating conditions data for a single propulsor across mission segments.
+
+    Parameters
+    ----------
+    results : Data
+        Mission results data structure containing:
+        results.segments[i].conditions with fields:
+
+            - energy[propulsor_tag][thrustor_tag].rpm
+            - energy[propulsor_tag][thrustor_tag].thrust
+            - energy[propulsor_tag][thrustor_tag].torque
+            - energy[propulsor_tag].commanded_thrust_vector_angle
+            - frames.inertial.time
+
+    propulsor : Data
+        Propulsor data structure containing:
+            - tag : str
+                Identifier for the propulsor
+            - rotor/propeller : Data
+                Thrustor component data
+
+    axis_1 : matplotlib.axes.Axes
+        Axis for RPM plot
+
+    axis_2 : matplotlib.axes.Axes
+        Axis for rotor angle plot
+
+    axis_3 : matplotlib.axes.Axes
+        Axis for thrust plot
+
+    axis_4 : matplotlib.axes.Axes
+        Axis for torque plot
+
+    line_colors : array
+        Array of RGB colors for different segments
+
+    ps : Data
+        Plot style data structure with fields:
+            - markers : list
+                Marker styles for different propulsors
+            - line_width : float
+                Width for plot lines
+
+    p_i : int
+        Index of current propulsor for marker selection
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    Helper function for plot_rotor_conditions that handles plotting
+    data for a single propulsor (rotor or propeller) across all mission
+    segments.
+
+    The function:
+
+    - Identifies thrustor type (rotor vs propeller)
+    - Extracts time histories for each segment
+    - Plots RPM, angle, thrust, and torque vs time
+    - Applies consistent styling
+    - Adds legend for first segment only
+    - Converts units as needed (time to minutes, angles to degrees)
+
+    See Also
+    --------
+    plot_rotor_conditions : Main plotting function
+    """
     if 'rotor' in  propulsor:
         thrustor = propulsor.rotor
     elif 'propeller' in  propulsor:
