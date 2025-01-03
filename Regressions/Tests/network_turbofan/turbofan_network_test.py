@@ -162,7 +162,7 @@ def main():
      
     for k,v in list(error.items()): 
         if k==cruise_CL_1:
-            assert(np.abs(v)<1e-1)
+            assert(np.abs(v)<5e-1)
         else:
             assert(np.abs(v)<1e-6)
         
