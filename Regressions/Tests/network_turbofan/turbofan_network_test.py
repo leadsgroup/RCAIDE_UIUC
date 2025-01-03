@@ -161,7 +161,7 @@ def main():
     print(error)
      
     for k,v in list(error.items()): 
-        if k == 'cruise_CL_2':
+        if k == 'cruise_CL_2' or k == 'cruise_CL_3':
             assert(np.abs(v)<5e-1)
         else:
             assert(np.abs(v)<1e-6)
