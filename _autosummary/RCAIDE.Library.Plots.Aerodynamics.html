@@ -529,51 +529,62 @@
   <p>RCAIDE.Library.Plots.Aerodynamics</p>
 <section id="module-RCAIDE.Library.Plots.Aerodynamics">
 <span id="aerodynamics"></span><h1>Aerodynamics<a class="headerlink" href="#module-RCAIDE.Library.Plots.Aerodynamics" title="Link to this heading">#</a></h1>
-<p>RCAIDE Package Setup</p>
+<p>RCAIDE Aerodynamics Plotting Package</p>
+<p>This package contains modules for visualizing aerodynamic analysis results and
+performance characteristics.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.html#module-RCAIDE.Library.Plots" title="RCAIDE.Library.Plots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots</span></code></a></dt><dd><p>Parent plotting package</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Methods.Aerodynamics.html#module-RCAIDE.Library.Methods.Aerodynamics" title="RCAIDE.Library.Methods.Aerodynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Aerodynamics</span></code></a></dt><dd><p>Aerodynamic analysis tools</p>
+</dd>
+</dl>
+</div>
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients" title="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_aerodynamic_coefficients</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the aerodynamic coefficients</p></td>
+<td><p>Creates a multi-panel visualization of aerodynamic coefficients throughout flight.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_forces.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_forces" title="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_aerodynamic_forces</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the aerodynamic forces</p></td>
+<td><p>Creates a multi-panel visualization of aerodynamic forces throughout flight.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_aircraft_aerodynamics.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_aircraft_aerodynamics" title="RCAIDE.Library.Plots.Aerodynamics.plot_aircraft_aerodynamics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_aircraft_aerodynamics</span></code></a>(results[, ...])</p></td>
-<td><p></p></td>
+<td><p>Creates 3D surface plots of aircraft lift and drag coefficients as functions of Mach number and angle of attack.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties" title="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_airfoil_boundary_layer_properties</span></code></a>(ap[, ...])</p></td>
-<td><p>Plots viscous distributions</p></td>
+<td><p>Generate plots of airfoil boundary layer properties and distributions.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files" title="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_airfoil_polar_files</span></code></a>(polar_data[, ...])</p></td>
-<td><p>This plots all airfoil polars in the list &quot;airfoil_polar_paths&quot;</p></td>
+<td><p>Generate plots of airfoil performance data from polar files.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars" title="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_airfoil_polars</span></code></a>(polar_data[, ...])</p></td>
-<td><p>This plots all the airfoil polars of a specfic airfoil</p></td>
+<td><p>Generate plots of airfoil aerodynamic characteristics from analysis results.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces" title="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_airfoil_surface_forces</span></code></a>(ap[, ...])</p></td>
-<td><p>This plots the forces on an airfoil surface</p></td>
+<td><p>Generate plots showing pressure forces on airfoil surface using arrows.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading" title="RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_disc_and_power_loading</span></code></a>(results[, ...])</p></td>
-<td><p>Plots rotor disc and power loadings</p></td>
+<td><p>Generate plots of rotor disc and power loading over time.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_drag_components.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_drag_components" title="RCAIDE.Library.Plots.Aerodynamics.plot_drag_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_drag_components</span></code></a>(results[, save_figure, ...])</p></td>
-<td><p>This plots the drag components of the aircraft</p></td>
+<td><p>Generate plots showing the breakdown of aircraft drag components over time.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution" title="RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_lift_distribution</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the sectional lift distrubtion at all control points on all lifting surfaces of the aircraft</p></td>
+<td><p>Generate plots of spanwise lift distribution for lifting surfaces.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions" title="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rotor_conditions</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the electric driven network propeller efficiencies</p></td>
+<td><p>Generate plots of key rotor operating conditions over time.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance" title="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rotor_disc_performance</span></code></a>(prop, outputs[, ...])</p></td>
-<td><p>Plots rotor disc performance</p></td>
+<td><p>Generate plots of rotor disc aerodynamic performance distributions.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_performance.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_rotor_performance" title="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_performance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rotor_performance</span></code></a>(rotor, outputs[, ...])</p></td>
-<td><p>Plots a summary of rotor performance</p></td>
+<td><p>Generate plots summarizing rotor aerodynamic performance distributions.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_surface_pressures.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_surface_pressures" title="RCAIDE.Library.Plots.Aerodynamics.plot_surface_pressures"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_surface_pressures</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the surface pressure distrubtion at all control points on all lifting surfaces of the aircraft</p></td>
+<td><p>Creates contour plots of surface pressure distributions on aircraft lifting surfaces.</p></td>
 </tr>
 </tbody>
 </table>

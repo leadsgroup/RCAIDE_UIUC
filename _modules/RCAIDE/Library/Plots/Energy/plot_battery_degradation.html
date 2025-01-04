@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Energy.plot_battery_degradation</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Energy/plot_battery_degradation.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Energy</span>
+<span class="c1"># RCAIDE/Library/Plots/Energy/plot_battery_degradation.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -394,6 +395,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Energy</span>
 <div class="viewcode-block" id="plot_battery_degradation">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Energy.plot_battery_degradation.html#RCAIDE.Library.Plots.Energy.plot_battery_degradation.plot_battery_degradation">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_battery_degradation</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -403,25 +405,61 @@
                             <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Battery_Degradation&quot;</span><span class="p">,</span>
                             <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                             <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the solar flux and power train performance of an solar powered aircraft</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a six-panel plot showing battery degradation metrics against various parameters.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results structure containing segment data and battery degradation metrics</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    line_color : str, optional</span>
+<span class="sd">        Matplotlib format string for first line style (default: &#39;bo-&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    line_color2 : str, optional</span>
+<span class="sd">        Matplotlib format string for second line style (default: &#39;rs--&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Base name of file for saved figure (default: &quot;Battery_Degradation&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Figure handle containing the generated plots</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates a 3x2 subplot showing:</span>
+<span class="sd">        Left column (Capacity fade vs):</span>
+<span class="sd">            1. Charge throughput (Ah)</span>
+<span class="sd">            2. Time (hours)</span>
+<span class="sd">            3. Time (days)</span>
+
+<span class="sd">        Right column (Resistance growth vs):</span>
+<span class="sd">            1. Charge throughput (Ah)</span>
+<span class="sd">            2. Time (hours)</span>
+<span class="sd">            3. Time (days)</span>
 <span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    None    </span>
+<span class="sd">    **Definitions**</span>
 <span class="sd">    </span>
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.conditions.propulsion</span>
-<span class="sd">        solar_flux</span>
-<span class="sd">        battery_power_draw</span>
-<span class="sd">        battery_energy</span>
-<span class="sd">    </span>
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
-<span class="sd">    </span>
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    &#39;Capacity Fade&#39;</span>
+<span class="sd">        The loss of energy storage capacity over time/usage</span>
+<span class="sd">    &#39;Resistance Growth&#39;</span>
+<span class="sd">        The increase in internal resistance over time/usage</span>
+<span class="sd">    &#39;Charge Throughput&#39;</span>
+<span class="sd">        The cumulative amount of charge that has passed through the battery</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
     <span class="c1"># get plotting style </span>
     <span class="n">ps</span>      <span class="o">=</span> <span class="n">plot_style</span><span class="p">()</span>  

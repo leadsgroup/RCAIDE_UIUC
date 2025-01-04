@@ -535,22 +535,73 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Mission.plot_aircraft_velocities.plot_aircraft_velocities">
 <span class="sig-name descname"><span class="pre">plot_aircraft_velocities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Aircraft</span> <span class="pre">Velocities'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Mission/plot_aircraft_velocities.html#plot_aircraft_velocities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Mission.plot_aircraft_velocities.plot_aircraft_velocities" title="Link to this definition">#</a></dt>
-<dd><p>This plots true, equivalent, and calibrated airspeeds along with mach</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-results.segments.condtions.freestream.</p>
-<blockquote>
-<div><p>velocity
-density
-mach_number</p>
-</div></blockquote>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a multi-panel visualization of aircraft velocity components over a mission.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – RCAIDE results data structure containing segment conditions</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display segment legend (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Aircraft Velocities”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>fig</strong> –</p>
+<dl class="simple">
+<dt>Handle to the generated figure containing four subplots:</dt><dd><ul class="simple">
+<li><p>True airspeed</p></li>
+<li><p>Equivalent airspeed</p></li>
+<li><p>Calibrated airspeed</p></li>
+<li><p>Mach number</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a four-panel plot showing:</dt><dd><ol class="arabic simple">
+<li><p>True airspeed vs time</p></li>
+<li><p>Equivalent airspeed vs time</p></li>
+<li><p>Calibrated airspeed vs time</p></li>
+<li><p>Mach number vs time</p></li>
+</ol>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Results contain freestream conditions</p></li>
+<li><p>Time is in minutes</p></li>
+<li><p>Velocities are in knots</p></li>
+<li><p>Standard atmosphere density used as reference</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘True Airspeed’</dt><dd><p>Actual aircraft velocity relative to airmass</p>
+</dd>
+<dt>‘Equivalent Airspeed’</dt><dd><p>Velocity at sea level producing same dynamic pressure</p>
+</dd>
+<dt>‘Calibrated Airspeed’</dt><dd><p>Indicated airspeed corrected for instrument and position errors</p>
+</dd>
+<dt>‘Mach Number’</dt><dd><p>Ratio of true airspeed to local speed of sound</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Mission.plot_flight_conditions.html#module-RCAIDE.Library.Plots.Mission.plot_flight_conditions" title="RCAIDE.Library.Plots.Mission.plot_flight_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Mission.plot_flight_conditions</span></code></a></dt><dd><p>Related atmospheric conditions</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Mission.plot_flight_trajectory.html#module-RCAIDE.Library.Plots.Mission.plot_flight_trajectory" title="RCAIDE.Library.Plots.Mission.plot_flight_trajectory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Mission.plot_flight_trajectory</span></code></a></dt><dd><p>Complete trajectory visualization</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

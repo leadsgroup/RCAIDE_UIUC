@@ -397,25 +397,83 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="plot_air_cooled_conditions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions.html#RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions.plot_air_cooled_conditions">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_air_cooled_conditions</span><span class="p">(</span><span class="n">air_cooled</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span> <span class="p">,</span><span class="n">save_filename</span><span class="p">,</span><span class="n">file_type</span> <span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots the Air Cooled Heat Acqusition conditions throughout flight.</span>
+<span class="k">def</span> <span class="nf">plot_air_cooled_conditions</span><span class="p">(</span><span class="n">air_cooled</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> 
+                             <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                             <span class="n">show_legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                             <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Air_Cooled_Conditions&quot;</span><span class="p">,</span>
+                             <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
+                             <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a multi-panel visualization of air-cooled heat exchanger performance.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    air_cooled : Component</span>
+<span class="sd">        Air-cooled heat exchanger component containing:</span>
+<span class="sd">            * tag : str</span>
+<span class="sd">                Unique identifier for the heat exchanger</span>
+<span class="sd">            </span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results data structure containing:</span>
+<span class="sd">            * segments[i].conditions.frames.inertial.time[:,0]</span>
+<span class="sd">                Time history for each segment</span>
+<span class="sd">            * segments[i].conditions.energy[coolant_line.tag][air_cooled.tag]</span>
+<span class="sd">                Heat exchanger performance data containing:</span>
+<span class="sd">                    * effectiveness[:,0]</span>
+<span class="sd">                        Heat exchanger effectiveness</span>
+<span class="sd">                    * total_heat_removed[:,0]</span>
+<span class="sd">                        Total heat transfer rate</span>
+<span class="sd">                    </span>
+<span class="sd">    coolant_line : Component</span>
+<span class="sd">        Coolant line component containing:</span>
+<span class="sd">            * tag : str</span>
+<span class="sd">                Unique identifier for the coolant circuit</span>
+<span class="sd">            </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag to display segment legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Air_Cooled_Conditions&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Handle to the generated figure</span>
+<span class="sd">   </span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates visualization showing:</span>
+<span class="sd">        * Heat exchanger performance metrics</span>
+<span class="sd">        * Thermal effectiveness evolution</span>
+<span class="sd">        * Heat transfer rate history</span>
+<span class="sd">        * Time history for each segment</span>
 <span class="sd">    </span>
-<span class="sd">     Assumptions:</span>
-<span class="sd">     None</span>
+<span class="sd">    **Definitions**</span>
 <span class="sd">    </span>
-<span class="sd">     Source:</span>
-<span class="sd">     None</span>
+<span class="sd">    &#39;Effectiveness&#39;</span>
+<span class="sd">        Ratio of actual to maximum possible heat transfer</span>
+<span class="sd">    &#39;Heat Transfer Rate&#39;</span>
+<span class="sd">        Rate of thermal energy transfer between fluids</span>
+<span class="sd">    &#39;Heat Capacity Rate&#39;</span>
+<span class="sd">        Product of mass flow rate and specific heat</span>
 <span class="sd">    </span>
-<span class="sd">     Inputs:</span>
-<span class="sd">     results.segments.conditions.energy[coolant_line.tag][air_cooled.tag].</span>
-<span class="sd">                                                                       effectiveness</span>
-<span class="sd">                                                                       total_heat_removed</span>
-<span class="sd">     Outputs:</span>
-<span class="sd">     Plots</span>
-<span class="sd">    </span>
-<span class="sd">     Properties Used:</span>
-<span class="sd">     N/A	</span>
-<span class="sd">     &quot;&quot;&quot;</span> 
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance : Overall system performance</span>
+<span class="sd">    RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions : Cross-flow heat exchanger analysis</span>
+<span class="sd">    &quot;&quot;&quot;</span> 
     
     <span class="c1"># get plotting style </span>
     <span class="n">ps</span>      <span class="o">=</span> <span class="n">plot_style</span><span class="p">()</span>  

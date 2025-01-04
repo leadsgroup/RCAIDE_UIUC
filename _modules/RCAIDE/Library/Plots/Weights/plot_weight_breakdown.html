@@ -406,22 +406,90 @@
                             <span class="n">width</span>          <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">7.2</span><span class="p">):</span> 
 <span class="w">  </span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the weight breakdown of an evtol aircraft</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates an interactive sunburst visualization of aircraft weight breakdown.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vehicle : Vehicle</span>
+<span class="sd">        RCAIDE vehicle data structure containing:</span>
+<span class="sd">        </span>
+<span class="sd">        * weight_breakdown : Data</span>
+<span class="sd">            Hierarchical weight data with structure:</span>
+<span class="sd">                * zero_fuel_weight : float</span>
+<span class="sd">                    Aircraft weight without fuel</span>
+<span class="sd">                * max_takeoff : float</span>
+<span class="sd">                    Maximum takeoff weight</span>
+<span class="sd">                * systems : Data</span>
+<span class="sd">                    System weights containing:</span>
+<span class="sd">                        * total : float</span>
+<span class="sd">                            Total systems weight</span>
+<span class="sd">                        * [system_name] : float/Data</span>
+<span class="sd">                            Individual system weights/subcomponents</span>
+<span class="sd">                * fuel : float</span>
+<span class="sd">                    Total fuel weight</span>
+<span class="sd">                </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_figure : bool, optional</span>
+<span class="sd">        Flag to display interactive plot (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag to display weight legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    SI_Units : bool, optional</span>
+<span class="sd">        If True, display weights in kg</span>
+<span class="sd">        If False, display weights in lbs (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Weight_Breakdown&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    aircraft_name : str, optional</span>
+<span class="sd">        Name to display in plot title (default: None)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 10)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7.2)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : plotly.graph_objects.Figure</span>
+<span class="sd">        Handle to the generated figure containing:</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    vehicle</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates visualization showing:</span>
+<span class="sd">        * Hierarchical weight breakdown</span>
+<span class="sd">        * Weight percentages</span>
+<span class="sd">        * Multi-level weight relationships</span>
+<span class="sd">        * Interactive exploration</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">        * All weights are positive</span>
+<span class="sd">        * Hierarchy is properly structured</span>
+<span class="sd">        * No duplicate component names</span>
+<span class="sd">        * Subcomponent weights sum to totals</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Weight Breakdown&#39;</span>
+<span class="sd">        Hierarchical decomposition of vehicle mass</span>
+<span class="sd">    &#39;Weight Fraction&#39;</span>
+<span class="sd">        Component weight divided by total weight</span>
+<span class="sd">    &#39;Zero Fuel Weight&#39;</span>
+<span class="sd">        Aircraft weight excluding fuel</span>
+<span class="sd">    &#39;Maximum Takeoff Weight&#39;</span>
+<span class="sd">        Maximum allowable total weight</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Analysis.Weights : Weight analysis tools</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">breakdown</span> <span class="o">=</span>  <span class="n">vehicle</span><span class="o">.</span><span class="n">weight_breakdown</span>     

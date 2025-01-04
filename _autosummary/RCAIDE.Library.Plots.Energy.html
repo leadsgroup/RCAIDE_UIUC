@@ -529,42 +529,45 @@
   <p>RCAIDE.Library.Plots.Energy</p>
 <section id="module-RCAIDE.Library.Plots.Energy">
 <span id="energy"></span><h1>Energy<a class="headerlink" href="#module-RCAIDE.Library.Plots.Energy" title="Link to this heading">#</a></h1>
-<p>RCAIDE Package Setup</p>
+<p>Energy plotting module providing visualization tools for energy-related components and analysis.</p>
+<p>This module contains functions for plotting various energy-related metrics and characteristics
+including battery performance, solar network conditions, propulsion system efficiency, and
+fuel consumption patterns.</p>
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_altitude_sfc_weight.html#module-RCAIDE.Library.Plots.Energy.plot_altitude_sfc_weight" title="RCAIDE.Library.Plots.Energy.plot_altitude_sfc_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_altitude_sfc_weight</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the altitude, specific fuel consumption and vehicle weight.</p></td>
+<td><p>Creates a four-panel plot showing throttle settings, vehicle weight, specific fuel consumption (SFC), and fuel consumption rate over time.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_battery_cell_conditions.html#module-RCAIDE.Library.Plots.Energy.plot_battery_cell_conditions" title="RCAIDE.Library.Plots.Energy.plot_battery_cell_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_battery_cell_conditions</span></code></a>(results[, ...])</p></td>
-<td><p>Plots the cell-level conditions of the battery throughout flight.</p></td>
+<td><p>Creates a six-panel plot showing various battery cell-level conditions throughout flight.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_battery_degradation.html#module-RCAIDE.Library.Plots.Energy.plot_battery_degradation" title="RCAIDE.Library.Plots.Energy.plot_battery_degradation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_battery_degradation</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the solar flux and power train performance of an solar powered aircraft</p></td>
+<td><p>Creates a six-panel plot showing battery degradation metrics against various parameters.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_battery_module_C_rates.html#module-RCAIDE.Library.Plots.Energy.plot_battery_module_C_rates" title="RCAIDE.Library.Plots.Energy.plot_battery_module_C_rates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_battery_module_C_rates</span></code></a>(results[, ...])</p></td>
-<td><p>Plots the module-level conditions of the battery throughout flight.</p></td>
+<td><p>Creates a two-panel plot showing instantaneous and nominal C-rates of battery modules during operation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_battery_module_conditions.html#module-RCAIDE.Library.Plots.Energy.plot_battery_module_conditions" title="RCAIDE.Library.Plots.Energy.plot_battery_module_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_battery_module_conditions</span></code></a>(results[, ...])</p></td>
-<td><p>Plots the module-level conditions of the battery throughout flight.</p></td>
+<td><p>Creates a six-panel plot showing various battery module-level conditions throughout flight.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_battery_ragone_diagram.html#module-RCAIDE.Library.Plots.Energy.plot_battery_ragone_diagram" title="RCAIDE.Library.Plots.Energy.plot_battery_ragone_diagram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_battery_ragone_diagram</span></code></a>(battery[, ...])</p></td>
-<td><p>Plots the pack-level conditions of the battery throughout flight.</p></td>
+<td><p>Creates a Ragone plot showing the relationship between specific power and specific energy of a battery.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_battery_temperature.html#module-RCAIDE.Library.Plots.Energy.plot_battery_temperature" title="RCAIDE.Library.Plots.Energy.plot_battery_temperature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_battery_temperature</span></code></a>(results[, ...])</p></td>
-<td><p>Plots the cell-level conditions of the battery throughout flight.</p></td>
+<td><p>Creates a three-panel plot showing battery thermal conditions and related parameters throughout flight.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_electric_propulsor_efficiencies.html#module-RCAIDE.Library.Plots.Energy.plot_electric_propulsor_efficiencies" title="RCAIDE.Library.Plots.Energy.plot_electric_propulsor_efficiencies"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_electric_propulsor_efficiencies</span></code></a>(results)</p></td>
-<td><p>This plots the electric driven network propeller efficiencies</p></td>
+<td><p>Creates a three-panel plot showing efficiencies of electric propulsion system components.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_fuel_consumption.html#module-RCAIDE.Library.Plots.Energy.plot_fuel_consumption" title="RCAIDE.Library.Plots.Energy.plot_fuel_consumption"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_fuel_consumption</span></code></a>(results[, ...])</p></td>
-<td><p>This plots aircraft fuel usage</p></td>
+<td><p>Creates a plot showing aircraft fuel consumption over time, including standard and additional fuel if present.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_propulsor_throttles.html#module-RCAIDE.Library.Plots.Energy.plot_propulsor_throttles" title="RCAIDE.Library.Plots.Energy.plot_propulsor_throttles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_propulsor_throttles</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the altitude, specific fuel consumption and vehicle weight.</p></td>
+<td><p>Creates a plot showing throttle settings for all propulsors throughout the flight mission.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Energy.plot_solar_network_conditions.html#module-RCAIDE.Library.Plots.Energy.plot_solar_network_conditions" title="RCAIDE.Library.Plots.Energy.plot_solar_network_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_solar_network_conditions</span></code></a>(results[, ...])</p></td>
-<td><p>This plots the solar flux and power train performance of an solar powered aircraft</p></td>
+<td><p>Creates a four-panel plot showing solar network conditions and battery performance metrics.</p></td>
 </tr>
 </tbody>
 </table>

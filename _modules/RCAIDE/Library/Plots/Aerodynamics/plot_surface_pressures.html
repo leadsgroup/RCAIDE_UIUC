@@ -395,29 +395,78 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="plot_surface_pressures">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_surface_pressures.html#RCAIDE.Library.Plots.Aerodynamics.plot_surface_pressures.plot_surface_pressures">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_surface_pressures</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Surface_Pressure&quot;</span><span class="p">,</span> <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the surface pressure distrubtion at all control points</span>
-<span class="sd">    on all lifting surfaces of the aircraft</span>
+<span class="k">def</span> <span class="nf">plot_surface_pressures</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> 
+                          <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                          <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Surface_Pressure&quot;</span><span class="p">,</span> 
+                          <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates contour plots of surface pressure distributions on aircraft lifting surfaces.</span>
 
-<span class="sd">    Assumptions:</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results data structure containing:</span>
+<span class="sd">            - segments[i].conditions.aerodynamics</span>
+<span class="sd">                Aerodynamic data containing:</span>
+<span class="sd">                    - coefficients.surface_pressure[ti]</span>
+<span class="sd">                        Pressure coefficient at each control point</span>
+<span class="sd">            - segments[i].analyses.aerodynamics.vehicle</span>
+<span class="sd">                Vehicle data containing:</span>
+<span class="sd">                    - vortex_distribution</span>
+<span class="sd">                        Distribution data with:</span>
+<span class="sd">                            - n_cw : array</span>
+<span class="sd">                                Number of chordwise panels per wing</span>
+<span class="sd">                            - n_sw : array</span>
+<span class="sd">                                Number of spanwise panels per wing</span>
+<span class="sd">                            - n_w : int</span>
+<span class="sd">                                Number of wings</span>
+<span class="sd">                            - XC, YC : arrays</span>
+<span class="sd">                                Control point coordinates</span>
+<span class="sd">                            - X : array</span>
+<span class="sd">                                Surface point x-coordinates</span>
+<span class="sd">                - wings : list</span>
+<span class="sd">                    Wing components with:</span>
+<span class="sd">                        - vertical : bool</span>
+<span class="sd">                            Flag for vertical surfaces</span>
+<span class="sd">                        - symmetric : bool</span>
+<span class="sd">                            Flag for symmetric surfaces</span>
+<span class="sd">            </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Surface_Pressure&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
 <span class="sd">    None</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.aerodynamics.</span>
-<span class="sd">        pressure_coefficient</span>
-<span class="sd">    vehicle.vortex_distribution.</span>
-<span class="sd">       n_cw</span>
-<span class="sd">       n_sw</span>
-<span class="sd">       n_w</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates visualization showing:</span>
+<span class="sd">        - Surface pressure distributions</span>
+<span class="sd">        - Spanwise pressure variations</span>
+<span class="sd">        - Chordwise pressure variations</span>
+<span class="sd">        - Wing geometry outlines</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Pressure Coefficient&#39;</span>
+<span class="sd">        Non-dimensional pressure difference</span>
+<span class="sd">    &#39;Control Point&#39;</span>
+<span class="sd">        Location where pressure is evaluated</span>
+<span class="sd">    &#39;Lifting Surface&#39;</span>
+<span class="sd">        Wing, tail, or other aerodynamic surface</span>
+<span class="sd">    &#39;Planform&#39;</span>
+<span class="sd">        Top-view shape of lifting surface</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution : Spanwise lift analysis</span>
+<span class="sd">    RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients : Overall coefficient plots</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="n">vehicle</span>    <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">analyses</span><span class="o">.</span><span class="n">aerodynamics</span><span class="o">.</span><span class="n">vehicle</span>

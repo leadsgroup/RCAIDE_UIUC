@@ -535,15 +535,87 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces.plot_airfoil_surface_forces">
 <span class="sig-name descname"><span class="pre">plot_airfoil_surface_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrow_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Airfoil_Cp_Distribution'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_airfoil_surface_forces.html#plot_airfoil_surface_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces.plot_airfoil_surface_forces" title="Link to this definition">#</a></dt>
-<dd><p>This plots the forces on an airfoil surface</p>
-<p>Assumptions:
-None</p>
-<p>Inputs:
-ap       - data stucture of airfoil boundary layer properties and polars</p>
-<p>Outputs:
-None</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generate plots showing pressure forces on airfoil surface using arrows.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ap</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <dl class="simple">
+<dt>Airfoil properties data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>x<span class="classifier">array</span></dt><dd><p>Airfoil surface x-coordinates</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>y<span class="classifier">array</span></dt><dd><p>Airfoil surface y-coordinates</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cp<span class="classifier">array</span></dt><dd><p>Pressure coefficients at surface points</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>normals<span class="classifier">array</span></dt><dd><p>Surface normal vectors [nx, ny]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AoA<span class="classifier">array</span></dt><dd><p>Angles of attack [rad]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Re<span class="classifier">array</span></dt><dd><p>Reynolds numbers</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save figure to file if True, default False</p></li>
+<li><p><strong>arrow_color</strong> (<em>str</em><em>, </em><em>optional</em>) – Color specification for force arrows, default ‘red’</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for saved figure file, default ‘Airfoil_Cp_Distribution’</p></li>
+<li><p><strong>show_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Display figure if True, default True</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure, default “.png”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a figure showing:</dt><dd><ul class="simple">
+<li><p>Airfoil profile</p></li>
+<li><p>Pressure force vectors as arrows normal to surface</p></li>
+<li><p>Arrow length proportional to local pressure coefficient</p></li>
+<li><p>Arrows point inward for negative Cp (suction)</p></li>
+<li><p>Arrows point outward for positive Cp (pressure)</p></li>
+</ul>
+</dd>
+</dl>
+<p>A separate figure is created for each combination of angle of
+attack and Reynolds number.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Surface Normal’</dt><dd><p>Unit vector perpendicular to airfoil surface</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.set_axes</span></code></dt><dd><p>Standardized axis formatting</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Analysis.Aerodynamics.compute_pressure_forces</span></code></dt><dd><p>Analysis module</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

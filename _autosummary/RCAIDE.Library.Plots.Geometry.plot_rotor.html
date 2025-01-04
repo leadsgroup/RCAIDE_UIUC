@@ -535,17 +535,54 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_rotor.plot_rotor">
 <span class="sig-name descname"><span class="pre">plot_rotor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'red'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'black'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Propeller_Geometry'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_rotor.html#plot_rotor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_rotor.plot_rotor" title="Link to this definition">#</a></dt>
-<dd><p>This plots the geometry of a propeller or rotor</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-RCAIDE.Library.Components.Energy.Converters.Propeller()</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a 2D visualization of rotor/propeller geometry distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prop</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Propulsors.Converters.Propeller.html#RCAIDE.Library.Components.Propulsors.Converters.Propeller.Propeller" title="RCAIDE.Library.Components.Propulsors.Converters.Propeller.Propeller"><em>Propeller</em></a>) – RCAIDE propeller/rotor data structure containing geometry information</p></li>
+<li><p><strong>face_color</strong> (<em>str</em><em>, </em><em>optional</em>) – Color specification for plot faces (default: ‘red’)</p></li>
+<li><p><strong>edge_color</strong> (<em>str</em><em>, </em><em>optional</em>) – Color specification for plot edges (default: ‘black’)</p></li>
+<li><p><strong>show_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display the figure (default: True)</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Propeller_Geometry”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>plotly.graph_objects.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a four-panel plot showing:</dt><dd><ol class="arabic simple">
+<li><p>Twist angle vs radial position</p></li>
+<li><p>Chord length vs radial position</p></li>
+<li><p>Maximum thickness vs radial position</p></li>
+<li><p>Mid-chord alignment vs radial position</p></li>
+</ol>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Distributions are defined at consistent radial stations</p></li>
+<li><p>Twist is in degrees</p></li>
+<li><p>Chord and thickness are in meters</p></li>
+<li><p>Mid-chord alignment is in meters</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Twist’</dt><dd><p>Local blade angle relative to rotation plane</p>
+</dd>
+<dt>‘Chord’</dt><dd><p>Local blade section length</p>
+</dd>
+<dt>‘Thickness’</dt><dd><p>Maximum thickness of local blade section</p>
+</dd>
+<dt>‘Mid-chord Alignment’</dt><dd><p>Offset of section mid-chord from reference line</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

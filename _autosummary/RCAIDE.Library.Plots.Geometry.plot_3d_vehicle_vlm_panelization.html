@@ -535,18 +535,63 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle_vlm_panelization.plot_3d_vehicle_vlm_panelization">
 <span class="sig-name descname"><span class="pre">plot_3d_vehicle_vlm_panelization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_wing_control_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VLM_Panelization'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_x_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_x_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_y_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_y_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_z_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_z_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_vehicle_vlm_panelization.html#plot_3d_vehicle_vlm_panelization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_vehicle_vlm_panelization.plot_3d_vehicle_vlm_panelization" title="Link to this definition">#</a></dt>
-<dd><p>This plots vortex lattice panels created when Fidelity Zero  Aerodynamics
-Routine is initialized</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-vehicle.vortex_distribution</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a 3D visualization of vehicle vortex lattice method (VLM) panelization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle</strong> (<a class="reference internal" href="RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle" title="RCAIDE.Framework.Analyses.Vehicle.Vehicle"><em>Vehicle</em></a>) – RCAIDE vehicle data structure containing geometry information</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Transparency value between 0 and 1 (default: 1.0)</p></li>
+<li><p><strong>plot_axis</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to show coordinate axes (default: False)</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_wing_control_points</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display VLM control points (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “VLM_Panelization”)</p></li>
+<li><p><strong>min_x_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum x-axis plot limit (default: -5)</p></li>
+<li><p><strong>max_x_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum x-axis plot limit (default: 40)</p></li>
+<li><p><strong>min_y_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum y-axis plot limit (default: -20)</p></li>
+<li><p><strong>max_y_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum y-axis plot limit (default: 20)</p></li>
+<li><p><strong>min_z_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum z-axis plot limit (default: -20)</p></li>
+<li><p><strong>max_z_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum z-axis plot limit (default: 20)</p></li>
+<li><p><strong>show_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display the figure (default: True)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Figure handle containing the generated plot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>plotly.graph_objects.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates an interactive 3D visualization showing:</dt><dd><ul class="simple">
+<li><p>VLM panels on lifting surfaces</p></li>
+<li><p>Control points (optional)</p></li>
+<li><p>Customizable view and axis limits</p></li>
+</ul>
+</dd>
+<dt>If vehicle’s vortex distribution is not available, generates a new one with:</dt><dd><ul class="simple">
+<li><p>25 spanwise vortices</p></li>
+<li><p>5 chordwise vortices</p></li>
+<li><p>Linear spanwise spacing</p></li>
+<li><p>No fuselage or nacelle modeling</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Lifting surfaces are represented by flat panels</p></li>
+<li><p>Control points are at 3/4 chord of each panel</p></li>
+<li><p>Vortex lines are at 1/4 chord of each panel</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Control Point’</dt><dd><p>Location where boundary condition is enforced</p>
+</dd>
+<dt>‘Vortex Line’</dt><dd><p>Line of bound vorticity representing lift</p>
+</dd>
+<dt>‘Panel’</dt><dd><p>Discrete element of lifting surface</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

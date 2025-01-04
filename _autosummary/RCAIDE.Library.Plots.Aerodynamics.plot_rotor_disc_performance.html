@@ -535,17 +535,89 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance.plot_rotor_disc_performance">
 <span class="sig-name descname"><span class="pre">plot_rotor_disc_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prop</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_rotor_disc_performance.html#plot_rotor_disc_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_rotor_disc_performance.plot_rotor_disc_performance" title="Link to this definition">#</a></dt>
-<dd><p>Plots rotor disc performance</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs
-outputs    - rotor outputs data structure</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generate plots of rotor disc aerodynamic performance distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prop</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – Rotor properties data structure</p></li>
+<li><p><strong>outputs</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Rotor analysis outputs containing:</p>
+<ul>
+<li><dl class="simple">
+<dt>disc_azimuthal_distribution<span class="classifier">array</span></dt><dd><p>Azimuthal angles around disc [rad]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_radial_distribution<span class="classifier">array</span></dt><dd><p>Radial positions on disc [m]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_thrust_distribution<span class="classifier">array</span></dt><dd><p>Local thrust distribution</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_torque_distribution<span class="classifier">array</span></dt><dd><p>Local torque distribution</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_effective_angle_of_attack<span class="classifier">array</span></dt><dd><p>Local effective angle of attack [rad]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_axial_induced_velocity<span class="classifier">array</span></dt><dd><p>Local axial induced velocity [m/s]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_tangential_induced_velocity<span class="classifier">array</span></dt><dd><p>Local tangential induced velocity [m/s]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>i</strong> (<em>int</em><em>, </em><em>optional</em>) – Time index for plotting, default 0</p></li>
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom plot title, default None</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save figure to file if True, default False</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>fig</strong> – Figure containing five polar subplots:</p>
+<ul class="simple">
+<li><p>Thrust distribution</p></li>
+<li><p>Torque distribution</p></li>
+<li><p>Local blade angle</p></li>
+<li><p>Axial velocity</p></li>
+<li><p>Tangential velocity</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>All plots use:</p>
+<ul class="simple">
+<li><p>Polar coordinates (azimuth, radius)</p></li>
+<li><p>Jet colormap for contours</p></li>
+<li><p>Consistent number of contour levels</p></li>
+<li><p>Colorbar showing scale</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Thrust Distribution’</dt><dd><p>Local thrust force per unit area</p>
+</dd>
+<dt>‘Torque Distribution’</dt><dd><p>Local torque per unit area</p>
+</dd>
+<dt>‘Effective Angle’</dt><dd><p>Local blade angle relative to inflow</p>
+</dd>
+<dt>‘Induced Velocity’</dt><dd><p>Flow velocity induced by rotor</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

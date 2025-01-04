@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_lift_distribution.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Plots/Aerodynamics/plot_lift_distribution.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -399,28 +399,60 @@
                            <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Lift_Distribution&quot;</span><span class="p">,</span>
                            <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                            <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the sectional lift distrubtion at all control points</span>
-<span class="sd">     on all lifting surfaces of the aircraft</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate plots of spanwise lift distribution for lifting surfaces.</span>
 
-<span class="sd">     Assumptions:</span>
-<span class="sd">     None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Data</span>
+<span class="sd">        Mission results data structure containing:</span>
+<span class="sd">            - results.segments.conditions.aerodynamics.coefficients.lift with fields:</span>
+<span class="sd">                - inviscid_wings_sectional : array</span>
+<span class="sd">                    Sectional lift coefficients at control points</span>
 
-<span class="sd">     Source:</span>
-<span class="sd">     None</span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Save figure to file if True, default False</span>
 
-<span class="sd">     Inputs:</span>
-<span class="sd">     results.segments.aerodynamics.</span>
-<span class="sd">         inviscid_wings_sectional_lift</span>
-<span class="sd">     vehicle.vortex_distribution.</span>
-<span class="sd">        n_sw</span>
-<span class="sd">        n_w</span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Base name for saved figure files, default &quot;Lift_Distribution&quot;</span>
 
-<span class="sd">     Outputs: </span>
-<span class="sd">     Plots</span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure, default &quot;.png&quot;</span>
 
-<span class="sd">     Properties Used:</span>
-<span class="sd">     N/A	</span>
-<span class="sd">     &quot;&quot;&quot;</span>   
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches, default 11</span>
+
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches, default 7</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Figure showing spanwise lift distribution</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates figures showing:</span>
+<span class="sd">        - Sectional lift coefficient (CLy) vs spanwise location</span>
+<span class="sd">        - Separate plot for each timestep in each segment</span>
+<span class="sd">        - Different wings distinguished by line colors:</span>
+<span class="sd">            - Blue: Main wings</span>
+<span class="sd">            - Red: Horizontal tails</span>
+<span class="sd">            - Black: Other surfaces</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Sectional Lift Coefficient&#39;</span>
+<span class="sd">        Non-dimensional lift force per unit span</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Control Points&#39;</span>
+<span class="sd">        Points where circulation/lift is evaluated</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling</span>
+<span class="sd">    &quot;&quot;&quot;</span>   
 
     <span class="c1"># get plotting style </span>
     <span class="n">ps</span>      <span class="o">=</span> <span class="n">plot_style</span><span class="p">()</span>  

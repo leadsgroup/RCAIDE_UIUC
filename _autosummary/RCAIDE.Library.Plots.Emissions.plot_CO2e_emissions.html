@@ -535,7 +535,84 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Emissions.plot_CO2e_emissions.plot_CO2e_emissions">
 <span class="sig-name descname"><span class="pre">plot_CO2e_emissions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CO2e_Emissions'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Emissions/plot_CO2e_emissions.html#plot_CO2e_emissions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Emissions.plot_CO2e_emissions.plot_CO2e_emissions" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Generate plots showing CO2-equivalent emissions over mission segments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Mission results data structure containing:
+results.segments[i].conditions.emissions.total with fields:</p>
+<blockquote>
+<div><ul>
+<li><dl class="simple">
+<dt>CO2<span class="classifier">array</span></dt><dd><p>Carbon dioxide emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>NOx<span class="classifier">array</span></dt><dd><p>Nitrogen oxide emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>H2O<span class="classifier">array</span></dt><dd><p>Water vapor emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Contrails<span class="classifier">array</span></dt><dd><p>Contrail formation impact [kg CO2e]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Soot<span class="classifier">array</span></dt><dd><p>Particulate emissions [kg]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>SO2<span class="classifier">array</span></dt><dd><p>Sulfur dioxide emissions [kg]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save figure to file if True, default False</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Display segment legend if True, default True</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for saved figure file, default “CO2e_Emissions”</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure, default “.png”</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches, default 11</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches, default 7</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Figure showing stacked emissions contributions</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a stacked area plot showing:</dt><dd><ul class="simple">
+<li><p>Individual contributions from each emission type</p></li>
+<li><p>Cumulative total CO2-equivalent impact</p></li>
+<li><p>Breakdown by mission segment</p></li>
+<li><p>Time history of emissions</p></li>
+</ul>
+</dd>
+</dl>
+<p>Different emission types are distinguished by fill colors
+and segments use different shades from the inferno colormap.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘CO2-equivalent (CO2e)’</dt><dd><p>Combined climate impact normalized to CO2</p>
+</dd>
+<dt>‘Global Warming Potential (GWP)’</dt><dd><p>Relative impact factor for different emissions</p>
+</dd>
+<dt>‘Contrail Impact’</dt><dd><p>Climate forcing from aviation-induced cloudiness</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 

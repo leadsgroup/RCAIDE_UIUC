@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Energy.plot_altitude_sfc_weight</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Energy/plot_altitude_sfc_weight.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Energy</span>
+<span class="c1"># RCAIDE/Library/Plots/Energy/plot_altitude_sfc_weight.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -394,6 +395,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Performance-Energy-Fuel</span>
 <div class="viewcode-block" id="plot_altitude_sfc_weight">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Energy.plot_altitude_sfc_weight.html#RCAIDE.Library.Plots.Energy.plot_altitude_sfc_weight.plot_altitude_sfc_weight">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_altitude_sfc_weight</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -402,25 +404,53 @@
                              <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Altitude_SFC_Weight&quot;</span> <span class="p">,</span>
                              <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                              <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the altitude, specific fuel consumption and vehicle weight.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a four-panel plot showing throttle settings, vehicle weight, specific fuel consumption (SFC), </span>
+<span class="sd">    and fuel consumption rate over time.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results structure containing segment data</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag for displaying plot legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Altitude_SFC_Weight&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
 
-<span class="sd">    Source: </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Figure handle containing the generated plots</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.conditions.</span>
-<span class="sd">        freestream.altitude</span>
-<span class="sd">        weights.total_mass</span>
-<span class="sd">        weights.vehicle_mass_rate</span>
-<span class="sd">        frames.body.thrust_force_vector</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates a 2x2 subplot containing:</span>
+<span class="sd">        1. Throttle settings vs time</span>
+<span class="sd">        2. Vehicle weight vs time</span>
+<span class="sd">        3. Specific fuel consumption vs time</span>
+<span class="sd">        4. Fuel consumption rate vs time</span>
+<span class="sd">    </span>
+<span class="sd">    Each segment is plotted with a different color from the inferno colormap.</span>
+<span class="sd">  </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;SFC&#39;</span>
+<span class="sd">        Specific Fuel Consumption - measure of the fuel efficiency of an engine design </span>
+<span class="sd">        with respect to thrust output</span>
 <span class="sd">    &quot;&quot;&quot;</span>
  
     <span class="c1"># get plotting style </span>

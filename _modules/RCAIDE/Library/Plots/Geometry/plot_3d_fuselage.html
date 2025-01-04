@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Geometry.plot_3d_fuselage</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Geometry/plot_3d_fuselage.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Geometry </span>
+<span class="c1"># RCAIDE/Library/Plots/Geometry/plot_3d_fuselage.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -394,23 +395,43 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="plot_3d_fuselage">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.plot_3d_fuselage.html#RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.plot_3d_fuselage">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_3d_fuselage</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span><span class="n">fuselage</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span> <span class="p">,</span><span class="n">color_map</span> <span class="o">=</span> <span class="s1">&#39;teal&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This plots the fuselage surface</span>
+<span class="k">def</span> <span class="nf">plot_3d_fuselage</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">fuselage</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">color_map</span> <span class="o">=</span> <span class="s1">&#39;teal&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a 3D visualization of a fuselage surface using tessellated panels.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    plot_data : list</span>
+<span class="sd">        Collection of plot vertices to be rendered</span>
+<span class="sd">        </span>
+<span class="sd">    fuselage : Fuselage</span>
+<span class="sd">        RCAIDE fuselage data structure containing geometry information</span>
+<span class="sd">        </span>
+<span class="sd">    tessellation : int, optional</span>
+<span class="sd">        Number of points to use in circumferential discretization (default: 24)</span>
+<span class="sd">        </span>
+<span class="sd">    color_map : str, optional</span>
+<span class="sd">        Color specification for the fuselage surface (default: &#39;teal&#39;)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    plot_data : list</span>
+<span class="sd">        Updated collection of plot vertices including fuselage surface</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    fuselage             - fuselage data structure</span>
-<span class="sd">    fuselage_points      - coordinates of fuselage points</span>
-<span class="sd">    color_map            - color of panel </span>
-
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a 3D surface by generating points along fuselage segments and </span>
+<span class="sd">    creating surface panels between adjacent cross-sections.</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Fuselage cross-sections are super-elliptical</span>
+<span class="sd">    * Surface is continuous between segments</span>
+<span class="sd">    * Tessellation is uniform around circumference</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    generate_3d_fuselage_points : Function to generate fuselage surface points</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">G</span>  <span class="o">=</span> <span class="n">generate_3d_fuselage_points</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span><span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span> <span class="p">)</span> 
     <span class="n">num_fus_segs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">PTS</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
@@ -434,20 +455,41 @@
 
 <div class="viewcode-block" id="generate_3d_fuselage_points">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.generate_3d_fuselage_points.html#RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.generate_3d_fuselage_points">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_3d_fuselage_points</span><span class="p">(</span><span class="n">fuselage</span> <span class="p">,</span><span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span> <span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This generates the coordinate points on the surface of the fuselage</span>
+<span class="k">def</span> <span class="nf">generate_3d_fuselage_points</span><span class="p">(</span><span class="n">fuselage</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates 3D coordinate points that define a fuselage surface.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fuselage : Fuselage</span>
+<span class="sd">        RCAIDE fuselage data structure containing geometry information</span>
+<span class="sd">        </span>
+<span class="sd">    tessellation : int, optional</span>
+<span class="sd">        Number of points to use in circumferential discretization (default: 24)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    G : Data</span>
+<span class="sd">        Data structure containing generated points</span>
+<span class="sd">        </span>
+<span class="sd">        - PTS : ndarray</span>
+<span class="sd">            Array of shape (num_segments, tessellation, 3) containing </span>
+<span class="sd">            x,y,z coordinates of surface points</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    fuselage                  - fuselage data structure</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Points are generated by creating super-elliptical cross-sections at each segment</span>
+<span class="sd">    and positioning them according to segment locations.</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Cross-sections lie in y-z plane</span>
+<span class="sd">    * Segments are ordered from nose to tail</span>
+<span class="sd">    * Origin is at the nose of the fuselage</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    plot_3d_fuselage : Function to visualize the generated surface</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">num_fus_segs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fuselage</span><span class="o">.</span><span class="n">segments</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">fuselage_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_fus_segs</span><span class="p">,</span><span class="n">tessellation</span> <span class="p">,</span><span class="mi">3</span><span class="p">))</span>

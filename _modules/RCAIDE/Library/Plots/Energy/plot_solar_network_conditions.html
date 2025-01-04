@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Energy.plot_solar_network_conditions</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Energy/plot_solar_network_conditions.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Energy</span>
+<span class="c1"># RCAIDE/Library/Plots/Energy/plot_solar_network_conditions.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke </span>
@@ -395,6 +396,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Energy</span>
 <div class="viewcode-block" id="plot_solar_network_conditions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Energy.plot_solar_network_conditions.html#RCAIDE.Library.Plots.Energy.plot_solar_network_conditions.plot_solar_network_conditions">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_solar_network_conditions</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -403,19 +405,60 @@
                     <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Solar_Flux&quot;</span><span class="p">,</span>
                     <span class="n">file_type</span>     <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                     <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the solar flux and power train performance of an solar powered aircraft</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a four-panel plot showing solar network conditions and battery performance metrics.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-<span class="sd">     </span>
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results structure containing segment data and solar network conditions</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag for displaying plot legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Solar_Flux&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Figure handle containing the generated plots</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates a 2x2 subplot containing:</span>
+<span class="sd">        1. Solar flux vs time</span>
+<span class="sd">        2. Battery charging power vs time</span>
+<span class="sd">        3. Battery current vs time</span>
+<span class="sd">        4. Battery energy vs time</span>
 <span class="sd">    </span>
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
+<span class="sd">    Each segment is plotted with a different color from the inferno colormap.</span>
+<span class="sd">    Different battery modules are distinguished by different markers.</span>
 <span class="sd">    </span>
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * For identical battery modules, only the first module&#39;s data is plotted</span>
+<span class="sd">    * Time is converted from seconds to minutes for plotting</span>
+<span class="sd">    * Energy is converted to megajoules for display</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Solar Flux&#39;</span>
+<span class="sd">        Solar radiation power per unit area (W/m²)</span>
+<span class="sd">    &#39;Charging Power&#39;</span>
+<span class="sd">        Rate of energy transfer to battery storage (W)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1"># get plotting style </span>

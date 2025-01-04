@@ -535,27 +535,141 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading.plot_disc_and_power_loading">
 <span class="sig-name descname"><span class="pre">plot_disc_and_power_loading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Disc_And_Power_Loading'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_disc_and_power_loading.html#plot_disc_and_power_loading"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading.plot_disc_and_power_loading" title="Link to this definition">#</a></dt>
-<dd><p>Plots rotor disc and power loadings</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs
-results.segments.conditions.propulsion.</p>
+<dd><p>Generate plots of rotor disc and power loading over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Mission results data structure containing:
+results.segments[i].conditions with fields:</p>
 <blockquote>
-<div><p>disc_loadings
-power_loading</p>
+<div><ul>
+<li><p>energy[network_tag][rotor_tag].disc_loading</p></li>
+<li><p>energy[network_tag][rotor_tag].power_loading</p></li>
+<li><p>frames.inertial.time</p></li>
+</ul>
 </div></blockquote>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save figure to file if True, default False</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Display segment legend if True, default True</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for saved figure file, default “Disc_And_Power_Loading”</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure, default “.png”</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches, default 11</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches, default 7</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a figure with two vertically stacked subplots showing:</dt><dd><ul class="simple">
+<li><p>Top: Disc loading (N/m²) vs time (minutes)</p></li>
+<li><p>Bottom: Power loading (N/W) vs time (minutes)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Each mission segment is plotted in a different color using the
+inferno colormap. Multiple rotors/propellers are distinguished
+by different markers.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Disc Loading’</dt><dd><p>Thrust per unit rotor disc area</p>
+</dd>
+<dt>‘Power Loading’</dt><dd><p>Thrust per unit power (measure of efficiency)</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.set_axes</span></code></dt><dd><p>Standardized axis formatting</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.plot_style</span></code></dt><dd><p>RCAIDE plot styling</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Analysis.Performance.propulsion</span></code></dt><dd><p>Analysis modules</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading.plot_propulsor_data">
 <span class="sig-name descname"><span class="pre">plot_propulsor_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">propulsor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_colors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pi</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_disc_and_power_loading.html#plot_propulsor_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading.plot_propulsor_data" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Plot disc and power loading data for a single propulsor across mission segments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Mission results data structure containing:
+results.segments[i].conditions with fields:</p>
+<blockquote>
+<div><ul>
+<li><p>energy[propulsor_tag][thrustor_tag].disc_loading</p></li>
+<li><p>energy[propulsor_tag][thrustor_tag].power_loading</p></li>
+<li><p>frames.inertial.time</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>propulsor</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Propulsor data structure containing:
+- tag : str</p>
+<blockquote>
+<div><p>Identifier for the propulsor</p>
+</div></blockquote>
+<ul>
+<li><dl class="simple">
+<dt>rotor/propeller<span class="classifier">Data</span></dt><dd><p>Thrustor component data</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>axis_1</strong> (<em>matplotlib.axes.Axes</em>) – Axis for disc loading plot</p></li>
+<li><p><strong>axis_2</strong> (<em>matplotlib.axes.Axes</em>) – Axis for power loading plot</p></li>
+<li><p><strong>line_colors</strong> (<em>array</em>) – Array of RGB colors for different segments</p></li>
+<li><p><strong>ps</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Plot style data structure with fields:
+- markers : list</p>
+<blockquote>
+<div><p>Marker styles for different propulsors</p>
+</div></blockquote>
+<ul>
+<li><dl class="simple">
+<dt>line_width<span class="classifier">float</span></dt><dd><p>Width for plot lines</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>pi</strong> (<em>int</em>) – Index of current propulsor for marker selection</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Helper function for plot_disc_and_power_loading that handles plotting
+data for a single propulsor (rotor or propeller) across all mission
+segments.</p>
+<p>The function:</p>
+<ul class="simple">
+<li><p>Identifies thrustor type (rotor vs propeller)</p></li>
+<li><p>Extracts time histories for each segment</p></li>
+<li><p>Plots disc and power loading vs time</p></li>
+<li><p>Applies consistent styling</p></li>
+<li><p>Adds legend for first segment only</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading.plot_disc_and_power_loading" title="RCAIDE.Library.Plots.Aerodynamics.plot_disc_and_power_loading.plot_disc_and_power_loading"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_disc_and_power_loading</span></code></a></dt><dd><p>Main plotting function</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.set_axes</span></code></dt><dd><p>Axis formatting</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
 
 </section>
 

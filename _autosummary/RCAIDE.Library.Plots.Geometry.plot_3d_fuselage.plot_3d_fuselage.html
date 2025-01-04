@@ -537,17 +537,39 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.plot_3d_fuselage">
 <span class="sig-name descname"><span class="pre">plot_3d_fuselage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fuselage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tessellation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'teal'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_fuselage.html#plot_3d_fuselage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.plot_3d_fuselage" title="Link to this definition">#</a></dt>
-<dd><p>This plots the fuselage surface</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-fuselage             - fuselage data structure
-fuselage_points      - coordinates of fuselage points
-color_map            - color of panel</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a 3D visualization of a fuselage surface using tessellated panels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plot_data</strong> (<em>list</em>) – Collection of plot vertices to be rendered</p></li>
+<li><p><strong>fuselage</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Fuselages.Fuselage.html#RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage" title="RCAIDE.Library.Components.Fuselages.Fuselage.Fuselage"><em>Fuselage</em></a>) – RCAIDE fuselage data structure containing geometry information</p></li>
+<li><p><strong>tessellation</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points to use in circumferential discretization (default: 24)</p></li>
+<li><p><strong>color_map</strong> (<em>str</em><em>, </em><em>optional</em>) – Color specification for the fuselage surface (default: ‘teal’)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>plot_data</strong> – Updated collection of plot vertices including fuselage surface</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Creates a 3D surface by generating points along fuselage segments and
+creating surface panels between adjacent cross-sections.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Fuselage cross-sections are super-elliptical</p></li>
+<li><p>Surface is continuous between segments</p></li>
+<li><p>Tessellation is uniform around circumference</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.generate_3d_fuselage_points.html#RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.generate_3d_fuselage_points" title="RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.generate_3d_fuselage_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_3d_fuselage_points</span></code></a></dt><dd><p>Function to generate fuselage surface points</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

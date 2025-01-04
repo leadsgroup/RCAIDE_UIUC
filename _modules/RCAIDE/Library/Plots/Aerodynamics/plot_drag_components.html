@@ -377,7 +377,7 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Aerodynamics.plot_drag_components</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_drag_components.py</span>
+<span></span><span class="c1"># RCAIDE/Library/Plots/Aerodynamics/plot_drag_components.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke </span>
@@ -394,6 +394,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Performance-Aerodynamics</span>
 <div class="viewcode-block" id="plot_drag_components">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_drag_components.html#RCAIDE.Library.Plots.Aerodynamics.plot_drag_components.plot_drag_components">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_drag_components</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -402,26 +403,77 @@
                          <span class="n">save_filename</span><span class="o">=</span><span class="s2">&quot;Drag_Components&quot;</span><span class="p">,</span>
                          <span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                         <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the drag components of the aircraft</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate plots showing the breakdown of aircraft drag components over time.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Data</span>
+<span class="sd">        Mission results data structure containing:</span>
+<span class="sd">        results.segments[i].conditions.aerodynamics.coefficients.drag with fields:</span>
+<span class="sd">            - parasite.total : array</span>
+<span class="sd">                Total parasite drag coefficient</span>
+<span class="sd">            - induced.total : array</span>
+<span class="sd">                Total induced drag coefficient</span>
+<span class="sd">            - compressible.total : array</span>
+<span class="sd">                Total compressibility drag coefficient</span>
+<span class="sd">            - miscellaneous.total : array</span>
+<span class="sd">                Other drag components coefficient</span>
+<span class="sd">            - total : array</span>
+<span class="sd">                Total aircraft drag coefficient</span>
+
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Save figure to file if True, default False</span>
+
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Display component legend if True, default True</span>
+
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name for saved figure file, default &quot;Drag_Components&quot;</span>
+
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure, default &quot;.png&quot;</span>
+
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches, default 11</span>
+
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches, default 7</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a single plot showing:</span>
+<span class="sd">        - Parasite drag coefficient (CDp)</span>
+<span class="sd">        - Induced drag coefficient (CDi)</span>
+<span class="sd">        - Compressibility drag coefficient (CDc)</span>
+<span class="sd">        - Miscellaneous drag coefficient (CDm)</span>
+<span class="sd">        - Total drag coefficient (CD)</span>
+
+<span class="sd">    Each mission segment uses a different color from the inferno colormap.</span>
+<span class="sd">    Components are distinguished by different markers.</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;Parasite Drag&#39;</span>
+<span class="sd">        Zero-lift drag due to viscous effects</span>
 <span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    &#39;Induced Drag&#39;</span>
+<span class="sd">        Drag due to lift production</span>
 <span class="sd">    </span>
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.condtions.aerodynamics.coefficients.drag</span>
-<span class="sd">          parasite.total</span>
-<span class="sd">          induced.total</span>
-<span class="sd">          compressible.total</span>
-<span class="sd">          miscellaneous.total</span>
-<span class="sd">          </span>
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
+<span class="sd">    &#39;Compressibility Drag&#39;</span>
+<span class="sd">        Additional drag due to shock waves</span>
 <span class="sd">    </span>
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    &#39;Miscellaneous Drag&#39;</span>
+<span class="sd">        Other sources including interference</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
     <span class="c1"># get plotting style </span>
     <span class="n">ps</span>      <span class="o">=</span> <span class="n">plot_style</span><span class="p">()</span>  

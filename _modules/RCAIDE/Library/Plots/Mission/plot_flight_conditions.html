@@ -399,35 +399,94 @@
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Mission.plot_flight_conditions.html#RCAIDE.Library.Plots.Mission.plot_flight_conditions.plot_flight_conditions">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_flight_conditions</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
                            <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                           <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                           <span class="n">show_legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                            <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Flight Conditions&quot;</span><span class="p">,</span>
                            <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
-                           <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span> 
+                           <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a multi-panel visualization of flight conditions over a mission profile.</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the flights the conditions</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results data structure containing:</span>
+<span class="sd">        </span>
+<span class="sd">        - segments[i].conditions.frames.inertial.time[:,0]</span>
+<span class="sd">            Time history for each segment</span>
+<span class="sd">        - segments[i].conditions.freestream.velocity[:,0]</span>
+<span class="sd">            Airspeed history for each segment</span>
+<span class="sd">        - segments[i].conditions.frames.body.inertial_rotations[:,1,None]</span>
+<span class="sd">            Pitch angle history for each segment</span>
+<span class="sd">        - segments[i].conditions.frames.inertial.aircraft_range[:,0]</span>
+<span class="sd">            Range history for each segment</span>
+<span class="sd">        - segments[i].conditions.freestream.altitude[:,0]</span>
+<span class="sd">            Altitude history for each segment</span>
+<span class="sd">        - segments[i].tag</span>
+<span class="sd">            Name/identifier of each segment</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag to display segment legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Flight Conditions&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Handle to the generated figure containing four subplots:</span>
+<span class="sd">            - Altitude vs time</span>
+<span class="sd">            - Airspeed vs time</span>
+<span class="sd">            - Range vs time</span>
+<span class="sd">            - Pitch angle vs time</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
-
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.conditions.</span>
-<span class="sd">         frames</span>
-<span class="sd">             body.inertial_rotations</span>
-<span class="sd">             inertial.position_vector</span>
-<span class="sd">         freestream.velocity</span>
-<span class="sd">         aerodynamics.</span>
-<span class="sd">             lift_coefficient</span>
-<span class="sd">             drag_coefficient</span>
-<span class="sd">             angle_of_attack</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a four-panel plot showing:</span>
+<span class="sd">        1. Altitude profile</span>
+<span class="sd">        2. Airspeed variation</span>
+<span class="sd">        3. Range covered</span>
+<span class="sd">        4. Aircraft pitch attitude</span>
+<span class="sd">    </span>
+<span class="sd">    Requires the following data in results:</span>
+<span class="sd">        - frames.inertial.time</span>
+<span class="sd">        - frames.inertial.position_vector</span>
+<span class="sd">        - frames.body.inertial_rotations</span>
+<span class="sd">        - freestream.velocity</span>
+<span class="sd">        - freestream.altitude</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Time is in minutes</span>
+<span class="sd">    * Altitude is in feet</span>
+<span class="sd">    * Airspeed is in mph</span>
+<span class="sd">    * Range is in nautical miles</span>
+<span class="sd">    * Pitch angle is in degrees</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Altitude&#39;</span>
+<span class="sd">        Height above reference plane</span>
+<span class="sd">    &#39;Range&#39;</span>
+<span class="sd">        Ground distance covered</span>
+<span class="sd">    &#39;Pitch Angle&#39;</span>
+<span class="sd">        Nose-up/down attitude relative to horizon</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Mission.plot_aircraft_velocities : Detailed velocity analysis</span>
+<span class="sd">    RCAIDE.Library.Plots.Mission.plot_flight_trajectory : 3D trajectory visualization</span>
 <span class="sd">    &quot;&quot;&quot;</span>
  
 

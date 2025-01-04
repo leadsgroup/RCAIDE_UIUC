@@ -529,36 +529,48 @@
   <p>RCAIDE.Library.Plots.Geometry</p>
 <section id="module-RCAIDE.Library.Plots.Geometry">
 <span id="geometry"></span><h1>Geometry<a class="headerlink" href="#module-RCAIDE.Library.Plots.Geometry" title="Link to this heading">#</a></h1>
-<p>RCAIDE Package Setup</p>
+<p>RCAIDE Package Setup for Geometry Plotting Functions</p>
+<p>This module provides a collection of functions for visualizing vehicle geometry and components in 2D and 3D.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Energy.html#module-RCAIDE.Library.Plots.Energy" title="RCAIDE.Library.Plots.Energy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Energy</span></code></a></dt><dd><p>Energy system visualization functions</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Performance</span></code></dt><dd><p>Vehicle performance visualization functions</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Mission.html#module-RCAIDE.Library.Plots.Mission" title="RCAIDE.Library.Plots.Mission"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Mission</span></code></a></dt><dd><p>Mission profile visualization functions</p>
+</dd>
+</dl>
+</div>
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.Common.html#module-RCAIDE.Library.Plots.Geometry.Common" title="RCAIDE.Library.Plots.Geometry.Common"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Common</span></code></a></p></td>
-<td><p>RCAIDE Package Setup</p></td>
+<td><p>RCAIDE Geometry Plotting Package</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_3d_fuselage.html#module-RCAIDE.Library.Plots.Geometry.plot_3d_fuselage" title="RCAIDE.Library.Plots.Geometry.plot_3d_fuselage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_3d_fuselage</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.html#module-RCAIDE.Library.Plots.Geometry.plot_3d_nacelle" title="RCAIDE.Library.Plots.Geometry.plot_3d_nacelle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_3d_nacelle</span></code></a>(plot_data, nacelle[, ...])</p></td>
-<td><p>This plots a 3D surface of a nacelle</p></td>
+<td><p>Creates a 3D visualization of a nacelle surface using tessellated panels.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_3d_rotor.html#module-RCAIDE.Library.Plots.Geometry.plot_3d_rotor" title="RCAIDE.Library.Plots.Geometry.plot_3d_rotor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_3d_rotor</span></code></a>(rotor[, save_filename, ...])</p></td>
-<td><p>This plots a 3D surface of the  rotor</p></td>
+<td><p>Creates a 3D visualization of a rotor with multiple blades.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle.html#module-RCAIDE.Library.Plots.Geometry.plot_3d_vehicle" title="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_3d_vehicle</span></code></a>(vehicle[, show_axis, ...])</p></td>
-<td><p>This plots a 3D representation of the aircraft</p></td>
+<td><p>Creates a complete 3D visualization of an aircraft including all major components.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle_vlm_panelization.html#module-RCAIDE.Library.Plots.Geometry.plot_3d_vehicle_vlm_panelization" title="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle_vlm_panelization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_3d_vehicle_vlm_panelization</span></code></a>(vehicle[, ...])</p></td>
-<td><p>This plots vortex lattice panels created when Fidelity Zero  Aerodynamics Routine is initialized</p></td>
+<td><p>Creates a 3D visualization of vehicle vortex lattice method (VLM) panelization.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_3d_wing.html#module-RCAIDE.Library.Plots.Geometry.plot_3d_wing" title="RCAIDE.Library.Plots.Geometry.plot_3d_wing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_3d_wing</span></code></a>(plot_data, wing[, ...])</p></td>
-<td><p>This plots the wings of a vehicle</p></td>
+<td><p>Creates a 3D visualization of wing surfaces including symmetric sections if applicable.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_airfoil.html#module-RCAIDE.Library.Plots.Geometry.plot_airfoil" title="RCAIDE.Library.Plots.Geometry.plot_airfoil"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_airfoil</span></code></a>(airfoil_paths[, save_figure, ...])</p></td>
-<td><p>This plots all airfoil defined in the list &quot;airfoil_names&quot;</p></td>
+<td><p>Creates a 2D visualization of airfoil geometries from coordinate files.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Geometry.plot_rotor.html#module-RCAIDE.Library.Plots.Geometry.plot_rotor" title="RCAIDE.Library.Plots.Geometry.plot_rotor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rotor</span></code></a>(prop[, face_color, edge_color, ...])</p></td>
-<td><p>This plots the geometry of a propeller or rotor</p></td>
+<td><p>Creates a 2D visualization of rotor/propeller geometry distributions.</p></td>
 </tr>
 </tbody>
 </table>

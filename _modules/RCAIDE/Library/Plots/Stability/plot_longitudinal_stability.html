@@ -398,11 +398,79 @@
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Stability.plot_longitudinal_stability.html#RCAIDE.Library.Plots.Stability.plot_longitudinal_stability.plot_longitudinal_stability">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_longitudinal_stability</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
                              <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                             <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                             <span class="n">show_legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                              <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Longitudinal_Stability&quot;</span><span class="p">,</span>
                              <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                              <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the static stability characteristics of an aircraft </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a multi-panel visualization of longitudinal stability characteristics.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results data structure containing:</span>
+<span class="sd">            - segments[i].conditions.frames.inertial.time[:,0]</span>
+<span class="sd">                Time history for each segment</span>
+<span class="sd">            - segments[i].conditions.aerodynamics.angles.theta[:,0]</span>
+<span class="sd">                Pitch angle history</span>
+<span class="sd">            - segments[i].conditions.aerodynamics.angles.alpha[:,0]</span>
+<span class="sd">                Angle of attack history</span>
+<span class="sd">            - segments[i].conditions.control_surfaces.elevator.deflection[:,0]</span>
+<span class="sd">                Elevator deflection history</span>
+<span class="sd">            - segments[i].tag</span>
+<span class="sd">                Name/identifier of each segment</span>
+<span class="sd">            </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag to display segment legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Longitudinal_Stability&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates visualization showing:</span>
+<span class="sd">        * Pitch attitude response</span>
+<span class="sd">        * Aerodynamic angle evolution</span>
+<span class="sd">        * Longitudinal control inputs</span>
+<span class="sd">        * Trajectory angle history</span>
+<span class="sd">        * Time history for each segment</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">        * Angles are in degrees</span>
+<span class="sd">        * Time is in minutes</span>
+<span class="sd">        * Positive deflections follow right-hand rule</span>
+<span class="sd">   </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Pitch Angle&#39;</span>
+<span class="sd">        Nose-up/down attitude relative to horizon</span>
+<span class="sd">    &#39;Angle of Attack&#39;</span>
+<span class="sd">        Angle between velocity vector and body reference line</span>
+<span class="sd">    &#39;Flight Path Angle&#39;</span>
+<span class="sd">        Angle between velocity vector and horizon</span>
+<span class="sd">    &#39;Elevator Deflection&#39;</span>
+<span class="sd">        Pitch control surface position</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Stability.plot_lateral_stability : Lateral-directional stability analysis</span>
+<span class="sd">    RCAIDE.Library.Plots.Stability.plot_flight_forces_and_moments : Force/moment visualization</span>
 <span class="sd">    &quot;&quot;&quot;</span>  
 
     <span class="c1"># get plotting style </span>

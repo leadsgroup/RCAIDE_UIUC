@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_surface_forces.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Performance-Aerodynamics  </span>
+<span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_surface_forces.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -394,21 +395,73 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------     </span>
 <div class="viewcode-block" id="plot_airfoil_surface_forces">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces.html#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_surface_forces.plot_airfoil_surface_forces">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_airfoil_surface_forces</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">,</span> <span class="n">arrow_color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">save_filename</span> <span class="o">=</span> <span class="s1">&#39;Airfoil_Cp_Distribution&#39;</span><span class="p">,</span> <span class="n">show_figure</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">):</span>  
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; This plots the forces on an airfoil surface</span>
+<span class="k">def</span> <span class="nf">plot_airfoil_surface_forces</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> 
+                              <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                              <span class="n">arrow_color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+                              <span class="n">save_filename</span> <span class="o">=</span> <span class="s1">&#39;Airfoil_Cp_Distribution&#39;</span><span class="p">,</span> 
+                              <span class="n">show_figure</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+                              <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate plots showing pressure forces on airfoil surface using arrows.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ap : Data</span>
+<span class="sd">        Airfoil properties data structure containing:</span>
+<span class="sd">            - x : array</span>
+<span class="sd">                Airfoil surface x-coordinates</span>
+<span class="sd">            - y : array</span>
+<span class="sd">                Airfoil surface y-coordinates</span>
+<span class="sd">            - cp : array</span>
+<span class="sd">                Pressure coefficients at surface points</span>
+<span class="sd">            - normals : array</span>
+<span class="sd">                Surface normal vectors [nx, ny]</span>
+<span class="sd">            - AoA : array</span>
+<span class="sd">                Angles of attack [rad]</span>
+<span class="sd">            - Re : array</span>
+<span class="sd">                Reynolds numbers</span>
+
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Save figure to file if True, default False</span>
+
+<span class="sd">    arrow_color : str, optional</span>
+<span class="sd">        Color specification for force arrows, default &#39;red&#39;</span>
+
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name for saved figure file, default &#39;Airfoil_Cp_Distribution&#39;</span>
+
+<span class="sd">    show_figure : bool, optional</span>
+<span class="sd">        Display figure if True, default True</span>
+
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure, default &quot;.png&quot;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a figure showing:</span>
+<span class="sd">        - Airfoil profile</span>
+<span class="sd">        - Pressure force vectors as arrows normal to surface</span>
+<span class="sd">        - Arrow length proportional to local pressure coefficient</span>
+<span class="sd">        - Arrows point inward for negative Cp (suction)</span>
+<span class="sd">        - Arrows point outward for positive Cp (pressure)</span>
+
+<span class="sd">    A separate figure is created for each combination of angle of</span>
+<span class="sd">    attack and Reynolds number.</span>
+
+<span class="sd">    **Definitions**</span>
 <span class="sd">    </span>
-<span class="sd">        Assumptions:</span>
-<span class="sd">        None</span>
-<span class="sd">        </span>
-<span class="sd">        Inputs: </span>
-<span class="sd">        ap       - data stucture of airfoil boundary layer properties and polars </span>
-<span class="sd">         </span>
-<span class="sd">        Outputs: </span>
-<span class="sd">        None </span>
-<span class="sd">        </span>
-<span class="sd">        Properties Used:</span>
-<span class="sd">        N/A</span>
-<span class="sd">        &quot;&quot;&quot;</span>        
+<span class="sd">    &#39;Surface Normal&#39;</span>
+<span class="sd">        Unit vector perpendicular to airfoil surface</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting</span>
+<span class="sd">    RCAIDE.Library.Analysis.Aerodynamics.compute_pressure_forces : Analysis module</span>
+<span class="sd">    &quot;&quot;&quot;</span>        
     
     <span class="c1"># determine dimension of angle of attack and reynolds number </span>
     <span class="n">n_cpts</span>   <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ap</span><span class="o">.</span><span class="n">AoA</span><span class="p">)</span>

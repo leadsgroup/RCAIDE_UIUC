@@ -535,22 +535,52 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Energy.plot_electric_propulsor_efficiencies.plot_electric_propulsor_efficiencies">
 <span class="sig-name descname"><span class="pre">plot_electric_propulsor_efficiencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Electric_Efficiencies'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Energy/plot_electric_propulsor_efficiencies.html#plot_electric_propulsor_efficiencies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Energy.plot_electric_propulsor_efficiencies.plot_electric_propulsor_efficiencies" title="Link to this definition">#</a></dt>
-<dd><p>This plots the electric driven network propeller efficiencies</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-results.segments.conditions.propulsion.</p>
-<blockquote>
-<div><p>etap
-etam
-fom</p>
-</div></blockquote>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a three-panel plot showing efficiencies of electric propulsion system components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – RCAIDE results structure containing segment data and propulsion system efficiencies</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for displaying plot legend (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Electric_Efficiencies”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>The function creates a 2x2 subplot containing:</dt><dd><ol class="arabic simple">
+<li><p>Propulsor efficiency vs time (rotor or ducted fan)</p></li>
+<li><p>Figure of Merit vs time</p></li>
+<li><p>Motor efficiency vs time</p></li>
+</ol>
+</dd>
+</dl>
+<p>Each segment is plotted with a different color from the inferno colormap.
+Different propulsors are distinguished by different markers.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>For identical propulsors, only the first propulsor’s data is plotted</p></li>
+<li><p>Time is converted from seconds to minutes for plotting</p></li>
+<li><p>Efficiencies are normalized between 0 and 1</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Figure of Merit’</dt><dd><p>Measure of rotor efficiency comparing actual power to ideal power</p>
+</dd>
+<dt>‘Motor Efficiency’</dt><dd><p>Ratio of mechanical power output to electrical power input</p>
+</dd>
+<dt>‘Propulsor Efficiency’</dt><dd><p>Ratio of useful thrust power to shaft power input</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

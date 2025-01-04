@@ -535,66 +535,118 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle.plot_3d_vehicle">
 <span class="sig-name descname"><span class="pre">plot_3d_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Vehicle_Geometry'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_x_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_x_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_y_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_y_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_z_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_z_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_eye_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_eye_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_eye_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_center_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_center_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_center_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_vehicle.html#plot_3d_vehicle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_vehicle.plot_3d_vehicle" title="Link to this definition">#</a></dt>
-<dd><p>This plots a 3D representation of the aircraft</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<dl class="simple">
-<dt>Inputs:</dt><dd><p>vehicle                      - vehicle data structure
-show_axis                    - plot axis flag
-save_figure                  - safe figure flag
-alpha                        - opacity
-show_wing_control_points     - show control point flag
-show_rotor_wake_vortex_core  - show rotor wake flag
-save_filename                - filename for saving
-x_axis_limit                 - limits of axis
-y_axis_limit                 - limits of axis
-z_axis_limit                 - limits of axis
-show_figure                  - show figure flag</p>
+<dd><p>Creates a complete 3D visualization of an aircraft including all major components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle</strong> (<a class="reference internal" href="RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle" title="RCAIDE.Framework.Analyses.Vehicle.Vehicle"><em>Vehicle</em></a>) – RCAIDE vehicle data structure containing all component geometries</p></li>
+<li><p><strong>show_axis</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display coordinate axes (default: False)</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Vehicle_Geometry”)</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Transparency value between 0 and 1 (default: 1.0)</p></li>
+<li><p><strong>min_x_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum x-axis plot limit (default: -5)</p></li>
+<li><p><strong>max_x_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum x-axis plot limit (default: 40)</p></li>
+<li><p><strong>min_y_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum y-axis plot limit (default: -20)</p></li>
+<li><p><strong>max_y_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum y-axis plot limit (default: 20)</p></li>
+<li><p><strong>min_z_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum z-axis plot limit (default: -20)</p></li>
+<li><p><strong>max_z_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum z-axis plot limit (default: 20)</p></li>
+<li><p><strong>camera_eye_x</strong> (<em>float</em><em>, </em><em>optional</em>) – Camera eye x-position (default: -1.5)</p></li>
+<li><p><strong>camera_eye_y</strong> (<em>float</em><em>, </em><em>optional</em>) – Camera eye y-position (default: -1.5)</p></li>
+<li><p><strong>camera_eye_z</strong> (<em>float</em><em>, </em><em>optional</em>) – Camera eye z-position (default: 0.8)</p></li>
+<li><p><strong>camera_center_x</strong> (<em>float</em><em>, </em><em>optional</em>) – Camera target x-position (default: 0.0)</p></li>
+<li><p><strong>camera_center_y</strong> (<em>float</em><em>, </em><em>optional</em>) – Camera target y-position (default: 0.0)</p></li>
+<li><p><strong>camera_center_z</strong> (<em>float</em><em>, </em><em>optional</em>) – Camera target z-position (default: -0.5)</p></li>
+<li><p><strong>show_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display the figure (default: True)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates an interactive 3D visualization showing:</dt><dd><ul class="simple">
+<li><p>Wings and control surfaces</p></li>
+<li><p>Fuselage sections</p></li>
+<li><p>Propulsion systems</p></li>
+<li><p>Customizable view and camera angles</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle.generate_3d_vehicle_geometry_data">
 <span class="sig-name descname"><span class="pre">generate_3d_vehicle_geometry_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_x_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_x_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_y_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_y_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_z_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_z_axis_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_vehicle.html#generate_3d_vehicle_geometry_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_vehicle.generate_3d_vehicle_geometry_data" title="Link to this definition">#</a></dt>
-<dd><p>This plots the 3D surface of the network</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<dl class="simple">
-<dt>Inputs:</dt><dd><p>vehicle                      - vehicle data structure
-alpha                        - opacity
-save_filename                - filename for saving
-x_axis_limit                 - limits of axis
-y_axis_limit                 - limits of axis
-z_axis_limit                 - limits of axis</p>
+<dd><p>Generates plot data for all vehicle components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plot_data</strong> (<em>list</em>) – Collection of plot vertices to be rendered</p></li>
+<li><p><strong>vehicle</strong> (<a class="reference internal" href="RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle" title="RCAIDE.Framework.Analyses.Vehicle.Vehicle"><em>Vehicle</em></a>) – RCAIDE vehicle data structure containing all component geometries</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Transparency value between 0 and 1 (default: 1.0)</p></li>
+<li><p><strong>min_x_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum x-axis plot limit (default: -5)</p></li>
+<li><p><strong>max_x_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum x-axis plot limit (default: 40)</p></li>
+<li><p><strong>min_y_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum y-axis plot limit (default: -20)</p></li>
+<li><p><strong>max_y_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum y-axis plot limit (default: 20)</p></li>
+<li><p><strong>min_z_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Minimum z-axis plot limit (default: -20)</p></li>
+<li><p><strong>max_z_axis_limit</strong> (<em>float</em><em>, </em><em>optional</em>) – Maximum z-axis plot limit (default: 20)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>plot_data</strong> (<em>list</em>) – Updated collection of plot vertices</p></li>
+<li><p><strong>min_x_axis_limit</strong> (<em>float</em>) – Updated minimum x-axis limit</p></li>
+<li><p><strong>max_x_axis_limit</strong> (<em>float</em>) – Updated maximum x-axis limit</p></li>
+<li><p><strong>min_y_axis_limit</strong> (<em>float</em>) – Updated minimum y-axis limit</p></li>
+<li><p><strong>max_y_axis_limit</strong> (<em>float</em>) – Updated maximum y-axis limit</p></li>
+<li><p><strong>min_z_axis_limit</strong> (<em>float</em>) – Updated minimum z-axis limit</p></li>
+<li><p><strong>max_z_axis_limit</strong> (<em>float</em>) – Updated maximum z-axis limit</p></li>
+</ul>
+</p>
 </dd>
 </dl>
-<p>Properties Used:
-N/A</p>
+<p class="rubric">Notes</p>
+<p>Processes geometry for:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Wings (using plot_3d_wing)</p></li>
+<li><p>Fuselages (using plot_3d_fuselage)</p></li>
+<li><p>Booms (using plot_3d_fuselage)</p></li>
+<li><p>Energy networks (using plot_3d_energy_network)</p></li>
+</ul>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_vehicle.plot_3d_energy_network">
 <span class="sig-name descname"><span class="pre">plot_3d_energy_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_airfoil_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_vehicle.html#plot_3d_energy_network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_vehicle.plot_3d_energy_network" title="Link to this definition">#</a></dt>
-<dd><p>This plots the 3D surface of the network</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-network            - network data structure
-network_face_color - color of panel
-network_edge_color - color of panel edge</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generates plot data for vehicle energy network components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plot_data</strong> (<em>list</em>) – Collection of plot vertices to be rendered</p></li>
+<li><p><strong>network</strong> (<a class="reference internal" href="RCAIDE.Framework.Networks.Network.html#RCAIDE.Framework.Networks.Network.Network" title="RCAIDE.Framework.Networks.Network.Network"><em>Network</em></a>) – RCAIDE network data structure containing propulsion components</p></li>
+<li><p><strong>number_of_airfoil_points</strong> (<em>int</em>) – Number of points used to discretize airfoil sections</p></li>
+<li><p><strong>color_map</strong> (<em>str</em>) – Color specification for network components</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>plot_data</strong> – Updated collection of plot vertices</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Processes geometry for:</dt><dd><ul class="simple">
+<li><p>Nacelles (using plot_3d_nacelle)</p></li>
+<li><p>Rotors (using plot_3d_rotor)</p></li>
+<li><p>Propellers (using plot_3d_rotor)</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

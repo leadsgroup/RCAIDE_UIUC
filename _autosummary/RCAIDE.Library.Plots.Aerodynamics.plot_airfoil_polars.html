@@ -535,17 +535,80 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars.plot_airfoil_polars">
 <span class="sig-name descname"><span class="pre">plot_airfoil_polars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polar_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Airfoil_Polars'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_airfoil_polars.html#plot_airfoil_polars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars.plot_airfoil_polars" title="Link to this definition">#</a></dt>
-<dd><p>This plots all the airfoil polars of a specfic airfoil</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-airfoil_polar_paths   [list of strings]</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generate plots of airfoil aerodynamic characteristics from analysis results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>polar_data</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <dl class="simple">
+<dt>Airfoil analysis results containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>cl_invisc[0]<span class="classifier">array</span></dt><dd><p>Inviscid lift coefficients</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cd_invisc[0]<span class="classifier">array</span></dt><dd><p>Inviscid drag coefficients</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cm_invisc[0]<span class="classifier">array</span></dt><dd><p>Inviscid moment coefficients</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AoA[0]<span class="classifier">array</span></dt><dd><p>Angles of attack [rad]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Re[0]<span class="classifier">array</span></dt><dd><p>Reynolds numbers</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save figure to file if True, default False</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for saved figure file, default “Airfoil_Polars”</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure, default “.png”</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches, default 11</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches, default 7</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a 2x2 subplot figure showing inviscid airfoil characteristics:</dt><dd><ul class="simple">
+<li><p>Top left: Lift coefficient vs angle of attack</p></li>
+<li><p>Top right: Drag coefficient vs angle of attack</p></li>
+<li><p>Bottom left: Moment coefficient vs angle of attack</p></li>
+<li><p>Bottom right: Lift-to-drag ratio vs angle of attack</p></li>
+</ul>
+</dd>
+</dl>
+<p>Results are plotted for a single Reynolds number case, with the
+Reynolds number shown in the legend (e.g., “Re=1.0e6”).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.set_axes</span></code></dt><dd><p>Standardized axis formatting</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.plot_style</span></code></dt><dd><p>RCAIDE plot styling</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Analysis.Aerodynamics.compute_airfoil_inviscid</span></code></dt><dd><p>Analysis module</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files" title="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files</span></code></a></dt><dd><p>Viscous polar plotting function</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

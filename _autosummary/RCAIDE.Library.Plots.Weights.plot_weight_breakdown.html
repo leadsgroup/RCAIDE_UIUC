@@ -535,17 +535,111 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Weights.plot_weight_breakdown.plot_weight_breakdown">
 <span class="sig-name descname"><span class="pre">plot_weight_breakdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SI_Units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Weight_Breakdown'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraft_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7.2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Weights/plot_weight_breakdown.html#plot_weight_breakdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Weights.plot_weight_breakdown.plot_weight_breakdown" title="Link to this definition">#</a></dt>
-<dd><p>This plots the weight breakdown of an evtol aircraft</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-vehicle</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates an interactive sunburst visualization of aircraft weight breakdown.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vehicle</strong> (<a class="reference internal" href="RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle" title="RCAIDE.Framework.Analyses.Vehicle.Vehicle"><em>Vehicle</em></a>) – <p>RCAIDE vehicle data structure containing:</p>
+<ul>
+<li><dl class="simple">
+<dt>weight_breakdown<span class="classifier">Data</span></dt><dd><dl class="simple">
+<dt>Hierarchical weight data with structure:</dt><dd><ul>
+<li><dl class="simple">
+<dt>zero_fuel_weight<span class="classifier">float</span></dt><dd><p>Aircraft weight without fuel</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>max_takeoff<span class="classifier">float</span></dt><dd><p>Maximum takeoff weight</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>systems<span class="classifier">Data</span></dt><dd><dl class="simple">
+<dt>System weights containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>total<span class="classifier">float</span></dt><dd><p>Total systems weight</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>[system_name]<span class="classifier">float/Data</span></dt><dd><p>Individual system weights/subcomponents</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>fuel<span class="classifier">float</span></dt><dd><p>Total fuel weight</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display interactive plot (default: True)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display weight legend (default: True)</p></li>
+<li><p><strong>SI_Units</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, display weights in kg
+If False, display weights in lbs (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Weight_Breakdown”)</p></li>
+<li><p><strong>aircraft_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name to display in plot title (default: None)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 10)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7.2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Handle to the generated figure containing:</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>plotly.graph_objects.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates visualization showing:</dt><dd><ul class="simple">
+<li><p>Hierarchical weight breakdown</p></li>
+<li><p>Weight percentages</p></li>
+<li><p>Multi-level weight relationships</p></li>
+<li><p>Interactive exploration</p></li>
+</ul>
+</dd>
+<dt><strong>Major Assumptions</strong></dt><dd><ul class="simple">
+<li><p>All weights are positive</p></li>
+<li><p>Hierarchy is properly structured</p></li>
+<li><p>No duplicate component names</p></li>
+<li><p>Subcomponent weights sum to totals</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Weight Breakdown’</dt><dd><p>Hierarchical decomposition of vehicle mass</p>
+</dd>
+<dt>‘Weight Fraction’</dt><dd><p>Component weight divided by total weight</p>
+</dd>
+<dt>‘Zero Fuel Weight’</dt><dd><p>Aircraft weight excluding fuel</p>
+</dd>
+<dt>‘Maximum Takeoff Weight’</dt><dd><p>Maximum allowable total weight</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Analysis.Weights</span></code></dt><dd><p>Weight analysis tools</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

@@ -535,17 +535,47 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_airfoil.plot_airfoil">
 <span class="sig-name descname"><span class="pre">plot_airfoil</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">airfoil_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Airfoil_Geometry'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_airfoil.html#plot_airfoil"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_airfoil.plot_airfoil" title="Link to this definition">#</a></dt>
-<dd><p>This plots all airfoil defined in the list “airfoil_names”</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-airfoil_geometry_files   &lt;list of strings&gt;</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a 2D visualization of airfoil geometries from coordinate files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>airfoil_paths</strong> (<em>list</em><em> of </em><em>str</em>) – Paths to airfoil coordinate files</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Airfoil_Geometry”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Handle to the generated figure</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a plot showing:</dt><dd><ul class="simple">
+<li><p>Airfoil surface coordinates</p></li>
+<li><p>Equal axis scaling</p></li>
+<li><p>Optional figure saving</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Coordinate files are properly formatted</p></li>
+<li><p>Coordinates are normalized by chord</p></li>
+<li><p>Points are ordered from trailing edge clockwise</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Chord’</dt><dd><p>Line from leading edge to trailing edge</p>
+</dd>
+<dt>‘Thickness’</dt><dd><p>Distance between upper and lower surface</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

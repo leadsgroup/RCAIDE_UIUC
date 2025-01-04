@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Energy.plot_battery_module_C_rates</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Energy/plot_battery_module_C_rates.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Energy</span>
+<span class="c1"># RCAIDE/Library/Plots/Energy/plot_battery_module_C_rates.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -395,6 +396,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Energy</span>
 <div class="viewcode-block" id="plot_battery_module_C_rates">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Energy.plot_battery_module_C_rates.html#RCAIDE.Library.Plots.Energy.plot_battery_module_C_rates.plot_battery_module_C_rates">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_battery_module_C_rates</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -404,26 +406,59 @@
                         <span class="n">file_type</span>     <span class="o">=</span><span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                         <span class="n">width</span>         <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
                         <span class="n">height</span>        <span class="o">=</span> <span class="mi">6</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots the module-level conditions of the battery throughout flight.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a two-panel plot showing instantaneous and nominal C-rates of battery modules during operation.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results structure containing segment data and battery conditions</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag for displaying plot legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Base name of file for saved figure (default: &quot;Battery_Module_C_Rates&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 8)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 6)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.conditions.</span>
-<span class="sd">        freestream.altitude</span>
-<span class="sd">        weights.total_mass</span>
-<span class="sd">        weights.vehicle_mass_rate</span>
-<span class="sd">        frames.body.thrust_force_vector</span>
-
-<span class="sd">    Outputs: </span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A	</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates a 1x2 subplot showing:</span>
+<span class="sd">        1. Instantaneous C-rate vs time</span>
+<span class="sd">        2. Nominal C-rate vs time</span>
+<span class="sd">    </span>
+<span class="sd">    Different segments are plotted with different colors using the inferno colormap.</span>
+<span class="sd">    For multiple battery modules, only non-identical modules are plotted.</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * For identical battery modules, only the first module&#39;s data is plotted</span>
+<span class="sd">    * Time is converted from seconds to minutes for plotting</span>
+<span class="sd">    * Battery energy is converted to Watt-hours for calculations</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;C-rate&#39;</span>
+<span class="sd">        A measure of the rate at which a battery is discharged relative to its capacity</span>
+<span class="sd">    &#39;Instantaneous C-rate&#39;</span>
+<span class="sd">        C-rate calculated using the current battery capacity</span>
+<span class="sd">    &#39;Nominal C-rate&#39;</span>
+<span class="sd">        C-rate calculated using the maximum battery capacity</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
      
     <span class="c1"># get plotting style </span>

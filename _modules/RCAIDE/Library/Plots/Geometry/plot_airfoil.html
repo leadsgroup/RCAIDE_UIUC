@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Geometry.plot_airfoil</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Geometry/plot_airfoil.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Geometry</span>
+<span class="c1"># RCAIDE/Library/Plots/Geometry/plot_airfoil.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -395,6 +396,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
+<span class="c1">## @ingroup Library-Plots-Geometry</span>
 <div class="viewcode-block" id="plot_airfoil">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_airfoil.html#RCAIDE.Library.Plots.Geometry.plot_airfoil.plot_airfoil">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_airfoil</span><span class="p">(</span><span class="n">airfoil_paths</span><span class="p">,</span>
@@ -402,22 +404,53 @@
                  <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Airfoil_Geometry&quot;</span><span class="p">,</span>
                  <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span> 
                  <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots all airfoil defined in the list &quot;airfoil_names&quot; </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a 2D visualization of airfoil geometries from coordinate files.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    airfoil_paths : list of str</span>
+<span class="sd">        Paths to airfoil coordinate files</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Airfoil_Geometry&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Handle to the generated figure</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    airfoil_geometry_files   &lt;list of strings&gt;</span>
-
-<span class="sd">    Outputs: </span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A	</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a plot showing:</span>
+<span class="sd">        - Airfoil surface coordinates</span>
+<span class="sd">        - Equal axis scaling</span>
+<span class="sd">        - Optional figure saving</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Coordinate files are properly formatted</span>
+<span class="sd">    * Coordinates are normalized by chord</span>
+<span class="sd">    * Points are ordered from trailing edge clockwise</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Chord&#39;</span>
+<span class="sd">        Line from leading edge to trailing edge</span>
+<span class="sd">    &#39;Thickness&#39;</span>
+<span class="sd">        Distance between upper and lower surface</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># get airfoil coordinate geometry     </span>
     <span class="n">airfoil_geometry</span> <span class="o">=</span> <span class="n">import_airfoil_geometry</span><span class="p">(</span><span class="n">airfoil_paths</span><span class="p">)</span>

@@ -535,22 +535,109 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_forces.plot_aerodynamic_forces">
 <span class="sig-name descname"><span class="pre">plot_aerodynamic_forces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Aerodynamic_Forces'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_aerodynamic_forces.html#plot_aerodynamic_forces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_forces.plot_aerodynamic_forces" title="Link to this definition">#</a></dt>
-<dd><p>This plots the aerodynamic forces</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-results.segments.condtions.frames</p>
-<blockquote>
-<div><p>body.thrust_force_vector
-wind.force_vector
-wind.force_vector</p>
-</div></blockquote>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a multi-panel visualization of aerodynamic forces throughout flight.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – <dl class="simple">
+<dt>RCAIDE results data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>segments[i].conditions.frames</dt><dd><dl class="simple">
+<dt>Frame data containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>body.thrust_force_vector[:,0]</dt><dd><p>Thrust force in body frame [N]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>wind.force_vector[:,0]</dt><dd><p>Drag force in wind frame [N]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>wind.force_vector[:,2]</dt><dd><p>Lift force in wind frame [N]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>segments[i].conditions.energy</dt><dd><dl class="simple">
+<dt>Energy data containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>power[:,0]</dt><dd><p>Total power in watts</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>segments[i].conditions.frames.inertial.time[:,0]</dt><dd><p>Time history for each segment</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>segments[i].tag</dt><dd><p>Segment identifier string</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display segment legend (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Aerodynamic_Forces”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates visualization showing:</dt><dd><ul class="simple">
+<li><p>Aerodynamic force magnitudes</p></li>
+<li><p>Power requirements</p></li>
+<li><p>Force balance evolution</p></li>
+<li><p>Time history of forces</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Lift’</dt><dd><p>Force perpendicular to airflow</p>
+</dd>
+<dt>‘Drag’</dt><dd><p>Force parallel to airflow</p>
+</dd>
+<dt>‘Thrust’</dt><dd><p>Propulsive force</p>
+</dd>
+<dt>‘Power’</dt><dd><p>Rate of energy use</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients" title="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients</span></code></a></dt><dd><p>Non-dimensional force plots</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_drag_components.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_drag_components" title="RCAIDE.Library.Plots.Aerodynamics.plot_drag_components"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Aerodynamics.plot_drag_components</span></code></a></dt><dd><p>Drag breakdown analysis</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

@@ -535,67 +535,182 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.plot_3d_nacelle">
 <span class="sig-name descname"><span class="pre">plot_3d_nacelle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nacelle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tessellation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_airfoil_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'darkmint'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_nacelle.html#plot_3d_nacelle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.plot_3d_nacelle" title="Link to this definition">#</a></dt>
-<dd><p>This plots a 3D surface of a nacelle</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-axes                       - plotting axes
-nacelle                    - RCAIDE nacelle data structure
-tessellation               - azimuthal discretization of lofted body
-number_of_airfoil_points   - discretization of airfoil geometry
-color_map                  - face color of nacelle</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a 3D visualization of a nacelle surface using tessellated panels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plot_data</strong> (<em>list</em>) – Collection of plot vertices to be rendered</p></li>
+<li><p><strong>nacelle</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle" title="RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle"><em>Nacelle</em></a>) – RCAIDE nacelle data structure containing geometry information</p></li>
+<li><p><strong>tessellation</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points in azimuthal discretization (default: 24)</p></li>
+<li><p><strong>number_of_airfoil_points</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points used to discretize airfoil sections (default: 21)</p></li>
+<li><p><strong>color_map</strong> (<em>str</em><em>, </em><em>optional</em>) – Color specification for the nacelle surface (default: ‘darkmint’)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>plot_data</strong> – Updated collection of plot vertices including nacelle surface</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Supports three types of nacelles:</dt><dd><ol class="arabic simple">
+<li><p>Stack nacelle (built from stacked segments)</p></li>
+<li><p>Body of Revolution nacelle (built from an airfoil profile)</p></li>
+<li><p>Basic nacelle (built from simple geometric parameters)</p></li>
+</ol>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Geometry.generate_3d_stack_nacelle_points</span></code></dt><dd><p>Points generation for stack nacelle</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Geometry.generate_3d_BOR_nacelle_points</span></code></dt><dd><p>Points generation for body of revolution</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Geometry.generate_3d_basic_nacelle_points</span></code></dt><dd><p>Points generation for basic nacelle</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_stack_nacelle_points">
 <span class="sig-name descname"><span class="pre">generate_3d_stack_nacelle_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tessellation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_airfoil_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_nacelle.html#generate_3d_stack_nacelle_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_stack_nacelle_points" title="Link to this definition">#</a></dt>
-<dd><p>This generates the coordinate points on the surface of the stack nacelle</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-nac                        - Nacelle data structure
-tessellation               - azimuthal discretization of lofted body
-number_of_airfoil_points   - discretization of airfoil geometry</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generates 3D coordinate points for a stack-type nacelle surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nac</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle" title="RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle"><em>Nacelle</em></a>) – RCAIDE nacelle data structure containing geometry information</p></li>
+<li><p><strong>tessellation</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points in azimuthal discretization (default: 24)</p></li>
+<li><p><strong>number_of_airfoil_points</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points used to discretize sections (default: 21)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>G</strong> –</p>
+<dl class="simple">
+<dt>Data structure containing generated points</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>PTS<span class="classifier">ndarray</span></dt><dd><p>Array of shape (num_segments, tessellation, 3) containing
+x,y,z coordinates of surface points</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates nacelle from stacked super-elliptical cross-sections with:</dt><dd><ul class="simple">
+<li><p>Specified width and height</p></li>
+<li><p>Controllable curvature</p></li>
+<li><p>Individual segment orientation</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Segments are ordered from front to back</p></li>
+<li><p>Cross-sections are super-elliptical</p></li>
+<li><p>Orientation defined by Euler angles</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_BOR_nacelle_points">
 <span class="sig-name descname"><span class="pre">generate_3d_BOR_nacelle_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tessellation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">24</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_airfoil_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_nacelle.html#generate_3d_BOR_nacelle_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_BOR_nacelle_points" title="Link to this definition">#</a></dt>
-<dd><p>This generates the coordinate points on the surface of the body of revolution nacelle</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-nac                        - Nacelle data structure
-tessellation               - azimuthal discretization of lofted body
-number_of_airfoil_points   - discretization of airfoil geometry</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generates 3D coordinate points for a body-of-revolution nacelle surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nac</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle" title="RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle"><em>Nacelle</em></a>) – RCAIDE nacelle data structure containing geometry information</p></li>
+<li><p><strong>tessellation</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points in azimuthal discretization (default: 24)</p></li>
+<li><p><strong>number_of_airfoil_points</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points used to discretize airfoil (default: 21)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>G</strong> –</p>
+<dl class="simple">
+<dt>Data structure containing generated points</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>PTS<span class="classifier">ndarray</span></dt><dd><p>Array of shape (num_sections, tessellation, 3) containing
+x,y,z coordinates of surface points</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Creates nacelle by revolving an airfoil profile about its chord line.
+Supports both NACA 4-series and custom airfoil coordinates.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Airfoil profile lies in x-z plane</p></li>
+<li><p>Profile is rotated about x-axis</p></li>
+<li><p>Flow-through option raises profile by inlet diameter</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_basic_nacelle_points">
 <span class="sig-name descname"><span class="pre">generate_3d_basic_nacelle_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tessellation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_airfoil_points</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_nacelle.html#generate_3d_basic_nacelle_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_basic_nacelle_points" title="Link to this definition">#</a></dt>
-<dd><p>This generates the coordinate points on the surface of the nacelle</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-nac                        - Nacelle data structure
-tessellation               - azimuthal discretization of lofted body
-number_of_airfoil_points   - discretization of airfoil geometry</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generates 3D coordinate points for a basic nacelle surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nac</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle" title="RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle"><em>Nacelle</em></a>) – RCAIDE nacelle data structure containing geometry information</p></li>
+<li><p><strong>tessellation</strong> (<em>int</em>) – Number of points in azimuthal discretization</p></li>
+<li><p><strong>number_of_airfoil_points</strong> (<em>int</em>) – Number of points used to discretize sections</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>G</strong> –</p>
+<dl class="simple">
+<dt>Data structure containing generated points</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>PTS<span class="classifier">ndarray</span></dt><dd><p>Array of shape (num_sections, tessellation, 3) containing
+x,y,z coordinates of surface points</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates a simple nacelle shape using basic geometric parameters:</dt><dd><ul class="simple">
+<li><p>Length</p></li>
+<li><p>Diameter</p></li>
+<li><p>Inlet diameter (for flow-through nacelles)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Cross-sections are circular</p></li>
+<li><p>Shape follows super-elliptical profile in x-direction</p></li>
+<li><p>10 sections used for discretization</p></li>
+</ul>
 </dd></dl>
 
 </section>

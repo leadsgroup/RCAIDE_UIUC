@@ -535,14 +535,125 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.post_process_noise_data.post_process_noise_data">
 <span class="sig-name descname"><span class="pre">post_process_noise_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flight_times</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array(['06:00:00',</span> <span class="pre">'06:30:00',</span> <span class="pre">'07:00:00',</span> <span class="pre">'07:30:00',</span> <span class="pre">'08:00:00',</span> <span class="pre">'08:30:00',</span> <span class="pre">'09:00:00',</span> <span class="pre">'09:30:00',</span> <span class="pre">'10:00:00',</span> <span class="pre">'10:30:00',</span> <span class="pre">'11:00:00',</span> <span class="pre">'11:30:00',</span> <span class="pre">'12:00:00',</span> <span class="pre">'12:30:00',</span> <span class="pre">'13:00:00',</span> <span class="pre">'13:30:00',</span> <span class="pre">'14:00:00',</span> <span class="pre">'14:30:00',</span> <span class="pre">'15:00:00'],</span> <span class="pre">dtype='&lt;U8')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_period</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['06:00:00',</span> <span class="pre">'20:00:00']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evalaute_noise_metrics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Noise/post_process_noise_data.html#post_process_noise_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.post_process_noise_data.post_process_noise_data" title="Link to this definition">#</a></dt>
-<dd><p>This translates all noise data into metadata for plotting</p>
-<p>Assumptions:
-None</p>
-<p>Source:</p>
-<p>Inputs: results</p>
-<p>Outputs: noise_data</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Processes raw noise simulation results into formatted data for visualization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – <dl class="simple">
+<dt>RCAIDE results data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>segments[i].analyses.noise.settings</dt><dd><dl class="simple">
+<dt>Noise analysis settings including:</dt><dd><ul>
+<li><p>number_of_microphone_in_stencil</p></li>
+<li><p>microphone_x_resolution</p></li>
+<li><p>microphone_y_resolution</p></li>
+<li><p>topography_file</p></li>
+<li><p>noise_times_steps</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>segments[i].state.conditions</dt><dd><dl class="simple">
+<dt>Flight conditions including:</dt><dd><ul>
+<li><p>frames.inertial.time</p></li>
+<li><p>noise.hemisphere_SPL_dBA</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>flight_times</strong> (<em>ndarray</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Array of time strings for noise evaluation (default: hourly from 06:00 to 15:00)</p></li>
+<li><p><strong>time_period</strong> (<em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – Start and end times for analysis period (default: [‘06:00:00’,’20:00:00’])</p></li>
+<li><p><strong>evalaute_noise_metrics</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to compute additional noise metrics (default: True)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>noise_data</strong> –</p>
+<dl class="simple">
+<dt>Processed noise data structure containing:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>SPL_dBA<span class="classifier">ndarray</span></dt><dd><p>Sound pressure levels at each grid point</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>time<span class="classifier">ndarray</span></dt><dd><p>Time history array</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>aircraft_position<span class="classifier">ndarray</span></dt><dd><p>Aircraft trajectory points</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>microphone_locations<span class="classifier">ndarray</span></dt><dd><p>Measurement grid coordinates</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>topography_file<span class="classifier">str, optional</span></dt><dd><p>Path to terrain data if used</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>microphone_coordinates<span class="classifier">ndarray, optional</span></dt><dd><p>Geographic coordinates if terrain used</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Processing steps include:</dt><dd><ol class="arabic simple">
+<li><p>Unpacking analysis settings</p></li>
+<li><p>Generating microphone grid</p></li>
+<li><p>Interpolating noise levels</p></li>
+<li><p>Computing metrics</p></li>
+<li><p>Formatting for visualization</p></li>
+</ol>
+</dd>
+<dt><strong>Major Assumptions</strong></dt><dd><ul class="simple">
+<li><p>Regular measurement grid spacing</p></li>
+<li><p>Continuous noise between segments</p></li>
+<li><p>Background noise floor exists</p></li>
+<li><p>Spherical spreading of sound</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘SPL_dBA’</dt><dd><p>A-weighted Sound Pressure Level</p>
+</dd>
+<dt>‘Hemisphere’</dt><dd><p>Directivity pattern around source</p>
+</dd>
+<dt>‘Stencil’</dt><dd><p>Local group of evaluation points</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Noise.plot_noise_level.html#module-RCAIDE.Library.Plots.Noise.plot_noise_level" title="RCAIDE.Library.Plots.Noise.plot_noise_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Noise.plot_noise_level</span></code></a></dt><dd><p>Visualization of processed data</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Methods.Noise.Common.background_noise.html#module-RCAIDE.Library.Methods.Noise.Common.background_noise" title="RCAIDE.Library.Methods.Noise.Common.background_noise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Noise.Common.background_noise</span></code></a></dt><dd><p>Background noise floor function</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

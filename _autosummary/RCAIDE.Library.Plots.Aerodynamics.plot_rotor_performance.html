@@ -535,17 +535,95 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_rotor_performance.plot_rotor_performance">
 <span class="sig-name descname"><span class="pre">plot_rotor_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rotor_Performance'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_rotor_performance.html#plot_rotor_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_rotor_performance.plot_rotor_performance" title="Link to this definition">#</a></dt>
-<dd><p>Plots a summary of rotor performance</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs
-rotor   - rotor data structure</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generate plots summarizing rotor aerodynamic performance distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rotor</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <p>Rotor data structure containing outputs with fields:</p>
+<ul>
+<li><dl class="simple">
+<dt>disc_radial_distribution<span class="classifier">array</span></dt><dd><p>Radial positions on disc [m]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_axial_velocity<span class="classifier">array</span></dt><dd><p>Total axial velocity [m/s]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_tangential_velocity<span class="classifier">array</span></dt><dd><p>Total tangential velocity [m/s]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_axial_induced_velocity<span class="classifier">array</span></dt><dd><p>Induced axial velocity [m/s]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_tangential_induced_velocity<span class="classifier">array</span></dt><dd><p>Induced tangential velocity [m/s]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_thrust_distribution<span class="classifier">array</span></dt><dd><p>Local thrust distribution [N]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>disc_torque_distribution<span class="classifier">array</span></dt><dd><p>Local torque distribution [N-m]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p></li>
+<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom plot title, default None</p></li>
+<li><p><strong>show_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Display figure if True, default True</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save figure to file if True, default False</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name for saved figure file, default ‘Rotor_Performance’</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure, default “.png”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>fig</strong> – Figure containing four subplots:</p>
+<ul class="simple">
+<li><p>Velocity distributions</p></li>
+<li><p>Induced velocity distributions</p></li>
+<li><p>Thrust distribution</p></li>
+<li><p>Torque distribution</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Each subplot includes:</p>
+<ul class="simple">
+<li><p>Appropriate axis labels</p></li>
+<li><p>Legend identifying components</p></li>
+<li><p>Consistent line styling</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Total Velocity’</dt><dd><p>Sum of freestream and induced velocities</p>
+</dd>
+<dt>‘Induced Velocity’</dt><dd><p>Additional velocity induced by rotor</p>
+</dd>
+<dt>‘Thrust Distribution’</dt><dd><p>Local thrust force per unit radius</p>
+</dd>
+<dt>‘Torque Distribution’</dt><dd><p>Local torque per unit radius</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rotor_disc_performance</span></code></dt><dd><p>Detailed disc visualization</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

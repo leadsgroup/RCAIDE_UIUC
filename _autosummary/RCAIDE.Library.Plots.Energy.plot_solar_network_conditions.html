@@ -535,15 +535,51 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Energy.plot_solar_network_conditions.plot_solar_network_conditions">
 <span class="sig-name descname"><span class="pre">plot_solar_network_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Solar_Flux'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Energy/plot_solar_network_conditions.html#plot_solar_network_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Energy.plot_solar_network_conditions.plot_solar_network_conditions" title="Link to this definition">#</a></dt>
-<dd><p>This plots the solar flux and power train performance of an solar powered aircraft</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a four-panel plot showing solar network conditions and battery performance metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – RCAIDE results structure containing segment data and solar network conditions</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for displaying plot legend (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Solar_Flux”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Figure handle containing the generated plots</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>The function creates a 2x2 subplot containing:</dt><dd><ol class="arabic simple">
+<li><p>Solar flux vs time</p></li>
+<li><p>Battery charging power vs time</p></li>
+<li><p>Battery current vs time</p></li>
+<li><p>Battery energy vs time</p></li>
+</ol>
+</dd>
+</dl>
+<p>Each segment is plotted with a different color from the inferno colormap.
+Different battery modules are distinguished by different markers.</p>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>For identical battery modules, only the first module’s data is plotted</p></li>
+<li><p>Time is converted from seconds to minutes for plotting</p></li>
+<li><p>Energy is converted to megajoules for display</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Solar Flux’</dt><dd><p>Solar radiation power per unit area (W/m²)</p>
+</dd>
+<dt>‘Charging Power’</dt><dd><p>Rate of energy transfer to battery storage (W)</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

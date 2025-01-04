@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_polars.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Performance-Aerodynamics</span>
+<span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_polars.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -393,29 +394,68 @@
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------     </span>
 
+<span class="c1">## @ingroup Library-Plots-Performance-Aerodynamics   </span>
 <div class="viewcode-block" id="plot_airfoil_polars">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars.html#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polars.plot_airfoil_polars">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_airfoil_polars</span><span class="p">(</span><span class="n">polar_data</span><span class="p">,</span>
-                        <span class="n">save_figure</span>   <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                        <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                         <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Airfoil_Polars&quot;</span><span class="p">,</span>
                         <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                         <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots all the airfoil polars of a specfic airfoil</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate plots of airfoil aerodynamic characteristics from analysis results.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    polar_data : Data</span>
+<span class="sd">        Airfoil analysis results containing:</span>
+<span class="sd">            - cl_invisc[0] : array</span>
+<span class="sd">                Inviscid lift coefficients</span>
+<span class="sd">            - cd_invisc[0] : array</span>
+<span class="sd">                Inviscid drag coefficients</span>
+<span class="sd">            - cm_invisc[0] : array</span>
+<span class="sd">                Inviscid moment coefficients</span>
+<span class="sd">            - AoA[0] : array</span>
+<span class="sd">                Angles of attack [rad]</span>
+<span class="sd">            - Re[0] : array</span>
+<span class="sd">                Reynolds numbers</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Save figure to file if True, default False</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    airfoil_polar_paths   [list of strings]</span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name for saved figure file, default &quot;Airfoil_Polars&quot;</span>
 
-<span class="sd">    Outputs: </span>
-<span class="sd">    Plots</span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure, default &quot;.png&quot;</span>
 
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A	</span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches, default 11</span>
+
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches, default 7</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a 2x2 subplot figure showing inviscid airfoil characteristics:</span>
+<span class="sd">        - Top left: Lift coefficient vs angle of attack</span>
+<span class="sd">        - Top right: Drag coefficient vs angle of attack</span>
+<span class="sd">        - Bottom left: Moment coefficient vs angle of attack</span>
+<span class="sd">        - Bottom right: Lift-to-drag ratio vs angle of attack</span>
+
+<span class="sd">    Results are plotted for a single Reynolds number case, with the</span>
+<span class="sd">    Reynolds number shown in the legend (e.g., &quot;Re=1.0e6&quot;).</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling</span>
+<span class="sd">    RCAIDE.Library.Analysis.Aerodynamics.compute_airfoil_inviscid : Analysis module</span>
+<span class="sd">    RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files : Viscous polar plotting function</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
  
     <span class="c1"># Get raw data polars </span>

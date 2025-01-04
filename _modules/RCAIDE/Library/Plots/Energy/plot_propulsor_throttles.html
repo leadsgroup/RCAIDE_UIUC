@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Energy.plot_propulsor_throttles</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Energy/plot_altitude_sfc_weight.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Energy</span>
+<span class="c1"># RCAIDE/Library/Plots/Energy/plot_altitude_sfc_weight.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -394,6 +395,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Performance-Energy-Fuel</span>
 <div class="viewcode-block" id="plot_propulsor_throttles">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Energy.plot_propulsor_throttles.html#RCAIDE.Library.Plots.Energy.plot_propulsor_throttles.plot_propulsor_throttles">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_propulsor_throttles</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -402,25 +404,56 @@
                              <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Propulsor_Throttles&quot;</span> <span class="p">,</span>
                              <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                              <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the altitude, specific fuel consumption and vehicle weight.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a plot showing throttle settings for all propulsors throughout the flight mission.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results structure containing segment data and propulsor throttle settings</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag for displaying plot legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Propulsor_Throttles&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
 
-<span class="sd">    Source:</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Figure handle containing the generated plot</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.conditions.</span>
-<span class="sd">        freestream.altitude</span>
-<span class="sd">        weights.total_mass</span>
-<span class="sd">        weights.vehicle_mass_rate</span>
-<span class="sd">        frames.body.thrust_force_vector</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates a single plot showing:</span>
+<span class="sd">        - Throttle settings vs time for each propulsor</span>
+<span class="sd">        - Different flight segments distinguished by different colors</span>
+<span class="sd">        - Different propulsors distinguished in the legend</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Throttle values are normalized between 0 and 1</span>
+<span class="sd">    * Time is converted from seconds to minutes for plotting</span>
+<span class="sd">    * All propulsors have throttle data available</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Throttle&#39;</span>
+<span class="sd">        Normalized control input that determines propulsor power setting</span>
+<span class="sd">    &#39;Flight Segment&#39;</span>
+<span class="sd">        Distinct phase of the mission with specific throttle requirements</span>
 <span class="sd">    &quot;&quot;&quot;</span>
  
     <span class="c1"># get plotting style </span>
@@ -453,9 +486,8 @@
                 <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>               
                     <span class="n">axis_1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">line_colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">line_width</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">segment_name</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span><span class="o">+</span> <span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span> <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">axis_1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">line_colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">line_width</span><span class="p">)</span> 
-                        
-          
+                    <span class="n">axis_1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">line_colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">marker</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">markers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">line_width</span><span class="p">)</span>     
+    
     <span class="k">if</span> <span class="n">show_legend</span><span class="p">:</span>
         <span class="n">leg</span> <span class="o">=</span>  <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
         <span class="n">leg</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Propulsor&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">legend_font_size</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="s1">&#39;heavy&#39;</span><span class="p">})</span>    

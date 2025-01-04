@@ -402,25 +402,81 @@
                              <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Aerodynamic_Coefficents&quot;</span><span class="p">,</span>
                              <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                              <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the aerodynamic coefficients</span>
-<span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
-<span class="sd">    </span>
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
-<span class="sd">    </span>
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.condtions.aerodynamics.</span>
-<span class="sd">        lift_coefficient</span>
-<span class="sd">        drag_coefficient</span>
-<span class="sd">        angle_of_attack</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a multi-panel visualization of aerodynamic coefficients throughout flight.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results data structure containing:</span>
+<span class="sd">            - segments[i].conditions.aerodynamics.coefficients</span>
+<span class="sd">                Coefficient data containing:</span>
+<span class="sd">                    - lift.total[:,0,None]</span>
+<span class="sd">                        Total lift coefficient</span>
+<span class="sd">                    - drag.total[:,0,None]</span>
+<span class="sd">                        Total drag coefficient</span>
+<span class="sd">            - segments[i].conditions.aerodynamics.angles</span>
+<span class="sd">                Angle data containing:</span>
+<span class="sd">                    - alpha[:,0]</span>
+<span class="sd">                        Angle of attack in radians</span>
+<span class="sd">            - segments[i].conditions.frames.inertial.time[:,0]</span>
+<span class="sd">                Time history for each segment</span>
+<span class="sd">            - segments[i].tag</span>
+<span class="sd">                Segment identifier string</span>
+<span class="sd">            </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
 <span class="sd">        </span>
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag to display segment legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Aerodynamic_Coefficents&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        </span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates visualization showing:</span>
+<span class="sd">        - Aerodynamic performance metrics</span>
+<span class="sd">        - Flight attitude history</span>
+<span class="sd">        - Efficiency characteristics</span>
+<span class="sd">        - Time evolution of coefficients</span>
 <span class="sd">    </span>
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">        * Quasi-steady aerodynamics</span>
+<span class="sd">        * Small angle approximations</span>
+<span class="sd">        * Incompressible flow</span>
+<span class="sd">        * Linear lift curve slope</span>
+<span class="sd">        * Negligible sideslip</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Lift Coefficient&#39;</span>
+<span class="sd">        Non-dimensional lift force</span>
+<span class="sd">    &#39;Drag Coefficient&#39;</span>
+<span class="sd">        Non-dimensional drag force</span>
+<span class="sd">    &#39;Angle of Attack&#39;</span>
+<span class="sd">        Angle between airflow and reference line</span>
+<span class="sd">    &#39;L/D Ratio&#39;</span>
+<span class="sd">        Measure of aerodynamic efficiency</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_forces : Dimensional force plots</span>
+<span class="sd">    RCAIDE.Library.Plots.Aerodynamics.plot_drag_components : Drag breakdown analysis</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
 
     <span class="c1"># get plotting style </span>

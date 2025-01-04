@@ -534,26 +534,123 @@
 <span id="plot-cross-flow-heat-exchanger-conditions"></span><h1>plot_cross_flow_heat_exchanger_conditions<a class="headerlink" href="#module-RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions.plot_cross_flow_heat_exchanger_conditions">
-<span class="sig-name descname"><span class="pre">plot_cross_flow_heat_exchanger_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cross_flow_hex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coolant_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Thermal_Management/plot_cross_flow_heat_exchanger_conditions.html#plot_cross_flow_heat_exchanger_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions.plot_cross_flow_heat_exchanger_conditions" title="Link to this definition">#</a></dt>
-<dd><p>Plots the Cross Flow Heat Exchanger conditions throughout flight.</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-results.segments.conditions.energy[coolant_line.tag][cross_flow_hex.tag].</p>
-<blockquote>
-<div><p>coolant_mass_flow_rate
-effectiveness_HEX
-power
-air_inlet_pressure
-inlet_air_temperature
-air_mass_flow_rate</p>
-</div></blockquote>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<span class="sig-name descname"><span class="pre">plot_cross_flow_heat_exchanger_conditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cross_flow_hex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coolant_line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Cross_Flow_HEX_Conditions'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Thermal_Management/plot_cross_flow_heat_exchanger_conditions.html#plot_cross_flow_heat_exchanger_conditions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions.plot_cross_flow_heat_exchanger_conditions" title="Link to this definition">#</a></dt>
+<dd><p>Creates a multi-panel visualization of cross-flow heat exchanger operating conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cross_flow_hex</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – <dl class="simple">
+<dt>Cross-flow heat exchanger component containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>tag<span class="classifier">str</span></dt><dd><p>Unique identifier for the heat exchanger</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – <dl class="simple">
+<dt>RCAIDE results data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>segments[i].conditions.energy[coolant_line.tag][cross_flow_hex.tag]</dt><dd><dl class="simple">
+<dt>Heat exchanger data containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>coolant_mass_flow_rate[:,0]</dt><dd><p>Coolant flow rate in kg/s</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>effectiveness_HEX[:,0]</dt><dd><p>Heat exchanger effectiveness</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>power[:,0]</dt><dd><p>Heat transfer rate in watts</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>air_inlet_pressure[:,0]</dt><dd><p>Air-side inlet pressure in Pa</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>inlet_air_temperature[:,0]</dt><dd><p>Air inlet temperature in K</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>air_mass_flow_rate[:,0]</dt><dd><p>Air flow rate in kg/s</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>coolant_line</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Component.html#RCAIDE.Library.Components.Component.Component" title="RCAIDE.Library.Components.Component.Component"><em>Component</em></a>) – <dl class="simple">
+<dt>Coolant line component containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>tag<span class="classifier">str</span></dt><dd><p>Unique identifier for the coolant circuit</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display segment legend (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Cross_Flow_HEX_Conditions”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Handle to the generated figure containing six subplots arranged in a 3x2 grid:</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates visualization showing:</dt><dd><ul class="simple">
+<li><p>Thermal performance metrics</p></li>
+<li><p>Flow conditions for both fluids</p></li>
+<li><p>Heat transfer characteristics</p></li>
+<li><p>Operating pressures and temperatures</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Effectiveness’</dt><dd><p>Ratio of actual to maximum possible heat transfer</p>
+</dd>
+<dt>‘NTU’</dt><dd><p>Dimensionless measure of heat exchanger size</p>
+</dd>
+<dt>‘Capacity Ratio’</dt><dd><p>Ratio of minimum to maximum heat capacity rates</p>
+</dd>
+<dt>‘Mass Flow Rate’</dt><dd><p>Mass of fluid flowing per unit time</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance.html#module-RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance" title="RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance</span></code></a></dt><dd><p>Overall system performance</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions.html#module-RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions" title="RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions</span></code></a></dt><dd><p>Air-cooled heat exchanger analysis</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

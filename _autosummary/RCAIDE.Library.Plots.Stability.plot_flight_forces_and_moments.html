@@ -535,7 +535,86 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Stability.plot_flight_forces_and_moments.plot_flight_forces_and_moments">
 <span class="sig-name descname"><span class="pre">plot_flight_forces_and_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Intertial_Forces_and_Moments'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Stability/plot_flight_forces_and_moments.html#plot_flight_forces_and_moments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Stability.plot_flight_forces_and_moments.plot_flight_forces_and_moments" title="Link to this definition">#</a></dt>
-<dd><p>This plots the aerodynamic forces</p>
+<dd><p>Creates a multi-panel visualization of aircraft forces and moments in the inertial frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – <dl class="simple">
+<dt>RCAIDE results data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>segments[i].conditions.frames.inertial.time[:,0]</dt><dd><p>Time history for each segment</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>segments[i].conditions.frames.inertial.total_force_vector[:,0:3]</dt><dd><p>Force components [X, Y, Z] in inertial frame</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>segments[i].conditions.frames.inertial.total_moment_vector[:,0:3]</dt><dd><p>Moment components [L, M, N] in inertial frame</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>segments[i].tag</dt><dd><p>Name/identifier of each segment</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display segment legend (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Inertial_Forces_and_Moments”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 12)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 8)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates visualization showing:</dt><dd><ul class="simple">
+<li><p>All force components in inertial frame</p></li>
+<li><p>All moment components in inertial frame</p></li>
+<li><p>Time history for each segment</p></li>
+<li><p>Color-coded flight segments</p></li>
+</ul>
+</dd>
+<dt><strong>Major Assumptions</strong></dt><dd><ul class="simple">
+<li><p>Forces are in Newtons</p></li>
+<li><p>Moments are in Newton-meters</p></li>
+<li><p>Time is in minutes</p></li>
+<li><p>Forces/moments are total (aerodynamic + propulsive + gravity)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Inertial Forces’</dt><dd><p>Forces in earth-fixed reference frame</p>
+</dd>
+<dt>‘Inertial Moments’</dt><dd><p>Moments in earth-fixed reference frame</p>
+</dd>
+<dt>‘Flight Segment’</dt><dd><p>Distinct portion of mission profile</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Stability.plot_longitudinal_stability.html#module-RCAIDE.Library.Plots.Stability.plot_longitudinal_stability" title="RCAIDE.Library.Plots.Stability.plot_longitudinal_stability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Stability.plot_longitudinal_stability</span></code></a></dt><dd><p>Longitudinal dynamics analysis</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Stability.plot_lateral_stability.html#module-RCAIDE.Library.Plots.Stability.plot_lateral_stability" title="RCAIDE.Library.Plots.Stability.plot_lateral_stability"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Stability.plot_lateral_stability</span></code></a></dt><dd><p>Lateral-directional dynamics analysis</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

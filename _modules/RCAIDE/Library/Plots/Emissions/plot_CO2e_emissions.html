@@ -393,7 +393,8 @@
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
-<span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
+<span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Performance-Emissions </span>
 <div class="viewcode-block" id="plot_CO2e_emissions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Emissions.plot_CO2e_emissions.html#RCAIDE.Library.Plots.Emissions.plot_CO2e_emissions.plot_CO2e_emissions">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_CO2e_emissions</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -402,8 +403,71 @@
                              <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;CO2e_Emissions&quot;</span> <span class="p">,</span>
                              <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                              <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;  </span>
-<span class="sd"> </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate plots showing CO2-equivalent emissions over mission segments.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Data</span>
+<span class="sd">        Mission results data structure containing:</span>
+<span class="sd">        results.segments[i].conditions.emissions.total with fields:</span>
+<span class="sd">            - CO2 : array</span>
+<span class="sd">                Carbon dioxide emissions [kg]</span>
+<span class="sd">            - NOx : array</span>
+<span class="sd">                Nitrogen oxide emissions [kg]</span>
+<span class="sd">            - H2O : array</span>
+<span class="sd">                Water vapor emissions [kg]</span>
+<span class="sd">            - Contrails : array</span>
+<span class="sd">                Contrail formation impact [kg CO2e]</span>
+<span class="sd">            - Soot : array</span>
+<span class="sd">                Particulate emissions [kg]</span>
+<span class="sd">            - SO2 : array</span>
+<span class="sd">                Sulfur dioxide emissions [kg]</span>
+
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Save figure to file if True, default False</span>
+
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Display segment legend if True, default True</span>
+
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name for saved figure file, default &quot;CO2e_Emissions&quot;</span>
+
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure, default &quot;.png&quot;</span>
+
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches, default 11</span>
+
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches, default 7</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Figure showing stacked emissions contributions</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a stacked area plot showing:</span>
+<span class="sd">        - Individual contributions from each emission type</span>
+<span class="sd">        - Cumulative total CO2-equivalent impact</span>
+<span class="sd">        - Breakdown by mission segment</span>
+<span class="sd">        - Time history of emissions</span>
+
+<span class="sd">    Different emission types are distinguished by fill colors</span>
+<span class="sd">    and segments use different shades from the inferno colormap.</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;CO2-equivalent (CO2e)&#39;</span>
+<span class="sd">        Combined climate impact normalized to CO2</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Global Warming Potential (GWP)&#39;</span>
+<span class="sd">        Relative impact factor for different emissions</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Contrail Impact&#39;</span>
+<span class="sd">        Climate forcing from aviation-induced cloudiness</span>
 <span class="sd">    &quot;&quot;&quot;</span>
  
     <span class="c1"># get plotting style </span>

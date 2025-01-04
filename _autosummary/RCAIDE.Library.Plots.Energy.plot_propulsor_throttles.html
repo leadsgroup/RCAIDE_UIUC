@@ -535,22 +535,48 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Energy.plot_propulsor_throttles.plot_propulsor_throttles">
 <span class="sig-name descname"><span class="pre">plot_propulsor_throttles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Propulsor_Throttles'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Energy/plot_propulsor_throttles.html#plot_propulsor_throttles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Energy.plot_propulsor_throttles.plot_propulsor_throttles" title="Link to this definition">#</a></dt>
-<dd><p>This plots the altitude, specific fuel consumption and vehicle weight.</p>
-<p>Assumptions:
-None</p>
-<p>Source:</p>
-<p>Inputs:
-results.segments.conditions.</p>
-<blockquote>
-<div><p>freestream.altitude
-weights.total_mass
-weights.vehicle_mass_rate
-frames.body.thrust_force_vector</p>
-</div></blockquote>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a plot showing throttle settings for all propulsors throughout the flight mission.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – RCAIDE results structure containing segment data and propulsor throttle settings</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for displaying plot legend (default: True)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Propulsor_Throttles”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Figure handle containing the generated plot</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>The function creates a single plot showing:</dt><dd><ul class="simple">
+<li><p>Throttle settings vs time for each propulsor</p></li>
+<li><p>Different flight segments distinguished by different colors</p></li>
+<li><p>Different propulsors distinguished in the legend</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Throttle values are normalized between 0 and 1</p></li>
+<li><p>Time is converted from seconds to minutes for plotting</p></li>
+<li><p>All propulsors have throttle data available</p></li>
+</ul>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Throttle’</dt><dd><p>Normalized control input that determines propulsor power setting</p>
+</dd>
+<dt>‘Flight Segment’</dt><dd><p>Distinct phase of the mission with specific throttle requirements</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

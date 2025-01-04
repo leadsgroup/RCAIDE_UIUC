@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Geometry.plot_rotor</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Geometry/plot_rotor.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Geometry</span>
+<span class="c1"># RCAIDE/Library/Plots/Geometry/plot_rotor.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke </span>
@@ -396,23 +397,63 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="plot_rotor">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_rotor.html#RCAIDE.Library.Plots.Geometry.plot_rotor.plot_rotor">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_rotor</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">face_color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edge_color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span> <span class="p">,</span><span class="n">show_figure</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Propeller_Geometry&quot;</span><span class="p">,</span> <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the geometry of a propeller or rotor</span>
+<span class="k">def</span> <span class="nf">plot_rotor</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">face_color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edge_color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">show_figure</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+               <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Propeller_Geometry&quot;</span><span class="p">,</span> <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a 2D visualization of rotor/propeller geometry distributions.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    prop : Propeller</span>
+<span class="sd">        RCAIDE propeller/rotor data structure containing geometry information</span>
+<span class="sd">        </span>
+<span class="sd">    face_color : str, optional</span>
+<span class="sd">        Color specification for plot faces (default: &#39;red&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    edge_color : str, optional</span>
+<span class="sd">        Color specification for plot edges (default: &#39;black&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    show_figure : bool, optional</span>
+<span class="sd">        Flag to display the figure (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Propeller_Geometry&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : plotly.graph_objects.Figure</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    RCAIDE.Library.Components.Energy.Converters.Propeller()</span>
-
-<span class="sd">    Outputs:</span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a four-panel plot showing:</span>
+<span class="sd">        1. Twist angle vs radial position</span>
+<span class="sd">        2. Chord length vs radial position</span>
+<span class="sd">        3. Maximum thickness vs radial position</span>
+<span class="sd">        4. Mid-chord alignment vs radial position</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * Distributions are defined at consistent radial stations</span>
+<span class="sd">    * Twist is in degrees</span>
+<span class="sd">    * Chord and thickness are in meters</span>
+<span class="sd">    * Mid-chord alignment is in meters</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Twist&#39;</span>
+<span class="sd">        Local blade angle relative to rotation plane</span>
+<span class="sd">    &#39;Chord&#39;</span>
+<span class="sd">        Local blade section length</span>
+<span class="sd">    &#39;Thickness&#39;</span>
+<span class="sd">        Maximum thickness of local blade section</span>
+<span class="sd">    &#39;Mid-chord Alignment&#39;</span>
+<span class="sd">        Offset of section mid-chord from reference line</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Initialize figure</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">make_subplots</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>

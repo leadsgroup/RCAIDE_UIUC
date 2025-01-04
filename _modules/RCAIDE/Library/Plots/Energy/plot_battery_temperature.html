@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Energy.plot_battery_temperature</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Energy/plot_battery_health_conditions.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Energy</span>
+<span class="c1"># RCAIDE/Library/Plots/Energy/plot_battery_health_conditions.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -395,6 +396,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
+<span class="c1">## @ingroup Library-Plots-Energy</span>
 <div class="viewcode-block" id="plot_battery_temperature">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Energy.plot_battery_temperature.html#RCAIDE.Library.Plots.Energy.plot_battery_temperature.plot_battery_temperature">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_battery_temperature</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -403,26 +405,58 @@
                                   <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Battery_Temperature&quot;</span><span class="p">,</span>
                                   <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                                   <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots the cell-level conditions of the battery throughout flight.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a three-panel plot showing battery thermal conditions and related parameters throughout flight.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results structure containing segment data and battery thermal conditions</span>
+<span class="sd">        </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag for displaying plot legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Battery_Temperature&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.conditions.</span>
-<span class="sd">        freestream.altitude</span>
-<span class="sd">        weights.total_mass</span>
-<span class="sd">        weights.vehicle_mass_rate</span>
-<span class="sd">        frames.body.thrust_force_vector</span>
-
-<span class="sd">    Outputs: </span>
-<span class="sd">    Plots</span>
-
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A	</span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The function creates a 2x2 subplot containing:</span>
+<span class="sd">        1. Cell temperature vs time</span>
+<span class="sd">        2. Charge throughput vs time</span>
+<span class="sd">        3. Heat generation rate vs time</span>
+<span class="sd">    </span>
+<span class="sd">    Each segment is plotted with a different color from the inferno colormap.</span>
+<span class="sd">    Different battery modules are distinguished by different markers.</span>
+<span class="sd">    </span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">    </span>
+<span class="sd">    * For identical battery modules, only the first module&#39;s data is plotted</span>
+<span class="sd">    * Time is converted from seconds to minutes for plotting</span>
+<span class="sd">    * Heat generation rate is converted to kilowatts for display</span>
+<span class="sd">    </span>
+<span class="sd">    **Definitions**</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Charge Throughput&#39;</span>
+<span class="sd">        Cumulative amount of charge that has passed through the battery (Ah)</span>
+<span class="sd">    &#39;Heat Generation Rate&#39;</span>
+<span class="sd">        Rate of thermal energy production in the battery (kW)</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
     
     <span class="c1"># get plotting style </span>

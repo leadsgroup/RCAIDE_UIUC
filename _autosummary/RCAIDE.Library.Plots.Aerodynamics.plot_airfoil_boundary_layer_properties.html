@@ -535,40 +535,185 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.plot_airfoil_boundary_layer_properties">
 <span class="sig-name descname"><span class="pre">plot_airfoil_boundary_layer_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Airfoil_with_Boundary_Layers'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_airfoil_boundary_layer_properties.html#plot_airfoil_boundary_layer_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.plot_airfoil_boundary_layer_properties" title="Link to this definition">#</a></dt>
-<dd><p>Plots viscous distributions</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<dl class="simple">
-<dt>Inputs:</dt><dd><p>ap     : data stucture of airfoil boundary layer properties</p>
-</dd>
-<dt>Outputs:</dt><dd><p>Figures of quantity distributions</p>
+<dd><p>Generate plots of airfoil boundary layer properties and distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ap</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <dl class="simple">
+<dt>Airfoil properties data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>x, y<span class="classifier">arrays</span></dt><dd><p>Airfoil surface coordinates</p>
 </dd>
 </dl>
-<p>Properties Used:
-N/A</p>
+</li>
+<li><dl class="simple">
+<dt>y_bl<span class="classifier">array</span></dt><dd><p>Boundary layer displacement thickness coordinates</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Ue_Vinf<span class="classifier">array</span></dt><dd><p>Edge velocity ratio (Ue/U∞)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>H<span class="classifier">array</span></dt><dd><p>Shape factor</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>delta_star<span class="classifier">array</span></dt><dd><p>Displacement thickness</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>delta<span class="classifier">array</span></dt><dd><p>Boundary layer thickness</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>theta<span class="classifier">array</span></dt><dd><p>Momentum thickness</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>cf<span class="classifier">array</span></dt><dd><p>Skin friction coefficient</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Re_theta<span class="classifier">array</span></dt><dd><p>Momentum thickness Reynolds number</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AoA<span class="classifier">array</span></dt><dd><p>Angles of attack [rad]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Re<span class="classifier">array</span></dt><dd><p>Reynolds numbers</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save figures to files if True, default False</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em><em>, </em><em>optional</em>) – Display case legend if True, default False</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figures, default “.png”</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Base name for saved figure files, default ‘Airfoil_with_Boundary_Layers’</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches, default 11</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches, default 7</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Figure showing airfoil with boundary layers</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates multiple figures showing:</dt><dd><ul class="simple">
+<li><p>Airfoil profile with boundary layer thickness</p></li>
+<li><p>Edge velocity distribution</p></li>
+<li><p>Shape factor distribution</p></li>
+<li><p>Displacement thickness distribution</p></li>
+<li><p>Boundary layer thickness distribution</p></li>
+<li><p>Momentum thickness distribution</p></li>
+<li><p>Skin friction distribution</p></li>
+<li><p>Momentum thickness Reynolds number distribution</p></li>
+</ul>
+</dd>
+</dl>
+<p>Each case (combination of AoA and Re) is plotted in a different color.
+Upper and lower surfaces are distinguished by line style.</p>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Shape Factor’</dt><dd><p>Ratio of displacement to momentum thickness</p>
+</dd>
+<dt>‘Displacement Thickness’</dt><dd><p>Distance flow is displaced from surface</p>
+</dd>
+<dt>‘Momentum Thickness’</dt><dd><p>Loss of momentum flux in boundary layer</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.set_axes</span></code></dt><dd><p>Standardized axis formatting</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.plot_style</span></code></dt><dd><p>RCAIDE plot styling</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Analysis.Aerodynamics.process_airfoil_boundary_layer</span></code></dt><dd><p>Analysis module</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.plot_quantity">
 <span class="sig-name descname"><span class="pre">plot_quantity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qaxis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim_low</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim_high</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_legend</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_airfoil_boundary_layer_properties.html#plot_quantity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.plot_quantity" title="Link to this definition">#</a></dt>
-<dd><p>Plots a quantity q over lower/upper/wake surfaces</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<dl class="simple">
-<dt>Inputs:</dt><dd><p>ap        : data stucture of airfoil boundary layer properties
-q         : vector of values to plot, on all points (wake too if present)
-qaxis     : name of quantity, for axis labeling
-qname     : name of quantity, for title labeling</p>
-</dd>
-<dt>Outputs:</dt><dd><p>Figure showing q versus x</p>
+<dd><p>Generate standardized plots of boundary layer quantities along airfoil surfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ap</strong> (<a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data"><em>Data</em></a>) – <dl class="simple">
+<dt>Airfoil properties data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>x<span class="classifier">array</span></dt><dd><p>Airfoil surface coordinates</p>
 </dd>
 </dl>
-<p>Properties Used:
-N/A</p>
+</li>
+<li><dl class="simple">
+<dt>AoA<span class="classifier">array</span></dt><dd><p>Angles of attack [rad]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Re<span class="classifier">array</span></dt><dd><p>Reynolds numbers</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>q</strong> (<em>array</em>) – Values of quantity to plot along airfoil surface</p></li>
+<li><p><strong>qaxis</strong> (<em>str</em>) – LaTeX-formatted axis label for quantity</p></li>
+<li><p><strong>qname</strong> (<em>str</em>) – Descriptive name for quantity (used in title)</p></li>
+<li><p><strong>ylim_low</strong> (<em>float</em>) – Lower limit for y-axis</p></li>
+<li><p><strong>ylim_high</strong> (<em>float</em>) – Upper limit for y-axis</p></li>
+<li><p><strong>file_type</strong> (<em>str</em>) – File extension for saved figure</p></li>
+<li><p><strong>show_legend</strong> (<em>bool</em>) – Display case legend if True</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em>) – Save figure to file if True</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – Figure width in inches</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – Figure height in inches</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Creates a single figure showing the specified quantity distribution
+along the airfoil surface for all cases (combinations of AoA and Re).</p>
+<p>Cases are plotted in different colors using the inferno colormap.
+Legend entries show AoA in degrees and Re number for each case.</p>
+<p>The plot uses standardized RCAIDE styling and axis formatting.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.set_axes</span></code></dt><dd><p>Standardized axis formatting</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Common.plot_style</span></code></dt><dd><p>RCAIDE plot styling</p>
+</dd>
+<dt><a class="reference internal" href="#module-RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties" title="RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties</span></code></a></dt><dd><p>Main plotting function</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

@@ -535,7 +535,100 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_aircraft_aerodynamics.plot_aircraft_aerodynamics">
 <span class="sig-name descname"><span class="pre">plot_aircraft_aerodynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bo-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_color2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rs--'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Aircraft_Aerodynamic_Analysis'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_aircraft_aerodynamics.html#plot_aircraft_aerodynamics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_aircraft_aerodynamics.plot_aircraft_aerodynamics" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Creates 3D surface plots of aircraft lift and drag coefficients as functions of
+Mach number and angle of attack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – <dl class="simple">
+<dt>RCAIDE results data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>Mach<span class="classifier">array</span></dt><dd><p>Array of Mach numbers</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>alpha<span class="classifier">array</span></dt><dd><p>Array of angles of attack in radians</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>lift_coefficient<span class="classifier">array</span></dt><dd><p>2D array of lift coefficients [Mach, alpha]</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>drag_coefficient<span class="classifier">array</span></dt><dd><p>2D array of drag coefficients [Mach, alpha]</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>line_color</strong> (<em>str</em><em>, </em><em>optional</em>) – Color and style specification for lift plot (default: ‘bo-‘)</p></li>
+<li><p><strong>line_color2</strong> (<em>str</em><em>, </em><em>optional</em>) – Color and style specification for drag plot (default: ‘rs–‘)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Aircraft_Aerodynamic_Analysis”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates visualization showing:</dt><dd><ul class="simple">
+<li><p>Aerodynamic coefficient variations</p></li>
+<li><p>Mach number effects</p></li>
+<li><p>Angle of attack sensitivity</p></li>
+<li><p>Nonlinear aerodynamic behavior</p></li>
+</ul>
+</dd>
+<dt>Function displays and optionally saves two 3D surface plots:</dt><dd><dl class="simple">
+<dt>Left Panel:</dt><dd><ul class="simple">
+<li><p>Lift coefficient surface</p></li>
+<li><p>Shows CL variation with Mach and alpha</p></li>
+<li><p>X-axis: Mach number</p></li>
+<li><p>Y-axis: Angle of attack [degrees]</p></li>
+<li><p>Z-axis: Lift coefficient</p></li>
+</ul>
+</dd>
+<dt>Right Panel:</dt><dd><ul class="simple">
+<li><p>Drag coefficient surface</p></li>
+<li><p>Shows CD variation with Mach and alpha</p></li>
+<li><p>X-axis: Mach number</p></li>
+<li><p>Y-axis: Angle of attack [degrees]</p></li>
+<li><p>Z-axis: Drag coefficient</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Mach Number’</dt><dd><p>Ratio of airspeed to speed of sound</p>
+</dd>
+<dt>‘Angle of Attack’</dt><dd><p>Angle between airflow and reference line</p>
+</dd>
+<dt>‘Lift Coefficient’</dt><dd><p>Non-dimensional lift force</p>
+</dd>
+<dt>‘Drag Coefficient’</dt><dd><p>Non-dimensional drag force</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_aerodynamic_coefficients</span></code></dt><dd><p>Time history of coefficients</p>
+</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_drag_components</span></code></dt><dd><p>Drag breakdown analysis</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
 
 </section>
 

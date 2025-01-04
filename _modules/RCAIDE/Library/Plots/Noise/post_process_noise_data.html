@@ -379,8 +379,7 @@
   <h1>Source code for RCAIDE.Library.Plots.Noise.post_process_noise_data</h1><div class="highlight"><pre>
 <span></span><span class="c1"># RCAIDE/Framework/Analyses/Noise/Frequency_Domain_Buildup.py</span>
 <span class="c1"># </span>
-<span class="c1"># </span>
-<span class="c1"># Created:  Oct 2024, A. Molloy</span>
+<span class="c1"># Mod:  Oct 2024, A. Molloy</span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -406,25 +405,86 @@
 <div class="viewcode-block" id="post_process_noise_data">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.post_process_noise_data.html#RCAIDE.Library.Plots.Noise.post_process_noise_data.post_process_noise_data">[docs]</a>
 <span class="k">def</span> <span class="nf">post_process_noise_data</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
-                            <span class="n">flight_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;06:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;06:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;07:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;07:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;08:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;08:30:00&#39;</span><span class="p">,</span>
-                                                     <span class="s1">&#39;09:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;09:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;10:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;10:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;11:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;11:30:00&#39;</span><span class="p">,</span>
-                                                     <span class="s1">&#39;12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;12:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;13:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;13:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;14:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;14:30:00&#39;</span><span class="p">,</span>
-                                                     <span class="s1">&#39;15:00:00&#39;</span><span class="p">]),</span>
-                            <span class="n">time_period</span>             <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;06:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;20:00:00&#39;</span><span class="p">],</span> 
-                            <span class="n">evalaute_noise_metrics</span>  <span class="o">=</span> <span class="kc">True</span><span class="p">):</span> 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This translates all noise data into metadata for plotting </span>
+                            <span class="n">flight_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;06:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;06:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;07:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;07:30:00&#39;</span><span class="p">,</span>
+                                                   <span class="s1">&#39;08:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;08:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;09:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;09:30:00&#39;</span><span class="p">,</span>
+                                                   <span class="s1">&#39;10:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;10:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;11:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;11:30:00&#39;</span><span class="p">,</span>
+                                                   <span class="s1">&#39;12:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;12:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;13:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;13:30:00&#39;</span><span class="p">,</span>
+                                                   <span class="s1">&#39;14:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;14:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;15:00:00&#39;</span><span class="p">]),</span>
+                            <span class="n">time_period</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;06:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;20:00:00&#39;</span><span class="p">],</span> 
+                            <span class="n">evalaute_noise_metrics</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Processes raw noise simulation results into formatted data for visualization.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results data structure containing:</span>
+<span class="sd">            - segments[i].analyses.noise.settings</span>
+<span class="sd">                Noise analysis settings including:</span>
+<span class="sd">                    - number_of_microphone_in_stencil</span>
+<span class="sd">                    - microphone_x_resolution</span>
+<span class="sd">                    - microphone_y_resolution</span>
+<span class="sd">                    - topography_file</span>
+<span class="sd">                    - noise_times_steps</span>
+<span class="sd">            - segments[i].state.conditions</span>
+<span class="sd">                Flight conditions including:</span>
+<span class="sd">                    - frames.inertial.time</span>
+<span class="sd">                    - noise.hemisphere_SPL_dBA</span>
+<span class="sd">                </span>
+<span class="sd">    flight_times : ndarray of str, optional</span>
+<span class="sd">        Array of time strings for noise evaluation (default: hourly from 06:00 to 15:00)</span>
+<span class="sd">        </span>
+<span class="sd">    time_period : list of str, optional</span>
+<span class="sd">        Start and end times for analysis period (default: [&#39;06:00:00&#39;,&#39;20:00:00&#39;])</span>
+<span class="sd">        </span>
+<span class="sd">    evalaute_noise_metrics : bool, optional</span>
+<span class="sd">        Flag to compute additional noise metrics (default: True)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    noise_data : Data</span>
+<span class="sd">        Processed noise data structure containing:</span>
+<span class="sd">            - SPL_dBA : ndarray</span>
+<span class="sd">                Sound pressure levels at each grid point</span>
+<span class="sd">            - time : ndarray</span>
+<span class="sd">                Time history array</span>
+<span class="sd">            - aircraft_position : ndarray</span>
+<span class="sd">                Aircraft trajectory points</span>
+<span class="sd">            - microphone_locations : ndarray</span>
+<span class="sd">                Measurement grid coordinates</span>
+<span class="sd">            - topography_file : str, optional</span>
+<span class="sd">                Path to terrain data if used</span>
+<span class="sd">            - microphone_coordinates : ndarray, optional</span>
+<span class="sd">                Geographic coordinates if terrain used</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Processing steps include:</span>
+<span class="sd">        1. Unpacking analysis settings</span>
+<span class="sd">        2. Generating microphone grid</span>
+<span class="sd">        3. Interpolating noise levels</span>
+<span class="sd">        4. Computing metrics</span>
+<span class="sd">        5. Formatting for visualization</span>
 <span class="sd">    </span>
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    **Major Assumptions**</span>
+<span class="sd">        * Regular measurement grid spacing</span>
+<span class="sd">        * Continuous noise between segments</span>
+<span class="sd">        * Background noise floor exists</span>
+<span class="sd">        * Spherical spreading of sound</span>
 <span class="sd">    </span>
-<span class="sd">    Source: </span>
-<span class="sd"> </span>
-<span class="sd">    Inputs: results </span>
-<span class="sd">         </span>
-<span class="sd">    Outputs: noise_data</span>
+<span class="sd">    **Definitions**</span>
 <span class="sd">    </span>
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A</span>
+<span class="sd">    &#39;SPL_dBA&#39;</span>
+<span class="sd">        A-weighted Sound Pressure Level</span>
+<span class="sd">    &#39;Hemisphere&#39;</span>
+<span class="sd">        Directivity pattern around source</span>
+<span class="sd">    &#39;Stencil&#39;</span>
+<span class="sd">        Local group of evaluation points</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Noise.plot_noise_level : Visualization of processed data</span>
+<span class="sd">    RCAIDE.Library.Methods.Noise.Common.background_noise : Background noise floor function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Step 1: Unpack settings      </span>

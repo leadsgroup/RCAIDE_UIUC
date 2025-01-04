@@ -397,28 +397,87 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="plot_wavy_channel_conditions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Thermal_Management.plot_wavy_channel_conditions.html#RCAIDE.Library.Plots.Thermal_Management.plot_wavy_channel_conditions.plot_wavy_channel_conditions">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_wavy_channel_conditions</span><span class="p">(</span><span class="n">wavy_channel</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span><span class="n">show_legend</span> <span class="p">,</span><span class="n">save_filename</span><span class="p">,</span><span class="n">file_type</span> <span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots the Wavy Channel Heat Acqusition conditions throughout flight.</span>
+<span class="k">def</span> <span class="nf">plot_wavy_channel_conditions</span><span class="p">(</span><span class="n">wavy_channel</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span>
+                             <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                             <span class="n">show_legend</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                             <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Wavy_Channel_Conditions&quot;</span><span class="p">,</span>
+                             <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
+                             <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a multi-panel visualization of wavy channel heat exchanger performance.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    wavy_channel : Component</span>
+<span class="sd">        Wavy channel heat exchanger component containing:</span>
+<span class="sd">            - tag : str</span>
+<span class="sd">                Unique identifier for the heat exchanger</span>
+<span class="sd">            </span>
+<span class="sd">    results : Results</span>
+<span class="sd">        RCAIDE results data structure containing:</span>
+<span class="sd">            - segments[i].conditions.frames.inertial.time[:,0]</span>
+<span class="sd">                Time history for each segment</span>
+<span class="sd">            - segments[i].conditions.energy[coolant_line.tag][wavy_channel.tag]</span>
+<span class="sd">                Heat exchanger data containing:</span>
+<span class="sd">                    - outlet_coolant_temperature[:,0]</span>
+<span class="sd">                        Coolant outlet temperature in K</span>
+<span class="sd">                    - coolant_mass_flow_rate[:,0]</span>
+<span class="sd">                        Coolant flow rate in kg/s</span>
+<span class="sd">                    - power[:,0]</span>
+<span class="sd">                        Heat transfer rate in watts</span>
+<span class="sd">                    </span>
+<span class="sd">    coolant_line : Component</span>
+<span class="sd">        Coolant line component containing:</span>
+<span class="sd">            - tag : str</span>
+<span class="sd">                Unique identifier for the coolant circuit</span>
+<span class="sd">            </span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Flag for saving the figure (default: False)</span>
+<span class="sd">        </span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Flag to display segment legend (default: True)</span>
+<span class="sd">        </span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name of file for saved figure (default: &quot;Wavy_Channel_Conditions&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure (default: &quot;.png&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches (default: 11)</span>
+<span class="sd">        </span>
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches (default: 7)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Handle to the generated figure containing three subplots</span>
+<span class="sd">        </span>
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates visualization showing:</span>
+<span class="sd">        * Thermal performance metrics</span>
+<span class="sd">        * Flow conditions</span>
+<span class="sd">        * Heat transfer characteristics</span>
+<span class="sd">        * Time history for each segment</span>
 <span class="sd">    </span>
-<span class="sd">     Assumptions:</span>
-<span class="sd">     None</span>
+<span class="sd">    **Definitions**</span>
 <span class="sd">    </span>
-<span class="sd">     Source:</span>
-<span class="sd">     None</span>
+<span class="sd">    &#39;Wavy Channel&#39;</span>
+<span class="sd">        Heat exchanger with sinusoidal flow paths</span>
+<span class="sd">    &#39;Hydraulic Diameter&#39;</span>
+<span class="sd">        4 × (flow area) / (wetted perimeter)</span>
+<span class="sd">    &#39;Heat Transfer Rate&#39;</span>
+<span class="sd">        Rate of thermal energy transfer</span>
+<span class="sd">    &#39;Mass Flow Rate&#39;</span>
+<span class="sd">        Mass of fluid flowing per unit time</span>
 <span class="sd">    </span>
-<span class="sd">     Inputs:</span>
-<span class="sd">     results.segments.conditions.energy[coolant_line.tag][wavy_channel.tag].</span>
-<span class="sd">                                                                       outlet_coolant_temperature</span>
-<span class="sd">                                                                       coolant_mass_flow_rate</span>
-<span class="sd">                                                                       power</span>
-<span class="sd">                                                                </span>
-<span class="sd">                                                                       </span>
-<span class="sd">     Outputs:</span>
-<span class="sd">     Plots</span>
-<span class="sd">    </span>
-<span class="sd">     Properties Used:</span>
-<span class="sd">     N/A	</span>
-<span class="sd">     &quot;&quot;&quot;</span> 
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance : Overall system performance</span>
+<span class="sd">    RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions : Cross-flow heat exchanger analysis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1"># get plotting style </span>
     <span class="n">ps</span>      <span class="o">=</span> <span class="n">plot_style</span><span class="p">()</span>  

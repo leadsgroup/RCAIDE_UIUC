@@ -535,37 +535,105 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_wing.plot_3d_wing">
 <span class="sig-name descname"><span class="pre">plot_3d_wing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_airfoil_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'greys'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_wing.html#plot_3d_wing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_wing.plot_3d_wing" title="Link to this definition">#</a></dt>
-<dd><p>This plots the wings of a vehicle</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-VD.</p>
-<blockquote>
-<div><p>XA1…ZB2    - coordinates of wing vortex distribution</p>
-</div></blockquote>
-<p>color_map       - color of panel</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a 3D visualization of wing surfaces including symmetric sections if applicable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plot_data</strong> (<em>list</em>) – Collection of plot vertices to be rendered</p></li>
+<li><p><strong>wing</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing" title="RCAIDE.Library.Components.Wings.Wing.Wing"><em>Wing</em></a>) – RCAIDE wing data structure containing geometry information</p></li>
+<li><p><strong>number_of_airfoil_points</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points used to discretize airfoil sections (default: 21)</p></li>
+<li><p><strong>color_map</strong> (<em>str</em><em>, </em><em>optional</em>) – Color specification for wing surface (default: ‘greys’)</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Transparency value between 0 and 1 (default: 1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>plot_data</strong> – Updated collection of plot vertices including wing surfaces</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates wing visualization by:</dt><dd><ul class="simple">
+<li><p>Generating points for each segment</p></li>
+<li><p>Creating surface panels between sections</p></li>
+<li><p>Adding symmetric wing if specified</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Wing segments are ordered from root to tip</p></li>
+<li><p>Airfoil sections lie in x-z plane</p></li>
+<li><p>Symmetric wing is mirror image about y-axis</p></li>
+</ul>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_wing.generate_3d_wing_points">
 <span class="sig-name descname"><span class="pre">generate_3d_wing_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_wing.html#generate_3d_wing_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_wing.generate_3d_wing_points" title="Link to this definition">#</a></dt>
-<dd><p>This generates the coordinates of the blade surface for plotting in the aircraft frame (x-back, z-up)</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-rotor            - RCAIDE rotor
-n_points         - number of points around airfoils of each blade section
-dim              - number for radial dimension
-i                - blade number
-aircraftRefFrame - boolean to convert the coordinates from rotor frame to aircraft frame</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generates 3D coordinate points that define a wing surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wing</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing" title="RCAIDE.Library.Components.Wings.Wing.Wing"><em>Wing</em></a>) – RCAIDE wing data structure containing geometry information</p></li>
+<li><p><strong>n_points</strong> (<em>int</em>) – Number of points used to discretize airfoil sections</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – Number of wing segments plus one</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>G</strong> –</p>
+<dl class="simple">
+<dt>Data structure containing generated points with attributes:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>X, Y, Z<span class="classifier">ndarray</span></dt><dd><p>Raw coordinate points</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PTS<span class="classifier">ndarray</span></dt><dd><p>Combined coordinate array</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>XA1, YA1, ZA1, XA2, YA2, ZA2<span class="classifier">ndarray</span></dt><dd><p>Leading edge surface points</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>XB1, YB1, ZB1, XB2, YB2, ZB2<span class="classifier">ndarray</span></dt><dd><p>Trailing edge surface points</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Generates wing geometry by:</dt><dd><ol class="arabic simple">
+<li><p>Creating airfoil sections at specified span positions</p></li>
+<li><p>Applying twist, sweep, and dihedral</p></li>
+<li><p>Scaling sections by local chord</p></li>
+<li><p>Positioning in aircraft coordinate system</p></li>
+</ol>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Leading Edge Sweep’</dt><dd><p>Angle between leading edge and y-axis</p>
+</dd>
+<dt>‘Quarter Chord Sweep’</dt><dd><p>Angle between quarter chord line and y-axis</p>
+</dd>
+<dt>‘Dihedral’</dt><dd><p>Upward angle of wing from horizontal</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

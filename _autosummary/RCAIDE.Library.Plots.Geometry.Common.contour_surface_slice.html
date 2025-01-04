@@ -538,7 +538,44 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.Common.contour_surface_slice.contour_surface_slice">
 <span class="sig-name descname"><span class="pre">contour_surface_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showscale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'right'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colorbar_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'v'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/Common/contour_surface_slice.html#contour_surface_slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.Common.contour_surface_slice.contour_surface_slice" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Creates a 3D surface plot with contour coloring for visualization of geometry slices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>ndarray</em>) – 2D array of x-coordinates defining surface points</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>) – 2D array of y-coordinates defining surface points</p></li>
+<li><p><strong>z</strong> (<em>ndarray</em>) – 2D array of z-coordinates defining surface points</p></li>
+<li><p><strong>values</strong> (<em>ndarray</em>) – 2D array of values used for surface coloring</p></li>
+<li><p><strong>color_scale</strong> (<em>str</em>) – Color scale specification for surface visualization</p></li>
+<li><p><strong>showscale</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display the color scale bar (default: False)</p></li>
+<li><p><strong>colorbar_title</strong> (<em>str</em><em>, </em><em>optional</em>) – Title for the color scale bar (default: None)</p></li>
+<li><p><strong>colorbar_location</strong> (<em>str</em><em>, </em><em>optional</em>) – Location of color scale bar (‘right’, ‘left’, ‘top’, ‘bottom’) (default: ‘right’)</p></li>
+<li><p><strong>colorbar_orientation</strong> (<em>str</em><em>, </em><em>optional</em>) – Orientation of color scale bar (‘v’ for vertical, ‘h’ for horizontal) (default: ‘v’)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>surface</strong> – Surface object ready for plotting</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>plotly.graph_objects.Surface</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Creates a surface visualization with:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Continuous color mapping based on values</p></li>
+<li><p>Optional color scale bar</p></li>
+<li><p>Customizable appearance</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Major Assumptions</strong></p>
+<ul class="simple">
+<li><p>Input arrays are 2D and of matching dimensions</p></li>
+<li><p>Values array corresponds to surface points</p></li>
+<li><p>Color scale is valid for plotly</p></li>
+</ul>
+</dd></dl>
 
 </section>
 

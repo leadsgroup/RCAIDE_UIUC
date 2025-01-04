@@ -535,26 +535,83 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Noise.plot_noise_level.plot_noise_level">
 <span class="sig-name descname"><span class="pre">plot_noise_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Sideline_Noise_Levels'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Noise/plot_noise_level.html#plot_noise_level"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Noise.plot_noise_level.plot_noise_level" title="Link to this definition">#</a></dt>
-<dd><p>This plots the A-weighted Sound Pressure Level as a function of time at various aximuthal angles
-on the ground</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-results.segments.conditions.</p>
-<blockquote>
-<div><p>frames.inertial.position_vector   - position vector of aircraft
-noise.</p>
-<blockquote>
-<div><p>total_SPL_dBA                 - total SPL (dbA)
-relative_microphone_locations - microphone locations</p>
-</div></blockquote>
-</div></blockquote>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a visualization of A-weighted Sound Pressure Levels at various sideline distances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>noise_data</strong> (<em>NoiseData</em>) – <dl class="simple">
+<dt>RCAIDE noise data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>microphone_y_resolution<span class="classifier">int</span></dt><dd><p>Number of sideline measurement positions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>microphone_locations<span class="classifier">ndarray</span></dt><dd><dl class="simple">
+<dt>3D array of microphone positions where:</dt><dd><ul>
+<li><p>[:,:,0] : x-positions (longitudinal)</p></li>
+<li><p>[:,:,1] : y-positions (sideline)</p></li>
+<li><p>[:,:,2] : z-positions (vertical)</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>noise_level</strong> (<em>ndarray</em><em>, </em><em>optional</em>) – 2D array of noise levels at measurement points (default: False)</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Sideline_Noise_Levels”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+<li><p><strong>width</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure width in inches (default: 11)</p></li>
+<li><p><strong>height</strong> (<em>float</em><em>, </em><em>optional</em>) – Figure height in inches (default: 7)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fig</strong> – Handle to the generated figure showing noise levels vs range</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>matplotlib.figure.Figure</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates visualization showing:</dt><dd><ul class="simple">
+<li><p>Noise level variation with distance</p></li>
+<li><p>Multiple sideline measurement positions</p></li>
+<li><p>Color-coded sideline distances</p></li>
+<li><p>Customizable appearance</p></li>
+</ul>
+</dd>
+<dt><strong>Major Assumptions</strong></dt><dd><ul class="simple">
+<li><p>Noise levels are A-weighted SPL in dBA</p></li>
+<li><p>Microphones are in a regular grid</p></li>
+<li><p>Range is in nautical miles</p></li>
+<li><p>Sideline distances are in meters</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Sound Pressure Level’</dt><dd><p>A-weighted acoustic pressure level in dBA</p>
+</dd>
+<dt>‘Sideline Distance’</dt><dd><p>Perpendicular distance from flight path</p>
+</dd>
+<dt>‘Range’</dt><dd><p>Distance along flight path</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.html#module-RCAIDE.Library.Plots.Noise.plot_2D_noise_contour" title="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Noise.plot_2D_noise_contour</span></code></a></dt><dd><p>2D contour visualization</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.html#module-RCAIDE.Library.Plots.Noise.plot_3D_noise_contour" title="RCAIDE.Library.Plots.Noise.plot_3D_noise_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Noise.plot_3D_noise_contour</span></code></a></dt><dd><p>3D noise field visualization</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

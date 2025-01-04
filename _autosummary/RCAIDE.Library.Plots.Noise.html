@@ -529,21 +529,32 @@
   <p>RCAIDE.Library.Plots.Noise</p>
 <section id="module-RCAIDE.Library.Plots.Noise">
 <span id="noise"></span><h1>Noise<a class="headerlink" href="#module-RCAIDE.Library.Plots.Noise" title="Link to this heading">#</a></h1>
-<p>RCAIDE Package Setup</p>
+<p>RCAIDE Noise Plotting Package</p>
+<p>This package contains modules for visualizing noise-related data and analysis
+results in RCAIDE.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.html#module-RCAIDE.Library.Plots" title="RCAIDE.Library.Plots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots</span></code></a></dt><dd><p>Parent plotting package</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Methods.Noise.html#module-RCAIDE.Library.Methods.Noise" title="RCAIDE.Library.Methods.Noise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Methods.Noise</span></code></a></dt><dd><p>Noise analysis tools</p>
+</dd>
+</dl>
+</div>
 <p class="rubric">Modules</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour.html#module-RCAIDE.Library.Plots.Noise.plot_2D_noise_contour" title="RCAIDE.Library.Plots.Noise.plot_2D_noise_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_2D_noise_contour</span></code></a>(noise_data[, ...])</p></td>
-<td><p>This plots a 2D noise contour of a noise level</p></td>
+<td><p>Creates a 2D contour plot of noise levels with optional terrain elevation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.html#module-RCAIDE.Library.Plots.Noise.plot_3D_noise_contour" title="RCAIDE.Library.Plots.Noise.plot_3D_noise_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_3D_noise_contour</span></code></a>(noise_data[, ...])</p></td>
-<td><p>This plots a 3D noise contour of a noise level using plotly</p></td>
+<td><p>Creates an interactive 3D visualization of noise contours with optional aircraft trajectory.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Noise.plot_noise_level.html#module-RCAIDE.Library.Plots.Noise.plot_noise_level" title="RCAIDE.Library.Plots.Noise.plot_noise_level"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_noise_level</span></code></a>(noise_data[, noise_level, ...])</p></td>
-<td><p>This plots the A-weighted Sound Pressure Level as a function of time at various aximuthal angles on the ground</p></td>
+<td><p>Creates a visualization of A-weighted Sound Pressure Levels at various sideline distances.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="RCAIDE.Library.Plots.Noise.post_process_noise_data.html#module-RCAIDE.Library.Plots.Noise.post_process_noise_data" title="RCAIDE.Library.Plots.Noise.post_process_noise_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">post_process_noise_data</span></code></a>(results[, ...])</p></td>
-<td><p>This translates all noise data into metadata for plotting</p></td>
+<td><p>Processes raw noise simulation results into formatted data for visualization.</p></td>
 </tr>
 </tbody>
 </table>

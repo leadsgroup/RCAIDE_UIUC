@@ -535,27 +535,133 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Aerodynamics.plot_surface_pressures.plot_surface_pressures">
 <span class="sig-name descname"><span class="pre">plot_surface_pressures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Surface_Pressure'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.png'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Aerodynamics/plot_surface_pressures.html#plot_surface_pressures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Aerodynamics.plot_surface_pressures.plot_surface_pressures" title="Link to this definition">#</a></dt>
-<dd><p>This plots the surface pressure distrubtion at all control points
-on all lifting surfaces of the aircraft</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-results.segments.aerodynamics.</p>
-<blockquote>
-<div><p>pressure_coefficient</p>
-</div></blockquote>
-<dl class="simple">
-<dt>vehicle.vortex_distribution.</dt><dd><p>n_cw
-n_sw
-n_w</p>
+<dd><p>Creates contour plots of surface pressure distributions on aircraft lifting surfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>results</strong> (<a class="reference internal" href="RCAIDE.Framework.Mission.Common.Results.html#RCAIDE.Framework.Mission.Common.Results.Results" title="RCAIDE.Framework.Mission.Common.Results.Results"><em>Results</em></a>) – <dl>
+<dt>RCAIDE results data structure containing:</dt><dd><ul>
+<li><dl class="simple">
+<dt>segments[i].conditions.aerodynamics</dt><dd><dl class="simple">
+<dt>Aerodynamic data containing:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>coefficients.surface_pressure[ti]</dt><dd><p>Pressure coefficient at each control point</p>
 </dd>
 </dl>
-<p>Outputs:
-Plots</p>
-<p>Properties Used:
-N/A</p>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>segments[i].analyses.aerodynamics.vehicle</dt><dd><dl class="simple">
+<dt>Vehicle data containing:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>vortex_distribution</dt><dd><dl class="simple">
+<dt>Distribution data with:</dt><dd><ul>
+<li><dl class="simple">
+<dt>n_cw<span class="classifier">array</span></dt><dd><p>Number of chordwise panels per wing</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>n_sw<span class="classifier">array</span></dt><dd><p>Number of spanwise panels per wing</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>n_w<span class="classifier">int</span></dt><dd><p>Number of wings</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>XC, YC<span class="classifier">arrays</span></dt><dd><p>Control point coordinates</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>X<span class="classifier">array</span></dt><dd><p>Surface point x-coordinates</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><dl class="simple">
+<dt>wings<span class="classifier">list</span></dt><dd><dl class="simple">
+<dt>Wing components with:</dt><dd><ul>
+<li><dl class="simple">
+<dt>vertical<span class="classifier">bool</span></dt><dd><p>Flag for vertical surfaces</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>symmetric<span class="classifier">bool</span></dt><dd><p>Flag for symmetric surfaces</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Surface_Pressure”)</p></li>
+<li><p><strong>file_type</strong> (<em>str</em><em>, </em><em>optional</em>) – File extension for saved figure (default: “.png”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates visualization showing:</dt><dd><ul class="simple">
+<li><p>Surface pressure distributions</p></li>
+<li><p>Spanwise pressure variations</p></li>
+<li><p>Chordwise pressure variations</p></li>
+<li><p>Wing geometry outlines</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Pressure Coefficient’</dt><dd><p>Non-dimensional pressure difference</p>
+</dd>
+<dt>‘Control Point’</dt><dd><p>Location where pressure is evaluated</p>
+</dd>
+<dt>‘Lifting Surface’</dt><dd><p>Wing, tail, or other aerodynamic surface</p>
+</dd>
+<dt>‘Planform’</dt><dd><p>Top-view shape of lifting surface</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution" title="RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Aerodynamics.plot_lift_distribution</span></code></a></dt><dd><p>Spanwise lift analysis</p>
+</dd>
+<dt><a class="reference internal" href="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients.html#module-RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients" title="RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_coefficients</span></code></a></dt><dd><p>Overall coefficient plots</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 </section>

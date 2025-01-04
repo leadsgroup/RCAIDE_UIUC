@@ -535,36 +535,105 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_rotor.plot_3d_rotor">
 <span class="sig-name descname"><span class="pre">plot_3d_rotor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Rotor'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_figure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_airfoil_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">21</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'turbid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_rotor.html#plot_3d_rotor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_rotor.plot_3d_rotor" title="Link to this definition">#</a></dt>
-<dd><p>This plots a 3D surface of the  rotor</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-axes                       - plotting axes
-rotor                      - RCAIDE rotor for which to plot the geometry
-cpt                        - control point at which to plot the rotor
-number_of_airfoil_points   - discretization of airfoil geometry</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Creates a 3D visualization of a rotor with multiple blades.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rotor</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Propulsors.Converters.Rotor.html#RCAIDE.Library.Components.Propulsors.Converters.Rotor.Rotor" title="RCAIDE.Library.Components.Propulsors.Converters.Rotor.Rotor"><em>Rotor</em></a>) – RCAIDE rotor data structure containing geometry and blade information</p></li>
+<li><p><strong>save_filename</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of file for saved figure (default: “Rotor”)</p></li>
+<li><p><strong>save_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag for saving the figure (default: False)</p></li>
+<li><p><strong>plot_data</strong> (<em>list</em><em>, </em><em>optional</em>) – Existing plot data to append to (default: None)</p></li>
+<li><p><strong>show_figure</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to display the figure (default: True)</p></li>
+<li><p><strong>plot_axis</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag to show coordinate axes (default: False)</p></li>
+<li><p><strong>cpt</strong> (<em>int</em><em>, </em><em>optional</em>) – Control point at which to plot the rotor (default: 0)</p></li>
+<li><p><strong>number_of_airfoil_points</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of points used to discretize airfoil sections (default: 21)</p></li>
+<li><p><strong>color_map</strong> (<em>str</em><em>, </em><em>optional</em>) – Color specification for the rotor surface (default: ‘turbid’)</p></li>
+<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – Transparency value between 0 and 1 (default: 1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>None or plot_data</strong> – If plot_data provided, returns updated list of plot vertices</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Creates an interactive 3D visualization with:</dt><dd><ul class="simple">
+<li><p>Multiple blades at specified angular positions</p></li>
+<li><p>Airfoil sections properly twisted and scaled</p></li>
+<li><p>Optional coordinate axes</p></li>
+<li><p>Adjustable view angles</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RCAIDE.Library.Plots.Geometry.plot_3d_rotor.generate_3d_blade_points">
 <span class="sig-name descname"><span class="pre">generate_3d_blade_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aircraftRefFrame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/RCAIDE/Library/Plots/Geometry/plot_3d_rotor.html#generate_3d_blade_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#RCAIDE.Library.Plots.Geometry.plot_3d_rotor.generate_3d_blade_points" title="Link to this definition">#</a></dt>
-<dd><p>This generates the coordinates of the blade surface for plotting in the aircraft frame (x-back, z-up)</p>
-<p>Assumptions:
-None</p>
-<p>Source:
-None</p>
-<p>Inputs:
-rotor            - RCAIDE rotor
-n_points         - number of points around airfoils of each blade section
-dim              - number for radial dimension
-i                - blade number
-aircraftRefFrame - boolean to convert the coordinates from rotor frame to aircraft frame</p>
-<p>Properties Used:
-N/A</p>
+<dd><p>Generates 3D coordinate points for a single rotor blade.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rotor</strong> (<a class="reference internal" href="RCAIDE.Library.Components.Propulsors.Converters.Rotor.html#RCAIDE.Library.Components.Propulsors.Converters.Rotor.Rotor" title="RCAIDE.Library.Components.Propulsors.Converters.Rotor.Rotor"><em>Rotor</em></a>) – RCAIDE rotor data structure containing blade geometry information</p></li>
+<li><p><strong>n_points</strong> (<em>int</em>) – Number of points around airfoil sections</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – Number of radial blade sections</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – Blade number (0 to number_of_blades-1)</p></li>
+<li><p><strong>aircraftRefFrame</strong> (<em>bool</em><em>, </em><em>optional</em>) – Convert coordinates to aircraft frame if True (default: True)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p><strong>G</strong> –</p>
+<dl class="simple">
+<dt>Data structure containing generated points with attributes:</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>X, Y, Z<span class="classifier">ndarray</span></dt><dd><p>Raw coordinate points</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PTS<span class="classifier">ndarray</span></dt><dd><p>Combined coordinate array</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>XA1, YA1, ZA1, XA2, YA2, ZA2<span class="classifier">ndarray</span></dt><dd><p>Leading edge surface points</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>XB1, YB1, ZB1, XB2, YB2, ZB2<span class="classifier">ndarray</span></dt><dd><p>Trailing edge surface points</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="RCAIDE.Framework.Core.Data.html#RCAIDE.Framework.Core.Data.Data" title="RCAIDE.Framework.Core.Data.Data">Data</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>Generates blade geometry by:</dt><dd><ol class="arabic simple">
+<li><p>Creating airfoil sections at specified radial positions</p></li>
+<li><p>Applying twist, chord, and thickness distributions</p></li>
+<li><p>Rotating to proper azimuthal position</p></li>
+<li><p>Converting to aircraft frame if requested</p></li>
+</ol>
+</dd>
+</dl>
+<p><strong>Definitions</strong></p>
+<dl class="simple">
+<dt>‘Mid-chord Alignment’</dt><dd><p>Reference point for blade section positioning and twist</p>
+</dd>
+<dt>‘Aircraft Frame’</dt><dd><p>Coordinate system with x-back, z-up orientation</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

@@ -377,7 +377,8 @@
                 <article class="bd-article">
                   
   <h1>Source code for RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions</h1><div class="highlight"><pre>
-<span></span><span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_rotor_conditions.py</span>
+<span></span><span class="c1">## @ingroup Library-Plots-Performance-Aerodynamics</span>
+<span class="c1"># RCAIDE/Library/Plots/Performance/Aerodynamics/plot_rotor_conditions.py</span>
 <span class="c1"># </span>
 <span class="c1"># </span>
 <span class="c1"># Created:  Jul 2023, M. Clarke</span>
@@ -395,6 +396,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------      </span>
+<span class="c1">## @ingroup Library-Plots-Performance-Aerodynamics</span>
 <div class="viewcode-block" id="plot_rotor_conditions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions.html#RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions.plot_rotor_conditions">[docs]</a>
 <span class="k">def</span> <span class="nf">plot_rotor_conditions</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
@@ -403,22 +405,61 @@
                         <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Rotor_Conditions&quot;</span><span class="p">,</span>
                         <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
                         <span class="n">width</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">7</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This plots the electric driven network propeller efficiencies </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate plots of key rotor operating conditions over time.</span>
 
-<span class="sd">    Assumptions:</span>
-<span class="sd">    None</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Data</span>
+<span class="sd">        Mission results data structure containing:</span>
+<span class="sd">            - results.segments[0].analyses.energy.vehicle.networks</span>
 
-<span class="sd">    Source:</span>
-<span class="sd">    None</span>
+<span class="sd">    save_figure : bool, optional</span>
+<span class="sd">        Save figure to file if True, default False</span>
 
-<span class="sd">    Inputs:</span>
-<span class="sd">    results.segments.conditions.propulsion.  </span>
-<span class="sd">        </span>
-<span class="sd">    Outputs: </span>
-<span class="sd">    Plots</span>
+<span class="sd">    show_legend : bool, optional</span>
+<span class="sd">        Display segment legend if True, default True</span>
 
-<span class="sd">    Properties Used:</span>
-<span class="sd">    N/A	</span>
+<span class="sd">    save_filename : str, optional</span>
+<span class="sd">        Name for saved figure file, default &quot;Rotor_Conditions&quot;</span>
+
+<span class="sd">    file_type : str, optional</span>
+<span class="sd">        File extension for saved figure, default &quot;.png&quot;</span>
+
+<span class="sd">    width : float, optional</span>
+<span class="sd">        Figure width in inches, default 11</span>
+
+<span class="sd">    height : float, optional</span>
+<span class="sd">        Figure height in inches, default 7</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a 2x2 subplot figure showing:</span>
+<span class="sd">        - Top left: RPM vs time (minutes)</span>
+<span class="sd">        - Top right: Rotor tilt angle (degrees) vs time</span>
+<span class="sd">        - Bottom left: Thrust (N) vs time</span>
+<span class="sd">        - Bottom right: Torque (N-m) vs time</span>
+
+<span class="sd">    Each mission segment uses a different color from the inferno colormap.</span>
+<span class="sd">    Multiple rotors are distinguished by different markers.</span>
+
+<span class="sd">    **Definitions**</span>
+
+<span class="sd">    &#39;RPM&#39;</span>
+<span class="sd">        Rotor rotational speed in revolutions per minute</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;Thrust Vector Angle&#39;</span>
+<span class="sd">        Angle between rotor thrust vector and vertical</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting</span>
+<span class="sd">    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling</span>
+<span class="sd">    RCAIDE.Library.Analysis.Performance.propulsion : Analysis modules</span>
 <span class="sd">    &quot;&quot;&quot;</span>	   
     <span class="c1"># get plotting style </span>
     <span class="n">ps</span>      <span class="o">=</span> <span class="n">plot_style</span><span class="p">()</span>  
@@ -463,7 +504,75 @@
 
 <div class="viewcode-block" id="plot_propulsor_data">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions.html#RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions.plot_propulsor_data">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_propulsor_data</span><span class="p">(</span><span class="n">results</span><span class="p">,</span><span class="n">propulsor</span><span class="p">,</span><span class="n">axis_1</span><span class="p">,</span><span class="n">axis_2</span><span class="p">,</span><span class="n">axis_3</span><span class="p">,</span><span class="n">axis_4</span><span class="p">,</span><span class="n">line_colors</span><span class="p">,</span><span class="n">ps</span><span class="p">,</span><span class="n">p_i</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">plot_propulsor_data</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">propulsor</span><span class="p">,</span> <span class="n">axis_1</span><span class="p">,</span> <span class="n">axis_2</span><span class="p">,</span> <span class="n">axis_3</span><span class="p">,</span> <span class="n">axis_4</span><span class="p">,</span> <span class="n">line_colors</span><span class="p">,</span> <span class="n">ps</span><span class="p">,</span> <span class="n">p_i</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot operating conditions data for a single propulsor across mission segments.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    results : Data</span>
+<span class="sd">        Mission results data structure containing:</span>
+<span class="sd">            - results.segments[i].conditions with fields:</span>
+<span class="sd">                - energy[propulsor_tag][thrustor_tag].rpm</span>
+<span class="sd">                - energy[propulsor_tag][thrustor_tag].thrust</span>
+<span class="sd">                - energy[propulsor_tag][thrustor_tag].torque</span>
+<span class="sd">                - energy[propulsor_tag].commanded_thrust_vector_angle</span>
+<span class="sd">                - frames.inertial.time</span>
+
+<span class="sd">    propulsor : Data</span>
+<span class="sd">        Propulsor data structure containing:</span>
+<span class="sd">            - tag : str</span>
+<span class="sd">                Identifier for the propulsor</span>
+<span class="sd">            - rotor/propeller : Data</span>
+<span class="sd">                Thrustor component data</span>
+
+<span class="sd">    axis_1 : matplotlib.axes.Axes</span>
+<span class="sd">        Axis for RPM plot</span>
+
+<span class="sd">    axis_2 : matplotlib.axes.Axes</span>
+<span class="sd">        Axis for rotor angle plot</span>
+
+<span class="sd">    axis_3 : matplotlib.axes.Axes</span>
+<span class="sd">        Axis for thrust plot</span>
+
+<span class="sd">    axis_4 : matplotlib.axes.Axes</span>
+<span class="sd">        Axis for torque plot</span>
+
+<span class="sd">    line_colors : array</span>
+<span class="sd">        Array of RGB colors for different segments</span>
+
+<span class="sd">    ps : Data</span>
+<span class="sd">        Plot style data structure with fields:</span>
+<span class="sd">            - markers : list</span>
+<span class="sd">                Marker styles for different propulsors</span>
+<span class="sd">            - line_width : float</span>
+<span class="sd">                Width for plot lines</span>
+
+<span class="sd">    p_i : int</span>
+<span class="sd">        Index of current propulsor for marker selection</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Helper function for plot_rotor_conditions that handles plotting</span>
+<span class="sd">    data for a single propulsor (rotor or propeller) across all mission</span>
+<span class="sd">    segments.</span>
+
+<span class="sd">    The function:</span>
+<span class="sd">        - Identifies thrustor type (rotor vs propeller)</span>
+<span class="sd">        - Extracts time histories for each segment</span>
+<span class="sd">        - Plots RPM, angle, thrust, and torque vs time</span>
+<span class="sd">        - Applies consistent styling</span>
+<span class="sd">        - Adds legend for first segment only</span>
+<span class="sd">        - Converts units as needed (time to minutes, angles to degrees)</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    RCAIDE.Library.Plots.Aerodynamics.plot_rotor_conditions : Main plotting function</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="s1">&#39;rotor&#39;</span> <span class="ow">in</span>  <span class="n">propulsor</span><span class="p">:</span>
         <span class="n">thrustor</span> <span class="o">=</span> <span class="n">propulsor</span><span class="o">.</span><span class="n">rotor</span>
     <span class="k">elif</span> <span class="s1">&#39;propeller&#39;</span> <span class="ow">in</span>  <span class="n">propulsor</span><span class="p">:</span>
