@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Performance-Aerodynamics  
 # RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_boundary_layer_properties.py
 # 
 # 
@@ -18,28 +19,97 @@ import numpy as np
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------     
 
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_airfoil_boundary_layer_properties(ap,
                                            save_figure = False,
                                            show_legend = False,
                                            file_type = ".png",
                                            save_filename = 'Airfoil_with_Boundary_Layers', 
                                            width = 11, height = 7):
-    """Plots viscous distributions
+    """
+    Generate plots of airfoil boundary layer properties and distributions.
+
+    Parameters
+    ----------
+    ap : Data
+        Airfoil properties data structure containing:
+            - x, y : arrays
+                Airfoil surface coordinates
+            - y_bl : array
+                Boundary layer displacement thickness coordinates
+            - Ue_Vinf : array
+                Edge velocity ratio (Ue/U∞)
+            - H : array
+                Shape factor
+            - delta_star : array
+                Displacement thickness
+            - delta : array
+                Boundary layer thickness
+            - theta : array
+                Momentum thickness
+            - cf : array
+                Skin friction coefficient
+            - Re_theta : array
+                Momentum thickness Reynolds number
+            - AoA : array
+                Angles of attack [rad]
+            - Re : array
+                Reynolds numbers
+
+    save_figure : bool, optional
+        Save figures to files if True, default False
+
+    show_legend : bool, optional
+        Display case legend if True, default False
+
+    file_type : str, optional
+        File extension for saved figures, default ".png"
+
+    save_filename : str, optional
+        Base name for saved figure files, default 'Airfoil_with_Boundary_Layers'
+
+    width : float, optional
+        Figure width in inches, default 11
+
+    height : float, optional
+        Figure height in inches, default 7
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure showing airfoil with boundary layers
+
+    Notes
+    -----
+    Creates multiple figures showing:
+        - Airfoil profile with boundary layer thickness
+        - Edge velocity distribution
+        - Shape factor distribution
+        - Displacement thickness distribution
+        - Boundary layer thickness distribution
+        - Momentum thickness distribution
+        - Skin friction distribution
+        - Momentum thickness Reynolds number distribution
+
+    Each case (combination of AoA and Re) is plotted in a different color.
+    Upper and lower surfaces are distinguished by line style.
+
+    **Definitions**
+
+    'Shape Factor'
+        Ratio of displacement to momentum thickness
     
-    Assumptions:
-    None
+    'Displacement Thickness'
+        Distance flow is displaced from surface
     
-    Source: 
-    None
-                                                     
-    Inputs:
-        ap     : data stucture of airfoil boundary layer properties  
-                                                                           
-    Outputs:
-        Figures of quantity distributions
-    
-    Properties Used:
-    N/A
+    'Momentum Thickness'
+        Loss of momentum flux in boundary layer
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
+    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
+    RCAIDE.Library.Analysis.Aerodynamics.process_airfoil_boundary_layer : Analysis module
     """      
     # get plotting style 
     ps      = plot_style()  
@@ -81,27 +151,71 @@ def plot_airfoil_boundary_layer_properties(ap,
 # ----------------------------------------------------------------------
 #  Plot Quantity
 # ----------------------------------------------------------------------  
-def plot_quantity(ap, q, qaxis, qname,ylim_low,ylim_high,file_type,show_legend,save_figure,width,height) :
-    """Plots a quantity q over lower/upper/wake surfaces
+def plot_quantity(ap, q, qaxis, qname, ylim_low, ylim_high, file_type, show_legend, save_figure, width, height):
+    """
+    Generate standardized plots of boundary layer quantities along airfoil surfaces.
+
+    Parameters
+    ----------
+    ap : Data
+        Airfoil properties data structure containing:
+            - x : array
+                Airfoil surface coordinates
+            - AoA : array
+                Angles of attack [rad]
+            - Re : array
+                Reynolds numbers
+
+    q : array
+        Values of quantity to plot along airfoil surface
     
-    Assumptions:
+    qaxis : str
+        LaTeX-formatted axis label for quantity
+    
+    qname : str
+        Descriptive name for quantity (used in title)
+    
+    ylim_low : float
+        Lower limit for y-axis
+    
+    ylim_high : float
+        Upper limit for y-axis
+    
+    file_type : str
+        File extension for saved figure
+    
+    show_legend : bool
+        Display case legend if True
+    
+    save_figure : bool
+        Save figure to file if True
+    
+    width : float
+        Figure width in inches
+    
+    height : float
+        Figure height in inches
+
+    Returns
+    -------
     None
+
+    Notes
+    -----
+    Creates a single figure showing the specified quantity distribution
+    along the airfoil surface for all cases (combinations of AoA and Re).
     
-    Source: 
-    None
-                                                     
-    Inputs:
-       ap        : data stucture of airfoil boundary layer properties  
-       q         : vector of values to plot, on all points (wake too if present)
-       qaxis     : name of quantity, for axis labeling
-       qname     : name of quantity, for title labeling
-                                                                           
-    Outputs:
-       Figure showing q versus x
+    Cases are plotted in different colors using the inferno colormap.
+    Legend entries show AoA in degrees and Re number for each case.
     
-    Properties Used:
-    N/A
-    """          
+    The plot uses standardized RCAIDE styling and axis formatting.
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
+    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
+    RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties : Main plotting function
+    """
 
     # get plotting style 
     ps      = plot_style()  

@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Performance-Aerodynamics
 # RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_polars.py
 # 
 # 
@@ -14,27 +15,66 @@ import matplotlib.pyplot as plt
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------     
 
+## @ingroup Library-Plots-Performance-Aerodynamics   
 def plot_airfoil_polars(polar_data,
-                        save_figure   = False,
+                        save_figure = False,
                         save_filename = "Airfoil_Polars",
                         file_type = ".png",
                         width = 11, height = 7):
-    """This plots all the airfoil polars of a specfic airfoil
+    """
+    Generate plots of airfoil aerodynamic characteristics from analysis results.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    polar_data : Data
+        Airfoil analysis results containing:
+            - cl_invisc[0] : array
+                Inviscid lift coefficients
+            - cd_invisc[0] : array
+                Inviscid drag coefficients
+            - cm_invisc[0] : array
+                Inviscid moment coefficients
+            - AoA[0] : array
+                Angles of attack [rad]
+            - Re[0] : array
+                Reynolds numbers
 
-    Source:
-    None
+    save_figure : bool, optional
+        Save figure to file if True, default False
 
-    Inputs:
-    airfoil_polar_paths   [list of strings]
+    save_filename : str, optional
+        Name for saved figure file, default "Airfoil_Polars"
 
-    Outputs: 
-    Plots
+    file_type : str, optional
+        File extension for saved figure, default ".png"
 
-    Properties Used:
-    N/A	
+    width : float, optional
+        Figure width in inches, default 11
+
+    height : float, optional
+        Figure height in inches, default 7
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+
+    Notes
+    -----
+    Creates a 2x2 subplot figure showing inviscid airfoil characteristics:
+        - Top left: Lift coefficient vs angle of attack
+        - Top right: Drag coefficient vs angle of attack
+        - Bottom left: Moment coefficient vs angle of attack
+        - Bottom right: Lift-to-drag ratio vs angle of attack
+
+    Results are plotted for a single Reynolds number case, with the
+    Reynolds number shown in the legend (e.g., "Re=1.0e6").
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
+    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
+    RCAIDE.Library.Analysis.Aerodynamics.compute_airfoil_inviscid : Analysis module
+    RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_polar_files : Viscous polar plotting function
     """ 
  
     # Get raw data polars 

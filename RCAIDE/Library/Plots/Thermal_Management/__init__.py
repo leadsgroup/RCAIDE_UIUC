@@ -1,7 +1,24 @@
 # RCAIDE/Library/Plots/Thermal_Management/__init__.py
 
+"""
+RCAIDE Thermal Management Plotting Package
 
-"""RCAIDE Package Setup
+This package contains modules for visualizing thermal management system performance 
+and heat exchanger characteristics.
+
+Notes
+-----
+The Thermal Management plotting package provides visualization tools for:
+    * Heat exchanger performance analysis
+    * Temperature distributions
+    * Flow conditions
+    * System efficiency metrics
+    * Thermal state evolution
+
+See Also
+--------
+RCAIDE.Library.Plots : Parent plotting package
+RCAIDE.Library.Analysis.Thermal_Management : Thermal analysis tools
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

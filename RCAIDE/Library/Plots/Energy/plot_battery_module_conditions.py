@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_battery_module_conditions.py
 # 
 # 
@@ -16,32 +17,70 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_battery_module_conditions(results,
                                   save_figure = False,
                                   show_legend = True,
                                   save_filename = "Battery_Module_Conditions_",
                                   file_type = ".png",
                                   width = 11, height = 7):
-    """Plots the module-level conditions of the battery throughout flight.
+    """
+    Creates a six-panel plot showing various battery module-level conditions throughout flight.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and battery module conditions
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Base name of file for saved figure (default: "Battery_Module_Conditions_")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
 
-    Inputs:
-    results.segments.conditions.
-        freestream.altitude
-        weights.total_mass
-        weights.vehicle_mass_rate
-        frames.body.thrust_force_vector
-
-    Outputs: 
-    Plots
-
-    Properties Used:
-    N/A	
+    Notes
+    -----
+    The function creates a 3x2 subplot containing:
+        1. State of Charge (SOC) vs time
+        2. Module energy vs time
+        3. Module current vs time
+        4. Module power vs time
+        5. Module voltage vs time
+        6. Module temperature vs time
+    
+    Each segment is plotted with a different color from the inferno colormap.
+    Different battery modules are distinguished by different markers.
+    
+    **Major Assumptions**
+    
+    * For identical battery modules, only the first module's data is plotted
+    * Time is converted from seconds to minutes for plotting
+    * Energy is converted to Watt-hours for display
+    
+    **Definitions**
+    
+    'SOC'
+        State of Charge - the level of charge of the battery module relative to its capacity
+    'Module Power'
+        Total electrical power of the battery module
+    'Module Energy'
+        Cumulative energy stored/discharged by the battery module
     """  
     
     # get plotting style 

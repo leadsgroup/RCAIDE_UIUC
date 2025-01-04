@@ -31,6 +31,5 @@ Batteries
    :recursive:
 
    Air_Cooled
-   Cryocooler
    Liquid_Cooled_Wavy_Channel
 

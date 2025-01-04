@@ -1,4 +1,4 @@
-# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_drag_components.py
+# RCAIDE/Library/Plots/Aerodynamics/plot_drag_components.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -15,32 +15,84 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Performance-Aerodynamics
 def plot_drag_components(results,
                          save_figure=False,
                          show_legend= True,
                          save_filename="Drag_Components",
                          file_type=".png",
                         width = 11, height = 7):
-    """This plots the drag components of the aircraft
+    """
+    Generate plots showing the breakdown of aircraft drag components over time.
+
+    Parameters
+    ----------
+    results : Data
+        Mission results data structure containing:
+        results.segments[i].conditions.aerodynamics.coefficients.drag with fields:
+            - parasite.total : array
+                Total parasite drag coefficient
+            - induced.total : array
+                Total induced drag coefficient
+            - compressible.total : array
+                Total compressibility drag coefficient
+            - miscellaneous.total : array
+                Other drag components coefficient
+            - total : array
+                Total aircraft drag coefficient
+
+    save_figure : bool, optional
+        Save figure to file if True, default False
+
+    show_legend : bool, optional
+        Display component legend if True, default True
+
+    save_filename : str, optional
+        Name for saved figure file, default "Drag_Components"
+
+    file_type : str, optional
+        File extension for saved figure, default ".png"
+
+    width : float, optional
+        Figure width in inches, default 11
+
+    height : float, optional
+        Figure height in inches, default 7
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
     
-    Assumptions:
-    None
+    Notes
+    -----
+    Creates a single plot showing:
+        - Parasite drag coefficient (CDp)
+        - Induced drag coefficient (CDi)
+        - Compressibility drag coefficient (CDc)
+        - Miscellaneous drag coefficient (CDm)
+        - Total drag coefficient (CD)
+
+    Each mission segment uses a different color from the inferno colormap.
+    Components are distinguished by different markers.
+
+    **Definitions**
+
+    'Parasite Drag'
+        Zero-lift drag due to viscous effects
     
-    Source:
-    None
+    'Induced Drag'
+        Drag due to lift production
     
-    Inputs:
-    results.segments.condtions.aerodynamics.coefficients.drag
-          parasite.total
-          induced.total
-          compressible.total
-          miscellaneous.total
-          
-    Outputs:
-    Plots
+    'Compressibility Drag'
+        Additional drag due to shock waves
     
-    Properties Used:
-    N/A
+    'Miscellaneous Drag'
+        Other sources including interference
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
+    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
     """ 
     # get plotting style 
     ps      = plot_style()  

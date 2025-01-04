@@ -11,15 +11,6 @@ get\_fuel\_tank\_properties
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-      :toctree:
-   
-      apply_properties
-      get_fuel_tank_properties
-      get_fuel_tanks
-   
    
 
    

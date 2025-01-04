@@ -18,7 +18,6 @@ RCAIDE.Library.Methods.Geodesics.Geodesics.Math
       ~Math.AngNormalize
       ~Math.AngRound
       ~Math.LatFix
-      ~Math.atan2d
       ~Math.cbrt
       ~Math.norm
       ~Math.polyval

@@ -32,7 +32,5 @@ Utilities
 
    Chebyshev
    Cubic_Spline_Blender
-   Utilities
    latin_hypercube_sampling
-   soft_max
 

@@ -31,5 +31,4 @@ Heat\_Exchangers
    :recursive:
 
    Cross_Flow_Heat_Exchanger
-   Cryogenic_Heat_Exchanger
 

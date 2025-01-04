@@ -1,7 +1,15 @@
 # RCAIDE/Library/Plots/__init__.py
 # 
 
-""" RCAIDE Package Setup
+"""
+RCAIDE Plotting Package
+
+This package contains modules for visualizing various aspects of aircraft analysis 
+and simulation results.
+
+See Also
+--------
+RCAIDE.Library.Analysis : Analysis tools generating data for plots
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

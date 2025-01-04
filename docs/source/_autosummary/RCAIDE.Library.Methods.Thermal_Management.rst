@@ -31,7 +31,6 @@ Thermal\_Management
    :recursive:
 
    Batteries
-   Cryogenics
    Heat_Exchangers
    Reservoirs
 

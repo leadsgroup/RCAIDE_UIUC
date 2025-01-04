@@ -31,11 +31,8 @@ Packages
    :recursive:
 
    additive
-   ipopt
    particle_swarm
    pyopt
-   pyopt_sparse
-   pyopt_surrogate
    scipy
    trmm
 

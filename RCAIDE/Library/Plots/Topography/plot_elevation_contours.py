@@ -30,22 +30,79 @@ def plot_elevation_contours(topography_file,
                             width = 11, height = 7): 
     
 
-    """This plots the elevation contours
+    """
+    Creates a contour plot visualization of terrain elevation data.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    topography_file : str
+        Path to file containing topographical data in format:
+            * Column 1: Longitude [degrees]
+            * Column 2: Latitude [degrees]
+            * Column 3: Elevation [meters]
+        
+    number_of_latitudinal_points : int, optional
+        Number of interpolation points in latitude direction (default: 100)
+        
+    number_of_longitudinal_points : int, optional
+        Number of interpolation points in longitude direction (default: 100)
+        
+    use_lat_long_coordinates : bool, optional
+        If True, plot in lat/long coordinates
+        If False, plot in distance coordinates (default: True)
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display elevation legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Elevation_Contours")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    topography_file
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
 
-    Inputs:
-    vehicle
+    Notes
+    -----
+    Creates visualization showing terrain elevation contours, color-coded elevation levels, 
+    geographic or distance-based coordinates, and a custom terrain-specific colormap.
 
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    When use_lat_long_coordinates is True the X-axis is Longitude [degrees] and the Y-axis is 
+    Latitude [degrees]. When use_lat_long_coordinates is False the X-axis is Longitudinal 
+    Distance [nmi] and the Y-axis is Latitudinal Distance [nmi].
+    
+    **Major Assumptions**
+        * Earth is approximated as spherical for distance calculations
+        * Linear interpolation between data points
+        * Sea level reference at 0 elevation
+        * Positive elevations above sea level
+        * Negative elevations below sea level
+    
+    **Definitions**
+    
+    'Elevation'
+        Height above sea level
+    'Contour'
+        Line of constant elevation
+    'Great Circle Distance'
+        Shortest distance between points on sphere
+    'Terrain'
+        Surface topography of land
+    
+    See Also
+    --------
+    RCAIDE.Framework.Analyses.Geodesics.Geodesics.Calculate_Distance : Distance calculation
     """
 
     # get plotting style 

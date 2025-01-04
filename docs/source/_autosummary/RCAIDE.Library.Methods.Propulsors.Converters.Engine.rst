@@ -31,7 +31,6 @@ Engine
    :recursive:
 
    append_engine_conditions
-   compute_fuel_flow_rate_from_torque
    compute_power_from_throttle
    compute_throttle_from_power
 

@@ -1,7 +1,6 @@
 # RCAIDE/Framework/Analyses/Noise/Frequency_Domain_Buildup.py
 # 
-# 
-# Created:  Oct 2024, A. Molloy
+# Mod:  Oct 2024, A. Molloy
 # Created:  Jul 2023, M. Clarke
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -25,25 +24,86 @@ from scipy.interpolate                                           import RegularG
 #  PLOTS
 # ---------------------------------------------------------------------------------------------------------------------- 
 def post_process_noise_data(results,
-                            flight_times = np.array(['06:00:00','06:30:00','07:00:00','07:30:00','08:00:00','08:30:00',
-                                                     '09:00:00','09:30:00','10:00:00','10:30:00','11:00:00','11:30:00',
-                                                     '12:00:00','12:30:00','13:00:00','13:30:00','14:00:00','14:30:00',
-                                                     '15:00:00']),
-                            time_period             = ['06:00:00','20:00:00'], 
-                            evalaute_noise_metrics  = True): 
-    """This translates all noise data into metadata for plotting 
+                            flight_times = np.array(['06:00:00','06:30:00','07:00:00','07:30:00',
+                                                   '08:00:00','08:30:00','09:00:00','09:30:00',
+                                                   '10:00:00','10:30:00','11:00:00','11:30:00',
+                                                   '12:00:00','12:30:00','13:00:00','13:30:00',
+                                                   '14:00:00','14:30:00','15:00:00']),
+                            time_period = ['06:00:00','20:00:00'], 
+                            evalaute_noise_metrics = True):
+    """
+    Processes raw noise simulation results into formatted data for visualization.
+
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].analyses.noise.settings
+                Noise analysis settings including:
+                    - number_of_microphone_in_stencil
+                    - microphone_x_resolution
+                    - microphone_y_resolution
+                    - topography_file
+                    - noise_times_steps
+            - segments[i].state.conditions
+                Flight conditions including:
+                    - frames.inertial.time
+                    - noise.hemisphere_SPL_dBA
+                
+    flight_times : ndarray of str, optional
+        Array of time strings for noise evaluation (default: hourly from 06:00 to 15:00)
+        
+    time_period : list of str, optional
+        Start and end times for analysis period (default: ['06:00:00','20:00:00'])
+        
+    evalaute_noise_metrics : bool, optional
+        Flag to compute additional noise metrics (default: True)
+
+    Returns
+    -------
+    noise_data : Data
+        Processed noise data structure containing:
+            - SPL_dBA : ndarray
+                Sound pressure levels at each grid point
+            - time : ndarray
+                Time history array
+            - aircraft_position : ndarray
+                Aircraft trajectory points
+            - microphone_locations : ndarray
+                Measurement grid coordinates
+            - topography_file : str, optional
+                Path to terrain data if used
+            - microphone_coordinates : ndarray, optional
+                Geographic coordinates if terrain used
+
+    Notes
+    -----
+    Processing steps include:
+        1. Unpacking analysis settings
+        2. Generating microphone grid
+        3. Interpolating noise levels
+        4. Computing metrics
+        5. Formatting for visualization
     
-    Assumptions:
-    None
+    **Major Assumptions**
+        * Regular measurement grid spacing
+        * Continuous noise between segments
+        * Background noise floor exists
+        * Spherical spreading of sound
     
-    Source: 
- 
-    Inputs: results 
-         
-    Outputs: noise_data
+    **Definitions**
     
-    Properties Used:
-    N/A
+    'SPL_dBA'
+        A-weighted Sound Pressure Level
+    'Hemisphere'
+        Directivity pattern around source
+    'Stencil'
+        Local group of evaluation points
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Noise.plot_noise_level : Visualization of processed data
+    RCAIDE.Library.Methods.Noise.Common.background_noise : Background noise floor function
     """
 
     # Step 1: Unpack settings      

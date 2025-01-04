@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Geometry
 # RCAIDE/Library/Plots/Geometry/plot_3d_nacelle.py
 # 
 # 
@@ -16,24 +17,44 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-def plot_3d_nacelle(plot_data,nacelle,tessellation = 24,number_of_airfoil_points = 21,color_map= 'darkmint'):
-    """ This plots a 3D surface of a nacelle  
+def plot_3d_nacelle(plot_data, nacelle, tessellation = 24, number_of_airfoil_points = 21, color_map = 'darkmint'):
+    """
+    Creates a 3D visualization of a nacelle surface using tessellated panels.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    plot_data : list
+        Collection of plot vertices to be rendered
+        
+    nacelle : Nacelle
+        RCAIDE nacelle data structure containing geometry information
+        
+    tessellation : int, optional
+        Number of points in azimuthal discretization (default: 24)
+        
+    number_of_airfoil_points : int, optional
+        Number of points used to discretize airfoil sections (default: 21)
+        
+    color_map : str, optional
+        Color specification for the nacelle surface (default: 'darkmint')
 
-    Source:
-    None 
+    Returns
+    -------
+    plot_data : list
+        Updated collection of plot vertices including nacelle surface
+
+    Notes
+    -----
+    Supports three types of nacelles:
+        1. Stack nacelle (built from stacked segments)
+        2. Body of Revolution nacelle (built from an airfoil profile)
+        3. Basic nacelle (built from simple geometric parameters)
     
-    Inputs:
-    axes                       - plotting axes 
-    nacelle                    - RCAIDE nacelle data structure
-    tessellation               - azimuthal discretization of lofted body 
-    number_of_airfoil_points   - discretization of airfoil geometry 
-    color_map                  - face color of nacelle  
-
-    Properties Used:
-    N/A
+    See Also
+    --------
+    RCAIDE.Library.Plots.Geometry.generate_3d_stack_nacelle_points : Points generation for stack nacelle
+    RCAIDE.Library.Plots.Geometry.generate_3d_BOR_nacelle_points : Points generation for body of revolution
+    RCAIDE.Library.Plots.Geometry.generate_3d_basic_nacelle_points : Points generation for basic nacelle
     """
     
     if type(nacelle) == RCAIDE.Library.Components.Nacelles.Stack_Nacelle: 
@@ -61,23 +82,43 @@ def plot_3d_nacelle(plot_data,nacelle,tessellation = 24,number_of_airfoil_points
 
     return plot_data
  
-def generate_3d_stack_nacelle_points(nac,tessellation = 24 ,number_of_airfoil_points = 21):
-    """ This generates the coordinate points on the surface of the stack nacelle
+def generate_3d_stack_nacelle_points(nac, tessellation = 24, number_of_airfoil_points = 21):
+    """
+    Generates 3D coordinate points for a stack-type nacelle surface.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    nac : Nacelle
+        RCAIDE nacelle data structure containing geometry information
+        
+    tessellation : int, optional
+        Number of points in azimuthal discretization (default: 24)
+        
+    number_of_airfoil_points : int, optional
+        Number of points used to discretize sections (default: 21)
 
-    Source:
-    None
+    Returns
+    -------
+    G : Data
+        Data structure containing generated points
+            - PTS : ndarray
+                Array of shape (num_segments, tessellation, 3) containing 
+                x,y,z coordinates of surface points
 
-    Inputs:
-    nac                        - Nacelle data structure 
-    tessellation               - azimuthal discretization of lofted body 
-    number_of_airfoil_points   - discretization of airfoil geometry 
+    Notes
+    -----
+    Creates nacelle from stacked super-elliptical cross-sections with:
+        - Specified width and height
+        - Controllable curvature
+        - Individual segment orientation
     
-    Properties Used:
-    N/A 
-    """ 
+    **Major Assumptions**
+    
+    * Segments are ordered from front to back
+    * Cross-sections are super-elliptical
+    * Orientation defined by Euler angles
+    
+    """
     
     num_nac_segs = len(nac.segments.keys())   
     theta        = np.linspace(0,2*np.pi,tessellation)  
@@ -138,28 +179,45 @@ def generate_3d_stack_nacelle_points(nac,tessellation = 24 ,number_of_airfoil_po
 
 
  
-def generate_3d_BOR_nacelle_points(nac,tessellation = 24 ,number_of_airfoil_points = 21):
-    """ This generates the coordinate points on the surface of the body of revolution nacelle
+def generate_3d_BOR_nacelle_points(nac, tessellation = 24, number_of_airfoil_points = 21):
+    """
+    Generates 3D coordinate points for a body-of-revolution nacelle surface.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    nac : Nacelle
+        RCAIDE nacelle data structure containing geometry information
+        
+    tessellation : int, optional
+        Number of points in azimuthal discretization (default: 24)
+        
+    number_of_airfoil_points : int, optional
+        Number of points used to discretize airfoil (default: 21)
 
-    Source:
-    None
+    Returns
+    -------
+    G : Data
+        Data structure containing generated points
+            - PTS : ndarray
+                Array of shape (num_sections, tessellation, 3) containing 
+                x,y,z coordinates of surface points
 
-    Inputs:
-    nac                        - Nacelle data structure 
-    tessellation               - azimuthal discretization of lofted body 
-    number_of_airfoil_points   - discretization of airfoil geometry 
+    Notes
+    -----
+    Creates nacelle by revolving an airfoil profile about its chord line.
+    Supports both NACA 4-series and custom airfoil coordinates.
     
-    Properties Used:
-    N/A 
-    """ 
+    **Major Assumptions**
+    
+    * Airfoil profile lies in x-z plane
+    * Profile is rotated about x-axis
+    * Flow-through option raises profile by inlet diameter
+    """
      
     theta        = np.linspace(0,2*np.pi,tessellation)  
     num_nac_segs = int(np.ceil(number_of_airfoil_points/2))
-    nac_pts      = np.zeros((num_nac_segs,tessellation,3)) 
-    naf          = nac.airfoil 
+    nac_pts      = np.zeros((num_nac_segs,tessellation,3))
+    naf          =  nac.airfoil
     
     if type(naf) == RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil: 
         a_geo        = compute_naca_4series(naf.NACA_4_Series_code,num_nac_segs)
@@ -195,23 +253,43 @@ def generate_3d_BOR_nacelle_points(nac,tessellation = 24 ,number_of_airfoil_poin
     G.PTS  = NAC_PTS 
     return G     
 
-def generate_3d_basic_nacelle_points(nac,tessellation,number_of_airfoil_points):
-    """ This generates the coordinate points on the surface of the nacelle
+def generate_3d_basic_nacelle_points(nac, tessellation, number_of_airfoil_points):
+    """
+    Generates 3D coordinate points for a basic nacelle surface.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    nac : Nacelle
+        RCAIDE nacelle data structure containing geometry information
+        
+    tessellation : int
+        Number of points in azimuthal discretization
+        
+    number_of_airfoil_points : int
+        Number of points used to discretize sections
 
-    Source:
-    None
+    Returns
+    -------
+    G : Data
+        Data structure containing generated points
+            - PTS : ndarray
+                Array of shape (num_sections, tessellation, 3) containing 
+                x,y,z coordinates of surface points
 
-    Inputs:
-    nac                        - Nacelle data structure 
-    tessellation               - azimuthal discretization of lofted body 
-    number_of_airfoil_points   - discretization of airfoil geometry 
+    Notes
+    -----
+    Creates a simple nacelle shape using basic geometric parameters:
+        - Length
+        - Diameter
+        - Inlet diameter (for flow-through nacelles)
     
-    Properties Used:
-    N/A 
-    """ 
+    **Major Assumptions**
+    
+    * Cross-sections are circular
+    * Shape follows super-elliptical profile in x-direction
+    * 10 sections used for discretization
+
+    """
       
 
     num_nac_segs = 10

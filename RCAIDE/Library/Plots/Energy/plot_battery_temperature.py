@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_battery_health_conditions.py
 # 
 # 
@@ -16,32 +17,65 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_battery_temperature(results,
                                   save_figure = False,
                                   show_legend = True,
                                   save_filename = "Battery_Temperature",
                                   file_type = ".png",
                                   width = 11, height = 7):
-    """Plots the cell-level conditions of the battery throughout flight.
+    """
+    Creates a three-panel plot showing battery thermal conditions and related parameters throughout flight.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and battery thermal conditions
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Battery_Temperature")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
 
-    Inputs:
-    results.segments.conditions.
-        freestream.altitude
-        weights.total_mass
-        weights.vehicle_mass_rate
-        frames.body.thrust_force_vector
-
-    Outputs: 
-    Plots
-
-    Properties Used:
-    N/A	
+    Notes
+    -----
+    The function creates a 2x2 subplot containing:
+        1. Cell temperature vs time
+        2. Charge throughput vs time
+        3. Heat generation rate vs time
+    
+    Each segment is plotted with a different color from the inferno colormap.
+    Different battery modules are distinguished by different markers.
+    
+    **Major Assumptions**
+    
+    * For identical battery modules, only the first module's data is plotted
+    * Time is converted from seconds to minutes for plotting
+    * Heat generation rate is converted to kilowatts for display
+    
+    **Definitions**
+    
+    'Charge Throughput'
+        Cumulative amount of charge that has passed through the battery (Ah)
+    'Heat Generation Rate'
+        Rate of thermal energy production in the battery (kW)
     """ 
     
     # get plotting style 

@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Geometry
 # RCAIDE/Library/Plots/Geometry/plot_airfoil.py
 # 
 # 
@@ -16,27 +17,59 @@ import matplotlib.pyplot as plt
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
+## @ingroup Library-Plots-Geometry
 def plot_airfoil(airfoil_paths,
                  save_figure = False, 
                  save_filename = "Airfoil_Geometry",
                  file_type = ".png", 
                  width = 11, height = 7):
-    """This plots all airfoil defined in the list "airfoil_names" 
+    """
+    Creates a 2D visualization of airfoil geometries from coordinate files.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    airfoil_paths : list of str
+        Paths to airfoil coordinate files
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Airfoil_Geometry")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure
 
-    Inputs:
-    airfoil_geometry_files   <list of strings>
-
-    Outputs: 
-    Plots
-
-    Properties Used:
-    N/A	
+    Notes
+    -----
+    Creates a plot showing:
+        - Airfoil surface coordinates
+        - Equal axis scaling
+        - Optional figure saving
+    
+    **Major Assumptions**
+    
+    * Coordinate files are properly formatted
+    * Coordinates are normalized by chord
+    * Points are ordered from trailing edge clockwise
+    
+    **Definitions**
+    
+    'Chord'
+        Line from leading edge to trailing edge
+    'Thickness'
+        Distance between upper and lower surface
     """
     # get airfoil coordinate geometry     
     airfoil_geometry = import_airfoil_geometry(airfoil_paths)

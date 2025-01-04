@@ -32,6 +32,4 @@ Combustor
 
    append_combustor_conditions
    compute_combustor_performance
-   compute_rayleigh
-   compute_supersonic_combustion
 
