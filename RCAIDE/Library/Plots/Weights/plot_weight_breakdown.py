@@ -25,22 +25,90 @@ def plot_weight_breakdown(vehicle,
                             width          = 10, height = 7.2): 
   
 
-    """This plots the weight breakdown of an evtol aircraft
+    """
+    Creates an interactive sunburst visualization of aircraft weight breakdown.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    vehicle : Vehicle
+        RCAIDE vehicle data structure containing:
+        
+        * weight_breakdown : Data
+            Hierarchical weight data with structure:
+                * zero_fuel_weight : float
+                    Aircraft weight without fuel
+                * max_takeoff : float
+                    Maximum takeoff weight
+                * systems : Data
+                    System weights containing:
+                        * total : float
+                            Total systems weight
+                        * [system_name] : float/Data
+                            Individual system weights/subcomponents
+                * fuel : float
+                    Total fuel weight
+                
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_figure : bool, optional
+        Flag to display interactive plot (default: True)
+        
+    show_legend : bool, optional
+        Flag to display weight legend (default: True)
+        
+    SI_Units : bool, optional
+        If True, display weights in kg
+        If False, display weights in lbs (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Weight_Breakdown")
+        
+    aircraft_name : str, optional
+        Name to display in plot title (default: None)
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 10)
+        
+    height : float, optional
+        Figure height in inches (default: 7.2)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : plotly.graph_objects.Figure
+        Handle to the generated figure containing:
 
-    Inputs:
-    vehicle
-
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates visualization showing:
+        * Hierarchical weight breakdown
+        * Weight percentages
+        * Multi-level weight relationships
+        * Interactive exploration
+    
+    **Major Assumptions**
+        * All weights are positive
+        * Hierarchy is properly structured
+        * No duplicate component names
+        * Subcomponent weights sum to totals
+    
+    **Definitions**
+    
+    'Weight Breakdown'
+        Hierarchical decomposition of vehicle mass
+    'Weight Fraction'
+        Component weight divided by total weight
+    'Zero Fuel Weight'
+        Aircraft weight excluding fuel
+    'Maximum Takeoff Weight'
+        Maximum allowable total weight
+    
+    See Also
+    --------
+    RCAIDE.Library.Analysis.Weights : Weight analysis tools
     """
 
     breakdown =  vehicle.weight_breakdown     

@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Performance-Aerodynamics   
 # RCAIDE/Library/Plots/Performance/Aerodynamics/plot_airfoil_polar_files.py
 # 
 # 
@@ -16,27 +17,67 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------     
+
+## @ingroup Library-Plots-Performance-Aerodynamics   
 def plot_airfoil_polar_files(polar_data,
                              save_figure = False,
                              save_filename = "Airfoil_Polars",
                              file_type = ".png",
                              width = 11, height = 7):
-    """This plots all airfoil polars in the list "airfoil_polar_paths" 
+    """
+    Generate plots of airfoil performance data from polar files.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    polar_data : Data
+        Airfoil polar data structure containing:
+            - lift_coefficients : array
+                CL values for each Reynolds number and angle of attack
+            - drag_coefficients : array
+                CD values for each Reynolds number and angle of attack
+            - angle_of_attacks : array
+                Angles of attack [rad]
+            - reynolds_numbers : array
+                Reynolds numbers
+            - re_from_polar : array
+                List of Reynolds numbers from polar files
 
-    Source:
-    None
+    save_figure : bool, optional
+        Save figure to file if True, default False
 
-    Inputs:
-    airfoil_polar_paths   [list of strings]
+    save_filename : str, optional
+        Name for saved figure file, default "Airfoil_Polars"
 
-    Outputs: 
-    Plots
+    file_type : str, optional
+        File extension for saved figure, default ".png"
 
-    Properties Used:
-    N/A	
+    width : float, optional
+        Figure width in inches, default 11
+
+    height : float, optional
+        Figure height in inches, default 7
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+
+    Notes
+    -----
+    Creates a 2x2 subplot figure showing airfoil performance:
+        - Top left: Lift coefficient vs angle of attack
+        - Top right: Drag coefficient vs angle of attack
+        - Bottom left: Drag polar (CL vs CD)
+        - Bottom right: Lift-to-drag ratio vs angle of attack
+
+    Each Reynolds number case is plotted in a different color using
+    the inferno colormap. Legend entries show Reynolds numbers in
+    scientific notation (e.g., "Re=1.0e6").
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
+    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
+    RCAIDE.Library.Analysis.Aerodynamics.process_airfoil_polars : Analysis module
     """ 
   
     

@@ -33,5 +33,4 @@ DC\_Motor
    append_motor_conditions
    compute_motor_performance
    design_motor
-   motor_performance
 

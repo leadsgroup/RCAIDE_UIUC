@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Geometry
 # RCAIDE/Library/Plots/Geometry/plot_3d_wing.py
 # 
 # 
@@ -16,22 +17,44 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
-def plot_3d_wing(plot_data,wing,number_of_airfoil_points = 21, color_map='greys',alpha=1):
-    """ This plots the wings of a vehicle
+def plot_3d_wing(plot_data, wing, number_of_airfoil_points = 21, color_map='greys', alpha=1):
+    """
+    Creates a 3D visualization of wing surfaces including symmetric sections if applicable.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    plot_data : list
+        Collection of plot vertices to be rendered
+        
+    wing : Wing
+        RCAIDE wing data structure containing geometry information
+        
+    number_of_airfoil_points : int, optional
+        Number of points used to discretize airfoil sections (default: 21)
+        
+    color_map : str, optional
+        Color specification for wing surface (default: 'greys')
+        
+    alpha : float, optional
+        Transparency value between 0 and 1 (default: 1)
 
-    Source:
-    None
+    Returns
+    -------
+    plot_data : list
+        Updated collection of plot vertices including wing surfaces
 
-    Inputs:
-    VD.
-       XA1...ZB2    - coordinates of wing vortex distribution
-    color_map       - color of panel 
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates wing visualization by:
+        - Generating points for each segment
+        - Creating surface panels between sections
+        - Adding symmetric wing if specified
+    
+    **Major Assumptions**
+    
+    * Wing segments are ordered from root to tip
+    * Airfoil sections lie in x-z plane
+    * Symmetric wing is mirror image about y-axis
     """
      
     af_pts    = number_of_airfoil_points-1 
@@ -82,24 +105,50 @@ def plot_3d_wing(plot_data,wing,number_of_airfoil_points = 21, color_map='greys'
              
     return plot_data
  
-def generate_3d_wing_points(wing,n_points,dim):
-    """ This generates the coordinates of the blade surface for plotting in the aircraft frame (x-back, z-up)
+def generate_3d_wing_points(wing, n_points, dim):
+    """
+    Generates 3D coordinate points that define a wing surface.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    wing : Wing
+        RCAIDE wing data structure containing geometry information
+        
+    n_points : int
+        Number of points used to discretize airfoil sections
+        
+    dim : int
+        Number of wing segments plus one
 
-    Source:
-    None
+    Returns
+    -------
+    G : Data
+        Data structure containing generated points with attributes:
+            - X, Y, Z : ndarray
+                Raw coordinate points
+            - PTS : ndarray
+                Combined coordinate array
+            - XA1, YA1, ZA1, XA2, YA2, ZA2 : ndarray
+                Leading edge surface points
+            - XB1, YB1, ZB1, XB2, YB2, ZB2 : ndarray
+                Trailing edge surface points
 
-    Inputs:
-    rotor            - RCAIDE rotor
-    n_points         - number of points around airfoils of each blade section
-    dim              - number for radial dimension
-    i                - blade number
-    aircraftRefFrame - boolean to convert the coordinates from rotor frame to aircraft frame 
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Generates wing geometry by:
+        1. Creating airfoil sections at specified span positions
+        2. Applying twist, sweep, and dihedral
+        3. Scaling sections by local chord
+        4. Positioning in aircraft coordinate system
+    
+    **Definitions**
+    
+    'Leading Edge Sweep'
+        Angle between leading edge and y-axis
+    'Quarter Chord Sweep'
+        Angle between quarter chord line and y-axis
+    'Dihedral'
+        Upward angle of wing from horizontal
     """    
     # unpack  
     # obtain the geometry for each segment in a loop                                            

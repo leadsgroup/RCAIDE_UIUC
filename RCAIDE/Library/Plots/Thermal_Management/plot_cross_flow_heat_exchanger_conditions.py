@@ -16,30 +16,91 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #   plot_heat_exchanger_system_conditions
 # ----------------------------------------------------------------------------------------------------------------------   
-def plot_cross_flow_heat_exchanger_conditions(cross_flow_hex, results, coolant_line, save_figure,show_legend ,save_filename,file_type , width, height):
-    """Plots the Cross Flow Heat Exchanger conditions throughout flight.
+def plot_cross_flow_heat_exchanger_conditions(cross_flow_hex, results, coolant_line,
+                                            save_figure = False,
+                                            show_legend = True,
+                                            save_filename = "Cross_Flow_HEX_Conditions",
+                                            file_type = ".png",
+                                            width = 11, height = 7):
+    """
+    Creates a multi-panel visualization of cross-flow heat exchanger operating conditions.
+
+    Parameters
+    ----------
+    cross_flow_hex : Component
+        Cross-flow heat exchanger component containing:
+            - tag : str
+                Unique identifier for the heat exchanger
+            
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.energy[coolant_line.tag][cross_flow_hex.tag]
+                Heat exchanger data containing:
+                    - coolant_mass_flow_rate[:,0]
+                        Coolant flow rate in kg/s
+                    - effectiveness_HEX[:,0]
+                        Heat exchanger effectiveness
+                    - power[:,0]
+                        Heat transfer rate in watts
+                    - air_inlet_pressure[:,0]
+                        Air-side inlet pressure in Pa
+                    - inlet_air_temperature[:,0]
+                        Air inlet temperature in K
+                    - air_mass_flow_rate[:,0]
+                        Air flow rate in kg/s
+                    
+    coolant_line : Component
+        Coolant line component containing:
+            - tag : str
+                Unique identifier for the coolant circuit
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Cross_Flow_HEX_Conditions")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure containing six subplots arranged in a 3x2 grid:
+        
+    Notes
+    -----
+    Creates visualization showing:
+        * Thermal performance metrics
+        * Flow conditions for both fluids
+        * Heat transfer characteristics
+        * Operating pressures and temperatures
+
+    **Definitions**
     
-     Assumptions:
-     None
+    'Effectiveness'
+        Ratio of actual to maximum possible heat transfer
+    'NTU'
+        Dimensionless measure of heat exchanger size
+    'Capacity Ratio'
+        Ratio of minimum to maximum heat capacity rates
+    'Mass Flow Rate'
+        Mass of fluid flowing per unit time
     
-     Source:
-     None
-    
-     Inputs:
-     results.segments.conditions.energy[coolant_line.tag][cross_flow_hex.tag].
-                                                                             coolant_mass_flow_rate
-                                                                             effectiveness_HEX   
-                                                                             power          
-                                                                             air_inlet_pressure
-                                                                             inlet_air_temperature 
-                                                                             air_mass_flow_rate    
-                                                                       
-     Outputs:
-     Plots
-    
-     Properties Used:
-     N/A	
-     """ 
+    See Also
+    --------
+    RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance : Overall system performance
+    RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions : Air-cooled heat exchanger analysis
+    """ 
     
     # get plotting style 
     ps      = plot_style()  

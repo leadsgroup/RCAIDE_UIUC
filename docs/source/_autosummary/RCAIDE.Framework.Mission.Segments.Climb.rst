@@ -38,7 +38,6 @@ Climb
    Constant_Mach_Constant_Rate
    Constant_Mach_Linear_Altitude
    Constant_Speed_Constant_Angle
-   Constant_Speed_Constant_Angle_Noise
    Constant_Speed_Constant_Rate
    Constant_Speed_Linear_Altitude
    Constant_Throttle_Constant_Speed

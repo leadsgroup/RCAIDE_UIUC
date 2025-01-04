@@ -34,7 +34,7 @@ Wings
    Control_Surfaces
    Horizontal_Tail
    Main_Wing
-   Segment
+   Segments
    Stabilator
    Vertical_Tail
    Vertical_Tail_All_Moving

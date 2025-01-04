@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_altitude_sfc_weight.py
 # 
 # 
@@ -15,31 +16,60 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Performance-Energy-Fuel
 def plot_altitude_sfc_weight(results,
                              save_figure = False,
                              show_legend = True,
                              save_filename = "Altitude_SFC_Weight" ,
                              file_type = ".png",
                              width = 11, height = 7):
-    """This plots the altitude, specific fuel consumption and vehicle weight.
+    """
+    Creates a four-panel plot showing throttle settings, vehicle weight, specific fuel consumption (SFC), 
+    and fuel consumption rate over time.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Altitude_SFC_Weight")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source: 
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated plots
 
-    Inputs:
-    results.segments.conditions.
-        freestream.altitude
-        weights.total_mass
-        weights.vehicle_mass_rate
-        frames.body.thrust_force_vector
-
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    The function creates a 2x2 subplot containing:
+        1. Throttle settings vs time
+        2. Vehicle weight vs time
+        3. Specific fuel consumption vs time
+        4. Fuel consumption rate vs time
+    
+    Each segment is plotted with a different color from the inferno colormap.
+  
+    **Definitions**
+    
+    'SFC'
+        Specific Fuel Consumption - measure of the fuel efficiency of an engine design 
+        with respect to thrust output
     """
  
     # get plotting style 

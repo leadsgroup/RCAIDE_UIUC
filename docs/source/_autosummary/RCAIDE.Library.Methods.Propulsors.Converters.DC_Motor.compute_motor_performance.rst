@@ -18,8 +18,6 @@ compute\_motor\_performance
    
       compute_RPM_and_torque_from_power_coefficent_and_voltage
       compute_current_from_RPM_and_voltage
-      compute_torque_from_RPM_and_voltage
-      compute_voltage_and_current_from_RPM_and_speed_constant
    
    
 

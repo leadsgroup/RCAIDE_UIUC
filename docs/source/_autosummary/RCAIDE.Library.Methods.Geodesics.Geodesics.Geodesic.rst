@@ -14,14 +14,7 @@ RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic
 
    .. autosummary::
    
-      ~Geodesic.ArcDirect
-      ~Geodesic.ArcDirectLine
-      ~Geodesic.Direct
-      ~Geodesic.DirectLine
       ~Geodesic.Inverse
-      ~Geodesic.InverseLine
-      ~Geodesic.Line
-      ~Geodesic.Polygon
       ~Geodesic.__init__
    
    

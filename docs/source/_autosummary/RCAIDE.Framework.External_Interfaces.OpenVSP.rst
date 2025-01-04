@@ -30,14 +30,15 @@ OpenVSP
    :template: custom-module-template.rst
    :recursive:
 
+   export_vsp_vehicle
    get_fuel_tank_properties
    get_vsp_measurements
+   import_vsp_vehicle
    mach_slices
+   vsp_boom
    vsp_fuselage
    vsp_nacelle
-   vsp_propeller
-   vsp_read
+   vsp_rotor
    vsp_wing
-   vsp_write
    write_vsp_mesh
 

@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_battery_module_C_rates.py
 # 
 # 
@@ -16,6 +17,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_battery_module_C_rates(results,
                         save_figure   = False,
                         show_legend   = True,
@@ -23,26 +25,59 @@ def plot_battery_module_C_rates(results,
                         file_type     =".png",
                         width         = 8,
                         height        = 6):
-    """Plots the module-level conditions of the battery throughout flight.
+    """
+    Creates a two-panel plot showing instantaneous and nominal C-rates of battery modules during operation.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and battery conditions
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Base name of file for saved figure (default: "Battery_Module_C_Rates")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 8)
+        
+    height : float, optional
+        Figure height in inches (default: 6)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
 
-    Inputs:
-    results.segments.conditions.
-        freestream.altitude
-        weights.total_mass
-        weights.vehicle_mass_rate
-        frames.body.thrust_force_vector
-
-    Outputs: 
-    Plots
-
-    Properties Used:
-    N/A	
+    Notes
+    -----
+    The function creates a 1x2 subplot showing:
+        1. Instantaneous C-rate vs time
+        2. Nominal C-rate vs time
+    
+    Different segments are plotted with different colors using the inferno colormap.
+    For multiple battery modules, only non-identical modules are plotted.
+    
+    **Major Assumptions**
+    
+    * For identical battery modules, only the first module's data is plotted
+    * Time is converted from seconds to minutes for plotting
+    * Battery energy is converted to Watt-hours for calculations
+    
+    **Definitions**
+    
+    'C-rate'
+        A measure of the rate at which a battery is discharged relative to its capacity
+    'Instantaneous C-rate'
+        C-rate calculated using the current battery capacity
+    'Nominal C-rate'
+        C-rate calculated using the maximum battery capacity
     """ 
      
     # get plotting style 

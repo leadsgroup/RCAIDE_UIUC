@@ -17,24 +17,80 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #   plot_heat_exchanger_system_conditions
 # ----------------------------------------------------------------------------------------------------------------------   
-def plot_reservoir_conditions(reservoir, results, coolant_line, save_figure,show_legend ,save_filename,file_type , width, height):
-    """Plots the Reservoir conditions throughout flight.
+def plot_reservoir_conditions(reservoir, results, coolant_line,
+                            save_figure = False,
+                            show_legend = True,
+                            save_filename = "Reservoir_Conditions", 
+                            file_type = ".png",
+                            width = 11, height = 7):
+    """
+    Creates visualization of thermal reservoir temperature conditions throughout flight.
+
+    Parameters
+    ----------
+    reservoir : Component
+        Thermal reservoir component containing:
+            - tag : str
+                Unique identifier for the reservoir
+            
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.frames.inertial.time[:,0]
+                Time history for each segment
+            - segments[i].conditions.energy[coolant_line.tag][reservoir.tag]
+                Reservoir data containing:
+                    - coolant_temperature[:,0]
+                        Coolant temperature in K
+                    
+    coolant_line : Component
+        Coolant line component containing:
+            - tag : str
+                Unique identifier for the coolant circuit
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Reservoir_Conditions")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure containing single plot:
+        
+    Notes
+    -----
+    Creates visualization showing:
+        * Reservoir thermal state
+        * Temperature evolution
+        * Time history for each segment
     
-     Assumptions:
-     None
+    **Definitions**
     
-     Source:
-     None
+    'Thermal Reservoir'
+        Component storing thermal energy in coolant
+    'Well-Mixed'
+        Uniform temperature throughout volume
+    'Thermal Mass'
+        Product of mass and specific heat
     
-     Inputs:
-     results.segments.conditions.energy[coolant_line.tag][reservoir.tag].
-                                                                        coolant_temperature
-     Outputs:
-     Plots
-    
-     Properties Used:
-     N/A	
-     """ 
+    See Also
+    --------
+    RCAIDE.Library.Plots.Thermal_Management.plot_thermal_management_performance : Overall system performance
+    RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions : Heat exchanger analysis
+    """ 
     # get plotting style 
     ps      = plot_style()  
 

@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Geometry
 # RCAIDE/Library/Plots/Geometry/plot_3d_vehicle.py
 # 
 # 
@@ -18,6 +19,7 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------  
+## @ingroup Library-Plots-Geometry
 def plot_3d_vehicle(vehicle,
                     show_axis                   = False,
                     save_figure                 = False,
@@ -36,32 +38,76 @@ def plot_3d_vehicle(vehicle,
                     camera_center_y             = 0.,
                     camera_center_z             = -0.5,
                     show_figure                 = True):
-    """This plots a 3D representation of the aircraft 
+    """
+    Creates a complete 3D visualization of an aircraft including all major components.
 
-    Assumptions:
+    Parameters
+    ----------
+    vehicle : Vehicle
+        RCAIDE vehicle data structure containing all component geometries
+        
+    show_axis : bool, optional
+        Flag to display coordinate axes (default: False)
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Vehicle_Geometry")
+        
+    alpha : float, optional
+        Transparency value between 0 and 1 (default: 1.0)
+        
+    min_x_axis_limit : float, optional
+        Minimum x-axis plot limit (default: -5)
+        
+    max_x_axis_limit : float, optional
+        Maximum x-axis plot limit (default: 40)
+        
+    min_y_axis_limit : float, optional
+        Minimum y-axis plot limit (default: -20)
+        
+    max_y_axis_limit : float, optional
+        Maximum y-axis plot limit (default: 20)
+        
+    min_z_axis_limit : float, optional
+        Minimum z-axis plot limit (default: -20)
+        
+    max_z_axis_limit : float, optional
+        Maximum z-axis plot limit (default: 20)
+        
+    camera_eye_x : float, optional
+        Camera eye x-position (default: -1.5)
+        
+    camera_eye_y : float, optional
+        Camera eye y-position (default: -1.5)
+        
+    camera_eye_z : float, optional
+        Camera eye z-position (default: 0.8)
+        
+    camera_center_x : float, optional
+        Camera target x-position (default: 0.0)
+        
+    camera_center_y : float, optional
+        Camera target y-position (default: 0.0)
+        
+    camera_center_z : float, optional
+        Camera target z-position (default: -0.5)
+        
+    show_figure : bool, optional
+        Flag to display the figure (default: True)
+
+    Returns
+    -------
     None
 
-    Source:
-    None
-
-    Inputs:
-       vehicle                      - vehicle data structure 
-       show_axis                    - plot axis flag          
-       save_figure                  - safe figure flag              
-       alpha                        - opacity                   
-       show_wing_control_points     - show control point flag  
-       show_rotor_wake_vortex_core  - show rotor wake flag 
-       save_filename                - filename for saving  
-       x_axis_limit                 - limits of axis  
-       y_axis_limit                 - limits of axis  
-       z_axis_limit                 - limits of axis  
-       show_figure                  - show figure flag  
-
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates an interactive 3D visualization showing:
+        - Wings and control surfaces
+        - Fuselage sections
+        - Propulsion systems
+        - Customizable view and camera angles
     """
 
     print("\nPlotting vehicle") 
@@ -106,6 +152,7 @@ def plot_3d_vehicle(vehicle,
     
     return     
 
+## @ingroup Library-Plots-Geometry
 def generate_3d_vehicle_geometry_data(plot_data,
                                       vehicle, 
                                       alpha                       = 1.0,  
@@ -115,24 +162,69 @@ def generate_3d_vehicle_geometry_data(plot_data,
                                       max_y_axis_limit            =  20,
                                       min_z_axis_limit            =  -20,
                                       max_z_axis_limit            =  20, ):
-    """ This plots the 3D surface of the network
+    """
+    Generates plot data for all vehicle components.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    plot_data : list
+        Collection of plot vertices to be rendered
+        
+    vehicle : Vehicle
+        RCAIDE vehicle data structure containing all component geometries
+        
+    alpha : float, optional
+        Transparency value between 0 and 1 (default: 1.0)
+        
+    min_x_axis_limit : float, optional
+        Minimum x-axis plot limit (default: -5)
+        
+    max_x_axis_limit : float, optional
+        Maximum x-axis plot limit (default: 40)
+        
+    min_y_axis_limit : float, optional
+        Minimum y-axis plot limit (default: -20)
+        
+    max_y_axis_limit : float, optional
+        Maximum y-axis plot limit (default: 20)
+        
+    min_z_axis_limit : float, optional
+        Minimum z-axis plot limit (default: -20)
+        
+    max_z_axis_limit : float, optional
+        Maximum z-axis plot limit (default: 20)
 
-    Source:
-    None
+    Returns
+    -------
+    plot_data : list
+        Updated collection of plot vertices
+        
+    min_x_axis_limit : float
+        Updated minimum x-axis limit
+        
+    max_x_axis_limit : float
+        Updated maximum x-axis limit
+        
+    min_y_axis_limit : float
+        Updated minimum y-axis limit
+        
+    max_y_axis_limit : float
+        Updated maximum y-axis limit
+        
+    min_z_axis_limit : float
+        Updated minimum z-axis limit
+        
+    max_z_axis_limit : float
+        Updated maximum z-axis limit
 
-    Inputs:
-       vehicle                      - vehicle data structure          
-       alpha                        - opacity  
-       save_filename                - filename for saving  
-       x_axis_limit                 - limits of axis  
-       y_axis_limit                 - limits of axis  
-       z_axis_limit                 - limits of axis   
+    Notes
+    -----
+    Processes geometry for:
 
-    Properties Used:
-    N/A
+        - Wings (using plot_3d_wing)
+        - Fuselages (using plot_3d_fuselage)
+        - Booms (using plot_3d_fuselage)
+        - Energy networks (using plot_3d_energy_network)
     """ 
     
     # -------------------------------------------------------------------------
@@ -164,28 +256,42 @@ def generate_3d_vehicle_geometry_data(plot_data,
  
     return plot_data,min_x_axis_limit,max_x_axis_limit,min_y_axis_limit,max_y_axis_limit,min_z_axis_limit,max_z_axis_limit
 
+## @ingroup Library-Plots-Geometry
 def plot_3d_energy_network(plot_data,network,number_of_airfoil_points,color_map):
-    """ This plots the 3D surface of the network
+    """
+    Generates plot data for vehicle energy network components.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    plot_data : list
+        Collection of plot vertices to be rendered
+        
+    network : Network
+        RCAIDE network data structure containing propulsion components
+        
+    number_of_airfoil_points : int
+        Number of points used to discretize airfoil sections
+        
+    color_map : str
+        Color specification for network components
 
-    Source:
-    None
+    Returns
+    -------
+    plot_data : list
+        Updated collection of plot vertices
 
-    Inputs:
-    network            - network data structure
-    network_face_color - color of panel
-    network_edge_color - color of panel edge 
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Processes geometry for:
+        - Nacelles (using plot_3d_nacelle)
+        - Rotors (using plot_3d_rotor)
+        - Propellers (using plot_3d_rotor)
     """ 
     show_axis     = False 
     save_figure   = False 
     show_figure   = False
     save_filename = 'propulsor'
- 
+
     for propulsor in network.propulsors:   
         number_of_airfoil_points = 21
         tessellation             = 24

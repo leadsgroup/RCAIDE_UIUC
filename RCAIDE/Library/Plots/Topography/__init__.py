@@ -1,7 +1,16 @@
 # RCAIDE/Library/Plots/Topography/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+RCAIDE Topography Plotting Package
+
+This package contains modules for visualizing terrain elevation data and 
+topographical features.
+
+See Also
+--------
+RCAIDE.Library.Plots : Parent plotting package
+RCAIDE.Library.Methods.Geodesics : Geographic calculations
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

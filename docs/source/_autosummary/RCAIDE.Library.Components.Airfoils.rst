@@ -31,5 +31,6 @@ Airfoils
    :recursive:
 
    Airfoil
+   Biconvex_Airfoil
    NACA_4_Series_Airfoil
 

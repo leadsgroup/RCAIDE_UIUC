@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_battery_degradation.py
 # 
 # 
@@ -15,6 +16,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_battery_degradation(results,
                             save_figure = False,
                             line_color = 'bo-',
@@ -22,25 +24,61 @@ def plot_battery_degradation(results,
                             save_filename = "Battery_Degradation",
                             file_type = ".png",
                             width = 11, height = 7):
-    """This plots the solar flux and power train performance of an solar powered aircraft
+    """
+    Creates a six-panel plot showing battery degradation metrics against various parameters.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and battery degradation metrics
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    line_color : str, optional
+        Matplotlib format string for first line style (default: 'bo-')
+        
+    line_color2 : str, optional
+        Matplotlib format string for second line style (default: 'rs--')
+        
+    save_filename : str, optional
+        Base name of file for saved figure (default: "Battery_Degradation")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated plots
+
+    Notes
+    -----
+    The function creates a 3x2 subplot showing:
+        Left column (Capacity fade vs):
+            1. Charge throughput (Ah)
+            2. Time (hours)
+            3. Time (days)
+
+        Right column (Resistance growth vs):
+            1. Charge throughput (Ah)
+            2. Time (hours)
+            3. Time (days)
     
-    Source:
-    None    
+    **Definitions**
     
-    Inputs:
-    results.segments.conditions.propulsion
-        solar_flux
-        battery_power_draw
-        battery_energy
-    
-    Outputs:
-    Plots
-    
-    Properties Used:
-    N/A
+    'Capacity Fade'
+        The loss of energy storage capacity over time/usage
+    'Resistance Growth'
+        The increase in internal resistance over time/usage
+    'Charge Throughput'
+        The cumulative amount of charge that has passed through the battery
     """ 
     # get plotting style 
     ps      = plot_style()  

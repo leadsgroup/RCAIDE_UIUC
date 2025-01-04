@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Geometry  
 # RCAIDE/Library/Plots/Geometry/plot_3d_rotor.py
 # 
 # 
@@ -18,26 +19,57 @@ import plotly.graph_objects as go
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------    
-def plot_3d_rotor(rotor,save_filename = "Rotor", save_figure = False, plot_data = None,
-                  show_figure  = True, plot_axis = False, cpt=0, number_of_airfoil_points = 21,
-                    color_map='turbid',alpha=1):
-    """ This plots a 3D surface of the  rotor
+def plot_3d_rotor(rotor, save_filename = "Rotor", save_figure = False, plot_data = None,
+                  show_figure = True, plot_axis = False, cpt = 0, 
+                  number_of_airfoil_points = 21, color_map = 'turbid', alpha = 1):
+    """
+    Creates a 3D visualization of a rotor with multiple blades.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    rotor : Rotor
+        RCAIDE rotor data structure containing geometry and blade information
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Rotor")
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    plot_data : list, optional
+        Existing plot data to append to (default: None)
+        
+    show_figure : bool, optional
+        Flag to display the figure (default: True)
+        
+    plot_axis : bool, optional
+        Flag to show coordinate axes (default: False)
+        
+    cpt : int, optional
+        Control point at which to plot the rotor (default: 0)
+        
+    number_of_airfoil_points : int, optional
+        Number of points used to discretize airfoil sections (default: 21)
+        
+    color_map : str, optional
+        Color specification for the rotor surface (default: 'turbid')
+        
+    alpha : float, optional
+        Transparency value between 0 and 1 (default: 1)
 
-    Source:
-    None
+    Returns
+    -------
+    None or plot_data : list
+        If plot_data provided, returns updated list of plot vertices
 
-    Inputs:
-    axes                       - plotting axes
-    rotor                      - RCAIDE rotor for which to plot the geometry
-    cpt                        - control point at which to plot the rotor
-    number_of_airfoil_points   - discretization of airfoil geometry 
+    Notes
+    -----
+    Creates an interactive 3D visualization with:
+        - Multiple blades at specified angular positions
+        - Airfoil sections properly twisted and scaled
+        - Optional coordinate axes
+        - Adjustable view angles
     
-
-    Properties Used:
-    N/A
     """
     plot_propeller_only = False
     if plot_data == None: 
@@ -98,25 +130,55 @@ def plot_3d_rotor(rotor,save_filename = "Rotor", save_figure = False, plot_data 
     else: 
         return plot_data
  
-def generate_3d_blade_points(rotor,n_points,dim,i,aircraftRefFrame=True):
-    """ This generates the coordinates of the blade surface for plotting in the aircraft frame (x-back, z-up)
+def generate_3d_blade_points(rotor, n_points, dim, i, aircraftRefFrame = True):
+    """
+    Generates 3D coordinate points for a single rotor blade.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    rotor : Rotor
+        RCAIDE rotor data structure containing blade geometry information
+        
+    n_points : int
+        Number of points around airfoil sections
+        
+    dim : int
+        Number of radial blade sections
+        
+    i : int
+        Blade number (0 to number_of_blades-1)
+        
+    aircraftRefFrame : bool, optional
+        Convert coordinates to aircraft frame if True (default: True)
 
-    Source:
-    None
+    Returns
+    -------
+    G : Data
+        Data structure containing generated points with attributes:
+            - X, Y, Z : ndarray
+                Raw coordinate points
+            - PTS : ndarray
+                Combined coordinate array
+            - XA1, YA1, ZA1, XA2, YA2, ZA2 : ndarray
+                Leading edge surface points
+            - XB1, YB1, ZB1, XB2, YB2, ZB2 : ndarray
+                Trailing edge surface points
 
-    Inputs:
-    rotor            - RCAIDE rotor
-    n_points         - number of points around airfoils of each blade section
-    dim              - number for radial dimension
-    i                - blade number
-    aircraftRefFrame - boolean to convert the coordinates from rotor frame to aircraft frame 
-
-    Properties Used:
-    N/A
-    """    
+    Notes
+    -----
+    Generates blade geometry by:
+        1. Creating airfoil sections at specified radial positions
+        2. Applying twist, chord, and thickness distributions
+        3. Rotating to proper azimuthal position
+        4. Converting to aircraft frame if requested
+    
+    **Definitions**
+    
+    'Mid-chord Alignment'
+        Reference point for blade section positioning and twist
+    'Aircraft Frame'
+        Coordinate system with x-back, z-up orientation
+    """
     # unpack 
     num_B        = rotor.number_of_blades
     airfoils     = rotor.airfoils 

@@ -14,15 +14,79 @@ import numpy as np
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
-# ----------------------------------------------------------------------------------------------------------------------    
+# ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Performance-Emissions 
 def plot_CO2e_emissions(results,
                              save_figure = False,
                              show_legend = True,
                              save_filename = "CO2e_Emissions" ,
                              file_type = ".png",
                              width = 11, height = 7):
-    """  
- 
+    """
+    Generate plots showing CO2-equivalent emissions over mission segments.
+
+    Parameters
+    ----------
+    results : Data
+        Mission results data structure containing:
+        results.segments[i].conditions.emissions.total with fields:
+            - CO2 : array
+                Carbon dioxide emissions [kg]
+            - NOx : array
+                Nitrogen oxide emissions [kg]
+            - H2O : array
+                Water vapor emissions [kg]
+            - Contrails : array
+                Contrail formation impact [kg CO2e]
+            - Soot : array
+                Particulate emissions [kg]
+            - SO2 : array
+                Sulfur dioxide emissions [kg]
+
+    save_figure : bool, optional
+        Save figure to file if True, default False
+
+    show_legend : bool, optional
+        Display segment legend if True, default True
+
+    save_filename : str, optional
+        Name for saved figure file, default "CO2e_Emissions"
+
+    file_type : str, optional
+        File extension for saved figure, default ".png"
+
+    width : float, optional
+        Figure width in inches, default 11
+
+    height : float, optional
+        Figure height in inches, default 7
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure showing stacked emissions contributions
+
+    Notes
+    -----
+    Creates a stacked area plot showing:
+        - Individual contributions from each emission type
+        - Cumulative total CO2-equivalent impact
+        - Breakdown by mission segment
+        - Time history of emissions
+
+    Different emission types are distinguished by fill colors
+    and segments use different shades from the inferno colormap.
+
+    **Definitions**
+
+    'CO2-equivalent (CO2e)'
+        Combined climate impact normalized to CO2
+    
+    'Global Warming Potential (GWP)'
+        Relative impact factor for different emissions
+    
+    'Contrail Impact'
+        Climate forcing from aviation-induced cloudiness
     """
  
     # get plotting style 
