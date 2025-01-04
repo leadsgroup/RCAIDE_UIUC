@@ -7,7 +7,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "RCAIDE_LEADS"
-dynamic = ["version"]
 description = "RCAIDE: Research Community Aerospace Interdisciplinary Design Environment"
 readme = "README_PyPI.md"  # Updated to use PyPI-compatible README
 requires-python = ">=3.8"
@@ -49,17 +48,8 @@ dependencies = [
     "threadpoolctl",
     "zipp"
 ]
-
-[project.urls]
-Homepage = "https://www.rcaide.leadsresearchgroup.com"
-
-[project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-cov",
-    "flake8",
-    "black"
-]
+# Dynamic version configuration
+dynamic = ["version"]
 
 [tool.setuptools]
 package-dir = {"" = "."}
