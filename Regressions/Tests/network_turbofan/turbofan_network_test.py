@@ -161,10 +161,7 @@ def main():
     print(error)
      
     for k,v in list(error.items()): 
-        if k == 'cruise_CL_2' or k == 'cruise_CL_3':
-            assert(np.abs(v)<5e-1)
-        else:
-            assert(np.abs(v)<1e-6)
+        assert(np.abs(v)<1e-6)
         
     plot_results(results)
     return 
@@ -494,7 +491,7 @@ def mission_setup(analyses):
     segment = Segments.Cruise.Constant_Throttle_Constant_Altitude(base_segment)
     segment.tag = "cruise_2" 
     segment.analyses.extend(analyses.base)  
-    segment.state.numerics.number_of_control_points                        = 12 
+    segment.state.numerics.number_of_control_points                        = 32 
     segment.altitude                                                       = 11. * Units.km  
     segment.air_speed_end                                                  = 215 * Units.m / Units.s  
     segment.throttle                                                       = 0.75
@@ -514,7 +511,7 @@ def mission_setup(analyses):
     segment.assigned_control_variables.body_angle.active                   = True   
     segment.assigned_control_variables.body_angle.initial_guess            = True 
     segment.assigned_control_variables.body_angle.initial_guess_values     = [[0*Units.degrees]]     
-        
+
     mission.append_segment(segment)   
     
     # ------------------------------------------------------------------------------------------------------------------------------------ 
