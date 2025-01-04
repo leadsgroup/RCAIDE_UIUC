@@ -51,18 +51,20 @@ from .Vehicle  import Vehicle
 from .load     import load 
 from .save     import save
 
+import os
 from warnings import simplefilter
 simplefilter('ignore')
 
-# Read version from VERSION file
-from pathlib import Path
-import os
+def get_version():
+    """Read the version from the VERSION file."""
+    # Get the directory of the current file
+    current_dir = os.path.dirname(__file__)
+    # Construct the full path to the VERSION file
+    version_file_path = os.path.join(current_dir, 'VERSION')
+    
+    if os.path.exists(version_file_path):
+        with open(version_file_path, 'r') as version_file:
+            return version_file.read().strip()
+    return '0.0.0' # fallback version
 
-def read_version():
-    version_file = Path(__file__).parent / 'VERSION'
-    if version_file.exists():
-        with open(version_file, 'r') as f:
-            return f.read().strip()
-    return '0.0.0'  # fallback version
-
-__version__ = read_version()
+__version__ = get_version()
