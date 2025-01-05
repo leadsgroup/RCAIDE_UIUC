@@ -19,7 +19,9 @@ These tutorials are designed to help you get started with RCAIDE. Set up basic a
           <a href="Missions/Tutorial_01_turbofan_aircraft.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
             Tutorial 1 - Boeing 737-800 (Turbofan Aircraft)
           </a>
-
+          <a href="Missions/Tutorial_03_turboprop_aircraft.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
+            Tutorial 3 - ATR 72 (Turboprop Aircraft)
+          </a>
           <!-- Future tutorials can be added like this:
           <a href="section1_tutorial_2.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
             Tutorial 2 - Another Example
@@ -35,3 +37,4 @@ These tutorials are designed to help you get started with RCAIDE. Set up basic a
    :glob:
 
    Missions/Tutorial_01_turbofan_aircraft
+   Missions/Tutorial_03_turboprop_aircraft
