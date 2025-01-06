@@ -1,5 +1,4 @@
-## @ingroup Input_Output-OpenVSP
-# get_vsp_measurements.py
+# RCAIDE/Framework/External_Interfaces/OpenVSP/get_vsp_measurements.py
 # 
 # Created:  --- 2016, T. MacDonald
 # Modified: Aug 2017, T. MacDonald
@@ -7,6 +6,10 @@
 #           Jan 2020, T. MacDonald
 #           Feb 2021, T. MacDonald
 
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------  
+# RCAIDE imports 
 try:
     import vsp as vsp
 except ImportError:
@@ -17,7 +20,9 @@ except ImportError:
         pass
 import numpy as np
 
-## @ingroup Input_Output-OpenVSP
+# ----------------------------------------------------------------------------------------------------------------------
+#  Get VSP Measurements
+# ---------------------------------------------------------------------------------------------------------------------- 
 def get_vsp_measurements(filename = 'Unnamed_CompGeom.csv', measurement_type = 'wetted_area'):
     """This calls OpenVSP to compute the wetted areas or volumes of a previously written vehicle.
     

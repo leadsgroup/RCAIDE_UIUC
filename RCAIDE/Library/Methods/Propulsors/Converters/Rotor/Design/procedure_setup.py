@@ -75,7 +75,7 @@ def modify_blade_geometry(nexus):
         vehicle_cruise    = nexus.vehicle_configurations.cruise 
         rotor_cruise      = vehicle_cruise.networks.electric.propulsors.electric_rotor.rotor 
         
-    airfoils = rotor_hover.Airfoils      
+    airfoils = rotor_hover.airfoils      
     a_loc    = rotor_hover.airfoil_polar_stations   
         
     # Update geometry of blade
@@ -395,7 +395,6 @@ def post_process(nexus):
     alpha                           = rotor.optimization_parameters.multiobjective_aeroacoustic_weight
     beta                            = rotor.optimization_parameters.multiobjective_performance_weight
     gamma                           = rotor.optimization_parameters.multiobjective_acoustic_weight
-    tol                             = rotor.optimization_parameters.tolerance 
     ideal_SPL                       = rotor.optimization_parameters.ideal_SPL_dBA  
     ideal_efficiency                = rotor.optimization_parameters.ideal_efficiency      
     ideal_FoM                       = rotor.optimization_parameters.ideal_figure_of_merit  
@@ -412,26 +411,26 @@ def post_process(nexus):
     summary.blade_taper_constraint_1        = rotor.chord_distribution[-1]/rotor.chord_distribution[0]
     summary.blade_taper_constraint_2        = rotor.chord_distribution[-1]/rotor.chord_distribution[0]
     summary.blade_twist_constraint          = rotor.twist_distribution [0] - rotor.twist_distribution [-1] 
-    summary.OEI_hover_thrust_power_residual = tol*rotor.oei.design_thrust - abs(nexus.results.oei.thrust - rotor.oei.design_thrust)
+    summary.OEI_hover_thrust_power_residual = abs(nexus.results.oei.thrust - rotor.oei.design_thrust) / nexus.results.oei.thrust
             
     # thrust/power residuals  
     if rotor.hover.design_thrust == None:
-        summary.hover_thrust_power_residual = tol*rotor.hover.design_power - abs(nexus.results.hover.power - rotor.hover.design_power)
+        summary.hover_thrust_power_residual = abs(nexus.results.hover.power - rotor.hover.design_power) / rotor.hover.design_power
     else: 
-        summary.hover_thrust_power_residual = tol*rotor.hover.design_thrust - abs(nexus.results.hover.thrust - rotor.hover.design_thrust)  
+        summary.hover_thrust_power_residual = abs(nexus.results.hover.thrust - rotor.hover.design_thrust) /rotor.hover.design_thrust 
 
     # oei
     if rotor.oei.design_thrust == None:
-        summary.oei_thrust_power_residual = tol*rotor.oei.design_power - abs(nexus.results.oei.power - rotor.oei.design_power)
+        summary.oei_thrust_power_residual =  abs(nexus.results.oei.power - rotor.oei.design_power) / rotor.oei.design_power
     else: 
-        summary.oei_thrust_power_residual = tol*rotor.oei.design_thrust - abs(nexus.results.oei.thrust - rotor.oei.design_thrust)  
+        summary.oei_thrust_power_residual = abs(nexus.results.oei.thrust - rotor.oei.design_thrust) /rotor.oei.design_thrust 
     
         
     if nexus.prop_rotor_flag: 
         if rotor.cruise.design_thrust == None:
-            summary.cruise_thrust_power_residual = tol*rotor.cruise.design_power  - abs(nexus.results.cruise.power - rotor.cruise.design_power) 
+            summary.cruise_thrust_power_residual = abs(nexus.results.cruise.power - rotor.cruise.design_power) /rotor.cruise.design_power 
         else: 
-            summary.cruise_thrust_power_residual = tol*rotor.cruise.design_thrust - abs(nexus.results.cruise.thrust - rotor.cruise.design_thrust)    
+            summary.cruise_thrust_power_residual =  abs(nexus.results.cruise.thrust - rotor.cruise.design_thrust) /rotor.cruise.design_thrust    
             
     # -------------------------------------------------------
     # OBJECTIVE FUNCTION

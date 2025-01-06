@@ -1,5 +1,4 @@
-## @ingroup Attributes-Planets
-# Earth.py
+ # Earth.py
 # 
 # Created:  Unk, 2013, J. Sinsay
 # Modified: Apr, 2015, E. Botero
@@ -13,8 +12,7 @@ from RCAIDE.Framework.Core import Units
 
 # ----------------------------------------------------------------------
 #  Earth Constant Class
-# ----------------------------------------------------------------------
-## @ingroup Attributes-Planets
+# ---------------------------------------------------------------------- 
 class Earth(Planet):
     """Holds constants for Earth
     

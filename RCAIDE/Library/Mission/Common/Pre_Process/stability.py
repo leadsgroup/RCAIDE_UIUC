@@ -31,7 +31,7 @@ def stability(mission):
             # ensure all properties of wing are computed before drag calculations  
             vehicle =  segment.analyses.stability.vehicle
             for wing in  vehicle.wings: 
-                if len(wing.Segments) > 1: 
+                if len(wing.segments) > 1: 
                     wing_segmented_planform(wing)
                 else:
                     wing_planform(wing)

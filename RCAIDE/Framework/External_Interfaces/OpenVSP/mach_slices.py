@@ -1,13 +1,11 @@
-## @ingroup Input_Output-OpenVSP
-# mach_slices.py
-# Created:  May 2021, E. Botero
-# Modified: 
-
-# ----------------------------------------------------------------------
-#  Imports
-# ----------------------------------------------------------------------
-
-from . import write
+# RCAIDE/Framework/External_Interfaces/OpenVSP/mach_slices.py
+# Created:  May 2021, E. Botero 
+ 
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------  
+# RCAIDE imports 
+from . import export_vsp_vehicle
 
 try:
     import vsp as vsp
@@ -19,10 +17,9 @@ except ImportError:
         pass
 import numpy as np
 
-# ----------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------- 
 #  Mach Slices
-# ----------------------------------------------------------------------
-
+# ---------------------------------------------------------------------------------------------------------------------- 
 def mach_slices(vehicle,mach,angle_of_attack=[0.],number_slices = 99):
     """ This method calculates the volume equivalent area for a vehicle for sonic boom analysis. It will write a VSP
         then slice it up depending on the mach number and angle of attack
@@ -52,7 +49,7 @@ def mach_slices(vehicle,mach,angle_of_attack=[0.],number_slices = 99):
     
 
     # Write the vehicle
-    write(vehicle,vehicle.tag,write_file=False)
+    export_vsp_vehicle(vehicle,vehicle.tag,write_file=False)
     
     X_locs_all       = []
     slice_areas_all = []

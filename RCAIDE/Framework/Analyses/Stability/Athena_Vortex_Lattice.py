@@ -111,9 +111,8 @@ class Athena_Vortex_Lattice(Stability):
         settings.trim_aircraft                                       = False
         settings.model_fuselage                                      = False 
         settings.print_output                                        = False 
-        settings.keep_files                                          = False
-        settings.save_regression_results                             = False          
-        settings.regression_flag                                     = False  
+        settings.keep_files                                          = False  
+        settings.new_regression_results                              = False  
         settings.side_slip_angle                                     = 0.0
         settings.roll_rate_coefficient                               = 0.0
         settings.pitch_rate_coefficient                              = 0.0 
@@ -129,7 +128,15 @@ class Athena_Vortex_Lattice(Stability):
         settings.supersonic.fuselage_parasite_drag_begin_blend_mach = 0.91
         settings.supersonic.fuselage_parasite_drag_end_blend_mach   = 0.99    
         settings.supersonic.cross_sectional_area_calculation_type   = 'Fixed'     
-        settings.supersonic.wave_drag_type                          = 'Raymer'   
+        settings.supersonic.wave_drag_type                          = 'Raymer'
+
+        self.reference_values                       = Data()
+        self.reference_values.S_ref                 = 0
+        self.reference_values.c_ref                 = 0
+        self.reference_values.b_ref                 = 0
+        self.reference_values.X_ref                 = 0
+        self.reference_values.Y_ref                 = 0
+        self.reference_values.Z_ref                 = 0          
     
         # conditions table, used for surrogate model training
         self.training                                               = Data()

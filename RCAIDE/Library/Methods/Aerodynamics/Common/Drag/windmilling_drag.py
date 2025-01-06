@@ -14,7 +14,6 @@ from   RCAIDE.Framework.Core     import Units, Data
 #  Compute drag of turbofan in windmilling condition
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Helper_Functions
 def windmilling_drag(geometry,state):
     """Computes windmilling drag for turbofan engines
 

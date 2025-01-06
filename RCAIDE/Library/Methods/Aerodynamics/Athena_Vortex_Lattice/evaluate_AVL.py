@@ -71,9 +71,9 @@ def evaluate_AVL_no_surrogate(state,settings,vehicle):
         None
 
     Args:
-        aerodynamics       : AVL analysis  [unitless]
-        state      : flight conditions     [unitless] 
-        vehicle    : vehicle configuration [unitless] 
+        aerodynamics    : AVL analysis  [unitless]
+        state           : flight conditions     [unitless] 
+        vehicle         : vehicle configuration [unitless] 
         
     Returns: 
         None  
@@ -82,18 +82,8 @@ def evaluate_AVL_no_surrogate(state,settings,vehicle):
     # unpack 
     conditions     = state.conditions
     aerodynamics   = state.analyses.aerodynamics   
-    results        = run_AVL_analysis(aerodynamics,conditions)
-    
-    conditions.aerodynamics.coefficients.lift.total                   = results.aerodynamics.coefficients.lift.total                 
-    conditions.aerodynamics.coefficients.drag.induced.inviscid        = results.aerodynamics.coefficients.drag.induced.inviscid      
-    conditions.aerodynamics.span_efficiency                           = results.aerodynamics.span_efficiency                         
-    conditions.control_surfaces.slat.static_stability.coefficients.M  = results.control_surfaces.slat.static_stability.coefficients.M
-    conditions.static_stability.derivatives.CM_alpha                  = results.static_stability.derivatives.CM_alpha                
-    conditions.static_stability.derivatives.CN_beta                   = results.static_stability.derivatives.CN_beta                 
-    conditions.static_stability.neutral_point                         = results.static_stability.neutral_point                       
-    conditions.static_stability.static_margin                         = results.static_stability.static_margin   
-    aerodynamics.settings.span_efficiency                             = conditions.aerodynamics.span_efficiency         
-      
+    run_AVL_analysis(aerodynamics,conditions)
+                       
     return
 
  

@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Epoxy.py
 #
 # Created: Jul, 2017, J. Smart
@@ -16,7 +14,6 @@ from RCAIDE.Framework.Core import Units
 # Hardened Epoxy Resin Solid Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Epoxy(Solid):
     """ Physical Constants Specific to Epoxy Resin
     

@@ -61,8 +61,8 @@ def turboshaft_engine_Boeing_502_14(altitude,mach):
     turboshaft.design_mach_number                  = 0.1   
     turboshaft.design_power                        = 148000.0*Units.W 
     turboshaft.mass_flow_rate_design               = 1.9 #[kg/s]
-                                                   
-    # working fluid                                
+    
+    # working fluid                                    
     turboshaft.working_fluid                       = RCAIDE.Library.Attributes.Gases.Air() 
     ram                                            = RCAIDE.Library.Components.Propulsors.Converters.Ram()
     ram.tag                                        = 'ram' 

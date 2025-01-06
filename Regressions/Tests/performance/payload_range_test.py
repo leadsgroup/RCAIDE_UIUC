@@ -9,8 +9,7 @@
 # RCAIDE imports  
 import RCAIDE
 from RCAIDE.Framework.Core import Units , Container
-from RCAIDE.Library.Methods.Performance.payload_range_diagram        import payload_range_diagram 
-from RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Electric  import converge_physics_based_weight_buildup 
+from RCAIDE.Library.Methods.Performance.compute_payload_range_diagram        import compute_payload_range_diagram
 
 # python imports     
 import numpy as np  
@@ -20,8 +19,7 @@ import os
 # local imports 
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles'))
 from Embraer_190    import vehicle_setup as E190_vehicle_setup 
-from NASA_X57       import vehicle_setup as X57_vehicle_setup 
-from NASA_X57       import configs_setup as X57_configs_setup      
+from NASA_X57       import vehicle_setup as X57_vehicle_setup      
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  REGRESSION
@@ -46,270 +44,75 @@ def main():
 def fuel_aircraft_payload_range():
     
     # vehicle data
-    E190_vehicle  = E190_vehicle_setup()
-    
+    vehicle             = E190_vehicle_setup()
+
     # take out control surfaces to make regression run faster
-    for wing in E190_vehicle.wings:
-        wing.control_surfaces  = Container() 
-    
-    # Set up vehicle configs
-    E190_configs  = E190_configs_setup(E190_vehicle)
-
-    # create analyses
-    E190_analyses = E190_analyses_setup(E190_configs)
-
-    # mission analyses 
-    E190_mission = E190_mission_setup(E190_analyses)
-    
-    # create mission instances (for multiple types of missions)
-    E190_missions = missions_setup(E190_mission) 
-      
-    fuel_payload_range_res  = payload_range_diagram(E190_vehicle,E190_missions.base_mission,'cruise',reserves=0., plot_diagram = True)
+    for wing in vehicle.wings:
+        wing.control_surfaces  = Container()
         
-    return fuel_payload_range_res 
-
-def electric_aircraft_payload_range():
+    assigned_propulsors = [['starboard_propulsor','port_propulsor']]   
+    altitude            = 10.668 * Units.km  
+    airspeed            = 230.412 * Units['m/s']
+    max_range_guess     = 1000 * Units.nmi
     
-    # vehicle data
 
-    X57_vehicle              = X57_vehicle_setup()      
-    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights()
-    weight_analysis.vehicle  = X57_vehicle
-    weight                   = weight_analysis.evaluate()
-    X57_vehicle.mass_properties.operating_empty =  weight.empty.total 
-    
-    # Set up vehicle configs
-    X57_configs  = X57_configs_setup(X57_vehicle)
-
-    # create analyses
-    X57_analyses = X57_analyses_setup(X57_configs)
-
-    # mission analyses 
-    X57_mission = X57_mission_setup(X57_analyses)
-    
-    # create mission instances (for multiple types of missions)
-    X57_missions = missions_setup(X57_mission) 
-      
-    electric_payload_range_res =  payload_range_diagram(X57_vehicle,X57_missions.base_mission,'cruise',reserves=0., plot_diagram = True)
-        
-    return electric_payload_range_res
-# ---------------------------------------------------------------------
-#   Define the Configurations
-# ---------------------------------------------------------------------
-
-def E190_configs_setup(vehicle):
- 
-    
-    # ------------------------------------------------------------------
-    #   Initialize Configurations
-    # ------------------------------------------------------------------
-
-    configs     = RCAIDE.Library.Components.Configs.Config.Container() 
-    base_config = RCAIDE.Library.Components.Configs.Config(vehicle)
-    base_config.tag = 'base'  
-    configs.append(base_config)
-
-    # ------------------------------------------------------------------
-    #   Cruise Configuration
-    # ------------------------------------------------------------------
-
-    config = RCAIDE.Library.Components.Configs.Config(base_config)
-    config.tag = 'cruise'
-    configs.append(config) 
-
-    # done!
-    return configs
-  
-def E190_analyses_setup(configs):
-
-    analyses = RCAIDE.Framework.Analyses.Analysis.Container()
-
-    # build a base analysis for each config
-    for tag,config in configs.items():
-        analysis = E190_base_analysis(config)
-        analyses[tag] = analysis
-
-    return analyses
-
-def E190_base_analysis(vehicle):
-
-    # ------------------------------------------------------------------
-    #   Initialize the Analyses
-    # ------------------------------------------------------------------     
-    analyses = RCAIDE.Framework.Analyses.Vehicle() 
-    
     # ------------------------------------------------------------------
     #  Weights
     weights         = RCAIDE.Framework.Analyses.Weights.Weights_Transport()
-    weights.vehicle = vehicle
-    analyses.append(weights)
+    weights.vehicle = vehicle 
 
     # ------------------------------------------------------------------
     #  Aerodynamics Analysis
     aerodynamics          = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
-    aerodynamics.vehicle = vehicle
+    aerodynamics.vehicle  = vehicle
     aerodynamics.settings.number_of_spanwise_vortices   = 5
-    aerodynamics.settings.number_of_chordwise_vortices  = 2     
-    analyses.append(aerodynamics)   
-
-    # ------------------------------------------------------------------
-    #  Energy
-    energy          = RCAIDE.Framework.Analyses.Energy.Energy()
-    energy.vehicle  = vehicle 
-    analyses.append(energy)
-
-    # ------------------------------------------------------------------
-    #  Planet Analysis
-    planet = RCAIDE.Framework.Analyses.Planets.Earth()
-    analyses.append(planet)
-
-    # ------------------------------------------------------------------
-    #  Atmosphere Analysis
-    atmosphere = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
-    atmosphere.features.planet = planet.features
-    analyses.append(atmosphere)   
-
-    # done!
-    return analyses    
-
-# ----------------------------------------------------------------------
-#   Define the Mission
-# ----------------------------------------------------------------------
- 
-def E190_mission_setup(analyses):
-
-    # ------------------------------------------------------------------
-    #   Initialize the Mission
-    # ------------------------------------------------------------------
-
-    mission = RCAIDE.Framework.Mission.Sequential_Segments()
-    mission.tag = 'the_mission'
-  
-    Segments = RCAIDE.Framework.Mission.Segments 
-    base_segment = Segments.Segment()
-    base_segment.state.numerics.number_of_control_points  = 3   
-
-    # ------------------------------------------------------------------    
-    #   Cruise Segment 
-    # ------------------------------------------------------------------    
-
-    segment = Segments.Cruise.Constant_Speed_Constant_Altitude(base_segment)
-    segment.tag = "cruise" 
-    segment.analyses.extend( analyses.cruise ) 
-    segment.altitude  = 10.668 * Units.km  
-    segment.air_speed = 230.412 * Units['m/s']
-    segment.distance  = 1000 * Units.nmi    
+    aerodynamics.settings.number_of_chordwise_vortices  = 2  
     
-    # define flight dynamics to model 
-    segment.flight_dynamics.force_x                      = True  
-    segment.flight_dynamics.force_z                      = True     
+    # run payload range analysis 
+    payload_range_results =  compute_payload_range_diagram(vehicle,assigned_propulsors,
+                                                           weights_analysis=weights,
+                                                           aerodynamics_analysis=aerodynamics,
+                                                           cruise_airspeed=airspeed,
+                                                           cruise_altitude=altitude, 
+                                                           max_range_guess = max_range_guess)
+                                   
+    return payload_range_results 
+
+def electric_aircraft_payload_range():
     
-    # define flight controls 
-    segment.assigned_control_variables.throttle.active               = True           
-    segment.assigned_control_variables.throttle.assigned_propulsors  = [['starboard_propulsor','port_propulsor']] 
-    segment.assigned_control_variables.body_angle.active             = True                
-    
-    mission.append_segment(segment) 
+    # vehicle data
+    vehicle             = X57_vehicle_setup()
  
+    assigned_propulsors = [['starboard_propulsor','port_propulsor']]   
+    altitude            = 15000   * Units.feet 
+    airspeed            = 130 * Units.kts
+    max_range_guess     = 20.   * Units.nautical_mile
+      
 
-    return mission 
-
-def X57_analyses_setup(configs):
-
-    analyses = RCAIDE.Framework.Analyses.Analysis.Container()
-
-    # build a base analysis for each config
-    for tag,config in configs.items():
-        analysis = X57_base_analysis(config)
-        analyses[tag] = analysis
-
-    return analyses
-
-def X57_base_analysis(vehicle):
-
-    # ------------------------------------------------------------------
-    #   Initialize the Analyses
-    # ------------------------------------------------------------------     
-    analyses = RCAIDE.Framework.Analyses.Vehicle()
- 
     # ------------------------------------------------------------------
     #  Weights
     weights = RCAIDE.Framework.Analyses.Weights.Weights_EVTOL()
     weights.vehicle = vehicle
-    analyses.append(weights)
+    
+    # since OEW was not defined, we evalaute it here   
+    _ = weights.evaluate()
 
     # ------------------------------------------------------------------
-    #  Aerodynamics Analysis  
-    aerodynamics = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
-    aerodynamics.vehicle                                = vehicle
+    #  Aerodynamics Analysis
+    aerodynamics          = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
+    aerodynamics.vehicle  = vehicle
     aerodynamics.settings.number_of_spanwise_vortices   = 5
-    aerodynamics.settings.number_of_chordwise_vortices  = 2   
-    analyses.append(aerodynamics)
-
-    # ------------------------------------------------------------------
-    #  Energy
-    energy          = RCAIDE.Framework.Analyses.Energy.Energy()
-    energy.vehicle  = vehicle 
-    analyses.append(energy)
+    aerodynamics.settings.number_of_chordwise_vortices  = 2  
     
-    # ------------------------------------------------------------------
-    #  Planet Analysis
-    planet = RCAIDE.Framework.Analyses.Planets.Earth()
-    analyses.append(planet)
-
-    # ------------------------------------------------------------------
-    #  Atmosphere Analysis
-    atmosphere = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
-    atmosphere.features.planet = planet.features
-    analyses.append(atmosphere)   
- 
-    return analyses
-
-def X57_mission_setup(analyses):
-    
-
-    # ------------------------------------------------------------------
-    #   Initialize the Mission
-    # ------------------------------------------------------------------
-    mission = RCAIDE.Framework.Mission.Sequential_Segments()
-    mission.tag = 'mission' 
-
-    # unpack Segments module
-    Segments = RCAIDE.Framework.Mission.Segments  
-    base_segment = Segments.Segment()
-    base_segment.state.numerics.number_of_control_points  = 3   
-
-    # ------------------------------------------------------------------
-    #  Cruise Segment 
-    # ------------------------------------------------------------------ 
-    segment = Segments.Cruise.Constant_Speed_Constant_Altitude(base_segment)
-    segment.tag = "cruise" 
-    segment.analyses.extend( analyses.base )  
-    segment.initial_battery_state_of_charge               = 1.0  
-    segment.altitude                                      = 15000   * Units.feet 
-    segment.air_speed                                     = 130 * Units.kts
-    segment.distance                                      = 20.   * Units.nautical_mile 
-    
-    # define flight dynamics to model 
-    segment.flight_dynamics.force_x                       = True  
-    segment.flight_dynamics.force_z                       = True     
-    
-    # define flight controls 
-    segment.assigned_control_variables.throttle.active               = True           
-    segment.assigned_control_variables.throttle.assigned_propulsors  = [['starboard_propulsor','port_propulsor']] 
-    segment.assigned_control_variables.body_angle.active             = True                  
-          
-    mission.append_segment(segment)
+    payload_range_results =  compute_payload_range_diagram(vehicle,assigned_propulsors,
+                                                           weights_analysis=weights,
+                                                           aerodynamics_analysis=aerodynamics,
+                                                           cruise_airspeed=airspeed,
+                                                           cruise_altitude=altitude, 
+                                                           max_range_guess = max_range_guess)
      
-    return mission
+    return payload_range_results
 
-def missions_setup(mission): 
- 
-    missions     = RCAIDE.Framework.Mission.Missions() 
-    mission.tag  = 'base_mission'
-    missions.append(mission)
- 
-    return missions   
 
 if __name__ == '__main__': 
     main()    

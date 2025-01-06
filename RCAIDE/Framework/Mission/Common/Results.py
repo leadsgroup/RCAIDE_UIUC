@@ -108,6 +108,7 @@ class Results(Conditions):
         self.frames.body.thrust_force_vector                                   = ones_3col * 0
         self.frames.body.moment_vector                                         = ones_3col * 0
         self.frames.body.velocity_vector                                       = ones_3col * 0
+        self.frames.body.thrust_moment_vector                                  = ones_3col * 0 
         self.frames.body.transform_to_inertial                                 = np.empty([0,0,0])
                                                                                
         # wind frame conditions                                                
@@ -164,17 +165,20 @@ class Results(Conditions):
                                                                                
         # aerodynamic coefficients                                             
         self.aerodynamics.coefficients                                         = Conditions()
+        self.aerodynamics.coefficients.surface_pressure                        = None
         self.aerodynamics.coefficients.lift                                    = Conditions()
-        self.aerodynamics.coefficients.lift.total                              = ones_1col * 0 
-        self.aerodynamics.coefficients.lift.inviscid_wings                     = Conditions()
+        self.aerodynamics.coefficients.lift.total                              = None
+        self.aerodynamics.coefficients.lift.induced                            = Conditions()
+        self.aerodynamics.coefficients.lift.induced.inviscid_wings             = Conditions()
         self.aerodynamics.coefficients.lift.compressible_wings                 = Conditions() 
         self.aerodynamics.coefficients.drag                                    = Conditions()  
         self.aerodynamics.coefficients.drag.total                              = ones_1col * 0   
         self.aerodynamics.coefficients.drag.parasite                           = Conditions()
         self.aerodynamics.coefficients.drag.compressible                       = Conditions()
         self.aerodynamics.coefficients.drag.induced                            = Conditions()
-        self.aerodynamics.coefficients.drag.induced.inviscid_wings             = Conditions()
         self.aerodynamics.coefficients.drag.induced.total                      = ones_1col * 0 
+        self.aerodynamics.coefficients.drag.induced.inviscid                   = ones_1col * 0 
+        self.aerodynamics.coefficients.drag.induced.inviscid_wings             = Conditions()
         self.aerodynamics.coefficients.drag.cooling                            = Conditions()
         self.aerodynamics.coefficients.drag.cooling.total                      = ones_1col * 0
         self.aerodynamics.coefficients.drag.windmilling                        = Conditions()

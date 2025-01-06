@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Unidirectional_Carbon_Fiber.py
 #
 # Created: Jul, 2017, J. Smart
@@ -16,7 +14,6 @@ from RCAIDE.Framework.Core import Units
 # Uni-Directional Carbon Fiber Solid Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Unidirectional_Carbon_Fiber(Solid):
 
     """ Physical Constants Specific to Unidirectional Carbon Fiber

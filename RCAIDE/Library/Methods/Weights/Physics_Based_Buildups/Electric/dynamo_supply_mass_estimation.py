@@ -1,4 +1,3 @@
-## @ingroup Methods-Dynamo_Supply-dynamo_supply_mass_estimation
 # dynamo_supply_mass_estimation.py
 #
 # Created:  Feb 2020,   K. Hamilton - Through New Zealand Ministry of Business Innovation and Employment Research Contract RTVU2004 
@@ -13,10 +12,7 @@ import scipy.integrate as integrate
 
 # ----------------------------------------------------------------------
 #  Dynamo_Supply dynamo_supply_mass_estimation
-# ----------------------------------------------------------------------    
-    
-    
-    
+# ----------------------------------------------------------------------      
 def dynamo_supply_mass_estimation(HTS_Dynamo_Supply):
     """ Basic mass estimation for HTS Dynamo supply. This supply includes all elements required to create the required shaft power from supplied electricity, i.e. the esc, brushless motor, and gearbox.
     Assumptions:

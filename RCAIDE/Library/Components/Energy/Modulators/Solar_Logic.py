@@ -1,4 +1,4 @@
-# RCAIDE/Library/Components/Propulsors/Modulators/Solar_Logic.py
+# RCAIDE/Library/Components/Energy/Modulators/Solar_Logic.py
 #  
 # Created:  Mar 2024, M. Clarke 
 
@@ -13,35 +13,46 @@ from RCAIDE.Library.Components import Component
 #  Solar_Logic
 # ----------------------------------------------------------------------------------------------------------------------  
 class Solar_Logic(Component):
-    """ The distributor is a component unique to a solar aircraft. This controls the flow of energy in to and from the battery.
-        This includes the basic logic of the maximum power point tracker that modifies the voltage of the panels to
-        extract maximum power.
+    """
+    Class for managing solar power extraction using Maximum Power Point Tracking
     
-        Assumptions:
-        None
+    Attributes
+    ----------
+    MPPT_efficiency : float
+        Efficiency of the Maximum Power Point Tracking system (default: 0.0)
         
-        Source:
-        None
+    system_voltage : float
+        Operating voltage of the electrical system (default: 0.0)
+
+    Notes
+    -----
+    The Solar Logic component manages the complex power flow in solar aircraft,
+    including:
+    - Maximum power point tracking for solar panels
+    - System voltage
+
+    **Definitions**
+
+    'Maximum Power Point Tracking (MPPT)'
+        Control strategy that adjusts solar panel voltage to extract maximum
+        available power under varying conditions
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Energy.Sources.Solar_Panels
+        Solar panel components
+    RCAIDE.Library.Components.Energy.Sources.Battery_Modules
+        Battery storage components
     """
     
-    
     def __defaults__(self):
-        """ This sets the default values.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for solar logic attributes
+        
+        Notes
+        -----
+        Initializes MPPT efficiency and system voltage to zero. These should be
+        set to appropriate values based on the specific system configuration.
         """         
         
         self.MPPT_efficiency = 0.0

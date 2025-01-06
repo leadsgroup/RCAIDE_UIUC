@@ -15,7 +15,6 @@ from RCAIDE.Library.Methods.Aerodynamics.Common.Lift.compute_flap_lift import co
 #  compute_max_lift_coeff
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Aerodynamics-Fidelity_Zero-Lift
 def compute_max_lift_coeff(state,settings,geometry):
     """Computes the maximum lift coefficient associated with an aircraft high lift system
 

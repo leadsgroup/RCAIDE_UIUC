@@ -90,29 +90,3 @@ def atleast_2d(A,oned_as='row'):
             raise Exception("oned_as must be 'row' or 'col' ")
             
     return A
-
-
-
-def append_array(A=None,B=None):
-    """ A stacking operation used by merged to put together data structures
-
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        A [array]
-        B [array]
-
-        Outputs:
-        array
-
-        Properties Used:
-        None
-    """       
-    if isinstance(A,array_type) and isinstance(B,array_type):
-        return np.vstack([A,B])
-    else:
-        return None

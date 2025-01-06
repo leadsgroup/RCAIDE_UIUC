@@ -21,13 +21,134 @@ import scipy as sp
 #  Generalized Rotor Class
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Rotor(Component):
-    """This is a general rotor component.
+    """
+    A generalized rotor component model serving as the base class for various rotary propulsion devices.
 
-    Assumptions:
-    None
+    Attributes
+    ----------
+    tag : str
+        Identifier for the rotor. Default is 'rotor'.
+        
+    number_of_blades : float
+        Number of rotor blades. Default is 0.0.
+        
+    tip_radius : float
+        Outer radius of the rotor [m]. Default is 0.0.
+        
+    hub_radius : float
+        Inner radius of the rotor at hub [m]. Default is 0.0.
+        
+    twist_distribution : float
+        Blade twist angle distribution [rad]. Default is 0.0.
+        
+    sweep_distribution : float
+        Quarter chord sweep distribution [m]. Default is 0.0.
+        
+    chord_distribution : float
+        Blade chord length distribution [m]. Default is 0.0.
+        
+    thickness_to_chord : float
+        Ratio of blade thickness to chord. Default is 0.0.
+        
+    max_thickness_distribution : float
+        Maximum thickness distribution along blade [m]. Default is 0.0.
+        
+    radius_distribution : ndarray
+        Radial stations along blade [m]. Default is None.
+        
+    mid_chord_alignment : float
+        Mid-chord line alignment [m]. Default is 0.0.
+        
+    blade_solidity : float
+        Ratio of total blade area to rotor disk area. Default is 0.0.
+        
+    flap_angle : float
+        Blade flapping angle [rad]. Default is 0.0.
+        
+    number_azimuthal_stations : int
+        Number of azimuthal calculation points. Default is 16.
+        
+    vtk_airfoil_points : int
+        Number of points for VTK airfoil visualization. Default is 40.
+        
+    Airfoils : Airfoil_Container
+        Container for blade airfoil definitions. Default is empty container.
+        
+    airfoil_polar_stations : ndarray
+        Radial stations for airfoil polars. Default is None.
+        
+    induced_power_factor : float
+        Factor accounting for non-ideal induced power. Default is 1.48.
+        
+    profile_drag_coefficient : float
+        Mean blade profile drag coefficient. Default is 0.03.
+        
+    clockwise_rotation : bool
+        Direction of rotation. Default is True.
+        
+    phase_offset_angle : float
+        Initial blade phase angle [rad]. Default is 0.0.
+        
+    orientation_euler_angles : list
+        Angles defining rotor orientation [rad]. Default is [0.,0.,0.].
+        
+    pitch_command : float
+        Commanded blade pitch angle [rad]. Default is 0.0.
+        
+    ducted : bool
+        Flag for ducted rotor configuration. Default is False.
+        
+    sol_tolerance : float
+        Solution convergence tolerance. Default is 1e-8.
+        
+    use_2d_analysis : bool
+        Flag for 2D aerodynamic analysis. Default is False.
+        
+    nonuniform_freestream : bool
+        Flag for nonuniform inflow conditions. Default is False.
 
-    Source:
-    None
+    Notes
+    -----
+    The Rotor class provides a comprehensive framework for modeling rotary
+    propulsion devices including:
+
+    * Geometric definition of rotor and blades
+    * Aerodynamic performance calculation
+    * Wake modeling capabilities
+    * Blade element analysis
+    * Performance optimization
+    * Acoustic analysis
+
+    **Major Assumptions**
+
+    * Rigid blade structure
+    * Quasi-steady aerodynamics
+    * Small angle approximations for flapping
+    * Linear blade twist and taper
+    * Uniform inflow (unless nonuniform_freestream is True)
+
+    **Theory**
+
+    The rotor model combines:
+    * Blade Element Momentum Theory
+    * Prescribed/Free Wake Analysis
+    * Acoustic Propagation Models
+    * Performance Optimization Methods
+
+    **Definitions**
+
+    'Blade Solidity'
+        Ratio of total blade area to rotor disk area
+    'Induced Power Factor'
+        Correction for non-ideal induced power effects
+    'Phase Offset'
+        Initial azimuthal position of reference blade
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.Propeller
+    RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor
+    RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor
     """
     def __defaults__(self):
         """This sets the default values for the component to function.
@@ -65,7 +186,7 @@ class Rotor(Component):
         self.flap_angle                        = 0.0
         self.number_azimuthal_stations         = 16 
         self.vtk_airfoil_points                = 40        
-        self.Airfoils                          = Airfoil_Container()
+        self.airfoils                          = Airfoil_Container()
         self.airfoil_polar_stations            = None 
         
         # design flight conditions 
@@ -145,28 +266,41 @@ class Rotor(Component):
             airfoil.tag = airfoil.tag + str(n_comps+1)    
             
         # store data
-        self.Airfoils.append(airfoil)
+        self.airfoils.append(airfoil)
     
     def vec_to_vel(self):
-        """This rotates from the propeller's vehicle frame to the propeller's velocity frame
+        """
+        Rotates from the rotor's vehicle frame to the rotor's velocity frame.
 
-        Assumptions:
-        There are two propeller frames, the propeller vehicle frame and the propeller velocity frame. When propeller
-        is axially aligned with the vehicle body:
-           - The velocity frame is X out the nose, Z towards the ground, and Y out the right wing
-           - The vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing
+        Returns
+        -------
+        rot_mat : ndarray
+            3x3 rotation matrix transforming from vehicle frame to velocity frame.
 
-        Source:
-        N/A
+        Notes
+        -----
+        This method creates a rotation matrix for transforming coordinates between
+        two reference frames of the rotor. When rotor is axially aligned with the 
+        vehicle body.
 
-        Inputs:
-        None
+        Velocity frame:
 
-        Outputs:
-        None
+        * X-axis points out the nose
+        * Z-axis points towards the ground
+        * Y-axis points out the right wing
 
-        Properties Used:
-        None
+        Vehicle frame:
+
+        * X-axis points towards the tail
+        * Z-axis points towards the ceiling
+        * Y-axis points out the right wing
+
+        **Major Assumptions**
+
+        * The rotor's default orientation is aligned with the vehicle body
+        * Right-handed coordinate system is used
+        * Small angle approximations are not used
+        * Rotation sequence is fixed
         """
 
         rot_mat = sp.spatial.transform.Rotation.from_rotvec([0,np.pi,0]).as_matrix()
@@ -174,25 +308,62 @@ class Rotor(Component):
         return rot_mat
     
 
-    def body_to_prop_vel(self,commanded_thrust_vector):
-        """This rotates from the system's body frame to the propeller's velocity frame
+    def body_to_prop_vel(self, commanded_thrust_vector):
+        """
+        Rotates from the system's body frame to the rotor's velocity frame.
 
-        Assumptions:
-        There are two propeller frames, the vehicle frame describing the location and the propeller velocity frame.
-        Velocity frame is X out the nose, Z towards the ground, and Y out the right wing
-        Vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing
+        Parameters
+        ----------
+        commanded_thrust_vector : ndarray
+            Vector of commanded thrust angles [rad] for each time step.
 
-        Source:
-        N/A
+        Returns
+        -------
+        rot_mat : ndarray
+            3x3 rotation matrix transforming from body frame to rotor velocity frame.
+        rots : ndarray
+            Array of rotation vectors including commanded thrust angles and orientation.
 
-        Inputs:
-        None
+        Notes
+        -----
+        This method performs a sequence of rotations to transform coordinates from
+        the vehicle body frame to the rotor's velocity frame. The transformation
+        sequence is:
 
-        Outputs:
-        None
+        1. Body to vehicle frame (π rotation about Y-axis)
+        2. Vehicle to rotor vehicle frame (includes thrust vector and orientation)
+        3. Rotor vehicle to rotor velocity frame
 
-        Properties Used:
-        None
+        **Theory**
+        The complete transformation is computed as:
+        .. math::
+            R_{total} = (R_{body2vehicle} R_{vehicle2rotor}) R_{rotor2vel}
+
+        Where:
+
+        * R_{body2vehicle} is a π rotation about Y-axis
+        * R_{vehicle2rotor} includes orientation_euler_angles and thrust command
+        * R_{rotor2vel} is from vec_to_vel()
+
+        Velocity frame:
+
+        * X-axis points out the nose
+        * Z-axis points towards the ground
+        * Y-axis points out the right wing
+
+        Vehicle frame:
+
+        * X-axis points towards the tail
+        * Z-axis points towards the ceiling
+        * Y-axis points out the right wing
+
+        **Major Assumptions**
+
+        * The rotor's default orientation is defined by orientation_euler_angles
+        * Right-handed coordinate system is used
+        * Thrust vector rotation is applied about the Y-axis
+        * Matrix multiplication order preserves proper transformation sequence
+        * Euler angle sequence is fixed
         """
 
         # Go from velocity to vehicle frame
@@ -216,25 +387,55 @@ class Rotor(Component):
         return rot_mat , rots
 
 
-    def prop_vel_to_body(self,commanded_thrust_vector):
-        """This rotates from the propeller's velocity frame to the system's body frame
+    def prop_vel_to_body(self, commanded_thrust_vector):
+        """
+        Rotates from the rotor's velocity frame to the system's body frame.
 
-        Assumptions:
-        There are two propeller frames, the vehicle frame describing the location and the propeller velocity frame
-        velocity frame is X out the nose, Z towards the ground, and Y out the right wing
-        vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing
+        Parameters
+        ----------
+        commanded_thrust_vector : ndarray
+            Vector of commanded thrust angles [rad] for each time step.
 
-        Source:
-        N/A
+        Returns
+        -------
+        rot_mat : ndarray
+            3x3 rotation matrix transforming from rotor velocity frame to body frame.
+        rots : ndarray
+            Array of rotation vectors including commanded thrust angles and orientation.
 
-        Inputs:
-        None
+        Notes
+        -----
+        This method performs the inverse transformation sequence of body_to_prop_vel.
+        The transformation sequence is:
 
-        Outputs:
-        None
+        1. Rotor velocity to rotor vehicle frame
+        2. Rotor vehicle to vehicle frame (includes thrust vector and orientation)
+        3. Vehicle to body frame (π rotation about Y-axis)
 
-        Properties Used:
-        None
+        **Theory**
+        The complete transformation is computed as:
+        .. math::
+            R_{total} = (R_{body2propvel})^{-1}
+
+        Velocity frame:
+
+        * X-axis points out the nose
+        * Z-axis points towards the ground
+        * Y-axis points out the right wing
+
+        Vehicle frame:
+
+        * X-axis points towards the tail
+        * Z-axis points towards the ceiling
+        * Y-axis points out the right wing
+
+        **Major Assumptions**
+
+        * The rotor's default orientation is defined by orientation_euler_angles
+        * Right-handed coordinate system is used
+        * Thrust vector rotation is applied about the Y-axis
+        * Rotation matrices are orthogonal (inverse = transpose)
+        * Euler angle sequence is fixed
         """
 
         body2propvel,rots = self.body_to_prop_vel(commanded_thrust_vector)

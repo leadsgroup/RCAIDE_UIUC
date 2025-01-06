@@ -64,28 +64,6 @@ class Sequential_Segments(Segments.Segment.Container):
 
         return  
 
-    def pre_process(self):
-        """ This executes the entire process
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            State  [Data()]
-    
-            Outputs:
-            State  [Data()]
-    
-            Properties Used:
-            None
-        """   
-        self.process.pre_process(self)
-         
-        return self 
-
                         
     def evaluate(self,state=None):
         """ This executes the entire process
@@ -142,33 +120,7 @@ class Container(ContainerBase):
     
             Properties Used:
             None
-        """         
-        results = RCAIDE.Framework.Core.Data()
-        
-        for key,mission in self.items():
-            result = mission.evaluate(state)
-            results[key] = result
-            
-        return results
-    
-    def finalize(self):
-        """ Stub
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
-            """          
+        """
         pass
 
 # Link container

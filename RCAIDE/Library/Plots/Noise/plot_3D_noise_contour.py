@@ -17,48 +17,115 @@ import plotly.graph_objects as go
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------    
 def plot_3D_noise_contour(noise_data,
-                       noise_level              = None ,
-                       min_noise_level          = 35,  
-                       max_noise_level          = 90, 
-                       noise_scale_label        = None,
-                       save_figure              = False,
-                       show_figure              = True,
-                       save_filename            = "Noise_Contour",
+                       noise_level = None,
+                       min_noise_level = 35,  
+                       max_noise_level = 90, 
+                       noise_scale_label = None,
+                       save_figure = False,
+                       show_figure = True,
+                       save_filename = "Noise_Contour",
                        use_lat_long_coordinates = True, 
-                       show_trajectory          = False,
-                       show_microphones         = False,
-                       colormap                 = 'jet',
-                       file_type                = ".png",
-                       background_color         = 'rgb(17,54,71)',
-                       grid_color               = 'gray',
-                       width                    = 1400, 
-                       height                   = 800,
-                       *args, **kwargs): 
-    """This plots a 3D noise contour of a noise level using plotly
+                       show_trajectory = False,
+                       show_microphones = False,
+                       colormap = 'jet',
+                       file_type = ".png",
+                       background_color = 'rgb(17,54,71)',
+                       grid_color = 'gray',
+                       width = 1400, 
+                       height = 800):
+    """
+    Creates an interactive 3D visualization of noise contours with optional aircraft trajectory.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    noise_data : NoiseData
+        RCAIDE noise data structure containing:
+            - microphone_locations[:,:,0:3]
+                3D array of microphone positions in (nmi, nmi, ft)
+            - aircraft_position[:,0:3]
+                Aircraft trajectory points in (nmi, nmi, ft)
+            
+    noise_level : ndarray
+        2D array of noise levels at measurement points
+        
+    min_noise_level : float, optional
+        Minimum noise level for contour scale (default: 35 dB)
+        
+    max_noise_level : float, optional
+        Maximum noise level for contour scale (default: 90 dB)
+        
+    noise_scale_label : str, optional
+        Label for noise metric (e.g., "dBA", "EPNL", etc.)
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_figure : bool, optional
+        Flag to display the figure (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Noise_Contour")
+        
+    use_lat_long_coordinates : bool, optional
+        Flag to use geographic coordinates (default: True)
+        
+    show_trajectory : bool, optional
+        Flag to display aircraft trajectory (default: False)
+        
+    show_microphones : bool, optional
+        Flag to display microphone locations (default: False)
+        
+    colormap : str, optional
+        Colormap specification for noise contours (default: 'jet')
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    background_color : str, optional
+        Color specification for plot background (default: 'rgb(17,54,71)')
+        
+    grid_color : str, optional
+        Color specification for grid lines (default: 'gray')
+        
+    width : int, optional
+        Figure width in pixels (default: 1400)
+        
+    height : int, optional
+        Figure height in pixels (default: 800)
 
-    Source:
-    None
+    Returns
+    -------
+    fig_3d : plotly.graph_objects.Figure
+        Handle to the generated interactive 3D figure
 
-    Inputs: 
-       noise_data        - noise data structure 
-       noise_level       - noise level (dBA, DNL, SENEL etc)
-       min_noise_level   - minimal noise level 
-       max_noise_level   - maximum noise level 
-       noise_scale_label - noise level label 
-       save_figure       - save figure 
-       show_figure       - show figure 
-       save_filename     - save file flag
-       show_trajectory   - plot aircraft trajectory flag
-       show_microphones  - show microhpone flag 
-
-    Outputs:
-       Plots
-
-    Properties Used:
-    N/A
+    Notes
+    -----
+    Creates visualization showing:
+        * 3D noise contour surface
+        * Optional aircraft trajectory
+        * Optional microphone locations
+        * Interactive viewing controls
+        * Customizable appearance
+    
+    **Major Assumptions**
+        * Noise levels are in decibels
+        * Coordinates are in nautical miles and feet
+        * Measurement grid is regularly spaced
+        * Z-axis represents elevation
+    
+    **Definitions**
+    
+    'Noise Contour'
+        Surface of constant noise level
+    'Aircraft Trajectory'
+        Time history of aircraft position
+    'Microphone Location'
+        Measurement point coordinates
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Noise.plot_2D_noise_contour : 2D visualization of noise field
+    RCAIDE.Library.Plots.Noise.contour_surface_slice : Surface generation utility
     """   
     Aircraft_pos    = noise_data.aircraft_position      
     X               = noise_data.microphone_locations[:,:,0]/Units.nmi  

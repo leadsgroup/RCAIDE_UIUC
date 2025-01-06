@@ -98,7 +98,7 @@ def vehicle_setup():
     wing.append_airfoil(wing_airfoil)  
     
     # set root sweep with inner section
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'section_1'
     segment.percent_span_location = 0.
     segment.twist                 = 0. * Units.deg
@@ -107,10 +107,10 @@ def vehicle_setup():
     segment.sweeps.quarter_chord  = 67. * Units.deg
     segment.thickness_to_chord    = 0.03
     segment.append_airfoil(wing_airfoil)
-    wing.Segments.append(segment)
+    wing.segments.append(segment)
     
     # set section 2 start point
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'section_2'
     segment.percent_span_location = (6.15 * 2) /wing.spans.projected
     segment.twist                 = 0. * Units.deg
@@ -119,11 +119,11 @@ def vehicle_setup():
     segment.sweeps.quarter_chord  = 48. * Units.deg
     segment.thickness_to_chord    = 0.03
     segment.append_airfoil(wing_airfoil)
-    wing.Segments.append(segment)
+    wing.segments.append(segment)
     
     
     # set section 3 start point
-    segment = RCAIDE.Library.Components.Wings.Segment() 
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment() 
     segment.tag                   = 'section_3'
     segment.percent_span_location = (12.1 *2) /wing.spans.projected
     segment.twist                 = 0. * Units.deg
@@ -132,10 +132,10 @@ def vehicle_setup():
     segment.sweeps.quarter_chord  = 71. * Units.deg 
     segment.thickness_to_chord    = 0.03
     segment.append_airfoil(wing_airfoil)
-    wing.Segments.append(segment)  
+    wing.segments.append(segment)  
     
     # set tip
-    segment = RCAIDE.Library.Components.Wings.Segment() 
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment() 
     segment.tag                   = 'tip'
     segment.percent_span_location = 1.
     segment.twist                 = 0. * Units.deg
@@ -144,7 +144,7 @@ def vehicle_setup():
     segment.sweeps.quarter_chord  = 0.
     segment.thickness_to_chord    = 0.03
     segment.append_airfoil(wing_airfoil)
-    wing.Segments.append(segment)      
+    wing.segments.append(segment)      
     
     # Fill out more segment properties automatically
     wing = wing_segmented_planform(wing)        
@@ -191,7 +191,7 @@ def vehicle_setup():
     wing.append_airfoil(tail_airfoil)  
 
     # set root sweep with inner section
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'section_1'
     segment.percent_span_location = 0.0
     segment.twist                 = 0. * Units.deg
@@ -200,22 +200,22 @@ def vehicle_setup():
     segment.sweeps.quarter_chord  = 63. * Units.deg
     segment.thickness_to_chord    = 0.04
     segment.append_airfoil(tail_airfoil)
-    wing.Segments.append(segment)
+    wing.segments.append(segment)
     
     # set mid section start point
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'section_2'
-    segment.percent_span_location = 2.4/(6.0) + wing.Segments['section_1'].percent_span_location
+    segment.percent_span_location = 2.4/(6.0) + wing.segments['section_1'].percent_span_location
     segment.twist                 = 0. * Units.deg
     segment.root_chord_percent    = 7.5/14.5
     segment.dihedral_outboard     = 0.
     segment.sweeps.quarter_chord  = 40. * Units.deg
     segment.thickness_to_chord    = 0.04
     segment.append_airfoil(tail_airfoil)
-    wing.Segments.append(segment)
+    wing.segments.append(segment)
     
     # set tip
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'tip'
     segment.percent_span_location = 1.
     segment.twist                 = 0. * Units.deg
@@ -224,7 +224,7 @@ def vehicle_setup():
     segment.sweeps.quarter_chord  = 0.
     segment.thickness_to_chord    = 0.04
     segment.append_airfoil(tail_airfoil)
-    wing.Segments.append(segment)    
+    wing.segments.append(segment)    
     
     # Fill out more segment properties automatically
     wing = wing_segmented_planform(wing)        
@@ -275,83 +275,81 @@ def vehicle_setup():
     
     
     # Segment  
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment() 
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() 
     segment.tag                                 = 'segment_0'    
     segment.percent_x_location                  = 0.0000
-    segment.percent_z_location                  =  -0.61 /fuselage.lengths.total 
-    segment.height                              = 0.00100 
-    segment.width                               = 0.00100  
-    fuselage.Segments.append(segment)   
+    segment.percent_z_location                  =  -0.61 /fuselage.lengths.total  
+    fuselage.segments.append(segment)   
      
     
     # Segment                                   
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_1'   
     segment.percent_x_location                  = 3.02870/fuselage.lengths.total   
     segment.percent_z_location                  = -0.3583/fuselage.lengths.total     
     segment.height                              = 1.4502  
     segment.width                               = 1.567  
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
     
 
     
     # Segment                                   
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_2'   
     segment.percent_x_location                  =   5.7742/fuselage.lengths.total   
     segment.percent_z_location                  =  -0.1500/fuselage.lengths.total    
     segment.height                              = 2.356  
     segment.width                               = 2.3429  
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
     
 
     # Segment                                   
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_3'   
     segment.percent_x_location                  =  9.0791/fuselage.lengths.total    
     segment.percent_z_location                  = 0  
     segment.height                              = 3.0581  
     segment.width                               = 2.741  
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
      
     
     
     # Segment  
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment() 
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment() 
     segment.tag                                 = 'segment_4'    
     segment.percent_x_location                  = 12.384/fuselage.lengths.total  
     segment.percent_z_location                  = 0  
     segment.height                              = 3.3200 
     segment.width                               = 2.880  
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
     
     # Segment                                   
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_6'   
     segment.percent_x_location                  = 43.228 /fuselage.lengths.total    
     segment.percent_z_location                  = 0 
     segment.height                              = 3.3200   
     segment.width                               = 2.8800  
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
 
     # Segment                                   
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_6'   
     segment.percent_x_location                  =  47.5354/fuselage.lengths.total     
     segment.percent_z_location                  =  0.100/fuselage.lengths.total     
     segment.height                              = 2.952  
     segment.width                               = 2.8800  
-    fuselage.Segments.append(segment)   
+    fuselage.segments.append(segment)   
 
                  
     # Segment                                   
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_7'   
     segment.percent_x_location                  = 1  
     segment.percent_z_location                  = 1.2332/fuselage.lengths.total   
     segment.height                              = 0.00100  
     segment.width                               = 0.00100  
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
     
     
     vehicle.append_component(fuselage)
@@ -361,12 +359,12 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------ 
     #initialize the fuel network
     net                                            = RCAIDE.Framework.Networks.Fuel() 
+    net.identical_propulsors                       = False # for regression 
     
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Fuel Distrubition Line 
     #------------------------------------------------------------------------------------------------------------------------------------  
     fuel_line                                     = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line() 
-    fuel_line.identical_propulsors                = False # for regression 
     
 
     #------------------------------------------------------------------------------------------------------------------------------------  
@@ -464,7 +462,7 @@ def vehicle_setup():
     nacelle.inlet_diameter                      = 1.1 
     nacelle.areas.wetted                        = 30.
     
-    nac_segment                                 = RCAIDE.Library.Components.Nacelles.Segment()
+    nac_segment                                 = RCAIDE.Library.Components.Nacelles.Segments.Segment()
     nac_segment.tag                             = 'segment_1' 
     nac_segment.orientation_euler_angles        = [0., -45*Units.degrees,0.]     
     nac_segment.percent_x_location              = 0.0  
@@ -473,7 +471,7 @@ def vehicle_setup():
     nac_segment.curvature                       = 5
     nacelle.append_segment(nac_segment)         
 
-    nac_segment                                 = RCAIDE.Library.Components.Nacelles.Segment()
+    nac_segment                                 = RCAIDE.Library.Components.Nacelles.Segments.Segment()
     nac_segment.tag                             = 'segment_2'
     nac_segment.percent_x_location              = 1.0
     nac_segment.height                          = 1.5
@@ -652,7 +650,7 @@ def configs_setup(vehicle):
     config.tag                            = 'landing' 
     config.wings['main_wing'].flaps_angle = 0. * Units.deg
     config.wings['main_wing'].slats_angle = 0. * Units.deg  
-    config.maximum_lift_coefficient       = 2.
+    config.maximum_lift_coefficient       = 2. 
     
     configs.append(config)
     

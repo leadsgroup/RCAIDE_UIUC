@@ -69,9 +69,9 @@ def tiltwing_transition_test(update_regression_values):
             print(val)
     
     # Truth values 
-    hover_throttle_truth              = 0.6044572977445689
-    vertical_climb_1_throttle_truth   = 0.6080401647201861
-    vertical_descent_throttle_truth   = 0.5977742166563198
+    hover_throttle_truth              = 0.6032731206904142
+    vertical_climb_1_throttle_truth   = 0.606892139245807
+    vertical_descent_throttle_truth   = 0.5965847517907135
     
     # Store errors 
     error = Data() 
@@ -114,9 +114,9 @@ def stopped_rotor_transition_test(update_regression_values):
             print(val)
     
     # Truth values 
-    hover_throttle_truth  = 0.6535694604648372
-    lst_throttle_truth    = 0.6390280013478361
-    hsct_throttle_truth   = 0.5500303980166116
+    hover_throttle_truth  = 0.650918038833368
+    lst_throttle_truth    = 0.6359963559059645
+    hsct_throttle_truth   = 0.5475420672366067
     
     # Store errors 
     error = Data() 

@@ -1,4 +1,3 @@
-## @ingroup Analyses-Planets
 # Planet.py
 #
 # Created:  
@@ -6,16 +5,13 @@
 
 # ----------------------------------------------------------------------
 #  Imports
-# ----------------------------------------------------------------------
-import RCAIDE
+# ---------------------------------------------------------------------- 
 from RCAIDE.Framework.Core import Data 
 from RCAIDE.Framework.Analyses import Analysis
 
 # ----------------------------------------------------------------------
 #  Analysis
 # ----------------------------------------------------------------------
-
-## @ingroup Analyses-Planets
 class Planet(Analysis):
     """ RCAIDE.Framework.Analyses.Planet()
     """

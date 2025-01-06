@@ -1,4 +1,3 @@
-## @ingroup Optimization-Package_Setups
 # pyopt_setup.py
 #
 # Created:  Jul 2015, E. Botero
@@ -16,9 +15,7 @@ from RCAIDE.Framework.Optimization.Common import helper_functions as help_fun
 
 # ----------------------------------------------------------------------
 #  Pyopt_Solve
-# ----------------------------------------------------------------------
-
-## @ingroup Optimization-Package_Setups
+# ---------------------------------------------------------------------- 
 def Pyopt_Solve(problem,solver='SNOPT',FD='single', sense_step=1.0E-6,  nonderivative_line_search=False):
     """ This converts your RCAIDE Nexus problem into a PyOpt optimization problem and solves it
         PyOpt has many algorithms, they can be switched out by using the solver input. 
@@ -155,9 +152,7 @@ def Pyopt_Solve(problem,solver='SNOPT',FD='single', sense_step=1.0E-6,  nonderiv
 
 # ----------------------------------------------------------------------
 #  Problem Wrapper
-# ----------------------------------------------------------------------
-
-## @ingroup Optimization-Package_Setups
+# ---------------------------------------------------------------------- 
 def PyOpt_Problem(problem,x):
     """ This wrapper runs the RCAIDE problem and is called by the PyOpt solver.
         Prints the inputs (x) as well as the objective values and constraints.

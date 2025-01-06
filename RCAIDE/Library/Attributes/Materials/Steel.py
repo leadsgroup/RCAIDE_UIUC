@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Steel.py
 #
 # Created: Jul, 2017, J. Smart
@@ -16,7 +14,6 @@ from RCAIDE.Framework.Core import Units
 # AISI 4340 Steel Solid Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Steel(Solid):
     """ Physical Constants Specific to AISI 4340 Steel
     

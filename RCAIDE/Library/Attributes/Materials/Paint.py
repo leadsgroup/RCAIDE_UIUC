@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Paint.py
 #
 # Created: Jul, 2017, J. Smart
@@ -16,7 +14,6 @@ from RCAIDE.Framework.Core import Units
 # Paint and/or Vinyl Surface Convering Solid Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Paint(Solid):
     """ Physical Constants Specific to Paint/Vinyl Surface Coverings
     

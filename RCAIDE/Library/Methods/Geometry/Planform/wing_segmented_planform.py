@@ -65,8 +65,8 @@ def wing_segmented_planform(wing, overwrite_reference = False):
     dihedrals = []
     chords    = []
     t_cs      = []
-    for key in wing.Segments.keys():
-        seg = wing.Segments[key]
+    for key in wing.segments.keys():
+        seg = wing.segments[key]
         span_locs.append(seg.percent_span_location)
         twists.append(seg.twist)
         chords.append(seg.root_chord_percent)
@@ -203,7 +203,7 @@ def segment_properties(wing,update_wet_areas=False,update_ref_areas=False):
     Outputs:
     wing.areas.wetted           [m^2]
     wing.areas.reference        [m^2]
-    wing.Segments.
+    wing.segments.
       taper                     [-]
       chords.mean_aerodynamic   [m]
       areas.
@@ -221,7 +221,7 @@ def segment_properties(wing,update_wet_areas=False,update_ref_areas=False):
     symm                      = wing.symmetric
     semispan                  = wing.spans.projected*0.5 * (2 - symm)
     t_c_w                     = wing.thickness_to_chord
-    segments                  = wing.Segments
+    segments                  = wing.segments
     segment_names             = list(segments.keys())
     num_segments              = len(segment_names)   
     total_wetted_area         = 0.

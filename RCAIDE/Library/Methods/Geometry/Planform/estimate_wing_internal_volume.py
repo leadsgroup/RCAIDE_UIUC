@@ -1,4 +1,3 @@
-## @ingroup Methods-Geometry-Three_Dimensional
 # estimate_naca_4_series_internal_volume.py
 #
 # Created:  ### ####, M. Vegh
@@ -12,8 +11,6 @@ import numpy as np
 # ----------------------------------------------------------------------
 #  Methods
 # ----------------------------------------------------------------------
-
-## @ingroup Methods-Geometry-Three_Dimensional
 def estimate_wing_internal_volume(wing, m, p): 
     """Computes the volume of a wing with NACA 4-series airfoils.
 

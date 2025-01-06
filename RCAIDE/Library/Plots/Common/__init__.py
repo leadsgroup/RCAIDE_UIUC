@@ -1,7 +1,12 @@
+## @defgroup Library-Plots-Performance-Common Common 
 # RCAIDE/Library/Plots/Performance/Common/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+RCAIDE Common Plotting Utilities
+
+This module provides standardized plotting utilities used across RCAIDE's visualization 
+capabilities. It includes functions for consistent axis formatting and plot styling.
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

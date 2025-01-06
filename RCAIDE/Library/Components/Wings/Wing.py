@@ -1,14 +1,14 @@
-# RCAIDE/Compoments/Wings/Wing.py
-# 
+# RCAIDE/Library/Compoments/Wings/Wing.py
 # 
 # Created:  Mar 2024, M. Clarke 
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
-# RCAIDE imports    
-from RCAIDE.Framework.Core import Data,Container
-from RCAIDE.Library.Components import Mass_Properties, Component  
+# RCAIDE imports
+import RCAIDE
+from RCAIDE.Framework.Core      import Data,Container 
+from RCAIDE.Library.Components  import Mass_Properties, Component   
 from RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia import  compute_wing_moment_of_inertia
 
 import numpy as np
@@ -17,42 +17,159 @@ import numpy as np
 #  Wing
 # ----------------------------------------------------------------------------------------------------------------------  
 class Wing(Component):
-    """This class defines the wing in RCAIDE
+    """
+    Base class for aircraft lifting surfaces providing core functionality for geometric 
+    definition and analysis.
 
-    Assumptions:
-    None
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the wing, defaults to 'wing'
+        
+    mass_properties : Mass_Properties
+        Mass and inertia properties, initialized empty
+        
+    origin : ndarray
+        3D coordinates [x, y, z] defining wing's reference point, defaults to [0.0, 0.0, 0.0]
+        
+    symmetric : bool
+        Flag indicating if wing is symmetric about x-z plane, defaults to True
+        
+    vertical : bool
+        Flag indicating if wing is vertically oriented, defaults to False
+        
+    t_tail : bool
+        Flag indicating if wing is mounted on vertical tail, defaults to False
+        
+    taper : float
+        Wing taper ratio, defaults to 0.0
+        
+    dihedral : float
+        Wing dihedral angle, defaults to 0.0
+        
+    aspect_ratio : float
+        Wing aspect ratio, defaults to 0.0
+        
+    thickness_to_chord : float
+        Average thickness-to-chord ratio, defaults to 0.0
+        
+    aerodynamic_center : list
+        Location of aerodynamic center [x, y, z], defaults to [0.0, 0.0, 0.0]
+        
+    exposed_root_chord_offset : float
+        Offset of exposed root from centerline, defaults to 0.0
+        
+    total_length : float
+        Total length of wing, defaults to 0.0
+        
+    spans : Data
+        Collection of span measurements
+        
+        - projected : float
+            Projected span, defaults to 0.0
+        - total : float
+            Total span including dihedral effects, defaults to 0.0
+            
+    areas : Data
+        Collection of area measurements
+        
+        - reference : float
+            Reference area, defaults to 0.0
+        - exposed : float
+            Exposed area, defaults to 0.0
+        - affected : float
+            Area affected by high-lift devices, defaults to 0.0
+        - wetted : float
+            Wetted area, defaults to 0.0
+            
+    chords : Data
+        Collection of chord measurements
+        
+        - mean_aerodynamic : float
+            Mean aerodynamic chord, defaults to 0.0
+        - mean_geometric : float
+            Mean geometric chord, defaults to 0.0
+        - root : float
+            Root chord, defaults to 0.0
+        - tip : float
+            Tip chord, defaults to 0.0
+            
+    sweeps : Data
+        Collection of sweep angles
+        
+        - quarter_chord : float
+            Quarter-chord sweep angle, defaults to 0.0
+        - leading_edge : float
+            Leading edge sweep angle, defaults to None
+        - half_chord : float
+            Half-chord sweep angle, defaults to 0.0
+            
+    twists : Data
+        Collection of twist angles
+        
+        - root : float
+            Root section twist angle, defaults to 0.0
+        - tip : float
+            Tip section twist angle, defaults to 0.0
+            
+    high_lift : bool
+        Flag indicating presence of high-lift devices, defaults to False
+        
+    symbolic : bool
+        Flag for symbolic computation mode, defaults to False
+        
+    high_mach : bool
+        Flag for high Mach number flow, defaults to False
+        
+    vortex_lift : bool
+        Flag for vortex lift modeling, defaults to False
+        
+    transition_x_upper : float
+        Upper surface transition location, defaults to 0.0
+        
+    transition_x_lower : float
+        Lower surface transition location, defaults to 0.0
+        
+    dynamic_pressure_ratio : float
+        Local to freestream dynamic pressure ratio, defaults to 0.0
+        
+    Airfoil : Container
+        Collection of airfoil definitions, initialized empty
+        
+    segments : Container
+        Collection of wing segments, initialized empty
+        
+    control_surfaces : Container
+        Collection of control surfaces, initialized empty
+        
+    fuel_tanks : Container
+        Collection of fuel tanks, initialized empty
 
-    Source:
-    N/A
-
-    Inputs:
-    None
-
-    Outputs:
-    None
-
-    Properties Used:
-    N/A
-    """      
-    def __defaults__(self):
-        """This sets the default values of a wing defined in RCAIDE.
+    Notes
+    -----
+    The Wing class serves as the foundation for all lifting surfaces in RCAIDE. 
+    It provides:
     
-        Assumptions:
-        None
+    * Geometric definition capabilities
+    * Segment management
+    * Control surface integration
+    * Fuel tank integration
+    * Mass properties computation
 
-        Source:
-        N/A
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Main_Wing
+        Primary lifting surface implementation
+    RCAIDE.Library.Components.Wings.Horizontal_Tail
+        Horizontal stabilizer implementation
+    RCAIDE.Library.Components.Wings.Vertical_Tail
+        Vertical stabilizer implementation
+    """      
 
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
+    def __defaults__(self):
+        """
+        Sets default values for the wing attributes.
         """         
-
         self.tag                               = 'wing'
         self.mass_properties                   = Mass_Properties()
         self.origin                            = np.array([[0.0,0.0,0.0]])
@@ -103,88 +220,57 @@ class Wing(Component):
                                                
         self.dynamic_pressure_ratio            = 0.0
                                                
-        self.Airfoil                           = Container()  
+        self.airfoil                           = None 
         
-        self.Segments                          = Container()
+        self.segments                          = Container()
         self.control_surfaces                  = Container()
         self.fuel_tanks                        = Container()
 
-    def append_segment(self,segment):
-        """ Adds a segment to the wing 
-    
-        Assumptions:
-        None
+    def append_segment(self, segment):
+        """
+        Adds a new segment to the wing's segment container.
 
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
-
+        Parameters
+        ----------
+        segment : Data
+            Wing segment to be added
+        """
         # Assert database type
-        if not isinstance(segment,Data):
-            raise Exception('input component must be of type Data()')
+        if not isinstance(segment,RCAIDE.Library.Components.Wings.Segments.Segment):
+            raise Exception('input component must be of type Segment')
 
         # Store data
-        self.Segments.append(segment)
+        self.segments.append(segment)
 
         return
     
-    def append_airfoil(self,airfoil):
-        """ Adds an airfoil to the segment 
-    
-        Assumptions:
-        None
+    def append_airfoil(self, airfoil):
+        """
+        Adds an airfoil definition to the wing.
 
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
-
+        Parameters
+        ----------
+        airfoil : Data
+            Airfoil data to be added
+        """
         # Assert database type
-        if not isinstance(airfoil,Data):
-            raise Exception('input component must be of type Data()')
+        if not isinstance(airfoil,RCAIDE.Library.Components.Airfoils.Airfoil):
+            raise Exception('input component must be of type Airfoil')
 
         # Store data
-        self.Airfoil.append(airfoil)
+        self.airfoil = airfoil
 
         return        
 
+    def append_control_surface(self, control_surface):
+        """
+        Adds a control surface to the wing.
 
-    def append_control_surface(self,control_surface):
-        """ Adds a component to vehicle 
-    
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
-
+        Parameters
+        ----------
+        control_surface : Data
+            Control surface to be added
+        """
         # Assert database type
         if not isinstance(control_surface,Data):
             raise Exception('input control surface must be of type Data()')
@@ -194,36 +280,43 @@ class Wing(Component):
 
         return
     
-    def append_fuel_tank(self,fuel_tank):
-        """ Adds a fuel tank to the wing 
-    
-        Assumptions:
-        None
+    def append_fuel_tank(self, fuel_tank):
+        """
+        Adds a fuel tank to the wing.
 
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
-
+        Parameters
+        ----------
+        fuel_tank : Data
+            Fuel tank to be added
+        """
         # Assert database type
         if not isinstance(fuel_tank,Data):
             raise Exception('input component must be of type Data()')
 
         # Store data
-        self.Fuel_Tanks.append(fuel_tank)
+        self.fuel_tanks.append(fuel_tank)
 
         return
  
-    def compute_moment_of_inertia(self,mass,center_of_gravity=[[0, 0, 0]], fuel_flag = False): 
-        I =  compute_wing_moment_of_inertia(self,mass, center_of_gravity, fuel_flag) 
+    def compute_moment_of_inertia(self, mass, center_of_gravity=[[0, 0, 0]], fuel_flag=False): 
+        """
+        Computes the moment of inertia tensor for the wing.
+
+        Parameters
+        ----------
+        mass : float
+            Wing mass
+        center_of_gravity : list, optional
+            Reference point coordinates, defaults to [[0, 0, 0]]
+        fuel_flag : bool, optional
+            Flag to include fuel mass, defaults to False
+
+        Returns
+        -------
+        ndarray
+            3x3 moment of inertia tensor
+        """
+        I = compute_wing_moment_of_inertia(self, mass, center_of_gravity, fuel_flag) 
         return I   
     
 class Container(Component.Container):

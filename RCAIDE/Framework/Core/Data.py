@@ -1,4 +1,3 @@
-## @ingroup Core
 # Data.py
 #
 # Created:  Jun 2016, E. Botero
@@ -14,7 +13,7 @@
 # ----------------------------------------------------------------------
 
 import numpy as np
-from .Arrays import atleast_2d_col, array_type, matrix_type, append_array
+from .Arrays import atleast_2d_col, array_type, matrix_type 
 
 from copy import copy
 
@@ -31,8 +30,6 @@ objgetattrib = object.__getattribute__
 # ----------------------------------------------------------------------
 #   Data
 # ----------------------------------------------------------------------        
-
-## @ingroup Core
 class Data(dict):
     """ An extension of the Python dict which allows for both tag and '.' usage.
         This is an unordered dictionary. So indexing it will not produce deterministic results.
@@ -93,31 +90,6 @@ class Data(dict):
             self[k] = v
         else:          
             object.__setattr__(self, k, v) 
-            
-    def __delattr__(self, k):
-        """ An override of the standard __delattr_ in Python. This deletes whatever is called by k
-            
-            Assumptions:
-            This one tries to treat k as an object, if that fails it treats it as a key.
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """        
-        try:
-            objgetattrib(self, k)
-        except:
-            del self[k]
-        else:
-            object.__delattr__(self, k)
     
     def __defaults__(self):
         """ A stub for all classes that come later
@@ -310,23 +282,25 @@ class Data(dict):
         return args        
     
     def __init__(self,*args,**kwarg):
-        """ Initializes a new Data() class
+        """ :meta private:"""
+        # """ 
+        #     Initializes a new Data() class
     
-            Assumptions:
-            N/A
+        #     Assumptions:
+        #     N/A
     
-            Source:
-            N/A
+        #     Source:
+        #     N/A
     
-            Inputs:
-            N/A
+        #     Inputs:
+        #     N/A
     
-            Outputs:
-            N/A
+        #     Outputs:
+        #     N/A
     
-            Properties Used:
-            N/A    
-        """           
+        #     Properties Used:
+        #     N/A    
+        # """           
 
         # handle input data (ala class factory)
         input_data = Data.__base__(*args,**kwarg)
@@ -335,104 +309,88 @@ class Data(dict):
         self.update(input_data)    
 
     def __iter__(self):
-        """ Returns all the iterable values. Can be used in a for loop.
+        """ :meta private:"""
+        # """ Returns all the iterable values. Can be used in a for loop.
     
-            Assumptions:
-            N/A
+        #     Assumptions:
+        #     N/A
     
-            Source:
-            N/A
+        #     Source:
+        #     N/A
     
-            Inputs:
-            N/A
+        #     Inputs:
+        #     N/A
     
-            Outputs:
-            N/A
+        #     Outputs:
+        #     N/A
     
-            Properties Used:
-            N/A    
-        """           
+        #     Properties Used:
+        #     N/A    
+        # """           
         return iter(self.values())
-    
-    def itervalues(self):
-        """ Finds all the values that can be iterated over.
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """             
-        for k in super(Data,self).__iter__():
-            yield self[k]   
+       
     
     def values(self):
-        """ Returns all values inside the Data() class.
+        """ :meta private:"""
+        # """ Returns all values inside the Data() class.
     
-            Assumptions:
-            N/A
+        #     Assumptions:
+        #     N/A
     
-            Source:
-            N/A
+        #     Source:
+        #     N/A
     
-            Inputs:
-            N/A
+        #     Inputs:
+        #     N/A
     
-            Outputs:
-            values
+        #     Outputs:
+        #     values
     
-            Properties Used:
-            N/A    
-        """          
+        #     Properties Used:
+        #     N/A    
+        # """          
         return self.__values()          
             
     def __values(self):
-        """ Iterates over all keys to find all the data values.
+        """ :meta private:"""
+        #  Iterates over all keys to find all the data values.
     
-            Assumptions:
-            N/A
+        #     Assumptions:
+        #     N/A
     
-            Source:
-            N/A
+        #     Source:
+        #     N/A
     
-            Inputs:
-            N/A
+        #     Inputs:
+        #     N/A
     
-            Outputs:
-            values
+        #     Outputs:
+        #     values
     
-            Properties Used:
-            N/A    
-        """           
+        #     Properties Used:
+        #     N/A    
+        #            
         return [self[key] for key in super(Data,self).__iter__()]    
     
     def update(self,other):
-        """ Updates the internal values of a dictionary with given data
+        """ :meta private:"""
+        # """ Updates the internal values of a dictionary with given data
     
-            Assumptions:
-            N/A
+        #     Assumptions:
+        #     N/A
     
-            Source:
-            N/A
+        #     Source:
+        #     N/A
     
-            Inputs:
-            other
+        #     Inputs:
+        #     other
     
-            Outputs:
-            N/A
+        #     Outputs:
+        #     N/A
     
-            Properties Used:
-            N/A    
-        """           
+        #     Properties Used:
+        #     N/A    
+        # """           
         if not isinstance(other,dict):
             raise TypeError('input is not a dictionary type')
         for k,v in other.items():
@@ -444,42 +402,7 @@ class Data(dict):
                 self[k].update(v)
             except:
                 self[k] = v
-        return
-    
-    def append_or_update(self,other):
-        """ Appends an array or updates the internal values of a dictionary with given data
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            other
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """           
-        if not isinstance(other,dict):
-            raise TypeError('input is not a dictionary type')
-        for k,v in other.items():
-            # recurse only if self's value is a Dict()
-            if k.startswith('_'):
-                continue
-            
-            # Check if v is an array and if k is a key in self
-            if isinstance(v,array_type) and hasattr(self,k):
-                self[k] = append_array(self[k],v)
-            else:
-                try:
-                    self[k].append_or_update(v)
-                except:
-                    self[k] = copy(v)
-        return          
+        return 
     
     def get_bases(self):
         """ Finds the higher classes that may be built off of data
@@ -794,61 +717,4 @@ class Data(dict):
         if not M.shape[-1] == _index[0]: warn('did not unpack all values',RuntimeWarning)
          
         # done!
-        return self     
-    
-    def do_recursive(self,method,other=None,default=None):
-        """ Recursively applies a method of the class.
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            method  - name of the method to access
-    
-            Outputs:
-            Result  - the results of the method
-    
-            Properties Used:
-            N/A    
-        """          
-    
-        # result data structure
-        klass = self.__class__
-        if isinstance(klass,Data):
-            klass = Data
-        result = klass()
-    
-        # the update function
-        def do_operation(A,B,C):
-            for k,a in A.items():
-                if isinstance(B,Data):
-                    if k in B:
-                        b = B[k]
-                    else: 
-                        C[k] = a
-                        continue
-                else:
-                    b = B
-                # recursion
-                if isinstance(a,Data):
-                    c = klass()
-                    C[k] = c
-                    do_operation(a,b,c)
-                # method
-                else:
-                    if b is None:
-                        c = method(a)
-                    else:
-                        c = method(a,b)
-                    if not c is None:
-                        C[k] = c
-                #: if type
-            #: for each key,value
-    
-        # do the update!
-        do_operation(self,other,result)    
-    
-        return result
+        return self      

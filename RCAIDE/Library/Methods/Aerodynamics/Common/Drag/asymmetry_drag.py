@@ -11,8 +11,6 @@ from   RCAIDE.Library.Components import Wings
 # ----------------------------------------------------------------------
 #  Compute asymmetry drag due to engine failure 
 # ----------------------------------------------------------------------
-
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Helper_Functions
 def asymmetry_drag(state, geometry, engine_out_location = 0,  single_engine_thrust = 0,  windmilling_drag_coefficient = 0.):
     """Computes asymmetry drag due to engine failure
 

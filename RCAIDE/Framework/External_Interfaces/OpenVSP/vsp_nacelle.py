@@ -1,11 +1,11 @@
-## @ingroup Input_Output-OpenVSP
-# vsp_nacelle.py
+# RCAIDE/Framework/External_Interfaces/OpenVSP/vsp_nacelle.py
 
 # Created:  Sep 2021, M. Clarke
 
-# ----------------------------------------------------------------------
-#  Imports
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------  
+# RCAIDE imports 
 
 import RCAIDE
 from RCAIDE.Framework.Core import Units, Data 
@@ -18,10 +18,10 @@ except ImportError:
     except ImportError:
         # This allows RCAIDE to build without OpenVSP
         pass
-# ----------------------------------------------------------------------
-#  vsp_nacelle
-# ----------------------------------------------------------------------
-## @ingroup Input_Output-OpenVSP
+    
+# ---------------------------------------------------------------------------------------------------------------------- 
+#  vsp_nacelle  
+# ---------------------------------------------------------------------------------------------------------------------- 
 def write_vsp_nacelle(nacelle, OML_set_ind):
     """This converts nacelles into OpenVSP format.
     
@@ -71,12 +71,10 @@ def write_vsp_nacelle(nacelle, OML_set_ind):
     nac_z          = nacelle.origin[0][2]
     nac_x_rotation = nacelle.orientation_euler_angles[0]/Units.degrees    
     nac_y_rotation = nacelle.orientation_euler_angles[1]/Units.degrees    
-    nac_z_rotation = nacelle.orientation_euler_angles[2]/Units.degrees      
-    num_segs       = len(nacelle.Segments)
+    nac_z_rotation = nacelle.orientation_euler_angles[2]/Units.degrees    
     
-    if num_segs > 0: 
-        if nacelle.Airfoil.NACA_4_series_flag == True:
-            raise AssertionError('Nacelle segments defined. Airfoil section will not be used.')
+    if type(nacelle) == RCAIDE.Library.Components.Nacelles.Stack_Nacelle:  
+        num_segs       = len(nacelle.Segments)         
         nac_id = vsp.AddGeom( "STACK")
         vsp.SetGeomName(nac_id,nac_tag)  
         
@@ -97,17 +95,18 @@ def write_vsp_nacelle(nacelle, OML_set_ind):
         x_poses = []
         z_delta = []
         
-        segs = nacelle.Segments
+        segs         = nacelle.Segments
+        segment_list = list(nacelle.Segments.keys())
         for seg in range(num_segs):   
-            widths.append(segs[seg].width)
-            heights.append(segs[seg].height) 
-            x_poses.append(segs[seg].percent_x_location)
+            widths.append(segs[segment_list[seg]].width)
+            heights.append(segs[segment_list[seg]].height) 
+            x_poses.append(segs[segment_list[seg]].percent_x_location)
             if seg == 0: 
                 x_delta.append(0)
                 z_delta.append(0) 
             else:
-                x_delta.append(length*(segs[seg].percent_x_location - segs[seg-1].percent_x_location))
-                z_delta.append(length*(segs[seg].percent_z_location - segs[seg-1].percent_z_location))  
+                x_delta.append(length*(segs[segment_list[seg]].percent_x_location - segs[segment_list[seg-1]].percent_x_location))
+                z_delta.append(length*(segs[segment_list[seg]].percent_z_location - segs[segment_list[seg-1]].percent_z_location))  
                
         vsp.CutXSec(nac_id,4) # remove point section at end  
         vsp.CutXSec(nac_id,0) # remove point section at beginning 
@@ -138,9 +137,11 @@ def write_vsp_nacelle(nacelle, OML_set_ind):
             vsp.Update()          
             xsecsurf = vsp.GetXSecSurf(nac_id,0)
             vsp.ChangeXSecShape(xsecsurf,num_segs-1,vsp.XS_POINT)
-            vsp.Update()      
+            vsp.Update()
+        vsp.SetSetFlag(nac_id, OML_set_ind, True) 
+        vsp.Update()              
             
-    else: 
+    elif type(nacelle) == RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle:
         nac_id = vsp.AddGeom( "BODYOFREVOLUTION")  
         vsp.SetGeomName(nac_id, nac_tag)
 
@@ -161,15 +162,15 @@ def write_vsp_nacelle(nacelle, OML_set_ind):
             vsp.SetParmVal(nac_id,"Mode","Design",0.0)
         else:
             vsp.SetParmVal(nac_id,"Mode","Design",1.0)  
-         
-        if nacelle.Airfoil.NACA_4_series_flag == True:
-            if isinstance(nacelle.Airfoil.coordinate_file, str) and len(nacelle.Airfoil.coordinate_file) != 4:
-                raise AssertionError('Nacelle cowling airfoil must be of type < string > and length < 4 >')
-            else: 
+        
+        
+        if nacelle.airfoil != None:
+            airfoil =  nacelle.airfoil
+            if type(airfoil) == RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil: 
                 angle        = nacelle.cowling_airfoil_angle/Units.degrees 
-                camber       = float(nacelle.Airfoil.coordinate_file[0])/100
-                camber_loc   = float(nacelle.Airfoil.coordinate_file[1])/10
-                thickness    = float(nacelle.Airfoil.coordinate_file[2:])/100
+                camber       = float(airfoil.NACA_4_Series_code[0])/100
+                camber_loc   = float(airfoil.NACA_4_Series_code[1])/10
+                thickness    = float(airfoil.NACA_4_Series_code[2:])/100
                 
                 vsp.ChangeBORXSecShape(nac_id ,vsp.XS_FOUR_SERIES)
                 vsp.Update()
@@ -179,7 +180,9 @@ def write_vsp_nacelle(nacelle, OML_set_ind):
                 vsp.SetParmVal(nac_id, "ThickChord", "XSecCurve", thickness)
                 vsp.SetParmVal(nac_id, "Camber", "XSecCurve", camber )
                 vsp.SetParmVal(nac_id, "CamberLoc", "XSecCurve",camber_loc)  
-                vsp.Update()
+                vsp.Update() 
+                
+                # TO DO: ADD MORE AIRFOIL SECTIONS 
         else:
             vsp.ChangeBORXSecShape(nac_id ,vsp.XS_SUPER_ELLIPSE)
             vsp.Update()
@@ -193,13 +196,15 @@ def write_vsp_nacelle(nacelle, OML_set_ind):
             vsp.SetParmVal(nac_id, "Super_M", "XSecCurve", 2.)
             vsp.SetParmVal(nac_id, "Super_N", "XSecCurve", 1.)  
 
-    vsp.SetSetFlag(nac_id, OML_set_ind, True)
-
-    vsp.Update()  
+        vsp.SetSetFlag(nac_id, OML_set_ind, True) 
+        vsp.Update()
+    else:
+        pass 
     return 
     
-
-## @ingroup Input_Output-OpenVSP
+# ---------------------------------------------------------------------------------------------------------------------- 
+# read_vsp_nacelle
+# ---------------------------------------------------------------------------------------------------------------------- 
 def read_vsp_nacelle(nacelle_id,vsp_nacelle_type, units_type='SI'):
     """This reads an OpenVSP stack geometry or body of revolution and writes it to a RCAIDE nacelle format.
     If an airfoil is defined in body-of-revolution, its coordinates are not read in due to absence of
@@ -211,7 +216,7 @@ def read_vsp_nacelle(nacelle_id,vsp_nacelle_type, units_type='SI'):
     N/A
 
     Inputs:
-    0. Pre-loaded VSP vehicle in memory, via vsp_read.
+    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
     1. VSP 10-digit geom ID for nacelle.
     2. Units_type set to 'SI' (default) or 'Imperial'. 
 
@@ -233,7 +238,6 @@ def read_vsp_nacelle(nacelle_id,vsp_nacelle_type, units_type='SI'):
     Properties Used:
     N/A
     """  	
-    nacelle = RCAIDE.Library.Components.Nacelles.Nacelle()	
 
     if units_type == 'SI':
         units_factor = Units.meter * 1.
@@ -241,20 +245,22 @@ def read_vsp_nacelle(nacelle_id,vsp_nacelle_type, units_type='SI'):
         units_factor = Units.foot * 1.
     elif units_type == 'inches':
         units_factor = Units.inch * 1.	
-
-    if vsp.GetGeomName(nacelle_id):
-        nacelle.tag = vsp.GetGeomName(nacelle_id)
-    else: 
-        nacelle.tag = 'NacelleGeom'	
-
-    nacelle.origin[0][0] = vsp.GetParmVal(nacelle_id, 'X_Location', 'XForm') * units_factor
-    nacelle.origin[0][1] = vsp.GetParmVal(nacelle_id, 'Y_Location', 'XForm') * units_factor
-    nacelle.origin[0][2] = vsp.GetParmVal(nacelle_id, 'Z_Location', 'XForm') * units_factor
-    nacelle.x_rotation   = vsp.GetParmVal(nacelle_id, 'X_Rotation', 'XForm') * units_factor
-    nacelle.y_rotation   = vsp.GetParmVal(nacelle_id, 'Y_Rotation', 'XForm') * units_factor
-    nacelle.z_rotation   = vsp.GetParmVal(nacelle_id, 'Z_Rotation', 'XForm') * units_factor  
+     
     
-    if vsp_nacelle_type == 'Stack': 
+    if vsp_nacelle_type == 'Stack':
+    
+        nacelle = RCAIDE.Library.Components.Nacelles.Stack_Nacelle()	
+        if vsp.GetGeomName(nacelle_id):
+            nacelle.tag = vsp.GetGeomName(nacelle_id)
+        else: 
+            nacelle.tag = 'NacelleGeom'	
+    
+        nacelle.origin[0][0] = vsp.GetParmVal(nacelle_id, 'X_Location', 'XForm') * units_factor
+        nacelle.origin[0][1] = vsp.GetParmVal(nacelle_id, 'Y_Location', 'XForm') * units_factor
+        nacelle.origin[0][2] = vsp.GetParmVal(nacelle_id, 'Z_Location', 'XForm') * units_factor
+        nacelle.x_rotation   = vsp.GetParmVal(nacelle_id, 'X_Rotation', 'XForm') * units_factor
+        nacelle.y_rotation   = vsp.GetParmVal(nacelle_id, 'Y_Rotation', 'XForm') * units_factor
+        nacelle.z_rotation   = vsp.GetParmVal(nacelle_id, 'Z_Rotation', 'XForm') * units_factor         
         
         xsec_surf_id = vsp.GetXSecSurf(nacelle_id, 0) # There is only one XSecSurf in geom.
         num_segs     = vsp.GetNumXSec(xsec_surf_id)   # Number of xsecs in nacelle.	
@@ -269,7 +275,7 @@ def read_vsp_nacelle(nacelle_id,vsp_nacelle_type, units_type='SI'):
         for i in range(num_segs): 
             # Create the segment
             xsec_id      = vsp.GetXSec(xsec_surf_id, i) # VSP XSec ID.
-            segment      = RCAIDE.Library.Components.Fuselages.Segment() 
+            segment      = RCAIDE.Library.Components.Fuselages.Segments.Segment() 
             segment.tag  = 'segment_' + str(i)
     
             # Pull out Parms that will be needed
@@ -309,14 +315,30 @@ def read_vsp_nacelle(nacelle_id,vsp_nacelle_type, units_type='SI'):
             
         nacelle.length   = abs_x_location_vec[-1] * units_factor
         nacelle.diameter = diameter
-        segs = nacelle.Segments
+        
+        segs         = nacelle.Segments
+        segment_list = list(nacelle.Segments.keys())
         for seg in range(num_segs):    
-            segs[seg].percent_x_location = np.array(abs_x_location_vec[seg])/abs_x_location_vec[-1]
-            segs[seg].percent_y_location = np.array(abs_y_location_vec[seg])/abs_x_location_vec[-1]
-            segs[seg].percent_z_location = np.array(abs_z_location_vec[seg])/abs_x_location_vec[-1] 
+            segs[segment_list[seg]].percent_x_location = np.array(abs_x_location_vec[seg])/abs_x_location_vec[-1]
+            segs[segment_list[seg]].percent_y_location = np.array(abs_y_location_vec[seg])/abs_x_location_vec[-1]
+            segs[segment_list[seg]].percent_z_location = np.array(abs_z_location_vec[seg])/abs_x_location_vec[-1] 
           
  
-    elif vsp_nacelle_type =='BodyOfRevolution':  
+    elif vsp_nacelle_type =='BodyOfRevolution':
+
+        nacelle = RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle()	
+        if vsp.GetGeomName(nacelle_id):
+            nacelle.tag = vsp.GetGeomName(nacelle_id)
+        else: 
+            nacelle.tag = 'NacelleGeom'	
+    
+        nacelle.origin[0][0] = vsp.GetParmVal(nacelle_id, 'X_Location', 'XForm') * units_factor
+        nacelle.origin[0][1] = vsp.GetParmVal(nacelle_id, 'Y_Location', 'XForm') * units_factor
+        nacelle.origin[0][2] = vsp.GetParmVal(nacelle_id, 'Z_Location', 'XForm') * units_factor
+        nacelle.x_rotation   = vsp.GetParmVal(nacelle_id, 'X_Rotation', 'XForm') * units_factor
+        nacelle.y_rotation   = vsp.GetParmVal(nacelle_id, 'Y_Rotation', 'XForm') * units_factor
+        nacelle.z_rotation   = vsp.GetParmVal(nacelle_id, 'Z_Rotation', 'XForm') * units_factor
+        
         diameter  = vsp.GetParmVal(nacelle_id, "Diameter","Design") * units_factor
         angle     = vsp.GetParmVal(nacelle_id, "Diameter","Design") * Units.degrees 
         ft_flag_idx   = vsp.GetParmVal(nacelle_id,"Mode","Design")	 

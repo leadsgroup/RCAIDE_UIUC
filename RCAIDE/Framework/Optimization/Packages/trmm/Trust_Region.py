@@ -1,4 +1,3 @@
-## @ingroup Optimization-Package_Setups-TRMM
 # Trust_Region.py
 #
 # Created:  Apr 2017, T. MacDonald
@@ -14,7 +13,6 @@ from RCAIDE.Framework.Core import Data
 #  Trust Region Class
 # ----------------------------------------------------------------------
 
-## @ingroup Optimization-Package_Setups-TRMM
 class Trust_Region(Data):
     """A trust region class
     

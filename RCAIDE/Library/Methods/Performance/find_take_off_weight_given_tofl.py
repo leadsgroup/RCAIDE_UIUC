@@ -1,4 +1,3 @@
-## @ingroup Methods-Performance
 # find_take_off_weight_given_tofl.py
 #
 # Created:  Sep 2014, C. Ilario, T. Orra 
@@ -16,8 +15,6 @@ import numpy as np
 # ----------------------------------------------------------------------
 #  Find Takeoff Weight Given TOFL
 # ----------------------------------------------------------------------
-
-## @ingroup Methods-Performance
 def find_take_off_weight_given_tofl(vehicle,analyses,target_tofl,altitude = 0, delta_isa = 0,):
     """Estimates the takeoff weight given a certain takeoff field length.
 

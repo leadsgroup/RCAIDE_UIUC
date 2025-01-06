@@ -1,4 +1,4 @@
-# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_rotor_performance.py
+# RCAIDE/Library/Plots/Aerodynamics/plot_rotor_performance.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -13,26 +13,82 @@ from plotly.subplots import make_subplots
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------      
-def plot_rotor_performance(rotor, title=None, show_figure = True,save_figure=False, save_filename='Rotor_Performance', file_type=".png"):
-    """Plots a summary of rotor performance 
-    
-    Assumptions:
-    None
-
-    Source: 
-    None
-    
-    Inputs
-    rotor   - rotor data structure 
-    
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+def plot_rotor_performance(rotor, outputs,title=None, show_figure = True, save_figure=False, save_filename='Rotor_Performance', file_type=".png"):
     """
-    # unpack
-    outputs = rotor.outputs
+    Generate plots summarizing rotor aerodynamic performance distributions.
+
+    Parameters
+    ----------
+    rotor : Data
+        Rotor data structure containing outputs with fields:
+
+        - disc_radial_distribution : array
+            Radial positions on disc [m]
+        - disc_axial_velocity : array
+            Total axial velocity [m/s]
+        - disc_tangential_velocity : array
+            Total tangential velocity [m/s]
+        - disc_axial_induced_velocity : array
+            Induced axial velocity [m/s]
+        - disc_tangential_induced_velocity : array
+            Induced tangential velocity [m/s]
+        - disc_thrust_distribution : array
+            Local thrust distribution [N]
+        - disc_torque_distribution : array
+            Local torque distribution [N-m]
+
+    title : str, optional
+        Custom plot title, default None
+
+    show_figure : bool, optional
+        Display figure if True, default True
+
+    save_figure : bool, optional
+        Save figure to file if True, default False
+
+    save_filename : str, optional
+        Name for saved figure file, default 'Rotor_Performance'
+
+    file_type : str, optional
+        File extension for saved figure, default ".png"
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure containing four subplots:
+
+        - Velocity distributions
+        - Induced velocity distributions
+        - Thrust distribution
+        - Torque distribution
+
+    Notes
+    -----
+    Each subplot includes:
+
+    - Appropriate axis labels
+    - Legend identifying components
+    - Consistent line styling
+
+    **Definitions**
+
+    'Total Velocity'
+        Sum of freestream and induced velocities
+    
+    'Induced Velocity'
+        Additional velocity induced by rotor
+    
+    'Thrust Distribution'
+        Local thrust force per unit radius
+    
+    'Torque Distribution'
+        Local torque per unit radius
+
+    See Also
+    --------
+    plot_rotor_disc_performance : Detailed disc visualization
+    """
+    # unpack 
     r_distribution = outputs.disc_radial_distribution[0, :, 0]
     
     # 2d plots

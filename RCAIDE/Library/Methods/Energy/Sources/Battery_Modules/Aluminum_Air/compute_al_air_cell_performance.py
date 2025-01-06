@@ -7,9 +7,9 @@
 #  compute_al_air_cell_performance
 # ----------------------------------------------------------------------------------------------------------------------  
 def find_aluminum_mass(battery, energy):
-    aluminum_mass = energy*battery.aluminum_mass_factor
+    aluminum_mass = energy*battery.cell.aluminum_mass_factor
     return aluminum_mass 
 
 def find_water_mass(battery, energy):
-    water_mass = energy*battery.water_mass_gain_factor
+    water_mass = energy*battery.cell.water_mass_gain_factor
     return water_mass

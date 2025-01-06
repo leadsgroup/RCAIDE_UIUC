@@ -8,7 +8,8 @@
 # RCAIDE Imports 
 import RCAIDE
 from RCAIDE.Framework.Core import Units , Data 
-from RCAIDE.Library.Plots import *       
+from RCAIDE.Library.Plots import *
+
 # Python imports
 import matplotlib.pyplot as plt  
 import sys 
@@ -27,8 +28,7 @@ def main():
 
     plot_elevation_contours(topography_file   ='LA_Metropolitan_Area.txt',use_lat_long_coordinates = False, save_filename = "Elevation_Contours_XY")
     
-    vehicle  = vehicle_setup()      
-    vehicle.networks.electric.busses.bus.identical_propulsors     = False # only for regression     
+    vehicle  = vehicle_setup()          
     configs  = configs_setup(vehicle) 
     analyses = analyses_setup(configs)  
     mission  = mission_setup(analyses)

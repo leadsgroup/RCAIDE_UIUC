@@ -1,5 +1,4 @@
-## @ingroup Attributes-Solids
-# Copper.py
+ # Copper.py
 #
 # Created: Feb 2020,  K. Hamilton - Through New Zealand Ministry of Business Innovation and Employment Research Contract RTVU2004
 # Modified: Jan 2022, S. Claridge
@@ -16,9 +15,7 @@ import numpy as np
 
 #-------------------------------------------------------------------------------
 # RRR=50 OFHC Copper Class
-#-------------------------------------------------------------------------------
-
-## @ingroup Attributes-Solid
+#------------------------------------------------------------------------------- 
 class Copper(Solid):
 
     """ Physical Constants Specific to copper RRR=50 OFHC

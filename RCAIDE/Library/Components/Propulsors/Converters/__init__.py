@@ -1,7 +1,14 @@
 # RCAIDE/Library/Components/Propulsors/Converters/__init__.py
 # 
 
-""" RCAIDE Package Setup
+"""
+RCAIDE Propulsor Converters Package. This module provides a collection of propulsion system components and converters 
+used in aircraft propulsion modeling.
+
+See Also
+--------
+RCAIDE.Library.Components.Energy.Sources
+RCAIDE.Library.Components.Propulsors
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

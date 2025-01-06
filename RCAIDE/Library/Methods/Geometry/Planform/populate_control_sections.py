@@ -32,7 +32,7 @@ def populate_control_sections(wing):
     N/A
     """
     w_cs  = wing.control_surfaces  
-    w_seg = wing.Segments 
+    w_seg = wing.segments 
 
     for i , seg in enumerate(w_seg):
         seg.control_surfaces = Container()

@@ -53,7 +53,7 @@ def design_propeller(prop,number_of_stations=20):
     alt          = prop.cruise.design_altitude
     Thrust       = prop.cruise.design_thrust
     Power        = prop.cruise.design_power
-    airfoils     = prop.Airfoils 
+    airfoils     = prop.airfoils 
     a_loc        = prop.airfoil_polar_stations
     
     if (Thrust == None) and (Power== None):

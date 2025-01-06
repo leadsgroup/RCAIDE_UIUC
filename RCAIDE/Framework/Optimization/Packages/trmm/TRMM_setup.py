@@ -1,4 +1,3 @@
-## @ingroup Optimization-Package_Setups-TRMM
 # TRMM_setup.py
 #
 # Created:  Apr 2017, T. MacDonald
@@ -15,7 +14,6 @@ from RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region import Trust_Regio
 #  TRMM_Solve
 # ----------------------------------------------------------------------
 
-## @ingroup Optimization-Package_Setups-TRMM
 def TRMM_Solve(problem,tr=None,tr_opt=None,print_output=False):
     """ This solves your TRMM
 

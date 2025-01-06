@@ -1,4 +1,3 @@
-## @ingroup Analyses-Atmospheric
 # US_Standard_1976.py
 #
 # Created: 
@@ -25,7 +24,6 @@ from RCAIDE.Library.Attributes.Planets import Earth
 #  Classes
 # ----------------------------------------------------------------------
 
-## @ingroup Analyses-Atmospheric
 class US_Standard_1976(Atmospheric):
 
     """ Implements the U.S. Standard Atmosphere (1976 version)

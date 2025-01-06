@@ -1,4 +1,3 @@
-## @ingroup Methods-Performance
 # estimate_take_off_field_length.py
 #
 # Created:  Jun 2014, T. Orra, C. Ilario, Celso, 
@@ -25,8 +24,6 @@ import numpy as np
 # ----------------------------------------------------------------------
 #  Compute field length required for takeoff
 # ----------------------------------------------------------------------
-
-## @ingroup Methods-Performance
 def estimate_take_off_field_length(vehicle,analyses,altitude = 0, delta_isa = 0, compute_2nd_seg_climb = False):
     """ Computes the takeoff field length for a given vehicle configuration in a given airport.
     Also optionally computes the second segment climb gradient.

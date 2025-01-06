@@ -1,22 +1,19 @@
-## @ingroup Methods-Aerodynamics-Fidelity_Zero-Lift
-# compute_flap_lift.py
+ # compute_flap_lift.py
 #
 # Created:  Dec 2013, A. Varyar
 # Modified: Feb 2014, T. Orra
 #           Jan 2016, E. Botero         
 
-# ----------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------- 
 #  Imports
-# ----------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------- 
 from   RCAIDE import  * 
 from   RCAIDE.Framework.Core import Units
 import numpy  as np
 
-# ----------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------- 
 #  compute_flap_lift
-# ----------------------------------------------------------------------
-
-## @ingroup Methods-Aerodynamics-Fidelity_Zero-Lift
+# ---------------------------------------------------------------------------------------------------------------------- 
 def compute_flap_lift(t_c,flap_type,flap_chord,flap_angle,sweep,wing_Sref,wing_affected_area):
     """Computes the increase of lift due to trailing edge flap deployment
 
@@ -76,38 +73,3 @@ def compute_flap_lift(t_c,flap_type,flap_chord,flap_angle,sweep,wing_Sref,wing_a
     dcl_max_flaps = dmax_flaps  *  Swf / wing_Sref
 
     return dcl_max_flaps
-
-
-# ----------------------------------------------------------------------
-#   Module Tests
-# ----------------------------------------------------------------------
-# this will run from command line, put simple tests for your code here
-if __name__ == '__main__':
-
-    #imports
-    from  RCAIDE import  * 
-    from  RCAIDE.Framework.Core import Units
-
-    # Test case
-    t_c             = 0.11
-    flap_type       = 'single_slotted'
-    flap_chord      = 0.28
-    flap_angle      = 30. * Units.deg
-    sweep           = 30. * Units.deg
-    wing_Sref       = 120.
-    wing_flap_area  = 120. * .6
-
-    dcl_flap = compute_flap_lift(t_c,flap_type,flap_chord,flap_angle,sweep,wing_Sref,wing_flap_area)
-    print('Delta CL due to Flaps: ', dcl_flap)
-
-    # Test case
-    t_c             = 0.11
-    flap_type       = 'none'
-    flap_chord      = 0.
-    flap_angle      = 0. * Units.deg
-    sweep           = 25. * Units.deg
-    wing_Sref       = 120.
-    wing_flap_area  = 0.
-
-    dcl_flap = compute_flap_lift(t_c,flap_type,flap_chord,flap_angle,sweep,wing_Sref,wing_flap_area)
-    print('Delta CL due to Flaps: ', dcl_flap)

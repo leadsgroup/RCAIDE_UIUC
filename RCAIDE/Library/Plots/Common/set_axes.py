@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Performance-Common
 # RCAIDE/Library/Plots/Performance/Common/set_axes.py
 # 
 # 
@@ -6,23 +7,47 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------    
+## @ingroup Library-Plots-Performance-Common
 def set_axes(axes):
-    """This sets the axis parameters for all plots
+    """
+    Apply a standardized RCAIDE formatting style to matplotlib plot axes.
 
-    Assumptions:
+    Parameters
+    ----------
+    axes : matplotlib.axes.Axes
+        Axes object to be formatted with RCAIDE standard style
+
+    Returns
+    -------
     None
 
-    Source:
-    None
+    Notes
+    -----
+    Applies the following formatting:
+        - Minor tick marks enabled
+        - Major grid lines: solid grey, width 0.5
+        - Minor grid lines: dotted grey, width 0.5
+        - Grid lines enabled
+        - Scientific notation disabled for y-axis
+        - Axis offset disabled for y-axis
 
-    Inputs
-    axes
+    This function ensures consistent axis appearance across all RCAIDE plots
+    and should be called after plotting data but before displaying the figure.
 
-    Outputs:
-    axes
+    **Definitions**
 
-    Properties Used:
-    N/A
+    'Major Grid'
+        Primary grid lines at major tick marks
+    
+    'Minor Grid'
+        Secondary grid lines at minor tick marks
+    
+    'Tick Marks'
+        Small lines indicating axis scale divisions
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.plot_style : Complementary plot styling
     """
 
     axes.minorticks_on()

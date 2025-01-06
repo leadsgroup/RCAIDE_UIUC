@@ -1,4 +1,3 @@
-## @ingroup Methods-Geometry-Two_Dimensional-Cross_Section-Planform
 # vertical_tail_planform_raymer.py
 #
 # Created:  ### ####, M. Vegh
@@ -13,8 +12,7 @@ from RCAIDE.Library.Methods.Geometry.Planform  import wing_planform
 
 # ----------------------------------------------------------------------
 #  Methods
-# ----------------------------------------------------------------------
-## @ingroup Methods-Geometry-Two_Dimensional-Cross_Section-Planform
+# ---------------------------------------------------------------------- 
 def vertical_tail_planform_raymer(vertical_stabilizer, wing,  l_vt,c_vt):
     """Adjusts reference area before calling generic wing planform function to compute wing planform values.
 

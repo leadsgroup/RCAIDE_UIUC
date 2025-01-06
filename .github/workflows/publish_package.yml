@@ -1,0 +1,133 @@
+name: Publish to PyPI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  check-version:
+    name: Version Validation
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout Current Branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure full history is fetched
+
+      - name: Determine Base Branch
+        id: determine_base
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "base_branch=${{ github.event.pull_request.base.ref }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event_name }}" == "push" ]]; then
+            # For push events, assume base_branch is develop
+            echo "base_branch=develop" >> $GITHUB_OUTPUT
+          else
+            echo "base_branch=unknown" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Fetch Base Branch
+        run: |
+          git fetch origin "${{ steps.determine_base.outputs.base_branch }}":"${{ steps.determine_base.outputs.base_branch }}"
+
+      - name: Read Version from Current Branch
+        id: current_version
+        run: |
+          if [ ! -f RCAIDE/VERSION ]; then
+            echo "VERSION file not found in the current branch."
+            exit 1
+          fi
+          VERSION=$(cat RCAIDE/VERSION)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if Base VERSION Exists
+        id: base_version_exists
+        run: |
+          BASE_VERSION_FILE="RCAIDE/VERSION"
+          if [[ "${{ steps.determine_base.outputs.base_branch }}" != "unknown" ]]; then
+            # Try to fetch the branch first
+            git fetch origin "${{ steps.determine_base.outputs.base_branch }}" || true
+            
+            # Check if the VERSION file exists in the base branch
+            if git rev-parse "origin/${{ steps.determine_base.outputs.base_branch }}" &>/dev/null && \
+               git cat-file -e "origin/${{ steps.determine_base.outputs.base_branch }}:${BASE_VERSION_FILE}" 2>/dev/null; then
+              echo "exists=true" >> $GITHUB_OUTPUT
+            else
+              echo "exists=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Read Version from Base Branch (if exists)
+        id: base_version
+        if: steps.base_version_exists.outputs.exists == 'true'
+        run: |
+          BASE_VERSION=$(git show "${{ steps.determine_base.outputs.base_branch }}:RCAIDE/VERSION")
+          echo "version=$BASE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Compare Versions Based on Target Branch
+        run: |
+          CURRENT_VERSION=${{ steps.current_version.outputs.version }}
+          TARGET_BRANCH=${{ github.event.pull_request.base.ref }}
+          
+          echo "Current Version: $CURRENT_VERSION"
+          echo "Target Branch: $TARGET_BRANCH"
+          
+          if [ "${{ steps.base_version_exists.outputs.exists }}" == "true" ]; then
+            BASE_VERSION=${{ steps.base_version.outputs.version }}
+            echo "Base Version: $BASE_VERSION"
+            
+            # Remove dots and convert to integer for simple comparison
+            CURRENT_NUM=$(echo $CURRENT_VERSION | tr -d '.')
+            BASE_NUM=$(echo $BASE_VERSION | tr -d '.')
+            
+            if [ $CURRENT_NUM -le $BASE_NUM ]; then
+              echo "Error: New version must be greater than base version"
+              exit 1
+            fi
+          fi
+          echo "Version check passed: $CURRENT_VERSION"
+
+  publish:
+    name: Publish Package to PyPI
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade build twine
+
+      - name: Prepare PyPI-Compatible README
+        run: |
+          cp README.md README_GitHub.md
+          cp README_PyPI.md README.md
+
+      - name: Build Package
+        run: |
+          python -m build
+
+      - name: Restore GitHub README
+        run: |
+          mv README_GitHub.md README.md
+
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          twine upload dist/*

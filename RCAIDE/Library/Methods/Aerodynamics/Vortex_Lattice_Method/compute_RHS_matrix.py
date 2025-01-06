@@ -72,41 +72,29 @@ def compute_RHS_matrix(delta,phi,conditions,settings,geometry,propeller_wake_mod
     PSI_distribution = np.repeat(PSI, VD.n_cp, axis = 1)
     V_inf            = conditions.freestream.velocity
     V_distribution   = np.repeat(V_inf , VD.n_cp, axis = 1)
+    num_ctrl_pts     = len(aoa)  
+    num_eval_pts     = len(VD.XC)
 
-    rot_V_wake_ind   = np.zeros((len(aoa), VD.n_cp,3))
-    prop_V_wake_ind  = np.zeros((len(aoa), VD.n_cp,3))
+    rot_V_wake_ind   = np.zeros((num_ctrl_pts, VD.n_cp,3))
     Vx_ind_total     = np.zeros_like(V_distribution)
     Vy_ind_total     = np.zeros_like(V_distribution)
-    Vz_ind_total     = np.zeros_like(V_distribution)
-
+    Vz_ind_total     = np.zeros_like(V_distribution) 
     dt               = 0
-    num_ctrl_pts     = len(aoa) # number of control points
-    num_eval_pts     = len(VD.XC)
     for network in geometry.networks:
         if propeller_wake_model:
-            # include the propeller wake effect on the wing
-            if 'propellers' in network.keys(): 
-                # extract the propeller wake and compute resulting induced velocities data structure
-                props           = network.propellers
-                prop_V_wake_ind = np.zeros((num_ctrl_pts,num_eval_pts,3))
-                
-                for p in props:
-                    prop_V_wake_ind += p.Wake.evaluate_slipstream(p,geometry,num_ctrl_pts)
-                    
-                    
-            if 'lift_rotors' in network.keys(): 
-                # extract the rotor wake and compute resulting induced velocities data structure
-                rots           = network.lift_rotors
-                rot_V_wake_ind = np.zeros((num_ctrl_pts,num_eval_pts,3))
-                
-                for r in rots:
-                    rot_V_wake_ind += r.Wake.evaluate_slipstream(r,geometry,num_ctrl_pts)
-                    
+            rot_V_wake_ind = np.zeros((num_ctrl_pts,num_eval_pts,3))
+            for propulsor in network.propulsors: 
+                if 'rotor' in  propulsor:
+                    rotor =  propulsor.rotor
+                elif 'propeller' in  propulsor :
+                    rotor =  propulsor.propeller
+                rotor_conditions =  conditions.energy[propulsor.tag][rotor.tag]
+                rot_V_wake_ind += rotor.Wake.evaluate_slipstream(rotor,rotor_conditions,geometry,num_ctrl_pts) 
                     
             # update the total induced velocity distribution
-            Vx_ind_total = Vx_ind_total + prop_V_wake_ind[:,:,0] + rot_V_wake_ind[:,:,0]
-            Vy_ind_total = Vy_ind_total + prop_V_wake_ind[:,:,1] + rot_V_wake_ind[:,:,1]
-            Vz_ind_total = Vz_ind_total + prop_V_wake_ind[:,:,2] + rot_V_wake_ind[:,:,2]
+            Vx_ind_total = Vx_ind_total  + rot_V_wake_ind[:,:,0]
+            Vy_ind_total = Vy_ind_total  + rot_V_wake_ind[:,:,1]
+            Vz_ind_total = Vz_ind_total  + rot_V_wake_ind[:,:,2]
 
             rhs = build_RHS(VD, conditions, settings, aoa_distribution, delta, phi, PSI_distribution,
                             Vx_ind_total, Vy_ind_total, Vz_ind_total, V_distribution, dt)           

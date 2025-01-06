@@ -1,4 +1,3 @@
-## @ingroup Analyses-Propulsion
 # Momentum_Theory_Wake.py
 #
 # Created:  Jan 2022, R. Erhard
@@ -18,7 +17,6 @@ import numpy as np
 # ----------------------------------------------------------------------
 #  Generalized Rotor Class
 # ----------------------------------------------------------------------
-## @ingroup Analyses-Propulsion
 class Momentum_Theory_Wake(Component):
     """This is a general rotor wake component. 
 
@@ -88,7 +86,7 @@ class Momentum_Theory_Wake(Component):
             
         return va, vt
     
-    def evaluate_slipstream(self,rotor,geometry,ctrl_pts,wing_instance=None):
+    def evaluate_slipstream(self,rotor,rotor_conditions,geometry,ctrl_pts,wing_instance=None):
         """
         Evaluates the velocities induced by the rotor on a specified wing of the vehicle.
         If no wing instance is specified, uses main wing or last available wing in geometry.
@@ -132,7 +130,7 @@ class Momentum_Theory_Wake(Component):
         wing_CPs, slipstream_vd_ids = extract_wing_collocation_points(geometry, wing_instance_idx)
         
         # Evaluate rotor slipstream effect on specified wing instance
-        rot_V_wake_ind = self.evaluate_wake_velocities(rotor, wing_CPs,ctrl_pts)
+        rot_V_wake_ind = self.evaluate_wake_velocities(rotor,rotor_conditions,wing_CPs,ctrl_pts)
         
         # Expand
         wake_V_ind = np.zeros((ctrl_pts,geometry.vortex_distribution.n_cp,3))
@@ -141,7 +139,7 @@ class Momentum_Theory_Wake(Component):
             
         return wake_V_ind
     
-    def evaluate_wake_velocities(self,rotor,evaluation_points,ctrl_pts):
+    def evaluate_wake_velocities(self,rotor,rotor_conditions,evaluation_points,ctrl_pts):
         """
         Links the rotor wake to compute the wake-induced velocities at the specified
         evaluation points.
@@ -163,10 +161,8 @@ class Momentum_Theory_Wake(Component):
         Properties Used:
         None
         """  
-        
-        rots = Data()
-        rots.append(rotor)
-        rot_V_wake_ind = compute_fidelity_zero_induced_velocity(evaluation_points,rots,ctrl_pts)  
+         
+        rot_V_wake_ind = compute_fidelity_zero_induced_velocity(rotor,rotor_conditions,evaluation_points,ctrl_pts)  
         
         return rot_V_wake_ind
     

@@ -14,13 +14,75 @@ from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.append_motor_conditio
 #  DC_Motor  
 # ----------------------------------------------------------------------------------------------------------------------           
 class DC_Motor(Component):
-    """This is a motor component.
-    
-    Assumptions:
-    None
+    """
+    A direct current (DC) electric motor component model for electric propulsion systems.
 
-    Source:
-    None
+    Attributes
+    ----------
+    tag : str
+        Identifier for the motor. Default is 'motor'.
+        
+    resistance : float
+        Internal electrical resistance of the motor [Ω]. Default is 0.0.
+        
+    no_load_current : float
+        Current drawn by the motor with no mechanical load [A]. Default is 0.0.
+        
+    speed_constant : float
+        Motor speed constant (Kv). Default is 0.0.
+        
+    rotor_radius : float
+        Radius of the motor's rotor [m]. Default is 0.0.
+        
+    rotor_Cp : float
+        Specific heat capacity of the rotor [J/kg/K]. Default is 0.0.
+        
+    efficiency : float
+        Overall motor efficiency. Default is 1.0.
+        
+    gear_ratio : float
+        Ratio of output shaft speed to motor speed. Default is 1.0.
+        
+    gearbox_efficiency : float
+        Efficiency of the gearbox. Default is 1.0.
+        
+    expected_current : float
+        Expected operating current [A]. Default is 0.0.
+        
+    power_split_ratio : float
+        Ratio of power distribution when motor drives multiple loads. Default is 0.0.
+        
+    design_torque : float
+        Design point torque output [N·m]. Default is 0.0.
+        
+    interpolated_func : callable
+        Function for interpolating motor performance. Default is None.
+
+    Notes
+    -----
+    The DC_Motor class models a direct current electric motor's performance
+    characteristics. It accounts for electrical, mechanical, and thermal effects
+    including:
+    * Internal resistance losses
+    * No-load current losses
+    * Gearbox losses
+    * Speed-torque relationships
+    * Power distribution for multiple loads
+
+    **Definitions**
+
+    'Kv'
+        Motor velocity constant, relating voltage to unloaded motor speed
+
+    'No-load Current'
+        Current drawn by motor to overcome internal friction when unloaded
+        
+    'Power Split Ratio'
+        Fraction of total power delivered to primary load in multi-load applications
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor
     """      
     def __defaults__(self):
         """This sets the default values for the component to function.

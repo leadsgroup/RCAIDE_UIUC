@@ -1,4 +1,4 @@
-## @ingroup Optimization-Package_Setups
+
 # additive_setup.py
 #
 # Created:  Apr 2017, T. MacDonald
@@ -39,7 +39,7 @@ class Additive_Solver():
         self.global_optimizer = 'SHGO'
         return
 
-    ## @ingroup Optimization-Package_Setups
+    
     def Additive_Solve(self,problem,num_fidelity_levels=2,num_samples=10,max_iterations=10,
                        tolerance=1e-6,opt_type='basic',num_starts=3,print_output=True):
         """Solves a multifidelity problem using an additive corrections
@@ -178,11 +178,9 @@ class Additive_Solver():
                     xb, shgo_cons = self.initialize_opt_vals_SHGO(obj, inp, x_low_bound, x_up_bound, con_low_edge, con_up_edge, nam, con, problem, g_additive_surrogate)
                 
                     #self.global_optimizer = 'SHGO'
-                    options = {}
-                    #options['maxfev'] = 1
-                    #self.expected_improvement_carpet(x_low_bound, x_up_bound, problem, f_additive_surrogate, g_additive_surrogate, fstar) 
+                    options = {} 
                     res = shgo(self.evaluate_expected_improvement, xb, iters=2, args=(problem,f_additive_surrogate,g_additive_surrogate,fstar),constraints=shgo_cons,options=options)
-                    #self.global_optimizer = 'ALPSO'
+                   
                     
                     fOpt  = np.nan 
                     imOpt = res['fun']
@@ -323,7 +321,7 @@ class Additive_Solver():
         
         return (FOpt,xOpt)
         
-    ## @ingroup Optimization-Package_Setups    
+        
     def evaluate_model(self,problem,x,cons):
         """Solves the optimization problem to get the objective and constraints
     
@@ -353,7 +351,7 @@ class Additive_Solver():
         
         return f,g
     
-    ## @ingroup Optimization-Package_Setups    
+        
     def evaluate_corrected_model(self,x,problem=None,obj_surrogate=None,cons_surrogate=None):
         """Evaluates the corrected model with the low fidelity plus the corrections
     
@@ -406,7 +404,7 @@ class Additive_Solver():
         else:
             raise NotImplementedError('Selected local optimizer is not implemented.')
     
-    ## @ingroup Optimization-Package_Setups
+    
     def evaluate_expected_improvement(self,x,problem=None,obj_surrogate=None,cons_surrogate=None,fstar=np.inf,cons=None):
         """Evaluates the expected improvement of the point x
     
@@ -479,91 +477,7 @@ class Additive_Solver():
         elif self.global_optimizer == 'SHGO':
             return -EI
     
-    ## @ingroup Optimization-Package_Setups
-    def expected_improvement_carpet(self,lbs,ubs,problem,obj_surrogate,cons_surrogate,fstar,show_log_improvement=False):
-        """Makes a carpet plot of the expected improvement
-    
-        Assumptions:
-        N/A
-    
-        Source:
-        N/A
-    
-        Inputs:
-        lbs                  [array]
-        lbs                  [array]
-        problem              [nexus()]
-        obj_surrogate        [fun()]
-        cons_surrogate       [fun()]
-        fstar                [float]
-        show_log_improvement [bool]
         
-        Outputs:
-        Alluring plots that you could only dream of
-    
-        Properties Used:
-        N/A    
-        
-        """       
-    
-        # Assumes 2D
-        # To use before global opt:
-        # self.expected_improvement_carpet(x_low_bound, x_up_bound, problem, f_additive_surrogate, g_additive_surrogate, fstar)  
-    
-        problem.fidelity_level = 1
-        linspace_num = 40
-        
-        x0s = np.linspace(lbs[0],ubs[0],linspace_num)
-        x1s = np.linspace(lbs[1],ubs[1],linspace_num) 
-            
-        EI = np.zeros([linspace_num,linspace_num])        
-            
-        for ii,x0 in enumerate(x0s):
-            for jj,x1 in enumerate(x1s):
-                x = [[x0,x1]]
-                obj   = problem.objective(x)
-                const = problem.all_constraints(x).tolist()    
-            
-                obj_addition, obj_sigma   = obj_surrogate.predict(x,return_std=True)
-                cons_addition, cons_sigma = cons_surrogate.predict(x,return_std=True)
-                
-                fhat      = obj[0] + obj_addition
-                EI[jj,ii] = (fstar-fhat)*norm.cdf((fstar-fhat)/obj_sigma) + obj_sigma*norm.pdf((fstar-fhat)/obj_sigma)
-                EI[jj,ii] = np.log(EI[jj,ii])
-                if EI[jj,ii] == -np.inf:
-                    EI[jj,ii] = -1000
-                const     = const + cons_addition
-                const     = const.tolist()[0]
-                
-                print(ii)
-                print(jj)
-                print('Expected Improvement: ' + str(EI[ii,jj]))
-                
-        import matplotlib.pyplot as plt
-                
-        num_levels = 20
-                
-        plt.figure(1)
-        levals = np.linspace(np.min(EI),np.max(EI),num_levels)
-        CS = plt.contourf(x0s, x1s, EI, 20, linewidths=2,levels=levals)
-        cbar = plt.colorbar(CS)
-        cbar.ax.set_ylabel('Expected Improvement')
-        
-        if show_log_improvement == True: # Display log expected information as well
-            EI = np.log(EI)
-            print(np.min(EI[EI!=-np.inf]))
-            if np.min(EI[EI!=-np.inf]) > -100:
-                levals = np.linspace(np.min(EI[EI!=-np.inf]),np.max(EI),num_levels)
-            else:
-                levals = np.linspace(-40,np.max(EI),num_levels)    
-            plt.figure(2)
-            CS = plt.contourf(x0s, x1s, EI, 20, linewidths=2,levels=levals)
-            cbar = plt.colorbar(CS)
-            cbar.ax.set_ylabel('Log Expected Improvement')    
-        
-        plt.show()
-        
-    ## @ingroup Optimization-Package_Setups    
     def scale_vals(self,inp,con,ini,bnd,scl):
         """Scales values to help setup the problem
     
@@ -628,7 +542,7 @@ class Additive_Solver():
     
         return (x,scaled_constraints,x_low_bound,x_up_bound,con_up_edge,con_low_edge)    
     
-    ## @ingroup Optimization-Package_Setups
+    
     def initialize_opt_vals(self,opt_prob,obj,inp,x_low_bound,x_up_bound,con_low_edge,con_up_edge,nam,con,x_eval):
         """Sets up the optimization values 
     
@@ -736,7 +650,7 @@ class Additive_Solver():
         
         return bound_list,slsqp_con_list    
     
-    ## @ingroup Optimization-Package_Setups
+    
     def run_objective_optimization(self,opt_prob,problem,f_additive_surrogate,g_additive_surrogate):
         """Runs SNOPT to optimize
     

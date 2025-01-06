@@ -2,8 +2,6 @@
 # ----------------------------------------------------------------------
 #  Compute Chord Length from Span Location
 # ---------------------------------------------------------------------- 
-
-## @ingroup Methods-Geometry-Three_Dimensional
 def compute_chord_length_from_span_location(wing,span_location):
     """Computes the chord length given a location along the half-span.
 

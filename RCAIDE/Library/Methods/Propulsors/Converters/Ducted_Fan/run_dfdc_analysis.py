@@ -33,8 +33,8 @@ def run_dfdc_analysis(dfdc_object,print_output):
     Properties Used:
         N/A
     """      
-    dfdc_regression_flag = dfdc_object.settings.regression_flag
-    if dfdc_regression_flag:
+    new_regression_results = dfdc_object.settings.new_regression_results
+    if new_regression_results:
         exit_status = 0 
     else:
         log_file = dfdc_object.settings.filenames.log_filename

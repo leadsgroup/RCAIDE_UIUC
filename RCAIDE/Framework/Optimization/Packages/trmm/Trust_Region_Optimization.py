@@ -1,4 +1,3 @@
-## @ingroup Optimization-Package_Setups-TRMM
 # Trust_Region_Optimization.py
 #
 # Created:  Apr 2017, T. MacDonald
@@ -23,7 +22,6 @@ from scipy.optimize import minimize
 # ----------------------------------------------------------------------
 #  Trust Region Optimization Class
 # ----------------------------------------------------------------------
-## @ingroup Optimization-Package_Setups-TRMM
 class Trust_Region_Optimization(Data):
     """A trust region optimization
     

@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Acrylic.py
 #
 # Created: Jul, 2017, J. Smart
@@ -12,11 +10,9 @@
 from .Solid import Solid
 from RCAIDE.Framework.Core import Units
 
-#-------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
 # Acrylic Solid Class
-#-------------------------------------------------------------------------------
-
-## @ingroup Attributes-Solids
+# ----------------------------------------------------------------------------------------------------------------------
 class Acrylic(Solid):
 
     """ Physical Constants Specific to Polymethyl Methacrylate

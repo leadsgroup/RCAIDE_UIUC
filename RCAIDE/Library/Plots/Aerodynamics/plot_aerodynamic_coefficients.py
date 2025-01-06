@@ -21,25 +21,81 @@ def plot_aerodynamic_coefficients(results,
                              save_filename = "Aerodynamic_Coefficents",
                              file_type = ".png",
                              width = 11, height = 7):
-    """This plots the aerodynamic coefficients
-    
-    Assumptions:
-    None
-    
-    Source:
-    None
-    
-    Inputs:
-    results.segments.condtions.aerodynamics.
-        lift_coefficient
-        drag_coefficient
-        angle_of_attack
+    """
+    Creates a multi-panel visualization of aerodynamic coefficients throughout flight.
+
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
+            - segments[i].conditions.aerodynamics.coefficients
+                Coefficient data containing:
+                    - lift.total[:,0,None]
+                        Total lift coefficient
+                    - drag.total[:,0,None]
+                        Total drag coefficient
+            - segments[i].conditions.aerodynamics.angles
+                Angle data containing:
+                    - alpha[:,0]
+                        Angle of attack in radians
+            - segments[i].conditions.frames.inertial.time[:,0]
+                Time history for each segment
+            - segments[i].tag
+                Segment identifier string
+            
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
         
-    Outputs:
-    Plots
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Aerodynamic_Coefficents")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        
+
+    Notes
+    -----
+    Creates visualization showing:
+        - Aerodynamic performance metrics
+        - Flight attitude history
+        - Efficiency characteristics
+        - Time evolution of coefficients
     
-    Properties Used:
-    N/A
+    **Major Assumptions**
+        * Quasi-steady aerodynamics
+        * Small angle approximations
+        * Incompressible flow
+        * Linear lift curve slope
+        * Negligible sideslip
+    
+    **Definitions**
+    
+    'Lift Coefficient'
+        Non-dimensional lift force
+    'Drag Coefficient'
+        Non-dimensional drag force
+    'Angle of Attack'
+        Angle between airflow and reference line
+    'L/D Ratio'
+        Measure of aerodynamic efficiency
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Aerodynamics.plot_aerodynamic_forces : Dimensional force plots
+    RCAIDE.Library.Plots.Aerodynamics.plot_drag_components : Drag breakdown analysis
     """ 
 
     # get plotting style 

@@ -15,13 +15,42 @@ from RCAIDE.Library.Methods.Propulsors.Constant_Speed_ICE_Propulsor.compute_cs_i
 #  Constant_Speed_ICE_Propeller
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Constant_Speed_ICE_Propeller(Propulsor):
-    """This is an internal engine-propeller propulsor
+    """
+    A propulsion system class that combines an internal combustion engine with a constant-speed propeller.
     
-    Assumptions:
-    None
+    Attributes
+    ----------
+    tag : str
+        Identifier for the propulsion system, defaults to 'ice_constant_speed_propeller'
+    
+    active_fuel_tanks : list
+        List with names of active fuel tanks. Default is None.
+        
+    engine : None or Engine
+        The internal combustion engine component
+        
+    propeller : None or Propeller
+        The constant-speed propeller component
+    
+    Notes
+    -----
+    This class models a propulsion system that pairs an internal combustion engine with 
+    a constant-speed propeller. The constant-speed propeller maintains a specified RPM 
+    by adjusting blade pitch.
+    
+    **Definitions**
 
-    Source:
-    None
+    'Constant-Speed Propeller'
+        A propeller that maintains a constant rotational speed by automatically 
+        adjusting blade pitch to match power requirements
+
+    'Governor'
+        Mechanical or electronic device that controls propeller pitch to maintain 
+        desired RPM
+    
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Propulsor
     """ 
     def __defaults__(self):    
         # setting the default values

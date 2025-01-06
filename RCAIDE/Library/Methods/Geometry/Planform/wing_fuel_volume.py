@@ -2,7 +2,6 @@
 # ----------------------------------------------------------------------
 #  Correlation-based methods for wing fuel capacity estimation
 # ----------------------------------------------------------------------
-## @ingroup Methods-Geometry-Two_Dimensional-Cross_Section-Planform
 def wing_fuel_volume(wing):
     """Calculates the available fuel volume in a wing.
 

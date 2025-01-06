@@ -38,10 +38,17 @@ def vehicle_setup():
     vehicle.mass_properties.moments_of_inertia.tensor = np.array([[164627.7,0.0,0.0],[0.0,471262.4,0.0],[0.0,0.0,554518.7]])
     vehicle.mass_properties.center_of_gravity         = [[2.239696797,0,-0.131189711 ]]
     vehicle.flight_envelope.ultimate_load             = 5.7
-    vehicle.flight_envelope.limit_load                = 3.8
+    vehicle.flight_envelope.positive_limit_load       = 3.8
     vehicle.reference_area                            = 17.112 
     vehicle.passengers                                = 2
     vehicle.design_dynamic_pressure                   = 1929.16080736607
+
+    cruise_speed                                      = 124. * Units.kts 
+    atmo                                              = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
+    freestream                                        = atmo.compute_values(altitude =  8500. * Units.ft) 
+    mach_number                                       = (cruise_speed/freestream.speed_of_sound)[0][0]  
+    vehicle.flight_envelope.design_mach_number        =  mach_number
+    
     # ------------------------------------------------------------------        
     #   Main Wing
     # ------------------------------------------------------------------   
@@ -81,7 +88,7 @@ def vehicle_setup():
     root_airfoil.coordinate_file          = rel_path + 'Airfoils' + separator + 'NACA_4415.txt' 
     
     # Wing Segments 
-    segment                               = RCAIDE.Library.Components.Wings.Segment()
+    segment                               = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                           = 'root_segment'
     segment.percent_span_location         = 0.0
     segment.twist                         = 2 * Units.degrees  
@@ -91,7 +98,7 @@ def vehicle_setup():
     segment.thickness_to_chord            = .15 
     wing.append_segment(segment)  
          
-    segment                               = RCAIDE.Library.Components.Wings.Segment()
+    segment                               = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                           = 'tip'
     segment.percent_span_location         = 1.0
     segment.twist                         = -1.0 * Units.degrees
@@ -216,76 +223,76 @@ def vehicle_setup():
     fuselage.effective_diameter                 = 1.22028016 
 
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_0'
     segment.percent_x_location                  = 0
     segment.percent_z_location                  = 0
     segment.height                              = 0.529255748
     segment.width                               = 0.575603849
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
 
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_1'
     segment.percent_x_location                  =  0.028527593
     segment.percent_z_location                  =  0
     segment.height                              =  0.737072721
     segment.width                               =  0.921265952 
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
 
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_2'
     segment.percent_x_location                  = 0.187342754 
     segment.percent_z_location                  = 0 
     segment.height                              = 1.174231852 
     segment.width                               = 1.196956212
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
 
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_3'
     segment.percent_x_location                  = 0.242034847 
     segment.percent_z_location                  = 0.011503528 
     segment.height                              = 1.450221906 
     segment.width                               = 1.173932059 
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
 
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_4'
     segment.percent_x_location                  = 0.296715183 
     segment.percent_z_location                  = 0.015984303 
     segment.height                              = 1.634415138 
     segment.width                               = 1.22028016 
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
 
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_5'
     segment.percent_x_location                  = 0.510275342 
     segment.percent_z_location                  = -0.005
     segment.height                              = 1.082135236 
     segment.width                               = 1.013062774 
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
 
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_6'
     segment.percent_x_location                  = 0.833284347 
     segment.percent_z_location                  = 0.014138855 
     segment.height                              = 0.621652157 
     segment.width                               = 0.414134978
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
  
     # Segment
-    segment                                     = RCAIDE.Library.Components.Fuselages.Segment()
+    segment                                     = RCAIDE.Library.Components.Fuselages.Segments.Segment()
     segment.tag                                 = 'segment_7'
     segment.percent_x_location                  = 1
     segment.percent_z_location                  = 0.018978667 
     segment.height                              = 0.092096616 
     segment.width                               = 0.046048308 
-    fuselage.Segments.append(segment)
+    fuselage.segments.append(segment)
     
     # add to vehicle
     vehicle.append_component(fuselage) 
@@ -333,17 +340,7 @@ def vehicle_setup():
     prop.cruise.design_Cl                   = 0.8
     prop.cruise.design_altitude             = 12000. * Units.feet
     prop.cruise.design_power                = .64 * 180. * Units.horsepower
-    prop.variable_pitch                     = True   
-    airfoil                                 = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil()
-    airfoil.NACA_4_Series_code              = '4412'   
-    airfoil.coordinate_file                 =  rel_path + 'Airfoils' + separator + 'NACA_4412.txt'   # absolute path   
-    airfoil.polar_files                     =[ rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_50000.txt',
-                                               rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_100000.txt',
-                                               rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_200000.txt',
-                                               rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_500000.txt',
-                                               rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_1000000.txt']  
-    prop.append_airfoil(airfoil)           
-    prop.airfoil_polar_stations             = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]  
+    prop.variable_pitch                     = True    
     design_propeller(prop)    
     ice_prop.propeller                      = prop
     

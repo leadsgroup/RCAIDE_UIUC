@@ -14,13 +14,49 @@ from RCAIDE.Library.Methods.Propulsors.Common.append_payload_conditions import a
 #  Avionics
 # ----------------------------------------------------------------------------------------------------------------------              
 class Payload(Component):
-    """A class representing a payload.
+    """
+    A payload component model for representing mission cargo and equipment.
+
+    Attributes
+    ----------
+    tag : str
+        Identifier for the payload. Default is 'payload'.
+        
+    power_draw : float
+        Power consumption of the payload. Default is 0.0.
+
+    Notes
+    -----
+    The Payload class models mission-specific cargo and equipment, including:
+
+    * Mass properties
+    * Power requirements
+    * Location in vehicle
+    * Energy consumption
+    * Operating conditions
+
+    The model can represent:
+
+    * Scientific instruments
+    * Cargo containers
+    * Passenger accommodations
+    * Mission-specific equipment
+    * Sensor packages
+    * Communication systems
+
+    **Major Assumptions**
     
-    Assumptions:
-    None
-    
-    Source:
-    N/A
+    * Constant power draw during operation
+    * Fixed mass and volume
+    * Rigid mounting to vehicle
+    * No thermal effects on vehicle
+    * No aerodynamic effects
+    * Steady-state operation
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Component
+    RCAIDE.Library.Methods.Propulsors.Common.append_payload_conditions
     """          
     def __defaults__(self):
         """This sets the default power draw.

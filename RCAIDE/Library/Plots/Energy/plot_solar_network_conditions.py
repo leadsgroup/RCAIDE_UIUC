@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Energy
 # RCAIDE/Library/Plots/Energy/plot_solar_network_conditions.py
 # 
 # 
@@ -16,25 +17,67 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_solar_network_conditions(results,
                     save_figure   = False,
                     show_legend   = True,
                     save_filename = "Solar_Flux",
                     file_type     = ".png",
                     width = 11, height = 7):
-    """This plots the solar flux and power train performance of an solar powered aircraft
+    """
+    Creates a four-panel plot showing solar network conditions and battery performance metrics.
 
-    Assumptions:
-    None
-     
-    Source:
-    None
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results structure containing segment data and solar network conditions
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag for displaying plot legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Solar_Flux")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated plots
+
+    Notes
+    -----
+    The function creates a 2x2 subplot containing:
+        1. Solar flux vs time
+        2. Battery charging power vs time
+        3. Battery current vs time
+        4. Battery energy vs time
     
-    Outputs:
-    Plots
+    Each segment is plotted with a different color from the inferno colormap.
+    Different battery modules are distinguished by different markers.
     
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    
+    * For identical battery modules, only the first module's data is plotted
+    * Time is converted from seconds to minutes for plotting
+    * Energy is converted to megajoules for display
+    
+    **Definitions**
+    
+    'Solar Flux'
+        Solar radiation power per unit area (W/m²)
+    'Charging Power'
+        Rate of energy transfer to battery storage (W)
     """
     
     # get plotting style 

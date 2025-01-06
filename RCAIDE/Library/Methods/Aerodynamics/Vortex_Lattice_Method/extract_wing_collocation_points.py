@@ -1,5 +1,4 @@
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift
-# extract_wing_VD.py
+# extract_wing_collocation_points.py
 #
 # Created:   Feb 2022, R. Erhard
 # Modified:  Mar 2022, R. Erhard
@@ -15,8 +14,7 @@ from RCAIDE.Framework.Core import Data
 # package imports
 import numpy as np 
 
-
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift
+ 
 def extract_wing_collocation_points(geometry, wing_instance_idx):
 
     """ This extracts the collocation points of the vehicle vortex distribution

@@ -1,7 +1,16 @@
 # RCAIDE/Library/Plots/Weights/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+RCAIDE Weight Analysis Plotting Package
+
+This package contains modules for visualizing aircraft weight breakdowns and 
+weight-related analyses.
+
+See Also
+--------
+RCAIDE.Library.Plots : Parent plotting package
+RCAIDE.Library.Analysis.Weights : Weight analysis tools
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

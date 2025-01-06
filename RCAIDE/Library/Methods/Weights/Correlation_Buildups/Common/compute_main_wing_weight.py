@@ -60,7 +60,7 @@ def compute_main_wing_weight(vehicle, wing, rho, sigma):
     L0      = frac * 2 * l_tot / (span * np.pi)
     
 
-    segment_keys   = list(wing.Segments.keys())
+    segment_keys   = list(wing.segments.keys())
     num_segments   = len(segment_keys)     
     if num_segments > 0: 
         # Prime some numbers
@@ -68,14 +68,14 @@ def compute_main_wing_weight(vehicle, wing, rho, sigma):
         b       = span
         for i_seg in range(1,num_segments): 
             # Unpack segment level info
-            Y1 = wing.Segments[segment_keys[i_seg-1]].percent_span_location
-            Y2 = wing.Segments[segment_keys[i_seg]].percent_span_location
+            Y1 = wing.segments[segment_keys[i_seg-1]].percent_span_location
+            Y2 = wing.segments[segment_keys[i_seg]].percent_span_location
 
-            if wing.Segments[segment_keys[i_seg-1]].root_chord_percent == wing.Segments[segment_keys[i_seg]].root_chord_percent and \
-                    wing.Segments[segment_keys[i_seg-1]].thickness_to_chord == wing.Segments[segment_keys[i_seg]].thickness_to_chord:
-                C   = wing.Segments[segment_keys[i_seg]].root_chord_percent * RC
-                G   = wing.Segments[segment_keys[i_seg]].thickness_to_chord
-                SW  = wing.Segments[segment_keys[i_seg-1]].sweeps.quarter_chord
+            if wing.segments[segment_keys[i_seg-1]].root_chord_percent == wing.segments[segment_keys[i_seg]].root_chord_percent and \
+                    wing.segments[segment_keys[i_seg-1]].thickness_to_chord == wing.segments[segment_keys[i_seg]].thickness_to_chord:
+                C   = wing.segments[segment_keys[i_seg]].root_chord_percent * RC
+                G   = wing.segments[segment_keys[i_seg]].thickness_to_chord
+                SW  = wing.segments[segment_keys[i_seg-1]].sweeps.quarter_chord
 
                 WB = (1 / (G * C * np.cos(SW) ** 2)) * 1 / 3 * (
                         1 / 8 * (-Y1 * (5 - 2 * Y1 ** 2) * np.sqrt(1 - Y1 ** 2) -
@@ -84,13 +84,13 @@ def compute_main_wing_weight(vehicle, wing, rho, sigma):
 
             else:
                 # A is the root thickness
-                A = RC * wing.Segments[segment_keys[i_seg-1]].root_chord_percent * wing.Segments[segment_keys[i_seg-1]].thickness_to_chord
+                A = RC * wing.segments[segment_keys[i_seg-1]].root_chord_percent * wing.segments[segment_keys[i_seg-1]].thickness_to_chord
                 # B is the slope of the thickness
-                B = (A - RC * wing.Segments[segment_keys[i_seg]].root_chord_percent * wing.Segments[segment_keys[i_seg]].thickness_to_chord) / (
-                        wing.Segments[segment_keys[i_seg]].percent_span_location - wing.Segments[segment_keys[i_seg-1]].percent_span_location)
+                B = (A - RC * wing.segments[segment_keys[i_seg]].root_chord_percent * wing.segments[segment_keys[i_seg]].thickness_to_chord) / (
+                        wing.segments[segment_keys[i_seg]].percent_span_location - wing.segments[segment_keys[i_seg-1]].percent_span_location)
                 # C is the offset
-                C = wing.Segments[segment_keys[i_seg-1]].percent_span_location
-                SW = wing.Segments[segment_keys[i_seg-1]].sweeps.quarter_chord
+                C = wing.segments[segment_keys[i_seg-1]].percent_span_location
+                SW = wing.segments[segment_keys[i_seg-1]].sweeps.quarter_chord
 
                 WB1 = big_integral(Y1, A, B, C)
                 WB2 = big_integral(Y2, A, B, C)

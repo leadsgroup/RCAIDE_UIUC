@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Nickel.py
 #
 # Created: Jul, 2017, J. Smart
@@ -16,7 +14,6 @@ from RCAIDE.Framework.Core import Units
 # Cold Rolled Nickel/Cobalt Chromoly Alloy Solid Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Nickel(Solid):
     """ Physical Constants Specific to Nickel/Cobalt Chromoly Alloy
     

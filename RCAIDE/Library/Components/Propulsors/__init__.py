@@ -1,8 +1,29 @@
 # RCAIDE/Library/Components/Propulsors/__init__.py
 # 
 # 
+"""
+Collection of propulsion system components for aircraft modeling and simulation.
 
-""" RCAIDE Package Setup
+This module provides various propulsor classes for different types of aircraft 
+propulsion systems, including:
+
+- Electric propulsion (Electric_Rotor, Electric_Ducted_Fan)
+- Internal combustion engine propulsion (ICE_Propeller, Constant_Speed_ICE_Propeller)
+- Gas turbine propulsion (Turbofan, Turbojet, Turboshaft, Turboprop)
+- Power conversion components (Converters)
+
+Notes
+-----
+Each propulsor class inherits from the base Propulsor class and implements 
+specific methods for performance calculation, operating condition management, 
+and system state tracking.
+
+The module structure allows for easy extension with new propulsion system types
+while maintaining consistent interfaces across all implementations.
+
+See Also
+--------
+RCAIDE.Library.Components.Energy
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

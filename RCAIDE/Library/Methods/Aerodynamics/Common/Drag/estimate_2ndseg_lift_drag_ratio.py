@@ -13,7 +13,6 @@ from   RCAIDE.Library.Methods.Aerodynamics.Common.Lift import compute_max_lift_c
 #  Compute 2nd segment lift to drag ratio
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Helper_Functions
 def estimate_2ndseg_lift_drag_ratio(state,settings,geometry):
     """Estimates the 2nd segment climb lift to drag ratio (all engine operating)
     

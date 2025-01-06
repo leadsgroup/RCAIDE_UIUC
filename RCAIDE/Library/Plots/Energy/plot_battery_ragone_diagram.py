@@ -1,3 +1,4 @@
+## @ingroup Library-Plots-Geometry
 # RCAIDE/Library/Plots/Energy/plot_battery_ragone_diagram.py
 # 
 # 
@@ -16,31 +17,61 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
+## @ingroup Library-Plots-Energy
 def plot_battery_ragone_diagram(battery,
                           save_figure   = False, 
                           save_filename = "Ragone_Plot",
                           file_type     =  ".png",
                           width = 11, height = 7):
-    """Plots the pack-level conditions of the battery throughout flight.
+    """
+    Creates a Ragone plot showing the relationship between specific power and specific energy of a battery.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    battery : Battery
+        RCAIDE battery object containing Ragone characteristics
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Ragone_Plot")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Source:
-    None
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure handle containing the generated Ragone plot
 
-    Inputs:
-    results.segments.conditions.
-        freestream.altitude
-        weights.total_mass
-        weights.vehicle_mass_rate
-        frames.body.thrust_force_vector
+    Notes
+    -----
+    The Ragone plot is a performance map showing the tradeoff between specific power 
+    and specific energy in energy storage devices. The plot uses logarithmic scales 
+    to display the wide range of values.
+    
+    **Major Assumptions**
+    
+    * Battery characteristics follow the Ragone relationship:
+        P = const_1 * 10^(E * const_2)
+    * Specific energy range is defined by upper and lower bounds
+    * Values are converted to standard units (kW/kg and Wh/kg)
 
-    Outputs:
-    Plots
-
-    Properties Used:
-    N/A
+    **Definitions**
+    
+    'Specific Power'
+        Power output per unit mass (kW/kg)
+    'Specific Energy'
+        Energy storage capacity per unit mass (Wh/kg)
+    'Ragone Plot'
+        Performance visualization showing the tradeoff between power and energy density
     """
  
     # get plotting style 

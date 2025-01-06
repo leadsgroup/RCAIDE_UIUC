@@ -159,10 +159,8 @@ def call_avl(avl_object,print_output):
         N/A
     """
     print_output =  True 
-    avl_regression_flag = avl_object.settings.regression_flag
-    if avl_regression_flag:
-        exit_status = 0 
-    else:
+    new_regression_results = avl_object.settings.new_regression_results
+    if new_regression_results:
         log_file = avl_object.settings.filenames.log_filename
         err_file = avl_object.settings.filenames.err_filename
         if isinstance(log_file,str):
@@ -198,6 +196,7 @@ def call_avl(avl_object,print_output):
     
             exit_status = avl_run.returncode
             ctime = time.ctime()
-
+    else: 
+        exit_status = 0        
     return exit_status
 

@@ -1,4 +1,4 @@
-# RCAIDE/Library/Compoments/Energy/Sources/Battery_Modules/Lithium_Ion_LiNiMnCoO2_18650.py
+# RCAIDE/Library/Compoments/Energy/Sources/Batteries/Lithium_Ion_LiNiMnCoO2_18650.py
 # 
 # 
 # Created:  Mar 2024, M. Clarke
@@ -10,7 +10,7 @@
 import RCAIDE
 from RCAIDE.Framework.Core                                            import Units , Data
 from .Generic_Battery_Module                                          import Generic_Battery_Module   
-from RCAIDE.Library.Methods.Energy.Sources.Battery_Modules.Lithium_Ion_NMC  import *
+from RCAIDE.Library.Methods.Energy.Sources.Batteries.Lithium_Ion_NMC  import *
 # package imports 
 import numpy as np
 import os 
@@ -20,7 +20,85 @@ from scipy.interpolate  import RegularGridInterpolator
 #  Lithium_Ion_NMC
 # ----------------------------------------------------------------------------------------------------------------------  
 class Lithium_Ion_NMC(Generic_Battery_Module):
-    """ 18650 lithium-nickel-manganese-cobalt-oxide battery cellc.
+    """
+    Class for modeling 18650-format lithium nickel manganese cobalt oxide batteries
+    
+    Attributes
+    ----------
+    tag : str
+        Identifier for the battery module (default: 'lithium_ion_nmc')
+        
+    maximum_energy : float
+        Maximum energy storage capacity [J] (default: 0.0)
+        
+    maximum_power : float
+        Maximum power output [W] (default: 0.0)
+        
+    maximum_voltage : float
+        Maximum voltage output [V] (default: 0.0)
+        
+    cell : Data
+        Cell-specific properties
+        
+        - chemistry : str
+            Battery chemistry type (default: 'LiNiMnCoO2')
+        - diameter : float
+            Cell diameter [m] (default: 0.0185)
+        - height : float
+            Cell height [m] (default: 0.0653)
+        - mass : float
+            Cell mass [kg] (default: 0.048)
+        - surface_area : float
+            Total cell surface area [m^2]
+        - volume : float
+            Cell volume [m^3]
+        - density : float
+            Cell density [kg/m^3]
+        - electrode_area : float
+            Active electrode area [m^2] (default: 0.0342)
+        - maximum_voltage : float
+            Maximum cell voltage [V] (default: 4.2)
+        - nominal_capacity : float
+            Rated capacity [Ah] (default: 3.8)
+        - nominal_voltage : float
+            Nominal operating voltage [V] (default: 3.6)
+        - charging_voltage : float
+            Charging voltage [V] (default: nominal_voltage)
+        - resistance : float
+            Internal resistance [Ohms] (default: 0.025)
+        - specific_heat_capacity : float
+            Cell specific heat [J/kgK] (default: 1108)
+        - radial_thermal_conductivity : float
+            Radial thermal conductivity [W/mK] (default: 0.4)
+        - axial_thermal_conductivity : float
+            Axial thermal conductivity [W/mK] (default: 32.2)
+        - discharge_performance_map : RegularGridInterpolator
+            Interpolator for voltage vs discharge characteristics
+
+    Notes
+    -----
+    The NMC cell model includes detailed thermal and electrical characteristics
+    based on 18650-format cells. The model includes forced air cooling assumptions
+    with a convective heat transfer coefficient for 35 m/s airflow.
+
+    References
+    ----------
+    [1] Jeon, D. H., & Baek, S. M. (2011). Thermal modeling of cylindrical 
+        lithium ion battery during discharge cycle. Energy Conversion and Management,
+        52(8-9), 2973-2981.
+        
+    [2] Yang, S., et al. (2019). A Review of Lithium-Ion Battery Thermal Management 
+        System Strategies and the Evaluate Criteria. Int. J. Electrochem. Sci, 14,
+        6077-6107.
+        
+    [3] Muenzel, V., et al. (2015). A comparative testing study of commercial
+        18650-format lithium-ion battery cells. Journal of The Electrochemical
+        Society, 162(8), A1592.
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module
+        Base battery module class
     """       
     
     def __defaults__(self):   
@@ -95,22 +173,54 @@ class Lithium_Ion_NMC(Generic_Battery_Module):
         return  
     
     def energy_calc(self,state,bus,coolant_lines, t_idx, delta_t): 
-        """Computes the state of the NMC battery cell.
-           
-        Assumptions:
-            None
+        """
+        Computes the state of the NMC battery cell
+        
+        This method calculates the battery's electrical performance and thermal
+        behavior during operation, including voltage, current, power, and 
+        temperature distributions.
+
+        Parameters
+        ----------
+        state : Data
+            Current system state containing:
+            - Temperature distributions
+            - Power demands
+            - Operating conditions
             
-        Source:
-            None
-    
-        Args:
-            self               : battery        [unitless]
-            state              : temperature    [K]
-            bus                : pressure       [Pa]
-            discharge (boolean): discharge flag [unitless]
+        bus : Component
+            Connected electrical bus containing:
+            - Voltage requirements
+            - Power requirements
+            - Load characteristics
             
-        Returns: 
-            None
+        coolant_lines : Component
+            Thermal management system containing:
+            - Coolant properties
+            - Flow conditions
+            - Heat exchanger parameters
+            
+        t_idx : int
+            Current time index in the simulation
+            
+        delta_t : float
+            Time step size [s]
+
+        Returns
+        -------
+        stored_results_flag : bool
+            Flag indicating if results were stored for future reuse
+            
+        stored_battery_tag : str
+            Identifier for stored battery state data
+
+        Notes
+        -----
+        The calculation includes:
+        - Voltage and current based on load demand
+        - Heat generation from internal resistance
+        - Thermal distribution with cooling effects
+        - State of charge tracking
         """        
         stored_results_flag, stored_battery_tag =  compute_nmc_cell_performance(self,state,bus,coolant_lines, t_idx,delta_t) 
         
@@ -121,41 +231,71 @@ class Lithium_Ion_NMC(Generic_Battery_Module):
         return 
     
     def update_battery_age(self,segment,battery_conditions,increment_battery_age_by_one_day = False):  
-        """ This is an aging model for 18650 lithium-nickel-manganese-cobalt-oxide batteries.   
+        """
+        Updates battery aging parameters based on usage and environmental conditions
         
-        Assumptions:
-            None
-        
-        Source:
-            None
-    
-        Args:
-            self                                      : battery            [unitless] 
-            battery_conditions                        : state of battery   [unitless]
-            increment_battery_age_by_one_day (boolean): day increment flag [unitless]  
+        This method tracks battery degradation by considering factors such as:
+        cycle count, depth of discharge, temperature exposure, and calendar aging.
+
+        Parameters
+        ----------
+        segment : Segment
+            Flight segment containing:
+            - Duration
+            - Operating conditions
+            - Power profile
             
-        Returns: 
-            None
+        battery_conditions : Data
+            Battery state data including:
+            - Temperature history
+            - Current rates
+            - State of charge history
+            
+        increment_battery_age_by_one_day : bool, optional
+            Flag to increment calendar age (default: False)
+
+        Notes
+        -----
+        The aging model accounts for:
+        - Capacity fade from cycling
+        - Calendar aging effects
+        - Temperature-dependent degradation
+        - Current rate impacts
         """        
         update_nmc_cell_age(self,segment,battery_conditions,increment_battery_age_by_one_day) 
         
         return  
 
 def create_discharge_performance_map(raw_data):
-    """ Creates discharge and charge response surface for a LiNiMnCoO2 battery cell   
-        
-        Assumptions:
-            None
-        
-        Source:
-            None
-            
-        Args:
-            raw_data     : cell discharge curves                  [unitless]   
-            
-        Returns: 
-            battery_data : response surface of battery properties [unitless]  
-        """   
+    """
+    Creates discharge and charge response surface for a LiNiMnCoO2 battery cell   
+
+    Parameters
+    ----------
+    raw_data : Data
+        Container with experimental battery data including:
+        - Voltage : array
+            Discharge voltage curves at different currents and temperatures
+        - Temperature : array
+            Cell temperature profiles during discharge
+
+    Returns
+    -------
+    battery_data : Data
+        Container with interpolation functions:
+        - Voltage : RegularGridInterpolator
+            Predicts voltage based on [current, temperature, SOC]
+        - Temperature : RegularGridInterpolator
+            Predicts cell temperature based on [current, temperature, SOC]
+
+    Notes
+    -----
+    The function creates 3D interpolations for:
+    - Voltage as function of current (0-8A), temperature (0-50°C), and SOC (0-1)
+    - Temperature rise as function of same parameters
+    
+    Uses regular grid interpolation for smooth predictions across the operating space.
+    """   
     # Process raw data   
     processed_data = Data() 
     processed_data.Voltage        = np.zeros((5,6,15,2)) # current , operating temperature , state_of_charge vs voltage      
@@ -188,7 +328,7 @@ def create_discharge_performance_map(raw_data):
     # Create performance maps  
     battery_data             = Data() 
     amps                    = np.linspace(0, 8, 5)
-    temp                    = np.linspace(0, 50, 6) +  272.65
+    temp                    = np.linspace(0, 50, 6) +  272.65  # Convert to Kelvin
     SOC                     = np.linspace(0, 1, 15)
     battery_data.Voltage     = RegularGridInterpolator((amps, temp, SOC), processed_data.Voltage,bounds_error=False,fill_value=None)
     battery_data.Temperature = RegularGridInterpolator((amps, temp, SOC), processed_data.Temperature,bounds_error=False,fill_value=None) 

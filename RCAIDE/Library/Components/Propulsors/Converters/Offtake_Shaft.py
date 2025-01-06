@@ -14,8 +14,45 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Offtake_Shaft.append_offtake_s
 # Shaft_Power_Offtake
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Offtake_Shaft(Component):
-    """This is a component representing the power draw from the shaft. 
-    """ 
+    """
+    A power offtake shaft component model for extracting power from rotating machinery.
+
+    Attributes
+    ----------
+    power_draw : float
+        Amount of power extracted from the shaft [W]. Default is 0.0.
+    reference_temperature : float
+        Reference temperature for performance calculations [K]. Default is 288.15.
+    reference_pressure : float
+        Reference pressure for performance calculations [Pa]. Default is 1.01325e5.
+
+    Notes
+    -----
+    The Offtake_Shaft class models power extraction from rotating shafts in 
+    propulsion systems. It is typically used to simulate:
+    * Accessory power extraction
+    * Generator drives
+    * Hydraulic pump drives
+    * Air conditioning system drives
+    * Other mechanical power requirements
+
+    The model accounts for:
+    * Power extraction effects on main shaft
+    * Temperature effects on performance
+    * Pressure effects on performance
+    * Impact on engine thermodynamic cycle
+
+    **Definitions**
+
+    'Power Draw'
+        Amount of mechanical power extracted from the main shaft
+    'Reference Conditions'
+        Standard day conditions used for performance normalization
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Propulsors.Converters.Offtake_Shaft
+    """
     def __defaults__(self):
         """This sets the default values for the component to function.
 

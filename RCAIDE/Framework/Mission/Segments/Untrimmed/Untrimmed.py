@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Acceleration_Constant_Altitude.py
+# RCAIDE/Framework/Analyses/Mission/Segments/Untrimmed/Untrimmed.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,7 +16,7 @@ from RCAIDE.Framework.Analyses                 import Process
 from RCAIDE.Library.Methods.skip               import skip 
 
 # ----------------------------------------------------------------------------------------------------------------------
-#  Constant_Acceleration_Constant_Altitude
+#  Untrimmed
 # ---------------------------------------------------------------------------------------------------------------------- 
 
 class Untrimmed(Segment):
@@ -73,6 +73,7 @@ class Untrimmed(Segment):
         self.pitch_rate                              = 0.  
         self.yaw_rate                                = 0.  
         self.state.numerics.number_of_control_points = 2     
+        self.trim_lift_coefficient                   = None
         self.state.conditions.update(Results())
         
         # ---------------------------------------------------------------
@@ -107,8 +108,8 @@ class Untrimmed(Segment):
         iterate.conditions = Process()
         iterate.conditions.differentials         = Common.Update.differentials_time
         iterate.conditions.orientations          = Common.Update.orientations
-        iterate.conditions.acceleration          = skip # Common.Update.acceleration
-        iterate.conditions.angular_acceleration  = skip # Common.Update.angular_acceleration
+        iterate.conditions.acceleration          = skip 
+        iterate.conditions.angular_acceleration  = skip 
         iterate.conditions.altitude              = Common.Update.altitude
         iterate.conditions.atmosphere            = Common.Update.atmosphere
         iterate.conditions.gravity               = Common.Update.gravity

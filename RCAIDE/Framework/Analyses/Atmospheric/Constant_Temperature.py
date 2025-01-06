@@ -14,7 +14,6 @@ from RCAIDE.Library.Attributes.Planets import Earth
 # ----------------------------------------------------------------------
 #  Classes
 # ----------------------------------------------------------------------
-## @ingroup Analyses-Atmospheric
 class Constant_Temperature(Atmospheric):
 
     """Implements a constant temperature with U.S. Standard Atmosphere (1976 version) freestream pressure

@@ -109,7 +109,7 @@ def iteration(PSI, wake_inputs, rotor):
     R            = rotor.tip_radius
     B            = rotor.number_of_blades
     tc           = rotor.thickness_to_chord
-    airfoils     = rotor.Airfoils
+    airfoils     = rotor.airfoils
     a_loc        = rotor.airfoil_polar_stations
     
     # Reshape PSI because the solver gives it flat

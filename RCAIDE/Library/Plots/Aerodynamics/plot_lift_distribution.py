@@ -1,4 +1,4 @@
-# RCAIDE/Library/Plots/Performance/Aerodynamics/plot_lift_distribution.py
+# RCAIDE/Library/Plots/Aerodynamics/plot_lift_distribution.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,33 +13,65 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
 # ----------------------------------------------------------------------------------------------------------------------   
-def plot_lift_distribution(results,vehicle,
+def plot_lift_distribution(results,
                            save_figure = False,
                            save_filename = "Lift_Distribution",
                            file_type = ".png",
                            width = 11, height = 7):
-    """This plots the sectional lift distrubtion at all control points
-     on all lifting surfaces of the aircraft
+    """
+    Generate plots of spanwise lift distribution for lifting surfaces.
 
-     Assumptions:
-     None
+    Parameters
+    ----------
+    results : Data
+        Mission results data structure containing:
+            - results.segments.conditions.aerodynamics.coefficients.lift with fields:
+                - inviscid_wings_sectional : array
+                    Sectional lift coefficients at control points
 
-     Source:
-     None
+    save_figure : bool, optional
+        Save figure to file if True, default False
 
-     Inputs:
-     results.segments.aerodynamics.
-         inviscid_wings_sectional_lift
-     vehicle.vortex_distribution.
-        n_sw
-        n_w
+    save_filename : str, optional
+        Base name for saved figure files, default "Lift_Distribution"
 
-     Outputs: 
-     Plots
+    file_type : str, optional
+        File extension for saved figure, default ".png"
 
-     Properties Used:
-     N/A	
-     """   
+    width : float, optional
+        Figure width in inches, default 11
+
+    height : float, optional
+        Figure height in inches, default 7
+
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Figure showing spanwise lift distribution
+
+    Notes
+    -----
+    Creates figures showing:
+        - Sectional lift coefficient (CLy) vs spanwise location
+        - Separate plot for each timestep in each segment
+        - Different wings distinguished by line colors:
+            - Blue: Main wings
+            - Red: Horizontal tails
+            - Black: Other surfaces
+
+    **Definitions**
+
+    'Sectional Lift Coefficient'
+        Non-dimensional lift force per unit span
+    
+    'Control Points'
+        Points where circulation/lift is evaluated
+
+    See Also
+    --------
+    RCAIDE.Library.Plots.Common.set_axes : Standardized axis formatting
+    RCAIDE.Library.Plots.Common.plot_style : RCAIDE plot styling
+    """   
 
     # get plotting style 
     ps      = plot_style()  
@@ -49,8 +81,8 @@ def plot_lift_distribution(results,vehicle,
                   'ytick.labelsize': ps.axis_font_size,
                   'axes.titlesize': ps.title_font_size}
     plt.rcParams.update(parameters)
-
-    VD         = vehicle.vortex_distribution	 	
+    
+    VD         = results.segments[0].analyses.aerodynamics.vehicle.vortex_distribution	 	
     n_w        = VD.n_w
     b_sw       = np.concatenate(([0],np.cumsum(VD.n_sw)))
 
@@ -59,7 +91,7 @@ def plot_lift_distribution(results,vehicle,
     for segment in results.segments.values():   	
         num_ctrl_pts = len(segment.conditions.frames.inertial.time)	
         for ti in range(num_ctrl_pts):  
-            cl_y = segment.conditions.aerodynamics.coefficients.lift.inviscid_wings_sectional[ti] 
+            cl_y = segment.conditions.aerodynamics.coefficients.lift.induced.spanwise[ti] 
             line = ['-b','-b','-r','-r','-k']
             fig  = plt.figure(save_filename + '_' + str(img_idx))
             fig.set_size_inches(8,8)  

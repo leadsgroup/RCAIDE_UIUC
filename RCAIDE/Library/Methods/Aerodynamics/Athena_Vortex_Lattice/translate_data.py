@@ -133,7 +133,7 @@ def translate_results_to_conditions(cases,res,results):
         res.static_stability.coefficients.pitch[i][0]                       = case_res.aerodynamics.pitch_moment_coefficient
         res.static_stability.coefficients.yaw[i][0]                         = case_res.aerodynamics.yaw_moment_coefficient
         res.aerodynamics.coefficients.lift.total[i][0]                      = case_res.aerodynamics.total_lift_coefficient
-        res.aerodynamics.coefficients.drag.induced.total[i][0]              = case_res.aerodynamics.induced_drag_coefficient 
+        res.aerodynamics.coefficients.drag.induced.inviscid[i][0]           = case_res.aerodynamics.induced_drag_coefficient 
         res.aerodynamics.coefficients.drag.induced.efficiency_factor[i][0]  = case_res.aerodynamics.oswald_efficiency 
         res.aerodynamics.oswald_efficiency[i][0]                            = case_res.aerodynamics.oswald_efficiency
         

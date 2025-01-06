@@ -15,7 +15,61 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Ram.append_ram_conditions impo
 #  Fan Component
 # ----------------------------------------------------------------------------------------------------------------------
 class Ram(Component):
-    """This represent the compression of incoming air flow. 
+    """
+    A ram air compression component model that simulates the compression of incoming air flow.
+
+    Attributes
+    ----------
+    tag : str
+        Identifier for the ram component. Default is 'Ram'.
+        
+    working_fluid : Data
+        Container for working fluid properties and conditions. Default is empty Data().
+
+    Notes
+    -----
+    The Ram class models the compression of incoming air due to the ram effect
+    in high-speed flight. It calculates:
+
+    * Total pressure rise due to flow deceleration
+    * Temperature increase from compression
+    * Changes in fluid properties
+    * Ram recovery efficiency
+    * Compressibility effects
+
+    The model assumes:
+
+    * Quasi-one-dimensional flow
+    * Adiabatic process (no heat transfer)
+    * Perfect gas behavior
+    * Steady flow conditions
+    * No boundary layer effects
+    * No shock waves (unless explicitly modeled)
+
+    **Theory**
+    The ram compression process follows isentropic flow relations for subsonic flow
+    and includes normal shock relations for supersonic flow. The total pressure 
+    recovery depends on the flight Mach number and inlet geometry.
+
+    **Definitions**
+    
+    'Ram Effect'
+        Pressure rise due to deceleration of high-speed flow
+    'Recovery Factor'
+        Ratio of actual to ideal pressure rise
+    'Working Fluid'
+        Fluid medium undergoing compression (typically air)
+
+    References
+    ----------
+    [1] Mattingly, J. D., & Boyer, K. M. (2016). Elements of propulsion: Gas 
+        turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. 
+        American Institute of Aeronautics and Astronautics.
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Component
+    RCAIDE.Library.Methods.Propulsors.Converters.Ram.append_ram_conditions
     """
 
     def __defaults__(self):
@@ -25,7 +79,9 @@ class Ram(Component):
             None
 
         Source:
-            https://web.stanford.edu/~cantwell/AA283_Course_Material/AA283_Course_Notes/ 
+        [1] Mattingly, J. D., & Boyer, K. M. (2016). Elements of propulsion: Gas 
+            turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. 
+            American Institute of Aeronautics and Astronautics.
         """
         #set the deafult values
         self.tag                      = 'Ram' 

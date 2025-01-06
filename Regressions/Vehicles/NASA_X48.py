@@ -73,7 +73,7 @@ def vehicle_setup(regression_flag):
     wing.high_lift                        = True 
     wing.dynamic_pressure_ratio           = 1.0
     
-    segment = RCAIDE.Library.Components.Wings.Segment() 
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment() 
     segment.tag                   = 'section_1'
     segment.percent_span_location = 1.0
     segment.twist                 = 3. * Units.deg
@@ -83,7 +83,7 @@ def vehicle_setup(regression_flag):
     segment.thickness_to_chord    = 0.165 
     wing.append_segment(segment)
     
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                      = 'section_2'
     segment.percent_span_location    = 0.052
     segment.twist                    = 3. * Units.deg
@@ -93,7 +93,7 @@ def vehicle_setup(regression_flag):
     segment.thickness_to_chord       = 0.167 
     wing.append_segment(segment)
 
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                      = 'section_3'
     segment.percent_span_location    = 0.138
     segment.twist                    = 0. * Units.deg
@@ -103,7 +103,7 @@ def vehicle_setup(regression_flag):
     segment.thickness_to_chord       = 0.171 
     wing.append_segment(segment)
     
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                      = 'section_4'
     segment.percent_span_location    = 0.221
     segment.twist                    = 2.5 * Units.deg
@@ -113,7 +113,7 @@ def vehicle_setup(regression_flag):
     segment.thickness_to_chord       = 0.175 
     wing.append_segment(segment)
     
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'section_5'
     segment.percent_span_location = 0.457
     segment.twist                 = 0. * Units.deg
@@ -123,7 +123,7 @@ def vehicle_setup(regression_flag):
     segment.thickness_to_chord    = 0.118
     wing.append_segment(segment)
     
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'section_6'
     segment.percent_span_location = 0.568
     segment.twist                 = 1. * Units.deg
@@ -133,7 +133,7 @@ def vehicle_setup(regression_flag):
     segment.thickness_to_chord    = 0.10
     wing.append_segment(segment)
      
-    segment = RCAIDE.Library.Components.Wings.Segment()
+    segment = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                   = 'tip'
     segment.percent_span_location = 1
     segment.twist                 = 0. * Units.deg

@@ -1,5 +1,4 @@
-# RCAIDE/Compoments/Wings/All_Moving_Surface.py
-# 
+# RCAIDE/Library/Compoments/Wings/All_Moving_Surface.py
 # 
 # Created:  Mar 2024, M. Clarke 
 
@@ -16,74 +15,87 @@ from RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_ine
 #  All_Moving_Surface
 # ----------------------------------------------------------------------------------------------------------------------  
 class All_Moving_Surface(Component):
-    """ This class is used to allow every all-moving control surface class
-    (e.g. Stabilator) to inherit from both a type of Wing (Horizontal_Tail
-    in the case of a Stabilator) and this class. This, way All_Moving_Surface
-    subclasses can inherit necessary functionality without code bloat or 
-    lengthy type checking if-statements.
+    """
+    A base class for control surfaces that pivot as complete aerodynamic surfaces. This class 
+    provides common functionality for surfaces like stabilators and all-moving vertical tails.
+
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the surface, defaults to 'All_Moving_Surface_Data_Object'
+        
+    sign_duplicate : float
+        Sign convention for duplicate surface deflection, defaults to 1.0
+        
+    hinge_fraction : float
+        Location of the hinge line as fraction of chord, defaults to 0.25
+        
+    deflection : float
+        Surface deflection angle, defaults to 0.0
+        
+    segments : Container
+        Collection of surface segments, initialized empty
+        
+    use_constant_hinge_fraction : bool
+        Flag to use constant chord fraction for hinge line, defaults to False
+        
+    hinge_vector : ndarray
+        Vector defining hinge line orientation in body frame, defaults to [0.0, 0.0, 0.0]
+
+    Notes
+    -----
+    This class is designed to be inherited alongside a Wing-derived class to create 
+    specific all-moving control surfaces. It provides:
     
-    In general, this class should not be used directly, and should only exist
-    as one of the parents of another class that also inherits from Wing  
+    * Hinge line definition options
+    * Deflection handling
+    * Moment of inertia calculations
     
-    Assumptions:
-    None
+    **Definitions**
 
-    Source:
-    N/A
+    'Hinge Vector'
+        Three-dimensional vector defining the orientation of the surface's hinge line 
+        in the body frame. Default [0,0,0] indicates hinge normal to root chord
+        
+    'Hinge Fraction'
+        Location of hinge line as fraction of chord when using constant fraction mode
 
-    Inputs:
-    None
-
-    Outputs:
-    None
-
-    Properties Used:
-    N/A
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Stabilator
+        All-moving horizontal stabilizer implementation
+    RCAIDE.Library.Components.Wings.Vertical_Tail_All_Moving
+        All-moving vertical stabilizer implementation
     """ 
 
     def __defaults__(self):
-        """This sets the default for All_Moving_Surface objects in RCAIDE.
-        
-        Attributes also found in Control_Surface:
-            see Control_Surface().__defaults__ for an explanation of attributes. Any
-            attributes used by this class that are shared with Control_Surface should 
-            always adhere to the convention established in Control_Surface.py
-    
-        Attributes unique to All_Moving_Surface:
-        - use_constant_hinge_fraction: false by default. If this is true, the hinge vector 
-            will follow a constant chord_fraction allong the wing, regardless of what is set
-            for hinge_vector. Note that constant hinge fractions are how hinges are handled for 
-            Control_Surfaces. If this attribute is false, the hinge vector is described by
-            the hinge_vector attribute
-        - hinge_vector: The vector in body-frame that the hingeline points along. By default, 
-            it is [0,0,0], and this is taken to mean that the hinge line is normal to the root
-            chord, in-plane with the wing. This attribute does nothing if use_constant_hinge_fraction
-            is set to True.
-        
-        Assumptions:
-        None
-
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
+        """
+        Sets default values for the all-moving surface attributes.
+        """
         self.tag                         = 'All_Moving_Surface_Data_Object' 
         self.sign_duplicate              = 1.0
         self.hinge_fraction              = 0.25
         self.deflection                  = 0.0   
-        self.Segments                    = DataOrdered()   
+        self.segments                    = Container()   
         
         self.use_constant_hinge_fraction = False
         self.hinge_vector                = np.array([0.,0.,0.])
 
-    def moment_of_inertia(wing,center_of_gravity):
-        I =  compute_wing_moment_of_inertia(wing,center_of_gravity) 
+    def moment_of_inertia(wing, center_of_gravity):
+        """
+        Computes the moment of inertia tensor for the all-moving surface.
+
+        Parameters
+        ----------
+        wing : Component
+            Wing component data
+        center_of_gravity : list
+            Reference point coordinates for moment calculation
+
+        Returns
+        -------
+        ndarray
+            3x3 moment of inertia tensor
+        """
+        I = compute_wing_moment_of_inertia(wing, center_of_gravity) 
         return I 

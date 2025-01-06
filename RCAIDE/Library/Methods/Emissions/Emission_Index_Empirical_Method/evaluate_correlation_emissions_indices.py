@@ -6,31 +6,156 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 import  RCAIDE
-from RCAIDE.Framework.Core import Data 
+from    RCAIDE.Framework.Core import Data 
  
 # package imports
-import numpy as np
+import  numpy as np
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  evaluate_correlation_emissions_indices
 # ---------------------------------------------------------------------------------------------------------------------- 
 def evaluate_correlation_emissions_indices(segment,settings,vehicle):
-    """ Computes the CO2 equivalent emissions from aircraft propulsors with combustor compoments
-    using emissions indices correlated to various fuels
-    
-    Assumtion:
+    """
+    Computes emission indices using empirical correlations.
+
+    Parameters
+    ----------
+    segment : Data
+        Mission segment data container
+        
+        - state : Data
+            Current state of the system
+
+            - numerics : Data
+                Numerical integration parameters
+
+                - time : Data
+                    Time integration settings
+            - conditions : Data
+                Flight conditions and component states
+            - ones_row : function
+                Creates array of ones with specified size
+                
+    settings : Data
+        Configuration settings for the simulation
+        
+    vehicle : Data
+        Vehicle configuration data
+
+        - networks : list
+            List of propulsion system networks
+
+            - fuel_lines : list
+                Fuel distribution systems
+
+                - active : bool
+                    Flag indicating if fuel line is in use
+                - fuel_tanks : list
+                    Fuel storage units
+
+                    - tag : str
+                        Identifier for the fuel tank
+                    - fuel : Data
+                        Fuel properties
+
+                        - emission_indices : Data
+                            Empirical emission indices
+
+                            - NOx : float
+                                NOx emission index [kg_NOx/kg_fuel]
+                            - CO2 : float
+                                CO2 emission index [kg_CO2/kg_fuel]
+                            - H2O : float
+                                H2O emission index [kg_H2O/kg_fuel]
+                            - SO2 : float
+                                SO2 emission index [kg_SO2/kg_fuel]
+                            - Soot : float
+                                Soot emission index [kg_soot/kg_fuel]
+                        - global_warming_potential_100 : Data
+                            100-year global warming potentials
+            - propulsors : list
+                Propulsion units (turbofans, turbojets, etc.)
+
+    Returns
+    -------
     None
+        Updates segment.state.conditions.emissions with:
+        
+        - total : Data
+            Total emissions over segment
+
+            - NOx : float
+                Total NOx emissions [kg]
+            - CO2 : float
+                Total CO2 emissions [kg]
+            - H2O : float
+                Total H2O emissions [kg]
+            - SO2 : float
+                Total SO2 emissions [kg]
+            - Soot : float
+                Total soot emissions [kg]
+            - Contrails : float
+                Total contrail effect [kg CO2 equivalent]
+        - index : Data
+            Emission indices
+
+            - NOx : ndarray
+                NOx emission index [kg_NOx/kg_fuel]
+            - CO2 : ndarray
+                CO2 emission index [kg_CO2/kg_fuel]
+            - H2O : ndarray
+                H2O emission index [kg_H2O/kg_fuel]
+            - SO2 : ndarray
+                SO2 emission index [kg_SO2/kg_fuel]
+            - Soot : ndarray
+                Soot emission index [kg_soot/kg_fuel]
+
+    Notes
+    -----
+    This function uses pre-defined emission indices for each fuel type and integrates
+    them over the mission segment based on fuel flow rates.
+
+    **Major Assumptions**
+
+    * Emission indices are constant for each fuel type
+    * Indices are independent of operating conditions
+    * Linear scaling with fuel flow rate
+
+    **Theory**
+    Total emissions are computed by:
     
-    Source
-    None
+    .. math::
+        E_{i,total} = \int \dot{m}_{fuel}(t) \cdot EI_i \cdot GWP_i \, dt
+
+    Where:
+
+    * :math:`E_{i,total}` = Total emissions for species i
+    * :math:`\dot{m}_{fuel}` = Fuel mass flow rate
+    * :math:`EI_i` = Emission index for species i
+    * :math:`GWP_i` = Global warming potential for species i
     
-    Args:
-    emissions_analysis 
-    segment
+    Contrail effects are estimated by:
     
-    Returns:
-    None  
-    """    
+    .. math::
+        E_{contrails} = \Delta R \cdot GWP_{contrails}
+
+    Where:
+
+    * :math:`\Delta R` = Flight range [km]
+    * :math:`GWP_{contrails}` = Contrail global warming potential
+
+    **Extra modules required**
+
+    * numpy
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method
+
+    References
+    ----------
+    [1] Lee, D. S., et al. (2021). The contribution of global aviation to anthropogenic climate forcing for 2000 to 2018. Atmospheric Environment, 244, 117834.
+    """  
     # unpack
     state      = segment.state
     I          = state.numerics.time.integrate

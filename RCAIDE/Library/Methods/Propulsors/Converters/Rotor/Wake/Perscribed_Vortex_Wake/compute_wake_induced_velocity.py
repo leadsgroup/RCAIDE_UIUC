@@ -1,4 +1,3 @@
-## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One
 # compute_wake_induced_velocity.py
 # 
 # Created:  Sep 2020, M. Clarke 
@@ -9,9 +8,11 @@
 # ----------------------------------------------------------------------
 
 # package imports
-import numpy as np 
+import numpy as np
 
-## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One
+# ----------------------------------------------------------------------------------------------------------------------
+# compute_wake_induced_velocity
+# ----------------------------------------------------------------------------------------------------------------------
 def compute_wake_induced_velocity(WD,VD,cpts,azi_start_idx=0,sigma=0.11,suppress_root=False):  
     """ This computes the velocity induced by the Fidelity One semi-prescribed vortex wake (PVW)
     on lifting surface control points
@@ -88,7 +89,6 @@ def compute_wake_induced_velocity(WD,VD,cpts,azi_start_idx=0,sigma=0.11,suppress
 # -------------------------------------------------------------------------------
 # vortex strength computation
 # -------------------------------------------------------------------------------
-## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One
 def vortex(X,Y,Z,X1,Y1,Z1,X2,Y2,Z2,sigma, GAMMA = 1, bv=False,WD=None,use_regularization_kernal=True):
     """ This computes the velocity induced on a control point by a segment
     of a horseshoe vortex that points from point 1 to point 2 for a filament with
@@ -161,7 +161,6 @@ def row_reduction_summation(A):
     
     return sum_res
 
-## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One
 def regularization_kernel(COEF_in, sigma):
     """
     Regularization kernel used to prevent singularities

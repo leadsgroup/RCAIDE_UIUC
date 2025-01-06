@@ -50,23 +50,26 @@ class Vehicle(Data):
         self.flight_envelope.design_mach_number                            = None  
         self.flight_envelope.design_cruise_altitude                        = None
         self.flight_envelope.design_range                                  = None 
-        self.flight_envelope.ultimate_load                                 = 5.7 
-        self.flight_envelope.limit_load                                    = 3.8   
+        self.flight_envelope.ultimate_load                                 = 5.7  
+        self.flight_envelope.positive_limit_load                           = 3.8
+        self.flight_envelope.negative_limit_load                           = -1.5    
         self.flight_envelope.alpha_maximum                                 = 0.0
+        self.flight_envelope.category                                      = None 
+        self.flight_envelope.FAR_part_number                               = None
         self.flight_envelope.alt_vc                                        = 0.0
         self.flight_envelope.alt_gust                                      = 0.0
         self.flight_envelope.max_ceiling                                   = 0.0
         self.flight_envelope.maximum_dynamic_pressure                      = 0.0
         self.flight_envelope.maximum_mach_operational                      = 0.0
+        self.flight_envelope.maximum_lift_coefficient                      = None
+        self.flight_envelope.minimum_lift_coefficient                      = None
 
         self.flight_envelope.maneuver                                      = Data()
-        self.flight_envelope.maneuver.load_alleviation_factor              = 0.0
-        
+        self.flight_envelope.maneuver.load_alleviation_factor              = 0.0 
         self.flight_envelope.maneuver.equivalent_speed                     = Data()
         self.flight_envelope.maneuver.equivalent_speed.velocity_max_gust   = 0
         self.flight_envelope.maneuver.equivalent_speed.velocity_max_cruise = 0
-        self.flight_envelope.maneuver.equivalent_speed.velocity_max_dive   = 0
-        
+        self.flight_envelope.maneuver.equivalent_speed.velocity_max_dive   = 0 
         self.flight_envelope.maneuver.load_factor                          = Data()
         self.flight_envelope.maneuver.load_factor.velocity_max_gust        = 0
         self.flight_envelope.maneuver.load_factor.velocity_max_cruise      = 0
@@ -187,95 +190,6 @@ class Vehicle(Data):
         component_root.append(component)
 
         return
-
-    def find_energy_network_root(self,energy_network):
-        """ Find pointer to energy network data root.
-        
-            Assumptions:
-                None
-    
-            Source:
-                None
-        """  
-        # find energy network root by type, allow subclasses
-        for energy_network_type, energy_network_root in self._energy_network_root_map.items():
-            if isinstance(energy_network,energy_network_type):
-                break
-        else:
-            raise Exception("Unable to place energy_network type %s" % energy_network.typestring())
-
-        return energy_network_root
-
-    def sum_mass(self):
-        """ Regresses through the vehicle and sums the masses
-        
-            Assumptions:
-                None
-    
-            Source:
-                None
-        """  
-
-        total = 0.0
-        
-        for key in self.keys():
-            item = self[key]
-            if isinstance(item,Components.Component.Container):
-                total += item.sum_mass()
-
-        return total
-    
-    
-    def center_of_gravity(self):
-        """ will recursively search the data tree and sum
-            any Comp.Mass_Properties.mass, and return the total sum
-        
-            Assumptions:
-                None
-    
-            Source:
-                None
-        """   
-        total = np.array([[0.0,0.0,0.0]])
-
-        for key in self.keys():
-            item = self[key]
-            if isinstance(item,Components.Component.Container):
-                total += item.total_moment()
-                
-        mass = self.sum_mass()
-        if mass ==0:
-            mass = 1.
-                
-        CG = total/mass
-        
-        self.mass_properties.center_of_gravity = CG
-                
-        return CG
-    
-    def moment_of_inertia(self):
-        """  
-        """
-        M = np.zeros((3, 3))
-        center_of_gravity =  self.mass_properties.center_of_gravity 
-        for key in self.keys():
-            item = self[key] 
-            M += item.moment_of_inertia(center_of_gravity) 
-                
-        return M
-     
-    def operating_empty_weight(self):
-        """ Compute operating empty weight  
-        
-            Assumptions:
-                None
-    
-            Source:
-                None
-        """  
-        outputs = compute_operating_empty_weight(self)  
-                
-        return outputs     
     
     def append_energy_network(self,energy_network):
         """ Adds an energy network to vehicle 
@@ -376,15 +290,3 @@ class Vehicle_Mass_Container(Components.Component.Container,Vehicle_Mass_Propert
         self.clear()
         for key in value.keys():
             self[key] = value[key]
-
-    def get_children(self):
-        """ Returns the components that can go inside
-        
-            Assumptions:
-                None
-    
-            Source:
-                None
-        """       
-        
-        return [Vehicle_Mass_Properties]

@@ -1,4 +1,3 @@
-## @ingroup Methods-Utilities
 # latin_hypercube_sampling.py
 #
 # Created:  Jul 2016, R. Fenrich (outside of RCAIDE code)
@@ -18,7 +17,6 @@ import numpy as np
 # ----------------------------------------------------------------------
 #   Latin Hypercube Sampling
 # ----------------------------------------------------------------------
-## @ingroup Methods-Utilities
 def latin_hypercube_sampling(num_dimensions,num_samples,bounds=None,criterion='random'):
     """Provides an array of chosen dimensionality and number of samples taken according
     to latin hypercube sampling. Bounds can be optionally specified.

@@ -89,7 +89,7 @@ def make_stabilator():
     wing.dynamic_pressure_ratio  = 0.9    
     
     # Wing Segments
-    segment                        = RCAIDE.Library.Components.Wings.Segment()
+    segment                        = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                    = 'root_segment'
     segment.percent_span_location  = 0.0
     segment.twist                  = 0. * Units.deg
@@ -99,7 +99,7 @@ def make_stabilator():
     segment.thickness_to_chord     = .1
     wing.append_segment(segment)
 
-    segment                        = RCAIDE.Library.Components.Wings.Segment()
+    segment                        = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                    = 'tip_segment'
     segment.percent_span_location  = 1.
     segment.twist                  = 0. * Units.deg
@@ -133,7 +133,7 @@ def make_all_moving_vert_tail():
     wing.dynamic_pressure_ratio  = 0.9    
     
     # Wing Segments
-    segment                        = RCAIDE.Library.Components.Wings.Segment()
+    segment                        = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                    = 'root_segment'
     segment.percent_span_location  = 0.0
     segment.twist                  = 0. * Units.deg
@@ -143,7 +143,7 @@ def make_all_moving_vert_tail():
     segment.thickness_to_chord     = .1
     wing.append_segment(segment)
 
-    segment                        = RCAIDE.Library.Components.Wings.Segment()
+    segment                        = RCAIDE.Library.Components.Wings.Segments.Segment()
     segment.tag                    = 'tip_segment'
     segment.percent_span_location  = 1.
     segment.twist                  = 0. * Units.deg

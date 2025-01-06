@@ -281,10 +281,10 @@ def generate_wing_stations(fuselage_width, wing):
     SPAN        = wing.spans.projected / Units.ft  # Wing span, ft
     SEMISPAN    = SPAN / 2
     root_chord  = wing.chords.root / Units.ft
-    num_seg     = len(wing.Segments.keys())
+    num_seg     = len(wing.segments.keys())
 
     if num_seg == 0:
-        segment                         = RCAIDE.Library.Components.Wings.Segment()
+        segment                         = RCAIDE.Library.Components.Wings.Segments.Segment()
         segment.tag                     = 'root'
         segment.percent_span_location   = 0.
         segment.twist                   = wing.twists.root
@@ -292,9 +292,9 @@ def generate_wing_stations(fuselage_width, wing):
         segment.dihedral_outboard       = 0.
         segment.sweeps.quarter_chord    = wing.sweeps.quarter_chord
         segment.thickness_to_chord      = wing.thickness_to_chord
-        wing.Segments.append(segment)
+        wing.segments.append(segment)
 
-        segment                         = RCAIDE.Library.Components.Wings.Segment()
+        segment                         = RCAIDE.Library.Components.Wings.Segments.Segment()
         segment.tag                     = 'tip'
         segment.percent_span_location   = 1.
         segment.twist                   = wing.twists.tip
@@ -302,39 +302,39 @@ def generate_wing_stations(fuselage_width, wing):
         segment.dihedral_outboard       = 0.
         segment.sweeps.quarter_chord    = wing.sweeps.quarter_chord
         segment.thickness_to_chord      = wing.thickness_to_chord
-        wing.Segments.append(segment)
-        num_seg = len(wing.Segments.keys())
+        wing.segments.append(segment)
+        num_seg = len(wing.segments.keys())
         
     ETA    = np.zeros(num_seg + 1)
     C      = np.zeros(num_seg + 1)
     T      = np.zeros(num_seg + 1)
     SWP    = np.zeros(num_seg + 1)
 
-    segment_keys  = list(wing.Segments.keys())     
-    ETA[0] = wing.Segments[segment_keys[0]].percent_span_location
-    C[0]   = root_chord * wing.Segments[segment_keys[0]].root_chord_percent * 1 / SEMISPAN
+    segment_keys  = list(wing.segments.keys())     
+    ETA[0] = wing.segments[segment_keys[0]].percent_span_location
+    C[0]   = root_chord * wing.segments[segment_keys[0]].root_chord_percent * 1 / SEMISPAN
     SWP[0] = 0
     
-    if hasattr(wing.Segments[segment_keys[0]], 'thickness_to_chord'):
-        T[0] = wing.Segments[segment_keys[0]].thickness_to_chord
+    if hasattr(wing.segments[segment_keys[0]], 'thickness_to_chord'):
+        T[0] = wing.segments[segment_keys[0]].thickness_to_chord
     else:
         T[0] = wing.thickness_to_chord
     ETA[1] = fuselage_width / 2 * 1 / Units.ft * 1 / SEMISPAN
     C[1] = determine_fuselage_chord(fuselage_width, wing) * 1 / SEMISPAN
 
-    if hasattr(wing.Segments[segment_keys[0]], 'thickness_to_chord'):
-        T[1] = wing.Segments[segment_keys[0]].thickness_to_chord
+    if hasattr(wing.segments[segment_keys[0]], 'thickness_to_chord'):
+        T[1] = wing.segments[segment_keys[0]].thickness_to_chord
     else:
         T[1] = wing.thickness_to_chord
     for i in range(1, num_seg):
-        ETA[i + 1] = wing.Segments[segment_keys[i]].percent_span_location
-        C[i + 1] = root_chord * wing.Segments[segment_keys[i]].root_chord_percent * 1 / SEMISPAN
-        if hasattr(wing.Segments[segment_keys[i]], 'thickness_to_chord'):
-            T[i + 1] = wing.Segments[segment_keys[i]].thickness_to_chord
+        ETA[i + 1] = wing.segments[segment_keys[i]].percent_span_location
+        C[i + 1] = root_chord * wing.segments[segment_keys[i]].root_chord_percent * 1 / SEMISPAN
+        if hasattr(wing.segments[segment_keys[i]], 'thickness_to_chord'):
+            T[i + 1] = wing.segments[segment_keys[i]].thickness_to_chord
         else:
             T[i + 1] = wing.thickness_to_chord
-        SWP[i] = np.arctan(np.tan(wing.Segments[segment_keys[i-1]].sweeps.quarter_chord) - (C[i - 1] - C[i]))
-    SWP[-1] = np.arctan(np.tan(wing.Segments[segment_keys[-2]].sweeps.quarter_chord) - (C[-2] - C[-1]))
+        SWP[i] = np.arctan(np.tan(wing.segments[segment_keys[i-1]].sweeps.quarter_chord) - (C[i - 1] - C[i]))
+    SWP[-1] = np.arctan(np.tan(wing.segments[segment_keys[-2]].sweeps.quarter_chord) - (C[-2] - C[-1]))
     return ETA, C, T, SWP
 
 
@@ -493,14 +493,14 @@ def determine_fuselage_chord(fuselage_width, wing):
             N/A
     """
 
-    segment_keys    = list(wing.Segments.keys())      
+    segment_keys    = list(wing.segments.keys())      
     root_chord      = wing.chords.root / Units.ft
     SPAN            = wing.spans.projected / Units.ft  # Wing span, ft
     SEMISPAN        = SPAN / 2
-    c1              = root_chord * wing.Segments[segment_keys[0]].root_chord_percent
-    c2              = root_chord * wing.Segments[segment_keys[-1]].root_chord_percent
-    y1              = wing.Segments[segment_keys[0]].percent_span_location
-    y2              = wing.Segments[segment_keys[1]].percent_span_location
+    c1              = root_chord * wing.segments[segment_keys[0]].root_chord_percent
+    c2              = root_chord * wing.segments[segment_keys[-1]].root_chord_percent
+    y1              = wing.segments[segment_keys[0]].percent_span_location
+    y2              = wing.segments[segment_keys[1]].percent_span_location
     b               = (y2 - y1) * SEMISPAN
     taper           = c2 / c1
     y               = fuselage_width / 2 * 1 / Units.ft

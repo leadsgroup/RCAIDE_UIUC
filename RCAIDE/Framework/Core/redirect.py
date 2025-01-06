@@ -1,4 +1,3 @@
-## @ingroup Core
 # redirect.py
 #
 # Created:  Aug 2015, T. Lukacyzk
@@ -12,9 +11,7 @@ import os, sys, shutil, copy
 
 # -------------------------------------------------------------------
 #  Output Redirection 
-# -------------------------------------------------------------------
-
-## @ingroup Core
+# ------------------------------------------------------------------- 
 class output(object):
     """ Temporarily redirects sys.stdout and sys.stderr when used in
         a 'with' contextmanager
@@ -87,9 +84,7 @@ class output(object):
 
 # -------------------------------------------------------------------
 #  Folder Redirection 
-# -------------------------------------------------------------------
-
-## @ingroup Core
+# ------------------------------------------------------------------- 
 class folder(object):
     """ Temporarily redirects to a working folder, pulling 
         and pushing needed files

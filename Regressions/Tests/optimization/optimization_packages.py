@@ -5,8 +5,7 @@
 
 # ----------------------------------------------------------------------        
 #   Imports
-# ----------------------------------------------------------------------    
-import RCAIDE
+# ----------------------------------------------------------------------     
 from   RCAIDE.Framework.Core         import Units, Data
 import RCAIDE.Framework.Optimization.Packages.scipy as scipy_setup 
 from   RCAIDE.Framework.Optimization.Common         import Nexus

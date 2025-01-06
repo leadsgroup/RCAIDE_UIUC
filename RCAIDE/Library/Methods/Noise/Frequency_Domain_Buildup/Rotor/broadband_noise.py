@@ -1,4 +1,3 @@
-## @ingroup Methods-Noise-Frequency_Domain_Buildup-Rotor
 # RCAIDE/Methods/Noise/Frequency_Domain_Buildup/Rotor/broadband_noise.py
 # 
 # 
@@ -21,7 +20,6 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # Compute Broadband Noise 
 # ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Noise-Frequency_Domain_Buildup-Rotor
 def broadband_noise(conditions,propulsor_conditions,coordinates,rotor,settings,Noise,cpt):
     '''This computes the trailing edge noise compoment of broadband noise of a propeller or 
     lift-rotor in the frequency domain. Boundary layer properties are computed using RCAIDE's 

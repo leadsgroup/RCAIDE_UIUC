@@ -152,12 +152,11 @@ FatDuct + CB test case
 ''' 
     geometry.write(duct_header) 
     if len(dfdc_object.geometry.hub_airfoil) > 0:
-        af_name =  list(dfdc_object.geometry.hub_airfoil.keys())[0]
-        if type(dfdc_object.geometry.hub_airfoil[af_name]) == RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil:
-            NACA_Code =  dfdc_object.geometry.hub_airfoil[af_name].NACA_4_Series_code
+        if type(dfdc_object.geometry.hub_airfoil) == RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil:
+            NACA_Code =  dfdc_object.geometry.hub_airfoil.NACA_4_Series_code
             airfoil_geometry_data = compute_naca_4series(NACA_Code)    
         else: 
-            airfoil_filename      = dfdc_object.geometry.hub_airfoil[af_name].coordinate_file
+            airfoil_filename      = dfdc_object.geometry.hub_airfoil.coordinate_file
             airfoil_geometry_data = import_airfoil_geometry(airfoil_filename)
     else:  
         airfoil_geometry_data = compute_naca_4series('0015') 
@@ -189,12 +188,11 @@ def make_duct_text(dfdc_object,geometry):
  
     """      
     if len(dfdc_object.geometry.duct_airfoil) > 0: 
-        af_name =  list(dfdc_object.geometry.duct_airfoil.keys())[0]
-        if type(dfdc_object.geometry.duct_airfoil[af_name]) == RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil:
-            NACA_Code =  dfdc_object.geometry.duct_airfoil[af_name].NACA_4_Series_code
+        if type(dfdc_object.geometry.duct_airfoil) == RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil:
+            NACA_Code =  dfdc_object.geometry.duct_airfoil.NACA_4_Series_code
             airfoil_geometry_data = compute_naca_4series(NACA_Code)    
         else: 
-            airfoil_filename      = dfdc_object.geometry.duct_airfoil[af_name].coordinate_file
+            airfoil_filename      = dfdc_object.geometry.duct_airfoil.coordinate_file
             airfoil_geometry_data = import_airfoil_geometry(airfoil_filename)
     else:  
         airfoil_geometry_data= compute_naca_4series('2208')    

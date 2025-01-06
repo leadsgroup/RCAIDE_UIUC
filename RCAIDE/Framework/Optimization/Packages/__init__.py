@@ -8,11 +8,8 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
 
-from . import additive 
-from . import ipopt 
+from . import additive  
 from . import particle_swarm
-from . import pyopt 
-from . import pyopt_sparse 
-from . import pyopt_surrogate
+from . import pyopt  
 from . import scipy
 from . import trmm

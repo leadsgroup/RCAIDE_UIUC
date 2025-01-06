@@ -1,21 +1,101 @@
 # RCAIDE/Library/Methods/Emissions/Chemical_Reactor_Network_Method/evaluate_CRN_emission_indices.py
 #  
-# Created:  Jul 2024, M. Clarke
+# Created: Jul 2024, M. Clarke, M. Guidotti
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 import  RCAIDE
-from RCAIDE.Framework.Core import Data
-from RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera import evaluate_cantera 
+from    RCAIDE.Framework.Core import Data
+from    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera import evaluate_cantera 
  
 # package imports
-import numpy as np
+import  numpy as np
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  evaluate_correlation_emissions_indices
 # ---------------------------------------------------------------------------------------------------------------------- 
 def evaluate_CRN_emission_indices_no_surrogate(segment,settings,vehicle):
+
+    """
+    Computes emission indices directly using Chemical Reactor Network without surrogate models.
+
+    Parameters
+    ----------
+    segment : Data
+        Mission segment data container
+        
+        - state : Data
+            Current state 
+
+            - numerics : Data
+                Numerical integration parameters
+
+                - time : Data
+                    Time integration settings
+            - conditions : Data
+                Flight conditions and component states
+            - ones_row : function
+                Creates array of ones with specified size
+                
+    settings : Data
+        Configuration settings for the simulation
+        
+    vehicle : Data
+        Vehicle configuration data
+
+        - networks : list
+            List of propulsion system networks
+
+            - fuel_lines : list
+                Fuel distribution systems
+            - propulsors : list
+                Propulsion units 
+    Returns
+    -------
+        Updates segment.state.conditions.emissions with:
+        
+        total : Data
+            Total emissions over segment
+
+            - CO2 : float
+                Total CO2 emissions [kg]
+            - H2O : float
+                Total H2O emissions [kg]
+            - NOx : float
+                Total NOx emissions [kg]
+        index : Data
+            Emission indices
+
+            - CO2 : ndarray
+                CO2 emission index [kg_CO2/kg_fuel]
+            - CO : ndarray
+                CO emission index [kg_CO/kg_fuel]
+            - H2O : ndarray
+                H2O emission index [kg_H2O/kg_fuel]
+            - NO : ndarray
+                NO emission index [kg_NO/kg_fuel]
+            - NO2 : ndarray
+                NO2 emission index [kg_NO2/kg_fuel]
+
+    Notes
+    -----
+    Computes emissions by directly evaluating the chemical kinetics at each time step
+    using Cantera. 
+
+    **Extra modules required**
+
+    * numpy
+    * Cantera (through evaluate_cantera function)
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera 
+
+    References
+    ----------
+    [1] Goodwin, D. G., Speth, R. L., Moffat, H. K., & Weber, B. W. (2023). Cantera: An object-oriented software toolkit for chemical kinetics, thermodynamics, and transport processes (Version 3.0.0) [Computer software]. https://www.cantera.org
+    """
   
     # unpack
     state     = segment.state
@@ -102,6 +182,93 @@ def evaluate_CRN_emission_indices_no_surrogate(segment,settings,vehicle):
     
 
 def evaluate_CRN_emission_indices_surrogate(segment,settings,vehicle): 
+
+    """
+    Computes emission indices using pre-trained Chemical Reactor Network surrogate models.
+
+    Parameters
+    ----------
+    segment : Data
+        Mission segment data container
+        
+        - state : Data
+            Current state of the system
+
+            - numerics : Data
+                Numerical integration parameters
+            - conditions : Data
+                Flight conditions and component states
+        - analyses : Data
+            Analysis settings and models
+
+            - emissions : Data
+                Emissions analysis settings
+
+                - surrogates : Data
+                    Trained surrogate models for each species
+                
+    settings : Data
+        Configuration settings for the simulation
+        
+    vehicle : Data
+        Vehicle configuration data
+
+        - networks : list
+            List of propulsion system networks
+
+            - propulsors : list
+                Propulsion units 
+
+    Returns
+    -------
+    Updates segment.state.conditions.emissions with:
+        
+    total : Data
+        Total emissions over segment
+
+        - CO2 : float
+            Total CO2 emissions [kg]
+        - H2O : float
+            Total H2O emissions [kg]
+        - NOx : float
+            Total NOx emissions [kg]
+    index : Data
+        Emission indices
+
+        - CO2 : ndarray
+            CO2 emission index [kg_CO2/kg_fuel]
+        - CO : ndarray
+            CO emission index [kg_CO/kg_fuel]
+        - H2O : ndarray
+            H2O emission index [kg_H2O/kg_fuel]
+        - NO : ndarray
+            NO emission index [kg_NO/kg_fuel]
+        - NO2 : ndarray
+            NO2 emission index [kg_NO2/kg_fuel]
+
+    Notes
+    -----
+    Uses pre-trained surrogate models to estimate emission indices.
+
+    **Extra modules required**
+
+    * numpy
+
+    **Major Assumptions**
+
+    * Operating conditions fall within the training data range
+    * Linear interpolation can be employed between training points
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.train_CRN_EI_surrogates
+    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.build_CRN_EI_surrogates
+    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera 
+
+    References
+    ----------
+    [1] Goodwin, D. G., Speth, R. L., Moffat, H. K., & Weber, B. W. (2023). Cantera: An object-oriented software toolkit for chemical kinetics, thermodynamics, and transport processes (Version 3.0.0) [Computer software]. https://www.cantera.org
+    """
   
     I          = segment.state.numerics.time.integrate
     surrogates = segment.analyses.emissions.surrogates

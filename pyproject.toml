@@ -1,0 +1,62 @@
+[build-system]
+requires = [
+    "setuptools>=67.8.0",
+    "wheel>=0.40.0"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "RCAIDE_LEADS"
+description = "RCAIDE: Research Community Aerospace Interdisciplinary Design Environment"
+readme = "README_PyPI.md"  # Updated to use PyPI-compatible README
+requires-python = ">=3.8"
+license = {text = "GNU Affero General Public License v3.0"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering"
+]
+dependencies = [
+    "numpy==1.26.4; python_version > '3.8'",
+    "scipy",
+    "matplotlib",
+    "scikit-learn",
+    "plotly",
+    "kaleido",
+    "pandas",
+    "contourpy",
+    "cycler",
+    "fonttools",
+    "geographiclib",
+    "geopy",
+    "importlib_metadata",
+    "joblib",
+    "pillow",
+    "python-dateutil",
+    "pytz",
+    "six",
+    "tenacity",
+    "threadpoolctl",
+    "zipp"
+]
+# Dynamic version configuration
+dynamic = ["version"]
+
+[tool.setuptools]
+package-dir = {"" = "."}
+
+[tool.setuptools.dynamic]
+version = {file = "RCAIDE/VERSION"}
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["RCAIDE*"]

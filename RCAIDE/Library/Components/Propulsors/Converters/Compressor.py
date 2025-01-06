@@ -14,7 +14,39 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Compressor.append_compressor_c
 #  Compressor 
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Compressor(Component):
-    """This is a compressor component typically used in a turbofan or turbojet.
+    """
+    A compressor component model for gas turbine engines.
+
+    Attributes
+    ----------
+    tag : str
+        Identifier for the compressor. Default is 'Compressor'.
+        
+    polytropic_efficiency : float
+        Efficiency of the compression process accounting for losses. Default is 1.0.
+        
+    pressure_ratio : float
+        Ratio of outlet to inlet total pressure. Default is 1.0.
+
+    Notes
+    -----
+    The Compressor class models the compression process in gas turbine engines.
+    It calculates the work required to increase the pressure of the working fluid
+    while accounting for losses through the polytropic efficiency.
+
+    **Definitions**
+
+    'Polytropic Efficiency'
+        A measure of compression efficiency that accounts for the continuous
+        nature of the compression process and real gas effects
+
+    'Pressure Ratio'
+        Ratio of exit to inlet total pressure, a key parameter determining
+        the compressor's performance and work input required
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Propulsors.Converters.Compressor
     """
     
     def __defaults__(self):

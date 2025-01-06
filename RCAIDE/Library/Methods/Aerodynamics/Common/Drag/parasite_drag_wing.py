@@ -65,7 +65,7 @@ def parasite_drag_wing(state,settings,geometry):
     exposed_root_chord_offset = wing.exposed_root_chord_offset
     t_c_w                     = wing.thickness_to_chord
     Sref                      = wing.areas.reference
-    num_segments              = len(wing.Segments.keys())     
+    num_segments              = len(wing.segments.keys())     
     
     # if wing has segments, compute and sum parasite drag of each segment
 
@@ -82,7 +82,7 @@ def parasite_drag_wing(state,settings,geometry):
         total_k_reyn_u               = 0          
         total_k_reyn_l               = 0
         
-        for i,segment in enumerate (wing.Segments): 
+        for i,segment in enumerate (wing.segments): 
             if i == num_segments-1:
                 continue  
             mac_seg       = segment.chords.mean_aerodynamic

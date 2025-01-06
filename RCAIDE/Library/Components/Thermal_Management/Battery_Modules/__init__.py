@@ -1,12 +1,25 @@
+<<<<<<< HEAD:RCAIDE/Library/Components/Thermal_Management/Battery_Modules/__init__.py
 # RCAIDE/Energy/Thermal_Management/Battery_Modules/__init__.py
 # 
+=======
+# RCAIDE/Energy/Thermal_Management/Batteries/__init__.py
+>>>>>>> 216d1c6da7064a437f8bb8b10f0f036f079e8863:RCAIDE/Library/Components/Thermal_Management/Batteries/__init__.py
 
-""" RCAIDE Package Setup
+"""
+Module containing thermal management components specifically for battery systems. This module 
+provides classes for different battery cooling approaches including air cooling, cryogenic 
+cooling, and liquid cooling with wavy channels.
+
+See Also
+--------
+RCAIDE.Library.Components.Energy.Sources.Battery_Modules
+    Related module for battery system modeling
+RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers
+    Related module for heat exchanger components used in battery cooling
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
 from .Air_Cooled                 import Air_Cooled
-from .Cryocooler                 import Cryocooler
 from .Liquid_Cooled_Wavy_Channel import Liquid_Cooled_Wavy_Channel

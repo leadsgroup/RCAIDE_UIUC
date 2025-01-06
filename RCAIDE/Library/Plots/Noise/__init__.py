@@ -1,7 +1,16 @@
 # RCAIDE/Library/Plots/Noise/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+RCAIDE Noise Plotting Package
+
+This package contains modules for visualizing noise-related data and analysis 
+results in RCAIDE.
+
+See Also
+--------
+RCAIDE.Library.Plots : Parent plotting package
+RCAIDE.Library.Methods.Noise : Noise analysis tools
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

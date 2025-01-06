@@ -56,8 +56,8 @@ def train_AVL_surrogates(aerodynamics):
     NP       = np.zeros_like(CM)  
 
     # remove old files in run directory  
-    if os.path.exists('avl_files'):
-        if not aerodynamics.settings.regression_flag:
+    if os.path.exists(aerodynamics.settings.filenames.run_folder):
+        if aerodynamics.settings.new_regression_results:
             rmtree(run_folder)
 
     for i,_ in enumerate(Mach):
@@ -112,7 +112,7 @@ def train_AVL_surrogates(aerodynamics):
         NP        = np.reshape(NP_1D , (len_AoA,-1))
 
     # Save the data for regression 
-    if aerodynamics.settings.save_regression_results:
+    if aerodynamics.settings.new_regression_results:
         # convert from 2D to 1D
         CL_1D       = CL.reshape([len_AoA*len_Mach,1]) 
         CD_1D       = CD.reshape([len_AoA*len_Mach,1])  

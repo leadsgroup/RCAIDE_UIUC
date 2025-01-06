@@ -66,17 +66,17 @@ def aerodynamics(segment):
     # -----------------------------------------------------------------
     # Moments
     # -----------------------------------------------------------------
-    CM = conditions.static_stability.coefficients.M
-    CL = conditions.static_stability.coefficients.L
-    CN = conditions.static_stability.coefficients.N
+    C_M = conditions.static_stability.coefficients.M
+    C_L = conditions.static_stability.coefficients.L
+    C_N = conditions.static_stability.coefficients.N
 
-    CM[q<=0.0] = 0.0
+    C_M[q<=0.0] = 0.0
 
     # dimensionalize
     M      = segment.state.ones_row(3) * 0.0
-    M[:,0] = (CL[:,0] * q[:,0] * Sref * span)
-    M[:,1] = (CM[:,0] * q[:,0] * Sref * MAC)
-    M[:,2] = (CN[:,0] * q[:,0] * Sref * span)
+    M[:,0] = (C_L[:,0] * q[:,0] * Sref * span)
+    M[:,1] = (C_M[:,0] * q[:,0] * Sref * MAC)
+    M[:,2] = (C_N[:,0] * q[:,0] * Sref * span)
 
     # pack conditions
     conditions.frames.wind.moment_vector[:,:] = M[:,:] 

@@ -91,31 +91,6 @@ class ContainerOrdered(DataOrdered):
         #val = self.check_new_val(val)
         DataOrdered.append(self,val)
         
-    def extend(self,vals):
-        """Append things regressively depending on what is inside.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            self
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A
-            """          
-        if isinstance(vals,(list,tuple)):
-            for v in val: self.append(v)
-        elif isinstance(vals,dict):
-            self.update(vals)
-        else:
-            raise Exception('unrecognized data type')
-        
     def get_children(self):
         """ Returns the components that can go inside
         

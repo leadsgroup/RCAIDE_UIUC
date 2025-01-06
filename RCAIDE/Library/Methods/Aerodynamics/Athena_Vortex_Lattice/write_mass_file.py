@@ -66,8 +66,8 @@ rho = {2}
 
         # Unpack inputs
         name    = avl_object.vehicle.tag
-        density = run_conditions.freestream.density 
-        gravity = run_conditions.freestream.gravity
+        density = run_conditions.freestream.density[0][0] 
+        gravity = run_conditions.freestream.gravity[0][0] 
         
         if aircraft.mass_properties.mass == 0:
             mass = aircraft.mass_properties.max_takeoff

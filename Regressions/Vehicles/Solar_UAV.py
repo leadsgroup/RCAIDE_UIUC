@@ -34,7 +34,7 @@ def vehicle_setup():
     # basic parameters
     vehicle.reference_area                           = 80.       
     vehicle.flight_envelope.ultimate_load            = 2.0
-    vehicle.flight_envelope.limit_load               = 1.5
+    vehicle.flight_envelope.positive_limit_load      = 1.5
     vehicle.flight_envelope.maximum_dynamic_pressure = 0.5*1.225*(40.**2.) #Max q
 
     # ------------------------------------------------------------------        

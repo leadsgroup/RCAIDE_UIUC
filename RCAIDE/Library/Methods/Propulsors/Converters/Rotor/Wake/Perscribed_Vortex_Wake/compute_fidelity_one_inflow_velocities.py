@@ -1,4 +1,3 @@
-## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One
 # compute_fidelity_one_inflow_velocities.py
 #
 # Created:  Sep 2021, R. Erhard
@@ -14,7 +13,6 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_W
 import numpy as np
 from scipy.interpolate import interp1d
 
-## @ingroup Methods-Propulsion-Rotor_Wake-Fidelity_One
 def compute_fidelity_one_inflow_velocities( wake, prop ):
     """
     Assumptions:

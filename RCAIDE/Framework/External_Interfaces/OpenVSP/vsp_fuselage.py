@@ -1,15 +1,14 @@
-## @ingroup Input_Output-OpenVSP
-# vsp_fuselage.py
+# RCAIDE/Framework/External_Interfaces/OpenVSP/vsp_fuselage.py
 
 # Created:  Jun 2018, T. St Francis
 # Modified: Aug 2018, T. St Francis
 #           Jan 2020, T. MacDonald
 #           Jul 2020, E. Botero
 
-# ----------------------------------------------------------------------
-#  Imports
-# ----------------------------------------------------------------------
-
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------  
+# RCAIDE imports 
 import RCAIDE
 from RCAIDE.Framework.Core import Units, Data  
 import numpy as np
@@ -21,11 +20,10 @@ except ImportError:
     except ImportError:
         # This allows RCAIDE to build without OpenVSP
         pass
-# ----------------------------------------------------------------------
+    
+# ---------------------------------------------------------------------------------------------------------------------- 
 #  vsp read fuselage
-# ----------------------------------------------------------------------
-
-## @ingroup Input_Output-OpenVSP
+# ---------------------------------------------------------------------------------------------------------------------- 
 def read_vsp_fuselage(fuselage_id,fux_idx,sym_flag, units_type='SI', fineness=True, use_scaling=True):
     """This reads an OpenVSP fuselage geometry and writes it to a RCAIDE fuselage format.
 
@@ -43,7 +41,7 @@ def read_vsp_fuselage(fuselage_id,fux_idx,sym_flag, units_type='SI', fineness=Tr
     N/A
 
     Inputs:
-    0. Pre-loaded VSP vehicle in memory, via vsp_read.
+    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
     1. VSP 10-digit geom ID for fuselage.
     2. Units_type set to 'SI' (default) or 'Imperial'.
     3. Boolean for whether or not to compute fuselage finenesses (default = True).
@@ -127,7 +125,18 @@ def read_vsp_fuselage(fuselage_id,fux_idx,sym_flag, units_type='SI', fineness=Tr
     for ii in range(0, fuselage.vsp_data.xsec_num): 
         # Create the segment
         x_sec                     = vsp.GetXSec(fuselage.vsp_data.xsec_surf_id, ii) # VSP XSec ID.
-        segment                   = RCAIDE.Library.Components.Fuselages.Segment()
+        vsp_section_index         = vsp.GetXSecShape(vsp.GetXSec(fuselage.vsp_data.xsec_surf_id, ii)) 
+        if vsp_section_index == 1:
+            segment                   = RCAIDE.Library.Components.Fuselages.Segments.Circle_Segment() 
+        elif vsp_section_index == 2:
+            segment                   = RCAIDE.Library.Components.Fuselages.Segments.Ellipse_Segment() 
+        elif vsp_section_index == 3:
+            segment                   = RCAIDE.Library.Components.Fuselages.Segments.Super_Ellipse_Segment() 
+        elif vsp_section_index == 4:
+            segment                   = RCAIDE.Library.Components.Fuselages.Segments.Rounded_Rectangle_Segment() 
+        else:
+            segment               = RCAIDE.Library.Components.Fuselages.Segments.Segment()  
+        segment                   = RCAIDE.Library.Components.Fuselages.Segments.Segment()
         segment.vsp_data.xsec_id  = x_sec 
         segment.tag               = 'segment_' + str(ii)
 
@@ -159,7 +168,7 @@ def read_vsp_fuselage(fuselage_id,fux_idx,sym_flag, units_type='SI', fineness=Tr
         shape_dict = {0:'point',1:'circle',2:'ellipse',3:'super ellipse',4:'rounded rectangle',5:'general fuse',6:'fuse file'}
         segment.vsp_data.shape = shape_dict[shape]	
 
-        fuselage.Segments.append(segment)
+        fuselage.segments.append(segment)
 
     fuselage.heights.at_quarter_length          = get_fuselage_height(fuselage, .25)  # Calls get_fuselage_height function (below).
     fuselage.heights.at_three_quarters_length   = get_fuselage_height(fuselage, .75) 
@@ -178,8 +187,9 @@ def read_vsp_fuselage(fuselage_id,fux_idx,sym_flag, units_type='SI', fineness=Tr
 
     return fuselage
 
-
-## @ingroup Input_Output-OpenVSP
+# ---------------------------------------------------------------------------------------------------------------------- 
+# Write VSP Fuselage
+# ---------------------------------------------------------------------------------------------------------------------- 
 def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set_ind):
     """This writes a fuselage into OpenVSP format.
 
@@ -229,7 +239,8 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
     N/A
     """     
 
-    num_segs           = len(fuselage.Segments)
+    segment_list       = list(fuselage.segments.keys())
+    num_segs           = len(segment_list)
     length             = fuselage.lengths.total
     fuse_x             = fuselage.origin[0][0]    
     fuse_y             = fuselage.origin[0][1]
@@ -269,12 +280,14 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
     else: # Fuselage shaping based on sections
         widths  = []
         heights = []
+        radii   = []
         x_poses = []
         z_poses = []
-        segs = fuselage.Segments
+        segs = fuselage.segments
         for seg in segs:
             widths.append(seg.width)
             heights.append(seg.height)
+            radii.append(seg.radius)
             x_poses.append(seg.percent_x_location)
             z_poses.append(seg.percent_z_location)
 
@@ -312,14 +325,7 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
         if not vals.nose.TB_Sym:
             vsp.SetParmVal(fuse_id,"BottomLAngle","XSec_0",vals.nose.bottom.angle)
             vsp.SetParmVal(fuse_id,"BottomLStrength","XSec_0",vals.nose.bottom.strength)           
-
-        # Tail
-        # Below can be enabled if AllSym (below) is removed
-        #vsp.SetParmVal(fuse_id,"RightLAngle","XSec_4",vals.tail.side.angle)
-        #vsp.SetParmVal(fuse_id,"RightLStrength","XSec_4",vals.tail.side.strength)
-        #vsp.SetParmVal(fuse_id,"TBSym","XSec_4",vals.tail.TB_Sym)
-        #vsp.SetParmVal(fuse_id,"BottomLAngle","XSec_4",vals.tail.bottom.angle)
-        #vsp.SetParmVal(fuse_id,"BottomLStrength","XSec_4",vals.tail.bottom.strength)
+ 
         if 'z_pos' in vals.tail:
             tail_z_pos = vals.tail.z_pos
         else:
@@ -349,33 +355,64 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
         vals.nose.z_pos        = 0.0
         vals.tail.top.angle    = 0.0
         vals.tail.top.strength = 0.0
-
-        #if len(np.unique(x_poses)) != len(x_poses):
-            #raise ValueError('Duplicate fuselage section positions detected.')
+ 
         vsp.SetParmVal(fuse_id,"Length","Design",length)
         if num_segs != 5: # reduce to only nose and tail
             vsp.CutXSec(fuse_id,1) # remove extra default section
             vsp.CutXSec(fuse_id,1) # remove extra default section
             vsp.CutXSec(fuse_id,1) # remove extra default section
-            for i in range(num_segs-2): # add back the required number of sections
-                vsp.InsertXSec(fuse_id, 0, vsp.XS_ELLIPSE)           
+            for i1 in reversed(range(num_segs-2)): # add back the required number of sections 
+                if type(segs[segment_list[i1]]) == RCAIDE.Library.Components.Fuselages.Segments.Circle_Segment:
+                    vsp.InsertXSec(fuse_id, 0, vsp.XS_CIRCLE)                    
+                elif type(segs[segment_list[i1]]) == RCAIDE.Library.Components.Fuselages.Segments.Ellipse_Segment:
+                    vsp.InsertXSec(fuse_id, 0, vsp.XS_ELLIPSE)    
+                elif type(segs[segment_list[i1]]) == RCAIDE.Library.Components.Fuselages.Segments.Super_Ellipse_Segment:
+                    vsp.InsertXSec(fuse_id, 0, vsp.XS_SUPER_ELLIPSE)    
+                elif type(segs[segment_list[i1]]) == RCAIDE.Library.Components.Fuselages.Segments.Rounded_Rectangle_Segment:
+                    vsp.InsertXSec(fuse_id, 0, vsp.XS_ROUNDED_RECTANGLE)     
+                else:
+                    vsp.InsertXSec(fuse_id, 0, vsp.XS_ELLIPSE)    
                 vsp.Update()
-        for i in range(num_segs-2):
+                
+        for i2 in range(num_segs-2):
             # Bunch sections to allow proper length settings in the next step
             # This is necessary because OpenVSP will not move a section past an adjacent section
-            vsp.SetParmVal(fuse_id, "XLocPercent", "XSec_"+str(i+1),1e-6*(i+1))
+            vsp.SetParmVal(fuse_id, "XLocPercent", "XSec_"+str(i2+1),1e-6*(i2+1))
             vsp.Update()
+            
         if x_poses[1] < (num_segs-2)*1e-6:
             print('Warning: Second fuselage section is too close to the nose. OpenVSP model may not be accurate.')
-        for i in reversed(range(num_segs-2)):
+            
+        for i3 in reversed(range(num_segs-2)):
             # order is reversed because sections are initially bunched in the front and cannot be extended passed the next
-            vsp.SetParmVal(fuse_id, "XLocPercent", "XSec_"+str(i+1),x_poses[i+1])
-            vsp.SetParmVal(fuse_id, "ZLocPercent", "XSec_"+str(i+1),z_poses[i+1])
-            vsp.SetParmVal(fuse_id, "Ellipse_Width", "XSecCurve_"+str(i+1), widths[i+1])
-            vsp.SetParmVal(fuse_id, "Ellipse_Height", "XSecCurve_"+str(i+1), heights[i+1])   
-            vsp.Update()             
-            set_section_angles(i, vals.nose.z_pos, tail_z_pos, x_poses, z_poses, heights, widths,length,end_ind,fuse_id)            
+            vsp.SetParmVal(fuse_id, "XLocPercent", "XSec_"+str(i3+1),x_poses[i3+1])
+            vsp.SetParmVal(fuse_id, "ZLocPercent", "XSec_"+str(i3+1),z_poses[i3+1])
+                       
+            if type(segs[segment_list[i3]]) == RCAIDE.Library.Components.Fuselages.Segments.Circle_Segment:
+                vsp.SetParmVal(fuse_id, "Circle_Diameter", "XSecCurve_"+str(i3+1), widths[i3+1]) 
+                
+            elif type(segs[segment_list[i3]]) == RCAIDE.Library.Components.Fuselages.Segments.Ellipse_Segment:
+                vsp.SetParmVal(fuse_id, "Ellipse_Width", "XSecCurve_"+str(i3+1), widths[i3+1])
+                vsp.SetParmVal(fuse_id, "Ellipse_Height", "XSecCurve_"+str(i3+1), heights[i3+1]) 
 
+            elif type(segs[segment_list[i3]]) == RCAIDE.Library.Components.Fuselages.Segments.Super_Ellipse_Segment:
+                vsp.SetParmVal(fuse_id, "Super_Width", "XSecCurve_"+str(i3+1), widths[i3+1])
+                vsp.SetParmVal(fuse_id, "Super_Height", "XSecCurve_"+str(i3+1), heights[i3+1])
+
+            elif type(segs[segment_list[i3]]) == RCAIDE.Library.Components.Fuselages.Segments.Rounded_Rectangle_Segment:
+                vsp.SetParmVal(fuse_id, "RoundedRect_Width", "XSecCurve_"+str(i3+1), widths[i3+1])
+                vsp.SetParmVal(fuse_id, "RoundedRect_Height", "XSecCurve_"+str(i3+1), heights[i3+1])
+                vsp.SetParmVal(fuse_id, "RoundRectXSec_Radius", "XSecCurve_"+str(i3+1), radii[i3+1]) 
+      
+            else:  
+                vsp.SetParmVal(fuse_id, "Ellipse_Width", "XSecCurve_"+str(i3+1), widths[i3+1])
+                vsp.SetParmVal(fuse_id, "Ellipse_Height", "XSecCurve_"+str(i3+1), heights[i3+1])  
+            vsp.Update()             
+            set_section_angles(i3, vals.nose.z_pos, tail_z_pos, x_poses, z_poses, heights, widths,length,end_ind,fuse_id)            
+
+    
+        vsp.SetParmVal(fuse_id,"TopLAngle","XSec_"+str(0),90)
+        vsp.SetParmVal(fuse_id,"RightLAngle","XSec_"+str(0),90)
         vsp.SetParmVal(fuse_id, "XLocPercent", "XSec_"+str(0),x_poses[0])
         vsp.SetParmVal(fuse_id, "ZLocPercent", "XSec_"+str(0),z_poses[0])
         vsp.SetParmVal(fuse_id, "XLocPercent", "XSec_"+str(end_ind),x_poses[-1])
@@ -383,9 +420,6 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
 
         # Tail
         if heights[-1] > 0.:
-            stdout = vsp.cvar.cstdout
-            errorMgr = vsp.ErrorMgrSingleton_getInstance()
-            errorMgr.PopErrorAndPrint(stdout)
 
             pos = len(heights)-1
             vsp.InsertXSec(fuse_id, pos-1, vsp.XS_ELLIPSE)
@@ -414,7 +448,6 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
             vsp.SetParmVal(fuse_id,"AllSym","XSec_"+str(end_ind),1)
             vsp.Update()
 
-
         if 'z_pos' in vals.tail:
             tail_z_pos = vals.tail.z_pos
         else:
@@ -428,7 +461,9 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
 
     return area_tags
 
-## ingroup Input_Output-OpenVSP
+# ---------------------------------------------------------------------------------------------------------------------- 
+# set_section_angles 
+# ---------------------------------------------------------------------------------------------------------------------- 
 def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end_ind,fuse_id):
     """Set fuselage section angles to create a smooth (in the non-technical sense) fuselage shape.
     Note that i of 0 corresponds to the first section that is not the end point.
@@ -451,19 +486,21 @@ def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end
 
     Properties Used:
     N/A
-    """    
+    """
+    divider = 1
+    if i < 2:
+        divider = 2
+        
     w0 = widths[i]
-    h0 = heights[i]
-    x0 = x_poses[i]
-    z0 = z_poses[i]   
+    h0 = heights[i] 
     w2 = widths[i+2]
     h2 = heights[i+2]
     x2 = x_poses[i+2]
     z2 = z_poses[i+2]
 
-    x0 = x0*length
+    x0 = x_poses[i]*length
     x2 = x2*length
-    z0 = z0*length
+    z0 = z_poses[i] *length
     z2 = z2*length
 
     top_z_diff = (h2/2+z2)-(h0/2+z0)
@@ -471,9 +508,9 @@ def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end
     y_diff     = w2/2-w0/2
     x_diff     = x2-x0
 
-    top_angle  = np.tan(top_z_diff/x_diff)/Units.deg
-    bot_angle  = np.tan(-bot_z_diff/x_diff)/Units.deg
-    side_angle = np.tan(y_diff/x_diff)/Units.deg
+    top_angle  = np.tan(top_z_diff/x_diff)/Units.deg / divider
+    bot_angle  = np.tan(-bot_z_diff/x_diff)/Units.deg / divider
+    side_angle = np.tan(y_diff/x_diff)/Units.deg/ divider
 
     vsp.SetParmVal(fuse_id,"TBSym","XSec_"+str(i+1),0)
     vsp.SetParmVal(fuse_id,"TopLAngle","XSec_"+str(i+1),top_angle)
@@ -484,7 +521,10 @@ def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end
     vsp.SetParmVal(fuse_id,"RightLStrength","XSec_"+str(i+1),0.75)   
 
     return  
-
+ 
+# ---------------------------------------------------------------------------------------------------------------------- 
+# compute_fuselage_fineness
+# ---------------------------------------------------------------------------------------------------------------------- 
 def compute_fuselage_fineness(fuselage, x_locs, eff_diams, eff_diam_gradients_fwd):
     """This computes fuselage finenesses for nose and tail.
 
@@ -495,7 +535,7 @@ def compute_fuselage_fineness(fuselage, x_locs, eff_diams, eff_diam_gradients_fw
     N/A
 
     Inputs:
-    0. Pre-loaded VSP vehicle in memory, via vsp_read.
+    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
     1. RCAIDE fuselage [object].
     2. Array of x_locations of fuselage segments. (length = L)
     3. Array of effective diameters of fuselage segments. (length = L)
@@ -506,25 +546,31 @@ def compute_fuselage_fineness(fuselage, x_locs, eff_diams, eff_diam_gradients_fw
 
     Properties Used:
     N/A
-    """ 	
+    """
+
+    segment_list       = list(fuselage.segments.keys())
+    
     # Compute nose fineness.    
-    x_locs    = np.array(x_locs)					# Make numpy arrays.
-    eff_diams = np.array(eff_diams)
-    min_val   = np.min(eff_diam_gradients_fwd[x_locs[:-1]<=0.5])	# Computes smallest eff_diam gradient value in front 50% of fuselage.
-    x_loc     = x_locs[:-1][eff_diam_gradients_fwd==min_val][0]		# Determines x-location of the first instance of that value (if gradient=0, gets frontmost x-loc).
-    fuselage.lengths.nose  = (x_loc-fuselage.Segments[0].percent_x_location)*fuselage.lengths.total	# Subtracts first segment x-loc in case not at global origin.
+    x_locs                 = np.array(x_locs)					# Make numpy arrays.
+    eff_diams              = np.array(eff_diams)
+    min_val                = np.min(eff_diam_gradients_fwd[x_locs[:-1]<=0.5])	# Computes smallest eff_diam gradient value in front 50% of fuselage.
+    x_loc                  = x_locs[:-1][eff_diam_gradients_fwd==min_val][0]		# Determines x-location of the first instance of that value (if gradient=0, gets frontmost x-loc).
+    fuselage.lengths.nose  = (x_loc-fuselage.segments[segment_list[0]].percent_x_location)*fuselage.lengths.total	# Subtracts first segment x-loc in case not at global origin.
     fuselage.fineness.nose = fuselage.lengths.nose/(eff_diams[x_locs==x_loc][0])
 
     # Compute tail fineness.
-    x_locs_tail		    = x_locs>=0.5						# Searches aft 50% of fuselage.
+    x_locs_tail	                = x_locs>=0.5						# Searches aft 50% of fuselage.
     eff_diam_gradients_fwd_tail = eff_diam_gradients_fwd[x_locs_tail[1:]]			# Smaller array of tail gradients.
-    min_val 		    = np.min(-eff_diam_gradients_fwd_tail)			# Computes min gradient, where fuselage tapers (minus sign makes positive).
-    x_loc = x_locs[np.hstack([False,-eff_diam_gradients_fwd==min_val])][-1]			# Saves aft-most value (useful for straight fuselage with multiple zero gradients.)
+    min_val 		        = np.min(-eff_diam_gradients_fwd_tail)			# Computes min gradient, where fuselage tapers (minus sign makes positive).
+    x_loc                       = x_locs[np.hstack([False,-eff_diam_gradients_fwd==min_val])][-1]			# Saves aft-most value (useful for straight fuselage with multiple zero gradients.)
     fuselage.lengths.tail       = (1.-x_loc)*fuselage.lengths.total
     fuselage.fineness.tail      = fuselage.lengths.tail/(eff_diams[x_locs==x_loc][0])	# Minus sign converts tail fineness to positive value.
 
     return fuselage
 
+# ---------------------------------------------------------------------------------------------------------------------- 
+# get_fuselage_height
+# ---------------------------------------------------------------------------------------------------------------------- 
 def get_fuselage_height(fuselage, location):
     """This linearly estimates fuselage height at any percentage point (0,100) along fuselage length.
 
@@ -535,7 +581,7 @@ def get_fuselage_height(fuselage, location):
     N/A
 
     Inputs:
-    0. Pre-loaded VSP vehicle in memory, via vsp_read.
+    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
     1. RCAIDE fuselage [object], containing fuselage.vsp_data.xsec_num in its data structure.
     2. Fuselage percentage point [float].
 
@@ -545,19 +591,23 @@ def get_fuselage_height(fuselage, location):
     Properties Used:
     N/A
     """
+
+    segment_list       = list(fuselage.segments.keys())    
     for jj in range(1, fuselage.vsp_data.xsec_num):		# Begin at second section, working toward tail.
-        if fuselage.Segments[jj].percent_x_location>=location and fuselage.Segments[jj-1].percent_x_location<location:  
+        if fuselage.segments[segment_list[jj]].percent_x_location>=location and fuselage.segments[segment_list[jj-1]].percent_x_location<location:  
             # Find two sections on either side (or including) the desired fuselage length percentage.
-            a        = fuselage.Segments[jj].percent_x_location							
-            b        = fuselage.Segments[jj-1].percent_x_location
-            a_height = fuselage.Segments[jj].height		# Linear approximation.
-            b_height = fuselage.Segments[jj-1].height
+            a        = fuselage.segments[segment_list[jj]].percent_x_location							
+            b        = fuselage.segments[segment_list[jj-1]].percent_x_location
+            a_height = fuselage.segments[segment_list[jj]].height		# Linear approximation.
+            b_height = fuselage.segments[segment_list[jj-1]].height
             slope    = (a_height - b_height)/(a-b)
             height   = ((location-b)*(slope)) + (b_height)	
             break
     return height
 
-## @ingroup Input_Output-OpenVSP
+# ---------------------------------------------------------------------------------------------------------------------- 
+# find_fuse_u_coordinate
+# ---------------------------------------------------------------------------------------------------------------------- 
 def find_fuse_u_coordinate(x_target,fuse_id,fuel_tank_tag):
     """Determines the u coordinate of an OpenVSP fuselage that matches an x coordinate
 
@@ -597,7 +647,9 @@ def find_fuse_u_coordinate(x_target,fuse_id,fuel_tank_tag):
     return u_current
 
 
-## @ingroup Input_Output-OpenVSP
+# ---------------------------------------------------------------------------------------------------------------------- 
+# write_fuselage_conformal_fuel_tank
+# ----------------------------------------------------------------------------------------------------------------------  
 def write_fuselage_conformal_fuel_tank(fuse_id,fuel_tank,fuel_tank_set_ind):
     """This writes a conformal fuel tank in a fuselage.
 
@@ -621,13 +673,7 @@ def write_fuselage_conformal_fuel_tank(fuse_id,fuel_tank,fuel_tank_set_ind):
 
     Properties Used:
     N/A
-    """        
-
-
-    #stdout = vsp.cvar.cstdout
-    #errorMgr = vsp.ErrorMgrSingleton_getInstance()
-    #errorMgr.PopErrorAndPrint(stdout)
-
+    """         
     # Unpack
     try:
         offset         = fuel_tank.inward_offset
@@ -645,22 +691,25 @@ def write_fuselage_conformal_fuel_tank(fuse_id,fuel_tank,fuel_tank_set_ind):
     # Get min x
     probe_id = vsp.AddProbe(fuse_id,0,0,0,fuel_tank.tag+'_probe')
     vsp.Update()
-    x_id  = vsp.FindParm(probe_id,'X','Measure')
-    x_pos = vsp.GetParmVal(x_id)    
+    x_id       = vsp.FindParm(probe_id,'X','Measure')
+    x_pos      = vsp.GetParmVal(x_id)    
     fuse_x_min = x_pos
     vsp.DelProbe(probe_id)
+    
     # Get min x
     probe_id = vsp.AddProbe(fuse_id,0,1,0,fuel_tank.tag+'_probe')
     vsp.Update()
-    x_id  = vsp.FindParm(probe_id,'X','Measure')
-    x_pos = vsp.GetParmVal(x_id)    
+    x_id       = vsp.FindParm(probe_id,'X','Measure')
+    x_pos      = vsp.GetParmVal(x_id)    
     fuse_x_max = x_pos 
     vsp.DelProbe(probe_id)
+
     # Search for u values
     x_target_start  = (fuse_x_max-fuse_x_min)*fuel_tank.start_length_percent
     x_target_end    = (fuse_x_max-fuse_x_min)*fuel_tank.end_length_percent
-    u_start = find_fuse_u_coordinate(x_target_start, fuse_id, fuel_tank.tag)
-    u_end   = find_fuse_u_coordinate(x_target_end, fuse_id, fuel_tank.tag)
+    u_start         = find_fuse_u_coordinate(x_target_start, fuse_id, fuel_tank.tag)
+    u_end           = find_fuse_u_coordinate(x_target_end, fuse_id, fuel_tank.tag)
+
     # Offset
     vsp.SetParmVal(tank_id,'Offset','Design',offset)      
 

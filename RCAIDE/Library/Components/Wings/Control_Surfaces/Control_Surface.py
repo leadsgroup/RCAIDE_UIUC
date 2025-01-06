@@ -1,6 +1,5 @@
 # RCAIDE/Compoments/Wings/Control_Surfaces/Control_Surface.py
 # 
-# 
 # Created:  Mar 2024, M. Clarke 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -10,44 +9,92 @@
 from RCAIDE.Library.Components import Component 
 
 # ---------------------------------------------------------------------------------------------------------------------- 
-#  Control Surfaces
-# ---------------------------------------------------------------------------------------------------------------------- -Control_Surfaces 
+#  Control Surface
+# ---------------------------------------------------------------------------------------------------------------------- 
 class Control_Surface(Component):
+    """
+    Base class for aircraft control surfaces providing core functionality for geometric 
+    definition and operation.
+
+    Attributes
+    ----------
+    tag : str
+        Unique identifier for the control surface, defaults to 'control_surface'
+        
+    span : float
+        Spanwise length of the control surface in meters, defaults to 0.0
+        
+    span_fraction_start : float
+        Spanwise location where control surface begins as fraction of wing span, 
+        defaults to 0.0
+        
+    span_fraction_end : float
+        Spanwise location where control surface ends as fraction of wing span, 
+        defaults to 0.0
+        
+    hinge_fraction : float
+        Chordwise location of hinge line as fraction of control surface chord, 
+        defaults to 0.0
+        
+    chord_fraction : float
+        Fraction of wing chord occupied by control surface, defaults to 0.0
+        
+    sign_duplicate : float
+        Sign convention for duplicate control surface deflection (1.0 or -1.0), 
+        defaults to 1.0
+        
+    deflection : float
+        Control surface deflection angle, defaults to 0.0
+        
+    configuration_type : str
+        Type of control surface construction (e.g., 'single_slotted'), 
+        defaults to 'single_slotted'
+        
+    gain : float
+        Deflection multiplier used for AVL analysis, defaults to 1.0
+
+    Notes
+    -----
+    The control surface class provides the foundation for all movable aerodynamic 
+    surfaces. Key features include:
+    
+    * Geometric definition relative to parent wing
+    * Deflection and hinge line specification
+    * Configuration type specification
+    * Duplicate surface handling
+
+    **Definitions**
+
+    'Span Fraction'
+        Location along wing span measured as fraction from root (0.0) to tip (1.0)
+        
+    'Chord Fraction'
+        Portion of local wing chord occupied by control surface
+        
+    'Hinge Fraction'
+        Location of hinge line measured as fraction of control surface chord
+        
+    'Sign Duplicate'
+        Determines deflection relationship between paired surfaces:
+        * 1.0 for synchronized deflection (e.g., flaps)
+        * -1.0 for opposite deflection (e.g., ailerons)
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Control_Surfaces.Flap
+        High-lift device implementation
+    RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron
+        Roll control implementation
+    RCAIDE.Library.Components.Wings.Control_Surfaces.Elevator
+        Pitch control implementation
+    RCAIDE.Library.Components.Wings.Control_Surfaces.Rudder
+        Yaw control implementation
+    """
+
     def __defaults__(self):
-        """This sets the default values of control surfaces defined in RCAIDE. 
-        
-        - span: the span of the control surface in meters        
-        - span_fraction_start: % span of the wing where the control surface starts        
-        - span_fraction_start: % span of the wing where the control surface starts
-        
-        - hinge_fraction: number between 0.0 and 1.0. This corresponds to the location of the 
-            hingeline, where 0 and 1 correspond to the leading and trailing edges, respectively, 
-            of the CONTROL SURFACE (NOT the wing).
-        - chord_fraction: number between 0.0 and 1.0 describing the fraction of the wing's chord
-            that is 'cut' out by the control surface
-        
-        - sign_duplicate: 1.0 or -1.0 - the sign of the duplicate control on the mirror wing.        
-            Use 1.0 for a mirrored control surface, like an elevator. Use -1.0 for an aileron.
-        - deflection: the angle the control surface is deflected. 
-        - configuration_type: the kind of control surface (e.g. single_slotted)
-        
-        Assumptions:
-        - for chord_fraction, Slats are always cut out from the leading edge and everything else
-            os cut out from the trailing edge.
-
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """         
-
+        """
+        Sets default values for the control surface attributes.
+        """
         self.tag                   = 'control_surface' 
         self.span                  = 0.0
         self.span_fraction_start   = 0.0

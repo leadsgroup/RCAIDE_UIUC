@@ -87,16 +87,16 @@ def optimization_setup(rotor,number_of_stations,print_iterations):
     # Constraints
     # -------------------------------------------------------------------  
     constraints = [] 
-    constraints.append([ 'hover_thrust_pow_res'      ,  '>'  ,  0.0 ,   1.0   , 1*Units.less])  
+    constraints.append([ 'hover_thrust_pow_res'      ,  '<'  ,  1E-3 ,   1.0   , 1*Units.less])  
     constraints.append([ 'blade_taper_constraint_1'  ,  '>'  ,  0.3 ,   1.0   , 1*Units.less])  
     constraints.append([ 'blade_taper_constraint_2'  ,  '<'  ,  0.9 ,   1.0   , 1*Units.less])  
     constraints.append([ 'blade_twist_constraint'    ,  '>'  ,  0.0 ,   1.0   , 1*Units.less])
     constraints.append([ 'max_sectional_cl_hov'      ,  '<'  ,  0.8 ,   1.0   , 1*Units.less])
     constraints.append([ 'chord_p_to_q_ratio'        ,  '>'  ,  0.5 ,   1.0   , 1*Units.less])    
     constraints.append([ 'twist_p_to_q_ratio'        ,  '>'  ,  0.5 ,   1.0   , 1*Units.less])  
-    constraints.append([ 'OEI_hov_thrust_pow_res'    ,  '>'  ,  0.0 ,   1.0   , 1*Units.less]) 
+    constraints.append([ 'OEI_hov_thrust_pow_res'    ,  '<'  ,  1E-3 ,   1.0   , 1*Units.less]) 
     if nexus.prop_rotor_flag:
-        constraints.append([ 'cruise_thrust_pow_res'     ,  '>'  ,  0.0 ,   1.0   , 1*Units.less]) 
+        constraints.append([ 'cruise_thrust_pow_res'     ,  '<'  ,  1E-3 ,   1.0   , 1*Units.less]) 
         constraints.append([ 'max_sectional_cl_cruise'   ,  '<'  ,  0.8 ,   1.0   , 1*Units.less])   
     problem.constraints =  np.array(constraints,dtype=object)                
     

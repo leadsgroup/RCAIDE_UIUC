@@ -52,7 +52,9 @@ def Harmonic_Noise_Validation(PP):
     fidelities                         = ['point_source', 'line_source', 'plane_source'] 
     electric_rotor                     = RCAIDE.Library.Components.Propulsors.Electric_Rotor() 
     rotor                              = F8745_D4_Propeller() 
-    electric_rotor.rotor               = rotor   
+    electric_rotor.rotor               = rotor
+    
+    plot_rotor(rotor, save_figure=False, show_figure=False)
     
     # Operating Conditions                                             
     a                       = 343.376

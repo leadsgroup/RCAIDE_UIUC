@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Aluminum_Rib.py
 #
 # Created: Jul, 2017, J. Smart
@@ -17,7 +15,6 @@ from RCAIDE.Framework.Core import Units
 # Aluminim Component Material Property Data Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Aluminum_Rib(Aluminum):
     """ Physical Constants Specific to 6061-T6 Aluminum Ribs
     

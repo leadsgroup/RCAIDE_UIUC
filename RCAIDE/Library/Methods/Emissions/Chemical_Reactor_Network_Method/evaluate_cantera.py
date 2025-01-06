@@ -1,4 +1,6 @@
 # RCAIDE/Library/Methods/Emissions/Chemical_Reactor_Network_Method/evaluate_cantera.py
+
+# Created: June 2024, M. Clarke, M. Guidotti 
  
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -14,21 +16,105 @@ import os
 #  evaluate_cantera
 # ----------------------------------------------------------------------------------------------------------------------   
 def evaluate_cantera(combustor,T,P,mdot,FAR): 
-    '''
-    This model estimates the Emission Index of various species deriving 
-    from the combustion of fuel. The model is based on a Chemical Reactor 
-    Network (CRN) built using Cantera.
+
+    """
+    Evaluates emission indices using Chemical Reactor Network (CRN) built in Cantera.
     
-    Assumptions: PSRs represent the Primary Zone, while In the Secondary 
-    Zone Air is added between different PFRs.
+    Parameters
+    ----------
+    combustor : Data
+        Combustor configuration data
+        
+        - f_air_PZ : float
+            Fraction of total air entering Primary Zone [-]
+        - FAR_st : float
+            Stoichiometric Fuel to Air ratio [-]
+        - N_comb : int
+            Number of can-annular combustors [-]
+        - N_PZ : int
+            Number of PSR (Perfectly Stirred Reactors) [-]
+        - A_PZ : float
+            Primary Zone cross-sectional area [m^2]
+        - L_PZ : float
+            Primary Zone length [m]
+        - N_SZ : int
+            Number of dilution air inlets [-]
+        - A_SZ : float
+            Secondary Zone cross-sectional area [m^2]
+        - L_SZ : float
+            Secondary Zone length [m]
+        - phi_SZ : float
+            Equivalence Ratio in the Secondary Zone [-]
+        - S_PZ : float
+            Mixing parameter for Primary Zone [-]
+        - F_SC : float
+            Fuel scaler [-]
+        - number_of_assigned_PSR_1st_mixers : int
+            Number of PSR assigned to first row of mixers [-]
+        - number_of_assigned_PSR_2nd_mixers : int
+            Number of PSR assigned to second row of mixers [-]
+        - fuel_data : Data
+            Fuel chemical properties and kinetics data
+
+    T : float
+        Stagnation Temperature entering combustors [K]
+    P : float
+        Stagnation Pressure entering combustors [Pa]
+    mdot : float
+        Air mass flow enetring the combustor [kg/s]
+    FAR : float
+        Fuel-to-Air ratio [-]
+
+    Returns
+    -------
+    results : Data
+        Container for emission indices
+        
+        - EI_CO2 : float
+            CO2 emission index [kg_CO2/kg_fuel]
+        - EI_CO : float
+            CO emission index [kg_CO/kg_fuel]
+        - EI_H2O : float
+            H2O emission index [kg_H2O/kg_fuel]
+        - EI_NO : float
+            NO emission index [kg_NO/kg_fuel]
+        - EI_NO2 : float
+            NO2 emission index [kg_NO2/kg_fuel]
+
+    Notes
+    -----
+    This model estimates emission indices using a Chemical Reactor Network built with Cantera.
+    The network consists of Perfectly Stirred Reactors (PSRs) in the Primary Zone and 
+    Plug Flow Reactors (PFRs) in the Secondary Zone.
+
+    **Extra modules required**
+
+    * Cantera
+    * pandas
+    * numpy
+
+    **Major Assumptions**
+
+    * PSRs represent the Primary Zone
+    * Air is added between different PFRs in Secondary Zone
+    * Primary Zone has a normal Equivalence Ratio distribution
+
+    **Theory**
+    The model uses a network of reactors to simulate combustion:
     
-    Improvements required:
-    - Comparison of resulting NO, NO2 and CO with literature
-    - Equivalence Ratio value in the Primary Zone
-    - Automate the code to mix all PSRs in one mixer and freely choose 
-      the number of PSRs and PFRs.    
-    
-    '''    
+    1. Primary Zone: Multiple PSRs with varying equivalence ratios
+    2. Mixing Zones: Ideal mixing between reactor outputs
+    3. Secondary Zone: PFRs with dilution air addition
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices
+    RCAIDE.Library.Components.Propulsors.Converters.Combustor
+
+    References
+    ----------
+    [1] Goodwin, D. G., Speth, R. L., Moffat, H. K., & Weber, B. W. (2023). Cantera: An object-oriented software toolkit for chemical kinetics, thermodynamics, and transport processes (Version 3.0.0) [Computer software]. https://www.cantera.org
+    """   
 
     # ------------------------------------------------------------------------------              
     # ------------------------------ Combustor Inputs ------------------------------              

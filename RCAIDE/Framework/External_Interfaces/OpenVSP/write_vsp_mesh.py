@@ -1,4 +1,3 @@
-## @ingroup Input_Output-OpenVSP
 # write_vsp_mesh.py
 # 
 # Created:  Oct 2016, T. MacDonald
@@ -7,6 +6,10 @@
 #           Jan 2019, T. MacDonald
 #           Jan 2020, T. MacDonald
 
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------  
+# RCAIDE imports 
 try:
     import vsp as vsp
 except ImportError:
@@ -19,7 +22,9 @@ import numpy as np
 import time
 import fileinput
 
-## @ingroup Input_Output-OpenVSP
+# ---------------------------------------------------------------------------------------------------------------------- 
+# write_vsp_mesh
+# ---------------------------------------------------------------------------------------------------------------------- 
 def write_vsp_mesh(geometry,tag,half_mesh_flag,growth_ratio,growth_limiting_flag):
     """This create an .stl surface mesh based on a vehicle stored in a .vsp3 file.
     
@@ -114,7 +119,9 @@ def write_vsp_mesh(geometry,tag,half_mesh_flag,growth_ratio,growth_limiting_flag
     dt = tf-ti
     print('VSP meshing for ' + tag + ' completed in ' + str(dt) + ' s')
     
-## @ingroup Input_Output-OpenVSP
+# ----------------------------------------------------------------------------------------------------------------------     
+# set_sources
+# ---------------------------------------------------------------------------------------------------------------------- 
 def set_sources(geometry):
     """This sets meshing sources in a way similar to the OpenVSP default. Some source values can
     also be optionally specified as below.
@@ -179,15 +186,15 @@ def set_sources(geometry):
             #comp_type = comp_type_dict[comp_name]
         if comp_type == 'wing':
             wing = comp_dict[comp_name]
-            if len(wing.Segments) == 0: # check if segments exist
+            if len(wing.segments) == 0: # check if segments exist
                 num_secs = 1
                 use_base = True
             else:
-                if wing.Segments[0].percent_span_location == 0.: # check if first segment starts at the root
-                    num_secs = len(wing.Segments)
+                if wing.segments[0].percent_span_location == 0.: # check if first segment starts at the root
+                    num_secs = len(wing.segments)
                     use_base = False
                 else:
-                    num_secs = len(wing.Segments) + 1
+                    num_secs = len(wing.segments) + 1
                     use_base = True
                     
             u_start = 0.
@@ -196,9 +203,9 @@ def set_sources(geometry):
             for ii in range(0,num_secs):
                 if (ii==0) and (use_base == True): # create sources on root segment
                     cr = base_root
-                    if len(wing.Segments) > 0:
-                        ct = base_root  * wing.Segments[0].root_chord_percent
-                        seg = wing.Segments[ii]
+                    if len(wing.segments) > 0:
+                        ct = base_root  * wing.segments[0].root_chord_percent
+                        seg = wing.segments[ii]
                     else:
                         if 'vsp_mesh' in wing:
                             custom_flag = True
@@ -207,21 +214,21 @@ def set_sources(geometry):
                         ct = base_tip           
                         seg = wing
                     # extract CFD source parameters
-                    if len(wing.Segments) == 0:
+                    if len(wing.segments) == 0:
                         wingtip_flag = True
                     else:
                         wingtip_flag = False
                     add_segment_sources(comp,cr, ct, ii, u_start, num_secs, custom_flag, 
                                   wingtip_flag,seg)                        
                 elif (ii==0) and (use_base == False): 
-                    cr = base_root * wing.Segments[0].root_chord_percent
+                    cr = base_root * wing.segments[0].root_chord_percent
                     if num_secs > 1:
-                        ct = base_root  * wing.Segments[1].root_chord_percent
+                        ct = base_root  * wing.segments[1].root_chord_percent
                     else:
                         ct = base_tip
                     # extract CFD source parameters
-                    seg = wing.Segments[ii]
-                    if 'vsp_mesh' in wing.Segments[ii]:
+                    seg = wing.segments[ii]
+                    if 'vsp_mesh' in wing.segments[ii]:
                         custom_flag = True
                     else:
                         custom_flag = False
@@ -233,10 +240,10 @@ def set_sources(geometry):
                         jj = 1
                     else:
                         jj = 0
-                    cr = base_root * wing.Segments[ii-jj].root_chord_percent
-                    ct = base_root * wing.Segments[ii+1-jj].root_chord_percent
-                    seg = wing.Segments[ii-jj]
-                    if 'vsp_mesh' in wing.Segments[ii-jj]:
+                    cr = base_root * wing.segments[ii-jj].root_chord_percent
+                    ct = base_root * wing.segments[ii+1-jj].root_chord_percent
+                    seg = wing.segments[ii-jj]
+                    if 'vsp_mesh' in wing.segments[ii-jj]:
                         custom_flag = True
                     else:
                         custom_flag = False
@@ -248,10 +255,10 @@ def set_sources(geometry):
                         jj = 1
                     else:
                         jj = 0                    
-                    cr = base_root * wing.Segments[ii-jj].root_chord_percent
+                    cr = base_root * wing.segments[ii-jj].root_chord_percent
                     ct = base_tip
-                    seg = wing.Segments[ii-jj]
-                    if 'vsp_mesh' in wing.Segments[ii-jj]:
+                    seg = wing.segments[ii-jj]
+                    if 'vsp_mesh' in wing.segments[ii-jj]:
                         custom_flag = True
                     else:
                         custom_flag = False
@@ -292,8 +299,10 @@ def set_sources(geometry):
             #vsp.AddCFDSource(vsp.POINT_SOURCE,comp,0,len1,rad1,uloc,wloc) 
             #pass        
     
-        
-## @ingroup Input_Output-OpenVSP
+            
+# ----------------------------------------------------------------------------------------------------------------------         
+# add_segment_sources
+# ---------------------------------------------------------------------------------------------------------------------- 
 def add_segment_sources(comp,cr,ct,ii,u_start,num_secs,custom_flag,wingtip_flag,seg):
     """This sets meshing sources for the wing segments according to their size and position.
     

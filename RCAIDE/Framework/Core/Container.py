@@ -22,79 +22,79 @@ t_table = str.maketrans( chars          + string.ascii_uppercase ,
 # ----------------------------------------------------------------------------------------------------------------------   
 
 class Container(Data):
-    """ A dict-type container with attribute, item and index style access
-        intended to hold a attribute-accessible list of Data(). This is unordered.
+    # """ A dict-type container with attribute, item and index style access
+    #     intended to hold a attribute-accessible list of Data(). This is unordered.
         
-        Assumptions:
-        N/A
+    #     Assumptions:
+    #     N/A
         
-        Source:
-        N/A
+    #     Source:
+    #     N/A
         
-    """
+    # """
             
         
     def __defaults__(self):
-        """ Defaults function
+        # """ Defaults function
     
-            Assumptions:
-            None
+        #     Assumptions:
+        #     None
         
-            Source:
-            N/A
+        #     Source:
+        #     N/A
         
-            Inputs:
-            N/A
+        #     Inputs:
+        #     N/A
         
-            Outputs:
-            N/A
+        #     Outputs:
+        #     N/A
             
-            Properties Used:
-            N/A
-        """          
+        #     Properties Used:
+        #     N/A
+        # """          
         pass
     
     def __init__(self,*args,**kwarg):
-        """ Initialization that builds the container
+        # """ Initialization that builds the container
         
-            Assumptions:
-            None
+        #     Assumptions:
+        #     None
         
-            Source:
-            N/A
+        #     Source:
+        #     N/A
         
-            Inputs:
-            self
+        #     Inputs:
+        #     self
         
-            Outputs:
-            N/A
+        #     Outputs:
+        #     N/A
             
-            Properties Used:
-            N/A
-        """          
+        #     Properties Used:
+        #     N/A
+        # """          
         super(Container,self).__init__(*args,**kwarg)
         self.__defaults__()
     
     def append(self,val):
-        """ Appends the value to the containers
-            This overrides the Data class append by allowing for duplicate named components
-            The following components will get new names.
+        # """ Appends the value to the containers
+        #     This overrides the Data class append by allowing for duplicate named components
+        #     The following components will get new names.
         
-            Assumptions:
-            None
+        #     Assumptions:
+        #     None
         
-            Source:
-            N/A
+        #     Source:
+        #     N/A
         
-            Inputs:
-            self
+        #     Inputs:
+        #     self
         
-            Outputs:
-            N/A
+        #     Outputs:
+        #     N/A
             
-            Properties Used:
-            N/A
-        """           
+        #     Properties Used:
+        #     N/A
+        # """           
         
         # See if the item tag exists, if it does modify the name
         keys = self.keys()
@@ -112,23 +112,23 @@ class Container(Data):
         Data.append(self,val)
         
     def extend(self,vals):
-        """ Append things regressively depending on what is inside.
+        # """ Append things regressively depending on what is inside.
     
-            Assumptions:
-            None
+        #     Assumptions:
+        #     None
         
-            Source:
-            N/A
+        #     Source:
+        #     N/A
         
-            Inputs:
-            self
+        #     Inputs:
+        #     self
         
-            Outputs:
-            N/A
+        #     Outputs:
+        #     N/A
             
-            Properties Used:
-            N/A
-        """         
+        #     Properties Used:
+        #     N/A
+        # """         
         if isinstance(vals,(list,tuple)):
             for v in val: self.append(v)
         elif isinstance(vals,dict):
@@ -137,22 +137,22 @@ class Container(Data):
             raise Exception('unrecognized data type')
         
     def get_children(self):
-        """ Returns the components that can go inside
+        # """ Returns the components that can go inside
         
-        Assumptions:
-        None
+        # Assumptions:
+        # None
     
-        Source:
-        N/A
+        # Source:
+        # N/A
     
-        Inputs:
-        None
+        # Inputs:
+        # None
     
-        Outputs:
-        None
+        # Outputs:
+        # None
     
-        Properties Used:
-        N/A
-        """        
+        # Properties Used:
+        # N/A
+        # """        
         
         return []    

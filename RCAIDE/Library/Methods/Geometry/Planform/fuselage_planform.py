@@ -10,7 +10,6 @@ import numpy as np
 #  Methods
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Geometry-Two_Dimensional-Cross_Section-Planform
 def fuselage_planform(fuselage):
     """Calculates fuselage geometry values
 

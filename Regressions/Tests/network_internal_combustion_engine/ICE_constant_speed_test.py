@@ -47,8 +47,8 @@ def main():
     # mission analysis 
     results = missions.base_mission.evaluate()   
     
-    P_truth     = 54435.6614505018
-    mdot_truth  = 0.004782841837590511
+    P_truth     = 53698.45856056677
+    mdot_truth  = 0.004718069503961755
     
     P    = results.segments.cruise.state.conditions.energy.ice_constant_speed_propeller.internal_combustion_engine.power[-1,0]
     mdot = results.segments.cruise.state.conditions.weights.vehicle_mass_rate[-1,0]     
@@ -75,6 +75,7 @@ def ICE_CS(vehicle):
 
     # ########################################################  Energy Network  #########################################################  
     net                                         = RCAIDE.Framework.Networks.Fuel()  
+    net.identical_propulsors                    = False  
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus

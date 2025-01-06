@@ -58,7 +58,7 @@ def compute_fuselage_weight(vehicle, fuselage, W_wing, W_propulsion):
 
     # Calculate fuselage indices
     I_p = 1.5 * 10 ** -3. * differential_pressure * width
-    I_b = 1.91 * 10 ** -4. * vehicle.flight_envelope.limit_load * weight * length / height ** 2.
+    I_b = 1.91 * 10 ** -4. * vehicle.flight_envelope.positive_limit_load* weight * length / height ** 2.
 
     if I_p > I_b:
         I_f = I_p

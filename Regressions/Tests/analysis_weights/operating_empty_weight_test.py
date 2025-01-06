@@ -179,7 +179,10 @@ def EVTOL_Aircraft_Test(update_regression_values,show_figure):
     return
 
         
-def Human_Powered_Aircraft_Test(update_regression_values,show_figure): 
+def Human_Powered_Aircraft_Test(update_regression_values,show_figure):
+    
+
+        
     weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_Human_Powered()
     weight_analysis.vehicle  = hp_setup()
     weight                   = weight_analysis.evaluate()
@@ -205,6 +208,21 @@ def Human_Powered_Aircraft_Test(update_regression_values,show_figure):
 
         print('')
         
+        
+    
+    
+    # plot vehicle 
+    plot_3d_vehicle(weight_analysis.vehicle, 
+                    min_x_axis_limit            = 0,
+                    max_x_axis_limit            = 10,
+                    min_y_axis_limit            = -10,
+                    max_y_axis_limit            = 10,
+                    min_z_axis_limit            = -10,
+                    max_z_axis_limit            = 10,
+                    save_figure                 = False, 
+                    show_figure                 = False, 
+                    )    
+                 
     return       
 
 

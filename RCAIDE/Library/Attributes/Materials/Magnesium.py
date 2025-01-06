@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Magnesium.py
 #
 # Created: Jul, 2022, J. Smart
@@ -15,9 +13,7 @@ from RCAIDE.Framework.Core import Units
 
 # -------------------------------------------------------------------------------
 # Aluminum 6061-T6 Solid Class
-# -------------------------------------------------------------------------------
-
-## @ingroup Attributes-Solid
+# ------------------------------------------------------------------------------- 
 class Magnesium(Solid):
     """ Physical Constants Specific to RZ5 Magnesium Alloy per BS 2L.128
 

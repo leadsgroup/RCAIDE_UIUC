@@ -6,13 +6,10 @@
 # ----------------------------------------------------------------------        
 #   Imports
 # ----------------------------------------------------------------------    
-
-import RCAIDE
-from RCAIDE.Framework.Core import Units, Data
+ 
 from RCAIDE.Framework.Analyses.Process import Process
 
-import numpy as np
-import copy
+import numpy as np 
  
 # ----------------------------------------------------------------------        
 #   Setup

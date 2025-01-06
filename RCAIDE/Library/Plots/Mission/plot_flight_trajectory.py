@@ -19,34 +19,91 @@ def plot_flight_trajectory(results,
                            line_color = 'bo-',
                            line_color2 = 'rs--',
                            save_figure = False,
-                           show_legend   = True,
+                           show_legend = True,
                            save_filename = "Flight_Trajectory",
                            file_type = ".png",
                            width = 11, height = 7):
-    """This plots the 3D flight trajectory of the aircraft.
+    """
+    Creates a multi-panel visualization of aircraft trajectory and mission profile.
 
-    Assumptions:
-    None
-
-    Source:
-    None
-
-    Inputs:
-    results.segments.conditions.
-         frames 
-             body.inertial_rotations
-             inertial.position_vector 
-         freestream.velocity
-         aerodynamics.
-             lift_coefficient
-             drag_coefficient
-             angle_of_attack
+    Parameters
+    ----------
+    results : Results
+        RCAIDE results data structure containing:
         
-    Outputs: 
-    Plots
+        - segments[i].conditions.frames.inertial.time[:,0]
+            Time history for each segment
+        - segments[i].conditions.frames.inertial.aircraft_range[:,0]
+            Range history for each segment
+        - segments[i].conditions.frames.inertial.position_vector[:,0:3]
+            3D position vector containing:
+                - [:,0]: x-position
+                - [:,1]: y-position
+                - [:,2]: z-position
+        - segments[i].tag
+            Name/identifier of each segment
+            
+    line_color : str, optional
+        Primary line style specification (default: 'bo-')
+        
+    line_color2 : str, optional
+        Secondary line style specification (default: 'rs--')
+        
+    save_figure : bool, optional
+        Flag for saving the figure (default: False)
+        
+    show_legend : bool, optional
+        Flag to display segment legend (default: True)
+        
+    save_filename : str, optional
+        Name of file for saved figure (default: "Flight_Trajectory")
+        
+    file_type : str, optional
+        File extension for saved figure (default: ".png")
+        
+    width : float, optional
+        Figure width in inches (default: 11)
+        
+    height : float, optional
+        Figure height in inches (default: 7)
 
-    Properties Used:
-    N/A	
+    Returns
+    -------
+    fig : matplotlib.figure.Figure
+        Handle to the generated figure containing four subplots:
+            - Range vs time
+            - Top view (x-y plane)
+            - Altitude vs time
+            - 3D trajectory
+
+    Notes
+    -----
+    Creates a four-panel plot showing:
+        1. Mission range profile
+        2. Top-down view of flight path
+        3. Altitude profile
+        4. Complete 3D trajectory
+    
+    **Major Assumptions**
+    
+    * Time is in minutes
+    * Range is in nautical miles
+    * Position coordinates are in meters
+    * Z-axis points downward in inertial frame
+    
+    **Definitions**
+    
+    'Range'
+        Total ground distance covered
+    'Ground Track'
+        Projection of flight path onto x-y plane
+    'Altitude Profile'
+        Variation of height with time
+    
+    See Also
+    --------
+    RCAIDE.Library.Plots.Mission.plot_flight_conditions : Detailed flight condition analysis
+    RCAIDE.Library.Plots.Mission.plot_aircraft_velocities : Aircraft speed profiles
     """	     
 
     # get plotting style 

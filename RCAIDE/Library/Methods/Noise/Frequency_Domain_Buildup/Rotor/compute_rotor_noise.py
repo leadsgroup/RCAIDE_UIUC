@@ -1,4 +1,3 @@
-## @ingroup Methods-Noise-Frequency_Domain_Buildup-Rotor
 # RCAIDE/Methods/Noise/Frequency_Domain_Buildup/Rotor/compute_rotor_noise.py
 # 
 # 
@@ -28,7 +27,6 @@ from RCAIDE.Framework.Core import interp2d
 # ----------------------------------------------------------------------------------------------------------------------    
 #  Rotor Noise 
 # ----------------------------------------------------------------------------------------------------------------------    
-## @ingroup Methods-Noise-Frequency_Domain_Buildup-Rotor
 def compute_rotor_noise(microphone_locations,propulsor,rotor,segment,settings, rotor_index = 0, previous_rotor_tag = None, identical_propulsors=True):
     ''' This is a collection medium-fidelity frequency domain methods for rotor acoustic noise prediction which 
     computes the acoustic signature (sound pressure level, weighted sound pressure levels,
@@ -107,7 +105,7 @@ def compute_rotor_noise(microphone_locations,propulsor,rotor,segment,settings, r
             AOA_sec           = aeroacoustic_data.disc_effective_angle_of_attack  
             a_loc             = rotor.airfoil_polar_stations
             num_az            = aeroacoustic_data.number_azimuthal_stations     
-            airfoils          = rotor.Airfoils         
+            airfoils          = rotor.airfoils         
             for jj,airfoil in enumerate(airfoils):
                 airfoil_points      = airfoil.number_of_points 
             chord_coord             = int(np.floor(airfoil_points/2))       

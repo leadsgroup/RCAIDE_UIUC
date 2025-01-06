@@ -1,16 +1,10 @@
-## @ingroup Methods-Propulsion
 # fm_id.py
 #
-# Created:  ### ####, RCAIDE Team
-# Modified: Feb 2016, E. Botero
-#           Dec 2017, W. Maier
+# Created: Dec 2024 M Clarke
 
 # ----------------------------------------------------------------------
 #  fm_id
-# ----------------------------------------------------------------------
-
-## @ingroup Methods-Propulsion
-
+# ---------------------------------------------------------------------- 
 def fm_id(M,gamma):
     """Function that takes in the Mach number and isentropic expansion factor,
     and outputs a value for f(M) that's commonly used in compressible flow

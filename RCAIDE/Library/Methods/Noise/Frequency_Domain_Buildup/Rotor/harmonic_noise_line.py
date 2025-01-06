@@ -1,4 +1,3 @@
-## @ingroup Methods-Noise-Multi_Fidelity
 # RCAIDE/Methods/Noise/Multi_Fidelity/harmonic_noise_line.py
 # 
 # 
@@ -18,8 +17,7 @@ import scipy as sp
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Compute Harmonic Noise 
-# ----------------------------------------------------------------------------------------------------------------------
-## @ingroup Methods-Noise-Frequency_Domain_Buildup-Rotor 
+# ---------------------------------------------------------------------------------------------------------------------- 
 def harmonic_noise_line(harmonics_blade,harmonics_load,conditions,propulsor_conditions,coordinates,rotor,settings,Noise,cpt):
     '''This computes the harmonic noise (i.e. thickness and loading noise) in the frequency domain 
     of a rotor at any angle of attack with load distribution along the blade span. This is a level 1 fidelity
@@ -79,7 +77,7 @@ def harmonic_noise_line(harmonics_blade,harmonics_load,conditions,propulsor_cond
     num_cpt                 = len(angle_of_attack) 
     num_mic                 = len(coordinates.X_hub[cpt,:,0,0,0]) 
     phi_0                   = np.array([rotor.phase_offset_angle])  # phase angle offset  
-    airfoils                = rotor.Airfoils
+    airfoils                = rotor.airfoils
     num_sec                 = len(rotor.radius_distribution)
     num_az                  = aeroacoustic_data.number_azimuthal_stations 
     orientation             = np.array(rotor.orientation_euler_angles) * 1 

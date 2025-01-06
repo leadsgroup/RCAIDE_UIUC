@@ -1,4 +1,3 @@
-## @ingroup Analyses-Atmospheric
 # Atmospheric.py
 #
 # Created:  Feb 2015, T. MacDonald
@@ -17,7 +16,6 @@ from RCAIDE.Framework.Analyses import Analysis
 #  Analysis
 # ----------------------------------------------------------------------
 
-## @ingroup Analyses-Atmospheric
 class Atmospheric(Analysis):
     """This is the base class for atmospheric analyses. It contains functions
     that are built into the default class.

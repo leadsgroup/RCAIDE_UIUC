@@ -14,7 +14,58 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Engine.append_engine_condition
 #  Engine Class
 # ----------------------------------------------------------------------------------------------------------------------  
 class Engine(Component):
-    """This is an internal combustion engine component. 
+    """
+    An internal combustion engine component model for propulsion systems.
+
+    Attributes
+    ----------
+    tag : str
+        Identifier for the engine. Default is 'internal_combustion_engine'.
+        
+    sea_level_power : float
+        Maximum power output at sea level conditions [W]. Default is 0.0.
+        
+    flat_rate_altitude : float
+        Altitude up to which engine maintains sea level power [m]. Default is 0.0.
+        
+    rated_speed : float
+        Engine speed at rated power [rad/s]. Default is 0.0.
+        
+    power_split_ratio : float
+        Ratio of power distribution when engine drives multiple loads. Default is 0.0.
+        
+    power_specific_fuel_consumption : float
+        Fuel consumption per unit power output [kg/W/s]. Default is 0.36.
+
+    Notes
+    -----
+    The Engine class models an internal combustion engine's performance characteristics
+    including:
+    * Sea level power rating
+    * Power lapse with altitude
+    * Fuel consumption characteristics
+    * Power distribution capabilities
+    * Operating speed effects
+
+    **Major Assumptions**
+    * Constant power specific fuel consumption
+    * Fuel properties remain constant
+    * Steady-state operation (no transient effects)
+
+    **Definitions**
+    
+    'Flat Rate Altitude'
+        Maximum altitude at which the engine can maintain sea level power output
+
+    'Power Specific Fuel Consumption'
+        Amount of fuel consumed per unit of power output per unit time
+
+    'Power Split Ratio'
+        Fraction of total power delivered to primary load in multi-load applications
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Propulsors.Converters.Engine
     """           
     def __defaults__(self):
         """This sets the default values for the component to function.

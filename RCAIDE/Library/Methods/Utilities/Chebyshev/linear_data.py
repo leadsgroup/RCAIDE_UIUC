@@ -1,4 +1,3 @@
-## @ingroup Methods-Utilities-Chebyshev
 # ----------------------------------------------------------------------
 #  Imports
 # ----------------------------------------------------------------------
@@ -7,9 +6,7 @@ import numpy as np
 
 # ----------------------------------------------------------------------
 #  Method
-# ----------------------------------------------------------------------
-
-## @ingroup Methods-Utilities-Chebyshev
+# ---------------------------------------------------------------------- 
 def linear_data(N = 16, integration = True, **options):
     """Calculates the differentiation and integration matricies
     using chebyshev's pseudospectral algorithm, based on linearly

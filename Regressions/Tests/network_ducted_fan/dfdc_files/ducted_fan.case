@@ -3,7 +3,7 @@ Bladed rotor + actdisk stator test case
 
 OPER
 !        Vinf         Vref          RPM          RPM
-  53.6448   53.6448       28071.423033531144          0.0    
+  53.6448   53.6448       28071.423033531155          0.0    
 !         Rho          Vso          Rmu           Alt
    1.2260       340.00      0.17800E-04  0.00000E+00
 !       XDwake        Nwake

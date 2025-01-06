@@ -8,8 +8,8 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
 # RCAIDE imports
 import RCAIDE
-from RCAIDE.Framework.Core     import Data
-from RCAIDE.Library.Components import Component
+from RCAIDE.Framework.Core              import Data
+from RCAIDE.Library.Components          import Component 
 from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.append_ducted_fan_conditions import  append_ducted_fan_conditions
 import numpy as np
 import scipy as sp
@@ -18,13 +18,119 @@ import scipy as sp
 #  Nacalle
 # ----------------------------------------------------------------------------------------------------------------------  
 class Ducted_Fan(Component):
-    """ This is a ducted fan component
+    """
+    A ducted fan propulsion system model that simulates the performance of a shrouded fan.
+
+    Attributes
+    ----------
+    tag : str
+        Identifier for the ducted fan. Default is 'ducted_fan'.
+        
+    number_of_radial_stations : int
+        Number of radial calculation points for blade analysis. Default is 20.
+        
+    number_of_rotor_blades : int
+        Number of blades in the rotor. Default is 12.
+        
+    tip_radius : float
+        Outer radius of the rotor [m]. Default is 1.0.
+        
+    hub_radius : float
+        Inner radius of the rotor at hub [m]. Default is 0.1.
+        
+    blade_clearance : float
+        Clearance between blade tip and duct [m]. Default is 0.01.
+        
+    length : float
+        Length of the ducted fan assembly [m]. Default is 1.0.
+        
+    fidelity : str
+        Level of fidelity for calculations. Default is 'polytropic'.
+        
+    nacelle : Component
+        Nacelle component. Default is None.
+        
+    fan : Component
+        Fan component. Default is Fan().
+        
+    ram : Component
+        Ram air intake component. Default is Ram().
+        
+    inlet_nozzle : Component
+        Inlet nozzle component. Default is Compression_Nozzle().
+        
+    orientation_euler_angles : list
+        Vector of angles defining default orientation [rad]. Default is [0.,0.,0.].
+        
+    rotor : Data
+        Rotor configuration data
+
+        - percent_x_location : float
+            Rotor position as fraction of length. Default is 0.4.
+            
+    stator : Data
+        Stator configuration data
+
+        - percent_x_location : float
+            Stator position as fraction of length. Default is 0.7.
+            
+    cruise : Data
+        Design cruise conditions
+
+        - design_thrust : float
+            Design point thrust. Default is None.
+
+        - design_altitude : float
+            Design altitude [m]. Default is None.
+            
+        - design_angular_velocity : float
+            Design rotational speed [rad/s]. Default is None.
+
+        - design_freestream_velocity : float
+            Design forward velocity [m/s]. Default is None.
+
+        - design_reference_velocity : float
+            Design reference velocity [m/s]. Default is None.
+
+        - design_freestream_mach : float
+            Design Mach number. Default is None.
+
+        - design_reference_mach : float
+            Design reference Mach number. Default is None.
+            
+    duct_airfoil : Data
+        Duct aerodynamic surface data. Default is empty Data().
+        
+    hub_airfoil : Data
+        Hub aerodynamic surface data. Default is empty Data().
+
+    Notes
+    -----
+    The Ducted_Fan class models a shrouded fan propulsion system, including:
+    * Rotor-stator interaction effects
+    * Duct aerodynamic influences
+    * Hub effects
+    * Multiple coordinate frame transformations
     
-    Assumptions:
-    None
-    
-    Source:
-    N/A
+    The model supports various fidelity levels and can handle both design and 
+    off-design conditions.
+
+    **Definitions**
+
+    'Euler Angles'
+        Set of three angles used to describe orientation in 3D space
+        
+    'Reference Velocity'
+        Characteristic velocity used for non-dimensionalization
+        
+    'Polytropic'
+        Thermodynamic process with constant polytropic efficiency
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.Fan
+    RCAIDE.Library.Components.Propulsors.Converters.Ram
+    RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle
     """
     
     def __defaults__(self):
@@ -72,64 +178,78 @@ class Ducted_Fan(Component):
         self.cruise.design_reference_velocity  = None 
         self.cruise.design_freestream_mach     = None
         self.cruise.design_reference_mach      = None 
-        self.duct_airfoil                      = Data()
-        self.hub_airfoil                       = Data() 
+        self.duct_airfoil                      = None
+        self.hub_airfoil                       = None
       
     
-    def append_duct_airfoil(self,airfoil):
-        """ Adds an airfoil to the segment 
-    
-        Assumptions:
+    def append_duct_airfoil(self, airfoil):
+        """
+        Adds an airfoil to the ducted fan's duct section.
+
+        Parameters
+        ----------
+        airfoil : Data
+            Airfoil data container with aerodynamic properties for the duct section.
+            Must be of type Data().
+
+        Returns
+        -------
         None
 
-        Source:
-        N/A
+        Notes
+        -----
+        This method appends airfoil data to the duct_airfoil attribute of the ducted fan.
+        The airfoil data is used to model the aerodynamic characteristics of the duct
+        section, which influences the overall performance of the ducted fan system.
 
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
+        Raises
+        ------
+        Exception
+            If input airfoil is not of type Data()
+        """
 
         # Assert database type
-        if not isinstance(airfoil,Data):
-            raise Exception('input component must be of type Data()')
+        if not isinstance(airfoil,RCAIDE.Library.Components.Airfoils.Airfoil):
+            raise Exception('input component must be of type Airfoil') 
 
         # Store data
-        self.duct_airfoil.append(airfoil)
+        self.duct_airfoil =  airfoil
 
         return
     
 
-    def append_hub_airfoil(self,airfoil):
-        """ Adds an airfoil to the segment 
-    
-        Assumptions:
+    def append_hub_airfoil(self, airfoil):
+        """
+        Adds an airfoil to the ducted fan's hub section.
+
+        Parameters
+        ----------
+        airfoil : Data
+            Airfoil data container with aerodynamic properties for the hub section.
+            Must be of type Data().
+
+        Returns
+        -------
         None
 
-        Source:
-        N/A
+        Notes
+        -----
+        This method appends airfoil data to the hub_airfoil attribute of the ducted fan.
+        The airfoil data is used to model the aerodynamic characteristics of the hub
+        section, which affects the flow field and performance of the ducted fan system.
 
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
-        """ 
+        Raises
+        ------
+        Exception
+            If input airfoil is not of type Data()
+        """
 
         # Assert database type
-        if not isinstance(airfoil,Data):
-            raise Exception('input component must be of type Data()')
+        if not isinstance(airfoil,RCAIDE.Library.Components.Airfoils.Airfoil):
+            raise Exception('input component must be of type Airfoil') 
 
         # Store data
-        self.hub_airfoil.append(airfoil)
+        self.hub_airfoil =  airfoil
 
         return 
 
@@ -139,25 +259,41 @@ class Ducted_Fan(Component):
         return        
           
     def vec_to_vel(self):
-        """This rotates from the ducted fan's vehicle frame to the ducted fan's velocity frame
+        """
+        Rotates from the ducted fan's vehicle frame to the ducted fan's velocity frame.
 
-        Assumptions:
-        There are two ducted fan frames, the ducted fan vehicle frame and the ducted fan velocity frame. When ducted fan
-        is axially aligned with the vehicle body:
-           - The velocity frame is X out the nose, Z towards the ground, and Y out the right wing
-           - The vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing
-
-        Source:
-        N/A
-
-        Inputs:
+        Parameters
+        ----------
         None
 
-        Outputs:
-        None
+        Returns
+        -------
+        rot_mat : ndarray
+            3x3 rotation matrix transforming from vehicle frame to velocity frame.
 
-        Properties Used:
-        None
+        Notes
+        -----
+        This method creates a rotation matrix for transforming coordinates between
+        two reference frames of the ducted fan. When the ducted fan is axially
+        aligned with the vehicle body:
+
+        Velocity frame:
+        * X-axis points out the nose
+        * Z-axis points towards the ground
+        * Y-axis points out the right wing
+
+        Vehicle frame:
+        * X-axis points towards the tail
+        * Z-axis points towards the ceiling
+        * Y-axis points out the right wing
+
+        **Theory**
+        The transformation is accomplished using a rotation of π radians about the Y-axis,
+        represented as a rotation vector [0, π, 0].
+
+        **Major Assumptions**
+        * The ducted fan's default orientation is aligned with the vehicle body
+        * Right-handed coordinate system is used
         """
 
         rot_mat = sp.spatial.transform.Rotation.from_rotvec([0,np.pi,0]).as_matrix()
@@ -165,25 +301,51 @@ class Ducted_Fan(Component):
         return rot_mat
     
 
-    def body_to_prop_vel(self,commanded_thrust_vector):
-        """This rotates from the system's body frame to the ducted fan's velocity frame
+    def body_to_prop_vel(self, commanded_thrust_vector):
+        """
+        Rotates from the system's body frame to the ducted fan's velocity frame.
 
-        Assumptions:
-        There are two ducted fan frames, the vehicle frame describing the location and the ducted fan velocity frame.
-        Velocity frame is X out the nose, Z towards the ground, and Y out the right wing
-        Vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing
+        Parameters
+        ----------
+        commanded_thrust_vector : ndarray
+            Vector of commanded thrust angles [rad] for each time step.
 
-        Source:
-        N/A
+        Returns
+        -------
+        rot_mat : ndarray
+            3x3 rotation matrix transforming from body frame to ducted fan velocity frame.
+        rots : ndarray
+            Array of rotation vectors including commanded thrust angles.
 
-        Inputs:
-        None
+        Notes
+        -----
+        This method performs a sequence of rotations to transform coordinates from
+        the vehicle body frame to the ducted fan's velocity frame. The transformation
+        sequence is:
+        1. Body to vehicle frame (π rotation about Y-axis)
+        2. Vehicle to ducted fan vehicle frame (includes thrust vector rotation)
+        3. Ducted fan vehicle to ducted fan velocity frame
 
-        Outputs:
-        None
+        Reference frames:
+        Velocity frame:
+        * X-axis points out the nose
+        * Z-axis points towards the ground
+        * Y-axis points out the right wing
 
-        Properties Used:
-        None
+        Vehicle frame:
+        * X-axis points towards the tail
+        * Z-axis points towards the ceiling
+        * Y-axis points out the right wing
+
+        **Theory**
+        The complete transformation is computed as:
+        rot_mat = (body_2_vehicle @ vehicle_2_duct_vec) @ duct_vec_2_duct_vel
+
+        **Major Assumptions**
+        * The ducted fan's default orientation is defined by orientation_euler_angles
+        * Right-handed coordinate system is used
+        * Thrust vector rotation is applied about the Y-axis
+        * Matrix multiplication order preserves proper transformation sequence
         """
 
         # Go from velocity to vehicle frame
@@ -207,25 +369,50 @@ class Ducted_Fan(Component):
         return rot_mat , rots
 
 
-    def duct_vel_to_body(self,commanded_thrust_vector):
-        """This rotates from the ducted fan's velocity frame to the system's body frame
+    def duct_vel_to_body(self, commanded_thrust_vector):
+        """
+        Rotates from the ducted fan's velocity frame to the system's body frame.
 
-        Assumptions:
-        There are two ducted fan frames, the vehicle frame describing the location and the ducted fan velocity frame
-        velocity frame is X out the nose, Z towards the ground, and Y out the right wing
-        vehicle frame is X towards the tail, Z towards the ceiling, and Y out the right wing
+        Parameters
+        ----------
+        commanded_thrust_vector : ndarray
+            Vector of commanded thrust angles [rad] for each time step.
 
-        Source:
-        N/A
+        Returns
+        -------
+        rot_mat : ndarray
+            3x3 rotation matrix transforming from ducted fan velocity frame to body frame.
+        rots : ndarray
+            Array of rotation vectors including commanded thrust angles.
 
-        Inputs:
-        None
+        Notes
+        -----
+        This method performs the inverse transformation sequence of body_to_prop_vel.
+        The transformation sequence is:
+        1. Ducted fan velocity to ducted fan vehicle frame
+        2. Ducted fan vehicle to vehicle frame (includes thrust vector rotation)
+        3. Vehicle to body frame (π rotation about Y-axis)
 
-        Outputs:
-        None
+        Reference frames:
+        Velocity frame:
+        * X-axis points out the nose
+        * Z-axis points towards the ground
+        * Y-axis points out the right wing
 
-        Properties Used:
-        None
+        Vehicle frame:
+        * X-axis points towards the tail
+        * Z-axis points towards the ceiling
+        * Y-axis points out the right wing
+
+        **Theory**
+        The transformation is computed by inverting the rotation matrix from 
+        body_to_prop_vel using:
+        rot_mat = (body_2_duct_vel)^(-1)
+
+        **Major Assumptions**
+        * The ducted fan's default orientation is defined by orientation_euler_angles
+        * Right-handed coordinate system is used
+        * Thrust vector rotation is applied about the Y-axis
         """
 
         body2ductvel,rots = self.body_to_duct_vel(commanded_thrust_vector)

@@ -1,7 +1,10 @@
 # RCAIDE/Library/Components/Systems/__init__.py 
 # 
 
-"""RCAIDE Package Setup
+"""
+Module containing aircraft system components for modeling various onboard systems 
+and equipment. This module provides base system classes and specific implementations 
+for avionics and other aircraft systems.
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

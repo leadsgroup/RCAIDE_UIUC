@@ -1,4 +1,4 @@
-# RCAIDE/Library/Compoments/Energy/Sources/Battery_Modules/Lithium_Air.py
+# RCAIDE/Library/Components/Energy/Sources/Battery_Modules/Lithium_Air.py
 # 
 # 
 # Created:  Mar 2024, M. Clarke 
@@ -15,18 +15,35 @@ from .Generic_Battery_Module import Generic_Battery_Module
 #  Lithium_Air
 # ----------------------------------------------------------------------------------------------------------------------   
 class Lithium_Air(Generic_Battery_Module):
-    """Lithium-Air battery cell.Specifies specific energy characteristics specific to
-    lithium-air batteries. Also includes parameters related to consumption of oxygen
-    """ 
+    """
+    Class for modeling lithium-air battery characteristics and performance
+    
+    Attributes
+    ----------
+    cell.specific_energy : float
+        Energy capacity per unit mass [J/kg] (default: 2000 Wh/kg)
+        
+    cell.specific_power : float
+        Maximum power output per unit mass [W/kg] (default: 0.66 kW/kg)
+        
+    cell.mass_gain_factor : float
+        Rate of mass increase from oxygen absorption [kg/Wh] (default: 1.92E-4)
+
+    Notes
+    -----
+    Lithium-air batteries use ambient oxygen as the cathode material, which is
+    absorbed during discharge, leading to mass gain. They offer very high specific
+    energy but have power density limitations.
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Generic_Battery_Module
+        Base battery module class
+    """
     
     def __defaults__(self):
-        """This sets the default values.
-    
-        Assumptions:
-            None
-        
-        Source:
-            None
+        """
+        Sets default values for lithium-air battery attributes
         """      
         self.cell.specific_energy  = 2000.     *Units.Wh/Units.kg    # convert to Joules/kg
         self.cell.specific_power   = 0.66      *Units.kW/Units.kg    # convert to W/kg

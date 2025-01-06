@@ -18,14 +18,49 @@ from RCAIDE.Library.Methods.Propulsors.Electric_Ducted_Fan_Propulsor.append_elec
 #  Electric Ducted Fan Component
 # ----------------------------------------------------------------------
 class Electric_Ducted_Fan(Propulsor):
-    """This is a electric motor-ducted_fan propulsor 
+    """
+    A propulsion system class that combines an electric motor with a ducted fan.
     
-    Assumptions:
-    None
+    Attributes
+    ----------
+    tag : str
+        Identifier for the propulsion system, defaults to 'electric_ducted_fan'
+    
+    motor : None or Motor
+        The electric motor component that provides rotational power
+        
+    ducted_fan : None or DuctedFan
+        The ducted fan component that generates thrust
+        
+    electronic_speed_controller : None or ESC
+        The electronic speed controller that regulates power to the motor
+    
+    Notes
+    -----
+    This class models an electric propulsion system where an electric motor drives 
+    a ducted fan to generate thrust. The system includes an electronic speed controller 
+    (ESC) to regulate power delivery from the electrical system to the motor.
+    
+    The ducted fan configuration provides several advantages over open propellers:
+    - Higher static thrust efficiency
+    - Reduced tip losses
+    - Lower noise emission
+    - Improved safety through shrouding
+    
+    **Definitions**
 
-    Source:
-    None
-    """ 
+    'Ducted Fan'
+        A propulsion device consisting of a fan enclosed within a duct/shroud 
+        that improves thrust efficiency
+    
+    'Electronic Speed Controller (ESC)'
+        Device that controls the speed of the electric motor by regulating 
+        power delivery based on input commands
+    
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Propulsor
+    """
     def __defaults__(self):    
         # setting the default values
         self.tag                          = 'electric_ducted_fan'    

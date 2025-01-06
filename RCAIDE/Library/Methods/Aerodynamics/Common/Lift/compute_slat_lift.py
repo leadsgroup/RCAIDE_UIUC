@@ -10,7 +10,6 @@ import numpy as np
 #  compute_slat_lift
 # ----------------------------------------------------------------------
 
-## @ingroup Methods-Aerodynamics-Fidelity_Zero-Lift
 def compute_slat_lift(slat_angle,sweep_angle):
     """Computes the increase in lift due to slats
 

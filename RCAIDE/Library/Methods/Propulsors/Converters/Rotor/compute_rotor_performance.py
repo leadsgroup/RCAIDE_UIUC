@@ -105,7 +105,7 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
     r_1d                  = rotor.radius_distribution
     tc                    = rotor.thickness_to_chord
     a_loc                 = rotor.airfoil_polar_stations
-    airfoils              = rotor.Airfoils 
+    airfoils              = rotor.airfoils 
     Na                    = rotor.number_azimuthal_stations
     nonuniform_freestream = rotor.nonuniform_freestream
     use_2d_analysis       = rotor.use_2d_analysis 
@@ -234,7 +234,7 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
             # control variable is the blade pitch, repeat around azimuth
             beta = np.repeat(total_blade_pitch[:,:,None], Na, axis=2)
         else:
-            beta = np.tile(total_blade_pitch[None,:,None],(ctrl_pts,1,Na ))
+            beta = np.tile(total_blade_pitch[:,:,None],(ctrl_pts,1,Na ))
 
         r    = np.tile(r_1d[None,:,None], (ctrl_pts, 1, Na))
         c    = np.tile(c[None,:,None], (ctrl_pts, 1, Na))

@@ -1,21 +1,19 @@
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift
-# generate_VD_helpers.py
+ # generate_VD_helpers.py
 # 
 # Created:  Aug 2022, A. Blaufox
 # Modified: 
 #           
 
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
 #  Imports
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
 
 # package imports 
 import numpy as np
 
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
 #  postprocess_VD
-# ----------------------------------------------------------------------
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift    
+# ----------------------------------------------------------------------------------------------------------------------
 def postprocess_VD(VD, settings):
     """ 
     Recomputes data about the VD. Should be called any time VD panel 
@@ -108,8 +106,7 @@ def postprocess_VD(VD, settings):
 
 # ----------------------------------------------------------------------
 #  Panel Computations
-# ----------------------------------------------------------------------
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift
+# ---------------------------------------------------------------------- 
 def compute_panel_area(VD):
     """ This computes the area of the panels on the lifting surface of the vehicle 
 
@@ -137,8 +134,7 @@ def compute_panel_area(VD):
     
     return A_panel
 
-
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift
+ 
 def compute_unit_normal(VD):
     """ This computes the unit normal vector of each panel
 

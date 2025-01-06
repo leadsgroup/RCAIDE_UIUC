@@ -179,23 +179,7 @@ class Math:
         c = c + 0.0
         if s == 0: s = math.copysign(s, x)
         return s, c
-
-    @staticmethod
-    def atan2d(y, x):
-        """compute atan2(y, x) with the result in degrees"""
-
-        if abs(y) > abs(x):
-            q = 2; x, y = y, x
-        else:
-            q = 0
-        if x < 0:
-            q += 1; x = -x
-        ang = math.degrees(math.atan2(y, x))
-        if   q == 1: ang = math.copysign(180, y) - ang
-        elif q == 2: ang =                90      - ang
-        elif q == 3: ang =               -90     + ang
-        return ang
-
+ 
 class GeodesicCapability:
     """
     Capability constants shared between Geodesic and GeodesicLine.
@@ -295,53 +279,7 @@ class Geodesic:
             k -= 1; y0 = ar * y1 - y0 + c[k]
         return ( 2 * sinx * cosx * y0 if sinp # sin(2 * x) * y0
              else cosx * (y0 - y1) )      # cos(x) * (y0 - y1)
-
-    @staticmethod
-    def _Astroid(x, y):
-        """Private: solve astroid equation."""
-        # Solve k^4+2*k^3-(x^2+y^2-1)*k^2-2*y^2*k-y^2 = 0 for positive root k.
-        # This solution is adapted from Geocentric::Reverse.
-        p = Math.sq(x)
-        q = Math.sq(y)
-        r = (p + q - 1) / 6
-        if not(q == 0 and r <= 0):
-            # Avoid possible division by zero when r = 0 by multiplying equations
-            # for s and t by r^3 and r, resp.
-            S = p * q / 4            # S = r^3 * s
-            r2 = Math.sq(r)
-            r3 = r * r2
-            # The discriminant of the quadratic equation for T3.  This is zero on
-            # the evolute curve p^(1/3)+q^(1/3) = 1
-            disc = S * (S + 2 * r3)
-            u = r
-            if disc >= 0:
-                T3 = S + r3
-                # Pick the sign on the sqrt to maximize abs(T3).  This minimizes loss
-                # of precision due to cancellation.  The result is unchanged because
-                # of the way the T is used in definition of u.
-                T3 += -math.sqrt(disc) if T3 < 0 else math.sqrt(disc) # T3 = (r * t)^3
-                # N.B. cbrt always returns the real root.  cbrt(-8) = -2.
-                T = Math.cbrt(T3)       # T = r * t
-                # T can be zero; but then r2 / T -> 0.
-                u += T + (r2 / T if T != 0 else 0)
-            else:
-                # T is complex, but the way u is defined the result is real.
-                ang = math.atan2(math.sqrt(-disc), -(S + r3))
-                # There are three possible cube roots.  We choose the root which
-                # avoids cancellation.  Note that disc < 0 implies that r < 0.
-                u += 2 * r * math.cos(ang / 3)
-            v = math.sqrt(Math.sq(u) + q) # guaranteed positive
-            # Avoid loss of accuracy when u < 0.
-            uv = q / (v - u) if u < 0 else u + v # u+v, guaranteed positive
-            w = (uv - q) / (2 * v)               # positive?
-            # Rearrange expression for k to avoid loss of accuracy due to
-            # subtraction.  Division by 0 not possible because uv > 0, w >= 0.
-            k = uv / (math.sqrt(uv + Math.sq(w)) + w) # guaranteed positive
-        else:                                       # q == 0 && r <= 0
-            # y = 0 with |x| <= 1.  Handle this case directly.
-            # for y small, positive root is k = abs(y)/sqrt(1-x^2)
-            k = 0
-        return k
+ 
 
     @staticmethod
     def _A1m1f(eps):
@@ -372,27 +310,7 @@ class Geodesic:
             c[l] = d * Math.polyval(m, coeff, o, eps2) / coeff[o + m + 1]
             o += m + 2
             d *= eps
-
-    @staticmethod
-    def _C1pf(eps, c):
-        """Private: return C1'"""
-        coeff = [
-        205, -432, 768, 1536,
-      4005, -4736, 3840, 12288,
-      -225, 116, 384,
-      -7173, 2695, 7680,
-      3467, 7680,
-      38081, 61440,
-    ]
-        eps2 = Math.sq(eps)
-        d = eps
-        o = 0
-        for l in range(1, Geodesic.nC1p_ + 1): # l is index of C1p[l]
-            m = (Geodesic.nC1p_ - l) // 2 # order of polynomial in eps^2
-            c[l] = d * Math.polyval(m, coeff, o, eps2) / coeff[o + m + 1]
-            o += m + 2
-            d *= eps
-
+            
     @staticmethod
     def _A2m1f(eps):
         """Private: return A2-1"""
@@ -563,19 +481,7 @@ class Geodesic:
             m = Geodesic.nC3_ - l - 1       # order of polynomial in eps
             mult *= eps
             c[l] = mult * Math.polyval(m, self._C3x, o, eps)
-            o += m + 1
-
-    def _C4f(self, eps, c):
-        """Private: return C4"""
-        # Evaluate C4 coeffs by Horner's method
-        # Elements c[0] thru c[nC4_ - 1] are set
-        mult = 1
-        o = 0
-        for l in range(Geodesic.nC4_): # l is index of C4[l]
-            m = Geodesic.nC4_ - l - 1    # order of polynomial in eps
-            c[l] = mult * Math.polyval(m, self._C4x, o, eps)
-            o += m + 1
-            mult *= eps
+            o += m + 1 
 
     # return s12b, m12b, m0, M12, M21
     def _Lengths(self, eps, sig12,
@@ -1211,202 +1117,7 @@ class Geodesic:
         if not arcmode: outmask |= Geodesic.DISTANCE_IN
         line = GeodesicLine(self, lat1, lon1, azi1, outmask)
         return line._GenPosition(arcmode, s12_a12, outmask)
-
-    def Direct(self, lat1, lon1, azi1, s12,
-             outmask = GeodesicCapability.STANDARD):
-        """Solve the direct geodesic problem
-
-        :param lat1: latitude of the first point in degrees
-        :param lon1: longitude of the first point in degrees
-        :param azi1: azimuth at the first point in degrees
-        :param s12: the distance from the first point to the second in
-          meters
-        :param outmask: the :ref:`output mask <outmask>`
-        :return: a :ref:`dict`
-
-        Compute geodesic starting at (*lat1*, *lon1*) with azimuth *azi1*
-        and length *s12*.  The default value of *outmask* is STANDARD, i.e.,
-        the *lat1*, *lon1*, *azi1*, *lat2*, *lon2*, *azi2*, *s12*, *a12*
-        entries are returned.
-
-        """
-
-        a12, lat2, lon2, azi2, s12, m12, M12, M21, S12 = self._GenDirect(
-        lat1, lon1, azi1, False, s12, outmask)
-        outmask &= Geodesic.OUT_MASK
-        result = {'lat1': Math.LatFix(lat1),
-              'lon1': lon1 if outmask & Geodesic.LONG_UNROLL else
-              Math.AngNormalize(lon1),
-              'azi1': Math.AngNormalize(azi1),
-              's12': s12}
-        result['a12'] = a12
-        if outmask & Geodesic.LATITUDE: result['lat2'] = lat2
-        if outmask & Geodesic.LONGITUDE: result['lon2'] = lon2
-        if outmask & Geodesic.AZIMUTH: result['azi2'] = azi2
-        if outmask & Geodesic.REDUCEDLENGTH: result['m12'] = m12
-        if outmask & Geodesic.GEODESICSCALE:
-            result['M12'] = M12; result['M21'] = M21
-        if outmask & Geodesic.AREA: result['S12'] = S12
-        return result
-
-    def ArcDirect(self, lat1, lon1, azi1, a12,
-                outmask = GeodesicCapability.STANDARD):
-        """Solve the direct geodesic problem in terms of spherical arc length
-
-        :param lat1: latitude of the first point in degrees
-        :param lon1: longitude of the first point in degrees
-        :param azi1: azimuth at the first point in degrees
-        :param a12: spherical arc length from the first point to the second
-          in degrees
-        :param outmask: the :ref:`output mask <outmask>`
-        :return: a :ref:`dict`
-
-        Compute geodesic starting at (*lat1*, *lon1*) with azimuth *azi1*
-        and arc length *a12*.  The default value of *outmask* is STANDARD,
-        i.e., the *lat1*, *lon1*, *azi1*, *lat2*, *lon2*, *azi2*, *s12*,
-        *a12* entries are returned.
-
-        """
-
-        a12, lat2, lon2, azi2, s12, m12, M12, M21, S12 = self._GenDirect(
-        lat1, lon1, azi1, True, a12, outmask)
-        outmask &= Geodesic.OUT_MASK
-        result = {'lat1': Math.LatFix(lat1),
-              'lon1': lon1 if outmask & Geodesic.LONG_UNROLL else
-              Math.AngNormalize(lon1),
-              'azi1': Math.AngNormalize(azi1),
-              'a12': a12}
-        if outmask & Geodesic.DISTANCE: result['s12'] = s12
-        if outmask & Geodesic.LATITUDE: result['lat2'] = lat2
-        if outmask & Geodesic.LONGITUDE: result['lon2'] = lon2
-        if outmask & Geodesic.AZIMUTH: result['azi2'] = azi2
-        if outmask & Geodesic.REDUCEDLENGTH: result['m12'] = m12
-        if outmask & Geodesic.GEODESICSCALE:
-            result['M12'] = M12; result['M21'] = M21
-        if outmask & Geodesic.AREA: result['S12'] = S12
-        return result
-
-    def Line(self, lat1, lon1, azi1,
-           caps = GeodesicCapability.STANDARD |
-           GeodesicCapability.DISTANCE_IN):
-        """Return a GeodesicLine object
-
-        :param lat1: latitude of the first point in degrees
-        :param lon1: longitude of the first point in degrees
-        :param azi1: azimuth at the first point in degrees
-        :param caps: the :ref:`capabilities <outmask>`
-        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`
-
-        This allows points along a geodesic starting at (*lat1*, *lon1*),
-        with azimuth *azi1* to be found.  The default value of *caps* is
-        STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-        solved.
-
-        """
-
-        from geographiclib.geodesicline import GeodesicLine
-        return GeodesicLine(self, lat1, lon1, azi1, caps)
-
-    def _GenDirectLine(self, lat1, lon1, azi1, arcmode, s12_a12,
-                     caps = GeodesicCapability.STANDARD |
-                     GeodesicCapability.DISTANCE_IN):
-        """Private: general form of DirectLine"""
-        from geographiclib.geodesicline import GeodesicLine
-        # Automatically supply DISTANCE_IN if necessary
-        if not arcmode: caps |= Geodesic.DISTANCE_IN
-        line = GeodesicLine(self, lat1, lon1, azi1, caps)
-        if arcmode:
-            line.SetArc(s12_a12)
-        else:
-            line.SetDistance(s12_a12)
-        return line
-
-    def DirectLine(self, lat1, lon1, azi1, s12,
-                 caps = GeodesicCapability.STANDARD |
-                 GeodesicCapability.DISTANCE_IN):
-        """Define a GeodesicLine object in terms of the direct geodesic
-        problem specified in terms of spherical arc length
-
-        :param lat1: latitude of the first point in degrees
-        :param lon1: longitude of the first point in degrees
-        :param azi1: azimuth at the first point in degrees
-        :param s12: the distance from the first point to the second in
-          meters
-        :param caps: the :ref:`capabilities <outmask>`
-        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`
-
-        This function sets point 3 of the GeodesicLine to correspond to
-        point 2 of the direct geodesic problem.  The default value of *caps*
-        is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-        solved.
-
-        """
-
-        return self._GenDirectLine(lat1, lon1, azi1, False, s12, caps)
-
-    def ArcDirectLine(self, lat1, lon1, azi1, a12,
-                    caps = GeodesicCapability.STANDARD |
-                 GeodesicCapability.DISTANCE_IN):
-        """Define a GeodesicLine object in terms of the direct geodesic
-        problem specified in terms of spherical arc length
-
-        :param lat1: latitude of the first point in degrees
-        :param lon1: longitude of the first point in degrees
-        :param azi1: azimuth at the first point in degrees
-        :param a12: spherical arc length from the first point to the second
-          in degrees
-        :param caps: the :ref:`capabilities <outmask>`
-        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`
-
-        This function sets point 3 of the GeodesicLine to correspond to
-        point 2 of the direct geodesic problem.  The default value of *caps*
-        is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-        solved.
-
-        """
-
-        return self._GenDirectLine(lat1, lon1, azi1, True, a12, caps)
-
-    def InverseLine(self, lat1, lon1, lat2, lon2,
-                  caps = GeodesicCapability.STANDARD |
-                  GeodesicCapability.DISTANCE_IN):
-        """Define a GeodesicLine object in terms of the invese geodesic problem
-
-        :param lat1: latitude of the first point in degrees
-        :param lon1: longitude of the first point in degrees
-        :param lat2: latitude of the second point in degrees
-        :param lon2: longitude of the second point in degrees
-        :param caps: the :ref:`capabilities <outmask>`
-        :return: a :class:`~geographiclib.geodesicline.GeodesicLine`
-
-        This function sets point 3 of the GeodesicLine to correspond to
-        point 2 of the inverse geodesic problem.  The default value of *caps*
-        is STANDARD | DISTANCE_IN, allowing direct geodesic problem to be
-        solved.
-
-        """
-
-        from geographiclib.geodesicline import GeodesicLine
-        a12, _, salp1, calp1, _, _, _, _, _, _ = self._GenInverse(
-        lat1, lon1, lat2, lon2, 0)
-        azi1 = Math.atan2d(salp1, calp1)
-        if caps & (Geodesic.OUT_MASK & Geodesic.DISTANCE_IN):
-            caps |= Geodesic.DISTANCE
-        line = GeodesicLine(self, lat1, lon1, azi1, caps, salp1, calp1)
-        line.SetArc(a12)
-        return line
-
-    def Polygon(self, polyline = False):
-        """Return a PolygonArea object
-
-        :param polyline: if True then the object describes a polyline
-          instead of a polygon
-        :return: a :class:`~geographiclib.polygonarea.PolygonArea`
-
-        """
-
-        from geographiclib.polygonarea import PolygonArea
-        return PolygonArea(self, polyline)
+ 
 
     EMPTY         = GeodesicCapability.EMPTY
     """No capabilities, no output."""

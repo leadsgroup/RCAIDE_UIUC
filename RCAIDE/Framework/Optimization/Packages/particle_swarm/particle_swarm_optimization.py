@@ -1,4 +1,3 @@
-## @ingroup Optimization-Package_Setups
 # particle_swarm_optimization.py
 # 
 # Created:  Sep. 2019, M. Clarke
@@ -10,8 +9,7 @@
 # RCAIDE imports
 import numpy as np
 import scipy as sp
- 
-## @ingroup Optimization-Package_Setups
+  
 def particle_swarm_optimization(func, lb, ub, ieqcons=[], f_ieqcons=None, args=(), kwargs={}, 
         swarmsize=100, omega=0.5, phip=0.5, phig=0.5, maxiter=100, 
         minstep=1e-8, minfunc=1e-8, debug=False):

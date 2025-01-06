@@ -17,13 +17,135 @@ import numpy as np
 #  LIFT ROTOR CLASS
 # ----------------------------------------------------------------------------------------------------------------------           
 class Lift_Rotor(Rotor):
-    """This is a lift rotor component, and is a sub-class of rotor.
-    
-    Assumptions:
-    None
-    
-    Source:
-    None
+    """
+    A lift rotor component model for vertical lift applications, inheriting from the base Rotor class.
+
+    Attributes
+    ----------
+    tag : str
+        Identifier for the lift rotor. Default is 'lift_rotor'.
+        
+    orientation_euler_angles : list
+        Vector of angles [rad] defining rotor orientation [θ, φ, ψ]. 
+        Default is [0., π/2, 0.] for Z-direction thrust up in vehicle frame.
+        
+    use_2d_analysis : bool
+        Flag for using 2D aerodynamic analysis. Default is False.
+        
+    variable_pitch : bool
+        Flag indicating if rotor has variable pitch capability. Default is False.
+        
+    hover : Data
+        Hover performance parameters
+        
+        - design_thrust : float
+            Design point thrust [N]. Default is None.
+        
+        - design_torque : float
+            Design point torque [N·m]. Default is None.
+
+        - design_power : float
+            Design point power [W]. Default is None.
+        
+        - design_angular_velocity : float
+            Design point rotational speed [rad/s]. Default is None.
+
+        - design_tip_mach : float
+            Design point blade tip Mach number. Default is None.
+        
+        - design_freestream_velocity : float
+            Design point forward velocity [m/s]. Default is None.
+
+        - design_acoustics : Data
+            Acoustic characteristics at design point. Default is None.
+
+        - design_performance : Data
+            Performance metrics at design point. Default is None.
+
+        - design_pitch_command : float
+            Design point blade pitch command [rad]. Default is 0.0.
+
+        - design_SPL_dBA : float
+            Design point sound pressure level [dBA]. Default is None.
+
+        - design_Cl : float
+            Design point lift coefficient. Default is None.
+
+        - design_thrust_coefficient : float
+            Design point thrust coefficient. Default is None.
+
+        - design_power_coefficient : float
+            Design point power coefficient. Default is None.
+            
+    oei : Data
+        One engine inoperative performance parameters
+        
+        - design_thrust : float
+            OEI thrust requirement [N]. Default is None.
+
+        - design_torque : float
+            OEI torque requirement [N·m]. Default is None.
+
+        - design_power : float
+            OEI power requirement [W]. Default is None.
+
+        - design_angular_velocity : float
+            OEI rotational speed [rad/s]. Default is None.
+
+        - design_freestream_velocity : float
+            OEI forward velocity [m/s]. Default is None.
+
+        - design_tip_mach : float
+            OEI blade tip Mach number. Default is None.
+
+        - design_altitude : float
+            OEI design altitude [m]. Default is None.
+        
+        - design_acoustics : Data
+            OEI acoustic characteristics. Default is None.
+
+        - design_pitch_command : float
+            OEI blade pitch command [rad]. Default is 0.0.
+
+        - design_performance : Data
+            OEI performance metrics. Default is None.
+
+        - design_SPL_dBA : float
+            OEI sound pressure level [dBA]. Default is None.
+
+        - design_Cl : float
+            OEI lift coefficient. Default is None.
+
+        - design_thrust_coefficient : float
+            OEI thrust coefficient. Default is None.
+
+        - design_power_coefficient : float
+            OEI power coefficient. Default is None.
+
+    Notes
+    -----
+    The Lift_Rotor class models rotors specifically designed for vertical lift applications.
+    It includes capabilities for:
+    * Hover performance analysis
+    * One engine inoperative (OEI) conditions
+    * Variable pitch operation
+    * Acoustic analysis
+    * Performance coefficient calculations
+
+    **Definitions**
+
+    'OEI'
+        One Engine Inoperative - emergency condition where one engine fails
+
+    'SPL'
+        Sound Pressure Level - measure of acoustic intensity
+        
+    'Tip Mach'
+        Mach number at the blade tip, including rotational and forward flight effects
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.Rotor
     """     
     def __defaults__(self):
         """This sets the default values for the component to function.

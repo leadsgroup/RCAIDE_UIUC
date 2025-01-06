@@ -8,8 +8,6 @@ import numpy as np
 # ----------------------------------------------------------------------
 #  Compressible Turbulent Flat Plate
 # ----------------------------------------------------------------------
-
-## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Helper_Functions
 def compressible_turbulent_flat_plate(Re,Ma,Tc):
     """Computes the coefficient of friction for a flat plate given the 
     input parameters. Also returns the correction terms used in the

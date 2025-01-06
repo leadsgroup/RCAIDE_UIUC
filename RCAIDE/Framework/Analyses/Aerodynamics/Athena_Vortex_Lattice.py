@@ -103,15 +103,14 @@ class Athena_Vortex_Lattice(Aerodynamics):
         settings.filenames.case_template                             = 'case_{0:04d}_{1:04d}'
         settings.filenames.log_filename                              = 'avl_log.txt'
         settings.filenames.err_filename                              = 'avl_err.txt'        
-        settings.number_of_spanwise_vortices                         = 20
+        settings.number_of_spanwise_vortices                         = 30
         settings.number_of_chordwise_vortices                        = 10
         settings.use_surrogate                                       = True 
         settings.trim_aircraft                                       = False 
         settings.model_fuselage                                      = False 
         settings.print_output                                        = False 
-        settings.keep_files                                          = False
-        settings.save_regression_results                             = False          
-        settings.regression_flag                                     = False  
+        settings.keep_files                                          = False        
+        settings.new_regression_results                              = False  
         settings.side_slip_angle                                     = 0.0
         settings.roll_rate_coefficient                               = 0.0
         settings.pitch_rate_coefficient                              = 0.0 
@@ -153,7 +152,15 @@ class Athena_Vortex_Lattice(Aerodynamics):
         self.surrogates.moment_coefficient          = None
         self.surrogates.Cm_alpha_moment_coefficient = None
         self.surrogates.Cn_beta_moment_coefficient  = None      
-        self.surrogates.neutral_point               = None  
+        self.surrogates.neutral_point               = None
+
+        self.reference_values                       = Data()
+        self.reference_values.S_ref                 = 0
+        self.reference_values.c_ref                 = 0
+        self.reference_values.b_ref                 = 0
+        self.reference_values.X_ref                 = 0
+        self.reference_values.Y_ref                 = 0
+        self.reference_values.Z_ref                 = 0        
 
         # build the evaluation process
         compute                                    = Process() 

@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Titanum.py
 #
 # Created: Jul, 2022, J. Smart
@@ -15,9 +13,7 @@ from RCAIDE.Framework.Core import Units
 
 # -------------------------------------------------------------------------------
 # Aluminum 6061-T6 Solid Class
-# -------------------------------------------------------------------------------
-
-## @ingroup Attributes-Solid
+# ------------------------------------------------------------------------------- 
 class Titanium(Solid):
     """ Physical Constants Specific to Grade 5 Ti-6AL-4V Alloy, Annealed
 

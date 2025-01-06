@@ -162,6 +162,7 @@ def mission_setup(analyses):
     # unpack Segments module
     Segments = RCAIDE.Framework.Mission.Segments 
     base_segment = Segments.Segment()
+    base_segment.state.numerics.discretization_method     = RCAIDE.Library.Methods.Utilities.Chebyshev.chebyshev_data
     
     # VSTALL Calculation  
     vehicle        = analyses.base.aerodynamics.vehicle

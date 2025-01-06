@@ -8,6 +8,5 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
         
-from .append_supersonic_nozzle_conditions   import append_supersonic_nozzle_conditions
-from .compute_limited_geometry              import compute_limited_geometry
+from .append_supersonic_nozzle_conditions   import append_supersonic_nozzle_conditions 
 from .compute_supersonic_nozzle_performance import compute_supersonic_nozzle_performance

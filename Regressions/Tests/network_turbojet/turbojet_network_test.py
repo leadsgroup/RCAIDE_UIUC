@@ -9,7 +9,9 @@
 # RCAIDE imports  
 import RCAIDE
 from RCAIDE.Framework.Core                          import Units , Data 
-from RCAIDE.Library.Plots                           import *        
+from RCAIDE.Library.Plots                           import *   
+from RCAIDE.load    import load 
+from RCAIDE.save    import save     
 
 # python imports     
 import numpy as np  
@@ -31,6 +33,17 @@ def main():
 
     # vehicle data
     vehicle  = vehicle_setup()
+
+    # plot vehicle 
+    plot_3d_vehicle(vehicle, 
+                    min_x_axis_limit            = 0,
+                    max_x_axis_limit            = 60,
+                    min_y_axis_limit            = -30,
+                    max_y_axis_limit            = 30,
+                    min_z_axis_limit            = -30,
+                    max_z_axis_limit            = 30,
+                    show_figure                 = False 
+                    )
     
     # Set up vehicle configs
     configs  = configs_setup(vehicle)
@@ -50,7 +63,7 @@ def main():
     # Extract sample values from computation  
     thrust     = results.segments.climb_1.conditions.energy['inner_right_turbojet'].thrust[3][0]
     throttle   = results.segments.level_cruise.conditions.energy['inner_right_turbojet'].throttle[3][0] 
-    CL        = results.segments.descent_1.conditions.aerodynamics.coefficients.lift.total[2][0] 
+    CL         = results.segments.descent_1.conditions.aerodynamics.coefficients.lift.total[2][0] 
     
     #print values for resetting regression
     show_vals = True
@@ -60,15 +73,19 @@ def main():
             print(val)
     
     # Truth values
-    thrust_truth     = 182566.0177458797
-    throttle_truth   = 1.0733674394507737
-    CL_truth         = 0.27062739821240467
+    thrust_truth     = 182566.01800494973
+    throttle_truth   = 1.073367439687721
+    CL_truth         = 0.2737121142244215
     
     # Store errors 
     error = Data()
     error.thrust    = np.max(np.abs(thrust - thrust_truth )/thrust_truth) 
     error.throttle  = np.max(np.abs(throttle  - throttle_truth  )/throttle_truth) 
-    error.CL        = np.max(np.abs(CL - CL_truth   )/CL_truth)      
+    error.CL        = np.max(np.abs(CL - CL_truth   )/CL_truth)
+    
+    # Save and Load Test 
+    save(error, 'turbojet_network_errors.res')
+    old_errors = load('turbojet_network_errors.res')  
      
     print('Errors:')
     print(error)
@@ -162,7 +179,9 @@ def plot_mission(results):
  
     plot_CO2e_emissions(results) 
   
-    plot_aerodynamic_forces(results)  
+    plot_aerodynamic_forces(results)
+    
+    plot_fuel_consumption(results)
      
         
     return 
@@ -368,7 +387,7 @@ def mission_setup(analyses):
     #   First Descent Segment: decceleration
     # ------------------------------------------------------------------    
     segment     = Segments.Cruise.Constant_Acceleration_Constant_Altitude(base_segment)
-    segment.tag = "decel_1" 
+    segment.tag = "cruise" 
     segment.analyses.extend( analyses.cruise )
     segment.acceleration                                  = -.5  * Units['m/s/s']
     segment.air_speed_end                                 = 1.5*573.  * Units.kts 
@@ -390,8 +409,8 @@ def mission_setup(analyses):
     segment     = Segments.Descent.Linear_Mach_Constant_Rate(base_segment)
     segment.tag = "descent_1" 
     segment.analyses.extend( analyses.cruise )
-    segment.altitude_end      = 41000. * Units.ft
-    segment.mach_number_end   = 1.3
+    segment.altitude_end      = 50000. * Units.ft
+    segment.mach_number_end   = 1.4
     segment.descent_rate      = 2000. * Units['ft/min']  
     
     # define flight dynamics to model 
@@ -404,6 +423,28 @@ def mission_setup(analyses):
     segment.assigned_control_variables.body_angle.active             = True                
     
     mission.append_segment(segment)     
+    
+
+    # ------------------------------------------------------------------
+    #   First Descent Segment
+    # ------------------------------------------------------------------  
+    segment     = Segments.Descent.Linear_Speed_Constant_Rate(base_segment)
+    segment.tag = "descent_2" 
+    segment.analyses.extend( analyses.cruise )
+    segment.altitude_end      = 41000. * Units.ft
+    segment.air_speed_end     = 383.591
+    segment.descent_rate      = 2000. * Units['ft/min']  
+    
+    # define flight dynamics to model 
+    segment.flight_dynamics.force_x                      = True  
+    segment.flight_dynamics.force_z                      = True     
+    
+    # define flight controls 
+    segment.assigned_control_variables.throttle.active               = True           
+    segment.assigned_control_variables.throttle.assigned_propulsors  = [['inner_right_turbojet','outer_right_turbojet','outer_left_turbojet','inner_left_turbojet']] 
+    segment.assigned_control_variables.body_angle.active             = True                
+    
+    mission.append_segment(segment)
     
     # ------------------------------------------------------------------
     #   First Descent Segment: decceleration

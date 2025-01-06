@@ -1,10 +1,13 @@
-## @ingroup Input_Output-OpenVSP
-# get_fuel_tank_properties.py
+# RCAIDE/Framework/External_Interfaces/OpenVSP/get_fuel_tank_properties.py
 # 
 # Created:  Sep 2018, T. MacDonald
 # Modified: Oct 2018, T. MacDonald
 #           Jan 2020, T. MacDonald
 
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------  
+# RCAIDE imports 
 try:
     import vsp as vsp
 except ImportError:
@@ -16,7 +19,9 @@ except ImportError:
 import numpy as np
 from RCAIDE.Framework.Core import Data
 
-## @ingroup Input_Output-OpenVSP
+# ----------------------------------------------------------------------------------------------------------------------
+#  Get Fuel Tank Properties
+# ----------------------------------------------------------------------------------------------------------------------   
 def get_fuel_tank_properties(vehicle,tag,fuel_tank_set_index=3,slices_for_calculation=100):
     """This function computes the center of gravity, total possible fuel mass,
     the available volume of each fuel tank in the vehicle through a mass
@@ -55,7 +60,7 @@ def get_fuel_tank_properties(vehicle,tag,fuel_tank_set_index=3,slices_for_calcul
     # Extract fuel tanks from vehicle
     fuel_tanks = get_fuel_tanks(vehicle)
     
-    num_slices = slices_for_calculation # Slices used to estimate mass distribution from areas in OpenVSP
+    num_slices             = slices_for_calculation # Slices used to estimate mass distribution from areas in OpenVSP
     mass_props_output_file = tag + '_mass_props.txt'
     vsp.SetComputationFileName(vsp.MASS_PROP_TXT_TYPE,mass_props_output_file)
     print('Computing Fuel Tank Mass Properties... ')
@@ -93,7 +98,9 @@ def get_fuel_tank_properties(vehicle,tag,fuel_tank_set_index=3,slices_for_calcul
     
     return vehicle
 
-## @ingroup Input_Output-OpenVSP
+# ----------------------------------------------------------------------------------------------------------------------
+# Apply Properties
+# ---------------------------------------------------------------------------------------------------------------------- 
 def apply_properties(vehicle,fuel_tanks):
     """Apply fuel tank properties from OpenVSP to the RCAIDE vehicle.
     
@@ -141,7 +148,10 @@ def apply_properties(vehicle,fuel_tanks):
                     
     return vehicle
     
-## @ingroup Input_Output-OpenVSP
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Get Fuel Tanks
+# ---------------------------------------------------------------------------------------------------------------------- 
 def get_fuel_tanks(vehicle):
     """Creates a data structure with fuel tanks based on 
     fuel tanks present in the vehicle
@@ -162,14 +172,11 @@ def get_fuel_tanks(vehicle):
     Properties Used:
     N/A
     """       
-    fuel_tanks = Data()
-    
-    for wing in vehicle.wings:
-        for tank in wing.Fuel_Tanks:
-            fuel_tanks[tank.tag] = Data()
+    vsp_fuel_tanks = Data()  
+
+    for network in vehicle.networks:  
+        for fuel_line in  network.fuel_lines: 
+            for fuel_tank in fuel_line.fuel_tanks: 
+                vsp_fuel_tanks[fuel_tank.tag] = Data()
                     
-    for fuse in vehicle.fuselages:
-        for tank in fuse.Fuel_Tanks:
-            fuel_tanks[tank.tag] = Data()
-                    
-    return fuel_tanks
+    return vsp_fuel_tanks

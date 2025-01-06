@@ -14,7 +14,55 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle.append_expans
 #  Expansion Nozzle
 # ----------------------------------------------------------------------------------------------------------------------
 class Expansion_Nozzle(Component):
-    """This is a nozzle component intended for use in expansion. 
+    """
+    An expansion nozzle component model for propulsion systems that converts pressure energy into kinetic energy.
+
+    Attributes
+    ----------
+    tag : str
+        Identifier for the nozzle. Default is 'Nozzle'.
+        
+    polytropic_efficiency : float
+        Efficiency of the expansion process accounting for losses. Default is 1.0.
+        
+    pressure_ratio : float
+        Ratio of outlet to inlet pressure. Default is 1.0.
+
+    Notes
+    -----
+    The Expansion_Nozzle class models a nozzle that converts pressure energy into 
+    kinetic energy through an expansion process. The model:
+    * Handles subsonic and choked flow conditions
+    * Accounts for losses through polytropic efficiency
+    * Maintains constant pressure ratio at design conditions
+    * Assumes quasi-one-dimensional flow
+
+    **Major Assumptions**
+    * Pressure ratio and efficiency do not change with varying conditions
+    * Flow can be subsonic or choked (but not supersonic)
+
+    **Definitions**
+
+    'Polytropic Efficiency'
+        Measure of expansion process efficiency accounting for real gas effects
+
+    'Pressure Ratio'
+        Ratio of exit to inlet pressure
+    
+    'Choked Flow'
+        Condition where flow reaches sonic velocity at the throat
+
+    References
+    ----------
+    [1] Mattingly, J. D., & Boyer, K. M. (2016). Elements of propulsion: Gas 
+        turbines and rockets, second edition Jack D. Mattingly, Keith M. Boyer. 
+        American Institute of Aeronautics and Astronautics.
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Component
+    RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle
+    RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle
     """
     
     def __defaults__(self):

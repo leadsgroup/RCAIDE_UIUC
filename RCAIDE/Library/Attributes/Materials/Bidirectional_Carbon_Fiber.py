@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Bidirectional_Carbon_Fiber.py
 #
 # Created: Jul, 2017, J. Smart
@@ -16,7 +14,6 @@ from RCAIDE.Framework.Core import Units
 # Bi-Directional Carbon Fiber Solid Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Bidirectional_Carbon_Fiber(Solid):
     """ Physical Constants Specific to Bidirectional Carbon Fiber
     

@@ -1,4 +1,3 @@
-## @ingroup Core
 # DiffedData.py
 #
 # Created:  Feb 2015, T. Lukacyzk
@@ -19,7 +18,6 @@ import numpy as np
 #  Config
 # ----------------------------------------------------------------------
 
-## @ingroup Core
 class Diffed_Data(Data):
     """ This is for creating a data new class where a different copy is saved.
         This is useful for creating a new configuration of a vehicle.
@@ -97,79 +95,7 @@ class Diffed_Data(Data):
         """          
         delta = diff(self,self._base)
         self._diff = delta
-        
-    def pull_base(self):
-        """ Updates the differences
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """          
-        try: self._base.pull_base()
-        except AttributeError: pass
-        self.update(self._base)
-        self.update(self._diff)
-    
-    def __str__(self,indent=''):
-        """ This function is used for printing the class.
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """         
-        try: 
-            args = self._diff.__str__(indent)
-            args += indent + '_base : ' + self._base.__repr__() + '\n'
-            args += indent + '  tag : ' + self._base.tag + '\n'
-            return args
-        except AttributeError:     
-            return Data.__str__(self,indent)
-    
-    def finalize(self):
-        """ This just does a pull_base()
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """          
-        ## dont do this here, breaks down stream dependencies
-        # self.store_diff 
-        
-        self.pull_base()
-
+         
 # ----------------------------------------------------------------------
 #  Config Container
 # ----------------------------------------------------------------------
@@ -206,28 +132,6 @@ class Container(ContainerBase):
         try: value.store_diff()
         except AttributeError: pass
         ContainerBase.append(self,value)
-        
-    def pull_base(self):
-        """ Updates the differences
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """          
-        for config in self:
-            try: config.pull_base()
-            except AttributeError: pass
 
     def store_diff(self):
         """ Finds the differences and saves them
@@ -249,29 +153,7 @@ class Container(ContainerBase):
         """          
         for config in self:
             try: config.store_diff()
-            except AttributeError: pass
-    
-    def finalize(self):
-        """ This just does a pull_base()
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """        
-        for config in self:
-            try: config.finalize()
-            except AttributeError: pass
+            except AttributeError: pass 
 
 
 # ------------------------------------------------------------

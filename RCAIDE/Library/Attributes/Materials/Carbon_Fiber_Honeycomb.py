@@ -1,5 +1,3 @@
-## @ingroup Attributes-Solids
-
 # Carbon_Fiber_Honeycomb.py
 #
 # Created: Jul, 2017, J. Smart
@@ -16,7 +14,6 @@ from RCAIDE.Framework.Core import Units
 # Carbon Fiber Honeycomb Core Solid Class
 #-------------------------------------------------------------------------------
 
-## @ingroup Attributes-Solids
 class Carbon_Fiber_Honeycomb(Solid):
     """ Physical Constants Specific to Carbon Fiber Honeycomb Core Material
     

@@ -1,4 +1,3 @@
-## @ingroup Optimization-Package_Setups
 # scipy_setup.py
 # 
 # Created:  Aug 2015, E. Botero 
@@ -20,9 +19,7 @@ from RCAIDE.Framework.Optimization.Common import helper_functions as help_fun
 
 # ----------------------------------------------------------------------
 #  Something that should become a class at some point
-# ----------------------------------------------------------------------
-
-## @ingroup Optimization-Package_Setups
+# ---------------------------------------------------------------------- 
 def SciPy_Solve(problem,solver='SLSQP', sense_step = 1.4901161193847656e-08, iter =200, tolerance = 1e-6, pop_size =  10 , prob_seed = None ):  
     """ This converts your RCAIDE Nexus problem into a SciPy optimization problem and solves it
         SciPy has many algorithms, they can be switched out by using the solver input. 
@@ -115,8 +112,7 @@ def SciPy_Solve(problem,solver='SLSQP', sense_step = 1.4901161193847656e-08, ite
         outputs = sp.optimize.minimize(wrapper,x,method=solver)
     
     return outputs
-
-## @ingroup Optimization-Package_Setups
+ 
 def SciPy_Problem(problem,x):
     """ This wrapper runs the RCAIDE problem and is called by the Scipy solver.
         Prints the inputs (x) as well as the objective value

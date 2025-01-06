@@ -1,4 +1,3 @@
-## @ingroup Core
 # DataOrdered.py
 #
 # Created:  Jul 2016, E. Botero
@@ -123,7 +122,6 @@ class Property(object):
 #   DataOrdered
 # ----------------------------------------------------------------------        
 
-## @ingroup Core
 class DataOrdered(OrderedDict):
     """ An extension of the Python dict which allows for both tag and '.' usage.
         This is an ordered dictionary. So indexing it will produce deterministic results.
@@ -342,37 +340,6 @@ class DataOrdered(OrderedDict):
             N/A    
         """          
         return iter(self.values())
-            
-    def __str__(self,indent=''):
-        """ This function is used for printing the class. This starts the first line of printing.
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """         
-        new_indent = '  '
-        args = ''
-        
-        # trunk data name
-        if not indent:
-            args += self.dataname()  + '\n'
-        else:
-            args += ''
-            
-        args += self.__str2(indent)
-        
-        return args
     
     def get_bases(self):
         """ Finds the higher classes that may be built off of data
@@ -568,29 +535,7 @@ class DataOrdered(OrderedDict):
         OrderedDict.__delattr__(self,key)
         link_prev, link_next, key = self._map.pop(key)
         link_prev[1] = link_next
-        link_next[0] = link_prev
-        
-    def __eq__(self, other):
-        """ This is overrides the Python function for checking for equality
-            
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """           
-        if isinstance(other, (DataOrdered,OrderedDict)):
-            return len(self)==len(other) and np.all(self.items() == other.items())
-        return dict.__eq__(self, other)
+        link_next[0] = link_prev 
         
     def __len__(self):
         """ This is overrides the Python function for checking length
@@ -709,59 +654,7 @@ class DataOrdered(OrderedDict):
             N/A    
         """        
         self.__setattr__(k,v)
-        
-    def __str2(self,indent=''):
-        """ This regresses through and does the rest of printing that __str__ missed
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """        
-        
-        new_indent = '  '
-        args = ''
-        
-        # trunk data name
-        if indent: args += '\n'
-        
-        # print values   
-        for key,value in self.items():
-            
-            # skip 'hidden' items
-            if isinstance(key,str) and key.startswith('_'):
-                continue
-            
-            # recurse into other dict types
-            if isinstance(value,OrderedDict):
-                if not value:
-                    val = '\n'
-                else:
-                    try:
-                        val = value.__str2(indent+new_indent)
-                    except RuntimeError: # recursion limit
-                        val = ''
-                    except:
-                        val = value.__str__(indent+new_indent)                                    
-                        
-            # everything else
-            else:
-                val = str(value) + '\n'
-                
-            # this key-value, indented
-            args+= indent + str(key) + ' : ' + val
-            
-        return args     
+         
 
     def clear(self):
         """ Empties a dictionary
@@ -914,50 +807,7 @@ class DataOrdered(OrderedDict):
             Properties Used:
             N/A    
         """         
-        return self.__iter_basic__()
-    
-    def itervalues(self):
-        """ Finds all the values that can be iterated over.
-    
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """          
-        for k in self.__iter_basic__():
-            yield self[k]
-    
-    def iteritems(self):
-        """ All items that may be iterated over
-            
-            Assumptions:
-            N/A
-    
-            Source:
-            N/A
-    
-            Inputs:
-            N/A
-    
-            Outputs:
-            N/A
-    
-            Properties Used:
-            N/A    
-        """          
-        for k in self.__iter():
-            yield (k, self[k])   
-
+        return self.__iter_basic__() 
 
 # for rebuilding dictionaries with attributes
 def _reconstructor(klass,items):

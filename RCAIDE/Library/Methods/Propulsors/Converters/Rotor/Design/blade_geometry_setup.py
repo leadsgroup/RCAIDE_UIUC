@@ -44,7 +44,7 @@ def blade_geometry_setup(rotor,number_of_stations):
     chi0                  = Rh/R  
     chi                   = np.linspace(chi0,1,N+1)  
     chi                   = chi[0:N]
-    airfoils              = rotor.Airfoils      
+    airfoils              = rotor.airfoils      
     a_loc                 = rotor.airfoil_polar_stations  
     
     # determine target values 

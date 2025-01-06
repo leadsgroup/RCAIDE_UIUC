@@ -1,4 +1,4 @@
-# RCAIDE/Library/Compoments/Energy/Fuel_Tanks/Central_Fuel_Tank.py
+# RCAIDE/Library/Components/Energy/Sources/Fuel_Tanks/Central_Fuel_Tank.py
 # 
 # 
 # Created:  September 2024, A. Molloy and M. Clarke 
@@ -15,16 +15,51 @@ from RCAIDE.Library.Methods.Energy.Sources.Fuel_Tanks.append_fuel_tank_condition
 #  Fuel Tank
 # ---------------------------------------------------------------------------------------------------------------------    
 class Central_Fuel_Tank(Fuel_Tank):
-    """Central Fuel tank compoment.
     """
-    def __defaults__(self):
-        """This sets the default values.
+    Class for modeling central fuel tank characteristics and behavior
     
-        Assumptions:
-            None
+    Attributes
+    ----------
+    tag : str
+        Identifier for the fuel tank (default: 'Central_fuel_tank')
         
-        Source:
-            None
+    fuel_selector_ratio : float
+        Ratio of fuel flow allocation (default: 1.0)
+        
+    mass_properties.empty_mass : float
+        Mass of empty tank structure [kg] (default: 0.0)
+        
+    secondary_fuel_flow : float
+        Secondary fuel flow rate [kg/s] (default: 0.0)
+        
+    length : float
+        Tank length [m] (default: 0.0)
+        
+    width : float
+        Tank width [m] (default: 0.0)
+        
+    height : float
+        Tank height [m] (default: 0.0)
+        
+    fuel : Component, optional
+        Fuel type stored in tank (default: None)
+
+    Notes
+    -----
+    The central fuel tank is located in the aircraft's center section,
+    often integrated with the wing box or fuselage structure. 
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank
+        Base fuel tank class
+    RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Wing_Fuel_Tank
+        Wing-mounted fuel tank class
+    """
+    
+    def __defaults__(self):
+        """
+        Sets default values for central fuel tank attributes
         """          
         self.tag                         = 'Central_fuel_tank'
         self.fuel_selector_ratio         = 1.0 
@@ -37,5 +72,15 @@ class Central_Fuel_Tank(Fuel_Tank):
          
 
     def append_operating_conditions(self,segment,fuel_line):  
+        """
+        Append fuel tank operating conditions for a flight segment
+        
+        Parameters
+        ----------
+        segment : Segment
+            Flight segment containing state conditions
+        fuel_line : Component
+            Connected fuel line component
+        """
         append_fuel_tank_conditions(self,segment, fuel_line)  
         return                                          

@@ -166,14 +166,21 @@ D{0}
         for ctrl_surf in wing.control_surfaces:
             if type(ctrl_surf) == Aileron:
                 control = 'RM'
+                cs_command = cs_template.format(cs_idx,control)
+                cs_commands = cs_commands + cs_command
+                cs_idx += 1   
             elif type(ctrl_surf) == Elevator:
                 control = 'PM' 
+                cs_command = cs_template.format(cs_idx,control)
+                cs_commands = cs_commands + cs_command
+                cs_idx += 1   
             elif type(ctrl_surf) == Rudder:
                 control = 'YM' 
-            cs_command = cs_template.format(cs_idx,control)
-            cs_commands = cs_commands + cs_command
-            cs_idx += 1   
-    
+                cs_command = cs_template.format(cs_idx,control)
+                cs_commands = cs_commands + cs_command
+                cs_idx += 1   
+            else:
+                cs_idx += 1   
     base_trim_command = \
 '''
 c1
