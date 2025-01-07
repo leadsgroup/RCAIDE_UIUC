@@ -40,9 +40,6 @@ These tutorials are designed to help you get started with RCAIDE. Set up basic a
           <a href="Missions/Tutorial_08_tilt_stopped_rotor_vtail_evtol_aircraft.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
             Tutorial 8 - Tilt Stopped Rotor Vtail eVTOL
           </a>
-          <a href="Missions/Tutorial_09_tilt_stopped_rotor_evtol_aircraft.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
-            Tutorial 9 - Tilt Stopped Rotor eVTOL
-          </a>
           <!-- Future tutorials can be added like this:
           <a href="section1_tutorial_2.html" class="tutorial-link" style="color:white; text-decoration:none; font-size:1.1em; padding: 8px 16px; border: 1px solid white; border-radius:8px; transition: background 0.2s;">
             Tutorial 2 - Another Example
@@ -65,4 +62,3 @@ These tutorials are designed to help you get started with RCAIDE. Set up basic a
    Missions/Tutorial_06_tiltrotor_evtol_aircraft
    Missions/Tutorial_07_lift_cruise_evtol_aircraft
    Missions/Tutorial_08_tilt_stopped_rotor_vtail_evtol_aircraft
-   Missions/Tutorial_09_tilt_stopped_rotor_evtol_aircraft
