@@ -1,6 +1,13 @@
 # RCAIDE/Framework/__init__.py 
 
-""" RCAIDE Package Setup
+"""
+RCAIDE Framework provides the foundational architecture for aircraft design and optimization. The
+framework serves as the backbone for aircraft conceptual design studies, enabling modular and 
+extensible analysis workflows.
+
+See Also
+--------
+RCAIDE.Library : Component and method libraries
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
