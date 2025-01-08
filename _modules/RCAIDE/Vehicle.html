@@ -29,7 +29,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,22 +386,22 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
  
-<span class="kn">from</span> <span class="nn">RCAIDE</span>                    <span class="kn">import</span> <span class="n">Framework</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>     <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">DataOrdered</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library</span>            <span class="kn">import</span> <span class="n">Components</span><span class="p">,</span> <span class="n">Attributes</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common.compute_operating_empty_weight</span> <span class="kn">import</span>  <span class="n">compute_operating_empty_weight</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE</span><span class="w">                    </span><span class="kn">import</span> <span class="n">Framework</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">     </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">DataOrdered</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library</span><span class="w">            </span><span class="kn">import</span> <span class="n">Components</span><span class="p">,</span> <span class="n">Attributes</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common.compute_operating_empty_weight</span><span class="w"> </span><span class="kn">import</span>  <span class="n">compute_operating_empty_weight</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Vehicle</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Vehicle">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle">[docs]</a>
-<span class="k">class</span> <span class="nc">Vehicle</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Vehicle</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;RCAIDE Vehicle container class with database + input / output functionality</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -474,7 +474,7 @@
 
 <div class="viewcode-block" id="Vehicle.__init__">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets up the component hierarchy for a vehicle</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -519,7 +519,7 @@
 
 <div class="viewcode-block" id="Vehicle.find_component_root">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.find_component_root">[docs]</a>
-    <span class="k">def</span> <span class="nf">find_component_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">component</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_component_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">component</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; find pointer to component data root.</span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>
@@ -551,7 +551,7 @@
 
 <div class="viewcode-block" id="Vehicle.append_component">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.append_component">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">component</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">component</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a component to vehicle</span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>
@@ -583,7 +583,7 @@
     
 <div class="viewcode-block" id="Vehicle.append_energy_network">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.append_energy_network">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_energy_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">energy_network</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_energy_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">energy_network</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds an energy network to vehicle </span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>
@@ -615,7 +615,7 @@
 
 <div class="viewcode-block" id="Vehicle.find_energy_network_root">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle.find_energy_network_root">[docs]</a>
-    <span class="k">def</span> <span class="nf">find_energy_network_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">energy_network</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">find_energy_network_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">energy_network</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Find pointer to energy network data root.</span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>
@@ -637,7 +637,7 @@
  
 <div class="viewcode-block" id="Vehicle_Mass_Properties">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle_Mass_Properties">[docs]</a>
-<span class="k">class</span> <span class="nc">Vehicle_Mass_Properties</span><span class="p">(</span><span class="n">Components</span><span class="o">.</span><span class="n">Mass_Properties</span><span class="p">):</span> 
+<span class="k">class</span><span class="w"> </span><span class="nc">Vehicle_Mass_Properties</span><span class="p">(</span><span class="n">Components</span><span class="o">.</span><span class="n">Mass_Properties</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; The vehicle&#39;s mass properties.</span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>
@@ -647,7 +647,7 @@
 <span class="sd">                None</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>
@@ -678,11 +678,11 @@
         
 <div class="viewcode-block" id="Vehicle_Mass_Container">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle_Mass_Container">[docs]</a>
-<span class="k">class</span> <span class="nc">Vehicle_Mass_Container</span><span class="p">(</span><span class="n">Components</span><span class="o">.</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span><span class="n">Vehicle_Mass_Properties</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Vehicle_Mass_Container</span><span class="p">(</span><span class="n">Components</span><span class="o">.</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span><span class="n">Vehicle_Mass_Properties</span><span class="p">):</span>
         
 <div class="viewcode-block" id="Vehicle_Mass_Container.append">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.Vehicle.html#RCAIDE.Vehicle.Vehicle_Mass_Container.append">[docs]</a>
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Appends the vehicle mass, but only let&#39;s one ever exist. Keeps the newest one</span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>

@@ -29,7 +29,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,18 +385,18 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------      </span>
 
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">DataOrdered</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">DataOrdered</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  load</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <div class="viewcode-block" id="load">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.load.html#RCAIDE.load.load">[docs]</a>
-<span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">pickle_format</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">pickle_format</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a JSON file into a RCAIDE data structure. </span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -434,7 +434,7 @@
 
 <div class="viewcode-block" id="read_RCAIDE_json_dict">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.load.html#RCAIDE.load.read_RCAIDE_json_dict">[docs]</a>
-<span class="k">def</span> <span class="nf">read_RCAIDE_json_dict</span><span class="p">(</span><span class="n">res_dict</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_RCAIDE_json_dict</span><span class="p">(</span><span class="n">res_dict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Builds a RCAIDE data structure based on a dictionary from a JSON file. This is initial case.</span>
 
 <span class="sd">    Assumptions:</span>
@@ -462,7 +462,7 @@
  
 <div class="viewcode-block" id="build_data_r">
 <a class="viewcode-back" href="../../_autosummary/RCAIDE.load.html#RCAIDE.load.build_data_r">[docs]</a>
-<span class="k">def</span> <span class="nf">build_data_r</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_data_r</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Builds a RCAIDE data structure based on a dictionary from a JSON file. This is recursive step.</span>
 
 <span class="sd">    Assumptions:</span>

@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,18 +385,18 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE imports </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses.Process</span>                                      <span class="kn">import</span> <span class="n">Process</span>     
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses.Process</span><span class="w">                                      </span><span class="kn">import</span> <span class="n">Process</span>     
 
 <span class="c1"># Python package imports </span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">fsolve</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1">#  Cross Flow Heat Exchanger Geometry Setup </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="cross_flow_heat_exchanger_sizing_setup">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.html#RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.cross_flow_heat_exchanger_sizing_setup">[docs]</a>
-<span class="k">def</span> <span class="nf">cross_flow_heat_exchanger_sizing_setup</span><span class="p">():</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">cross_flow_heat_exchanger_sizing_setup</span><span class="p">():</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Creates a process to modify and analyze the heat exchanger system</span>
 <span class="sd">          </span>
 <span class="sd">          Inputs:  </span>
@@ -425,7 +425,7 @@
 
 <div class="viewcode-block" id="modify_crossflow_hex_size">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.html#RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.modify_crossflow_hex_size">[docs]</a>
-<span class="k">def</span> <span class="nf">modify_crossflow_hex_size</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">modify_crossflow_hex_size</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span> 
 <span class="w">    </span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Modifies geometry of Cross Flow Heat Exchanger  </span>
 <span class="sd">          </span>
@@ -760,7 +760,7 @@
 
 <div class="viewcode-block" id="equation">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.html#RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.equation">[docs]</a>
-<span class="k">def</span> <span class="nf">equation</span><span class="p">(</span><span class="n">NTU</span><span class="p">,</span><span class="o">*</span><span class="n">data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">equation</span><span class="p">(</span><span class="n">NTU</span><span class="p">,</span><span class="o">*</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Equation for the NTU relation for a Cross Flow Heat Exchanger  </span>
 <span class="sd">          </span>
 <span class="sd">          Inputs:  </span>
@@ -782,7 +782,7 @@
 <span class="c1"># ----------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="post_process">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.html#RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup.post_process">[docs]</a>
-<span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Post processes the outputs obtained from the optimizer  </span>
 <span class="sd">          </span>
 <span class="sd">          Inputs:  </span>

@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,10 +386,10 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 
 <span class="c1"># RCAIDE imports  </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span>                                 <span class="kn">import</span> <span class="n">Component</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Component</span>                       <span class="kn">import</span> <span class="n">Container</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Energy.Distributors.Electrical_Bus</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w">                                 </span><span class="kn">import</span> <span class="n">Component</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Component</span><span class="w">                       </span><span class="kn">import</span> <span class="n">Container</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Energy.Distributors.Electrical_Bus</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -397,7 +397,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Electrical_Bus">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.html#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus">[docs]</a>
-<span class="k">class</span> <span class="nc">Electrical_Bus</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Electrical_Bus</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for managing power distribution between aircraft electrical components</span>
 <span class="sd">    </span>
@@ -470,7 +470,7 @@
 <span class="sd">        Solar panel components</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -497,7 +497,7 @@
         
 <div class="viewcode-block" id="Electrical_Bus.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.html#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Append operating conditions for a flight segment</span>
 <span class="sd">        </span>
@@ -512,7 +512,7 @@
         
 <div class="viewcode-block" id="Electrical_Bus.append_segment_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.html#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.append_segment_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conditions</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Append segment-specific conditions to the bus</span>
 <span class="sd">        </span>
@@ -529,7 +529,7 @@
     
 <div class="viewcode-block" id="Electrical_Bus.initialize_bus_properties">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.html#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.initialize_bus_properties">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_bus_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_bus_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize electrical bus properties</span>
 <span class="sd">        </span>
@@ -542,7 +542,7 @@
         
 <div class="viewcode-block" id="Electrical_Bus.compute_distributor_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.html#RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus.Electrical_Bus.compute_distributor_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_distributor_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_distributor_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute electrical conditions during operation</span>
 <span class="sd">        </span>

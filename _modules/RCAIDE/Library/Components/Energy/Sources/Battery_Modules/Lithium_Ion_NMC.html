@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,21 +386,21 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                                            <span class="kn">import</span> <span class="n">Units</span> <span class="p">,</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">.Generic_Battery_Module</span>                                          <span class="kn">import</span> <span class="n">Generic_Battery_Module</span>   
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Energy.Sources.Batteries.Lithium_Ion_NMC</span>  <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                                            </span><span class="kn">import</span> <span class="n">Units</span> <span class="p">,</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Generic_Battery_Module</span><span class="w">                                          </span><span class="kn">import</span> <span class="n">Generic_Battery_Module</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Energy.Sources.Batteries.Lithium_Ion_NMC</span><span class="w">  </span><span class="kn">import</span> <span class="o">*</span>
 <span class="c1"># package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">os</span> 
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span>  <span class="kn">import</span> <span class="n">RegularGridInterpolator</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w">  </span><span class="kn">import</span> <span class="n">RegularGridInterpolator</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Lithium_Ion_NMC</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Lithium_Ion_NMC">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC">[docs]</a>
-<span class="k">class</span> <span class="nc">Lithium_Ion_NMC</span><span class="p">(</span><span class="n">Generic_Battery_Module</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Lithium_Ion_NMC</span><span class="p">(</span><span class="n">Generic_Battery_Module</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class for modeling 18650-format lithium nickel manganese cobalt oxide batteries</span>
 <span class="sd">    </span>
@@ -482,7 +482,7 @@
 <span class="sd">        Base battery module class</span>
 <span class="sd">    &quot;&quot;&quot;</span>       
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -555,7 +555,7 @@
     
 <div class="viewcode-block" id="Lithium_Ion_NMC.energy_calc">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.energy_calc">[docs]</a>
-    <span class="k">def</span> <span class="nf">energy_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">energy_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the state of the NMC battery cell</span>
 <span class="sd">        </span>
@@ -612,14 +612,14 @@
     
 <div class="viewcode-block" id="Lithium_Ion_NMC.reuse_stored_data">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.reuse_stored_data">[docs]</a>
-    <span class="k">def</span> <span class="nf">reuse_stored_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span><span class="n">stored_results_flag</span><span class="p">,</span> <span class="n">stored_battery_tag</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reuse_stored_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span><span class="n">stored_results_flag</span><span class="p">,</span> <span class="n">stored_battery_tag</span><span class="p">):</span>
         <span class="n">reuse_stored_nmc_cell_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">bus</span><span class="p">,</span><span class="n">coolant_lines</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span><span class="n">stored_results_flag</span><span class="p">,</span> <span class="n">stored_battery_tag</span><span class="p">)</span>
         <span class="k">return</span> </div>
 
     
 <div class="viewcode-block" id="Lithium_Ion_NMC.update_battery_age">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.Lithium_Ion_NMC.update_battery_age">[docs]</a>
-    <span class="k">def</span> <span class="nf">update_battery_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">battery_conditions</span><span class="p">,</span><span class="n">increment_battery_age_by_one_day</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_battery_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">battery_conditions</span><span class="p">,</span><span class="n">increment_battery_age_by_one_day</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>  
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates battery aging parameters based on usage and environmental conditions</span>
 <span class="sd">        </span>
@@ -659,7 +659,7 @@
 
 <div class="viewcode-block" id="create_discharge_performance_map">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.create_discharge_performance_map">[docs]</a>
-<span class="k">def</span> <span class="nf">create_discharge_performance_map</span><span class="p">(</span><span class="n">raw_data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_discharge_performance_map</span><span class="p">(</span><span class="n">raw_data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates discharge and charge response surface for a LiNiMnCoO2 battery cell   </span>
 
@@ -731,7 +731,7 @@
 
 <div class="viewcode-block" id="load_battery_results">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.html#RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC.load_battery_results">[docs]</a>
-<span class="k">def</span> <span class="nf">load_battery_results</span><span class="p">():</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">load_battery_results</span><span class="p">():</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Load experimental raw data of NMC cells </span>
 <span class="sd">        </span>
 <span class="sd">       Assumptions:</span>

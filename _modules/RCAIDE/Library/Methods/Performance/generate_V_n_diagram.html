@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,21 +387,21 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 
 <span class="c1"># RCAIDE Imports</span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>  <span class="kn">import</span> <span class="n">Results</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Common</span><span class="w">  </span><span class="kn">import</span> <span class="n">Results</span>  
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Compute a V-n diagram</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="generate_V_n_diagram">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.generate_V_n_diagram">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_V_n_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">analyses</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">delta_ISA</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_V_n_diagram</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">analyses</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">delta_ISA</span><span class="p">):</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes a V-n diagram for a given aircraft and given regulations for ISA conditions</span>
 
@@ -750,7 +750,7 @@
       
 <div class="viewcode-block" id="evalaute_aircraft">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.evalaute_aircraft">[docs]</a>
-<span class="k">def</span> <span class="nf">evalaute_aircraft</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">Vc</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">evalaute_aircraft</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">Vc</span><span class="p">):</span> 
     
     <span class="c1"># Set up vehicle configs</span>
     <span class="n">configs</span>  <span class="o">=</span> <span class="n">configs_setup</span><span class="p">(</span><span class="n">vehicle</span><span class="p">)</span>
@@ -772,7 +772,7 @@
  
 <div class="viewcode-block" id="analyses_setup">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.analyses_setup">[docs]</a>
-<span class="k">def</span> <span class="nf">analyses_setup</span><span class="p">(</span><span class="n">configs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">analyses_setup</span><span class="p">(</span><span class="n">configs</span><span class="p">):</span>
 
     <span class="n">analyses</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Container</span><span class="p">()</span>
 
@@ -786,7 +786,7 @@
 
 <div class="viewcode-block" id="base_analysis">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.base_analysis">[docs]</a>
-<span class="k">def</span> <span class="nf">base_analysis</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">base_analysis</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span>
 
        <span class="c1"># ------------------------------------------------------------------</span>
     <span class="c1">#   Initialize the Analyses</span>
@@ -837,7 +837,7 @@
   
 <div class="viewcode-block" id="configs_setup">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.configs_setup">[docs]</a>
-<span class="k">def</span> <span class="nf">configs_setup</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">configs_setup</span><span class="p">(</span><span class="n">vehicle</span><span class="p">):</span> 
     <span class="c1"># ------------------------------------------------------------------</span>
     <span class="c1">#   Initialize Configurations</span>
     <span class="c1"># ------------------------------------------------------------------ </span>
@@ -850,7 +850,7 @@
  
 <div class="viewcode-block" id="base_mission_setup">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.base_mission_setup">[docs]</a>
-<span class="k">def</span> <span class="nf">base_mission_setup</span><span class="p">(</span><span class="n">analyses</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">Vc</span><span class="p">):</span>   
+<span class="k">def</span><span class="w"> </span><span class="nf">base_mission_setup</span><span class="p">(</span><span class="n">analyses</span><span class="p">,</span><span class="n">altitude</span><span class="p">,</span><span class="n">Vc</span><span class="p">):</span>   
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This sets up the nominal cruise of the aircraft</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -882,7 +882,7 @@
 
 <div class="viewcode-block" id="missions_setup">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.missions_setup">[docs]</a>
-<span class="k">def</span> <span class="nf">missions_setup</span><span class="p">(</span><span class="n">mission</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">missions_setup</span><span class="p">(</span><span class="n">mission</span><span class="p">):</span> 
  
     <span class="n">missions</span>     <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Mission</span><span class="o">.</span><span class="n">Missions</span><span class="p">()</span>
     
@@ -900,7 +900,7 @@
 
 <div class="viewcode-block" id="stall_maneuver_speeds">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.stall_maneuver_speeds">[docs]</a>
-<span class="k">def</span> <span class="nf">stall_maneuver_speeds</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stall_maneuver_speeds</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes stall and maneuver speeds for positive and negative halves of the the V-n diagram</span>
 
@@ -974,7 +974,7 @@
 
 <div class="viewcode-block" id="stall_line">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.stall_line">[docs]</a>
-<span class="k">def</span> <span class="nf">stall_line</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">Num_of_points</span><span class="p">,</span> <span class="n">sign_flag</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stall_line</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">,</span> <span class="n">upper_bound</span><span class="p">,</span> <span class="n">lower_bound</span><span class="p">,</span> <span class="n">Num_of_points</span><span class="p">,</span> <span class="n">sign_flag</span><span class="p">):</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates Stall lines of positive and negative halves of the V-n diagram</span>
 
@@ -1051,7 +1051,7 @@
 
 <div class="viewcode-block" id="gust_loads">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.gust_loads">[docs]</a>
-<span class="k">def</span> <span class="nf">gust_loads</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">Kg</span><span class="p">,</span> <span class="n">CLa</span><span class="p">,</span> <span class="n">Num_of_points</span><span class="p">,</span> <span class="n">FAR_part_number</span><span class="p">,</span> <span class="n">sign_flag</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gust_loads</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">Kg</span><span class="p">,</span> <span class="n">CLa</span><span class="p">,</span> <span class="n">Num_of_points</span><span class="p">,</span> <span class="n">FAR_part_number</span><span class="p">,</span> <span class="n">sign_flag</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates airspeeds and load factors for gust loads and modifies the V-n diagram</span>
 
@@ -1258,7 +1258,7 @@
 
 <div class="viewcode-block" id="gust_dive_speed_intersection">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.gust_dive_speed_intersection">[docs]</a>
-<span class="k">def</span> <span class="nf">gust_dive_speed_intersection</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">load_factors</span><span class="p">,</span> <span class="n">gust_load_factors</span><span class="p">,</span> <span class="n">airspeeds</span><span class="p">,</span> <span class="n">element_num</span><span class="p">,</span> <span class="n">Vc</span><span class="p">,</span> <span class="n">Vd</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gust_dive_speed_intersection</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">load_factors</span><span class="p">,</span> <span class="n">gust_load_factors</span><span class="p">,</span> <span class="n">airspeeds</span><span class="p">,</span> <span class="n">element_num</span><span class="p">,</span> <span class="n">Vc</span><span class="p">,</span> <span class="n">Vd</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates intersection between the general V-n diagram and the gust load for Vd</span>
 
@@ -1311,7 +1311,7 @@
 
 <div class="viewcode-block" id="post_processing">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.post_processing">[docs]</a>
-<span class="k">def</span> <span class="nf">post_processing</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">Uref_rough</span><span class="p">,</span> <span class="n">Uref_cruise</span><span class="p">,</span> <span class="n">Uref_dive</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">vehicle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span><span class="n">category_tag</span><span class="p">,</span> <span class="n">Uref_rough</span><span class="p">,</span> <span class="n">Uref_cruise</span><span class="p">,</span> <span class="n">Uref_dive</span><span class="p">,</span> <span class="n">V_n_data</span><span class="p">,</span> <span class="n">vehicle</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plot graph, save the final figure, and create results output file</span>
 
@@ -1419,7 +1419,7 @@
 
 <div class="viewcode-block" id="convert_keas">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.generate_V_n_diagram.html#RCAIDE.Library.Methods.Performance.generate_V_n_diagram.convert_keas">[docs]</a>
-<span class="k">def</span> <span class="nf">convert_keas</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_keas</span><span class="p">(</span><span class="n">V_n_data</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Convert speed to KEAS</span>
 

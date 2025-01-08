@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,20 +385,20 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Imports</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Component</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Wings</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence</span> <span class="kn">import</span> <span class="n">fidelity_zero_wake_convergence</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.compute_fidelity_zero_induced_velocity</span> <span class="kn">import</span> <span class="n">compute_fidelity_zero_induced_velocity</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.extract_wing_collocation_points</span> <span class="kn">import</span> <span class="n">extract_wing_collocation_points</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w"> </span><span class="kn">import</span> <span class="n">Component</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence</span><span class="w"> </span><span class="kn">import</span> <span class="n">fidelity_zero_wake_convergence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.compute_fidelity_zero_induced_velocity</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_fidelity_zero_induced_velocity</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.extract_wing_collocation_points</span><span class="w"> </span><span class="kn">import</span> <span class="n">extract_wing_collocation_points</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Generalized Rotor Class</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Momentum_Theory_Wake">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.html#RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.Momentum_Theory_Wake">[docs]</a>
-<span class="k">class</span> <span class="nc">Momentum_Theory_Wake</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Momentum_Theory_Wake</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a general rotor wake component. </span>
 
 <span class="sd">    Assumptions:</span>
@@ -407,7 +407,7 @@
 <span class="sd">    Source:</span>
 <span class="sd">    None</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values for the component to function.</span>
 
 <span class="sd">        Assumptions:</span>
@@ -432,7 +432,7 @@
     
 <div class="viewcode-block" id="Momentum_Theory_Wake.evaluate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.html#RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.Momentum_Theory_Wake.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">wake_inputs</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">wake_inputs</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        </span>
 <span class="sd">        Wake evaluation is performed using a simplified vortex wake method for Fidelity Zero, </span>
@@ -472,7 +472,7 @@
     
 <div class="viewcode-block" id="Momentum_Theory_Wake.evaluate_slipstream">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.html#RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.Momentum_Theory_Wake.evaluate_slipstream">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_slipstream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">,</span><span class="n">wing_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_slipstream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">,</span><span class="n">wing_instance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Evaluates the velocities induced by the rotor on a specified wing of the vehicle.</span>
 <span class="sd">        If no wing instance is specified, uses main wing or last available wing in geometry.</span>
@@ -528,7 +528,7 @@
     
 <div class="viewcode-block" id="Momentum_Theory_Wake.evaluate_wake_velocities">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.html#RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake.Momentum_Theory_Wake.evaluate_wake_velocities">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_wake_velocities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">evaluation_points</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_wake_velocities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">rotor_conditions</span><span class="p">,</span><span class="n">evaluation_points</span><span class="p">,</span><span class="n">ctrl_pts</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Links the rotor wake to compute the wake-induced velocities at the specified</span>
 <span class="sd">        evaluation points.</span>

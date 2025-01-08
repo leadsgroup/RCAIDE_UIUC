@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,11 +387,11 @@
 <span class="c1">#  Imports</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">.Container</span> <span class="kn">import</span> <span class="n">Container</span> <span class="k">as</span> <span class="n">ContainerBase</span>
-<span class="kn">from</span> <span class="nn">.Data</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">.DataOrdered</span> <span class="kn">import</span> <span class="n">DataOrdered</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Container</span><span class="w"> </span><span class="kn">import</span> <span class="n">Container</span> <span class="k">as</span> <span class="n">ContainerBase</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.DataOrdered</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataOrdered</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Config</span>
@@ -399,7 +399,7 @@
 
 <div class="viewcode-block" id="Diffed_Data">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data">[docs]</a>
-<span class="k">class</span> <span class="nc">Diffed_Data</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Diffed_Data</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This is for creating a data new class where a different copy is saved.</span>
 <span class="sd">        This is useful for creating a new configuration of a vehicle.</span>
 
@@ -411,7 +411,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>    
 
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; A stub for all classes that come later</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -435,7 +435,7 @@
         
 <div class="viewcode-block" id="Diffed_Data.__init__">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Initializes the new Diffed_Data() class through a deepcopy</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -461,7 +461,7 @@
         
 <div class="viewcode-block" id="Diffed_Data.store_diff">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Diffed_Data.store_diff">[docs]</a>
-    <span class="k">def</span> <span class="nf">store_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">store_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Finds the differences and saves them</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -490,7 +490,7 @@
 
 <div class="viewcode-block" id="Container">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Container">[docs]</a>
-<span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">ContainerBase</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Container</span><span class="p">(</span><span class="n">ContainerBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; A dict-type container with attribute, item and index style access</span>
 <span class="sd">        intended to hold a attribute-accessible list of Data(). This is unordered.</span>
 <span class="sd">        </span>
@@ -503,7 +503,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="Container.append">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Container.append">[docs]</a>
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Appends the value to the containers</span>
 <span class="sd">        </span>
 <span class="sd">            Assumptions:</span>
@@ -528,7 +528,7 @@
 
 <div class="viewcode-block" id="Container.store_diff">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.Container.store_diff">[docs]</a>
-    <span class="k">def</span> <span class="nf">store_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">store_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Finds the differences and saves them</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -565,7 +565,7 @@
 
 <div class="viewcode-block" id="diff">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Diffed_Data.html#RCAIDE.Framework.Core.Diffed_Data.diff">[docs]</a>
-<span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">diff</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; The magic diff function that makes Diffed_Data() work</span>
 
 <span class="sd">        Assumptions:</span>

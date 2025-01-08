@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,22 +386,22 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
    
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Wings</span>          <span class="kn">import</span> <span class="n">Main_Wing</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Utilities</span>         <span class="kn">import</span> <span class="n">Cubic_Spline_Blender</span>  
-<span class="kn">from</span> <span class="nn">.wave_drag</span>                               <span class="kn">import</span> <span class="n">wave_drag</span>
-<span class="kn">from</span> <span class="nn">.drag_divergence</span>                         <span class="kn">import</span> <span class="n">drag_divergence</span> 
-<span class="kn">from</span> <span class="nn">.supersonic_wave_drag_volume_raymer</span>      <span class="kn">import</span> <span class="n">supersonic_wave_drag_volume_raymer</span>
-<span class="kn">from</span> <span class="nn">.supersonic_wave_drag_volume_sears_haack</span> <span class="kn">import</span> <span class="n">supersonic_wave_drag_volume_sears_haack</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Wings</span><span class="w">          </span><span class="kn">import</span> <span class="n">Main_Wing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Utilities</span><span class="w">         </span><span class="kn">import</span> <span class="n">Cubic_Spline_Blender</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">.wave_drag</span><span class="w">                               </span><span class="kn">import</span> <span class="n">wave_drag</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.drag_divergence</span><span class="w">                         </span><span class="kn">import</span> <span class="n">drag_divergence</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">.supersonic_wave_drag_volume_raymer</span><span class="w">      </span><span class="kn">import</span> <span class="n">supersonic_wave_drag_volume_raymer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.supersonic_wave_drag_volume_sears_haack</span><span class="w"> </span><span class="kn">import</span> <span class="n">supersonic_wave_drag_volume_sears_haack</span>
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Compressibility Drag Total</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="compressibility_drag">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag.html#RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag.compressibility_drag">[docs]</a>
-<span class="k">def</span> <span class="nf">compressibility_drag</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">geometry</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compressibility_drag</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">geometry</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes compressibility drag for full aircraft including volume drag</span>
 
 <span class="sd">    Assumptions:</span>
@@ -501,7 +501,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="transonic_drag_function">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag.html#RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag.transonic_drag_function">[docs]</a>
-<span class="k">def</span> <span class="nf">transonic_drag_function</span><span class="p">(</span><span class="n">Mach</span><span class="p">,</span><span class="n">a_vertex</span><span class="p">,</span> <span class="n">peak_mach</span><span class="p">,</span> <span class="n">peak_volume_total</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">transonic_drag_function</span><span class="p">(</span><span class="n">Mach</span><span class="p">,</span><span class="n">a_vertex</span><span class="p">,</span> <span class="n">peak_mach</span><span class="p">,</span> <span class="n">peak_volume_total</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;  parabolic approximation of drag rise in the transonic region</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -529,7 +529,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="lift_wave_drag">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag.html#RCAIDE.Library.Methods.Aerodynamics.Common.Drag.compressibility_drag.lift_wave_drag">[docs]</a>
-<span class="k">def</span> <span class="nf">lift_wave_drag</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span><span class="n">configuration</span><span class="p">,</span><span class="n">geometry</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lift_wave_drag</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span><span class="n">configuration</span><span class="p">,</span><span class="n">geometry</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine lift wave drag for supersonic speeds</span>
 
 <span class="sd">    Assumptions:</span>

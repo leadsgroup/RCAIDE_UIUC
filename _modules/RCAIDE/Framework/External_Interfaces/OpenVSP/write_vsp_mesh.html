@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -390,23 +390,23 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1"># RCAIDE imports </span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">vsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">vsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">openvsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">openvsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="c1"># This allows RCAIDE to build without OpenVSP</span>
         <span class="k">pass</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">fileinput</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">fileinput</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># write_vsp_mesh</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="write_vsp_mesh">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.write_vsp_mesh.html#RCAIDE.Framework.External_Interfaces.OpenVSP.write_vsp_mesh.write_vsp_mesh">[docs]</a>
-<span class="k">def</span> <span class="nf">write_vsp_mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">half_mesh_flag</span><span class="p">,</span><span class="n">growth_ratio</span><span class="p">,</span><span class="n">growth_limiting_flag</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_vsp_mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">half_mesh_flag</span><span class="p">,</span><span class="n">growth_ratio</span><span class="p">,</span><span class="n">growth_limiting_flag</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This create an .stl surface mesh based on a vehicle stored in a .vsp3 file.</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -506,7 +506,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="set_sources">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.write_vsp_mesh.html#RCAIDE.Framework.External_Interfaces.OpenVSP.write_vsp_mesh.set_sources">[docs]</a>
-<span class="k">def</span> <span class="nf">set_sources</span><span class="p">(</span><span class="n">geometry</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_sources</span><span class="p">(</span><span class="n">geometry</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This sets meshing sources in a way similar to the OpenVSP default. Some source values can</span>
 <span class="sd">    also be optionally specified as below.</span>
 <span class="sd">    </span>
@@ -690,7 +690,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="add_segment_sources">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.write_vsp_mesh.html#RCAIDE.Framework.External_Interfaces.OpenVSP.write_vsp_mesh.add_segment_sources">[docs]</a>
-<span class="k">def</span> <span class="nf">add_segment_sources</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span><span class="n">cr</span><span class="p">,</span><span class="n">ct</span><span class="p">,</span><span class="n">ii</span><span class="p">,</span><span class="n">u_start</span><span class="p">,</span><span class="n">num_secs</span><span class="p">,</span><span class="n">custom_flag</span><span class="p">,</span><span class="n">wingtip_flag</span><span class="p">,</span><span class="n">seg</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_segment_sources</span><span class="p">(</span><span class="n">comp</span><span class="p">,</span><span class="n">cr</span><span class="p">,</span><span class="n">ct</span><span class="p">,</span><span class="n">ii</span><span class="p">,</span><span class="n">u_start</span><span class="p">,</span><span class="n">num_secs</span><span class="p">,</span><span class="n">custom_flag</span><span class="p">,</span><span class="n">wingtip_flag</span><span class="p">,</span><span class="n">seg</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This sets meshing sources for the wing segments according to their size and position.</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>

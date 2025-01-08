@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -380,20 +380,20 @@
 <span></span><span class="c1">#-------------------------------------------------------------------------------</span>
 <span class="c1"># Imports</span>
 <span class="c1">#-------------------------------------------------------------------------------</span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                              <span class="kn">import</span> <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>                    <span class="kn">import</span> <span class="n">Results</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Segments.Segment</span>          <span class="kn">import</span> <span class="n">Segment</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance</span> <span class="kn">import</span> <span class="n">compute_rotor_performance</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                              </span><span class="kn">import</span> <span class="n">Units</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Common</span><span class="w">                    </span><span class="kn">import</span> <span class="n">Results</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Segments.Segment</span><span class="w">          </span><span class="kn">import</span> <span class="n">Segment</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_rotor_performance</span> 
  
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ------------------------------------------------------------------------------</span>
 <span class="c1">#   Propeller Analysis</span>
 <span class="c1"># ------------------------------------------------------------------------------ </span>
 <div class="viewcode-block" id="propeller_aerodynamic_analysis">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.propeller_aerodynamic_analysis.html#RCAIDE.Library.Methods.Performance.propeller_aerodynamic_analysis.propeller_aerodynamic_analysis">[docs]</a>
-<span class="k">def</span> <span class="nf">propeller_aerodynamic_analysis</span><span class="p">(</span><span class="n">propeller</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">propeller_aerodynamic_analysis</span><span class="p">(</span><span class="n">propeller</span><span class="p">,</span>
                            <span class="n">velocity_range</span><span class="p">,</span>
                            <span class="n">angular_velocity</span> <span class="o">=</span> <span class="mi">2500</span><span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">rpm</span><span class="p">,</span>
                            <span class="n">angle_of_attack</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 

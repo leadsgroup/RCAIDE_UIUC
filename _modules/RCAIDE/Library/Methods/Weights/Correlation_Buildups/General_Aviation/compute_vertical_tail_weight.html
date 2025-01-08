@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,15 +387,15 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span>  <span class="n">Units</span><span class="p">,</span>  <span class="n">Data</span>
-<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span>  <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span>  <span class="n">Units</span><span class="p">,</span>  <span class="n">Data</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Vertical Tail Weight </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="compute_vertical_tail_weight">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_vertical_tail_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_vertical_tail_weight.compute_vertical_tail_weight">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_vertical_tail_weight</span><span class="p">(</span><span class="n">S_v</span><span class="p">,</span> <span class="n">AR_v</span><span class="p">,</span> <span class="n">sweep_v</span><span class="p">,</span> <span class="n">q_c</span><span class="p">,</span> <span class="n">taper_v</span><span class="p">,</span> <span class="n">t_c_v</span><span class="p">,</span> <span class="n">Nult</span><span class="p">,</span><span class="n">TOW</span><span class="p">,</span><span class="n">t_tail</span><span class="p">,</span> <span class="n">rudder_fraction</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">):</span>      
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_vertical_tail_weight</span><span class="p">(</span><span class="n">S_v</span><span class="p">,</span> <span class="n">AR_v</span><span class="p">,</span> <span class="n">sweep_v</span><span class="p">,</span> <span class="n">q_c</span><span class="p">,</span> <span class="n">taper_v</span><span class="p">,</span> <span class="n">t_c_v</span><span class="p">,</span> <span class="n">Nult</span><span class="p">,</span><span class="n">TOW</span><span class="p">,</span><span class="n">t_tail</span><span class="p">,</span> <span class="n">rudder_fraction</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">):</span>      
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the weight of the vertical fin of an aircraft without the weight of the rudder and then calculate the weight of the rudder        </span>
 <span class="sd">        </span>

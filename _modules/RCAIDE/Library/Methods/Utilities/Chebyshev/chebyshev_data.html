@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -381,14 +381,14 @@
 <span class="c1">#  Imports</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Method</span>
 <span class="c1"># ---------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="chebyshev_data">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Utilities.Chebyshev.chebyshev_data.html#RCAIDE.Library.Methods.Utilities.Chebyshev.chebyshev_data.chebyshev_data">[docs]</a>
-<span class="k">def</span> <span class="nf">chebyshev_data</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">integration</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">chebyshev_data</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">integration</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the differentiation and integration matricies</span>
 <span class="sd">    using chebyshev&#39;s pseudospectral algorithm, based on cosine</span>
 <span class="sd">    spaced samples in x.</span>
@@ -482,7 +482,7 @@
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span><span class="kc">None</span><span class="p">]</span>
     
     <span class="c1"># the function</span>
-    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mf">2.</span> <span class="o">+</span> <span class="mf">1.</span>
     
     <span class="c1"># scaling and offsets from nondimensional x to dimensional y</span>
@@ -502,7 +502,7 @@
     <span class="n">int_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">I</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
     
     <span class="c1"># plot</span>
-    <span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(y)&#39;</span><span class="p">)</span>

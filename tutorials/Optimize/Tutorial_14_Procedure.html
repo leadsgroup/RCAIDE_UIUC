@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tutorial 14 - Procedure &#8212; RCAIDE</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d103512f" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/Optimize/Tutorial_14_Procedure';</script>
+    <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/tutorials/Optimize/Tutorial_14_Procedure.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="auto">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/leads_logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/leads_logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">RCAIDE</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../install.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../quick_start.html">
+    Quick Start
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../contributing.html">
+    Contributing Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/leadsgroup/RCAIDE_LEADS" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github-square fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Tutorial 14 - Procedure</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="Tutorial-14---Procedure">
+<h1>Tutorial 14 - Procedure<a class="headerlink" href="#Tutorial-14---Procedure" title="Link to this heading">#</a></h1>
+<p>Welcome to this tutorial outlining the Procedure for an optimization problem in RCAIDE. This guide will walk you through the code, explain its components, and highlight where modifications can be made to customize the simulation for different vehicle designs. This tutorial is part of the Optimize tutorial.</p>
+<hr class="docutils" />
+</section>
+<section id="1.-Header-and-Imports">
+<h1>1. Header and Imports<a class="headerlink" href="#1.-Header-and-Imports" title="Link to this heading">#</a></h1>
+<p>The <strong>Imports</strong> section imports the necessary libraries and functions for the tutorial. These include, but are not limited to:</p>
+<ul class="simple">
+<li><p><strong>numpy</strong> for numerical operations and arrays</p></li>
+<li><p><strong>Units</strong> and <strong>Data</strong> for unit conversions and data handling</p></li>
+<li><p><strong>design_turbofan</strong> for turbofan design</p></li>
+</ul>
+<hr class="docutils" />
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses.Process</span><span class="w"> </span><span class="kn">import</span> <span class="n">Process</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Turbofan_Propulsor</span><span class="w">   </span><span class="kn">import</span> <span class="n">design_turbofan</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Matplotlib created a temporary cache directory at /var/folders/r4/4h9x29hj6f95kyhjsltxc6_00000gn/T/matplotlib-a33yrch_ because the default path (/Users/aidanmolloy/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Fontconfig warning: ignoring UTF-8: not a valid region tag
+Matplotlib is building the font cache; this may take a moment.
+</pre></div></div>
+</div>
+</section>
+<section id="Setup">
+<h1>Setup<a class="headerlink" href="#Setup" title="Link to this heading">#</a></h1>
+<p>The <strong>``setup``</strong> function creates the analysis procedure. It first creates a process container and assigns the update_aircraft and weight functions to it. It then creates a second process container and assigns the design_mission function to it. Finally, it assigns the post_process function to the analysis procedure.</p>
+<hr class="docutils" />
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">():</span>
+
+    <span class="c1"># ------------------------------------------------------------------</span>
+    <span class="c1">#   Analysis Procedure</span>
+    <span class="c1"># ------------------------------------------------------------------</span>
+
+    <span class="c1"># size the base config</span>
+    <span class="n">procedure</span> <span class="o">=</span> <span class="n">Process</span><span class="p">()</span>
+    <span class="n">procedure</span><span class="o">.</span><span class="n">update_aircraft</span> <span class="o">=</span> <span class="n">update_aircraft</span>
+
+    <span class="c1"># find the weights</span>
+    <span class="n">procedure</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">weight</span>
+
+    <span class="c1"># performance studies</span>
+    <span class="n">procedure</span><span class="o">.</span><span class="n">missions</span>                   <span class="o">=</span> <span class="n">Process</span><span class="p">()</span>
+    <span class="n">procedure</span><span class="o">.</span><span class="n">missions</span><span class="o">.</span><span class="n">design_mission</span>    <span class="o">=</span> <span class="n">design_mission</span>
+
+    <span class="c1"># post process the results</span>
+    <span class="n">procedure</span><span class="o">.</span><span class="n">post_process</span> <span class="o">=</span> <span class="n">post_process</span>
+
+    <span class="k">return</span> <span class="n">procedure</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Find-Target-Range">
+<h1>Find Target Range<a class="headerlink" href="#Find-Target-Range" title="Link to this heading">#</a></h1>
+<p>The <strong>``find_target_range``</strong> function calculates the cruise range of the mission by summing the distances of the climb and descent segments and subtracting this from the design range. It unpacks each of the segments from the mission and assigns each to its own variable. It then uses trigonometric functions to calculate the distance of each segment. Finally, it assigns the cruise range to the cruise segment.</p>
+<hr class="docutils" />
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_target_range</span><span class="p">(</span><span class="n">nexus</span><span class="p">,</span><span class="n">mission</span><span class="p">):</span>
+
+    <span class="n">segments</span> <span class="o">=</span> <span class="n">mission</span><span class="o">.</span><span class="n">segments</span>
+    <span class="n">climb_1</span>  <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;climb_1&#39;</span><span class="p">]</span>
+    <span class="n">climb_2</span>  <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;climb_2&#39;</span><span class="p">]</span>
+    <span class="n">climb_3</span>  <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;climb_3&#39;</span><span class="p">]</span>
+
+    <span class="n">descent_1</span> <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;descent_1&#39;</span><span class="p">]</span>
+    <span class="n">descent_2</span> <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;descent_2&#39;</span><span class="p">]</span>
+    <span class="n">descent_3</span> <span class="o">=</span> <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;descent_3&#39;</span><span class="p">]</span>
+
+    <span class="n">x_climb_1</span>   <span class="o">=</span> <span class="n">climb_1</span><span class="o">.</span><span class="n">altitude_end</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">climb_1</span><span class="o">.</span><span class="n">climb_rate</span><span class="o">/</span><span class="n">climb_1</span><span class="o">.</span><span class="n">air_speed</span><span class="p">))</span>
+    <span class="n">x_climb_2</span>   <span class="o">=</span> <span class="p">(</span><span class="n">climb_2</span><span class="o">.</span><span class="n">altitude_end</span><span class="o">-</span><span class="n">climb_1</span><span class="o">.</span><span class="n">altitude_end</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">climb_2</span><span class="o">.</span><span class="n">climb_rate</span><span class="o">/</span><span class="n">climb_2</span><span class="o">.</span><span class="n">air_speed</span><span class="p">))</span>
+    <span class="n">x_climb_3</span>   <span class="o">=</span> <span class="p">(</span><span class="n">climb_3</span><span class="o">.</span><span class="n">altitude_end</span><span class="o">-</span><span class="n">climb_2</span><span class="o">.</span><span class="n">altitude_end</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">climb_3</span><span class="o">.</span><span class="n">climb_rate</span><span class="o">/</span><span class="n">climb_3</span><span class="o">.</span><span class="n">air_speed</span><span class="p">))</span>
+    <span class="n">x_descent_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">climb_3</span><span class="o">.</span><span class="n">altitude_end</span><span class="o">-</span><span class="n">descent_1</span><span class="o">.</span><span class="n">altitude_end</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">descent_1</span><span class="o">.</span><span class="n">descent_rate</span><span class="o">/</span><span class="n">descent_1</span><span class="o">.</span><span class="n">air_speed</span><span class="p">))</span>
+    <span class="n">x_descent_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">descent_1</span><span class="o">.</span><span class="n">altitude_end</span><span class="o">-</span><span class="n">descent_2</span><span class="o">.</span><span class="n">altitude_end</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">descent_2</span><span class="o">.</span><span class="n">descent_rate</span><span class="o">/</span><span class="n">descent_2</span><span class="o">.</span><span class="n">air_speed</span><span class="p">))</span>
+    <span class="n">x_descent_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">descent_2</span><span class="o">.</span><span class="n">altitude_end</span><span class="o">-</span><span class="n">descent_3</span><span class="o">.</span><span class="n">altitude_end</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">descent_3</span><span class="o">.</span><span class="n">descent_rate</span><span class="o">/</span><span class="n">descent_3</span><span class="o">.</span><span class="n">air_speed</span><span class="p">))</span>
+
+    <span class="n">cruise_range</span> <span class="o">=</span> <span class="n">mission</span><span class="o">.</span><span class="n">design_range</span><span class="o">-</span><span class="p">(</span><span class="n">x_climb_1</span><span class="o">+</span><span class="n">x_climb_2</span><span class="o">+</span><span class="n">x_climb_3</span><span class="o">+</span><span class="n">x_descent_1</span><span class="o">+</span><span class="n">x_descent_2</span><span class="o">+</span><span class="n">x_descent_3</span><span class="p">)</span>
+
+    <span class="n">segments</span><span class="p">[</span><span class="s1">&#39;cruise&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">cruise_range</span>
+
+    <span class="k">return</span> <span class="n">nexus</span>
+<br/></pre></div>
+</div>
+</div>
+</section>
+<section id="Design-Mission">
+<h1>Design Mission<a class="headerlink" href="#Design-Mission" title="Link to this heading">#</a></h1>
+<p>Design mission takes the base mission and sets the design range to 1500 nmi. It then calls the find_target_range function to calculate the cruise range and evaluate the mission.</p>
+<hr class="docutils" />
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">design_mission</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+
+    <span class="n">mission</span> <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">missions</span><span class="o">.</span><span class="n">base</span>
+    <span class="n">mission</span><span class="o">.</span><span class="n">design_range</span> <span class="o">=</span> <span class="mf">1500.</span><span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">nmi</span>
+    <span class="n">find_target_range</span><span class="p">(</span><span class="n">nexus</span><span class="p">,</span><span class="n">mission</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">results</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">mission</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">nexus</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Update-Aircraft">
+<h1>Update Aircraft<a class="headerlink" href="#Update-Aircraft" title="Link to this heading">#</a></h1>
+<p>The update aircraft function updates the aircraft and engines based on the new airspeed and altitude from the otpimization problem.</p>
+<p>It first unpacks the vehicle and new conditions which are used to calculate derived values including the differential pressure and mach number. These updated values are then used to redesign the enginesnd wing.</p>
+<p>Overall, this function serves as the interface between the optimization problem and the aircraft design which is being adjusted.</p>
+<hr class="docutils" />
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update_aircraft</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+    <span class="n">configs</span> <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span>
+    <span class="n">base</span>    <span class="o">=</span> <span class="n">configs</span><span class="o">.</span><span class="n">base</span>
+
+    <span class="c1"># find conditions</span>
+    <span class="n">air_speed</span>   <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">missions</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="s1">&#39;cruise&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">air_speed</span>
+    <span class="n">altitude</span>    <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">missions</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="s1">&#39;climb_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">altitude_end</span>
+    <span class="n">atmosphere</span>  <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Atmospheric</span><span class="o">.</span><span class="n">US_Standard_1976</span><span class="p">()</span>
+    <span class="n">freestream</span>  <span class="o">=</span> <span class="n">atmosphere</span><span class="o">.</span><span class="n">compute_values</span><span class="p">(</span><span class="n">altitude</span><span class="p">)</span>
+    <span class="n">freestream0</span> <span class="o">=</span> <span class="n">atmosphere</span><span class="o">.</span><span class="n">compute_values</span><span class="p">(</span><span class="mf">6000.</span><span class="o">*</span><span class="n">Units</span><span class="o">.</span><span class="n">ft</span><span class="p">)</span>  <span class="c1">#cabin altitude</span>
+
+    <span class="n">diff_pressure</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">freestream0</span><span class="o">.</span><span class="n">pressure</span><span class="o">-</span><span class="n">freestream</span><span class="o">.</span><span class="n">pressure</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fuselage</span>              <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">fuselages</span><span class="p">[</span><span class="s1">&#39;tube_fuselage&#39;</span><span class="p">]</span>
+    <span class="n">fuselage</span><span class="o">.</span><span class="n">differential_pressure</span> <span class="o">=</span> <span class="n">diff_pressure</span>
+
+    <span class="c1"># now size engine</span>
+    <span class="n">mach_number</span>        <span class="o">=</span> <span class="n">air_speed</span><span class="o">/</span><span class="n">freestream</span><span class="o">.</span><span class="n">speed_of_sound</span>
+
+    <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="n">configs</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">wings</span><span class="o">.</span><span class="n">horizontal_stabilizer</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="p">(</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">92.0</span><span class="p">)</span><span class="o">*</span><span class="n">config</span><span class="o">.</span><span class="n">wings</span><span class="o">.</span><span class="n">main_wing</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">reference</span>
+
+        <span class="k">for</span> <span class="n">wing</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">wings</span><span class="p">:</span>
+            <span class="n">wing</span> <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Library</span><span class="o">.</span><span class="n">Methods</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Planform</span><span class="o">.</span><span class="n">wing_planform</span><span class="p">(</span><span class="n">wing</span><span class="p">)</span>
+            <span class="n">wing</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">exposed</span>  <span class="o">=</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">wing</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">wetted</span>
+            <span class="n">wing</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">affected</span> <span class="o">=</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">wing</span><span class="o">.</span><span class="n">areas</span><span class="o">.</span><span class="n">reference</span>
+
+        <span class="c1"># redesign turbofan</span>
+        <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span>  <span class="n">config</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">propulsor</span> <span class="ow">in</span>  <span class="n">network</span><span class="o">.</span><span class="n">propulsors</span><span class="p">:</span>
+                <span class="n">propulsor</span><span class="o">.</span><span class="n">design_mach_number</span>   <span class="o">=</span> <span class="n">mach_number</span>
+                <span class="n">design_turbofan</span><span class="p">(</span><span class="n">propulsor</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">nexus</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Weight">
+<h1>Weight<a class="headerlink" href="#Weight" title="Link to this heading">#</a></h1>
+<p>This function recalculates the weight of the vehicle using the Weights_Transport analysis. The first line unpacks the vehicle from the optimization container, nexus, and then runs this new vehicle through the weight analysis.</p>
+<hr class="docutils" />
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">weight</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+
+    <span class="n">vehicle</span> <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span><span class="o">.</span><span class="n">base</span>
+
+    <span class="n">weight_analysis</span>                               <span class="o">=</span> <span class="n">RCAIDE</span><span class="o">.</span><span class="n">Framework</span><span class="o">.</span><span class="n">Analyses</span><span class="o">.</span><span class="n">Weights</span><span class="o">.</span><span class="n">Weights_Transport</span><span class="p">()</span>
+    <span class="n">weight_analysis</span><span class="o">.</span><span class="n">vehicle</span>                       <span class="o">=</span> <span class="n">vehicle</span>
+    <span class="n">weight</span>                                        <span class="o">=</span> <span class="n">weight_analysis</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">nexus</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Post-Process-Results">
+<h1>Post Process Results<a class="headerlink" href="#Post-Process-Results" title="Link to this heading">#</a></h1>
+<p>The <strong>``post_process``</strong> function takes the optimization problem and its results and calculates various parameters including x_zero_fuel_margin and base_mission_fuelburn which are appended to the summary section of nexus. Nexus is then returned.</p>
+<hr class="docutils" />
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+
+    <span class="c1"># Unpack data</span>
+    <span class="n">vehicle</span>                           <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span><span class="o">.</span><span class="n">base</span>
+    <span class="n">results</span>                           <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">results</span>
+    <span class="n">summary</span>                           <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">summary</span>
+    <span class="n">nexus</span><span class="o">.</span><span class="n">total_number_of_iterations</span> <span class="o">+=</span><span class="mi">1</span>
+
+    <span class="c1">#throttle in design mission</span>
+    <span class="n">max_throttle</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">segments</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">analyses</span><span class="o">.</span><span class="n">energy</span><span class="o">.</span><span class="n">vehicle</span><span class="o">.</span><span class="n">networks</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="p">,</span>  <span class="n">propulsor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">propulsors</span><span class="p">):</span>
+                <span class="n">max_segment_throttle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span><span class="o">.</span><span class="n">throttle</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">max_segment_throttle</span> <span class="o">&gt;</span> <span class="n">max_throttle</span><span class="p">:</span>
+                    <span class="n">max_throttle</span> <span class="o">=</span> <span class="n">max_segment_throttle</span>
+
+    <span class="n">summary</span><span class="o">.</span><span class="n">max_throttle</span> <span class="o">=</span> <span class="n">max_throttle</span>
+
+    <span class="c1"># Fuel margin and base fuel calculations</span>
+    <span class="n">design_landing_weight</span>    <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">total_mass</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">design_takeoff_weight</span>    <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">takeoff</span>
+    <span class="n">zero_fuel_weight</span>         <span class="o">=</span> <span class="n">vehicle</span><span class="o">.</span><span class="n">mass_properties</span><span class="o">.</span><span class="n">operating_empty</span>
+
+    <span class="n">summary</span><span class="o">.</span><span class="n">max_zero_fuel_margin</span>  <span class="o">=</span> <span class="p">(</span><span class="n">design_landing_weight</span> <span class="o">-</span> <span class="n">zero_fuel_weight</span><span class="p">)</span><span class="o">/</span><span class="n">zero_fuel_weight</span>
+    <span class="n">summary</span><span class="o">.</span><span class="n">base_mission_fuelburn</span> <span class="o">=</span> <span class="n">design_takeoff_weight</span> <span class="o">-</span> <span class="n">results</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">segments</span><span class="p">[</span><span class="s1">&#39;descent_3&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">total_mass</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">nexus</span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial 14 - Procedure</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#1.-Header-and-Imports">1. Header and Imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Setup">Setup</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Find-Target-Range">Find Target Range</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Design-Mission">Design Mission</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Update-Aircraft">Update Aircraft</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Weight">Weight</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#Post-Process-Results">Post Process Results</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/tutorials/Optimize/Tutorial_14_Procedure.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Laboratory for Electric Aircraft Design and Sustainability.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

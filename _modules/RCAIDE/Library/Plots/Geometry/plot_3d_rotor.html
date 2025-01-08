@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,21 +386,21 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots.Geometry.Common.contour_surface_slice</span> <span class="kn">import</span> <span class="n">contour_surface_slice</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span> <span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span> <span class="kn">import</span> <span class="n">compute_naca_4series</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Plots.Geometry.Common.contour_surface_slice</span><span class="w"> </span><span class="kn">import</span> <span class="n">contour_surface_slice</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span><span class="w"> </span><span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_naca_4series</span>
 
 <span class="c1"># python imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>     
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>     
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <div class="viewcode-block" id="plot_3d_rotor">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_rotor.html#RCAIDE.Library.Plots.Geometry.plot_3d_rotor.plot_3d_rotor">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_3d_rotor</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Rotor&quot;</span><span class="p">,</span> <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">plot_data</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_3d_rotor</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">save_filename</span> <span class="o">=</span> <span class="s2">&quot;Rotor&quot;</span><span class="p">,</span> <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">plot_data</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                   <span class="n">show_figure</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">plot_axis</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">cpt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
                   <span class="n">number_of_airfoil_points</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span> <span class="n">color_map</span> <span class="o">=</span> <span class="s1">&#39;turbid&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -514,7 +514,7 @@
  
 <div class="viewcode-block" id="generate_3d_blade_points">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_rotor.html#RCAIDE.Library.Plots.Geometry.plot_3d_rotor.generate_3d_blade_points">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_3d_blade_points</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">n_points</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">aircraftRefFrame</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_3d_blade_points</span><span class="p">(</span><span class="n">rotor</span><span class="p">,</span> <span class="n">n_points</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">aircraftRefFrame</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates 3D coordinate points for a single rotor blade.</span>
 

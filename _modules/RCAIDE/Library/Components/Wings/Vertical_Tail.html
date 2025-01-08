@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,16 +385,16 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE imports   </span>
-<span class="kn">from</span> <span class="nn">.Wing</span> <span class="kn">import</span> <span class="n">Wing</span> 
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia</span> <span class="kn">import</span>  <span class="n">compute_wing_moment_of_inertia</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Wing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Wing</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia</span><span class="w"> </span><span class="kn">import</span>  <span class="n">compute_wing_moment_of_inertia</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Vertical_Tail</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Vertical_Tail">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Vertical_Tail.html#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail">[docs]</a>
-<span class="k">class</span> <span class="nc">Vertical_Tail</span><span class="p">(</span><span class="n">Wing</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Vertical_Tail</span><span class="p">(</span><span class="n">Wing</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class representing a vertical stabilizer surface for aircraft directional control </span>
 <span class="sd">    and stability.</span>
@@ -426,7 +426,7 @@
 <span class="sd">        All-moving vertical tail variant</span>
 <span class="sd">    &quot;&quot;&quot;</span> 
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets default values for the vertical tail attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -436,7 +436,7 @@
         
 <div class="viewcode-block" id="Vertical_Tail.make_x_z_reflection">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Vertical_Tail.html#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.make_x_z_reflection">[docs]</a>
-    <span class="k">def</span> <span class="nf">make_x_z_reflection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">make_x_z_reflection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a reflected copy of the vertical tail over the x-z plane.</span>
 
@@ -475,7 +475,7 @@
     
 <div class="viewcode-block" id="Vertical_Tail.moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Vertical_Tail.html#RCAIDE.Library.Components.Wings.Vertical_Tail.Vertical_Tail.moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">moment_of_inertia</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the moment of inertia tensor for the vertical tail.</span>
 

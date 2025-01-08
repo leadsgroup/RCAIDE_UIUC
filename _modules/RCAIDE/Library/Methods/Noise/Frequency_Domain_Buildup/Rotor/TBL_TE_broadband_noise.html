@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,14 +387,14 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 
 <span class="c1"># Python Package imports  </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Compute TBL-TE Broadband Noise </span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="TBL_TE_broadband_noise">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.TBL_TE_broadband_noise">[docs]</a>
-<span class="k">def</span> <span class="nf">TBL_TE_broadband_noise</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">r_e</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">U</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">R_c</span><span class="p">,</span><span class="n">Dbar_h</span><span class="p">,</span><span class="n">Dbar_l</span><span class="p">,</span><span class="n">R_delta_star_p</span><span class="p">,</span><span class="n">delta_star_p</span><span class="p">,</span><span class="n">delta_star_s</span><span class="p">,</span><span class="n">alpha_star</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">TBL_TE_broadband_noise</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">r_e</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">U</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">R_c</span><span class="p">,</span><span class="n">Dbar_h</span><span class="p">,</span><span class="n">Dbar_l</span><span class="p">,</span><span class="n">R_delta_star_p</span><span class="p">,</span><span class="n">delta_star_p</span><span class="p">,</span><span class="n">delta_star_s</span><span class="p">,</span><span class="n">alpha_star</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;This computes the turbument boundary layer- trailing edge noise compoment of broadband noise using the method outlined by the </span>
 <span class="sd">    Brooks, Pope and Marcolini (BPM) Model</span>
 <span class="sd">    </span>
@@ -471,7 +471,7 @@
 
 <div class="viewcode-block" id="spectral_shape_function_A">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.spectral_shape_function_A">[docs]</a>
-<span class="k">def</span> <span class="nf">spectral_shape_function_A</span><span class="p">(</span><span class="n">St</span><span class="p">,</span><span class="n">St_peak</span><span class="p">,</span><span class="n">R_c</span><span class="p">):</span>  
+<span class="k">def</span><span class="w"> </span><span class="nf">spectral_shape_function_A</span><span class="p">(</span><span class="n">St</span><span class="p">,</span><span class="n">St_peak</span><span class="p">,</span><span class="n">R_c</span><span class="p">):</span>  
     <span class="n">a</span>                  <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">St</span><span class="o">/</span><span class="n">St_peak</span><span class="p">))</span>    <span class="c1"># 37  </span>
     <span class="n">a_0</span>                <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">9.57E-13</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="n">R_c</span> <span class="o">-</span> <span class="mf">8.57E5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.13</span>    <span class="c1"># 38 </span>
     <span class="n">a_0</span><span class="p">[</span><span class="n">R_c</span> <span class="o">&lt;</span> <span class="mf">9.52E4</span><span class="p">]</span>  <span class="o">=</span>  <span class="mf">0.57</span>                            <span class="c1"># 38 </span>
@@ -490,7 +490,7 @@
 
 <div class="viewcode-block" id="spectral_shape_function_B">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.spectral_shape_function_B">[docs]</a>
-<span class="k">def</span> <span class="nf">spectral_shape_function_B</span><span class="p">(</span><span class="n">St_s</span><span class="p">,</span><span class="n">St_2</span><span class="p">,</span><span class="n">R_c</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">spectral_shape_function_B</span><span class="p">(</span><span class="n">St_s</span><span class="p">,</span><span class="n">St_2</span><span class="p">,</span><span class="n">R_c</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>
@@ -512,7 +512,7 @@
 
 <div class="viewcode-block" id="A_min_function">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.A_min_function">[docs]</a>
-<span class="k">def</span> <span class="nf">A_min_function</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>   
+<span class="k">def</span><span class="w"> </span><span class="nf">A_min_function</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>   
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>
@@ -525,7 +525,7 @@
 
 <div class="viewcode-block" id="A_max_function">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.A_max_function">[docs]</a>
-<span class="k">def</span> <span class="nf">A_max_function</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>    
+<span class="k">def</span><span class="w"> </span><span class="nf">A_max_function</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>    
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>
@@ -539,7 +539,7 @@
 
 <div class="viewcode-block" id="B_min_function">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.B_min_function">[docs]</a>
-<span class="k">def</span> <span class="nf">B_min_function</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>   
+<span class="k">def</span><span class="w"> </span><span class="nf">B_min_function</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>   
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>
@@ -552,7 +552,7 @@
 
 <div class="viewcode-block" id="B_max_function">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.B_max_function">[docs]</a>
-<span class="k">def</span> <span class="nf">B_max_function</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>  
+<span class="k">def</span><span class="w"> </span><span class="nf">B_max_function</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>  
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>
@@ -565,7 +565,7 @@
 
 <div class="viewcode-block" id="amplitude_function_K_1">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.amplitude_function_K_1">[docs]</a>
-<span class="k">def</span> <span class="nf">amplitude_function_K_1</span><span class="p">(</span><span class="n">R_c</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">amplitude_function_K_1</span><span class="p">(</span><span class="n">R_c</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>
@@ -578,7 +578,7 @@
 
 <div class="viewcode-block" id="amplitude_function_delta_K_1">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.amplitude_function_delta_K_1">[docs]</a>
-<span class="k">def</span> <span class="nf">amplitude_function_delta_K_1</span><span class="p">(</span><span class="n">alpha_star</span><span class="p">,</span><span class="n">R_delta_star_p</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">amplitude_function_delta_K_1</span><span class="p">(</span><span class="n">alpha_star</span><span class="p">,</span><span class="n">R_delta_star_p</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>
@@ -590,7 +590,7 @@
 
 <div class="viewcode-block" id="amplitude_function_K_2">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise.amplitude_function_K_2">[docs]</a>
-<span class="k">def</span> <span class="nf">amplitude_function_K_2</span><span class="p">(</span><span class="n">alpha_star</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">K_1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">amplitude_function_K_2</span><span class="p">(</span><span class="n">alpha_star</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="n">K_1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    COMMENTS NIRANJAN </span>
 <span class="sd">     </span>

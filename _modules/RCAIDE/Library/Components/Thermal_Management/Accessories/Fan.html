@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,14 +385,14 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Imports</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Fan</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Fan">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.html#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan">[docs]</a>
-<span class="k">class</span> <span class="nc">Fan</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Fan</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class representing a cooling fan for thermal management systems.</span>
 
@@ -428,7 +428,7 @@
 <span class="sd">        Similar component for liquid cooling systems</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets default values for the fan attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -438,7 +438,7 @@
    
 <div class="viewcode-block" id="Fan.compute_power_consumed">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.html#RCAIDE.Library.Components.Thermal_Management.Accessories.Fan.Fan.compute_power_consumed">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_power_consumed</span><span class="p">(</span><span class="n">pressure_differential</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">mass_flow_rate</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_power_consumed</span><span class="p">(</span><span class="n">pressure_differential</span><span class="p">,</span> <span class="n">density</span><span class="p">,</span> <span class="n">mass_flow_rate</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the power consumed by the fan.</span>
 

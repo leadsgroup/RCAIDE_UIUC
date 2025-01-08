@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -383,14 +383,14 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># --- ------------------------------------------------------------------------------------------------------------- </span>
   
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Set Values</span>
 <span class="c1"># -----------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="set_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.set_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.set_values">[docs]</a>
-<span class="k">def</span> <span class="nf">set_values</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span><span class="n">input_dictionary</span><span class="p">,</span><span class="n">converted_values</span><span class="p">,</span><span class="n">aliases</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_values</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span><span class="n">input_dictionary</span><span class="p">,</span><span class="n">converted_values</span><span class="p">,</span><span class="n">aliases</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This method regresses through a dictionary to set the required values.</span>
 <span class="sd">        dictionary is the base class that will be modified, input_dictionary is</span>
 <span class="sd">        the set of inputs to be used, converted_values are values to be set in the</span>
@@ -459,7 +459,7 @@
 
 <div class="viewcode-block" id="find_a_star">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.find_a_star.html#RCAIDE.Framework.Optimization.Common.helper_functions.find_a_star">[docs]</a>
-<span class="k">def</span> <span class="nf">find_a_star</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span><span class="n">string</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_a_star</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span><span class="n">string</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Searches through a dictionary looking for an *</span>
 
 <span class="sd">    Assumptions:</span>
@@ -500,7 +500,7 @@
 
 <div class="viewcode-block" id="scale_input_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.scale_input_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.scale_input_values">[docs]</a>
-<span class="k">def</span> <span class="nf">scale_input_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scale_input_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Scales the values according to the a provided scale</span>
 
 <span class="sd">    Assumptions:</span>
@@ -528,7 +528,7 @@
 
 <div class="viewcode-block" id="limit_input_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.limit_input_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.limit_input_values">[docs]</a>
-<span class="k">def</span> <span class="nf">limit_input_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">limit_input_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Ensures that the inputs are between the bounds</span>
 
 <span class="sd">    Assumptions:</span>
@@ -566,7 +566,7 @@
 
 <div class="viewcode-block" id="convert_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.convert_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.convert_values">[docs]</a>
-<span class="k">def</span> <span class="nf">convert_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Converts an inputs from an optimization into the right units</span>
 
 <span class="sd">    Assumptions:</span>
@@ -604,7 +604,7 @@
 
 <div class="viewcode-block" id="get_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.get_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.get_values">[docs]</a>
-<span class="k">def</span> <span class="nf">get_values</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span><span class="n">outputs</span><span class="p">,</span><span class="n">aliases</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_values</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span><span class="n">outputs</span><span class="p">,</span><span class="n">aliases</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Retrieves values saved in a dictionary </span>
 
 <span class="sd">    Assumptions:</span>
@@ -652,7 +652,7 @@
 
 <div class="viewcode-block" id="scale_obj_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.scale_obj_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.scale_obj_values">[docs]</a>
-<span class="k">def</span> <span class="nf">scale_obj_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scale_obj_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Rescales an objective based on Nexus inputs scale</span>
 
 <span class="sd">    Assumptions:</span>
@@ -684,7 +684,7 @@
 
 <div class="viewcode-block" id="scale_const_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.scale_const_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.scale_const_values">[docs]</a>
-<span class="k">def</span> <span class="nf">scale_const_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scale_const_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Rescales constraint values based on Nexus inputs scale</span>
 
 <span class="sd">    Assumptions:</span>
@@ -713,7 +713,7 @@
 
 <div class="viewcode-block" id="scale_const_bnds">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.scale_const_bnds.html#RCAIDE.Framework.Optimization.Common.helper_functions.scale_const_bnds">[docs]</a>
-<span class="k">def</span> <span class="nf">scale_const_bnds</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scale_const_bnds</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Rescales constraint bounds based on Nexus inputs scale</span>
 
 <span class="sd">    Assumptions:</span>
@@ -746,7 +746,7 @@
 
 <div class="viewcode-block" id="unscale_const_values">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.helper_functions.unscale_const_values.html#RCAIDE.Framework.Optimization.Common.helper_functions.unscale_const_values">[docs]</a>
-<span class="k">def</span> <span class="nf">unscale_const_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">unscale_const_values</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Rescales values based on Nexus inputs scale</span>
 
 <span class="sd">    Assumptions:</span>

@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -388,8 +388,8 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Optimization.Common</span> <span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Optimization.Common</span><span class="w"> </span><span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
 
 
 <span class="c1"># ----------------------------------------------------------------------</span>
@@ -397,7 +397,7 @@
 <span class="c1"># ---------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Pyopt_Solve">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.pyopt.pyopt_setup.Pyopt_Solve.html#RCAIDE.Framework.Optimization.Packages.pyopt.pyopt_setup.Pyopt_Solve">[docs]</a>
-<span class="k">def</span> <span class="nf">Pyopt_Solve</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;SNOPT&#39;</span><span class="p">,</span><span class="n">FD</span><span class="o">=</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">sense_step</span><span class="o">=</span><span class="mf">1.0E-6</span><span class="p">,</span>  <span class="n">nonderivative_line_search</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Pyopt_Solve</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;SNOPT&#39;</span><span class="p">,</span><span class="n">FD</span><span class="o">=</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">sense_step</span><span class="o">=</span><span class="mf">1.0E-6</span><span class="p">,</span>  <span class="n">nonderivative_line_search</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This converts your RCAIDE Nexus problem into a PyOpt optimization problem and solves it</span>
 <span class="sd">        PyOpt has many algorithms, they can be switched out by using the solver input. </span>
 
@@ -429,12 +429,12 @@
     <span class="n">con</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">constraints</span>
    
     <span class="k">if</span> <span class="n">FD</span> <span class="o">==</span> <span class="s1">&#39;parallel&#39;</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">mpi4py</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPI</span>
         <span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
         <span class="n">myrank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>      
    
     <span class="c1"># Instantiate the problem and set objective</span>
-    <span class="kn">import</span> <span class="nn">pyOpt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt</span>
     <span class="n">opt_prob</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">Optimization</span><span class="p">(</span><span class="s1">&#39;RCAIDE&#39;</span><span class="p">,</span><span class="n">mywrap</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)):</span>
         <span class="n">opt_prob</span><span class="o">.</span><span class="n">addObj</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>    
@@ -477,7 +477,7 @@
     <span class="nb">print</span><span class="p">(</span><span class="n">opt_prob</span><span class="p">)</span>
    
     <span class="k">if</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;SNOPT&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pySNOPT</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pySNOPT</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pySNOPT</span><span class="o">.</span><span class="n">SNOPT</span><span class="p">()</span>
         <span class="n">CD_step</span> <span class="o">=</span> <span class="p">(</span><span class="n">sense_step</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="mf">3.</span><span class="p">)</span>  <span class="c1">#based on SNOPT Manual Recommendations</span>
         <span class="n">opt</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span><span class="s1">&#39;Function precision&#39;</span><span class="p">,</span> <span class="n">sense_step</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span>
@@ -485,36 +485,36 @@
         <span class="n">opt</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span><span class="s1">&#39;Central difference interval&#39;</span><span class="p">,</span> <span class="n">CD_step</span><span class="p">)</span>
 
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;COBYLA&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyCOBYLA</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyCOBYLA</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyCOBYLA</span><span class="o">.</span><span class="n">COBYLA</span><span class="p">()</span> 
         
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;SLSQP&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pySLSQP</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pySLSQP</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pySLSQP</span><span class="o">.</span><span class="n">SLSQP</span><span class="p">()</span>
         <span class="n">opt</span><span class="o">.</span><span class="n">setOption</span><span class="p">(</span><span class="s1">&#39;MAXIT&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;KSOPT&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyKSOPT</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyKSOPT</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyKSOPT</span><span class="o">.</span><span class="n">KSOPT</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;ALHSO&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyALHSO</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyALHSO</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyALHSO</span><span class="o">.</span><span class="n">ALHSO</span><span class="p">()</span>   
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;FSQP&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyFSQP</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyFSQP</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyFSQP</span><span class="o">.</span><span class="n">FSQP</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;PSQP&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyPSQP</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyPSQP</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyPSQP</span><span class="o">.</span><span class="n">PSQP</span><span class="p">()</span>    
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;NLPQL&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyNLPQL</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyNLPQL</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyNLPQL</span><span class="o">.</span><span class="n">NLPQL</span><span class="p">()</span>    
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;NSGA2&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyNSGA2</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyNSGA2</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyNSGA2</span><span class="o">.</span><span class="n">NSGA2</span><span class="p">(</span><span class="n">pll_type</span><span class="o">=</span><span class="s1">&#39;POA&#39;</span><span class="p">)</span> 
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;MIDACO&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyMIDACO</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyMIDACO</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyMIDACO</span><span class="o">.</span><span class="n">MIDACO</span><span class="p">(</span><span class="n">pll_type</span><span class="o">=</span><span class="s1">&#39;POA&#39;</span><span class="p">)</span>     
     <span class="k">elif</span> <span class="n">solver</span> <span class="o">==</span> <span class="s1">&#39;ALPSO&#39;</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pyOpt.pyALPSO</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyALPSO</span>
         <span class="c1">#opt = pyOpt.pyALPSO.ALPSO(pll_type=&#39;DPM&#39;) #this requires DPM, which is a parallel implementation</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="n">pyOpt</span><span class="o">.</span><span class="n">pyALPSO</span><span class="o">.</span><span class="n">ALPSO</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">nonderivative_line_search</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
@@ -537,7 +537,7 @@
 <span class="c1"># ---------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="PyOpt_Problem">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.pyopt.pyopt_setup.PyOpt_Problem.html#RCAIDE.Framework.Optimization.Packages.pyopt.pyopt_setup.PyOpt_Problem">[docs]</a>
-<span class="k">def</span> <span class="nf">PyOpt_Problem</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PyOpt_Problem</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This wrapper runs the RCAIDE problem and is called by the PyOpt solver.</span>
 <span class="sd">        Prints the inputs (x) as well as the objective values and constraints.</span>
 <span class="sd">        If any values produce NaN then a fail flag is thrown.</span>

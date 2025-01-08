@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -383,13 +383,13 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># --- ------------------------------------------------------------------------------------------------------------- </span>
  
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span> <span class="kn">import</span> <span class="n">Process</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses</span><span class="w"> </span><span class="kn">import</span> <span class="n">Process</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Nexus Class</span>
@@ -397,7 +397,7 @@
 <span class="c1">## @ingroupFramework-Optimization-Common</span>
 <div class="viewcode-block" id="Nexus">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus">[docs]</a>
-<span class="k">class</span> <span class="nc">Nexus</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Nexus</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;noun (plural same or nexuses)</span>
 <span class="sd">        -a connection or series of connections linking two or more things</span>
 <span class="sd">        -a connected group or series: a nexus of ideas.</span>
@@ -408,7 +408,7 @@
 <span class="sd">         </span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -442,7 +442,7 @@
     
 <div class="viewcode-block" id="Nexus.evaluate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This function runs the problem you setup in RCAIDE</span>
 <span class="sd">            If the last time you ran this the inputs were the same, a cache is used.</span>
 <span class="sd">    </span>
@@ -474,7 +474,7 @@
 
         
     
-    <span class="k">def</span> <span class="nf">_really_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_really_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Tricky little function you&#39;re not supposed to use. Doesn&#39;t check if the last inputs were already run.</span>
 <span class="sd">            This steps through like a process through the nexus, and stores the results.</span>
 <span class="sd">    </span>
@@ -512,7 +512,7 @@
     
 <div class="viewcode-block" id="Nexus.objective">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.objective">[docs]</a>
-    <span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the objective value for your function</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -544,7 +544,7 @@
     
 <div class="viewcode-block" id="Nexus.inequality_constraint">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.inequality_constraint">[docs]</a>
-    <span class="k">def</span> <span class="nf">inequality_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">inequality_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the inequality constraint values for your function</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -599,7 +599,7 @@
     
 <div class="viewcode-block" id="Nexus.equality_constraint">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.equality_constraint">[docs]</a>
-    <span class="k">def</span> <span class="nf">equality_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">equality_constraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve the equality constraint values for your function</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -643,7 +643,7 @@
         
 <div class="viewcode-block" id="Nexus.all_constraints">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.all_constraints">[docs]</a>
-    <span class="k">def</span> <span class="nf">all_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns both the inequality and equality constraint values for your function</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -676,7 +676,7 @@
     
 <div class="viewcode-block" id="Nexus.unpack_inputs">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.unpack_inputs">[docs]</a>
-    <span class="k">def</span> <span class="nf">unpack_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unpack_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Put&#39;s the values of the problem in the right place.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -716,7 +716,7 @@
     
 <div class="viewcode-block" id="Nexus.constraints_individual">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.constraints_individual">[docs]</a>
-    <span class="k">def</span> <span class="nf">constraints_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">constraints_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Put&#39;s the values of the problem in the right place.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -739,7 +739,7 @@
 
 <div class="viewcode-block" id="Nexus.finite_difference">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.finite_difference">[docs]</a>
-    <span class="k">def</span> <span class="nf">finite_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">diff_interval</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">finite_difference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">diff_interval</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Finite difference gradients and jacobians of the problem.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -794,7 +794,7 @@
     
 <div class="viewcode-block" id="Nexus.translate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Optimization.Common.Nexus.html#RCAIDE.Framework.Optimization.Common.Nexus.Nexus.translate">[docs]</a>
-    <span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Make a pretty table view of the problem with objective and constraints at the current inputs</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>

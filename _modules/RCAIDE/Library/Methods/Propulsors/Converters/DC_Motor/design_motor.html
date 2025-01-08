@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,14 +386,14 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <span class="c1"># python imports  </span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  design motor </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------     </span>
 <div class="viewcode-block" id="design_motor">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.design_motor">[docs]</a>
-<span class="k">def</span> <span class="nf">design_motor</span><span class="p">(</span><span class="n">motor</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">design_motor</span><span class="p">(</span><span class="n">motor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39; Sizes a DC motor to obtain the best combination of speed constant and resistance values</span>
 <span class="sd">    by sizing the motor for a design RPM value. Note that this design RPM value can be compute</span>
 <span class="sd">    from design tip mach. The following properties are computed.  </span>
@@ -454,35 +454,35 @@
 <span class="c1"># objective function</span>
 <div class="viewcode-block" id="objective">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.objective">[docs]</a>
-<span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
     <span class="k">return</span> <span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">omeg</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   </div>
 
 
 <span class="c1"># hard efficiency constraint</span>
 <div class="viewcode-block" id="hard_constraint_1">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.hard_constraint_1">[docs]</a>
-<span class="k">def</span> <span class="nf">hard_constraint_1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">hard_constraint_1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
     <span class="k">return</span> <span class="n">etam</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="p">(</span><span class="n">io</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">omeg</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">*</span><span class="p">(</span><span class="n">omeg</span><span class="o">/</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>   </div>
 
 
 <span class="c1"># hard torque equality constraint</span>
 <div class="viewcode-block" id="hard_constraint_2">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.hard_constraint_2">[docs]</a>
-<span class="k">def</span> <span class="nf">hard_constraint_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">hard_constraint_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
     <span class="k">return</span> <span class="p">((</span><span class="n">v</span> <span class="o">-</span> <span class="n">omeg</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">io</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">Q</span>  </div>
 
 
 <span class="c1"># slack efficiency constraint </span>
 <div class="viewcode-block" id="slack_constraint_1">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.slack_constraint_1">[docs]</a>
-<span class="k">def</span> <span class="nf">slack_constraint_1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">slack_constraint_1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
     <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">etam</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span> <span class="p">(</span><span class="n">io</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">omeg</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">*</span><span class="p">(</span><span class="n">omeg</span><span class="o">/</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span> <span class="o">-</span> <span class="mf">0.2</span></div>
 
 
 <span class="c1"># slack torque equality constraint </span>
 <div class="viewcode-block" id="slack_constraint_2">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.design_motor.slack_constraint_2">[docs]</a>
-<span class="k">def</span> <span class="nf">slack_constraint_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">slack_constraint_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="p">,</span> <span class="n">omeg</span><span class="p">,</span>  <span class="n">etam</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">io</span> <span class="p">):</span> 
     <span class="k">return</span>  <span class="nb">abs</span><span class="p">(((</span><span class="n">v</span> <span class="o">-</span> <span class="n">omeg</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">io</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">Q</span><span class="p">)</span> <span class="o">-</span> <span class="mi">200</span> </div>
 
 </pre></div>

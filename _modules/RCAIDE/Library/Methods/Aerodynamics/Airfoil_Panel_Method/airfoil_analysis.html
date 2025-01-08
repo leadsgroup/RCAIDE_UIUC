@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,23 +387,23 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE imports  </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">.hess_smith</span>           <span class="kn">import</span> <span class="n">hess_smith</span>
-<span class="kn">from</span> <span class="nn">.thwaites_method</span>      <span class="kn">import</span> <span class="n">thwaites_method</span> 
-<span class="kn">from</span> <span class="nn">.heads_method</span>         <span class="kn">import</span> <span class="n">heads_method</span> 
-<span class="kn">from</span> <span class="nn">.aero_coeff</span>           <span class="kn">import</span> <span class="n">aero_coeff</span>
-<span class="kn">from</span> <span class="nn">.chordwise_distribution</span> <span class="kn">import</span> <span class="n">chordwise_distribution</span>
-<span class="kn">from</span> <span class="nn">.cf_filter</span>            <span class="kn">import</span> <span class="n">cf_filter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.hess_smith</span><span class="w">           </span><span class="kn">import</span> <span class="n">hess_smith</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.thwaites_method</span><span class="w">      </span><span class="kn">import</span> <span class="n">thwaites_method</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">.heads_method</span><span class="w">         </span><span class="kn">import</span> <span class="n">heads_method</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">.aero_coeff</span><span class="w">           </span><span class="kn">import</span> <span class="n">aero_coeff</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.chordwise_distribution</span><span class="w"> </span><span class="kn">import</span> <span class="n">chordwise_distribution</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.cf_filter</span><span class="w">            </span><span class="kn">import</span> <span class="n">cf_filter</span>
 
 <span class="c1"># pacakge imports  </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># airfoil_analysis.py</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="airfoil_analysis">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.airfoil_analysis">[docs]</a>
-<span class="k">def</span> <span class="nf">airfoil_analysis</span><span class="p">(</span><span class="n">airfoil_geometry</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">Re_L</span><span class="p">,</span><span class="n">initial_momentum_thickness</span><span class="o">=</span><span class="mf">1E-5</span><span class="p">,</span><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E0</span><span class="p">,</span><span class="n">H_wake</span> <span class="o">=</span> <span class="mf">1.05</span><span class="p">,</span><span class="n">Ue_wake</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">airfoil_analysis</span><span class="p">(</span><span class="n">airfoil_geometry</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">Re_L</span><span class="p">,</span><span class="n">initial_momentum_thickness</span><span class="o">=</span><span class="mf">1E-5</span><span class="p">,</span><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E0</span><span class="p">,</span><span class="n">H_wake</span> <span class="o">=</span> <span class="mf">1.05</span><span class="p">,</span><span class="n">Ue_wake</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This computes the aerodynamic polars as well as the boundary layer properties of </span>
 <span class="sd">    an airfoil at a defined set of reynolds numbers and angle of attacks</span>
 
@@ -900,7 +900,7 @@
 
 <div class="viewcode-block" id="concatenate_surfaces">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis.concatenate_surfaces">[docs]</a>
-<span class="k">def</span> <span class="nf">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">FUNC_BOT_SURF</span><span class="p">,</span><span class="n">FUNC_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">concatenate_surfaces</span><span class="p">(</span><span class="n">X_BOT</span><span class="p">,</span><span class="n">X_TOP</span><span class="p">,</span><span class="n">FUNC_BOT_SURF</span><span class="p">,</span><span class="n">FUNC_TOP_SURF</span><span class="p">,</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Interpolation of airfoil properties   </span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>

@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,16 +387,16 @@
 <span class="c1">#  Imports</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Performance.estimate_take_off_field_length</span> <span class="kn">import</span> <span class="n">estimate_take_off_field_length</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Performance.estimate_take_off_field_length</span><span class="w"> </span><span class="kn">import</span> <span class="n">estimate_take_off_field_length</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Find Takeoff Weight Given TOFL</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="find_take_off_weight_given_tofl">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.html#RCAIDE.Library.Methods.Performance.find_take_off_weight_given_tofl.find_take_off_weight_given_tofl">[docs]</a>
-<span class="k">def</span> <span class="nf">find_take_off_weight_given_tofl</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">analyses</span><span class="p">,</span><span class="n">target_tofl</span><span class="p">,</span><span class="n">altitude</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">delta_isa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_take_off_weight_given_tofl</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">analyses</span><span class="p">,</span><span class="n">target_tofl</span><span class="p">,</span><span class="n">altitude</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">delta_isa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Estimates the takeoff weight given a certain takeoff field length.</span>
 
 <span class="sd">    Assumptions:</span>

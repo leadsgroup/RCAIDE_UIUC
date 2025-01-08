@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,19 +386,19 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>              <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span>          <span class="kn">import</span> <span class="n">Component</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.append_ducted_fan_conditions</span> <span class="kn">import</span>  <span class="n">append_ducted_fan_conditions</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">              </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w">          </span><span class="kn">import</span> <span class="n">Component</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.append_ducted_fan_conditions</span><span class="w"> </span><span class="kn">import</span>  <span class="n">append_ducted_fan_conditions</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
  
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Nacalle</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Ducted_Fan">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan">[docs]</a>
-<span class="k">class</span> <span class="nc">Ducted_Fan</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Ducted_Fan</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A ducted fan propulsion system model that simulates the performance of a shrouded fan.</span>
 
@@ -514,7 +514,7 @@
 <span class="sd">    RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the component to function.</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -565,7 +565,7 @@
     
 <div class="viewcode-block" id="Ducted_Fan.append_duct_airfoil">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan.append_duct_airfoil">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_duct_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">airfoil</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_duct_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">airfoil</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds an airfoil to the ducted fan&#39;s duct section.</span>
 
@@ -604,7 +604,7 @@
 
 <div class="viewcode-block" id="Ducted_Fan.append_hub_airfoil">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan.append_hub_airfoil">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_hub_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">airfoil</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_hub_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">airfoil</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds an airfoil to the ducted fan&#39;s hub section.</span>
 
@@ -642,7 +642,7 @@
 
 <div class="viewcode-block" id="Ducted_Fan.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="n">ducted_fan</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_operating_conditions</span><span class="p">(</span><span class="n">ducted_fan</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">propulsor</span><span class="p">):</span> 
         <span class="n">energy_conditions</span>       <span class="o">=</span> <span class="n">segment</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">energy</span><span class="p">[</span><span class="n">propulsor</span><span class="o">.</span><span class="n">tag</span><span class="p">]</span>
         <span class="n">append_ducted_fan_conditions</span><span class="p">(</span><span class="n">ducted_fan</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">energy_conditions</span><span class="p">)</span>
         <span class="k">return</span>        </div>
@@ -650,7 +650,7 @@
           
 <div class="viewcode-block" id="Ducted_Fan.vec_to_vel">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan.vec_to_vel">[docs]</a>
-    <span class="k">def</span> <span class="nf">vec_to_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vec_to_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Rotates from the ducted fan&#39;s vehicle frame to the ducted fan&#39;s velocity frame.</span>
 
@@ -696,7 +696,7 @@
 
 <div class="viewcode-block" id="Ducted_Fan.body_to_prop_vel">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan.body_to_prop_vel">[docs]</a>
-    <span class="k">def</span> <span class="nf">body_to_prop_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commanded_thrust_vector</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">body_to_prop_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commanded_thrust_vector</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Rotates from the system&#39;s body frame to the ducted fan&#39;s velocity frame.</span>
 
@@ -767,7 +767,7 @@
 
 <div class="viewcode-block" id="Ducted_Fan.duct_vel_to_body">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan.duct_vel_to_body">[docs]</a>
-    <span class="k">def</span> <span class="nf">duct_vel_to_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commanded_thrust_vector</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">duct_vel_to_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commanded_thrust_vector</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Rotates from the ducted fan&#39;s velocity frame to the system&#39;s body frame.</span>
 
@@ -824,7 +824,7 @@
     
 <div class="viewcode-block" id="Ducted_Fan.vec_to_duct_body">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.html#RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan.Ducted_Fan.vec_to_duct_body">[docs]</a>
-    <span class="k">def</span> <span class="nf">vec_to_duct_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">commanded_thrust_vector</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vec_to_duct_body</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">commanded_thrust_vector</span><span class="p">):</span>
         <span class="n">rot_mat</span><span class="p">,</span> <span class="n">rots</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">duct_vel_to_body</span><span class="p">(</span><span class="n">commanded_thrust_vector</span><span class="p">)</span> 
         <span class="k">return</span> <span class="n">rot_mat</span><span class="p">,</span> <span class="n">rots</span> </div>
 </div>

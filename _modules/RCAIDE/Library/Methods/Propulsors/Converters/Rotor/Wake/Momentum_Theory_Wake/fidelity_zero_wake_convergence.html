@@ -29,7 +29,7 @@
   <link href="../../../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -383,14 +383,14 @@
 <span class="c1"># Created:  Feb 2022, R. Erhard</span>
 <span class="c1"># Modified: </span>
 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.BET_calculations</span> <span class="kn">import</span> <span class="n">compute_airfoil_aerodynamics</span><span class="p">,</span><span class="n">compute_inflow_and_tip_loss</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Common.Lift.BET_calculations</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_airfoil_aerodynamics</span><span class="p">,</span><span class="n">compute_inflow_and_tip_loss</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
 <span class="c1">## @defgroup Methods-Propulsion-Rotor_Wake-Fidelity_Zero</span>
 <div class="viewcode-block" id="fidelity_zero_wake_convergence">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.fidelity_zero_wake_convergence.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.fidelity_zero_wake_convergence">[docs]</a>
-<span class="k">def</span> <span class="nf">fidelity_zero_wake_convergence</span><span class="p">(</span><span class="n">wake</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">wake_inputs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fidelity_zero_wake_convergence</span><span class="p">(</span><span class="n">wake</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">wake_inputs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Wake evaluation is performed using a simplified vortex wake method for Fidelity Zero, </span>
 <span class="sd">    following Helmholtz vortex theory.</span>
@@ -446,7 +446,7 @@
 <span class="c1">## @defgroup Methods-Propulsion-Rotor_Wake-Fidelity_Zero</span>
 <div class="viewcode-block" id="iteration">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.iteration.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.iteration">[docs]</a>
-<span class="k">def</span> <span class="nf">iteration</span><span class="p">(</span><span class="n">PSI</span><span class="p">,</span> <span class="n">wake_inputs</span><span class="p">,</span> <span class="n">rotor</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">iteration</span><span class="p">(</span><span class="n">PSI</span><span class="p">,</span> <span class="n">wake_inputs</span><span class="p">,</span> <span class="n">rotor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the BEVW iteration.</span>
 
@@ -525,7 +525,7 @@
 <span class="c1">## @defgroup Methods-Propulsion-Rotor_Wake-Fidelity_Zero</span>
 <div class="viewcode-block" id="va_vt">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.va_vt.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.va_vt">[docs]</a>
-<span class="k">def</span> <span class="nf">va_vt</span><span class="p">(</span><span class="n">PSI</span><span class="p">,</span> <span class="n">wake_inputs</span><span class="p">,</span> <span class="n">rotor</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">va_vt</span><span class="p">(</span><span class="n">PSI</span><span class="p">,</span> <span class="n">wake_inputs</span><span class="p">,</span> <span class="n">rotor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the inflow velocities</span>
 
@@ -582,7 +582,7 @@
 <span class="c1">## @defgroup Methods-Propulsion-Rotor_Wake-Fidelity_Zero</span>
 <div class="viewcode-block" id="compute_dR_dpsi">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.compute_dR_dpsi.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Momentum_Theory_Wake.fidelity_zero_wake_convergence.compute_dR_dpsi">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_dR_dpsi</span><span class="p">(</span><span class="n">PSI</span><span class="p">,</span><span class="n">wake_inputs</span><span class="p">,</span><span class="n">rotor</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_dR_dpsi</span><span class="p">(</span><span class="n">PSI</span><span class="p">,</span><span class="n">wake_inputs</span><span class="p">,</span><span class="n">rotor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the analytical derivative for the BEVW iteration.</span>
 

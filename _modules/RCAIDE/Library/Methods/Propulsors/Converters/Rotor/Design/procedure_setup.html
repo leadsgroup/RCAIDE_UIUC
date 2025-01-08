@@ -29,7 +29,7 @@
   <link href="../../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,23 +387,23 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 
 <span class="c1"># RCAIDE Imports </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                                                        <span class="kn">import</span> <span class="n">Units</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor</span>                  <span class="kn">import</span> <span class="n">compute_rotor_noise</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses.Process</span>                                            <span class="kn">import</span> <span class="n">Process</span>   
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>                                              <span class="kn">import</span> <span class="n">Conditions</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance</span> <span class="kn">import</span> <span class="n">compute_rotor_performance</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                                                        </span><span class="kn">import</span> <span class="n">Units</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor</span><span class="w">                  </span><span class="kn">import</span> <span class="n">compute_rotor_noise</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses.Process</span><span class="w">                                            </span><span class="kn">import</span> <span class="n">Process</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Common</span><span class="w">                                              </span><span class="kn">import</span> <span class="n">Conditions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_rotor_performance</span> 
 
 <span class="c1"># Python package imports   </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>  
     
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1">#  Procedure Setup </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <div class="viewcode-block" id="procedure_setup">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.procedure_setup">[docs]</a>
-<span class="k">def</span> <span class="nf">procedure_setup</span><span class="p">():</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">procedure_setup</span><span class="p">():</span> 
     
     <span class="c1"># size the base config</span>
     <span class="n">procedure</span> <span class="o">=</span> <span class="n">Process</span><span class="p">()</span>
@@ -432,7 +432,7 @@
 <span class="c1"># ---------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="modify_blade_geometry">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.modify_blade_geometry">[docs]</a>
-<span class="k">def</span> <span class="nf">modify_blade_geometry</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">modify_blade_geometry</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Modifies geometry of prop-rotor blade </span>
 <span class="sd">          </span>
 <span class="sd">          Inputs:  </span>
@@ -516,7 +516,7 @@
 <span class="c1"># ---------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="updated_blade_geometry">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.updated_blade_geometry">[docs]</a>
-<span class="k">def</span> <span class="nf">updated_blade_geometry</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">c_r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">c_t</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">updated_blade_geometry</span><span class="p">(</span><span class="n">chi</span><span class="p">,</span><span class="n">c_r</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">c_t</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes planform function of twist and chord distributron using hyperparameters  </span>
 <span class="sd">          </span>
 <span class="sd">          Inputs:  </span>
@@ -553,7 +553,7 @@
 <span class="c1"># ----------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="run_rotor_hover">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.run_rotor_hover">[docs]</a>
-<span class="k">def</span> <span class="nf">run_rotor_hover</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_rotor_hover</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
      
     <span class="c1"># Unpack    </span>
     <span class="n">network</span>               <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span><span class="o">.</span><span class="n">hover</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">electric</span> 
@@ -636,7 +636,7 @@
 <span class="c1"># ---------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="run_rotor_OEI">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.run_rotor_OEI">[docs]</a>
-<span class="k">def</span> <span class="nf">run_rotor_OEI</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_rotor_OEI</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
     
     <span class="c1"># Unpack   </span>
     <span class="n">network</span>               <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span><span class="o">.</span><span class="n">oei</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">electric</span> 
@@ -691,7 +691,7 @@
 <span class="c1"># ----------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="run_rotor_cruise">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.run_rotor_cruise">[docs]</a>
-<span class="k">def</span> <span class="nf">run_rotor_cruise</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_rotor_cruise</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
  
     <span class="k">if</span> <span class="n">nexus</span><span class="o">.</span><span class="n">prop_rotor_flag</span><span class="p">:</span>     
         <span class="n">network</span>         <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span><span class="o">.</span><span class="n">cruise</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">electric</span> 
@@ -787,7 +787,7 @@
 <span class="c1"># ----------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="post_process">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Design.procedure_setup.post_process">[docs]</a>
-<span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="n">nexus</span><span class="p">):</span>
      
     <span class="n">rotor</span>                           <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span><span class="o">.</span><span class="n">hover</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">electric</span><span class="o">.</span><span class="n">propulsors</span><span class="o">.</span><span class="n">electric_rotor</span><span class="o">.</span><span class="n">rotor</span>  
     <span class="n">rotor_oei</span>                       <span class="o">=</span> <span class="n">nexus</span><span class="o">.</span><span class="n">vehicle_configurations</span><span class="o">.</span><span class="n">oei</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">electric</span><span class="o">.</span><span class="n">propulsors</span><span class="o">.</span><span class="n">electric_rotor</span><span class="o">.</span><span class="n">rotor</span>

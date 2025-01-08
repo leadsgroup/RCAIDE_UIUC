@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,27 +387,27 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 
 <span class="c1"># RCAIDE Imports     </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                                           <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>                                 <span class="kn">import</span> <span class="n">Conditions</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Ram</span>                <span class="kn">import</span> <span class="n">compute_ram_performance</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Combustor</span>          <span class="kn">import</span> <span class="n">compute_combustor_performance</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Compressor</span>         <span class="kn">import</span> <span class="n">compute_compressor_performance</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Turbine</span>            <span class="kn">import</span> <span class="n">compute_turbine_performance</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle</span>   <span class="kn">import</span> <span class="n">compute_expansion_nozzle_performance</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle</span> <span class="kn">import</span> <span class="n">compute_compression_nozzle_performance</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Turboshaft_Propulsor</span>          <span class="kn">import</span> <span class="n">size_core</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Common</span>                        <span class="kn">import</span> <span class="n">compute_static_sea_level_performance</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                                           </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Common</span><span class="w">                                 </span><span class="kn">import</span> <span class="n">Conditions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Ram</span><span class="w">                </span><span class="kn">import</span> <span class="n">compute_ram_performance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Combustor</span><span class="w">          </span><span class="kn">import</span> <span class="n">compute_combustor_performance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Compressor</span><span class="w">         </span><span class="kn">import</span> <span class="n">compute_compressor_performance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Turbine</span><span class="w">            </span><span class="kn">import</span> <span class="n">compute_turbine_performance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle</span><span class="w">   </span><span class="kn">import</span> <span class="n">compute_expansion_nozzle_performance</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_compression_nozzle_performance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Turboshaft_Propulsor</span><span class="w">          </span><span class="kn">import</span> <span class="n">size_core</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Common</span><span class="w">                        </span><span class="kn">import</span> <span class="n">compute_static_sea_level_performance</span> 
 
 <span class="c1"># Python package imports   </span>
-<span class="kn">import</span> <span class="nn">numpy</span>                                                                <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w">                                                                </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1">#  Design Turboshaft</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="design_turboshaft">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Turboshaft_Propulsor.design_turboshaft.html#RCAIDE.Library.Methods.Propulsors.Turboshaft_Propulsor.design_turboshaft.design_turboshaft">[docs]</a>
-<span class="k">def</span> <span class="nf">design_turboshaft</span><span class="p">(</span><span class="n">turboshaft</span><span class="p">):</span>  
+<span class="k">def</span><span class="w"> </span><span class="nf">design_turboshaft</span><span class="p">(</span><span class="n">turboshaft</span><span class="p">):</span>  
     <span class="c1">#check if mach number and temperature are passed</span>
     <span class="k">if</span><span class="p">(</span><span class="n">turboshaft</span><span class="o">.</span><span class="n">design_mach_number</span><span class="o">==</span><span class="kc">None</span> <span class="ow">or</span> <span class="n">turboshaft</span><span class="o">.</span><span class="n">design_altitude</span><span class="o">==</span><span class="kc">None</span><span class="p">):</span>
         

@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,17 +385,17 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE imports    </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>              <span class="kn">import</span> <span class="n">Data</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span>          <span class="kn">import</span> <span class="n">Component</span>   
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">              </span><span class="kn">import</span> <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w">          </span><span class="kn">import</span> <span class="n">Component</span>   
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
  
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Nacelle</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Nacelle">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle">[docs]</a>
-<span class="k">class</span> <span class="nc">Nacelle</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Nacelle</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for aircraft engine nacelles providing core functionality for geometric </span>
 <span class="sd">    definition and analysis.</span>
@@ -478,7 +478,7 @@
 <span class="sd">        Implementation for stacked segment nacelles</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets default values for the nacelle attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>      
@@ -500,7 +500,7 @@
 
 <div class="viewcode-block" id="Nacelle.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">propulsor</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">propulsor</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Placeholder for adding operating conditions to the nacelle.</span>
 
@@ -516,7 +516,7 @@
 
 <div class="viewcode-block" id="Nacelle.nac_vel_to_body">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.nac_vel_to_body">[docs]</a>
-    <span class="k">def</span> <span class="nf">nac_vel_to_body</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nac_vel_to_body</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes rotation matrix from nacelle velocity frame to body frame.</span>
 
@@ -540,7 +540,7 @@
     
 <div class="viewcode-block" id="Nacelle.body_to_nac_vel">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.body_to_nac_vel">[docs]</a>
-    <span class="k">def</span> <span class="nf">body_to_nac_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">body_to_nac_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes rotation matrix from body frame to nacelle velocity frame.</span>
 
@@ -574,7 +574,7 @@
     
 <div class="viewcode-block" id="Nacelle.vec_to_vel">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Nacelles.Nacelle.html#RCAIDE.Library.Components.Nacelles.Nacelle.Nacelle.vec_to_vel">[docs]</a>
-    <span class="k">def</span> <span class="nf">vec_to_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">vec_to_vel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes rotation matrix from nacelle vehicle frame to nacelle velocity frame.</span>
 

@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,14 +386,14 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <span class="c1"># package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
  
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  compute_omega_and_Q_from_Cp_and_V</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <div class="viewcode-block" id="compute_RPM_and_torque_from_power_coefficent_and_voltage">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_RPM_and_torque_from_power_coefficent_and_voltage.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_RPM_and_torque_from_power_coefficent_and_voltage">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_RPM_and_torque_from_power_coefficent_and_voltage</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span><span class="n">motor_conditions</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_RPM_and_torque_from_power_coefficent_and_voltage</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span><span class="n">motor_conditions</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the motors RPM and torque using power coefficient and operating voltage.</span>
 <span class="sd">    The following perperties of the motor are computed  </span>
 <span class="sd">    motor_conditions.torque                    (numpy.ndarray):  torque [Nm]</span>
@@ -457,7 +457,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="compute_current_from_RPM_and_voltage">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_current_from_RPM_and_voltage.html#RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance.compute_current_from_RPM_and_voltage">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_current_from_RPM_and_voltage</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">motor_conditions</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_current_from_RPM_and_voltage</span><span class="p">(</span><span class="n">motor</span><span class="p">,</span> <span class="n">motor_conditions</span><span class="p">,</span><span class="n">conditions</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculates the motor&#39;s current from its RPM and voltage. </span>
 <span class="sd">    The following perperties of the motor are computed   </span>
 <span class="sd">    motor_conditions.current     (numpy.ndarray): current      [A]</span>

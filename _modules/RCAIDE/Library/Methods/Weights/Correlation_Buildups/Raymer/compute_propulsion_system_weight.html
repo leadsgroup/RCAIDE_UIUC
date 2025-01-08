@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,19 +387,19 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE </span>
-<span class="kn">import</span>  <span class="nn">RCAIDE</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>    <span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_propulsion_system_weight</span> <span class="kn">import</span> <span class="n">compute_engine_weight</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">RCAIDE</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">    </span><span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_propulsion_system_weight</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_engine_weight</span>
 
 <span class="c1"># python imports </span>
-<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span>  <span class="nn">np</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="nn">np</span>
  
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Propulsion System Weight </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="compute_propulsion_system_weight">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.compute_propulsion_system_weight">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_propulsion_system_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">network</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_propulsion_system_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">network</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate the weight of propulsion system using Raymer method, including:</span>
 <span class="sd">        - fuel system weight</span>
 <span class="sd">        - thurst reversers weight</span>
@@ -467,7 +467,7 @@
 
 <div class="viewcode-block" id="compute_nacelle_weight">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.compute_nacelle_weight">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_nacelle_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">ref_nacelle</span><span class="p">,</span> <span class="n">NENG</span><span class="p">,</span> <span class="n">WENG</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_nacelle_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">ref_nacelle</span><span class="p">,</span> <span class="n">NENG</span><span class="p">,</span> <span class="n">WENG</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates the nacelle weight based on the Raymer method</span>
 <span class="sd">        Assumptions:</span>
 <span class="sd">            1) All nacelles are identical</span>
@@ -502,7 +502,7 @@
 
 <div class="viewcode-block" id="compute_misc_engine_weight">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.compute_misc_engine_weight">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_misc_engine_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">NENG</span><span class="p">,</span> <span class="n">WENG</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_misc_engine_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">NENG</span><span class="p">,</span> <span class="n">WENG</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates the miscellaneous engine weight based on the Raymer method, electrical control system weight</span>
 <span class="sd">        and starter engine weight</span>
 <span class="sd">        Assumptions:</span>
@@ -536,7 +536,7 @@
  
 <div class="viewcode-block" id="compute_fuel_system_weight">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_propulsion_system_weight.compute_fuel_system_weight">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_fuel_system_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">NENG</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_fuel_system_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">NENG</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculates the weight of the fuel system based on the Raymer method</span>
 <span class="sd">        Assumptions:</span>
 

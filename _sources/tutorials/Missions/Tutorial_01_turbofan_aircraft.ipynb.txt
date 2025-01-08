@@ -28,10 +28,10 @@
    "id": "240295e0-7be5-40b7-ba3a-c1754fbd604a",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:49.945875Z",
-     "iopub.status.busy": "2025-01-04T15:45:49.945414Z",
-     "iopub.status.idle": "2025-01-04T15:45:50.763540Z",
-     "shell.execute_reply": "2025-01-04T15:45:50.762989Z"
+     "iopub.execute_input": "2025-01-08T13:04:56.993709Z",
+     "iopub.status.busy": "2025-01-08T13:04:56.993515Z",
+     "iopub.status.idle": "2025-01-08T13:04:59.142436Z",
+     "shell.execute_reply": "2025-01-08T13:04:59.141837Z"
     }
    },
    "outputs": [],
@@ -55,7 +55,7 @@
     "\n",
     "### Key Imports:\n",
     "\n",
-    "1. **RCAIDE**: The core package is imported directly. This approach allows us to access specific classes and methods from RCAIDE without repeatedly importing individual components at the top of the script.\n",
+    "1. **`RCAIDE`**: The core package is imported directly. This approach allows us to access specific classes and methods from RCAIDE without repeatedly importing individual components at the top of the script.\n",
     "\n",
     "2. **`Units` Module**: The Units module is a standardized way to handle unit conversions within RCAIDE. It ensures consistent units across all inputs and outputs, reducing the likelihood of conversion errors."
    ]
@@ -66,10 +66,10 @@
    "id": "3ba2ac60-625b-42b7-b247-4991fd479b6d",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:50.765890Z",
-     "iopub.status.busy": "2025-01-04T15:45:50.765455Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.302964Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.302342Z"
+     "iopub.execute_input": "2025-01-08T13:04:59.144706Z",
+     "iopub.status.busy": "2025-01-08T13:04:59.144447Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.804664Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.804011Z"
     },
     "scrolled": true
    },
@@ -90,19 +90,19 @@
    "id": "c1ad8521-410f-4485-842b-5da0424e2896",
    "metadata": {},
    "source": [
-    "# Vehicle Setup\n",
+    "## Vehicle Setup\n",
     "\n",
     "The **`vehicle_setup`** function defines the baseline configuration of the aircraft. This section builds the vehicle step-by-step by specifying its components, geometric properties, and high-level parameters.\n",
     "\n",
     "---\n",
     "\n",
-    "## 1. Creating the Vehicle Instance\n",
+    "### 1. Creating the Vehicle Instance\n",
     "\n",
     "The setup begins by creating a vehicle instance and assigning it a **tag**. The tag is a unique string identifier used to reference the vehicle during analysis or in post-processing steps.\n",
     "\n",
     "---\n",
     "\n",
-    "## 2. Defining High-Level Vehicle Parameters\n",
+    "### 2. Defining High-Level Vehicle Parameters\n",
     "\n",
     "The high-level parameters describe the aircraft’s key operational characteristics, such as:\n",
     "\n",
@@ -115,13 +115,13 @@
     "\n",
     "---\n",
     "\n",
-    "## 3. Defining the Landing Gear\n",
+    "### 3. Defining the Landing Gear\n",
     "\n",
     "Landing gear parameters, such as the number of main and nose wheels, are set for the aircraft. While not used in this tutorial, these values can be applied in advanced analyses, such as **ground loads** or **noise prediction**.\n",
     "\n",
     "---\n",
     "\n",
-    "## 4. Main Wing Setup\n",
+    "### 4. Main Wing Setup\n",
     "\n",
     "The main wing is added using the **`Main_Wing`** class. This designation ensures that the primary lifting surface is recognized correctly by the analysis tools. Key properties of the wing include:\n",
     "\n",
@@ -129,11 +129,11 @@
     "- **Span**: The length of the wing from tip to tip.\n",
     "- **Aspect Ratio**: A ratio of span to average chord, determining wing efficiency.\n",
     "- **Segments**: Divisions of the wing geometry (e.g., root and tip sections).\n",
-    "- **Control Surfaces**: High-lift devices like flaps and ailerons, defined by span fractions and deflections.\n",
+    "- **Control Surfaces**: High-lift devices and ailerons, defined by span fractions and deflections.\n",
     "\n",
     "---\n",
     "\n",
-    "## 5. Horizontal and Vertical Stabilizers\n",
+    "### 5. Horizontal and Vertical Stabilizers\n",
     "\n",
     "The stabilizers provide stability and control for the aircraft:\n",
     "\n",
@@ -142,7 +142,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 6. Fuselage Definition\n",
+    "### 6. Fuselage Definition\n",
     "\n",
     "The fuselage is modeled by specifying its geometric parameters, such as:\n",
     "\n",
@@ -154,11 +154,11 @@
     "\n",
     "---\n",
     "\n",
-    "## 7. Energy Network: Turbofan Engine\n",
+    "### 7. Energy Network: Turbofan Engine\n",
     "\n",
     "The **energy network** models the propulsion system, in this case, a turbofan engine. The turbofan network determines the engine’s thrust, bypass ratio, and fuel type. These parameters are essential for performance and fuel efficiency analyses.\n",
     "\n",
-    "More detailed information about turbofan behavior and configurations is provided in the **Turbofan Modeling Tutorial**.\n",
+    "More detailed information about turbofan behavior and configurations will be provided in the forthcoming **Turbofan Modeling Tutorial**.\n",
     "\n",
     "---"
    ]
@@ -169,10 +169,10 @@
    "id": "7a804f20-6182-4036-94d5-571e1d7da8ba",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.305616Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.305342Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.405176Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.404624Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.807441Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.807161Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.902591Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.902107Z"
     }
    },
    "outputs": [],
@@ -796,19 +796,20 @@
    "id": "73687190-e818-4b20-8bca-e640aeb3e4ef",
    "metadata": {},
    "source": [
-    "# Configurations Setup\n",
     "\n",
-    "The **`configs_setup`** function defines the different vehicle configurations (referred to as **configs**) used during the simulation. Configurations allow for modifications to the baseline vehicle, such as altering control surface settings, without redefining the entire vehicle.\n",
+    "## Configurations Setup\n",
+    "\n",
+    "The **`configs_setup`** function defines the different vehicle configurations (referred to as **configs**) used during the simulation. Configurations allow for modifications to the baseline vehicle, such as altering control surface settings, without redefining the entire vehicle. Example configurations are included below.\n",
     "\n",
     "---\n",
     "\n",
-    "## 1. Base Configuration\n",
+    "### 1. Base Configuration\n",
     "\n",
     "The **base configuration** serves as the foundation for all other configurations. It is defined to match the baseline vehicle created in the `vehicle_setup` function. Configurations in RCAIDE are created as **containers** using **RCAIDE Data classes**. These classes provide additional functionality, such as the ability to **append** new configurations or modifications.\n",
     "\n",
     "---\n",
     "\n",
-    "## 2. Cruise Configuration\n",
+    "### 2. Cruise Configuration\n",
     "\n",
     "The **cruise configuration** demonstrates that new configurations can inherit properties directly from existing configurations (e.g., the base config). This avoids redundancy and ensures consistency across configurations.\n",
     "\n",
@@ -816,7 +817,7 @@
     "  \n",
     "---\n",
     "\n",
-    "## 3. Takeoff Configuration\n",
+    "### 3. Takeoff Configuration\n",
     "\n",
     "The **takeoff configuration** is the first configuration that introduces changes to the baseline vehicle. It shows how specific vehicle parameters, such as flap and slat settings, can be modified. For example:\n",
     "\n",
@@ -827,7 +828,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 4. Remaining Configurations\n",
+    "### 4. Remaining Configurations\n",
     "\n",
     "The remaining configurations, such as **climb**, **approach**, and **landing**, follow a similar pattern:\n",
     "\n",
@@ -846,10 +847,10 @@
    "id": "40b6618a-2300-4934-9959-76275669406b",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.407206Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.406904Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.414605Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.414136Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.904551Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.904364Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.911896Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.911433Z"
     }
    },
    "outputs": [],
@@ -955,13 +956,13 @@
    "id": "49cb2045-4495-40f5-a8f5-2338410a7bae",
    "metadata": {},
    "source": [
-    "# Base Analysis\n",
+    "## Base Analysis\n",
     "\n",
     "The **`base_analysis`** function defines the analyses required for evaluating the aircraft. Each analysis addresses a specific aspect of the vehicle’s performance or characteristics. Below are the key analyses, their purpose, and considerations for their use.\n",
     "\n",
     "---\n",
     "\n",
-    "## 1. Weights Analysis\n",
+    "### 1. Weights Analysis\n",
     "\n",
     "The **weights analysis** calculates the distribution of the aircraft's weight across various components. This method is based on **empirical correlations** designed for **tube-and-wing transport aircraft** configurations.\n",
     "\n",
@@ -970,7 +971,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 2. Aerodynamics Analysis\n",
+    "### 2. Aerodynamics Analysis\n",
     "\n",
     "The **aerodynamics analysis** evaluates the aerodynamic performance of the aircraft. It uses RCAIDE's **fidelity zero** method:\n",
     "\n",
@@ -982,7 +983,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 3. Stability Analysis\n",
+    "### 3. Stability Analysis\n",
     "\n",
     "The **stability analysis** calculates stability derivatives for the aircraft. While it is **not used** in the current mission setup, it can be run post-mission for checks or additional analysis.\n",
     "\n",
@@ -991,7 +992,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 4. Energy Analysis\n",
+    "### 4. Energy Analysis\n",
     "\n",
     "The **energy analysis** runs the energy network attached to the vehicle. For this turbofan-powered aircraft:\n",
     "\n",
@@ -1000,13 +1001,13 @@
     "\n",
     "---\n",
     "\n",
-    "## 5. Planet Analysis\n",
+    "### 5. Planet Analysis\n",
     "\n",
     "The **planet analysis** defines the planetary environment the vehicle operates in. This setup allows for the attachment of an atmospheric model.\n",
     "\n",
     "---\n",
     "\n",
-    "## 6. Atmosphere Analysis\n",
+    "### 6. Atmosphere Analysis\n",
     "\n",
     "The **atmosphere analysis** sets the atmospheric conditions for the simulation. A common choice is the **US 1976 Standard Atmosphere**, which provides:\n",
     "\n",
@@ -1022,10 +1023,10 @@
    "id": "e368c067-09c1-4def-8aa6-7d592af8ae61",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.416530Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.416124Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.420412Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.419812Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.913634Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.913437Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.917524Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.917059Z"
     }
    },
    "outputs": [],
@@ -1078,19 +1079,19 @@
    "id": "9228b067-36d2-4dd1-b03a-4ab26b857214",
    "metadata": {},
    "source": [
-    "# Analyses Setup\n",
+    "## Analyses Setup\n",
     "\n",
     "The **`analyses_setup`** function assigns a set of analyses to each vehicle configuration. Analyses are used to evaluate the aircraft’s performance, aerodynamics, energy systems, and other characteristics for a given configuration.\n",
     "\n",
     "---\n",
     "\n",
-    "## 1. Overview of Analyses Assignment\n",
+    "### 1. Overview of Analyses Assignment\n",
     "\n",
     "In this tutorial, **all configurations** share the same set of analyses. However, this function provides the flexibility to assign a unique set of analyses to any specific configuration.\n",
     "\n",
     "---\n",
     "\n",
-    "## 2. Purpose of Analyses Assignment\n",
+    "### 2. Purpose of Analyses Assignment\n",
     "\n",
     "The analyses ensure that the defined vehicle configurations (e.g., **cruise**, **takeoff**, **landing**) are evaluated correctly during the simulation. Each configuration can have:\n",
     "\n",
@@ -1099,7 +1100,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 3. Typical Analyses Included\n",
+    "### 3. Typical Analyses Included\n",
     "\n",
     "The following analyses are typically assigned to each configuration:\n",
     "\n",
@@ -1113,7 +1114,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 4. Customizing Analyses\n",
+    "### 4. Customizing Analyses\n",
     "\n",
     "To assign a **custom analysis set** for a specific configuration:\n",
     "\n",
@@ -1131,10 +1132,10 @@
    "id": "0dcaa85a-5ade-465a-9ccd-14ae6c9d6261",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.422274Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.421997Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.425013Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.424540Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.919198Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.919021Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.921916Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.921434Z"
     }
    },
    "outputs": [],
@@ -1158,13 +1159,13 @@
    "id": "a2689e90-ddce-43ce-8b2d-c89b8958935d",
    "metadata": {},
    "source": [
-    "# Mission Setup\n",
+    "## Mission Setup\n",
     "\n",
     "The **`mission_setup`** function defines the **mission profile** used to compute the aircraft's performance. A mission profile consists of sequential **segments** that represent different phases of flight, such as climb, cruise, and descent.\n",
     "\n",
     "---\n",
     "\n",
-    "## 1. Mission Profile Overview\n",
+    "### 1. Mission Profile Overview\n",
     "\n",
     "A mission profile is made up of individual flight segments. Each segment specifies the aircraft's flight conditions, such as:\n",
     "\n",
@@ -1177,7 +1178,7 @@
     "\n",
     "---\n",
     "\n",
-    "## 2. Segments in the Mission Profile\n",
+    "### 2. Segments in the Mission Profile\n",
     "\n",
     "Common segments in a mission profile include:\n",
     "\n",
@@ -1202,10 +1203,10 @@
    "id": "e0ff2c51-2b38-464a-a47d-9e1976d3e1e7",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.427000Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.426813Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.440199Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.439764Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.923924Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.923753Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.937133Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.936703Z"
     }
    },
    "outputs": [],
@@ -1475,7 +1476,7 @@
    "id": "6b2b23c4-3646-4217-acad-6870cbca7844",
    "metadata": {},
    "source": [
-    "# Missions Setup\n",
+    "## Missions Setup\n",
     "\n",
     "The **`missions_setup`** function creates a **missions container** that holds a single mission profile. This container allows for the bundling of multiple missions, but only includes the base mission in this tutorial. If multiple missions are added here, they still must be called individually for evaluation.\n"
    ]
@@ -1486,10 +1487,10 @@
    "id": "b380bfb9-64a0-4d65-9e66-c74ff025c6b4",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.441915Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.441716Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.444735Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.444274Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.938844Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.938650Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.941720Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.941229Z"
     }
    },
    "outputs": [],
@@ -1509,7 +1510,7 @@
    "id": "869f7d45-7300-4adf-b7c0-a74411c3bae2",
    "metadata": {},
    "source": [
-    "# Plot Mission\n",
+    "## Plot Mission\n",
     "\n",
     "The last function in this file is used to plot the performance results from the mission evaluation. The results shown are not an exhaustive list of RCAIDE outputs, and custom plotting routines can be created."
    ]
@@ -1520,10 +1521,10 @@
    "id": "1edc8815-56a3-4ce9-9357-0b3e45910d84",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.446362Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.446185Z",
-     "iopub.status.idle": "2025-01-04T15:45:52.449380Z",
-     "shell.execute_reply": "2025-01-04T15:45:52.448926Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.943374Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.943199Z",
+     "iopub.status.idle": "2025-01-08T13:05:00.946413Z",
+     "shell.execute_reply": "2025-01-08T13:05:00.945860Z"
     }
    },
    "outputs": [],
@@ -1555,15 +1556,25 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "id": "cea8c2b8",
+   "metadata": {},
+   "source": [
+    "## Main Script\n",
+    "\n",
+    "The main script is used to call each of the functions defined above to execute the mission. A main script is used to run the functions for increased readability and maintainability."
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": 10,
    "id": "a81c45f1",
    "metadata": {
     "execution": {
-     "iopub.execute_input": "2025-01-04T15:45:52.451005Z",
-     "iopub.status.busy": "2025-01-04T15:45:52.450809Z",
-     "iopub.status.idle": "2025-01-04T15:46:29.222416Z",
-     "shell.execute_reply": "2025-01-04T15:46:29.221770Z"
+     "iopub.execute_input": "2025-01-08T13:05:00.948324Z",
+     "iopub.status.busy": "2025-01-08T13:05:00.948001Z",
+     "iopub.status.idle": "2025-01-08T13:05:37.382894Z",
+     "shell.execute_reply": "2025-01-08T13:05:37.382302Z"
     }
    },
    "outputs": [

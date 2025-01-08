@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,17 +386,17 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE imports    </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span> 
 
 <span class="c1"># package imports  </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># heads_method</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="heads_method">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method.heads_method">[docs]</a>
-<span class="k">def</span> <span class="nf">heads_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span><span class="n">NU</span><span class="p">,</span><span class="n">DEL_0</span><span class="p">,</span><span class="n">THETA_0</span><span class="p">,</span><span class="n">DELTA_STAR_0</span><span class="p">,</span><span class="n">CF_0</span><span class="p">,</span><span class="n">ShapeFactor_0</span><span class="p">,</span><span class="n">RE_L</span><span class="p">,</span><span class="n">TURBULENT_COORD</span><span class="p">,</span><span class="n">VE_I</span><span class="p">,</span><span class="n">DVE_I</span><span class="p">,</span><span class="n">TURBULENT_SURF</span><span class="p">,</span><span class="n">tol</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">heads_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span><span class="n">NU</span><span class="p">,</span><span class="n">DEL_0</span><span class="p">,</span><span class="n">THETA_0</span><span class="p">,</span><span class="n">DELTA_STAR_0</span><span class="p">,</span><span class="n">CF_0</span><span class="p">,</span><span class="n">ShapeFactor_0</span><span class="p">,</span><span class="n">RE_L</span><span class="p">,</span><span class="n">TURBULENT_COORD</span><span class="p">,</span><span class="n">VE_I</span><span class="p">,</span><span class="n">DVE_I</span><span class="p">,</span><span class="n">TURBULENT_SURF</span><span class="p">,</span><span class="n">tol</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the boundary layer characteristics in turbulent</span>
 <span class="sd">    flow pressure gradients</span>
 
@@ -454,12 +454,12 @@
             <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
                 <span class="k">pass</span>
             <span class="k">else</span><span class="p">:</span> 
-                <span class="k">def</span> <span class="nf">getcf</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">THETA</span><span class="p">):</span>
+                <span class="k">def</span><span class="w"> </span><span class="nf">getcf</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">THETA</span><span class="p">):</span>
                     <span class="n">ReTheta</span> <span class="o">=</span> <span class="n">Ve_i</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">*</span><span class="n">THETA</span><span class="o">/</span><span class="n">nu</span><span class="p">;</span>
                     <span class="n">cf_var</span> <span class="o">=</span> <span class="mf">0.246</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.678</span><span class="o">*</span><span class="n">H</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">ReTheta</span><span class="o">**-</span><span class="mf">0.268</span><span class="p">);</span>
                     <span class="k">return</span> <span class="n">cf_var</span>
                 
-                <span class="k">def</span> <span class="nf">getH</span><span class="p">(</span><span class="n">H1_var</span><span class="p">):</span>
+                <span class="k">def</span><span class="w"> </span><span class="nf">getH</span><span class="p">(</span><span class="n">H1_var</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">H1_var</span><span class="o">&lt;</span><span class="mf">3.3</span><span class="p">:</span>
                         <span class="n">H_var</span> <span class="o">=</span> <span class="mf">3.0</span>
                     <span class="k">elif</span> <span class="n">H1_var</span> <span class="o">&lt;</span> <span class="mf">5.39142</span><span class="p">:</span>
@@ -469,11 +469,11 @@
                     <span class="k">return</span> <span class="n">H_var</span> 
              
                 <span class="c1"># define RK4 slope function for Theta</span>
-                <span class="k">def</span> <span class="nf">dTheta_by_dx</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">THETA</span><span class="p">,</span> <span class="n">VETHETAH1</span><span class="p">):</span>
+                <span class="k">def</span><span class="w"> </span><span class="nf">dTheta_by_dx</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">THETA</span><span class="p">,</span> <span class="n">VETHETAH1</span><span class="p">):</span>
                     <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">cf</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">THETA</span><span class="o">/</span><span class="n">Ve_i</span><span class="p">[</span><span class="n">index</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="n">H</span><span class="p">[</span><span class="n">index</span><span class="p">])</span><span class="o">*</span><span class="p">(</span><span class="n">dVe_i</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
                 
                 <span class="c1"># define RK4 slope function for VeThetaH1</span>
-                <span class="k">def</span> <span class="nf">dVeThetaH1_by_dx</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">THETA</span><span class="p">,</span> <span class="n">VETHETAH1</span><span class="p">):</span>
+                <span class="k">def</span><span class="w"> </span><span class="nf">dVeThetaH1_by_dx</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">THETA</span><span class="p">,</span> <span class="n">VETHETAH1</span><span class="p">):</span>
                     <span class="k">return</span> <span class="n">Ve_i</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">*</span><span class="mf">0.0306</span><span class="o">*</span><span class="p">(((</span><span class="n">VETHETAH1</span><span class="o">/</span><span class="p">(</span><span class="n">Ve_i</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">*</span><span class="n">THETA</span><span class="p">))</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">**-</span><span class="mf">0.6169</span><span class="p">)</span>
                 
                 <span class="n">x_i</span>          <span class="o">=</span> <span class="n">TURBULENT_COORD</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">][</span><span class="n">TURBULENT_COORD</span><span class="o">.</span><span class="n">mask</span><span class="p">[:,</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span> <span class="o">==</span><span class="kc">False</span><span class="p">]</span> 
@@ -569,7 +569,7 @@
 
 <div class="viewcode-block" id="RK4">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.heads_method.RK4">[docs]</a>
-<span class="k">def</span> <span class="nf">RK4</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Theta_var</span><span class="p">,</span> <span class="n">VeThetaH1_var</span><span class="p">,</span> <span class="n">Theta_slope</span><span class="p">,</span> <span class="n">VeThetaH1_slope</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">RK4</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Theta_var</span><span class="p">,</span> <span class="n">VeThetaH1_var</span><span class="p">,</span> <span class="n">Theta_slope</span><span class="p">,</span> <span class="n">VeThetaH1_slope</span><span class="p">):</span>
     <span class="n">k1</span> <span class="o">=</span> <span class="n">Theta_slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">Theta_var</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">VeThetaH1_var</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
     <span class="n">l1</span> <span class="o">=</span> <span class="n">VeThetaH1_slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">Theta_var</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">VeThetaH1_var</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
     

@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,15 +385,15 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Container</span> <span class="k">as</span> <span class="n">ContainerBase</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Container</span> <span class="k">as</span> <span class="n">ContainerBase</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Analysis</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Analysis">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis">[docs]</a>
-<span class="k">class</span> <span class="nc">Analysis</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Analysis</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; RCAIDE.Framework.Analyses.Analysis()</span>
 <span class="sd">    </span>
 <span class="sd">        The Top Level Analysis Class</span>
@@ -404,7 +404,7 @@
 <span class="sd">            Source:</span>
 <span class="sd">            N/A</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values and methods for the analysis.</span>
 <span class="sd">        </span>
 <span class="sd">                Assumptions:</span>
@@ -428,7 +428,7 @@
         
 <div class="viewcode-block" id="Analysis.initialize">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to initialize the analysis&#39; specific algorithms.</span>
 <span class="sd">                </span>
 <span class="sd">                Assumptions:</span>
@@ -451,7 +451,7 @@
     
 <div class="viewcode-block" id="Analysis.evaluate">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to execute the analysis&#39; specific algorithms.</span>
 <span class="sd">                </span>
 <span class="sd">                Assumptions:</span>
@@ -475,7 +475,7 @@
     
 <div class="viewcode-block" id="Analysis.post_process">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Analysis.post_process">[docs]</a>
-    <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to post_process </span>
 <span class="sd">                </span>
 <span class="sd">                Assumptions:</span>
@@ -496,7 +496,7 @@
         <span class="k">return</span> </div>
 
     
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to set the class&#39; call behavior to the evaluate function.</span>
 <span class="sd">                        </span>
@@ -525,7 +525,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="Container">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Container">[docs]</a>
-<span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">ContainerBase</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Container</span><span class="p">(</span><span class="n">ContainerBase</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; RCAIDE.Framework.Analyses.Analysis.Container()</span>
 <span class="sd">    </span>
 <span class="sd">        The Analysis Container Class</span>
@@ -539,7 +539,7 @@
         
 <div class="viewcode-block" id="Container.initialize">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Container.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to execute the initialize functions of the analyses</span>
 <span class="sd">            stored in the container.</span>
 <span class="sd">                                        </span>
@@ -565,7 +565,7 @@
     
 <div class="viewcode-block" id="Container.evaluate">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Container.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to execute the evaluate functions of the analyses</span>
 <span class="sd">            stored in the container.</span>
 <span class="sd">                                                </span>
@@ -596,7 +596,7 @@
     
 <div class="viewcode-block" id="Container.post_process">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Analysis.html#RCAIDE.Framework.Analyses.Analysis.Container.post_process">[docs]</a>
-    <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to execute post processing functions </span>
 <span class="sd">                                                </span>
 <span class="sd">                Assumptions:</span>
@@ -621,7 +621,7 @@
 
                 
     
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to set the class&#39; call behavior to the evaluate functions.</span>
 <span class="sd">                                                        </span>
 <span class="sd">                Assumptions:</span>

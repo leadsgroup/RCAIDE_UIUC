@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -390,15 +390,15 @@
 <span class="c1">#   Imports</span>
 <span class="c1"># ----------------------------------------------------------------------  </span>
 
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
 
 <span class="c1"># for enforcing attribute style access names</span>
-<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
 <span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">whitespace</span>
 <span class="n">t_table</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span> <span class="n">chars</span>          <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="p">,</span> 
                             <span class="s1">&#39;_&#39;</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#   Property Class</span>
@@ -406,7 +406,7 @@
 
 <div class="viewcode-block" id="Property">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.Property">[docs]</a>
-<span class="k">class</span> <span class="nc">Property</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Property</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Used to create the root map essential to the linking in DataOrdered()</span>
 <span class="sd">       </span>
 <span class="sd">        Assumptions:</span>
@@ -418,7 +418,7 @@
     
 <div class="viewcode-block" id="Property.__init__">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.Property.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Initializes a property</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -439,7 +439,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_key</span> <span class="o">=</span> <span class="n">key</span></div>
 
         
-    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">kls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">kls</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Gets a property</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -460,7 +460,7 @@
         <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="bp">self</span>
         <span class="k">else</span>          <span class="p">:</span> <span class="k">return</span> <span class="nb">dict</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">)</span>
         
-    <span class="k">def</span> <span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets a property</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -481,7 +481,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>          
         <span class="nb">dict</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_key</span><span class="p">,</span><span class="n">val</span><span class="p">)</span>
         
-    <span class="k">def</span> <span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Deletes a property</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -509,7 +509,7 @@
 
 <div class="viewcode-block" id="DataOrdered">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered">[docs]</a>
-<span class="k">class</span> <span class="nc">DataOrdered</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DataOrdered</span><span class="p">(</span><span class="n">OrderedDict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; An extension of the Python dict which allows for both tag and &#39;.&#39; usage.</span>
 <span class="sd">        This is an ordered dictionary. So indexing it will produce deterministic results.</span>
 <span class="sd">       </span>
@@ -526,7 +526,7 @@
     
 <div class="viewcode-block" id="DataOrdered.append">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.append">[docs]</a>
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds new values to the classes. Can also change an already appended key</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -552,7 +552,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>    </div>
 
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; A stub for all classes that come later</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -572,7 +572,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>         
         <span class="k">pass</span>
     
-    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Retrieves an attribute set by a key k</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -595,7 +595,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">DataOrdered</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="n">k</span><span class="p">])</span>
     
-    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Creates a new Data() class</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -638,7 +638,7 @@
     
 <div class="viewcode-block" id="DataOrdered.hasattr">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.hasattr">[docs]</a>
-    <span class="k">def</span> <span class="nf">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
@@ -649,7 +649,7 @@
     
 <div class="viewcode-block" id="DataOrdered.__init__">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Initializes a new Data() class</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -676,7 +676,7 @@
 
         
         
-    <span class="k">def</span> <span class="nf">__init2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__init2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; A helper that allows __init_ to complete the new Data() class</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -694,7 +694,7 @@
 <span class="sd">            Properties Used:</span>
 <span class="sd">            N/A    </span>
 <span class="sd">        &quot;&quot;&quot;</span>         
-        <span class="k">def</span> <span class="nf">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>  
+        <span class="k">def</span><span class="w"> </span><span class="nf">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>  
             
             <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>            
         
@@ -717,7 +717,7 @@
             <span class="n">append_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="n">value</span><span class="p">)</span>     
 
     <span class="c1"># iterate on values, not keys</span>
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the iterable values. Can be used in a for loop.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -739,7 +739,7 @@
     
 <div class="viewcode-block" id="DataOrdered.get_bases">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get_bases">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_bases</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_bases</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Finds the higher classes that may be built off of data</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -772,7 +772,7 @@
     
 <div class="viewcode-block" id="DataOrdered.typestring">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.typestring">[docs]</a>
-    <span class="k">def</span> <span class="nf">typestring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">typestring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This function makes the .key.key structure in string form of Data()</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -800,7 +800,7 @@
     
 <div class="viewcode-block" id="DataOrdered.dataname">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.dataname">[docs]</a>
-    <span class="k">def</span> <span class="nf">dataname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dataname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This function is used for printing the class</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -823,7 +823,7 @@
 
 <div class="viewcode-block" id="DataOrdered.deep_set">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_set">[docs]</a>
-    <span class="k">def</span> <span class="nf">deep_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deep_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">,</span><span class="n">val</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Regresses through a list of keys the same value in various places in a dictionary.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -859,7 +859,7 @@
 
 <div class="viewcode-block" id="DataOrdered.deep_get">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.deep_get">[docs]</a>
-    <span class="k">def</span> <span class="nf">deep_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deep_get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Regresses through a list of keys to pull a specific value out</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -894,7 +894,7 @@
     
 <div class="viewcode-block" id="DataOrdered.update">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.update">[docs]</a>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">other</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Updates the internal values of a dictionary with given data</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -926,7 +926,7 @@
         <span class="k">return</span> </div>
 
 
-    <span class="k">def</span> <span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__delattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; An override of the standard __delattr_ in Python. This deletes whatever is called by k</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -951,7 +951,7 @@
         <span class="n">link_prev</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_next</span>
         <span class="n">link_next</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">link_prev</span> 
         
-    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This is overrides the Python function for checking length</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -971,7 +971,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>          
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>   
 
-    <span class="k">def</span> <span class="nf">__iter_basic__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__iter_basic__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the iterable values. Can be used in a for loop.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -995,7 +995,7 @@
             <span class="k">yield</span> <span class="n">curr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
             <span class="n">curr</span> <span class="o">=</span> <span class="n">curr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
             
-    <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Reduction function used for making configs</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -1019,7 +1019,7 @@
             <span class="n">inst_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">_reconstructor</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span><span class="n">items</span><span class="p">,),</span> <span class="n">inst_dict</span><span class="p">)</span>
     
-    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; An override of the standard __setattr_ in Python.</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -1048,7 +1048,7 @@
             <span class="n">last</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">last</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">key</span><span class="p">]</span>
         <span class="n">OrderedDict</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; An override of the standard __setattr_ in Python.</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -1072,7 +1072,7 @@
 
 <div class="viewcode-block" id="DataOrdered.clear">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.clear">[docs]</a>
-    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Empties a dictionary</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -1104,7 +1104,7 @@
         
 <div class="viewcode-block" id="DataOrdered.get">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.get">[docs]</a>
-    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the values from k</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -1127,7 +1127,7 @@
         
 <div class="viewcode-block" id="DataOrdered.has_key">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.has_key">[docs]</a>
-    <span class="k">def</span> <span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Checks if the dictionary has the key, k</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -1154,7 +1154,7 @@
 
 <div class="viewcode-block" id="DataOrdered.keys">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.keys">[docs]</a>
-    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns a list of keys</span>
 <span class="sd">            </span>
 <span class="sd">            Assumptions:</span>
@@ -1177,7 +1177,7 @@
     
 <div class="viewcode-block" id="DataOrdered.values">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.values">[docs]</a>
-    <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all values inside the Data() class.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -1200,7 +1200,7 @@
     
 <div class="viewcode-block" id="DataOrdered.items">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.items">[docs]</a>
-    <span class="k">def</span> <span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the items inside the data class</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -1223,7 +1223,7 @@
     
 <div class="viewcode-block" id="DataOrdered.iterkeys">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.DataOrdered.html#RCAIDE.Framework.Core.DataOrdered.DataOrdered.iterkeys">[docs]</a>
-    <span class="k">def</span> <span class="nf">iterkeys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">iterkeys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns all the keys which may be iterated over</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -1246,7 +1246,7 @@
 
 
 <span class="c1"># for rebuilding dictionaries with attributes</span>
-<span class="k">def</span> <span class="nf">_reconstructor</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span><span class="n">items</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_reconstructor</span><span class="p">(</span><span class="n">klass</span><span class="p">,</span><span class="n">items</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; For rebuilding dictionaries with attributes</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>

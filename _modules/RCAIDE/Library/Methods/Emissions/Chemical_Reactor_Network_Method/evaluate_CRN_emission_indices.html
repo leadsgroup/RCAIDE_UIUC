@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -384,19 +384,19 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-<span class="kn">import</span>  <span class="nn">RCAIDE</span>
-<span class="kn">from</span>    <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span>    <span class="nn">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera</span> <span class="kn">import</span> <span class="n">evaluate_cantera</span> 
+<span class="kn">import</span><span class="w">  </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w">    </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w">    </span><span class="nn">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera</span><span class="w"> </span><span class="kn">import</span> <span class="n">evaluate_cantera</span> 
  
 <span class="c1"># package imports</span>
-<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  evaluate_correlation_emissions_indices</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="evaluate_CRN_emission_indices_no_surrogate">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_no_surrogate.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_no_surrogate">[docs]</a>
-<span class="k">def</span> <span class="nf">evaluate_CRN_emission_indices_no_surrogate</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_CRN_emission_indices_no_surrogate</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes emission indices directly using Chemical Reactor Network without surrogate models.</span>
@@ -565,7 +565,7 @@
 
 <div class="viewcode-block" id="evaluate_CRN_emission_indices_surrogate">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_surrogate.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_CRN_emission_indices.evaluate_CRN_emission_indices_surrogate">[docs]</a>
-<span class="k">def</span> <span class="nf">evaluate_CRN_emission_indices_surrogate</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_CRN_emission_indices_surrogate</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">vehicle</span><span class="p">):</span> 
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes emission indices using pre-trained Chemical Reactor Network surrogate models.</span>

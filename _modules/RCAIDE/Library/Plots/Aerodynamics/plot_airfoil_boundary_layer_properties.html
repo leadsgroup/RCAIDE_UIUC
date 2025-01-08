@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,13 +386,13 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots.Common</span> <span class="kn">import</span> <span class="n">set_axes</span><span class="p">,</span> <span class="n">plot_style</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Plots.Common</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_axes</span><span class="p">,</span> <span class="n">plot_style</span>
 
 <span class="c1"># python imports </span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
@@ -401,7 +401,7 @@
 <span class="c1">## @ingroup Library-Plots-Performance-Aerodynamics</span>
 <div class="viewcode-block" id="plot_airfoil_boundary_layer_properties">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.html#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.plot_airfoil_boundary_layer_properties">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_airfoil_boundary_layer_properties</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_airfoil_boundary_layer_properties</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span>
                                            <span class="n">save_figure</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                                            <span class="n">show_legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                                            <span class="n">file_type</span> <span class="o">=</span> <span class="s2">&quot;.png&quot;</span><span class="p">,</span>
@@ -535,7 +535,7 @@
 <span class="c1"># ----------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="plot_quantity">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.html#RCAIDE.Library.Plots.Aerodynamics.plot_airfoil_boundary_layer_properties.plot_quantity">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_quantity</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">qaxis</span><span class="p">,</span> <span class="n">qname</span><span class="p">,</span> <span class="n">ylim_low</span><span class="p">,</span> <span class="n">ylim_high</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">show_legend</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_quantity</span><span class="p">(</span><span class="n">ap</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">qaxis</span><span class="p">,</span> <span class="n">qname</span><span class="p">,</span> <span class="n">ylim_low</span><span class="p">,</span> <span class="n">ylim_high</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">show_legend</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate standardized plots of boundary layer quantities along airfoil surfaces.</span>
 

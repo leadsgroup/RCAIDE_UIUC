@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -388,15 +388,15 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 
 <span class="c1"># package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                                       <span class="kn">import</span>  <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Wings</span>                             <span class="kn">import</span> <span class="n">All_Moving_Surface</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Fuselages</span>                         <span class="kn">import</span> <span class="n">Fuselage</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers</span>      <span class="kn">import</span> <span class="n">postprocess_VD</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings</span>           <span class="kn">import</span> <span class="n">make_VLM_wings</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface</span>  <span class="kn">import</span> <span class="n">deflect_control_surface</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span>                                            <span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                                       </span><span class="kn">import</span>  <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Wings</span><span class="w">                             </span><span class="kn">import</span> <span class="n">All_Moving_Surface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Fuselages</span><span class="w">                         </span><span class="kn">import</span> <span class="n">Fuselage</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_VD_helpers</span><span class="w">      </span><span class="kn">import</span> <span class="n">postprocess_VD</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.make_VLM_wings</span><span class="w">           </span><span class="kn">import</span> <span class="n">make_VLM_wings</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface</span><span class="w">  </span><span class="kn">import</span> <span class="n">deflect_control_surface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span><span class="w">                                            </span><span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
  
 
 <span class="c1"># ----------------------------------------------------------------------</span>
@@ -404,7 +404,7 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="generate_vortex_distribution">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.generate_vortex_distribution">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_vortex_distribution</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span><span class="n">settings</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_vortex_distribution</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span><span class="n">settings</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39; Compute the coordinates of panels, vortices , control points</span>
 <span class="sd">    and geometry used to build the influence coefficient matrix. A </span>
 <span class="sd">    different discretization (n_sw and n_cw) may be defined for each type</span>
@@ -642,7 +642,7 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="generate_wing_vortex_distribution">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.generate_wing_vortex_distribution">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_wing_vortex_distribution</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">wing</span><span class="p">,</span><span class="n">n_cw</span><span class="p">,</span><span class="n">n_sw</span><span class="p">,</span><span class="n">spc</span><span class="p">,</span><span class="n">precision</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_wing_vortex_distribution</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">wing</span><span class="p">,</span><span class="n">n_cw</span><span class="p">,</span><span class="n">n_sw</span><span class="p">,</span><span class="n">spc</span><span class="p">,</span><span class="n">precision</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This generates vortex distribution points for the given wing </span>
 
 <span class="sd">    Assumptions: </span>
@@ -1209,7 +1209,7 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="generate_fuselage_and_nacelle_vortex_distribution">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.generate_vortex_distribution.generate_fuselage_and_nacelle_vortex_distribution">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_fuselage_and_nacelle_vortex_distribution</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">fus</span><span class="p">,</span><span class="n">n_cw</span><span class="p">,</span><span class="n">n_sw</span><span class="p">,</span><span class="n">precision</span><span class="p">,</span><span class="n">model_geometry</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_fuselage_and_nacelle_vortex_distribution</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">fus</span><span class="p">,</span><span class="n">n_cw</span><span class="p">,</span><span class="n">n_sw</span><span class="p">,</span><span class="n">precision</span><span class="p">,</span><span class="n">model_geometry</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This generates the vortex distribution points on a fuselage or nacelle component</span>
 <span class="sd">    Assumptions: </span>
 <span class="sd">    If nacelle has segments defined, the mean width and height of the nacelle is used</span>

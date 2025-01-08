@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,15 +385,15 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">.Analysis</span> <span class="kn">import</span> <span class="n">Analysis</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Analysis</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Vehicle</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Vehicle">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle">[docs]</a>
-<span class="k">class</span> <span class="nc">Vehicle</span><span class="p">(</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Vehicle</span><span class="p">(</span><span class="n">Analysis</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; RCAIDE.Framework.Analyses.Vehicle()</span>
 <span class="sd">    </span>
 <span class="sd">        The Vehicle Analyses Container Class</span>
@@ -404,7 +404,7 @@
 <span class="sd">            Source:</span>
 <span class="sd">            N/A</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default analyses to be applied to the vehicle.</span>
 <span class="sd">        </span>
 <span class="sd">                Assumptions:</span>
@@ -435,7 +435,7 @@
 
 <div class="viewcode-block" id="Vehicle.append">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle.append">[docs]</a>
-    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">analysis</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">analysis</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This is used to add new analyses to the container.</span>
 <span class="sd">        </span>
 <span class="sd">                Assumptions:</span>
@@ -461,7 +461,7 @@
 
 <div class="viewcode-block" id="Vehicle.__init__">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwarg</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the initialization behavior of the vehicle analysis</span>
 <span class="sd">           container. Maps analysis paths to string keys.</span>
 <span class="sd">           </span>
@@ -497,7 +497,7 @@
 
 <div class="viewcode-block" id="Vehicle.get_root">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Analyses.Vehicle.html#RCAIDE.Framework.Analyses.Vehicle.Vehicle.get_root">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">analysis</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_root</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">analysis</span><span class="p">):</span>
 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This is used to determine the root of the analysis path associated</span>
 <span class="sd">            with a particular analysis key by the analysis map.</span>

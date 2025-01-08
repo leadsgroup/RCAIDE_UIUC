@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,20 +386,20 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE Imports</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span>                    <span class="kn">import</span> <span class="n">Analysis</span><span class="p">,</span> <span class="n">Settings</span><span class="p">,</span> <span class="n">Process</span>   
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>     <span class="kn">import</span> <span class="n">State</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses</span><span class="w">                    </span><span class="kn">import</span> <span class="n">Analysis</span><span class="p">,</span> <span class="n">Settings</span><span class="p">,</span> <span class="n">Process</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Common</span><span class="w">     </span><span class="kn">import</span> <span class="n">State</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  ANALYSES</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment">[docs]</a>
-<span class="k">class</span> <span class="nc">Segment</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Segment</span><span class="p">(</span><span class="n">Analysis</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -438,7 +438,7 @@
     
 <div class="viewcode-block" id="Segment.initialize">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This executes the initialize process</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -462,7 +462,7 @@
     
 <div class="viewcode-block" id="Segment.converge">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment.converge">[docs]</a>
-    <span class="k">def</span> <span class="nf">converge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">converge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This executes the converge process</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -485,7 +485,7 @@
     
 <div class="viewcode-block" id="Segment.iterate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment.iterate">[docs]</a>
-    <span class="k">def</span> <span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">iterate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This executes the iterate process</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -509,7 +509,7 @@
     
 <div class="viewcode-block" id="Segment.post_process">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment.post_process">[docs]</a>
-    <span class="k">def</span> <span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This executes post processing</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -533,7 +533,7 @@
     
 <div class="viewcode-block" id="Segment.evaluate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This executes the entire process</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -559,7 +559,7 @@
     
 <div class="viewcode-block" id="Segment.flight_dynamics_and_controls">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Segment.flight_dynamics_and_controls">[docs]</a>
-    <span class="k">def</span> <span class="nf">flight_dynamics_and_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">flight_dynamics_and_controls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">flight_dynamics</span>                                             <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">flight_dynamics</span><span class="o">.</span><span class="n">force_x</span>                                     <span class="o">=</span> <span class="kc">False</span> 
         <span class="bp">self</span><span class="o">.</span><span class="n">flight_dynamics</span><span class="o">.</span><span class="n">force_y</span>                                     <span class="o">=</span> <span class="kc">False</span> 
@@ -643,7 +643,7 @@
 
 <div class="viewcode-block" id="Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Container">[docs]</a>
-<span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">Segment</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Container</span><span class="p">(</span><span class="n">Segment</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; A container for the segment</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -653,7 +653,7 @@
 <span class="sd">        None</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -678,7 +678,7 @@
         
 <div class="viewcode-block" id="Container.append_segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Segment.html#RCAIDE.Framework.Mission.Segments.Segment.Container.append_segment">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Add a SubSegment</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>

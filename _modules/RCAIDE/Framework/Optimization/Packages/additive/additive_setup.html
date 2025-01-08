@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -389,33 +389,33 @@
 <span class="c1">#  Imports</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">pyOpt</span>
-    <span class="kn">import</span> <span class="nn">pyOpt.pySNOPT</span>
-    <span class="kn">import</span> <span class="nn">pyOpt.pyALPSO</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pySNOPT</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pyOpt.pyALPSO</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
-<span class="kn">import</span> <span class="nn">sklearn</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">gaussian_process</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Optimization.Common</span> <span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Utilities.latin_hypercube_sampling</span> <span class="kn">import</span> <span class="n">latin_hypercube_sampling</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">shgo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sklearn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">gaussian_process</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Optimization.Common</span><span class="w"> </span><span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Utilities.latin_hypercube_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">latin_hypercube_sampling</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">shgo</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Additive Solve Functions</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Additive_Solver">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver">[docs]</a>
-<span class="k">class</span> <span class="nc">Additive_Solver</span><span class="p">():</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Additive_Solver</span><span class="p">():</span>
 <div class="viewcode-block" id="Additive_Solver.__init__">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># These defaults are chosen since they are built in to scipy and</span>
         <span class="c1"># therefore are always available when running RCAIDE</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">local_optimizer</span>  <span class="o">=</span> <span class="s1">&#39;SLSQP&#39;</span>
@@ -426,7 +426,7 @@
     
 <div class="viewcode-block" id="Additive_Solver.Additive_Solve">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.Additive_Solve">[docs]</a>
-    <span class="k">def</span> <span class="nf">Additive_Solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">num_fidelity_levels</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">num_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">max_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Additive_Solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">num_fidelity_levels</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">num_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">max_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                        <span class="n">tolerance</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span><span class="n">opt_type</span><span class="o">=</span><span class="s1">&#39;basic&#39;</span><span class="p">,</span><span class="n">num_starts</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">print_output</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Solves a multifidelity problem using an additive corrections</span>
 <span class="sd">    </span>
@@ -462,7 +462,7 @@
         
         <span class="c1"># History writing</span>
         <span class="n">f_out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;add_hist.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
         <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         
         <span class="n">inp</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">inputs</span>
@@ -711,7 +711,7 @@
         
 <div class="viewcode-block" id="Additive_Solver.evaluate_model">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_model">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">cons</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">cons</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Solves the optimization problem to get the objective and constraints</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -744,7 +744,7 @@
         
 <div class="viewcode-block" id="Additive_Solver.evaluate_corrected_model">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_corrected_model">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_corrected_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">obj_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_corrected_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">obj_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluates the corrected model with the low fidelity plus the corrections</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -800,7 +800,7 @@
     
 <div class="viewcode-block" id="Additive_Solver.evaluate_expected_improvement">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.evaluate_expected_improvement">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_expected_improvement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">obj_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">fstar</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="n">cons</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_expected_improvement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">obj_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">fstar</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="n">cons</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluates the expected improvement of the point x</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -876,7 +876,7 @@
         
 <div class="viewcode-block" id="Additive_Solver.scale_vals">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.scale_vals">[docs]</a>
-    <span class="k">def</span> <span class="nf">scale_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">ini</span><span class="p">,</span><span class="n">bnd</span><span class="p">,</span><span class="n">scl</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">ini</span><span class="p">,</span><span class="n">bnd</span><span class="p">,</span><span class="n">scl</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Scales values to help setup the problem</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -944,7 +944,7 @@
     
 <div class="viewcode-block" id="Additive_Solver.initialize_opt_vals">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_opt_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">opt_prob</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">nam</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">x_eval</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_opt_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">opt_prob</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">nam</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">x_eval</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets up the optimization values </span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -994,7 +994,7 @@
     
 <div class="viewcode-block" id="Additive_Solver.unpack_constraints_slsqp">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.unpack_constraints_slsqp">[docs]</a>
-    <span class="k">def</span> <span class="nf">unpack_constraints_slsqp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">con_ind</span><span class="p">,</span><span class="n">sign</span><span class="p">,</span><span class="n">edge</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unpack_constraints_slsqp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">con_ind</span><span class="p">,</span><span class="n">sign</span><span class="p">,</span><span class="n">edge</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">cons_surrogate</span><span class="p">):</span>
         
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>        
@@ -1013,7 +1013,7 @@
     
 <div class="viewcode-block" id="Additive_Solver.initialize_opt_vals_SLSQP">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SLSQP">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_opt_vals_SLSQP</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">nam</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">x_eval</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">cons_surr</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_opt_vals_SLSQP</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">nam</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">x_eval</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">cons_surr</span><span class="p">):</span>
         <span class="c1"># Initialize variables according to SLSQP requirements</span>
         <span class="n">x0</span> <span class="o">=</span> <span class="n">x_eval</span>
         <span class="n">slsqp_con_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1037,7 +1037,7 @@
     
 <div class="viewcode-block" id="Additive_Solver.initialize_opt_vals_SHGO">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.initialize_opt_vals_SHGO">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_opt_vals_SHGO</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">nam</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">cons_surr</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_opt_vals_SHGO</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">obj</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">x_low_bound</span><span class="p">,</span><span class="n">x_up_bound</span><span class="p">,</span><span class="n">con_low_edge</span><span class="p">,</span><span class="n">con_up_edge</span><span class="p">,</span><span class="n">nam</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">cons_surr</span><span class="p">):</span>
         <span class="c1"># Initialize variables according to SLSQP requirements</span>
         <span class="n">bound_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_low_bound</span><span class="p">)):</span>
@@ -1064,7 +1064,7 @@
     
 <div class="viewcode-block" id="Additive_Solver.run_objective_optimization">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.html#RCAIDE.Framework.Optimization.Packages.additive.additive_setup.Additive_Solver.run_objective_optimization">[docs]</a>
-    <span class="k">def</span> <span class="nf">run_objective_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">opt_prob</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">f_additive_surrogate</span><span class="p">,</span><span class="n">g_additive_surrogate</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_objective_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">opt_prob</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">f_additive_surrogate</span><span class="p">,</span><span class="n">g_additive_surrogate</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Runs SNOPT to optimize</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>

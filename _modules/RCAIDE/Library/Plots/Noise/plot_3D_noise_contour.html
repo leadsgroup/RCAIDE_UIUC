@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,19 +385,19 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots</span>  <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Plots</span><span class="w">  </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># python imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
-<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <div class="viewcode-block" id="plot_3D_noise_contour">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.html#RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.plot_3D_noise_contour">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_3D_noise_contour</span><span class="p">(</span><span class="n">noise_data</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_3D_noise_contour</span><span class="p">(</span><span class="n">noise_data</span><span class="p">,</span>
                        <span class="n">noise_level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                        <span class="n">min_noise_level</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span>  
                        <span class="n">max_noise_level</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span> 
@@ -603,7 +603,7 @@
 
 <div class="viewcode-block" id="colorax">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.html#RCAIDE.Library.Plots.Noise.plot_3D_noise_contour.colorax">[docs]</a>
-<span class="k">def</span> <span class="nf">colorax</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">colorax</span><span class="p">(</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">cmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span></div>
 
  

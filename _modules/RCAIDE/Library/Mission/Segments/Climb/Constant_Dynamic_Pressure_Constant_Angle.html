@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,17 +386,17 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span> 
 
 <span class="c1"># Package imports  </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
  
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Initialize Conditions</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="initialize_conditions_unpack_unknowns">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.initialize_conditions_unpack_unknowns.html#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.initialize_conditions_unpack_unknowns">[docs]</a>
-<span class="k">def</span> <span class="nf">initialize_conditions_unpack_unknowns</span><span class="p">(</span><span class="n">segment</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">initialize_conditions_unpack_unknowns</span><span class="p">(</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets the specified conditions which are given for the segment type.</span>
 
 <span class="sd">    Assumptions:</span>
@@ -471,7 +471,7 @@
     
 <div class="viewcode-block" id="residual_altitude">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.residual_altitude.html#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.residual_altitude">[docs]</a>
-<span class="k">def</span> <span class="nf">residual_altitude</span><span class="p">(</span><span class="n">segment</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">residual_altitude</span><span class="p">(</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the altitude residual</span>
 
 <span class="sd">    Assumptions:</span>
@@ -507,7 +507,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------     </span>
 <div class="viewcode-block" id="update_differentials">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.update_differentials.html#RCAIDE.Library.Mission.Segments.Climb.Constant_Dynamic_Pressure_Constant_Angle.update_differentials">[docs]</a>
-<span class="k">def</span> <span class="nf">update_differentials</span><span class="p">(</span><span class="n">segment</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_differentials</span><span class="p">(</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; On each iteration creates the differentials and integration functions from knowns about the problem. </span>
 <span class="sd">      Sets the time at each point. Must return in dimensional time, with t[0] = 0.</span>
 <span class="sd">      This is different from the common method as it also includes the scaling of operators.</span>

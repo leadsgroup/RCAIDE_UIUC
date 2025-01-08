@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,19 +387,19 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE</span>
-<span class="kn">import</span>  <span class="nn">RCAIDE</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>    <span class="kn">import</span> <span class="n">Units</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">RCAIDE</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">    </span><span class="kn">import</span> <span class="n">Units</span>
 
 <span class="c1"># python imports </span>
-<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span>  <span class="nn">np</span>
-<span class="kn">import</span>  <span class="nn">copy</span> 
+<span class="kn">import</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">copy</span> 
  
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Main Wing Weight </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="compute_wing_weight">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.compute_wing_weight">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_wing_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">wing</span><span class="p">,</span> <span class="n">WPOD</span><span class="p">,</span> <span class="n">complexity</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">num_main_wings</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_wing_weight</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">wing</span><span class="p">,</span> <span class="n">WPOD</span><span class="p">,</span> <span class="n">complexity</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">num_main_wings</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate the wing weight based on the flops method. The wing weight consists of:</span>
 <span class="sd">        - Total Wing Shear Material and Control Surface Weight</span>
 <span class="sd">        - Total Wing Miscellaneous Items Weight</span>
@@ -631,7 +631,7 @@
 
 <div class="viewcode-block" id="generate_wing_stations">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.generate_wing_stations">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_wing_stations</span><span class="p">(</span><span class="n">fuselage_width</span><span class="p">,</span> <span class="n">wing</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_wing_stations</span><span class="p">(</span><span class="n">fuselage_width</span><span class="p">,</span> <span class="n">wing</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Divides half the wing in sections, using the defined sections</span>
 <span class="sd">        and adding a section at the intersection of wing and fuselage</span>
 
@@ -725,7 +725,7 @@
 
 <div class="viewcode-block" id="generate_int_stations">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.generate_int_stations">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_int_stations</span><span class="p">(</span><span class="n">NSD</span><span class="p">,</span> <span class="n">ETA</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_int_stations</span><span class="p">(</span><span class="n">NSD</span><span class="p">,</span> <span class="n">ETA</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Divides half of the wing in integration stations</span>
 
 <span class="sd">        Assumptions:</span>
@@ -761,7 +761,7 @@
 
 <div class="viewcode-block" id="calculate_load">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.calculate_load">[docs]</a>
-<span class="k">def</span> <span class="nf">calculate_load</span><span class="p">(</span><span class="n">ETA</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_load</span><span class="p">(</span><span class="n">ETA</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Returns load factor assuming elliptical load distribution</span>
 
 <span class="sd">        Assumptions:</span>
@@ -785,7 +785,7 @@
 
 <div class="viewcode-block" id="find_sweep">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.find_sweep">[docs]</a>
-<span class="k">def</span> <span class="nf">find_sweep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">lst_y</span><span class="p">,</span> <span class="n">swp</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_sweep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">lst_y</span><span class="p">,</span> <span class="n">swp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Finds sweep angle for a certain y-location along the wing</span>
 
 <span class="sd">        Assumptions:</span>
@@ -819,7 +819,7 @@
 
 <div class="viewcode-block" id="get_spanwise_engine">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.get_spanwise_engine">[docs]</a>
-<span class="k">def</span> <span class="nf">get_spanwise_engine</span><span class="p">(</span><span class="n">networks</span><span class="p">,</span> <span class="n">SEMISPAN</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_spanwise_engine</span><span class="p">(</span><span class="n">networks</span><span class="p">,</span> <span class="n">SEMISPAN</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Returns EETA for the engine locations along the wing</span>
 
 <span class="sd">        Assumptions:</span>
@@ -852,7 +852,7 @@
 
 <div class="viewcode-block" id="wing_weight_constants_FLOPS">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.wing_weight_constants_FLOPS">[docs]</a>
-<span class="k">def</span> <span class="nf">wing_weight_constants_FLOPS</span><span class="p">(</span><span class="n">ac_type</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">wing_weight_constants_FLOPS</span><span class="p">(</span><span class="n">ac_type</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Defines wing weight constants as defined by FLOPS</span>
 <span class="sd">        Inputs: ac_type - determines type of instruments, electronics, and operating items based on types:</span>
 <span class="sd">                &quot;short-range&quot;, &quot;medium-range&quot;, &quot;long-range&quot;, &quot;business&quot;, &quot;cargo&quot;, &quot;commuter&quot;, &quot;sst&quot;</span>
@@ -870,7 +870,7 @@
 
 <div class="viewcode-block" id="determine_fuselage_chord">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.html#RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_wing_weight.determine_fuselage_chord">[docs]</a>
-<span class="k">def</span> <span class="nf">determine_fuselage_chord</span><span class="p">(</span><span class="n">fuselage_width</span><span class="p">,</span> <span class="n">wing</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">determine_fuselage_chord</span><span class="p">(</span><span class="n">fuselage_width</span><span class="p">,</span> <span class="n">wing</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Determine chord at wing and fuselage intersection</span>
 
 <span class="sd">        Assumptions:</span>

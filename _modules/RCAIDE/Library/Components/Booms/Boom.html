@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,15 +386,15 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE imports </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span> <span class="kn">import</span> <span class="n">Component</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>     <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Container</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w"> </span><span class="kn">import</span> <span class="n">Component</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">     </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Container</span> 
  
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  BOOM</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Boom">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Booms.Boom.html#RCAIDE.Library.Components.Booms.Boom.Boom">[docs]</a>
-<span class="k">class</span> <span class="nc">Boom</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Boom</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A structural boom component model for aircraft and rotorcraft applications.</span>
 
@@ -506,7 +506,7 @@
 <span class="sd">        Pressure difference between inside and outside of boom</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; :meta private:&quot;&quot;&quot;</span>
         <span class="c1">#This sets the default values.</span>
     
@@ -562,7 +562,7 @@
         
 <div class="viewcode-block" id="Boom.append_segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Booms.Boom.html#RCAIDE.Library.Components.Booms.Boom.Boom.append_segment">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Assumptions:</span>
 <span class="sd">           None</span>
@@ -591,8 +591,8 @@
 
 <div class="viewcode-block" id="Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Booms.Boom.html#RCAIDE.Library.Components.Booms.Boom.Container">[docs]</a>
-<span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Container</span><span class="p">(</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; :meta private: &quot;&quot;&quot;</span>
         <span class="c1">#Returns the components that can go inside</span>
     

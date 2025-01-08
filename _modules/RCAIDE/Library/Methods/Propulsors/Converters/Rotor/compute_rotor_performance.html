@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,18 +386,18 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
  <span class="c1"># RCAIDE imports </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                              <span class="kn">import</span> <span class="n">Data</span> <span class="p">,</span> <span class="n">Units</span><span class="p">,</span> <span class="n">orientation_product</span><span class="p">,</span> <span class="n">orientation_transpose</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Common.Lift</span>    <span class="kn">import</span> <span class="n">compute_airfoil_aerodynamics</span><span class="p">,</span><span class="n">compute_inflow_and_tip_loss</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                              </span><span class="kn">import</span> <span class="n">Data</span> <span class="p">,</span> <span class="n">Units</span><span class="p">,</span> <span class="n">orientation_product</span><span class="p">,</span> <span class="n">orientation_transpose</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Common.Lift</span><span class="w">    </span><span class="kn">import</span> <span class="n">compute_airfoil_aerodynamics</span><span class="p">,</span><span class="n">compute_inflow_and_tip_loss</span>  
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span>  <span class="nn">np</span> 
+<span class="kn">import</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="nn">np</span> 
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Generalized Rotor Class</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="compute_rotor_performance">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance.compute_rotor_performance">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_rotor_performance</span><span class="p">(</span><span class="n">propulsor</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]]):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_rotor_performance</span><span class="p">(</span><span class="n">propulsor</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">]]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyzes a general rotor given geometry and operating conditions.</span>
 
 <span class="sd">    Assumptions:</span>

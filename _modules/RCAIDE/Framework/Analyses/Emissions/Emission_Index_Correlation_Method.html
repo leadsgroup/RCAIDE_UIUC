@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -384,9 +384,9 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span>    <span class="kn">import</span> <span class="n">Process</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method</span> <span class="kn">import</span> <span class="o">*</span>  
-<span class="kn">from</span> <span class="nn">.Emissions</span>                   <span class="kn">import</span> <span class="n">Emissions</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses</span><span class="w">    </span><span class="kn">import</span> <span class="n">Process</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Emissions.Emission_Index_Empirical_Method</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Emissions</span><span class="w">                   </span><span class="kn">import</span> <span class="n">Emissions</span> 
   
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -394,7 +394,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Emission_Index_Correlation_Method">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method">[docs]</a>
-<span class="k">class</span> <span class="nc">Emission_Index_Correlation_Method</span><span class="p">(</span><span class="n">Emissions</span><span class="p">):</span> 
+<span class="k">class</span><span class="w"> </span><span class="nc">Emission_Index_Correlation_Method</span><span class="p">(</span><span class="n">Emissions</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Analysis class for computing aircraft emissions using empirical correlation methods.</span>
 
@@ -445,7 +445,7 @@
 <span class="sd">        characteristics. RTO MP-14, paper 20.</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This sets the default values and methods for the analysis.</span>
 <span class="sd">    </span>
@@ -466,7 +466,7 @@
             
 <div class="viewcode-block" id="Emission_Index_Correlation_Method.initialize">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>   
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function computes the emissions of different species from the Emission Indices </span>
 <span class="sd">        available in literature.</span>
@@ -486,7 +486,7 @@
 
 <div class="viewcode-block" id="Emission_Index_Correlation_Method.evaluate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_Correlation_Method.Emission_Index_Correlation_Method.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        The default evaluate function.</span>
 

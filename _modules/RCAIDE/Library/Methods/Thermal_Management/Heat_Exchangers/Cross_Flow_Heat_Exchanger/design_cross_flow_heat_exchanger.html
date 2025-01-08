@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,22 +385,22 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE imports </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                            <span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span>   
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup</span> <span class="kn">import</span> <span class="n">cross_flow_heat_exchanger_sizing_setup</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_geometry_setup</span> <span class="kn">import</span> <span class="n">cross_flow_heat_exchanger_geometry_setup</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Optimization.Common</span>             <span class="kn">import</span> <span class="n">Nexus</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Optimization.Packages.scipy</span>     <span class="kn">import</span> <span class="n">scipy_setup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                            </span><span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_sizing_setup</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_flow_heat_exchanger_sizing_setup</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.cross_flow_heat_exchanger_geometry_setup</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_flow_heat_exchanger_geometry_setup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Optimization.Common</span><span class="w">             </span><span class="kn">import</span> <span class="n">Nexus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Optimization.Packages.scipy</span><span class="w">     </span><span class="kn">import</span> <span class="n">scipy_setup</span>
 
 <span class="c1"># Python package imports   </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
-<span class="kn">import</span> <span class="nn">time</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span> 
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Rotor Design</span>
 <span class="c1"># ---------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="design_cross_flow_heat_exchanger">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.design_cross_flow_heat_exchanger.html#RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.design_cross_flow_heat_exchanger.design_cross_flow_heat_exchanger">[docs]</a>
-<span class="k">def</span> <span class="nf">design_cross_flow_heat_exchanger</span><span class="p">(</span><span class="n">HEX</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">battery</span><span class="p">,</span> <span class="n">single_side_contact</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dry_mass</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">design_cross_flow_heat_exchanger</span><span class="p">(</span><span class="n">HEX</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">battery</span><span class="p">,</span> <span class="n">single_side_contact</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dry_mass</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                        <span class="n">solver_name</span><span class="o">=</span> <span class="s1">&#39;SLSQP&#39;</span><span class="p">,</span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span><span class="n">solver_sense_step</span> <span class="o">=</span> <span class="mf">1E-3</span><span class="p">,</span>
                                        <span class="n">solver_tolerance</span> <span class="o">=</span> <span class="mf">1E-2</span><span class="p">,</span><span class="n">print_iterations</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span>
@@ -446,7 +446,7 @@
  
 <div class="viewcode-block" id="crossflow_heat_exchanger_design_problem_setup">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.design_cross_flow_heat_exchanger.html#RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.design_cross_flow_heat_exchanger.crossflow_heat_exchanger_design_problem_setup">[docs]</a>
-<span class="k">def</span> <span class="nf">crossflow_heat_exchanger_design_problem_setup</span><span class="p">(</span><span class="n">HEX</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">print_iterations</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">crossflow_heat_exchanger_design_problem_setup</span><span class="p">(</span><span class="n">HEX</span><span class="p">,</span><span class="n">coolant_line</span><span class="p">,</span><span class="n">print_iterations</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Sets up cross flow heat exchanger optimization problem including design variables,</span>
 <span class="sd">        constraints and objective function using RCAIDE&#39;s Nexus optimization framework.</span>
 <span class="sd">        Appends methodolody of planform modification to Nexus.</span>

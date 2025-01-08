@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,14 +386,14 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1"># RCAIDE imports </span>
 
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span> 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">vsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">vsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">openvsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">openvsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="c1"># This allows RCAIDE to build without OpenVSP</span>
         <span class="k">pass</span>
@@ -403,7 +403,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="write_vsp_nacelle">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_nacelle.write_vsp_nacelle.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_nacelle.write_vsp_nacelle">[docs]</a>
-<span class="k">def</span> <span class="nf">write_vsp_nacelle</span><span class="p">(</span><span class="n">nacelle</span><span class="p">,</span> <span class="n">OML_set_ind</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_vsp_nacelle</span><span class="p">(</span><span class="n">nacelle</span><span class="p">,</span> <span class="n">OML_set_ind</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This converts nacelles into OpenVSP format.</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions: </span>
@@ -589,7 +589,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="read_vsp_nacelle">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_nacelle.read_vsp_nacelle.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_nacelle.read_vsp_nacelle">[docs]</a>
-<span class="k">def</span> <span class="nf">read_vsp_nacelle</span><span class="p">(</span><span class="n">nacelle_id</span><span class="p">,</span><span class="n">vsp_nacelle_type</span><span class="p">,</span> <span class="n">units_type</span><span class="o">=</span><span class="s1">&#39;SI&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_vsp_nacelle</span><span class="p">(</span><span class="n">nacelle_id</span><span class="p">,</span><span class="n">vsp_nacelle_type</span><span class="p">,</span> <span class="n">units_type</span><span class="o">=</span><span class="s1">&#39;SI&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This reads an OpenVSP stack geometry or body of revolution and writes it to a RCAIDE nacelle format.</span>
 <span class="sd">    If an airfoil is defined in body-of-revolution, its coordinates are not read in due to absence of</span>
 <span class="sd">    API functions in VSP.</span>

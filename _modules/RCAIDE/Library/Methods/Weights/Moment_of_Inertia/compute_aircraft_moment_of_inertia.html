@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -384,17 +384,17 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia</span> <span class="kn">import</span> <span class="n">compute_cuboid_moment_of_inertia</span><span class="p">,</span> <span class="n">compute_cylinder_moment_of_inertia</span><span class="p">,</span> <span class="n">compute_wing_moment_of_inertia</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_cuboid_moment_of_inertia</span><span class="p">,</span> <span class="n">compute_cylinder_moment_of_inertia</span><span class="p">,</span> <span class="n">compute_wing_moment_of_inertia</span>
 
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span>  <span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="nn">np</span> 
 
 <span class="c1"># ------------------------------------------------------------------        </span>
 <span class="c1">#  Component moments of inertia (MOI) tensors</span>
 <span class="c1"># ------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="compute_aircraft_moment_of_inertia">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_aircraft_moment_of_inertia.html#RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_aircraft_moment_of_inertia.compute_aircraft_moment_of_inertia">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_aircraft_moment_of_inertia</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">CG_location</span><span class="p">,</span> <span class="n">update_MOI</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_aircraft_moment_of_inertia</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">CG_location</span><span class="p">,</span> <span class="n">update_MOI</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39; sums the moments of inertia of each component in the aircraft. Components summed: fuselages,</span>
 <span class="sd">    wings (main, horizontal, tail + others), turbofan engines, batteries, motors, batteries, fuel tanks</span>
 

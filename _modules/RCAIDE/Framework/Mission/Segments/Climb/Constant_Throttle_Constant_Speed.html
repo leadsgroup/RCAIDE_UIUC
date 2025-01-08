@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,11 +387,11 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                       <span class="kn">import</span> <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Segments.Evaluate</span>  <span class="kn">import</span> <span class="n">Evaluate</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Segments.Cruise</span>    <span class="kn">import</span> <span class="n">Constant_Throttle_Constant_Altitude</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Mission</span>                      <span class="kn">import</span> <span class="n">Common</span><span class="p">,</span><span class="n">Segments</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span>                   <span class="kn">import</span> <span class="n">Process</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                       </span><span class="kn">import</span> <span class="n">Units</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Segments.Evaluate</span><span class="w">  </span><span class="kn">import</span> <span class="n">Evaluate</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Segments.Cruise</span><span class="w">    </span><span class="kn">import</span> <span class="n">Constant_Throttle_Constant_Altitude</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Mission</span><span class="w">                      </span><span class="kn">import</span> <span class="n">Common</span><span class="p">,</span><span class="n">Segments</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses</span><span class="w">                   </span><span class="kn">import</span> <span class="n">Process</span>  
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Constant_Throttle_Constant_Speed</span>
@@ -399,7 +399,7 @@
  
 <div class="viewcode-block" id="Constant_Throttle_Constant_Speed">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.html#RCAIDE.Framework.Mission.Segments.Climb.Constant_Throttle_Constant_Speed.Constant_Throttle_Constant_Speed">[docs]</a>
-<span class="k">class</span> <span class="nc">Constant_Throttle_Constant_Speed</span><span class="p">(</span><span class="n">Evaluate</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Constant_Throttle_Constant_Speed</span><span class="p">(</span><span class="n">Evaluate</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Climb at a constant throttle setting and true airspeed. This segment may not always converge as the vehicle </span>
 <span class="sd">        could be deficient in thrust. Useful as a check to see the climb rate at the top of climb.</span>
 <span class="sd">    </span>
@@ -410,7 +410,7 @@
 <span class="sd">        None</span>
 <span class="sd">    &quot;&quot;&quot;</span>     
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default solver flow. Anything in here can be modified after initializing a segment.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>

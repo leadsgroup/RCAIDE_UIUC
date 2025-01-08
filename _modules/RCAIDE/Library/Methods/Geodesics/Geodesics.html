@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -392,8 +392,8 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="sd">&quot;&quot;&quot;Evaluate the thrust produced by the energy network.</span>
 
@@ -430,7 +430,7 @@
 
 <div class="viewcode-block" id="Math">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math">[docs]</a>
-<span class="k">class</span> <span class="nc">Math</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Math</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Additional math routines for GeographicLib.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -438,7 +438,7 @@
 <div class="viewcode-block" id="Math.sq">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.sq">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">sq</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sq</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Square a number&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span></div>
@@ -447,7 +447,7 @@
 <div class="viewcode-block" id="Math.cbrt">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.cbrt">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">cbrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cbrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Real cube root of a number&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">copysign</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="o">/</span><span class="mf">3.0</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span></div>
@@ -456,7 +456,7 @@
 <div class="viewcode-block" id="Math.norm">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.norm">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: Normalize a two-vector.&quot;&quot;&quot;</span>
 
         <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">Math</span><span class="o">.</span><span class="n">sq</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
@@ -472,7 +472,7 @@
 <div class="viewcode-block" id="Math.sum">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.sum">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Error free transformation of a sum.&quot;&quot;&quot;</span>
 
         <span class="c1"># Error free transformation of a sum.  Note that t can be the same as one</span>
@@ -491,7 +491,7 @@
 <div class="viewcode-block" id="Math.polyval">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.polyval">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">polyval</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">polyval</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate a polynomial.&quot;&quot;&quot;</span>
 
         <span class="n">y</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">0</span> <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">p</span><span class="p">[</span><span class="n">s</span><span class="p">])</span> <span class="c1"># make sure the returned value is a float</span>
@@ -504,7 +504,7 @@
 <div class="viewcode-block" id="Math.AngRound">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.AngRound">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">AngRound</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">AngRound</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: Round an angle so that small values underflow to zero.&quot;&quot;&quot;</span>
 
         <span class="c1"># The makes the smallest gap in x = 1/16 - nextafter(1/16, 0) = 1/2^57</span>
@@ -522,7 +522,7 @@
 <div class="viewcode-block" id="Math.remainder">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.remainder">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">remainder</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">remainder</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;remainder of x/y in the range [-y/2, y/2].&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="n">math</span><span class="o">.</span><span class="n">nan</span></div>
@@ -531,7 +531,7 @@
 <div class="viewcode-block" id="Math.AngNormalize">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.AngNormalize">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">AngNormalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">AngNormalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;reduce angle to [-180,180]&quot;&quot;&quot;</span>
 
         <span class="n">y</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>
@@ -541,7 +541,7 @@
 <div class="viewcode-block" id="Math.LatFix">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.LatFix">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">LatFix</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">LatFix</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;replace angles outside [-90,90] by NaN&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">90</span> <span class="k">else</span> <span class="n">x</span></div>
@@ -550,7 +550,7 @@
 <div class="viewcode-block" id="Math.AngDiff">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.AngDiff">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">AngDiff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">AngDiff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;compute y - x and reduce to [-180,180] accurately&quot;&quot;&quot;</span>
 
         <span class="n">d</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">,</span> <span class="mi">360</span><span class="p">),</span> <span class="n">Math</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">360</span><span class="p">))</span>
@@ -563,7 +563,7 @@
 <div class="viewcode-block" id="Math.sincosd">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.sincosd">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">sincosd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sincosd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute sine and cosine of x in degrees.&quot;&quot;&quot;</span>
 
         <span class="n">r</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">fmod</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span> <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="n">math</span><span class="o">.</span><span class="n">nan</span>
@@ -582,7 +582,7 @@
 <div class="viewcode-block" id="Math.sincosde">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Math.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Math.sincosde">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">sincosde</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sincosde</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute sine and cosine of (x + t) in degrees with x in [-180, 180]&quot;&quot;&quot;</span>
 
         <span class="n">q</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mi">90</span><span class="p">))</span> <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
@@ -600,7 +600,7 @@
  
 <div class="viewcode-block" id="GeodesicCapability">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.GeodesicCapability.html#RCAIDE.Library.Methods.Geodesics.Geodesics.GeodesicCapability">[docs]</a>
-<span class="k">class</span> <span class="nc">GeodesicCapability</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">GeodesicCapability</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Capability constants shared between Geodesic and GeodesicLine.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -632,7 +632,7 @@
 
 <div class="viewcode-block" id="Constants">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Constants.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Constants">[docs]</a>
-<span class="k">class</span> <span class="nc">Constants</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Constants</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Constants describing the WGS84 ellipsoid</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -644,7 +644,7 @@
 
 <div class="viewcode-block" id="Geodesic">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic">[docs]</a>
-<span class="k">class</span> <span class="nc">Geodesic</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Geodesic</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve geodesic problems&quot;&quot;&quot;</span>
 
     <span class="n">GEOGRAPHICLIB_GEODESIC_ORDER</span> <span class="o">=</span> <span class="mi">6</span>
@@ -681,7 +681,7 @@
     <span class="n">OUT_MASK</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">OUT_MASK</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_SinCosSeries</span><span class="p">(</span><span class="n">sinp</span><span class="p">,</span> <span class="n">sinx</span><span class="p">,</span> <span class="n">cosx</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_SinCosSeries</span><span class="p">(</span><span class="n">sinp</span><span class="p">,</span> <span class="n">sinx</span><span class="p">,</span> <span class="n">cosx</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: Evaluate a trig series using Clenshaw summation.&quot;&quot;&quot;</span>
         <span class="c1"># Evaluate</span>
         <span class="c1"># y = sinp ? sum(c[i] * sin( 2*i    * x), i, 1, n) :</span>
@@ -708,7 +708,7 @@
  
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_A1m1f</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_A1m1f</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return A1-1.&quot;&quot;&quot;</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
         <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span>
@@ -718,7 +718,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_C1f</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_C1f</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return C1.&quot;&quot;&quot;</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
         <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span>
@@ -738,7 +738,7 @@
             <span class="n">d</span> <span class="o">*=</span> <span class="n">eps</span>
             
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_A2m1f</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_A2m1f</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return A2-1&quot;&quot;&quot;</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
         <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span><span class="mi">28</span><span class="p">,</span> <span class="o">-</span><span class="mi">192</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span>
@@ -748,7 +748,7 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">eps</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_C2f</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_C2f</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return C2&quot;&quot;&quot;</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
         <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span>
@@ -769,7 +769,7 @@
 
 <div class="viewcode-block" id="Geodesic.__init__">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a Geodesic object</span>
 
 <span class="sd">        :param a: the equatorial radius of the ellipsoid in meters</span>
@@ -818,7 +818,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_C4coeff</span><span class="p">()</span></div>
 
 
-    <span class="k">def</span> <span class="nf">_A3coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_A3coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return coefficients for A3&quot;&quot;&quot;</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
         <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span>
@@ -835,7 +835,7 @@
             <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2</span>
 
-    <span class="k">def</span> <span class="nf">_C3coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_C3coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return coefficients for C3&quot;&quot;&quot;</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
         <span class="mi">3</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span>
@@ -862,7 +862,7 @@
                 <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2</span>
 
-    <span class="k">def</span> <span class="nf">_C4coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_C4coeff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return coefficients for C4&quot;&quot;&quot;</span>
         <span class="n">coeff</span> <span class="o">=</span> <span class="p">[</span>
         <span class="mi">97</span><span class="p">,</span> <span class="mi">15015</span><span class="p">,</span>
@@ -895,12 +895,12 @@
                 <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">2</span>
 
-    <span class="k">def</span> <span class="nf">_A3f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_A3f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return A3&quot;&quot;&quot;</span>
         <span class="c1"># Evaluate A3</span>
         <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">Geodesic</span><span class="o">.</span><span class="n">nA3_</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A3x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eps</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_C3f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_C3f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: return C3&quot;&quot;&quot;</span>
         <span class="c1"># Evaluate C3</span>
         <span class="c1"># Elements c[1] thru c[nC3_ - 1] are set</span>
@@ -913,7 +913,7 @@
             <span class="n">o</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span> 
 
     <span class="c1"># return s12b, m12b, m0, M12, M21</span>
-    <span class="k">def</span> <span class="nf">_Lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">sig12</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_Lengths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">sig12</span><span class="p">,</span>
                <span class="n">ssig1</span><span class="p">,</span> <span class="n">csig1</span><span class="p">,</span> <span class="n">dn1</span><span class="p">,</span> <span class="n">ssig2</span><span class="p">,</span> <span class="n">csig2</span><span class="p">,</span> <span class="n">dn2</span><span class="p">,</span> <span class="n">cbet1</span><span class="p">,</span> <span class="n">cbet2</span><span class="p">,</span> <span class="n">outmask</span><span class="p">,</span>
                <span class="c1"># Scratch areas of the right size</span>
                <span class="n">C1a</span><span class="p">,</span> <span class="n">C2a</span><span class="p">):</span>
@@ -967,7 +967,7 @@
         <span class="k">return</span> <span class="n">s12b</span><span class="p">,</span> <span class="n">m12b</span><span class="p">,</span> <span class="n">m0</span><span class="p">,</span> <span class="n">M12</span><span class="p">,</span> <span class="n">M21</span>
 
     <span class="c1"># return sig12, salp1, calp1, salp2, calp2, dnm</span>
-    <span class="k">def</span> <span class="nf">_InverseStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbet1</span><span class="p">,</span> <span class="n">cbet1</span><span class="p">,</span> <span class="n">dn1</span><span class="p">,</span> <span class="n">sbet2</span><span class="p">,</span> <span class="n">cbet2</span><span class="p">,</span> <span class="n">dn2</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_InverseStart</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbet1</span><span class="p">,</span> <span class="n">cbet1</span><span class="p">,</span> <span class="n">dn1</span><span class="p">,</span> <span class="n">sbet2</span><span class="p">,</span> <span class="n">cbet2</span><span class="p">,</span> <span class="n">dn2</span><span class="p">,</span>
                     <span class="n">lam12</span><span class="p">,</span> <span class="n">slam12</span><span class="p">,</span> <span class="n">clam12</span><span class="p">,</span>
                     <span class="c1"># Scratch areas of the right size</span>
                     <span class="n">C1a</span><span class="p">,</span> <span class="n">C2a</span><span class="p">):</span>
@@ -1108,7 +1108,7 @@
     <span class="c1"># return lam12, salp2, calp2, sig12, ssig1, csig1, ssig2, csig2, eps,</span>
     <span class="c1"># domg12, dlam12</span>
     
-    <span class="k">def</span> <span class="nf">_Lambda12</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbet1</span><span class="p">,</span> <span class="n">cbet1</span><span class="p">,</span> <span class="n">dn1</span><span class="p">,</span> <span class="n">sbet2</span><span class="p">,</span> <span class="n">cbet2</span><span class="p">,</span> <span class="n">dn2</span><span class="p">,</span> <span class="n">salp1</span><span class="p">,</span> <span class="n">calp1</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_Lambda12</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sbet1</span><span class="p">,</span> <span class="n">cbet1</span><span class="p">,</span> <span class="n">dn1</span><span class="p">,</span> <span class="n">sbet2</span><span class="p">,</span> <span class="n">cbet2</span><span class="p">,</span> <span class="n">dn2</span><span class="p">,</span> <span class="n">salp1</span><span class="p">,</span> <span class="n">calp1</span><span class="p">,</span>
                 <span class="n">slam120</span><span class="p">,</span> <span class="n">clam120</span><span class="p">,</span> <span class="n">diffp</span><span class="p">,</span>
                 <span class="c1"># Scratch areas of the right size</span>
                 <span class="n">C1a</span><span class="p">,</span> <span class="n">C2a</span><span class="p">,</span> <span class="n">C3a</span><span class="p">):</span>
@@ -1185,7 +1185,7 @@
             <span class="n">domg12</span><span class="p">,</span> <span class="n">dlam12</span><span class="p">)</span>
 
     <span class="c1"># return a12, s12, salp1, calp1, salp2, calp2, m12, M12, M21, S12</span>
-    <span class="k">def</span> <span class="nf">_GenInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">outmask</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_GenInverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">outmask</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: General version of the inverse problem&quot;&quot;&quot;</span>
         <span class="n">a12</span> <span class="o">=</span> <span class="n">s12</span> <span class="o">=</span> <span class="n">m12</span> <span class="o">=</span> <span class="n">M12</span> <span class="o">=</span> <span class="n">M21</span> <span class="o">=</span> <span class="n">S12</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># return vals</span>
 
@@ -1498,7 +1498,7 @@
 
 <div class="viewcode-block" id="Geodesic.Inverse">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic.Inverse">[docs]</a>
-    <span class="k">def</span> <span class="nf">Inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">Inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span>
               <span class="n">outmask</span> <span class="o">=</span> <span class="n">GeodesicCapability</span><span class="o">.</span><span class="n">STANDARD</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Solve the inverse geodesic problem</span>
 
@@ -1542,9 +1542,9 @@
 
 
     <span class="c1"># return a12, lat2, lon2, azi2, s12, m12, M12, M21, S12</span>
-    <span class="k">def</span> <span class="nf">_GenDirect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">arcmode</span><span class="p">,</span> <span class="n">s12_a12</span><span class="p">,</span> <span class="n">outmask</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_GenDirect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">arcmode</span><span class="p">,</span> <span class="n">s12_a12</span><span class="p">,</span> <span class="n">outmask</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Private: General version of direct problem&quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">geographiclib.geodesicline</span> <span class="kn">import</span> <span class="n">GeodesicLine</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">geographiclib.geodesicline</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeodesicLine</span>
         <span class="c1"># Automatically supply DISTANCE_IN if necessary</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">arcmode</span><span class="p">:</span> <span class="n">outmask</span> <span class="o">|=</span> <span class="n">Geodesic</span><span class="o">.</span><span class="n">DISTANCE_IN</span>
         <span class="n">line</span> <span class="o">=</span> <span class="n">GeodesicLine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">azi1</span><span class="p">,</span> <span class="n">outmask</span><span class="p">)</span>
@@ -1586,7 +1586,7 @@
 
 <div class="viewcode-block" id="Distance">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Distance.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Distance">[docs]</a>
-<span class="k">class</span> <span class="nc">Distance</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Distance</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Modified to remve unit conversions to stay with RCAIDE conventions - Oct. 2024</span>
 <span class="sd">    Base class for other distance algorithms. Represents a distance.</span>
 
@@ -1638,7 +1638,7 @@
     
 <div class="viewcode-block" id="Distance.__init__">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Distance.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Distance.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        There are 3 ways to create a distance:</span>
 
@@ -1674,51 +1674,51 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__kilometers</span> <span class="o">=</span> <span class="n">kilometers</span></div>
 
 
-    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Distance</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">kilometers</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Distance instance must be added with Distance instance.&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="o">-</span><span class="n">other</span>
 
-    <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Distance</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Distance instance must be multiplicated with numbers.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span> <span class="o">*</span> <span class="n">other</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Distance</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Distance instance must be multiplicated with numbers.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="n">other</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Distance</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span> <span class="o">/</span> <span class="n">other</span><span class="o">.</span><span class="n">kilometers</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span> <span class="o">/</span> <span class="n">other</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Distance</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span> <span class="o">//</span> <span class="n">other</span><span class="o">.</span><span class="n">kilometers</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span> <span class="o">//</span> <span class="n">other</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Distance.measure">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Distance.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Distance.measure">[docs]</a>
-    <span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="c1"># Intentionally not documented, because this method is not supposed</span>
         <span class="c1"># to be used directly.</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Distance is an abstract class&quot;</span><span class="p">)</span></div>
@@ -1726,7 +1726,7 @@
 
 <div class="viewcode-block" id="Distance.destination">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Distance.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Distance.destination">[docs]</a>
-    <span class="k">def</span> <span class="nf">destination</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">bearing</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">destination</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">bearing</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate destination point using a starting point, bearing</span>
 <span class="sd">        and a distance. This method works for non-abstract distances only.</span>
@@ -1758,51 +1758,51 @@
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Distance is an abstract class&quot;</span><span class="p">)</span></div>
 
 
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
         <span class="k">return</span> <span class="s1">&#39;Distance(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
         <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> km&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">__kilometers</span>
 
-    <span class="k">def</span> <span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># py2 only</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__cmp__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>  <span class="c1"># py2 only</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Distance</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">kilometers</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">cmp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cmp__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cmp__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cmp__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cmp__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cmp__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__cmp__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span>
     
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">kilometers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">kilometers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__kilometers</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">km</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">km</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">kilometers</span></div>
 
 
 <div class="viewcode-block" id="Geodesic_Calculate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate">[docs]</a>
-<span class="k">class</span> <span class="nc">Geodesic_Calculate</span><span class="p">(</span><span class="n">Distance</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Geodesic_Calculate</span><span class="p">(</span><span class="n">Distance</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the geodesic distance between points.</span>
 
@@ -1826,7 +1826,7 @@
 
 <div class="viewcode-block" id="Geodesic_Calculate.__init__">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         
         <span class="bp">self</span><span class="o">.</span><span class="n">ellipsoid_key</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ELLIPSOID</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1838,7 +1838,7 @@
 
 <div class="viewcode-block" id="Geodesic_Calculate.set_ellipsoid">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate.set_ellipsoid">[docs]</a>
-    <span class="k">def</span> <span class="nf">set_ellipsoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ellipsoid</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_ellipsoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ellipsoid</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ellipsoid</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">ELLIPSOID</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6378.137</span><span class="p">,</span> <span class="mf">6356.7523142</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="mf">298.257223563</span><span class="p">)</span> <span class="c1"># Assigns WGS-84 Ellipsoid parameters</span>
@@ -1854,7 +1854,7 @@
 
 <div class="viewcode-block" id="Geodesic_Calculate.measure">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate.html#RCAIDE.Library.Methods.Geodesics.Geodesics.Geodesic_Calculate.measure">[docs]</a>
-    <span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">measure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="c1">#a, b = Point(a), Point(b)</span>
         <span class="c1">#_ensure_same_altitude(a, b)</span>
         <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>

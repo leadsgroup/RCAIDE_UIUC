@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,12 +386,12 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
  <span class="c1"># RCAIDE imports   </span>
-<span class="kn">from</span> <span class="nn">.</span>                <span class="kn">import</span> <span class="n">Propulsor</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.unpack_ice_propeller_unknowns</span>   <span class="kn">import</span> <span class="n">unpack_ice_propeller_unknowns</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.pack_ice_propeller_residuals</span>    <span class="kn">import</span> <span class="n">pack_ice_propeller_residuals</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.append_ice_propeller_conditions</span> <span class="kn">import</span> <span class="n">append_ice_propeller_conditions</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.compute_ice_performance</span>         <span class="kn">import</span> <span class="n">compute_ice_performance</span><span class="p">,</span> <span class="n">reuse_stored_ice_data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.append_ice_residual_and_unknown</span> <span class="kn">import</span>  <span class="n">append_ice_residual_and_unknown</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w">                </span><span class="kn">import</span> <span class="n">Propulsor</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.unpack_ice_propeller_unknowns</span><span class="w">   </span><span class="kn">import</span> <span class="n">unpack_ice_propeller_unknowns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.pack_ice_propeller_residuals</span><span class="w">    </span><span class="kn">import</span> <span class="n">pack_ice_propeller_residuals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.append_ice_propeller_conditions</span><span class="w"> </span><span class="kn">import</span> <span class="n">append_ice_propeller_conditions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.compute_ice_performance</span><span class="w">         </span><span class="kn">import</span> <span class="n">compute_ice_performance</span><span class="p">,</span> <span class="n">reuse_stored_ice_data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.ICE_Propulsor.append_ice_residual_and_unknown</span><span class="w"> </span><span class="kn">import</span>  <span class="n">append_ice_residual_and_unknown</span>
  
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
@@ -399,7 +399,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="ICE_Propeller">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.ICE_Propeller.html#RCAIDE.Library.Components.Propulsors.ICE_Propeller.ICE_Propeller">[docs]</a>
-<span class="k">class</span> <span class="nc">ICE_Propeller</span><span class="p">(</span><span class="n">Propulsor</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ICE_Propeller</span><span class="p">(</span><span class="n">Propulsor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A propulsion system class that combines an internal combustion engine with a fixed-pitch propeller.</span>
 <span class="sd">    </span>
@@ -445,7 +445,7 @@
 <span class="sd">    RCAIDE.Library.Components.Propulsors.Propulsor</span>
 <span class="sd">    RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
         <span class="c1"># setting the default values</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                          <span class="o">=</span> <span class="s1">&#39;ice_propeller&#39;</span>   
         <span class="bp">self</span><span class="o">.</span><span class="n">active_fuel_tanks</span>            <span class="o">=</span> <span class="kc">None</span>
@@ -457,7 +457,7 @@
 
 <div class="viewcode-block" id="ICE_Propeller.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.ICE_Propeller.html#RCAIDE.Library.Components.Propulsors.ICE_Propeller.ICE_Propeller.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Appends operating conditions to the segment.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -467,7 +467,7 @@
 
 <div class="viewcode-block" id="ICE_Propeller.unpack_propulsor_unknowns">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.ICE_Propeller.html#RCAIDE.Library.Components.Propulsors.ICE_Propeller.ICE_Propeller.unpack_propulsor_unknowns">[docs]</a>
-    <span class="k">def</span> <span class="nf">unpack_propulsor_unknowns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">unpack_propulsor_unknowns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>  
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Unpacks propulsor unknowns from the segment.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -477,7 +477,7 @@
 
 <div class="viewcode-block" id="ICE_Propeller.pack_propulsor_residuals">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.ICE_Propeller.html#RCAIDE.Library.Components.Propulsors.ICE_Propeller.ICE_Propeller.pack_propulsor_residuals">[docs]</a>
-    <span class="k">def</span> <span class="nf">pack_propulsor_residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">pack_propulsor_residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Packs propulsor residuals into the segment.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -487,7 +487,7 @@
 
 <div class="viewcode-block" id="ICE_Propeller.append_propulsor_unknowns_and_residuals">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.ICE_Propeller.html#RCAIDE.Library.Components.Propulsors.ICE_Propeller.ICE_Propeller.append_propulsor_unknowns_and_residuals">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_propulsor_unknowns_and_residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_propulsor_unknowns_and_residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Appends propulsor unknowns and residuals to the segment.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -497,7 +497,7 @@
     
 <div class="viewcode-block" id="ICE_Propeller.compute_performance">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.ICE_Propeller.html#RCAIDE.Library.Components.Propulsors.ICE_Propeller.ICE_Propeller.compute_performance">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes propulsor performance including thrust, moment, and power.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -507,7 +507,7 @@
     
 <div class="viewcode-block" id="ICE_Propeller.reuse_stored_data">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Propulsors.ICE_Propeller.html#RCAIDE.Library.Components.Propulsors.ICE_Propeller.ICE_Propeller.reuse_stored_data">[docs]</a>
-    <span class="k">def</span> <span class="nf">reuse_stored_data</span><span class="p">(</span><span class="n">ICE_prop</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">network</span><span class="p">,</span><span class="n">stored_propulsor_tag</span><span class="p">,</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reuse_stored_data</span><span class="p">(</span><span class="n">ICE_prop</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">network</span><span class="p">,</span><span class="n">stored_propulsor_tag</span><span class="p">,</span><span class="n">center_of_gravity</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Reuses stored propulsor data for performance calculations.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

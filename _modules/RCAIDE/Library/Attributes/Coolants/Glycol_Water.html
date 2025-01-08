@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,18 +385,18 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Imports</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="kn">from</span> <span class="nn">.Coolant</span> <span class="kn">import</span> <span class="n">Coolant</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Coolant</span><span class="w"> </span><span class="kn">import</span> <span class="n">Coolant</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Glycol_Water</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Glycol_Water">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Attributes.Coolants.Glycol_Water.html#RCAIDE.Library.Attributes.Coolants.Glycol_Water.Glycol_Water">[docs]</a>
-<span class="k">class</span> <span class="nc">Glycol_Water</span><span class="p">(</span><span class="n">Coolant</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Glycol_Water</span><span class="p">(</span><span class="n">Coolant</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generic class of ethelyne glycol-water mixture coolant.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -417,7 +417,7 @@
 
 <div class="viewcode-block" id="Glycol_Water.compute_cp">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Attributes.Coolants.Glycol_Water.html#RCAIDE.Library.Attributes.Coolants.Glycol_Water.Glycol_Water.compute_cp">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_cp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_cp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Computes the specfic heat capacity of water-glycol at a specfic temperature  </span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -438,7 +438,7 @@
     
 <div class="viewcode-block" id="Glycol_Water.compute_absolute_viscosity">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Attributes.Coolants.Glycol_Water.html#RCAIDE.Library.Attributes.Coolants.Glycol_Water.Glycol_Water.compute_absolute_viscosity">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_absolute_viscosity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">101325.</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_absolute_viscosity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">101325.</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Computes the absolute viscosity of water-glycol at a specfic temperature and pressure </span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -460,7 +460,7 @@
     
 <div class="viewcode-block" id="Glycol_Water.compute_density">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Attributes.Coolants.Glycol_Water.html#RCAIDE.Library.Attributes.Coolants.Glycol_Water.Glycol_Water.compute_density">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_density</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">101325.</span><span class="p">):</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_density</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">101325.</span><span class="p">):</span>  
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Computes the density of water-glycol at a specfic temperature and pressure </span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -482,7 +482,7 @@
     
 <div class="viewcode-block" id="Glycol_Water.compute_thermal_conductivity">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Attributes.Coolants.Glycol_Water.html#RCAIDE.Library.Attributes.Coolants.Glycol_Water.Glycol_Water.compute_thermal_conductivity">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_thermal_conductivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">101325.</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_thermal_conductivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mf">101325.</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Computes the density of water-glycol at a specfic temperature and pressure </span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -505,7 +505,7 @@
     
 <div class="viewcode-block" id="Glycol_Water.compute_prandtl_number">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Attributes.Coolants.Glycol_Water.html#RCAIDE.Library.Attributes.Coolants.Glycol_Water.Glycol_Water.compute_prandtl_number">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_prandtl_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_prandtl_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">300.</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Computes the density of water-glycol at a specfic temperature and pressure </span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>

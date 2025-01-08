@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,19 +385,19 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>      <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span><span class="n">Container</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span>  <span class="kn">import</span> <span class="n">Mass_Properties</span><span class="p">,</span> <span class="n">Component</span>   
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia</span> <span class="kn">import</span>  <span class="n">compute_wing_moment_of_inertia</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">      </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span><span class="n">Container</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w">  </span><span class="kn">import</span> <span class="n">Mass_Properties</span><span class="p">,</span> <span class="n">Component</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia</span><span class="w"> </span><span class="kn">import</span>  <span class="n">compute_wing_moment_of_inertia</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Wing</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Wing">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing">[docs]</a>
-<span class="k">class</span> <span class="nc">Wing</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Wing</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Base class for aircraft lifting surfaces providing core functionality for geometric </span>
 <span class="sd">    definition and analysis.</span>
@@ -547,7 +547,7 @@
 <span class="sd">        Vertical stabilizer implementation</span>
 <span class="sd">    &quot;&quot;&quot;</span>      
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets default values for the wing attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>         
@@ -609,7 +609,7 @@
 
 <div class="viewcode-block" id="Wing.append_segment">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing.append_segment">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a new segment to the wing&#39;s segment container.</span>
 
@@ -630,7 +630,7 @@
     
 <div class="viewcode-block" id="Wing.append_airfoil">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing.append_airfoil">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">airfoil</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_airfoil</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">airfoil</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds an airfoil definition to the wing.</span>
 
@@ -651,7 +651,7 @@
 
 <div class="viewcode-block" id="Wing.append_control_surface">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing.append_control_surface">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_control_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_surface</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_control_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">control_surface</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a control surface to the wing.</span>
 
@@ -672,7 +672,7 @@
     
 <div class="viewcode-block" id="Wing.append_fuel_tank">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing.append_fuel_tank">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_fuel_tank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fuel_tank</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_fuel_tank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fuel_tank</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds a fuel tank to the wing.</span>
 
@@ -693,7 +693,7 @@
  
 <div class="viewcode-block" id="Wing.compute_moment_of_inertia">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Wing.compute_moment_of_inertia">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">fuel_flag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_moment_of_inertia</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">center_of_gravity</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">fuel_flag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Computes the moment of inertia tensor for the wing.</span>
 
@@ -718,10 +718,10 @@
     
 <div class="viewcode-block" id="Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Container">[docs]</a>
-<span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Container</span><span class="p">(</span><span class="n">Component</span><span class="o">.</span><span class="n">Container</span><span class="p">):</span>
 <div class="viewcode-block" id="Container.get_children">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Components.Wings.Wing.html#RCAIDE.Library.Components.Wings.Wing.Container.get_children">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Returns the components that can go inside</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -739,9 +739,9 @@
 <span class="sd">        Properties Used:</span>
 <span class="sd">        N/A</span>
 <span class="sd">        &quot;&quot;&quot;</span>       
-        <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Main_Wing</span>
-        <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Vertical_Tail</span>
-        <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Horizontal_Tail</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">Main_Wing</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vertical_Tail</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">Horizontal_Tail</span>
         
         <span class="k">return</span> <span class="p">[</span><span class="n">Main_Wing</span><span class="p">,</span><span class="n">Vertical_Tail</span><span class="p">,</span><span class="n">Horizontal_Tail</span><span class="p">]</span></div>
 </div>

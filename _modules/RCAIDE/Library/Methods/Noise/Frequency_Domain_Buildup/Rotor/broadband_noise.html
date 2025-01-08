@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,22 +386,22 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.BPM_boundary_layer_properties</span> <span class="kn">import</span> <span class="n">BPM_boundary_layer_properties</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.LBL_VS_broadband_noise</span>        <span class="kn">import</span> <span class="n">LBL_VS_broadband_noise</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise</span>        <span class="kn">import</span> <span class="n">TBL_TE_broadband_noise</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TIP_broadband_noise</span>           <span class="kn">import</span> <span class="n">TIP_broadband_noise</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.noise_directivities</span>           <span class="kn">import</span> <span class="n">noise_directivities</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.BPM_boundary_layer_properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">BPM_boundary_layer_properties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.LBL_VS_broadband_noise</span><span class="w">        </span><span class="kn">import</span> <span class="n">LBL_VS_broadband_noise</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TBL_TE_broadband_noise</span><span class="w">        </span><span class="kn">import</span> <span class="n">TBL_TE_broadband_noise</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.TIP_broadband_noise</span><span class="w">           </span><span class="kn">import</span> <span class="n">TIP_broadband_noise</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.noise_directivities</span><span class="w">           </span><span class="kn">import</span> <span class="n">noise_directivities</span>
 
 <span class="c1"># Python Package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  
  
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Compute Broadband Noise </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="broadband_noise">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise.broadband_noise">[docs]</a>
-<span class="k">def</span> <span class="nf">broadband_noise</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">,</span><span class="n">coordinates</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">Noise</span><span class="p">,</span><span class="n">cpt</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">broadband_noise</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span><span class="n">propulsor_conditions</span><span class="p">,</span><span class="n">coordinates</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">Noise</span><span class="p">,</span><span class="n">cpt</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;This computes the trailing edge noise compoment of broadband noise of a propeller or </span>
 <span class="sd">    lift-rotor in the frequency domain. Boundary layer properties are computed using RCAIDE&#39;s </span>
 <span class="sd">    panel method.</span>
@@ -609,13 +609,13 @@
  
 <div class="viewcode-block" id="flatten_matrix">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise.flatten_matrix">[docs]</a>
-<span class="k">def</span> <span class="nf">flatten_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">num_cpt</span><span class="p">,</span><span class="n">num_mic</span><span class="p">,</span><span class="n">num_blades</span><span class="p">,</span><span class="n">num_sec</span><span class="p">,</span><span class="n">num_cf</span><span class="p">,</span><span class="n">num_az</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">flatten_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">num_cpt</span><span class="p">,</span><span class="n">num_mic</span><span class="p">,</span><span class="n">num_blades</span><span class="p">,</span><span class="n">num_sec</span><span class="p">,</span><span class="n">num_cf</span><span class="p">,</span><span class="n">num_az</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,(</span><span class="n">num_cpt</span><span class="o">*</span><span class="n">num_mic</span><span class="o">*</span><span class="n">num_blades</span><span class="o">*</span><span class="n">num_sec</span><span class="o">*</span><span class="n">num_cf</span><span class="o">*</span><span class="n">num_az</span><span class="p">))</span></div>
 
  
 <div class="viewcode-block" id="unflatten_matrix">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise.unflatten_matrix">[docs]</a>
-<span class="k">def</span> <span class="nf">unflatten_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">num_cpt</span><span class="p">,</span><span class="n">num_mic</span><span class="p">,</span><span class="n">num_blades</span><span class="p">,</span><span class="n">num_sec</span><span class="p">,</span><span class="n">num_cf</span><span class="p">,</span><span class="n">num_az</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">unflatten_matrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">num_cpt</span><span class="p">,</span><span class="n">num_mic</span><span class="p">,</span><span class="n">num_blades</span><span class="p">,</span><span class="n">num_sec</span><span class="p">,</span><span class="n">num_cf</span><span class="p">,</span><span class="n">num_az</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,(</span><span class="n">num_cpt</span><span class="p">,</span><span class="n">num_mic</span><span class="p">,</span><span class="n">num_blades</span><span class="p">,</span><span class="n">num_sec</span><span class="p">,</span><span class="n">num_cf</span><span class="p">,</span><span class="n">num_az</span><span class="p">))</span></div>
 
 </pre></div>

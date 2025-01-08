@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,23 +387,23 @@
 <span class="c1">#  Imports</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">RCAIDE.Framework.Optimization.Packages.pyopt.pyopt_setup</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Optimization.Packages.pyopt.pyopt_setup</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="k">pass</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Optimization.Common</span> <span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Optimization.Common</span><span class="w"> </span><span class="kn">import</span> <span class="n">helper_functions</span> <span class="k">as</span> <span class="n">help_fun</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Trust Region Optimization Class</span>
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Trust_Region_Optimization">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization">[docs]</a>
-<span class="k">class</span> <span class="nc">Trust_Region_Optimization</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Trust_Region_Optimization</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A trust region optimization</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -413,7 +413,7 @@
 <span class="sd">    None</span>
 <span class="sd">    &quot;&quot;&quot;</span>      
         
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values.</span>
 
 <span class="sd">        Assumptions:</span>
@@ -448,7 +448,7 @@
         
 <div class="viewcode-block" id="Trust_Region_Optimization.optimize">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.optimize">[docs]</a>
-    <span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">print_output</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">print_output</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Optimizes the problem</span>
 
 <span class="sd">        Assumptions:</span>
@@ -499,7 +499,7 @@
             
         <span class="c1"># History writing</span>
         <span class="n">f_out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;TRM_hist.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
-        <span class="kn">import</span> <span class="nn">datetime</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
         <span class="n">f_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span><span class="o">+</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>       
         
         <span class="n">inp</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">optimization_problem</span><span class="o">.</span><span class="n">inputs</span>
@@ -772,7 +772,7 @@
         
 <div class="viewcode-block" id="Trust_Region_Optimization.evaluate_model">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.evaluate_model">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">der_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">der_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluates the RCAIDE nexus problem. This is often a mission evaluation.</span>
 
 <span class="sd">        Assumptions:</span>
@@ -815,7 +815,7 @@
 
 <div class="viewcode-block" id="Trust_Region_Optimization.evaluate_corrected_model">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.evaluate_corrected_model">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_corrected_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">corrections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">tr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">return_cons</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_corrected_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">corrections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">tr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">return_cons</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluates the RCAIDE nexus problem and applies corrections to the results.</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -868,7 +868,7 @@
     
 <div class="viewcode-block" id="Trust_Region_Optimization.evaluate_constraints">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.evaluate_constraints">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">corrections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">tr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">lb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">ub</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">corrections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">tr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">lb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">ub</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluates the RCAIDE nexus problem provides an objective value based on constraint violation.</span>
 <span class="sd">        Correction factors are applied to the evaluation results.</span>
 <span class="sd">        </span>
@@ -922,7 +922,7 @@
         
 <div class="viewcode-block" id="Trust_Region_Optimization.calculate_constraint_violation">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.calculate_constraint_violation">[docs]</a>
-    <span class="k">def</span> <span class="nf">calculate_constraint_violation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">gval</span><span class="p">,</span><span class="n">lb</span><span class="p">,</span><span class="n">ub</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_constraint_violation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">gval</span><span class="p">,</span><span class="n">lb</span><span class="p">,</span><span class="n">ub</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates the constraint violation using a 2-norm of the violated constraint values.</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -957,7 +957,7 @@
     
 <div class="viewcode-block" id="Trust_Region_Optimization.calculate_correction">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.calculate_correction">[docs]</a>
-    <span class="k">def</span> <span class="nf">calculate_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">dg</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">f</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">dg</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculates additive correction factors.</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -1000,7 +1000,7 @@
     
 <div class="viewcode-block" id="Trust_Region_Optimization.scale_vals">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.scale_vals">[docs]</a>
-    <span class="k">def</span> <span class="nf">scale_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">ini</span><span class="p">,</span><span class="n">bnd</span><span class="p">,</span><span class="n">scl</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale_vals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">inp</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">ini</span><span class="p">,</span><span class="n">bnd</span><span class="p">,</span><span class="n">scl</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Scales inputs, constraints, and their bounds.</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -1070,7 +1070,7 @@
     
 <div class="viewcode-block" id="Trust_Region_Optimization.accuracy_ratio">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.accuracy_ratio">[docs]</a>
-    <span class="k">def</span> <span class="nf">accuracy_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">f_center</span><span class="p">,</span><span class="n">f_hi</span><span class="p">,</span><span class="n">f_corr</span><span class="p">,</span><span class="n">g_viol_center</span><span class="p">,</span><span class="n">g_viol_hi</span><span class="p">,</span><span class="n">g_viol_corr</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">accuracy_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">f_center</span><span class="p">,</span><span class="n">f_hi</span><span class="p">,</span><span class="n">f_corr</span><span class="p">,</span><span class="n">g_viol_center</span><span class="p">,</span><span class="n">g_viol_hi</span><span class="p">,</span><span class="n">g_viol_corr</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the trust region accuracy ratio.</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -1110,7 +1110,7 @@
     
 <div class="viewcode-block" id="Trust_Region_Optimization.update_tr_size">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.update_tr_size">[docs]</a>
-    <span class="k">def</span> <span class="nf">update_tr_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rho</span><span class="p">,</span><span class="n">tr</span><span class="p">,</span><span class="n">accepted</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_tr_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rho</span><span class="p">,</span><span class="n">tr</span><span class="p">,</span><span class="n">accepted</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the trust region size based on the accuracy ratio and if it has been accepted.</span>
 <span class="sd">        </span>
 <span class="sd">        Assumptions:</span>
@@ -1165,7 +1165,7 @@
     
 <div class="viewcode-block" id="Trust_Region_Optimization.initialize_SLSQP_constraints">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.initialize_SLSQP_constraints">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize_SLSQP_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">corrections</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize_SLSQP_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">con</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">corrections</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
         <span class="c1"># Initialize variables according to SLSQP requirements</span>
         <span class="n">slsqp_con_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">con</span><span class="p">):</span>
@@ -1188,7 +1188,7 @@
     
 <div class="viewcode-block" id="Trust_Region_Optimization.unpack_constraints_slsqp">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.html#RCAIDE.Framework.Optimization.Packages.trmm.Trust_Region_Optimization.Trust_Region_Optimization.unpack_constraints_slsqp">[docs]</a>
-    <span class="k">def</span> <span class="nf">unpack_constraints_slsqp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">con_ind</span><span class="p">,</span><span class="n">sign</span><span class="p">,</span><span class="n">edge</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">corrections</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unpack_constraints_slsqp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">con_ind</span><span class="p">,</span><span class="n">sign</span><span class="p">,</span><span class="n">edge</span><span class="p">,</span><span class="n">problem</span><span class="p">,</span><span class="n">corrections</span><span class="p">,</span><span class="n">tr</span><span class="p">):</span>
     
         <span class="n">A</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">corrections</span>
         <span class="n">x0</span>   <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">center</span>

@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,17 +386,17 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE imports  </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span> 
 
 <span class="c1"># pacakge imports  </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Thwaites Method</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="thwaites_method">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.thwaites_method">[docs]</a>
-<span class="k">def</span> <span class="nf">thwaites_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span><span class="n">NU</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">RE_L</span><span class="p">,</span><span class="n">X_I</span><span class="p">,</span><span class="n">VE_I</span><span class="p">,</span> <span class="n">DVE_I</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">THETA_0</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">thwaites_method</span><span class="p">(</span><span class="n">npanel</span><span class="p">,</span><span class="n">ncases</span><span class="p">,</span><span class="n">ncpts</span><span class="p">,</span><span class="n">NU</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">RE_L</span><span class="p">,</span><span class="n">X_I</span><span class="p">,</span><span class="n">VE_I</span><span class="p">,</span> <span class="n">DVE_I</span><span class="p">,</span><span class="n">tol</span><span class="p">,</span><span class="n">THETA_0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the boundary layer characteristics in laminar </span>
 <span class="sd">    flow pressure gradients</span>
 <span class="sd">    </span>
@@ -447,7 +447,7 @@
     <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncases</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">cpt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncpts</span><span class="p">):</span>
             
-            <span class="k">def</span> <span class="nf">dy_by_dx</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="nf">dy_by_dx</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
                 <span class="k">return</span> <span class="mf">0.45</span><span class="o">*</span><span class="n">nu</span><span class="o">*</span><span class="n">Ve_i</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">**</span><span class="mi">5</span>            
             
             <span class="n">l</span>              <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">case</span><span class="p">,</span><span class="n">cpt</span><span class="p">]</span>
@@ -536,7 +536,7 @@
 
 <div class="viewcode-block" id="getH">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getH">[docs]</a>
-<span class="k">def</span> <span class="nf">getH</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">getH</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the shape factor, H</span>
 
 <span class="sd">    Assumptions:</span>
@@ -563,7 +563,7 @@
 
 <div class="viewcode-block" id="getcf">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.getcf">[docs]</a>
-<span class="k">def</span> <span class="nf">getcf</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">,</span> <span class="n">Re_theta</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">getcf</span><span class="p">(</span><span class="n">lambda_val</span> <span class="p">,</span> <span class="n">Re_theta</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the skin friction coefficient, cf</span>
 
 <span class="sd">    Assumptions:</span>
@@ -592,7 +592,7 @@
 
 <div class="viewcode-block" id="RK4">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.html#RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.thwaites_method.RK4">[docs]</a>
-<span class="k">def</span> <span class="nf">RK4</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Var</span><span class="p">,</span> <span class="n">Slope</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">RK4</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Var</span><span class="p">,</span> <span class="n">Slope</span><span class="p">):</span>
     <span class="n">m1</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
     <span class="n">m2</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">m1</span><span class="o">*</span><span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">m3</span> <span class="o">=</span> <span class="n">Slope</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span>  <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>  <span class="n">Var</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">+</span> <span class="n">m2</span><span class="o">*</span><span class="n">dx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>

@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -390,18 +390,18 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1"># RCAIDE imports </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span> <span class="p">,</span> <span class="n">Data</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Airfoils.Airfoil</span> <span class="kn">import</span> <span class="n">Airfoil</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Planform</span> <span class="kn">import</span> <span class="n">wing_planform</span><span class="p">,</span> <span class="n">wing_segmented_planform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span> <span class="p">,</span> <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Airfoils.Airfoil</span><span class="w"> </span><span class="kn">import</span> <span class="n">Airfoil</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Planform</span><span class="w"> </span><span class="kn">import</span> <span class="n">wing_planform</span><span class="p">,</span> <span class="n">wing_segmented_planform</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">vsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">vsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">openvsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">openvsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="c1"># This allows RCAIDE to build without OpenVSP</span>
         <span class="k">pass</span>
@@ -415,7 +415,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="read_vsp_wing">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.read_vsp_wing.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.read_vsp_wing">[docs]</a>
-<span class="k">def</span> <span class="nf">read_vsp_wing</span><span class="p">(</span><span class="n">wing_id</span><span class="p">,</span> <span class="n">units_type</span><span class="o">=</span><span class="s1">&#39;SI&#39;</span><span class="p">,</span> <span class="n">write_airfoil_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_scaling</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_vsp_wing</span><span class="p">(</span><span class="n">wing_id</span><span class="p">,</span> <span class="n">units_type</span><span class="o">=</span><span class="s1">&#39;SI&#39;</span><span class="p">,</span> <span class="n">write_airfoil_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_scaling</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This reads an OpenVSP wing vehicle geometry and writes it into a RCAIDE wing format.</span>
 
 <span class="sd">    Assumptions:</span>
@@ -789,7 +789,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="write_vsp_wing">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.write_vsp_wing.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.write_vsp_wing">[docs]</a>
-<span class="k">def</span> <span class="nf">write_vsp_wing</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">wing</span><span class="p">,</span> <span class="n">area_tags</span><span class="p">,</span> <span class="n">fuel_tank_set_ind</span><span class="p">,</span> <span class="n">OML_set_ind</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_vsp_wing</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">wing</span><span class="p">,</span> <span class="n">area_tags</span><span class="p">,</span> <span class="n">fuel_tank_set_ind</span><span class="p">,</span> <span class="n">OML_set_ind</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This write a given wing into OpenVSP format</span>
 
 <span class="sd">    Assumptions:</span>
@@ -1093,7 +1093,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="write_vsp_control_surface">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.write_vsp_control_surface.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.write_vsp_control_surface">[docs]</a>
-<span class="k">def</span> <span class="nf">write_vsp_control_surface</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">wing_id</span><span class="p">,</span><span class="n">ctrl_surf</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_vsp_control_surface</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span><span class="n">wing_id</span><span class="p">,</span><span class="n">ctrl_surf</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This writes a control surface in a wing.</span>
 
 <span class="sd">    Assumptions:</span>
@@ -1187,7 +1187,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="write_wing_conformal_fuel_tank">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.write_wing_conformal_fuel_tank.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.write_wing_conformal_fuel_tank">[docs]</a>
-<span class="k">def</span> <span class="nf">write_wing_conformal_fuel_tank</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">wing</span><span class="p">,</span> <span class="n">wing_id</span><span class="p">,</span><span class="n">fuel_tank</span><span class="p">,</span><span class="n">fuel_tank_set_ind</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_wing_conformal_fuel_tank</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">wing</span><span class="p">,</span> <span class="n">wing_id</span><span class="p">,</span><span class="n">fuel_tank</span><span class="p">,</span><span class="n">fuel_tank_set_ind</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This writes a conformal fuel tank in a wing.</span>
 
 <span class="sd">    Assumptions:</span>
@@ -1307,7 +1307,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="get_vsp_trim_from_RCAIDE_trim">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.get_vsp_trim_from_RCAIDE_trim.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.get_vsp_trim_from_RCAIDE_trim">[docs]</a>
-<span class="k">def</span> <span class="nf">get_vsp_trim_from_RCAIDE_trim</span><span class="p">(</span><span class="n">seg_span_percents</span><span class="p">,</span><span class="n">vsp_segment_breaks</span><span class="p">,</span><span class="n">trim</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_vsp_trim_from_RCAIDE_trim</span><span class="p">(</span><span class="n">seg_span_percents</span><span class="p">,</span><span class="n">vsp_segment_breaks</span><span class="p">,</span><span class="n">trim</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute OpenVSP span trim coordinates based on RCAIDE coordinates</span>
 
 <span class="sd">    Assumptions:</span>
@@ -1342,7 +1342,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="convert_sweep">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.convert_sweep.html#RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing.convert_sweep">[docs]</a>
-<span class="k">def</span> <span class="nf">convert_sweep</span><span class="p">(</span><span class="n">sweep</span><span class="p">,</span><span class="n">sweep_loc</span><span class="p">,</span><span class="n">new_sweep_loc</span><span class="p">,</span><span class="n">AR</span><span class="p">,</span><span class="n">taper</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_sweep</span><span class="p">(</span><span class="n">sweep</span><span class="p">,</span><span class="n">sweep_loc</span><span class="p">,</span><span class="n">new_sweep_loc</span><span class="p">,</span><span class="n">AR</span><span class="p">,</span><span class="n">taper</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This converts arbitrary sweep into a desired sweep given</span>
 <span class="sd">    wing geometry.</span>
 

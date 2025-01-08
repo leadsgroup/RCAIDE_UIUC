@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,14 +385,14 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="kn">import</span>  <span class="nn">RCAIDE</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">RCAIDE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">fsolve</span>
 
 
 <div class="viewcode-block" id="compute_mixing_temperature">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Reservoirs.Reservoir_Tank.compute_mixing_temperature.html#RCAIDE.Library.Methods.Thermal_Management.Reservoirs.Reservoir_Tank.compute_mixing_temperature.compute_mixing_temperature">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_mixing_temperature</span><span class="p">(</span><span class="n">reservoir</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_mixing_temperature</span><span class="p">(</span><span class="n">reservoir</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the resultant temperature of the reservoir at each time step with coolant exchanging heat to the environment.</span>
 
@@ -466,7 +466,7 @@
 
 <div class="viewcode-block" id="compute_heat_loss_to_environment">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Reservoirs.Reservoir_Tank.compute_mixing_temperature.html#RCAIDE.Library.Methods.Thermal_Management.Reservoirs.Reservoir_Tank.compute_mixing_temperature.compute_heat_loss_to_environment">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_heat_loss_to_environment</span><span class="p">(</span><span class="n">T_final</span><span class="p">,</span> <span class="n">T_ambient</span><span class="p">,</span> <span class="n">reservoir</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_heat_loss_to_environment</span><span class="p">(</span><span class="n">T_final</span><span class="p">,</span> <span class="n">T_ambient</span><span class="p">,</span> <span class="n">reservoir</span><span class="p">):</span>
     <span class="c1"># Properties of Reservoir</span>
     <span class="n">A_surface</span>       <span class="o">=</span> <span class="n">reservoir</span><span class="o">.</span><span class="n">surface_area</span>
     <span class="n">thickness</span>       <span class="o">=</span> <span class="n">reservoir</span><span class="o">.</span><span class="n">thickness</span>
@@ -492,7 +492,7 @@
 
 <div class="viewcode-block" id="energy_balance">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Thermal_Management.Reservoirs.Reservoir_Tank.compute_mixing_temperature.html#RCAIDE.Library.Methods.Thermal_Management.Reservoirs.Reservoir_Tank.compute_mixing_temperature.energy_balance">[docs]</a>
-<span class="k">def</span> <span class="nf">energy_balance</span><span class="p">(</span><span class="n">T_final</span><span class="p">,</span> <span class="n">T_current</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">mass_coolant</span><span class="p">,</span> <span class="n">Cp_RES</span><span class="p">,</span> <span class="n">Cp_HAS</span><span class="p">,</span> <span class="n">Cp_HEX</span><span class="p">,</span> <span class="n">mass_flow_HAS</span><span class="p">,</span> <span class="n">T_outlet_HAS</span><span class="p">,</span> <span class="n">mass_flow_HEX</span><span class="p">,</span> <span class="n">T_outlet_HEX</span><span class="p">,</span> <span class="n">reservoir</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">energy_balance</span><span class="p">(</span><span class="n">T_final</span><span class="p">,</span> <span class="n">T_current</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">mass_coolant</span><span class="p">,</span> <span class="n">Cp_RES</span><span class="p">,</span> <span class="n">Cp_HAS</span><span class="p">,</span> <span class="n">Cp_HEX</span><span class="p">,</span> <span class="n">mass_flow_HAS</span><span class="p">,</span> <span class="n">T_outlet_HAS</span><span class="p">,</span> <span class="n">mass_flow_HEX</span><span class="p">,</span> <span class="n">T_outlet_HEX</span><span class="p">,</span> <span class="n">reservoir</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
     <span class="c1"># Ambient Air Temperature</span>
     <span class="n">T_ambient</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">freestream</span><span class="o">.</span><span class="n">temperature</span><span class="p">[</span><span class="n">t_idx</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 

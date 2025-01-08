@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -384,24 +384,24 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span>  <span class="n">Data</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span>    <span class="kn">import</span> <span class="n">Process</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method</span> <span class="kn">import</span> <span class="o">*</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses.Emissions</span>            <span class="kn">import</span> <span class="n">Emissions</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span>  <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses</span><span class="w">    </span><span class="kn">import</span> <span class="n">Process</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses.Emissions</span><span class="w">            </span><span class="kn">import</span> <span class="n">Emissions</span> 
   
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span>  <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Correlation_Buildup</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="Emission_Index_CRN_Method">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_CRN_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_CRN_Method.Emission_Index_CRN_Method">[docs]</a>
-<span class="k">class</span> <span class="nc">Emission_Index_CRN_Method</span><span class="p">(</span><span class="n">Emissions</span><span class="p">):</span> 
+<span class="k">class</span><span class="w"> </span><span class="nc">Emission_Index_CRN_Method</span><span class="p">(</span><span class="n">Emissions</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Emissions Index Chemical Reactor Network Method</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This sets the default values and methods for the analysis.</span>
 <span class="sd">    </span>
@@ -432,7 +432,7 @@
     
 <div class="viewcode-block" id="Emission_Index_CRN_Method.initialize">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_CRN_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_CRN_Method.Emission_Index_CRN_Method.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This function defines the analysis of the combustor emisisons with the CRN method.</span>
@@ -471,7 +471,7 @@
 
 <div class="viewcode-block" id="Emission_Index_CRN_Method.evaluate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Emissions.Emission_Index_CRN_Method.html#RCAIDE.Framework.Analyses.Emissions.Emission_Index_CRN_Method.Emission_Index_CRN_Method.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The default evaluate function.</span>
 
 <span class="sd">        Assumptions:</span>

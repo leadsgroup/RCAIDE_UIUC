@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,14 +386,14 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span>  <span class="n">Data</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span>  <span class="n">Data</span>   
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Wing</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Wing">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Wing">[docs]</a>
-<span class="k">class</span> <span class="nc">Wing</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Wing</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This class that defines parameters of the AVL aircraft wing</span>
 
 <span class="sd">    Assumptions:</span>
@@ -412,7 +412,7 @@
 <span class="sd">        N/A</span>
 <span class="sd">    &quot;&quot;&quot;</span>    
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;wing&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">symmetric</span> <span class="o">=</span> <span class="kc">True</span>
@@ -428,7 +428,7 @@
 
 <div class="viewcode-block" id="Wing.append_section">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Wing.append_section">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">section</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">section</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a segment to the wing &quot;&quot;&quot;</span>
 
         <span class="c1"># assert database type</span>
@@ -447,7 +447,7 @@
 <span class="c1"># ------------------------------------------------------------ </span>
 <div class="viewcode-block" id="Section">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Section">[docs]</a>
-<span class="k">class</span> <span class="nc">Section</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Section</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This class defines the sections of the aircraft wing in AVL.</span>
 <span class="sd">    Each section can be thought of as a trapezoid</span>
 
@@ -466,7 +466,7 @@
 <span class="sd">    Properties Used:</span>
 <span class="sd">        N/A</span>
 <span class="sd">    &quot;&quot;&quot;</span>   	
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets the defaunts of the aircraft wing geometry </span>
 
 <span class="sd">        Assumptions:</span>
@@ -495,7 +495,7 @@
 
 <div class="viewcode-block" id="Section.append_control_surface">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Section.append_control_surface">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_control_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">control</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_control_surface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">control</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a control_surface to the wing section in AVL</span>
 
 <span class="sd">        Assumptions:</span>
@@ -531,7 +531,7 @@
 
 <div class="viewcode-block" id="Control_Surface">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface">[docs]</a>
-<span class="k">class</span> <span class="nc">Control_Surface</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Control_Surface</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This class defines the control surface geometry and deflection</span>
 <span class="sd">    on the aircraft wing in AVL</span>
 
@@ -550,7 +550,7 @@
 <span class="sd">    Properties Used:</span>
 <span class="sd">        N/A</span>
 <span class="sd">    &quot;&quot;&quot;</span>   	
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets the defaults of the control surface on the aircraft wing</span>
 <span class="sd">        in AVL</span>
 
@@ -587,16 +587,16 @@
 
 <div class="viewcode-block" id="Control_Surface_Data">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface_Data">[docs]</a>
-<span class="k">class</span> <span class="nc">Control_Surface_Data</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Control_Surface_Data</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This class stores results from the control surfaces  </span>
 <span class="sd">    &quot;&quot;&quot;</span>   	
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                 <span class="o">=</span> <span class="s1">&#39;control_surface_results&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">control_surfaces</span>    <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Control_Surface_Data.append_control_surface_result">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface_Data.append_control_surface_result">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_control_surface_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">control_res</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_control_surface_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">control_res</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Adds a control_surface to the wing section in AVL</span>
 <span class="sd">        &quot;&quot;&quot;</span>   		
 
@@ -612,10 +612,10 @@
 
 <div class="viewcode-block" id="Control_Surface_Results">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.AVL_Objects.Wing.Control_Surface_Results">[docs]</a>
-<span class="k">class</span> <span class="nc">Control_Surface_Results</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Control_Surface_Results</span><span class="p">(</span><span class="n">Data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This class defines the control surface geometry and deflection</span>
 <span class="sd">    &quot;&quot;&quot;</span>   	
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets the defaults of the control surface on the aircraft wing</span>
 <span class="sd">        &quot;&quot;&quot;</span>   		
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span>                 <span class="o">=</span> <span class="s1">&#39;control_surface&#39;</span>

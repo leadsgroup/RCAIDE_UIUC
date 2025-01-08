@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,17 +386,17 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">from</span>   <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>  
-<span class="kn">import</span> <span class="nn">pandas</span>                <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span>                 <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span><span class="w">   </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w">                </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w">                 </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  evaluate_cantera</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="evaluate_cantera">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera.evaluate_cantera">[docs]</a>
-<span class="k">def</span> <span class="nf">evaluate_cantera</span><span class="p">(</span><span class="n">combustor</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">mdot</span><span class="p">,</span><span class="n">FAR</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_cantera</span><span class="p">(</span><span class="n">combustor</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">mdot</span><span class="p">,</span><span class="n">FAR</span><span class="p">):</span> 
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluates emission indices using Chemical Reactor Network (CRN) built in Cantera.</span>
@@ -547,7 +547,7 @@
     
     
     <span class="k">try</span><span class="p">:</span> 
-        <span class="kn">import</span> <span class="nn">cantera</span> <span class="k">as</span> <span class="nn">ct</span> 
+        <span class="kn">import</span><span class="w"> </span><span class="nn">cantera</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ct</span> 
         <span class="n">gas</span><span class="p">,</span> <span class="n">EI</span> <span class="o">=</span> <span class="n">combustor_model</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span><span class="n">kinetics_model</span><span class="p">,</span><span class="n">oxidizer_model</span><span class="p">,</span><span class="n">high_fidelity_kin_mech</span><span class="p">,</span> <span class="n">dict_fuel</span><span class="p">,</span> <span class="n">dict_oxy</span><span class="p">,</span> <span class="n">T_stag_0</span><span class="p">,</span> <span class="n">P_stag_0</span><span class="p">,</span> <span class="n">FAR</span><span class="p">,</span> <span class="n">m_dot_fuel</span><span class="p">,</span> <span class="n">m_dot_air</span><span class="p">,</span> <span class="n">N_PZ</span><span class="p">,</span> <span class="n">A_PZ</span><span class="p">,</span> <span class="n">L_PZ</span><span class="p">,</span> <span class="n">phi_sign</span><span class="p">,</span> <span class="n">phi_SZ</span><span class="p">,</span> <span class="n">A_SZ</span><span class="p">,</span> <span class="n">L_SZ</span><span class="p">,</span> <span class="n">f_air_PZ</span><span class="p">,</span> <span class="n">N_SZ</span><span class="p">,</span> <span class="n">sigma_phi</span><span class="p">,</span> <span class="n">PSR_1st_mixers</span><span class="p">,</span> <span class="n">PSR_2nd_mixers</span><span class="p">)</span> <span class="c1"># [-]       Run combustor function</span>
         
         <span class="n">sp_idx</span>                  <span class="o">=</span> <span class="p">[</span><span class="n">gas</span><span class="o">.</span><span class="n">species_index</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span> <span class="k">for</span> <span class="n">sp</span> <span class="ow">in</span> <span class="n">list_sp</span><span class="p">]</span>             <span class="c1"># [-]       Retrieve the species index</span>
@@ -584,7 +584,7 @@
 
 <div class="viewcode-block" id="combustor_model">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera.html#RCAIDE.Library.Methods.Emissions.Chemical_Reactor_Network_Method.evaluate_cantera.combustor_model">[docs]</a>
-<span class="k">def</span> <span class="nf">combustor_model</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">kinetics_model</span><span class="p">,</span><span class="n">oxidizer_model</span><span class="p">,</span><span class="n">high_fidelity_kin_mech</span><span class="p">,</span> <span class="n">dict_fuel</span><span class="p">,</span> <span class="n">dict_oxy</span><span class="p">,</span> <span class="n">T_stag_0</span><span class="p">,</span> <span class="n">P_stag_0</span><span class="p">,</span> <span class="n">FAR</span><span class="p">,</span> <span class="n">m_dot_fuel</span><span class="p">,</span> <span class="n">m_dot_air</span><span class="p">,</span> <span class="n">N_PZ</span><span class="p">,</span> <span class="n">A_PZ</span><span class="p">,</span> <span class="n">L_PZ</span><span class="p">,</span> <span class="n">phi_sign</span><span class="p">,</span> <span class="n">phi_SZ</span><span class="p">,</span> <span class="n">A_SZ</span><span class="p">,</span> <span class="n">L_SZ</span><span class="p">,</span> <span class="n">f_air_PZ</span><span class="p">,</span> <span class="n">N_SZ</span><span class="p">,</span> <span class="n">sigma_phi</span><span class="p">,</span> <span class="n">PSR_1st_mixers</span><span class="p">,</span> <span class="n">PSR_2nd_mixers</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">combustor_model</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="n">kinetics_model</span><span class="p">,</span><span class="n">oxidizer_model</span><span class="p">,</span><span class="n">high_fidelity_kin_mech</span><span class="p">,</span> <span class="n">dict_fuel</span><span class="p">,</span> <span class="n">dict_oxy</span><span class="p">,</span> <span class="n">T_stag_0</span><span class="p">,</span> <span class="n">P_stag_0</span><span class="p">,</span> <span class="n">FAR</span><span class="p">,</span> <span class="n">m_dot_fuel</span><span class="p">,</span> <span class="n">m_dot_air</span><span class="p">,</span> <span class="n">N_PZ</span><span class="p">,</span> <span class="n">A_PZ</span><span class="p">,</span> <span class="n">L_PZ</span><span class="p">,</span> <span class="n">phi_sign</span><span class="p">,</span> <span class="n">phi_SZ</span><span class="p">,</span> <span class="n">A_SZ</span><span class="p">,</span> <span class="n">L_SZ</span><span class="p">,</span> <span class="n">f_air_PZ</span><span class="p">,</span> <span class="n">N_SZ</span><span class="p">,</span> <span class="n">sigma_phi</span><span class="p">,</span> <span class="n">PSR_1st_mixers</span><span class="p">,</span> <span class="n">PSR_2nd_mixers</span><span class="p">):</span>
 
     <span class="n">ospath</span>    <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
     <span class="n">separator</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span>

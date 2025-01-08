@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -547,7 +547,7 @@ semiaxes and the flattening. Otherwise, it should be a tuple with those
 values.  See the comments above the <cite>ELLIPSOIDS</cite> dictionary for
 more information.</p>
 <p>Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geopy.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">geodesic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">newport_ri</span> <span class="o">=</span> <span class="p">(</span><span class="mf">41.49008</span><span class="p">,</span> <span class="o">-</span><span class="mf">71.312796</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cleveland_oh</span> <span class="o">=</span> <span class="p">(</span><span class="mf">41.499498</span><span class="p">,</span> <span class="o">-</span><span class="mf">81.695391</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">geodesic</span><span class="p">(</span><span class="n">newport_ri</span><span class="p">,</span> <span class="n">cleveland_oh</span><span class="p">)</span><span class="o">.</span><span class="n">miles</span><span class="p">)</span>
@@ -560,7 +560,7 @@ more information.</p>
 <dd><p>There are 3 ways to create a distance:</p>
 <ul>
 <li><p>From kilometers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">Distance</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geopy.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">Distance</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Distance</span><span class="p">(</span><span class="mf">1.42</span><span class="p">)</span>
 <span class="go">Distance(1.42)</span>
 </pre></div>
@@ -568,7 +568,7 @@ more information.</p>
 </li>
 <li><p>From points (for non-abstract distances only),
 calculated as a sum of distances between all points:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geopy.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">geodesic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geodesic</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.1</span><span class="p">,</span> <span class="mf">160.1</span><span class="p">))</span>
 <span class="go">Distance(14.003702498106215)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geodesic</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.1</span><span class="p">,</span> <span class="mf">160.1</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.2</span><span class="p">,</span> <span class="mf">160.2</span><span class="p">))</span>
@@ -606,7 +606,7 @@ calculated as a sum of distances between all points:</p>
 <dd><p>There are 3 ways to create a distance:</p>
 <ul>
 <li><p>From kilometers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">Distance</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geopy.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">Distance</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Distance</span><span class="p">(</span><span class="mf">1.42</span><span class="p">)</span>
 <span class="go">Distance(1.42)</span>
 </pre></div>
@@ -614,7 +614,7 @@ calculated as a sum of distances between all points:</p>
 </li>
 <li><p>From points (for non-abstract distances only),
 calculated as a sum of distances between all points:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">geopy.distance</span> <span class="kn">import</span> <span class="n">geodesic</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">geopy.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">geodesic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geodesic</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.1</span><span class="p">,</span> <span class="mf">160.1</span><span class="p">))</span>
 <span class="go">Distance(14.003702498106215)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">geodesic</span><span class="p">((</span><span class="mi">40</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.1</span><span class="p">,</span> <span class="mf">160.1</span><span class="p">),</span> <span class="p">(</span><span class="mf">40.2</span><span class="p">,</span> <span class="mf">160.2</span><span class="p">))</span>

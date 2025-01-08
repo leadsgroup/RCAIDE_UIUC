@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,22 +386,22 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports   </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                             <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Units</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses</span>                         <span class="kn">import</span> <span class="n">Process</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics</span>               <span class="kn">import</span> <span class="n">Common</span>
-<span class="kn">from</span> <span class="nn">.Aerodynamics</span>                                     <span class="kn">import</span> <span class="n">Aerodynamics</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Analyses.Common.Process_Geometry</span> <span class="kn">import</span> <span class="n">Process_Geometry</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method</span> <span class="kn">import</span> <span class="o">*</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                             </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Units</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses</span><span class="w">                         </span><span class="kn">import</span> <span class="n">Process</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics</span><span class="w">               </span><span class="kn">import</span> <span class="n">Common</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Aerodynamics</span><span class="w">                                     </span><span class="kn">import</span> <span class="n">Aerodynamics</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Analyses.Common.Process_Geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Process_Geometry</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>   
 
 <span class="c1"># package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Vortex_Lattice_Method</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="Vortex_Lattice_Method">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method.Vortex_Lattice_Method">[docs]</a>
-<span class="k">class</span> <span class="nc">Vortex_Lattice_Method</span><span class="p">(</span><span class="n">Aerodynamics</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Vortex_Lattice_Method</span><span class="p">(</span><span class="n">Aerodynamics</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a subsonic aerodynamic buildup analysis based on the vortex lattice method</span>
 
 <span class="sd">     Assumptions:</span>
@@ -420,7 +420,7 @@
 <span class="sd">     N/A </span>
 <span class="sd">    &quot;&quot;&quot;</span>      
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This sets the default values and methods for the analysis.</span>
 
 <span class="sd">        Assumptions:</span>
@@ -575,7 +575,7 @@
 
 <div class="viewcode-block" id="Vortex_Lattice_Method.initialize">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method.Vortex_Lattice_Method.initialize">[docs]</a>
-    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  
         <span class="n">use_surrogate</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">use_surrogate</span>  
 
         <span class="c1"># If we are using the surrogate</span>
@@ -598,7 +598,7 @@
          
 <div class="viewcode-block" id="Vortex_Lattice_Method.evaluate">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method.html#RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method.Vortex_Lattice_Method.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">state</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The default evaluate function.</span>
 
 <span class="sd">        Assumptions:</span>

@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -396,29 +396,29 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1"># RCAIDE imports </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_rotor</span>     <span class="kn">import</span> <span class="n">write_vsp_rotor_bem</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage</span>  <span class="kn">import</span> <span class="n">write_vsp_fuselage</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing</span>      <span class="kn">import</span> <span class="n">write_vsp_wing</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_nacelle</span>   <span class="kn">import</span> <span class="n">write_vsp_nacelle</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span><span class="p">,</span> <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_rotor</span><span class="w">     </span><span class="kn">import</span> <span class="n">write_vsp_rotor_bem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_fuselage</span><span class="w">  </span><span class="kn">import</span> <span class="n">write_vsp_fuselage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_wing</span><span class="w">      </span><span class="kn">import</span> <span class="n">write_vsp_wing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.External_Interfaces.OpenVSP.vsp_nacelle</span><span class="w">   </span><span class="kn">import</span> <span class="n">write_vsp_nacelle</span> 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">vsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">vsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">openvsp</span> <span class="k">as</span> <span class="nn">vsp</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">openvsp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vsp</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="c1"># This allows RCAIDE to build without OpenVSP</span>
         <span class="k">pass</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1"># export_vsp_vehicle</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="export_vsp_vehicle">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.External_Interfaces.OpenVSP.export_vsp_vehicle.html#RCAIDE.Framework.External_Interfaces.OpenVSP.export_vsp_vehicle.export_vsp_vehicle">[docs]</a>
-<span class="k">def</span> <span class="nf">export_vsp_vehicle</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">vehicle_tag</span><span class="p">,</span> <span class="n">fuel_tank_set_ind</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">OML_set_ind</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">write_igs</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">export_vsp_vehicle</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">vehicle_tag</span><span class="p">,</span> <span class="n">fuel_tank_set_ind</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">write_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">OML_set_ind</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">write_igs</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This writes a RCAIDE vehicle to OpenVSP format. It will take wing segments into account</span>
 <span class="sd">    if they are specified in the vehicle setup file.</span>
 <span class="sd">    </span>

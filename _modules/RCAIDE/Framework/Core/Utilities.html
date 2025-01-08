@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -388,7 +388,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># Package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  interp2d</span>
@@ -396,7 +396,7 @@
  
 <div class="viewcode-block" id="interp2d">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.interp2d.html#RCAIDE.Framework.Core.Utilities.interp2d">[docs]</a>
-<span class="k">def</span> <span class="nf">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">zp</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">interp2d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="n">yp</span><span class="p">,</span><span class="n">zp</span><span class="p">,</span><span class="n">fill_value</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Bilinear interpolation on a grid. ``CartesianGrid`` is much faster if the data</span>
 <span class="sd">    lies on a regular grid.</span>
@@ -445,7 +445,7 @@
  
 <div class="viewcode-block" id="orientation_product">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.orientation_product.html#RCAIDE.Framework.Core.Utilities.orientation_product">[docs]</a>
-<span class="k">def</span> <span class="nf">orientation_product</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">Bb</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">orientation_product</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">Bb</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the product of a tensor and a vector.</span>
 
 <span class="sd">    Assumptions:</span>
@@ -484,7 +484,7 @@
 
 <div class="viewcode-block" id="orientation_transpose">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.orientation_transpose.html#RCAIDE.Framework.Core.Utilities.orientation_transpose">[docs]</a>
-<span class="k">def</span> <span class="nf">orientation_transpose</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">orientation_transpose</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the transpose of a tensor.</span>
 
 <span class="sd">    Assumptions:</span>
@@ -517,7 +517,7 @@
 
 <div class="viewcode-block" id="angles_to_dcms">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.angles_to_dcms.html#RCAIDE.Framework.Core.Utilities.angles_to_dcms">[docs]</a>
-<span class="k">def</span> <span class="nf">angles_to_dcms</span><span class="p">(</span><span class="n">rotations</span><span class="p">,</span><span class="n">sequence</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">angles_to_dcms</span><span class="p">(</span><span class="n">rotations</span><span class="p">,</span><span class="n">sequence</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Builds an euler angle rotation matrix</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -558,7 +558,7 @@
 
 <div class="viewcode-block" id="T0">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.T0.html#RCAIDE.Framework.Core.Utilities.T0">[docs]</a>
-<span class="k">def</span> <span class="nf">T0</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">T0</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotation matrix about first axis</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -599,7 +599,7 @@
 
 <div class="viewcode-block" id="T1">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.T1.html#RCAIDE.Framework.Core.Utilities.T1">[docs]</a>
-<span class="k">def</span> <span class="nf">T1</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">T1</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotation matrix about second axis</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -640,7 +640,7 @@
 
 <div class="viewcode-block" id="T2">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.T2.html#RCAIDE.Framework.Core.Utilities.T2">[docs]</a>
-<span class="k">def</span> <span class="nf">T2</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">T2</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotation matrix about third axis</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -681,7 +681,7 @@
 
 <div class="viewcode-block" id="new_tensor">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Core.Utilities.new_tensor.html#RCAIDE.Framework.Core.Utilities.new_tensor">[docs]</a>
-<span class="k">def</span> <span class="nf">new_tensor</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">new_tensor</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initializes the required tensor. Able to handle imaginary values.</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>

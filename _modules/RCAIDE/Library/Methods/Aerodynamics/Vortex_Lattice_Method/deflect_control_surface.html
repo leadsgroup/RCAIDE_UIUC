@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,12 +387,12 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Imports</span>
 <span class="c1"># ---------------------------------------------------------------------- </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Wings</span> <span class="kn">import</span> <span class="n">All_Moving_Surface</span>
-<span class="kn">from</span> <span class="nn">.generate_VD_helpers</span> <span class="kn">import</span> <span class="n">postprocess_VD</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Wings</span><span class="w"> </span><span class="kn">import</span> <span class="n">All_Moving_Surface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.generate_VD_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">postprocess_VD</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Deflect Control Surface</span>
@@ -401,7 +401,7 @@
 <span class="c1">## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift</span>
 <div class="viewcode-block" id="deflect_control_surfaces">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surfaces.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surfaces">[docs]</a>
-<span class="k">def</span> <span class="nf">deflect_control_surfaces</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">settings</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deflect_control_surfaces</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">settings</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Goes through a vehicle and updates the control surface deflections in the VD. Crucially this rebuilds the VD as a</span>
 <span class="sd">    postprocess step</span>
@@ -443,7 +443,7 @@
 <span class="c1">## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift</span>
 <div class="viewcode-block" id="deflect_control_surface">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surface.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surface">[docs]</a>
-<span class="k">def</span> <span class="nf">deflect_control_surface</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">wing</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deflect_control_surface</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">wing</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
 <span class="sd">    Deflects the panels of a vortex distribution that correspond to the given VLM_wing. </span>
 <span class="sd">    </span>
@@ -656,7 +656,7 @@
 <span class="c1">## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift</span>
 <div class="viewcode-block" id="deflect_control_surface_strip">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surface_strip.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.deflect_control_surface_strip">[docs]</a>
-<span class="k">def</span> <span class="nf">deflect_control_surface_strip</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">raw_VD</span><span class="p">,</span> <span class="n">is_first_strip</span><span class="p">,</span> <span class="n">sym_sign</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deflect_control_surface_strip</span><span class="p">(</span><span class="n">wing</span><span class="p">,</span> <span class="n">raw_VD</span><span class="p">,</span> <span class="n">is_first_strip</span><span class="p">,</span> <span class="n">sym_sign</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Rotates existing points in the VD with respect to current values of a delta deflection</span>
 
 <span class="sd">    Assumptions: </span>
@@ -863,7 +863,7 @@
 <span class="c1">## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift</span>
 <div class="viewcode-block" id="make_hinge_quaternion">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.make_hinge_quaternion.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.make_hinge_quaternion">[docs]</a>
-<span class="k">def</span> <span class="nf">make_hinge_quaternion</span><span class="p">(</span><span class="n">point_on_line</span><span class="p">,</span> <span class="n">direction_unit_vector</span><span class="p">,</span> <span class="n">rotation_angle</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_hinge_quaternion</span><span class="p">(</span><span class="n">point_on_line</span><span class="p">,</span> <span class="n">direction_unit_vector</span><span class="p">,</span> <span class="n">rotation_angle</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This make a quaternion that will rotate a vector about a the line that </span>
 <span class="sd">    passes through the point &#39;point_on_line&#39; and has direction &#39;direction_unit_vector&#39;.</span>
 <span class="sd">    The quat rotates &#39;rotation_angle&#39; radians. The quat is meant to be multiplied by</span>
@@ -920,7 +920,7 @@
 <span class="c1">## @ingroup Methods-Aerodynamics-Common-Fidelity_Zero-Lift</span>
 <div class="viewcode-block" id="rotate_points_with_quaternion">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.rotate_points_with_quaternion.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.rotate_points_with_quaternion">[docs]</a>
-<span class="k">def</span> <span class="nf">rotate_points_with_quaternion</span><span class="p">(</span><span class="n">quat</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rotate_points_with_quaternion</span><span class="p">(</span><span class="n">quat</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This rotates the points by a quaternion</span>
 
 <span class="sd">    Assumptions: </span>
@@ -951,7 +951,7 @@
     
 <div class="viewcode-block" id="flip_1">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.flip_1.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.flip_1">[docs]</a>
-<span class="k">def</span> <span class="nf">flip_1</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">flip_1</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This swaps values based on a double boolean</span>
 <span class="sd">    </span>
 <span class="sd">    If T1 is false A and B are kept as is. T2 is not used</span>
@@ -986,7 +986,7 @@
     
 <div class="viewcode-block" id="flip_2">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.flip_2.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.deflect_control_surface.flip_2">[docs]</a>
-<span class="k">def</span> <span class="nf">flip_2</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">flip_2</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This swaps values based on a double boolean</span>
 <span class="sd">    </span>
 <span class="sd">    If T1 is false A and B are kept as is. T2 is not used</span>

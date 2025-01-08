@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,19 +386,19 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots.Geometry.Common.contour_surface_slice</span> <span class="kn">import</span> <span class="n">contour_surface_slice</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span> <span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span> <span class="kn">import</span> <span class="n">compute_naca_4series</span>  
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Plots.Geometry.Common.contour_surface_slice</span><span class="w"> </span><span class="kn">import</span> <span class="n">contour_surface_slice</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span><span class="w"> </span><span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_naca_4series</span>  
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  PLOTS</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="plot_3d_nacelle">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.html#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.plot_3d_nacelle">[docs]</a>
-<span class="k">def</span> <span class="nf">plot_3d_nacelle</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">nacelle</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span> <span class="n">color_map</span> <span class="o">=</span> <span class="s1">&#39;darkmint&#39;</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_3d_nacelle</span><span class="p">(</span><span class="n">plot_data</span><span class="p">,</span> <span class="n">nacelle</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span> <span class="n">color_map</span> <span class="o">=</span> <span class="s1">&#39;darkmint&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates a 3D visualization of a nacelle surface using tessellated panels.</span>
 
@@ -466,7 +466,7 @@
  
 <div class="viewcode-block" id="generate_3d_stack_nacelle_points">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.html#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_stack_nacelle_points">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_3d_stack_nacelle_points</span><span class="p">(</span><span class="n">nac</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span> <span class="o">=</span> <span class="mi">21</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_3d_stack_nacelle_points</span><span class="p">(</span><span class="n">nac</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span> <span class="o">=</span> <span class="mi">21</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates 3D coordinate points for a stack-type nacelle surface.</span>
 
@@ -566,7 +566,7 @@
  
 <div class="viewcode-block" id="generate_3d_BOR_nacelle_points">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.html#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_BOR_nacelle_points">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_3d_BOR_nacelle_points</span><span class="p">(</span><span class="n">nac</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span> <span class="o">=</span> <span class="mi">21</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_3d_BOR_nacelle_points</span><span class="p">(</span><span class="n">nac</span><span class="p">,</span> <span class="n">tessellation</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span> <span class="o">=</span> <span class="mi">21</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates 3D coordinate points for a body-of-revolution nacelle surface.</span>
 
@@ -643,7 +643,7 @@
 
 <div class="viewcode-block" id="generate_3d_basic_nacelle_points">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.html#RCAIDE.Library.Plots.Geometry.plot_3d_nacelle.generate_3d_basic_nacelle_points">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_3d_basic_nacelle_points</span><span class="p">(</span><span class="n">nac</span><span class="p">,</span> <span class="n">tessellation</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_3d_basic_nacelle_points</span><span class="p">(</span><span class="n">nac</span><span class="p">,</span> <span class="n">tessellation</span><span class="p">,</span> <span class="n">number_of_airfoil_points</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generates 3D coordinate points for a basic nacelle surface.</span>
 

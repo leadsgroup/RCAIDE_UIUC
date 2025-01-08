@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,15 +386,15 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span>  <span class="n">Data</span> <span class="p">,</span>  <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Wings.Control_Surfaces</span>                                      <span class="kn">import</span> <span class="n">Aileron</span> <span class="p">,</span> <span class="n">Elevator</span> <span class="p">,</span> <span class="n">Slat</span> <span class="p">,</span> <span class="n">Flap</span> <span class="p">,</span> <span class="n">Rudder</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file</span>      <span class="kn">import</span> <span class="n">write_avl_airfoil_file</span>  
-<span class="kn">from</span> <span class="nn">.AVL_Objects.Wing</span>                                                                     <span class="kn">import</span> <span class="n">Wing</span><span class="p">,</span> <span class="n">Section</span><span class="p">,</span> <span class="n">Control_Surface</span>
-<span class="kn">from</span> <span class="nn">.AVL_Objects.Body</span>                                                                     <span class="kn">import</span> <span class="n">Body</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span>  <span class="n">Data</span> <span class="p">,</span>  <span class="n">Units</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Wings.Control_Surfaces</span><span class="w">                                      </span><span class="kn">import</span> <span class="n">Aileron</span> <span class="p">,</span> <span class="n">Elevator</span> <span class="p">,</span> <span class="n">Slat</span> <span class="p">,</span> <span class="n">Flap</span> <span class="p">,</span> <span class="n">Rudder</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_avl_airfoil_file</span><span class="w">      </span><span class="kn">import</span> <span class="n">write_avl_airfoil_file</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">.AVL_Objects.Wing</span><span class="w">                                                                     </span><span class="kn">import</span> <span class="n">Wing</span><span class="p">,</span> <span class="n">Section</span><span class="p">,</span> <span class="n">Control_Surface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.AVL_Objects.Body</span><span class="w">                                                                     </span><span class="kn">import</span> <span class="n">Body</span>
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span>  <span class="nn">numpy</span> <span class="k">as</span>  <span class="nn">np</span>
+<span class="kn">import</span><span class="w">  </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="nn">np</span>
 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -402,7 +402,7 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="translate_avl_wing">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_wing.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_wing">[docs]</a>
-<span class="k">def</span> <span class="nf">translate_avl_wing</span><span class="p">(</span><span class="n">rcaide_wing</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">translate_avl_wing</span><span class="p">(</span><span class="n">rcaide_wing</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Translates wing geometry from the vehicle setup to AVL format</span>
 
 <span class="sd">    Assumptions:</span>
@@ -434,7 +434,7 @@
 
 <div class="viewcode-block" id="translate_avl_body">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_body.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.translate_avl_body">[docs]</a>
-<span class="k">def</span> <span class="nf">translate_avl_body</span><span class="p">(</span><span class="n">rcaide_body</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">translate_avl_body</span><span class="p">(</span><span class="n">rcaide_body</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Translates body geometry from the vehicle setup to AVL format</span>
 
 <span class="sd">    Assumptions:</span>
@@ -474,7 +474,7 @@
 
 <div class="viewcode-block" id="populate_wing_sections">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_wing_sections.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_wing_sections">[docs]</a>
-<span class="k">def</span> <span class="nf">populate_wing_sections</span><span class="p">(</span><span class="n">avl_wing</span><span class="p">,</span><span class="n">rcaide_wing</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">populate_wing_sections</span><span class="p">(</span><span class="n">avl_wing</span><span class="p">,</span><span class="n">rcaide_wing</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Creates sections of wing geometry and populates the AVL wing data structure</span>
 
 <span class="sd">    Assumptions:</span>
@@ -637,7 +637,7 @@
 
 <div class="viewcode-block" id="append_avl_wing_control_surfaces">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.append_avl_wing_control_surfaces.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.append_avl_wing_control_surfaces">[docs]</a>
-<span class="k">def</span> <span class="nf">append_avl_wing_control_surfaces</span><span class="p">(</span><span class="n">rcaide_wing</span><span class="p">,</span><span class="n">avl_wing</span><span class="p">,</span><span class="n">semispan</span><span class="p">,</span><span class="n">root_chord_percent</span><span class="p">,</span><span class="n">tip_chord_percent</span><span class="p">,</span><span class="n">tip_percent_span</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">append_avl_wing_control_surfaces</span><span class="p">(</span><span class="n">rcaide_wing</span><span class="p">,</span><span class="n">avl_wing</span><span class="p">,</span><span class="n">semispan</span><span class="p">,</span><span class="n">root_chord_percent</span><span class="p">,</span><span class="n">tip_chord_percent</span><span class="p">,</span><span class="n">tip_percent_span</span><span class="p">,</span>
                                      <span class="n">root_percent_span</span><span class="p">,</span><span class="n">root_twist</span><span class="p">,</span><span class="n">tip_twist</span><span class="p">,</span><span class="n">tip_airfoil</span><span class="p">,</span><span class="n">seg_tag</span><span class="p">,</span><span class="n">dihedral</span><span class="p">,</span><span class="n">origin</span><span class="p">,</span><span class="n">sweep</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Converts control surfaces on a rcaide wing to sections in avl wing</span>
@@ -796,7 +796,7 @@
 
 <div class="viewcode-block" id="populate_body_sections">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_body_sections.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures.populate_body_sections">[docs]</a>
-<span class="k">def</span> <span class="nf">populate_body_sections</span><span class="p">(</span><span class="n">avl_body</span><span class="p">,</span><span class="n">rcaide_body</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">populate_body_sections</span><span class="p">(</span><span class="n">avl_body</span><span class="p">,</span><span class="n">rcaide_body</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Creates sections of body geometry and populates the AVL body data structure</span>
 
 <span class="sd">    Assumptions:</span>

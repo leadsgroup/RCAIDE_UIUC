@@ -30,7 +30,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d103512f" />
   
@@ -50,8 +50,8 @@
     <link rel="canonical" href="https://docs.rcaide.leadsresearchgroup.com/tutorials/Performance/Tutorial_23_aircraft_aerodynamic_analysis.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Tutorial 25 - V-n Diagram" href="Tutorial_25_V_n_diagram.html" />
-    <link rel="prev" title="Performance" href="../performance.html" />
+    <link rel="next" title="Tutorial 24 - Airfoil Polar Simulation" href="Tutorial_24_airfoil_polar_simulation.html" />
+    <link rel="prev" title="Tutorial 22 - Propeller Simulation" href="Tutorial_22_propeller_simulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -347,8 +347,73 @@
 
 
 
+<li class="toctree-l2"><a class="reference internal" href="../Missions/Tutorial_02_turbojet_aircraft.html">Tutorial 2 - Turbojet Aircraft Simulation</a></li>
 
 
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Missions/Tutorial_03_turboprop_aircraft.html">Tutorial 3 - Turboprop Aircraft Simulation</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Missions/Tutorial_04_general_aviation_aircraft.html">Tutorial 4 - General Aircraft Simulation</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Missions/Tutorial_05_electric_aircraft.html">Tutorial 5 - Electric Aircraft Simulation</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Missions/Tutorial_06_tiltrotor_evtol_aircraft.html">Tutorial 6 - Tiltrotor eVTOL Aircraft Simulation</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Missions/Tutorial_07_lift_cruise_evtol_aircraft.html">Tutorial 7 - Lift + Cruise eVTOL Aircraft Simulation</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Missions/Tutorial_08_tilt_stopped_rotor_vtail_evtol_aircraft.html">Tutorial 8 - Tilt Stopped Rotor Vtail eVTOL Aircraft Simulation</a></li>
 
 
 
@@ -364,9 +429,26 @@
 
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../optimization.html">Optimization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optimization.html">Optimization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../performance.html">Performance</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Tutorial_21_payload_range_diagram.html">Tutorial 21 - Payload Range Diagram</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Tutorial_22_propeller_simulation.html">Tutorial 22 - Propeller Simulation</a></li>
+
+
+
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Tutorial 23 - Aircraft Aerodynamic Analysis</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Tutorial_24_airfoil_polar_simulation.html">Tutorial 24 - Airfoil Polar Simulation</a></li>
+
 
 
 
@@ -451,11 +533,11 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span>  <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.cm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w">  </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </pre></div>
 </div>
 </div>
@@ -473,12 +555,12 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Units</span> <span class="p">,</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Propulsors.Turbofan_Propulsor</span>          <span class="kn">import</span> <span class="n">design_turbofan</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Performance</span>                            <span class="kn">import</span> <span class="n">aircraft_aerodynamic_analysis</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Planform</span>                      <span class="kn">import</span> <span class="n">segment_properties</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots</span>                                          <span class="kn">import</span> <span class="o">*</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Units</span> <span class="p">,</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Propulsors.Turbofan_Propulsor</span><span class="w">          </span><span class="kn">import</span> <span class="n">design_turbofan</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Performance</span><span class="w">                            </span><span class="kn">import</span> <span class="n">aircraft_aerodynamic_analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Planform</span><span class="w">                      </span><span class="kn">import</span> <span class="n">segment_properties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Plots</span><span class="w">                                          </span><span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </div>
@@ -490,7 +572,7 @@
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vehicle_setup</span><span class="p">():</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vehicle_setup</span><span class="p">():</span>
 
     <span class="c1"># ------------------------------------------------------------------</span>
     <span class="c1">#   Initialize the Vehicle</span>
@@ -1183,20 +1265,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../performance.html"
+       href="Tutorial_22_propeller_simulation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Performance</p>
+        <p class="prev-next-title">Tutorial 22 - Propeller Simulation</p>
       </div>
     </a>
     <a class="right-next"
-       href="Tutorial_25_V_n_diagram.html"
+       href="Tutorial_24_airfoil_polar_simulation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 25 - V-n Diagram</p>
+        <p class="prev-next-title">Tutorial 24 - Airfoil Polar Simulation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

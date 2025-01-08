@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,25 +387,25 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 
 <span class="c1"># RCAIDE imports </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                                                          <span class="kn">import</span> <span class="n">Data</span> <span class="p">,</span> <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis</span>      <span class="kn">import</span> <span class="n">airfoil_analysis</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars</span>                  <span class="kn">import</span> <span class="n">import_airfoil_polars</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series</span>                   <span class="kn">import</span> <span class="n">compute_naca_4series</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.AERODAS.pre_stall_coefficients</span>             <span class="kn">import</span> <span class="n">pre_stall_coefficients</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.AERODAS.post_stall_coefficients</span>            <span class="kn">import</span> <span class="n">post_stall_coefficients</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                                                          </span><span class="kn">import</span> <span class="n">Data</span> <span class="p">,</span> <span class="n">Units</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis</span><span class="w">      </span><span class="kn">import</span> <span class="n">airfoil_analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_polars</span><span class="w">                  </span><span class="kn">import</span> <span class="n">import_airfoil_polars</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil.compute_naca_4series</span><span class="w">                   </span><span class="kn">import</span> <span class="n">compute_naca_4series</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.AERODAS.pre_stall_coefficients</span><span class="w">             </span><span class="kn">import</span> <span class="n">pre_stall_coefficients</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.AERODAS.post_stall_coefficients</span><span class="w">            </span><span class="kn">import</span> <span class="n">post_stall_coefficients</span>
 
 <span class="c1"># numpy imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span>     <span class="kn">import</span> <span class="n">RegularGridInterpolator</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">interp2d</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w">     </span><span class="kn">import</span> <span class="n">RegularGridInterpolator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp2d</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  compute_airfoil_properties</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------   </span>
 <div class="viewcode-block" id="compute_airfoil_properties">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.html#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_airfoil_properties">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_airfoil_properties</span><span class="p">(</span><span class="n">airfoil_geometry</span><span class="p">,</span> <span class="n">airfoil_polar_files</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">use_pre_stall_data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_airfoil_properties</span><span class="p">(</span><span class="n">airfoil_geometry</span><span class="p">,</span> <span class="n">airfoil_polar_files</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">use_pre_stall_data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This computes the aerodynamic properties and coefficients of an airfoil in stall regimes using pre-stall</span>
 <span class="sd">    characterstics and AERODAS formation for post stall characteristics. This is useful for </span>
 <span class="sd">    obtaining a more accurate prediction of wing and blade loading as well as aeroacoustics. Pre stall characteristics </span>
@@ -491,7 +491,7 @@
  
 <div class="viewcode-block" id="compute_extended_polars">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.html#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_extended_polars">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_extended_polars</span><span class="p">(</span><span class="n">airfoil_cl</span><span class="p">,</span><span class="n">airfoil_cd</span><span class="p">,</span><span class="n">airfoil_aoa</span><span class="p">,</span><span class="n">AoA_sweep_deg</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">use_pre_stall_data</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_extended_polars</span><span class="p">(</span><span class="n">airfoil_cl</span><span class="p">,</span><span class="n">airfoil_cd</span><span class="p">,</span><span class="n">airfoil_aoa</span><span class="p">,</span><span class="n">AoA_sweep_deg</span><span class="p">,</span><span class="n">geometry</span><span class="p">,</span><span class="n">use_pre_stall_data</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Computes the aerodynamic polars of an airfoil over an extended angle of attack range</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -591,7 +591,7 @@
 
 <div class="viewcode-block" id="apply_pre_stall_data">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.html#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.apply_pre_stall_data">[docs]</a>
-<span class="k">def</span> <span class="nf">apply_pre_stall_data</span><span class="p">(</span><span class="n">AoA_sweep_deg</span><span class="p">,</span> <span class="n">airfoil_aoa</span><span class="p">,</span> <span class="n">airfoil_cl</span><span class="p">,</span> <span class="n">airfoil_cd</span><span class="p">,</span> <span class="n">CL</span><span class="p">,</span> <span class="n">CD</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_pre_stall_data</span><span class="p">(</span><span class="n">AoA_sweep_deg</span><span class="p">,</span> <span class="n">airfoil_aoa</span><span class="p">,</span> <span class="n">airfoil_cl</span><span class="p">,</span> <span class="n">airfoil_cd</span><span class="p">,</span> <span class="n">CL</span><span class="p">,</span> <span class="n">CD</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Applies prestall data to lift and drag curve slopes</span>
 <span class="sd">    </span>
 <span class="sd">    Assumptions:</span>
@@ -637,7 +637,7 @@
  
 <div class="viewcode-block" id="compute_boundary_layer_properties">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.html#RCAIDE.Library.Methods.Geometry.Airfoil.compute_airfoil_properties.compute_boundary_layer_properties">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_boundary_layer_properties</span><span class="p">(</span><span class="n">airfoil_geometry</span><span class="p">,</span><span class="n">Airfoil_Data</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_boundary_layer_properties</span><span class="p">(</span><span class="n">airfoil_geometry</span><span class="p">,</span><span class="n">Airfoil_Data</span><span class="p">):</span> 
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Computes the boundary layer properties of an airfoil for a sweep of Reynolds numbers </span>
 <span class="sd">    and angle of attacks. </span>
 <span class="sd">    </span>

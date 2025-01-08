@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,22 +385,22 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE Imports</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                                                                <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components</span>                                                            <span class="kn">import</span> <span class="n">Component</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Attributes.Coolants.Glycol_Water</span>                                      <span class="kn">import</span> <span class="n">Glycol_Water</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Attributes.Gases</span>                                                      <span class="kn">import</span> <span class="n">Air</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger</span>  <span class="kn">import</span>  <span class="n">cross_flow_hex_rating_model</span><span class="p">,</span> <span class="n">append_cross_flow_heat_exchanger_conditions</span><span class="p">,</span> <span class="n">append_cross_flow_hex_segment_conditions</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions</span>    <span class="kn">import</span> <span class="n">plot_cross_flow_heat_exchanger_conditions</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                                                                </span><span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">Units</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components</span><span class="w">                                                            </span><span class="kn">import</span> <span class="n">Component</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Attributes.Coolants.Glycol_Water</span><span class="w">                                      </span><span class="kn">import</span> <span class="n">Glycol_Water</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Attributes.Gases</span><span class="w">                                                      </span><span class="kn">import</span> <span class="n">Air</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger</span><span class="w">  </span><span class="kn">import</span>  <span class="n">cross_flow_hex_rating_model</span><span class="p">,</span> <span class="n">append_cross_flow_heat_exchanger_conditions</span><span class="p">,</span> <span class="n">append_cross_flow_hex_segment_conditions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Plots.Thermal_Management.plot_cross_flow_heat_exchanger_conditions</span><span class="w">    </span><span class="kn">import</span> <span class="n">plot_cross_flow_heat_exchanger_conditions</span> 
 
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  Cross Flow Heat Exchanger </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger">[docs]</a>
-<span class="k">class</span> <span class="nc">Cross_Flow_Heat_Exchanger</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Cross_Flow_Heat_Exchanger</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A class representing a cross-flow heat exchanger with strip fins for thermal </span>
 <span class="sd">    management systems.</span>
@@ -525,7 +525,7 @@
 <span class="sd">        Alternative heat exchanger for cryogenic applications</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets default values for the cross-flow heat exchanger attributes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>         
@@ -612,7 +612,7 @@
 
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.append_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.append_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds operating conditions for the heat exchanger to a mission segment.</span>
 
@@ -629,7 +629,7 @@
   
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.append_segment_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.append_segment_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">append_segment_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">conditions</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds specific segment conditions to the heat exchanger analysis.</span>
 
@@ -650,7 +650,7 @@
        
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.compute_heat_exchanger_performance">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.compute_heat_exchanger_performance">[docs]</a>
-    <span class="k">def</span> <span class="nf">compute_heat_exchanger_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_heat_exchanger_performance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">bus</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">delta_t</span><span class="p">,</span> <span class="n">t_idx</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates thermal performance of the heat exchanger.</span>
 
@@ -673,7 +673,7 @@
 
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.plot_operating_conditions">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.plot_operating_conditions">[docs]</a>
-    <span class="k">def</span> <span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_operating_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">coolant_line</span><span class="p">,</span> <span class="n">save_filename</span><span class="p">,</span> <span class="n">save_figure</span><span class="p">,</span> 
                                 <span class="n">show_legend</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates visualization plots of the heat exchanger operating conditions.</span>
@@ -704,7 +704,7 @@
 
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.load_kc_values">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.load_kc_values">[docs]</a>
-    <span class="k">def</span> <span class="nf">load_kc_values</span><span class="p">():</span> 
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_kc_values</span><span class="p">():</span> 
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Loads entrance loss coefficient data from file.</span>
 
@@ -723,7 +723,7 @@
     
 <div class="viewcode-block" id="Cross_Flow_Heat_Exchanger.load_ke_values">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.html#RCAIDE.Library.Components.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger.Cross_Flow_Heat_Exchanger.load_ke_values">[docs]</a>
-    <span class="k">def</span> <span class="nf">load_ke_values</span><span class="p">():</span>  
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_ke_values</span><span class="p">():</span>  
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Loads exit loss coefficient data from file.</span>
 

@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -388,11 +388,11 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 
 <span class="c1"># package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
 
 <div class="viewcode-block" id="compute_wing_induced_velocity">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.compute_wing_induced_velocity">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_wing_induced_velocity</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">mach</span><span class="p">,</span><span class="n">compute_EW</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_wing_induced_velocity</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span><span class="n">mach</span><span class="p">,</span><span class="n">compute_EW</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This computes the induced velocities at each control point of the vehicle vortex lattice </span>
 
 <span class="sd">    Assumptions: </span>
@@ -597,7 +597,7 @@
     
 <div class="viewcode-block" id="subsonic">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.subsonic">[docs]</a>
-<span class="k">def</span> <span class="nf">subsonic</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">XSQ1</span><span class="p">,</span><span class="n">RO1</span><span class="p">,</span><span class="n">XSQ2</span><span class="p">,</span><span class="n">RO2</span><span class="p">,</span><span class="n">XTY</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">B2</span><span class="p">,</span><span class="n">ZSQ</span><span class="p">,</span><span class="n">TOLSQ</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">RTV1</span><span class="p">,</span><span class="n">RTV2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">subsonic</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">XSQ1</span><span class="p">,</span><span class="n">RO1</span><span class="p">,</span><span class="n">XSQ2</span><span class="p">,</span><span class="n">RO2</span><span class="p">,</span><span class="n">XTY</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">B2</span><span class="p">,</span><span class="n">ZSQ</span><span class="p">,</span><span class="n">TOLSQ</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">RTV1</span><span class="p">,</span><span class="n">RTV2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;  This computes the induced velocities at each control point </span>
 <span class="sd">    of the vehicle vortex lattice for subsonic mach numbers</span>
 
@@ -670,7 +670,7 @@
 
 <div class="viewcode-block" id="supersonic">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.supersonic">[docs]</a>
-<span class="k">def</span> <span class="nf">supersonic</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">XSQ1</span><span class="p">,</span><span class="n">RO1</span><span class="p">,</span><span class="n">XSQ2</span><span class="p">,</span><span class="n">RO2</span><span class="p">,</span><span class="n">XTY</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">B2</span><span class="p">,</span><span class="n">ZSQ</span><span class="p">,</span><span class="n">TOLSQ</span><span class="p">,</span><span class="n">TOL</span><span class="p">,</span><span class="n">TOLSQ2</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">RTV1</span><span class="p">,</span><span class="n">RTV2</span><span class="p">,</span><span class="n">CUTOFF</span><span class="p">,</span><span class="n">CHORD</span><span class="p">,</span><span class="n">RNMAX</span><span class="p">,</span><span class="n">n_cp</span><span class="p">,</span><span class="n">TE_ind</span><span class="p">,</span> <span class="n">LE_ind</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">supersonic</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">XSQ1</span><span class="p">,</span><span class="n">RO1</span><span class="p">,</span><span class="n">XSQ2</span><span class="p">,</span><span class="n">RO2</span><span class="p">,</span><span class="n">XTY</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">B2</span><span class="p">,</span><span class="n">ZSQ</span><span class="p">,</span><span class="n">TOLSQ</span><span class="p">,</span><span class="n">TOL</span><span class="p">,</span><span class="n">TOLSQ2</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">RTV1</span><span class="p">,</span><span class="n">RTV2</span><span class="p">,</span><span class="n">CUTOFF</span><span class="p">,</span><span class="n">CHORD</span><span class="p">,</span><span class="n">RNMAX</span><span class="p">,</span><span class="n">n_cp</span><span class="p">,</span><span class="n">TE_ind</span><span class="p">,</span> <span class="n">LE_ind</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;  This computes the induced velocities at each control point </span>
 <span class="sd">    of the vehicle vortex lattice for supersonic mach numbers</span>
 
@@ -884,7 +884,7 @@
 
 <div class="viewcode-block" id="supersonic_in_plane">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.compute_wing_induced_velocity.supersonic_in_plane">[docs]</a>
-<span class="k">def</span> <span class="nf">supersonic_in_plane</span><span class="p">(</span><span class="n">RAD1</span><span class="p">,</span><span class="n">RAD2</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">TOL</span><span class="p">,</span><span class="n">XTY</span><span class="p">,</span><span class="n">CPI</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">supersonic_in_plane</span><span class="p">(</span><span class="n">RAD1</span><span class="p">,</span><span class="n">RAD2</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">TOL</span><span class="p">,</span><span class="n">XTY</span><span class="p">,</span><span class="n">CPI</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;  This computes the induced velocities at each control point </span>
 <span class="sd">    in the special case where the vortices lie in the same plane</span>
 <span class="sd">    </span>

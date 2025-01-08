@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -385,21 +385,21 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
-<span class="kn">import</span> <span class="nn">RCAIDE</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span>                    <span class="kn">import</span>    <span class="n">Units</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Components.Wings</span>          <span class="kn">import</span> <span class="n">Main_Wing</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Utilities</span>         <span class="kn">import</span> <span class="n">Cubic_Spline_Blender</span>   
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Planform.convert_sweep</span> <span class="kn">import</span> <span class="n">convert_sweep</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">RCAIDE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w">                    </span><span class="kn">import</span>    <span class="n">Units</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Components.Wings</span><span class="w">          </span><span class="kn">import</span> <span class="n">Main_Wing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Utilities</span><span class="w">         </span><span class="kn">import</span> <span class="n">Cubic_Spline_Blender</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Planform.convert_sweep</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert_sweep</span> 
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <span class="c1">#  Supersonic Wave Drag Due to Volume - Raymer Method </span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="supersonic_wave_drag_volume_raymer">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_raymer.html#RCAIDE.Library.Methods.Aerodynamics.Common.Drag.supersonic_wave_drag_volume_raymer.supersonic_wave_drag_volume_raymer">[docs]</a>
-<span class="k">def</span> <span class="nf">supersonic_wave_drag_volume_raymer</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mach</span><span class="p">,</span><span class="n">scaling_factor</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">supersonic_wave_drag_volume_raymer</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span><span class="n">mach</span><span class="p">,</span><span class="n">scaling_factor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the volume drag</span>
 
 <span class="sd">    Assumptions:</span>

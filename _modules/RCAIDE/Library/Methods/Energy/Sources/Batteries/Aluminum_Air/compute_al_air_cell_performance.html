@@ -29,7 +29,7 @@
   <link href="../../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,14 +387,14 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="find_aluminum_mass">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Energy.Sources.Batteries.Aluminum_Air.compute_al_air_cell_performance.find_aluminum_mass.html#RCAIDE.Library.Methods.Energy.Sources.Batteries.Aluminum_Air.compute_al_air_cell_performance.find_aluminum_mass">[docs]</a>
-<span class="k">def</span> <span class="nf">find_aluminum_mass</span><span class="p">(</span><span class="n">battery</span><span class="p">,</span> <span class="n">energy</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_aluminum_mass</span><span class="p">(</span><span class="n">battery</span><span class="p">,</span> <span class="n">energy</span><span class="p">):</span>
     <span class="n">aluminum_mass</span> <span class="o">=</span> <span class="n">energy</span><span class="o">*</span><span class="n">battery</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">aluminum_mass_factor</span>
     <span class="k">return</span> <span class="n">aluminum_mass</span> </div>
 
 
 <div class="viewcode-block" id="find_water_mass">
 <a class="viewcode-back" href="../../../../../../../../_autosummary/RCAIDE.Library.Methods.Energy.Sources.Batteries.Aluminum_Air.compute_al_air_cell_performance.find_water_mass.html#RCAIDE.Library.Methods.Energy.Sources.Batteries.Aluminum_Air.compute_al_air_cell_performance.find_water_mass">[docs]</a>
-<span class="k">def</span> <span class="nf">find_water_mass</span><span class="p">(</span><span class="n">battery</span><span class="p">,</span> <span class="n">energy</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_water_mass</span><span class="p">(</span><span class="n">battery</span><span class="p">,</span> <span class="n">energy</span><span class="p">):</span>
     <span class="n">water_mass</span> <span class="o">=</span> <span class="n">energy</span><span class="o">*</span><span class="n">battery</span><span class="o">.</span><span class="n">cell</span><span class="o">.</span><span class="n">water_mass_gain_factor</span>
     <span class="k">return</span> <span class="n">water_mass</span></div>
 

@@ -29,7 +29,7 @@
   <link href="../../../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,14 +387,14 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># compute_wake_induced_velocity</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="compute_wake_induced_velocity">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.compute_wake_induced_velocity.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.compute_wake_induced_velocity">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_wake_induced_velocity</span><span class="p">(</span><span class="n">WD</span><span class="p">,</span><span class="n">VD</span><span class="p">,</span><span class="n">cpts</span><span class="p">,</span><span class="n">azi_start_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sigma</span><span class="o">=</span><span class="mf">0.11</span><span class="p">,</span><span class="n">suppress_root</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_wake_induced_velocity</span><span class="p">(</span><span class="n">WD</span><span class="p">,</span><span class="n">VD</span><span class="p">,</span><span class="n">cpts</span><span class="p">,</span><span class="n">azi_start_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sigma</span><span class="o">=</span><span class="mf">0.11</span><span class="p">,</span><span class="n">suppress_root</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This computes the velocity induced by the Fidelity One semi-prescribed vortex wake (PVW)</span>
 <span class="sd">    on lifting surface control points</span>
 
@@ -473,7 +473,7 @@
 <span class="c1"># -------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="vortex">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.vortex.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.vortex">[docs]</a>
-<span class="k">def</span> <span class="nf">vortex</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Z1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">Z2</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span> <span class="n">GAMMA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bv</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">WD</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">use_regularization_kernal</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vortex</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Z1</span><span class="p">,</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">,</span><span class="n">Z2</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span> <span class="n">GAMMA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bv</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">WD</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">use_regularization_kernal</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This computes the velocity induced on a control point by a segment</span>
 <span class="sd">    of a horseshoe vortex that points from point 1 to point 2 for a filament with</span>
 <span class="sd">    positive vortex strength.</span>
@@ -542,7 +542,7 @@
 
 <div class="viewcode-block" id="row_reduction_summation">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.row_reduction_summation.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.row_reduction_summation">[docs]</a>
-<span class="k">def</span> <span class="nf">row_reduction_summation</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">row_reduction_summation</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="c1"># sum along last axis</span>
     <span class="n">sum_res</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># sum along axis</span>
     
@@ -551,7 +551,7 @@
 
 <div class="viewcode-block" id="regularization_kernel">
 <a class="viewcode-back" href="../../../../../../../../../_autosummary/RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.regularization_kernel.html#RCAIDE.Library.Methods.Propulsors.Converters.Rotor.Wake.Perscribed_Vortex_Wake.compute_wake_induced_velocity.regularization_kernel">[docs]</a>
-<span class="k">def</span> <span class="nf">regularization_kernel</span><span class="p">(</span><span class="n">COEF_in</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">regularization_kernel</span><span class="p">(</span><span class="n">COEF_in</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Regularization kernel used to prevent singularities</span>
 <span class="sd">    </span>

@@ -29,7 +29,7 @@
   <link href="../../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,28 +387,28 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE Imports </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span>  <span class="n">Data</span>   
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Common.decibel_arithmetic</span>                                <span class="kn">import</span> <span class="n">SPL_arithmetic</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Common.compute_noise_source_coordinates</span>                  <span class="kn">import</span> <span class="n">compute_rotor_point_source_coordinates</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.harmonic_noise_point</span>      <span class="kn">import</span> <span class="n">harmonic_noise_point</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.harmonic_noise_line</span>       <span class="kn">import</span> <span class="n">harmonic_noise_line</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.harmonic_noise_plane</span>      <span class="kn">import</span> <span class="n">harmonic_noise_plane</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise</span>           <span class="kn">import</span> <span class="n">broadband_noise</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Common</span>                                                   <span class="kn">import</span> <span class="n">atmospheric_attenuation</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Metrics.A_weighting_metric</span>                               <span class="kn">import</span> <span class="n">A_weighting_metric</span>  
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry</span>                       <span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis</span>             <span class="kn">import</span> <span class="n">airfoil_analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span>  <span class="n">Data</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Common.decibel_arithmetic</span><span class="w">                                </span><span class="kn">import</span> <span class="n">SPL_arithmetic</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Common.compute_noise_source_coordinates</span><span class="w">                  </span><span class="kn">import</span> <span class="n">compute_rotor_point_source_coordinates</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.harmonic_noise_point</span><span class="w">      </span><span class="kn">import</span> <span class="n">harmonic_noise_point</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.harmonic_noise_line</span><span class="w">       </span><span class="kn">import</span> <span class="n">harmonic_noise_line</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.harmonic_noise_plane</span><span class="w">      </span><span class="kn">import</span> <span class="n">harmonic_noise_plane</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.broadband_noise</span><span class="w">           </span><span class="kn">import</span> <span class="n">broadband_noise</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Common</span><span class="w">                                                   </span><span class="kn">import</span> <span class="n">atmospheric_attenuation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Metrics.A_weighting_metric</span><span class="w">                               </span><span class="kn">import</span> <span class="n">A_weighting_metric</span>  
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geometry.Airfoil.import_airfoil_geometry</span><span class="w">                       </span><span class="kn">import</span> <span class="n">import_airfoil_geometry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Airfoil_Panel_Method.airfoil_analysis</span><span class="w">             </span><span class="kn">import</span> <span class="n">airfoil_analysis</span>
 
 <span class="c1"># Python package imports   </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>    
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">interp2d</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>    
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp2d</span> 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <span class="c1">#  Rotor Noise </span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------    </span>
 <div class="viewcode-block" id="compute_rotor_noise">
 <a class="viewcode-back" href="../../../../../../../_autosummary/RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.compute_rotor_noise.html#RCAIDE.Library.Methods.Noise.Frequency_Domain_Buildup.Rotor.compute_rotor_noise.compute_rotor_noise">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_rotor_noise</span><span class="p">(</span><span class="n">microphone_locations</span><span class="p">,</span><span class="n">propulsor</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span> <span class="n">rotor_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">previous_rotor_tag</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">identical_propulsors</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_rotor_noise</span><span class="p">(</span><span class="n">microphone_locations</span><span class="p">,</span><span class="n">propulsor</span><span class="p">,</span><span class="n">rotor</span><span class="p">,</span><span class="n">segment</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span> <span class="n">rotor_index</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">previous_rotor_tag</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">identical_propulsors</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39; This is a collection medium-fidelity frequency domain methods for rotor acoustic noise prediction which </span>
 <span class="sd">    computes the acoustic signature (sound pressure level, weighted sound pressure levels,</span>
 <span class="sd">    and frequency spectrums of a system of rotating blades           </span>

@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -387,21 +387,21 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">DataOrdered</span>
-<span class="kn">from</span> <span class="nn">.Conditions</span>           <span class="kn">import</span> <span class="n">Conditions</span>
-<span class="kn">from</span> <span class="nn">.Unknowns</span>             <span class="kn">import</span> <span class="n">Unknowns</span>
-<span class="kn">from</span> <span class="nn">.Residuals</span>            <span class="kn">import</span> <span class="n">Residuals</span>
-<span class="kn">from</span> <span class="nn">.Numerics</span>             <span class="kn">import</span> <span class="n">Numerics</span>   
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataOrdered</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Conditions</span><span class="w">           </span><span class="kn">import</span> <span class="n">Conditions</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Unknowns</span><span class="w">             </span><span class="kn">import</span> <span class="n">Unknowns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Residuals</span><span class="w">            </span><span class="kn">import</span> <span class="n">Residuals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Numerics</span><span class="w">             </span><span class="kn">import</span> <span class="n">Numerics</span>   
 
 <span class="c1"># python imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  State</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <div class="viewcode-block" id="State">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Common.State.html#RCAIDE.Framework.Mission.Common.State.State">[docs]</a>
-<span class="k">class</span> <span class="nc">State</span><span class="p">(</span><span class="n">Conditions</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">Conditions</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Creates the State data structure for storing daata that solved in a mission</span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -412,7 +412,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>    
     
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -440,7 +440,7 @@
         
 <div class="viewcode-block" id="State.expand_rows">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Common.State.html#RCAIDE.Framework.Mission.Common.State.State.expand_rows">[docs]</a>
-    <span class="k">def</span> <span class="nf">expand_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rows</span><span class="p">,</span><span class="n">override</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">expand_rows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">rows</span><span class="p">,</span><span class="n">override</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Makes a 1-D array the right size. Often used after a mission is initialized to size out the vectors to the</span>
 <span class="sd">            right size. Will not overwrite an array if it already exists, unless override is True.</span>
 <span class="sd">        </span>
@@ -489,8 +489,8 @@
                 
 <div class="viewcode-block" id="Container">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Common.State.html#RCAIDE.Framework.Mission.Common.State.Container">[docs]</a>
-<span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">State</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Container</span><span class="p">(</span><span class="n">State</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -512,7 +512,7 @@
         
 <div class="viewcode-block" id="Container.merged">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Common.State.html#RCAIDE.Framework.Mission.Common.State.Container.merged">[docs]</a>
-    <span class="k">def</span> <span class="nf">merged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">merged</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Combines the states of multiple segments</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -552,7 +552,7 @@
 
 <div class="viewcode-block" id="append_array">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Framework.Mission.Common.State.html#RCAIDE.Framework.Mission.Common.State.append_array">[docs]</a>
-<span class="k">def</span> <span class="nf">append_array</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">append_array</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; A stacking operation used by merged to put together data structures</span>
 
 <span class="sd">        Assumptions:</span>

@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -389,11 +389,11 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 
 <span class="c1"># package imports </span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span> <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">.compute_wing_induced_velocity</span>      <span class="kn">import</span> <span class="n">compute_wing_induced_velocity</span>
-<span class="kn">from</span> <span class="nn">.generate_vortex_distribution</span>       <span class="kn">import</span> <span class="n">generate_vortex_distribution</span> 
-<span class="kn">from</span> <span class="nn">.compute_RHS_matrix</span>                 <span class="kn">import</span> <span class="n">compute_RHS_matrix</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.compute_wing_induced_velocity</span><span class="w">      </span><span class="kn">import</span> <span class="n">compute_wing_induced_velocity</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.generate_vortex_distribution</span><span class="w">       </span><span class="kn">import</span> <span class="n">generate_vortex_distribution</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">.compute_RHS_matrix</span><span class="w">                 </span><span class="kn">import</span> <span class="n">compute_RHS_matrix</span> 
 
 <span class="c1"># ----------------------------------------------------------------------</span>
 <span class="c1">#  Vortex Lattice</span>
@@ -401,7 +401,7 @@
 
 <div class="viewcode-block" id="VLM">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.VLM">[docs]</a>
-<span class="k">def</span> <span class="nf">VLM</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">geometry</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">VLM</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span><span class="n">settings</span><span class="p">,</span><span class="n">geometry</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Uses the vortex lattice method to compute the lift, induced drag and moment coefficients.</span>
 <span class="sd">    </span>
 <span class="sd">    The user has the option to discretize control surfaces using the boolean settings.discretize_control_surfaces.</span>
@@ -922,7 +922,7 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="compute_rotation_effects">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.compute_rotation_effects">[docs]</a>
-<span class="k">def</span> <span class="nf">compute_rotation_effects</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">EW_small</span><span class="p">,</span> <span class="n">GAMMA</span><span class="p">,</span> <span class="n">len_mach</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">CHORD</span><span class="p">,</span> <span class="n">XLE</span><span class="p">,</span> <span class="n">XBAR</span><span class="p">,</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_rotation_effects</span><span class="p">(</span><span class="n">VD</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">EW_small</span><span class="p">,</span> <span class="n">GAMMA</span><span class="p">,</span> <span class="n">len_mach</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">CHORD</span><span class="p">,</span> <span class="n">XLE</span><span class="p">,</span> <span class="n">XBAR</span><span class="p">,</span> 
                              <span class="n">rhs</span><span class="p">,</span> <span class="n">COSINP</span><span class="p">,</span> <span class="n">SINALF</span><span class="p">,</span><span class="n">COSCOS</span><span class="p">,</span> <span class="n">PITCH</span><span class="p">,</span> <span class="n">ROLL</span><span class="p">,</span> <span class="n">YAW</span><span class="p">,</span> <span class="n">STB</span><span class="p">,</span> <span class="n">RNMAX</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This computes the effects of the freestream and aircraft rotation rate on </span>
 <span class="sd">    CLE, the induced flow at the leading edge</span>
@@ -980,7 +980,7 @@
 <span class="c1"># ----------------------------------------------------------------------</span>
 <div class="viewcode-block" id="strip_cumsum">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.html#RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM.strip_cumsum">[docs]</a>
-<span class="k">def</span> <span class="nf">strip_cumsum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">chord_breaks</span><span class="p">,</span> <span class="n">strip_lengths</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">strip_cumsum</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">chord_breaks</span><span class="p">,</span> <span class="n">strip_lengths</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Uses numpy to to compute a cumsum that resets along</span>
 <span class="sd">    the leading edge of every strip.</span>
 <span class="sd">    </span>

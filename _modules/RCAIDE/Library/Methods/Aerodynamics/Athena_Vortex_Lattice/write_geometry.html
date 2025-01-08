@@ -29,7 +29,7 @@
   <link href="../../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,15 +386,15 @@
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 
 <span class="c1"># RCAIDE imports  </span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files</span> <span class="kn">import</span> <span class="n">purge_files</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures</span> <span class="kn">import</span> <span class="n">translate_avl_wing</span><span class="p">,</span> <span class="n">translate_avl_body</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.purge_files</span><span class="w"> </span><span class="kn">import</span> <span class="n">purge_files</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.create_avl_datastructures</span><span class="w"> </span><span class="kn">import</span> <span class="n">translate_avl_wing</span><span class="p">,</span> <span class="n">translate_avl_body</span>
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1">#  write_geometry</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="write_geometry">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.write_geometry">[docs]</a>
-<span class="k">def</span> <span class="nf">write_geometry</span><span class="p">(</span><span class="n">avl_object</span><span class="p">,</span><span class="n">run_script_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_geometry</span><span class="p">(</span><span class="n">avl_object</span><span class="p">,</span><span class="n">run_script_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function writes the translated aircraft geometry into text file read </span>
 <span class="sd">    by AVL when it is called</span>
 
@@ -453,7 +453,7 @@
 
 <div class="viewcode-block" id="make_header_text">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_header_text">[docs]</a>
-<span class="k">def</span> <span class="nf">make_header_text</span><span class="p">(</span><span class="n">avl_object</span><span class="p">):</span>  
+<span class="k">def</span><span class="w"> </span><span class="nf">make_header_text</span><span class="p">(</span><span class="n">avl_object</span><span class="p">):</span>  
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function writes the header using the template required for the AVL executable to read</span>
 
 <span class="sd">    Assumptions:</span>
@@ -517,7 +517,7 @@
 
 <div class="viewcode-block" id="make_surface_text">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_surface_text">[docs]</a>
-<span class="k">def</span> <span class="nf">make_surface_text</span><span class="p">(</span><span class="n">avl_wing</span><span class="p">,</span><span class="n">number_of_spanwise_vortices</span><span class="p">,</span><span class="n">number_of_chordwise_vortices</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_surface_text</span><span class="p">(</span><span class="n">avl_wing</span><span class="p">,</span><span class="n">number_of_spanwise_vortices</span><span class="p">,</span><span class="n">number_of_chordwise_vortices</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function writes the surface text using the template required for the AVL executable to read</span>
 
 <span class="sd">    Assumptions:</span>
@@ -587,7 +587,7 @@
 
 <div class="viewcode-block" id="make_body_text">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_text">[docs]</a>
-<span class="k">def</span> <span class="nf">make_body_text</span><span class="p">(</span><span class="n">avl_body</span><span class="p">,</span><span class="n">number_of_chordwise_vortices</span><span class="p">):</span>   
+<span class="k">def</span><span class="w"> </span><span class="nf">make_body_text</span><span class="p">(</span><span class="n">avl_body</span><span class="p">,</span><span class="n">number_of_chordwise_vortices</span><span class="p">):</span>   
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function writes the body text using the template required for the AVL executable to read</span>
 
 <span class="sd">    Assumptions:</span>
@@ -647,7 +647,7 @@
 
 <div class="viewcode-block" id="make_wing_section_text">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_wing_section_text">[docs]</a>
-<span class="k">def</span> <span class="nf">make_wing_section_text</span><span class="p">(</span><span class="n">avl_section</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_wing_section_text</span><span class="p">(</span><span class="n">avl_section</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function writes the wing text using the template required for the AVL executable to read</span>
 
 <span class="sd">    Assumptions:</span>
@@ -709,7 +709,7 @@
     
 <div class="viewcode-block" id="make_body_section_text">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_body_section_text">[docs]</a>
-<span class="k">def</span> <span class="nf">make_body_section_text</span><span class="p">(</span><span class="n">avl_body_section</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_body_section_text</span><span class="p">(</span><span class="n">avl_body_section</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function writes the body text using the template required for the AVL executable to read</span>
 
 <span class="sd">    Assumptions:</span>
@@ -759,7 +759,7 @@
     
 <div class="viewcode-block" id="make_controls_text">
 <a class="viewcode-back" href="../../../../../../_autosummary/RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.html#RCAIDE.Library.Methods.Aerodynamics.Athena_Vortex_Lattice.write_geometry.make_controls_text">[docs]</a>
-<span class="k">def</span> <span class="nf">make_controls_text</span><span class="p">(</span><span class="n">avl_control_surface</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_controls_text</span><span class="p">(</span><span class="n">avl_control_surface</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;This function writes the control surface text using the template required </span>
 <span class="sd">    for the AVL executable to read</span>
 

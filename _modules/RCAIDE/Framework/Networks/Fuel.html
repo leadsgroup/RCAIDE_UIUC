@@ -29,7 +29,7 @@
   <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,17 +386,17 @@
 <span class="c1">#  Imports</span>
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># RCAIDE Imports</span>
-<span class="kn">import</span>  <span class="nn">RCAIDE</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Mission.Common</span>                      <span class="kn">import</span> <span class="n">Residuals</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Mission.Common.Unpack_Unknowns.energy</span> <span class="kn">import</span> <span class="n">unknowns</span>
-<span class="kn">from</span> <span class="nn">.Network</span>                                             <span class="kn">import</span> <span class="n">Network</span>   
+<span class="kn">import</span><span class="w">  </span><span class="nn">RCAIDE</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Mission.Common</span><span class="w">                      </span><span class="kn">import</span> <span class="n">Residuals</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Mission.Common.Unpack_Unknowns.energy</span><span class="w"> </span><span class="kn">import</span> <span class="n">unknowns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.Network</span><span class="w">                                             </span><span class="kn">import</span> <span class="n">Network</span>   
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
 <span class="c1"># Fuel</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <div class="viewcode-block" id="Fuel">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Networks.Fuel.html#RCAIDE.Framework.Networks.Fuel.Fuel">[docs]</a>
-<span class="k">class</span> <span class="nc">Fuel</span><span class="p">(</span><span class="n">Network</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Fuel</span><span class="p">(</span><span class="n">Network</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; This is a  fuel-based network. </span>
 <span class="sd">    </span>
 <span class="sd">        Assumptions:</span>
@@ -405,7 +405,7 @@
 <span class="sd">        Source: </span>
 <span class="sd">    &quot;&quot;&quot;</span>      
     
-    <span class="k">def</span> <span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__defaults__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This sets the default values for the network to function.</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -430,7 +430,7 @@
     <span class="c1"># linking the different network components</span>
 <div class="viewcode-block" id="Fuel.evaluate">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Networks.Fuel.html#RCAIDE.Framework.Networks.Fuel.Fuel.evaluate">[docs]</a>
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">network</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="n">network</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">center_of_gravity</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Calculate thrust given the current state of the vehicle</span>
 <span class="sd">    </span>
 <span class="sd">            Assumptions:</span>
@@ -506,7 +506,7 @@
     
 <div class="viewcode-block" id="Fuel.unpack_unknowns">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Networks.Fuel.html#RCAIDE.Framework.Networks.Fuel.Fuel.unpack_unknowns">[docs]</a>
-    <span class="k">def</span> <span class="nf">unpack_unknowns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unpack_unknowns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Unpacks the unknowns set in the mission to be available for the mission.</span>
 
 <span class="sd">        Assumptions:</span>
@@ -539,7 +539,7 @@
      
 <div class="viewcode-block" id="Fuel.residuals">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Networks.Fuel.html#RCAIDE.Framework.Networks.Fuel.Fuel.residuals">[docs]</a>
-    <span class="k">def</span> <span class="nf">residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">residuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This packs the residuals to be sent to the mission solver.</span>
 <span class="sd">   </span>
 <span class="sd">           Assumptions:</span>
@@ -572,7 +572,7 @@
     
 <div class="viewcode-block" id="Fuel.add_unknowns_and_residuals_to_segment">
 <a class="viewcode-back" href="../../../../_autosummary/RCAIDE.Framework.Networks.Fuel.html#RCAIDE.Framework.Networks.Fuel.Fuel.add_unknowns_and_residuals_to_segment">[docs]</a>
-    <span class="k">def</span> <span class="nf">add_unknowns_and_residuals_to_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_unknowns_and_residuals_to_segment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">segment</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; This function sets up the information that the mission needs to run a mission segment using this network </span>
 <span class="sd">         </span>
 <span class="sd">            Assumptions:</span>

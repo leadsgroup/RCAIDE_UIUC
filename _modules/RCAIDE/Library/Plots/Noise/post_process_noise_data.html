@@ -29,7 +29,7 @@
   <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=d103512f" />
   
   <!-- So that users can add custom icons -->
@@ -386,17 +386,17 @@
 <span class="c1">#  IMPORT</span>
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------  </span>
 <span class="c1"># noise imports</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Framework.Core</span> <span class="kn">import</span>  <span class="n">Data</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Common.background_noise</span>     <span class="kn">import</span> <span class="n">background_noise</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Metrics</span> <span class="kn">import</span> <span class="o">*</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Common.generate_zero_elevation_microphone_locations</span> <span class="kn">import</span> <span class="n">generate_zero_elevation_microphone_locations</span> 
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Common.generate_terrain_microphone_locations</span>        <span class="kn">import</span> <span class="n">generate_terrain_microphone_locations</span>     
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Noise.Common.compute_relative_noise_evaluation_locations</span>  <span class="kn">import</span> <span class="n">compute_relative_noise_evaluation_locations</span>
-<span class="kn">from</span> <span class="nn">RCAIDE.Library.Methods.Geodesics.compute_point_to_point_geospacial_data</span>          <span class="kn">import</span> <span class="n">compute_point_to_point_geospacial_data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Framework.Core</span><span class="w"> </span><span class="kn">import</span>  <span class="n">Data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Common.background_noise</span><span class="w">     </span><span class="kn">import</span> <span class="n">background_noise</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Metrics</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Common.generate_zero_elevation_microphone_locations</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_zero_elevation_microphone_locations</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Common.generate_terrain_microphone_locations</span><span class="w">        </span><span class="kn">import</span> <span class="n">generate_terrain_microphone_locations</span>     
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Noise.Common.compute_relative_noise_evaluation_locations</span><span class="w">  </span><span class="kn">import</span> <span class="n">compute_relative_noise_evaluation_locations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">RCAIDE.Library.Methods.Geodesics.compute_point_to_point_geospacial_data</span><span class="w">          </span><span class="kn">import</span> <span class="n">compute_point_to_point_geospacial_data</span>
 
 <span class="c1"># package imports</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.interpolate</span>                                           <span class="kn">import</span> <span class="n">RegularGridInterpolator</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w">                                           </span><span class="kn">import</span> <span class="n">RegularGridInterpolator</span>
 
 
 <span class="c1"># ----------------------------------------------------------------------------------------------------------------------</span>
@@ -404,7 +404,7 @@
 <span class="c1"># ---------------------------------------------------------------------------------------------------------------------- </span>
 <div class="viewcode-block" id="post_process_noise_data">
 <a class="viewcode-back" href="../../../../../_autosummary/RCAIDE.Library.Plots.Noise.post_process_noise_data.html#RCAIDE.Library.Plots.Noise.post_process_noise_data.post_process_noise_data">[docs]</a>
-<span class="k">def</span> <span class="nf">post_process_noise_data</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">post_process_noise_data</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
                             <span class="n">flight_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;06:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;06:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;07:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;07:30:00&#39;</span><span class="p">,</span>
                                                    <span class="s1">&#39;08:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;08:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;09:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;09:30:00&#39;</span><span class="p">,</span>
                                                    <span class="s1">&#39;10:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;10:30:00&#39;</span><span class="p">,</span><span class="s1">&#39;11:00:00&#39;</span><span class="p">,</span><span class="s1">&#39;11:30:00&#39;</span><span class="p">,</span>
