@@ -16,22 +16,36 @@ from RCAIDE.Framework.Core import Units
 #-------------------------------------------------------------------------------
 
 class Aluminum_Rib(Aluminum):
-    """ Physical Constants Specific to 6061-T6 Aluminum Ribs
+    """
+    A class representing 6061-T6 aluminum ribs with specific manufacturing constraints.
+
+    Attributes
+    ----------
+    minimum_gage_thickness : float
+        Minimum manufacturable thickness for precision rib components in m (1.5e-3)
+    minimum_width : float
+        Minimum manufacturable width for rib components in m (25.4e-3)
+
+    Notes
+    -----
+    This class extends the base Aluminum class, specifically for rib components.
+    It adds manufacturing constraints typical for precision machined aluminum ribs.
+    All other material properties (strength, density, etc.) are inherited from the 
+    Aluminum class for 6061-T6 alloy.
+
+    **Definitions**
     
-    Assumptions:
-    Limit of machining capability for precision components
+    'Minimum Gage Thickness'
+        The smallest thickness that can be reliably manufactured for a rib component
+        while maintaining structural integrity and manufacturing tolerances
     
-    Source:
-    None
-    
-    Inputs:
-    N/A
-    
-    Outputs:
-    N/A
-    
-    Properties Used:
-    None
+    'Minimum Width'
+        The smallest width that can be reliably manufactured for a rib component
+        while maintaining structural integrity and manufacturing tolerances
+
+    References
+    ----------
+    [1] MatWeb. (n.d.). Aluminum 6061-T6; 6061-T651. https://www.matweb.com/search/DataSheet.aspx?MatGUID=b8d536e0b9b54bd7b69e4124d8f1d20a 
     """
 
     def __defaults__(self):
