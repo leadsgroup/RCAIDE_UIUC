@@ -6,8 +6,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
-
-from RCAIDE.Framework.Core import Units 
+import RCAIDE
+from RCAIDE.Framework.Core import Units
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Larminie_Model import  compute_power, compute_voltage
+import  scipy as  sp
 import  numpy as  np
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -53,8 +55,7 @@ def compute_stack_properties(fuel_cell_stack):
     euler_angles       = fuel_cell_stack.orientation_euler_angles
     fuel_cell_length   = fuel_cell_stack.fuel_cell.length 
     fuel_cell_width    = fuel_cell_stack.fuel_cell.width   
-    fuel_cell_height   = fuel_cell_stack.fuel_cell.height   
-    weight_factor      = fuel_cell_stack.additional_weight_factor
+    fuel_cell_height   = fuel_cell_stack.fuel_cell.height    
     
     x1 =  normal_count * (fuel_cell_length +  normal_spacing) * volume_factor # distance in the module-level normal direction
     x2 =  parallel_count *  (fuel_cell_width +parallel_spacing) * volume_factor # distance in the module-level parallel direction
@@ -83,15 +84,27 @@ def compute_stack_properties(fuel_cell_stack):
     fuel_cell_stack.height = height 
     
     
-    P_fc    =  fuel_cell_stack.fuel_cell.rated_power_density *  fuel_cell_stack.fuel_cell.interface_area
-    I_fc    =  fuel_cell_stack.fuel_cell.rated_current_density *  fuel_cell_stack.fuel_cell.interface_area
-    I_stack = I_fc * parallel_e
-    V_fc    = P_fc / I_fc
-    V_stack = V_fc  * series_e
-    P_stack = V_stack * I_stack
     
-    fuel_cell_stack.voltage         = V_stack
-    fuel_cell_stack.maximum_voltage = V_stack  
-    fuel_cell_stack.maximum_current = I_stack 
-    fuel_cell_stack.maximum_power   = P_stack   
-     
+    if isinstance(fuel_cell_stack, RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack):
+    
+        fuel_cell                            = fuel_cell_stack.fuel_cell 
+        lb                                   = 0.0001/(Units.cm**2.)    #lower bound on fuel cell current density
+        ub                                   = 1.2/(Units.cm**2.)
+        sign                                 = -1. #used to minimize -power
+        current_density                      = sp.optimize.fminbound(compute_power, lb, ub, args=(fuel_cell, sign))
+        power_per_cell                       = compute_power(current_density,fuel_cell) 
+        V_fc                                 = compute_voltage(fuel_cell,current_density)  #useful voltage vector 
+        
+        fuel_cell.volume                     = parallel_e *series_e *fuel_cell.interface_area*fuel_cell.wall_thickness
+        fuel_cell_stack.mass_properties.mass = fuel_cell.volume*fuel_cell.cell_density*fuel_cell.porosity_coefficient #fuel cell mass in kg
+        fuel_cell.mass_density               = fuel_cell_stack.mass_properties.mass/  fuel_cell.volume                      
+        fuel_cell.specific_power             = fuel_cell.max_power/fuel_cell_stack.mass_properties.mass #fuel cell specific power in W/kg
+
+
+        fuel_cell_stack.voltage         = V_fc  * series_e
+        fuel_cell_stack.maximum_voltage = V_fc  * series_e
+        #fuel_cell_stack.maximum_power   = power_per_cell * series_e 
+        #fuel_cell_stack.maximum_current =  fuel_cell_stack.maximum_power / fuel_cell_stack.maximum_voltage
+ 
+ 
+  

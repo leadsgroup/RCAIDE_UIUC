@@ -2,7 +2,7 @@
 #  Imports
 # ---------------------------------------------------------------------- 
 from RCAIDE.Framework.Core import Units
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Generic   import find_voltage_larminie, find_power_diff_larminie
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Larminie_Model   import compute_voltage, compute_power_difference
 
 import numpy as np
 import scipy as sp
@@ -41,37 +41,19 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
     # ---------------------------------------------------------------------------------
     # Compute Bus electrical properties 
     # ---------------------------------------------------------------------------------    
-    bus_conditions              = state.conditions.energy[bus.tag] 
-    P_bus                       = bus_conditions.power_draw 
+    bus_conditions              = state.conditions.energy[bus.tag]
+    fuel_cell_stack_conditions  = bus_conditions[fuel_cell.tag]
+    P_bus                       = bus_conditions.power_draw  
 
-
-    if fuel_cell.discharge_model == 'Simple': 
-        # ---------------------------------------------------------------------------------
-        # Compute fuel_cell_stack Conditions
-        # -------------------------------------------------------------------------    
-        fuel_cell_stack_conditions = state.conditions.energy[bus.tag].fuel_cell_stacks[fuel_cell_stack.tag] 
-
-
-        #mass flow rate of the fuel  
-        mdot        = P_bus[t_idx]/(fuel_cell.propellant.specific_energy*fuel_cell.efficiency) 
-
-        fuel_cell_stack_conditions.fuel_cell.inputs.fuel_mass_flow_rate[t_idx]        = mdot 
-
-    else: # use  Larminie
-
-        power           = fuel_cell.inputs.power_in  
-        lb              = .1*Units.mA/(Units.cm**2.)    #lower bound on fuel cell current density
-        ub              = 1200.0*Units.mA/(Units.cm**2.)
-        current_density = np.zeros_like(power)
-
-        for i in range(len(power)):
-            current_density[i] = sp.optimize.fminbound(find_power_diff_larminie, lb, ub, args=(fuel_cell, power[i]))
-
-        v          = find_voltage_larminie(fuel_cell,current_density)    
-        efficiency = np.divide(v, fuel_cell.ideal_voltage)
-        mdot       = np.divide(power,np.multiply(fuel_cell.propellant.specific_energy,efficiency))        
-        fuel_cell_stack_conditions.fuel_cell.inputs.fuel_mass_flow_rate[t_idx]        = mdot
-        
+    power           = P_bus[t_idx]
+    lb              = .1*Units.mA/(Units.cm**2.)    #lower bound on fuel cell current density
+    ub              = 1200.0*Units.mA/(Units.cm**2.) 
+    current_density  = sp.optimize.fminbound(compute_power_difference, lb, ub, args=(fuel_cell, power)) 
+    v          = compute_voltage(fuel_cell,current_density)    
+    efficiency = np.divide(v, fuel_cell.ideal_voltage)
+    mdot       = np.divide(power,np.multiply(fuel_cell.propellant.specific_energy,efficiency))        
+    fuel_cell_stack_conditions.fuel_cell.inputs.fuel_mass_flow_rate[t_idx]        = mdot
+    
     stored_results_flag            = True
     stored_fuel_cell_stack_tag     = fuel_cell_stack.tag  
 

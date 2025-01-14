@@ -27,7 +27,7 @@ def size_module_from_mass(battery_module):
 
 
     """     
-    mass = battery_module.mass_properties.mass/battery_module.additional_weight_factor
+    mass = battery_module.mass_properties.mass/battery_module.BMS_additional_weight_factor
     
     if battery_module.cell.mass == None: 
         n_series   = 1

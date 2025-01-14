@@ -53,29 +53,26 @@ class Generic_Fuel_Cell_Stack(Component):
         self.length                                     = 0.0
         self.width                                      = 0.0
         self.height                                     = 0.0
-        self.volume_packaging_factor                    = 1.05
-        self.additional_weight_factor                   = 1.42
+        self.volume_packaging_factor                    = 1.05 
                  
         self.orientation_euler_angles                   = [0.,0.,0.]  # vector of angles defining default orientation of rotor        
                      
-        self.fuel_cell                                  = Data() 
-        self.fuel_cell.discharge_model                  = 'Simple' # or Larminie    
+        self.fuel_cell                                  = Data()  
         self.fuel_cell.propellant                       = RCAIDE.Library.Attributes.Propellants.Gaseous_Hydrogen()
         self.fuel_cell.oxidizer                         = Air()
         self.fuel_cell.efficiency                       = .65                                 # normal fuel cell operating efficiency at sea level
-        self.fuel_cell.specific_power                   = 2.08        *Units.kW/Units.kg      # specific power of fuel cell [kW/kg]; default is Nissan 2011 level
-        self.fuel_cell.mass_density                     = 1203.208556 *Units.kg/Units.m**3.   # take default as specs from Nissan 2011 fuel cell      
+        self.fuel_cell.specific_power                   = 2080                                # specific power of fuel cell [W/kg]; default is Nissan 2011 level
+        self.fuel_cell.mass_density                     = 1203.208556                         # take default as specs from Nissan 2011 fuel cell      
         self.fuel_cell.volume                           = 0.0
         self.fuel_cell.max_power                        = 0.0 
         self.fuel_cell.length                           = 0.02
         self.fuel_cell.width                            = 0.05
         self.fuel_cell.height                           = 0.1 
         self.fuel_cell.rated_current_density            = 1.0
-        self.fuel_cell.rated_power_density              = 1.0
-        self.additional_weight_factor                   = 1.1
+        self.fuel_cell.rated_power_density              = 1.0 
         
         self.fuel_cell.interface_area                   = 875.*(Units.cm**2.)                  # area of the fuel cell interface
-        self.fuel_cell.r                                = (2.45E-4) *(Units.kohm*(Units.cm**2))# area specific resistance [k-Ohm-cm^2]
+        self.fuel_cell.r                                = (2.45E-4) *(1000*(Units.cm**2)) # *(Units.kohm*(Units.cm**2))# area specific resistance [k-Ohm-cm^2]
         self.fuel_cell.Eoc                              = .931                                 # effective activation energy (V)
         self.fuel_cell.A1                               = .03                                  # slope of the Tafel line (models activation losses) (V)
         self.fuel_cell.m                                = 1.05E-4                              # constant in mass-transfer overvoltage equation (V)

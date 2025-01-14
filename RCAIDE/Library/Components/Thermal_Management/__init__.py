@@ -24,7 +24,7 @@ RCAIDE.Library.Components.Energy_Systems
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
 from . import Accessories
-from . import Batteries
+from . import Battery_Modules
 from . import Heat_Exchangers
 from . import Reservoirs
 
