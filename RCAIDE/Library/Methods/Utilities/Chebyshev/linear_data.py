@@ -1,3 +1,5 @@
+# RCAIDE/Library/Methods/Utilities/Chebyshev/linear_data.py
+
 # ----------------------------------------------------------------------
 #  Imports
 # ----------------------------------------------------------------------
@@ -7,36 +9,59 @@ import numpy as np
 # ----------------------------------------------------------------------
 #  Method
 # ---------------------------------------------------------------------- 
-def linear_data(N = 16, integration = True, **options):
-    """Calculates the differentiation and integration matricies
-    using chebyshev's pseudospectral algorithm, based on linearly
-    spaced samples in x.
+def linear_data(N=16, integration=True, **options):
+    """
+    Calculates differentiation and integration matrices using linearly spaced samples 
+    for numerical operations.
+
+    Parameters
+    ----------
+    N : int, optional
+        Number of points for discretization (default: 16)
+    integration : bool, optional
+        Flag to compute integration operator (default: True)
+    **options : dict
+        Additional options (reserved for future use)
+
+    Returns
+    -------
+    x : numpy.ndarray
+        Linearly spaced control points in range [0,1]
+    D : numpy.ndarray
+        Differentiation operator matrix (N x N)
+    I : numpy.ndarray or None
+        Integration operator matrix (N x N) if integration=True, 
+        None otherwise
+
+    Notes
+    -----
+    Implements a linear spacing variant of the pseudospectral method for numerical 
+    differentiation and integration. While potentially less accurate than Chebyshev 
+    spacing for some applications, linear spacing can be more intuitive and easier 
+    to work with.
+
+    **Theory**
     
-    D and I are not symmetric
-    get derivatives with df_dy = np.dot(D,f)
-    get integral with    int_f = np.dot(I,f)
-        where f is either a 1-d vector or 2-d column array
-        
-    A full example of how these operators are used is available in 
-    the chebyshev_data.py (same folder)
+    Points are distributed uniformly:
+    .. math::
+        x_i = i/(N-1)
+    
+    The differentiation matrix D is constructed using:
+    .. math::
+        D_{ij} = \\frac{c_i}{c_j} \\frac{(-1)^{i+j}}{x_i - x_j}
+    
+    where c₀ = cₙ = 2, cᵢ = 1 otherwise
 
-    Assumptions:
-    None
+    **Major Assumptions**
+        * Function is smooth and well-behaved
+        * Domain is normalized to [0,1]
+        * Sufficient points for desired accuracy
+        * Matrix operations are numerically stable
+        * Linear spacing provides adequate resolution
 
-    Source:
-    N/A
-
-    Inputs:
-    N                      [-]        Number of points
-    integration (optional) <boolean>  Determines if the integration operator is calculated
-
-    Outputs:
-    x                      [-]        N-number of cosine spaced control points, in range [0,1]
-    D                      [-]        Differentiation operation matrix
-    I                      [-]        Integration operation matrix, or None if integration = False
-
-    Properties Used:
-    N/A
+    See Also
+    --------
+    RCAIDE.Library.Methods.Utilities.Chebyshev.chebyshev_data : Alternative using Chebyshev point distribution
     """           
     
     # setup

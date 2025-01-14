@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/compute_point_to_point_geospacial_data.py
+# RCAIDE/Library/Methods/Geodesics/compute_point_to_point_geospacial_data.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -15,29 +15,46 @@ import numpy as np
 #  Compute Point to Point Geospacial Data
 # --------------------------------------------------------------------- 
 def compute_point_to_point_geospacial_data(settings):
-    """This computes the absolute microphone/observer locations on a defined topography
-            
-    Assumptions: 
-        topography_file is a text file obtained from https://topex.ucsd.edu/cgi-bin/get_data.cgi
-    
-    Source:
-        N/A  
+    """
+    Computes absolute locations between microphones/observers on a defined topography and calculates 
+    geospacial relationships between origin and destination points.
 
-    Inputs:   
-        topography_file                        - file of lattide, longitude and elevation points     
-        origin_coordinates                     - coordinates of origin location                                              [degrees]
-        destination_coordinates                - coordinates of destimation location                                            [degrees]  
-        
-    Outputs:                                   
-        latitude_longitude_micrphone_locations - latitude-longitude and elevation coordinates of all microphones in domain      [deg,deg,m]  
-        flight_range                           - gound distance between origin and destination location                      [meters]              
-        true_course                            - true course angle measured clockwise from true north                     [radians]                      
-        origin_location                        - cartesial coordinates of origin location relative to computational domain   [meters]                   
-        destination_xyz_location               - cartesial coordinates of destination location relative to computational domain [meters]    
-    
-    Properties Used:
-        N/A       
-    """     
+    Parameters
+    ----------
+    settings : Data
+        Configuration object containing:
+            - topography_file : str
+                Path to file containing latitude, longitude, and elevation data
+            - aircraft_origin_coordinates : array_like
+                [latitude, longitude] of starting point in degrees
+            - aircraft_destination_coordinates : array_like
+                [latitude, longitude] of ending point in degrees
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    This function transforms geographic coordinates into a local cartesian system 
+    while preserving elevation data from the topography. It handles coordinate 
+    transformations and elevation interpolation. It uses geograpic coordinates 
+    and elevation data from the topography file obtained from https://topex.ucsd.edu/cgi-bin/get_data.cgi. 
+
+    Data is returned in the following format:   
+        - aircraft_origin_location : [x, y, z]
+        - aircraft_destination_location : [x, y, z]
+
+    **Major Assumptions**
+        * Topography file follows ASCII XYZ-format
+        * Coordinates are in decimal degrees
+        * Elevation data is in meters
+        * Linear interpolation of elevation data
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Geodesics.Geodesics.Calculate_Distance : Function used for distance calculations
+    """
     # convert cooordinates to array 
     origin_coordinates   = np.asarray(settings.aircraft_origin_coordinates)
     destination_coordinates = np.asarray(settings.aircraft_destination_coordinates)

@@ -1,4 +1,4 @@
-# latin_hypercube_sampling.py
+# RCAIDE/Library/Methods/Utilities/latin_hypercube_sampling.py
 #
 # Created:  Jul 2016, R. Fenrich (outside of RCAIDE code)
 # Modified: Apr 2017, T. MacDonald
@@ -17,29 +17,48 @@ import numpy as np
 # ----------------------------------------------------------------------
 #   Latin Hypercube Sampling
 # ----------------------------------------------------------------------
-def latin_hypercube_sampling(num_dimensions,num_samples,bounds=None,criterion='random'):
-    """Provides an array of chosen dimensionality and number of samples taken according
-    to latin hypercube sampling. Bounds can be optionally specified.
+def latin_hypercube_sampling(num_dimensions, num_samples, bounds=None, criterion='random'):
+    """
+    Generates Latin Hypercube samples for design space exploration and optimization.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    num_dimensions : int
+        Number of design variables or dimensions
+    num_samples : int
+        Number of sample points to generate
+    bounds : tuple of numpy.ndarray, optional
+        Lower and upper bounds for each dimension
+        ((array([low_1, low_2, ...]), array([up_1, up_2, ...]))
+        Default is unit hypercube [0,1] in all dimensions
+    criterion : {'random', 'center'}, optional
+        Sampling strategy within each hypercube cell
+            - 'random': Random sampling within each segment
+            - 'center': Sample at center of each segment
 
-    Source:
-    None
+    Returns
+    -------
+    lhd : numpy.ndarray
+        Array of sample points with shape (num_samples, num_dimensions)
 
-    Inputs:
-    num_dimensions       [-]
-    num_samples          [-]
-    bounds (optional)    [-]      Default is 0 to 1. Input value should be in the form (with numpy arrays)
-                                  (array([low_bnd_1,low_bnd_2,..]), array([up_bnd_1,up_bnd_2,..]))
-    criterion            <string> Possible values: random and center. Determines if samples are 
-                                  taken at the center of a bucket or randomly from within it.
-                         
-    Outputs:             
-    lhd                  [-]      Array of samples
+    Notes
+    -----
+    Latin Hypercube Sampling (LHS) is a statistical method for generating 
+    near-random samples with better coverage of the sample space compared 
+    to pure random sampling.
 
-    Properties Used:
-    N/A
+    **Theory**
+    The method divides each dimension into equal segments and ensures 
+    exactly one sample in each segment when projected onto any dimension:
+    
+    .. math::
+        segment_{size} = \\frac{1}{num\\_samples}
+    
+    **Major Assumptions**
+        * Dimensions are independent
+        * Sample space is continuous
+        * Equal probability within each segment
+        * Linear scaling for non-unit bounds
     """       
     
     n = num_dimensions

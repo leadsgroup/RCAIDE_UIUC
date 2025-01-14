@@ -16,10 +16,12 @@
 import math
 import sys
 
-"""Evaluate the thrust produced by the energy network.
+""" This is a built-in adaptation of the Geopy distance claculation capabilities. It primarily serves to calcualte distances
+lat/long coordinate points. Minor adjustments have been made to better fit within the RCAIDE frameowkr (for instance, results
+only returned in kilometers).
 
-Assumptions:
-    WGS-84 Ellipsoid model 
+Distinct classes that are included in one palce here include the original Constants, Distance, Geodesic, 
+GeodesicCapability, Geodesic_Calculate, and Math classes.
 
 Source:
     Karney, C. F., (2022) Geopy Python Code [source code]. https://geographiclib.sourceforge.io/
@@ -51,7 +53,7 @@ Returns:
 
 class Math:
     """
-    Additional math routines for GeographicLib.
+    Additional math routines for GeographicLib. See Geopy documentation for more information.
     """
 
     @staticmethod
@@ -182,7 +184,7 @@ class Math:
  
 class GeodesicCapability:
     """
-    Capability constants shared between Geodesic and GeodesicLine.
+    Capability constants shared between Geodesic and GeodesicLine. See Geopy documentation for more information.
     """
 
     CAP_NONE = 0
@@ -211,7 +213,7 @@ class GeodesicCapability:
 
 class Constants:
     """
-    Constants describing the WGS84 ellipsoid
+    Constants describing the WGS84 ellipsoidSee Geopy documentation for more information.
     """
     WGS84_a = 6378137.0           # meters
     """the equatorial radius in meters of the WGS84 ellipsoid in meters"""
@@ -219,7 +221,7 @@ class Constants:
     """the flattening of the WGS84 ellipsoid, 1/298.257223563"""
 
 class Geodesic:
-    """Solve geodesic problems"""
+    """Solve geodesic problems. See Geopy documentation for more information."""
 
     GEOGRAPHICLIB_GEODESIC_ORDER = 6
     nA1_ = GEOGRAPHICLIB_GEODESIC_ORDER
@@ -1152,7 +1154,7 @@ Geodesic.WGS84 = Geodesic(Constants.WGS84_a, Constants.WGS84_f)
 """Instantiation for the WGS84 ellipsoid"""
 
 class Distance:
-    """ Modified to remve unit conversions to stay with RCAIDE conventions - Oct. 2024
+    """ See Geopy documentation for more information.Modified to remve unit conversions to stay with RCAIDE conventions - Oct. 2024
     Base class for other distance algorithms. Represents a distance.
 
     Can be used for units conversion::
@@ -1357,24 +1359,7 @@ class Distance:
 
 class Geodesic_Calculate(Distance):
     """
-    Calculate the geodesic distance between points.
-
-    Set which ellipsoidal model of the earth to use by specifying an
-    ``ellipsoid`` keyword argument. The default is 'WGS-84', which is the
-    most globally accurate model.  If ``ellipsoid`` is a string, it is
-    looked up in the `ELLIPSOIDS` dictionary to obtain the major and minor
-    semiaxes and the flattening. Otherwise, it should be a tuple with those
-    values.  See the comments above the `ELLIPSOIDS` dictionary for
-    more information.
-
-    Example::
-
-        >>> from geopy.distance import geodesic
-        >>> newport_ri = (41.49008, -71.312796)
-        >>> cleveland_oh = (41.499498, -81.695391)
-        >>> print(geodesic(newport_ri, cleveland_oh).miles)
-        538.390445368
-
+    Calculate the geodesic distance between points. See Geopy documentation for more information.
     """
 
     def __init__(self, *args, **kwargs):

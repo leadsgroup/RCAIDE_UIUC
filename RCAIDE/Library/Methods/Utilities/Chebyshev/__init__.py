@@ -1,7 +1,11 @@
-# RCAIDE/Methods/Utilities/Chebyshev/__init__.py
+# RCAIDE/Library/Methods/Utilities/Chebyshev/__init__.py
 # 
 
-""" RCAIDE Package Setup
+"""
+Chebyshev Polynomial Module
+
+This module provides functionality for Chebyshev polynomial interpolation and data 
+handling. It includes tools for both linear and Chebyshev data interpolation methods.
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

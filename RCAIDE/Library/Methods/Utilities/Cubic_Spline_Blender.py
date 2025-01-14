@@ -14,16 +14,42 @@ import numpy as np
 # ----------------------------------------------------------------------
 
 class Cubic_Spline_Blender():
-    """This is a cubic spline function that can be used to blend two type of calculations
-    without knowing the end points. It preserves continuous first derivatives.
+    """
+    A cubic spline interpolation class for smoothly blending between two calculations 
+    or regimes while preserving continuous first derivatives.
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    x_start : float
+        Starting x-coordinate of the blending region
+    x_end : float
+        Ending x-coordinate of the blending region
 
-    Source:
-    Information at:
-    https://en.wikipedia.org/wiki/Cubic_Hermite_spline
-    """ 
+    Notes
+    -----
+    This class implements a cubic Hermite spline to create smooth transitions between 
+    different calculation regimes. The blending function has continuous first derivatives 
+    and varies smoothly from 1 at x_start to 0 at x_end.
+
+    **Theory**
+    The blending is achieved using a cubic polynomial of the form:
+    .. math::
+        y = 2η³ - 3η² + 1
+
+    where η is the normalized coordinate:
+    .. math::
+        η = (x - x_start)/(x_end - x_start)
+
+    **Major Assumptions**
+        * The transition should be smooth (C¹ continuous)
+        * The blending function should be monotonic
+        * Values outside the blending region are clamped (1 below x_start, 0 above x_end)
+
+    See Also
+    --------
+    compute : Method to calculate the blending value at a given x
+    eta_transform : Method to calculate the normalized coordinate
+    """
     
     def __init__(self, x_start, x_end):
         """This sets the default start and end position.
@@ -48,22 +74,18 @@ class Cubic_Spline_Blender():
     
     
     def compute(self,x):
-        """This computes the y value along a normalized spline
+        """
+        Computes the blending coefficient at a given x-coordinate.
 
-        Assumptions:
-        None
+        Parameters
+        ----------
+        x : float or array_like
+            The x-coordinate(s) at which to compute the blending coefficient
 
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
+        Returns
+        -------
+        y : float or array_like
+            The blending coefficient(s) at x. Values are clamped to [0,1]
         """          
         eta = self.eta_transform(x)
     
@@ -73,22 +95,18 @@ class Cubic_Spline_Blender():
         return y
 
     def eta_transform(self,x):
-        """Normalizes the transformation
+        """
+        Transforms x-coordinates to normalized coordinates η, eta.
 
-        Assumptions:
-        None
+        Parameters
+        ----------
+        x : float or array_like
+            The x-coordinate(s) to transform
 
-        Source:
-        N/A
-
-        Inputs:
-        None
-
-        Outputs:
-        None
-
-        Properties Used:
-        N/A
+        Returns
+        -------
+        eta : float or array_like
+            The normalized coordinate(s) η = (x - x_start)/(x_end - x_start)
         """          
         x_start = self.x_start
         x_end   = self.x_end
