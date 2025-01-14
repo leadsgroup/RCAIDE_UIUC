@@ -34,7 +34,7 @@ except ImportError:
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  vsp read
 # ---------------------------------------------------------------------------------------------------------------------- 
-def import_vsp_vehicle(tag,network_type=None, propulsor_type = None, units_type='SI',use_scaling=True,calculate_wetted_area=True): 
+def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_type = None, units_type='SI',use_scaling=True,calculate_wetted_area=True): 
     """This reads an OpenVSP vehicle geometry and writes it into a RCAIDE vehicle format.
     Includes wings, fuselages, and rotors.
 
@@ -217,7 +217,7 @@ def import_vsp_vehicle(tag,network_type=None, propulsor_type = None, units_type=
     # Read Wings 
     # ------------------------------------------------------------------			
     for wing_id in vsp_wings:
-        wing = read_vsp_wing(wing_id, units_type,use_scaling)
+        wing = read_vsp_wing(wing_id, main_wing_tag, units_type,use_scaling)
         if calculate_wetted_area:
             wing.areas.wetted = measurements[vsp.GetGeomName(wing_id)] * (units_factor**2)  
         vehicle.append_component(wing)		 
