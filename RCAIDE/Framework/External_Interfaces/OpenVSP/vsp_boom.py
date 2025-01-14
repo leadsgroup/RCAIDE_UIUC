@@ -24,64 +24,56 @@ except ImportError:
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  vsp read boom
 # ---------------------------------------------------------------------------------------------------------------------- 
-def read_vsp_boom(b_id,fux_idx,sym_flag, units_type='SI', fineness=True, use_scaling=True):
-    """This reads an OpenVSP boom geometry and writes it to a RCAIDE boom format.
+def read_vsp_boom(b_id, fux_idx, sym_flag, units_type='SI', fineness=True, use_scaling=True):
+    """
+    Reads an OpenVSP boom geometry and converts it to RCAIDE boom format
 
-    Assumptions:
-    1. OpenVSP boom is "conventionally shaped" (generally narrow at nose and tail, wider in center). 
-    2. Boom is designed in VSP as it appears in real life. That is, the VSP model does not rely on
-       superficial elements such as canopies, stacks, or additional booms to cover up internal lofting oddities.
-    3. This program will NOT account for multiple geometries comprising the boom. For example: a wingbox mounted beneath
-       is a separate geometry and will NOT be processed.
-    4. Boom origin is located at nose. VSP file origin can be located anywhere, preferably at the forward tip
-       of the vehicle or in front (to make all X-coordinates of vehicle positive).
-    5. Written for OpenVSP 3.21.1
+    Parameters
+    ----------
+    b_id : str
+        OpenVSP 10-digit geometry ID for boom
+    fux_idx : int
+        Index for multiple boom instances
+    sym_flag : int
+        Symmetry flag (1 or -1) for mirroring
+    units_type : {'SI', 'imperial', 'inches'}, optional
+        Units system to use
+        Default: 'SI'
+    fineness : bool, optional
+        Whether to compute boom fineness ratios
+        Default: True
+    use_scaling : bool, optional
+        Whether to use OpenVSP scaling
+        Default: True
 
-    Source:
-    N/A
+    Returns
+    -------
+    boom : RCAIDE.Library.Components.Booms.Boom
+        Boom object with properties:
+        
+        - origin [m] : Location in all three dimensions
+        - width [m] : Maximum width
+        - lengths.total/nose/tail [m] : Overall and section lengths
+        - heights.maximum/at_quarter_length [m] : Various height measurements
+        - effective_diameter [m] : Average of height and width
+        - fineness.nose/tail [-] : Length to diameter ratios
+        - areas.wetted [m^2] : Surface area
+        - segments : Ordered container of boom cross-sections
 
-    Inputs:
-    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
-    1. VSP 10-digit geom ID for boom.
-    2. Units_type set to 'SI' (default) or 'Imperial'.
-    3. Boolean for whether or not to compute boom finenesses (default = True).
-    4. Boolean for whether or not to use the scaling from OpenVSP (default = True).
+    Notes
+    -----
+    This function reads boom geometry from OpenVSP and converts it to RCAIDE format
+    with proper units and measurements.
 
-    Outputs:
+    **Major Assumptions**
+    * Boom has conventional shape (narrow ends, wider center)
+    * Boom is designed realistically without superficial elements
+    * Single geometry per boom (no additional components)
+    * Boom origin at nose
+    * Written for OpenVSP 3.21.1
 
-    Writes RCAIDE boom, with these geometries:           (all defaults are SI, but user may specify Imperial)
-
-    	Booms.Boom.			
-    		origin                                  [m] in all three dimensions
-    		width                                   [m]
-    		lengths.
-    		  total                                 [m]
-    		  nose                                  [m]
-    		  tail                                  [m]
-    		heights.
-    		  maximum                               [m]
-    		  at_quarter_length                     [m]
-    		  at_three_quarters_length              [m]
-    		effective_diameter                      [m]
-    		fineness.nose                           [-] ratio of nose section length to boom effective diameter
-    		fineness.tail                           [-] ratio of tail section length to boom effective diameter
-    		areas.wetted                            [m^2]
-    		tag                                     <string>
-    		segment[].   (segments are in ordered container and callable by number)
-    		  vsp.shape                               [point,circle,round_rect,general_fuse,fuse_file]
-    		  vsp.xsec_id                             <10 digit string>
-    		  percent_x_location
-    		  percent_z_location
-    		  height
-    		  width
-    		  length
-    		  effective_diameter
-    		  tag
-    		vsp.xsec_num                              <integer of boom segment quantity>
-    		vsp.xsec_surf_id                          <10 digit string>
-
-    Properties Used:
-    N/A
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
     """  	
     boom = RCAIDE.Library.Components.Booms.Boom()	
 
@@ -179,53 +171,39 @@ def read_vsp_boom(b_id,fux_idx,sym_flag, units_type='SI', fineness=True, use_sca
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Write VSP boom
 # ---------------------------------------------------------------------------------------------------------------------- 
-def write_vsp_boom(boom,area_tags, OML_set_ind):
-    """This writes a boom into OpenVSP format.
+def write_vsp_boom(boom, area_tags, OML_set_ind):
+    """
+    Writes a RCAIDE boom object to OpenVSP format
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    boom : RCAIDE.Library.Components.Booms.Boom
+        Boom object to export
+    area_tags : dict
+        Dictionary of component wetted areas
+    OML_set_ind : int
+        OpenVSP set index for outer mold line
 
-    Source:
-    N/A
+    Returns
+    -------
+    area_tags : dict
+        Updated dictionary of component wetted areas
 
-    Inputs:
-    boom
-      width                                   [m]
-      lengths.total                           [m]
-      heights.
-        maximum                               [m]
-        at_quarter_length                     [m]
-        at_wing_root_quarter_chord            [m]
-        at_three_quarters_length              [m]
-      effective_diameter                      [m]
-      fineness.nose                           [-] ratio of nose section length to boom width
-      fineness.tail                           [-] ratio of tail section length to boom width
-      tag                                     <string>
-      OpenVSP_values.  (optional)
-        nose.top.angle                        [degrees]
-        nose.top.strength                     [-] this determines how much the specified angle influences that shape
-        nose.side.angle                       [degrees]
-        nose.side.strength                    [-]
-        nose.TB_Sym                           <boolean> determines if top angle is mirrored on bottom
-        nose.z_pos                            [-] z position of the nose as a percentage of boom length (.1 is 10%)
-        tail.top.angle                        [degrees]
-        tail.top.strength                     [-]
-        tail.z_pos (optional, 0.02 default)   [-] z position of the tail as a percentage of boom length (.1 is 10%)
-      Segments. (optional)
-        width                                 [m]
-        height                                [m]
-        percent_x_location                    [-] .1 is 10% length
-        percent_z_location                    [-] .1 is 10% length
-    area_tags                                 <dict> used to keep track of all tags needed in wetted area computation           
-    main_wing.origin                          [m]
-    main_wing.chords.root                     [m]
-    fuel_tank_set_index                       <int> OpenVSP object set containing the fuel tanks    
+    Notes
+    -----
+    This function exports a boom from RCAIDE to OpenVSP format, handling:
+    - Boom cross-section geometry
+    - Nose and tail shaping
+    - Position and scaling
+    - Surface properties
 
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
+    **Major Assumptions**
+    * Boom geometry can be represented by OpenVSP cross-sections
+    * Nose and tail properties follow OpenVSP conventions
+    * All required geometric parameters are defined
 
-    Properties Used:
-    N/A
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
     """     
 
     num_segs           = len(boom.segments)
@@ -372,28 +350,42 @@ def write_vsp_boom(boom,area_tags, OML_set_ind):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # set_section_angles 
 # ---------------------------------------------------------------------------------------------------------------------- 
-def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end_ind,b_id):
-    """Set boom section angles to create a smooth (in the non-technical sense) boom shape.
-    Note that i of 0 corresponds to the first section that is not the end point.
+def set_section_angles(i, nose_z, tail_z, x_poses, z_poses, heights, widths, length, end_ind, b_id):
+    """
+    Sets boom section angles to create smooth transitions between sections
 
-    Assumptions:
-    May fail to give reasonable angles for very irregularly shaped booms
-    Does not work on the nose and tail sections.
+    Parameters
+    ----------
+    i : int
+        Section index
+    nose_z : float
+        Z position of nose as fraction of length
+    tail_z : float
+        Z position of tail as fraction of length
+    x_poses : array_like
+        X positions of sections as fractions of length
+    z_poses : array_like
+        Z positions of sections as fractions of length
+    heights : array_like
+        Section heights [m]
+    widths : array_like
+        Section widths [m]
+    length : float
+        Total boom length [m]
+    end_ind : int
+        Index of final section
+    b_id : str
+        OpenVSP boom ID
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function calculates and sets angles between boom sections to create
+    smooth geometry transitions.
 
-    Inputs:  
-    nose_z   [-] # 0.1 is 10% of the boom length
-    widths   np.array of [m]
-    heights  np.array of [m]
-    tail_z   [-] # 0.1 is 10% of the boom length
-
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * May not handle very irregular boom shapes
+    * Does not modify nose and tail sections
+    * Adjacent sections have compatible geometry
     """    
     w0 = widths[i]
     h0 = heights[i]
@@ -432,26 +424,33 @@ def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end
 # compute_boom_fineness
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_boom_fineness(boom, x_locs, eff_diams, eff_diam_gradients_fwd):
-    """This computes boom finenesses for nose and tail.
+    """
+    Computes fineness ratios for boom nose and tail sections
 
-    Assumptions:
-    Written for OpenVSP 3.16.1
+    Parameters
+    ----------
+    boom : RCAIDE.Library.Components.Booms.Boom
+        Boom object to analyze
+    x_locs : array_like
+        Section x locations as fractions of length
+    eff_diams : array_like
+        Effective diameters at each section [m]
+    eff_diam_gradients_fwd : array_like
+        Forward differences of effective diameters
 
-    Source:
-    N/A
+    Returns
+    -------
+    boom : RCAIDE.Library.Components.Booms.Boom
+        Boom object with updated fineness ratios
 
-    Inputs:
-    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
-    1. RCAIDE boom [object].
-    2. Array of x_locations of boom segments. (length = L)
-    3. Array of effective diameters of boom segments. (length = L)
-    4. Array of effective diameter gradients from nose to tail. (length = L-1)
+    Notes
+    -----
+    Computes length-to-diameter ratios for nose and tail sections based on
+    geometry transitions.
 
-    Outputs:
-    Writes fineness values to RCAIDE boom, returns boom.
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Nose section ends at minimum gradient in front 50% of boom
+    * Tail section begins at minimum negative gradient in aft 50%
     """
 
     segment_list       = list(boom.segments.keys())
@@ -478,24 +477,29 @@ def compute_boom_fineness(boom, x_locs, eff_diams, eff_diam_gradients_fwd):
 # get_boom_height
 # ---------------------------------------------------------------------------------------------------------------------- 
 def get_boom_height(boom, location):
-    """This linearly estimates boom height at any percentage point (0,100) along boom length.
+    """
+    Estimates boom height at specified location using linear interpolation
 
-    Assumptions:
-    Written for OpenVSP 3.16.1
+    Parameters
+    ----------
+    boom : RCAIDE.Library.Components.Booms.Boom
+        Boom object to analyze
+    location : float
+        Location as fraction of boom length (0.0-1.0)
 
-    Source:
-    N/A
+    Returns
+    -------
+    height : float
+        Interpolated height at specified location [m]
 
-    Inputs:
-    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
-    1. RCAIDE boom [object], containing boom.vsp_data.xsec_num in its data structure.
-    2. boom percentage point [float].
+    Notes
+    -----
+    Uses linear interpolation between adjacent sections to estimate height
+    at any point along boom length.
 
-    Outputs:
-    height [m]
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Height varies linearly between sections
+    * Location is between 0 and 1
     """
 
     segment_list   = list(boom.segments.keys())       
@@ -514,25 +518,32 @@ def get_boom_height(boom, location):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # find_fuse_u_coordinate
 # ---------------------------------------------------------------------------------------------------------------------- 
-def find_fuse_u_coordinate(x_target,b_id,fuel_tank_tag):
-    """Determines the u coordinate of an OpenVSP boom that matches an x coordinate
+def find_fuse_u_coordinate(x_target, b_id, fuel_tank_tag):
+    """
+    Determines OpenVSP u-coordinate corresponding to an x-coordinate
 
-    Assumptions:
-    boom is aligned with the x axis
+    Parameters
+    ----------
+    x_target : float
+        Target x-coordinate [m]
+    b_id : str
+        OpenVSP boom ID
+    fuel_tank_tag : str
+        Tag for fuel tank probe
 
-    Source:
-    N/A
+    Returns
+    -------
+    u_current : float
+        OpenVSP u-coordinate (0-1) corresponding to x_target
 
-    Inputs:
-    x_target      [m]
-    b_id       <str>
-    fuel_tank_tag <str>
+    Notes
+    -----
+    Uses binary search to find the u-coordinate that gives the desired
+    x-coordinate position.
 
-    Outputs:
-    u_current     [-] u coordinate for the requests x position
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Boom is aligned with x-axis
+    * X-coordinate varies monotonically with u-coordinate
     """     
     tol   = 1e-3
     diff  = 1000    

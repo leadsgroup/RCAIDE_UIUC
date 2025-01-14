@@ -25,28 +25,47 @@ import fileinput
 # ---------------------------------------------------------------------------------------------------------------------- 
 # write_vsp_mesh
 # ---------------------------------------------------------------------------------------------------------------------- 
-def write_vsp_mesh(geometry,tag,half_mesh_flag,growth_ratio,growth_limiting_flag):
-    """This create an .stl surface mesh based on a vehicle stored in a .vsp3 file.
-    
-    Assumptions:
+def write_vsp_mesh(geometry, tag, half_mesh_flag, growth_ratio, growth_limiting_flag):
+    """
+    Creates an STL surface mesh of a vehicle using OpenVSP
+
+    Parameters
+    ----------
+    geometry : RCAIDE.Vehicle
+        Vehicle to mesh, containing:
+        - wings.main_wing.chords.mean_aerodynamic [m]
+        - Other components with meshing sources
+    tag : str
+        Base name for output files
+    half_mesh_flag : bool
+        Whether to create a symmetry plane
+    growth_ratio : float
+        Growth ratio for mesh cell sizes
+    growth_limiting_flag : bool
+        Whether to use 3D growth limiting
+
+    Returns
+    -------
     None
+        Creates output files:
+        - <tag>.stl : Surface mesh
+        - <tag>.key : Component key file
+        - <tag>_premesh.vsp3 : VSP file with mesh settings
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function sets up and runs OpenVSP's CFD meshing to create a surface
+    mesh suitable for CFD analysis.
 
-    Inputs:
-    geometry.                                 - Also passed to set_sources
-      wings.main_wing.chords.mean_aerodynamic [m]
-    half_mesh_flag                            <boolean>  determines if a symmetry plane is created
-    growth_ratio                              [-]        growth ratio for the mesh
-    growth_limiting_flag                      <boolean>  determines if 3D growth limiting is used
+    **Major Assumptions**
+    * Vehicle geometry is suitable for meshing
+    * Main wing is defined with mean aerodynamic chord
+    * Component sources are properly defined
+    * Mesh settings are appropriate for the geometry
 
-    Outputs:
-    <tag>.stl                               
-
-    Properties Used:
-    N/A
-    """      
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
+    """
     
     # Reset OpenVSP to avoid including a previous vehicle
     vsp.ClearVSPModel()
@@ -123,36 +142,37 @@ def write_vsp_mesh(geometry,tag,half_mesh_flag,growth_ratio,growth_limiting_flag
 # set_sources
 # ---------------------------------------------------------------------------------------------------------------------- 
 def set_sources(geometry):
-    """This sets meshing sources in a way similar to the OpenVSP default. Some source values can
-    also be optionally specified as below.
-    
-    Assumptions:
-    None
+    """
+    Sets mesh sources on vehicle components
 
-    Source:
-    https://github.com/OpenVSP/OpenVSP (with some modifications)
+    Parameters
+    ----------
+    geometry : RCAIDE.Vehicle
+        Vehicle containing components that need mesh sources:
+        
+        wings.*.
+            - tag : str
+            - Segments.*.percent_span_location : float
+            - Segments.*.root_chord_percent : float
+            - chords.root : float
+            - chords.tip : float
+            - vsp_mesh : optional settings
+        
+        fuselages.*.
+            - tag : str
+            - vsp_mesh.length : float (optional)
+            - vsp_mesh.radius : float (optional)
+            - lengths.total : float
 
-    Inputs:
-    geometry.
-      wings.*.                              (passed to add_segment_sources())
-        tag                                 <string>
-        Segments.*.percent_span_location    [-] (.1 is 10%)
-        Segments.*.root_chord_percent       [-] (.1 is 10%)
-        chords.root                         [m]
-        chords.tip                          [m]
-        vsp_mesh                            (optional) - This holds settings that are used in add_segment_sources
-      fuselages.*.
-        tag                                 <string>
-        vsp_mesh.                           (optional)
-          length                            [m]
-          radius                            [m]
-        lengths.total                       (only used if vsp_mesh is not defined for the fuselage)
+    Notes
+    -----
+    Creates mesh sources similar to OpenVSP defaults but allows custom
+    source parameters through the vsp_mesh attribute.
 
-    Outputs:
-    <tag>.stl                               
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Components can be identified by their tags
+    * Wing segments cover full span if defined
+    * Source parameters are appropriate for the geometry
     """     
     # Extract information on geometry type (for some reason it seems VSP doesn't have a simple 
     # way to do this)
@@ -303,35 +323,40 @@ def set_sources(geometry):
 # ----------------------------------------------------------------------------------------------------------------------         
 # add_segment_sources
 # ---------------------------------------------------------------------------------------------------------------------- 
-def add_segment_sources(comp,cr,ct,ii,u_start,num_secs,custom_flag,wingtip_flag,seg):
-    """This sets meshing sources for the wing segments according to their size and position.
-    
-    Assumptions:
-    None
+def add_segment_sources(comp, cr, ct, ii, u_start, num_secs, custom_flag, wingtip_flag, seg):
+    """
+    Adds mesh sources to a wing segment
 
-    Source:
-    https://github.com/OpenVSP/OpenVSP (with some modifications)
+    Parameters
+    ----------
+    comp : str
+        OpenVSP component ID
+    cr : float
+        Root chord length [m]
+    ct : float
+        Tip chord length [m]
+    ii : int
+        Segment index
+    u_start : float
+        Starting u-coordinate
+    num_secs : int
+        Number of sections
+    custom_flag : bool
+        Whether to use custom source parameters
+    wingtip_flag : bool
+        Whether this is a wingtip segment
+    seg : RCAIDE.Library.Components.Wings.Segment
+        Wing segment containing optional vsp_mesh parameters
 
-    Inputs:
-    comp             <string> - OpenVSP component ID
-    cr               [m]      - root chord
-    ct               [m]      - tip chord
-    ii               [-]      - segment index
-    u_start          [-]      - OpenVSP parameter determining the u dimensional start point
-    num_secs         [-]      - number of segments on the corresponding wing
-    custom_flag      <boolean> - determines if custom source settings are to be used
-    wingtip_flag     <boolean> - indicates if the current segment is a wingtip
-    seg.vsp_mesh.    (only used if custom_flag is True)
-      inner_length   [m]       - length of inboard element edge
-      outer_length   [m]       - length of outboard element edge
-      inner_radius   [m]       - radius of influence for inboard source
-      outer_radius   [m]       - radius of influence for outboard source
+    Notes
+    -----
+    Creates line sources along segment leading/trailing edges with
+    appropriate sizing parameters.
 
-    Outputs:
-    None - sources are added to OpenVSP instance                             
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Source parameters scale with chord length if not custom
+    * Segment geometry is suitable for line sources
+    * Custom parameters are properly defined if used
     """     
     if custom_flag == True:
         len1 = seg.vsp_mesh.inner_length

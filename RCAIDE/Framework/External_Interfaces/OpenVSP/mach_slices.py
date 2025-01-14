@@ -20,31 +20,45 @@ import numpy as np
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Mach Slices
 # ---------------------------------------------------------------------------------------------------------------------- 
-def mach_slices(vehicle,mach,angle_of_attack=[0.],number_slices = 99):
-    """ This method calculates the volume equivalent area for a vehicle for sonic boom analysis. It will write a VSP
-        then slice it up depending on the mach number and angle of attack
-    
-        Assumptions:
-        X_locs is the location where lift values are taken on the x-axis
-        AE_x is the lift equivalent area
-        
-        
-        Source:
-        N/A
-        
-        Inputs:
-        vehicle             [vehicle]
-        mach                [-]
-        angle_of_attack     [radians]
-        number_slices       [int]
+def mach_slices(vehicle, mach, angle_of_attack=[0.], number_slices=99):
+    """
+    Calculates volume equivalent area for sonic boom analysis using OpenVSP
 
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle
+        Vehicle to analyze
+    mach : array_like
+        Mach numbers to evaluate
+    angle_of_attack : array_like, optional
+        Angles of attack in radians
+        Default: [0.]
+    number_slices : int, optional
+        Number of slices to use in calculation
+        Default: 99
 
-        Outputs:
-        X_locs              [m]
-        slice_areas         [m^2]
-        
-        Properties Used:
-        N/A
+    Returns
+    -------
+    X_locs_all : list of ndarray
+        X-axis locations [m] for each Mach number where areas are computed
+    slice_areas_all : list of ndarray
+        Cross-sectional areas [m^2] at each X location for each Mach number
+
+    Notes
+    -----
+    This function computes equivalent areas for sonic boom analysis by:
+    1. Writing vehicle to OpenVSP
+    2. Calculating Mach angle and adjusting for angle of attack
+    3. Slicing geometry along Mach planes
+    4. Computing areas normal to freestream
+
+    **Major Assumptions**
+    * Vehicle geometry is suitable for sonic boom analysis
+    * Mach angles and areas are computed in the X-Z plane
+    * Areas are projected normal to the freestream direction
+
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
     """       
     
 

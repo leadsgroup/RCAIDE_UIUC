@@ -1,4 +1,4 @@
-# RCAIDE/Framework/External_Interfaces/OpenVSP/vsp_propeller.py
+# RCAIDE/Framework/External_Interfaces/OpenVSP/vsp_rotor.py
 
 # Created:  Sep 2021, R. Erhard
 # Modified:
@@ -29,62 +29,59 @@ t_table = str.maketrans( chars          + string.ascii_uppercase ,
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  vsp read rotor
 # ---------------------------------------------------------------------------------------------------------------------- 
-def read_vsp_rotor(prop_id, units_type='SI',write_airfoil_file=True):
-    """This reads an OpenVSP rotor geometry and writes it into a RCAIDE rotor format.
-
-    Assumptions:
-    1. Written for OpenVSP 3.24.0
-
-    Source:
-    N/A
-
-    Inputs:
-    1. VSP 10-digit geom ID for rotor.
-    2. units_type set to 'SI' (default) or 'Imperial'.
-    3. write_airfoil_file set to True (default) or False
-    4. number_of_radial_stations is the radial discretization used to extract the rotor design from OpenVSP
-
-    Outputs:
-    Writes RCAIDE rotor object, with these geometries, from VSP:
-    	rotor.
-    		origin                                  [m] in all three dimensions
-    		orientation				[deg] in all three dimensions
-    		number_of_blades			[-]
-    		tip_radius				[m]
-    		hub_radius				[m]
-    		twist_distribution			[deg]
-    		chord_distribution			[m]
-    		radius_distribution			[m]
-    		sweep_distribution			[deg]
-    		mid_chord_alignment			[m]
-    		max_thickness_distribution		[m]
-    		thickness_to_chord			[-]
-    		blade_solidity				[-]
-    		rotation			        [-]
-    		thickness_to_chord                      [-]
-                beta34                                  [radians]
-                pre_cone                                [radians]
-                rake                                    [radians]
-                skew                                    [radians]
-                axial                                   [radians]
-                tangential                              [radians]
-    		dihedral                                [radians]
-    		symmetric                               <boolean>
-    		tag                                     <string>
-    		Segments.
-    		  tag                                   <string>
-    		  twist                                 [radians]
-    		  percent_span_location                 [-]  .1 is 10%
-    		  root_chord_percent                    [-]  .1 is 10%
-    		  dihedral_outboard                     [radians]
-    		  sweeps.quarter_chord                  [radians]
-    		  thickness_to_chord                    [-]
-    		  airfoil                               <NACA 4-series, 6 series, or airfoil file>
-
-    Properties Used:
-    N/A
+def read_vsp_rotor(prop_id, units_type='SI', write_airfoil_file=True):
     """
+    Reads an OpenVSP rotor geometry and converts it to RCAIDE format
 
+    Parameters
+    ----------
+    prop_id : str
+        OpenVSP 10-digit geometry ID for rotor
+    units_type : {'SI', 'imperial', 'inches'}, optional
+        Units system to use
+        Default: 'SI'
+    write_airfoil_file : bool, optional
+        Whether to write airfoil data to file
+        Default: True
+
+    Returns
+    -------
+    rotor : RCAIDE.Library.Components.Propulsors.Converters.Rotor
+        Rotor object with properties:
+        
+        - origin [m] : Location in all three dimensions
+        - orientation_euler_angles [rad] : Rotation angles
+        - number_of_blades [-] : Number of rotor blades
+        - tip_radius [m] : Blade tip radius
+        - hub_radius [m] : Hub radius
+        - twist_distribution [rad] : Blade twist along span
+        - chord_distribution [m] : Blade chord along span
+        - radius_distribution [m] : Radial stations
+        - sweep_distribution [rad] : Blade sweep along span
+        - mid_chord_alignment [m] : Mid-chord line position
+        - thickness_to_chord [-] : t/c ratio along span
+        - blade_solidity [-] : Blade area ratio
+        - rotation [-] : Direction of rotation
+        - beta34 [rad] : Pitch at 3/4 radius
+        - pre_cone [rad] : Pre-cone angle
+        - rake [rad] : Blade rake
+        - skew [rad] : Blade skew
+        - axial [rad] : Axial inclination
+        - tangential [rad] : Tangential inclination
+
+    Notes
+    -----
+    This function reads rotor geometry from OpenVSP and converts it to RCAIDE format
+    with proper units and measurements.
+
+    **Major Assumptions**
+    * Written for OpenVSP 3.24.0
+    * Rotor geometry follows OpenVSP conventions
+    * All required geometric parameters are accessible through VSP API
+
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
+    """
 
     # Check if this is a rotor or a lift rotor 
     rotor 	= RCAIDE.Library.Components.Propulsors.Converters.Rotor()
@@ -180,20 +177,25 @@ def read_vsp_rotor(prop_id, units_type='SI',write_airfoil_file=True):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # write_vsp_rotor_bem
 # ---------------------------------------------------------------------------------------------------------------------- 
-def write_vsp_rotor_bem(vsp_bem_filename,rotor):
-    """   This functions writes a .bem file for OpenVSP
-    Assumptions:
-        None
+def write_vsp_rotor_bem(vsp_bem_filename, rotor):
+    """
+    Writes a RCAIDE rotor object to OpenVSP .bem format
 
-    Source:
-        None
-    Inputs:
-        OpenVSP .bem filename
-        RCAIDE Propeller Data Structure
-    Outputs:
-        OpenVSP .bem file
-    Properties Used:
-        N/A
+    Parameters
+    ----------
+    vsp_bem_filename : str
+        Path to output .bem file
+    rotor : RCAIDE.Library.Components.Propulsors.Converters.Rotor
+        Rotor object to export
+
+    Notes
+    -----
+    Creates a .bem file containing rotor geometry that can be imported into OpenVSP.
+    File includes header information, section properties, and airfoil coordinates.
+
+    **Major Assumptions**
+    * Rotor geometry can be represented in OpenVSP .bem format
+    * All required geometric parameters are defined
     """
     vsp_bem = open(vsp_bem_filename,'w')
     with open(vsp_bem_filename,'w') as vsp_bem:
@@ -212,21 +214,24 @@ def write_vsp_rotor_bem(vsp_bem_filename,rotor):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # make_header_text
 # ---------------------------------------------------------------------------------------------------------------------- 
-def make_header_text(vsp_bem,rotor):
-    """This function writes the header of the OpenVSP .bem file
-    Assumptions:
-        None
+def make_header_text(vsp_bem, rotor):
+    """
+    Writes the header section of an OpenVSP .bem file
 
-    Source:
-        None
-    Inputs:
-        vsp_bem - OpenVSP .bem file
-        rotor    - RCAIDE rotor data structure
+    Parameters
+    ----------
+    vsp_bem : file
+        Open file object for writing
+    rotor : RCAIDE.Library.Components.Propulsors.Converters.Rotor
+        Rotor object containing geometry data
 
-    Outputs:
-        NA
-    Properties Used:
-        N/A
+    Notes
+    -----
+    Writes basic rotor parameters including:
+    - Number of sections and blades
+    - Diameter
+    - Beta angle at 3/4 radius
+    - Position and orientation
     """
     header_base = \
 '''...{0}...
@@ -263,21 +268,28 @@ Normal: {8}, {9}, {10}
 # ---------------------------------------------------------------------------------------------------------------------- 
 # make_section_text
 # ---------------------------------------------------------------------------------------------------------------------- 
-def make_section_text(vsp_bem,rotor):
-    """This function writes the sectional information of the rotor
-    Assumptions:
-        None
+def make_section_text(vsp_bem, rotor):
+    """
+    Writes the blade section properties to an OpenVSP .bem file
 
-    Source:
-        None
-    Inputs:
-        vsp_bem - OpenVSP .bem file
-        rotor    - RCAIDE rotor data structure
+    Parameters
+    ----------
+    vsp_bem : file
+        Open file object for writing
+    rotor : RCAIDE.Library.Components.Propulsors.Converters.Rotor
+        Rotor object containing geometry data
 
-    Outputs:
-        NA
-    Properties Used:
-        N/A
+    Notes
+    -----
+    Writes section properties including:
+    - Normalized radius (r/R)
+    - Normalized chord (c/R)
+    - Twist angle
+    - Rake and skew
+    - Sweep angle
+    - Thickness ratio (t/c)
+    - Design lift coefficient
+    - Axial and tangential inclination
     """
     header = \
         '''Radius/R, Chord/R, Twist (deg), Rake/R, Skew/R, Sweep, t/c, CLi, Axial, Tangential\n'''
@@ -317,21 +329,25 @@ def make_section_text(vsp_bem,rotor):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # make_airfoil_text
 # ---------------------------------------------------------------------------------------------------------------------- 
-def make_airfoil_text(vsp_bem,rotor):
-    """This function writes the airfoil geometry into the vsp file
-    Assumptions:
-        None
+def make_airfoil_text(vsp_bem, rotor):
+    """
+    Writes airfoil coordinates to an OpenVSP .bem file
 
-    Source:
-        None
-    Inputs:
-        vsp_bem - OpenVSP .bem file
-        rotor    - RCAIDE rotor data structure
+    Parameters
+    ----------
+    vsp_bem : file
+        Open file object for writing
+    rotor : RCAIDE.Library.Components.Propulsors.Converters.Rotor
+        Rotor object containing airfoil data
 
-    Outputs:
-        NA
-    Properties Used:
-        N/A
+    Notes
+    -----
+    Writes x,y coordinates for each airfoil section along the blade span.
+    Uses airfoil data stored in rotor.airfoils collection.
+
+    **Major Assumptions**
+    * Airfoil geometry is defined at each section
+    * Coordinates are properly normalized
     """
 
     N             = len(rotor.radius_distribution)

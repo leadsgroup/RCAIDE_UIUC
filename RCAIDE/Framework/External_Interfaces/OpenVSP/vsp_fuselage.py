@@ -24,65 +24,53 @@ except ImportError:
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  vsp read fuselage
 # ---------------------------------------------------------------------------------------------------------------------- 
-def read_vsp_fuselage(fuselage_id,fux_idx,sym_flag, units_type='SI', fineness=True, use_scaling=True):
-    """This reads an OpenVSP fuselage geometry and writes it to a RCAIDE fuselage format.
+def read_vsp_fuselage(fuselage_id, fux_idx, sym_flag, units_type='SI', fineness=True, use_scaling=True):
+    """
+    Reads an OpenVSP fuselage geometry and converts it to RCAIDE format
 
-    Assumptions:
-    1. OpenVSP fuselage is "conventionally shaped" (generally narrow at nose and tail, wider in center). 
-    2. Fuselage is designed in VSP as it appears in real life. That is, the VSP model does not rely on
-       superficial elements such as canopies, stacks, or additional fuselages to cover up internal lofting oddities.
-    3. This program will NOT account for multiple geometries comprising the fuselage. For example: a wingbox mounted beneath
-       is a separate geometry and will NOT be processed.
-    4. Fuselage origin is located at nose. VSP file origin can be located anywhere, preferably at the forward tip
-       of the vehicle or in front (to make all X-coordinates of vehicle positive).
-    5. Written for OpenVSP 3.21.1
+    Parameters
+    ----------
+    fuselage_id : str
+        OpenVSP 10-digit geometry ID for fuselage
+    fux_idx : int
+        Index for multiple fuselage instances
+    sym_flag : int
+        Symmetry flag (1 or -1) for mirroring
+    units_type : {'SI', 'imperial', 'inches'}, optional
+        Units system to use
+        Default: 'SI'
+    fineness : bool, optional
+        Whether to compute fuselage fineness ratios
+        Default: True
+    use_scaling : bool, optional
+        Whether to use OpenVSP scaling
+        Default: True
 
-    Source:
-    N/A
+    Returns
+    -------
+    fuselage : RCAIDE.Library.Components.Fuselages.Fuselage
+        Fuselage object with properties:
+        
+        - origin [m] : Location in all three dimensions
+        - width [m] : Maximum width
+        - lengths.total/nose/tail [m] : Overall and section lengths
+        - heights.maximum/at_quarter_length [m] : Various height measurements
+        - effective_diameter [m] : Average of height and width
+        - fineness.nose/tail [-] : Length to diameter ratios
+        - areas.wetted [m^2] : Surface area
+        - segments : Ordered container of fuselage cross-sections
 
-    Inputs:
-    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
-    1. VSP 10-digit geom ID for fuselage.
-    2. Units_type set to 'SI' (default) or 'Imperial'.
-    3. Boolean for whether or not to compute fuselage finenesses (default = True).
-    4. Boolean for whether or not to use the scaling from OpenVSP (default = True).
+    Notes
+    -----
+    This function reads fuselage geometry from OpenVSP and converts it to RCAIDE format
+    with proper units and measurements.
 
-    Outputs:
-
-    Writes RCAIDE fuselage, with these geometries:           (all defaults are SI, but user may specify Imperial)
-
-    	Fuselages.Fuselage.			
-    		origin                                  [m] in all three dimensions
-    		width                                   [m]
-    		lengths.
-    		  total                                 [m]
-    		  nose                                  [m]
-    		  tail                                  [m]
-    		heights.
-    		  maximum                               [m]
-    		  at_quarter_length                     [m]
-    		  at_three_quarters_length              [m]
-    		effective_diameter                      [m]
-    		fineness.nose                           [-] ratio of nose section length to fuselage effective diameter
-    		fineness.tail                           [-] ratio of tail section length to fuselage effective diameter
-    		areas.wetted                            [m^2]
-    		tag                                     <string>
-    		segment[].   (segments are in ordered container and callable by number)
-    		  vsp.shape                               [point,circle,round_rect,general_fuse,fuse_file]
-    		  vsp.xsec_id                             <10 digit string>
-    		  percent_x_location
-    		  percent_z_location
-    		  height
-    		  width
-    		  length
-    		  effective_diameter
-    		  tag
-    		vsp.xsec_num                              <integer of fuselage segment quantity>
-    		vsp.xsec_surf_id                          <10 digit string>
-
-    Properties Used:
-    N/A
-    """  	
+    **Major Assumptions**
+    * Fuselage has conventional shape (narrow ends, wider center)
+    * Fuselage is designed realistically without superficial elements
+    * Single geometry per fuselage (no additional components)
+    * Fuselage origin at nose
+    """
     fuselage = RCAIDE.Library.Components.Fuselages.Fuselage()	
 
     if units_type == 'SI':
@@ -190,55 +178,42 @@ def read_vsp_fuselage(fuselage_id,fux_idx,sym_flag, units_type='SI', fineness=Tr
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Write VSP Fuselage
 # ---------------------------------------------------------------------------------------------------------------------- 
-def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set_ind):
-    """This writes a fuselage into OpenVSP format.
+def write_vsp_fuselage(fuselage, area_tags, main_wing, fuel_tank_set_ind, OML_set_ind):
+    """
+    Writes a RCAIDE fuselage object to OpenVSP format
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    fuselage : RCAIDE.Library.Components.Fuselages.Fuselage
+        Fuselage object to export
+    area_tags : dict
+        Dictionary of component wetted areas
+    main_wing : RCAIDE.Library.Components.Wings.Wing, optional
+        Main wing object for positioning
+    fuel_tank_set_ind : int
+        OpenVSP set index for fuel tanks
+    OML_set_ind : int
+        OpenVSP set index for outer mold line
 
-    Source:
-    N/A
+    Returns
+    -------
+    area_tags : dict
+        Updated dictionary of component wetted areas
 
-    Inputs:
-    fuselage
-      width                                   [m]
-      lengths.total                           [m]
-      heights.
-        maximum                               [m]
-        at_quarter_length                     [m]
-        at_wing_root_quarter_chord            [m]
-        at_three_quarters_length              [m]
-      effective_diameter                      [m]
-      fineness.nose                           [-] ratio of nose section length to fuselage width
-      fineness.tail                           [-] ratio of tail section length to fuselage width
-      tag                                     <string>
-      OpenVSP_values.  (optional)
-        nose.top.angle                        [degrees]
-        nose.top.strength                     [-] this determines how much the specified angle influences that shape
-        nose.side.angle                       [degrees]
-        nose.side.strength                    [-]
-        nose.TB_Sym                           <boolean> determines if top angle is mirrored on bottom
-        nose.z_pos                            [-] z position of the nose as a percentage of fuselage length (.1 is 10%)
-        tail.top.angle                        [degrees]
-        tail.top.strength                     [-]
-        tail.z_pos (optional, 0.02 default)   [-] z position of the tail as a percentage of fuselage length (.1 is 10%)
-      Segments. (optional)
-        width                                 [m]
-        height                                [m]
-        percent_x_location                    [-] .1 is 10% length
-        percent_z_location                    [-] .1 is 10% length
-    area_tags                                 <dict> used to keep track of all tags needed in wetted area computation           
-    main_wing.origin                          [m]
-    main_wing.chords.root                     [m]
-    fuel_tank_set_index                       <int> OpenVSP object set containing the fuel tanks    
+    Notes
+    -----
+    This function exports a fuselage from RCAIDE to OpenVSP format, handling:
+    - Cross-section geometry and transitions
+    - Nose and tail shaping
+    - Position and scaling
+    - Fuel tank definition
+    - Surface properties
 
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
-
-    Properties Used:
-    N/A
-    """     
-
+    **Major Assumptions**
+    * Fuselage geometry can be represented by OpenVSP cross-sections
+    * Cross-sections can be circles, ellipses, super ellipses, or rounded rectangles
+    * All required geometric parameters are defined
+    """
     segment_list       = list(fuselage.segments.keys())
     num_segs           = len(segment_list)
     length             = fuselage.lengths.total
@@ -465,27 +440,41 @@ def write_vsp_fuselage(fuselage,area_tags, main_wing, fuel_tank_set_ind, OML_set
 # set_section_angles 
 # ---------------------------------------------------------------------------------------------------------------------- 
 def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end_ind,fuse_id):
-    """Set fuselage section angles to create a smooth (in the non-technical sense) fuselage shape.
-    Note that i of 0 corresponds to the first section that is not the end point.
+    """
+    Sets fuselage section angles to create smooth transitions between sections
 
-    Assumptions:
-    May fail to give reasonable angles for very irregularly shaped fuselages
-    Does not work on the nose and tail sections.
+    Parameters
+    ----------
+    i : int
+        Section index
+    nose_z : float
+        Z position of nose as fraction of length
+    tail_z : float
+        Z position of tail as fraction of length
+    x_poses : array_like
+        X positions of sections as fractions of length
+    z_poses : array_like
+        Z positions of sections as fractions of length
+    heights : array_like
+        Section heights [m]
+    widths : array_like
+        Section widths [m]
+    length : float
+        Total fuselage length [m]
+    end_ind : int
+        Index of final section
+    fuse_id : str
+        OpenVSP fuselage ID
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function calculates and sets angles between fuselage sections to create
+    smooth geometry transitions.
 
-    Inputs:  
-    nose_z   [-] # 0.1 is 10% of the fuselage length
-    widths   np.array of [m]
-    heights  np.array of [m]
-    tail_z   [-] # 0.1 is 10% of the fuselage length
-
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * May not handle very irregular fuselage shapes
+    * Does not modify nose and tail sections
+    * Adjacent sections have compatible geometry
     """
     divider = 1
     if i < 2:
@@ -526,26 +515,33 @@ def set_section_angles(i,nose_z,tail_z,x_poses,z_poses,heights,widths,length,end
 # compute_fuselage_fineness
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_fuselage_fineness(fuselage, x_locs, eff_diams, eff_diam_gradients_fwd):
-    """This computes fuselage finenesses for nose and tail.
+    """
+    Computes fineness ratios for fuselage nose and tail sections
 
-    Assumptions:
-    Written for OpenVSP 3.16.1
+    Parameters
+    ----------
+    fuselage : RCAIDE.Library.Components.Fuselages.Fuselage
+        Fuselage object to analyze
+    x_locs : array_like
+        Section x locations as fractions of length
+    eff_diams : array_like
+        Effective diameters at each section [m]
+    eff_diam_gradients_fwd : array_like
+        Forward differences of effective diameters
 
-    Source:
-    N/A
+    Returns
+    -------
+    fuselage : RCAIDE.Library.Components.Fuselages.Fuselage
+        Fuselage object with updated fineness ratios
 
-    Inputs:
-    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
-    1. RCAIDE fuselage [object].
-    2. Array of x_locations of fuselage segments. (length = L)
-    3. Array of effective diameters of fuselage segments. (length = L)
-    4. Array of effective diameter gradients from nose to tail. (length = L-1)
+    Notes
+    -----
+    Computes length-to-diameter ratios for nose and tail sections based on
+    geometry transitions.
 
-    Outputs:
-    Writes fineness values to RCAIDE fuselage, returns fuselage.
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Nose section ends at minimum gradient in front 50% of fuselage
+    * Tail section begins at minimum negative gradient in aft 50%
     """
 
     segment_list       = list(fuselage.segments.keys())
@@ -572,24 +568,29 @@ def compute_fuselage_fineness(fuselage, x_locs, eff_diams, eff_diam_gradients_fw
 # get_fuselage_height
 # ---------------------------------------------------------------------------------------------------------------------- 
 def get_fuselage_height(fuselage, location):
-    """This linearly estimates fuselage height at any percentage point (0,100) along fuselage length.
+    """
+    Estimates fuselage height at specified location using linear interpolation
 
-    Assumptions:
-    Written for OpenVSP 3.16.1
+    Parameters
+    ----------
+    fuselage : RCAIDE.Library.Components.Fuselages.Fuselage
+        Fuselage object to analyze
+    location : float
+        Location as fraction of fuselage length (0.0-1.0)
 
-    Source:
-    N/A
+    Returns
+    -------
+    height : float
+        Interpolated height at specified location [m]
 
-    Inputs:
-    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
-    1. RCAIDE fuselage [object], containing fuselage.vsp_data.xsec_num in its data structure.
-    2. Fuselage percentage point [float].
+    Notes
+    -----
+    Uses linear interpolation between adjacent sections to estimate height
+    at any point along fuselage length.
 
-    Outputs:
-    height [m]
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Height varies linearly between sections
+    * Location is between 0 and 1
     """
 
     segment_list       = list(fuselage.segments.keys())    
@@ -608,26 +609,33 @@ def get_fuselage_height(fuselage, location):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # find_fuse_u_coordinate
 # ---------------------------------------------------------------------------------------------------------------------- 
-def find_fuse_u_coordinate(x_target,fuse_id,fuel_tank_tag):
-    """Determines the u coordinate of an OpenVSP fuselage that matches an x coordinate
+def find_fuse_u_coordinate(x_target, fuse_id, fuel_tank_tag):
+    """
+    Determines OpenVSP u-coordinate corresponding to an x-coordinate
 
-    Assumptions:
-    Fuselage is aligned with the x axis
+    Parameters
+    ----------
+    x_target : float
+        Target x-coordinate [m]
+    fuse_id : str
+        OpenVSP fuselage ID
+    fuel_tank_tag : str
+        Tag for fuel tank probe
 
-    Source:
-    N/A
+    Returns
+    -------
+    u_current : float
+        OpenVSP u-coordinate (0-1) corresponding to x_target
 
-    Inputs:
-    x_target      [m]
-    fuse_id       <str>
-    fuel_tank_tag <str>
+    Notes
+    -----
+    Uses binary search to find the u-coordinate that gives the desired
+    x-coordinate position.
 
-    Outputs:
-    u_current     [-] u coordinate for the requests x position
-
-    Properties Used:
-    N/A
-    """     
+    **Major Assumptions**
+    * Fuselage is aligned with x-axis
+    * X-coordinate varies monotonically with u-coordinate
+    """
     tol   = 1e-3
     diff  = 1000    
     u_min = 0
@@ -650,29 +658,28 @@ def find_fuse_u_coordinate(x_target,fuse_id,fuel_tank_tag):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # write_fuselage_conformal_fuel_tank
 # ----------------------------------------------------------------------------------------------------------------------  
-def write_fuselage_conformal_fuel_tank(fuse_id,fuel_tank,fuel_tank_set_ind):
-    """This writes a conformal fuel tank in a fuselage.
+def write_fuselage_conformal_fuel_tank(fuse_id, tank, fuel_tank_set_ind):
+    """
+    Creates a conformal fuel tank in an OpenVSP fuselage
 
-    Assumptions:
-    Fuselage is aligned with the x axis
+    Parameters
+    ----------
+    fuse_id : str
+        OpenVSP fuselage ID
+    tank : RCAIDE.Library.Components.Fuselages.Fuel_Tank
+        Fuel tank object to create
+    fuel_tank_set_ind : int
+        OpenVSP set index for fuel tanks
 
-    Source:
-    N/A
+    Notes
+    -----
+    Creates a fuel tank that conforms to the fuselage internal volume
+    between specified start and end positions.
 
-    Inputs:
-    fuse_id                                     <str>
-    fuel_tank.
-      inward_offset                             [m]
-      start_length_percent                      [-] .1 is 10%
-      end_length_percent                        [-]
-      fuel_type.density                         [kg/m^3]
-    fuel_tank_set_ind                           <int>
-
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Tank boundaries align with fuselage cross-sections
+    * Tank volume follows fuselage contours
+    * Tank is fully contained within fuselage
     """         
     # Unpack
     try:

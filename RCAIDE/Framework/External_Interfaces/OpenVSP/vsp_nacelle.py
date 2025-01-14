@@ -23,38 +23,34 @@ except ImportError:
 #  vsp_nacelle  
 # ---------------------------------------------------------------------------------------------------------------------- 
 def write_vsp_nacelle(nacelle, OML_set_ind):
-    """This converts nacelles into OpenVSP format.
-    
-    Assumptions: 
-    1. If nacelle segments are defined, geometry written to OpenVSP is of type "StackGeom". 
-       1.a  This type of nacelle can be either set as flow through or not flow through.
-       1.b  Segments are defined in a similar manner to fuselage segments. See geometric 
-            documentation in RCAIDE-Library-Components-Nacelles-Nacelle
-    
-    2. If nacelle segments are not defined, geometry written to OpenVSP is of type "BodyofRevolution".
-       2.a This type of nacelle can be either set as flow through or not flow through.
-       2.b BodyofRevolution can be either be a 4 digit airfoil (type string) or super ellipse (default)
-    Source:
-    N/A
-    Inputs: 
-      nacelle.
-      origin                              [m] in all three dimension, should have as many origins as engines 
-      length                              [m]
-      diameter                            [m]
-      flow_through                        <boolean> if True create a flow through nacelle, if False create a cylinder
-      segment(optional).
-         width                            [m]
-         height                           [m]
-         lenght                           [m]
-         percent_x_location               [m]     
-         percent_y_location               [m]        
-         percent_z_location               [m] 
-       
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
-    Properties Used:
-    N/A
-    """    
+    """
+    Writes a RCAIDE nacelle object to OpenVSP format
+
+    Parameters
+    ----------
+    nacelle : RCAIDE.Library.Components.Nacelles.Nacelle
+        Nacelle object to export, either Stack_Nacelle or Body_of_Revolution_Nacelle
+    OML_set_ind : int
+        OpenVSP set index for outer mold line
+
+    Notes
+    -----
+    This function exports a nacelle from RCAIDE to OpenVSP format, handling:
+    - Stack or body-of-revolution geometry types
+    - Cross-section definition
+    - Position and orientation
+    - Airfoil-based shapes
+    - Surface properties
+
+    **Major Assumptions**
+    * Nacelle geometry can be represented as stack sections or body of revolution
+    * For stack type: sections define complete geometry
+    * For body of revolution: shape follows airfoil or super-ellipse profile
+    * All required geometric parameters are defined
+
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
+    """
     # default tesselation 
     radial_tesselation = 21
     axial_tesselation  = 25
@@ -205,39 +201,46 @@ def write_vsp_nacelle(nacelle, OML_set_ind):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # read_vsp_nacelle
 # ---------------------------------------------------------------------------------------------------------------------- 
-def read_vsp_nacelle(nacelle_id,vsp_nacelle_type, units_type='SI'):
-    """This reads an OpenVSP stack geometry or body of revolution and writes it to a RCAIDE nacelle format.
-    If an airfoil is defined in body-of-revolution, its coordinates are not read in due to absence of
-    API functions in VSP.
+def read_vsp_nacelle(nacelle_id, vsp_nacelle_type, units_type='SI'):
+    """
+    Reads an OpenVSP nacelle geometry and converts it to RCAIDE format
 
-    Assumptions: 
-    
-    Source:
-    N/A
+    Parameters
+    ----------
+    nacelle_id : str
+        OpenVSP geometry ID for nacelle
+    vsp_nacelle_type : {'Stack', 'BodyOfRevolution'}
+        Type of OpenVSP nacelle geometry
+    units_type : {'SI', 'imperial', 'inches'}, optional
+        Units system to use
+        Default: 'SI'
 
-    Inputs:
-    0. Pre-loaded VSP vehicle in memory, via import_vsp_vehicle.
-    1. VSP 10-digit geom ID for nacelle.
-    2. Units_type set to 'SI' (default) or 'Imperial'. 
+    Returns
+    -------
+    nacelle : RCAIDE.Library.Components.Nacelles.Nacelle
+        Nacelle object with properties:
+        
+        - origin [m] : Location in all three dimensions
+        - orientation_euler_angles [rad] : Rotation angles
+        - length [m] : Overall length
+        - diameter [m] : Maximum diameter
+        - flow_through : bool
+        - For Stack type:
+            - segments : Ordered container of cross-sections
+        - For Body of Revolution type:
+            - airfoil : Optional airfoil definition
+            - inlet_diameter [m] : Flow-through opening size
 
-    Outputs:
-    Writes RCAIDE nacelle, with these geometries:           (all defaults are SI, but user may specify Imperial)
+    Notes
+    -----
+    This function reads nacelle geometry from OpenVSP and converts it to RCAIDE format
+    with proper units and measurements.
 
-        Nacelles.Nacelle.	
-            origin                  [m] in all three dimensions
-            width                   [m]
-            lengths                 [m]
-            heights                 [m]
-            tag                     <string>
-            segment[].   (segments are in ordered container and callable by number) 
-              percent_x_location    [unitless]
-              percent_z_location    [unitless]
-              height                [m]
-              width                 [m]
-
-    Properties Used:
-    N/A
-    """  	
+    **Major Assumptions**
+    * Nacelle is either stack of sections or body of revolution
+    * For body of revolution with airfoil: coordinates not read due to VSP API limitations
+    * All required geometric parameters are accessible through VSP API
+    """
 
     if units_type == 'SI':
         units_factor = Units.meter * 1.

@@ -35,50 +35,51 @@ t_table = str.maketrans( chars          + string.ascii_uppercase ,
 #  vsp read wing
 # ----------------------------------------------------------------------------------------------------------------------  
 def read_vsp_wing(wing_id, units_type='SI', write_airfoil_file=True, use_scaling=True):
-    """This reads an OpenVSP wing vehicle geometry and writes it into a RCAIDE wing format.
+    """
+    Reads an OpenVSP wing geometry and converts it to RCAIDE format
 
-    Assumptions:
-    1. OpenVSP wing is divided into segments ("XSecs" in VSP).
-    2. Written for OpenVSP 3.21.1
+    Parameters
+    ----------
+    wing_id : str
+        OpenVSP geometry ID for wing
+    units_type : {'SI', 'imperial', 'inches'}, optional
+        Units system to use
+        Default: 'SI'
+    write_airfoil_file : bool, optional
+        Whether to write airfoil data to file
+        Default: True
+    use_scaling : bool, optional
+        Whether to use OpenVSP scaling
+        Default: True
 
-    Source:
-    N/A
+    Returns
+    -------
+    wing : RCAIDE.Library.Components.Wings.Wing
+        Wing object with properties:
+        
+        - origin [m] : Location in all three dimensions
+        - spans.projected [m] : Wing span
+        - chords.root/tip [m] : Root and tip chord lengths
+        - aspect_ratio [-] : Wing aspect ratio
+        - sweeps.quarter_chord [rad] : Quarter-chord sweep angle
+        - twists.root/tip [rad] : Root and tip twist angles
+        - thickness_to_chord [-] : t/c ratio
+        - dihedral [rad] : Wing dihedral angle
+        - areas.reference/wetted [m^2] : Wing areas
+        - segments : Container with airfoil data and section properties
 
-    Inputs:
-    1. VSP 10-digit geom ID for wing.
-    2. units_type set to 'SI' (default) or 'Imperial'.
-    3. Boolean for whether or not to write an airfoil file(default = True).
-    4. Boolean for whether or not to use the scaling from OpenVSP (default = True).
+    Notes
+    -----
+    This function reads wing geometry from OpenVSP and converts it to RCAIDE format
+    with proper units and measurements.
 
-    Outputs:
-    Writes RCAIDE wing object, with these geometries, from VSP:
-    	Wings.Wing.    (* is all keys)
-    		origin                                  [m] in all three dimensions
-    		spans.projected                         [m]
-    		chords.root                             [m]
-    		chords.tip                              [m]
-    		aspect_ratio                            [-]
-    		sweeps.quarter_chord                    [radians]
-    		twists.root                             [radians]
-    		twists.tip                              [radians]
-    		thickness_to_chord                      [-]
-    		dihedral                                [radians]
-    		symmetric                               <boolean>
-    		tag                                     <string>
-    		areas.reference                         [m^2]
-    		areas.wetted                            [m^2]
-    		Segments.
-    		  tag                                   <string>
-    		  twist                                 [radians]
-    		  percent_span_location                 [-]  .1 is 10%
-    		  root_chord_percent                    [-]  .1 is 10%
-    		  dihedral_outboard                     [radians]
-    		  sweeps.quarter_chord                  [radians]
-    		  thickness_to_chord                    [-]
-    		  airfoil                               <NACA 4-series, 6 series, or airfoil file>
+    **Major Assumptions**
+    * Wing geometry follows OpenVSP conventions
+    * Airfoils are NACA 4-series, 6-series, or from file
+    * All required geometric parameters are accessible through VSP API
 
-    Properties Used:
-    N/A
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
     """
 
     # Check if this is vertical tail, this seems like a weird first step but it's necessary
@@ -406,44 +407,46 @@ def read_vsp_wing(wing_id, units_type='SI', write_airfoil_file=True, use_scaling
 # write_vsp_wing
 # ----------------------------------------------------------------------------------------------------------------------  
 def write_vsp_wing(vehicle,wing, area_tags, fuel_tank_set_ind, OML_set_ind):
-    """This write a given wing into OpenVSP format
+    """
+    Writes a RCAIDE wing object to OpenVSP format
 
-    Assumptions:
-    If wing segments are defined, they must cover the full span.
-    (may work in some other cases, but functionality will not be maintained)
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle
+        Vehicle containing the wing
+    wing : RCAIDE.Library.Components.Wings.Wing
+        Wing object to export
+    area_tags : dict
+        Dictionary of component wetted areas
+    fuel_tank_set_ind : int
+        OpenVSP set index for fuel tanks
+    OML_set_ind : int
+        OpenVSP set index for outer mold line
 
-    Source:
-    N/A
+    Returns
+    -------
+    area_tags : dict
+        Updated dictionary of component wetted areas
+    wing_id : str
+        OpenVSP ID of created wing
 
-    Inputs:
-    vehicle                                   [-] vehicle data structure
-    wing.
-      origin                                  [m] in all three dimensions
-      spans.projected                         [m]
-      chords.root                             [m]
-      chords.tip                              [m]
-      sweeps.quarter_chord                    [radians]
-      twists.root                             [radians]
-      twists.tip                              [radians]
-      thickness_to_chord                      [-]
-      dihedral                                [radians]
-      tag                                     <string>
-      Segments.*. (optional)
-        twist                                 [radians]
-        percent_span_location                 [-]  .1 is 10%
-        root_chord_percent                    [-]  .1 is 10%
-        dihedral_outboard                     [radians]
-        sweeps.quarter_chord                  [radians]
-        thickness_to_chord                    [-]
-    area_tags                                 <dict> used to keep track of all tags needed in wetted area computation
-    fuel_tank_set_index                       <int> OpenVSP object set containing the fuel tanks
+    Notes
+    -----
+    This function exports a wing from RCAIDE to OpenVSP format, handling:
+    - Basic wing geometry (span, chord, sweep, etc.)
+    - Airfoil sections and transitions
+    - Control surfaces
+    - Fuel tanks
+    - Surface properties
 
-    Outputs:
-    area_tags                                 <dict> used to keep track of all tags needed in wetted area computation
-    wing_id                                   <str>  OpenVSP ID for given wing
+    **Major Assumptions**
+    * Wing geometry can be represented by OpenVSP sections
+    * Airfoils are compatible with OpenVSP format
+    * All required geometric parameters are defined
+    * Control surfaces and fuel tanks follow OpenVSP conventions
 
-    Properties Used:
-    N/A
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
     """
     wing_x = wing.origin[0][0]
     wing_y = wing.origin[0][1]
@@ -706,25 +709,31 @@ def write_vsp_wing(vehicle,wing, area_tags, fuel_tank_set_ind, OML_set_ind):
 # ----------------------------------------------------------------------------------------------------------------------  
 # write_vsp_control_surface
 # ----------------------------------------------------------------------------------------------------------------------  
-def write_vsp_control_surface(wing,wing_id,ctrl_surf):
-    """This writes a control surface in a wing.
+def write_vsp_control_surface(wing, wing_id, ctrl_surf):
+    """
+    Writes a control surface definition to an OpenVSP wing
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    wing : RCAIDE.Library.Components.Wings.Wing
+        Wing containing the control surface
+    wing_id : str
+        OpenVSP ID of the wing
+    ctrl_surf : RCAIDE.Library.Components.Wings.Control_Surfaces.Control_Surface
+        Control surface to add (Flap, Slat, Aileron, etc)
 
-    Source:
-    N/A
+    Notes
+    -----
+    Creates an OpenVSP subsurface representing the control surface with:
+    - Span extent (start/end positions)
+    - Chord fraction
+    - Leading/trailing edge flag
+    - Surface parameters
 
-    Inputs:
-    wind_id              <str>
-    ctrl_surf            [-]
-    n_segments           int, number of wing segments
-
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Control surface geometry fits within wing bounds
+    * Control surface type maps to OpenVSP subsurface types
+    * Wing segments are properly defined if present
     """
     
     # determine the number of segments and where the breaks are
@@ -797,34 +806,33 @@ def write_vsp_control_surface(wing,wing_id,ctrl_surf):
 # ----------------------------------------------------------------------------------------------------------------------  
 # write_wing_conformal_fuel_tank
 # ----------------------------------------------------------------------------------------------------------------------  
-def write_wing_conformal_fuel_tank(vehicle,wing, wing_id,fuel_tank,fuel_tank_set_ind):
-    """This writes a conformal fuel tank in a wing.
+def write_wing_conformal_fuel_tank(vehicle, wing, wing_id, fuel_tank, fuel_tank_set_ind):
+    """
+    Creates a conformal fuel tank in an OpenVSP wing
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle
+        Vehicle containing the wing
+    wing : RCAIDE.Library.Components.Wings.Wing
+        Wing containing the fuel tank
+    wing_id : str
+        OpenVSP ID of the wing
+    fuel_tank : RCAIDE.Library.Components.Wings.Fuel_Tank
+        Fuel tank object to create
+    fuel_tank_set_ind : int
+        OpenVSP set index for fuel tanks
 
-    Source:
-    N/A
+    Notes
+    -----
+    Creates a fuel tank that conforms to the wing internal volume between
+    specified chord and span positions.
 
-    Inputs:
-    vehicle                                     [-] vehicle data structure
-    wing.segments.*.percent_span_location       [-]
-    wing.spans.projected                        [m]
-    wind_id                                     <str>
-    fuel_tank.
-      inward_offset                             [m]
-      start_chord_percent                       [-] .1 is 10%
-      end_chord_percent                         [-]
-      start_span_percent                        [-]
-      end_span_percent                          [-]
-      fuel_type.density                         [kg/m^3]
-    fuel_tank_set_ind                           <int>
-
-    Outputs:
-    Operates on the active OpenVSP model, no direct output
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Tank boundaries align with wing sections
+    * Tank volume follows wing contours
+    * Tank is fully contained within wing
+    * Required fuel tank parameters are defined
     """
     # Unpack
     try:
@@ -914,25 +922,33 @@ def write_wing_conformal_fuel_tank(vehicle,wing, wing_id,fuel_tank,fuel_tank_set
 # ---------------------------------------------------------------------------------------------------------------------- 
 # get_vsp_trim_from_RCAIDE_trim
 # ---------------------------------------------------------------------------------------------------------------------- 
-def get_vsp_trim_from_RCAIDE_trim(seg_span_percents,vsp_segment_breaks,trim):
-    """Compute OpenVSP span trim coordinates based on RCAIDE coordinates
+def get_vsp_trim_from_RCAIDE_trim(seg_span_percents, vsp_segment_breaks, trim):
+    """
+    Converts RCAIDE span trim coordinates to OpenVSP coordinates
 
-    Assumptions:
-    Wing does not have end caps
+    Parameters
+    ----------
+    seg_span_percents : array_like
+        Segment span locations as fractions (0-1)
+    vsp_segment_breaks : array_like
+        OpenVSP segment break locations (0-1)
+    trim : float
+        RCAIDE trim value to convert (0-1)
 
-    Source:
-    N/A
+    Returns
+    -------
+    trim : float
+        Equivalent OpenVSP trim value
 
-    Inputs:
-    seg_span_percents   [-] range of 0 to 1
-    vsp_segment_breaks  [-] range of 0 to 1
-    trim                [-] range of 0 to 1 (RCAIDE value)
+    Notes
+    -----
+    Maps between RCAIDE and OpenVSP span coordinate systems for proper
+    positioning of features like control surfaces and fuel tanks.
 
-    Outputs:
-    trim                [-] OpenVSP trim value
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Wing does not have end caps
+    * Coordinate systems are compatible
+    * Trim value is between 0 and 1
     """
     # Determine max chord trim correction
     y_seg_ind                        = next(i for i,per_y in enumerate(seg_span_percents) if per_y > trim)
@@ -946,28 +962,37 @@ def get_vsp_trim_from_RCAIDE_trim(seg_span_percents,vsp_segment_breaks,trim):
 # ---------------------------------------------------------------------------------------------------------------------- 
 # convert_sweep
 # ---------------------------------------------------------------------------------------------------------------------- 
-def convert_sweep(sweep,sweep_loc,new_sweep_loc,AR,taper):
-    """This converts arbitrary sweep into a desired sweep given
-    wing geometry.
+def convert_sweep(sweep, sweep_loc, new_sweep_loc, AR, taper):
+    """
+    Converts sweep angle between different chord locations
 
-    Assumptions:
-    None
+    Parameters
+    ----------
+    sweep : float
+        Original sweep angle [degrees]
+    sweep_loc : float
+        Original sweep reference location (0-1)
+    new_sweep_loc : float
+        Desired sweep reference location (0-1)
+    AR : float
+        Wing aspect ratio
+    taper : float
+        Wing taper ratio
 
-    Source:
-    N/A
+    Returns
+    -------
+    new_sweep : float
+        Sweep angle at new reference location [degrees]
 
-    Inputs:
-    sweep               [degrees]
-    sweep_loc           [unitless]
-    new_sweep_loc       [unitless]
-    AR                  [unitless]
-    taper               [unitless]
+    Notes
+    -----
+    Uses standard sweep conversion equations to translate between
+    different chord reference locations.
 
-    Outputs:
-    quarter chord sweep
-
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Wing has straight leading/trailing edges
+    * Simple trapezoidal geometry
+    * Standard sweep conversion relations apply
     """
     sweep_LE  = np.arctan(np.tan(sweep)+4*sweep_loc* (1-taper)/(AR*(1+taper))) 
     new_sweep = np.arctan(np.tan(sweep_LE)-4*new_sweep_loc* (1-taper)/(AR*(1+taper)))

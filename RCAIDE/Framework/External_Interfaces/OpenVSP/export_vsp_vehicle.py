@@ -37,16 +37,44 @@ import os
 # ---------------------------------------------------------------------------------------------------------------------- 
 # export_vsp_vehicle
 # ---------------------------------------------------------------------------------------------------------------------- 
-def export_vsp_vehicle(vehicle, vehicle_tag, fuel_tank_set_ind=3, verbose=True, write_file=True, OML_set_ind = 4, write_igs = False):
-    """This writes a RCAIDE vehicle to OpenVSP format. It will take wing segments into account
-    if they are specified in the vehicle setup file.
-    
-    Assumptions:
-    Vehicle is composed of conventional shape fuselages, wings, and networks. Any network
-    that should be created is tagged as 'turbofan'.
+def export_vsp_vehicle(vehicle, vehicle_tag, fuel_tank_set_ind=3, verbose=True, write_file=True, OML_set_ind=4, write_igs=False):
+    """
+    Exports a RCAIDE vehicle model to OpenVSP format
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle
+        Vehicle object containing component definitions and properties
+    vehicle_tag : str 
+        Name for the exported VSP file
+    fuel_tank_set_ind : int, optional
+        OpenVSP object set index for fuel tanks. Default is 3
+    verbose : bool, optional
+        Whether to print status messages during export. Default is True
+    write_file : bool, optional
+        Whether to save the VSP file. Default is True
+    OML_set_ind : int, optional
+        OpenVSP object set index for outer mold line. Default is 4
+    write_igs : bool, optional
+        Whether to export IGS file. Default is False
+
+    Returns
+    -------
+    area_tags : dict
+        Dictionary mapping component names to wetted areas
+
+    Notes
+    -----
+    This function converts a RCAIDE vehicle configuration into OpenVSP format.
+    It handles wings, fuselages, nacelles and other components with their
+    geometric and aerodynamic properties.
+
+    **Major Assumptions**
+    * Vehicle is composed of conventional shape fuselages, wings, and networks
+    * Any network that should be created is tagged as 'turbofan'
+
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
 
     Inputs:
     vehicle.
@@ -98,11 +126,6 @@ def export_vsp_vehicle(vehicle, vehicle_tag, fuel_tank_set_ind=3, verbose=True, 
           tail.z_pos (optional, 0.02 default)   [-] z position of the tail as a percentage of fuselage length (.1 is 10%)
     fuel_tank_set_index                         <int> OpenVSP object set containing the fuel tanks    
 
-    Outputs:
-    <tag>.vsp3           This is the OpenVSP representation of the aircraft
-
-    Properties Used:
-    N/A
     """    
 
     # -------------------------------------------------------------------------     

@@ -34,93 +34,81 @@ except ImportError:
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  vsp read
 # ---------------------------------------------------------------------------------------------------------------------- 
-def import_vsp_vehicle(tag,network_type=None, propulsor_type = None, units_type='SI',use_scaling=True,calculate_wetted_area=True): 
-    """This reads an OpenVSP vehicle geometry and writes it into a RCAIDE vehicle format.
-    Includes wings, fuselages, and rotors.
+def import_vsp_vehicle(tag, network_type=None, propulsor_type=None, units_type='SI', use_scaling=True, calculate_wetted_area=True):
+    """
+    Reads an OpenVSP vehicle geometry and converts it to RCAIDE vehicle format
 
-    Assumptions:
-    1. OpenVSP vehicle is composed of conventionally shaped fuselages, wings, and rotors. 
-    1a. OpenVSP fuselage: generally narrow at nose and tail, wider in center). 
-    1b. Fuselage is designed in VSP as it appears in real life. That is, the VSP model does not rely on
-       superficial elements such as canopies, stacks, or additional fuselages to cover up internal lofting oddities.
-    1c. This program will NOT account for multiple geometries comprising the fuselage. For example: a wingbox mounted beneath
-       is a separate geometry and will NOT be processed.
-    2. Fuselage origin is located at nose. VSP file origin can be located anywhere, preferably at the forward tip
-       of the vehicle or in front (to make all X-coordinates of vehicle positive). 
-    4. Written for OpenVSP 3.21.1
+    Parameters
+    ----------
+    tag : str
+        Name of .vsp3 file to import
+    network_type : RCAIDE.Framework.Networks.Network
+        Type of energy network to use
+    propulsor_type : RCAIDE.Library.Components.Propulsors.Propulsor
+        Type of propulsion system to use
+    units_type : {'SI', 'imperial', 'inches'}, optional
+        Units system to use
+        Default: 'SI'
+    use_scaling : bool, optional
+        Whether to use OpenVSP scaling
+        Default: True
+    calculate_wetted_area : bool, optional
+        Whether to compute wetted areas
+        Default: True
 
-    Source:
-    N/A
+    Returns
+    -------
+    vehicle : RCAIDE.Vehicle
+        Vehicle object containing imported geometry with components:
+        
+        Wings.Wing.*
+            - origin [m]
+            - spans.projected [m]
+            - chords.root/tip [m]
+            - aspect_ratio [-]
+            - sweeps.quarter_chord [rad]
+            - twists.root/tip [rad]
+            - thickness_to_chord [-]
+            - dihedral [rad]
+            - areas.reference/wetted [m^2]
+            - Segments with airfoil data
+            
+        Fuselages.Fuselage.*
+            - origin [m]
+            - width [m]
+            - lengths.total/nose/tail [m] 
+            - heights.maximum/at_quarter_length [m]
+            - effective_diameter [m]
+            - fineness.nose/tail [-]
+            - areas.wetted [m^2]
+            - segments with shape data
+            
+        Propellers.Propeller.*
+            - location [rad]
+            - rotation [rad]
+            - tip_radius [m]
+            - hub_radius [m]
 
-    Inputs:
-    1. A tag for an XML file in format .vsp3.
-    2. Units_type set to 'SI' (default) or 'Imperial'
-    3. User-specified network
-    4. Boolean for whether or not to use the scaling from OpenVSP (default = True).
+    Notes
+    -----
+    This function imports OpenVSP geometry into RCAIDE format, handling wings,
+    fuselages, propellers and other components.
 
-    Outputs:
-    Writes RCAIDE vehicle with these geometries from VSP:    (All values default to SI. Any other 2nd argument outputs Imperial.)
-    	Wings.Wing.    (* is all keys)
-    		origin                                  [m] in all three dimensions
-    		spans.projected                         [m]
-    		chords.root                             [m]
-    		chords.tip                              [m]
-    		aspect_ratio                            [-]
-    		sweeps.quarter_chord                    [radians]
-    		twists.root                             [radians]
-    		twists.tip                              [radians]
-    		thickness_to_chord                      [-]
-    		dihedral                                [radians]
-    		symmetric                               <boolean>
-    		tag                                     <string>
-    		areas.reference                         [m^2]
-    		areas.wetted                            [m^2]
-    		Segments.
-    		  tag                                   <string>
-    		  twist                                 [radians]
-    		  percent_span_location                 [-]  .1 is 10%
-    		  root_chord_percent                    [-]  .1 is 10%
-    		  dihedral_outboard                     [radians]
-    		  sweeps.quarter_chord                  [radians]
-    		  thickness_to_chord                    [-]
-    		  airfoil                               <NACA 4-series, 6 series, or airfoil file>
+    **Major Assumptions**
+    * OpenVSP vehicle uses conventional shapes for fuselages, wings, rotors
+    * Fuselage is designed realistically without superficial elements
+    * Fuselage origin at nose
+    * Single geometry per fuselage (no additional components)
+    * Written for OpenVSP 3.21.1
 
-    	Fuselages.Fuselage.			
-    		origin                                  [m] in all three dimensions
-    		width                                   [m]
-    		lengths.
-    		  total                                 [m]
-    		  nose                                  [m]
-    		  tail                                  [m]
-    		heights.
-    		  maximum                               [m]
-    		  at_quarter_length                     [m]
-    		  at_three_quarters_length              [m]
-    		effective_diameter                      [m]
-    		fineness.nose                           [-] ratio of nose section length to fuselage effective diameter
-    		fineness.tail                           [-] ratio of tail section length to fuselage effective diameter
-    		areas.wetted                            [m^2]
-    		tag                                     <string>
-    		segment[].   (segments are in ordered container and callable by number)
-    		  vsp.shape                               [point,circle,round_rect,general_fuse,fuse_file]
-    		  vsp.xsec_id                             <10 digit string>
-    		  percent_x_location
-    		  percent_z_location
-    		  height
-    		  width
-    		  length
-    		  effective_diameter
-    		  tag
-    		vsp.xsec_num                              <integer of fuselage segment quantity>
-    		vsp.xsec_surf_id                          <10 digit string>
+    **Extra modules required**
+    * OpenVSP (vsp or openvsp module)
 
-    	Propellers.Propeller.
-    		location[X,Y,Z]                            [radians]
-    		rotation[X,Y,Z]                            [radians]
-    		tip_radius                                 [m]
-    	        hub_radius                                 [m] 
- 
-    """  	
+    Raises
+    ------
+    Exception
+        If network_type or propulsor_type not specified
+    """
 
     if isinstance(network_type,RCAIDE.Framework.Networks.Network) != True:
         raise Exception('Vehicle energy network type must be defined. \n Choose from list in RCAIDE.Framework.Networks') 

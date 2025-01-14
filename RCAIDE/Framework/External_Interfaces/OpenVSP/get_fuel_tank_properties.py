@@ -153,25 +153,33 @@ def apply_properties(vehicle,fuel_tanks):
 # Get Fuel Tanks
 # ---------------------------------------------------------------------------------------------------------------------- 
 def get_fuel_tanks(vehicle):
-    """Creates a data structure with fuel tanks based on 
-    fuel tanks present in the vehicle
-    
-    Assumptions:
-    Fuel tanks exists in the fuselage and wings only
+    """
+    Creates a data structure containing fuel tanks from the vehicle configuration
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle
+        Vehicle object containing fuel tank definitions in networks
 
-    Inputs:
-    vehicle.fuselages.*.Fuel_Tanks.*.tag     [-]
-    vehicle.wings.*.Fuel_Tanks.*.tag         [-]
+    Returns
+    -------
+    vsp_fuel_tanks : RCAIDE.Core.Data
+        Data structure containing empty data objects for each fuel tank
+        
+        - Keys are fuel tank tags
+        - Values are empty Data() objects to be populated later
 
-    Outputs:    
-    fuel_tanks.tag                           [-]
+    Notes
+    -----
+    This function extracts fuel tank information from the vehicle's networks and
+    creates a data structure to store their properties. The returned structure
+    will be populated with mass properties later.
 
-    Properties Used:
-    N/A
-    """       
+    **Major Assumptions**
+    * Fuel tanks exist in the vehicle's networks and fuel lines
+    * Each fuel tank has a unique tag
+
+    """
     vsp_fuel_tanks = Data()  
 
     for network in vehicle.networks:  
