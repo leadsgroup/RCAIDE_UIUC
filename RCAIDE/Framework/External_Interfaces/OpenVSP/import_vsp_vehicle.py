@@ -352,5 +352,7 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
         print ('Unequal numbers of rotors and nacelles defined. Skipping propulsor definition.') 
                 
     vehicle.networks.append(network)
-
+   
+   
+    # TO DO: SHIFT ALL COMPONENTS SO ORIGIN IS AT 0,0
     return vehicle
