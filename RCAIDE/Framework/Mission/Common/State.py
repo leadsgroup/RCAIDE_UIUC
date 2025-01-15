@@ -21,33 +21,61 @@ import numpy as np
 #  State
 # ----------------------------------------------------------------------------------------------------------------------
 class State(Conditions):
-    """ Creates the State data structure for storing daata that solved in a mission
-    
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """    
+    """
+    Data structure for storing complete mission segment state information
+
+    Attributes
+    ----------
+    tag : str
+        Identifier, defaults to 'state'
+    initials : Conditions
+        Initial conditions at segment start
+    numerics : Numerics
+        Numerical integration parameters
+    unknowns : Unknowns
+        Variables to be solved
+    conditions : Conditions
+        Current state conditions
+    residuals : Residuals
+        Constraint residuals
+
+    Methods
+    -------
+    expand_rows(rows, override=False)
+        Expands state arrays to specified number of rows
+    merged()
+        Combines states from multiple segments
+
+    Notes
+    -----
+    This class provides the complete state representation for mission segments,
+    including both the physical state and numerical solution state. It inherits
+    from Conditions to provide data structure functionality.
+
+    **Major Assumptions**
+    * State variables are properly initialized
+    * Array dimensions are consistent
+    * Segment type determines required state variables
+    * Initial conditions are valid
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Common.Conditions
+    RCAIDE.Framework.Mission.Common.Numerics
+    RCAIDE.Framework.Mission.Common.Unknowns
+    RCAIDE.Framework.Mission.Common.Residuals
+    """
     
     
     def __defaults__(self):
-        """ This sets the default values.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for state container
+
+        Notes
+        -----
+        Initializes basic state structure with empty containers.
+        Additional state variables are added based on segment type.
+        Called automatically when class is instantiated.
         """           
         
         self.tag        = 'state'
@@ -58,23 +86,25 @@ class State(Conditions):
         self.residuals  = Residuals()
         
     def expand_rows(self,rows,override=False):
-        """ Makes a 1-D array the right size. Often used after a mission is initialized to size out the vectors to the
-            right size. Will not overwrite an array if it already exists, unless override is True.
-        
-            Assumptions:
-            Doesn't expand initials or numerics
-    
-            Source:
-            N/A
-    
-            Inputs:
-            rows   [int]
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Expands state arrays to specified number of rows
+
+        Parameters
+        ----------
+        rows : int
+            Number of rows to expand arrays to
+        override : bool, optional
+            Whether to override existing arrays
+            Default: False
+
+        Notes
+        -----
+        Recursively resizes arrays in state structure except initials and numerics.
+        Will not overwrite existing arrays unless override=True.
+
+        **Major Assumptions**
+        * Arrays can be broadcast to new dimensions
+        * Original data is preserved if not overridden
         """         
         
         # store
@@ -103,43 +133,72 @@ class State(Conditions):
 # ----------------------------------------------------------------------------------------------------------------------        
                 
 class Container(State):
+    """
+    Container for managing multiple segment states
+
+    Attributes
+    ----------
+    segments : DataOrdered
+        Ordered dictionary of segment states
+
+    Methods
+    -------
+    merged()
+        Combines states from all segments
+
+    Notes
+    -----
+    This class provides organization for multiple segment states and methods
+    to combine them. Inherits from State to provide state functionality.
+
+    **Major Assumptions**
+    * Segments are properly ordered
+    * Segment states are compatible for merging
+    """
+
     def __defaults__(self):
-        """ This sets the default values.
-    
-            Assumptions:
-            Puts the segments in the right order
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
-        """         
+        """
+        Sets default values for container initialization
+
+        Attributes
+        ----------
+        segments : DataOrdered
+            Empty ordered dictionary for storing mission segments
+
+        Notes
+        -----
+        This method initializes the container with an empty DataOrdered dictionary
+        that will store mission segments in the order they are added. Called
+        automatically when class is instantiated.
+
+        **Major Assumptions**
+        * Segments will be added in correct execution order
+        * DataOrdered maintains insertion order
+        * Container starts empty
+
+        See Also
+        --------
+        RCAIDE.Framework.Core.DataOrdered
+        """
         self.segments = DataOrdered()
         
     def merged(self):
-        """ Combines the states of multiple segments
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            state_out [State()]
-    
-            Properties Used:
-            None
+        """
+        Combines the states of multiple segments
+
+        Returns
+        -------
+        state_out : State
+            Combined state containing all segment data
+
+        Notes
+        -----
+        Merges unknowns, conditions, and residuals from all segments.
+        Maintains time ordering of segments.
+
+        **Major Assumptions**
+        * Segments have compatible state structures
+        * Arrays can be vertically stacked
         """              
         
         state_out = State()
@@ -160,23 +219,26 @@ State.Container = Container
 # ---------------------------------------------------------------------------------------------------------------------- 
 
 def append_array(A,B=None):
-    """ A stacking operation used by merged to put together data structures
+    """
+    Stacks arrays vertically for state merging
 
-        Assumptions:
-        None
+    Parameters
+    ----------
+    A : ndarray
+        First array to stack
+    B : ndarray, optional
+        Second array to stack
+        Default: None
 
-        Source:
-        N/A
+    Returns
+    -------
+    array : ndarray or None
+        Vertically stacked array if inputs are arrays, None otherwise
 
-        Inputs:
-        A [array]
-        B [array]
-
-        Outputs:
-        array
-
-        Properties Used:
-        None
+    Notes
+    -----
+    Helper function for merging segment states.
+    Returns None if inputs are not both numpy arrays.
     """       
     if isinstance(A,np.ndarray) and isinstance(B,np.ndarray):
         return np.vstack([A,B])

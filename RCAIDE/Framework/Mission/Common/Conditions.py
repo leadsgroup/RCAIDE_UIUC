@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Conditions/Conditions.py
+# RCAIDE/Framework/Mission/Common/Conditions.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -15,99 +15,121 @@ import numpy as np
 #  Conditions
 # ----------------------------------------------------------------------------------------------------------------------
 class Conditions(Data):
-    """ Conditions are the magic Data that contains the information about the vehicle in flight.
-        At this point none of the information really exists. What is here are the methods that allow a mission
-        to collect the information.
-    
-        Assumptions:
-        None
-        
-        Source:
-        None   
-    """ 
+    """
+    Base class for storing and managing mission segment conditions data
+
+    Attributes
+    ----------
+    _size : int
+        Size of condition arrays, defaults to 1
+
+    Methods
+    -------
+    ones_row(cols)
+        Returns a row vector of ones with given columns
+    ones_row_m1(cols) 
+        Returns an N-1 row vector of ones
+    ones_row_m2(cols)
+        Returns an N-2 row vector of ones
+    expand_rows(rows, override=False)
+        Expands condition arrays to specified number of rows
+
+    Notes
+    -----
+    This class provides the core data structure for storing conditions during
+    mission analysis. It inherits from Data to provide attribute-style access
+    to nested dictionaries.
+
+    **Major Assumptions**
+    * Arrays can be properly broadcast for calculations
+    * Conditions follow expected structure for segment type
+    """
 
     _size = 1
     
     def ones_row(self,cols):
-        """ returns a row vector of ones with given number of columns 
-        
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            cols   [in]
-    
-            Outputs:
-            Vector
-    
-            Properties Used:
-            None
+        """
+        Returns a row vector of ones with given number of columns
+
+        Parameters
+        ----------
+        cols : int
+            Number of columns for output array
+
+        Returns
+        -------
+        array : ndarray
+            Array of ones with shape (_size, cols)
+
+        Notes
+        -----
+        Used to initialize condition arrays with proper dimensions.
         """     
         return np.ones([self._size,cols])
     
     def ones_row_m1(self,cols):
-        """ returns an N-1 row vector of ones with given number of columns
-        
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            cols   [in]
-    
-            Outputs:
-            Vector
-    
-            Properties Used:
-            None
+        """
+        Returns an N-1 row vector of ones
+
+        Parameters
+        ----------
+        cols : int
+            Number of columns for output array
+
+        Returns
+        -------
+        array : ndarray
+            Array of ones with shape (_size-1, cols)
+
+        Notes
+        -----
+        Creates arrays one row shorter than standard size.
+        Used for difference calculations.
         """ 
         return expanded_array(cols, 1)
     
     def ones_row_m2(self,cols):
-        """ returns an N-2 row vector of ones with given number of columns
-        
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            cols   [int]
-    
-            Outputs:
-            Vector
-    
-            Properties Used:
-            None
+        """
+        Returns an N-2 row vector of ones
+
+        Parameters
+        ----------
+        cols : int
+            Number of columns for output array
+
+        Returns
+        -------
+        array : ndarray
+            Array of ones with shape (_size-2, cols)
+
+        Notes
+        -----
+        Creates arrays two rows shorter than standard size.
+        Used for second difference calculations.
         """ 
         return expanded_array(cols, 2)
     
     
     def expand_rows(self,rows,override=False):
-        """ Makes a 1-D array the right size. Often used after a mission is initialized to size out the vectors to the
-            right size. Will not overwrite an array if it already exists, unless override is True.
-        
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            rows     [int]
-            override [boolean]
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Expands condition arrays to specified number of rows
+
+        Parameters
+        ----------
+        rows : int
+            Number of rows to expand arrays to
+        override : bool, optional
+            Whether to override existing arrays
+            Default: False
+
+        Notes
+        -----
+        Recursively resizes arrays in the conditions structure.
+        Will not overwrite existing arrays unless override=True.
+
+        **Major Assumptions**
+        * Arrays can be broadcast to new dimensions
+        * Original data is preserved if not overridden
         """           
         
         # store
@@ -135,36 +157,59 @@ class Conditions(Data):
         return
                 
 class expanded_array(Data):
-    """ This is an array that will expand later when the mission is initialized. It is called specifically by conditions
-    
-        Assumptions:
-        None
-        
-        Source:
-        None   
-    """ 
+    """
+    Array class that expands to proper dimensions when mission is initialized
+
+    Attributes
+    ----------
+    _size : int
+        Current size of array, defaults to 1
+    _adjustment : int
+        Number of rows to reduce from final size
+    _cols : int
+        Number of columns in array
+    _array : ndarray
+        Underlying numpy array storage
+
+    Methods
+    -------
+    resize(rows)
+        Resizes array to specified number of rows minus adjustment
+    __call__()
+        Returns current array value
+    __mul__(other)
+        Handles multiplication with other values
+    __rmul__(other)
+        Handles reverse multiplication with other values
+
+    Notes
+    -----
+    This class provides delayed array expansion for mission calculations.
+    Arrays start as 1x1 and expand to proper dimensions when the mission
+    is initialized. Used by Conditions class for efficient memory usage.
+
+    **Major Assumptions**
+    * Array will be resized before use in calculations
+    * Adjustment value remains constant
+    * Multiplication operations create new 1x1 arrays
+    """
 
     _size = 1  
         
     def __init__(self, cols, adjustment):
         """ Initialization that sets expansion later
-        
-            Assumptions:
-            None
-        
-            Source:
-            N/A
-        
-            Inputs:
-            self
-            cols       - columns                          [int]
-            adjustment - how much smaller                 [int]
-        
-            Outputs:
-            N/A
-            
-            Properties Used:
-            N/A
+         
+        Parameters
+        ----------
+        cols : int
+            Number of columns for array
+        adjustment : int
+            Number of rows to reduce from final size
+
+        Notes
+        -----
+        Creates initial 1x1 array that will be expanded later.
+        Stores column count and size adjustment for future resize.
         """          
         
         self._adjustment = adjustment
@@ -175,23 +220,21 @@ class expanded_array(Data):
     def resize(self,rows):
         """ This function actually completes the resizing. After this it's no longer an expanded array. That way it
             doesn't propogate virally. That means if one wishes to resize later the conditions need to be reset.
-        
-            Assumptions:
-            None
-        
-            Source:
-            N/A
-        
-            Inputs:
-            self
-            rows       - rows                             [int]
-            v          - values (really self)             [int]
-        
-            Outputs:
-            np.array   - properly sized                   [array]
-            
-            Properties Used:
-            N/A
+         
+        Parameters
+        ----------
+        rows : int
+            Number of rows for final array
+
+        Returns
+        -------
+        array : ndarray
+            Resized array with shape (rows-adjustment, cols)
+
+        Notes
+        -----
+        Converts expandable array to fixed numpy array.
+        Called during mission initialization to set final dimensions.
         """   
         # unpack
         adjustment = self._adjustment
@@ -204,43 +247,37 @@ class expanded_array(Data):
     
     def __call__(self):
         """ This returns the value and shape of the array as is
-        
-            Assumptions:
-            None
-        
-            Source:
-            N/A
-        
-            Inputs:
-            self
+         
+        Returns
+        -------
+        array : ndarray
+            Current array value and shape
 
-            Outputs:
-            np.array   - properly sized                   [array]
-            
-            Properties Used:
-            N/A
+        Notes
+        -----
+        Provides direct access to underlying numpy array.
+        Used when array value is needed before expansion.
         """           
         
         return self._array
     
     def __mul__(self,other):
         """ Performs multiplication and returns self
-        
-            Assumptions:
-            None
-        
-            Source:
-            N/A
-        
-            Inputs:
-            self
-            other      - something can be multiplied      [float]
+         
+        Parameters
+        ----------
+        other : float
+            Value to multiply by
 
-            Outputs:
-            self
-            
-            Properties Used:
-            N/A
+        Returns
+        -------
+        self : expanded_array
+            Updated array with new values
+
+        Notes
+        -----
+        Creates new 1x1 array with multiplied value.
+        Maintains expandable array properties.
         """          
         
         self._array = np.resize(other,[1,1])
@@ -249,22 +286,21 @@ class expanded_array(Data):
 
     def __rmul__(self,other):
         """ Performs multiplication and returns self
-        
-            Assumptions:
-            None
-        
-            Source:
-            N/A
-        
-            Inputs:
-            self
-            other      - something can be multiplied      [float]
+         
+        Parameters
+        ----------
+        other : float
+            Value to multiply by
 
-            Outputs:
-            self
-            
-            Properties Used:
-            N/A
+        Returns
+        -------
+        self : expanded_array
+            Updated array with new values
+
+        Notes
+        -----
+        Handles multiplication when array is second operand.
+        Identical behavior to __mul__.
         """                 
         
         self._array = np.resize(other,[1,1])

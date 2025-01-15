@@ -16,32 +16,71 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 
 class Numerics(Conditions):
-    """ Creates the data structure for the numerical solving of a mission.
-    
-        Assumptions:
-        None
-        
-        Source:
-        None
+    """
+    Data structure for numerical solving parameters in mission analysis
+
+    Attributes
+    ----------
+    tag : str
+        Identifier, defaults to 'numerics'
+    number_of_control_points : int
+        Number of points for discretization, defaults to 16
+    discretization_method : callable
+        Function to generate discretization points, defaults to chebyshev_data
+    solver_jacobian : str
+        Type of jacobian to use, defaults to "none"
+    tolerance_solution : float
+        Convergence tolerance, defaults to 1e-8
+    converged : bool or None
+        Whether solution has converged
+    max_evaluations : float
+        Maximum number of function evaluations
+    step_size : float or None
+        Step size for numerical derivatives
+
+    dimensionless : Conditions
+        Dimensionless integration data:
+        - control_points : ndarray
+            Points for integration
+        - differentiate : ndarray
+            Differentiation matrix
+        - integrate : ndarray
+            Integration matrix
+
+    time : Conditions
+        Time-based integration data:
+        - control_points : ndarray
+            Time points
+        - differentiate : ndarray
+            Time differentiation matrix
+        - integrate : ndarray
+            Time integration matrix
+
+    Notes
+    -----
+    This class stores all numerical parameters needed for solving mission segments.
+    It inherits from Conditions to provide data structure functionality.
+
+    **Major Assumptions**
+    * Discretization method provides required matrices
+    * Integration schemes are compatible with solver
+    * Control points are properly distributed
+    * Time and dimensionless parameters are synchronized
+
+    **Extra modules required**
+    * numpy
+    * RCAIDE.Library.Methods.Utilities.Chebyshev
     """
     
     def __defaults__(self):
-        """This sets the default values.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for numerical parameters
+
+        Notes
+        -----
+        Initializes all numerical parameters with default values.
+        Creates empty arrays for integration matrices.
+        Called automatically when class is instantiated.
         """           
         self.tag                              = 'numerics' 
         self.number_of_control_points         = 16

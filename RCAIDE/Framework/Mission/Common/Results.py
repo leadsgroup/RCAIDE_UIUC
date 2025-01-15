@@ -19,51 +19,166 @@ import numpy as np
 # ---------------------------------------------------------------------------------------------------------------------- 
 
 class Results(Conditions):
-    """ This builds upon Basic, which itself builds on conditions, to add the data structure for aerodynamic mission analyses.
-    
-        Assumptions:
-        None
+    """
+    Data structure for storing mission analysis results and aerodynamic data
+
+    Attributes
+    ----------
+    tag : str
+        Identifier, defaults to 'results'
+
+    S_ref : ndarray
+        Reference area [m^2]
+    c_ref : ndarray
+        Reference chord [m]
+    b_ref : ndarray
+        Reference span [m]
+    X_ref : ndarray
+        X reference location [m]
+    Y_ref : ndarray
+        Y reference location [m]
+    Z_ref : ndarray
+        Z reference location [m]
+
+    frames : Conditions
+        Reference frame data:
         
-        Source:ty.static.coeffici
-        None   ty.static.coeffici
+        - inertial : Conditions
+            - position_vector [m]
+            - velocity_vector [m/s]
+            - acceleration_vector [m/s^2]
+            - angular_velocity_vector [rad/s]
+            - angular_acceleration_vector [rad/s^2]
+            - gravity_force_vector [N]
+            - total_force_vector [N]
+            - total_moment_vector [N-m]
+            - time [s]
+            - aircraft_range [m]
+
+        - body : Conditions
+            - inertial_rotations [rad]
+            - thrust_force_vector [N]
+            - moment_vector [N-m]
+            - velocity_vector [m/s]
+            - thrust_moment_vector [N-m]
+            - transform_to_inertial [ndarray]
+
+        - wind : Conditions
+            - body_rotations [rad]
+            - velocity_vector [m/s]
+            - force_vector [N]
+            - moment_vector [N-m]
+            - transform_to_inertial [ndarray]
+
+        - planet : Conditions
+            - start_time [s]
+            - latitude [rad]
+            - longitude [rad]
+            - true_course [rad]
+            - true_heading [rad]
+
+    freestream : Conditions
+        Flow conditions:
+        - velocity [m/s]
+        - mach_number [-]
+        - pressure [Pa]
+        - temperature [K]
+        - density [kg/m^3]
+        - speed_of_sound [m/s]
+        - dynamic_viscosity [N-s/m^2]
+        - altitude [m]
+        - gravity [m/s^2]
+        - reynolds_number [-]
+        - dynamic_pressure [Pa]
+        - delta_ISA [K]
+
+    aerodynamics : Conditions
+        Aerodynamic properties:
+        
+        - angles : Conditions
+            - alpha [rad]
+            - beta [rad]
+            - phi [rad]
+            
+        - coefficients : Conditions
+            - lift [-]
+            - drag [-]
+            - surface_pressure [-]
+            (includes detailed breakdowns of lift/drag components)
+
+    control_surfaces : Conditions
+        Control surface data for:
+        - aileron
+        - elevator
+        - rudder
+        - flap
+        - slat
+        Each includes:
+        - deflection [rad]
+        - static_stability coefficients
+
+    stability : Conditions
+        Stability derivatives and parameters:
+        - static_margin [-]
+        - neutral_point [-]
+        - static_stability derivatives
+
+    emissions : Conditions
+        Emissions data
+
+    noise : Conditions
+        Acoustic data
+
+    energy : Conditions
+        Energy and propulsion data:
+        - throttle [-]
+        - thrust_force_vector [N]
+        - power [W]
+        - vehicle_mass_rate [kg/s]
+
+    weights : Conditions
+        Mass properties:
+        - total_mass [kg]
+        - total_moment_of_inertia [kg-m^2]
+        - vehicle_mass_rate [kg/s]
+
+    Notes
+    -----
+    This class provides a comprehensive data structure for storing all results
+    from mission analysis. It inherits from Conditions to provide data
+    structure functionality.
+
+    **Major Assumptions**
+    * All arrays properly sized for mission points
+    * Units are consistent throughout
+    * Reference frame transformations are valid
+    * Coefficient subscripts follow standard conventions:
+        - X,Y,Z : force components
+        - L,M,N : moment components
+        - u,v,w : velocity components
+        - p,q,r : angular rates
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Common.Conditions
+    RCAIDE.Framework.Mission.Common.State
     """
     
     
     def __defaults__(self):
-        """This sets the default values.
-    
-            Assumptions:
-            Coefficient subscritps:
-                X      - force in X direction
-                Y      - force in Y direction 
-                Z      - force in Z direction
-                
-                lift  - force 
-                drag  - force 
-    
-                L     - moment about X axis 
-                M     - moment about Y axis 
-                N     - moment about Z axis
-                
-                u     - velocity in X drection
-                v     - velocity in Y drection
-                w     - velocity in Z drection
-                   
-                p     - angular rate about X axis
-                q     - angular rate about Y axis
-                r     - angular rate about Z axis
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for results container
+
+        Notes
+        -----
+        Initializes all results arrays with zeros.
+        Creates nested Conditions objects for organizing data.
+        Called automatically when class is instantiated.
+
+        **Major Assumptions**
+        * One column arrays for scalar quantities
+        * Three column arrays for vector quantities
+        * Empty arrays for undefined quantities
         """ 
         
         self.tag                                              = 'results' 
