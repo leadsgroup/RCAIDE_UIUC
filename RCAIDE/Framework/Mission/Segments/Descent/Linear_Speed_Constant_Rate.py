@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Descent/Linear_Speed_Constant_Rate.py
+# RCAIDE/Framework/Mission/Segments/Descent/Linear_Speed_Constant_Rate.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,33 +16,78 @@ from RCAIDE.Library.Mission                      import Common,Segments
 #  Linear_Speed_Constant_Rate
 # ----------------------------------------------------------------------------------------------------------------------
 class Linear_Speed_Constant_Rate(Evaluate):
-    """ Linearly change true airspeed while climbing at a constant rate.
+    """
+    Mission segment for descending at constant rate with linear true airspeed variation
+
+    Attributes
+    ----------
+    altitude_start : float
+        Initial altitude [m], optional
+    altitude_end : float
+        Final altitude [m], defaults to 10 km
+    descent_rate : float
+        Rate of descent [m/s], defaults to 3 m/s
+    air_speed_start : float
+        Initial true airspeed [m/s], required
+    air_speed_end : float
+        Final true airspeed [m/s], defaults to 200 m/s
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment maintains a constant descent rate while linearly varying the
+    true airspeed between specified start and end values. Unlike Mach-based
+    segments, the true airspeed variation is independent of atmospheric
+    conditions.
+
+    The segment processes include:
+    - Altitude differential initialization
+    - Linear speed descent conditions initialization
+    - Control surface unpacking
+    - Flight dynamics residual evaluation
+    - Orientation unpacking
+
+    **Major Assumptions**
+    * Standard atmosphere
+    * Quasi-steady flight
+    * No wind effects
+    * Speed range achievable throughout descent
+    * Sufficient control authority
+    * Constant descent rate maintainable
+    * Linear speed variation achievable
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """       
-    
+    Initialize:
+    - differentials_altitude
+    - conditions (linear speed descent)
+
+    Iterate:
+    - unknowns.mission (orientation)
+    - unknowns.controls (control surfaces)
+    - residuals.flight_dynamics
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Framework.Mission.Common
+    RCAIDE.Framework.Mission.Segments.Descent.Linear_Mach_Constant_Rate
+    """
+
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
-        """          
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow defines how the segment is evaluated:
+        1. Initialize altitude differentials and conditions
+        2. Iterate on orientation, controls and flight dynamics
+        """
         
         # -------------------------------------------------------------------------------------------------------------- 
         #   User Inputs

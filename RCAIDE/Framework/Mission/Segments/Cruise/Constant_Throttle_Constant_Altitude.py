@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
+# RCAIDE/Framework/Mission/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -18,14 +18,67 @@ from RCAIDE.Framework.Analyses                   import Process
 # ----------------------------------------------------------------------------------------------------------------------  
 
 class Constant_Throttle_Constant_Altitude(Evaluate):
-    """ Vehicle flies at a set throttle setting. Allows a vehicle to do a level acceleration.
+    """
+    Mission segment for level acceleration at constant throttle and altitude
+
+    Attributes
+    ----------
+    throttle : float
+        Throttle setting [-], required
+    altitude : float
+        Constant altitude to maintain [m], required
+    air_speed_start : float
+        Initial true airspeed [m/s], required
+    air_speed_end : float
+        Final true airspeed [m/s], defaults to 0.0
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    state.residuals.final_velocity_error : float
+        Error in final velocity constraint
+
+    Notes
+    -----
+    This segment maintains constant altitude and throttle setting while allowing
+    the vehicle to accelerate. Useful for level acceleration performance analysis.
+    The segment duration is determined by the time required to reach the target
+    airspeed at the specified throttle setting.
+
+    The segment processes include extensive condition updates:
+    - Time differentials
+    - Velocity integration
+    - Orientations and accelerations
+    - Atmosphere and gravity
+    - Energy and thrust
+    - Aerodynamics and stability
+    - Forces and moments
+    - Planet position
+
+    **Major Assumptions**
+    * Standard atmosphere
+    * Quasi-steady flight
+    * No wind effects
+    * Sufficient control authority
+    * Altitude maintainable during acceleration
+    * Target speed achievable at specified throttle
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """           
+    Initialize:
+    - conditions (constant throttle cruise)
+
+    Iterate:
+    - Update all conditions (differentials through moments)
+    - Evaluate flight dynamics residuals
+    - Solve velocity constraints
+    - Update orientation and acceleration unknowns
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Framework.Mission.Common
+    RCAIDE.Library.Mission.Segments.Cruise
+    """
     
     
     # ------------------------------------------------------------------
@@ -33,22 +86,16 @@ class Constant_Throttle_Constant_Altitude(Evaluate):
     # ------------------------------------------------------------------  
 
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up extensive process flow
+        for condition updates. Called automatically when segment is instantiated.
+
+        The process flow defines a comprehensive update sequence for all flight
+        conditions and states during the acceleration maneuver.
         """           
         
         # -------------------------------------------------------------------------------------------------------------- 

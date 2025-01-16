@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.py
+# RCAIDE/Framework/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -19,33 +19,79 @@ from RCAIDE.Framework.Analyses                   import Process
 # ---------------------------------------------------------------------------------------------------------------------- 
  
 class Constant_Throttle_Constant_Speed(Evaluate):
-    """ Climb at a constant throttle setting and true airspeed. This segment may not always converge as the vehicle 
-        could be deficient in thrust. Useful as a check to see the climb rate at the top of climb.
+    """
+    Mission segment for climbing at constant throttle setting and true airspeed
+
+    Attributes
+    ----------
+    altitude_start : float
+        Initial altitude [m], optional
+    altitude_end : float
+        Final altitude [m], defaults to 10 km
+    throttle : float
+        Throttle setting [-], defaults to 0.5
+    air_speed : float
+        True airspeed to maintain [m/s]
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment maintains constant throttle and true airspeed while climbing.
+    The climb rate is determined by available excess thrust. This segment may
+    not always converge if insufficient thrust is available at the specified
+    throttle setting. Useful for evaluating climb performance at top of climb.
+
+    The segment processes include extensive condition updates:
+    - Velocity vector from wind angle
+    - Body angle unpacking
+    - Altitude differentials
+    - Time differentials
+    - Orientations
+    - Acceleration
+    - Atmosphere
+    - Gravity
+    - Freestream conditions
+    - Energy/thrust
+    - Aerodynamics
+    - Stability
+    - Weights
+    - Forces and moments
+    - Planet position
+
+    **Major Assumptions**
+    * Throttle setting provides sufficient thrust for climb
+    * Quasi-steady flight
+    * Standard atmosphere
+    * No wind effects
+    * Thrust available exceeds drag at specified conditions
+
+    **Process Flow**
     
-        Assumptions:
-        You set a reasonable throttle setting that can provide enough thrust.
-        
-        Source:
-        None
-    """     
+    Initialize:
+    - conditions
+
+    Iterate:
+    - Update all conditions (velocities through moments)
+    - Evaluate flight dynamics residuals
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Framework.Mission.Common
+    """
     
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up extensive process flow
+        for condition updates. Called automatically when segment is instantiated.
+
+        The process flow defines a comprehensive update sequence for all flight
+        conditions and states during the climb.
         """          
         
         # -------------------------------------------------------------------------------------------------------------- 

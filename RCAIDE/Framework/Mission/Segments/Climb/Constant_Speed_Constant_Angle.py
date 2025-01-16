@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Climb/Constant_Speed_Constant_Angle.py
+# RCAIDE/Framework/Mission/Segments/Climb/Constant_Speed_Constant_Angle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,33 +16,69 @@ from RCAIDE.Library.Mission                          import Common,Segments
 #  Constant_Speed_Constant_Angle
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Constant_Speed_Constant_Angle(Evaluate):
-    """ A basic constant true airspeed climb at a constant angle. Usually used for certification to ensure a vehicle
-        can clear and obstacle.
+    """
+    Mission segment for climbing at constant true airspeed and constant angle
+
+    Attributes
+    ----------
+    altitude_start : float
+        Initial altitude [m], optional
+    altitude_end : float
+        Final altitude [m], defaults to 10 km
+    climb_angle : float
+        Climb angle [rad], defaults to 3 degrees
+    air_speed : float
+        True airspeed to maintain [m/s], defaults to 100 m/s
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment maintains constant true airspeed while climbing at a fixed angle.
+    It is typically used for certification requirements to demonstrate obstacle
+    clearance capabilities.
+
+    The segment processes include:
+    - Altitude differential initialization
+    - Constant speed climb conditions initialization
+    - Flight dynamics residual evaluation
+    - Orientation unpacking
+
+    **Major Assumptions**
+    * Standard atmosphere
+    * Quasi-steady flight
+    * No wind effects
+    * Airspeed achievable throughout climb
+    * Sufficient thrust available for climb angle
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """          
+    Initialize:
+    - differentials_altitude
+    - conditions (constant speed climb)
+
+    Iterate:
+    - residuals.flight_dynamics
+    - unknowns.mission (orientation)
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Framework.Mission.Common
+    """
     
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow defines how the segment is evaluated:
+        1. Initialize altitude differentials and conditions
+        2. Iterate on flight dynamics and orientation
         """          
         
         # -------------------------------------------------------------------------------------------------------------- 

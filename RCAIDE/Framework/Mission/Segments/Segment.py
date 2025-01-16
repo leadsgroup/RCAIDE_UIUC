@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Mission/Segment/Segment.py
+# RCAIDE/Framework/Mission/Segments/Segment.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -15,26 +15,92 @@ from RCAIDE.Framework.Mission.Common     import State
 #  ANALYSES
 # ----------------------------------------------------------------------------------------------------------------------  
 class Segment(Analysis):
-    """ 
-    """    
+    """
+    Base class for all mission segments
+
+    Attributes
+    ----------
+    settings : Settings
+        Configuration settings for the segment
+    state : State
+        Current state of the vehicle
+    analyses : Analysis.Container
+        Container for analysis methods
+    process : Process
+        Process flow control object
+    conditions : Data
+        Reference to state.conditions
+
+    Notes
+    -----
+    This class provides the fundamental structure for all mission segments.
+    It establishes the framework for initialization, convergence, iteration,
+    and post-processing of flight segments. The class manages flight dynamics
+    and control variables through a comprehensive data structure.
+
+    The segment processes include:
+    - Process initialization
+    - State convergence
+    - Iteration control
+    - Post-processing
+    - Flight dynamics and control management
+
+    **Flight Dynamics Controls**
+    
+    The class manages the following control variables:
+    - Body angles (pitch, roll, yaw)
+    - Bank angle
+    - Wind angles
+    - Time and velocity
+    - Altitude and acceleration
+    - Control surface deflections
+        * Elevator
+        * Rudder
+        * Flaps
+        * Slats
+        * Ailerons
+    - Thrust settings and vectoring
+
+    **Process Flow**
+    
+    Initialize:
+    - Set up initial conditions
+    - Configure analyses
+
+    Converge:
+    - Iterate until convergence criteria met
+
+    Iterate:
+    - Update unknowns
+    - Process conditions
+    - Evaluate residuals
+
+    Post Process:
+    - Finalize results
+    - Update state
+
+    See Also
+    --------
+    RCAIDE.Framework.Analyses.Analysis
+    RCAIDE.Framework.Mission.Common.State
+    RCAIDE.Framework.Analyses.Process
+    """
     
     def __defaults__(self):
-        """This sets the default values.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes the basic structure of a mission segment including:
+        - Settings container
+        - State object
+        - Analysis container
+        - Process control structure
+        - Flight dynamics and control variables
+
+        All control variables are initialized as inactive with no
+        default values or assignments.
         """          
         
         self.settings                      = Settings() 
@@ -56,112 +122,145 @@ class Segment(Analysis):
         return
     
     def initialize(self):
-        """ This executes the initialize process
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            State  [Data()]
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Executes the segment initialization process
+
+        Notes
+        -----
+        Performs initial setup of the segment including:
+        - State variable initialization
+        - Analysis configuration
+        - Process setup
+        
+        This method is called automatically at the start of
+        segment evaluation.
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
         """        
         self.process.initialize(self)
         return
     
-    def converge(self,state):
-        """ This executes the converge process
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            State  [Data()]
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+    def converge(self, state):
+        """
+        Executes the segment convergence process
+
+        Notes
+        -----
+        Iterates the segment solution until convergence criteria are met.
+        Handles the convergence of:
+        - Flight dynamics
+        - Control surface settings
+        - Performance parameters
+
+        Parameters
+        ----------
+        state : Data
+            Current segment state data structure
+
+        Returns
+        -------
+        None
         """             
         self.process.converge(self,state)    
     
     def iterate(self):
-        """ This executes the iterate process
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            State  [Data()]
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Executes a single iteration of the segment solution process
+
+        Notes
+        -----
+        Performs one complete iteration including:
+        - Unknown variable updates
+        - Condition evaluations
+        - Residual calculations
+        - State updates
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
         """        
         self.process.iterate(self)
         return
     
     def post_process(self):
-        """ This executes post processing
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            State  [Data()]
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Executes segment post-processing operations
+
+        Notes
+        -----
+        Performs final calculations and cleanup including:
+        - Performance metric calculations
+        - Data storage and formatting
+        - State finalization
+        - Resource cleanup
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
         """         
         self.process.post_process(self)
         return
     
-    def evaluate(self,state=None):
-        """ This executes the entire process
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            State  [Data()]
-    
-            Outputs:
-            State  [Data()]
-    
-            Properties Used:
-            None
+    def evaluate(self, state=None):
+        """
+        Executes the complete segment evaluation process
+
+        Notes
+        -----
+        Runs the full segment analysis sequence:
+        1. Initialization
+        2. Convergence
+        3. Iteration
+        4. Post-processing
+
+        This is the main entry point for segment execution.
+
+        Parameters
+        ----------
+        state : Data, optional
+            Initial state data structure. If None, uses self.state
+
+        Returns
+        -------
+        self : Segment
+            Returns self for method chaining
         """          
         if state is None:
             state = self.state
         self.process(self)
         return self
     
-    def flight_dynamics_and_controls(self): 
+    def flight_dynamics_and_controls(self):
+        """
+        Initializes flight dynamics flags and control variable structures
+
+        Notes
+        -----
+        Sets up data structures for:
+        - Force and moment tracking (x, y, z axes)
+        - Control variable management
+            * Body angles and orientations
+            * Flight parameters (velocity, altitude, etc.)
+            * Control surface deflections
+            * Propulsion controls
+        
+        All control variables are initialized as inactive and must be
+        explicitly activated and configured for use.
+        """
         self.flight_dynamics                                             = Data()
         self.flight_dynamics.force_x                                     = False 
         self.flight_dynamics.force_y                                     = False 
@@ -242,55 +341,64 @@ class Segment(Analysis):
 # ----------------------------------------------------------------------
 
 class Container(Segment):
-    """ A container for the segment
-    
-        Assumptions:
-        None
-        
-        Source:
-        None
+    """
+    Container class for organizing multiple mission segments
+
+    Attributes
+    ----------
+    segments : Process
+        Container for mission segments
+    state : State.Container
+        Container for segment states
+
+    Notes
+    -----
+    This class provides organization and management for multiple mission
+    segments. It allows segments to be grouped and processed together
+    while maintaining proper sequencing and data flow.
+
+    The container handles:
+    - Segment storage and organization
+    - State management across segments
+    - Sequential segment execution
+    - Data transfer between segments
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Segment
+    RCAIDE.Framework.Mission.Common.State
     """    
     
     def __defaults__(self):
-        """This sets the default values.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for the container
+
+        Notes
+        -----
+        Initializes:
+        - Empty segments container
+        - Container state structure
         """          
-                
         self.segments = Process()
-        
         self.state = State.Container()
         
-    def append_segment(self,segment):
-        """ Add a SubSegment
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            segment  [Segment()]
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+    def append_segment(self, segment):
+        """
+        Adds a new segment to the container
+
+        Notes
+        -----
+        Appends a segment to the sequence of mission segments.
+        Segments are executed in the order they are added.
+
+        Parameters
+        ----------
+        segment : Segment
+            Mission segment to be added to container
+
+        Returns
+        -------
+        None
         """          
         self.segments.append(segment)
         return    

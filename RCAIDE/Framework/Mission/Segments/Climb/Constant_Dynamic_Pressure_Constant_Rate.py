@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Climb/Constant_Dynamic_Pressure_Constant_Rate.py
+# RCAIDE/Framework/Mission/Segments/Climb/Constant_Dynamic_Pressure_Constant_Rate.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,32 +16,69 @@ from RCAIDE.Library.Mission                          import Common,Segments
 #  Constant_Dynamic_Pressure_Constant_Rate
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Constant_Dynamic_Pressure_Constant_Rate(Evaluate):
-    """ Climb at a constant dynamic pressure at a constant rate.
+    """
+    Mission segment for climbing at constant dynamic pressure and constant rate
+
+    Attributes
+    ----------
+    altitude_start : float
+        Initial altitude [m], optional
+    altitude_end : float
+        Final altitude [m], defaults to 10 km
+    climb_rate : float
+        Rate of climb [m/s], defaults to 3 m/s
+    dynamic_pressure : float
+        Dynamic pressure to maintain [Pa]
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment maintains constant dynamic pressure while climbing at a fixed rate.
+    The true airspeed will vary with altitude to maintain the specified dynamic
+    pressure as atmospheric density changes.
+
+    The segment processes include:
+    - Altitude differential initialization
+    - Dynamic pressure climb conditions initialization
+    - Orientation unpacking
+    - Total forces residual evaluation
+
+    **Major Assumptions**
+    * Standard atmosphere
+    * Quasi-steady flight
+    * No wind effects
+    * Dynamic pressure achievable throughout climb
+    * Sufficient thrust available for climb rate
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """       
+    Initialize:
+    - differentials_altitude
+    - conditions (dynamic pressure climb)
+
+    Iterate:
+    - residuals.total_forces (climb/descent forces)
+    - unknowns.mission (orientation)
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Framework.Mission.Common
+    """
     
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow defines how the segment is evaluated:
+        1. Initialize altitude differentials and conditions
+        2. Iterate on total forces and orientation
         """          
         
         # -------------------------------------------------------------------------------------------------------------- 

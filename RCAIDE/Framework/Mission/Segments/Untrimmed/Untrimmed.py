@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Untrimmed/Untrimmed.py
+# RCAIDE/Framework/Mission/Segments/Untrimmed/Untrimmed.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -20,41 +20,94 @@ from RCAIDE.Library.Methods.skip               import skip
 # ---------------------------------------------------------------------------------------------------------------------- 
 
 class Untrimmed(Segment):
-    """ Base process class used to analyze a vehicle in each flight segment  
+    """
+    Base segment class for untrimmed flight analysis
+
+    Attributes
+    ----------
+    temperature_deviation : float
+        Temperature offset from standard atmosphere [K], defaults to 0.0
+    sideslip_angle : float
+        Aircraft sideslip angle [rad], defaults to 0.0
+    angle_of_attack : float
+        Aircraft angle of attack [rad], defaults to 1.0 degree
+    bank_angle : float
+        Aircraft bank angle [rad], defaults to 0.0
+    linear_acceleration_x : float
+        Body-axis x acceleration [m/s^2], defaults to 0.0
+    linear_acceleration_y : float
+        Body-axis y acceleration [m/s^2], defaults to 0.0
+    linear_acceleration_z : float
+        Body-axis z acceleration [m/s^2], defaults to 0.0 (positive down)
+    roll_rate : float
+        Body-axis roll rate [rad/s], defaults to 0.0
+    pitch_rate : float
+        Body-axis pitch rate [rad/s], defaults to 0.0
+    yaw_rate : float
+        Body-axis yaw rate [rad/s], defaults to 0.0
+    state.numerics.number_of_control_points : int
+        Number of analysis points, defaults to 2
+    trim_lift_coefficient : float
+        Target lift coefficient for trim, optional
+
+    Notes
+    -----
+    This segment provides the base functionality for analyzing vehicle flight
+    without enforcing trim conditions. Used for dynamic maneuvers or when
+    analyzing off-nominal flight conditions. The segment handles flight dynamics,
+    aerodynamics, and propulsion calculations in an untrimmed state.
+
+    The segment processes include:
+    - Flight dynamics and controls initialization
+    - State expansion
+    - Atmosphere and freestream conditions
+    - Force and moment calculations
+    - Stability analysis
+    - Noise and emissions evaluation
+
+    **Major Assumptions**
+    * Quasi-steady aerodynamics
+    * Rigid body dynamics
+    * Standard atmosphere (with optional temperature deviation)
+    * No trim requirements enforced
+    * Small angle approximations for stability derivatives
+
+    **Process Flow**
     
-    Assumptions:
-    None
+    Initialize:
+    - expand_state
+    - differentials
+    - conditions
 
-    Source:
-    N/A
+    Iterate:
+    - initials (time, weights, position)
+    - unknowns (controls, orientation)
+    - conditions (atmosphere through moments)
+    - residuals (flight dynamics)
 
-    Inputs:
-    None
+    Post Process:
+    - noise
+    - skip (energy, emissions, position)
 
-    Outputs:
-    None
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Segment
+    RCAIDE.Library.Mission.Common
+    RCAIDE.Framework.Mission.Common.Results
+    """
 
-    Properties Used:
-    None
-    """     
-    
     def __defaults__(self):
-        """This sets the default values.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow includes comprehensive flight dynamics evaluation
+        without enforcing trim conditions. Includes initialization of flight
+        controls and residuals.
         """           
         
         # --------------------------------------------------------------

@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Pitch_Rate_Constant_Altitude.py
+# RCAIDE/Framework/Mission/Segments/Cruise/Constant_Pitch_Rate_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -18,34 +18,73 @@ from RCAIDE.Library.Mission                      import Common,Segments
 # ----------------------------------------------------------------------------------------------------------------------  
 
 class Constant_Pitch_Rate_Constant_Altitude(Evaluate):
-    """ Vehicle flies at a constant pitch rate at a set altitude. This is maneuvering flight.
-        This is used in VTOL aircraft which need to transition from one pitch attitude to another.
+    """
+    Mission segment for maneuvering at constant pitch rate while maintaining altitude
+
+    Attributes
+    ----------
+    altitude : float
+        Constant altitude to maintain [m], required
+    pitch_rate : float
+        Rate of pitch change [rad/s^2], defaults to 1 rad/s^2
+    pitch_initial : float
+        Initial pitch angle [rad], required
+    pitch_final : float
+        Final pitch angle [rad], defaults to 0 rad
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment maintains constant altitude while executing a pitch maneuver
+    at a fixed rate. Primarily used for VTOL aircraft transitions between
+    different pitch attitudes. The segment duration is determined by the
+    pitch rate and total pitch angle change required.
+
+    The segment processes include:
+    - Constant altitude conditions initialization
+    - Control surface unpacking
+    - Flight dynamics residual evaluation
+    - Orientation unpacking
+
+    **Major Assumptions**
+    * Standard atmosphere
+    * Quasi-steady flight
+    * No wind effects
+    * Sufficient control authority for pitch maneuver
+    * Altitude can be maintained during pitch change
+    * Constant pitch rate achievable
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """      
-    
+    Initialize:
+    - conditions (constant pitch rate maneuver)
+
+    Iterate:
+    - unknowns.mission (orientation)
+    - unknowns.controls (control surfaces)
+    - residuals.flight_dynamics
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Framework.Mission.Common
+    RCAIDE.Library.Mission.Segments.Cruise
+    """
+
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
-        """           
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow defines how the segment is evaluated:
+        1. Initialize conditions
+        2. Iterate on orientation, controls and flight dynamics
+        """
         
         # -------------------------------------------------------------------------------------------------------------- 
         #   User Inputs

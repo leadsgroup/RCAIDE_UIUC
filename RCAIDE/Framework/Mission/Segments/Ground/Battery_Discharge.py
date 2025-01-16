@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Ground/Battery_Disharge.py
+# RCAIDE/Framework/Mission/Segments/Ground/Battery_Disharge.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,31 +16,78 @@ from RCAIDE.Library.Methods.skip                              import skip
 # ----------------------------------------------------------------------------------------------------------------------
 #  SEGMENT
 # ----------------------------------------------------------------------------------------------------------------------
-class Battery_Discharge(Evaluate): 
+class Battery_Discharge(Evaluate):
+    """
+    Mission segment for discharging battery while vehicle is on ground
+
+    Attributes
+    ----------
+    altitude : float
+        Ground altitude [m], required
+    time : float
+        Duration of discharge [s], defaults to 1.0 s
+    cooling_time : float
+        Additional time for battery cooling [s], defaults to 0.0 s
+    overcharge_contingency : float
+        Safety factor for discharge capacity, defaults to 1.10
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment simulates battery discharge while the vehicle is stationary
+    on the ground. Useful for pre-flight systems checks or ground operations.
+    Aerodynamic and stability calculations are skipped since the vehicle is
+    stationary.
+
+    The segment processes include:
+    - Ground battery discharge conditions initialization
+    - Energy state tracking
+    - Battery thermal management
+
+    **Major Assumptions**
+    * Vehicle is stationary
+    * No aerodynamic forces
+    * Constant discharge rate
+    * Battery thermal limits maintained
+    * Ground support equipment available if needed
+
+    **Process Flow**
+    
+    Initialize:
+    - conditions (battery discharge)
+
+    Iterate:
+    - unknowns.mission (skipped)
+    - conditions.aerodynamics (skipped)
+    - conditions.stability (skipped)
+
+    Post Process:
+    - noise (skipped)
+    - emissions (skipped)
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Library.Mission.Segments.Ground
+    """
 
     # ------------------------------------------------------------------
     #   Data Defaults
     # ------------------------------------------------------------------  
 
-    def __defaults__(self):  
+    def __defaults__(self):
+        """
+        Sets default values for segment parameters
 
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
-        """              
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow skips aerodynamic and stability calculations since
+        the vehicle is stationary on the ground.
+        """
         
         # --------------------------------------------------------------
         #   User Inputs

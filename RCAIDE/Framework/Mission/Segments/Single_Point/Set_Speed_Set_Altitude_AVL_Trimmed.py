@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Single_Point/Set_Speed_Set_Altitude_AVL_Trimmed.py
+# RCAIDE/Framework/Mission/Segments/Single_Point/Set_Speed_Set_Altitude_AVL_Trimmed.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -23,33 +23,92 @@ import numpy as np
 #  Set_Speed_Set_Altitude
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Set_Speed_Set_Altitude_AVL_Trimmed(Segment):
-    """ This is a segment that is solved using a single point. A snapshot in time.
-        We fix the speed and altitude. Throttle is solved from those.
+    """
+    Single point mission segment for AVL trim analysis at fixed speed and altitude
+
+    Attributes
+    ----------
+    temperature_deviation : float
+        Temperature offset from standard atmosphere [K], defaults to 0.0
+    sideslip_angle : float
+        Aircraft sideslip angle [rad], defaults to 0.0
+    angle_of_attack : float
+        Aircraft angle of attack [rad], required
+    trim_lift_coefficient : float
+        Target lift coefficient for trim [-], required
+    bank_angle : float
+        Aircraft bank angle [rad], defaults to 0.0
+    linear_acceleration_x : float
+        Body-axis x acceleration [m/s^2], defaults to 0.0
+    linear_acceleration_y : float
+        Body-axis y acceleration [m/s^2], defaults to 0.0
+    linear_acceleration_z : float
+        Body-axis z acceleration [m/s^2], defaults to 0.0 (positive down)
+    roll_rate : float
+        Body-axis roll rate [rad/s], defaults to 0.0
+    pitch_rate : float
+        Body-axis pitch rate [rad/s], defaults to 0.0
+    yaw_rate : float
+        Body-axis yaw rate [rad/s], defaults to 0.0
+    state.numerics.number_of_control_points : int
+        Number of analysis points, defaults to 1
+
+    Notes
+    -----
+    This segment performs a single-point analysis using AVL (Athena Vortex Lattice)
+    to determine trim conditions at a specified speed and altitude. The segment
+    solves for control surface deflections and orientation angles to achieve the
+    target lift coefficient with zero moments.
+
+    The segment processes include:
+    - Flight dynamics and controls initialization
+    - Atmosphere and freestream conditions
+    - AVL aerodynamic analysis
+    - Force and moment calculations
+    - Trim residual evaluation
+
+    **Major Assumptions**
+    * Quasi-steady flow
+    * Linear aerodynamics
+    * Small angle approximations
+    * No propulsion-aerodynamic interactions
+    * Rigid aircraft
+    * Standard atmosphere (with optional temperature deviation)
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """        
+    Initialize:
+    - differentials (dimensionless)
+    - conditions (speed/altitude)
+
+    Iterate:
+    - initials (time, weights, position)
+    - unknowns (orientation)
+    - conditions (atmosphere through moments)
+    - residuals (flight dynamics)
+
+    Post Process:
+    - noise
+    - skip (energy, emissions, position)
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Segment
+    RCAIDE.Library.Mission.Common
+    RCAIDE.Library.Mission.Segments.Single_Point
+    """
     
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow includes AVL aerodynamic analysis and trim
+        condition evaluation at the specified flight state.
         """           
 
         

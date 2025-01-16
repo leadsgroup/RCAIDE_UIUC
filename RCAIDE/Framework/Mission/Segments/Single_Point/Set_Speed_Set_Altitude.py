@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Single_Point/Set_Speed_Set_Altitude.py
+# RCAIDE/Framework/Mission/Segments/Single_Point/Set_Speed_Set_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -20,33 +20,83 @@ import numpy as np
 #  Set_Speed_Set_Altitude
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Set_Speed_Set_Altitude(Evaluate):
-    """ This is a segment that is solved using a single point. A snapshot in time.
-        We fix the speed and altitude. Throttle is solved from those.
+    """
+    Single point mission segment for analysis at fixed speed and altitude
+
+    Attributes
+    ----------
+    altitude : float
+        Flight altitude [m], required
+    air_speed : float
+        True airspeed [m/s], defaults to 10 km/hr
+    distance : float
+        Ground distance [m], defaults to 10 km
+    linear_acceleration_x : float
+        Body-axis x acceleration [m/s^2], defaults to 0.0
+    linear_acceleration_y : float
+        Body-axis y acceleration [m/s^2], defaults to 0.0
+    linear_acceleration_z : float
+        Body-axis z acceleration [m/s^2], defaults to 0.0 (positive down)
+    roll_rate : float
+        Body-axis roll rate [rad/s], defaults to 0.0
+    pitch_rate : float
+        Body-axis pitch rate [rad/s], defaults to 0.0
+    yaw_rate : float
+        Body-axis yaw rate [rad/s], defaults to 0.0
+    state.numerics.number_of_control_points : int
+        Number of analysis points, defaults to 1
+
+    Notes
+    -----
+    This segment performs a single-point analysis at specified speed and
+    altitude conditions. It provides a snapshot of the vehicle state and
+    performance without time integration. The throttle setting is solved
+    to maintain the specified flight conditions.
+
+    The segment processes include:
+    - Flight conditions initialization
+    - Control surface unpacking
+    - Flight dynamics evaluation
+    - Basic performance calculations
+
+    **Major Assumptions**
+    * Quasi-steady flight
+    * Standard atmosphere
+    * Rigid aircraft
+    * Small angle approximations
+    * Sufficient thrust available
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """        
-    
+    Initialize:
+    - conditions (speed/altitude)
+
+    Iterate:
+    - unknowns.controls (control surfaces)
+    - unknowns.mission (orientation)
+    - residuals.flight_dynamics
+
+    Post Process:
+    - skip (inertial position)
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Library.Mission.Common
+    RCAIDE.Framework.Mission.Segments.Single_Point.Set_Speed_Set_Altitude_No_Propulsion
+    """
+
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow includes basic flight dynamics evaluation at
+        the specified flight state.
         """           
         
         # --------------------------------------------------------------------------------------------------------------

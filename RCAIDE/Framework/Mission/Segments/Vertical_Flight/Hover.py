@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Vertical_Flight/Hover.py
+# RCAIDE/Framework/Mission/Segments/Vertical_Flight/Hover.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,33 +16,72 @@ from RCAIDE.Library.Mission                      import Common,Segments
 #  Hover
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Hover(Evaluate):
-    """ A stationary hover for VTOL aircraft. No aerodynamic drag and lift are used, since there is no velocity.
+    """
+    Mission segment for stationary hover in VTOL aircraft
+
+    Attributes
+    ----------
+    altitude : float
+        Hover altitude [m], required
+    time : float
+        Duration of hover [s], defaults to 1.0 s
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment simulates a stationary hover for VTOL aircraft where the
+    vehicle maintains a fixed position in space. Aerodynamic forces are
+    considered negligible due to zero translational velocity. Typically
+    used for multicopter or helicopter operations like precision hover,
+    payload operations, or transition preparation.
+
+    The segment processes include:
+    - Hover conditions initialization
+    - Flight dynamics evaluation
+    - Power and thrust calculations
+    - Energy consumption tracking
+
+    **Major Assumptions**
+    * Zero translational velocity
+    * Negligible aerodynamic forces
+    * Thrust exactly counters weight
+    * No wind effects
+    * Perfect position hold
+    * Quasi-steady state
+    * Constant altitude
+    * No ground effect
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """     
-    
+    Initialize:
+    - conditions (hover)
+
+    Iterate:
+    - residuals.flight_dynamics
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Library.Mission.Common
+    RCAIDE.Library.Mission.Segments.Vertical_Flight
+    RCAIDE.Framework.Mission.Segments.Vertical_Flight.Climb
+    RCAIDE.Framework.Mission.Segments.Vertical_Flight.Descent
+    """
+
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
-        """              
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow includes hover flight dynamics evaluation
+        with focus on thrust and power requirements for maintaining
+        stationary flight.
+        """
         
         # -------------------------------------------------------------------------------------------------------------- 
         #   User Inputs

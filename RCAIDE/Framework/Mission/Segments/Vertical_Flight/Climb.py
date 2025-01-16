@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Vertical_Flight/Climb.py
+# RCAIDE/Framework/Mission/Segments/Vertical_Flight/Climb.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,32 +16,67 @@ from RCAIDE.Library.Mission                      import Common,Segments
 #  Climb
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Climb(Evaluate):
-    """ A vertically climbing hover for VTOL aircraft. Although the vehicle moves, no aerodynamic drag and lift are used.
+    """
+    Mission segment for vertical climb in VTOL aircraft
+
+    Attributes
+    ----------
+    altitude_start : float
+        Initial altitude [m], optional
+    altitude_end : float
+        Final altitude [m], defaults to 1 km
+    climb_rate : float
+        Vertical rate of climb [m/s], defaults to 1 m/s
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment simulates pure vertical climb for VTOL aircraft where
+    aerodynamic forces are considered negligible. Typically used for
+    multicopter or helicopter hover-climb phases where the vehicle
+    maintains vertical flight with minimal forward velocity.
+
+    The segment processes include:
+    - Vertical flight conditions initialization
+    - Flight dynamics evaluation
+    - Power and thrust calculations
+
+    **Major Assumptions**
+    * Negligible aerodynamic lift
+    * Negligible aerodynamic drag
+    * Pure vertical motion
+    * No lateral-directional motion
+    * Thrust aligned with vertical axis
+    * Quasi-steady flight
+    * Constant climb rate
+
+    **Process Flow**
     
-        Assumptions:
-        Your vehicle creates a negligible drag and lift force during a vertical climb.
-        
-        Source:
-        None
+    Initialize:
+    - conditions (vertical climb)
+
+    Iterate:
+    - residuals.flight_dynamics
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Library.Mission.Common
+    RCAIDE.Library.Mission.Segments.Vertical_Flight
     """     
     
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow includes vertical flight dynamics evaluation
+        with focus on thrust and power requirements for climbing flight.
         """              
         
         # -------------------------------------------------------------------------------------------------------------- 

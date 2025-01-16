@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Cruise/Constant_Speed_Constant_Altitude.py
+# RCAIDE/Framework/Mission/Segments/Cruise/Constant_Speed_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -17,33 +17,71 @@ from RCAIDE.Library.Mission                      import Common,Segments
 # ----------------------------------------------------------------------------------------------------------------------  
 
 class Constant_Speed_Constant_Altitude(Evaluate):
-    """ Fixed true airspeed and altitude and a set distance.
-        Most other cruise segments are built off this segment. The most simple segment you can fly.
+    """
+    Mission segment for cruising at constant true airspeed and altitude
+
+    Attributes
+    ----------
+    altitude : float
+        Constant altitude to maintain [m], required
+    air_speed : float
+        True airspeed to maintain [m/s], required
+    distance : float
+        Ground distance to cover [m], defaults to 10 km
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+    bank_angle : float
+        Bank angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This is the most basic cruise segment, maintaining constant altitude and
+    true airspeed while covering a specified ground distance. Most other cruise
+    segments are derived from this fundamental segment. The true airspeed remains
+    constant regardless of atmospheric conditions.
+
+    The segment processes include:
+    - Constant altitude/speed conditions initialization
+    - Control surface unpacking
+    - Flight dynamics residual evaluation
+    - Orientation unpacking
+
+    **Major Assumptions**
+    * Standard atmosphere
+    * Quasi-steady flight
+    * No wind effects
+    * Airspeed achievable at altitude
+    * Sufficient thrust available
+    * Constant altitude maintainable
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """         
-    
+    Initialize:
+    - conditions (constant speed cruise)
+
+    Iterate:
+    - unknowns.mission (orientation)
+    - unknowns.controls (control surfaces)
+    - residuals.flight_dynamics
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Framework.Mission.Common
+    """
+
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow defines how the segment is evaluated:
+        1. Initialize conditions
+        2. Iterate on orientation, controls and flight dynamics
         """           
         
         # -------------------------------------------------------------------------------------------------------------- 

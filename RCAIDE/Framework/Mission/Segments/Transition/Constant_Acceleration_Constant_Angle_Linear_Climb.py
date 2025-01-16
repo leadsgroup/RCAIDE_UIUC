@@ -1,4 +1,4 @@
-# RCAIDE/Framework/Analyses/Mission/Segments/Transition/Constant_Acceleration_Constant_Angle_Linear_Climb.py
+# RCAIDE/Framework/Mission/Segments/Transition/Constant_Acceleration_Constant_Angle_Linear_Climb.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,32 +16,78 @@ from RCAIDE.Library.Mission                           import Common,Segments
 #  Constant_Acceleration_Constant_Angle_Linear_Climb
 # ----------------------------------------------------------------------------------------------------------------------
 class Constant_Acceleration_Constant_Angle_Linear_Climb(Evaluate):
-    """ Vehicle accelerates at a constant rate between two airspeeds.
+    """
+    Mission segment for transitioning with constant acceleration and climb angle
+
+    Attributes
+    ----------
+    altitude_start : float
+        Initial altitude [m], required
+    altitude_end : float
+        Final altitude [m], required
+    air_speed_start : float
+        Initial true airspeed [m/s], required
+    climb_angle : float
+        Flight path angle [rad], defaults to 0.0
+    acceleration : float
+        Longitudinal acceleration [m/s^2], defaults to 1.0
+    pitch_initial : float
+        Initial pitch angle [rad], required
+    pitch_final : float
+        Final pitch angle [rad], defaults to 0.0
+    true_course : float
+        True course angle [rad], defaults to 0 degrees
+
+    Notes
+    -----
+    This segment simulates a transition maneuver where the vehicle maintains
+    constant longitudinal acceleration and flight path angle while climbing.
+    Typically used for VTOL transition phases or acceleration climbs. The
+    pitch angle varies linearly between initial and final values.
+
+    The segment processes include:
+    - Transition conditions initialization
+    - Control surface unpacking
+    - Flight dynamics evaluation
+    - Orientation tracking
+
+    **Major Assumptions**
+    * Constant longitudinal acceleration
+    * Constant flight path angle
+    * Linear pitch angle variation
+    * Quasi-steady aerodynamics
+    * No lateral-directional coupling
+    * Sufficient thrust available
+    * Small angle approximations
+
+    **Process Flow**
     
-        Assumptions:
-        None
-        
-        Source:
-        None
-    """     
-    
+    Initialize:
+    - conditions (transition climb)
+
+    Iterate:
+    - unknowns.mission (orientation)
+    - unknowns.controls (control surfaces)
+    - residuals.flight_dynamics
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Evaluate
+    RCAIDE.Library.Mission.Common
+    RCAIDE.Library.Mission.Segments.Transition
+    """
+
     def __defaults__(self):
-        """ This sets the default solver flow. Anything in here can be modified after initializing a segment.
-    
-            Assumptions:
-            None
-    
-            Source:
-            N/A
-    
-            Inputs:
-            None
-    
-            Outputs:
-            None
-    
-            Properties Used:
-            None
+        """
+        Sets default values for segment parameters
+
+        Notes
+        -----
+        Initializes segment with default values and sets up process flow.
+        Called automatically when segment is instantiated.
+
+        The process flow includes transition maneuver evaluation with
+        constant acceleration and flight path angle constraints.
         """           
         
         # --------------------------------------------------------------
