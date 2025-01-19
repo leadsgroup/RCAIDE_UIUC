@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/curvilinear_inertial_horizontal_position.py
+# RCAIDE/Library/Mission/Common/Update/curvilinear_inertial_horizontal_position.py
 # 
 # 
 # Created:  September 2023, M. Clarke 
@@ -15,24 +15,59 @@ from RCAIDE.Framework.Core import Units
 #  Integrate Position
 # ---------------------------------------------------------------------------------------------------------------------- 
 def curvilinear_inertial_horizontal_position(segment):
-    """ Determines how far the airplane has traveled and calculates position. 
-    
-        Assumptions:
-        Assumes a flat earth, this is planar motion.
-        
-        Inputs:
-            segment.state.conditions:
-                frames.inertial.position_vector [meters]
-                frames.inertial.velocity_vector [meters/second]
-            segment.state.numerics.time.integrate       [float]
-            
-        Outputs:
-            segment.state.conditions:           
-                frames.inertial.position_vector [meters]
+    """
+    Computes curvilinear position for turning flight segments
 
-        Properties Used:
-        N/A
-                                
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function calculates the horizontal position components for curved flight paths,
+    particularly useful for turning maneuvers. Uses arc geometry to determine position.
+
+    **Required Segment Components**
+
+    segment:
+        state.conditions:
+            frames:
+                inertial:
+                    - position_vector : array
+                        Current position [m]
+                    - velocity_vector : array
+                        Current velocity [m/s]
+                    - aircraft_range : array
+                        Distance traveled [m]
+                planet:
+                    - true_heading : array
+                        Vehicle heading angle [rad]
+        state.numerics:
+            time:
+                - integrate : array
+                    Time integration operator
+        turn_radius : float
+            Turn radius [m]
+        turn_angle : float
+            Total turn angle [rad]
+
+    **Major Assumptions**
+    * Flat earth
+    * Constant turn radius
+    * Planar motion
+    * Well-defined turn geometry
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.frames.inertial.aircraft_range [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
     """        
 
     conditions  = segment.state.conditions 

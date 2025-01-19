@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Unpack_Unknowns/control_surfaces.py
+# RCAIDE/Library/Mission/Common/Unpack_Unknowns/control_surfaces.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -8,6 +8,69 @@ import RCAIDE
 #  Unpack Unknowns
 # ----------------------------------------------------------------------------------------------------------------------
 def control_surfaces(segment):
+    """
+    Updates control surface deflections from solver unknowns
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function applies control surface deflection values from the solver's
+    unknowns to both the vehicle model and results data structure. It handles
+    all types of control surfaces including elevators, slats, rudders, flaps,
+    and ailerons.
+
+    The function processes:
+    1. Elevator deflections
+    2. Slat deflections
+    3. Rudder deflections
+    4. Flap deflections
+    5. Aileron deflections
+
+    **Required Segment Components**
+
+    segment:
+        - assigned_control_variables : Data
+            Control variable configurations
+            - {control_type}.active : bool
+                Whether control is active
+            - {control_type}.assigned_surfaces : list
+                Surface names for each control group
+        - state.unknowns : Data
+            Solver unknown values
+        - state.conditions.control_surfaces : Data
+            Results data structure
+        - analyses : list
+            Analysis modules containing vehicle definition
+
+    **Control Surface Types**
+    
+    Supported controls:
+    - Elevator
+    - Slat
+    - Rudder
+    - Flap
+    - Aileron
+
+    **Major Assumptions**
+    * Valid control surface definitions
+    * Proper surface assignments
+    * Compatible deflection values
+    * Well-defined vehicle geometry
+
+    Returns
+    -------
+    None
+        Updates segment state and vehicle model directly
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Wings.Control_Surfaces
+    RCAIDE.Framework.Mission.Segments
+    """
     assigned_control_variables   = segment.assigned_control_variables
     control_surfaces             = segment.state.conditions.control_surfaces
     

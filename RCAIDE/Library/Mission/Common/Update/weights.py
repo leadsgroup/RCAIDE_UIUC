@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/weights.py
+# RCAIDE/Library/Mission/Common/Update/weights.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -11,29 +11,62 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # Update Weights
 # ----------------------------------------------------------------------------------------------------------------------  
-def weights(segment): 
-    """ Updates the weight of the vehicle 
-        
-        Assumptions:
-        N/A
-        
-        Inputs:
-             segment.state.
-                 numerics.time.integrate               [-]
-                 conditions.weights.total_mass         [kg]
-                 conditions.weights.vehicle_mass_rate  [kg/s]
-                 conditions.freestream.gravity         [m/s^2]
+def weights(segment):
+    """
+    Updates vehicle mass and weight forces during mission
 
-                 
-        Outputs: 
-            segment.state.conditions.
-                 weights.total_mass
-                 frames.inertial.gravity_force_vector
-      
-        Properties Used:
-        N/A
-                    
-    """ 
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function integrates mass flow rates to track vehicle mass changes
+    and updates the corresponding gravitational forces. It handles both
+    primary and additional fuel consumption.
+
+    **Required Segment Components**
+
+    segment:
+        state:
+            numerics.time:
+                - integrate : array
+                    Time integration operator
+            conditions:
+                weights:
+                    - total_mass : array
+                        Vehicle mass [kg]
+                    - vehicle_mass_rate : array
+                        Mass consumption rate [kg/s]
+                freestream:
+                    - gravity : array
+                        Gravitational acceleration [m/s²]
+        analyses.energy.vehicle.networks:
+            fuel_lines:
+                - fuel_tanks : list
+                    List of fuel tanks
+                - mass : array
+                    Fuel mass [kg]
+                - mass_flow_rate : array
+                    Fuel flow rate [kg/s]
+
+    **Major Assumptions**
+    * Continuous mass flow
+    * Well-defined fuel systems
+    * Valid integration scheme
+    * Conservative mass transfer
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.weights.total_mass [kg]
+        - conditions.frames.inertial.gravity_force_vector [N]
+        - conditions.energy.*.*.mass [kg]
+
+
+    """
     
     # unpack
     conditions   = segment.state.conditions

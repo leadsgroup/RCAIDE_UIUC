@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/orientations.py
+# RCAIDE/Library/Mission/Common/Update/orientations.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -17,31 +17,65 @@ import numpy as np
 #  Update Orientations
 # ----------------------------------------------------------------------------------------------------------------------
 def orientations(segment):
-    
-    """ Updates the orientation of the vehicle throughout the mission for each relevant axis
-    
-        Assumptions:
-        This assumes the vehicle has 3 frames: inertial, body, and wind 
-        
-        Inputs:
-        segment.state.conditions:
-            frames.inertial.velocity_vector          [meters/second]
-            frames.body.inertial_rotations           [Radians]
-        segment.analyses.planet.mean_radius [meters]
-        state.numerics.time.integrate                [float]
-            
-        Outputs:
-            segment.state.conditions:           
-                aerodynamics.angles.alpha         [Radians]
-                aerodynamics.angles.beta          [Radians]
-                aerodynamics.angles.roll          [Radians]
-                frames.body.transform_to_inertial [Radians]
-                frames.wind.body_rotations        [Radians]
-                frames.wind.transform_to_inertial [Radians]
-    
+    """
+    Updates vehicle orientation angles and transformations
 
-        Properties Used:
-        N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function updates the orientation angles and transformation matrices
+    between the vehicle's reference frames (inertial, body, and wind).
+    It handles coordinate transformations and angular rates.
+
+    **Required Segment Components**
+
+    segment.state.conditions:
+        frames:
+            inertial:
+                - velocity_vector : array
+                    Vehicle velocity [m/s]
+                - angular_velocity_vector : array
+                    Angular velocity [rad/s]
+            body:
+                - inertial_rotations : array
+                    Euler angles [rad]
+                - transform_to_inertial : array
+                    Body to inertial transform
+            wind:
+                - body_rotations : array
+                    Wind frame angles [rad]
+                - transform_to_inertial : array
+                    Wind to inertial transform
+        aerodynamics:
+            angles:
+                - alpha : array
+                    Angle of attack [rad]
+                - beta : array
+                    Sideslip angle [rad]
+                - roll : array
+                    Roll angle [rad]
+
+    **Major Assumptions**
+    * Small angle approximations
+    * Euler angle sequence (2,1,0)
+    * Right-handed coordinate systems
+    * No singularities in transformations
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.*.transform_to_inertial
+        - conditions.frames.*.body_rotations
+        - conditions.frames.inertial.angular_velocity_vector
+
+    See Also
+    --------
+    RCAIDE.Framework.Core
     """
 
     # unpack

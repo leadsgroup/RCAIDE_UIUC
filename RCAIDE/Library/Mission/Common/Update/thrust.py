@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/thrust.py
+# RCAIDE/Library/Mission/Common/Update/thrust.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,20 +7,56 @@
 #  Update Thrust
 # ---------------------------------------------------------------------------------------------------------------------- 
 def thrust(segment):
-    """ Updates the thrust vector of the vehicle from the propulsors 
-        
-        Assumptions:
-        N/A
-        
-        Inputs:
-            None 
-                 
-        Outputs: 
-            None
-      
-        Properties Used:
-        N/A
-                    
+    """
+    Updates propulsion system thrust and fuel consumption
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function evaluates the energy model to compute thrust forces,
+    moments, and fuel consumption rates for all propulsors.
+
+    **Required Segment Components**
+
+    segment:
+        analyses:
+            energy : Model
+                Energy/propulsion model
+        state.conditions:
+            frames.body:
+                - thrust_force_vector : array
+                    Propulsive forces [N]
+                - thrust_moment_vector : array
+                    Propulsive moments [N·m]
+            weights:
+                - vehicle_mass_rate : array
+                    Total mass rate [kg/s]
+                - vehicle_fuel_rate : array, optional
+                    Main fuel consumption [kg/s]
+                - vehicle_additional_fuel_rate : array, optional
+                    Secondary fuel consumption [kg/s]
+
+    **Major Assumptions**
+    * Valid propulsion model
+    * Quasi-steady operation
+    * Well-defined energy networks
+    * Compatible fuel systems
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.body.thrust_force_vector [N]
+        - conditions.frames.body.thrust_moment_vector [N·m]
+        - conditions.weights.vehicle_mass_rate [kg/s]
+        - conditions.weights.vehicle_fuel_rate [kg/s]
+        - conditions.weights.vehicle_additional_fuel_rate [kg/s]
+
+    
     """ 
 
     # unpack

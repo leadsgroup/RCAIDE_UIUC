@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/kinematics.py
+# RCAIDE/Library/Mission/Common/Update/kinematics.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,23 +13,46 @@ import numpy as np
 #  Update Acceleration
 # ----------------------------------------------------------------------------------------------------------------------
 def kinematics(segment):
-    """ Updates the kinematics of the rigid body (aircraft) 
-        
-        Assumptions:
-        N/A
-        
-        Inputs:
-            segment.state.:
-                 conditions.frames.inertial.velocity_vector    [m/s]
-                 numerics.time.differentiate                   [-]
-                 
-        Outputs:
-            segment.conditions 
-                 frames.inertial.acceleration_vector 
-      
-        Properties Used:
-        N/A
-                    
+    """
+    Updates vehicle kinematic states by differentiating position
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function calculates vehicle accelerations by differentiating
+    the inertial velocity vector. Similar to acceleration.py but focused
+    on full kinematic state updates.
+
+    **Required Segment Components**
+
+    segment.state:
+        conditions.frames.inertial:
+            - velocity_vector : array
+                Vehicle velocity [m/s]
+        numerics.time:
+            - differentiate : array
+                Time differentiation operator
+
+    **Major Assumptions**
+    * Flat earth
+    * Planar motion
+    * Valid velocity data
+    * Well-defined time discretization
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.acceleration_vector [m/s²]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    RCAIDE.Library.Mission.Common.Update.acceleration
     """   
     
     # unpack conditions

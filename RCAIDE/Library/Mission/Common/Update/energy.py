@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/energy.py
+# RCAIDE/Library/Mission/Common/Update/energy.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -6,24 +6,46 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Battery Age
 # ---------------------------------------------------------------------------------------------------------------------- 
-def energy(segment):  
-    """Updates battery age based on operating conditions, cell temperature and time of operation.
-       Source: 
-       Cell specific. See individual battery cell for more details
+def energy(segment):
+    """
+    Updates battery age and conditions based on segment operation
 
-       Assumptions:
-       Cell specific. See individual battery cell for more details
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-       Inputs: 
-       segment.
-           conditions                         - conditions of battery at each segment  [unitless]
-           increment_battery_age_by_one_day   - flag to increment battery cycle day    [boolean]
+    Notes
+    -----
+    This function updates the battery age and conditions based on operating
+    parameters, cell temperature, and time of operation. The specific aging
+    model depends on the battery cell type.
 
-       Outputs:
-       N/A  
+    **Required Segment Components**
 
-       Properties Used:
-       N/A 
+    segment:
+        conditions:
+            energy : dict
+                Energy system conditions by component
+        analyses.energy.vehicle.networks:
+            busses:
+                - battery_modules : list
+                    Battery modules to update
+        increment_battery_age_by_one_day : bool
+            Flag to increment battery cycle day
+
+    **Major Assumptions**
+    * Valid battery models
+    * Well-defined operating conditions
+    * Compatible aging models
+    * Proper temperature tracking
+
+    Returns
+    -------
+    None
+        Updates battery conditions directly
+
+  
     """  
     # loop throuh networks in vehicle 
     for network in segment.analyses.energy.vehicle.networks: 

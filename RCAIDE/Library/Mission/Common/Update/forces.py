@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/forces.py
+# RCAIDE/Library/Mission/Common/Update/forces.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -15,26 +15,56 @@ import  numpy as  np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Forces
 # ----------------------------------------------------------------------------------------------------------------------
-def forces(segment): 
-    """ Updates the total resultant force on the vehicle 
-        
-        Assumptions:
-        N/A
-        
-        Inputs:
-            segment.state.conditions.:
-                frames.wind.force_vector               [N]
-                frames.body.thrust_force_vector        [N]
-                frames.inertial.gravity_force_vector   [N]
-        Outputs:
-            segment.conditions
-                frames.inertial.total_force_vector     [N]
+def forces(segment):
+    """
+    Updates total resultant forces on the vehicle
 
-      
-        Properties Used:
-        N/A
-                    
-    """    
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function transforms and sums all force vectors (aerodynamic, thrust,
+    gravity) into the inertial frame to get the total force on the vehicle.
+    Special handling is included for vertical flight segments.
+
+    **Required Segment Components**
+
+    segment.state.conditions:
+        frames:
+            wind:
+                - force_vector : array
+                    Aerodynamic forces [N]
+                - transform_to_inertial : array
+                    Wind to inertial transform matrix
+            body:
+                - thrust_force_vector : array
+                    Propulsive forces [N]
+                - transform_to_inertial : array
+                    Body to inertial transform matrix
+            inertial:
+                - gravity_force_vector : array
+                    Gravitational force [N]
+
+    **Major Assumptions**
+    * Valid coordinate transformations
+    * Proper force definitions
+    * Compatible reference frames
+    * Rigid body dynamics
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.total_force_vector [N]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    RCAIDE.Framework.Core
+    """
  
     # unpack 
     conditions                    = segment.state.conditions 

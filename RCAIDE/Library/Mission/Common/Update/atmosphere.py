@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/atmosphere.py
+# RCAIDE/Library/Mission/Common/Update/atmosphere.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,30 +7,52 @@
 #  Update Atmosphere
 # ----------------------------------------------------------------------------------------------------------------------
 def atmosphere(segment):
-    """ Computes conditions of the atmosphere at given altitudes
+    """
+    Computes atmospheric properties at current altitude
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function evaluates the atmospheric model to obtain properties
+    like pressure, temperature, density etc. at the current altitude.
+
+    **Required Segment Components**
+
+    segment:
+        state.conditions:
+            freestream:
+                - altitude : array
+                    Vehicle altitude [m]
+        analyses.atmosphere : Model
+            Atmospheric model
+        temperature_deviation : float
+            Temperature offset from standard day [K]
+
+    **Major Assumptions**
+    * Valid atmospheric model
+    * Hydrostatic equilibrium
+    * Well-mixed atmosphere
+    * Ideal gas behavior
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly with:
+        - conditions.freestream:
+            - pressure [Pa]
+            - temperature [K]
+            - density [kg/m³]
+            - speed_of_sound [m/s]
+            - dynamic_viscosity [Pa·s]
+            - kinematic_viscosity [m²/s]
+            - thermal_conductivity [W/(m·K)]
+            - prandtl_number [-]
+
     
-        Assumptions:
-        N/A
-        
-        Inputs:
-            state.conditions:
-                freestream.altitude             [meters]
-            segment.analyses.atmoshere          [Function]
-            
-        Outputs:
-            state.conditions:
-                freestream.pressure             [pascals]
-                freestream.temperature          [kelvin]
-                freestream.density              [kilogram/meter^3]
-                freestream.speed_of_sound       [meter/second]
-                freestream.dynamic_viscosity    [pascals-seconds]
-                freestream.kinematic_viscosity  [meters^2/second]
-                freestream.thermal_conductivity [Watt/meter-Kelvin]
-                freestream.prandtl_number       [unitless]
-                
-        Properties Used:
-        N/A
-                                
     """
     
     # unpack

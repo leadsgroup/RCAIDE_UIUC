@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/gravity.py
+# RCAIDE/Library/Mission/Common/Update/gravity.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -8,20 +8,50 @@
 #  Update Gravity
 # ----------------------------------------------------------------------------------------------------------------------
 def gravity(segment):
-    """ Sets the gravity for each part of the mission
-    
-        Assumptions:
-        Fixed sea level gravity, doesn't use a gravity model yet
-        
-        Inputs:
-        segment.analyses.planet.features.sea_level_gravity [Data] 
-            
-        Outputs:
-        state.conditions.freestream.gravity [meters/second^2]
+    """
+    Updates gravitational acceleration for current altitude
 
-        Properties Used:
-        N/A
-                                
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function computes the local gravitational acceleration based on
+    altitude using the planet's gravity model. Currently uses a simple
+    sea-level gravity model.
+
+    **Required Segment Components**
+
+    segment:
+        analyses:
+            planet:
+                features:
+                    - sea_level_gravity : float
+                        Surface gravity [m/s²]
+                - compute_gravity : function
+                    Gravity model function
+        conditions:
+            freestream:
+                - altitude : array
+                    Vehicle altitude [m]
+
+    **Major Assumptions**
+    * Spherical planet
+    * Simple gravity model
+    * No terrain effects
+    * No planetary rotation effects
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.freestream.gravity [m/s²]
+
+    See Also
+    --------
+    RCAIDE.Attributes.Planets
     """      
 
     # unpack

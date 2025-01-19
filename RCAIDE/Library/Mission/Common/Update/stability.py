@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/stability.py
+# RCAIDE/Library/Mission/Common/Update/stability.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -8,21 +8,67 @@ import RCAIDE
 # ----------------------------------------------------------------------------------------------------------------------
 #  Stability
 # ---------------------------------------------------------------------------------------------------------------------- 
-def stability(segment): 
-    """ Updates the stability of the aircraft 
-        
-        Assumptions:
-        If stability model is defined, overwrite the aerodynamics calculations
-        
-        Inputs:
-            None 
-                 
-        Outputs: 
-            None
-      
-        Properties Used:
-        N/A
-                    
+def stability(segment):
+    """
+    Updates vehicle stability characteristics and forces
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function evaluates the stability model if one is defined and
+    updates aerodynamic forces and moments accordingly. It handles both
+    VLM and AVL stability analyses.
+
+    **Required Segment Components**
+
+    segment:
+        analyses:
+            stability : Model
+                Stability analysis model
+                vehicle:
+                    - reference_area : float
+                        Wing reference area [m²]
+                    - wings.main_wing:
+                        - chords.mean_aerodynamic : float
+                            Mean aerodynamic chord [m]
+                        - spans.projected : float
+                            Projected wingspan [m]
+        state.conditions:
+            aerodynamics:
+                coefficients:
+                    - lift.total : array
+                        Total lift coefficient [-]
+                    - drag.total : array
+                        Total drag coefficient [-]
+            static_stability:
+                coefficients:
+                    - Y : array
+                        Side force coefficient [-]
+                    - L : array
+                        Rolling moment coefficient [-]
+                    - M : array
+                        Pitching moment coefficient [-]
+                    - N : array
+                        Yawing moment coefficient [-]
+
+    **Major Assumptions**
+    * Valid stability model
+    * Linear aerodynamics
+    * Small angle approximations
+    * Quasi-steady flow
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.wind.force_vector [N]
+        - conditions.frames.wind.moment_vector [N·m]
+
+    
     """   
     # unpack
     stability_model    = segment.analyses.stability

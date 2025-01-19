@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/aerodynamics.py
+# RCAIDE/Library/Mission/Common/Update/aerodynamics.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -7,27 +7,56 @@
 #  Update Aerodynamics
 # ----------------------------------------------------------------------------------------------------------------------
 def aerodynamics(segment):
-    """ Gets aerodynamics conditions
+    """
+    Computes aerodynamic forces and coefficients
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function evaluates the aerodynamic model to obtain forces and moments.
+    Uses a right-handed coordinate system:
+    - +X out nose
+    - +Y out starboard wing
+    - +Z down
+
+    **Required Segment Components**
+
+    segment:
+        analyses.aerodynamics:
+            - vehicle.reference_area : float
+                Reference wing area [m²]
+            - settings.maximum_lift_coefficient : float
+                Maximum allowable lift coefficient
+            - vehicle.wings.main_wing:
+                - chords.mean_aerodynamic : float
+                    Mean aerodynamic chord [m]
+                - spans.projected : float
+                    Projected wingspan [m]
+
+    state.conditions:
+        freestream:
+            - dynamic_pressure : array
+                Dynamic pressure [Pa]
+
+    **Major Assumptions**
+    * Valid aerodynamic model
+    * Subsonic flow
+    * Small angle approximations
+    * Rigid aircraft
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.aerodynamics.coefficients
+        - conditions.frames.wind.force_vector
+        - conditions.frames.wind.moment_vector
+
     
-        Assumptions:
-        +X out nose
-        +Y out starboard wing
-        +Z down
-
-        Inputs:
-            segment.analyses.aerodynamics_model                    [Function]
-            aerodynamics_model.settings.maximum_lift_coefficient   [unitless]
-            aerodynamics_model.vehicle.reference_area             [meter^2]
-            segment.state.conditions.freestream.dynamic_pressure   [pascals]
-
-        Outputs:
-            conditions.aerodynamics.coefficients.lift.total [unitless]
-            conditions.aerodynamics.coefficients.drag.total [unitless]
-            conditions.frames.wind.force_vector [newtons]
-            conditions.frames.wind.drag_force_vector [newtons]
-
-        Properties Used:
-        N/A
     """
     
     # unpack

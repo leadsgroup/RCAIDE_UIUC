@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/linear_inertial_horizontal_position.py
+# RCAIDE/Library/Mission/Common/Update/linear_inertial_horizontal_position.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -15,24 +15,56 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
  
 def linear_inertial_horizontal_position(segment):
-    """ Determines how far the airplane has traveled. 
-    
-        Assumptions:
-        Assumes a flat earth, this is planar motion.
-        
-        Inputs:
-            segment.state.conditions:
-                frames.inertial.position_vector [meters]
-                frames.inertial.velocity_vector [meters/second]
-            segment.state.numerics.time.integrate       [float]
-            
-        Outputs:
-            segment.state.conditions:           
-                frames.inertial.position_vector [meters]
+    """
+    Computes linear position for straight-line flight segments
 
-        Properties Used:
-        N/A
-                                
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function calculates the horizontal position components for straight
+    flight paths. Uses velocity integration and heading angle to determine
+    position changes.
+
+    **Required Segment Components**
+
+    segment:
+        state.conditions:
+            frames.inertial:
+                - position_vector : array
+                    Current position [m]
+                - velocity_vector : array
+                    Current velocity [m/s]
+                - aircraft_range : array
+                    Distance traveled [m]
+        state.numerics:
+            - number_of_control_points : int
+                Number of discretization points
+            time:
+                - integrate : array
+                    Time integration operator
+        true_course : float
+            Vehicle heading angle [rad]
+
+    **Major Assumptions**
+    * Flat earth
+    * Constant heading
+    * Planar motion
+    * Well-defined trajectory
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.frames.inertial.aircraft_range [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
     """        
 
     conditions = segment.state.conditions

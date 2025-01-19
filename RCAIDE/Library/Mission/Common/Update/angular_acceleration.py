@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/angular_acceleration.py
+# RCAIDE/Library/Mission/Common/Update/angular_acceleration.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -12,23 +12,44 @@ import numpy as np
 # Update Acceleration
 # ----------------------------------------------------------------------------------------------------------------------   
 def angular_acceleration(segment):
-    """ Differentiates the angular velocity vector to get angular accelerations
-    
-        Assumptions:
-        Assumes a flat earth, this is planar motion.
-        
-        Inputs:
-            segment.state.conditions:
-                frames.inertial.angular_velocity_vector     [rad/second]
-            segment.state.numerics.time.differentiate       [float]
-            
-        Outputs:
-            segment.state.conditions:           
-                frames.inertial.angular_acceleration_vector [rad/s^2]
+    """
+    Computes angular acceleration by differentiating angular velocity
 
-        Properties Used:
-        N/A
-                                
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function calculates the angular acceleration vector by differentiating
+    the inertial angular velocity vector. Assumes planar motion.
+
+    **Required Segment Components**
+
+    segment.state:
+        conditions.frames.inertial:
+            - angular_velocity_vector : array
+                Vehicle angular velocity [rad/s]
+        numerics.time:
+            - differentiate : array
+                Time differentiation operator
+
+    **Major Assumptions**
+    * Flat earth
+    * Planar motion
+    * Valid angular velocity data
+    * Well-defined time discretization
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.angular_acceleration_vector [rad/s²]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
     """            
     
     # unpack conditions

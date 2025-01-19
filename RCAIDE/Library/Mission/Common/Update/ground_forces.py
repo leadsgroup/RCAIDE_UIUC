@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/ground_forces.py
+# RCAIDE/Library/Mission/Common/Update/ground_forces.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,25 +14,58 @@ from RCAIDE.Library.Mission.Common.Update.forces import forces
 #  Compute Ground Forces
 # ---------------------------------------------------------------------------------------------------------------------- 
 def ground_forces(segment):
-    """ Compute the rolling friction on the aircraft 
-    
-    Assumptions:
-        Does a force balance to calculate the load on the wheels using only lift. Uses only a single friction coefficient.
-    
-    Source:
-        N/A
-    
-    Inputs:
-    conditions:
-        frames.inertial.gravity_force_vector       [meters/second^2]
-        ground.friction_coefficient                [unitless]
-        frames.wind.force_vector                   [newtons]
-    
-    Outputs:
-        conditions.frames.inertial.ground_force_vector [newtons]
-    
-    Properties Used:
-        N/A
+    """
+    Computes ground reaction and friction forces
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function calculates the normal and friction forces from ground
+    contact. It performs a force balance using aerodynamic lift and
+    vehicle weight to determine wheel loads.
+
+    **Required Segment Components**
+
+    segment.state.conditions:
+        frames:
+            inertial:
+                - gravity_force_vector : array
+                    Weight force [N]
+                - ground_force_vector : array
+                    Ground reaction forces [N]
+                - total_force_vector : array
+                    Net forces on vehicle [N]
+            wind:
+                - force_vector : array
+                    Aerodynamic forces [N]
+                - transform_to_inertial : array
+                    Wind to inertial transform
+        ground:
+            - friction_coefficient : array
+                Rolling friction coefficient [-]
+
+    **Major Assumptions**
+    * Rigid ground contact
+    * Single friction coefficient
+    * No tire deformation
+    * Planar motion
+    * Simple friction model
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.ground_force_vector [N]
+        - conditions.frames.inertial.total_force_vector [N]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments.Ground
+    RCAIDE.Framework.Core
     """   
 
     # unpack

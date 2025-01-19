@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/planet_position.py
+# RCAIDE/Library/Mission/Common/Update/planet_position.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -17,27 +17,67 @@ import numpy as np
 #  Update Planet Position
 # ----------------------------------------------------------------------------------------------------------------------
 def planet_position(segment):
-    """ Updates the location of the vehicle relative to the Planet throughout the mission
-    
-        Assumptions:
-        This is valid for small movements and times as it does not account for the rotation of the Planet beneath the vehicle
-        
-        Inputs:
-        segment.state.conditions:
-            freestream.velocity                      [meters/second]
-            freestream.altitude                      [meters]
-            frames.body.inertial_rotations           [Radians]
-        segment.analyses.planet.mean_radius [meters]
-        segment.state.numerics.time.integrate        [float]
-            
-        Outputs:
-            segment.state.conditions:           
-                frames.planet.latitude  [Radians]
-                frames.planet.longitude [Radians]
+    """
+    Updates vehicle position relative to the planet
 
-        Properties Used:
-        N/A
-                                
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function calculates the vehicle's latitude and longitude based on
+    its motion relative to the planet. Valid for small movements and times
+    as it does not account for planet rotation.
+
+    **Required Segment Components**
+
+    segment:
+        state.conditions:
+            freestream:
+                - velocity : array
+                    Vehicle velocity [m/s]
+                - altitude : array
+                    Vehicle altitude [m]
+            frames:
+                body:
+                    - inertial_rotations : array
+                        Euler angles [rad]
+                planet:
+                    - latitude : array
+                        Current latitude [rad]
+                    - longitude : array
+                        Current longitude [rad]
+                    - true_course : array
+                        Vehicle heading [rad]
+        analyses:
+            planet:
+                - mean_radius : float
+                    Planet radius [m]
+        state.numerics:
+            time:
+                - integrate : array
+                    Time integration operator
+
+    **Major Assumptions**
+    * Small time intervals
+    * No planet rotation
+    * Spherical planet
+    * Great circle navigation
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.planet:
+            - latitude [rad]
+            - longitude [rad]
+            - true_course [-]
+
+    See Also
+    --------
+    RCAIDE.Attributes.Planets
     """        
     
     # unpack

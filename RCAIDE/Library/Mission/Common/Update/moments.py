@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Common/Update/moments.py
+# RCAIDE/Library/Mission/Common/Update/moments.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,26 +13,52 @@ from RCAIDE.Framework.Core  import  orientation_product
 # ----------------------------------------------------------------------------------------------------------------------
 #  Update Moments
 # ----------------------------------------------------------------------------------------------------------------------
-def moments(segment): 
-    """ Updates the total resultant moment on the vehicle 
-        
-        Assumptions:
-        N/A
-        
-        Inputs:
-            segment.state.conditions.:
-                frames.wind.force_vector          [N] 
-                frames.body.thrust_force_vector        [N]
-                frames.inertial.gravity_force_vector   [N]
-        Outputs:
-            segment.conditions
-                frames.inertial.total_force_vector     [N]
- 
-      
-        Properties Used:
-        N/A
-                    
-    """    
+def moments(segment):
+    """
+    Updates total resultant moments on the vehicle
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function transforms and sums all moment vectors (aerodynamic and thrust)
+    into the inertial frame to get the total moment on the vehicle.
+
+    **Required Segment Components**
+
+    segment.state.conditions:
+        frames:
+            wind:
+                - moment_vector : array
+                    Aerodynamic moments [N·m]
+                - transform_to_inertial : array
+                    Wind to inertial transform matrix
+            body:
+                - thrust_moment_vector : array
+                    Propulsive moments [N·m]
+                - transform_to_inertial : array
+                    Body to inertial transform matrix
+
+    **Major Assumptions**
+    * Valid coordinate transformations
+    * Proper moment definitions
+    * Compatible reference frames
+    * Rigid body dynamics
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.total_moment_vector [N·m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    RCAIDE.Framework.Core
+    """
 
     # unpack
     conditions                = segment.state.conditions  
