@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Climb/Constant_Dynamic_Pressure_Constant_Angle.py
+# RCAIDE/Library/Mission/Segments/Climb/Constant_Dynamic_Pressure_Constant_Angle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,31 +16,66 @@ import numpy as np
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
 def initialize_conditions_unpack_unknowns(segment):
-    """Sets the specified conditions which are given for the segment type.
+    """
+    Initializes conditions for constant dynamic pressure climb with fixed angle
 
-    Assumptions:
-    Constrant dynamic pressure and constant rate of climb
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function sets up the initial conditions for a climb segment with constant
+    dynamic pressure and constant climb angle. It handles both initialization and
+    unpacking of solver unknowns.
 
-    Inputs:
-    segment.climb_angle                                 [radians]
-    segment.dynamic_pressure                            [pascals]
-    segment.altitude_start                              [meters]
-    segment.altitude_end                                [meters]
-    segment.state.numerics.dimensionless.control_points [unitless]
-    conditions.freestream.density                       [kilograms/meter^3]  
+    **Required Segment Components**
 
-    Outputs:
-    conditions.frames.inertial.velocity_vector  [meters/second]
-    conditions.frames.inertial.position_vector  [meters]
-    conditions.energy.throttle              [unitless]
-    conditions.frames.body.inertial_rotations   [radians]
+    segment:
+        - climb_angle : float
+            Fixed climb angle [rad]
+        - dynamic_pressure : float
+            Dynamic pressure to maintain [Pa]
+        - altitude_start : float
+            Initial altitude [m]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        - state:
+            conditions : Data
+                State conditions container
+            unknowns:
+                altitude : array
+                    Altitude profile [m]
 
-    Properties Used:
-    N/A
-    """           
+    **Calculation Process**
+    1. Compute atmospheric properties at altitude
+    2. Calculate true airspeed from dynamic pressure:
+       V = sqrt(2q/ρ) where:
+       - q is dynamic pressure
+       - ρ is air density
+    3. Decompose velocity into components using climb angle
+
+    **Major Assumptions**
+    * Constant dynamic pressure
+    * Fixed climb angle
+    * Standard atmosphere model
+    * Small angle approximations
+    * Quasi-steady flight
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    RCAIDE.Library.Mission.Common.Update.atmosphere
+    """
     
     # unpack
     climb_angle = segment.climb_angle
@@ -88,26 +123,37 @@ def initialize_conditions_unpack_unknowns(segment):
     conditions.frames.inertial.velocity_vector[:,2] = v_z   
     
 def residual_altitude(segment):
-    """Computes the altitude residual
+    """
+    Computes the altitude residual for solver iteration
 
-    Assumptions:
-    No higher order terms.
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function calculates the difference between the solver's altitude guess
+    and the actual altitude computed from segment conditions. The residual is
+    normalized by the final altitude.
 
-    Inputs:
-    segment.state.conditions.frames.inertial.total_force_vector   [Newtons]
-    segment.state.conditions.frames.inertial.acceleration_vector  [meter/second^2]
-    segment.state.conditions.weights.total_mass                   [kilogram]
-    segment.state.conditions.freestream.altitude                  [meter]
+    **Required Segment Components**
 
-    Outputs:
-    segment.state.residuals.altitude                              [meters] 
+    segment.state:
+        unknowns:
+            altitude : array
+                Solver's altitude guess [m]
+        conditions.freestream:
+            altitude : array
+                Computed altitude [m]
 
-    Properties Used:
-    N/A
-    """     
+    Returns
+    -------
+    None
+        Updates segment residuals directly:
+        - residuals.altitude : array
+            Normalized altitude error [-]
+    """
     
     # Unpack results 
     alt_in  = segment.state.unknowns.altitude[:,0] 
@@ -121,24 +167,54 @@ def residual_altitude(segment):
 # Update Differentials
 # ----------------------------------------------------------------------------------------------------------------------     
 def update_differentials(segment):
-    """ On each iteration creates the differentials and integration functions from knowns about the problem. 
-      Sets the time at each point. Must return in dimensional time, with t[0] = 0.
-      This is different from the common method as it also includes the scaling of operators.
+    """
+    Updates time derivatives and integration for altitude-based discretization
 
-        Assumptions:
-        Works with a segment discretized in vertical position, altitude
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-        Inputs:
-        state.numerics.dimensionless.control_points      [Unitless]
-        state.numerics.dimensionless.differentiate       [Unitless]
-        state.numerics.dimensionless.integrate           [Unitless]
-        state.conditions.frames.inertial.position_vector [meter]
-        state.conditions.frames.inertial.velocity_vector [meter/second]
-        
+    Notes
+    -----
+    This function handles the time integration for segments discretized in altitude.
+    It scales the differentiation and integration operators based on the vertical
+    velocity profile.
 
-        Outputs:
-        state.conditions.frames.inertial.time            [second]
+    **Required Segment Components**
 
+    segment:
+        state:
+            numerics:
+                dimensionless:
+                    - control_points : array
+                        Discretization points [-]
+                    - differentiate : array
+                        Differentiation operator
+                    - integrate : array
+                        Integration operator
+            conditions:
+                frames.inertial:
+                    - position_vector : array
+                        Position vector [m]
+                    - velocity_vector : array
+                        Velocity vector [m/s]
+                    - time : array
+                        Time vector [s]
+
+    **Process Flow**
+    1. Calculate time step from altitude change and vertical velocity
+    2. Scale operators by time step
+    3. Integrate altitude profile
+    4. Update time vector
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.time [s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
     """    
 
     # unpack

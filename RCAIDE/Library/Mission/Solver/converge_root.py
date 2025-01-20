@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/converge_root.py
+# RCAIDE/Library/Mission/Solver/converge_root.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke  
@@ -15,25 +15,63 @@ import  sys
 # converge root
 # ---------------------------------------------------------------------------------------------------------------------- 
 def converge_root(segment):
-    """Interfaces the mission to a numerical solver. The solver may be changed by using root_finder.
+    """
+    Interfaces mission segment with numerical root-finding solver
 
-    Assumptions:
-    N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function provides an interface between mission segments and numerical 
+    root-finding algorithms to solve for unknown variables that satisfy segment
+    constraints.
 
-    Inputs:
-    segment                            [Data]
-    segment.settings.root_finder       [Data]
-    state.numerics.tolerance_solution  [Unitless]
+    **Required Segment Components**
 
-    Outputs:
-    state.unknowns                     [Any]
-    segment.state.numerics.converged   [Unitless]
+    segment:
+        - state:
+            numerics:
+                tolerance_solution : float
+                    Convergence tolerance [-]
+                max_evaluations : int
+                    Maximum function evaluations
+                step_size : float
+                    Finite difference step size
+            unknowns : Data
+                Unknown variables to solve for
+        - settings:
+            root_finder : function, optional
+                Root-finding algorithm (defaults to scipy.optimize.fsolve)
 
-    Properties Used:
-    N/A
+    **Calculation Process**
+    1. Pack unknown variables into array
+    2. Call root-finding algorithm with:
+       - Iteration function
+       - Initial unknowns guess
+       - Convergence parameters
+    3. Check convergence status
+    4. Update segment convergence flag
+
+    **Major Assumptions**
+    * Problem is well-posed for root-finding
+    * Residuals are continuous
+    * Solution exists within bounds
+    * Gradients are well-behaved
+
+    Returns
+    -------
+    None
+        Updates segment state directly:
+        - state.numerics.converged [bool]
+        - segment.converged [bool]
+
+    See Also
+    --------
+    iterate
+    scipy.optimize.fsolve
     """       
     
     unknowns = segment.state.unknowns.pack_array()
@@ -66,24 +104,46 @@ def converge_root(segment):
 #  Helper Functions
 # ---------------------------------------------------------------------------------------------------------------------- 
 def iterate(unknowns, segment):
-    
-    """Runs one iteration of of all analyses for the mission.
+    """
+    Performs one iteration of segment analysis
 
-    Assumptions:
-    N/A
+    Parameters
+    ----------
+    unknowns : array_like
+        Current values of unknown variables
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function executes one complete iteration of the segment analysis process,
+    updating the segment state with current unknowns and computing residuals.
 
-    Inputs:
-    state.unknowns                [Data]
-    segment.process.iterate       [Data]
+    **Required Segment Components**
 
-    Outputs:
-    residuals                     [Unitless]
+    segment:
+        - state:
+            unknowns : Data
+                Container for unknown variables
+            residuals : Data
+                Container for constraint residuals
+        - process:
+            iterate : function
+                Segment iteration process
 
-    Properties Used:
-    N/A
+    **Calculation Process**
+    1. Unpack unknowns into segment state
+    2. Execute segment iteration process
+    3. Pack residuals into array
+
+    Returns
+    -------
+    residuals : ndarray
+        Array of constraint residuals
+
+    See Also
+    --------
+    converge_root
     """       
     if isinstance(unknowns,np.ndarray):
         segment.state.unknowns.unpack_array(unknowns)

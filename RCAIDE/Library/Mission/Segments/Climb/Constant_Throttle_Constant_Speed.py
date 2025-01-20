@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Climb/Constant_Throttle_Constant_Speed.py
+# RCAIDE/Library/Mission/Segments/Climb/Constant_Throttle_Constant_Speed.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,23 +14,38 @@ import numpy as np
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
 def unpack_body_angle(segment):
-    """Unpacks and sets the proper value for body angle
+    """
+    Unpacks and sets the proper value for body angle
 
-    Assumptions:
-    N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function handles the initialization of the body angle for a climb segment
+    with constant throttle and constant speed.
 
-    Inputs:
-    state.unknowns.body_angle                      [Radians]
+    **Required Segment Components**
 
-    Outputs:
-    state.conditions.frames.body.inertial_rotation [Radians]
+    segment:
+        state:
+            unknowns:
+                body_angle : array
+                    Aircraft body angle [rad]
+            conditions:
+                frames:
+                    body:
+                        transform_to_inertial : array
+                            Rotation matrix from body to inertial frame
 
-    Properties Used:
-    N/A
-    """          
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.body.transform_to_inertial
+    """
     
     ctrls    = segment.assigned_control_variables 
 
@@ -52,28 +67,64 @@ def unpack_body_angle(segment):
 # ----------------------------------------------------------------------
 
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
-    
-    Assumptions:
-    Constant throttle estting, with a constant true airspeed
+    """
+    Initializes conditions for constant throttle climb with fixed speed
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Inputs:
-    segment.air_speed                                   [meters/second] 
-    segment.altitude_start                              [meters]
-    segment.altitude_end                                [meters]
-    segment.state.numerics.dimensionless.control_points [Unitless]
-    conditions.freestream.density                       [kilograms/meter^3]
+    Notes
+    -----
+    This function sets up the initial conditions for a climb segment with constant
+    throttle setting and constant airspeed.
 
-    Outputs:
-    conditions.frames.inertial.velocity_vector          [meters/second]
-    conditions.energy.throttle                          [Unitless]
+    **Required Segment Components**
 
-    Properties Used:
-    N/A
-    """         
+    segment:
+        - air_speed : float
+            True airspeed to maintain [m/s]
+        - throttle : float
+            Throttle setting to maintain [-]
+        - altitude_start : float
+            Initial altitude [m]
+        - altitude_end : float
+            Final altitude [m]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        - state:
+            numerics.dimensionless.control_points : array
+                Discretization points [-]
+            conditions : Data
+                State conditions container
+
+    **Calculation Process**
+    1. Set initial conditions
+    2. Decompose velocity into components using:
+        - Wind angle (to be solved)
+        - Body angle (to be solved)
+        - Sideslip angle
+        - Constant speed requirement
+
+    **Major Assumptions**
+    * Constant throttle setting
+    * Constant true airspeed
+    * Small angle approximations
+    * Quasi-steady flight
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    """
     
     # unpack 
     alt0       = segment.altitude_start 
@@ -103,29 +154,69 @@ def initialize_conditions(segment):
  
 
 def update_differentials_altitude(segment):
-    """On each iteration creates the differentials and integration funcitons from knowns about the problem. Sets the time at each point. Must return in dimensional time, with t[0] = 0
+    """
+    Updates time derivatives and integration for altitude-based discretization
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function handles the time integration for segments discretized in altitude
+    for constant throttle, constant speed climbs. It scales the differentiation and 
+    integration operators based on the vertical velocity profile.
+
+    **Required Segment Components**
+
+    segment:
+        state:
+            numerics:
+                dimensionless:
+                    - control_points : array
+                        Discretization points [-]
+                    - differentiate : array
+                        Differentiation operator
+                    - integrate : array
+                        Integration operator
+            conditions:
+                frames.inertial:
+                    - position_vector : array
+                        Position vector [m]
+                    - velocity_vector : array
+                        Velocity vector [m/s]
+                    - time : array
+                        Time vector [s]
+        - altitude_start : float
+            Initial altitude [m]
+        - altitude_end : float
+            Final altitude [m]
+
+    **Process Flow**
+    1. Calculate time step from altitude change and vertical velocity
+    2. Scale operators by time step
+    3. Integrate altitude profile
+    4. Update time vector
+
+    **Major Assumptions**
+    * Vertical velocity is well-behaved
+    * Altitude change is monotonic
+    * Time step is positive
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.time [s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    """
     
-    Assumptions:
-    Constant throttle setting, with a constant true airspeed.
-
-    Source:
-    N/A
-
-    Inputs:
-    segment.climb_angle                         [radians]
-    state.conditions.frames.inertial.velocity_vector [meter/second]
-    segment.altitude_start                      [meters]
-    segment.altitude_end                        [meters]
-
-    Outputs:
-    state.conditions.frames.inertial.time       [seconds]
-    conditions.frames.inertial.position_vector  [meters]
-    conditions.freestream.altitude              [meters]
-
-    Properties Used:
-    N/A
-    """   
-
     # unpack
     t = segment.state.numerics.dimensionless.control_points
     I = segment.state.numerics.dimensionless.integrate
@@ -165,6 +256,45 @@ def update_differentials_altitude(segment):
 # ----------------------------------------------------------------------
 
 def update_velocity_vector_from_wind_angle(segment):
+    """
+    Updates velocity vector based on wind angle solution
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function updates the velocity vector components based on the solved
+    wind angle and body angle values.
+
+    **Required Segment Components**
+
+    segment:
+        - air_speed : float
+            True airspeed [m/s]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        state:
+            unknowns:
+                wind_angle : array
+                    Angle between velocity vector and horizon [rad]
+                body_angle : array
+                    Aircraft body angle [rad]
+
+    **Calculation Process**
+    1. Calculate flight path angle from body and wind angles
+    2. Decompose velocity into components using:
+        - Flight path angle
+        - Sideslip angle
+        - Constant speed requirement
+
+    Returns
+    -------
+    conditions : Data
+        Updated segment conditions with new velocity vector
+    """
     
     # unpack
     conditions = segment.state.conditions 

@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/expand_state.py
+# RCAIDE/Library/Mission/Solver/expand_state.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke   
@@ -7,23 +7,51 @@
 # Expand State
 # ----------------------------------------------------------------------------------------------------------------------  
 def expand_state(segment):
-    
-    """Makes all vectors in the state the same size.
+    """
+    Expands all state vectors to match number of control points
 
-    Assumptions:
-    N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function ensures all state vectors in the segment have consistent dimensions
+    by expanding them to match the number of control points used for discretization.
 
-    Inputs:
-    state.numerics.number_of_control_points  [Unitless]
+    **Required Segment Components**
 
-    Outputs:
-    N/A
+    segment:
+        - state:
+            numerics:
+                number_of_control_points : int
+                    Number of discretization points [-]
+            expand_rows : function
+                Method to expand state containers
 
-    Properties Used:
-    N/A
+    **Calculation Process**
+    1. Get required vector size from numerics
+    2. Call expand_rows to resize all state containers:
+       - conditions
+       - unknowns
+       - residuals
+       - differentials
+
+    **Major Assumptions**
+    * All state vectors should have same length
+    * Expansion preserves vector values
+    * State containers support expand_rows method
+    * Control points already properly set
+
+    Returns
+    -------
+    None
+        Updates segment state containers directly to have consistent dimensions
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
     """       
 
     n_points = segment.state.numerics.number_of_control_points

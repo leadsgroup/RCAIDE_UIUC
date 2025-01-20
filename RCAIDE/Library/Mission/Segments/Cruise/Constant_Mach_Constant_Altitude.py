@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Cruise/Constant_Mach_Constant_Altitude.py
+# RCAIDE/Library/Mission/Segments/Cruise/Constant_Mach_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -16,27 +16,71 @@ import numpy as np
 #  Initialize Conditions
 # ---------------------------------------------------------------------------------------------------------------------- 
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
+    """
+    Initializes conditions for constant Mach cruise at fixed altitude
 
-    Assumptions:
-    Constant mach and constant altitude
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function sets up the initial conditions for a cruise segment with constant
+    Mach number and constant altitude. The true airspeed is determined from the
+    Mach number and local speed of sound.
 
-    Inputs:
-    segment.altitude                [meters]
-    segment.distance                [meters]
-    segment.mach_number             [unitless]
+    **Required Segment Components**
 
-    Outputs:
-    conditions.frames.inertial.velocity_vector  [meters/second]
-    conditions.frames.inertial.position_vector  [meters]
-    conditions.freestream.altitude              [meters]
-    conditions.frames.inertial.time             [seconds]
+    segment:
+        - altitude : float
+            Cruise altitude [m]
+        - distance : float
+            Ground distance to cover [m]
+        - mach_number : float
+            Mach number to maintain [-]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        - state:
+            numerics.dimensionless.control_points : array
+                Discretization points [-]
+            conditions : Data
+                State conditions container
+        - analyses:
+            atmosphere : Model
+                Atmospheric model for property calculations
 
-    Properties Used:
-    N/A
+    **Calculation Process**
+    1. Get atmospheric properties at altitude
+    2. Calculate true airspeed from Mach number:
+       V = M * a where:
+       - M is Mach number
+       - a is speed of sound
+    3. Calculate time required based on distance and speed
+    4. Discretize time points
+    5. Decompose velocity into components using sideslip angle
+
+    **Major Assumptions**
+    * Constant Mach number
+    * Constant altitude
+    * Standard atmosphere model
+    * Small angle approximations
+    * Quasi-steady flight
+    * No wind effects
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
+        - conditions.frames.inertial.time [s]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    RCAIDE.Library.Mission.Common.Update.atmosphere
     """      
     
     # unpack

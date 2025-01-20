@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Ground/Takeoff.py
+# RCAIDE/Library/Mission/Segments/Ground/Takeoff.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke  
@@ -13,26 +13,86 @@ import numpy as np
 # unpack unknowns
 # ---------------------------------------------------------------------------------------------------------------------- 
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
+    """
+    Initializes conditions for aircraft takeoff ground roll
 
-    Assumptions:
-    Builds on the initialize conditions for common
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function sets up the initial conditions for a ground takeoff segment with
+    acceleration from initial speed to rotation speed. The segment handles ground
+    effects, friction, and incline during the takeoff roll.
 
-    Inputs:
-    segment.throttle                           [unitless]
-    conditions.frames.inertial.position_vector [meters]
-    conditions.weights.total_mass              [kilogram]
+    **Required Segment Components**
 
-    Outputs:
-    conditions.weights.total_mass              [kilogram]
-    conditions.frames.inertial.position_vector [unitless]
-    conditions.propulsion.throttle             [meters]
-    
-    Properties Used:
-    N/A
+    segment:
+        - altitude : float
+            Ground altitude [m]
+        - velocity_start : float
+            Initial ground speed [m/s]
+        - velocity_end : float
+            Rotation speed [m/s]
+        - ground_incline : float
+            Runway incline angle [rad]
+        - friction_coefficient : float
+            Ground friction coefficient [-]
+        - state:
+            numerics:
+                dimensionless:
+                    control_points : array
+                        Discretization points [-]
+            conditions : Data
+                State conditions container
+            unknowns:
+                ground_velocity : array
+                    Ground velocity profile [m/s]
+            initials : Data, optional
+                Initial conditions from previous segment
+        - analyses:
+            weights:
+                vehicle:
+                    mass_properties:
+                        takeoff : float
+                            Aircraft takeoff mass [kg]
+
+    **Calculation Process**
+    1. Check initial conditions
+    2. Initialize velocity profile:
+       v = v0 + (vf - v0)*t where:
+       - v0 is initial speed
+       - vf is rotation speed
+       - t is normalized time/distance
+    3. Set ground conditions:
+       - Friction coefficient
+       - Ground incline
+    4. Set position and altitude
+    5. Set aircraft mass
+
+    **Major Assumptions**
+    * Constant friction coefficient
+    * Constant ground incline
+    * Linear velocity increase
+    * Quasi-steady acceleration
+    * Small minimum velocity for numerical stability
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.ground.incline [rad]
+        - conditions.ground.friction_coefficient [-]
+        - conditions.freestream.altitude [m]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.weights.total_mass [kg]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
     """  
 
     # use the common initialization # unpack inputs

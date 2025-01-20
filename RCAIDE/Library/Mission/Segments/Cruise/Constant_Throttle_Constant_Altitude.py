@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
+# RCAIDE/Library/Mission/Segments/Cruise/Constant_Throttle_Constant_Altitude.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -13,6 +13,50 @@ import numpy as np
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
 def unpack_unknowns(segment):
+    """
+    Unpacks and processes unknown variables for constant throttle cruise
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function handles the unpacking and processing of unknown variables that
+    are solved during the segment analysis.
+
+    **Required Segment Components**
+
+    segment:
+        state:
+            unknowns:
+                acceleration : array
+                    Acceleration in x-direction [m/s^2]
+                elapsed_time : array
+                    Time duration [s]
+            numerics:
+                dimensionless:
+                    control_points : array
+                        Discretization points [-]
+            conditions:
+                frames:
+                    inertial:
+                        acceleration_vector : array
+                            Acceleration vector [m/s^2]
+                        time : array
+                            Time vector [s]
+
+    **Calculation Process**
+    1. Extract acceleration and time from unknowns
+    2. Scale time points between initial and final values
+    3. Build acceleration vector with x-component
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly
+    """
     
     # unpack unknowns
     unknowns   = segment.state.unknowns 
@@ -42,6 +86,48 @@ def unpack_unknowns(segment):
 # ---------------------------------------------------------------------- 
 
 def integrate_velocity(segment):
+    """
+    Integrates acceleration to get velocity profile
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function integrates the acceleration to obtain the velocity profile,
+    considering the initial velocity and sideslip angle.
+
+    **Required Segment Components**
+
+    segment:
+        - air_speed_start : float
+            Initial true airspeed [m/s]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        state:
+            numerics:
+                time:
+                    integrate : array
+                        Integration operator
+            conditions:
+                frames:
+                    inertial:
+                        acceleration_vector : array
+                            Acceleration vector [m/s^2]
+                        velocity_vector : array
+                            Velocity vector [m/s]
+
+    **Calculation Process**
+    1. Integrate acceleration to get velocity magnitude
+    2. Decompose into components using sideslip angle
+
+    Returns
+    -------
+    None
+        Updates velocity vector in segment conditions
+    """
     
     # unpack 
     conditions = segment.state.conditions
@@ -66,27 +152,50 @@ def integrate_velocity(segment):
 # ----------------------------------------------------------------------    
 
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
+    """
+    Initializes conditions for constant throttle cruise at fixed altitude
 
-    Assumptions:
-    Constant throttle and constant altitude, allows for acceleration
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function sets up the initial conditions for a cruise segment with constant
+    throttle setting and constant altitude. The segment allows for acceleration
+    between initial and final speeds.
 
-    Inputs:
-    segment.altitude                             [meters]
-    segment.air_speed_start                      [meters/second]
-    segment.air_speed_end                        [meters/second] 
-    segment.state.numerics.number_of_control_points [int]
+    **Required Segment Components**
 
-    Outputs:
-    state.conditions.energy.throttle        [unitless]
-    conditions.frames.inertial.position_vector  [meters]
-    conditions.freestream.altitude              [meters]
+    segment:
+        - altitude : float
+            Cruise altitude [m]
+        - air_speed_start : float
+            Initial true airspeed [m/s]
+        - air_speed_end : float
+            Final true airspeed [m/s]
+        - state:
+            numerics:
+                number_of_control_points : int
+                    Number of discretization points
+            conditions : Data
+                State conditions container
+            initials : Data, optional
+                Initial conditions from previous segment
 
-    Properties Used:
-    N/A
+    **Major Assumptions**
+    * Constant throttle setting
+    * Constant altitude
+    * Non-zero velocities required
+    * Initial and final speeds must differ
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.freestream.altitude [m]
+        - conditions.frames.inertial.position_vector [m]
     """    
     # unpack inputs
     alt      = segment.altitude 
@@ -123,25 +232,43 @@ def initialize_conditions(segment):
 # ----------------------------------------------------------------------    
 
 def solve_velocity(segment):
-    """ Calculates the additional velocity residual
-    
-        Assumptions:
-        The vehicle accelerates, residual on forces and to get it to the final speed
-        
-        Inputs:
-        segment.air_speed_end                  [meters/second]
-        segment.state.conditions: 
-            frames.inertial.velocity_vector    [meters/second] 
-        segment.state.numerics.time.differentiate
-            
-        Outputs:
-        segment.state.residuals:
-            forces               [meters/second^2]
-            final_velocity_error [meters/second] 
+    """
+    Calculates velocity residual for segment convergence
 
-        Properties Used:
-        N/A
-                                
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function computes the residual between the achieved and target final
+    velocities to ensure proper segment convergence.
+
+    **Required Segment Components**
+
+    segment:
+        - air_speed_end : float
+            Target final airspeed [m/s]
+        state:
+            conditions:
+                frames:
+                    inertial:
+                        velocity_vector : array
+                            Current velocity vector [m/s]
+            residuals:
+                final_velocity_error : float
+                    Velocity convergence error [m/s]
+
+    **Calculation Process**
+    1. Calculate magnitude of final velocity
+    2. Compare with target final velocity
+    3. Store residual for solver
+
+    Returns
+    -------
+    None
+        Updates residuals in segment state
     """    
 
     # unpack inputs

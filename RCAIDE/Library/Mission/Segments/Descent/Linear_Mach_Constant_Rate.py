@@ -1,4 +1,4 @@
- # RCAIDE/Library/Missions/Segments/Descent/Linear_Mach_Constant_Rate.py
+# RCAIDE/Library/Mission/Segments/Descent/Linear_Mach_Constant_Rate.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,31 +16,79 @@ import numpy as np
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------  
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
+    """
+    Initializes conditions for linear Mach descent at fixed rate
 
-    Assumptions:
-    Change mach linearly through the descent with constant descent rate
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function sets up the initial conditions for a descent segment with linearly
+    varying Mach number and constant descent rate. The true airspeed varies with both
+    Mach number and local speed of sound.
 
-    Inputs:
-    segment.descent_rate                        [meters/second]
-    segment.altitude_start                      [meters]
-    segment.altitude_end                        [meters]
-    segment.mach_number_start                          [unitless]
-    segment.mach_number_end                            [unitless]
-    segment.air_speed                           [meters/second]
-    state.numerics.dimensionless.control_points [array]
+    **Required Segment Components**
 
-    Outputs:
-    conditions.frames.inertial.velocity_vector  [meters/second]
-    conditions.frames.inertial.position_vector  [meters]
-    conditions.freestream.altitude              [meters]
-    conditions.frames.inertial.time             [seconds]
+    segment:
+        - descent_rate : float
+            Rate of descent [m/s]
+        - mach_number_start : float
+            Initial Mach number [-]
+        - mach_number_end : float
+            Final Mach number [-]
+        - altitude_start : float
+            Initial altitude [m]
+        - altitude_end : float
+            Final altitude [m]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        - state:
+            numerics.dimensionless.control_points : array
+                Discretization points [-]
+            conditions : Data
+                State conditions container
+            initials : Data, optional
+                Initial conditions from previous segment
 
-    Properties Used:
-    N/A
+    **Calculation Process**
+    1. Get atmospheric properties for speed of sound
+    2. Discretize altitude profile
+    3. Calculate Mach number variation:
+       M = M0 + (Mf - M0)*t where:
+       - M0 is initial Mach number
+       - Mf is final Mach number
+       - t is normalized time/distance
+    4. Calculate true airspeed:
+       V = M * a where:
+       - M is local Mach number
+       - a is local speed of sound
+    5. Decompose velocity using:
+       - Fixed descent rate
+       - Sideslip angle
+       - Computed true airspeed
+
+    **Major Assumptions**
+    * Linear Mach number variation
+    * Constant descent rate
+    * Standard atmosphere model
+    * Small angle approximations
+    * Quasi-steady flight
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    RCAIDE.Library.Mission.Common.Update.atmosphere
     """      
     
     # unpack

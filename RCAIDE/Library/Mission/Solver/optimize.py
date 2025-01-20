@@ -1,4 +1,4 @@
-# optimize.py
+# RCAIDE/Library/Mission/Solver/optimize.py
 # 
 # Created:  Dec 2016, E. Botero
 # Modified: Jun 2017, E. Botero
@@ -17,25 +17,60 @@ import numpy as np
 # ----------------------------------------------------------------------
 
 def converge_opt(segment):
-    """Interfaces the mission to an optimization algorithm
+    """
+    Interfaces mission segment with optimization algorithms
 
-    Assumptions:
-    N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function provides an interface between mission segments and optimization 
+    algorithms to minimize an objective function while satisfying constraints.
 
-    Inputs:
-    state.unknowns                     [Data]
-    segment                            [Data]
-    segment.algorithm                  [string]
+    **Required Segment Components**
 
-    Outputs:
-    state.unknowns                     [Any]
+    segment:
+        - state:
+            unknowns : Data
+                Variables to optimize
+        - algorithm : str
+            Optimization algorithm ('SLSQP' or 'SNOPT')
+        - objective : str
+            Name of objective function
+        - lift_coefficient_limit : float
+            Maximum allowable lift coefficient
+        - altitude_end : float
+            Target final altitude [m]
 
-    Properties Used:
-    N/A
-    """     
+    **Calculation Process**
+    1. Pack optimization variables
+    2. Set up objective and constraint functions
+    3. Define variable bounds
+    4. Call selected optimizer:
+       - SLSQP: Sequential Least Squares Programming
+       - SNOPT: Sparse Nonlinear OPTimizer
+
+    **Major Assumptions**
+    * Problem is well-posed for optimization
+    * Objective and constraints are continuous
+    * Solution exists within bounds
+    * Gradients are well-behaved
+
+    Returns
+    -------
+    None
+        Updates segment state directly with optimal solution
+
+    See Also
+    --------
+    get_objective
+    get_econstraints
+    get_ieconstraints
+    make_bnds
+    """
     
     # pack up the array
     unknowns = segment.state.unknowns.pack_array()
@@ -92,21 +127,25 @@ def converge_opt(segment):
 # ----------------------------------------------------------------------
     
 def get_objective(unknowns, segment):
-    """ Runs the mission if the objective value is needed
-    
-        Assumptions:
-        N/A
-        
-        Inputs:
-        state.unknowns      [Data]
-    
-        Outputs:
-        objective           [float]
+    """
+    Evaluates objective function for current optimization variables
 
-        Properties Used:
-        N/A
-                                
-    """      
+    Parameters
+    ----------
+    unknowns : array_like
+        Current optimization variables
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    Runs segment iteration process if unknowns have changed since last evaluation.
+
+    Returns
+    -------
+    float
+        Objective function value
+    """
     
     if isinstance(unknowns,np.ndarray):
         segment.state.unknowns.unpack_array(unknowns)
@@ -121,21 +160,25 @@ def get_objective(unknowns, segment):
     return objective
 
 def get_econstraints(unknowns, segment):
-    """ Runs the mission if the equality constraint values are needed
-    
-        Assumptions:
-        N/A
-        
-        Inputs:
-        state.unknowns      [Data]
-            
-        Outputs:
-        constraints          [array]
+    """
+    Evaluates equality constraints for current optimization variables
 
-        Properties Used:
-        N/A
-                                
-    """       
+    Parameters
+    ----------
+    unknowns : array_like
+        Current optimization variables
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    Runs segment iteration process if unknowns have changed since last evaluation.
+
+    Returns
+    -------
+    ndarray
+        Equality constraint values
+    """
     
     if isinstance(unknowns,np.ndarray):
         segment.state.unknowns.unpack_array(unknowns)
@@ -150,23 +193,29 @@ def get_econstraints(unknowns, segment):
     return constraints
 
 def make_bnds(unknowns, segment):
-    """ Automatically sets the bounds of the optimization.
-    
-        Assumptions:
-        Restricts throttle to between 0 and 100%
-        Restricts body angle from 0 to pi/2 radians
-        Restricts flight path angle from 0 to pi/2 radians
-        
-        Inputs:
-        none
-            
-        Outputs:
-        bnds
+    """
+    Creates bounds for optimization variables
 
-        Properties Used:
-        N/A
-                                
-    """      
+    Parameters
+    ----------
+    unknowns : array_like
+        Optimization variables
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    Sets physical bounds on:
+    * Throttle: [0, 1]
+    * Body angle: [0, π/2]
+    * Flight path angle: [0, π/2]
+    * Velocities: [0, 2000] m/s
+
+    Returns
+    -------
+    list
+        Tuples of (lower_bound, upper_bound) for each variable
+    """
 
     ones    = segment.state.ones_row(1)
     ones_m1 = segment.state.ones_row_m1(1).resize(segment.state._size)
@@ -188,25 +237,29 @@ def make_bnds(unknowns, segment):
     return bnds
 
 def get_ieconstraints(unknowns, segment):
-    """ Runs the mission if the inequality constraint values are needed, these are specific to a climb
-    
-        Assumptions:
-        Time only goes forward
-        CL is less than a specified limit
-        CL is greater than zero
-        All altitudes are greater than zero
-        The vehicle accelerates not decelerates
-        
-        Inputs:
-        state.unknowns      [Data]
-            
-        Outputs:
-        constraints          [array]
+    """
+    Evaluates inequality constraints for current optimization variables
 
-        Properties Used:
-        N/A
-                                
-    """      
+    Parameters
+    ----------
+    unknowns : array_like
+        Current optimization variables
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    Enforces physical constraints on:
+    * Time progression (forward only)
+    * Lift coefficient (0 < CL < limit)
+    * Altitude (positive)
+    * Acceleration (positive)
+
+    Returns
+    -------
+    ndarray
+        Inequality constraint values
+    """
 
     if isinstance(unknowns,np.ndarray):
         segment.state.unknowns.unpack_array(unknowns)
@@ -237,25 +290,25 @@ def get_ieconstraints(unknowns, segment):
     return constraints
 
 def get_problem_pyopt(unknowns, segment):
-    """ Runs the mission and obtains the objective and all constraints. This is formatted for pyopt
-    
-        Assumptions:
-        Time only goes forward
-        CL is less than a specified limit
-        All altitudes are greater than zero
-        
-        Inputs:
-        state.unknowns      [Data]
-    
-        Outputs:
-        obj                 [float]
-        con                 [array]
-        fail                [boolean]
+    """
+    Formats optimization problem for pyOpt interface
 
-        Properties Used:
-        N/A
-                                
-    """       
+    Parameters
+    ----------
+    unknowns : array_like
+        Current optimization variables
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    Combines objective and all constraints into format required by pyOpt.
+
+    Returns
+    -------
+    tuple
+        (objective_value, constraint_list, fail_status)
+    """
 
     if isinstance(unknowns,np.ndarray):
         segment.state.unknowns.unpack_array(unknowns)

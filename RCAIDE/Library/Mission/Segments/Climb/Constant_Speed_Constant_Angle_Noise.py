@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Climb/Constant_Speed_Constant_Angle_Noise.py
+# RCAIDE/Library/Mission/Segments/Climb/Constant_Speed_Constant_Angle_Noise.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,24 +14,37 @@ import numpy as np
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------
 def expand_state(segment):
-    
-    """Makes all vectors in the state the same size. Determines the minimum amount of points needed to get data for noise certification.
+    """
+    Expands state array for noise certification analysis
 
-    Assumptions:
-    Half second intervals for certification requirements. Fixed microphone position
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function determines the minimum number of points needed for noise
+    certification analysis and expands the state arrays accordingly.
 
-    Inputs:
-    state.numerics.number_of_control_points  [Unitless]
+    **Required Segment Components**
 
-    Outputs:
-    N/A
+    segment:
+        state:
+            numerics:
+                number_of_control_points : int
+                    Number of discretization points
 
-    Properties Used:
-    Position of the flyover microphone is 6500 meters
-    """          
+    **Major Assumptions**
+    * Half-second time intervals required for certification
+    * Fixed microphone position at 6500m
+    * Continuous noise characteristics
+
+    Returns
+    -------
+    None
+        Updates segment state arrays directly
+    """
     
     # unpack
     climb_angle  = segment.climb_angle
@@ -59,30 +72,62 @@ def expand_state(segment):
 #  Initialize Conditions
 # ---------------------------------------------------------------------- 
 def initialize_conditions(segment):
-    """Gets the overall time step for the segment type.
-    
-    Assumptions:
-    Constant true airspeed, with a constant climb angle. This segment is specically created for noise calculations.
+    """
+    Initializes conditions for constant speed noise certification climb
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Inputs:
-    segment.climb_angle                         [radians]
-    segment.air_speed                           [meter/second]
-    segment.altitude_start                      [meters]
-    segment.altitude_end                        [meters]
-    state.numerics.dimensionless.control_points [Unitless]
-    conditions.freestream.density               [kilograms/meter^3]
+    Notes
+    -----
+    This function sets up the initial conditions for a noise certification climb
+    segment with constant true airspeed and constant climb angle. Initial altitude
+    is fixed at 35ft (10.668m) per certification requirements.
 
-    Outputs:
-    conditions.frames.inertial.velocity_vector  [meters/second]
-    conditions.frames.inertial.position_vector  [meters]
-    conditions.freestream.altitude              [meters]
+    **Required Segment Components**
 
-    Properties Used:
-    N/A
-    """     
+    segment:
+        - climb_angle : float
+            Fixed climb angle [rad]
+        - air_speed : float
+            True airspeed to maintain [m/s]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        - state:
+            numerics.dimensionless.control_points : array
+                Discretization points [-]
+            conditions : Data
+                State conditions container
+
+    **Calculation Process**
+    1. Set initial altitude (35ft)
+    2. Calculate final altitude based on time steps
+    3. Decompose constant velocity into components using:
+        - Fixed climb angle
+        - Sideslip angle
+        - Constant speed requirement
+
+    **Major Assumptions**
+    * Initial altitude of 35ft (10.668m)
+    * Constant true airspeed
+    * Fixed climb angle
+    * Half-second time steps
+    * Small angle approximations
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    """
     
     dt=0.5  #time step in seconds for noise calculation
     

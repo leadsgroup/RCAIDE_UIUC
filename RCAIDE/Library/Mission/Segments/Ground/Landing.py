@@ -1,5 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Ground/Landing.py
-# (c) Copyright 2023 Aerospace Research Community LLC
+# RCAIDE/Library/Mission/Segments/Ground/Landing.py
 # 
 # Created:  Jun 2024, M. Clarke  
 
@@ -13,23 +12,73 @@ import numpy as np
 # unpack unknowns
 # ---------------------------------------------------------------------------------------------------------------------- 
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
+    """
+    Initializes conditions for aircraft landing segment
 
-    Assumptions:
-    Builds on the initialize conditions for common
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
+    Notes
+    -----
+    This function sets up the initial conditions for a ground landing segment with
+    deceleration from touchdown to final speed. The segment handles ground effects
+    and friction during the landing roll.
+
+    **Required Segment Components**
+
+    segment:
+        - altitude : float
+            Ground altitude [m]
+        - velocity_start : float
+            Initial velocity at touchdown [m/s]
+        - velocity_end : float
+            Final velocity after landing roll [m/s]
+        - friction_coefficient : float
+            Ground friction coefficient [-]
+        - state:
+            numerics:
+                dimensionless:
+                    control_points : array
+                        Discretization points [-]
+            conditions : Data
+                State conditions container
+            unknowns:
+                ground_velocity : array
+                    Ground velocity profile [m/s]
+            initials : Data, optional
+                Initial conditions from previous segment
+
+    **Calculation Process**
+    1. Check initial conditions
+    2. Initialize velocity profile:
+       v = v0 + (vf - v0)*t where:
+       - v0 is touchdown speed
+       - vf is final speed
+       - t is normalized time/distance
+    3. Set ground friction coefficient
+    4. Set position and altitude
+
+    **Major Assumptions**
+    * Constant friction coefficient
+    * Linear velocity decrease
+    * No bouncing or porpoising
+    * Quasi-steady deceleration
+    * Small minimum velocity for numerical stability
+
+    Returns
+    -------
     None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.ground.friction_coefficient [-]
+        - conditions.freestream.altitude [m]
+        - conditions.frames.inertial.position_vector [m]
 
-    Args:
-    segment.throttle                                         [unitless]
-    segment.analyses.weights.vehicle.mass_properties.landing [kilogram]
-    
-    Returns:
-    conditions.weights.total_mass   [kilogram]
-    conditions.propulsion.throttle  [unitless]
-
-
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
     """      
      
     # unpack inputs

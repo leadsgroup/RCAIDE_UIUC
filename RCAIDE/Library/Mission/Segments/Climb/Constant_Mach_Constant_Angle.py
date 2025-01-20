@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Climb/Constant_Mach_Constant_Angle.py
+# RCAIDE/Library/Mission/Segments/Climb/Constant_Mach_Constant_Angle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -16,30 +16,69 @@ import numpy as np
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------  
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
-    
-    Assumptions:
-    Constant Mach number, with a constant angle of climb
+    """
+    Initializes conditions for constant Mach climb with fixed angle
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Inputs:
-    segment.climb_angle                                 [radians]
-    segment.mach_number                                 [Unitless]
-    segment.altitude_start                              [meters]
-    segment.altitude_end                                [meters]
-    segment.state.numerics.dimensionless.control_points [Unitless]
-    conditions.freestream.density                       [kilograms/meter^3]
+    Notes
+    -----
+    This function sets up the initial conditions for a climb segment with constant
+    Mach number and constant climb angle.
 
-    Outputs:
-    conditions.frames.inertial.velocity_vector  [meters/second]
-    conditions.frames.inertial.position_vector  [meters]
-    conditions.freestream.altitude              [meters]
+    **Required Segment Components**
 
-    Properties Used:
-    N/A
-    """       
+    segment:
+        - climb_angle : float
+            Fixed climb angle [rad]
+        - mach_number : float
+            Mach number to maintain [-]
+        - altitude_start : float
+            Initial altitude [m]
+        - altitude_end : float
+            Final altitude [m]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        - state:
+            numerics.dimensionless.control_points : array
+                Discretization points [-]
+            conditions : Data
+                State conditions container
+        - analyses:
+            atmosphere : Model
+                Atmospheric model for property calculations
+
+    **Calculation Process**
+    1. Get atmospheric properties for speed of sound
+    2. Calculate true airspeed from Mach number
+    3. Decompose velocity into components using:
+        - Fixed climb angle
+        - Sideslip angle
+        - Constant Mach requirement
+
+    **Major Assumptions**
+    * Constant Mach number
+    * Fixed climb angle
+    * Standard atmosphere model
+    * Small angle approximations
+    * Quasi-steady flight
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    RCAIDE.Library.Mission.Common.Update.atmosphere
+    """
     # unpack User Inputs
     climb_angle = segment.climb_angle
     mach_number = segment.mach_number
@@ -83,7 +122,68 @@ def initialize_conditions(segment):
 #  Residual Total Forces
 # ----------------------------------------------------------------------------------------------------------------------  
 def residual_total_forces(segment):
-    
+    """
+    Calculates the force residuals for constant Mach climb with fixed angle
+
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function computes the force balance residuals for a climb segment with 
+    constant Mach number and constant climb angle. It ensures the forces are in 
+    equilibrium considering thrust, drag, lift, and weight.
+
+    **Required Segment Components**
+
+    segment:
+        state:
+            conditions:
+                frames:
+                    inertial:
+                        total_force_vector : array
+                            Net force vector in inertial frame [N]
+                    body:
+                        thrust_force_vector : array
+                            Thrust force vector in body frame [N]
+                        transform_to_inertial : array
+                            Rotation matrix from body to inertial frame
+                aerodynamics:
+                    lift_coefficient : array
+                        Aircraft lift coefficient [-]
+                    drag_coefficient : array
+                        Aircraft drag coefficient [-]
+                freestream:
+                    dynamic_pressure : array
+                        Dynamic pressure [Pa]
+                weights:
+                    total_mass : array
+                        Aircraft total mass [kg]
+
+    **Force Balance**
+    * Thrust balances drag in the wind axis
+    * Lift balances weight in the vertical plane
+    * Side forces are assumed negligible
+
+    **Major Assumptions**
+    * Quasi-steady flight
+    * Small angle approximations
+    * Negligible side forces
+    * Thrust aligned with body axis
+
+    Returns
+    -------
+    None
+        Updates segment residuals directly:
+        - residuals.forces : array
+            Force balance residuals [N]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
+    """
     # Unpack results
     FT      = segment.state.conditions.frames.inertial.total_force_vector
     a       = segment.state.conditions.frames.inertial.acceleration_vector
@@ -107,24 +207,54 @@ def residual_total_forces(segment):
 # Update Differentials
 # ----------------------------------------------------------------------------------------------------------------------     
 def update_differentials(segment):
-    """ On each iteration creates the differentials and integration functions from knowns about the problem. 
-      Sets the time at each point. Must return in dimensional time, with t[0] = 0.
-      This is different from the common method as it also includes the scaling of operators.
+    """
+    Updates time derivatives and integration for altitude-based discretization
 
-        Assumptions:
-        Works with a segment discretized in vertical position, altitude
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-        Inputs:
-        state.numerics.dimensionless.control_points      [Unitless]
-        state.numerics.dimensionless.differentiate       [Unitless]
-        state.numerics.dimensionless.integrate           [Unitless]
-        state.conditions.frames.inertial.position_vector [meter]
-        state.conditions.frames.inertial.velocity_vector [meter/second]
-        
+    Notes
+    -----
+    This function handles the time integration for segments discretized in altitude.
+    It scales the differentiation and integration operators based on the vertical
+    velocity profile.
 
-        Outputs:
-        state.conditions.frames.inertial.time            [second]
+    **Required Segment Components**
 
+    segment:
+        state:
+            numerics:
+                dimensionless:
+                    - control_points : array
+                        Discretization points [-]
+                    - differentiate : array
+                        Differentiation operator
+                    - integrate : array
+                        Integration operator
+            conditions:
+                frames.inertial:
+                    - position_vector : array
+                        Position vector [m]
+                    - velocity_vector : array
+                        Velocity vector [m/s]
+                    - time : array
+                        Time vector [s]
+
+    **Process Flow**
+    1. Calculate time step from altitude change and vertical velocity
+    2. Scale operators by time step
+    3. Integrate altitude profile
+    4. Update time vector
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.frames.inertial.time [s]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.freestream.altitude [m]
     """    
 
     # unpack

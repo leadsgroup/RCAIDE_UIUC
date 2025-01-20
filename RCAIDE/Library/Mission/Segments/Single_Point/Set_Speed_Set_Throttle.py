@@ -1,4 +1,4 @@
-# RCAIDE/Library/Missions/Segments/Single_Point/Set_Speed_Set_Throttle.py
+# RCAIDE/Library/Mission/Segments/Single_Point/Set_Speed_Set_Throttle.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -13,30 +13,80 @@ import numpy as np
 #  Initialize Conditions
 # ----------------------------------------------------------------------------------------------------------------------   
 def initialize_conditions(segment):
-    """Sets the specified conditions which are given for the segment type.
+    """
+    Initializes conditions for fixed speed and throttle analysis
 
-    Assumptions:
-    A fixed speed and throttle
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
 
-    Source:
-    N/A
+    Notes
+    -----
+    This function sets up the initial conditions for a single point analysis with
+    fixed speed and throttle setting. The x-acceleration is treated as an unknown
+    to be solved for during the analysis.
 
-    Inputs:
-    segment.altitude                               [meters]
-    segment.air_speed                              [meters/second]
-    segment.throttle                               [unitless]
-    segment.linear_acceleration_z                         [meters/second^2]
-    segment.state.unknowns.acceleration            [meters/second^2]
+    **Required Segment Components**
 
-    Outputs:
-    conditions.frames.inertial.acceleration_vector [meters/second^2]
-    conditions.frames.inertial.velocity_vector     [meters/second]
-    conditions.frames.inertial.position_vector     [meters]
-    conditions.freestream.altitude                 [meters]
-    conditions.frames.inertial.time                [seconds]
+    segment:
+        - altitude : float
+            Flight altitude [m]
+        - air_speed : float
+            True airspeed [m/s]
+        - sideslip_angle : float
+            Aircraft sideslip angle [rad]
+        - linear_acceleration_z : float
+            Acceleration in z-direction [m/s^2]
+        - roll_rate : float
+            Aircraft roll rate [rad/s]
+        - pitch_rate : float
+            Aircraft pitch rate [rad/s]
+        - yaw_rate : float
+            Aircraft yaw rate [rad/s]
+        - state:
+            unknowns:
+                acceleration : array
+                    X-direction acceleration [m/s^2]
+            conditions : Data
+                State conditions container
+            initials : Data, optional
+                Initial conditions from previous segment
 
-    Properties Used:
-    N/A
+    **Calculation Process**
+    1. Check initial conditions
+    2. Decompose velocity into components using sideslip angle:
+       - v_x = V * cos(β)
+       - v_y = V * sin(β)
+       where:
+       - V is true airspeed
+       - β is sideslip angle
+    3. Set position and altitude
+    4. Initialize acceleration vector with unknown x-component
+    5. Set angular rates
+
+    **Major Assumptions**
+    * Fixed throttle setting
+    * Constant airspeed
+    * Small angle approximations
+    * Quasi-steady state
+    * No lateral acceleration
+
+    Returns
+    -------
+    None
+        Updates segment conditions directly:
+        - conditions.freestream.altitude [m]
+        - conditions.frames.inertial.position_vector [m]
+        - conditions.frames.inertial.velocity_vector [m/s]
+        - conditions.frames.inertial.acceleration_vector [m/s^2]
+        - conditions.static_stability.roll_rate [rad/s]
+        - conditions.static_stability.pitch_rate [rad/s]
+        - conditions.static_stability.yaw_rate [rad/s]
+
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Segments
     """      
     
     # unpack
@@ -72,24 +122,36 @@ def initialize_conditions(segment):
 #  Unpack Unknowns 
 # ----------------------------------------------------------------------------------------------------------------------  
 def unpack_unknowns(segment):
-    """ Unpacks the x accleration and body angle from the solver to the mission
-    
-        Assumptions:
-        N/A
-        
-        Inputs:
-            segment.state.unknowns:
-                acceleration                        [meters/second^2]
-                body_angle                          [radians]
-            
-        Outputs:
-            segment.state.conditions:
-                frames.inertial.acceleration_vector [meters/second^2]
-                frames.body.inertial_rotations      [radians]
+    """
+    Updates the x-acceleration from solver results
 
-        Properties Used:
-        N/A
-                                
+    Parameters
+    ----------
+    segment : Segment
+        The mission segment being analyzed
+
+    Notes
+    -----
+    This function takes the solved x-acceleration value and updates the
+    acceleration vector in the segment conditions.
+
+    **Required Segment Components**
+
+    segment:
+        state:
+            unknowns:
+                acceleration : array
+                    Solved x-acceleration value [m/s^2]
+            conditions:
+                frames:
+                    inertial:
+                        acceleration_vector : array
+                            Full acceleration vector [m/s^2]
+
+    Returns
+    -------
+    None
+        Updates acceleration vector in segment conditions directly
     """      
     
     # unpack unknowns  
