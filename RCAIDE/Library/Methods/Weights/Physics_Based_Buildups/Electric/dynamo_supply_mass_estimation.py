@@ -14,22 +14,46 @@ import scipy.integrate as integrate
 #  Dynamo_Supply dynamo_supply_mass_estimation
 # ----------------------------------------------------------------------      
 def dynamo_supply_mass_estimation(HTS_Dynamo_Supply):
-    """ Basic mass estimation for HTS Dynamo supply. This supply includes all elements required to create the required shaft power from supplied electricity, i.e. the esc, brushless motor, and gearbox.
-    Assumptions:
-        Mass scales linearly with power and current
+    """
+    Estimates the mass of a High Temperature Superconducting (HTS) dynamo power supply system, including the electronic 
+    speed controller (ESC), brushless motor, and gearbox.
 
-    Source:
-        Maxon Motor drivetrains
+    Parameters
+    ----------
+    HTS_Dynamo_Supply : Data()
+        Data structure containing dynamo supply specifications
+            - rated_power : float
+                Rated power output of the dynamo supply [W]
 
-    Inputs:
-        current             [A]
-        power_out           [W]
+    Returns
+    -------
+    mass : float
+        Total mass of the dynamo supply system [kg]
 
-    Outputs:
-        mass                [kg]
+    Notes
+    -----
+    The function computes component masses using empirical relationships:
+    - Motor mass = 0.013 + 0.0046 * rated_power
+    - Gearbox mass = 0.0109 + 0.0015 * rated_power
+    - ESC mass = (5.0 + rated_power/50.0)/1000.0
 
-    Properties Used:
-        None
+    **Major Assumptions**
+        * Mass scales linearly with power output
+        * Based on Maxon EC-max 12V brushless motors under 100W
+        * ESC mass scaling is an empirical estimate
+        * Component relationships remain valid across power ranges
+
+    **Extra modules required**
+        * numpy
+        * scipy.integrate
+
+    References
+    ----------
+    [1] Maxon Motor drivetrain specifications and datasheets
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.DC_Motor
     """
 
     # unpack

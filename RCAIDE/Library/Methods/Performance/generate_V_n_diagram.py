@@ -1,4 +1,4 @@
- # generate_V_n_diagram.py
+# generate_V_n_diagram.py
 #
 # Created:  Nov 2018, S. Karpuk
 # Modified:
@@ -20,39 +20,87 @@ import matplotlib.pyplot as plt
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Compute a V-n diagram
 # ---------------------------------------------------------------------------------------------------------------------- 
-def generate_V_n_diagram(vehicle,analyses,altitude,delta_ISA):
+def generate_V_n_diagram(vehicle, analyses, altitude, delta_ISA):
+    """
+    Computes a V-n (velocity-load factor) diagram for an aircraft according to FAR requirements.
+
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - reference_area : float
+                Wing reference area [m²]
+            - maximum_lift_coefficient : float
+                Maximum lift coefficient
+            - minimum_lift_coefficient : float
+                Minimum lift coefficient
+            - chords.mean_aerodynamic : float
+                Mean aerodynamic chord [m]
+            - flight_envelope : Data
+                Container with:
+                    - FAR_part_number : str
+                        '23' or '25' for certification category
+                    - category : str
+                        For Part 23: 'normal', 'utility', 'acrobatic', or 'commuter'
+                    - design_mach_number : float
+                        Cruise Mach number
+                    - positive_limit_load : float
+                        Positive load factor limit
+                    - negative_limit_load : float
+                        Negative load factor limit
+    analyses : Analyses
+        Container with atmosphere and aerodynamic analyses
+    altitude : float
+        Analysis altitude [m]
+    delta_ISA : float
+        Temperature offset from ISA conditions [K]
+
+    Returns
+    -------
+    V_n_data : Data
+        Container of V-n diagram data including:
+            - limit_loads : Data
+                Positive and negative load factor limits
+            - airspeeds : Data
+                Critical airspeeds (Vs, Va, Vb, Vc, Vd)
+            - gust_load_factors : Data
+                Load factors from gust conditions
+            - load_factors : Data
+                Complete set of load factors vs velocity
+
+    Notes
+    -----
+    Computes the following critical speeds and conditions:
+        * Vs1: Stall speed
+        * Va: Maneuvering speed
+        * Vb: Design speed for maximum gust intensity
+        * Vc: Design cruise speed
+        * Vd: Design diving speed
+
+    **Major Assumptions**
+        * Quasi-steady aerodynamics
+        * Linear lift curve slope
+        * Rigid aircraft structure
+        * Standard atmosphere modified by altitude and delta_ISA
+
+    **Theory**
+    Load factor limits are determined by:
+
+    .. math::
+        n = \\frac{L}{W} = \\frac{\\rho V^2 S C_L}{2W}
+
+    Gust loads are computed using:
+
+    .. math::
+        \\Delta n = \\frac{K_g U_de V a C_{L_\\alpha}}{498 W/S}
+
+    References
+    ----------
+    [1] FAR Part 23: https://www.ecfr.gov/current/title-14/part-23
     
-    """ Computes a V-n diagram for a given aircraft and given regulations for ISA conditions
-
-    Source:
-    S. Gudmundsson "General Aviation Aircraft Design: Applied Methods and Procedures", Butterworth-Heinemann; 1 edition
-    CFR FAR Part 23: https://www.ecfr.gov/cgi-bin/text-idx?SID=0e6a13c7c1de7f501d0eb0a4d71418bd&mc=true&tpl=/ecfrbrowse/Title14/14cfr23_main_02.tpl
-    CFR FAR Part 25: https://www.ecfr.gov/cgi-bin/text-idx?tpl=/ecfrbrowse/Title14/14cfr25_main_02.tpl
-
-    Inputs:
-    analyses.base.atmosphere               [RCAIDE data type]
-    vehicle.
-      reference_area                       [m^2]
-      maximum_lift_coefficient             [Unitless]
-      minimum_lift_coefficient             [Unitless]
-      chords.mean_aerodynamic              [m]
-      envelope.FARpart_number              [Unitless]
-        positive_limit_load               [Unitless]
-        negative_limit_load               [Unitless]
-        cruise_mach                        [Unitless]
-    weight                                 [kg]
-    altitude                               [m]
-    delta_ISA                              [deg C]
-
-    Outputs:
-    V_n_data
-
-    Properties Used:
-    N/A
-
-    Description:
-    The script creates an aircraft V-n diagram based on the input parameters specified by the user.
-    Depending on the certification flag, an appropriate diagram, output and log files are created.
+    [2] FAR Part 25: https://www.ecfr.gov/current/title-14/part-25
+    
+    [3] Gudmundsson, S. (2022). General Aviation Aircraft Design: Applied Methods and procedures. Elsevier. 
     """
     
     weight =  vehicle.mass_properties.max_takeoff
@@ -367,7 +415,9 @@ def generate_V_n_diagram(vehicle,analyses,altitude,delta_ISA):
 
       
 def evalaute_aircraft(vehicle,altitude,Vc): 
-    
+    """
+    :meta private:
+    """
     # Set up vehicle configs
     configs  = configs_setup(vehicle)
 
@@ -386,6 +436,9 @@ def evalaute_aircraft(vehicle,altitude,Vc):
     return results
  
 def analyses_setup(configs):
+    """
+    :meta private:
+    """
 
     analyses = RCAIDE.Framework.Analyses.Analysis.Container()
 
@@ -397,7 +450,9 @@ def analyses_setup(configs):
     return analyses
 
 def base_analysis(vehicle):
-
+    """
+    :meta private:
+    """
        # ------------------------------------------------------------------
     #   Initialize the Analyses
     # ------------------------------------------------------------------     
@@ -445,6 +500,10 @@ def base_analysis(vehicle):
 
   
 def configs_setup(vehicle): 
+    """
+    :meta private:
+    """
+    
     # ------------------------------------------------------------------
     #   Initialize Configurations
     # ------------------------------------------------------------------ 
@@ -456,6 +515,8 @@ def configs_setup(vehicle):
  
 def base_mission_setup(analyses,altitude,Vc):   
     '''
+    :meta private:
+    
     This sets up the nominal cruise of the aircraft
     '''
      
@@ -484,7 +545,10 @@ def base_mission_setup(analyses,altitude,Vc):
     return mission
 
 def missions_setup(mission): 
- 
+    """
+    :meta private:
+    """
+
     missions     = RCAIDE.Framework.Mission.Missions()
     
     # base mission 
@@ -500,7 +564,9 @@ def missions_setup(mission):
 
 def stall_maneuver_speeds(V_n_data):
 
-    """ Computes stall and maneuver speeds for positive and negative halves of the the V-n diagram
+    """ 
+    :meta private:
+    Computes stall and maneuver speeds for positive and negative halves of the the V-n diagram
 
     Source:
     S. Gudmundsson "General Aviation Aircraft Design: Applied Methods and Procedures", Butterworth-Heinemann; 1 edition
@@ -571,7 +637,10 @@ def stall_maneuver_speeds(V_n_data):
 
 def stall_line(V_n_data, upper_bound, lower_bound, Num_of_points, sign_flag):
     
-    """ Calculates Stall lines of positive and negative halves of the V-n diagram
+    """ 
+    :meta private:
+
+    Calculates Stall lines of positive and negative halves of the V-n diagram
 
     Source:
     S. Gudmundsson "General Aviation Aircraft Design: Applied Methods and Procedures", Butterworth-Heinemann; 1 edition
@@ -645,7 +714,10 @@ def stall_line(V_n_data, upper_bound, lower_bound, Num_of_points, sign_flag):
 
 def gust_loads(category_tag, V_n_data, Kg, CLa, Num_of_points, FAR_part_number, sign_flag):
 
-    """ Calculates airspeeds and load factors for gust loads and modifies the V-n diagram
+    """ 
+    :meta private:
+    
+    Calculates airspeeds and load factors for gust loads and modifies the V-n diagram
 
     Source:
     S. Gudmundsson "General Aviation Aircraft Design: Applied Methods and Procedures", Butterworth-Heinemann; 1 edition
@@ -849,7 +921,10 @@ def gust_loads(category_tag, V_n_data, Kg, CLa, Num_of_points, FAR_part_number, 
 
 def gust_dive_speed_intersection(category_tag, load_factors, gust_load_factors, airspeeds, element_num, Vc, Vd):
 
-    """ Calculates intersection between the general V-n diagram and the gust load for Vd
+    """
+    :meta private:
+    
+    Calculates intersection between the general V-n diagram and the gust load for Vd
 
     Source:
     S. Gudmundsson "General Aviation Aircraft Design: Applied Methods and Procedures", Butterworth-Heinemann; 1 edition
@@ -899,7 +974,10 @@ def gust_dive_speed_intersection(category_tag, load_factors, gust_load_factors, 
 
 def post_processing(category_tag, Uref_rough, Uref_cruise, Uref_dive, V_n_data, vehicle):
 
-    """ Plot graph, save the final figure, and create results output file
+    """
+    :meta private:
+    
+    Plot graph, save the final figure, and create results output file
 
     Source:
 
@@ -1004,7 +1082,10 @@ def post_processing(category_tag, Uref_rough, Uref_cruise, Uref_dive, V_n_data, 
 
 def convert_keas(V_n_data):
 
-    """ Convert speed to KEAS
+    """
+    :meta private:
+    
+    Convert speed to KEAS
 
     Source:
 

@@ -1,7 +1,13 @@
 # RCAIDE/Library/Methods/Weights/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+Weights Module
+
+This module provides comprehensive functionality for aircraft weight analysis, 
+including mass properties, inertia calculations, and weight estimation methods for both
+full aircraft and components.
+
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

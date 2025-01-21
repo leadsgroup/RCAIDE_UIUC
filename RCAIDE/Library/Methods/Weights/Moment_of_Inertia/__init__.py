@@ -1,6 +1,13 @@
 # RCAIDE/Library/Methods/Stability/Moment_of_Inertia/__init__.py 
 
-""" RCAIDE Package Setup
+"""
+Methods for computing moments of inertia for various vehicle components and the complete vehicle. This module provides 
+functions for calculating mass distribution properties using geometric approximations and analytical methods.
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Center_of_Gravity
+RCAIDE.Library.Methods.Weights.Correlations
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

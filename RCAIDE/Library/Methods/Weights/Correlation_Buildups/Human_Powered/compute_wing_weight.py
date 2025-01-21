@@ -6,40 +6,83 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Wing Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_wing_weight(Sw,bw,cw,Nwr,t_cw,Nwer,nult,GW):
-    """ Compute weight of human-powered aircraft wing 
-    
-    Assumptions:
-       All of this is from AIAA 89-2048, units are in kg. These weight estimates
-       are from the MIT Daedalus and are valid for very lightweight
-       carbon fiber composite structures. This may need to be solved iteratively since
-       gross weight is an input.
-       
-    Source: 
-        MIT Daedalus
-        
-    Inputs:
-        Sw -       wing area                                                       [meters**2]
-        bw -       wing span                                                       [meters]
-        cw -       average wing chord                                              [meters]
-        eltaw -   average rib spacing to average chord ratio                       [dimensionless]
-        Nwr -      number of wing or tail surface ribs (bw^2)/(deltaw*Sw)          [dimensionless]
-        t_cw -     wing airfoil thickness to chord ratio                           [dimensionless]
-        Nwer -     number of wing end ribs (2*number of individual wing panels -2) [dimensionless]
-        nult -     ultimate load factor                                            [dimensionless]
-        GW -       aircraft gross weight                                           [kilogram]
-    
-    Outputs:
-        Wws -      weight of wing spar                                             [kilogram]
-        Wwr -      weight of wing ribs                                             [kilogram]
-        Wwer -     weight of wing end ribs                                         [kilogram]
-        WwLE -     weight of wing leading edge                                     [kilogram]
-        WwTE -     weight of wing trailing edge                                    [kilogram]
-        Wwc -      weight of wing covering                                         [kilogram]
+def compute_wing_weight(Sw, bw, cw, Nwr, t_cw, Nwer, nult, GW):
+    """
+    Computes wing weight for human-powered aircraft using MIT Daedalus correlations.
+    Includes primary structure, secondary structure, and covering weights.
 
-    Properties Used:
-        N/A
-    """ 
+    Parameters
+    ----------
+    Sw : float
+        Wing reference area [m²]
+    bw : float
+        Wing span [m]
+    cw : float
+        Average wing chord [m]
+    Nwr : float
+        Number of wing ribs = (bw²)/(deltaw*Sw)
+    t_cw : float
+        Wing airfoil thickness to chord ratio
+    Nwer : float
+        Number of wing end ribs (2*number of individual wing panels - 2)
+    nult : float
+        Ultimate load factor
+    GW : float
+        Aircraft gross weight [kg]
+
+    Returns
+    -------
+    weight : float
+        Total wing weight [kg], including:
+            - Wws : Wing spar weight
+            - Wwr : Wing rib weight
+            - Wwer : Wing end rib weight
+            - WwLE : Wing leading edge weight
+            - WwTE : Wing trailing edge weight
+            - Wwc : Wing covering weight
+
+    Notes
+    -----
+    Uses empirical correlations developed from the MIT Daedalus human-powered aircraft project.
+
+    **Major Assumptions**
+        * Ultra-lightweight carbon fiber composite construction
+        * Low-speed flight regime
+        * Weight must be solved iteratively since gross weight is an input
+
+    **Theory**
+    Component weights computed using:
+    .. math::
+        W_{ws} = (0.117b_w + 0.011b_w^2)(1 + \\frac{n_{ult}GW/100 - 2}{4})
+
+        W_{wr} = N_{wr}(0.055c_w^2t_{c_w} + 0.00191c_w)
+
+        W_{wer} = N_{wer}(0.662c_w^2t_{c_w} + 0.00657c_w)
+
+        W_{wLE} = 0.456\\frac{S_w^2\\delta_w^{4/3}}{b_w}
+
+        W_{wTE} = 0.0277b_w
+
+        W_{wc} = 0.0308S_w
+
+    where:
+        * b_w = wing span
+        * n_ult = ultimate load factor
+        * GW = gross weight
+        * c_w = average chord
+        * t_c_w = thickness to chord ratio
+        * δ_w = average rib spacing ratio
+        * S_w = wing area
+
+    References
+    ----------
+    [1] Langford, J. (1989). The daedalus project - a summary of lessons learned. 
+    Aircraft Design and Operations Meeting. https://doi.org/10.2514/6.1989-2048 
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Human_Powered.compute_operating_empty_weight
+    """
     
     deltaw = (bw**2)/(Sw*Nwr)
     

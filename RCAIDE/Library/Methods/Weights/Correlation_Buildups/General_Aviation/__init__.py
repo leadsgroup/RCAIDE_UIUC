@@ -1,7 +1,17 @@
 # RCAIDE/Library/Methods/Weights/Correlations/General_Aviation/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+This module provides weight estimation methods for general aviation aircraft components 
+using empirical correlations. The methods are calibrated for light aircraft ranging 
+from single-engine piston to light business jets.
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS
+    Weight estimation methods for transport aircraft
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.Human_Powered
+    Weight estimation methods for ultra-lightweight aircraft
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

@@ -1,7 +1,17 @@
 # RCAIDE/Library/Methods/Weights/Correlations/Raymer/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+Collection of aircraft weight estimation methods based on Raymer's empirical correlations. 
+This module provides component weight estimation functions for general aviation and transport 
+aircraft including wing, tail, fuselage, landing gear, and systems weights. The correlations 
+are primarily derived from historical aircraft data as presented in Raymer's "Aircraft Design: 
+A Conceptual Approach".
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.Propulsion
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

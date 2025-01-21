@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Weights/Correlation_Buildups/General_Aviation/compute_landing_gear_weight.py
+# RCAIDE/Library/Methods/Weights/Correlation_Buildups/General_Aviation/compute_operating_empty_weight.py
 # 
 # 
 # Created:  Sep 2024, M. Clarke 
@@ -24,144 +24,77 @@ from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Propulsion as Pr
 # Main Wing Weight 
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_operating_empty_weight(vehicle, settings=None):
-    """ output = RCAIDE.Methods.Weights.Correlations.Tube_Wing.empty(engine,wing,aircraft,fuselage,horizontal,vertical)
-        Computes the empty weight breakdown of a General Aviation type aircraft  
-        
-        Inputs:
-            engine - a data dictionary with the fields:                    
-                thrust_sls - sea level static thrust of a single engine [Newtons]
+    """
+    Computes the operating empty weight breakdown of a General Aviation type aircraft using empirical correlations.
 
-            vehicle - a data dictionary with the fields:                    
-                reference_area                                                            [meters**2]
-                envelope - a data dictionary with the fields:
-                    ultimate_load - ultimate load of the aircraft                         [dimensionless]
-                    limit_load    - limit load factor at zero fuel weight of the aircraft [dimensionless]
-                
-                mass_properties - a data dictionary with the fields:
-                    max_takeoff   - max takeoff weight of the vehicle           [kilograms]
-                    max_zero_fuel - maximum zero fuel weight of the aircraft    [kilograms]
-                    cargo         - cargo weight                                [kilograms]
-                
-                passengers - number of passengers on the aircraft               [dimensionless]
-                        
-                design_dynamic_pressure - dynamic pressure at cruise conditions [Pascal]
-                design_mach_number      - mach number at cruise conditions      [dimensionless]
-                
-                networks - a data dictionary with the fields: 
-                    keys           - identifier for the type of network; different types have different fields
-                        turbofan
-                            thrust_sls - sealevel standard thrust                               [Newtons]             
-                        internal_combustion
-                            rated_power - maximum rated power of the internal combustion engine [Watts]
-                        
-                    number_of_engines - integer indicating the number of engines on the aircraft
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing all vehicle information
+            - reference_area : float
+                Wing reference area [m^2]
+            - flight_envelope : Data()
+                Contains ultimate_load and design_mach_number
+            - mass_properties : Data()
+                Contains max_takeoff, cargo weights
+            - networks : list
+                List of propulsion networks
+            - wings : list
+                List of all wing components (main wing, tails)
+            - fuselages : list
+                List of fuselage components
+            - landing_gears : list
+                List of landing gear components
+    settings : Data(), optional
+        Configuration settings
+            - use_max_fuel_weight : bool
+                Flag for using maximum fuel weight in calculations
 
-                W_cargo - weight of the bulk cargo being carried on the aircraft [kilograms]
-                num_seats - number of seats installed on the aircraft [dimensionless]
-                ctrl - specifies if the control system is "fully powered", "partially powered", or not powered [dimensionless]
-                ac - determines type of instruments, electronics, and operating items based on types: 
-                    "short-range", "medium-range", "long-range", "business", "cargo", "commuter", "sst" [dimensionless]
-                w2h - tail length (distance from the airplane c.g. to the horizontal tail aerodynamic center) [meters]
-                
-                fuel - a data dictionary with the fields: 
-                    mass_properties  - a data dictionary with the fields:
-                        mass -mass of fuel [kilograms]
-                    density          - gravimetric density of fuel                             [kilograms/meter**3]    
-                    number_of_tanks  - number of external fuel tanks                           [dimensionless]
-                    internal_volume  - internal fuel volume contained in the wing              [meters**3]
-                wings - a data dictionary with the fields:    
-                    wing - a data dictionary with the fields:
-                        span                      - span of the wing                           [meters]
-                        taper                     - taper ratio of the wing                    [dimensionless]
-                        thickness_to_chord        - thickness-to-chord ratio of the wing       [dimensionless]
-                        chords - a data dictionary with the fields:
-                            mean_aerodynamic - mean aerodynamic chord of the wing              [meters]
-                            root             - root chord of the wing                          [meters]
-                            
-                            
-                        sweeps - a data dictionary with the fields:
-                            quarter_chord - quarter chord sweep angle of the wing              [radians]
-                        mac                       - mean aerodynamic chord of the wing         [meters]
-                        r_c                       - wing root chord                            [meters]
-                        origin  - location of the leading edge of the wing relative to the front of the fuselage                                      [meters,meters,meters]
-                        aerodynamic_center - location of the aerodynamic center of the horizontal_stabilizer relative to the leading edge of the wing [meters,meters,meters]
-        
-                    
-                    
-                    
-                    horizontal_stabilizer - a data dictionary with the fields:
-                        areas -  a data dictionary with the fields:
-                            reference - reference area of the horizontal stabilizer                                    [meters**2]
-                            exposed  - exposed area for the horizontal tail                                            [meters**2]
-                        taper   - taper ratio of the horizontal stabilizer                                             [dimensionless]
-                        span    - span of the horizontal tail                                                          [meters]
-                        sweeps - a data dictionary with the fields:
-                            quarter_chord - quarter chord sweep angle of the horizontal stabilizer                     [radians]
-                        chords - a data dictionary with the fields:
-                            mean_aerodynamic - mean aerodynamic chord of the horizontal stabilizer                     [meters]         
-                            root             - root chord of the horizontal stabilizer             
-                        thickness_to_chord - thickness-to-chord ratio of the horizontal tail                           [dimensionless]
-                        mac     - mean aerodynamic chord of the horizontal tail                                        [meters]
-                        origin  - location of the leading of the horizontal tail relative to the front of the fuselage                                                 [meters,meters,meters]
-                        aerodynamic_center - location of the aerodynamic center of the horizontal_stabilizer relative to the leading edge of the horizontal stabilizer [meters,meters,meters]
-        
-                    vertical - a data dictionary with the fields:
-                        areas -  a data dictionary with the fields:
-                            reference - reference area of the vertical stabilizer         [meters**2]
-                        span    - span of the vertical tail                               [meters]
-                        taper   - taper ratio of the horizontal stabilizer                [dimensionless]
-                        t_c     - thickness-to-chord ratio of the vertical tail           [dimensionless]
-                        sweeps   - a data dictionary with the fields:
-                            quarter_chord - quarter chord sweep angle of the vertical stabilizer [radians]
-                        t_tail - flag to determine if aircraft has a t-tail, "yes"               [dimensionless]
+    Returns
+    -------
+    output : Data()
+        Weight breakdown of the aircraft
+            - empty : Data()
+                Empty weight components (structural, propulsion, systems)
+            - payload : Data()
+                Payload weight breakdown
+            - operational_items : Data()
+                Crew and operational items weights
+            - fuel : float
+                Total fuel weight [kg]
+            - total : float
+                Total aircraft weight [kg]
 
+    Notes
+    -----
+    This method computes the complete weight breakdown of a general aviation aircraft
+    using empirical correlations. It handles multiple types of propulsion systems
+    including electric, turbofan, piston, and turboprop engines. Refer to Raymer [1] 
+    for more details.
 
-                
-                fuselages - a data dictionary with the fields:  
-                    fuselage - a data dictionary with the fields:
-                        areas             - a data dictionary with the fields:
-                            wetted - wetted area of the fuselage [meters**2]
-                        differential_pressure  - Maximum fuselage pressure differential   [Pascal]
-                        width             - width of the fuselage                         [meters]
-                        heights - a data dictionary with the fields:
-                            maximum - height of the fuselage                              [meters]
-                        lengths-  a data dictionary with the fields:
-                            structure - structural length of the fuselage                 [meters]                     
-                        mass_properties - a data dictionary with the fields:
-                            volume - total volume of the fuselage                         [meters**3]
-                            internal_volume - internal volume of the fuselage             [meters**3]
-                        number_coach_sets - number of seats on the aircraft               [dimensionless]    
-                landing_gear - a data dictionary with the fields:
-                    main - a data dictionary with the fields:
-                        strut_length - strut length of the main gear                      [meters]
-                    nose - a data dictionary with the fields:
-                        strut_length - strut length of the nose gear                      [meters]
-                avionics - a data dictionary, used to determine if avionics weight is calculated, don't include if vehicle has none
-                air_conditioner - a data dictionary, used to determine if air conditioner weight is calculated, don't include if vehicle has none
-        
-        
-        Outputs:
-            output - a data dictionary with fields:
-                wing - wing weight                            [kilograms]
-                fuselage - fuselage weight                    [kilograms]
-                propulsion - propulsion                       [kilograms]
-                landing_gear_main - main gear weight          [kilograms]
-                landing_gear_nose - nose gear weight          [kilograms]
-                horizonal_tail - horizontal stabilizer weight [kilograms]
-                vertical_tail - vertical stabilizer weight    [kilograms]
-                systems - total systems weight                [kilograms]
-                systems - a data dictionary with fields:
-                    control_systems - control systems weight  [kilograms]
-                    hydraulics - hydraulics weight            [kilograms]
-                    avionics - avionics weight                [kilograms]
-                    electric - electrical systems weight      [kilograms]
-                    air_conditioner - air conditioner weight  [kilograms]
-                    furnish - furnishing weight               [kilograms]
-                    fuel_system - fuel system weight          [ kilograms]
-           Wing, empannage, fuselage, propulsion and individual systems masses updated with their calculated values
-       Assumptions:
-            calculated aircraft weight from correlations created per component of historical aircraft
-        
+    **Major Assumptions**
+        * Weight correlations are based on historical general aviation aircraft data
+
+    **Theory**
+    The method uses a buildup approach where individual component weights are calculated
+    separately and summed to get the total aircraft weight:
+
+    .. math::
+        W_{empty} = W_{wing} + W_{fuselage} + W_{landing\_gear} + W_{propulsion} + W_{systems} + W_{tail}
+
+    References
+    ----------
+    [1] Raymer, D. P. (2018). Aircraft design: A conceptual approach: A conceptual approach. 
+        American Institute of Aeronautics and Astronautics Inc. 
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_main_wing_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_fuselage_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_landing_gear_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_systems_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_horizontal_tail_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_vertical_tail_weight
     """     
 
     if settings == None: 

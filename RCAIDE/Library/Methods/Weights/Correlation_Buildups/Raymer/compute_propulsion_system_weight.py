@@ -18,37 +18,81 @@ import  numpy as  np
 # ----------------------------------------------------------------------------------------------------------------------
 # Propulsion System Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_propulsion_system_weight(vehicle,network):
-    """ Calculate the weight of propulsion system using Raymer method, including:
-        - fuel system weight
-        - thurst reversers weight
-        - electrical system weight
-        - starter engine weight
-        - nacelle weight
-        - cargo containers
-        The dry engine weight comes from the FLOPS relations since it is not listed in Raymer
+def compute_propulsion_system_weight(vehicle, network):
+    """
+    Calculates the total propulsion system weight using Raymer's method, including subsystems.
 
-        Assumptions:
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing:
+            - networks : list
+                List of propulsion networks
+            - fuselages : list
+                List of fuselage components
+            - flight_envelope : Data()
+                Contains design_mach_number
+            - mass_properties : Data()
+                Contains max_zero_fuel
+    network : RCAIDE.Network()
+        Network component containing:
+            - fuel_lines : list
+                List of fuel line components with fuel tanks
+            - propulsors : list
+                List of propulsion components
 
-        Source:
-            Aircraft Design: A Conceptual Approach
+    Returns
+    -------
+    output : Data()
+        Propulsion system weight breakdown:
+            - W_prop : float
+                Total propulsion system weight [kg]
+            - W_thrust_reverser : float
+                Thrust reverser weight [kg]
+            - W_starter : float
+                Starter engine weight [kg]
+            - W_engine_controls : float
+                Engine controls weight [kg]
+            - W_fuel_system : float
+                Fuel system weight [kg]
+            - W_nacelle : float
+                Nacelle weight [kg]
+            - W_engine : float
+                Total dry engine weight [kg]
+            - number_of_engines : int
+                Number of engines
+            - number_of_fuel_tanks : int
+                Number of fuel tanks
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-            network    - data dictionary for the specific network that is being estimated [dimensionless]
+    Notes
+    -----
+    This method calculates the complete propulsion system weight including engines,
+    nacelles, fuel system, and all supporting systems using Raymer's correlations.
 
-        Outputs:
-            output - data dictionary with weights                               [kilograms]
-                    - output.W_prop: total propulsive system weight
-                    - output.W_thrust_reverser: thurst reverser weight
-                    - output.starter: starter engine weight
-                    - output.W_engine_controls: engine controls weight
-                    - output.fuel_system: fuel system weight
-                    - output.nacelle: nacelle weight
-                    - output.W_engine: dry engine weight
+    **Major Assumptions**
+        * Correlations based on conventional turbofan/turbojet installations
+        * Engine controls scale with number of engines and fuselage length
+        * Nacelle weight includes thrust reversers if applicable
+        * Fuel system weight scales with fuel capacity and number of tanks
+        * Starter weight scales with total engine weight
 
-        Properties Used:
-            N/A
+    **Theory**
+    Key component weights are calculated using:
+    .. math::
+        W_{nacelle} = 0.6724K_{ng}L_n^{0.1}W_n^{0.294}N_{ult}^{0.119}W_{ec}^{0.611}N_{eng}S_n^{0.224}
+
+    .. math::
+        W_{fuel\_sys} = 1.07W_{fuel}^{0.58}N_{eng}^{0.43}M_{max}^{0.34}
+
+    References
+    ----------
+    [1] Raymer, D., "Aircraft Design: A Conceptual Approach", AIAA 
+        Education Series, 2018. 
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_jet_engine_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_piston_engine_weight
     """
 
     NENG    =  0 
@@ -83,29 +127,50 @@ def compute_propulsion_system_weight(vehicle,network):
     output.number_of_fuel_tanks = number_of_tanks  
     return output
 
-def compute_nacelle_weight(vehicle,ref_nacelle, NENG, WENG):
-    """ Calculates the nacelle weight based on the Raymer method
-        Assumptions:
-            1) All nacelles are identical
-            2) The number of nacelles is the same as the number of engines 
-        Source:
-            Aircraft Design: A Conceptual Approach (2nd edition)
+def compute_nacelle_weight(vehicle, ref_nacelle, NENG, WENG):
+    """
+    Calculates the nacelle weight based on Raymer's empirical method.
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                           [dimensionless]
-                -.ultimate_load: ultimate load factor of aircraft
-            nacelle  - data dictionary for the specific nacelle that is being estimated [dimensionless]
-                -lenght: total length of engine                                         [m]
-                -diameter: diameter of nacelle                                          [m]
-            WENG    - dry engine weight                                                 [kg]
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing:
+            - flight_envelope.ultimate_load : float
+                Ultimate load factor
+    ref_nacelle : RCAIDE.Component()
+        Nacelle component containing:
+            - length : float
+                Total length of nacelle [m]
+            - diameter : float
+                Maximum diameter of nacelle [m]
+    NENG : int
+        Number of engines
+    WENG : float
+        Dry engine weight [kg]
 
+    Returns
+    -------
+    WNAC : float
+        Total nacelle weight [kg]
 
-        Outputs:
-            WNAC: nacelle weight                                                        [kg]
+    Notes
+    -----
+    **Major Assumptions**
+        * All nacelles are identical
+        * Number of nacelles equals number of engines
+        * Engine not pylon mounted (Kng = 1)
+        * Conventional nacelle construction
 
-        Properties Used:
-            N/A
-    """ 
+    **Theory**
+    The nacelle weight is calculated using:
+    .. math::
+        W_{nac} = 0.6724K_{ng}L_n^{0.1}W_n^{0.294}N_{ult}^{0.119}W_{ec}^{0.611}N_{eng}S_n^{0.224}
+
+    References
+    ----------
+    [1] Raymer, D., "Aircraft Design: A Conceptual Approach", AIAA 
+        Education Series, 2018. 
+    """
     Kng             = 1 # assuming the engine is not pylon mounted
     Nlt             = ref_nacelle.length / Units.ft
     Nw              = ref_nacelle.diameter / Units.ft
@@ -116,25 +181,41 @@ def compute_nacelle_weight(vehicle,ref_nacelle, NENG, WENG):
     return WNAC * Units.lbs
 
 def compute_misc_engine_weight(vehicle, NENG, WENG):
-    """ Calculates the miscellaneous engine weight based on the Raymer method, electrical control system weight
-        and starter engine weight
-        Assumptions:
+    """
+    Calculates miscellaneous engine weights including electrical controls and starter.
 
-        Source:
-            Aircraft Design: A Conceptual Approach
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing:
+            - fuselages : list
+                List of fuselage components with lengths.total
+    NENG : int
+        Number of engines
+    WENG : float
+        Dry engine weight [kg]
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.fuselages['fuselage'].lengths.total: length of fuselage   [m]
-            network    - data dictionary for the specific network that is being estimated [dimensionless]
-                -.number_of_engines: number of engines
+    Returns
+    -------
+    WEC : float
+        Engine control system weight [kg]
+    WSTART : float
+        Starter system weight [kg]
 
-        Outputs:
-            WEC: electrical engine control system weight                    [kg]
-            WSTART: starter engine weight                                   [kg]
+    Notes
+    -----
+    **Theory**
+    The weights are calculated using:
+    .. math::
+        W_{ec} = 5N_{eng} + 0.8L_{ec}
 
-        Properties Used:
-            N/A
+    .. math::
+        W_{start} = 49.19(N_{eng}W_{eng}/1000)^{0.541}
+
+    References
+    ----------
+    [1] Raymer, D., "Aircraft Design: A Conceptual Approach", AIAA 
+        Education Series, 2018. 
     """
 
     L =  0 
@@ -147,22 +228,36 @@ def compute_misc_engine_weight(vehicle, NENG, WENG):
     return WEC * Units.lbs, WSTART * Units.lbs
  
 def compute_fuel_system_weight(vehicle, NENG):
-    """ Calculates the weight of the fuel system based on the Raymer method
-        Assumptions:
+    """
+    Calculates the weight of the fuel system based on Raymer's method.
 
-        Source:
-            Aircraft Design: A Conceptual Approach
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing:
+            - flight_envelope.design_mach_number : float
+                Design mach number
+            - mass_properties.max_zero_fuel : float
+                Maximum zero fuel weight [kg]
+    NENG : int
+        Number of engines
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.design_mach_number: design mach number
-                -.mass_properties.max_zero_fuel: maximum zero fuel weight   [kg]
+    Returns
+    -------
+    WFSYS : float
+        Fuel system weight [kg]
 
-        Outputs:
-            WFSYS: Fuel system weight                                       [kg]
+    Notes
+    -----
+    **Theory**
+    The fuel system weight is calculated using:
+    .. math::
+        W_{fs} = 1.07W_{fuel}^{0.58}N_{eng}^{0.43}M_{max}^{0.34}
 
-        Properties Used:
-            N/A
+    References
+    ----------
+    [1] Raymer, D., "Aircraft Design: A Conceptual Approach", AIAA 
+        Education Series, 2018. 
     """
     VMAX    = vehicle.flight_envelope.design_mach_number
     FMXTOT  = vehicle.mass_properties.max_zero_fuel / Units.lbs

@@ -16,19 +16,53 @@ import numpy as np
 def compute_boom_weight(boom,
              maximum_g_load = 3.8,
              safety_factor = 1.5):
-    """ Calculates the structural mass of a boom for an eVTOL vehicle, 
-        
-        Assumptions: 
-            Assumes cylindrical boom
-        Sources: 
+    """
+    Calculates the structural mass of a cylindrical boom for an aircraft using material properties 
+    and basic geometry.
 
-        Inputs:  
+    Parameters
+    ----------
+    boom : RCAIDE.Components.Booms.Boom()
+        Boom data structure
+            - lengths.total : float
+                Total length of the boom [m]
+            - heights.maximum : float
+                Maximum height/diameter of the boom [m]
+    maximum_g_load : float, optional
+        Maximum load factor the boom must withstand (default 3.8)
+    safety_factor : float, optional
+        Design safety factor (default 1.5)
 
-        Outputs: 
-            weight:                 Estimated Boom Mass             [kg]
-        
-        Properties Used:
-        Material Properties of Imported RCAIDE Solids
+    Returns
+    -------
+    weight : float
+        Estimated boom mass [kg]
+
+    Notes
+    -----
+    The function calculates boom weight based on wetted surface area and material thickness.
+
+    **Major Assumptions**
+        * Boom is a hollow cylinder
+        * Uniform material thickness of 1 cm
+        * Uses carbon fiber with density of 1759 kg/m³
+        * Uniform material properties throughout the boom
+        * No stress concentrations or joints considered
+    
+    **Theory**
+    Weight is calculated using:
+    .. math::
+        W = \\rho * t * (2\\pi * \\frac{d}{2} * L + 2\\pi * (\\frac{d}{2})^2)
+
+    where:
+        - :math:`\\rho` = material density
+        - :math:`t` = wall thickness
+        - :math:`d` = boom diameter
+        - :math:`L` = boom length
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Common.compute_fuselage_weight
     """
 
     #-------------------------------------------------------------------------------

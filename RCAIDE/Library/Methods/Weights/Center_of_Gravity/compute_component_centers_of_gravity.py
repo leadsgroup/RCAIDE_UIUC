@@ -1,5 +1,4 @@
-# RCAIDE/Methods/Stability/Center_of_Gravity/compute_component_centers_of_gravity.py
-# 
+# RCAIDE/Library/Methods/Weights/Center_of_Gravity/compute_component_centers_of_gravity.py
 # 
 # Created:  Dec 2023, M. Clarke  
 
@@ -25,21 +24,58 @@ import numpy as np
 def compute_component_centers_of_gravity(vehicle, nose_load = 0.06):
     """ computes the center of gravity of all of the vehicle components based on correlations 
     from Stanford University AA241 Lecture Notes 
+    """
+    Computes the center of gravity locations for all vehicle components based on empirical correlations and geometric relationships.
 
-    Assumptions:
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing all components including wings, fuselages,
+        landing gear, systems, and payload
+    nose_load : float, optional
+        Fraction of weight distributed to the nose of the aircraft, default is 0.06
+
+    Returns
+    -------
     None
+        Updates the center_of_gravity attribute of each component in place
 
-    Source:
-    AA 241 Notes
+    Notes
+    -----
+    The function calculates CG locations for:
+        * Fuselages (45% of total length)
+        * Wings (varies by type):
+            - Main wing: 5% MAC + aerodynamic center
+            - Horizontal tail: 30% chord at 35% semi-span
+            - Vertical tail: 30% chord at 35% span
+            - Other wings: 30% MAC + sweep offset
+        * Landing gear
+        * Systems (avionics, electrical, hydraulic, etc.)
+        * Payload (passengers, cargo, baggage)
+        * Propulsion components
 
-    Inputs:
-    vehicle
+    **Major Assumptions**
+        * Fuselage CG is at 45% of total length
+        * Component CGs are primarily based on empirical correlations
+        * Systems are distributed based on typical transport aircraft layouts
+        * If no fuselage exists, main wing root chord is used as reference length
 
-    Outputs:
-    None
+    **Theory**
+    Component positions are calculated using geometric relationships and empirical 
+    data from aircraft design practices. The general form for swept surfaces is:
 
-    Properties Used:
-    N/A
+    .. math::
+        x_{cg} = x_{ref} + c_{ref} + \tan(\Lambda)\cdot(y)
+
+    References
+    ----------
+    [1] Stanford University AA241 Aircraft Design Lecture Notes
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.mass_and_inertia_functions
+    RCAIDE.Library.Methods.Geometry.Planform.compute_span_location_from_chord_length
+    RCAIDE.Library.Methods.Geometry.Planform.compute_chord_length_from_span_location
     """  
     
     C =  RCAIDE.Library.Components
@@ -209,6 +245,9 @@ def compute_component_centers_of_gravity(vehicle, nose_load = 0.06):
     return
 
 def compute_properties(network_moment,network_mass,p_item):  
+    """
+    :meta private:
+    """
     if isinstance(p_item,Component): 
         network_moment += p_item.mass_properties.mass*(np.array(p_item.origin) + np.array( p_item.mass_properties.center_of_gravity))
         network_mass   += p_item.mass_properties.mass

@@ -13,35 +13,65 @@ from RCAIDE.Framework.Core    import Units ,  Data
 # ----------------------------------------------------------------------------------------------------------------------
 #  Operating Items Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_payload_weight(vehicle, weight_per_passenger = 165. * Units.lb):
-    """ Calculate the payload weight, including:
-        - passenger and carry-on weight
-        - baggage weight
-        - cargo weight
-
-        Assumptions:
-            None
-
-        Source:
-            The Flight Optimization System Weight Estimation Method
-
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.passengers: number of passengers in aircraft
-                -.design_range: design range of aircraft                        [nmi]
-                -.mass_properties.cargo: weight of cargo carried                [kilograms]
-
-        Outputs:
-            output - data dictionary with weights                               [kilograms]
-                    - output.passengers: passenger weight
-                    - output.baggage: baggage weight
-                    - output.cargo: cargo weight
-                    - output.total: total payload weight
-
-        Properties Used:
-            N/A
+def compute_payload_weight(vehicle, W_passenger=195*Units.lbs, W_baggage=30*Units.lbs):
     """
-    WPPASS  = weight_per_passenger
+    Computes the total payload weight including passengers, baggage, and cargo using 
+    FLOPS weight estimation method.
+
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - passengers : int
+                Number of passengers
+            - mass_properties.cargo : float
+                Mass of cargo [kg]
+    W_passenger : float, optional
+        Standard passenger weight including clothing [kg], default 195 lbs
+    W_baggage : float, optional
+        Standard baggage allowance per passenger [kg], default 30 lbs
+
+    Returns
+    -------
+    output : Data
+        Container with payload breakdown:
+            - total : float
+                Total payload weight [kg]
+            - passengers : float
+                Total passenger weight [kg]
+            - baggage : float
+                Total baggage weight [kg]
+            - cargo : float
+                Bulk cargo weight [kg]
+
+    Notes
+    -----
+    Uses FAA standard weights for commercial operations.
+
+    **Major Assumptions**
+        * Variation in baggage allowance per passenger based on design range
+
+    **Theory**
+    Total payload weight is computed as:
+    .. math::
+        W_{payload} = n_{pax}(W_{pax} + W_{bag}) + W_{cargo}
+
+    where:
+        * n_pax = number of passengers
+        * W_pax = standard passenger weight
+        * W_bag = standard baggage allowance
+        * W_cargo = bulk cargo weight
+
+    References
+    ----------
+    [1] NASA Flight Optimization System (FLOPS)
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_operating_empty_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_operating_items_weight
+    """
+    WPPASS  = W_passenger
     WPASS   = vehicle.passengers * WPPASS
     DESRNG  = vehicle.flight_envelope.design_range / Units.nmi
     if DESRNG <= 900:

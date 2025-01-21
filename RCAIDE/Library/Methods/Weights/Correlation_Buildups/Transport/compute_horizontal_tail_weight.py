@@ -15,32 +15,83 @@ import numpy as  np
 #  Horizontal Tail Weight 
 # ----------------------------------------------------------------------------------------------------------------------
 def compute_horizontal_tail_weight(vehicle, wing):
-    """ Calculate the weight of the horizontal tail in a standard configuration
-    
-    Assumptions:
-        calculated weight of the horizontal tail including the elevator
-        Assume that the elevator is 25% of the horizontal tail 
-    
-    Source: 
-        Aircraft Design: A Conceptual Approach by Raymer
-        
-    Inputs:
-        wing.spans.projected - span of the horizontal tail                                              [meters]
-        wing.sweeps.quarter_chord - sweep of the horizontal tail                                        [radians]
-        Nult - ultimate design load of the aircraft                                                     [dimensionless]
-        S_h - area of the horizontal tail                                                               [meters**2]
-        vehicle.mass_properties.max_takeoff - maximum takeoff weight of the aircraft                    [kilograms]
-        vehicle.wings['main_wing'].origin[0] - mean aerodynamic chord of the wing                       [meters]
-        wing.aerodynamic_center[0]  - mean aerodynamic chord of the horizontal tail                     [meters]
-        wing.thickness_to_chord  - thickness-to-chord ratio of the horizontal tail                      [dimensionless]
-        wing.areas.exposed - exposed surface area for the horizontal tail                               [m^2]
-        wing.areas.wetted - wetted surface area of tail
-    
-    Outputs:
-        weight - weight of the horizontal tail                                                          [kilograms]
-       
-    Properties Used:
-        N/A
+    """ 
+    Calculates horizontal tail weight for transport aircraft using empirical correlation.
+
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing:
+            - mass_properties.max_takeoff : float
+                Maximum takeoff weight [kg]
+            - flight_envelope.ultimate_load : float
+                Ultimate load factor
+            - wings['main_wing'] : Data()
+                Main wing properties:
+                    - origin : array
+                        Root location [m]
+                    - aerodynamic_center : array
+                        Location of aerodynamic center [m]
+    wing : RCAIDE.Component()
+        Horizontal tail component containing:
+            - spans.projected : float
+                Projected span [m]
+            - sweeps.quarter_chord : float
+                Quarter chord sweep angle [rad]
+            - areas.reference : float
+                Reference area [m^2]
+            - areas.exposed : float
+                Exposed area [m^2]
+            - areas.wetted : float
+                Wetted area [m^2]
+            - thickness_to_chord : float
+                Thickness-to-chord ratio
+            - origin : array
+                Root location [m]
+            - aerodynamic_center : array
+                Location of aerodynamic center [m]
+
+    Returns
+    -------
+    weight : float
+        Weight of the horizontal tail [kg]
+
+    Notes
+    -----
+    This method implements an empirical correlation for transport aircraft horizontal
+    tail weight estimation, accounting for geometry, loads, and configuration effects.
+
+    **Major Assumptions**
+        * Elevator comprises approximately 25% of tail area
+        * Correlation based on transport category aircraft data
+        * Elevator is included in the weight
+
+    **Theory**
+    The horizontal tail weight is calculated using:
+    .. math::
+        W_{ht} = 5.25S_{ht} + 0.8 \\times 10^{-6}N_{ult}b_{ht}^3W_{to}\\bar{c}_w
+        \\sqrt{\\frac{S_{exp}}{S_{ht}}} \\left(\\frac{1}{(t/c)\\cos^2\\Lambda L_{ht}S_{ht}^{1.5}}\\right)
+
+    where:
+        * :math:`S_{ht}` is horizontal tail area
+        * :math:`N_{ult}` is ultimate load factor
+        * :math:`b_{ht}` is tail span
+        * :math:`W_{to}` is takeoff weight
+        * :math:`\\bar{c}_w` is wing mean chord
+        * :math:`S_{exp}` is exposed tail area
+        * :math:`t/c` is thickness ratio
+        * :math:`\\Lambda` is quarter-chord sweep
+        * :math:`L_{ht}` is tail arm length
+
+    References
+    ----------
+    [1] Raymer, D., "Aircraft Design: A Conceptual Approach", AIAA 
+        Education Series, 2018. 
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_vertical_tail_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_operating_empty_weight
     """
     # unpack inputs
     span       = wing.spans.projected / Units.ft  # Convert meters to ft

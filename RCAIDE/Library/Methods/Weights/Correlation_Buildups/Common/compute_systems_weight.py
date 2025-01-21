@@ -12,38 +12,71 @@ import RCAIDE.Library.Components.Wings as Wings
 # Payload
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_systems_weight(vehicle):
-    """ Calculate the weight of the different engine systems on the aircraft
+    """
+    Computes the weight of aircraft systems using empirical correlations based on 
+    aircraft type and size.
 
-    Assumptions:
-        numbers based on FAA regulations and correlations from previous aircraft
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - passengers : int
+                Total number of seats
+            - systems.control : str
+                Control system type ('fully powered', 'partially powered', or 'unpowered')
+            - systems.accessories : str
+                Aircraft type ('short-range', 'medium-range', 'long-range', 'business', 
+                'cargo', 'commuter', 'sst')
+            - reference_area : float
+                Wing reference area [m²]
+            - wings : list
+                Wing surfaces for control surface area calculation
 
-    Source:
-        http://aerodesign.stanford.edu/aircraftdesign/structures/componentweight.html
+    Returns
+    -------
+    output : Data
+        Container with systems weight breakdown:
+            - W_flight_control : float
+                Flight control system weight [kg]
+            - W_apu : float
+                APU system weight [kg]
+            - W_hyd_pnu : float
+                Hydraulics and pneumatics weight [kg]
+            - W_instruments : float
+                Instruments weight [kg]
+            - W_avionics : float
+                Avionics weight [kg]
+            - W_electrical : float
+                Electrical system weight [kg]
+            - W_ac : float
+                Air conditioning weight [kg]
+            - W_furnish : float
+                Furnishings weight [kg]
+            - W_anti_ice : float
+                Anti-ice system weight [kg]
+            - W_systems : float
+                Total systems weight [kg]
 
-   Inputs:
-       vehicle.passengers - total number of seats on the aircraft                                     [dimensionless]
-       vehicle.systems.control - specifies if the control system is fully power,
-                                    partially powered, or not powered                                 [dimensionless]
-       wing.areas.reference - area of the horizontal tail                                             [meters**2]
-       wing.areas.reference - area of the vertical tail                                               [meters**2]
-       vehicle.reference_area - area of the wing                                                      [meters**2]
-       vehicle.systems.accessories - determines type of instruments, electronics,
-                                        and operating items based on type of vehicle                  [dimensionless]
+    Notes
+    -----
+    Uses correlations developed from historical aircraft data, adjusted for 
+    aircraft type and systems complexity along with FAA regulations.
 
-   Outputs:
-       output - a data dictionary with fields:
-           W_flight_controls - weight of the flight control system                                               [kilograms]
-           W_apu - weight of the apu                                                                      [kilograms]
-           W_hyd_pnu - weight of the hydraulics and pneumatics                                            [kilograms]
-           W_instruments - weight of the instruments and navigational equipment                           [kilograms]
-           W_avionics - weight of the avionics                                                            [kilograms]
-           W_opitems - weight of the optional items based on the type of aircraft                         [kilograms]
-           W_electrical - weight of the electrical items                                                        [kilograms]
-           W_ac - weight of the air conditioning and anti-ice system                                      [kilograms]
-           W_furnish - weight of the furnishings in the fuselage                                          [kilograms]
+    **Major Assumptions**
+        * Systems complexity scales with aircraft size
+        * Standard system architectures for each aircraft type
+        * Similar technology levels across systems
+        * Control surface area proportional to tail area
+        * APU requirements based on passenger count
+        * Environmental control sized for passenger count
 
-    Properties Used:
-        N/A
+    References
+    ----------
+    [1] http://aerodesign.stanford.edu/aircraftdesign/structures/componentweight.html
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common.compute_operating_empty_weight
     """ 
     num_seats   = vehicle.passengers
     ctrl_type   = vehicle.systems.control

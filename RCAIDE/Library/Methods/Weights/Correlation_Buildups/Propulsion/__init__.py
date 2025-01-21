@@ -1,7 +1,16 @@
 # RCAIDE/Library/Methods/Weights/Correlations/Propulsion/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+Collection of methods for estimating propulsion system weights in aircraft. This module includes correlations 
+for various propulsion system types including jet engines, piston engines, electric motors, and their 
+integrated installations. The methods are primarily based on empirical correlations derived from historical 
+aircraft data.
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Electric
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

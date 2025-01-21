@@ -13,35 +13,85 @@ from RCAIDE.Framework.Core import  Units , Data
 # ----------------------------------------------------------------------------------------------------------------------
 # Systems Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_systems_weight(W_uav, V_fuel, V_int, N_tank, N_eng, l_fuselage, span, TOW, Nult, num_seats,  mach_number, has_air_conditioner=1):
-    """ output = RCAIDE.Methods.Weights.Correlations.General_Avation.systems(num_seats, ctrl_type, S_h, S_v, S_gross_w, ac_type)
-        Calculate the weight of the different engine systems on the aircraft
+def compute_systems_weight(W_uav, V_fuel, V_int, N_tank, N_eng, l_fuselage, span, TOW, Nult, num_seats, mach_number, has_air_conditioner=1):
+    """
+    Calculates the weight of various aircraft systems using empirical correlations for general aviation aircraft.
 
-        Source:
-            Raymer, Aircraft Design: A Conceptual Approach (pg 461 in 4th edition)
+    Parameters
+    ----------
+    W_uav : float
+        Weight of uninstalled avionics [kg]
+    V_fuel : float
+        Total fuel volume [m^3]
+    V_int : float
+        Internal fuel volume [m^3]
+    N_tank : int
+        Number of fuel tanks
+    N_eng : int
+        Number of engines
+    l_fuselage : float
+        Length of fuselage [m]
+    span : float
+        Wing span [m]
+    TOW : float
+        Maximum takeoff weight [kg]
+    Nult : float
+        Ultimate load factor
+    num_seats : int
+        Number of passenger seats
+    mach_number : float
+        Design cruise Mach number
+    has_air_conditioner : int, optional
+        Binary flag for air conditioning system (1=yes, 0=no), defaults to 1
 
-        Inputs:
-            V_fuel              - total fuel volume                     [meters**3]
-            V_int               - internal fuel volume                  [meters**3]
-            N_tank              - number of fuel tanks                  [dimensionless]
-            N_eng               - number of engines                     [dimensionless]
-            span                - wingspan                              [meters]
-            TOW                 - gross takeoff weight of the aircraft  [kg]
-            num_seats           - total number of seats on the aircraft [dimensionless]
-            mach_number         - mach number                           [dimensionless]
-            has_air_conditioner - integer of 1 if the vehicle has ac, 0 if not
+    Returns
+    -------
+    output : Data()
+        System weights breakdown
+            - W_flight_control : float
+                Flight control system weight [kg]
+            - W_hyd_pnu : float
+                Hydraulics and pneumatics weight [kg]
+            - W_avionics : float
+                Avionics system weight [kg]
+            - W_electrical : float
+                Electrical system weight [kg]
+            - W_ac : float
+                Air conditioning system weight [kg]
+            - W_furnish : float
+                Furnishings weight [kg]
+            - W_fuel_system : float
+                Fuel system weight [kg]
+            - total : float
+                Total systems weight [kg]
 
-        Outputs:
-            output - a data dictionary with fields:
-                W_flight_controls - weight of the flight control system [kilograms]
-                W_apu - weight of the apu [kilograms]
-                W_hyd_pnu - weight of the hydraulics and pneumatics [kilograms]
-                W_avionics - weight of the avionics [kilograms]
-                W_opitems - weight of the optional items based on the type of aircraft [kilograms]
-                W_electrical - weight of the electrical items [kilograms]
-                W_ac - weight of the air conditioning and anti-ice system [kilograms]
-                W_furnish - weight of the furnishings in the fuselage [kilograms]
-    """ 
+    Notes
+    -----
+    This method uses empirical correlations from Raymer to estimate the weight
+    of various aircraft systems based on aircraft characteristics. Refer to 
+    page 461 of the 4th edition of Raymer [1] for more details.
+
+    **Major Assumptions**
+        * Correlations are based on historical general aviation aircraft data
+        * Systems are of conventional design and technology level
+
+    **Theory**
+    Key weight correlations used:
+    .. math::
+        W_{fuel\_sys} = 2.49(V_{tot}^{0.726})(\frac{V_{tot}}{V_{tot}+V_{int}})^{0.363}(N_{tank}^{0.242})(N_{eng}^{0.157})
+    
+    .. math::
+        W_{flight\_ctrl} = 0.053(l_{fus}^{1.536})(b^{0.371})(N_{ult}W_{0}10^{-4})^{0.8}
+
+    References
+    ----------
+    [1] Raymer, D. P. (2018). Aircraft design: A conceptual approach: A conceptual approach. 
+        American Institute of Aeronautics and Astronautics Inc. 
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_operating_empty_weight
+    """
     # unpack inputs 
     Q_tot  = V_fuel/Units.gallons
     Q_int  = V_int/Units.gallons 

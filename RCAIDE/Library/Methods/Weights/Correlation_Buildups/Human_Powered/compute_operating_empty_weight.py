@@ -17,65 +17,91 @@ from .  import compute_wing_weight
 # ----------------------------------------------------------------------------------------------------------------------
 #  Vertical Tail Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_operating_empty_weight(vehicle,settings=None):
-    """ Computes weights estimates for human powered aircraft
-    
-    Assumptions:
-       All of this is from AIAA 89-2048, units are in kg. These weight estimates
-       are from the MIT Daedalus and are valid for very lightweight
-       carbon fiber composite structures. This may need to be solved iteratively since
-       gross weight is an input.
-       
-    Source: 
-        MIT Daedalus
-                       
-    Inputs:
-        wing - a data dictionary with the fields:
-            Sw -       wing area                                                       [meters**2]
-            bw -       wing span                                                       [meters]
-            cw -       average wing chord                                              [meters]
-            deltaw -   average rib spacing to average chord ratio                      [dimensionless]
-            Nwr -      number of wing surface ribs (bw**2)/(deltaw*Sw)                 [dimensionless]
-            t_cw -     wing airfoil thickness to chord ratio                           [dimensionless]
-            Nwer -     number of wing end ribs (2*number of individual wing panels -2) [dimensionless]
-            
-        horizontal - a data dictionary with the fields:
-            Sts -      tail surface area                                               [meters]
-            bts -      tail surface span                                               [meters]
-            cts -      average tail surface chord                                      [meters]
-            deltawts - average rib spacing to average chord ratio                      [dimensionless]
-            Ntsr -     number of tail surface ribs (bts^2)/(deltats*Sts)               [dimensionless]
-            t_cts -    tail airfoil thickness to chord ratio                           [dimensionless]
-            
-        vertical - a data dictionary with the fields:
-            Sts -      tail surface area                                               [meters]
-            bts -      tail surface span                                               [meters]
-            cts -      average tail surface chord                                      [meters]
-            deltawts - average rib spacing to average chord ratio                      [dimensionless]
-            Ntsr -     number of tail surface ribs (bts**2)/(deltats*Sts)              [dimensionless]
-            t_cts -    tail airfoil thickness to chord ratio                           [dimensionless]
-            
-        aircraft - a data dictionary with the fields:    
-            nult -     ultimate load factor                                            [dimensionless]
-            GW -       aircraft gross weight                                           [kilogram]
-            qm -       dynamic pressure at maneuvering speed                           [Pascals]
-            Ltb -      tailboom length                                                 [meters]
-    
-    Outputs:
-        Wws -      weight of wing spar                                                 [kilogram]
-        Wtss -     weight of tail surface spar                                         [kilogram]
-        Wwr -      weight of wing ribs                                                 [kilogram]
-        Wtsr -     weight of tail surface ribs                                         [kilogram]
-        Wwer -     weight of wing end ribs                                             [kilogram]
-        WwLE -     weight of wing leading edge                                         [kilogram]
-        WtsLE -    weight of tail surface leading edge                                 [kilogram]
-        WwTE -     weight of wing trailing edge                                        [kilogram]
-        Wwc -      weight of wing covering                                             [kilogram]
-        Wtsc -     weight of tail surface covering                                     [kilogram]
-        Wtb -      tailboom weight                                                     [kilogram]
-                
-    Properties Used:
-        N/A
+def compute_operating_empty_weight(vehicle, settings=None):
+    """
+    Computes operating empty weight for human-powered aircraft using MIT Daedalus 
+    correlations. Integrates weights of all major structural components.
+
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - wings : list
+                Aircraft wings with:
+                    - areas.reference : float
+                        Wing area [m²]
+                    - spans.projected : float
+                        Wing span [m]
+                    - chords.mean_aerodynamic : float
+                        Mean chord [m]
+                    - number_ribs : int
+                        Number of wing ribs
+                    - thickness_to_chord : float
+                        t/c ratio
+                    - number_end_ribs : int
+                        Number of wing end ribs
+            - flight_envelope : FlightEnvelope
+                - ultimate_load : float
+                    Ultimate load factor
+                - maximum_dynamic_pressure : float
+                    Maximum dynamic pressure [Pa]
+            - mass_properties : MassProperties
+                - max_takeoff : float
+                    Maximum takeoff weight [kg]
+            - Ltb : float
+                Tailboom length [m]
+    settings : Settings, optional
+        Configuration settings (not used in this method)
+
+    Returns
+    -------
+    output : Data
+        Container with weight breakdown:
+            - empty : Data
+                - structural : Data
+                    - wings : float
+                        Total wing structure weight [kg]
+                    - fuselage : float
+                        Fuselage structure weight [kg]
+                - total : float
+                    Total operating empty weight [kg]
+
+    Notes
+    -----
+    Uses empirical correlations developed from the MIT Daedalus human-powered aircraft project.
+
+    **Major Assumptions**
+        * Ultra-lightweight carbon fiber composite construction
+        * Minimal structural margins
+        * Simple tubular structures
+        * No pressurization requirements
+        * Single-pilot configuration
+        * Low-speed flight regime
+        * Weight must be solved iteratively since gross weight is an input
+
+    **Theory**
+    Total weight is computed by summing:
+        * Main wing weight (including ribs, spars, covering)
+        * Horizontal tail weight
+        * Vertical tail weight
+        * Fuselage/tailboom weight
+
+    Each component uses specialized correlations accounting for:
+        * Minimum gauge constraints
+        * Basic systems integration
+        * Structural load paths
+        * Assembly requirements
+
+    References
+    ----------
+    [1] Langford, J. "The Daedalus project - A summary of lessons learned", 
+        AIAA Paper 89-2048, 1989.
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Human_Powered.compute_wing_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Human_Powered.compute_tail_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Human_Powered.compute_fuselage_weight
     """ 
     
     #Unpack

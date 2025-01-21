@@ -1,7 +1,15 @@
-# RCAIDE/Methods/Stability/Center_of_Gravity/__init__.py
+# RCAIDE/Library/Methods/Weights/Center_of_Gravity/__init__.py
 # 
 
-""" RCAIDE Package Setup
+
+"""
+Methods for computing the center of gravity (CG) locations for vehicle components and the overall vehicle. 
+This module provides functions to calculate individual component CG positions and aggregate them into a total vehicle CG.
+
+See Also
+--------
+RCAIDE.Methods.Weights.Correlation_Buildups
+RCAIDE.Methods.Weights.Physics_Based_Buildups
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

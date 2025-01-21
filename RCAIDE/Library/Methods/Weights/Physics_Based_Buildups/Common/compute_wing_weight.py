@@ -30,42 +30,111 @@ def compute_wing_weight(wing,
          shear_center_location = 0.25,
          margin_factor = 1.2):
     
-    """ Calculates the structural mass of a wing for an eVTOL vehicle based on
-        assumption of NACA airfoil wing, an assumed L/D, cm/cl, and structural
-        geometry. 
-        
-        Assumptions:
-        If no materials are assigned to vehicle model, appropriate assumptions
-        are made based on RCAIDE's Solids Attributes library. 
-        
-        Shear moment is calculated  by adding thrust from each motor to each
-        analysis point that's closer to the wing root than the motor. Accomplished
-        by indexing Vt according to a boolean mask of the design points that area
-        less than or aligned with the motor location under consideration in an
-        iterative loop
-     
-        Sources:
-        Project Vahana Conceptual Trade Study
+    """
+    Calculates the structural mass of a wing using beam theory and material properties, accounting for 
+    aerodynamic loads, thrust loads, and structural requirements.
 
-        Inputs:
+    Parameters
+    ----------
+    wing : RCAIDE.Components.Wings.Wing()
+        Wing data structure containing
+            - spans.projected : float
+                Wing span [m]
+            - chords.mean_aerodynamic : float
+                Mean aerodynamic chord [m]
+            - thickness_to_chord : float
+                Wing thickness to chord ratio
+            - areas.reference : float
+                Wing reference area [m²]
+            - winglet_fraction : float, optional
+                Winglet length as fraction of span
+            - materials : Data()
+                Material properties for wing components
+                    - skin_materials : Data()
+                        Materials for wing skin
+                    - spar_materials : Data()
+                        Materials for wing spars
+                    - flap_materials : Data()
+                        Materials for wing flaps
+                    - rib_materials : Data()
+                        Materials for wing ribs
+    config : RCAIDE.Vehicle()
+        Vehicle configuration containing
+            - mass_properties.max_takeoff : float
+                Maximum takeoff weight [kg]
+            - wings : list
+                List of all wing components
+            - networks : list
+                List of propulsion networks
+    max_thrust : float
+        Maximum thrust per motor [N]
+    num_analysis_points : int, optional
+        Number of spanwise analysis points (default 10)
+    safety_factor : float, optional
+        Design safety factor (default 1.5)
+    max_g_load : float, optional
+        Maximum load factor (default 3.8)
+    moment_to_lift_ratio : float, optional
+        Ratio of moment to lift coefficients (default 0.02)
+    lift_to_drag_ratio : float, optional
+        Aircraft lift to drag ratio (default 7)
+    forward_web_locations : list, optional
+        Forward spar locations [x/c] (default [0.25, 0.35])
+    rear_web_locations : list, optional
+        Rear spar locations [x/c] (default [0.65, 0.75])
+    shear_center_location : float, optional
+        Shear center location [x/c] (default 0.25)
+    margin_factor : float, optional
+        Additional mass margin factor (default 1.2)
 
-            wing                          RCAIDE Wing Data Structure           [None]
-                 winglet_fraction         winglet fraction                    [Unitless]
-                 motor_spanwise_locations spanwise fraction location of motor [Unitless]
-            config                        RCAIDE Config Data Structure         [None]
-            maxThrust                     Maximum Thrust                      [N]
-            numAnalysisPoints             Analysis Points for Sizing          [Unitless]
-            safety_factor                 Design Safety Factor                [Unitless]
-            max_g_load                    Maximum Accelerative Load           [Unitless]
-            moment_to_lift_ratio          Coeff. of Moment to Coeff. of Lift  [Unitless]
-            lift_to_drag_ratio            Coeff. of Lift to Coeff. of Drag    [Unitless]
-            forward_web_locations         Location of Forward Spar Webbing    [m]
-            rear_web_locations            Location of Rear Spar Webbing       [m]
-            shear_center                  Location of Shear Center            [m]
-            margin_factor                 Allowable Extra Mass Fraction       [Unitless]
+    Returns
+    -------
+    mass : float
+        Total wing structural mass [kg]
 
-        Outputs: 
-            weight:                       Wing Mass                           [kg]
+    Notes
+    -----
+    The function performs a detailed structural analysis considering bending moments,
+    torsional loads, and thrust loads from wing-mounted motors.
+
+    **Major Assumptions**
+        * NACA airfoil section
+        * Elliptical lift distribution
+        * Linear beam theory applies
+        * If materials not specified, defaults to:
+            - Bidirectional carbon fiber for torsion carrier
+            - Carbon fiber honeycomb for core
+            - Unidirectional carbon fiber for bending
+            - Aluminum for ribs
+            - Epoxy for adhesive
+            - Paint for covering
+
+    **Theory**
+    Key calculations include:
+    .. math::
+        L = L_0 \\sqrt{1-(\\frac{y}{b/2})^2}
+
+        L_0 = \\frac{1}{2}N_g * MTOW * g * SF * \\frac{S_{wing}}{S_{total}}
+
+        T = L * c * \\frac{C_m}{C_l}
+
+        D = \\frac{L}{L/D}
+
+    where:
+        - :math:`L` = spanwise lift distribution
+        - :math:`L_0` = total design lift force
+        - :math:`T` = torsion distribution
+        - :math:`D` = drag distribution
+        - :math:`N_g` = load factor
+        - :math:`SF` = safety factor
+
+    References
+    ----------
+    [1] Project Vahana Conceptual Trade Study
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_wing_weight
     """
 
     #-------------------------------------------------------------------------------

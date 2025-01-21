@@ -17,36 +17,61 @@ import  numpy as  np
 #  Operating Items Weight 
 # ----------------------------------------------------------------------------------------------------------------------
 def compute_operating_items_weight(vehicle):
-    """ Calculate the weight of operating items, including:
-        - crew
-        - baggage
-        - unusable fuel
-        - engine oil
-        - passenger service
-        - ammunition and non-fixed weapons
-        - cargo containers
+    """
+    Calculate the weight of operating items for a transport aircraft, including crew, baggage, unusable 
+    fuel, engine oil, passenger service items, and cargo containers.
 
-        Assumptions:
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing vehicle properties
+            - passengers : int
+                Number of passengers
+            - systems.accessories : str
+                Type of aircraft. Options:
+                    - 'short-range': Short-range domestic with austere accommodations
+                    - 'medium-range': Medium-range domestic
+                    - 'long-range': Long-range overwater
+                    - 'business': Business jet
+                    - 'cargo': All cargo
+                    - 'commuter': Commuter aircraft
+                    - 'sst': Supersonic transport
 
-        Source:
-            http://aerodesign.stanford.edu/aircraftdesign/AircraftDesign.html
+    Returns
+    -------
+    output : Data()
+        Operating items weight breakdown
+            - misc : float
+                Weight of unusable fuel, engine oil, passenger service items and cargo containers [kg]
+            - flight_crew : float
+                Weight of flight crew including their baggage [kg]
+            - flight_attendants : float
+                Weight of flight attendants including their baggage [kg]
+            - total : float
+                Total operating items weight [kg]
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.passengers: number of passengers
-                -.systems.accessories: type of aircraft (short-range, commuter
-                                                        medium-range, long-range,
-                                                        sst, cargo)
+    Notes
+    -----
+    Flight crew sizing:
+        * 2 crew members for aircraft < 150 passengers
+        * 3 crew members for aircraft >= 150 passengers
 
-        Outputs:
-            output - data dictionary with weights                               [kilograms]
-                    - output.oper_items: unusable fuel, engine oil, passenger service weight and cargo containers
-                    - output.flight_crew: flight crew weight
-                    - output.flight_attendants: flight attendants weight
-                    - output.total: total operating items weight
+    Flight attendant sizing:
+        * 1 attendant for aircraft < 51 passengers
+        * 1 + floor(passengers/40) for aircraft >= 51 passengers
 
-        Properties Used:
-            N/A
+    **Major Assumptions**
+        * Flight crew weight: 190 lbs per person + 50 lbs baggage
+        * Flight attendant weight: 170 lbs per person + 40 lbs baggage
+        * Operating items weight varies by aircraft type per passenger
+
+    References
+    ----------
+    [1] Stanford Aircraft Design Course, "Aircraft Weight Estimation", http://aerodesign.stanford.edu/aircraftdesign/AircraftDesign.html
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_operating_items_weight
     """
     num_seats   = vehicle.passengers
     ac_type     = vehicle.systems.accessories

@@ -1,7 +1,18 @@
 # RCAIDE/Library/Methods/Weights/Correlations/Human_Powered/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+This module provides weight estimation methods for human-powered aircraft components 
+using empirical correlations. These methods are specifically calibrated for 
+ultra-lightweight aircraft designs where minimizing structural weight while maintaining 
+adequate strength is critical.
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS
+    Weight estimation methods for conventional aircraft
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer
+    Weight estimation methods using Raymer correlations
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

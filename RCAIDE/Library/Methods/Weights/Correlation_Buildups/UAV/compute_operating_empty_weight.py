@@ -15,25 +15,59 @@ from RCAIDE.Framework.Core    import  Data
 # Compute Operating Empty Weight 
 # ----------------------------------------------------------------------------------------------------------------------
 def compute_operating_empty_weight(vehicle):
-    """ This computes the weigt of a UAV   
-    
-    Assumptions:
-        Assumes a 'main wing' is attached
+    """
+    Computes the operating empty weight of a UAV using empirical correlations based on wing geometry.
 
-    Source:
-        Structural Weight correlation from all 415 samples of fixed-wing UAVs and sailplanes
-        Equation 3.16 from 'Design of Solar Powered Airplanes for Continuous Flight' by Andre Noth
-        Relatively valid for a wide variety of vehicles, may be optimistic 
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing vehicle properties
+            - reference_area : float
+                Aircraft reference area [m²]
+            - wings : list
+                List of wing components
+                    - areas.reference : float
+                        Wing reference area [m²]
+                    - aspect_ratio : float
+                        Wing aspect ratio
 
-    Inputs:
-        S                [meters**2]
-        AR               [dimensionless]
-        
-    Outputs:
-        weight           [kilograms]
+    Returns
+    -------
+    weight : Data()
+        Weight breakdown data structure
+            - empty : Data()
+                Empty weight components
+                    - total : float
+                        Total empty weight [kg]
 
-    Properties Used:
-        N/A
+    Notes
+    -----
+    The function uses a correlation developed specifically for fixed-wing UAVs and sailplanes,
+    based on a statistical analysis of 415 aircraft samples.
+
+    **Major Assumptions**
+        * Aircraft has at least one 'main wing' component
+        * Correlation is valid for fixed-wing UAVs and sailplanes
+        * Weight scales primarily with wing area and aspect ratio
+
+    **Theory**
+    The empty weight is calculated using:
+    .. math::
+        W_{airframe} = \\frac{5.58(S^{1.59})(AR^{0.71})}{g}
+
+    where:
+        - :math:`W_{airframe}` = airframe weight [kg]
+        - :math:`S` = wing reference area [m²]
+        - :math:`AR` = wing aspect ratio
+        - :math:`g` = gravitational acceleration [m/s²]
+
+    References
+    ----------
+    [1] Noth, A. (2008). Design of solar powered airplanes for continuous flight by andré Noth (thesis). 
+        Design of solar powered airplanes for continuous flight by André Noth. ETH, Zürich. 
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_operating_empty_weight
     """    
     # ----------------------------------------------------------------------------------------------------------------------
     # Unpack

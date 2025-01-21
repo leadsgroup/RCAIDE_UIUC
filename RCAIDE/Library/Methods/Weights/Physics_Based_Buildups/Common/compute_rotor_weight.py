@@ -26,42 +26,103 @@ def compute_rotor_weight(rotor,
          shear_center = 0.25,
          speed_of_sound = 340.294,
          tip_max_mach_number = 0.65):
-    """ Calculates propeller blade pass for an eVTOL vehicle based on assumption
-        of a NACA airfoil rotor, an assumed cm/cl, tip Mach limit, and structural
-        geometry. 
+    """
+    Calculates the structural mass of a rotor blade using beam theory and material properties.
 
-        Assumptions:
-        Originally written as part of an AA 290 project inteded for trade study
-        of the above vehicle types.
+    Parameters
+    ----------
+    rotor : RCAIDE.Components.Rotors.Rotor()
+        Rotor data structure containing
+            - tip_radius : float
+                Blade radius [m]
+            - number_of_blades : int
+                Number of rotor blades
+            - materials : Data()
+                Material properties for blade components
+                    - skin_materials : Data()
+                        Materials for blade skin
+                    - spar_materials : Data()
+                        Materials for blade spar
+                    - flap_materials : Data()
+                        Materials for blade flap
+                    - rib_materials : Data()
+                        Materials for blade ribs
+                    - root_materials : Data()
+                        Materials for blade root
+    maximum_lifting_thrust : float
+        Maximum design thrust [N]
+    chord_to_radius_ratio : float, optional
+        Blade chord to radius ratio (default 0.1)
+    thickness_to_chord : float, optional
+        Blade thickness to chord ratio (default 0.12)
+    root_to_radius_ratio : float, optional
+        Root structure to blade radius ratio (default 0.1)
+    moment_to_lift_ratio : float, optional
+        Coefficient of moment to coefficient of lift ratio (default 0.02)
+    spanwise_analysis_points : int, optional
+        Number of analysis points along blade span (default 5)
+    safety_factor : float, optional
+        Design safety factor (default 1.5)
+    margin_factor : float, optional
+        Allowable extra mass fraction (default 1.2)
+    forward_web_locations : list, optional
+        Location of forward spar webbing [x/c] (default [0.25, 0.35])
+    shear_center : float, optional
+        Location of shear center [x/c] (default 0.25)
+    speed_of_sound : float, optional
+        Local speed of sound [m/s] (default 340.294)
+    tip_max_mach_number : float, optional
+        Allowable tip Mach number (default 0.65)
 
-        If vehicle model does not have material properties assigned, appropriate
-        assumptions are made based on RCAIDE's Solids Attributes library.
-        
-        Sources:
-        Project Vahana Conceptual Trade Study
+    Returns
+    -------
+    mass : float
+        Total rotor mass [kg]
 
-        Inputs:
+    Notes
+    -----
+    The function performs a detailed structural analysis considering bending moments,
+    torsional loads, and centrifugal forces.
 
-            rotor                       RCAIDE Rotor Data Structure
-            maximum_thrust              Maximum Design Thrust               [N]
-            chord_to_radius_ratio       Chord to Blade Radius               [Unitless]
-            thickness_to_chord          Blade Thickness to Chord            [Unitless]
-            root_to_radius_ratio        Root Structure to Blade Radius      [Unitless]
-            moment_to_lift_ratio        Coeff. of Moment to Coeff. of Lift  [Unitless]
-            spanwise_analysis_points    Analysis Points for Sizing          [Unitless]
-            safety_factor               Design Safety Factor                [Unitless]
-            margin_factor               Allowable Extra Mass Fraction       [Unitless]
-            forward_web_locationss      Location of Forward Spar Webbing    [m]
-            shear_center                Location of Shear Center            [m]
-            speed_of_sound              Local Speed of Sound                [m/s]
-            tip_max_mach_number         Allowable Tip Mach Number           [Unitless]
+    **Major Assumptions**
+        * NACA airfoil section
+        * Linear beam theory applies
+        * Tip speed limited by Mach number
+        * Uniform material properties along span
+        * If materials not specified, defaults to:
+            - Bidirectional carbon fiber for torsion and shear
+            - Unidirectional carbon fiber for bending
+            - Carbon fiber honeycomb for core
+            - Aluminum for ribs and root
+            - Nickel for leading edge
+            - Epoxy for adhesive
+            - Paint for cover
 
-        Outputs:
+    **Theory**
+    Key calculations include:
+    .. math::
+        \\omega = \\frac{M_{tip} * a_0}{R}
 
-            weight:                 Propeller Mass                      [kg]
-            
-        Properties Used:
-        Material properties of imported RCAIDE Solids
+        F = SF * \\frac{3T_{max}}{R^3} * x^2 / N_b
+
+        Q = F * c * \\frac{C_m}{C_l}
+
+    where:
+        - :math:`\\omega` = rotor angular velocity
+        - :math:`F` = spanwise force distribution
+        - :math:`Q` = torsion distribution
+        - :math:`T_{max}` = maximum thrust
+        - :math:`R` = blade radius
+        - :math:`N_b` = number of blades
+
+    References
+    ----------
+    [1] Project Vahana Conceptual Trade Study
+    [2] Project for AA 290
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport.compute_rotor_weight
     """
 
     #-------------------------------------------------------------------------------

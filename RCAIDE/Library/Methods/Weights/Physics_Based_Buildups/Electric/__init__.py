@@ -1,7 +1,13 @@
 # RCAIDE/Library/Methods/Weights/Buildups/eVTOL/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+This module provides functions for physics-based weight estimation of electric aircraft. It includes methods for computing 
+operating empty weight and iteratively converging weight buildups based on physical principles and constraints.
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Correlation_Buildups
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

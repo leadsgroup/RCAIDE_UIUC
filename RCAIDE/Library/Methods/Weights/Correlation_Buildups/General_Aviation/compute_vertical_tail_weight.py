@@ -14,35 +14,71 @@ import  numpy as  np
 # ----------------------------------------------------------------------------------------------------------------------
 # Vertical Tail Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_vertical_tail_weight(S_v, AR_v, sweep_v, q_c, taper_v, t_c_v, Nult,TOW,t_tail, rudder_fraction = 0.25):      
+def compute_vertical_tail_weight(S_v, AR_v, sweep_v, q_c, taper_v, t_c_v, Nult, TOW, t_tail, rudder_fraction=0.25):
     """
-        Calculate the weight of the vertical fin of an aircraft without the weight of the rudder and then calculate the weight of the rudder        
-        
-        Source:
-            Raymer,  Aircraft Design: A Conceptual Approach (pg 460 in 4th edition)
-        
-        Inputs:
-            S_v - area of the vertical tail (combined fin and rudder)          [meters**2]
-            M_w -mass of wing                                                  [kilograms]
-            AR_v -aspect ratio of vertial tail                                 [dimensionless]
-            sweep_v - sweep angle of the vertical tail                         [radians]
-            q_c - dynamic pressure at cruise                                   [Pascals]
-            taper_v - taper ratio of vertical tail                             [dimensionless]
-            t_c_v -thickness to chord ratio of wing                            [dimensionless]
-            Nult - ultimate load of the aircraft                               [dimensionless]
-            TOW - maximum takeoff weight of the aircraft                       [kilograms]
-            S_gross_w - wing gross area                                        [meters**2]
-            t_tail - flag to determine if aircraft has a t-tail                [dimensionless]
-            rudder_fraction - fraction of the vertical tail that is the rudder [dimensionless]
-        
-        Outputs:
-            output - a dictionary with outputs:
-                W_tail_vertical - weight of the vertical fin portion of the vertical tail [kilograms]
-            
-        Assumptions:
-            Vertical tail weight is the weight of the vertical fin without the rudder weight.
-           
-   """     
+    Calculates the weight of the vertical tail for a general aviation aircraft using empirical correlations.
+
+    Parameters
+    ----------
+    S_v : float
+        Vertical tail reference area [m^2]
+    AR_v : float
+        Vertical tail aspect ratio
+    sweep_v : float
+        Quarter-chord sweep angle [radians]
+    q_c : float
+        Dynamic pressure at cruise [Pa]
+    taper_v : float
+        Vertical tail taper ratio
+    t_c_v : float
+        Vertical tail thickness-to-chord ratio
+    Nult : float
+        Ultimate load factor
+    TOW : float
+        Maximum takeoff weight [kg]
+    t_tail : str
+        Flag indicating T-tail configuration ('yes' or 'no')
+    rudder_fraction : float, optional
+        Fraction of vertical tail area that is rudder, defaults to 0.25
+
+    Returns
+    -------
+    W_tail_vertical : float
+        Weight of the vertical tail [kg]
+
+    Notes
+    -----
+    This method uses Raymer's empirical correlation to estimate vertical tail weight
+    for general aviation aircraft. The correlation accounts for T-tail configurations
+    with a weight penalty.
+
+    **Major Assumptions**
+        * Conventional aluminum construction
+        * Rudder comprises 25% of vertical tail area by default
+        * T-tail configuration adds 20% to vertical tail weight
+        * Weight correlation based on historical general aviation data. Does not include rudder weight
+
+    **Theory**
+    The vertical tail weight is calculated using the following correlation:
+    .. math::
+        W_{vt} = 0.073(1 + 0.2T_{tail})(N_{ult}W_0)^{0.376}q^{0.122}S_{vt}^{0.873}
+        (\frac{100t/c}{\cos\Lambda})^{-0.49}(\frac{A}{\cos^2\Lambda})^{0.357}\lambda^{0.039}
+
+    where:
+        * :math:`T_{tail}` is 1 for T-tail configuration, 0 otherwise
+        * :math:`\Lambda` is the quarter-chord sweep angle
+        * :math:`\lambda` is the taper ratio
+
+    References
+    ----------
+    [1] Raymer, D. P. (2018). Aircraft design: A conceptual approach: A conceptual approach. 
+        American Institute of Aeronautics and Astronautics Inc. 
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_horizontal_tail_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_operating_empty_weight
+    """
     # unpack inputs
     W_0   = TOW / Units.lb # Convert kg to lbs
     S_vt  = S_v/ Units.ft**2 # Convert from meters squared to ft squared  
@@ -50,7 +86,7 @@ def compute_vertical_tail_weight(S_v, AR_v, sweep_v, q_c, taper_v, t_c_v, Nult,T
 
     # Determine weight of the vertical portion of the tail
     if t_tail == "yes": 
-        T_tail_factor = 1.# Weight of vertical portion of the T-tail is 25% more than a conventional tail
+        T_tail_factor = 1.# Weight of vertical portion of the T-tail is 20% more than a conventional tail
     else: 
         T_tail_factor = 0.
 

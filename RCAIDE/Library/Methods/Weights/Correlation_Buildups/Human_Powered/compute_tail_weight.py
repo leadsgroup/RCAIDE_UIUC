@@ -6,36 +6,73 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  Tail Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_tail_weight(Sts,bts,cts,Ntsr,t_cts,qm):        
-    """ Compute weight of human-powered aircraft tail     
-    
-    Assumptions:
-       All of this is from AIAA 89-2048, units are in kg. These weight estimates
-       are from the MIT Daedalus and are valid for very lightweight
-       carbon fiber composite structures. This may need to be solved iteratively since
-       gross weight is an input.
-       
-    Source: 
-        MIT Daedalus
-                
-    Inputs:
-        Sts -      tail surface area                                [meters]
-        bts -      tail surface span                                [meters]
-        cts -      average tail surface chord                       [meters]
-        deltats -  average rib spacing to average chord ratio       [dimensionless]
-        Ntsr -     number of tail surface ribs (bts^2)/(deltats*Sts)[dimensionless]
-        t_cts -    tail airfoil thickness to chord ratio            [dimensionless]
-        qm -       dynamic pressure at maneuvering speed            [Pascals]
-    
-    Outputs:
-        Wtss -     weight of tail surface spar                      [kilogram]
-        Wtsr -     weight of tail surface ribs                      [kilogram]
-        WtsLE -    weight of tail surface leading edge              [kilogram]
-        Wtsc -     weight of tail surface covering                  [kilogram]
-            
-    Properties Used:
-        N/A
-    """     
+def compute_tail_weight(Sts, bts, cts, Ntsr, t_cts, qm):
+    """
+    Computes tail surface weight for human-powered aircraft using MIT Daedalus correlations.
+    Applicable for both horizontal and vertical tail surfaces.
+
+    Parameters
+    ----------
+    Sts : float
+        Tail surface area [m²]
+    bts : float
+        Tail surface span [m]
+    cts : float
+        Average tail surface chord [m]
+    Ntsr : float
+        Number of tail surface ribs = (bts²)/(deltats*Sts)
+    t_cts : float
+        Tail airfoil thickness to chord ratio
+    qm : float
+        Dynamic pressure at maneuvering speed [Pa]
+
+    Returns
+    -------
+    weight : float
+        Total tail surface weight [kg], including:
+            - Wtss : Tail surface spar weight
+            - Wtsr : Tail surface rib weight
+            - Wts : Tail surface secondary structure weight
+            - Wtsc : Tail surface covering weight
+
+    Notes
+    -----
+    Uses empirical correlations developed from the MIT Daedalus human-powered aircraft project.
+
+    **Major Assumptions**
+        * Ultra-lightweight carbon fiber composite construction
+        * Low-speed flight regime
+        * Weight must be solved iteratively since gross weight is an input
+
+    **Theory**
+    Total weight is computed using:
+    .. math::
+        W_{tss} = (4.15\\times10^{-2}b_{ts} + 3.91\\times10^{-3}b_{ts}^2)(1 + \\frac{q_mS_{ts}/78.5 - 1}{12})
+
+        W_{tsr} = N_{tsr}(0.116c_{ts}^2t_{c_{ts}} + 4.01\\times10^{-3}c_{ts})
+
+        W_{ts} = 0.174\\frac{S_{ts}^2\\delta_{ts}^{4/3}}{b_{ts}}
+
+        W_{tsc} = 1.93\\times10^{-2}S_{ts}
+
+    where:
+        * b_ts = tail surface span
+        * S_ts = tail surface area
+        * q_m = maneuvering dynamic pressure
+        * c_ts = average tail surface chord
+        * t_c_ts = thickness to chord ratio
+        * δ_ts = average rib spacing ratio
+        * N_tsr = number of tail surface ribs
+
+    References
+    ----------
+    [1] Langford, J. (1989). The daedalus project - a summary of lessons learned. Aircraft Design 
+        and Operations Meeting. https://doi.org/10.2514/6.1989-2048 
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Human_Powered.compute_operating_empty_weight
+    """
     deltats = (bts**2)/(Sts*Ntsr)
     
     #Rudder & Elevator Primary Structure:

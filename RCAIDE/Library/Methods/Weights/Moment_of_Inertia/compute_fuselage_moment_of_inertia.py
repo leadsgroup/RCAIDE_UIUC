@@ -11,31 +11,77 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Compute Fuselage Moment of Intertia
 # ----------------------------------------------------------------------------------------------------------------------   
-def compute_fuselage_moment_of_inertia(fuselage,center_of_gravity=[[0, 0, 0]]): 
-    ''' computes the moment of ienrtia tensor for a generic fuselage about a given center of gravity. 
+def compute_fuselage_moment_of_inertia(fuselage, center_of_gravity=[[0, 0, 0]]):
+    """
+    Computes the moment of inertia tensor for a generic fuselage by modeling it as a combination 
+    of a hemisphere, cylinder, and cone.
 
-    Assumptions:
-    - Fuselage can be approximated by a hemisphere, cylinder, and cone.
-    - Fuselage is hollow with the inner radius being 85% of the outer radius.
-    - Fuselage is constant density
+    Parameters
+    ----------
+    fuselage : Fuselage
+        The fuselage instance containing:
+            - mass_properties.mass : float
+                Total fuselage mass [kg]
+            - effective_diameter : float
+                Fuselage outer diameter [m]
+            - lengths : Data
+                Container with:
+                    - total : float
+                        Total fuselage length [m]
+                    - nose : float
+                        Nose section length [m]
+                    - tail : float
+                        Tail section length [m]
+            - origin : array
+                Fuselage reference point location [m]
+    center_of_gravity : array, optional
+        Reference point for moment of inertia calculation [m], default [0,0,0]
 
-    Source:
-    [1] Moulton, B. C., and Hunsaker, D. F., “Simplified Mass and Inertial Estimates for Aircraft with Components
-    of Constant Density,” AIAA SCITECH 2023 Forum, January 2023, AIAA-2023-2432 DOI: 10.2514/
-    6.2023-2432
-    
-    [2] Weisstein, E. W., "Moment of Inertia -- Cone," Wolfram Research, N.D., https://scienceworld.wolfram.com/physics/MomentofInertiaCone.html 
+    Returns
+    -------
+    I_total : ndarray
+        3x3 moment of inertia tensor about reference point [kg-m²]
+    mass_fuselage : float
+        Total fuselage mass [kg]
 
-    Inputs:
-    - Fuselage
-    - Center of gravity or the point to find the MOI about
+    Notes
+    -----
+    Models the fuselage as three sections, Nose: Hemisphere, Center: Cylinder, Tail: Cone. 
 
-    Outputs:
-    - Fuselage moment of inertia tensor
+    **Major Assumptions**
+        * Hollow structure with inner radius 85% of outer radius
+        * Uniform density throughout
+        * Axisymmetric about x-axis
+        * Mass distributed according to volume fractions
+        * Rigid body
+        * Sections are perfectly joined
 
-    Properties Used:
-    N/A
-    '''
+    **Theory**
+    The total moment of inertia is the sum of component inertias:
+    .. math::
+        I_{total} = I_{hemisphere} + I_{cylinder} + I_{cone}
+
+    Each component's contribution follows:
+    .. math::
+        I_{component} = I_{cm} + m(d^2\\delta_{ij} - d_id_j)
+
+    where volume fractions determine mass distribution:
+    .. math::
+        m_{component} = m_{total}\\frac{V_{component}}{V_{total}}
+
+    References
+    ----------
+    [1] Moulton, B. C., and Hunsaker, D. F., "Simplified Mass and Inertial 
+        Estimates for Aircraft with Components of Constant Density," AIAA 
+        SCITECH 2023 Forum, January 2023, AIAA-2023-2432 
+        DOI: 10.2514/6.2023-2432
+    [2] Weisstein, E. W., "Moment of Inertia -- Cone," Wolfram Research, N.D., 
+        https://scienceworld.wolfram.com/physics/MomentofInertiaCone.html
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_aircraft_moment_of_inertia
+    """
     
     # ----------------------------------------------------------------------------------------------------------------------   
     # Setup

@@ -17,34 +17,70 @@ import  numpy as  np
 #  Vertical Tail Weight 
 # ---------------------------------------------------------------------------------------------------------------------
 def compute_vertical_tail_weight(vehicle, wing, rudder_fraction=0.25):
-    """ Calculate the weight of the vertical fin of an aircraft without the weight of 
-    the rudder and then calculate the weight of the rudder 
+    """
+    Calculate the weight of the vertical tail assembly including the vertical fin and rudder.
+
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing vehicle properties
+            - flight_envelope.ultimate_load : float
+                Ultimate load factor of the aircraft
+            - mass_properties.max_takeoff : float
+                Maximum takeoff weight [kg]
+            - reference_area : float
+                Wing reference area [m²]
+    wing : RCAIDE.Components.Wings.Vertical_Tail()
+        Vertical tail data structure
+            - spans.projected : float
+                Projected span of the vertical tail [m]
+            - thickness_to_chord : float
+                Thickness-to-chord ratio of the vertical tail
+            - sweeps.quarter_chord : float
+                Quarter chord sweep angle [radians]
+            - areas.reference : float
+                Reference area of the vertical tail [m²]
+            - t_tail : str
+                Indicates if vertical tail is part of T-tail configuration ('yes' or 'no')
+    rudder_fraction : float, optional
+        Fraction of vertical tail area that is rudder (default 0.25)
+
+    Returns
+    -------
+    tail_weight : float
+        Total weight of vertical tail assembly [kg]
+
+    Notes
+    -----
+    The function first calculates the weight of the vertical fin without the rudder, then adds
+    the rudder weight based on the specified area fraction.
+
+    **Major Assumptions**
+        * Rudder occupies 25% of vertical tail area by default
+        * Rudder weighs 60% more per unit area than the vertical fin
+        * T-tail configuration adds 25% to vertical fin weight
     
-    Assumptions:
-        Vertical tail weight is the weight of the vertical fin without the rudder weight.
-        Rudder occupies 25% of the S_v and weighs 60% more per unit area.     
-        
-    Source: 
-        N/A 
-        
-    Inputs:
-        S_v - area of the vertical tail (combined fin and rudder)                      [meters**2]
-        vehicle.flight_envelope.ultimate_load - ultimate load of the aircraft                 [dimensionless]
-        wing.spans.projected - span of the vertical                                    [meters]
-        vehicle.mass_properties.max_takeoff - maximum takeoff weight of the aircraft   [kilograms]
-        wing.thickness_to_chord- thickness-to-chord ratio of the vertical tail         [dimensionless]
-        wing.sweeps.quarter_chord - sweep angle of the vertical tail                   [radians]
-        vehicle.reference_area - wing gross area                                       [meters**2]
-        wing.t_tail - factor to determine if aircraft has a t-tail                     [dimensionless]
-        rudder_fraction - fraction of the vertical tail that is the rudder             [dimensionless]
-    
-    Outputs:
-        output - a dictionary with outputs:
-            W_tail_vertical - weight of the vertical fin portion of the vertical tail [kilograms]
-            W_rudder - weight of the rudder on the aircraft                           [kilograms]
-  
-    Properties Used:
-        N/A
+    **Theory**
+    The weight estimation uses an empirical correlation based on:
+    .. math::
+        W_{vert} = T_{factor} * (2.62 * S_{v} + 1.5 * 10^{-5} * N_{ult} * b_{v}^3 * 
+        (8 + 0.44 * \\frac{W_{to}}{S_{ref}}) / (t/c * cos^2(\\Lambda)))
+
+    where:
+        - :math:`W_{vert}` = vertical tail weight
+        - :math:`T_{factor}` = T-tail factor (1.25 or 1.0)
+        - :math:`S_{v}` = vertical tail area
+        - :math:`N_{ult}` = ultimate load factor
+        - :math:`b_{v}` = vertical tail span
+        - :math:`W_{to}` = takeoff weight
+        - :math:`S_{ref}` = reference wing area
+        - :math:`t/c` = thickness to chord ratio
+        - :math:`\\Lambda` = quarter chord sweep angle
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer.compute_vertical_tail_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_vertical_tail_weight
     """
     # unpack inputs
     span                   = wing.spans.projected / Units.ft  # Convert meters to ft

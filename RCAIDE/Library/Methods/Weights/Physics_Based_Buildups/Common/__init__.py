@@ -1,7 +1,17 @@
 # RCAIDE/Library/Methods/Weights/Buildups/Common/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+Collection of fundamental physics-based weight estimation methods that can be applied across different aircraft types. 
+These methods calculate component weights using first principles, structural mechanics, and material properties rather 
+than empirical correlations. The module includes methods for primary structural components (wings, booms, fuselages, 
+rotors) and systems (wiring).
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Electric
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common
+RCAIDE.Library.Attributes.Materials
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

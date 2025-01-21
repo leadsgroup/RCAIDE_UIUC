@@ -22,50 +22,69 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # Compute Operating Empty Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_operating_empty_weight(vehicle,settings = None): 
-    """ Calculates the empty vehicle mass for an EVTOL-type aircraft including seats,
-        avionics, servomotors, ballistic recovery system, rotor and hub assembly,
-        transmission, and landing gear. 
-        
-        Sources:
-        Project Vahana Conceptual Trade Study
-        https://github.com/VahanaOpenSource
+def compute_operating_empty_weight(vehicle, settings=None):
+    """
+    Calculates the operating empty weight for an electric aircraft using physics-based weight estimation methods.
 
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        RCAIDE vehicle data structure containing all vehicle components and their properties
+    settings : Data(), optional
+        Configuration settings for weight estimation
+            - miscelleneous_weight_factor : float
+                Factor to account for miscellaneous weights (default: 1.1)
+            - safety_factor : float
+                Design safety factor (default: 1.5)
+            - disk_area_factor : float
+                Inverse of disk area efficiency (default: 1.15)
+            - max_thrust_to_weight_ratio : float
+                Maximum allowable thrust to weight ratio (default: 1.1)
+            - max_g_load : float
+                Maximum g-forces load for certification (default: 3.8)
 
-        Inputs: 
-            vehicle:                     RCAIDE Config Data Stucture 
-            max_tip_mach:               Allowable Tip Mach Number                      [Unitless]
-            disk_area_factor:           Inverse of Disk Area Efficiency                [Unitless]
-            max_thrust_to_weight_ratio: Allowable Thrust to Weight Ratio               [Unitless]
-            safety_factor               Safety Factor in vehicle design                [Unitless]
-            max_g_load                  Maximum g-forces load for certification        [UNitless]
-            motor_efficiency:           Motor Efficiency                               [Unitless]
+    Returns
+    -------
+    output : Data()
+        Hierarchical data structure containing component weights
+            - empty : Data()
+                Empty weight breakdown
+                    - structural : Data()
+                        Structural component weights (booms, fuselage, landing gear, wings)
+                    - propulsion : Data()
+                        Propulsion system weights (motors, rotors, hubs, servos, wiring, battery, TMS)
+                    - systems : Data()
+                        Aircraft systems weights (ECS, avionics, seats, BRS)
+            - payload : Data()
+                Payload weight breakdown (passengers, cargo)
+            - zero_fuel_weight : float
+                Total weight without fuel
+            - total : float
+                Total aircraft weight
 
-        Outputs: 
-            outputs:                    Data Dictionary of Component Masses [kg]
+    Notes
+    -----
+    The function computes weights for major aircraft components using physics-based methods:
+    - Structural components (wings, fuselage, booms, landing gear)
+    - Propulsion system (motors, rotors, battery, wiring)
+    - Aircraft systems (avionics, environmental control, seats)
+    - Payload capacity
 
-        Output data dictionary has the following book-keeping hierarchical structure:
+    **Major Assumptions**
+        * Linear scaling of some component weights with MTOW
+        * Fixed weights for seats, avionics, and passenger weights
+        * Environmental control system scales with passenger count
+        * Component weight factors based on empirical data
 
-            Output
-                Total.
-                    Empty.
-                        Structural.
-                            Fuselage
-                            Wings
-                            Landing Gear
-                            Rotors
-                            Hubs
-                        Seats
-                        Battery
-                        Motors
-                        Servo
-                    Systems.
-                        Avionics
-                        ECS               - Environmental Control System
-                        BRS               - Ballistic Recovery System
-                        Wiring            - Aircraft Electronic Wiring
-                    Payload
+    References
+    ----------
+    [1] Project Vahana Conceptual Trade Study, https://github.com/VahanaOpenSource
 
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Common.compute_wing_weight
+    RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Common.compute_fuselage_weight
+    RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Common.compute_rotor_weight
     """
     
     if settings == None: 

@@ -11,35 +11,84 @@ import numpy as  np
 # Main Wing 
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_main_wing_weight(vehicle, wing, rho, sigma):
-    """ Calculate the wing weight of the aircraft based on the fully-stressed
-    bending weight of the wing box
+    """
+    Computes the wing structural weight based on the fully-stressed bending weight 
+    of the wing box and empirical data from transport aircraft.
 
-    Assumptions:
-        calculated total wing weight based on a bending index and actual data
-        from 15 transport aircraft
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - mass_properties.max_takeoff : float
+                Maximum takeoff weight [kg]
+            - mass_properties.max_zero_fuel : float
+                Maximum zero fuel weight [kg]
+            - flight_envelope.ultimate_load : float
+                Ultimate load factor
+            - reference_area : float
+                Reference wing area [m²]
+    wing : Wing
+        The wing instance containing:
+            - areas.reference : float
+                Wing reference area [m²]
+            - sweeps.quarter_chord : float
+                Quarter-chord sweep angle [rad]
+            - spans.projected : float
+                Wing projected span [m]
+            - thickness_to_chord : float
+                Average thickness-to-chord ratio
+            - taper : float
+                Wing taper ratio
+            - chords.root : float
+                Root chord length [m]
+            - segments : dict
+                Wing segment definitions
+    rho : float
+        Material density [kg/m³]
+    sigma : float
+        Material yield strength [Pa]
 
-    Source:
-        http://aerodesign.stanford.edu/aircraftdesign/AircraftDesign.html
-        search for: Derivation of the Wing Weight Index
+    Returns
+    -------
+    weight : float
+        Wing structural weight [kg]
 
-    Inputs:
-        vehicle - data dictionary with vehicle properties                   [dimensionless]
-            -.mass_properties.max_takeoff: MTOW                             [kilograms]
-            -.mass_properties.max_zero_fuel: zero fuel weight aircraft      [kilograms]
-            -.flight_envelope.ultimate_load: ultimate load factor
-        wing    - data dictionary with specific wing properties             [dimensionless]
-            -.areas.reference: wing reference surface area                  [m^2]
-            -.sweeps.quarter_chord: quarter chord sweep angle               [deg]
-            -.spans.projected: wing span                                    [m]
-            -.thickness_to_chord: thickness to chord of wing
-            -.taper: taper ratio of wing
-            -.chords.root: root chord                                       [m]
+    Notes
+    -----
+    Uses a combination of analytical bending weight calculations and empirical corrections
+    based on transport aircraft data.
 
-    Outputs:
-        weight - weight of the wing                  [kilograms]
+    **Major Assumptions**
+        * Wing box carries primary bending loads
+        * Linear spanwise load distribution
+        * Constant material properties
+        * Fully-stressed design
+        * Secondary structure proportional to primary
+        * Multi-segment wings handled through integration
 
-    Properties Used:
-        N/A
+    **Theory**
+    Basic wing weight index:
+    .. math::
+        W_w = \\frac{N_{ult}\\sqrt{W_0W_{zf}}b^3(1+2\\lambda)}{t_c\\cos^2(\\Lambda)S_w(1+\\lambda)}
+
+    where:
+        * N_ult = ultimate load factor
+        * W_0 = max takeoff weight
+        * W_zf = zero fuel weight
+        * b = span
+        * λ = taper ratio
+        * t_c = thickness ratio
+        * Λ = sweep angle
+        * S_w = wing area
+
+    References
+    ----------
+    [1]  http://aerodesign.stanford.edu/aircraftdesign/AircraftDesign.html
+        search for: Derivation of the Wing
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common.compute_operating_empty_weight
     """
 
     # unpack inputs

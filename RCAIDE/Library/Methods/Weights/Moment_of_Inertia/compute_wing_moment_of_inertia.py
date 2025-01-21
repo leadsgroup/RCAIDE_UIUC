@@ -15,37 +15,93 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Compute Wing Moment of Intertia
 # ----------------------------------------------------------------------------------------------------------------------  
-def compute_wing_moment_of_inertia(wing,mass = 0, center_of_gravity = [[0, 0, 0]], fuel_flag = False):
-    ''' computes the moment of inertia tensor for a wing about a given center of gravity.
-    Includes the ability to modela  wing fuel tank as a condensed wing
+def compute_wing_moment_of_inertia(wing, mass=0, center_of_gravity=[[0, 0, 0]], fuel_flag=False):
+    """
+    Computes the moment of inertia tensor for a wing or wing-like surface (horizontal/vertical tail) 
+    about a specified reference point. Includes capability to model wing fuel tanks.
 
-    Assumptions:
-    - Wing is solid
-    - Wing has a constant density
+    Parameters
+    ----------
+    wing : Wing
+        The wing instance containing:
+            - thickness_to_chord : float
+                Thickness-to-chord ratio
+            - chords : Data
+                Container with:
+                    - tip : float
+                        Tip chord length [m]
+                    - root : float
+                        Root chord length [m]
+            - spans.total : float
+                Wing span [m]
+            - sweeps.quarter_chord : float
+                Quarter-chord sweep angle [rad]
+            - dihedral : float
+                Wing dihedral angle [rad]
+            - origin : array
+                Wing reference point location [m]
+            - symmetric : bool
+                Flag for symmetric wings
+            - vertical : bool
+                Flag for vertical surfaces
+    mass : float
+        Wing mass [kg]
+    center_of_gravity : array, optional
+        Reference point for moment of inertia calculation [m], default [0,0,0]
+    fuel_flag : bool, optional
+        Flag to model wing as fuel tank, default False
 
-    Source:
-    [1] Moulton, B. C., and Hunsaker, D. F., “Simplified Mass and Inertial Estimates for Aircraft with Components
-    of Constant Density,” AIAA SCITECH 2023 Forum, January 2023, AIAA-2023-2432 DOI: 10.2514/
-    6.2023-2432
-    
-    [2] Fuel tank references: These were used to estimate the length percentages. 
-    - https://assets.publishing.service.gov.uk/media/5422fa1aed915d13710007a1/2-2007_G-YMME.pdf
-    - https://oat.aero/2023/03/17/airbus-a380-general-familiarisation-fuel-storage/
-    - http://www.b737.org.uk/fuel.htm
-    - https://slideplayer.com/slide/3854059/
-    
-    Inputs:
-    - Wing
-    - Wing mass
-    - Center of gravity
-    - Fuel flag (whether the wing is considered a fuel tank or not)
+    Returns
+    -------
+    I_global : ndarray
+        3x3 moment of inertia tensor about reference point [kg-m²]
+    mass : float
+        Input mass returned for consistency [kg]
 
-    Outputs:
-    - wing moment of inertia tensor
+    Notes
+    -----
+    For fuel tanks, adjusts dimensions to:
+        * 80% of wing span
+        * 60% of chord length
+        * Shifted 1.25% chord aft
 
-    Properties Used:
-    N/A
-    '''
+    **Major Assumptions**
+        * NACA 4-digit airfoil thickness distribution
+        * Constant density throughout
+        * Linear taper
+        * Rigid structure
+        * For fuel tanks:
+            - Centered in wing
+            - Uniform fuel distribution
+            - Fixed percentage of wing dimensions
+
+    **Theory**
+    Uses integration constants defined in [1]:
+    .. math::
+        k_a = t_r(3c_r^2 + 2c_rc_t + c_t^2) + t_t(c_r^2 + 2c_rc_t + 3c_t^2)
+
+    where:
+        * t_r = root thickness ratio
+        * t_t = tip thickness ratio
+        * c_r = root chord
+        * c_t = tip chord
+
+    References
+    ----------
+    [1] Moulton, B. C., and Hunsaker, D. F., "Simplified Mass and Inertial 
+        Estimates for Aircraft with Components of Constant Density," AIAA 
+        SCITECH 2023 Forum, January 2023, AIAA-2023-2432 
+        DOI: 10.2514/6.2023-2432
+    [2] Fuel tank references:
+        - UK AAIB Report: G-YMME, 2007
+        - Airbus A380 Fuel Storage Guide
+        - Boeing 737 Technical Guide
+        - Commercial Aircraft Structure Design Notes
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_aircraft_moment_of_inertia
+    """
     # ----------------------------------------------------------------------------------------------------------------------
     # Setup: 
     # ---------------------------------------------------------------------------------------------------------------------- 

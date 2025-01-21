@@ -14,28 +14,75 @@ import  numpy as  np
 # ----------------------------------------------------------------------------------------------------------------------
 # Horizontal Tail Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_horizontal_tail_weight(S_h, AR_h, sweep_h, q_c, taper_h, t_c_h,Nult,TOW):       
-    """ 
-        Calculate the weight of the horizontal tail for a General Aviation-type aircraft
-        
-        Source:
-            Aircraft Design: A Conceptual Approach by Raymer (pg 460 in 4th edition)
-        
-      
-        Inputs:
-            S_h  = trapezoidal area of horizontal tail           [meters**2]
-            Ar_h = aspect ratio of horizontal tail               [dimensionless]
-            sweep_h = quarter chord sweep of the horizontal tail [radians]
-            q_c  = dynamic pressure at cruise                    [Pascals]
-            
-            
-        Outputs:
-            weight - weight of the horizontal tail               [kilograms]
-            
-        Assumptions:
-            calculated weight of the horizontal tail including the elevator
-            Assume that the elevator is 25% of the horizontal tail
-        
+def compute_horizontal_tail_weight(S_h, AR_h, sweep_h, q_c, taper_h, t_c_h, Nult, TOW):
+    """
+    Computes horizontal tail weight for general aviation aircraft using Raymer's method.
+    Accounts for geometry, loads, and basic systems integration.
+
+    Parameters
+    ----------
+    S_h : float
+        Horizontal tail reference area [m²]
+    AR_h : float
+        Horizontal tail aspect ratio
+    sweep_h : float
+        Quarter-chord sweep angle [rad]
+    q_c : float
+        Dynamic pressure at cruise [Pa]
+    taper_h : float
+        Horizontal tail taper ratio
+    t_c_h : float
+        Average thickness-to-chord ratio
+    Nult : float
+        Ultimate load factor
+    TOW : float
+        Maximum takeoff weight [kg]
+
+    Returns
+    -------
+    weight : float
+        Horizontal tail structural weight [kg]
+
+    Notes
+    -----
+    Uses Raymer's correlation developed for general aviation aircraft.
+
+    **Major Assumptions**
+        * General aviation aircraft
+
+    **Theory**
+    Weight is computed using:
+    .. math::
+        W_{ht} = 0.016(N_zW_{to})^{0.414}q^{0.168}S_{ht}^{0.896}
+                 (\\frac{100t/c}{cos\\Lambda})^{-0.12}
+                 (\\frac{A}{cos^2\\Lambda})^{0.043}\\lambda^{-0.02}
+
+    where:
+        * N_z = ultimate load factor
+        * W_to = takeoff weight
+        * q = dynamic pressure
+        * S_ht = horizontal tail area
+        * t/c = thickness ratio
+        * Λ = quarter-chord sweep
+        * A = aspect ratio
+        * λ = taper ratio
+
+    The correlation accounts for:
+        * Bending and torsional loads
+        * Elevator integration
+        * Control system attachments
+        * Minimum gauge requirements
+        * Standard structural margins
+
+    References
+    ----------
+    [1] Raymer, D., "Aircraft Design: A Conceptual Approach", AIAA 
+        Education Series, 2018.
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_vertical_tail_weight
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_operating_empty_weight
     """
     # unpack inputs
     W_0   = TOW / Units.lb # Convert kg to lbs

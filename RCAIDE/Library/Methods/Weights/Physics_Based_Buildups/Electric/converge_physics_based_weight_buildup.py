@@ -16,33 +16,49 @@ import RCAIDE
 def converge_physics_based_weight_buildup(base_vehicle,
                     print_iterations              = False,
                     miscelleneous_weight_factor   = 1.1,):
-    '''Converges the maximum takeoff weight of an aircraft using the eVTOL 
-    weight buildup routine.  
+    """
+    Iteratively converges the maximum takeoff weight (MTOW) of an electric aircraft by running successive physics-based 
+    weight estimations until the computed weight matches the assumed weight.
+
+    Parameters
+    ----------
+    base_vehicle : RCAIDE.Vehicle()
+        RCAIDE vehicle data structure containing initial vehicle configuration
+    print_iterations : bool, optional
+        Flag to print weight difference at each iteration (default: False)
+    miscelleneous_weight_factor : float, optional
+        Factor to account for miscellaneous weights in the buildup (default: 1.1)
+
+    Returns
+    -------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure with converged weights
+    breakdown : Data()
+        Detailed weight breakdown of the converged configuration
+            - empty : Data()
+                Empty weight components
+            - payload : Data()
+                Payload weight components
+            - total : float
+                Total converged weight
+
+    Notes
+    -----
+    The function uses an iterative process to converge the vehicle weight:
+        1. Performs initial weight estimation
+        2. Compares estimated weight to assumed MTOW
+        3. Updates MTOW assumption
+        4. Repeats until difference is less than 1 kg
     
-    Source:
-    None
+    **Major Assumptions**
+        * Convergence threshold of 1 kg is sufficient for design purposes
+        * Maximum 100 iterations allowed for convergence
     
-    Assumptions:
-    None
-    
-    Inputs:
-    vehicle                     RCAIDE Config Data Stucture
-    print_iterations            Boolean Flag      
-    miscelleneous_weight_factor          Factor capturing uncertainty in vehicle weight [Unitless]
-    speed_of_sound:             Local Speed of Sound                           [m/s]
-    max_tip_mach:               Allowable Tip Mach Number                      [Unitless]
-    disk_area_factor:           Inverse of Disk Area Efficiency                [Unitless]
-    max_thrust_to_weight_ratio: Allowable Thrust to Weight Ratio               [Unitless]
-    safety_factor               Safety Factor in vehicle design                [Unitless]
-    max_g_load                  Maximum g-forces load for certification        [UNitless]
-    motor_efficiency:           Motor Efficiency                               [Unitless]
-    
-    Outputs:
-    None
-    
-    Properties Used:
-    N/A
-    '''
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Electric.compute_operating_empty_weight
+    RCAIDE.Framework.Analyses.Weights.Weights_EVTOL
+    """
     
 
     weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_EVTOL()

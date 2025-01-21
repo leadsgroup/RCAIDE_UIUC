@@ -1,7 +1,17 @@
 # RCAIDE/Library/Methods/Weights/Correlations/FLOPS/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+Methods for computing component weights using NASA's Flight Optimization System (FLOPS) 
+correlations. This module provides weight estimation techniques derived from NASA's 
+extensive aircraft database and analysis tools.
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common
+    Shared component weight methods
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport
+    Transport aircraft weight methods
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

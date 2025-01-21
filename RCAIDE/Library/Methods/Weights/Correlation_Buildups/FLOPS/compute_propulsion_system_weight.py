@@ -17,52 +17,98 @@ import  numpy as  np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Propulsion Systems Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_propulsion_system_weight(vehicle,ref_propulsor):
-    """ Calculate the weight of propulsion system, including:
-        - dry engine weight
-        - fuel system weight
-        - thurst reversers weight
-        - electrical system weight
-        - starter engine weight
-        - nacelle weight
-        - cargo containers
+def compute_propulsion_system_weight(vehicle, ref_propulsor):
+    """
+    Computes the complete propulsion system weight using NASA FLOPS weight estimation 
+    method. Includes engines, nacelles, thrust reversers, and associated systems.
 
-        Assumptions:
-            1) Rated thrust per scaled engine and rated thurst for baseline are the same
-            2) Engine weight scaling parameter is 1.15
-            3) Enginge inlet weight scaling exponent is 1
-            4) Baseline inlet weight is 0 lbs as in example files FLOPS
-            5) Baseline nozzle weight is 0 lbs as in example files FLOPS
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - networks : list
+                Propulsion systems with:
+                    - propulsors : list
+                        Engine data
+                    - fuel_lines : list
+                        Fuel system data with fuel tanks
+            - design_mach_number : float
+                Design cruise Mach number
+            - mass_properties.max_zero_fuel : float
+                Maximum zero fuel weight [kg]
+            - systems.accessories : str
+                Aircraft type ('short-range', 'commuter', 'medium-range', 
+                'long-range', 'sst', 'cargo')
+    ref_propulsor : Propulsor
+        Reference engine containing:
+            - sealevel_static_thrust : float
+                Sea level static thrust [N]
+            - nacelle : Nacelle
+                Nacelle geometry with:
+                    - diameter : float
+                        Maximum diameter [m]
+                    - length : float
+                        Total length [m]
 
-        Source:
-            The Flight Optimization System Weight Estimation Method
+    Returns
+    -------
+    output : Data
+        Container with propulsion weight breakdown:
+            - W_prop : float
+                Total propulsion system weight [kg]
+            - W_engine : float
+                Dry engine weight [kg]
+            - W_thrust_reverser : float
+                Thrust reverser weight [kg]
+            - W_starter : float
+                Starter system weight [kg]
+            - W_engine_controls : float
+                Engine controls weight [kg]
+            - W_fuel_system : float
+                Fuel system weight [kg]
+            - W_nacelle : float
+                Nacelle weight [kg]
+            - number_of_engines : int
+                Total engine count
+            - number_of_fuel_tanks : int
+                Total fuel tank count
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.design_mach_number: design mach number for cruise flight
-                -.mass_properties.max_zero_fuel: zero fuel weight               [kg]
-                -.systems.accessories: type of aircraft (short-range, commuter
-                                                        medium-range, long-range,
-                                                        sst, cargo)
-            nacelle - data dictionary with propulsion system properties 
-                -.diameter: diameter of nacelle                                 [meters]
-                -.length: length of complete engine assembly                    [meters]
-            ref_propulsor.
-                -.sealevel_static_thrust: thrust at sea level                   [N]
+    Notes
+    -----
+    Uses FLOPS correlations developed from transport aircraft database.
 
+    **Major Assumptions**
+        * Rated thrust per scaled engine equals baseline thrust
+        * Engine weight scaling parameter is 1.15
+        * Engine inlet weight scaling exponent is 1
+        * Baseline inlet weight is 0 lbs
+        * Baseline nozzle weight is 0 lbs
+        * All nacelles are identical
+        * Number of nacelles equals number of engines
 
-        Outputs:
-            output - data dictionary with weights                               [kilograms]
-                    - output.W_prop: total propulsive system weight
-                    - output.W_thrust_reverser: thurst reverser weight
-                    - output.starter: starter engine weight
-                    - output.W_engine_controls: engine controls weight
-                    - output.fuel_system: fuel system weight
-                    - output.nacelle: nacelle weight
-                    - output.W_engine: dry engine weight
+    **Theory**
+    Engine weight is computed using:
+    .. math::
+        W_{eng} = W_{base}(T/T_{base})^{1.15}
 
-        Properties Used:
-            N/A
+    Nacelle weight is computed using:
+    .. math::
+        W_{nac} = 0.25N_{nac}D_{nac}L_{nac}T^{0.36}
+
+    Thrust reverser weight is computed using:
+    .. math::
+        W_{rev} = 0.034T N_{nac}
+
+    where:
+        * W_base = baseline engine weight
+        * T = sea level static thrust
+        * N_nac = number of nacelles
+        * D_nac = nacelle diameter
+        * L_nac = nacelle length
+
+    References
+    ----------
+    [1] NASA Flight Optimization System (FLOPS)
     """
      
     NENG =  0 
@@ -99,32 +145,51 @@ def compute_propulsion_system_weight(vehicle,ref_propulsor):
     return output
 
 
-def nacelle_FLOPS(ref_propulsor,ref_nacelle,NENG):
-    """ Calculates the nacelle weight based on the FLOPS method
-    
-        Assumptions:
-            1) All nacelles are identical
-            2) The number of nacelles is the same as the number of engines 
+def nacelle_FLOPS(ref_propulsor, ref_nacelle, NENG):
+    """
+    Calculates the nacelle weight based on the FLOPS method.
 
-        Source:
-            Aircraft Design: A Conceptual Approach
+    Parameters
+    ----------
+    ref_propulsor : Propulsor
+        Reference engine containing:
+            - sealevel_static_thrust : float
+                Sea level static thrust [N]
+    ref_nacelle : Nacelle
+        Nacelle geometry with:
+            - diameter : float
+                Maximum diameter [m]
+            - length : float
+                Total length [m]
+    NENG : int
+        Number of engines
 
-        Inputs:
-            ref_propulsor    - data dictionary for the specific network that is being estimated [dimensionless]
-                -.number_of_engines: number of engines
-                -.engine_lenght: total length of engine                                  [m]
-                -.sealevel_static_thrust: sealevel static thrust of engine               [N]
-            nacelle.             
-                -.diameter: diameter of nacelle                                          [m]
-            WENG    - dry engine weight                                                  [kg]
-             
-             
-        Outputs:             
-            WNAC: nacelle weight                                                         [kg]
+    Returns
+    -------
+    WNAC : float
+        Total nacelle weight [kg]
 
-        Properties Used:
-            N/A
-    """ 
+    Notes
+    -----
+    **Major Assumptions**
+        * All nacelles are identical
+        * Number of nacelles equals number of engines
+
+    **Theory**
+    Weight is computed using:
+    .. math::
+        W_{nac} = 0.25N_{nac}D_{nac}L_{nac}T^{0.36}
+
+    where:
+        * N_nac = number of nacelles
+        * D_nac = nacelle diameter
+        * L_nac = nacelle length
+        * T = sea level static thrust
+
+    References
+    ----------
+    [1] Raymer, D.P. Aircraft Design: A Conceptual Approach, AIAA Education Series, 2012
+    """
     TNAC   = NENG + 1. / 2 * (NENG - 2 * np.floor(NENG / 2.))
     DNAC   = ref_nacelle.diameter / Units.ft
     XNAC   = ref_nacelle.length / Units.ft
@@ -133,58 +198,92 @@ def nacelle_FLOPS(ref_propulsor,ref_nacelle,NENG):
     return WNAC * Units.lbs
 
 
-def thrust_reverser_FLOPS(ref_propulsor,NENG):
-    """ Calculates the weight of the thrust reversers of the aircraft
-    
-        Assumptions:
+def thrust_reverser_FLOPS(ref_propulsor, NENG):
+    """
+    Calculates the weight of the thrust reversers.
 
-        Source:
-            The Flight Optimization System Weight Estimation Method
+    Parameters
+    ----------
+    ref_propulsor : Propulsor
+        Reference engine containing:
+            - sealevel_static_thrust : float
+                Sea level static thrust [N]
+    NENG : int
+        Number of engines
 
-        Inputs:
-            ref_propulsor    - data dictionary for the specific network that is being estimated [dimensionless]
-                -.number_of_engines: number of engines
-                -.sealevel_static_thrust: sealevel static thrust of engine  [N]
+    Returns
+    -------
+    WTHR : float
+        Total thrust reverser weight [kg]
 
-        Outputs:
-            WTHR: Thrust reversers weight                                   [kg]
+    Notes
+    -----
+    **Theory**
+    Weight is computed using:
+    .. math::
+        W_{rev} = 0.034T N_{nac}
 
-        Properties Used:
-            N/A
-    """ 
+    where:
+        * T = sea level static thrust
+        * N_nac = number of nacelles
+
+    References
+    ----------
+    [1] NASA Flight Optimization System (FLOPS)
+    """
     TNAC = NENG + 1. / 2 * (NENG - 2 * np.floor(NENG / 2.))
     THRUST = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
     WTHR = 0.034 * THRUST * TNAC
     return WTHR * Units.lbs
 
 
-def misc_engine_FLOPS(vehicle,ref_propulsor,ref_nacelle,NENG ):
-    """ Calculates the miscellaneous engine weight based on the FLOPS method, electrical control system weight
-        and starter engine weight
-        
-        Assumptions:
-            1) All nacelles are identical
-            2) The number of nacelles is the same as the number of engines 
+def misc_engine_FLOPS(vehicle, ref_propulsor, ref_nacelle, NENG):
+    """
+    Calculates miscellaneous engine weights including electrical control system 
+    and starter engine weights.
 
-        Source:
-            The Flight Optimization System Weight Estimation Method
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - design_mach_number : float
+                Design cruise Mach number
+    ref_propulsor : Propulsor
+        Reference engine containing:
+            - sealevel_static_thrust : float
+                Sea level static thrust [N]
+    ref_nacelle : Nacelle
+        Nacelle geometry with:
+            - diameter : float
+                Maximum diameter [m]
+    NENG : int
+        Number of engines
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                            [dimensionless]
-                 -.design_mach_number: design mach number
-            ref_propulsor    - data dictionary for the specific network that is being estimated [dimensionless]
-                -.number_of_engines: number of engines
-                -.sealevel_static_thrust: sealevel static thrust of engine               [N]
-            nacelle              
-                -.diameter: diameter of nacelle                                          [m]
-              
-        Outputs:              
-            WEC: electrical engine control system weight                                 [kg]
-            WSTART: starter engine weight                                                [kg]
+    Returns
+    -------
+    WEC : float
+        Electrical engine control system weight [kg]
+    WSTART : float
+        Starter engine weight [kg]
 
-        Properties Used:
-            N/A
-    """ 
+    Notes
+    -----
+    **Theory**
+    Weights are computed using:
+    .. math::
+        W_{EC} = 0.26N_{eng}T^{0.5}
+        W_{start} = 11.0N_{eng}V_{max}^{0.32}D_{nac}^{1.6}
+
+    where:
+        * N_eng = number of engines
+        * T = sea level static thrust
+        * V_max = design Mach number
+        * D_nac = nacelle diameter
+    
+    References
+    ----------
+    [1] NASA Flight Optimization System (FLOPS)
+    """
     THRUST  = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
     WEC     = 0.26 * NENG * THRUST ** 0.5
     FNAC    = ref_nacelle.diameter / Units.ft
@@ -194,22 +293,40 @@ def misc_engine_FLOPS(vehicle,ref_propulsor,ref_nacelle,NENG ):
 
 
 def fuel_system_FLOPS(vehicle, NENG):
-    """ Calculates the weight of the fuel system based on the FLOPS method
-        Assumptions:
+    """
+    Calculates the weight of the fuel system.
 
-        Source:
-            The Flight Optimization System Weight Estimation Method
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - design_mach_number : float
+                Design cruise Mach number
+            - mass_properties.max_zero_fuel : float
+                Maximum zero fuel weight [kg]
+    NENG : int
+        Number of engines
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.design_mach_number: design mach number
-                -.mass_properties.max_zero_fuel: maximum zero fuel weight   [kg]
+    Returns
+    -------
+    WFSYS : float
+        Fuel system weight [kg]
 
-        Outputs:
-            WFSYS: Fuel system weight                                       [kg]
+    Notes
+    -----
+    **Theory**
+    Weight is computed using:
+    .. math::
+        W_{fsys} = 1.07W_{ZF}^{0.58}N_{eng}^{0.43}M^{0.34}
 
-        Properties Used:
-            N/A
+    where:
+        * W_ZF = zero fuel weight
+        * N_eng = number of engines
+        * M = design Mach number
+    
+    References
+    ----------
+    [1] NASA Flight Optimization System (FLOPS)
     """
     VMAX = vehicle.flight_envelope.design_mach_number
     FMXTOT = vehicle.mass_properties.max_zero_fuel / Units.lbs
@@ -218,30 +335,47 @@ def fuel_system_FLOPS(vehicle, NENG):
 
 
 def compute_engine_weight(vehicle, ref_propulsor):
-    """ Calculates the dry engine weight based on the FLOPS method
-        Assumptions:
-            Rated thrust per scaled engine and rated thurst for baseline are the same
-            Engine weight scaling parameter is 1.15
-            Enginge inlet weight scaling exponent is 1
-            Baseline inlet weight is 0 lbs as in example files FLOPS
-            Baseline nozzle weight is 0 lbs as in example files FLOPS
+    """
+    Calculates the dry engine weight based on the FLOPS method.
 
-        Source:
-            The Flight Optimization System Weight Estimation Method
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing:
+            - systems.accessories : str
+                Aircraft type ('short-range', 'commuter', etc.)
+    ref_propulsor : Propulsor
+        Reference engine containing:
+            - sealevel_static_thrust : float
+                Sea level static thrust [N]
 
-        Inputs:
-            vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.systems.accessories: type of aircraft (short-range, commuter
-                                                        medium-range, long-range,
-                                                        sst, cargo)
-            ref_propulsor    - data dictionary for the specific network that is being estimated [dimensionless]
-                -.sealevel_static_thrust: sealevel static thrust of engine  [N]
+    Returns
+    -------
+    WENG : float
+        Dry engine weight [kg]
 
-        Outputs:
-            WENG: dry engine weight                                         [kg]
+    Notes
+    -----
+    **Major Assumptions**
+        * Rated thrust per scaled engine equals baseline thrust
+        * Engine weight scaling parameter is 1.15
+        * Engine inlet weight scaling exponent is 1
+        * Baseline inlet weight is 0 lbs
+        * Baseline nozzle weight is 0 lbs
 
-        Properties Used:
-            N/A
+    **Theory**
+    Weight is computed using:
+    .. math::
+        W_{eng} = W_{base}(T/T_{base})^{1.15}
+
+    where:
+        * W_base = baseline engine weight
+        * T = sea level static thrust
+        * T_base = baseline thrust
+    
+    References
+    ----------
+    [1] NASA Flight Optimization System (FLOPS)
     """
     EEXP = 1.15
     EINL = 1

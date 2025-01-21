@@ -21,91 +21,98 @@ import numpy as np
 # Operating Empty Weight 
 # ----------------------------------------------------------------------------------------------------------------------
 def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE'):
-    """ Main function that estimates the zero-fuel weight of a transport aircraft:
-        - MTOW = WZFW + FUEL
-        - WZFW = WOE + WPAYLOAD
-        - WOE = WE + WOPERATING_ITEMS
-        - WE = WSTRCT + WPROP + WSYS
-        Assumptions:
-            1) All nacelles are identical
-            2) The number of nacelles is the same as the number of engines 
+    """
+    Estimates the operating empty weight of a transport aircraft using various weight estimation methods.
+    The function calculates structural, propulsion, systems, and operational weights.
 
-        Source:
-            FLOPS method: The Flight Optimization System Weight Estimation Method
-            RCAIDE method: http://aerodesign.stanford.edu/aircraftdesign/AircraftDesign.html
-            RAYMER method: Aircraft Design A Conceptual Approach
-       Inputs:
-            vehicle - data dictionary with vehicle properties               [dimensionless]
-                -.networks: data dictionary with all the network elements and properties
-                    -.total_weight: total weight of the propulsion system   [kg] 
-                      (optional, calculated if not included)
-                -.fuselages: data dictionary with the fuselage properties of the vehicle
-                -.wings: data dictionary with all the wing properties of the vehicle, including horzinotal and vertical stabilizers
-                -.wings['main_wing']: data dictionary with main wing properties
-                    -.flap_ratio: flap surface area over wing surface area
-                -.mass_properties: data dictionary with all the main mass properties of the vehicle including MTOW, ZFW, EW and OEW
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing vehicle properties
+            - networks : dict
+                Data dictionary with network elements and properties
+                    - total_weight : float
+                        Total propulsion system weight [kg] (optional)
+            - fuselages : dict
+                Data dictionary with fuselage properties
+            - wings : dict
+                Data dictionary with wing properties including stabilizers
+            - mass_properties : dict
+                Vehicle mass properties including MTOW, ZFW, EW, OEW
+    settings : Data(), optional
+        Configuration settings for weight calculations
+            - weight_reduction_factors : Data()
+                - main_wing : float
+                    Weight reduction factor for main wing
+                - empennage : float
+                    Weight reduction factor for empennage
+                - fuselage : float
+                    Weight reduction factor for fuselage
+                - structural : float
+                    Overall structural weight reduction factor
+                - systems : float
+                    Systems weight reduction factor
+    method_type : str, optional
+        Weight estimation method to use. Options:
+            - 'FLOPS Simple'
+            - 'FLOPS Complex'  
+            - 'RCAIDE'
+            - 'Raymer'
 
-            settings.weight_reduction_factors.
-                    main_wing                                               [dimensionless] (.1 is a 10% weight reduction)
-                    empennage                                               [dimensionless] (.1 is a 10% weight reduction)
-                    fuselage                                                [dimensionless] (.1 is a 10% weight reduction)
-            method_type - weight estimation method chosen, available:
-                            - FLOPS Simple
-                            - FLOPS Complex
-                            - RCAIDE 
-                            - Raymer
-       Outputs:
-            output - data dictionary with the weight breakdown of the vehicle
-                        -.structures: structural weight
-                            -.wing: wing weight
-                            -.horizontal_tail: horizontal tail weight
-                            -.vertical_tail: vertical tail weight
-                            -.fuselage: fuselage weight
-                            -.main_landing_gear: main landing gear weight
-                            -.nose_landing_gear: nose landing gear weight
-                            -.nacelle: nacelle weight
-                            -.paint: paint weight
-                            -.total: total strucural weight
+    Returns
+    -------
+    output : Data()
+        Weight breakdown data structure containing:
+            - structures : Data()
+                Structural component weights
+            - propulsion : Data()
+                Propulsion system weights
+            - systems : Data()
+                Aircraft systems weights
+            - payload : Data()
+                Payload weights
+            - operational_items : Data()
+                Operational item weights
+            - empty : float
+                Total empty weight
+            - operating_empty : float
+                Operating empty weight
+            - zero_fuel_weight : float
+                Zero fuel weight
+            - fuel : float
+                Fuel weight
 
-                        -.propulsion: propulsive system weight
-                            -.engines: dry engine weight
-                            -.thrust_reversers: thrust reversers weight
-                            -.miscellaneous: miscellaneous items includes electrical system for engines and starter engine
-                            -.fuel_system: fuel system weight
-                            -.total: total propulsive system weight
+    Notes
+    -----
+    The function allows for three different methods of weight estimation:
+        1. FLOPS Simple
+        2. FLOPS Complex
+        3. Raymer
+        4. RCAIDE
+    
+    The function implements a hierarchical weight buildup:
+        MTOW = WZFW + FUEL
+        WZFW = WOE + WPAYLOAD
+        WOE = WE + WOPERATING_ITEMS
+        WE = WSTRCT + WPROP + WSYS
 
-                        -.systems: system weight
-                            -.control_systems: control system weight
-                            -.apu: apu weight
-                            -.electrical: electrical system weight
-                            -.avionics: avionics weight
-                            -.hydraulics: hydraulics and pneumatic system weight
-                            -.furnish: furnishing weight
-                            -.air_conditioner: air conditioner weight
-                            -.instruments: instrumentation weight
-                            -.anti_ice: anti ice system weight
-                            -.total: total system weight
+    **Major Assumptions**
+        * All nacelles are identical
+        * Number of nacelles equals number of engines
+        * Weight reduction factors are applied uniformly to respective components
 
-                        -.payload: payload weight
-                            -.passengers: passenger weight
-                            -.bagage: baggage weight
-                            -.cargo: cargo weight
-                            -.total: total payload weight
+    References
+    ----------
+    [1] NASA FLOPS Weight Estimation Method Documentation
+    [2] Raymer, D., "Aircraft Design: A Conceptual Approach", AIAA 
+        Education Series, 2018. 
+    [3] Stanford Aircraft Design Course, "Aircraft Weight Estimation", http://aerodesign.stanford.edu/aircraftdesign/AircraftDesign.html
 
-                        -.operational_items: operational items weight
-                            -.misc: unusable fuel, engine oil, passenger service weight and cargo containers
-                            -.flight_crew: flight crew weight
-                            -.flight_attendants: flight attendants weight
-                            -.total: total operating items weight
-
-                        -.empty = structures.total + propulsion.total + systems.total
-                        -.operating_empty = empty + operational_items.total
-                        -.zero_fuel_weight = operating_empty + payload.total
-                        -.fuel = vehicle.mass_properties.max_takeoff - zero_fuel_weight
-
-
-        Properties Used:
-            N/A
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer
+    RCAIDE.Library.Methods.Weights.Correlation_Buildups.Transport
     """
     
     if settings == None:

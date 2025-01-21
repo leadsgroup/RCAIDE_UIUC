@@ -13,25 +13,61 @@ import numpy as  np
 # ------------------------------------------------------------------        
 #  Component moments of inertia (MOI) tensors
 # ------------------------------------------------------------------  
-def compute_aircraft_moment_of_inertia(vehicle, CG_location, update_MOI=True): 
-    ''' sums the moments of inertia of each component in the aircraft. Components summed: fuselages,
-    wings (main, horizontal, tail + others), turbofan engines, batteries, motors, batteries, fuel tanks
+def compute_aircraft_moment_of_inertia(vehicle, CG_location, update_MOI=True):
+    """
+    Computes the total aircraft moment of inertia tensor by summing contributions from all major components.
 
-    Assumptions:
-    - All other components than those listed are insignificant
+    Parameters
+    ----------
+    vehicle : Vehicle
+        The vehicle instance containing components:
+            - fuselages : list
+                All fuselage segments
+            - wings : list
+                All wing surfaces (main wing, horizontal tail, etc.)
+            - networks : list
+                Propulsion networks containing:
+                    - propulsors : list
+                        Electric rotors, turbofans, etc.
+                    - busses : list
+                        Battery modules
+                    - fuel_lines : list
+                        Fuel tanks (central and wing)
+    CG_location : array
+        Vehicle center of gravity location [m]
+    update_MOI : bool, optional
+        Flag to update vehicle mass properties with computed MOI, default True
 
-    Source:
- 
-    Inputs:
-    - vehicle
-    - Center of gravity
+    Returns
+    -------
+    MOI_tensor : ndarray
+        3x3 moment of inertia tensor about CG [kg-m²]
+    MOI_mass : float
+        Total mass of all components included in MOI calculation [kg]
 
-    Outputs:
-    - Total aircraft moment of inertia tensor
+    Notes
+    -----
+    Computes inertia tensors for:
+        * Fuselage sections
+        * Wing surfaces
+        * Propulsion components
+            - Motors/engines
+            - Batteries
+            - Fuel tanks
 
-    Properties Used:
-    N/A
-    '''    
+    **Major Assumptions**
+        * Components can be approximated as basic geometric shapes
+        * Small components' contributions are negligible
+        * Rigid body dynamics
+        * Component masses are uniformly distributed
+        * Parallel axis theorem is valid for all components
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_wing_moment_of_inertia
+    RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_cylinder_moment_of_inertia
+    RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_cuboid_moment_of_inertia
+    """    
     
     # ------------------------------------------------------------------        
     # Setup

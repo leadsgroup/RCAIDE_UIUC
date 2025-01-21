@@ -1,7 +1,17 @@
 # RCAIDE/Library/Methods/Weights/Correlations/Transport/__init__.py
 # 
 
-"""RCAIDE Package Setup
+"""
+Collection of aircraft weight estimation methods for transport category aircraft. 
+This module provides component weight estimation functions based on empirical 
+correlations derived from historical transport aircraft data. The methods include 
+weight estimations for fuselage, wings, tails, operating items, and empty weight 
+calculations.
+
+See Also
+--------
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.Raymer
+RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
