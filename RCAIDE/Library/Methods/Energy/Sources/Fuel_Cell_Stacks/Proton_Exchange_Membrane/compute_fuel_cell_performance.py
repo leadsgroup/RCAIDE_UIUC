@@ -1,7 +1,23 @@
+# RCAIDE/Methods/Energy/Sources/Fuel_Cell_Stacks/Proton_Exchange_Membrane/compute_fuel_cell_performance.py
+#  
+# Created: Jan 2025, M. Clarke
+
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------
 import  numpy as  np
 from scipy.optimize import minimize_scalar
 
-def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,delta_t): 
+
+# ----------------------------------------------------------------------------------------------------------------------
+#  compute_fuel_cell_performance
+# ----------------------------------------------------------------------------------------------------------------------
+def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,delta_t):
+    '''
+    
+    MATTEO
+    
+    '''
 
     # Unpack flight conditions 
     M0 = state.conditions.freestream.mach_number
@@ -91,7 +107,6 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
 
     return  stored_results_flag, stored_fuel_cell_stack_tag
 
-
 def evaluate_PEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
     """
     Determines the fuel cell state of the PEM fuel cell 
@@ -155,7 +170,6 @@ def evaluate_PEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
     
     return mdot_H2,V, net_power, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power
 
-
 def evaluate_CEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
     """
     Evaluates the power required by the CEM (compressor-expander module)
@@ -189,9 +203,8 @@ def evaluate_CEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
     power_req      = fuel_cell_conditions.fuel_cell.CEM_power[t_idx, 0]
     mdot_out       = fuel_cell_conditions.fuel_cell.mdot_out_exp[t_idx, 0]
     expander_power = fuel_cell_conditions.fuel_cell.P_exp[t_idx, 0]
-    return power_req, mdot_out, expander_power
-
-
+    return power_req, mdot_out, expander_power 
+ 
 def calculate_voltage(i, fuel_cell_stack,fuel_cell_conditions,t_idx):
     """
     Calculates the output voltage of the fuel cell by subtracting the activation,
@@ -249,7 +262,7 @@ def calculate_voltage(i, fuel_cell_stack,fuel_cell_conditions,t_idx):
     V_cell = E_cell - eta_act - eta_ohmic - eta_conc - degradation * fuel_cell.maximum_deg
     V_loss = eta_act + eta_ohmic + eta_conc + degradation * fuel_cell.maximum_deg
     return V_cell, V_loss
-
+ 
 def set_rated_current_density(fuel_cell_stack, rated_current_density, rated_power_density): 
     """
     Sets the rated cd and pd of the fuel cell system 
@@ -265,8 +278,8 @@ def set_rated_current_density(fuel_cell_stack, rated_current_density, rated_powe
     fuel_cell.rated_current_density = rated_current_density 
     fuel_cell.rated_power_density   = rated_power_density
     
-    return 
-
+    return
+ 
 def calculate_P_drop_hum(fuel_cell_stack, i):
     """
     Calculates the pressure drop across the humidifier for the rated current 
@@ -284,7 +297,7 @@ def calculate_P_drop_hum(fuel_cell_stack, i):
     fuel_cell   = fuel_cell_stack.fuel_cell
     P_drop = (i/fuel_cell.rated_current_density) ** 2 * fuel_cell.rated_p_drop_hum
     return P_drop
-
+ 
 def calculate_P_drop_stack(fuel_cell_stack, i):
     """
     Calculates the pressure drop across the stack for the rated current 

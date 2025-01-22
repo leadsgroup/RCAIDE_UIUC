@@ -1,7 +1,6 @@
-# RCAIDE/Methods/Energy/Sources/Battery/Lithium_Ion_LFP/compute_lfp_cell_performance.py
-# 
-# 
-# Created: Nov 2024, S. Shekar
+# RCAIDE/Methods/Energy/Sources/Fuel_Cell_Stacks/Proton_Exchange_Membrane/append_fuel_cell_conditions.py
+#  
+# Created: Jan 2025, M. Clarke
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -10,10 +9,15 @@ import RCAIDE
 from RCAIDE.Framework.Mission.Common     import   Conditions 
 
 # ----------------------------------------------------------------------------------------------------------------------
-# compute_lfp_cell_performance
+# append_fuel_cell_conditions
 # ----------------------------------------------------------------------------------------------------------------------  
 def append_fuel_cell_conditions(fuel_cell_stack,segment,bus): 
- 
+
+    '''
+    
+    MATTEO
+    
+    ''' 
     ones_row                                                                                    = segment.state.ones_row    
                                              
     bus_results                                                                                 = segment.state.conditions.energy[bus.tag]        

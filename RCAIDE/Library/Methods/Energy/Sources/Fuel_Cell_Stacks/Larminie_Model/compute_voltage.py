@@ -1,19 +1,15 @@
-## @ingroup Methods-Power-Fuel_Cell-Discharge
-# compute_voltage.py
-#
-# Created : Apr 2015, M. Vegh 
-# Modified: Feb 2016, E. Botero
-  
-# ----------------------------------------------------------------------
-#  Imports
-# ----------------------------------------------------------------------
-from RCAIDE.Framework.Core import Units
-
+# RCAIDE/Methods/Energy/Sources/Fuel_Cell_Stacks/Larminie_Model/compute_voltage.py
+#  
+# Created: Jan 2025, M. Clarke
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------
+from RCAIDE.Framework.Core import Units 
 import numpy as np
 
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
 #  Find Voltage Larminie
-# ---------------------------------------------------------------------- 
+# ----------------------------------------------------------------------------------------------------------------------
 def compute_voltage(fuel_cell,current_density):
     '''
     function that determines the fuel cell voltage based on an input
@@ -34,9 +30,7 @@ def compute_voltage(fuel_cell,current_density):
         Eoc                   [V]
    
     Outputs:
-        V                     [V]
-         
-    
+        V                     [V] 
     '''
     r   = fuel_cell.r/(1000*(Units.cm**2))
     Eoc = fuel_cell.Eoc 

@@ -8,11 +8,11 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports 
 import RCAIDE  
-from RCAIDE.Framework.Core                                    import Units, Data 
-from RCAIDE.Library.Methods.Energy.Sources.Batteries.Common   import size_module_from_mass ,size_module_from_energy_and_power, find_mass_gain_rate, find_total_mass_gain, find_ragone_properties
-from RCAIDE.Library.Methods.Energy.Sources.Batteries.Aluminum_Air import * 
-from RCAIDE.Framework.Mission.Common                          import Conditions
-from RCAIDE.Library.Plots                                     import * 
+from RCAIDE.Framework.Core                                              import Units, Data 
+from RCAIDE.Library.Methods.Energy.Sources.Battery_Modules.Common       import size_module_from_mass ,size_module_from_energy_and_power, find_mass_gain_rate, find_total_mass_gain, find_ragone_properties
+from RCAIDE.Library.Methods.Energy.Sources.Battery_Modules.Aluminum_Air import * 
+from RCAIDE.Framework.Mission.Common                                    import Conditions
+from RCAIDE.Library.Plots                                               import * 
 
 # package imports  
 import numpy as np
@@ -23,7 +23,7 @@ import matplotlib.cm as cm
 import sys 
 import os
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles'))
-from Isolated_Battery_Cell   import vehicle_setup , configs_setup  
+from Battery_Cell   import vehicle_setup , configs_setup  
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  REGRESSION
@@ -216,7 +216,7 @@ def mission_setup(analyses,vehicle,battery_chemistry,current,mAh):
     time               = 0.8 * (mAh/1000)/current * Units.hrs  
 
     # Charge Segment 
-    segment                                 = Segments.Ground.Battery_Recharge(base_segment)      
+    segment                                 = Segments.Ground.Recharge(base_segment)      
     segment.analyses.extend(analyses.charge) 
     segment.cutoff_SOC                      = 1.0  
     segment.initial_battery_state_of_charge = 0.2  
@@ -224,14 +224,14 @@ def mission_setup(analyses,vehicle,battery_chemistry,current,mAh):
     mission.append_segment(segment)   
 
          
-    segment                                 = Segments.Ground.Battery_Discharge(base_segment) 
+    segment                                 = Segments.Ground.Discharge(base_segment) 
     segment.analyses.extend(analyses.discharge)  
     segment.tag                             = 'Discharge_1' 
     segment.time                            = time/2  
     segment.initial_battery_state_of_charge = 1  
     mission.append_segment(segment)
     
-    segment                                = Segments.Ground.Battery_Discharge(base_segment) 
+    segment                                = Segments.Ground.Discharge(base_segment) 
     segment.tag                            = 'Discharge_2'
     segment.analyses.extend(analyses.discharge)   
     segment.time                           = time/2  

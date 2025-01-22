@@ -1,4 +1,4 @@
-# Regression/scripts/Tests/network_all_electric/electric_btms_test.py
+# Regression/scripts/Tests/network_electric/battery_electric_aircraft_test.py
 # 
 # 
 # Created:  Sep 2024, S. Shekar

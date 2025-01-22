@@ -1,23 +1,15 @@
-## @ingroup Methods-Power-Fuel_Cell-Discharge
-# compute_power.py
-#
-# Created : Apr 2015, M. Vegh 
-# Modified: Sep 2015, M. Vegh
-#           Feb 2016, E. Botero
-
-# ----------------------------------------------------------------------
-#  Imports
-# ----------------------------------------------------------------------
-from RCAIDE.Framework.Core import Units
-from .compute_voltage import compute_voltage
-
+# RCAIDE/Methods/Energy/Sources/Fuel_Cell_Stacks/Larminie_Model/compute_power.py
+#  
+# Created: Jan 2025, M. Clarke
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------
+from .compute_voltage import compute_voltage 
 import numpy as np
 
-# ----------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
 #  Find Power Larminie
-# ----------------------------------------------------------------------
-
-## @ingroup Methods-Power-Fuel_Cell-Discharge
+# ----------------------------------------------------------------------------------------------------------------------
 def compute_power(current_density, fuel_cell, sign=1.0):
     '''
     Function that determines the power output per cell, based on in 
@@ -42,5 +34,4 @@ def compute_power(current_density, fuel_cell, sign=1.0):
     v             = compute_voltage(fuel_cell,current_density)  #useful voltage vector
     power_out     = sign* np.multiply(v,i1)*A       #obtain power output in W/cell
     
-    #want to minimize
     return power_out
