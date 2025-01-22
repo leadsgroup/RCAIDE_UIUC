@@ -1,5 +1,4 @@
-# RCAIDE/Methods/Energy/Propulsors/Networks/Turbojet_Propulsor/compute_turbojet_performance.py
-# 
+# RCAIDE/Library/Methods/Propulsors/Turbojet_Propulsor/compute_turbojet_performance.py
 # 
 # Created:  Jul 2023, M. Clarke
 
@@ -24,30 +23,79 @@ from copy import  deepcopy
 # compute_turbojet_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_turbojet_performance(turbojet,state,center_of_gravity= [[0.0, 0.0,0.0]]):  
-    ''' Computes the perfomrance of one turbojet
+    """
+    Computes the performance characteristics of a turbojet engine by analyzing flow through each component.
     
-    Assumptions: 
-    N/A
-
-    Source:
-    N/A
+    Parameters
+    ----------
+    turbojet : Turbojet
+        Turbojet engine object containing all component definitions
+            - ram : Ram
+            - inlet_nozzle : Compression_Nozzle
+            - low_pressure_compressor : Compressor
+            - high_pressure_compressor : Compressor
+            - combustor : Combustor
+            - high_pressure_turbine : Turbine
+            - low_pressure_turbine : Turbine
+            - afterburner : Combustor, optional
+            - core_nozzle : Supersonic_Nozzle
+    state : State
+        State object containing flight conditions
+    center_of_gravity : list, optional
+        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
     
-    Inputs:  
-    turbojet             - turbojet data structure               [-]  
-    state                - operating conditions data structure   [-]  
-    fuel_line            - fuelline                              [-]
-    center_of_gravity    - aircraft center of gravity            [m]
-
-    Outputs:  
-    total_thrust         - thrust of turbojet group              [N]
-    total_momnet         - moment of turbojet group              [Nm]
-    total_power          - power of turbojet group               [W] 
-    stored_results_flag  - boolean for stored results            [-]     
-    stored_propulsor_tag - name of turbojet with stored results  [-]
+    Returns
+    -------
+    thrust_vector : ndarray
+        Three-dimensional thrust vector [N]
+    moment : ndarray
+        Three-dimensional moment vector [N*m]
+    power : float
+        Engine power output [W]
+    stored_results_flag : bool
+        Flag indicating results have been stored
+    stored_propulsor_tag : str
+        Tag identifying the propulsor
     
-    Properties Used: 
-    N.A.          
-    ''' 
+    Notes
+    -----
+    This function performs a component-by-component analysis of the turbojet engine by:
+    1. Computing ram performance
+    2. Analyzing flow through inlet nozzle
+    3. Computing compressor stages performance
+    4. Analyzing combustor performance
+    5. Computing turbine stages performance
+    6. Analyzing afterburner performance (if active)
+    7. Computing nozzle performance
+    8. Calculating final thrust and moments
+    
+    **Major Assumptions**
+        * Quasi-one-dimensional flow
+        * Each component operates in steady state
+        * Perfect gas behavior in non-combustion sections
+        * Adiabatic component processes except in combustor/afterburner
+    
+    **Theory**
+    The analysis follows standard gas turbine cycle analysis with:
+        * Isentropic compression in compressors
+        * Constant pressure heat addition in combustor
+        * Isentropic expansion in turbines
+        * Conservation of mass, momentum, and energy through components
+    
+    .. math::
+        \\text{Power Balance: } W_{compressor} = W_{turbine}
+    
+    **Extra modules required**
+        * numpy
+        * copy (deepcopy)
+    
+    See Also
+    --------
+    RCAIDE.Library.Methods.Propulsors.Converters.Ram.compute_ram_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Combustor.compute_combustor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Compressor.compute_compressor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Turbine.compute_turbine_performance
+    """ 
     conditions                = state.conditions
     noise_conditions          = conditions.noise[turbojet.tag]  
     turbojet_conditions       = conditions.energy[turbojet.tag]
@@ -234,28 +282,40 @@ def compute_turbojet_performance(turbojet,state,center_of_gravity= [[0.0, 0.0,0.
     return thrust_vector,moment,power,stored_results_flag,stored_propulsor_tag
 
 def reuse_stored_turbojet_data(turbojet,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
-    '''Reuses results from one turbojet for identical propulsors
-    
-    Assumptions: 
-    N/A
+    """
+    Reuses previously computed results for identical turbojet engines to save computation time.
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    turbojet : Turbojet
+        Turbojet engine object to compute results for
+    state : State
+        State object containing flight conditions
+    network : Network
+        Network object containing all propulsion systems
+    stored_propulsor_tag : str
+        Tag of the previously computed turbojet to copy results from
+    center_of_gravity : list, optional
+        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
 
-    Inputs:  
-    turbojet            - turbojet data structure                [-] 
-    state               - operating conditions data structure   [-]  
-    fuel_line            - fuelline                              [-] 
-    total_thrust         - thrust of turbojet group              [N]
-    total_power          - power of turbojet group               [W] 
+    Returns
+    -------
+    thrust_vector : ndarray
+        Three-dimensional thrust vector [N]
+    moment : ndarray
+        Three-dimensional moment vector [N*m]
+    power : float
+        Engine power output [W]
 
-    Outputs:  
-    total_thrust         - thrust of turbojet group              [N]
-    total_power          - power of turbojet group               [W] 
-    
-    Properties Used: 
-    N.A.        
-    ''' 
+    Notes
+    -----
+    This function copies previously computed results and only recalculates the moments
+    based on the new turbojet's position relative to the center of gravity.
+
+    **Major Assumptions**
+        * The turbojets are identical in configuration and operating conditions
+        * Only the position relative to center of gravity may differ
+    """
     conditions                              = state.conditions  
     conditions.energy[turbojet.tag]  =deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turbojet.tag]   =deepcopy(conditions.noise[stored_propulsor_tag])

@@ -1,7 +1,6 @@
-# RCAIDE/Methods/Energy/Propulsors/Networks/Turboprop_Propulsor/compute_turboprop_performance.py
+# RCAIDE/Library/Methods/Propulsors/Turboprop_Propulsor/compute_turboprop_performance.py
 # 
-# 
-# Created:  Jul 2023, M. Clarke
+# Created:  Sep 2024, M. Clarke, M. Guidotti
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -26,29 +25,67 @@ import numpy as np
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,0.0]]):    
     
-    ''' Computes the performance of one turboprop
-    
-    Assumptions: 
-    N/A
+    """
+    Computes the performance characteristics of a turboprop engine including thrust, power, and moments.
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    turboprop : Turboprop
+        Turboprop engine object containing all component definitions
+            - ram : Ram
+            - inlet_nozzle : Compression_Nozzle  
+            - compressor : Compressor
+            - combustor : Combustor
+            - high_pressure_turbine : Turbine
+            - low_pressure_turbine : Turbine
+            - core_nozzle : Expansion_Nozzle
+    state : State
+        State data structure containing conditions
+            - conditions.energy : dict
+                Energy conditions for each component
+            - conditions.noise : dict 
+                Noise conditions for components
+    center_of_gravity : array, optional
+        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
 
-    Inputs:  
-    conditions           - operating conditions data structure     [-]  
-    fuel_line            - fuel line                               [-] 
-    turboprop            - turboprop data structure                [-] 
-    total_power          - power of turboprop group                [W] 
+    Returns
+    -------
+    thrust_vector : array
+        Three-dimensional thrust force vector [N]
+    moment : array
+        Three-dimensional moment vector [N*m]
+    power : float
+        Power output of the turboprop [W]
+    stored_results_flag : bool
+        Flag indicating if results were stored
+    stored_propulsor_tag : str
+        Tag identifier of the turboprop with stored results
 
-    Outputs:  
-    thrust               - thrust of turboprop group               [W]
-    power                - power of turboprop group                [W] 
-    stored_results_flag  - boolean for stored results              [-]     
-    stored_propulsor_tag - name of turboprop with stored results   [-]
-    
-    Properties Used: 
-    N.A.        
-    ''' 
+    Notes
+    -----
+    The function performs a component-by-component analysis through the turboprop:
+    1. Ram inlet performance
+    2. Inlet nozzle compression
+    3. Compressor performance
+    4. Combustor performance
+    5. High pressure turbine performance
+    6. Low pressure turbine performance
+    7. Core nozzle expansion
+    8. Final thrust and moment calculations
+
+    **Theory**
+
+    The turboprop performance is calculated by analyzing the thermodynamic cycle
+    through each component sequentially, passing the output conditions of one
+    component as inputs to the next.
+
+    See Also
+    --------
+    RCAIDE.Library.Methods.Propulsors.Converters.Ram.compute_ram_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Combustor.compute_combustor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Compressor.compute_compressor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Turbine.compute_turbine_performance
+    """
     conditions                                            = state.conditions 
     noise_conditions                                      = conditions.noise[turboprop.tag]  
     turboprop_conditions                                  = conditions.energy[turboprop.tag]
@@ -203,26 +240,38 @@ def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,
     return thrust_vector,moment,power,stored_results_flag,stored_propulsor_tag
 
 def reuse_stored_turboprop_data(turboprop,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
-    '''Reuses results from one turboprop for identical propulsors
-    
-    Assumptions: 
-    N/A
+    """
+    Reuses previously computed results for identical turboprop engines to avoid redundant calculations.
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    turboprop : Turboprop
+        Turboprop engine object to compute results for
+    state : State
+        State data structure containing conditions
+    network : Network
+        Network containing the turboprop
+    stored_propulsor_tag : str
+        Tag identifier of the turboprop with stored results to copy from
+    center_of_gravity : array, optional
+        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
 
-    Inputs:  
-    conditions           - operating conditions data structure     [-]  
-    fuel_line            - fuelline                                [-] 
-    turboprop            - turboprop data structure              [-] 
-    total_power          - power of turboprop group               [W] 
+    Returns
+    -------
+    thrust_vector : array
+        Three-dimensional thrust force vector [N]
+    moment : array
+        Three-dimensional moment vector [N*m]
+    power : float
+        Power output of the turboprop [W]
 
-    Outputs:  
-    total_power          - power of turboprop group               [W] 
-    
-    Properties Used: 
-    N.A.        
-    ''' 
+    Notes
+    -----
+    This function copies previously computed results from an identical turboprop
+    engine and only recalculates the moments based on the new turboprop's position
+    relative to the center of gravity. This optimization is useful when multiple
+    identical turboprops are present in the aircraft configuration.
+    """
     conditions                        = state.conditions  
     conditions.energy[turboprop.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turboprop.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])

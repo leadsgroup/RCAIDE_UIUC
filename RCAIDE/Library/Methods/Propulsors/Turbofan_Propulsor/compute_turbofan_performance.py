@@ -1,5 +1,4 @@
-# RCAIDE/Methods/Energy/Propulsors/Turbofan_Propulsor/compute_turbofan_performance.py
-# 
+# RCAIDE/Library/Methods/Propulsors/Turbofan_Propulsor/compute_turbofan_performance.py
 # 
 # Created:  Jul 2024, RCAIDE Team
 
@@ -24,30 +23,66 @@ from copy import  deepcopy
 # compute_performance
 # ----------------------------------------------------------------------------------------------------------------------   
 def compute_turbofan_performance(turbofan,state,center_of_gravity= [[0.0, 0.0,0.0]]):  
-    ''' Computes the perfomrance of one turbofan
-    
-    Assumptions: 
-    N/A
+    """
+    Computes the performance of a turbofan engine by analyzing flow through each component.
 
-    Source:
-    N/A
-    
-    Inputs:  
-    turbofan             - turbofan data structure               [-]  
-    state                - operating conditions data structure   [-]  
-    fuel_line            - fuelline                              [-]
-    center_of_gravity    - aircraft center of gravity            [m]
+    Parameters
+    ----------
+    turbofan : Turbofan
+        Turbofan engine object containing all component definitions
+            - ram : Ram
+            - inlet_nozzle : Compression_Nozzle
+            - fan : Fan
+            - low_pressure_compressor : Compressor
+            - high_pressure_compressor : Compressor
+            - combustor : Combustor
+            - high_pressure_turbine : Turbine
+            - low_pressure_turbine : Turbine
+            - core_nozzle : Expansion_Nozzle
+            - fan_nozzle : Expansion_Nozzle
+    state : State
+        State object containing flight conditions
+    center_of_gravity : list, optional
+        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
 
-    Outputs:  
-    total_thrust         - thrust of turbofan group              [N]
-    total_momnet         - moment of turbofan group              [Nm]
-    total_power          - power of turbofan group               [W] 
-    stored_results_flag  - boolean for stored results            [-]     
-    stored_propulsor_tag - name of turbojet with stored results  [-]
-    
-    Properties Used: 
-    N.A.        
-    ''' 
+    Returns
+    -------
+    thrust_vector : ndarray
+        Three-dimensional thrust vector [N]
+    moment : ndarray
+        Three-dimensional moment vector [N*m]
+    power : float
+        Engine power output [W]
+    stored_results_flag : bool
+        Flag indicating results have been stored
+    stored_propulsor_tag : str
+        Tag identifying the propulsor
+
+    Notes
+    -----
+    This function performs a component-by-component analysis of the turbofan engine:
+    1. Computes ram performance
+    2. Links and computes inlet nozzle performance
+    3. Links and computes fan performance
+    4. Links and computes compressor stages
+    5. Links and computes combustor performance
+    6. Links and computes turbine stages
+    7. Links and computes nozzle performance
+    8. Computes final thrust and moments
+
+    **Major Assumptions**
+        * Quasi-one-dimensional flow
+        * Each component operates in steady state
+        * Perfect gas behavior in non-combustion sections
+
+        See Also
+    --------
+    RCAIDE.Library.Methods.Propulsors.Converters.Ram.compute_ram_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Combustor.compute_combustor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Compressor.compute_compressor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Turbine.compute_turbine_performance
+    """
+ 
     conditions                = state.conditions   
     noise_conditions          = conditions.noise[turbofan.tag] 
     turbofan_conditions       = conditions.energy[turbofan.tag] 
@@ -263,28 +298,40 @@ def compute_turbofan_performance(turbofan,state,center_of_gravity= [[0.0, 0.0,0.
     return thrust_vector,moment,power,stored_results_flag,stored_propulsor_tag 
     
 def reuse_stored_turbofan_data(turbofan,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
-    '''Reuses results from one turbofan for identical turbofans
-    
-    Assumptions: 
-    N/A
+    """
+    Reuses previously computed results for identical turbofan engines to save computation time.
 
-    Source:
-    N/A
+    Parameters
+    ----------
+    turbofan : Turbofan
+        Turbofan engine object to compute results for
+    state : State
+        State object containing flight conditions
+    network : Network
+        Network object containing all propulsion systems
+    stored_propulsor_tag : str
+        Tag of the previously computed turbofan to copy results from
+    center_of_gravity : list, optional
+        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
 
-    Inputs:  
-    turbofan             - turbofan data structure                [-]
-    state                - operating conditions data structure   [-]  
-    fuel_line            - fuelline                              [-]  
-    total_thrust         - thrust of turbofan group              [N]
-    total_power          - power of turbofan group               [W] 
+    Returns
+    -------
+    thrust_vector : ndarray
+        Three-dimensional thrust vector [N]
+    moment : ndarray
+        Three-dimensional moment vector [N*m]
+    power : float
+        Engine power output [W]
 
-    Outputs:  
-    total_thrust         - thrust of turbofan group              [N]
-    total_power          - power of turbofan group               [W] 
-    
-    Properties Used: 
-    N.A.        
-    ''' 
+    Notes
+    -----
+    This function copies previously computed results and only recalculates the moments
+    based on the new turbofan's position relative to the center of gravity.
+
+    **Major Assumptions**
+        * The turbofans are identical in configuration and operating conditions
+        * Only the position relative to center of gravity may differ
+    """ 
     conditions                                      = state.conditions  
     conditions.energy[turbofan.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turbofan.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
