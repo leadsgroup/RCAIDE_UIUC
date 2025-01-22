@@ -47,7 +47,7 @@ def compute_stack_properties(fuel_cell_stack):
     stacking_rows      = fuel_cell_stack.geometrtic_configuration.stacking_rows
 
     if int(parallel_e*series_e) != int(normal_count*parallel_count):
-        pass #raise Exception('Number of cells in gemetric layout not equal to number of cells in electric circuit configuration ')
+        raise Exception('Number of cells in gemetric layout not equal to number of cells in electric circuit configuration ')
          
     normal_spacing     = fuel_cell_stack.geometrtic_configuration.normal_spacing   
     parallel_spacing   = fuel_cell_stack.geometrtic_configuration.parallel_spacing
@@ -82,11 +82,8 @@ def compute_stack_properties(fuel_cell_stack):
     fuel_cell_stack.length = length
     fuel_cell_stack.width  = width
     fuel_cell_stack.height = height 
-    
-    
-    
+     
     if isinstance(fuel_cell_stack, RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack):
-    
         fuel_cell                            = fuel_cell_stack.fuel_cell 
         lb                                   = 0.0001/(Units.cm**2.)    #lower bound on fuel cell current density
         ub                                   = 1.2/(Units.cm**2.)

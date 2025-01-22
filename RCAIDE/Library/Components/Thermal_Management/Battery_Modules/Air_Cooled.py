@@ -1,9 +1,5 @@
-<<<<<<< HEAD:RCAIDE/Library/Components/Thermal_Management/Battery_Modules/Air_Cooled.py
 # RCAIDE/Energy/Thermal_Management/Battery_Modules/Air_Cooled.py
-# 
-=======
-# RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.py
->>>>>>> 216d1c6da7064a437f8bb8b10f0f036f079e8863:RCAIDE/Library/Components/Thermal_Management/Batteries/Air_Cooled.py
+#  
 # 
 # Created:  Jul 2023, M. Clarke
 # Modified: Aug 2024, S. Shekar 
@@ -60,10 +56,8 @@ class Air_Cooled(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel
-        Alternative cooling approach using liquid coolant
-    RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler
-        Alternative cooling approach for extreme temperatures
+    RCAIDE.Library.Components.Thermal_Management.Battery_Modules.Liquid_Cooled_Wavy_Channel
+        Alternative cooling approach using liquid coolant 
     """
     
     def __defaults__(self):

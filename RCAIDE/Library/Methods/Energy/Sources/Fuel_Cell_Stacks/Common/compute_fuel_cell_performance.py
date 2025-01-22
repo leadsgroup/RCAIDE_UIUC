@@ -42,16 +42,15 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
     # Compute Bus electrical properties 
     # ---------------------------------------------------------------------------------    
     bus_conditions              = state.conditions.energy[bus.tag]
-    fuel_cell_stack_conditions  = bus_conditions[fuel_cell.tag]
+    fuel_cell_stack_conditions  = bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag]
     P_bus                       = bus_conditions.power_draw  
-
-    power           = P_bus[t_idx]
-    lb              = .1*Units.mA/(Units.cm**2.)    #lower bound on fuel cell current density
-    ub              = 1200.0*Units.mA/(Units.cm**2.) 
-    current_density  = sp.optimize.fminbound(compute_power_difference, lb, ub, args=(fuel_cell, power)) 
-    v          = compute_voltage(fuel_cell,current_density)    
-    efficiency = np.divide(v, fuel_cell.ideal_voltage)
-    mdot       = np.divide(power,np.multiply(fuel_cell.propellant.specific_energy,efficiency))        
+ 
+    lb               = 0.0001/(Units.cm**2.)    # lower bound on fuel cell current density 
+    ub               = 1.2/(Units.cm**2.)       # upper bound on fuel cell current density
+    current_density  = sp.optimize.fminbound(compute_power_difference, lb, ub, args=(fuel_cell, P_bus[t_idx])) 
+    v                = compute_voltage(fuel_cell,current_density)    
+    efficiency       = np.divide(v, fuel_cell.ideal_voltage)
+    mdot             = np.divide(P_bus[t_idx],np.multiply(fuel_cell.propellant.specific_energy,efficiency))        
     fuel_cell_stack_conditions.fuel_cell.inputs.fuel_mass_flow_rate[t_idx]        = mdot
     
     stored_results_flag            = True

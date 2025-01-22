@@ -1,7 +1,7 @@
 # Regressions/Vehicles/Hydrogen_Fuel_Cell_Twin_Otter.py
 # 
 # 
-# Created:   Jan 2024, S. Shekar
+# Created:   Jan 20245, M. Clarke
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -437,11 +437,10 @@ def vehicle_setup(fuel_cell_model):
     if fuel_cell_model == 'Larminie':  
         fuel_cell_stack   = RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack()
         
-    fuel_cell_stack.electrical_configuration.series             = 85
+    fuel_cell_stack.electrical_configuration.series             = 85 * 12
     fuel_cell_stack.electrical_configuration.parallel           = 25
-    fuel_cell_stack.geometrtic_configuration.normal_count       = 85
-    fuel_cell_stack.geometrtic_configuration.parallel_count     = 25
-            
+    fuel_cell_stack.geometrtic_configuration.normal_count       = 85 * 12
+    fuel_cell_stack.geometrtic_configuration.parallel_count     = 25 
         
     bus.fuel_cell_stacks.append(fuel_cell_stack)  
     bus.initialize_bus_properties()
@@ -479,7 +478,7 @@ def vehicle_setup(fuel_cell_model):
     airfoil                                          = RCAIDE.Library.Components.Airfoils.Airfoil()
     airfoil.tag                                      = 'NACA_4412' 
     airfoil.coordinate_file                          =  rel_path + 'Airfoils' + separator + 'NACA_4412.txt'   # absolute path   
-    airfoil.polar_files                              =[ rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_50000.txt',
+    airfoil.polar_files                              = [ rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_50000.txt',
                                                         rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_100000.txt',
                                                         rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_200000.txt',
                                                         rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_500000.txt',
@@ -497,7 +496,7 @@ def vehicle_setup(fuel_cell_model):
     motor.no_load_current                            = 1
     motor.rotor_radius                               = propeller.tip_radius
     motor.design_torque                              = propeller.cruise.design_torque 
-    motor.angular_velocity                           = propeller.cruise.design_angular_velocity # Horse power of gas engine variant  750 * Units['hp']
+    motor.angular_velocity                           = propeller.cruise.design_angular_velocity
     design_motor(motor)  
     motor.mass_properties.mass                       = compute_motor_weight(motor) 
     starboard_propulsor.motor                        = motor 
