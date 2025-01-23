@@ -87,13 +87,10 @@ def compute_turboshaft_performance(turboshaft,state,center_of_gravity= [[0.0, 0.
 
     See Also
     --------
-    compute_ram_performance
-    compute_compression_nozzle_performance
-    compute_compressor_performance
-    compute_combustor_performance
-    compute_turbine_performance
-    compute_expansion_nozzle_performance
-    compute_power
+    RCAIDE.Library.Methods.Propulsors.Converters.Ram.compute_ram_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Combustor.compute_combustor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Compressor.compute_compressor_performance
+    RCAIDE.Library.Methods.Propulsors.Converters.Turbine.compute_turbine_performance
     """ 
     conditions                = state.conditions 
     noise_conditions          = conditions.noise[turboshaft.tag]  

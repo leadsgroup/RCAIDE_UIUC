@@ -1,5 +1,4 @@
-# RCAIDE/Methods/Energy/Propulsors/Turboshaft_Propulsor/size_core.py
-# 
+# RCAIDE/Library/Methods/Propulsors/Turboshaft_Propulsor/size_core.py
 # 
 # Created:  Sep 2024, M. Clarke, M. Guidotti
 
@@ -77,7 +76,7 @@ def size_core(turboshaft, turboshaft_conditions, conditions):
 
     See Also
     --------
-    compute_power : Function that computes power output based on sized core
+    RCAIDE.Library.Methods.Propulsors.Turboshaft_Propulsor.compute_power
     """
     
     #unpack from turboshaft
