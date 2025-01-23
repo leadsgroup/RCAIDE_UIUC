@@ -647,7 +647,7 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
             if type(control_surface) == RCAIDE.Library.Components.Wings.Control_Surfaces.Flap: 
                 settings.flap_flag     = True    
     
-    for i in  range(len(Mach)): 
+    for i in range(len(Mach)): 
         for wing in vehicle.wings: 
             for control_surface in wing.control_surfaces:  
                 if type(control_surface) == RCAIDE.Library.Components.Wings.Control_Surfaces.Aileron:  
@@ -678,7 +678,7 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
         
         # Dimensionalize the lift and drag for each wing 
         for wing in vehicle.wings: 
-            conditions.aerodynamics.coefficients.lift.induced.inviscid_wings[wing.tag]         = Clift_wings[wing.tag]
+            conditions.aerodynamics.coefficients.lift.induced.inviscid_wings[wing.tag] = Clift_wings[wing.tag]
             conditions.aerodynamics.coefficients.lift.compressible_wings[wing.tag]     = Clift_wings[wing.tag]
             conditions.aerodynamics.coefficients.drag.induced.inviscid_wings[wing.tag] = Cdrag_wings[wing.tag] 
         conditions.aerodynamics.coefficients.lift.induced.spanwise     = Clift_spanwise
@@ -707,13 +707,13 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
         Cdrag_visc      = state.conditions.aerodynamics.coefficients.drag.total
         CX_visc         = orientation_product(T_wind2inertial,Cdrag_visc)[:,0][:,None]   
       
-        no_beta   = np.all(conditions.aerodynamics.angles.beta == 0)
-        no_ail    = np.all(conditions.control_surfaces.aileron.deflection == 0) 
-        no_rud    = np.all(conditions.control_surfaces.rudder.deflection == 0) 
-        no_bank   = np.all(conditions.aerodynamics.angles.phi == 0)  
+        # no_beta   = np.all(conditions.aerodynamics.angles.beta == 0)
+        # no_ail    = np.all(conditions.control_surfaces.aileron.deflection == 0) 
+        # no_rud    = np.all(conditions.control_surfaces.rudder.deflection == 0) 
+        # no_bank   = np.all(conditions.aerodynamics.angles.phi == 0)  
         
-        if no_beta and no_ail and no_rud and no_bank:
-            CY = CY * 0
+        # if no_beta and no_ail and no_rud and no_bank:
+        #     CY = CY * 0
         conditions.static_stability.coefficients.lift[i, 0]  = Clift[i, 0]
         conditions.static_stability.coefficients.drag[i, 0]  = Cdrag_visc[i, 0] 
         conditions.static_stability.coefficients.X[i, 0]     = CX[i, 0]
@@ -736,7 +736,7 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     # --------------------------------------------------------------------------------------------       
 
     atmosphere                                                         = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
-    atmo_data                                                          = atmosphere.compute_values(altitude = conditions.freestream.altitude )    
+    atmo_data                                                          = atmosphere.compute_values(altitude = conditions.freestream.altitude)    
 
     equilibrium_conditions                                             = RCAIDE.Framework.Mission.Common.Results()
     equilibrium_conditions.energy                                      = deepcopy(conditions.energy)
@@ -750,18 +750,17 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     equilibrium_conditions.frames.inertial.velocity_vector[:,0]        = conditions.frames.inertial.velocity_vector[0,0] 
     equilibrium_conditions.freestream.mach_number                      = equilibrium_conditions.freestream.velocity/equilibrium_conditions.freestream.speed_of_sound
     equilibrium_conditions.freestream.dynamic_pressure                 = 0.5 * equilibrium_conditions.freestream.density *  (equilibrium_conditions.freestream.velocity ** 2)
-    equilibrium_conditions.freestream.reynolds_number                  = equilibrium_conditions.freestream.density * equilibrium_conditions.freestream.velocity / equilibrium_conditions.freestream.dynamic_viscosity  
+    equilibrium_conditions.freestream.reynolds_number                  = equilibrium_conditions.freestream.density * equilibrium_conditions.freestream.velocity * wing.chords.mean_aerodynamic/ equilibrium_conditions.freestream.dynamic_viscosity  
     
-
     Clift_0,Cdrag_0,CX_0,CY_0,CZ_0,CL_0,CM_0,CN_0,_,_,_,_,_ ,_,Clift_0_wings,Cdrag_0_wings,_,_,_, _= call_VLM(equilibrium_conditions,settings,vehicle)
     
     # Dimensionalize the lift and drag for each wing 
     for wing in vehicle.wings: 
-        equilibrium_conditions.aerodynamics.coefficients.lift.induced.inviscid_wings[wing.tag]         = Clift_0_wings[wing.tag]
+        equilibrium_conditions.aerodynamics.coefficients.lift.induced.inviscid_wings[wing.tag] = Clift_0_wings[wing.tag]
         equilibrium_conditions.aerodynamics.coefficients.lift.compressible_wings[wing.tag]     = Clift_0_wings[wing.tag]
         equilibrium_conditions.aerodynamics.coefficients.drag.induced.inviscid_wings[wing.tag] = Cdrag_0_wings[wing.tag] 
-    equilibrium_conditions.aerodynamics.coefficients.lift.total                =  Clift_0
-    equilibrium_conditions.aerodynamics.coefficients.drag.induced.inviscid     =  Cdrag_0     
+    equilibrium_conditions.aerodynamics.coefficients.lift.total                                = Clift_0
+    equilibrium_conditions.aerodynamics.coefficients.drag.induced.inviscid                     = Cdrag_0     
 
     equilibrium_state                    = RCAIDE.Framework.Mission.Common.State()
     equilibrium_state.conditions         = equilibrium_conditions  
@@ -788,10 +787,9 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     RCAIDE.Library.Methods.Aerodynamics.Common.Drag.total_drag(equilibrium_state,settings,vehicle)
     
     T_wind2inertial = equilibrium_conditions.frames.wind.transform_to_inertial 
-    Cdrag_0    = equilibrium_state.conditions.aerodynamics.coefficients.drag.total
-    CX_0       = orientation_product(T_wind2inertial,Cdrag_0)[:,0][:,None]
+    Cdrag_0         = equilibrium_state.conditions.aerodynamics.coefficients.drag.total
+    CX_0            = orientation_product(T_wind2inertial,Cdrag_0)[:,0][:,None]
      
-
     # --------------------------------------------------------------------------------------------      
     # Alpha Purtubation  
     # --------------------------------------------------------------------------------------------    
