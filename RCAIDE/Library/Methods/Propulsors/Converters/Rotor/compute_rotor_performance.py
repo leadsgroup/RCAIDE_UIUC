@@ -390,7 +390,8 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
     Crd      = rotor_drag/(rho_0*(n*n)*(D*D*D*D))
     etap     = V*thrust/power
     A        = np.pi*(R**2 - rotor.hub_radius**2)
-    FoM      = thrust*np.sqrt(thrust/(2*rho_0*A))/power  
+    FoM      = thrust*np.sqrt(thrust/(2*rho_0*A))/power
+    J        = V / (n * D)
 
     # prevent things from breaking
     Cq[Cq<0]                   = 0.
@@ -438,6 +439,7 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
                 tip_mach                          = omega * R / conditions.freestream.speed_of_sound, 
                 efficiency                        = etap,         
                 number_radial_stations            = Nr,
+                advance_ratio                     = J, 
                 orientation                       = orientation,  
                 number_azimuthal_stations         = Na,
                 disc_radial_distribution          = r_dim_2d,
