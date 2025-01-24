@@ -24,7 +24,6 @@ import numpy as np
 def compute_component_centers_of_gravity(vehicle, nose_load = 0.06):
     """ computes the center of gravity of all of the vehicle components based on correlations 
     from Stanford University AA241 Lecture Notes 
-    """
     Computes the center of gravity locations for all vehicle components based on empirical correlations and geometric relationships.
 
     Parameters
