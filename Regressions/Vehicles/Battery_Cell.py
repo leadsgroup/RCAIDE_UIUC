@@ -31,6 +31,8 @@ def vehicle_setup(current,C_rat,cell_chemistry,electrical_config):
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
     bus                                       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
+    bus.number_of_battery_modules =  1
+    
     bus.battery_module_electric_configuration = electrical_config
     if cell_chemistry == 'lithium_ion_nmc': 
         battery = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC()

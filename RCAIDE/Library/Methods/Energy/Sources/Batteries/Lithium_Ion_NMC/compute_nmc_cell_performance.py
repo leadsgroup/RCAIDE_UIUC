@@ -23,7 +23,7 @@ def compute_nmc_cell_performance(battery_module,state,bus,coolant_lines,t_idx, d
 
     Parameters
     ----------
-    battery_module : BatteryModule
+    battery_module : battery_module
         The battery_module object containing cell properties and configuration.
     state : MissionState
         The current state of the mission.
@@ -165,7 +165,7 @@ def compute_nmc_cell_performance(battery_module,state,bus,coolant_lines,t_idx, d
     n_series          = battery_module.electrical_configuration.series
     n_parallel        = battery_module.electrical_configuration.parallel 
     n_total           = n_series*n_parallel 
-    no_modules        = len(bus.battery_modules)
+    no_modules        = bus.number_of_battery_modules
     
     # ---------------------------------------------------------------------------------
     # Examine Thermal Management System
@@ -186,7 +186,7 @@ def compute_nmc_cell_performance(battery_module,state,bus,coolant_lines,t_idx, d
     if bus_config == 'Series':
         I_module[t_idx]      = I_bus[t_idx]
     elif bus_config  == 'Parallel':
-        I_module[t_idx]      = I_bus[t_idx] /len(bus.battery_modules)
+        I_module[t_idx]      = I_bus[t_idx] / bus.number_of_battery_modules
 
     I_cell[t_idx] = I_module[t_idx] / n_parallel   
        
@@ -257,7 +257,21 @@ def compute_nmc_cell_performance(battery_module,state,bus,coolant_lines,t_idx, d
 
 
 def reuse_stored_nmc_cell_data(battery_module,state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_battery_module_tag):
-    '''Reuses results from one propulsor for identical batteries 
+    '''Reuses results from one propulsor for identical batteries
+    
+    Assumptions: 
+    N/A
+
+    Source:
+    N/A
+
+    Inputs:  
+    
+
+    Outputs:  
+    
+    Properties Used: 
+    N.A.        
     '''
    
     state.conditions.energy[bus.tag].battery_modules[battery_module.tag] = deepcopy(state.conditions.energy[bus.tag].battery_modules[stored_battery_module_tag])
@@ -266,27 +280,24 @@ def reuse_stored_nmc_cell_data(battery_module,state,bus,coolant_lines, t_idx, de
     return
  
 def compute_nmc_cell_state(battery_module_data,SOC,T,I):
-    """
-    This computes the electrical state variables of a lithium ion 
+    """This computes the electrical state variables of a lithium ion 
     battery_module cell with a  lithium-nickel-cobalt-aluminum oxide cathode 
-    chemistry from look-up tables
+    chemistry from look-up tables 
+     
+    Assumtions: 
+    N/A
     
-    Parameters
-    ----------
-    SOC : float
-        state of charge of cell[unitless]
-    battery_module_data : tuple
-        look-up data structure [unitless]
-    T : float
-        battery_module cell temperature [Kelvin]
-    I : float
-        battery_module cell current  [Amperes] 
-
-    Returns
-    -------
-    tuple
-        A tuple containing:
-        under-load voltage [Volts]
+    Source:  
+    N/A 
+     
+    Inputs:
+        SOC           - state of charge of cell     [unitless]
+        battery_module_data  - look-up data structure      [unitless]
+        T             - battery_module cell temperature    [Kelvin]
+        I             - battery_module cell current        [Amperes]
+    
+    Outputs:  
+        V_ul          - under-load voltage          [Volts] 
         
     """ 
 

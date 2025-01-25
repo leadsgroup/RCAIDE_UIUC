@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Energy/Sources/Batteries/__init__.py
+# RCAIDE/Methods/Energy/Sources/Battery/__init__.py
 # 
 
 """ RCAIDE Package Setup
