@@ -7,7 +7,7 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 from RCAIDE.Library.Components import Component  
-from RCAIDE.Library.Methods.Thermal_Management.Battery_Modules.Air_Cooled import append_air_cooled_conditions, air_cooled_performance, append_air_cooled_segment_conditions
+from RCAIDE.Library.Methods.Thermal_Management.Batteries.Air_Cooled import append_air_cooled_conditions, air_cooled_performance, append_air_cooled_segment_conditions
 from RCAIDE.Library.Attributes.Gases import Air
 from RCAIDE.Library.Plots.Thermal_Management.plot_air_cooled_conditions import plot_air_cooled_conditions
 
@@ -57,6 +57,8 @@ class Air_Cooled(Component):
     --------
     RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel
         Alternative cooling approach using liquid coolant
+    RCAIDE.Library.Components.Thermal_Management.Batteries.Cryocooler
+        Alternative cooling approach for extreme temperatures
     """
     
     def __defaults__(self):

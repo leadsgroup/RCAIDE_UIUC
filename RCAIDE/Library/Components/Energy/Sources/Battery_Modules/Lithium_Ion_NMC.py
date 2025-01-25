@@ -8,8 +8,8 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
 # RCAIDE imports
 import RCAIDE
-from RCAIDE.Framework.Core                                                  import Units , Data
-from .Generic_Battery_Module                                                import Generic_Battery_Module   
+from RCAIDE.Framework.Core                                            import Units , Data
+from .Generic_Battery_Module                                          import Generic_Battery_Module   
 from RCAIDE.Library.Methods.Energy.Sources.Batteries.Lithium_Ion_NMC  import *
 # package imports 
 import numpy as np
