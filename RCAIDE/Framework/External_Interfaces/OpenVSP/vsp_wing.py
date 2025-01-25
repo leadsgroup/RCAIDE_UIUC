@@ -34,7 +34,7 @@ t_table = str.maketrans( chars          + string.ascii_uppercase ,
 # ----------------------------------------------------------------------------------------------------------------------  
 #  vsp read wing
 # ----------------------------------------------------------------------------------------------------------------------  
-def read_vsp_wing(wing_id, units_type='SI', write_airfoil_file=True, use_scaling=True):
+def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil_file=True, use_scaling=True):
     """This reads an OpenVSP wing vehicle geometry and writes it into a RCAIDE wing format.
 
     Assumptions:
@@ -108,7 +108,9 @@ def read_vsp_wing(wing_id, units_type='SI', write_airfoil_file=True, use_scaling
     # Apply a tag to the wing
     if vsp.GetGeomName(wing_id):
         tag = vsp.GetGeomName(wing_id)
-        tag = tag.translate(t_table)
+        tag = tag.translate(t_table) 
+        if main_wing_tag == tag:
+            wing = RCAIDE.Library.Components.Wings.Main_Wing()
         wing.tag = tag
     else:
         wing.tag = 'winggeom'
