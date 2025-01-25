@@ -32,7 +32,6 @@ def append_bus_conditions(bus,segment):
 
     segment.state.conditions.energy[bus.tag]                       = Conditions()
     segment.state.conditions.energy[bus.tag].battery_modules       = Conditions()
-    segment.state.conditions.energy[bus.tag].fuel_cell_stacks      = Conditions()
     segment.state.conditions.energy[bus.tag].power_draw            = 0 * ones_row(1)
     segment.state.conditions.energy[bus.tag].state_of_charge       = 0 * ones_row(1) 
     segment.state.conditions.energy[bus.tag].depth_of_discharge    = 0 * ones_row(1) 
@@ -92,10 +91,10 @@ def append_bus_segment_conditions(bus,conditions,segment):
                             bus_conditions.power_draw[0,0]   +=  segment.state.initials.conditions.energy[coolant_line.tag][heat_exchanger.tag].power[-1] 
         # Bus Properties 
         bus_initials            = segment.state.initials.conditions.energy[bus.tag]
-        if type(segment) ==  RCAIDE.Framework.Mission.Segments.Ground.Recharge:             
-            bus_initials.discharge_flag           = False 
+        if type(segment) ==  RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge:             
+            bus_initials.battery_discharge_flag           = False 
         else:                   
-            bus_initials.discharge_flag           = True     
+            bus_initials.battery_discharge_flag           = True     
         bus_conditions.energy[0,0]          = bus_initials.energy[-1,0]
 
 

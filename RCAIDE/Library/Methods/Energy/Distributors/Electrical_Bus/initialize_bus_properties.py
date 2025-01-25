@@ -2,8 +2,8 @@
 # 
 # Created: Sep 2024, S. Shekar
 #
-from RCAIDE.Library.Methods.Energy.Sources.Batteries.Common    import compute_module_properties 
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Common   import compute_stack_properties
+from RCAIDE.Library.Methods.Energy.Sources.Batteries.Common                    import compute_module_properties 
+
 # ----------------------------------------------------------------------------------------------------------------------
 #  METHODS
 # ---------------------------------------------------------------------------------------------------------------------- 
@@ -23,7 +23,6 @@ def initialize_bus_properties(bus):
         Properties Used:
         None
         """
-        
     if bus.battery_module_electric_configuration == 'Series':
         bus.nominal_capacity = 0
         bus.maximum_energy   = 0
@@ -39,15 +38,5 @@ def initialize_bus_properties(bus):
             compute_module_properties(battery_module)        
             bus.voltage           =  max(battery_module.voltage, bus.voltage)
             bus.nominal_capacity +=  battery_module.nominal_capacity        
-            bus.maximum_energy   +=  battery_module.initial_maximum_energy
-
-    #if bus.fuel_cell_stack_electric_configuration == 'Series':
-        #bus.maximum_energy   = 0
-        #for fuel_cell_stack in  bus.fuel_cell_stacks: 
-            #compute_stack_properties(fuel_cell_stack) 
-            #bus.voltage         +=  fuel_cell_stack.voltage  
-    #elif bus.fuel_cell_stack_electric_configuration == 'Parallel': 
-        #for fuel_cell_stack in  bus.fuel_cell_stacks: 
-            #compute_stack_properties(fuel_cell_stack)        
-            #bus.voltage           =  max(fuel_cell_stack.voltage, bus.voltage)    
+            bus.maximum_energy  +=  battery_module.initial_maximum_energy 
     return
