@@ -1,7 +1,6 @@
-# RCAIDE/Methods/Energy/Propulsors/low_fidelity_ducted_fan_Propulsor/compute_low_fidelity_ducted_fan_performance.py
+# RCAIDE/Library/Methods/Propulsors/Low_Fidelity_Ducted_Fan/compute_low_fidelity_ducted_fan_performance.py
 # 
-# 
-# Created:  Jul 2024, RCAIDE Team
+# Created:  Jan 2025, M. Guidotti
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -14,8 +13,8 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle   import comp
 from RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle import compute_compression_nozzle_performance
 from RCAIDE.Library.Methods.Propulsors.Low_Fidelity_Ducted_Fan       import compute_thrust
 
-import  numpy as  np
-from    copy  import  deepcopy
+import  numpy as np
+from    copy  import deepcopy
 
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_performance
@@ -32,7 +31,6 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
     Inputs:  
     low_fidelity_ducted_fan - low_fidelity_ducted_fan data structure  [-]  
     state                   - operating conditions data structure     [-]  
-    fuel_line               - fuelline                                [-]
     center_of_gravity       - aircraft center of gravity              [m]
    
     Outputs:     
@@ -40,7 +38,7 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
     total_momnet            - moment of low_fidelity_ducted_fan group [Nm]
     total_power             - power of low_fidelity_ducted_fan group  [W] 
     stored_results_flag     - boolean for stored results              [-]     
-    stored_propulsor_tag    - name of turbojet with stored results    [-]
+    stored_propulsor_tag    - name of low_fidelity_ducted_fan with stored results    [-]
     
     Properties Used: 
     N.A.        
@@ -104,16 +102,11 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
     low_fidelity_ducted_fan_conditions.fan_nozzle_exit_velocity       = fan_nozzle_conditions.outputs.velocity
     low_fidelity_ducted_fan_conditions.fan_nozzle_area_ratio          = fan_nozzle_conditions.outputs.area_ratio  
     low_fidelity_ducted_fan_conditions.fan_nozzle_static_pressure     = fan_nozzle_conditions.outputs.static_pressure
-    low_fidelity_ducted_fan_conditions.core_nozzle_area_ratio         = core_nozzle_conditions.outputs.area_ratio 
-    low_fidelity_ducted_fan_conditions.core_nozzle_static_pressure    = core_nozzle_conditions.outputs.static_pressure
-    low_fidelity_ducted_fan_conditions.core_nozzle_exit_velocity      = core_nozzle_conditions.outputs.velocity  
 
     # Link the thrust component to the low pressure compressor 
-    low_fidelity_ducted_fan_conditions.total_temperature_reference    = lpc_conditions.outputs.stagnation_temperature
-    low_fidelity_ducted_fan_conditions.total_pressure_reference       = lpc_conditions.outputs.stagnation_pressure 
-    low_fidelity_ducted_fan_conditions.bypass_ratio                   = bypass_ratio
-    low_fidelity_ducted_fan_conditions.flow_through_core              = 1./(1.+bypass_ratio) #scaled constant to turn on core thrust computation
-    low_fidelity_ducted_fan_conditions.flow_through_fan               = bypass_ratio/(1.+bypass_ratio) #scaled constant to turn on fan thrust computation        
+    low_fidelity_ducted_fan_conditions.total_temperature_reference    = fan_conditions.outputs.stagnation_temperature
+    low_fidelity_ducted_fan_conditions.total_pressure_reference       = fan_conditions.outputs.stagnation_pressure 
+    low_fidelity_ducted_fan_conditions.flow_through_fan               = 1  
 
     # Compute the thrust
     compute_thrust(low_fidelity_ducted_fan,low_fidelity_ducted_fan_conditions,conditions)

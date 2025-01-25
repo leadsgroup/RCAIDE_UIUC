@@ -40,3 +40,4 @@ from .Turbojet                                   import Turbojet
 from .Turboshaft                                 import Turboshaft
 from .Turboprop                                  import Turboprop
 from .Constant_Speed_ICE_Propeller               import Constant_Speed_ICE_Propeller
+from .Low_Fidelity_Ducted_Fan                    import Low_Fidelity_Ducted_Fan

@@ -1,7 +1,7 @@
-# RCAIDE/Library/Components/Propulsors/low_fidelity_ducted_fan.py 
+# RCAIDE/Library/Components/Propulsors/Low_Fidelity_Ducted_Fan.py 
 #
 #
-# Created:  Mar 2024, M. Clarke
+# Created:  Jan 2025, M. Guidotti
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
