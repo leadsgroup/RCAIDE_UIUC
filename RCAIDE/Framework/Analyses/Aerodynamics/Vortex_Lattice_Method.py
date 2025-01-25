@@ -80,7 +80,7 @@ class Vortex_Lattice_Method(Aerodynamics):
         self.settings.propeller_wake_model                               = False 
         self.settings.discretize_control_surfaces                        = True
         self.settings.model_fuselage                                     = False
-        self.settings.trim_aircraft                                      = True 
+        self.settings.trim_aircraft                                      = False
         self.settings.aileron_flag                                       = False
         self.settings.rudder_flag                                        = False
         self.settings.flap_flag                                          = False
@@ -124,10 +124,14 @@ class Vortex_Lattice_Method(Aerodynamics):
 
         self.training.altitude                                      = 0
         self.training.speed_of_sound                                = 343 
-        self.training.angle_purtubation                             = 2 * Units.deg          
-        self.training.speed_purtubation                             = 0.5  
-        self.training.rate_purtubation                              = 0.5 * Units.deg / Units.sec   
-        self.training.control_surface_purtubation                   = 5 * Units.deg   
+        # self.training.angle_purtubation                             = 2 * Units.deg          
+        # self.training.speed_purtubation                             = 0.5  
+        # self.training.rate_purtubation                              = 0.5 * Units.deg / Units.sec   
+        # self.training.control_surface_purtubation                   = 5 * Units.deg   
+        self.training.angle_purtubation                             = 10 * Units.deg          
+        self.training.speed_purtubation                             = 5  
+        self.training.rate_purtubation                              = 10 * Units.deg / Units.sec   
+        self.training.control_surface_purtubation                   = 10 * Units.deg   
         # self.training.sideslip_angle                                = np.array([10  , 5.0 ]) * Units.deg
         # self.training.aileron_deflection                            = np.array([10  , 5.0 ]) * Units.deg
         # self.training.elevator_deflection                           = np.array([10  , 5.0 ]) * Units.deg   
@@ -210,7 +214,7 @@ class Vortex_Lattice_Method(Aerodynamics):
         if use_surrogate == True: 
             compute.lift.inviscid_wings  = evaluate_surrogate
         else:
-            compute.lift.inviscid_wings  = evaluate_no_surrogate  
+            compute.lift.inviscid_wings  = evaluate_no_surrogate
         return 
     
          
