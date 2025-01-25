@@ -55,7 +55,7 @@ class Air_Cooled(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Thermal_Management.Battery_Modules.Liquid_Cooled_Wavy_Channel
+    RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel
         Alternative cooling approach using liquid coolant
     """
     

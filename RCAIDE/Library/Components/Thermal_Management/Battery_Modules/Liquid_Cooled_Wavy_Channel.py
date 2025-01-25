@@ -13,7 +13,7 @@ from RCAIDE.Library.Components.Component                                        
 from RCAIDE.Library.Attributes.Materials.Aluminum                                   import Aluminum
 from RCAIDE.Library.Components                                                      import Component
 from RCAIDE.Library.Components.Component                                            import Container
-from RCAIDE.Library.Methods.Thermal_Management.Battery_Modules.Liquid_Cooled_Wavy_Channel import  wavy_channel_rating_model,append_wavy_channel_conditions,append_wavy_channel_segment_conditions 
+from RCAIDE.Library.Methods.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel import  wavy_channel_rating_model,append_wavy_channel_conditions,append_wavy_channel_segment_conditions 
 from RCAIDE.Library.Plots.Thermal_Management                                        import plot_wavy_channel_conditions
 # ----------------------------------------------------------------------------------------------------------------------
 # Liquid_Cooled_Wavy_Channel_Heat_Acquisition_System

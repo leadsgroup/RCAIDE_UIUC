@@ -7,7 +7,7 @@
 import RCAIDE 
 from RCAIDE.Framework.Core import Units   
 from RCAIDE.Library.Methods.Propulsors.Converters.Rotor     import design_propeller
-from RCAIDE.Library.Methods.Energy.Sources.Battery_Modules.Common import size_module_from_mass
+from RCAIDE.Library.Methods.Energy.Sources.Batteries.Common import size_module_from_mass
 
 # python imports 
 import numpy as np   

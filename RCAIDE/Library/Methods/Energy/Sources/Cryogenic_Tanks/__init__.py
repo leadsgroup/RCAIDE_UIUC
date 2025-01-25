@@ -1,4 +1,5 @@
-# RCAIDE/Methods/Thermal_Management/Battery_Modules/__init__.py 
+# RCAIDE/Methods/Energy/Sources/Croygenic_Tanks/Common/__init__.py
+# 
 
 """ RCAIDE Package Setup
 """
@@ -7,6 +8,4 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
 
-from . import Air_Cooled
-from . import Liquid_Cooled_Wavy_Channel
-
+from .append_cryogenic_tank_conditions   import append_cryogenic_tank_conditions

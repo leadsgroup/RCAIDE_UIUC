@@ -14,7 +14,7 @@ from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor                      
 from RCAIDE.Library.Methods.Weights.Correlation_Buildups.Propulsion                       import compute_motor_weight
 from RCAIDE.Library.Methods.Geometry.Planform                                             import wing_segmented_planform
 from RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger  import design_cross_flow_heat_exchanger
-from RCAIDE.Library.Methods.Thermal_Management.Battery_Modules.Liquid_Cooled_Wavy_Channel       import design_wavy_channel
+from RCAIDE.Library.Methods.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel       import design_wavy_channel
  
 # python imports 
 import numpy as np 
@@ -477,7 +477,7 @@ def vehicle_setup(cell_chemistry, btms_type):
         coolant_line                                           = RCAIDE.Library.Components.Energy.Distributors.Coolant_Line(bus)
         coolant_line.tag                                       = 'liquid_cooled_coolant_line'
         net.coolant_lines.append(coolant_line)
-        HAS                                                    = RCAIDE.Library.Components.Thermal_Management.Battery_Modules.Liquid_Cooled_Wavy_Channel(coolant_line)
+        HAS                                                    = RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel(coolant_line)
         HAS.design_altitude                                    = 2500. * Units.feet  
         atmosphere                                             = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976() 
         atmo_data                                              = atmosphere.compute_values(altitude = HAS.design_altitude)     
@@ -507,7 +507,7 @@ def vehicle_setup(cell_chemistry, btms_type):
         coolant_line                                 = RCAIDE.Library.Components.Energy.Distributors.Coolant_Line(bus)
         coolant_line.tag                             = 'air_cooled_coolant_line'
         net.coolant_lines.append(coolant_line)
-        HAS                                         = RCAIDE.Library.Components.Thermal_Management.Battery_Modules.Air_Cooled() 
+        HAS                                         = RCAIDE.Library.Components.Thermal_Management.Batteries.Air_Cooled() 
         HAS.convective_heat_transfer_coefficient    = 7.17
         for battery_module in bus.battery_modules:
             coolant_line.battery_modules[battery_module.tag].append(HAS)

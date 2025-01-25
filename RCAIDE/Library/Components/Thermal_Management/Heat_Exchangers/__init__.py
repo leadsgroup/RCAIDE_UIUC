@@ -6,7 +6,7 @@ provides classes for different heat exchanger configurations including cross-flo
 
 See Also
 --------
-RCAIDE.Library.Components.Thermal_Management.Battery_Modules
+RCAIDE.Library.Components.Thermal_Management.Batteries
     Related module for battery cooling applications
 RCAIDE.Library.Components.Thermal_Management.Accessories
     Related module for pumps and fans used with heat exchangers

@@ -21,5 +21,6 @@ RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks
 # ----------------------------------------------------------------------------------------------------------------------
 from . import Battery_Modules
 from . import Fuel_Cell_Stacks
+from . import Cryogenic_Tanks
 from . import Fuel_Tanks
 from . import Solar_Panels

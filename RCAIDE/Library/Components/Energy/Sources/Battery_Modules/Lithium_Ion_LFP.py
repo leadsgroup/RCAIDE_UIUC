@@ -11,7 +11,7 @@
 import RCAIDE
 from RCAIDE.Framework.Core                                                 import Units,Data
 from .Generic_Battery_Module                                               import Generic_Battery_Module
-from RCAIDE.Library.Methods.Energy.Sources.Battery_Modules.Lithium_Ion_LFP import * 
+from RCAIDE.Library.Methods.Energy.Sources.Batteries.Lithium_Ion_LFP import * 
 
 # package imports 
 import numpy as np  

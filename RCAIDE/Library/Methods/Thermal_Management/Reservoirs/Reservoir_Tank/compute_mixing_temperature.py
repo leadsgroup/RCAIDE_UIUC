@@ -65,7 +65,7 @@ def compute_mixing_temperature(reservoir, state, coolant_line, delta_t, t_idx):
 
     for battery in coolant_line.battery_modules:
         for HAS in battery:
-            if isinstance(HAS, RCAIDE.Library.Components.Thermal_Management.Battery_Modules.Liquid_Cooled_Wavy_Channel):
+            if isinstance(HAS, RCAIDE.Library.Components.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel):
                 mass_flow_HAS.append(state.conditions.energy[coolant_line.tag][HAS.tag].coolant_mass_flow_rate[t_idx + 1])
                 T_outlet_HAS.append(state.conditions.energy[coolant_line.tag][HAS.tag].outlet_coolant_temperature[t_idx + 1])
                 Cp_HAS.append(coolant.compute_cp(T_outlet_HAS[-1]))

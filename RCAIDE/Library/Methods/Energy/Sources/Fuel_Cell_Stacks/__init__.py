@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Power/Fuel_Cell/__init__.py
+# RCAIDE/Library/Methods/Energy/Fuel_Cell_Stacks/__init__.py
 # 
 
 """ RCAIDE Package Setup

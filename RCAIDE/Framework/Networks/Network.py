@@ -28,6 +28,7 @@ class Network(Component):
         self.tag                          = 'network'
         self.propulsors                   = Container()  
         self.busses                       = Container()
+        self.cryogenic_lines              = Container()
         self.coolant_lines                = Container()
         self.fuel_lines                   = Container() 
         self.identical_propulsors         = True

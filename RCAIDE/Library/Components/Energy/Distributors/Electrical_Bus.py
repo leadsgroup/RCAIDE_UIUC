@@ -61,9 +61,6 @@ class Electrical_Bus(Component):
     charging_c_rate : float
         Battery charging rate in C (default: 1.0)
         
-    number_of_battery_modules : int
-        Number of battery modules on this bus (default: 1)
-        
     battery_module_electric_configuration : str
         Configuration of battery modules ('Series' or 'Parallel') (default: 'Series')
 
@@ -107,7 +104,7 @@ class Electrical_Bus(Component):
         self.payload                                = RCAIDE.Library.Components.Payloads.Payload()         
         self.identical_battery_modules              = True      
         self.identical_fuel_cell_stacks             = True  
-        self.active                                 = True   
+        self.active                                 = True
         self.efficiency                             = 1.0
         self.voltage                                = 0.0 
         self.power_split_ratio                      = 1.0

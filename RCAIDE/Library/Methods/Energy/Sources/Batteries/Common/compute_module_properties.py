@@ -12,7 +12,7 @@ import  numpy as  np
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  METHOD
-# ----------------------------------------------------------------------------------------------------------------------  
+# ---------------------------------------------------------------------------------------------------------------------- -Common
 def compute_module_properties(battery_module):  
     """Calculate module level properties of battery module using cell 
     properties and module configuraton
@@ -103,5 +103,3 @@ def compute_module_properties(battery_module):
     battery_module.initial_maximum_energy         = battery_module.maximum_energy      
     battery_module.nominal_capacity               = battery_module.cell.nominal_capacity* parallel_e 
     battery_module.voltage                        = battery_module.maximum_voltage 
-    
-    return 

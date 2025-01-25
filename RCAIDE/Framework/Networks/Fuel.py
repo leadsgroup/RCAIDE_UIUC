@@ -73,7 +73,8 @@ class Fuel(Network):
         # Step 2: loop through compoments of network and determine performance
         for fuel_line in fuel_lines:     
             stored_results_flag  = False
-            stored_propulsor_tag = None 
+            stored_propulsor_tag = None
+            # Step 2.1: Compute thrust,moment and power of propulsors
             for propulsor_group in fuel_line.assigned_propulsors:
                 for propulsor_tag in propulsor_group:
                     propulsor =  network.propulsors[propulsor_tag]
