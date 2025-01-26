@@ -1,7 +1,13 @@
 # RCAIDE/Methods/Energy/Propulsion/Converters/Common/__init__.py
 # 
 
-""" RCAIDE Package Setup
+"""
+Collection of common methods used for propulsion analysis in RCAIDE. This module contains functions for computing 
+performance metrics at sea level conditions and appending various system conditions including avionics and payload.
+
+See Also
+--------
+RCAIDE.Library.Methods.Propulsors
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

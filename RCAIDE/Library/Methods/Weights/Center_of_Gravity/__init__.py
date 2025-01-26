@@ -3,13 +3,14 @@
 
 
 """
-Methods for computing the center of gravity (CG) locations for vehicle components and the overall vehicle. 
-This module provides functions to calculate individual component CG positions and aggregate them into a total vehicle CG.
+This module provides methods for computing and analyzing center of gravity locations for aircraft components and systems. 
+It includes functions for determining component CG positions based on empirical correlations and geometric relationships.
 
 See Also
 --------
-RCAIDE.Methods.Weights.Correlation_Buildups
-RCAIDE.Methods.Weights.Physics_Based_Buildups
+RCAIDE.Library.Methods.Weights.Physics_Based_Buildups
+RCAIDE.Library.Methods.Weights.Correlation_Buildups
+RCAIDE.Library.Methods.Geometry.Planform
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

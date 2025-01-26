@@ -7,7 +7,7 @@ sizing, and computing performance characteristics of turbofan engines including 
 See Also
 --------
 RCAIDE.Library.Components.Propulsors.Turbofan
-RCAIDE.Framework.Analysis.Propulsion
+RCAIDE.Framework.Analyses.Propulsion
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

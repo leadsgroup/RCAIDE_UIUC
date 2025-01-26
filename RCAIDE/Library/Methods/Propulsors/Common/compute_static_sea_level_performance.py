@@ -1,5 +1,4 @@
 # RCAIDE/Library/Methods/Propulsors/Common/compute_static_sea_level_performance.py
-# (c) Copyright 2023 Aerospace Research Community LLC
 # 
 # Created:  Jul 2024, RCAIDE Team
 
@@ -18,20 +17,46 @@ import numpy as np
 #  Design Turbofan
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_static_sea_level_performance(propulsor):
-    """Compute static sea level performance of a propulsor     
+    """
+    Computes the static sea level performance characteristics of a propulsion system.
     
-    Assumtions:
-       None 
+    Parameters
+    ----------
+    propulsor : RCAIDE.Library.Components.Propulsors.Propulsor
+        The propulsion system object to analyze
+            - working_fluid : Gas
+                Working fluid properties for the propulsion system
+            - tag : str
+                Unique identifier for the propulsor
     
-    Source:
-        None 
+    Returns
+    -------
+    None
     
-    Args:
-        propulsor (dict): propulsor data structure [-]
+    Notes
+    -----
+    This function creates a simulated sea level static test condition and computes
+    the propulsor performance. It sets up atmospheric conditions at sea level
+    with near-zero velocity (Mach 0.01) to approximate static conditions. It then 
+    appends the propulsor operating conditions to the segment state.
+  
     
-    Returns:
-        None 
+    **Major Assumptions**
+        * Earth standard atmosphere (US 1976)
+        * Static conditions approximated with Mach 0.01
+        * Full throttle (1.0) operation
+        * Sea level gravity
     
+    **Theory**
+    
+    Static sea level performance is computed by simulating the propulsor
+    at sea level conditions with:
+    
+    See Also
+    --------
+    RCAIDE.Framework.Mission.Common.Results
+    RCAIDE.Library.Attributes.Planets.Earth
+    RCAIDE.Library.Components.Propulsors
     """  
     # Step 28: Static Sea Level Thrust  
     planet                                            = RCAIDE.Library.Attributes.Planets.Earth()
