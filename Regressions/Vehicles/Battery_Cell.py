@@ -30,8 +30,7 @@ def vehicle_setup(current,C_rat,cell_chemistry,electrical_config):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
-    bus                                       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
-    bus.number_of_battery_modules =  1
+    bus                                       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
     
     bus.battery_module_electric_configuration = electrical_config
     if cell_chemistry == 'lithium_ion_nmc': 
@@ -53,10 +52,8 @@ def vehicle_setup(current,C_rat,cell_chemistry,electrical_config):
     net.busses.append(bus) 
     
     # append network 
-    vehicle.append_energy_network(net) 
- 
-    # ##################################   Determine Vehicle Mass Properties Using Physic Based Methods  ################################       
-    vehicle.mass_properties.takeoff = battery.mass_properties.mass 
+    vehicle.append_energy_network(net)
+    
     return vehicle
 
 

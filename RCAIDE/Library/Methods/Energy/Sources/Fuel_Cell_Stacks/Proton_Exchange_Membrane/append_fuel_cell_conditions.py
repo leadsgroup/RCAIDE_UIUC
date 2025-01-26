@@ -59,12 +59,12 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].current                                   = 0 * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_to_air_ratio                         = fuel_cell_stack.fuel_cell.fuel_to_air_ratio* ones_row(1)    
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].voltage_open_circuit                      = 0 * ones_row(1) 
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].voltage_under_load                        = 0 * ones_row(1)
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].voltage_under_load                        = 0 * ones_row(1) 
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_mass_flow_rate                       = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.voltage_open_circuit            = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.voltage_under_load              = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.power                           = 0 * ones_row(1)
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.current                         = 0 * ones_row(1) 
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.current_density                 = 0 * ones_row(1)  
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.current                         = 0 * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.stagnation_temperature          = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.stagnation_pressure             = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.p_drop_fc                       = fuel_cell_stack.fuel_cell.rated_p_drop_fc * ones_row(1)
@@ -91,16 +91,20 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.P_exp                           = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.P_generator_exp                 = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.CEM_power                       = 0 * ones_row(1)
-           
-    # Conditions for recharging fuel_cell 
-    if isinstance(segment,RCAIDE.Framework.Mission.Segments.Ground.Recharge):
+     
+    # Residuals and unknowns for PEM cell      
+    segment.state.unknowns[fuel_cell_stack.tag  + '_H2_pressure']    =  1* ones_row(1)  
+    segment.state.residuals[fuel_cell_stack.tag  + '_power'] =  0* ones_row(1)  
+
+    # Conditions for recharging fuel_cell        
+    if isinstance(segment,RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge):
         segment.state.conditions.energy.recharging  = True  
         segment.state.unknowns['recharge']          =  0* ones_row(1)  
-        segment.state.residuals.network['recharge'] =  0* ones_row(1)
-    elif type(segment) == RCAIDE.Framework.Mission.Segments.Ground.Discharge:
+        segment.state.residuals['recharge'] =  0* ones_row(1)
+    elif type(segment) == RCAIDE.Framework.Mission.Segments.Ground.Battery_Discharge:
         segment.state.conditions.energy.recharging   = False     
         segment.state.unknowns['recharge']          =  0* ones_row(1)  
-        segment.state.residuals.network['recharge'] =  0* ones_row(1)
+        segment.state.residuals['recharge'] =  0* ones_row(1)
     else:
         segment.state.conditions.energy.recharging  = False            
     

@@ -49,11 +49,12 @@ class Cryogenic_Tank(Component):
         self.tag                         = 'cryogenic_tank'
         self.pressure                    = 1.0 
         self.mass_properties.empty_mass  = 0.0   
-        self.secondary_cryogenic_flow         = 0.0
+        self.croygen_selector_ratio      = 1.0 
+        self.secondary_cryogenic_flow    = 0.0 
         self.cryogen                     = None
          
 
-    def append_operating_conditions(self,segment,cryogenic_line):  
+    def append_operating_conditions(self,segment,bus):  
         """
         Append cryogenic tank operating conditions for a flight segment
         
@@ -61,8 +62,8 @@ class Cryogenic_Tank(Component):
         ----------
         segment : Segment
             Flight segment containing state conditions
-        cryogenic_line : Component
-            Connected cryogenic line component
+        bus : Component
+            Connected bus component
         """
-        append_cryogenic_tank_conditions(self,segment, cryogenic_line)  
+        append_cryogenic_tank_conditions(self,segment, bus)  
         return                                          

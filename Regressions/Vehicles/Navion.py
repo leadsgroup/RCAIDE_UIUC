@@ -318,8 +318,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    ice_prop                                   = RCAIDE.Library.Components.Propulsors.ICE_Propeller()     
-    ice_prop.active_fuel_tanks                 = ['fuel_tank']   
+    ice_prop                                   = RCAIDE.Library.Components.Propulsors.ICE_Propeller()      
                                                      
     # Engine                     
     engine                                     = RCAIDE.Library.Components.Propulsors.Converters.Engine()

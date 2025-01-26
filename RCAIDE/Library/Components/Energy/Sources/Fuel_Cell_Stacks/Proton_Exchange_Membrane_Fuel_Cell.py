@@ -10,7 +10,9 @@
 from RCAIDE.Framework.Core import Data
 from .Generic_Fuel_Cell_Stack    import  Generic_Fuel_Cell_Stack
 from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.compute_fuel_cell_performance import *
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.append_fuel_cell_conditions import *
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.append_fuel_cell_conditions   import *
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.pack_PEM_residuals            import pack_PEM_residuals
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.unpack_PEM_unknowns           import unpack_PEM_unknowns
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Proton_Exchange_Membrane_Fuel_Cell
@@ -112,42 +114,46 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
             The mass per active membrane area of the fuel cell (kg/m2)
         """ 
 
-        self.tag                                 = 'pem_fuel_cell'        
-        self.fuel_cell.R                         = 8.31   # Universal gas constant (J / (mol*K))
-        self.fuel_cell.F                         = 96485  # Faraday constant (C / mol)
-        self.fuel_cell.E_C                       = 66000  # Activation energy of ORR (J)
-        self.fuel_cell.MMH2                      = 2.0E-3 # Molar mass of H2 (kg/mol) 
-        self.fuel_cell.MMO2                      = 32E-3  # Molar mass of O2 (kg/mol) 
-        self.fuel_cell.O2_mass_frac              = 0.233          
-        self.fuel_cell.type                      = "LT" 
-        self.fuel_cell.t_m                       = 0.0024 #* Units.cm
-        self.fuel_cell.a_c                       = 98
-        self.fuel_cell.L_c                       = 0.1 
-        self.fuel_cell.CEM                       = Data() 
-        self.fuel_cell.CEM.compressor_efficiency = 0.71
-        self.fuel_cell.CEM.expander_efficiency   = 0.73 
-        self.fuel_cell.CEM.motor_efficiency      = 0.801025 
-        self.fuel_cell.CEM.generator_efficiency  = 1
-        self.fuel_cell.CEM.specific_weight       = None
-        self.fuel_cell.CEM.weight                = 0 
-        self.fuel_cell.maximum_deg               = 0 
-        self.fuel_cell.rated_p_drop_fc           = 0.240 
-        self.fuel_cell.rated_p_drop_hum          = 0.025 
-        self.fuel_cell.gamma_para                = 0.03 
-        self.fuel_cell.alpha                     = 0.375
-        self.fuel_cell.gamma                     = 0.45
-        self.fuel_cell.lambda_eff                = 20
-        self.fuel_cell.fuel_to_air_ratio         = 0.5
-        self.fuel_cell.c1                        = 0.0435 
-        self.fuel_cell.c2                        = 0.0636
-        self.fuel_cell.stack_temperature         = 353.15 
-        self.fuel_cell.air_excess_ratio          = 2
-        self.fuel_cell.oxygen_relative_humidity  = 2
-        self.fuel_cell.i0ref                     = 9E-6
-        self.fuel_cell.i0ref_P_ref               = 1 
-        self.fuel_cell.i0ref_T_ref               = 353
+        self.tag                                        = 'pem_fuel_cell'        
+        self.fuel_cell.R                                = 8.31   # Universal gas constant (J / (mol*K))
+        self.fuel_cell.F                                = 96485  # Faraday constant (C / mol)
+        self.fuel_cell.E_C                              = 66000  # Activation energy of ORR (J)
+        self.fuel_cell.MMH2                             = 2.0E-3 # Molar mass of H2 (kg/mol) 
+        self.fuel_cell.MMO2                             = 32E-3  # Molar mass of O2 (kg/mol) 
+        self.fuel_cell.O2_mass_frac                     = 0.233          
+        self.fuel_cell.type                             = "LT" 
+        self.fuel_cell.t_m                              = 0.0024 #* Units.cm 
+        self.fuel_cell.interface_area                   = 50 #* Units.cm^2  # area of the fuel cell interface        
+        self.fuel_cell.a_c                              = 98
+        self.fuel_cell.L_c                              = 0.1 
+        self.fuel_cell.CEM                              = Data() 
+        self.fuel_cell.CEM.compressor_efficiency        = 0.71
+        self.fuel_cell.CEM.expander_efficiency          = 0.73 
+        self.fuel_cell.CEM.motor_efficiency             = 0.801025 
+        self.fuel_cell.CEM.generator_efficiency         = 1
+        self.fuel_cell.CEM.specific_weight              = None
+        self.fuel_cell.CEM.weight                       = 0 
+        self.fuel_cell.maximum_deg                      = 0
+        self.fuel_cell.rated_current_density            = 0.1 # A/cm^2
+        self.fuel_cell.rated_p_drop_fc                  = 0.240 
+        self.fuel_cell.rated_p_drop_hum                 = 0.025
+        self.fuel_cell.rated_H2_pressure                = 1  
+        self.fuel_cell.rated_H2_to_air_mixture_ratio    = 1 
+        self.fuel_cell.gamma_para                       = 0.03 
+        self.fuel_cell.alpha                            = 0.375
+        self.fuel_cell.gamma                            = 0.45
+        self.fuel_cell.lambda_eff                       = 24
+        self.fuel_cell.fuel_to_air_ratio                = 0.5
+        self.fuel_cell.c1                               = 0.0435 
+        self.fuel_cell.c2                               = 0.0636
+        self.fuel_cell.stack_temperature                = 353.15 
+        self.fuel_cell.air_excess_ratio                 = 2
+        self.fuel_cell.oxygen_relative_humidity         = 1
+        self.fuel_cell.i0ref                            = 9E-6
+        self.fuel_cell.i0ref_P_ref                      = 1 
+        self.fuel_cell.i0ref_T_ref                      = 353
         self.fuel_cell.current_density_limit_multiplier = 1
-        self.fuel_cell.area_specific_mass       = 2.5 
+        self.fuel_cell.area_specific_mass               = 2.5 
         return 
         
     def energy_calc(self,state,bus,coolant_lines, t_idx, delta_t): 
@@ -175,6 +181,14 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
         
         return stored_results_flag, stored_battery_tag 
 
+    def unpack_fuel_cell_unknowns(self,bus,segment):  
+        unpack_PEM_unknowns(self,bus,segment)
+        return 
+ 
+    def pack_fuel_cell_residuals(self,bus,segment): 
+        pack_PEM_residuals(self,bus,segment)
+        return
+    
     def append_operating_conditions(self,segment,bus):  
         append_fuel_cell_conditions(self,segment,bus)  
         return

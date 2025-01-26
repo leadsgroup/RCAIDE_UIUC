@@ -61,17 +61,19 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].current                                   = 0 * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].voltage_open_circuit                      = 0 * ones_row(1) 
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.voltage_open_circuit            = 0 * ones_row(1)  
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.current_density                 = 0 * ones_row(1)  
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.voltage_under_load              = 0 * ones_row(1) 
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.power                           = 0 * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.current                         = 0 * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inputs.fuel_mass_flow_rate      = 0 * ones_row(1)
-    
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inputs.air_mass_flow_rate       = 0 * ones_row(1) 
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_mass_flow_rate                       = 0 * ones_row(1) 
     
     # Conditions for recharging fuel_cell 
-    if isinstance(segment,RCAIDE.Framework.Mission.Segments.Ground.Recharge):
+    if isinstance(segment,RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge):
         segment.state.conditions.energy.recharging  = True 
         segment.state.unknowns['recharge']          =  0* ones_row(1)  
         segment.state.residuals.network['recharge'] =  0* ones_row(1)
-    elif type(segment) == RCAIDE.Framework.Mission.Segments.Ground.Discharge:
+    elif type(segment) == RCAIDE.Framework.Mission.Segments.Ground.Battery_Discharge:
         segment.state.conditions.energy.recharging   = False 
         segment.state.unknowns['discharge']          =  0* ones_row(1)  
         segment.state.residuals.network['discharge'] =  0* ones_row(1)     

@@ -59,6 +59,7 @@ class Fuel_Line(Component):
         """          
         self.tag                           = 'fuel_line'  
         self.fuel_tanks                    = Container()
+        self.cryogenic_tanks               = Container()
         self.assigned_propulsors           = []
         self.active                        = True 
         self.efficiency                    = 1.0 

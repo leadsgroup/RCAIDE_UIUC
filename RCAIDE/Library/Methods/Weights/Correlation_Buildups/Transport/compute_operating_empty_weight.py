@@ -215,6 +215,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     W_energy_network.W_motors          = 0 
     W_energy_network.W_nacelle         = 0 
     W_energy_network.W_battery         = 0
+    W_energy_network.W_fuel_cell       = 0
     W_energy_network.W_motor           = 0
     number_of_engines                  = 0
     number_of_tanks                    = 0
@@ -275,6 +276,10 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
             for battery in bus.battery_modules: 
                 W_energy_network_total  += battery.mass_properties.mass * Units.kg
                 W_energy_network.W_battery = battery.mass_properties.mass * Units.kg
+    
+            for fuel_cell in bus.fuel_cell_stacks: 
+                W_energy_network_total  += fuel_cell.mass_properties.mass * Units.kg    
+                W_energy_network.W_fuel_cell  += fuel_cell.mass_properties.mass * Units.kg                   
                 
         for propulsor in network.propulsors:
             if 'motor' in propulsor:                           
@@ -297,6 +302,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
  
     output.empty.propulsion.total               = W_energy_network_cumulative
     output.empty.propulsion.battery             = W_energy_network.W_battery
+    output.empty.propulsion.fuel_cell           = W_energy_network.W_fuel_cell
     output.empty.propulsion.motors              = W_energy_network.W_motor
     output.empty.propulsion.engines             = W_energy_network.W_engine
     output.empty.propulsion.thrust_reversers    = W_energy_network.W_thrust_reverser

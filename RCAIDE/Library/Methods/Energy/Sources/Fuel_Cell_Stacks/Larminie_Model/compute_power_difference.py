@@ -28,4 +28,4 @@ def compute_power_difference(current_density, fuel_cell, power_desired):
     '''
     power_out     = compute_power(current_density, fuel_cell)              
     
-    return (power_desired-power_out)**2.#abs(power_desired-power_out)
+    return (power_desired-power_out)**2.

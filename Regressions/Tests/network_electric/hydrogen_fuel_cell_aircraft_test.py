@@ -10,6 +10,7 @@
 import RCAIDE  
 from RCAIDE.Framework.Core   import Units, Data   
 from RCAIDE.Library.Plots    import *   
+from RCAIDE.Library.Methods.Performance.estimate_stall_speed  import estimate_stall_speed 
  
 # package imports  
 import numpy as np
@@ -28,73 +29,38 @@ from Hydrogen_Fuel_Cell_Twin_Otter   import vehicle_setup , configs_setup
 #  REGRESSION
 # ----------------------------------------------------------------------------------------------------------------------  
 
-def main(): 
-    low_fidelity_discharge_model()
-    medium_fidelity_discharge_model()
-    
-    return 
-      
-def low_fidelity_discharge_model(): 
+def main():  
  
-    mdot_H2_true        = 0.05853883881516223
-    fuel_cell_model     = 'Larminie'
+    mdot_H2_true         = [0.0046627573434166285,0.01991295354916295]
+    fuel_cell_models     = ['PEM', 'Larminie', ]
     
-    vehicle  = vehicle_setup(fuel_cell_model) 
+    for i in range(2): 
     
-    # Set up vehicle configs
-    configs  = configs_setup(vehicle)
-
-    # create analyses
-    analyses = analyses_setup(configs)
-
-    # mission analyses
-    mission  = mission_setup(analyses,configs) 
-    
-    # create mission instances (for multiple types of missions)
-    missions = missions_setup(mission) 
-     
-    # mission analysis 
-    results = missions.base_mission.evaluate()  
-    
-    # Voltage Cell Regression
-    mdot_H2       = results.segments[0].conditions.energy.bus.fuel_cell_stacks['fuel_cell'].fuel_cell.inputs.fuel_mass_flow_rate[0,0]
-    print('Mass Flow Rate: ' + str(mdot_H2))
-    mdot_H2_diff   = np.abs(mdot_H2 - mdot_H2_true) 
-    print(mdot_H2_diff) 
-    assert np.abs((mdot_H2_diff)/mdot_H2_true) < 1e-6  
+        vehicle  = vehicle_setup(fuel_cell_models[i]) 
         
-    return
-
-def medium_fidelity_discharge_model():
+        # Set up vehicle configs
+        configs  = configs_setup(vehicle)
     
-    mdot_H2_true        = 2.2805644236790175e-10
-    fuel_cell_model     = 'PEM'
+        # create analyses
+        analyses = analyses_setup(configs)
     
-    vehicle  = vehicle_setup(fuel_cell_model) 
-    
-    # Set up vehicle configs
-    configs  = configs_setup(vehicle)
-
-    # create analyses
-    analyses = analyses_setup(configs)
-
-    # mission analyses
-    mission  = mission_setup(analyses,configs) 
-    
-    # create mission instances (for multiple types of missions)
-    missions = missions_setup(mission) 
-     
-    # mission analysis 
-    results = missions.base_mission.evaluate()  
-    
-    # Voltage Cell Regression
-    mdot_H2       = results.segments[0].conditions.energy.bus.fuel_cell_stacks['pem_fuel_cell'].fuel_cell.inputs.fuel_mass_flow_rate[0,0]
-    print('Mass Flow Rate: ' + str(mdot_H2))
-    mdot_H2_diff   = np.abs(mdot_H2 - mdot_H2_true) 
-    print(mdot_H2_diff) 
-    assert np.abs((mdot_H2_diff)/mdot_H2_true) < 1e-6  
+        # mission analyses
+        mission  = mission_setup(analyses) 
         
-    return  
+        # create mission instances (for multiple types of missions)
+        missions = missions_setup(mission) 
+         
+        # mission analysis 
+        results = missions.base_mission.evaluate()  
+        
+        # Voltage Cell Regression
+        mdot_H2        = results.segments[0].conditions.energy.bus.cryogenic_tank.mass_flow_rate[0,0]
+        print('Mass Flow Rate: ' + str(mdot_H2))
+        mdot_H2_diff   = np.abs(mdot_H2 - mdot_H2_true[i]) 
+        print(mdot_H2_diff) 
+        assert np.abs((mdot_H2_diff)/mdot_H2_true[i]) < 1e-6  
+        
+    return 
  
 def analyses_setup(configs):
 
@@ -107,43 +73,96 @@ def analyses_setup(configs):
 
     return analyses
 
-def base_analysis(vehicle):    
-    #   Initialize the Analyses     
-    analyses = RCAIDE.Framework.Analyses.Vehicle()  
-    
+
+def base_analysis(vehicle):
+
+    # ------------------------------------------------------------------
+    #   Initialize the Analyses
+    # ------------------------------------------------------------------     
+    analyses = RCAIDE.Framework.Analyses.Vehicle()
+ 
+    # ------------------------------------------------------------------
+    #  Weights
+    weights          = RCAIDE.Framework.Analyses.Weights.Weights_EVTOL()
+    weights.vehicle  = vehicle
+    analyses.append(weights)
+
+    # ------------------------------------------------------------------
+    #  Aerodynamics Analysis  
+    aerodynamics                   = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
+    aerodynamics.vehicle           = vehicle
+    analyses.append(aerodynamics)
+
+    # ------------------------------------------------------------------
     #  Energy
     energy          = RCAIDE.Framework.Analyses.Energy.Energy()
     energy.vehicle  = vehicle 
     analyses.append(energy)
- 
+    
+    # ------------------------------------------------------------------
     #  Planet Analysis
-    planet  = RCAIDE.Framework.Analyses.Planets.Earth()
+    planet = RCAIDE.Framework.Analyses.Planets.Earth()
     analyses.append(planet)
- 
+
+    # ------------------------------------------------------------------
     #  Atmosphere Analysis
-    atmosphere                 = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
+    atmosphere = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
     atmosphere.features.planet = planet.features
     analyses.append(atmosphere)   
  
-    return analyses     
+    return analyses
 
-def mission_setup(analyses,vehicle):
- 
-    #   Initialize the Mission 
-    mission            = RCAIDE.Framework.Mission.Sequential_Segments()
-    mission.tag        = 'fuel_cell_cycle_test'   
-    Segments           = RCAIDE.Framework.Mission.Segments 
-    base_segment       = Segments.Segment()    
-
-    # Charge Segment 
-    segment                                 = Segments.Ground.Discharge(base_segment)      
-    segment.analyses.extend(analyses.base)
-    segment.throttle =  1.0 
-    segment.tag                             = 'Discharge' 
-    mission.append_segment(segment)    
-     
+# ----------------------------------------------------------------------
+#   Define the Mission
+# ---------------------------------------------------------------------- 
+def mission_setup(analyses):
     
-    return mission 
+
+    # ------------------------------------------------------------------
+    #   Initialize the Mission
+    # ------------------------------------------------------------------
+    mission = RCAIDE.Framework.Mission.Sequential_Segments()
+    mission.tag = 'mission' 
+
+    # unpack Segments module
+    Segments = RCAIDE.Framework.Mission.Segments  
+    base_segment = Segments.Segment()
+    base_segment.temperature_deviation  = 2.5
+    base_segment.state.numerics.number_of_control_points  = 3
+    
+    # VSTALL Calculation  
+    vehicle        = analyses.base.aerodynamics.vehicle
+    vehicle_mass   = vehicle.mass_properties.max_takeoff
+    reference_area = vehicle.reference_area 
+    Vstall         = estimate_stall_speed(vehicle_mass,reference_area,altitude = 0.0,maximum_lift_coefficient = 1.2)
+    
+    # ------------------------------------------------------------------
+    #   Departure End of Runway Segment  
+    # ------------------------------------------------------------------ 
+    segment = Segments.Climb.Linear_Speed_Constant_Rate(base_segment) 
+    segment.tag = 'climb'       
+    segment.analyses.extend( analyses.base )  
+    segment.altitude_start                                           = 0.0 * Units.feet
+    segment.altitude_end                                             = 5 
+    segment.air_speed_start                                          = Vstall *1.2  
+    segment.air_speed_end                                            = Vstall *1.25
+    segment.initial_battery_state_of_charge                          = 1.0
+                       
+    # define flight dynamics to model            
+    segment.flight_dynamics.force_x                                  = True  
+    segment.flight_dynamics.force_z                                  = True     
+    
+    # define flight controls 
+    segment.assigned_control_variables.throttle.active               = True           
+    segment.assigned_control_variables.throttle.assigned_propulsors  = [['starboard_propulsor','port_propulsor']] 
+    segment.assigned_control_variables.body_angle.active             = True                  
+       
+    mission.append_segment(segment) 
+    
+    # ------------------------------------------------------------------
+    #   Mission definition complete    
+    # ------------------------------------------------------------------ 
+    return mission
 
 def missions_setup(mission): 
  

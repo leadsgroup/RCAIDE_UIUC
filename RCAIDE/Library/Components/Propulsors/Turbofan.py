@@ -57,9 +57,6 @@ class Turbofan(Propulsor):
     fan_nozzle : Component
         Fan exhaust nozzle component. Default is None.
         
-    active_fuel_tanks : None or list
-        Collection of active fuel tanks. Default is None.
-        
     active_crypgenic_tanks_tanks : None or list
         Collection of active cryogenoc tanks. Default is None.
         
@@ -154,8 +151,7 @@ class Turbofan(Propulsor):
         self.high_pressure_turbine                    = None 
         self.combustor                                = None 
         self.core_nozzle                              = None 
-        self.fan_nozzle                               = None  
-        self.active_fuel_tanks                        = None         
+        self.fan_nozzle                               = None       
         self.engine_diameter                          = 0.0      
         self.engine_length                            = 0.0
         self.engine_height                            = 0.5     # Engine centerline heigh above the ground plane

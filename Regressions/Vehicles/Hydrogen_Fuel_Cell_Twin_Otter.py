@@ -430,30 +430,31 @@ def vehicle_setup(fuel_cell_model):
       
     if fuel_cell_model == 'PEM': 
         fuel_cell_stack = RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane_Fuel_Cell() 
+        fuel_cell_stack.electrical_configuration.series             = 85 * 12  
+        fuel_cell_stack.electrical_configuration.parallel           = 6
+        fuel_cell_stack.geometrtic_configuration.normal_count       = 85 * 12  
+        fuel_cell_stack.geometrtic_configuration.parallel_count     = 6
     if fuel_cell_model == 'Larminie':  
-        fuel_cell_stack   = RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack()
-        
-    fuel_cell_stack.electrical_configuration.series             = 85 * 12
-    fuel_cell_stack.electrical_configuration.parallel           = 25
-    fuel_cell_stack.geometrtic_configuration.normal_count       = 85 * 12
-    fuel_cell_stack.geometrtic_configuration.parallel_count     = 25 
+        fuel_cell_stack   = RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack() 
+        fuel_cell_stack.electrical_configuration.series             = 85 * 12
+        fuel_cell_stack.electrical_configuration.parallel           = 1
+        fuel_cell_stack.geometrtic_configuration.normal_count       = 85 * 12 
+        fuel_cell_stack.geometrtic_configuration.parallel_count     = 1
         
     bus.fuel_cell_stacks.append(fuel_cell_stack)  
     bus.initialize_bus_properties() 
 
     #------------------------------------------------------------------------------------------------------------------------------------  
-    # Crogenic Line 
-    #------------------------------------------------------------------------------------------------------------------------------------      
-    cryogenic_line = RCAIDE.Library.Components.Energy.Distributors.Cryogenic_Line()
+    # Crogenic Tank
+    #------------------------------------------------------------------------------------------------------------------------------------       
     cryogenic_tank = RCAIDE.Library.Components.Energy.Sources.Cryogenic_Tanks.Cryogenic_Tank()  
-    cryogenic_line.cryogenic_tanks.append(cryogenic_tank)    
+    bus.cryogenic_tanks.append(cryogenic_tank)    
      
     #------------------------------------------------------------------------------------------------------------------------------------  
     #  Starboard Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
     starboard_propulsor                              = RCAIDE.Library.Components.Propulsors.Electric_Rotor()  
     starboard_propulsor.tag                          = 'starboard_propulsor'
-    starboard_propulsor.active_crypgenic_tanks       = ['cryogenic_tank']   
     
     # Electronic Speed Controller       
     esc                                              = RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller()
@@ -512,8 +513,7 @@ def vehicle_setup(fuel_cell_model):
     # Port Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
     port_propulsor                             = RCAIDE.Library.Components.Propulsors.Electric_Rotor() 
-    port_propulsor.tag                         = "port_propulsor"
-    port_propulsor.active_crypgenic_tanks      = ['cryogenic_tank']   
+    port_propulsor.tag                         = "port_propulsor" 
             
     esc_2                                      = deepcopy(esc)
     esc_2.origin                               = [[3.8, -2.8129,1.22 ]]        
@@ -553,8 +553,7 @@ def vehicle_setup(fuel_cell_model):
     bus.assigned_propulsors =  [[starboard_propulsor.tag, port_propulsor.tag]] 
 
     # append bus   
-    net.busses.append(bus)
-    net.cryogenic_lines.append(cryogenic_line)
+    net.busses.append(bus) 
     
     vehicle.append_energy_network(net)
 

@@ -9,6 +9,7 @@
 import RCAIDE
 from RCAIDE.Framework.Core import Units
 from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Larminie_Model import  compute_power, compute_voltage
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.compute_fuel_cell_performance import  evaluate_PEM ,  evaluate_max_gross_power, set_rated_current_density, calculate_P_drop_stack
 import  scipy as  sp
 import  numpy as  np
 
@@ -41,7 +42,8 @@ def compute_stack_properties(fuel_cell_stack):
      
     
     series_e           = fuel_cell_stack.electrical_configuration.series
-    parallel_e         = fuel_cell_stack.electrical_configuration.parallel 
+    parallel_e         = fuel_cell_stack.electrical_configuration.parallel
+    n_total            = parallel_e *series_e
     normal_count       = fuel_cell_stack.geometrtic_configuration.normal_count  
     parallel_count     = fuel_cell_stack.geometrtic_configuration.parallel_count
     stacking_rows      = fuel_cell_stack.geometrtic_configuration.stacking_rows
@@ -82,26 +84,82 @@ def compute_stack_properties(fuel_cell_stack):
     fuel_cell_stack.length = length
     fuel_cell_stack.width  = width
     fuel_cell_stack.height = height 
+    fuel_cell              = fuel_cell_stack.fuel_cell 
      
-    if isinstance(fuel_cell_stack, RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack):
-        fuel_cell                            = fuel_cell_stack.fuel_cell 
-        lb                                   = 0.0001/(Units.cm**2.)    #lower bound on fuel cell current density
-        ub                                   = 1.2/(Units.cm**2.)
-        sign                                 = -1. #used to minimize -power
-        current_density                      = sp.optimize.fminbound(compute_power, lb, ub, args=(fuel_cell, sign))
-        power_per_cell                       = compute_power(current_density,fuel_cell) 
-        V_fc                                 = compute_voltage(fuel_cell,current_density)  #useful voltage vector 
+    if type(fuel_cell_stack) == RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack:
+        lb                                     = 0.0001/(Units.cm**2.)    #lower bound on fuel cell current density
+        ub                                     = 1.2/(Units.cm**2.)
+        sign                                   = -1. # used to minimize -power 
+        maximum_current_density                = sp.optimize.fminbound(compute_power, lb, ub, args=(fuel_cell, sign)) 
+        P_fuel_cell                            = compute_power(maximum_current_density,fuel_cell)  
+        V_fuel_cell                            = compute_voltage(fuel_cell,maximum_current_density)  # useful voltage vector 
+        efficiency                             = np.divide(V_fuel_cell, fuel_cell.ideal_voltage)
+        mdot_H2                                = np.divide(P_fuel_cell,np.multiply(fuel_cell.propellant.specific_energy,efficiency))
         
-        fuel_cell.volume                     = parallel_e *series_e *fuel_cell.interface_area*fuel_cell.wall_thickness
-        fuel_cell_stack.mass_properties.mass = fuel_cell.volume*fuel_cell.cell_density*fuel_cell.porosity_coefficient #fuel cell mass in kg
-        fuel_cell.mass_density               = fuel_cell_stack.mass_properties.mass/  fuel_cell.volume                      
-        fuel_cell.specific_power             = fuel_cell.max_power/fuel_cell_stack.mass_properties.mass #fuel cell specific power in W/kg
-
-
-        fuel_cell_stack.voltage         = V_fc  * series_e
-        fuel_cell_stack.maximum_voltage = V_fc  * series_e
-        #fuel_cell_stack.maximum_power   = power_per_cell * series_e 
-        #fuel_cell_stack.maximum_current =  fuel_cell_stack.maximum_power / fuel_cell_stack.maximum_voltage
- 
- 
+        # store properties
+        fuel_cell.rated_current_density       = maximum_current_density
+        fuel_cell.volume                       = fuel_cell.interface_area*fuel_cell.wall_thickness
+        fuel_cell.mass                         = fuel_cell.volume*fuel_cell.cell_density*fuel_cell.porosity_coefficient  
+        fuel_cell.density                      = fuel_cell.mass/fuel_cell.volume                      
+        fuel_cell.specific_power               = fuel_cell.max_power/fuel_cell.mass  
   
+        fuel_cell_stack.mass_properties.mass   = n_total*fuel_cell.mass 
+        fuel_cell_stack.voltage                = V_fuel_cell  * series_e
+        fuel_cell_stack.maximum_voltage        = V_fuel_cell  * series_e
+        fuel_cell_stack.maximum_power          = P_fuel_cell * series_e 
+        fuel_cell_stack.maximum_current        = fuel_cell_stack.maximum_power / fuel_cell_stack.maximum_voltage
+        fuel_cell_stack.maximum_fuel_flow_rate = mdot_H2 * n_total
+    
+    elif type(fuel_cell_stack) == RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane_Fuel_Cell:
+        pass
+    
+        # check if mach number and temperature are passed
+        design_altitude =  0
+        
+        # call the atmospheric model to get the conditions at the specified altitude
+        atmosphere = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
+        atmo_data  = atmosphere.compute_values(design_altitude) 
+         
+        segment                  = RCAIDE.Framework.Mission.Segments.Segment()  
+        segment.state.conditions = RCAIDE.Framework.Mission.Common.Results()   
+        bus     = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
+        bus.fuel_cell_stacks.append(fuel_cell_stack)   
+        
+        bus.append_operating_conditions(segment)
+        for fuel_cell_stack in  bus.fuel_cell_stacks: 
+            fuel_cell_stack.append_operating_conditions(segment,bus)      
+            
+        for tag, bus_item in  bus.items():  
+            if issubclass(type(bus_item), RCAIDE.Library.Components.Component):
+                bus_item.append_operating_conditions(segment,bus)
+ 
+        for cryogenic_tank in  bus.cryogenic_tanks: 
+            cryogenic_tank.append_operating_conditions(segment,bus)
+      
+        # compute fuel cell performance             
+        t_idx   =  0
+        fuel_cell_stack_conditions = segment.state.conditions.energy[bus.tag].fuel_cell_stacks[fuel_cell_stack.tag]
+        fuel_cell_stack_conditions.fuel_cell.stagnation_temperature[t_idx, 0]    = atmo_data.temperature   
+        fuel_cell_stack_conditions.fuel_cell.stagnation_pressure[t_idx, 0]       = atmo_data.pressure  
+        fuel_cell_stack_conditions.fuel_cell.inputs.air_pressure[t_idx, 0]       = fuel_cell.rated_H2_pressure 
+        fuel_cell_stack_conditions.fuel_cell.inputs.hydrogen_pressure[t_idx, 0]  = fuel_cell.rated_H2_pressure * fuel_cell.rated_H2_to_air_mixture_ratio
+        fuel_cell_stack_conditions.fuel_cell.p_drop_fc[t_idx, 0]                 = fuel_cell.rated_p_drop_fc     
+        rated_current_density, rated_power_density = evaluate_max_gross_power(fuel_cell_stack,fuel_cell_stack_conditions,t_idx)
+        set_rated_current_density(fuel_cell_stack, rated_current_density, rated_power_density)
+         
+        mdot_H2, V_fuel_cell, P_fuel_cell, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power =  evaluate_PEM(fuel_cell_stack,fuel_cell_stack_conditions, t_idx)
+            
+        # store properties
+        area_square_meters                     = fuel_cell.interface_area * 0.0001
+        fuel_cell.volume                       = area_square_meters*fuel_cell.wall_thickness
+        fuel_cell.mass                         = fuel_cell.volume*fuel_cell.cell_density*fuel_cell.porosity_coefficient  
+        fuel_cell.density                      = fuel_cell.mass/fuel_cell.volume                      
+        fuel_cell.specific_power               = fuel_cell.max_power/fuel_cell.mass  
+        fuel_cell_stack.mass_properties.mass   = n_total*fuel_cell.mass 
+        fuel_cell_stack.voltage                = V_fuel_cell  * series_e
+        fuel_cell_stack.maximum_voltage        = V_fuel_cell  * series_e
+        fuel_cell_stack.maximum_power          = P_fuel_cell * series_e 
+        fuel_cell_stack.maximum_current        = fuel_cell_stack.maximum_power / fuel_cell_stack.maximum_voltage
+        fuel_cell_stack.maximum_fuel_flow_rate = mdot_H2 * n_total         
+         
+    return 

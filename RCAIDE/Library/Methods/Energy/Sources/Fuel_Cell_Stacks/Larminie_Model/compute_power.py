@@ -31,7 +31,6 @@ def compute_power(current_density, fuel_cell, sign=1.0):
     # sign variable is used so that you can maximize the power, by minimizing the -power
     i1            = current_density
     A             = fuel_cell.interface_area
-    v             = compute_voltage(fuel_cell,current_density)  #useful voltage vector
-    power_out     = sign* np.multiply(v,i1)*A       #obtain power output in W/cell
-    
+    v             = compute_voltage(fuel_cell,current_density)   # useful voltage vector
+    power_out     = sign* np.multiply(v,i1)*A                    # obtain power output in W/cell 
     return power_out

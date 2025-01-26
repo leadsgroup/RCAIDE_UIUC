@@ -86,17 +86,17 @@ class Electric(Network):
 
         # unpack   
         conditions      = state.conditions 
-        busses          = network.busses
-        cryogenic_lines = network.cryogenic_lines   
+        busses          = network.busses 
         coolant_lines   = network.coolant_lines
         total_thrust    = 0. * state.ones_row(3) 
         total_power     = 0. * state.ones_row(1) 
         total_moment    = 0. * state.ones_row(3)  
-        total_mdot     = 0. * state.ones_row(1)   
+        total_mdot      = 0. * state.ones_row(1)   
         reverse_thrust  = network.reverse_thrust
        
         # Step 1: Compute performance of electric propulsor components 
         for bus in busses:
+            cryogen_mdot    = 0. * state.ones_row(1)  
             T               = 0. * state.ones_row(1) 
             total_power     = 0. * state.ones_row(1) 
             M               = 0. * state.ones_row(1)  
@@ -167,7 +167,9 @@ class Electric(Network):
         for bus in  busses:    
             for t_idx in range(state.numerics.number_of_control_points):            
                 stored_results_flag       = False
-                stored_battery_cell_tag   = None 
+                stored_battery_cell_tag   = None
+                
+                stored_fuel_cell_tag      = None  
                 # Step 2.1.a : Battery Module Performance          
                 for battery_module in  bus.battery_modules:                   
                     if bus.identical_battery_modules == False:
@@ -179,47 +181,46 @@ class Electric(Network):
                             stored_results_flag, stored_battery_cell_tag  =  battery_module.energy_calc(state,bus,coolant_lines, t_idx, delta_t)
                         else:
                             # use previous battery results 
-                            battery_module.reuse_stored_data(state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_battery_cell_tag)                            
+                            battery_module.reuse_stored_data(state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_battery_cell_tag)
+                 
+                # Step 2.1.b : Fuel Cell Stack Performance           
+                for fuel_cell_stack in  bus.fuel_cell_stacks:                   
+                    if bus.identical_fuel_cell_stacks == False:
+                        # run analysis  
+                        stored_results_flag, stored_fuel_cell_tag =  fuel_cell_stack.energy_calc(state,bus,coolant_lines, t_idx, delta_t)
+                    else:             
+                        if stored_results_flag == False: 
+                            # run battery analysis 
+                            stored_results_flag, stored_fuel_cell_tag  =  fuel_cell_stack.energy_calc(state,bus,coolant_lines, t_idx, delta_t)
+                        else:
+                            # use previous battery results 
+                            fuel_cell_stack.reuse_stored_data(state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_fuel_cell_tag)
+                         
+                    # compute cryogen mass flow rate 
+                    fuel_cell_stack_conditions  = bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag]                        
+                    cryogen_mdot[t_idx]        += fuel_cell_stack_conditions.fuel_mass_flow_rate[t_idx]
+                    
+                    # compute total mass flow rate 
+                    total_mdot[t_idx]     += fuel_cell_stack_conditions.fuel_mass_flow_rate[t_idx]    
+                   
+                # Step 3: Compute bus properties          
                 bus.compute_distributor_conditions(state,t_idx, delta_t)
                 
-                # Step 2.1.b : Battery Thermal Management Calculations                    
-                for coolant_line in  coolant_lines:
+                # Step 4 : Battery Thermal Management Calculations                    
+                for coolant_line in coolant_lines:
                     if t_idx != state.numerics.number_of_control_points-1: 
                         for heat_exchanger in coolant_line.heat_exchangers: 
                             heat_exchanger.compute_heat_exchanger_performance(state,bus,coolant_line,delta_t[t_idx],t_idx) 
                         for reservoir in coolant_line.reservoirs:   
-                            reservoir.compute_reservior_coolant_temperature(state,coolant_line,delta_t[t_idx],t_idx)
-     
-     
-        # Step 2.2: Compute performance of fuel cell compoments     
-        for cryogenic_line in cryogenic_lines:
-            stored_fuel_cell_tag      = None  
-            for fuel_cell_stack in  bus.fuel_cell_stacks:                   
-                if bus.identical_fuel_cell_stacks == False:
-                    # run analysis  
-                    stored_results_flag, stored_fuel_cell_tag =  fuel_cell_stack.energy_calc(state,bus,coolant_lines, t_idx, delta_t)
-                else:             
-                    if stored_results_flag == False: 
-                        # run battery analysis 
-                        stored_results_flag, stored_fuel_cell_tag  =  fuel_cell_stack.energy_calc(state,bus,coolant_lines, t_idx, delta_t)
-                    else:
-                        # use previous battery results 
-                        fuel_cell_stack.reuse_stored_data(state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_fuel_cell_tag)
-        
-            # Step 2.2: Link each propulsor the its respective fuel tank(s)
-            for cryogenic_tank in cryogenic_lines.cryogenic_tanks:
-                mdot = 0. * state.ones_row(1)   
-                for propulsor in network.propulsors:
-                    for source in (propulsor.active_cryogenic_tanks):
-                        if cryogenic_tank.tag == source: 
-                            mdot += conditions.energy[propulsor.tag].fuel_flow_rate 
-                    
-                # Step 2.3 : Determine cumulative fuel flow from fuel tank 
-                fuel_tank_mdot = cryogenic_tank.fuel_selector_ratio*mdot + cryogenic_tank.secondary_fuel_flow 
+                            reservoir.compute_reservior_coolant_temperature(state,coolant_line,delta_t[t_idx],t_idx) 
+       
+            # Step 5: Determine mass flow from cryogenic tanks 
+            for cryogenic_tank in bus.cryogenic_tanks:
+                # Step 5.1: Determine the cumulative flow from each cryogen tank
+                fuel_tank_mdot = cryogenic_tank.croygen_selector_ratio*cryogen_mdot + cryogenic_tank.secondary_cryogenic_flow 
                 
-                # Step 2.4: Store mass flow results 
-                conditions.energy[cryogenic_line.tag][cryogenic_tank.tag].mass_flow_rate  = fuel_tank_mdot  
-                total_mdot += fuel_tank_mdot 
+                # Step 5.2: DStore mass flow results 
+                conditions.energy[bus.tag][cryogenic_tank.tag].mass_flow_rate  = fuel_tank_mdot 
                                  
         if reverse_thrust ==  True:
             total_thrust =  total_thrust * -1     
@@ -261,6 +262,10 @@ class Electric(Network):
         for network in segment.analyses.energy.vehicle.networks:
             for bus_i, bus in enumerate(network.busses):    
                 if bus.active:
+                    for i , fuel_cell_stack in enumerate(bus.fuel_cell_stacks):
+                        if i == 0 or bus.identical_fuel_cell_stacks == False:
+                            fuel_cell_stack.unpack_fuel_cell_unknowns(bus,segment)
+                        
                     for propulsor_group in  bus.assigned_propulsors:
                         propulsor = network.propulsors[propulsor_group[0]]
                         propulsor.unpack_propulsor_unknowns(segment) 
@@ -291,6 +296,10 @@ class Electric(Network):
         for network in segment.analyses.energy.vehicle.networks:
             for bus_i, bus in enumerate(network.busses):    
                 if bus.active:
+                    for i , fuel_cell_stack in enumerate(bus.fuel_cell_stacks):
+                        if i == 0 or bus.identical_fuel_cell_stacks == False:
+                            fuel_cell_stack.pack_fuel_cell_residuals(bus,segment)
+                        
                     for propulsor_group in  bus.assigned_propulsors:
                         propulsor =  network.propulsors[propulsor_group[0]]
                         propulsor.pack_propulsor_residuals(segment)   
@@ -356,7 +365,11 @@ class Electric(Network):
                     
                 for tag, bus_item in  bus.items():  
                     if issubclass(type(bus_item), RCAIDE.Library.Components.Component):
-                        bus_item.append_operating_conditions(segment,bus)                     
+                        bus_item.append_operating_conditions(segment,bus)
+         
+                for cryogenic_tank in  bus.cryogenic_tanks: 
+                    cryogenic_tank.append_operating_conditions(segment,bus)
+                                                    
     
             for coolant_line_i, coolant_line in enumerate(network.coolant_lines):  
                 # ------------------------------------------------------------------------------------------------------            
