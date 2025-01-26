@@ -1,20 +1,21 @@
-# RCAIDE/Methods/Energy/Sources/Battery/Common/compute_module_properties.py
+# RCAIDE/Methods/Energy/Sources/Fuel_Cells/Common/compute_stack_properties.py
 # 
 # 
-# Created:  Jul 2023, M. Clarke 
+# Created:   Nov 2024, M. Clarke 
+# Modified:  Jan 2025, M. Clarke 
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 import RCAIDE
 from RCAIDE.Framework.Core import Units
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Larminie_Model import  compute_power, compute_voltage
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.compute_fuel_cell_performance import  evaluate_PEM ,  evaluate_max_gross_power, set_rated_current_density, calculate_P_drop_stack
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Larminie_Model import  compute_power, compute_voltage
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.compute_fuel_cell_performance import  evaluate_PEM ,  evaluate_max_gross_power, set_rated_current_density 
 import  scipy as  sp
 import  numpy as  np
 
 # ----------------------------------------------------------------------------------------------------------------------
-#  METHOD
+#  Compute Stack Properties
 # ----------------------------------------------------------------------------------------------------------------------  
 def compute_stack_properties(fuel_cell_stack):  
     """Calculate fuel_cell_stack level properties of battery module using cell 

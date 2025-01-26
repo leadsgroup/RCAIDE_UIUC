@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Energy/Sources/Fuel_Cell_Stacks/Larminie_Model/compute_voltage.py
+# RCAIDE/Methods/Energy/Sources/Fuel_Cells/Larminie_Model/compute_voltage.py
 #  
 # Created: Jan 2025, M. Clarke
 # ----------------------------------------------------------------------------------------------------------------------

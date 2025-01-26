@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Energy/Sources/fuel_cell/Common/append_fuel_cell_conditions.py
+# RCAIDE/Methods/Energy/Sources/Fuel_Cells/Larminie_Nodel/append_fuel_cell_conditions.py
 # 
 # 
 # Created: Nov 2024, M. Clarke

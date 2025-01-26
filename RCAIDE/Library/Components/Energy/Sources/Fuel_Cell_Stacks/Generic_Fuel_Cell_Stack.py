@@ -1,7 +1,8 @@
 # RCAIDE/Library/Compoments/Energy/Sources/Fuel_Cells/Generic_Fuel_Cell.py
 # 
 # 
-# Created:  Dec 2024, M. Clarke 
+# Created:  Jan 2025, M. Clarke
+
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
@@ -10,8 +11,8 @@ import RCAIDE
 from RCAIDE.Framework.Core                                     import Units, Data
 from RCAIDE.Library.Components                                 import Component    
 from RCAIDE.Library.Attributes.Gases                           import Air  
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Common.compute_fuel_cell_performance import *
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Common.append_fuel_cell_conditions import *
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Larminie_Model.compute_fuel_cell_performance import *
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Larminie_Model.append_fuel_cell_conditions   import *
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Generic_Fuel_Cell

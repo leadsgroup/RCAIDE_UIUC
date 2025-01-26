@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Energy/Sources/Fuel_Cell_Stacks/Proton_Exchange_Membrane/append_fuel_cell_conditions.py
+# RCAIDE/Methods/Energy/Sources/Fuel_Cells/Proton_Exchange_Membrane/append_fuel_cell_conditions.py
 #  
 # Created: Jan 2025, M. Clarke
 

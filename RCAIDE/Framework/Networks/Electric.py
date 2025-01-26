@@ -2,7 +2,8 @@
 # 
 # Created:  Jul 2023, M. Clarke
 # Modified: Sep 2024, S. Shekar
-
+#           Jan 2025, M. Clarke
+  
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------  
@@ -21,15 +22,12 @@ import  numpy as  np
 #  Electric
 # ----------------------------------------------------------------------------------------------------------------------  
 class Electric(Network):
-    """ A network comprising an electrichemical energy source to power electro mechanical power
-        conversion machines eg. electric motors via a bus.
-        Electronic speed controllers, thermal management system, avionics, and other eletric 
-        power systes paylaods are also modelled. Rotors and motors are arranged into groups,
-        called propulsor groups, to siginify how they are connected in the network.
-        The network also takes into consideration thermal management components that are
-        connected to a coolant line.
-        The network adds additional unknowns and residuals to the mission to determinge 
-        the torque matching between motors and rotors in each propulsor group.
+    """ An electric network comprising one or more electrichemical energy source and/or fuel cells that to power electro-
+        mechanical conversion machines eg. electric motors via a bus. Electronic speed controllers, thermal management
+        system, avionics, and other eletric power systes paylaods are also modeled. Ducted fans, generators, rotors and
+        motors etc. arranged into groups, called propulsor groups, to siginify how they are connected in the network.
+        The network also takes into consideration thermal management components that are connected to a coolant line.
+        Based on the propulsor, additional unknowns and residuals are added to the mission  
 
 
         Assumptions:

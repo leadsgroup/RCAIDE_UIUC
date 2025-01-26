@@ -1,6 +1,7 @@
 # RCAIDE/Library/Components/Energy/Networks/Distribution/Electrical_Bus.py 
 # 
 # Created:  Jul 2023, M. Clarke 
+# Modofied: Jan 2025, M. Clarke 
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT

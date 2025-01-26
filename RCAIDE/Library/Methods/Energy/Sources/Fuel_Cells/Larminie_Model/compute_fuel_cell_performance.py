@@ -1,8 +1,12 @@
-# ----------------------------------------------------------------------
-#  Imports
-# ---------------------------------------------------------------------- 
+# RCAIDE/Library/Methods/Energy/Sources/Fuel_Cells/Common/compute_fuel_cell_performance.py 
+# 
+# Created: Jan 2025, M. Clarke 
+
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------  
 from RCAIDE.Framework.Core import Units
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Larminie_Model   import compute_voltage, compute_power_difference
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Larminie_Model   import compute_voltage, compute_power_difference
 
 import numpy as np
 import scipy as sp

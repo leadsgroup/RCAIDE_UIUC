@@ -1,7 +1,7 @@
-# RCAIDE/Energy/Networks/Fuel.py
+# RCAIDE/Framework/Energy/Networks/Fuel.py
 # 
 # Created:  Oct 2023, M. Clarke
-# Modified: 
+#           Jan 2025, M. Clarke 
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Imports
@@ -102,14 +102,9 @@ class Fuel(Network):
                         total_mdot     += conditions.energy[propulsor.tag].fuel_flow_rate
                         
                 
-            # Step 2.2: Link each propulsor the its respective fuel tank(s)
-            for fuel_tank in fuel_line.fuel_tanks: 
-                    
-                # Step 2.3 : Determine cumulative fuel flow from fuel tank 
-                fuel_tank_mdot = fuel_tank.fuel_selector_ratio*fuel_line_mdot + fuel_tank.secondary_fuel_flow 
-                
-                # Step 2.4: Store mass flow results 
-                conditions.energy[fuel_line.tag][fuel_tank.tag].mass_flow_rate  = fuel_tank_mdot                    
+            # Step 2.2: Determine cumulative fuel flow from each fuel tank  
+            for fuel_tank in fuel_line.fuel_tanks:  
+                conditions.energy[fuel_line.tag][fuel_tank.tag].mass_flow_rate  = fuel_tank.fuel_selector_ratio*fuel_line_mdot + fuel_tank.secondary_fuel_flow         
                             
         # Step 3: Pack results
         if reverse_thrust ==  True:

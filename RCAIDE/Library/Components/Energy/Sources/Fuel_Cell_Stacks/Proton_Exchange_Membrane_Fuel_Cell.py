@@ -7,12 +7,12 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports
-from RCAIDE.Framework.Core import Data
+from RCAIDE.Framework.Core       import Data
 from .Generic_Fuel_Cell_Stack    import  Generic_Fuel_Cell_Stack
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.compute_fuel_cell_performance import *
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.append_fuel_cell_conditions   import *
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.pack_PEM_residuals            import pack_PEM_residuals
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane.unpack_PEM_unknowns           import unpack_PEM_unknowns
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.compute_fuel_cell_performance import *
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.append_fuel_cell_conditions   import *
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.pack_PEM_residuals            import pack_PEM_residuals
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.unpack_PEM_unknowns           import unpack_PEM_unknowns
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Proton_Exchange_Membrane_Fuel_Cell

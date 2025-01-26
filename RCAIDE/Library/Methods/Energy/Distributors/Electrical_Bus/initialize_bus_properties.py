@@ -1,9 +1,10 @@
 #  RCAIDE/Methods/Energy/Distributors/Electrical_Bus/initialize_bus_properties.py
 # 
-# Created: Sep 2024, S. Shekar
+# Created:  Sep 2024, S. Shekar
+# Modified: Jan 2025, M. Clarke
 #
 from RCAIDE.Library.Methods.Energy.Sources.Batteries.Common          import compute_module_properties 
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cell_Stacks.Common   import compute_stack_properties
+from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Common         import compute_stack_properties
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  METHODS
