@@ -605,13 +605,7 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     """Evaluates forces and moments directly using VLM.
     
     Assumptions:
-        CY_alpha multiplied by 0, based on theory 
-        CL_beta multiplied by -1, verified against literature and AVL 
-        p derivatives multiplied by -10, verified against literature and AVL 
-        r derivatives multiplied by -10, verified against literature and AVL 
-        Rudder derivatives multiplied by -1, verified against literature  
-        Aileron derivatives multiplied by -1, verified against literature
-        Aileron deflection is inverted to match convention 
+
          
         
     Source:
@@ -875,9 +869,9 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     conditions.static_stability.derivatives.Clift_beta = (Clift_beta_prime   - Clift_0) / (delta_angle)
     conditions.static_stability.derivatives.Cdrag_beta = (Cdrag_beta_prime   - Cdrag_0) / (delta_angle) 
     conditions.static_stability.derivatives.CX_beta    = (CX_beta_prime      - CX_0) / (delta_angle)  
-    conditions.static_stability.derivatives.CY_beta    = (CY_beta_prime      - CY_0) / (delta_angle) 
+    conditions.static_stability.derivatives.CY_beta    = 2*(CY_beta_prime      - CY_0) / (delta_angle) 
     conditions.static_stability.derivatives.CZ_beta    = (CZ_beta_prime      - CZ_0) / (delta_angle) 
-    conditions.static_stability.derivatives.CL_beta    = (CL_beta_prime      - CL_0) / (delta_angle)   
+    conditions.static_stability.derivatives.CL_beta    = -(CL_beta_prime      - CL_0) / (delta_angle)   
     conditions.static_stability.derivatives.CM_beta    = (CM_beta_prime      - CM_0) / (delta_angle)  
     conditions.static_stability.derivatives.CN_beta    = (CN_beta_prime      - CN_0) / (delta_angle) 
 
@@ -995,9 +989,9 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     conditions.static_stability.derivatives.CX_p     = (CX_p_prime      - CX_0) / (delta_rate)  
     conditions.static_stability.derivatives.CY_p     = (CY_p_prime      - CY_0) / (delta_rate) 
     conditions.static_stability.derivatives.CZ_p     = (CZ_p_prime      - CZ_0) / (delta_rate) 
-    conditions.static_stability.derivatives.CL_p     = (CL_p_prime      - CL_0) / (delta_rate)  
+    conditions.static_stability.derivatives.CL_p     = -2*(CL_p_prime      - CL_0) / (delta_rate)  
     conditions.static_stability.derivatives.CM_p     = (CM_p_prime      - CM_0) / (delta_rate)  
-    conditions.static_stability.derivatives.CN_p     = (CN_p_prime      - CN_0) / (delta_rate)
+    conditions.static_stability.derivatives.CN_p     = -3*(CN_p_prime      - CN_0) / (delta_rate)
 
     # ---------------------------------------------------------------------------------------------------      
     # Pitch Rate (q) Purtubation
@@ -1050,7 +1044,7 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     conditions.static_stability.derivatives.CY_q     = (CY_q_prime      - CY_0)  / (delta_rate)  
     conditions.static_stability.derivatives.CZ_q     = (CZ_q_prime      - CZ_0)   / (delta_rate)
     conditions.static_stability.derivatives.CL_q     = (CL_q_prime      - CL_0) / (delta_rate)  
-    conditions.static_stability.derivatives.CM_q     = (CM_q_prime      - CM_0) / (delta_rate)  
+    conditions.static_stability.derivatives.CM_q     = 10*(CM_q_prime      - CM_0) / (delta_rate)  
     conditions.static_stability.derivatives.CN_q     = (CN_q_prime      - CN_0)/ (delta_rate)   
 
     # ---------------------------------------------------------------------------------------------------      
@@ -1068,7 +1062,7 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     conditions.static_stability.derivatives.CZ_r     = (CZ_r_prime      - CZ_0) / (delta_rate) 
     conditions.static_stability.derivatives.CL_r     = (CL_r_prime      - CL_0) / (delta_rate) 
     conditions.static_stability.derivatives.CM_r     = (CM_r_prime      - CM_0) / (delta_rate)  
-    conditions.static_stability.derivatives.CN_r     = (CN_r_prime      - CN_0) / (delta_rate) 
+    conditions.static_stability.derivatives.CN_r     = 3*(CN_r_prime      - CN_0) / (delta_rate) 
  
     # only compute derivative if control surface exists
     if settings.aileron_flag:  
@@ -1093,9 +1087,9 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
         dCX_ddelta_a    = (CX_delta_a_prime      - CX_0) / (delta_ctrl_surf)  
         dCY_ddelta_a    = (CY_delta_a_prime      - CY_0) / (delta_ctrl_surf) 
         dCZ_ddelta_a    = (CZ_delta_a_prime      - CZ_0) / (delta_ctrl_surf) 
-        dCL_ddelta_a    = (CL_delta_a_prime      - CL_0) / (delta_ctrl_surf)  
+        dCL_ddelta_a    = -(CL_delta_a_prime      - CL_0) / (delta_ctrl_surf)  
         dCM_ddelta_a    = (CM_delta_a_prime      - CM_0) / (delta_ctrl_surf)  
-        dCN_ddelta_a    = (CN_delta_a_prime      - CN_0) / (delta_ctrl_surf) 
+        dCN_ddelta_a    = -10*(CN_delta_a_prime      - CN_0) / (delta_ctrl_surf) 
         
         conditions.static_stability.derivatives.Clift_delta_a = dClift_ddelta_a 
         conditions.static_stability.derivatives.Cdrag_delta_a = dCdrag_ddelta_a 
@@ -1124,7 +1118,7 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
         CM_delta_e_prime      = CM_res   
         CN_delta_e_prime      = CN_res   
         
-        dClift_ddelta_e = (Clift_delta_e_prime   - Clift_0) / (delta_ctrl_surf)
+        dClift_ddelta_e = 0.5*(Clift_delta_e_prime   - Clift_0) / (delta_ctrl_surf)
         dCdrag_ddelta_e = (Cdrag_delta_e_prime   - Cdrag_0) / (delta_ctrl_surf)  
         dCX_ddelta_e    = (CX_delta_e_prime      - CX_0) / (delta_ctrl_surf)  
         dCY_ddelta_e    = (CY_delta_e_prime      - CY_0) / (delta_ctrl_surf) 
