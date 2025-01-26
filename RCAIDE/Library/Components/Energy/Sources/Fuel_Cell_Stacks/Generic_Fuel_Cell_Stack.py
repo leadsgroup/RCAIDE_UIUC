@@ -72,7 +72,7 @@ class Generic_Fuel_Cell_Stack(Component):
         self.fuel_cell.rated_power_density              = 1.0 
         
         self.fuel_cell.interface_area                   = 875.*(Units.cm**2.)                  # area of the fuel cell interface
-        self.fuel_cell.r                                = (2.45E-4) *(1000*(Units.cm**2))      # *(Units.kohm*(Units.cm**2))# area specific resistance [k-Ohm-cm^2]
+        self.fuel_cell.r                                = (2.45E-4) *(1000*(Units.cm**2))      # area specific resistance [k-Ohm-cm^2]
         self.fuel_cell.Eoc                              = .931                                 # effective activation energy (V)
         self.fuel_cell.A1                               = .03                                  # slope of the Tafel line (models activation losses) (V)
         self.fuel_cell.m                                = 1.05E-4                              # constant in mass-transfer overvoltage equation (V)
