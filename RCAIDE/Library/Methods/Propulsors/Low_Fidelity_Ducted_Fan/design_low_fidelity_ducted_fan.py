@@ -10,9 +10,9 @@
 import RCAIDE
 from RCAIDE.Framework.Mission.Common                                 import Conditions
 from RCAIDE.Library.Methods.Propulsors.Converters.Ram                import compute_ram_performance
+from RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle import compute_compression_nozzle_performance
 from RCAIDE.Library.Methods.Propulsors.Converters.Fan                import compute_fan_performance
 from RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle   import compute_expansion_nozzle_performance 
-from RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle import compute_compression_nozzle_performance
 from RCAIDE.Library.Methods.Propulsors.Low_Fidelity_Ducted_Fan       import size_core
 from RCAIDE.Library.Methods.Propulsors.Common                        import compute_static_sea_level_performance
 
@@ -21,11 +21,11 @@ from RCAIDE.Library.Methods.Propulsors.Common                        import comp
 import numpy as np
 
 # ----------------------------------------------------------------------------------------------------------------------
-#  Design low_fidelity_ducted_fan
+#  Design Turbofan
 # ---------------------------------------------------------------------------------------------------------------------- 
 def design_low_fidelity_ducted_fan(low_fidelity_ducted_fan):
-    """Compute perfomance properties of a low_fidelity_ducted_fan based on polytropic ration and combustor properties.
-    low_fidelity_ducted_fan is created by manually linking the different components
+    """Compute perfomance properties of a low fidelity ducted fan based on polytropic ration and combustor properties.
+    Low fidelity ducted fan is created by manually linking the different components
     
     
     Assumtions:
@@ -34,11 +34,11 @@ def design_low_fidelity_ducted_fan(low_fidelity_ducted_fan):
     Source:
     
     Args:
-        low_fidelity_ducted_fan (dict): low_fidelity_ducted_fan data structure [-]
+        low_fidelity_ducted_fan (dict): low fidelity ducted fan data structure [-]
     
     Returns:
         None 
-    
+
     """
     # check if mach number and temperature are passed
     if(low_fidelity_ducted_fan.design_mach_number==None) and (low_fidelity_ducted_fan.design_altitude==None): 
@@ -82,14 +82,13 @@ def design_low_fidelity_ducted_fan(low_fidelity_ducted_fan):
     ram                       = low_fidelity_ducted_fan.ram
     inlet_nozzle              = low_fidelity_ducted_fan.inlet_nozzle
     fan                       = low_fidelity_ducted_fan.fan
-    fan_nozzle                = low_fidelity_ducted_fan.fan_nozzle 
-
+    exit_nozzle               = low_fidelity_ducted_fan.exit_nozzle 
     # unpack component conditions
     low_fidelity_ducted_fan_conditions     = conditions.energy[low_fidelity_ducted_fan.tag]
     ram_conditions          = low_fidelity_ducted_fan_conditions[ram.tag]    
     inlet_nozzle_conditions = low_fidelity_ducted_fan_conditions[inlet_nozzle.tag]
     fan_conditions          = low_fidelity_ducted_fan_conditions[fan.tag]    
-    fan_nozzle_conditions   = low_fidelity_ducted_fan_conditions[fan_nozzle.tag]    
+    exit_nozzle_conditions  = low_fidelity_ducted_fan_conditions[exit_nozzle.tag] 
      
     # Step 1: Set the working fluid to determine the fluid properties
     ram.working_fluid                             = low_fidelity_ducted_fan.working_fluid
@@ -117,28 +116,27 @@ def design_low_fidelity_ducted_fan(low_fidelity_ducted_fan):
     fan.working_fluid                                                 = inlet_nozzle.working_fluid
      
     # Step 6: Compute flow through the fan
-    compute_fan_performance(fan,fan_conditions,conditions)    
-
+    compute_fan_performance(fan,fan_conditions,conditions)      
     # Step 19: Link the fan nozzle to the fan
-    fan_nozzle_conditions.inputs.stagnation_temperature     = fan_conditions.outputs.stagnation_temperature
-    fan_nozzle_conditions.inputs.stagnation_pressure        = fan_conditions.outputs.stagnation_pressure
-    fan_nozzle_conditions.inputs.static_temperature         = fan_conditions.outputs.static_temperature
-    fan_nozzle_conditions.inputs.static_pressure            = fan_conditions.outputs.static_pressure  
-    fan_nozzle_conditions.inputs.mach_number                = fan_conditions.outputs.mach_number   
-    fan_nozzle.working_fluid                                = fan.working_fluid
+    exit_nozzle_conditions.inputs.stagnation_temperature     = fan_conditions.outputs.stagnation_temperature
+    exit_nozzle_conditions.inputs.stagnation_pressure        = fan_conditions.outputs.stagnation_pressure
+    exit_nozzle_conditions.inputs.static_temperature         = fan_conditions.outputs.static_temperature
+    exit_nozzle_conditions.inputs.static_pressure            = fan_conditions.outputs.static_pressure  
+    exit_nozzle_conditions.inputs.mach_number                = fan_conditions.outputs.mach_number   
+    exit_nozzle.working_fluid                                = fan.working_fluid
     
     # Step 20: Compute flow through the fan nozzle
-    compute_expansion_nozzle_performance(fan_nozzle,fan_nozzle_conditions,conditions)
+    compute_expansion_nozzle_performance(exit_nozzle,exit_nozzle_conditions,conditions)
      
-    # Step 21: Link the low_fidelity_ducted_fan to outputs from various compoments    
-    low_fidelity_ducted_fan_conditions.fan_nozzle_exit_velocity                 = fan_nozzle_conditions.outputs.velocity
-    low_fidelity_ducted_fan_conditions.fan_nozzle_area_ratio                    = fan_nozzle_conditions.outputs.area_ratio  
-    low_fidelity_ducted_fan_conditions.fan_nozzle_static_pressure               = fan_nozzle_conditions.outputs.static_pressure
-    low_fidelity_ducted_fan_conditions.flow_through_fan                         = 1 #scaled constant to turn on fan thrust computation   
+    # Step 21: Link the turbofan to outputs from various compoments    
+    low_fidelity_ducted_fan_conditions.fan_nozzle_exit_velocity                 = exit_nozzle_conditions.outputs.velocity
+    low_fidelity_ducted_fan_conditions.fan_nozzle_area_ratio                    = exit_nozzle_conditions.outputs.area_ratio  
+    low_fidelity_ducted_fan_conditions.fan_nozzle_static_pressure               = exit_nozzle_conditions.outputs.static_pressure
     low_fidelity_ducted_fan_conditions.total_temperature_reference              = fan_conditions.outputs.stagnation_temperature
-    low_fidelity_ducted_fan_conditions.total_pressure_reference                 = fan_conditions.outputs.stagnation_pressure  
+    low_fidelity_ducted_fan_conditions.total_pressure_reference                 = fan_conditions.outputs.stagnation_pressure
+    low_fidelity_ducted_fan_conditions.flow_through_fan                         = 1
 
-    # Step 22: Size the core of the low_fidelity_ducted_fan  
+    # Step 22: Size the core of the turbofan  
     size_core(low_fidelity_ducted_fan,low_fidelity_ducted_fan_conditions,conditions) 
     mass_flow                     = low_fidelity_ducted_fan.mass_flow_rate_design
     low_fidelity_ducted_fan.design_core_massflow = mass_flow   
