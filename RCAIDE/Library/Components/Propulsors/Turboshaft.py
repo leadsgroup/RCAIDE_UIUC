@@ -29,9 +29,6 @@ class Turboshaft(Propulsor):
     fuel_type : Propellant
         Type of fuel used in the engine. Default is Jet_A1.
         
-    active_fuel_tanks : list
-        List with names of active fuel tanks. Default is None.
-        
     nacelle : Component
         Nacelle component of the engine. Default is None.
         
@@ -142,8 +139,7 @@ class Turboshaft(Propulsor):
     def __defaults__(self):
         # setting the default values
         self.tag                                              = 'Turboshaft'
-        self.fuel_type                                        = RCAIDE.Library.Attributes.Propellants.Jet_A1()
-        self.active_fuel_tanks                                = None
+        self.fuel_type                                        = RCAIDE.Library.Attributes.Propellants.Jet_A1() 
         self.nacelle                                          = None  
         self.ram                                              = None 
         self.inlet_nozzle                                     = None 
