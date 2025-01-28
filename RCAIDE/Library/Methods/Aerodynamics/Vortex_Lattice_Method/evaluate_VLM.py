@@ -701,13 +701,13 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
         Cdrag_visc      = state.conditions.aerodynamics.coefficients.drag.total
         CX_visc         = orientation_product(T_wind2inertial,Cdrag_visc)[:,0][:,None]   
       
-        # no_beta   = np.all(conditions.aerodynamics.angles.beta == 0)
-        # no_ail    = np.all(conditions.control_surfaces.aileron.deflection == 0) 
-        # no_rud    = np.all(conditions.control_surfaces.rudder.deflection == 0) 
-        # no_bank   = np.all(conditions.aerodynamics.angles.phi == 0)  
+        no_beta   = np.all(conditions.aerodynamics.angles.beta == 0)
+        no_ail    = np.all(conditions.control_surfaces.aileron.deflection == 0) 
+        no_rud    = np.all(conditions.control_surfaces.rudder.deflection == 0) 
+        no_bank   = np.all(conditions.aerodynamics.angles.phi == 0)  
         
         # if no_beta and no_ail and no_rud and no_bank:
-        #     CY = CY * 0
+        CY = CY * 0
         conditions.static_stability.coefficients.lift[i, 0]  = Clift[i, 0]
         conditions.static_stability.coefficients.drag[i, 0]  = Cdrag_visc[i, 0] 
         conditions.static_stability.coefficients.X[i, 0]     = CX[i, 0]
