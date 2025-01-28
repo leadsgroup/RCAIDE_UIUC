@@ -113,10 +113,8 @@ class Vortex_Lattice_Method(Aerodynamics):
     
         # conditions table, used for surrogate model training
         self.training                                               = Data()
-        self.training.angle_of_attack                               = np.array([-5, -2 , 1E-20 , 2, 5.0, 7.5, 10]) * Units.deg 
-        self.training.Mach                                          = np.array([1E-20, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3]) 
-        # self.training.angle_of_attack                               = np.array([-5., -2. , 1E-20 , 2.0, 5.0, 8.0, 12., 45., 75.]) * Units.deg 
-        # self.training.Mach                                          = np.array([0.1  ,0.3,  0.5,  0.65 , 0.85 , 0.9, 1.3, 1.35 , 1.5 , 2.0, 2.25 , 2.5  , 3.5])             
+        self.training.angle_of_attack                               = np.array([-5., -2. , 1E-20 , 2.0, 5.0, 8.0, 12., 45., 75.]) * Units.deg 
+        self.training.Mach                                          = np.array([0.1  ,0.3,  0.5,  0.65 , 0.85 , 0.9, 1.3, 1.35 , 1.5 , 2.0, 2.25 , 2.5  , 3.5])             
                       
         self.training.subsonic                                      = None
         self.training.supersonic                                    = None
@@ -124,26 +122,22 @@ class Vortex_Lattice_Method(Aerodynamics):
 
         self.training.altitude                                      = 0
         self.training.speed_of_sound                                = 343 
-        # self.training.angle_purtubation                             = 2 * Units.deg          
-        # self.training.speed_purtubation                             = 0.5  
-        # self.training.rate_purtubation                              = 0.5 * Units.deg / Units.sec   
-        # self.training.control_surface_purtubation                   = 5 * Units.deg   
         self.training.angle_purtubation                             = 10 * Units.deg          
         self.training.speed_purtubation                             = 5  
         self.training.rate_purtubation                              = 10 * Units.deg / Units.sec   
         self.training.control_surface_purtubation                   = 10 * Units.deg   
-        # self.training.sideslip_angle                                = np.array([10  , 5.0 ]) * Units.deg
-        # self.training.aileron_deflection                            = np.array([10  , 5.0 ]) * Units.deg
-        # self.training.elevator_deflection                           = np.array([10  , 5.0 ]) * Units.deg   
-        # self.training.rudder_deflection                             = np.array([10  , 1E-3 ]) * Units.deg
-        # self.training.flap_deflection                               = np.array([10  , 1E-3 ]) * Units.deg 
-        # self.training.slat_deflection                               = np.array([10  , 1E-3 ]) * Units.deg                      
-        # self.training.u                                             = np.array([10 , 5 ])  
-        # self.training.v                                             = np.array([10 , 5 ])  
-        # self.training.w                                             = np.array([10 , 5 ])    
-        # self.training.pitch_rate                                    = np.array([3 ,1.5 ])  * Units.deg / Units.sec
-        # self.training.roll_rate                                     = np.array([3 ,1.5 ])  * Units.deg / Units.sec
-        # self.training.yaw_rate                                      = np.array([3 ,1.5 ])  * Units.deg / Units.sec
+        self.training.sideslip_angle                                = np.array([10  , 5.0 ]) * Units.deg
+        self.training.aileron_deflection                            = np.array([10  , 5.0 ]) * Units.deg
+        self.training.elevator_deflection                           = np.array([10  , 5.0 ]) * Units.deg   
+        self.training.rudder_deflection                             = np.array([10  , 1E-3 ]) * Units.deg
+        self.training.flap_deflection                               = np.array([10  , 1E-3 ]) * Units.deg 
+        self.training.slat_deflection                               = np.array([10  , 1E-3 ]) * Units.deg                      
+        self.training.u                                             = np.array([10 , 5 ])  
+        self.training.v                                             = np.array([10 , 5 ])  
+        self.training.w                                             = np.array([10 , 5 ])    
+        self.training.pitch_rate                                    = np.array([3 ,1.5 ])  * Units.deg / Units.sec
+        self.training.roll_rate                                     = np.array([3 ,1.5 ])  * Units.deg / Units.sec
+        self.training.yaw_rate                                      = np.array([3 ,1.5 ])  * Units.deg / Units.sec
     
         self.reference_values                                       = Data()
         self.reference_values.S_ref                                 = 0
