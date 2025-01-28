@@ -23,6 +23,8 @@ from RCAIDE.Framework.External_Interfaces.OpenVSP.get_vsp_measurements import ge
 
 import numpy as np
 from copy import deepcopy
+import sys
+import os
 
 try:
     import vsp as vsp
@@ -131,6 +133,11 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
         raise Exception('Vehicle propulsor type must be defined. \n Choose from list in RCAIDE.Library.Compoments.Propulsors')     
 
     vsp.ClearVSPModel() 
+    
+    # Get the last path from sys.path
+    system_path = sys.path[-1]
+    # Append the system path to the filename
+    tag = os.path.join(system_path, tag)
     vsp.ReadVSPFile(tag)	
 
     vsp_fuselages     = []
