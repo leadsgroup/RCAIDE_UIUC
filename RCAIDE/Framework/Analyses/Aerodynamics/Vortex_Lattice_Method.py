@@ -80,7 +80,7 @@ class Vortex_Lattice_Method(Aerodynamics):
         self.settings.propeller_wake_model                               = False 
         self.settings.discretize_control_surfaces                        = True
         self.settings.model_fuselage                                     = False
-        self.settings.trim_aircraft                                      = False
+        self.settings.trim_aircraft                                      = True
         self.settings.aileron_flag                                       = False
         self.settings.rudder_flag                                        = False
         self.settings.flap_flag                                          = False
