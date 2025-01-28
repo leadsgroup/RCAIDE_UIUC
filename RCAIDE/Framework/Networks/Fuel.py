@@ -99,8 +99,7 @@ class Fuel(Network):
                         fuel_line_mdot += conditions.energy[propulsor.tag].fuel_flow_rate
                         
                         # compute total mass flow rate 
-                        total_mdot     += conditions.energy[propulsor.tag].fuel_flow_rate
-                        
+                        total_mdot     += conditions.energy[propulsor.tag].fuel_flow_rate 
                 
             # Step 2.2: Determine cumulative fuel flow from each fuel tank  
             for fuel_tank in fuel_line.fuel_tanks:  
