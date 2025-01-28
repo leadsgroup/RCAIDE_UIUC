@@ -706,8 +706,8 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
         no_rud    = np.all(conditions.control_surfaces.rudder.deflection == 0) 
         no_bank   = np.all(conditions.aerodynamics.angles.phi == 0)  
         
-        # if no_beta and no_ail and no_rud and no_bank:
-        CY = CY * 0
+        if no_beta and no_ail and no_rud and no_bank:
+            CY = CY * 0
         conditions.static_stability.coefficients.lift[i, 0]  = Clift[i, 0]
         conditions.static_stability.coefficients.drag[i, 0]  = Cdrag_visc[i, 0] 
         conditions.static_stability.coefficients.X[i, 0]     = CX[i, 0]
