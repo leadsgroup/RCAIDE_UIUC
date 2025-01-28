@@ -13,6 +13,8 @@ from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Larminie_Model import  com
 from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.compute_fuel_cell_performance import  evaluate_PEM ,  evaluate_max_gross_power, set_rated_current_density 
 import  scipy as  sp
 import  numpy as  np
+import matplotlib.pyplot as  plt
+import matplotlib.cm as cm
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Compute Stack Properties
@@ -111,8 +113,7 @@ def compute_stack_properties(fuel_cell_stack):
         fuel_cell_stack.maximum_current        = fuel_cell_stack.maximum_power / fuel_cell_stack.maximum_voltage
         fuel_cell_stack.maximum_fuel_flow_rate = mdot_H2 * n_total
     
-    elif type(fuel_cell_stack) == RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane_Fuel_Cell:
-        pass
+    elif type(fuel_cell_stack) == RCAIDE.Library.Components.Energy.Sources.Fuel_Cell_Stacks.Proton_Exchange_Membrane_Fuel_Cell: 
     
         # check if mach number and temperature are passed
         design_altitude =  0
@@ -141,15 +142,15 @@ def compute_stack_properties(fuel_cell_stack):
         t_idx   =  0
         fuel_cell_stack_conditions = segment.state.conditions.energy[bus.tag].fuel_cell_stacks[fuel_cell_stack.tag]
         fuel_cell_stack_conditions.fuel_cell.stagnation_temperature[t_idx, 0]    = atmo_data.temperature   
-        fuel_cell_stack_conditions.fuel_cell.stagnation_pressure[t_idx, 0]       = atmo_data.pressure  
-        fuel_cell_stack_conditions.fuel_cell.inputs.air_pressure[t_idx, 0]       = fuel_cell.rated_H2_pressure 
-        fuel_cell_stack_conditions.fuel_cell.inputs.hydrogen_pressure[t_idx, 0]  = fuel_cell.rated_H2_pressure * fuel_cell.rated_H2_to_air_mixture_ratio
-        fuel_cell_stack_conditions.fuel_cell.p_drop_fc[t_idx, 0]                 = fuel_cell.rated_p_drop_fc     
+        fuel_cell_stack_conditions.fuel_cell.stagnation_pressure[t_idx, 0]       = atmo_data.pressure   
+        fuel_cell_stack_conditions.fuel_cell.pressure_drop[t_idx, 0]             = fuel_cell.rated_p_drop_fc
+        fuel_cell_stack_conditions.fuel_cell.stack_temperature[t_idx, 0]         = fuel_cell.stack_temperature 
         rated_current_density, rated_power_density = evaluate_max_gross_power(fuel_cell_stack,fuel_cell_stack_conditions,t_idx)
         set_rated_current_density(fuel_cell_stack, rated_current_density, rated_power_density)
-         
-        mdot_H2, V_fuel_cell, P_fuel_cell, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power =  evaluate_PEM(fuel_cell_stack,fuel_cell_stack_conditions, t_idx)
-            
+        
+        fuel_cell_stack_conditions.fuel_cell.current_density[t_idx] = rated_current_density
+        m_dot_H2, V_fuel_cell, P_fuel_cell, _, _, _, _, _,_  =  evaluate_PEM(fuel_cell_stack,fuel_cell_stack_conditions, t_idx)
+   
         # store properties
         area_square_meters                     = fuel_cell.interface_area * 0.0001
         fuel_cell.volume                       = area_square_meters*fuel_cell.wall_thickness
@@ -159,8 +160,8 @@ def compute_stack_properties(fuel_cell_stack):
         fuel_cell_stack.mass_properties.mass   = n_total*fuel_cell.mass 
         fuel_cell_stack.voltage                = V_fuel_cell  * series_e
         fuel_cell_stack.maximum_voltage        = V_fuel_cell  * series_e
-        fuel_cell_stack.maximum_power          = P_fuel_cell * series_e 
+        fuel_cell_stack.maximum_power          = P_fuel_cell * n_total 
         fuel_cell_stack.maximum_current        = fuel_cell_stack.maximum_power / fuel_cell_stack.maximum_voltage
-        fuel_cell_stack.maximum_fuel_flow_rate = mdot_H2 * n_total         
+        fuel_cell_stack.maximum_fuel_flow_rate = m_dot_H2 * n_total         
          
     return 

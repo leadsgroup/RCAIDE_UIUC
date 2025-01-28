@@ -39,7 +39,7 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     - voltage_open_circuit             
     - current_density                  
     - current                          
-    - fuel_mass_flow_rate
+    - H2_mass_flow_rate
  
     References
     ---------- 
@@ -64,9 +64,9 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.voltage_under_load              = 0 * ones_row(1) 
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.power                           = 0 * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.current                         = 0 * ones_row(1)  
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inputs.fuel_mass_flow_rate      = 0 * ones_row(1)
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inputs.air_mass_flow_rate       = 0 * ones_row(1) 
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_mass_flow_rate                       = 0 * ones_row(1) 
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inlet_H2_mass_flow_rate         = 0 * ones_row(1)
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inlet_air_mass_flow_rate        = 0 * ones_row(1) 
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].H2_mass_flow_rate                         = 0 * ones_row(1) 
     
     # Conditions for recharging fuel_cell 
     if isinstance(segment,RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge):

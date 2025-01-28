@@ -19,35 +19,28 @@ from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.u
 # ---------------------------------------------------------------------------------------------------------------------- 
 class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
     """
-    PEM Fuel Cell class
-
-    Constants:
-    ----------
-    R: float 
-        Universal gas constant (J / (mol*K))
-    F: float 
-        Faraday constant (C / mol)
-    E_C: float 
-        Activation energy of ORR (J)
-    MMH2: float 
-        Molar mass of H2 (kg/mol)
-    MMO2: float 
-        Molar mass of O2 (kg/mol)
-    """
-    
-    
+    Proton Exchange Membrane Fuel Cell class 
+    """ 
     def __defaults__(self):
         """This sets the default values.
     
         Assumptions:
-            None
-         
-        Initialize the PEM fuel cell with given parameters.
+            None 
 
         Parameters:
         ----------
         type: string
             The type of PEM model to use, "LT" for low temperature, or "HT" for high temperature
+        R: float 
+            Universal gas constant (J / (mol*K))
+        F: float 
+            Faraday constant (C / mol)
+        E_C: float 
+            Activation energy of ORR (J)
+        H2_molar_mass: float 
+            Molar mass of H2 (kg/mol)
+        O2_molar_mass: float 
+            Molar mass of O2 (kg/mol)
         t_m: Length 
             The membrane thickness of the PEM cell 
         a_c: float 
@@ -56,7 +49,7 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
             The catalyst platinum loading in mg Pt / cm^2
         A: Area 
             The membrane area 
-        CEM: CEM 
+        compressor_expander_module: compressor_expander_module 
             The compressor expander module of the air supply system 
         maximum_deg: float 
             The maximum voltage drop due to degradation of the fuel cell at EOL
@@ -112,67 +105,59 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
             The value which the limiting current is multiplied by for advanced PEM systems
         area_specific_mass: float 
             The mass per active membrane area of the fuel cell (kg/m2)
+            
+             
+        References
+        [1] Chilver-Stainer, James, et al. "Power output optimisation via arranging gas flow channels
+            for low-temperature polymer electrolyte membrane fuel cell (PEMFC) for
+            hydrogen-powered vehicles." Energies 16.9 (2023): 3722.
+        
         """ 
 
-        self.tag                                        = 'pem_fuel_cell'        
-        self.fuel_cell.R                                = 8.31   # Universal gas constant (J / (mol*K))
-        self.fuel_cell.F                                = 96485  # Faraday constant (C / mol)
-        self.fuel_cell.E_C                              = 66000  # Activation energy of ORR (J)
-        self.fuel_cell.MMH2                             = 2.0E-3 # Molar mass of H2 (kg/mol) 
-        self.fuel_cell.MMO2                             = 32E-3  # Molar mass of O2 (kg/mol) 
-        self.fuel_cell.O2_mass_frac                     = 0.233          
-        self.fuel_cell.type                             = "LT" 
-        self.fuel_cell.t_m                              = 0.0024 #* Units.cm 
-        self.fuel_cell.interface_area                   = 50 #* Units.cm^2  # area of the fuel cell interface        
-        self.fuel_cell.a_c                              = 98
-        self.fuel_cell.L_c                              = 0.1 
-        self.fuel_cell.CEM                              = Data() 
-        self.fuel_cell.CEM.compressor_efficiency        = 0.71
-        self.fuel_cell.CEM.expander_efficiency          = 0.73 
-        self.fuel_cell.CEM.motor_efficiency             = 0.801025 
-        self.fuel_cell.CEM.generator_efficiency         = 1
-        self.fuel_cell.CEM.specific_weight              = None
-        self.fuel_cell.CEM.weight                       = 0 
-        self.fuel_cell.maximum_deg                      = 0
-        self.fuel_cell.rated_current_density            = 0.1 # A/cm^2
-        self.fuel_cell.rated_p_drop_fc                  = 0.240 
-        self.fuel_cell.rated_p_drop_hum                 = 0.025
-        self.fuel_cell.rated_H2_pressure                = 1  
-        self.fuel_cell.rated_H2_to_air_mixture_ratio    = 1 
-        self.fuel_cell.gamma_para                       = 0.03 
-        self.fuel_cell.alpha                            = 0.375
-        self.fuel_cell.gamma                            = 0.45
-        self.fuel_cell.lambda_eff                       = 24
-        self.fuel_cell.fuel_to_air_ratio                = 0.5
-        self.fuel_cell.c1                               = 0.0435 
-        self.fuel_cell.c2                               = 0.0636
-        self.fuel_cell.stack_temperature                = 353.15 
-        self.fuel_cell.air_excess_ratio                 = 2
-        self.fuel_cell.oxygen_relative_humidity         = 1
-        self.fuel_cell.i0ref                            = 9E-6
-        self.fuel_cell.i0ref_P_ref                      = 1 
-        self.fuel_cell.i0ref_T_ref                      = 353
-        self.fuel_cell.current_density_limit_multiplier = 1
-        self.fuel_cell.area_specific_mass               = 2.5 
+        self.tag                                                               = 'pem_fuel_cell'        
+        self.fuel_cell.Universal_gas_constant                                  = 8.31   # Universal gas constant (J / (mol*K))
+        self.fuel_cell.Faraday_constant                                        = 96485  # Faraday constant (C / mol)
+        self.fuel_cell.E_C                                                     = 66000  # Activation energy of ORR (J)
+        self.fuel_cell.H2_molar_mass                                           = 2.0E-3 # Molar mass of H2 (kg/mol) 
+        self.fuel_cell.O2_molar_mass                                           = 32E-3  # Molar mass of O2 (kg/mol) 
+        self.fuel_cell.O2_mass_frac                                            = 0.233          
+        self.fuel_cell.type                                                    = "LT"
+        self.fuel_cell.specific_heat_capacity                                  = 903    # J/kg·K  # Chilver-Stainer, James, et al
+        self.fuel_cell.t_m                                                     = 0.0024 #* Units.cm 
+        self.fuel_cell.interface_area                                          = 50 #* Units.cm^2  # area of the fuel cell interface        
+        self.fuel_cell.a_c                                                     = 98
+        self.fuel_cell.L_c                                                     = 0.1 
+        self.fuel_cell.compressor_expander_module                              = Data() 
+        self.fuel_cell.compressor_expander_module.compressor_efficiency        = 0.71
+        self.fuel_cell.compressor_expander_module.expander_efficiency          = 0.73 
+        self.fuel_cell.compressor_expander_module.motor_efficiency             = 0.801025 
+        self.fuel_cell.compressor_expander_module.generator_efficiency         = 1
+        self.fuel_cell.compressor_expander_module.specific_weight              = None
+        self.fuel_cell.compressor_expander_module.weight                       = 0 
+        self.fuel_cell.maximum_deg                                             = 0
+        self.fuel_cell.rated_current_density                                   = 0.1 # A/cm^2
+        self.fuel_cell.rated_p_drop_fc                                         = 0.240 
+        self.fuel_cell.rated_p_drop_hum                                        = 0.025
+        self.fuel_cell.rated_H2_pressure                                       = 1   
+        self.fuel_cell.rated_air_pressure                                      = 1  
+        self.fuel_cell.gamma_para                                              = 0.03 
+        self.fuel_cell.alpha                                                   = 0.375
+        self.fuel_cell.gamma                                                   = 0.45
+        self.fuel_cell.lambda_eff                                              = 24 
+        self.fuel_cell.c1                                                      = 0.0435 
+        self.fuel_cell.c2                                                      = 0.0636
+        self.fuel_cell.stack_temperature                                       = 353.15 # Kelvin
+        self.fuel_cell.air_excess_ratio                                        = 2
+        self.fuel_cell.oxygen_relative_humidity                                = 1
+        self.fuel_cell.i0ref                                                   = 9E-6
+        self.fuel_cell.i0ref_P_ref                                             = 1 
+        self.fuel_cell.i0ref_T_ref                                             = 353
+        self.fuel_cell.current_density_limit_multiplier                        = 1
+        self.fuel_cell.area_specific_mass                                      = 2.5 
         return 
         
     def energy_calc(self,state,bus,coolant_lines, t_idx, delta_t): 
-        """Computes the state of the NMC battery cell.
-           
-        Assumptions:
-            None
-            
-        Source:
-            None
-    
-        Args:
-            self               : battery        [unitless]
-            state              : temperature    [K]
-            bus                : pressure       [Pa]
-            discharge (boolean): discharge flag [unitless]
-            
-        Returns: 
-            None
+        """Computes the state of the fuel cell battery cell. 
         """        
         if not (self.fuel_cell.type == "LT") or  (self.fuel_cell.type == "HT"): 
             raise ValueError('PEM type not supported, currently supported types are "LT" and "HT"')         

@@ -128,7 +128,7 @@ def mission_setup(analyses):
     Segments = RCAIDE.Framework.Mission.Segments  
     base_segment = Segments.Segment()
     base_segment.temperature_deviation  = 2.5
-    base_segment.state.numerics.number_of_control_points  = 3
+    base_segment.state.numerics.number_of_control_points  = 16
     
     # VSTALL Calculation  
     vehicle        = analyses.base.aerodynamics.vehicle
@@ -173,6 +173,14 @@ def missions_setup(mission):
     missions.append(mission)
  
     return missions  
+
+def plot_results(results):
+    # Plots fligh conditions 
+    plot_flight_conditions(results)
+    plot_fuel_consumption(results)
+    return
+
+
  
 if __name__ == '__main__':
     main()

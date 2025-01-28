@@ -196,10 +196,10 @@ class Electric(Network):
                          
                     # compute cryogen mass flow rate 
                     fuel_cell_stack_conditions  = bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag]                        
-                    cryogen_mdot[t_idx]        += fuel_cell_stack_conditions.fuel_mass_flow_rate[t_idx]
+                    cryogen_mdot[t_idx]        += fuel_cell_stack_conditions.H2_mass_flow_rate[t_idx]
                     
                     # compute total mass flow rate 
-                    total_mdot[t_idx]     += fuel_cell_stack_conditions.fuel_mass_flow_rate[t_idx]    
+                    total_mdot[t_idx]     += fuel_cell_stack_conditions.H2_mass_flow_rate[t_idx]    
                    
                 # Step 3: Compute bus properties          
                 bus.compute_distributor_conditions(state,t_idx, delta_t)

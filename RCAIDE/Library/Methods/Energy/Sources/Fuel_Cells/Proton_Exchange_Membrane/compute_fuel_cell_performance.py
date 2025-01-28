@@ -69,17 +69,24 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
     # append atmospheric conditions to fuel cell 
     fuel_cell_stack_conditions.fuel_cell.stagnation_temperature[t_idx] = stagnation_temperature[t_idx]
     fuel_cell_stack_conditions.fuel_cell.stagnation_pressure[t_idx]    = stagnation_pressure[t_idx]
-      
-    P_H2 = fuel_cell_stack_conditions.fuel_cell.inputs.hydrogen_pressure[t_idx]  
-    fuel_cell_stack_conditions.fuel_cell.inputs.air_pressure[t_idx]      =  P_H2 * fuel_cell.rated_H2_to_air_mixture_ratio 
-    mdot_cell, V_fuel_cell, P_cell, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power =  evaluate_PEM(fuel_cell_stack,fuel_cell_stack_conditions, t_idx)  
-          
+    
+    print(fuel_cell_stack_conditions.fuel_cell.current_density[t_idx] )
+    m_dot_H2, V_fuel_cell, P_cell, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power =  evaluate_PEM(fuel_cell_stack,fuel_cell_stack_conditions, t_idx)
+    
+    # ---------------------------------------------------------------------------------------------------     
+    # Future State 
+    # --------------------------------------------------------------------------------------------------- 
+    if t_idx != state.numerics.number_of_control_points-1:   
+        dT_dt              =  gross_heat / (fuel_cell.mass *2000) #fuel_cell.specific_heat_capacity) 
+        fuel_cell_stack_conditions.fuel_cell.stack_temperature[t_idx+1,0]  = fuel_cell_stack_conditions.fuel_cell.stack_temperature[t_idx, 0] + dT_dt*delta_t[t_idx]  
+    
     I_cell  = P_cell / V_fuel_cell
     I_stack = I_cell * n_parallel
     if bus_config == 'Series':
         bus_conditions.current_draw[t_idx] = I_stack  
     elif bus_config  == 'Parallel': 
         bus_conditions.current_draw[t_idx] = I_stack * len(bus.fuel_cell_stacks)  
+     
     
     fuel_cell_stack_conditions.power[t_idx]                                      = P_cell * n_total
     fuel_cell_stack_conditions.current[t_idx]                                    = I_stack
@@ -88,12 +95,12 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
     fuel_cell_stack_conditions.fuel_cell.voltage_open_circuit[t_idx]             = V_fuel_cell   # assumes no losses
     fuel_cell_stack_conditions.fuel_cell.voltage_under_load[t_idx]               = V_fuel_cell
     fuel_cell_stack_conditions.fuel_cell.power[t_idx]                            = P_cell
-    fuel_cell_stack_conditions.fuel_cell.current[t_idx]                          = P_cell / V_fuel_cell 
-    fuel_cell_stack_conditions.fuel_cell.inputs.fuel_mass_flow_rate[t_idx]       = mdot_cell  
-    fuel_cell_stack_conditions.fuel_mass_flow_rate[t_idx]                        = mdot_cell * n_total  
-    fuel_cell_stack_conditions.fuel_cell.inputs.fuel_mass_flow_rate[t_idx]       = mdot_cell
-    fuel_cell_stack_conditions.fuel_cell.inputs.oxidizer_mass_flow_rate[t_idx]   = mdot_air_in
-    fuel_cell_stack_conditions.fuel_cell.outputs.oxidizer_mass_flow_rate[t_idx]  = mdot_air_out
+    fuel_cell_stack_conditions.fuel_cell.current[t_idx]                          = P_cell / V_fuel_cell  
+    fuel_cell_stack_conditions.H2_mass_flow_rate[t_idx]                          = m_dot_H2 * n_total
+    fuel_cell_stack_conditions.fuel_cell.inlet_H2_mass_flow_rate[t_idx]          = m_dot_H2
+    fuel_cell_stack_conditions.fuel_cell.inlet_H2_mass_flow_rate[t_idx]          = m_dot_H2
+    fuel_cell_stack_conditions.fuel_cell.inlet_air_mass_flow_rate[t_idx]         = mdot_air_in
+    fuel_cell_stack_conditions.fuel_cell.outlet_air_mass_flow_rate[t_idx]        = mdot_air_out
     
     stored_results_flag            = True
     stored_fuel_cell_stack_tag     = fuel_cell_stack.tag  
@@ -139,29 +146,29 @@ def evaluate_PEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
     float: 
         mdot_air_in (kg/s)
     """
-    fuel_cell        = fuel_cell_stack.fuel_cell
-    i                = fuel_cell.rated_current_density
+    fuel_cell        = fuel_cell_stack.fuel_cell 
+    i                = fuel_cell_conditions.fuel_cell.current_density[t_idx]  
     air_excess_ratio = fuel_cell.air_excess_ratio 
     
-    fuel_cell_conditions.fuel_cell.p_drop_fc[t_idx] = calculate_P_drop_stack(fuel_cell_stack,i)
+    fuel_cell_conditions.fuel_cell.pressure_drop[t_idx] = calculate_P_drop_stack(fuel_cell_stack,i)
     if fuel_cell.type == "LT":
-        fuel_cell_conditions.fuel_cell.p_drop_hum[t_idx] = calculate_P_drop_hum(fuel_cell_stack,i) 
+        fuel_cell_conditions.fuel_cell.humidifier.pressure_drop[t_idx] = calculate_P_drop_hum(fuel_cell_stack,i) 
     else: 
-        fuel_cell_conditions.fuel_cell.p_drop_hum[t_idx] = 0 
+        fuel_cell_conditions.fuel_cell.humidifier.pressure_drop[t_idx] = 0 
     
-    mdot_air_in     = i * fuel_cell.interface_area * fuel_cell.MMO2 / (4 * fuel_cell.F * fuel_cell.O2_mass_frac) * air_excess_ratio
-    mdot_H2         = i * fuel_cell.interface_area / (2 * fuel_cell.F) * fuel_cell.MMH2 
+    mdot_air_in     = i * fuel_cell.interface_area * fuel_cell.O2_molar_mass / (4 * fuel_cell.Faraday_constant * fuel_cell.O2_mass_frac) * air_excess_ratio
+    mdot_H2         = i * fuel_cell.interface_area / (2 * fuel_cell.Faraday_constant) * fuel_cell.H2_molar_mass
     voltage, V_loss = calculate_voltage(i, fuel_cell_stack,fuel_cell_conditions,t_idx)
     gross_power     = voltage * i * fuel_cell.interface_area
     gross_heat      = V_loss * i * fuel_cell.interface_area
     
-    # evalaute CEM
-    fuel_cell_conditions.fuel_cell.mdot_air_in[t_idx] = mdot_air_in
+    # evalaute compressor_expander_module
+    fuel_cell_conditions.fuel_cell.inlet_air_mass_flow_rate[t_idx] = mdot_air_in
     compressor_power, mdot_air_out, expander_power = evaluate_CEM(fuel_cell_stack, fuel_cell_conditions,t_idx)
     parasitic_power  = fuel_cell.gamma_para * gross_power
     net_power        = gross_power - compressor_power - parasitic_power
     
-    return mdot_H2,voltage, net_power, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power
+    return mdot_H2, voltage, net_power, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power
 
 def evaluate_CEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
     """
@@ -179,7 +186,7 @@ def evaluate_CEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
         Oxygen excess ratio (above stoichometric)
     p_drop_hum: float 
         The pressure drop (bar) through the humidifier 
-    p_drop_fc: float 
+    pressure_drop: float 
         The pressure drop (bar) through the fuel cell
 
     Returns: 
@@ -190,39 +197,38 @@ def evaluate_CEM(fuel_cell_stack,fuel_cell_conditions,t_idx):
     Cp                = 1004
     gam               = 1.4
     
-    fuel_cell         = fuel_cell_stack.fuel_cell
-     
-    CEM               = fuel_cell.CEM 
+    fuel_cell         = fuel_cell_stack.fuel_cell 
+    CEM               = fuel_cell.compressor_expander_module 
     Tt_in             = fuel_cell_conditions.fuel_cell.stagnation_temperature[t_idx, 0] 
-    Pt_in             = fuel_cell_conditions.fuel_cell.stagnation_pressure[t_idx, 0]  # conversion to bar
-    mdot_air_in       = fuel_cell_conditions.fuel_cell.mdot_air_in[t_idx, 0]
-    p_drop_hum        = fuel_cell_conditions.fuel_cell.p_drop_hum[t_idx, 0]
-    p_drop_fc         = fuel_cell_conditions.fuel_cell.p_drop_fc[t_idx, 0]
-    FC_air_p          = fuel_cell_conditions.fuel_cell.inputs.air_pressure[t_idx, 0] 
+    Pt_in             = fuel_cell_conditions.fuel_cell.stagnation_pressure[t_idx, 0]  
+    mdot_air_in       = fuel_cell_conditions.fuel_cell.inlet_air_mass_flow_rate[t_idx, 0]
+    p_drop_hum        = fuel_cell_conditions.fuel_cell.humidifier.pressure_drop[t_idx, 0]
+    pressure_drop     = fuel_cell_conditions.fuel_cell.pressure_drop[t_idx, 0]
+    FC_air_p          = fuel_cell.rated_air_pressure  
     air_excess_ratio  = fuel_cell.air_excess_ratio 
     
     p_air_FC          = FC_air_p  + p_drop_hum
     comp_p_req        = mdot_air_in * Cp* Tt_in * ( ((p_air_FC + p_drop_hum) / Pt_in) **((gam - 1) / gam)   - 1) / CEM.compressor_efficiency
     input_p           = comp_p_req / CEM.motor_efficiency 
-    p_exp             = p_air_FC - p_drop_fc -p_drop_hum
+    p_exp             = p_air_FC - pressure_drop -p_drop_hum
     Tt_exp            = Tt_in * (p_exp / Pt_in) ** ((gam - 1) / gam)
     mdot_air_out      = mdot_air_in -  mdot_air_in /air_excess_ratio * 0.233
     exp_p_ext         = mdot_air_out * Cp * Tt_exp * (1 - (Pt_in / p_exp) ** ((gam - 1) / gam)) * CEM.expander_efficiency
     output_p          = exp_p_ext * CEM.generator_efficiency
     p_req             = input_p - output_p
 
-    fuel_cell_conditions.fuel_cell.p_air_out[t_idx]        = FC_air_p  + p_drop_hum     
-    fuel_cell_conditions.fuel_cell.p_in_comp[t_idx]        = Pt_in 
-    fuel_cell_conditions.fuel_cell.pi_comp[t_idx]          = (p_air_FC + p_drop_hum) / Pt_in 
-    fuel_cell_conditions.fuel_cell.mdot_in_comp[t_idx]     = mdot_air_in 
-    fuel_cell_conditions.fuel_cell.mdot_out_exp[t_idx]     = mdot_air_out 
-    fuel_cell_conditions.fuel_cell.p_in_exp[t_idx]         = p_exp 
-    fuel_cell_conditions.fuel_cell.pi_exp[t_idx]           = Pt_in / p_exp 
-    fuel_cell_conditions.fuel_cell.P_comp[t_idx]           = comp_p_req
-    fuel_cell_conditions.fuel_cell.P_motor_comp[t_idx]     = input_p
-    fuel_cell_conditions.fuel_cell.P_exp[t_idx]            = exp_p_ext
-    fuel_cell_conditions.fuel_cell.P_generator_exp[t_idx]  = output_p 
-    fuel_cell_conditions.fuel_cell.CEM_power[t_idx]        = p_req
+    fuel_cell_conditions.fuel_cell.outlet_air_pressure[t_idx]              = FC_air_p  + p_drop_hum     
+    fuel_cell_conditions.fuel_cell.compressor_inlet_pressure[t_idx]        = Pt_in 
+    fuel_cell_conditions.fuel_cell.compressor_pressure_ratio[t_idx]        = (p_air_FC + p_drop_hum) / Pt_in 
+    fuel_cell_conditions.fuel_cell.compressor_inlet_mass_flow_rate[t_idx]  = mdot_air_in 
+    fuel_cell_conditions.fuel_cell.compressor_power[t_idx]                 = comp_p_req
+    fuel_cell_conditions.fuel_cell.expander_outlet_mass_flow_rate[t_idx]   = mdot_air_out 
+    fuel_cell_conditions.fuel_cell.expander_inlet_pressure[t_idx]          = p_exp 
+    fuel_cell_conditions.fuel_cell.expander_pressure_ratio[t_idx]          = Pt_in / p_exp
+    fuel_cell_conditions.fuel_cell.expander_power[t_idx]                   = exp_p_ext 
+    fuel_cell_conditions.fuel_cell.motor_compressor_power[t_idx]           = input_p
+    fuel_cell_conditions.fuel_cell.expander_generator_power[t_idx]         = output_p 
+    fuel_cell_conditions.fuel_cell.compressor_expander_module_power[t_idx] = p_req
        
     return p_req, mdot_air_out, exp_p_ext 
  
@@ -245,7 +251,7 @@ def calculate_voltage(i, fuel_cell_stack,fuel_cell_conditions,t_idx):
         Relative humidity of the air and hydrogen streams (0-1)
     air_excess_ratio: float 
         Air excess ratio (above stoichometric)
-    p_drop_fc: float 
+    pressure_drop: float 
         Pressure drop of the fuel cell at the rated current density (bar)
     degradation: float 
         The percent of maximumm degradation to evaluate divided by 100
@@ -259,24 +265,24 @@ def calculate_voltage(i, fuel_cell_stack,fuel_cell_conditions,t_idx):
     
     # unpack
     fuel_cell          = fuel_cell_stack.fuel_cell 
-    stack_temperature  = fuel_cell.stack_temperature
-    P_H2_input         = fuel_cell_conditions.fuel_cell.inputs.hydrogen_pressure[t_idx, 0]   
-    P_air              = fuel_cell_conditions.fuel_cell.inputs.air_pressure[t_idx, 0]      
+    stack_temperature  = fuel_cell_conditions.fuel_cell.stack_temperature[t_idx, 0]      
+    P_H2_input         = fuel_cell.rated_H2_pressure   
+    P_air              = fuel_cell.rated_air_pressure
     RH                 = fuel_cell.oxygen_relative_humidity 
     air_excess_ratio   = fuel_cell.air_excess_ratio 
-    p_drop_fc          = fuel_cell_conditions.fuel_cell.p_drop_fc[t_idx, 0]      # known  p_drop_fc = self.calculate_P_drop_stack(i)
-    degradation        = fuel_cell_conditions.fuel_cell.degradation[t_idx, 0]    # known  confirmed  
+    pressure_drop      = fuel_cell_conditions.fuel_cell.pressure_drop[t_idx, 0]      
+    degradation        = fuel_cell_conditions.fuel_cell.degradation[t_idx, 0]    
     
-    P_O2   = calculate_P_O2(fuel_cell_stack,P_air, stack_temperature, RH, air_excess_ratio, p_drop_fc, i)
+    P_O2   = calculate_P_O2(fuel_cell_stack,P_air, stack_temperature, RH, air_excess_ratio, pressure_drop, i)
     P_H2   = calculate_P_H2(fuel_cell_stack,P_H2_input, stack_temperature, RH, i)
     E_cell = calculate_E_cell(fuel_cell_stack,stack_temperature, P_H2, P_O2)
     
     if fuel_cell.type == "LT": 
         eta_ohmic  = calculate_ohmic_losses_LT(fuel_cell_stack,stack_temperature, i) 
-        eta_conc   = calculate_concentration_losses_LT(fuel_cell_stack,stack_temperature, P_O2, RH, air_excess_ratio, p_drop_fc, i)
+        eta_conc   = calculate_concentration_losses_LT(fuel_cell_stack,stack_temperature, P_O2, RH, air_excess_ratio, pressure_drop, i)
     elif fuel_cell.type == "HT": 
         eta_ohmic = calculate_ohmic_losses_HT(fuel_cell_stack,stack_temperature, i) 
-        eta_conc  = calculate_concentration_losses_HT(fuel_cell_stack,stack_temperature, P_O2, RH, air_excess_ratio, p_drop_fc, i) 
+        eta_conc  = calculate_concentration_losses_HT(fuel_cell_stack,stack_temperature, P_O2, RH, air_excess_ratio, pressure_drop, i) 
     eta_act = calculate_activation_losses(fuel_cell_stack,stack_temperature, P_O2, i) 
 
     # Calculate the output voltage of the fuel cell
@@ -415,7 +421,7 @@ def calculate_E_cell(fuel_cell_stack, stack_temperature, P_H2, P_O2):
     fuel_cell   = fuel_cell_stack.fuel_cell
     try:
         E_cell = 1.229 - 8.45e-4 * (stack_temperature - 298.15) + \
-        fuel_cell.R*stack_temperature / (4 * fuel_cell.alpha * fuel_cell.F) * (np.log(P_H2) + 0.5 * np.log(P_O2))
+        fuel_cell.Universal_gas_constant*stack_temperature / (4 * fuel_cell.alpha * fuel_cell.Faraday_constant) * (np.log(P_H2) + 0.5 * np.log(P_O2))
     except: 
         return -10
     return E_cell
@@ -439,9 +445,9 @@ def calculate_activation_losses(fuel_cell_stack, stack_temperature, P_O2, i):
         Activation voltage loss (V)
     """
     fuel_cell = fuel_cell_stack.fuel_cell
-    A_const   = fuel_cell.R * stack_temperature / (2 * fuel_cell.alpha * fuel_cell.F)
+    A_const   = fuel_cell.Universal_gas_constant * stack_temperature / (2 * fuel_cell.alpha * fuel_cell.Faraday_constant)
     i0        = fuel_cell.i0ref * fuel_cell.L_c * fuel_cell.a_c * (P_O2/fuel_cell.i0ref_P_ref) ** (fuel_cell.gamma) * \
-        np.exp(-fuel_cell.E_C / (fuel_cell.R * stack_temperature) * (1 - (stack_temperature / fuel_cell.i0ref_T_ref)))
+        np.exp(-fuel_cell.E_C / (fuel_cell.Universal_gas_constant * stack_temperature) * (1 - (stack_temperature / fuel_cell.i0ref_T_ref)))
     eta_act = A_const * np.log(i/i0)
     return eta_act
 
@@ -524,7 +530,7 @@ def calculate_concentration_losses_LT(fuel_cell_stack, stack_temperature, P_O2, 
     if i >= i_lim: 
         return 10
     else: 
-        eta_conc = (1 + 1 / fuel_cell.alpha) * fuel_cell.R * stack_temperature / (2 * fuel_cell.F) * np.log(i_lim / (i_lim - i)) 
+        eta_conc = (1 + 1 / fuel_cell.alpha) * fuel_cell.Universal_gas_constant * stack_temperature / (2 * fuel_cell.Faraday_constant) * np.log(i_lim / (i_lim - i)) 
         return eta_conc
     
 def calculate_limiting_current_density_LT(fuel_cell_stack, stack_temperature, P_O2, RH, air_excess_ratio, P_drop, i, **kwargs): 
@@ -586,7 +592,7 @@ def calculate_concentration_losses_HT(fuel_cell_stack, stack_temperature, P_O2, 
     if i >= i_lim: 
         return 10
     else: 
-        eta_conc = (1 + 1.8/fuel_cell.alpha) * fuel_cell.R * stack_temperature / (2* fuel_cell.F) * np.log(i_lim / (i_lim - i)) 
+        eta_conc = (1 + 1.8/fuel_cell.alpha) * fuel_cell.Universal_gas_constant * stack_temperature / (2* fuel_cell.Faraday_constant) * np.log(i_lim / (i_lim - i)) 
         return eta_conc
 
 def calculate_limiting_current_density_HT(fuel_cell_stack, stack_temperature, P_O2, RH, air_excess_ratio, P_drop, i): 
@@ -623,8 +629,8 @@ def calculate_limiting_current_density_HT(fuel_cell_stack, stack_temperature, P_
 def evaluate_max_gross_power(fuel_cell_stack,fuel_cell_conditions,t_idx):
 
     fuel_cell           = fuel_cell_stack.fuel_cell
-    FC_air_p            = fuel_cell_conditions.fuel_cell.inputs.air_pressure[t_idx, 0]    
-    stack_temperature   = fuel_cell.stack_temperature       
+    FC_air_p            = fuel_cell.rated_air_pressure 
+    stack_temperature   = fuel_cell_conditions.fuel_cell.stack_temperature[t_idx,0]      
     RH                  = fuel_cell.oxygen_relative_humidity         
     air_excess_ratio    = fuel_cell.air_excess_ratio 
      

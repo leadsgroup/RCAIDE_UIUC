@@ -54,7 +54,7 @@ def main():
             error =  abs(CL - CL_true[i][j]) /CL_true[i][j]
             assert(abs(error)<1e-6)
              
-            if i ==  0: 
+            if i ==  0 and  j == 0: 
                 # plot the results 
                 plot_results(results)
 
