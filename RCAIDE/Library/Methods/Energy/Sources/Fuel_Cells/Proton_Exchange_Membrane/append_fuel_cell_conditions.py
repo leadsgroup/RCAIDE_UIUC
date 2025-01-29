@@ -96,9 +96,9 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.compressor_expander_module      = Conditions
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.compressor_expander_module_power= 0 * ones_row(1)
      
-    # Residuals and unknowns for PEM cell      
-    segment.state.unknowns[fuel_cell_stack.tag  + '_current_density']       =  1 * ones_row(1)  
-    segment.state.residuals[fuel_cell_stack.tag  + '_power']                =  0 * ones_row(1)  
+    ## Residuals and unknowns for PEM cell      
+    #segment.state.unknowns[fuel_cell_stack.tag  + '_current_density']       =  1 * ones_row(1)  
+    #segment.state.residuals[fuel_cell_stack.tag  + '_power']                =  0 * ones_row(1)  
 
     # Conditions for recharging fuel_cell        
     if isinstance(segment,RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge):

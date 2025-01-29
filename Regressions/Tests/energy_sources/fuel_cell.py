@@ -32,7 +32,7 @@ def main():
     
     # Operating conditions for battery p 
     marker_size           = 5   
-    mdot_H2_true          = [6.650984987132492e-07, 7.618884548066386e-07]
+    mdot_H2_true          = [6.650984987132492e-07, 6.498654055834548e-07]
 
     # PLot parameters 
     marker                = ['s' ,'o' ,'P']
@@ -67,7 +67,7 @@ def main():
         
         # Hydrogen Mass Flow Rate Regression
         fuel_cell_tag = list(results.segments[0].conditions.energy.bus.fuel_cell_stacks.keys())[0]
-        mdot_H2       = results.segments[0].conditions.energy.bus.fuel_cell_stacks[fuel_cell_tag].fuel_cell.inputs.fuel_mass_flow_rate
+        mdot_H2       = results.segments[0].conditions.energy.bus.fuel_cell_stacks[fuel_cell_tag].H2_mass_flow_rate
         print('Mass Flow Rate: ' + str(mdot_H2[0,0]))
         mdot_H2_diff   = np.abs(mdot_H2[0,0] - mdot_H2_true[i]) 
         print(mdot_H2_diff) 

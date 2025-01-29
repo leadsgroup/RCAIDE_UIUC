@@ -60,8 +60,11 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
     n_total           = n_series*n_parallel  
      
     # Compute Bus electrical properties  
-    bus_conditions              = state.conditions.energy[bus.tag]
-    bus_config                  = bus.fuel_cell_stack_electric_configuration  
+    bus_conditions              = state.conditions.energy[bus.tag] 
+    P_bus                       = bus_conditions.power_draw
+    bus_config                  = bus.fuel_cell_stack_electric_configuration 
+    P_module                    = P_bus  /len(bus.fuel_cell_stacks)
+    P_cell                      = P_module[t_idx]/n_total 
      
     # Compute fuel_cell_stack Conditions 
     fuel_cell_stack_conditions = state.conditions.energy[bus.tag].fuel_cell_stacks[fuel_cell_stack.tag]
@@ -70,17 +73,23 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
     fuel_cell_stack_conditions.fuel_cell.stagnation_temperature[t_idx] = stagnation_temperature[t_idx]
     fuel_cell_stack_conditions.fuel_cell.stagnation_pressure[t_idx]    = stagnation_pressure[t_idx]
     
-    print(fuel_cell_stack_conditions.fuel_cell.current_density[t_idx] )
-    m_dot_H2, V_fuel_cell, P_cell, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power =  evaluate_PEM(fuel_cell_stack,fuel_cell_stack_conditions, t_idx)
-    
+    i      = 1
+    diff_P =  10
+    alpha  =  0.05
+    while  abs(diff_P) > 1E-8: 
+        fuel_cell_stack_conditions.fuel_cell.current_density[t_idx] = i
+        m_dot_H2, V_fuel_cell, P_fuel_cell, gross_power, gross_heat, compressor_power, mdot_air_in, mdot_air_out, expander_power =  evaluate_PEM(fuel_cell_stack,fuel_cell_stack_conditions, t_idx) 
+        diff_P =  P_cell - P_fuel_cell
+        i += diff_P*alpha
+        
     # ---------------------------------------------------------------------------------------------------     
     # Future State 
     # --------------------------------------------------------------------------------------------------- 
     if t_idx != state.numerics.number_of_control_points-1:   
-        dT_dt              =  gross_heat / (fuel_cell.mass *2000) #fuel_cell.specific_heat_capacity) 
+        dT_dt              =  gross_heat / (fuel_cell.mass *fuel_cell.specific_heat_capacity) 
         fuel_cell_stack_conditions.fuel_cell.stack_temperature[t_idx+1,0]  = fuel_cell_stack_conditions.fuel_cell.stack_temperature[t_idx, 0] + dT_dt*delta_t[t_idx]  
     
-    I_cell  = P_cell / V_fuel_cell
+    I_cell  = P_fuel_cell / V_fuel_cell
     I_stack = I_cell * n_parallel
     if bus_config == 'Series':
         bus_conditions.current_draw[t_idx] = I_stack  
@@ -88,14 +97,14 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
         bus_conditions.current_draw[t_idx] = I_stack * len(bus.fuel_cell_stacks)  
      
     
-    fuel_cell_stack_conditions.power[t_idx]                                      = P_cell * n_total
+    fuel_cell_stack_conditions.power[t_idx]                                      = P_fuel_cell * n_total
     fuel_cell_stack_conditions.current[t_idx]                                    = I_stack
     fuel_cell_stack_conditions.voltage_open_circuit[t_idx]                       = V_fuel_cell *  n_series # assumes no losses
     fuel_cell_stack_conditions.voltage_under_load[t_idx]                         = V_fuel_cell *  n_series
     fuel_cell_stack_conditions.fuel_cell.voltage_open_circuit[t_idx]             = V_fuel_cell   # assumes no losses
     fuel_cell_stack_conditions.fuel_cell.voltage_under_load[t_idx]               = V_fuel_cell
-    fuel_cell_stack_conditions.fuel_cell.power[t_idx]                            = P_cell
-    fuel_cell_stack_conditions.fuel_cell.current[t_idx]                          = P_cell / V_fuel_cell  
+    fuel_cell_stack_conditions.fuel_cell.power[t_idx]                            = P_fuel_cell
+    fuel_cell_stack_conditions.fuel_cell.current[t_idx]                          = P_fuel_cell / V_fuel_cell  
     fuel_cell_stack_conditions.H2_mass_flow_rate[t_idx]                          = m_dot_H2 * n_total
     fuel_cell_stack_conditions.fuel_cell.inlet_H2_mass_flow_rate[t_idx]          = m_dot_H2
     fuel_cell_stack_conditions.fuel_cell.inlet_H2_mass_flow_rate[t_idx]          = m_dot_H2
