@@ -23,6 +23,8 @@ from RCAIDE.Framework.External_Interfaces.OpenVSP.get_vsp_measurements import ge
 
 import numpy as np
 from copy import deepcopy
+import sys
+import os
 
 try:
     import vsp as vsp
@@ -34,7 +36,7 @@ except ImportError:
         pass
     
 # ---------------------------------------------------------------------------------------------------------------------- 
-#  vsp read
+#  vsp read 
 # ---------------------------------------------------------------------------------------------------------------------- 
 def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_type = None, units_type='SI',use_scaling=True,calculate_wetted_area=True): 
     """This reads an OpenVSP vehicle geometry and writes it into a RCAIDE vehicle format.
@@ -129,6 +131,12 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
 
     if isinstance(propulsor_type,RCAIDE.Library.Components.Propulsors.Propulsor ) != True:
         raise Exception('Vehicle propulsor type must be defined. \n Choose from list in RCAIDE.Library.Compoments.Propulsors')     
+
+    # Get the last path from sys.path
+    system_path = sys.path[-1]
+    # Append the system path to the filename
+    tag = os.path.join(system_path, tag)
+
 
     vsp.ClearVSPModel() 
     vsp.ReadVSPFile(tag)	

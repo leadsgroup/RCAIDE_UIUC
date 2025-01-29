@@ -15,6 +15,8 @@ from RCAIDE.Library.Plots.Geometry.plot_3d_rotor                import plot_3d_r
 # python imports 
 import numpy as np 
 import plotly.graph_objects as go  
+import os
+import sys
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  PLOTS
@@ -144,6 +146,8 @@ def plot_3d_vehicle(vehicle,
              scene_camera=camera) 
     fig.update_coloraxes(showscale=False) 
     fig.update_traces(opacity = alpha)
+
+    save_filename = os.path.join(sys.path[-1], save_filename)
     if save_figure:
         fig.write_image(save_filename + ".png")
         
