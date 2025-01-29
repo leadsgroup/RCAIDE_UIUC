@@ -56,12 +56,47 @@ def main():
     print('Error2: ',aileron_deflection_diff)
     assert np.abs(aileron_deflection_diff/aileron_deflection_true) < 5e-3
     
-
     rudder_deflection        = results.segments.climb.conditions.control_surfaces.rudder.deflection[0,0] / Units.deg  
     rudder_deflection_true   = -1.3958266716629082
     rudder_deflection_diff   = np.abs(rudder_deflection - rudder_deflection_true)
     print('Error3: ',rudder_deflection_diff)
     assert np.abs(rudder_deflection_diff/rudder_deflection_true) < 5e-3    
+
+    C_m_alpha        = results.segments.climb.conditions.static_stability.derivatives.CM_alpha[0,0]  
+    C_m_alpha_true   = -0.59029143
+    C_m_alpha_diff   = np.abs(C_m_alpha - C_m_alpha_true)
+    print('Error: ',C_m_alpha_diff)
+    assert np.abs(C_m_alpha_diff/C_m_alpha_true) < 1e-3  
+
+    C_m_delta_e        = results.segments.climb.conditions.static_stability.derivatives.CM_delta_e[0,0]  
+    C_m_delta_e_true   = 1.649758851126327
+    C_m_delta_e_diff   = np.abs(C_m_delta_e - C_m_delta_e_true)
+    print('Error: ',C_m_delta_e_diff)
+    assert np.abs(C_m_delta_e_diff/C_m_delta_e_true) < 1e-3  
+
+    C_l_beta        = results.segments.climb.conditions.static_stability.derivatives.CL_beta[0,0]  
+    C_l_beta_true   = -0.1923156877681459
+    C_l_beta_diff   = np.abs(C_l_beta - C_l_beta_true)
+    print('Error: ',C_l_beta_diff)
+    assert np.abs(C_l_beta_diff/C_l_beta_true) < 1e-3  
+
+    C_n_beta        = results.segments.climb.conditions.static_stability.derivatives.CN_beta[0,0]
+    C_n_beta_true   = 0.09110645785585034
+    C_n_beta_diff   = np.abs(C_n_beta - C_n_beta_true)
+    print('Error: ',C_n_beta_diff)
+    assert np.abs(C_n_beta_diff/C_n_beta_true) < 1e-3    
+
+    C_l_delta_a        = results.segments.climb.conditions.static_stability.derivatives.CL_delta_a[0,0]  
+    C_l_delta_a_true   = -0.8945396397059977
+    C_l_delta_a_diff   = np.abs(C_l_delta_a - C_l_delta_a_true)
+    print('Error: ',C_l_delta_a_diff)
+    assert np.abs(C_l_delta_a_diff/C_l_delta_a_true) < 1e-3 
+
+    C_n_delta_a        = results.segments.climb.conditions.static_stability.derivatives.CN_delta_a[0,0]  
+    C_n_delta_a_true   = -0.1302726269584374
+    C_n_delta_a_diff   = np.abs(C_n_delta_a - C_n_delta_a_true)
+    print('Error: ',C_n_delta_a_diff)
+    assert np.abs(C_n_delta_a_diff/C_n_delta_a_true) < 1e-3   
 
     # plt results
     plot_mission(results)
@@ -92,42 +127,40 @@ def base_analysis(vehicle, configs):
 
     # ------------------------------------------------------------------
     #  Weights
+    # ------------------------------------------------------------------  
     weights = RCAIDE.Framework.Analyses.Weights.Weights_Transport()
     weights.vehicle = vehicle
     analyses.append(weights)
 
     # ------------------------------------------------------------------
     #  Aerodynamics Analysis
+    # ------------------------------------------------------------------  
     aerodynamics = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
-    aerodynamics.vehicle                             = vehicle
+    aerodynamics.vehicle                                = vehicle
+    aerodynamics.settings.use_surrogate                 = False
     aerodynamics.settings.number_of_spanwise_vortices   = 30
-    aerodynamics.settings.drag_coefficient_increment = 0.0000
-    aerodynamics.settings.model_fuselage             = True                
-    aerodynamics.settings.model_nacelle              = True
+    aerodynamics.settings.drag_coefficient_increment    = 0.0000
+    aerodynamics.settings.model_fuselage                = True                
+    aerodynamics.settings.model_nacelle                 = True
     analyses.append(aerodynamics) 
-      
-    stability                                       = RCAIDE.Framework.Analyses.Stability.Vortex_Lattice_Method() 
-    stability.settings.discretize_control_surfaces  = True
-    stability.settings.model_fuselage               = True                
-    stability.settings.model_nacelle                = True
-        
-    stability.configuration                         = configs
-    stability.vehicle                               = vehicle
-    analyses.append(stability)
+
 
     # ------------------------------------------------------------------
     #  Energy
+    # ------------------------------------------------------------------  
     energy= RCAIDE.Framework.Analyses.Energy.Energy()
     energy.vehicle  = vehicle 
     analyses.append(energy)
 
     # ------------------------------------------------------------------
     #  Planet Analysis
+    # ------------------------------------------------------------------  
     planet = RCAIDE.Framework.Analyses.Planets.Earth()
     analyses.append(planet)
 
     # ------------------------------------------------------------------
     #  Atmosphere Analysis
+    # ------------------------------------------------------------------  
     atmosphere = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
     atmosphere.features.planet = planet.features
     analyses.append(atmosphere)   

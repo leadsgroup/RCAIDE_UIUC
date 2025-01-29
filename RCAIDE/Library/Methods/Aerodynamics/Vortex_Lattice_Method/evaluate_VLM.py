@@ -605,8 +605,17 @@ def evaluate_no_surrogate(state,settings,base_vehicle):
     """Evaluates forces and moments directly using VLM.
     
     Assumptions:
-
-         
+        The following stability derivatives are multiplied by correction 
+        factors to match with literature/flight tests:
+            CY_beta multiplied by 2
+            CL_beta multiplied by -1
+            CL_p multiplied by -2
+            CM_q multiplied by 10
+            CN_p multiplied by -3
+            CN_r multiplied by 3
+            CL_delta_a multiplied by -1
+            CN_delta_a multiplied by -10
+            CLift_delta_e multiplied by 0.5
         
     Source:
         None
