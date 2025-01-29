@@ -23,7 +23,7 @@ from copy import  deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_performance
 # ----------------------------------------------------------------------------------------------------------------------   
-def compute_turbofan_performance(turbofan,state,center_of_gravity= [[0.0, 0.0,0.0]]):  
+def compute_turbofan_performance(turbofan,state,center_of_gravity):  
     ''' Computes the perfomrance of one turbofan
     
     Assumptions: 
@@ -229,7 +229,8 @@ def compute_turbofan_performance(turbofan,state,center_of_gravity= [[0.0, 0.0,0.
     moment_vector              = 0*state.ones_row(3)
     thrust_vector              = 0*state.ones_row(3)
     thrust_vector[:,0]         =  turbofan_conditions.thrust[:,0]
-    moment_vector[:,0]         =  turbofan.origin[0][0] -   center_of_gravity[0][0] 
+    center_of_gravity = [[0.0, 0.0,0.0]] 
+    moment_vector[:,0]         =  turbofan.origin[0][0] -   center_of_gravity[0][0]
     moment_vector[:,1]         =  turbofan.origin[0][1]  -  center_of_gravity[0][1] 
     moment_vector[:,2]         =  turbofan.origin[0][2]  -  center_of_gravity[0][2]
     M                          =  np.cross(moment_vector, thrust_vector)   

@@ -25,7 +25,7 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
     ''' 
     conditions                = state.conditions   
     noise_conditions          = conditions.noise[low_fidelity_ducted_fan.tag] 
-    low_fidelity_ducted_fan_conditions       = conditions.energy[low_fidelity_ducted_fan.tag] 
+    low_fidelity_ducted_fan_conditions = conditions.energy[low_fidelity_ducted_fan.tag] 
     rho                       = conditions.freestream.density
     U0                        = conditions.freestream.velocity
     
@@ -56,6 +56,20 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
 
     # Flow through the inlet nozzle
     compute_compression_nozzle_performance(inlet_nozzle,inlet_nozzle_conditions,conditions)
+
+  # Link the shaft power input to the fan
+    try:
+        shaft_power                                        = low_fidelity_ducted_fan.Shaft_Power_Off_Take       
+        shaft_power.inputs.mdhc                            = low_fidelity_ducted_fan.compressor_nondimensional_massflow
+        shaft_power.inputs.Tref                            = low_fidelity_ducted_fan.reference_temperature
+        shaft_power.inputs.Pref                            = low_fidelity_ducted_fan.reference_pressure
+        shaft_power.inputs.total_temperature_reference     = fan_conditions.outputs.stagnation_temperature
+        shaft_power.inputs.total_pressure_reference        = fan_conditions.outputs.stagnation_pressure
+
+        shaft_power(conditions)
+        fan_conditions.inputs.shaft_power_off_take   = shaft_power.outputs
+    except:
+        pass
     
     # Link the fan to the inlet nozzle
     fan_conditions.inputs.stagnation_temperature                      = inlet_nozzle_conditions.outputs.stagnation_temperature
@@ -68,20 +82,6 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
     # Flow through the fan
     compute_fan_performance(fan,fan_conditions,conditions)    
           
-    # Link the shaft power output to the fan
-    try:
-        shaft_power                                        = low_fidelity_ducted_fan.Shaft_Power_Off_Take       
-        shaft_power.inputs.mdhc                            = low_fidelity_ducted_fan.compressor_nondimensional_massflow
-        shaft_power.inputs.Tref                            = low_fidelity_ducted_fan.reference_temperature
-        shaft_power.inputs.Pref                            = low_fidelity_ducted_fan.reference_pressure
-        shaft_power.inputs.total_temperature_reference     = fan_conditions.outputs.stagnation_temperature
-        shaft_power.inputs.total_pressure_reference        = fan_conditions.outputs.stagnation_pressure
-
-        shaft_power(conditions)
-    except:
-        pass
-
-
     # Link the dan nozzle to the fan
     exit_nozzle_conditions.inputs.stagnation_temperature     = fan_conditions.outputs.stagnation_temperature
     exit_nozzle_conditions.inputs.stagnation_pressure        = fan_conditions.outputs.stagnation_pressure
@@ -102,6 +102,7 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
     low_fidelity_ducted_fan_conditions.total_temperature_reference              = low_fidelity_ducted_fan.reference_temperature
     low_fidelity_ducted_fan_conditions.total_pressure_reference                 = low_fidelity_ducted_fan.reference_pressure
     low_fidelity_ducted_fan_conditions.flow_through_fan                         = 1
+    low_fidelity_ducted_fan_conditions.fan_exit_velocity                      = fan_conditions.outputs.fan_exit_velocity
 
     # Compute the thrust
     compute_thrust(low_fidelity_ducted_fan,low_fidelity_ducted_fan_conditions,conditions)
@@ -109,11 +110,11 @@ def compute_low_fidelity_ducted_fan_performance(low_fidelity_ducted_fan,state,ce
     # Compute forces and moments
     moment_vector              = 0*state.ones_row(3)
     thrust_vector              = 0*state.ones_row(3)
-    thrust_vector[:,0]         =  low_fidelity_ducted_fan_conditions.thrust[:,0]
-    moment_vector[:,0]         =  low_fidelity_ducted_fan.origin[0][0] -   center_of_gravity[0][0] 
-    moment_vector[:,1]         =  low_fidelity_ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
-    moment_vector[:,2]         =  low_fidelity_ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
-    M                          =  np.cross(moment_vector, thrust_vector)   
+    thrust_vector[:,0]         = low_fidelity_ducted_fan_conditions.thrust[:,0]
+    moment_vector[:,0]         = low_fidelity_ducted_fan.origin[0][0] -   center_of_gravity[0][0] 
+    moment_vector[:,1]         = low_fidelity_ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
+    moment_vector[:,2]         = low_fidelity_ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
+    M                          = np.cross(moment_vector, thrust_vector)   
     moment                     = M 
     power                      = low_fidelity_ducted_fan_conditions.power 
     low_fidelity_ducted_fan_conditions.moment = moment

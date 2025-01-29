@@ -106,6 +106,19 @@ def design_low_fidelity_ducted_fan(low_fidelity_ducted_fan):
     
     # Step 4: Compute flow through the inlet nozzle
     compute_compression_nozzle_performance(inlet_nozzle,inlet_nozzle_conditions,conditions)
+
+    try:
+        shaft_power                                        = low_fidelity_ducted_fan.Shaft_Power_Off_Take       
+        shaft_power.inputs.mdhc                            = low_fidelity_ducted_fan.compressor_nondimensional_massflow
+        shaft_power.inputs.Tref                            = low_fidelity_ducted_fan.reference_temperature
+        shaft_power.inputs.Pref                            = low_fidelity_ducted_fan.reference_pressure
+        shaft_power.inputs.total_temperature_reference     = fan_conditions.outputs.stagnation_temperature
+        shaft_power.inputs.total_pressure_reference        = fan_conditions.outputs.stagnation_pressure
+
+        shaft_power(conditions)
+        fan_conditions.inputs.shaft_power_off_take   = shaft_power.outputs
+    except:
+        pass
     
     # Step 5: Link the fan to the inlet nozzle
     fan_conditions.inputs.stagnation_temperature                      = inlet_nozzle_conditions.outputs.stagnation_temperature
@@ -135,6 +148,7 @@ def design_low_fidelity_ducted_fan(low_fidelity_ducted_fan):
     low_fidelity_ducted_fan_conditions.total_temperature_reference              = fan_conditions.outputs.stagnation_temperature
     low_fidelity_ducted_fan_conditions.total_pressure_reference                 = fan_conditions.outputs.stagnation_pressure
     low_fidelity_ducted_fan_conditions.flow_through_fan                         = 1
+    low_fidelity_ducted_fan_conditions.fan_exit_velocity                      = fan_conditions.outputs.fan_exit_velocity
 
     # Step 22: Size the core of the turbofan  
     size_core(low_fidelity_ducted_fan,low_fidelity_ducted_fan_conditions,conditions) 

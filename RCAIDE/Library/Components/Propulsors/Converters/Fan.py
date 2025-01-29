@@ -83,6 +83,7 @@ class Fan(Component):
         #set the default values
         self.tag                            = 'Fan'
         self.polytropic_efficiency          = 1.0
+        self.mechanical_efficiency          = 1.0
         self.pressure_ratio                 = 1.0
         self.angular_velocity               = 0
 

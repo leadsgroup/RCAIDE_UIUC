@@ -45,30 +45,34 @@ def compute_fan_performance(fan,fan_conditions,conditions):
     # unpack from fan
     PR                      = fan.pressure_ratio
     etapold                 = fan.polytropic_efficiency
-
+    eta_mech                = fan.mechanical_efficiency
     Tt_in                   = fan_conditions.inputs.stagnation_temperature
     Pt_in                   = fan_conditions.inputs.stagnation_pressure 
     P0                      = fan_conditions.inputs.static_pressure 
     T0                      = fan_conditions.inputs.static_temperature
     M0                      = fan_conditions.inputs.mach_number    
-    R                       = fan_conditions.inputs.gas_specific_constant
+    shaft_takeoff        = fan_conditions.inputs.shaft_power_off_take.work_done 
     
     # Unpack ram inputs
     working_fluid           = fan.working_fluid
  
     # Compute the working fluid properties 
     gamma  = working_fluid.compute_gamma(T0,P0) 
-    Cp     = working_fluid.compute_cp(T0,P0)    
-    
-    # Compute the output quantities  
-    Pt_out    = Pt_in*PR
-    Tt_out    = Tt_in*PR**((gamma-1)/(gamma*etapold))
-    T_out     = Tt_out/(1.+(gamma-1.)/2.*M0*M0)
-    P_out     = Pt_out/((1.+(gamma-1.)/2.*M0*M0)**(gamma/(gamma-1.))) 
-    ht_out    = Tt_out*Cp   
-    ht_in     = Tt_in*Cp 
-    M_out     = np.sqrt( (((Pt_out/P_out)**((gamma-1.)/gamma))-1.) *2./(gamma-1.) )   
-    V         = M_out*np.sqrt(gamma*R*T_out)
+    Cp     = working_fluid.compute_cp(T0,P0) 
+    R      = Cp*(gamma - 1)/gamma   
+
+    deltah = -(shaft_takeoff) * 1/eta_mech
+
+    # Compute the output stagnation quantities from the inputs and the energy drop computed above
+    Tt_out    = Tt_in+deltah/Cp
+    ht_out    = Cp*Tt_out 
+    ht_in     = Tt_in*Cp   
+    Pt_out    = Pt_in*(Tt_out/Tt_in)**(gamma/((gamma-1)*etapold)) 
+    PR        = Pt_out/Pt_in
+    tau_t     = Tt_out/Tt_in
+    T_out     = Tt_out
+    P_out     = Pt_out
+    V         = M0*np.sqrt(gamma*R*T_out)
     
     # Compute the work done by the fan (normalized by mass flow i.e. J/(kg/s)
     work_done = ht_out - ht_in
@@ -80,7 +84,7 @@ def compute_fan_performance(fan,fan_conditions,conditions):
     fan_conditions.outputs.static_pressure         = P_out    
     fan_conditions.outputs.work_done               = work_done
     fan_conditions.outputs.stagnation_enthalpy     = ht_out
-    fan_conditions.outputs.mach_number             = M_out
+    fan_conditions.outputs.mach_number             = M0
     fan_conditions.outputs.fan_exit_velocity       = V
     
     return 
