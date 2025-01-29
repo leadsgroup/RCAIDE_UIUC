@@ -26,7 +26,7 @@ classifiers = [
     "Topic :: Scientific/Engineering"
 ]
 dependencies = [
-    "numpy==1.26.4; python_version > '3.8'",
+    "numpy,
     "scipy",
     "matplotlib",
     "scikit-learn",
