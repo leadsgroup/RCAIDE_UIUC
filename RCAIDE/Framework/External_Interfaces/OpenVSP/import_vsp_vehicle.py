@@ -133,7 +133,7 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
         raise Exception('Vehicle propulsor type must be defined. \n Choose from list in RCAIDE.Library.Compoments.Propulsors')     
 
     # Get the last path from sys.path
-    system_path = sys.path[-1]
+    system_path = sys.path[0]
     # Append the system path to the filename
     tag = os.path.join(system_path, tag)
 

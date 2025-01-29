@@ -66,7 +66,7 @@ def get_vsp_measurements(filename = 'Unnamed_CompGeom.csv', measurement_type = '
         return -1
 
     # Get the last path from sys.path
-    system_path = sys.path[-1]
+    system_path = sys.path[0]
     # Append the system path to the filename
     filename = os.path.join(system_path, filename)
     vsp.SetComputationFileName(file_type, filename)

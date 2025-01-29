@@ -113,7 +113,7 @@ def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil
         tag = tag.translate(t_table) 
         if main_wing_tag == tag:
             wing = RCAIDE.Library.Components.Wings.Main_Wing()
-        save_filename = os.path.join(sys.path[-1], tag )
+        save_filename = os.path.join(sys.path[0], tag )
         wing.tag = tag
 
     else:
