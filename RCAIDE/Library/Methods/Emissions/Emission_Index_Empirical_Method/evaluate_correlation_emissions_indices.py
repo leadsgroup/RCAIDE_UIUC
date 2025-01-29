@@ -4,8 +4,7 @@
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
-# ----------------------------------------------------------------------------------------------------------------------
-import  RCAIDE
+# ---------------------------------------------------------------------------------------------------------------------- 
 from    RCAIDE.Framework.Core import Data 
  
 # package imports
@@ -206,6 +205,6 @@ def evaluate_correlation_emissions_indices(segment,settings,vehicle):
     emissions.index.SO2       = EI_SO2   * state.ones_row(1)
     emissions.index.Soot      = EI_Soot  * state.ones_row(1)
     
-    state.conditions.emissions =  emissions
+    state.conditions.emissions = emissions
     return   
 

@@ -18,6 +18,8 @@ from RCAIDE.Library.Methods.Geometry.Planform import wing_planform, wing_segment
 
 import numpy as np
 import string
+import os
+import sys
 try:
     import vsp as vsp
 except ImportError:
@@ -111,7 +113,9 @@ def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil
         tag = tag.translate(t_table) 
         if main_wing_tag == tag:
             wing = RCAIDE.Library.Components.Wings.Main_Wing()
+        save_filename = os.path.join(sys.path[0], tag )
         wing.tag = tag
+
     else:
         wing.tag = 'winggeom'
 
@@ -245,8 +249,8 @@ def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil
                 # (Write the root airfoil with final arg = 0. Write 4th airfoil of 5 segments with final arg = .8)
 
             if write_airfoil_file==True:
-                vsp.WriteSeligAirfoil(str(wing.tag) + '_airfoil_XSec_' + str(jj) +'.dat', wing_id, float(jj/segment_num))
-                airfoil.coordinate_file    = str(wing.tag) + '_airfoil_XSec_' + str(jj) +'.dat'
+                vsp.WriteSeligAirfoil(str(save_filename) + '_airfoil_XSec_' + str(jj) +'.dat', wing_id, float(jj/segment_num))
+                airfoil.coordinate_file    = str(save_filename) + '_airfoil_XSec_' + str(jj) +'.dat'
                 airfoil.tag                = 'airfoil'
 
                 segment.append_airfoil(airfoil)
