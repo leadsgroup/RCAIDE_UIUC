@@ -13,6 +13,7 @@ systems and their interactions.
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
-from . import Sources
+from . import Converters
 from . import Distributors
 from . import Modulators
+from . import Sources
