@@ -139,7 +139,7 @@ def compute_stack_properties(fuel_cell_stack):
             cryogenic_tank.append_operating_conditions(segment,bus)
       
         # compute fuel cell performance             
-        t_idx   =  0
+        t_idx                      =  0
         fuel_cell_stack_conditions = segment.state.conditions.energy[bus.tag].fuel_cell_stacks[fuel_cell_stack.tag]
         fuel_cell_stack_conditions.fuel_cell.stagnation_temperature[t_idx, 0]    = atmo_data.temperature   
         fuel_cell_stack_conditions.fuel_cell.stagnation_pressure[t_idx, 0]       = atmo_data.pressure   
