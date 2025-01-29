@@ -68,9 +68,9 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.oxygen_relative_humidity        = 1 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.degradation                     = 0 * ones_row(1)
     
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.pressure_drop                   = fuel_cell_stack.fuel_cell.rated_p_drop_fc * ones_row(1) # CORRECT 
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.pressure_drop                   = 0 * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.air_excess_ratio                = 0 * ones_row(1) 
-    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.stack_temperature               = fuel_cell_stack.fuel_cell.stack_temperature * ones_row(1) # CORRECT 
+    bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.stack_temperature               = fuel_cell_stack.fuel_cell.stack_temperature * ones_row(1)  
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inlet_H2_mass_flow_rate         = 0 * ones_row(1) 
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.inlet_air_mass_flow_rate        = 0 * ones_row(1)    
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.outlet_air_pressure             = 0 * ones_row(1) 
@@ -95,10 +95,6 @@ def append_fuel_cell_conditions(fuel_cell_stack,segment,bus):
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.expander_generator_power        = 0 * ones_row(1)
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.compressor_expander_module      = Conditions
     bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag].fuel_cell.compressor_expander_module_power= 0 * ones_row(1)
-     
-    ## Residuals and unknowns for PEM cell      
-    #segment.state.unknowns[fuel_cell_stack.tag  + '_current_density']       =  1 * ones_row(1)  
-    #segment.state.residuals[fuel_cell_stack.tag  + '_power']                =  0 * ones_row(1)  
 
     # Conditions for recharging fuel_cell        
     if isinstance(segment,RCAIDE.Framework.Mission.Segments.Ground.Battery_Recharge):
