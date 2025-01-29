@@ -225,8 +225,7 @@ class Electric(Network):
             total_moment =  total_moment * -1                    
         conditions.energy.thrust_force_vector  = total_thrust
         conditions.energy.power                = total_power 
-        conditions.energy.thrust_moment_vector = total_moment
-        conditions.energy.vehicle_mass_rate    = state.ones_row(1)*0.0  
+        conditions.energy.thrust_moment_vector = total_moment 
         conditions.energy.vehicle_mass_rate    = total_mdot  
 
         return
