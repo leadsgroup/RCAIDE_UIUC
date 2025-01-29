@@ -120,15 +120,7 @@ class Generic_Fuel_Cell_Stack(Component):
 
     def append_operating_conditions(self,segment,bus):  
         append_fuel_cell_conditions(self,segment,bus)  
-        return 
-
-    def unpack_fuel_cell_unknowns(self,bus,segment):  
-        pass
-        return 
-
-    def pack_fuel_cell_residuals(self,bus,segment): 
-        pass
-        return 
+        return
     
     def append_fuel_cell_segment_conditions(self,bus, conditions, segment):
         append_fuel_cell_segment_conditions(self,bus, conditions, segment)

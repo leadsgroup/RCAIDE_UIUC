@@ -11,8 +11,6 @@ from RCAIDE.Framework.Core       import Data
 from .Generic_Fuel_Cell_Stack    import  Generic_Fuel_Cell_Stack
 from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.compute_fuel_cell_performance import *
 from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.append_fuel_cell_conditions   import *
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.pack_PEM_residuals            import pack_PEM_residuals
-from RCAIDE.Library.Methods.Energy.Sources.Fuel_Cells.Proton_Exchange_Membrane.unpack_PEM_unknowns           import unpack_PEM_unknowns
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Proton_Exchange_Membrane_Fuel_Cell
@@ -164,15 +162,7 @@ class Proton_Exchange_Membrane_Fuel_Cell(Generic_Fuel_Cell_Stack):
         
         stored_results_flag, stored_battery_tag = compute_fuel_cell_performance(self,state,bus,coolant_lines, t_idx,delta_t) 
         
-        return stored_results_flag, stored_battery_tag 
-
-    def unpack_fuel_cell_unknowns(self,bus,segment):  
-        unpack_PEM_unknowns(self,bus,segment)
-        return 
- 
-    def pack_fuel_cell_residuals(self,bus,segment): 
-        pack_PEM_residuals(self,bus,segment)
-        return
+        return stored_results_flag, stored_battery_tag
     
     def append_operating_conditions(self,segment,bus):  
         append_fuel_cell_conditions(self,segment,bus)  
