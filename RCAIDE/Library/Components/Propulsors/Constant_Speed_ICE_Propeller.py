@@ -22,6 +22,9 @@ class Constant_Speed_ICE_Propeller(Propulsor):
     ----------
     tag : str
         Identifier for the propulsion system, defaults to 'ice_constant_speed_propeller'
+    
+    active_fuel_tanks : list
+        List with names of active fuel tanks. Default is None.
         
     engine : None or Engine
         The internal combustion engine component
@@ -52,6 +55,7 @@ class Constant_Speed_ICE_Propeller(Propulsor):
     def __defaults__(self):    
         # setting the default values
         self.tag                          = 'ice_constant_speed_propeller'   
+        self.active_fuel_tanks            = None
         self.engine                       = None
         self.propeller                    = None  
           

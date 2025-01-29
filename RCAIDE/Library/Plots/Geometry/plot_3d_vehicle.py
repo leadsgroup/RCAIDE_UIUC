@@ -154,7 +154,6 @@ def plot_3d_vehicle(vehicle,
 
     # Use the first path from sys.path
     save_filename = os.path.join(sys.path[0], save_filename)
-    print('-------------------------------',save_filename)
     if save_figure:
         fig.write_image(save_filename + ".png")
         

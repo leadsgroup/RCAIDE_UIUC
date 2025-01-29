@@ -57,6 +57,9 @@ class Turbofan(Propulsor):
     fan_nozzle : Component
         Fan exhaust nozzle component. Default is None.
         
+    active_fuel_tanks : Container
+        Collection of active fuel tanks. Default is None.
+        
     engine_diameter : float
         Diameter of the engine [m]. Default is 0.0.
         
@@ -148,7 +151,8 @@ class Turbofan(Propulsor):
         self.high_pressure_turbine                    = None 
         self.combustor                                = None 
         self.core_nozzle                              = None 
-        self.fan_nozzle                               = None          
+        self.fan_nozzle                               = None  
+        self.active_fuel_tanks                        = None         
         self.engine_diameter                          = 0.0      
         self.engine_length                            = 0.0
         self.engine_height                            = 0.5     # Engine centerline heigh above the ground plane

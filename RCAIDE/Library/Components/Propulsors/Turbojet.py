@@ -23,7 +23,10 @@ class Turbojet(Propulsor):
     Attributes
     ----------
     tag : str
-        Identifier for the turbojet engine. Default is 'Turbojet'. 
+        Identifier for the turbojet engine. Default is 'Turbojet'.
+    
+    active_fuel_tanks : list
+        List with names of active fuel tanks. Default is None.
         
     nacelle : Component
         Nacelle component of the engine. Default is None.
@@ -130,7 +133,8 @@ class Turbojet(Propulsor):
     """ 
     def __defaults__(self):
         # setting the default values
-        self.tag                                      = 'Turbojet'  
+        self.tag                                      = 'Turbojet' 
+        self.active_fuel_tanks                        = None
         self.nacelle                                  = None  
         self.ram                                      = None 
         self.inlet_nozzle                             = None 
