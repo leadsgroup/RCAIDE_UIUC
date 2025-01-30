@@ -240,7 +240,7 @@ def VLM(conditions,settings,geometry):
 
     # Build the RHS vector    
     rhs = compute_RHS_matrix(delta,phi,conditions,settings,geometry,pwm) 
-    RHS     = rhs.RHS*1
+    RHS     = rhs.RHS*1 # this is matches numpy=1.26 in terms of dimension
     ONSET   = rhs.ONSET*1
 
     # Build induced velocity matrix, C_mn
@@ -254,7 +254,7 @@ def VLM(conditions,settings,geometry):
     EW    = EW_small[inv,:,:]
 
     # Turn off sonic vortices when Mach>1
-    RHS = RHS*RFLAG
+    RHS = RHS*RFLAG # this no longer matches dimensions of numpy=1.26
     
     # Build Aerodynamic Influence Coefficient Matrix
     use_VORLAX_induced_velocity = settings.use_VORLAX_matrix_calculation
