@@ -12,7 +12,7 @@ from RCAIDE.Library.Methods.Propulsors.Electric_Ducted_Fan_Propulsor.append_elec
 from RCAIDE.Library.Methods.Propulsors.Electric_Ducted_Fan_Propulsor.unpack_electric_ducted_fan_unknowns             import unpack_electric_ducted_fan_unknowns
 from RCAIDE.Library.Methods.Propulsors.Electric_Ducted_Fan_Propulsor.pack_electric_ducted_fan_residuals              import pack_electric_ducted_fan_residuals 
 from RCAIDE.Library.Methods.Propulsors.Electric_Ducted_Fan_Propulsor.compute_electric_ducted_fan_performance         import compute_electric_ducted_fan_performance, reuse_stored_electric_ducted_fan_data
-from RCAIDE.Library.Methods.Propulsors.Electric_Ducted_Fan_Propulsor.append_electric_ducted_fan_residual_and_unknown import  append_electric_ducted_fan_residual_and_unknown
+from RCAIDE.Library.Methods.Propulsors.Electric_Ducted_Fan_Propulsor.append_electric_ducted_fan_residual_and_unknown import append_electric_ducted_fan_residual_and_unknown
 
 # ----------------------------------------------------------------------
 #  Electric Ducted Fan Component

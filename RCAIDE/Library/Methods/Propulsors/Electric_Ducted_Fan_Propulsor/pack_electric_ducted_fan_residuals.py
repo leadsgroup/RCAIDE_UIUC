@@ -1,5 +1,4 @@
-# RCAIDE/Library/Methods/Propulsors/Electric_Rotor_Propulsor/pack_electric_ducted_fan_residuals.py
-# (c) Copyright 2023 Aerospace Research Community LLC
+# RCAIDE/Library/Methods/Propulsors/Electric_Rotor_Propulsor/pack_electric_ducted_fan_residuals.py 
 # 
 # Created:  Jun 2024, M. Clarke   
 
@@ -7,7 +6,10 @@
 #  pack electric ducted_fan network residuals
 # ----------------------------------------------------------------------------------------------------------------------  
 
-def pack_electric_ducted_fan_residuals(propulsor,segment):  
+def pack_electric_ducted_fan_residuals(propulsor,segment):
+    '''
+    Packs residuals for electric ducted fan 
+    '''
     motor         = propulsor.motor
     ducted_fan    = propulsor.ducted_fan 
     q_motor       = segment.state.conditions.energy[propulsor.tag][motor.tag].torque

@@ -174,7 +174,7 @@ class Lithium_Ion_LFP(Generic_Battery_Module):
                         
         return stored_results_flag, stored_battery_tag
     
-    def reuse_stored_data(self,state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_battery_tag):
+    def reuse_stored_data(self,state,bus,stored_results_flag, stored_battery_tag):
         """
         Reuses previously stored battery performance data
         
@@ -195,7 +195,7 @@ class Lithium_Ion_LFP(Generic_Battery_Module):
         stored_battery_tag : str
             Identifier for stored results
         """
-        reuse_stored_lfp_cell_data(self,state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_battery_tag)
+        reuse_stored_lfp_cell_data(self,state,bus,stored_results_flag, stored_battery_tag)
         return    
       
     def update_battery_age(self,segment, battery_conditions,increment_battery_age_by_one_day): 

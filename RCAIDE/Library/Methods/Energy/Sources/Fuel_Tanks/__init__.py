@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Energy/Sources/Battery/Common/__init__.py
+# RCAIDE/Methods/Energy/Sources/Fuel_Tanks/__init__.py
 # 
 
 """ RCAIDE Package Setup
