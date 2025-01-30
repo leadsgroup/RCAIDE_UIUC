@@ -92,7 +92,7 @@ def compute_lfp_cell_performance(battery_module,state,bus,coolant_lines,t_idx, d
     n_series          = battery_module.electrical_configuration.series
     n_parallel        = battery_module.electrical_configuration.parallel 
     n_total           = n_series * n_parallel
-    no_modules        = bus.number_of_battery_modules
+    no_modules        = len(bus.battery_modules)
     
     # ---------------------------------------------------------------------------------
     # Examine Thermal Management System
@@ -113,7 +113,7 @@ def compute_lfp_cell_performance(battery_module,state,bus,coolant_lines,t_idx, d
     if bus_config == 'Series':
         I_module[t_idx]      = I_bus[t_idx]
     elif bus_config  == 'Parallel':
-        I_module[t_idx]      = I_bus[t_idx] / bus.number_of_battery_modules
+        I_module[t_idx]      = I_bus[t_idx] / len(bus.battery_modules)
 
     I_cell[t_idx] = I_module[t_idx] / n_parallel   
        
@@ -167,7 +167,7 @@ def compute_lfp_cell_performance(battery_module,state,bus,coolant_lines,t_idx, d
     stored_battery_tag     = battery_module.tag  
         
     return stored_results_flag, stored_battery_tag
-def reuse_stored_lfp_cell_data(battery_module,state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_battery_tag):
+def reuse_stored_lfp_cell_data(battery_module,state,bus,stored_results_flag, stored_battery_tag):
     '''Reuses results from one propulsor for identical batteries
     
     Assumptions: 

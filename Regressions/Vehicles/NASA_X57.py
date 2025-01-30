@@ -343,8 +343,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
-    bus                              = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
-    bus.number_of_battery_modules    = 8
+    bus                              = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
 
     #------------------------------------------------------------------------------------------------------------------------------------           
     # Battery
@@ -356,7 +355,7 @@ def vehicle_setup():
     bat.geometrtic_configuration.normal_count              = 20
     bat.geometrtic_configuration.parallel_count            = 32
      
-    for _ in range(bus.number_of_battery_modules):
+    for _ in range(8):
         bus.battery_modules.append(deepcopy(bat))      
     bus.initialize_bus_properties()      
     #------------------------------------------------------------------------------------------------------------------------------------  

@@ -9,4 +9,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 from . import Batteries
+from . import Fuel_Cells
+from . import Cryogenic_Tanks
 from . import Fuel_Tanks
