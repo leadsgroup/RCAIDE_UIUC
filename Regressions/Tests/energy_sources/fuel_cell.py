@@ -32,7 +32,7 @@ def main():
     
     # Operating conditions for battery p 
     marker_size           = 5   
-    mdot_H2_true          = [6.650984987132492e-07, 3.1979336247376623e-07]
+    mdot_H2_true          = [3.1979336247376623e-07,6.498654180730008e-07]
 
     # PLot parameters 
     marker                = ['s' ,'o' ,'P']

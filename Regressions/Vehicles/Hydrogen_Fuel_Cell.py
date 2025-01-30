@@ -36,10 +36,11 @@ def vehicle_setup(fuel_cell_model):
     if fuel_cell_model == 'PEM': 
         bus.fuel_cell_stack_electric_configuration =  "Series"
         bus.identical_fuel_cell_stacks             = False
-        bus.fuel_cell_stacks.append(fuel_cell_stack)  
         fuel_cell_stack = RCAIDE.Library.Components.Energy.Converters.Proton_Exchange_Membrane_Fuel_Cell() 
+        bus.fuel_cell_stacks.append(fuel_cell_stack)  
     if fuel_cell_model == 'Larminie':
         bus.fuel_cell_stack_electric_configuration =  "Parallel"
+        
         fuel_cell_stack_1 = RCAIDE.Library.Components.Energy.Converters.Generic_Fuel_Cell_Stack()  
         bus.fuel_cell_stacks.append(fuel_cell_stack_1)
 
