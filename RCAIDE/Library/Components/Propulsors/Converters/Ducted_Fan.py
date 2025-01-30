@@ -159,6 +159,10 @@ class Ducted_Fan(Component):
         self.hub_radius                        = 0.1
         self.blade_clearance                   = 0.01
         self.length                            = 1
+        self.eta_p                             = 0.9
+        self.K_fan                             = 0.9
+        self.epsilon_d                         = 0.9
+        self.A_R                               = 0.9
         self.fidelity                          = 'polytropic'
         self.nacelle                           = None  
         self.fan                               = RCAIDE.Library.Components.Propulsors.Converters.Fan()   

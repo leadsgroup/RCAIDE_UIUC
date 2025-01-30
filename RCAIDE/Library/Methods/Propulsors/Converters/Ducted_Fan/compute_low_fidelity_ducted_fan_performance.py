@@ -1,13 +1,12 @@
-# RCAIDE/Library/Methods/Propulsors/Converters/Rotor/compute_ducted_fan_performance.py
-# (c) Copyright 2023 Aerospace Research Community LLC
+# RCAIDE/Library/Methods/Propulsors/Converters/Ducted_Fan/compute_low_fidelity_ducted_fan_performance.py
 # 
-# Created:  Jul 2024, RCAIDE Team 
+# Created:  Jan 2025, M. Clarke, M. Guidotti
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports 
-from RCAIDE.Framework.Core                              import Data , Units, orientation_product, orientation_transpose   
+from RCAIDE.Framework.Core                              import Data 
 
 # package imports
 import  numpy as  np 
@@ -36,35 +35,25 @@ def compute_low_fidelity_ducted_fan_performance(propulsor,state,center_of_gravit
     # Unpack ducted_fan blade parameters and operating conditions 
     conditions            = state.conditions
     ducted_fan            = propulsor.ducted_fan
-    eta_p                 = propulsor.eta_p
-    K_fan                 = propulsor.K_fan
-    epsilon_d             = propulsor.epsilon_d
-    A_R                   = propulsor.A_R
-    propulsor_conditions  = conditions.energy[propulsor.tag]
-    commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
-    ducted_fan_conditions = propulsor_conditions[ducted_fan.tag]
-                  
-    altitude  = conditions.freestream.altitude / 1000
+    eta_p                 = ducted_fan.eta_p
+    K_fan                 = ducted_fan.K_fan
+    epsilon_d             = ducted_fan.epsilon_d
+    A_R                   = ducted_fan.A_R
     a         = conditions.freestream.speed_of_sound
-    
-    omega = ducted_fan_conditions.omega 
-    n     = omega/(2.*np.pi)   # Rotations per second
-    D     = ducted_fan.tip_radius * 2
-    A     = 0.25 * np.pi * (D ** 2)
     
     # Unpack freestream conditions
     rho     = conditions.freestream.density[:,0,None] 
-    u0      = conditions.freestream.velocity[:,0,None]
+    u0      = conditions.freestream.airspeed[:,0,None]
 
     # Compute power 
-    P_EM                       = ducted_fan_conditions.power
+    P_EM                       = propulsor.motor.design_torque*propulsor.motor.angular_velocity
 
     P_req                      = P_EM*eta_p/K_fan
 
     # Coefficients of the cubic equation
-    a = 1 / (4 * rho * A_R * epsilon_d)
-    b = -(1/2)*((u0) ** 2)
-    c = +(3/2)*(u0)*P_req
+    a = float(1 / (4 * rho * A_R * epsilon_d))
+    b =  float(-(1/2)*((u0) ** 2))
+    c =  float(+(3/2)*(u0)*P_req)
     d = -P_req**2
 
     # Use numpy.roots to solve the cubic equation
@@ -78,11 +67,11 @@ def compute_low_fidelity_ducted_fan_performance(propulsor,state,center_of_gravit
     power          = P_EM              
  
     # Compute moment 
-    moment_vector           = np.zeros((3))
-    moment_vector[:,0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
-    moment_vector[:,1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
-    moment_vector[:,2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
-    moment                  =  np.cross(moment_vector, thrust) 
+    moment_vector         = np.zeros((3))
+    moment_vector[0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
+    moment_vector[1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
+    moment_vector[2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
+    moment                = moment_vector
      
     outputs                                       = Data( 
                 thrust                            = thrust,  

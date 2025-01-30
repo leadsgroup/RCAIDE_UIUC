@@ -12,3 +12,5 @@ from .append_motor_conditions           import append_motor_conditions
 from .compute_motor_performance         import compute_RPM_and_torque_from_power_coefficent_and_voltage
 from .compute_motor_performance         import compute_current_from_RPM_and_voltage 
 from .design_motor                      import design_motor
+from .compute_PMSM_motor_performance    import compute_PMSM_motor_performance
+from .compute_PMSM_thermal_motor_performance import compute_PMSM_motor_thermal_performance
