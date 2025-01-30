@@ -381,8 +381,7 @@ def vehicle_setup(new_regression=True) :
     # Forward Bus
     #====================================================================================================================================  
     cruise_bus                                             = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
-    cruise_bus.tag                                         = 'cruise_bus'
-    cruise_bus.number_of_battery_modules                   = 1
+    cruise_bus.tag                                         = 'cruise_bus' 
      
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus Battery
@@ -392,10 +391,8 @@ def vehicle_setup(new_regression=True) :
     bat.electrical_configuration.series                    = 140  
     bat.electrical_configuration.parallel                  = 60 
     bat.geometrtic_configuration.normal_count              = 140  
-    bat.geometrtic_configuration.parallel_count            = 60 
-     
-    for _ in range(cruise_bus.number_of_battery_modules):
-        cruise_bus.battery_modules.append(deepcopy(bat))       
+    bat.geometrtic_configuration.parallel_count            = 60  
+    cruise_bus.battery_modules.append(bat)       
     
     cruise_bus.initialize_bus_properties()
     #------------------------------------------------------------------------------------------------------------------------------------  
@@ -572,8 +569,7 @@ def vehicle_setup(new_regression=True) :
     # Lift Bus 
     #====================================================================================================================================          
     lift_bus                                               = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
-    lift_bus.tag                                           = 'lift_bus'
-    lift_bus.number_of_battery_modules                     = 1
+    lift_bus.tag                                           = 'lift_bus' 
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus Battery
@@ -583,11 +579,8 @@ def vehicle_setup(new_regression=True) :
     bat.electrical_configuration.series                    = 140   
     bat.electrical_configuration.parallel                  = 20 
     bat.geometrtic_configuration.normal_count              = 140   
-    bat.geometrtic_configuration.parallel_count            = 20 
-
-    for _ in range(lift_bus.number_of_battery_modules):
-        lift_bus.battery_modules.append(deepcopy(bat))
-        
+    bat.geometrtic_configuration.parallel_count            = 20  
+    lift_bus.battery_modules.append(bat) 
     lift_bus.initialize_bus_properties()
 
     #------------------------------------------------------------------------------------------------------------------------------------  

@@ -1,4 +1,4 @@
-# Regression/scripts/Tests/network_all_electric/electric_btms_test.py
+# Regression/scripts/Tests/network_electric/battery_electric_aircraft_test.py
 # 
 # 
 # Created:  Sep 2024, S. Shekar
@@ -54,7 +54,7 @@ def main():
             error =  abs(CL - CL_true[i][j]) /CL_true[i][j]
             assert(abs(error)<1e-6)
              
-            if i ==  0: 
+            if i ==  0 and  j == 0: 
                 # plot the results 
                 plot_results(results)
 

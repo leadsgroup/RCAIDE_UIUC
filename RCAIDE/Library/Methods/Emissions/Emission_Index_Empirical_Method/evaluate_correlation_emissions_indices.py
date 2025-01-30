@@ -185,6 +185,7 @@ def evaluate_correlation_emissions_indices(segment,settings,vehicle):
                     SO2_total  += np.dot(I,mdot*EI_SO2)
                     H2O_total  += np.dot(I,mdot*EI_H2O) 
                     Soot_total += np.dot(I,mdot*EI_Soot)
+                                     
          
     flight_range    =  state.conditions.frames.inertial.aircraft_range 
     Contrails_total =  (flight_range -   flight_range[0]) /1000 * fuel.global_warming_potential_100.Contrails
