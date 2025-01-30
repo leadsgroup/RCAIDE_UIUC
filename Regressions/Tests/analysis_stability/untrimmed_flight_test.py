@@ -83,12 +83,12 @@ def base_analysis(vehicle, configs):
     # ------------------------------------------------------------------
     #  Aerodynamics Analysis
     aerodynamics = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
-    aerodynamics.vehicle                                = vehicle
-    aerodynamics.settings.use_surrogate                 = False
-    aerodynamics.settings.number_of_spanwise_vortices   = 30
-    aerodynamics.settings.drag_coefficient_increment    = 0.0000
-    aerodynamics.settings.model_fuselage                = True                
-    aerodynamics.settings.model_nacelle                 = True
+    aerodynamics.vehicle                               = vehicle
+    aerodynamics.settings.use_surrogate                = False
+    aerodynamics.settings.number_of_spanwise_vortices  = 30
+    aerodynamics.settings.drag_coefficient_increment   = 0.0000
+    aerodynamics.settings.model_fuselage               = True                
+    aerodynamics.settings.model_nacelle                = True
     analyses.append(aerodynamics) 
        
     # ------------------------------------------------------------------
