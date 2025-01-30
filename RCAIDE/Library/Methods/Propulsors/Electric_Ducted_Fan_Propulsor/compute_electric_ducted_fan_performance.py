@@ -10,6 +10,7 @@
 from RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance  import * 
 from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.compute_motor_performance                   import *
 from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_ducted_fan_performance            import * 
+from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_low_fidelity_ducted_fan_performance import *
 
 # pacakge imports  
 import numpy as np 
@@ -65,12 +66,18 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     compute_RPM_and_torque_from_power_coefficent_and_voltage(motor,motor_conditions,conditions)
     
     # Spin the ducted_fan 
+    ducted_fan_conditions.torque             = motor_conditions.torque
     ducted_fan_conditions.omega              = motor_conditions.omega
+    ducted_fan_conditions.power              = motor_conditions.torque*motor_conditions.omega
     ducted_fan_conditions.tip_mach           = (motor_conditions.omega * ducted_fan.tip_radius) / conditions.freestream.speed_of_sound
     ducted_fan_conditions.throttle           = esc_conditions.throttle
     ducted_fan_conditions.operating_altitude = conditions.freestream.altitude
     ducted_fan_conditions.inflow_velocity    = conditions.freestream.velocity
-    compute_ducted_fan_performance(propulsor,state,center_of_gravity)  
+
+    if ducted_fan.fidelity == 'low':
+        compute_low_fidelity_ducted_fan_performance(propulsor,state,center_of_gravity)  
+    else:
+        compute_ducted_fan_performance(propulsor,state,center_of_gravity)  
 
     # Run the motor for current
     compute_current_from_RPM_and_voltage(motor,motor_conditions,conditions)

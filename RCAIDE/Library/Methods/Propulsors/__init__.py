@@ -18,4 +18,3 @@ from . import Modulators
 from . import Turbofan_Propulsor
 from . import Turbojet_Propulsor
 from . import Turboshaft_Propulsor
-from . import Low_Fidelity_Ducted_Fan
