@@ -47,9 +47,6 @@ def Transport_Aircraft_Test(update_regression_values,show_figure):
         print('Testing Method: '+method_type) 
         
         weight_analysis                               = RCAIDE.Framework.Analyses.Weights.Weights_Transport()
-        
-        
-        
         weight_analysis.vehicle                       = transport_setup() 
         weight_analysis.method                        = method_type 
         weight                                        = weight_analysis.evaluate()

@@ -179,7 +179,7 @@ class Electric(Network):
                             stored_results_flag, stored_battery_cell_tag  =  battery_module.energy_calc(state,bus,coolant_lines, t_idx, delta_t)
                         else:
                             # use previous battery results 
-                            battery_module.reuse_stored_data(state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_battery_cell_tag)
+                            battery_module.reuse_stored_data(state,bus,stored_results_flag, stored_battery_cell_tag)
                  
                 # Step 2.1.b : Fuel Cell Stack Performance           
                 for fuel_cell_stack in  bus.fuel_cell_stacks:                   
@@ -192,7 +192,7 @@ class Electric(Network):
                             stored_results_flag, stored_fuel_cell_tag  =  fuel_cell_stack.energy_calc(state,bus,coolant_lines, t_idx, delta_t)
                         else:
                             # use previous battery results 
-                            fuel_cell_stack.reuse_stored_data(state,bus,coolant_lines, t_idx, delta_t,stored_results_flag, stored_fuel_cell_tag)
+                            fuel_cell_stack.reuse_stored_data(state,bus,stored_results_flag, stored_fuel_cell_tag)
                          
                     # compute cryogen mass flow rate 
                     fuel_cell_stack_conditions  = bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag]                        
