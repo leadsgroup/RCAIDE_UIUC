@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Propulsors/Converters/DC_Motor/compute_PMSM_motor_performance.py
+# RCAIDE/Library/Methods/Propulsors/Converters/PMSM_Motor/compute_PMSM_motor_performance.py
 
 # 
 # Created:  Jan 2025, M. Clarke, M. Guidotti
