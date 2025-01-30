@@ -51,7 +51,7 @@ def compute_payload_weight(vehicle, weight_per_passenger = 165. * Units.lb):
     else:
         BPP = 44 * Units.lbs
     WPBAG       = BPP * vehicle.passengers  # baggage weight
-    WPAYLOAD    = WPASS + WPBAG + vehicle.mass_properties.cargo / Units.lbs  # payload weight
+    WPAYLOAD    = WPASS + WPBAG + vehicle.mass_properties.cargo  # payload weight
 
     output              = Data()
     output.total        = WPAYLOAD

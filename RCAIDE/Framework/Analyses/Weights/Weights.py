@@ -85,7 +85,7 @@ class Weights(Analysis):
         """
         # unpack
         vehicle = self.vehicle 
-        results = RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common.compute_operating_empty_weight(vehicle, settings=self.settings)
+        results = RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common.compute_operating_empty_weight(vehicle, settings=self.settings,  method_type=self.method)
 
         # storing weigth breakdown into vehicle
         vehicle.weight_breakdown = results
