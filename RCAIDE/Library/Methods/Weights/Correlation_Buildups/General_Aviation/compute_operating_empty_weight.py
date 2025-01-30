@@ -210,9 +210,6 @@ def compute_operating_empty_weight(vehicle, settings=None):
     
             for battery in bus.battery_modules: 
                 W_energy_network_total  += battery.mass_properties.mass * Units.kg
-    
-            for fuel_cell in bus.fuel_cell_stacks: 
-                W_energy_network_total  += fuel_cell.mass_properties.mass * Units.kg                
                   
             for propulsor in bus.propulsors:
                 if 'motor' in propulsor: 
