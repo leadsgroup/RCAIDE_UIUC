@@ -429,13 +429,13 @@ def vehicle_setup(fuel_cell_model):
     bus = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()   
       
     if fuel_cell_model == 'PEM': 
-        fuel_cell_stack = RCAIDE.Library.Components.Energy.Converters.Fuel_Cell_Stacks.Proton_Exchange_Membrane_Fuel_Cell() 
+        fuel_cell_stack = RCAIDE.Library.Components.Energy.Converters.Proton_Exchange_Membrane_Fuel_Cell() 
         fuel_cell_stack.electrical_configuration.series             = 940
         fuel_cell_stack.electrical_configuration.parallel           = 7
         fuel_cell_stack.geometrtic_configuration.normal_count       = 940
         fuel_cell_stack.geometrtic_configuration.parallel_count     = 7
     if fuel_cell_model == 'Larminie':  
-        fuel_cell_stack   = RCAIDE.Library.Components.Energy.Converters.Fuel_Cell_Stacks.Generic_Fuel_Cell_Stack() 
+        fuel_cell_stack   = RCAIDE.Library.Components.Energy.Converters.Generic_Fuel_Cell_Stack() 
         fuel_cell_stack.electrical_configuration.series             = 1020
         fuel_cell_stack.electrical_configuration.parallel           = 1
         fuel_cell_stack.geometrtic_configuration.normal_count       = 1020

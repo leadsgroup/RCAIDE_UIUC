@@ -289,10 +289,6 @@ class Electric(Network):
         for network in segment.analyses.energy.vehicle.networks:
             for bus_i, bus in enumerate(network.busses):    
                 if bus.active:
-                    for i , fuel_cell_stack in enumerate(bus.fuel_cell_stacks):
-                        if i == 0 or bus.identical_fuel_cell_stacks == False:
-                            fuel_cell_stack.pack_fuel_cell_residuals(bus,segment)
-                        
                     for propulsor_group in  bus.assigned_propulsors:
                         propulsor =  network.propulsors[propulsor_group[0]]
                         propulsor.pack_propulsor_residuals(segment)   

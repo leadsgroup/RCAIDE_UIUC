@@ -1,21 +1,12 @@
-# RCAIDE/Library/Components/Energy/Converters/__init__.py
+# RCAIDE/Library/Compoments/Energy/Converters/__init__.py
 # 
 
-"""
-Energy converters module providing components for aircraft power conversion
-
-This module contains implementations for various energy converters components including
-fuel cells.
-
-See Also
---------
-RCAIDE.Library.Components.Energy.Sources.Battery_Modules
-    Battery system components and models
-RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks
-    Fuel storage and delivery systems
+""" RCAIDE Package Setup
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
-# ---------------------------------------------------------------------------------------------------------------------- 
-from . import Fuel_Cell_Stacks 
+# ----------------------------------------------------------------------------------------------------------------------
+
+from .Generic_Fuel_Cell_Stack            import Generic_Fuel_Cell_Stack
+from .Proton_Exchange_Membrane_Fuel_Cell import Proton_Exchange_Membrane_Fuel_Cell
