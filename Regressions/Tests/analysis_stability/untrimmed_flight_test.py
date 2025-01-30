@@ -45,7 +45,7 @@ def main():
     results = missions.base_mission.evaluate() 
 
     CL        = results.segments.cruise.conditions.aerodynamics.coefficients.lift.total[0][0]
-    CL_true   = 0.5539757116712055
+    CL_true   = 0.5470776980723923
     CL_diff   = np.abs(CL - CL_true)
     print('Error: ',CL_diff)
     assert np.abs(CL_diff/CL_true) < 1e-6
@@ -83,8 +83,12 @@ def base_analysis(vehicle, configs):
     # ------------------------------------------------------------------
     #  Aerodynamics Analysis
     aerodynamics = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
-    aerodynamics.vehicle                             = vehicle
-    aerodynamics.settings.use_surrogate              = False
+    aerodynamics.vehicle                               = vehicle
+    aerodynamics.settings.use_surrogate                = False
+    aerodynamics.settings.number_of_spanwise_vortices  = 30
+    aerodynamics.settings.drag_coefficient_increment   = 0.0000
+    aerodynamics.settings.model_fuselage               = True                
+    aerodynamics.settings.model_nacelle                = True
     analyses.append(aerodynamics) 
        
     # ------------------------------------------------------------------
