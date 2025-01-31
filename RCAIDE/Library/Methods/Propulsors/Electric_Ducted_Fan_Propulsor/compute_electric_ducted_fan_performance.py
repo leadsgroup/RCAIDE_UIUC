@@ -6,12 +6,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
-# RCAIDE imports   
-import RCAIDE
+# RCAIDE imports    
 from RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance    import * 
 from RCAIDE.Library.Methods.Propulsors.Converters.Motor.compute_motor_performance                        import *
 from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_ducted_fan_performance              import * 
-from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_low_fidelity_ducted_fan_performance import *
 
 # pacakge imports  
 import numpy as np 
@@ -73,12 +71,8 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     ducted_fan_conditions.tip_mach           = (motor_conditions.omega * ducted_fan.tip_radius) / conditions.freestream.speed_of_sound
     ducted_fan_conditions.throttle           = esc_conditions.throttle
     ducted_fan_conditions.operating_altitude = conditions.freestream.altitude
-    ducted_fan_conditions.inflow_velocity    = conditions.freestream.velocity
-
-    if ducted_fan.fidelity == 'low':
-        compute_low_fidelity_ducted_fan_performance(propulsor,state,center_of_gravity)  
-    else:
-        compute_ducted_fan_performance(propulsor,state,center_of_gravity)   
+    ducted_fan_conditions.inflow_velocity    = conditions.freestream.velocity 
+    compute_ducted_fan_performance(propulsor,state,center_of_gravity)   
     
     # Detemine esc current 
     esc_conditions.outputs.current = motor_conditions.current

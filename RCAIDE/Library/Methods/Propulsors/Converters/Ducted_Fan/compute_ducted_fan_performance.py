@@ -6,7 +6,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
- # RCAIDE imports 
+ # RCAIDE imports
+ import  RCAIDE
 from RCAIDE.Framework.Core                              import Data , Units, orientation_product, orientation_transpose   
 
 # package imports
@@ -39,61 +40,106 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     propulsor_conditions  = conditions.energy[propulsor.tag]
     commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
     ducted_fan_conditions = propulsor_conditions[ducted_fan.tag]
-                  
-    altitude  = conditions.freestream.altitude / 1000
-    a         = conditions.freestream.speed_of_sound
     
-    omega = ducted_fan_conditions.omega 
-    n     = omega/(2.*np.pi)   # Rotations per second
-    D     = ducted_fan.tip_radius * 2
-    A     = 0.25 * np.pi * (D ** 2)
+    if type(ducted_fan) ==  RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan: 
+                      
+        altitude  = conditions.freestream.altitude / 1000
+        a         = conditions.freestream.speed_of_sound
+        
+        omega = ducted_fan_conditions.omega 
+        n     = omega/(2.*np.pi)   # Rotations per second
+        D     = ducted_fan.tip_radius * 2
+        A     = 0.25 * np.pi * (D ** 2)
+        
+        # Unpack freestream conditions
+        rho     = conditions.freestream.density[:,0,None] 
+        Vv      = conditions.frames.inertial.velocity_vector 
     
-    # Unpack freestream conditions
-    rho     = conditions.freestream.density[:,0,None] 
-    Vv      = conditions.frames.inertial.velocity_vector 
-
-    # Number of radial stations and segment control point
-    B        = ducted_fan.number_of_rotor_blades
-    Nr       = ducted_fan.number_of_radial_stations
-    ctrl_pts = len(Vv)
+        # Number of radial stations and segment control point
+        B        = ducted_fan.number_of_rotor_blades
+        Nr       = ducted_fan.number_of_radial_stations
+        ctrl_pts = len(Vv)
+         
+        # Velocity in the rotor frame
+        T_body2inertial         = conditions.frames.body.transform_to_inertial
+        T_inertial2body         = orientation_transpose(T_body2inertial)
+        V_body                  = orientation_product(T_inertial2body,Vv)
+        body2thrust,orientation = ducted_fan.body_to_prop_vel(commanded_TV) 
+        T_body2thrust           = orientation_transpose(np.ones_like(T_body2inertial[:])*body2thrust)
+        V_thrust                = orientation_product(T_body2thrust,V_body)
+    
+        # Check and correct for hover
+        V         = V_thrust[:,0,None]
+        V[V==0.0] = 1E-6
+         
+        tip_mach = (omega * ducted_fan.tip_radius) / a
+        mach     =  V/ a
+        # create tuple for querying surrogate 
+        pts      = (mach,tip_mach,altitude) 
+        
+        thrust         = ducted_fan.performance_surrogates.thrust(pts)            
+        power          = ducted_fan.performance_surrogates.power(pts)                 
+        efficiency     = ducted_fan.performance_surrogates.efficiency(pts)            
+        torque         = ducted_fan.performance_surrogates.torque(pts)                
+        Ct             = ducted_fan.performance_surrogates.thrust_coefficient(pts)    
+        Cp             = ducted_fan.performance_surrogates.power_coefficient(pts) 
+        Cq             = torque/(rho*(n*n)*(D*D*D*D*D))
+        FoM            = thrust*np.sqrt(thrust/(2*rho*A))/power  
+        
+        # calculate coefficients    
+        thrust_prop_frame      = np.zeros((ctrl_pts,3))
+        thrust_prop_frame[:,0] = thrust[:,0]
+        thrust_vector          = orientation_product(orientation_transpose(T_body2thrust),thrust_prop_frame)
      
-    # Velocity in the rotor frame
-    T_body2inertial         = conditions.frames.body.transform_to_inertial
-    T_inertial2body         = orientation_transpose(T_body2inertial)
-    V_body                  = orientation_product(T_inertial2body,Vv)
-    body2thrust,orientation = ducted_fan.body_to_prop_vel(commanded_TV) 
-    T_body2thrust           = orientation_transpose(np.ones_like(T_body2inertial[:])*body2thrust)
-    V_thrust                = orientation_product(T_body2thrust,V_body)
-
-    # Check and correct for hover
-    V         = V_thrust[:,0,None]
-    V[V==0.0] = 1E-6
+        # Compute moment 
+        moment_vector           = np.zeros((ctrl_pts,3))
+        moment_vector[:,0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
+        moment_vector[:,1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
+        moment_vector[:,2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
+        moment                  =  np.cross(moment_vector, thrust_vector)
+    else: 
+    
+        # Unpack ducted_fan blade parameters and operating conditions 
+        conditions            = state.conditions
+        ducted_fan            = propulsor.ducted_fan
+        eta_p                 = ducted_fan.eta_p
+        K_fan                 = ducted_fan.K_fan
+        epsilon_d             = ducted_fan.epsilon_d
+        A_R                   = ducted_fan.A_R
+        a         = conditions.freestream.speed_of_sound
+        
+        # Unpack freestream conditions
+        rho     = conditions.freestream.density[:,0,None] 
+        u0      = conditions.freestream.airspeed[:,0,None]
+    
+        # Compute power 
+        P_EM                       = propulsor.motor.design_torque*propulsor.motor.angular_velocity
+    
+        P_req                      = P_EM*eta_p/K_fan
+    
+        # Coefficients of the cubic equation
+        a = float(1 / (4 * rho * A_R * epsilon_d))
+        b =  float(-(1/2)*((u0) ** 2))
+        c =  float(+(3/2)*(u0)*P_req)
+        d = -P_req**2
+    
+        # Use numpy.roots to solve the cubic equation
+        coefficients = [a, b, c, d]
+        roots = np.roots(coefficients)
+    
+        # Filter out the physical root (real, non-negative values)
+        T = [root.real for root in roots if np.isreal(root) and root.real >= 0]
+    
+        thrust         = T       
+        power          = P_EM              
      
-    tip_mach = (omega * ducted_fan.tip_radius) / a
-    mach     =  V/ a
-    # create tuple for querying surrogate 
-    pts      = (mach,tip_mach,altitude) 
-    
-    thrust         = ducted_fan.performance_surrogates.thrust(pts)            
-    power          = ducted_fan.performance_surrogates.power(pts)                 
-    efficiency     = ducted_fan.performance_surrogates.efficiency(pts)            
-    torque         = ducted_fan.performance_surrogates.torque(pts)                
-    Ct             = ducted_fan.performance_surrogates.thrust_coefficient(pts)    
-    Cp             = ducted_fan.performance_surrogates.power_coefficient(pts) 
-    Cq             = torque/(rho*(n*n)*(D*D*D*D*D))
-    FoM            = thrust*np.sqrt(thrust/(2*rho*A))/power  
-    
-    # calculate coefficients    
-    thrust_prop_frame      = np.zeros((ctrl_pts,3))
-    thrust_prop_frame[:,0] = thrust[:,0]
-    thrust_vector          = orientation_product(orientation_transpose(T_body2thrust),thrust_prop_frame)
- 
-    # Compute moment 
-    moment_vector           = np.zeros((ctrl_pts,3))
-    moment_vector[:,0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
-    moment_vector[:,1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
-    moment_vector[:,2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
-    moment                  =  np.cross(moment_vector, thrust_vector) 
+        # Compute moment 
+        moment_vector         = np.zeros((3))
+        moment_vector[0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
+        moment_vector[1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
+        moment_vector[2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
+        moment                = moment_vector
+          
      
     outputs                                       = Data( 
                 torque                            = torque,
