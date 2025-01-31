@@ -31,8 +31,8 @@ from Test_Propeller    import Test_Propeller
  
 def main(): 
     motor_type  = ['DC_Motor', 'PMSM_Motor']
-    omega_truth = [36.455819245889195,82.33509483753275]
-    torque_truth = [145.0992694988849,14.577400915883537]
+    omega_truth = [36.455819245889195,37.653244590335106]
+    torque_truth = [145.0992694988849,145.7740091588354]
     current_truth = [73.5454727365098,73.0]
     voltage_truth = [120,120.0]
 
@@ -82,12 +82,7 @@ def main():
         # ------------------------------------------------------------------------------------------------------
         # Assign network-specific  residuals, unknowns and results data structures
         # ------------------------------------------------------------------------------------------------------  
-        electric_rotor.append_propulsor_unknowns_and_residuals(segment)
-
-        # for tag, bus_item in  bus.items():  
-        #     if issubclass(type(bus_item), RCAIDE.Library.Components.Component):
-        #         bus_item.append_operating_conditions(segment,bus)
- 
+        electric_rotor.append_propulsor_unknowns_and_residuals(segment) 
 
         motor_conditions = segment.state.conditions.energy[electric_rotor.tag][motor.tag]
                 # Assign conditions to the rotor
@@ -95,18 +90,16 @@ def main():
 
         if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
             motor_conditions.current = np.ones((ctrl_pts,1)) * 73
-            Motor.compute_PMSM_motor_performance.compute_RPM_and_torque(motor,motor_conditions,conditions)
+            Motor.compute_motor_performance(motor,motor_conditions,conditions)
         else:
             motor_conditions.rotor_power_coefficient   = np.ones((ctrl_pts,1)) * 0.5
-            Motor.compute_DC_motor_performance.compute_RPM_and_torque(motor,motor_conditions,conditions)
-            Motor.compute_DC_motor_performance.compute_current_from_RPM_and_voltage(motor,motor_conditions,conditions) 
+            Motor.compute_motor_performance(motor,motor_conditions,conditions)
 
         # run analysis 
         omega = motor_conditions.omega
         torque = motor_conditions.torque
         current = motor_conditions.current
         voltage = motor_conditions.voltage
-
  
         # Truth values 
         error = Data()
@@ -141,6 +134,20 @@ def design_test_motor(prop, motor_type):
         design_DC_motor(motor) 
     elif motor_type == 'PMSM_Motor':
         motor = RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor()
+        motor.speed_constant            = 3                        # [rpm/V]        speed constant
+        motor.stator_inner_diameter     = 0.16                        # [m]            stator inner diameter
+        motor.stator_outer_diameter     = 0.348                       # [m]            stator outer diameter
+
+        # Input data from Literature
+        motor.winding_factor            = 0.95                        # [-]            winding factor
+
+        # Input data from Assumptions
+        motor.motor_stack_length        = 11.40                       # [m]            (It should be around 0.14 m) motor stack length 
+        motor.number_of_turns           = 100                          # [-]            number of turns  
+        motor.length_of_path            = 0.4                         # [m]            length of the path  
+        motor.mu_0                      = 1.256637061e-5              # [N/A**2]       permeability of free space
+        motor.mu_r                      = 1005                        # [N/A**2]       relative permeability of the magnetic material 
+        
     else:
         raise ValueError('Invalid motor type')
     return motor

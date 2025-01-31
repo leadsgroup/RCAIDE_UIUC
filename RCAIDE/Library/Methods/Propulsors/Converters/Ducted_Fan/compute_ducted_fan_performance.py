@@ -7,7 +7,7 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports
- import  RCAIDE
+import  RCAIDE
 from RCAIDE.Framework.Core                              import Data , Units, orientation_product, orientation_transpose   
 
 # package imports
