@@ -23,6 +23,7 @@ from .Fan                                        import Fan
 from .Engine                                     import Engine
 from .Lift_Rotor                                 import Lift_Rotor 
 from .DC_Motor                                   import DC_Motor
+from .PMSM_Motor                                 import PMSM_Motor
 from .Ducted_Fan                                 import Ducted_Fan 
 from .Propeller                                  import Propeller
 from .Ram                                        import Ram 

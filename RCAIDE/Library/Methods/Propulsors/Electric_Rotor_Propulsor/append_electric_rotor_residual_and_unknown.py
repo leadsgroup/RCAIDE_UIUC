@@ -29,7 +29,7 @@ def append_electric_rotor_residual_and_unknown(propulsor,segment):
     elif (type(rotor) == Lift_Rotor) or (type(rotor) == Prop_Rotor):
         cp_init  = float(rotor.hover.design_power_coefficient)
             # Run the motor for current
-    if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor.PMSM_Motor):
+    if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
         segment.state.unknowns[ propulsor.tag + '_current']                    = 50 * ones_row(1)  
     else:
         segment.state.unknowns[ propulsor.tag + '_rotor_cp']                    = cp_init * ones_row(1)  

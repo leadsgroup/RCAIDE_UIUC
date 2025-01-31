@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------------------------------------------------------   
 # RCAIDE imports  
 from RCAIDE.Library.Components import Component
-from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.append_motor_conditions import  append_motor_conditions
+from RCAIDE.Library.Methods.Propulsors.Converters.Motor.append_motor_conditions import  append_motor_conditions
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  PMSM_Motor  
