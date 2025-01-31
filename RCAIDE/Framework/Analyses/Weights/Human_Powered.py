@@ -1,4 +1,4 @@
-# RCAIDE/Frameworks/Analysis/Weights/Weights_UAV.py
+# RCAIDE/Frameworks/Analysis/Weights/Weights_Human_Powered.py
 #
 # Created:  Oct 2024, M. Clarke
 
@@ -9,10 +9,10 @@ import RCAIDE
 from .Weights import Weights
 
 # ----------------------------------------------------------------------------------------------------------------------
-#  BWB Weights Analysis
+#  Human Powered Weights Analysis
 # ----------------------------------------------------------------------------------------------------------------------
-class Weights_UAV(Weights):
-    """ This is class that evaluates the weight of a UAV
+class Human_Powered(Weights):
+    """ This is class that evaluates the weight of a human powered aircraft 
     
     Assumptions:
         None
@@ -27,7 +27,7 @@ class Weights_UAV(Weights):
         None 
     """
     def __defaults__(self):
-        """This sets the default values and methods for the UAV weight analysis.
+        """This sets the default values and methods for the human powered weight analysis.
     
         Assumptions:
         None

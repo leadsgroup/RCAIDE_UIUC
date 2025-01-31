@@ -12,7 +12,7 @@ from .Weights import Weights
 # ----------------------------------------------------------------------------------------------------------------------
 #  BWB Weights Analysis
 # ----------------------------------------------------------------------------------------------------------------------
-class Weights_BWB(Weights):
+class BWB(Weights):
     """ This is class that evaluates the weight of a BWB aircraft
     
     Assumptions:

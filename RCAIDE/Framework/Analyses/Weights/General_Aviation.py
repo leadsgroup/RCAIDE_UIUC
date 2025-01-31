@@ -1,4 +1,4 @@
-# RCAIDE/Frameworks/Analysis/Weights/Weights_Human_Powered.py
+# RCAIDE/Frameworks/Analysis/Weights/Weights_General_Aviation.py
 #
 # Created:  Oct 2024, M. Clarke
 
@@ -6,13 +6,14 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
 import RCAIDE 
+from RCAIDE.Framework.Core import Data 
 from .Weights import Weights
 
 # ----------------------------------------------------------------------------------------------------------------------
-#  Human Powered Weights Analysis
+#  General Aviation Weights Analysis
 # ----------------------------------------------------------------------------------------------------------------------
-class Weights_Human_Powered(Weights):
-    """ This is class that evaluates the weight of a human powered aircraft 
+class General_Aviation(Weights):
+    """ This is class that evaluates the weight of a general aviation aircraft
     
     Assumptions:
         None
@@ -27,7 +28,7 @@ class Weights_Human_Powered(Weights):
         None 
     """
     def __defaults__(self):
-        """This sets the default values and methods for the human powered weight analysis.
+        """This sets the default values and methods for the general aviation weight analysis.
     
         Assumptions:
         None
@@ -41,8 +42,9 @@ class Weights_Human_Powered(Weights):
         Outputs:
         None 
         """           
-        self.tag      = 'weights_uav'
-        self.vehicle  = None     
+        self.tag      = 'weights_general_aviation'
+        self.vehicle  = None    
+        self.settings = None        
         
     def evaluate(self):
         """Evaluate the weight analysis.
@@ -61,7 +63,7 @@ class Weights_Human_Powered(Weights):
         """
         # unpack
         vehicle = self.vehicle 
-        results = RCAIDE.Library.Methods.Weights.Correlation_Buildups.UAV.compute_operating_empty_weight(vehicle)
+        results = RCAIDE.Library.Methods.Weights.Correlation_Buildups.General_Aviation.compute_operating_empty_weight(vehicle, settings=self.settings)
 
         # storing weigth breakdown into vehicle
         vehicle.weight_breakdown = results

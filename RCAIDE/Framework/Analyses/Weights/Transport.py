@@ -13,7 +13,7 @@ from .Weights import Weights
 # ----------------------------------------------------------------------------------------------------------------------
 #  Transport Weights Analysis
 # ----------------------------------------------------------------------------------------------------------------------
-class Weights_Transport(Weights):
+class Transport(Weights):
     """ This is class that evaluates the weight of Transport class aircraft
 
     Assumptions:

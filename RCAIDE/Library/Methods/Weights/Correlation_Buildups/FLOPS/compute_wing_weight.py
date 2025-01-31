@@ -106,7 +106,7 @@ def compute_wing_weight(vehicle, wing, WPOD, complexity, settings, num_main_wing
         CAYL = (1.0 - SLAM ** 2) * \
                (1.0 + C6 * SLAM ** 2 + 0.03 * CAYA * C4 * SLAM)  # Wing sweep factor due to aeroelastic tailoring
         TCA  = wing.thickness_to_chord
-        BT   = 0.215 * (0.37 + 0.7 * TR) * (SPAN ** 2 / SW) ** EMS / (CAYL * TCA)  # Bending factor
+        BT   = 0.215 * (0.37 + 0.7 * TR) * (SPAN ** 2 / SW) ** (EMS / (CAYL * TCA))  # Bending factor
         CAYE = 1 - 0.03 * NEW
 
     else:
