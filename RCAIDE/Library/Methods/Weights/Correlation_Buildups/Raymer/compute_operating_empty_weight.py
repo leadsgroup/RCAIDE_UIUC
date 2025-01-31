@@ -7,11 +7,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 import RCAIDE
 from RCAIDE.Framework.Core import Data ,  Units 
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Propulsion as Propulsion 
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Common    as  Common
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Raymer    as  Raymer 
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import FLOPS     as  FLOPS 
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Transport as  Transport  
+from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Propulsion as Propulsion  
+from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Raymer    as  Raymer  
 from RCAIDE.Library.Attributes.Materials.Aluminum import Aluminum
 
 # python imports 
@@ -20,7 +17,7 @@ import numpy as np
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Operating Empty Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE'):
+def compute_operating_empty_weight(weight_analysis):
     """ Main function that estimates the zero-fuel weight of a transport aircraft:
         - MTOW = WZFW + FUEL
         - WZFW = WOE + WPAYLOAD
@@ -108,136 +105,117 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
             N/A
     """
     
-    if settings == None:
-        W_factors = Data()
-        use_max_fuel_weight = True 
-    else:
-        use_max_fuel_weight = settings.use_max_fuel_weight 
-        
-    # Set the factors
-    if not hasattr(settings, 'weight_reduction_factors'):
-        W_factors              = Data() 
-        W_factors.main_wing    = 0.
-        W_factors.empennage    = 0.
-        W_factors.fuselage     = 0.
-        W_factors.structural   = 0.
-        W_factors.systems      = 0.
-    else:
-        W_factors = settings.weight_reduction_factors
-        if 'structural' in W_factors and W_factors.structural != 0.:
-            print('Overriding individual structural weight factors')
+    vehicle  = weight_analysis.vehicle
+    settings = weight_analysis.settings
+    aircraft_class    = type(weight_analysis)
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    if aircraft_class == RCAIDE.Framework.Analyses.Weights.General_Aviation:
+        pass
+
+
+
+    if aircraft_class == RCAIDE.Library.Analyses.Weights.Transport: 
+
+        if settings == None:
+            W_factors = Data()
+            use_max_fuel_weight = True 
+        else:
+            use_max_fuel_weight = settings.use_max_fuel_weight 
+            
+        # Set the factors
+        if not hasattr(settings, 'weight_reduction_factors'):
+            W_factors              = Data() 
             W_factors.main_wing    = 0.
             W_factors.empennage    = 0.
             W_factors.fuselage     = 0.
+            W_factors.structural   = 0.
             W_factors.systems      = 0.
         else:
-            W_factors.structural   = 0.
-            W_factors.systems      = 0. 
-    
-    Wings = RCAIDE.Library.Components.Wings  
-    if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-        if vehicle.flight_envelope.design_mach_number  == None: # Added design mach number
-            raise ValueError("FLOPS requires a design mach number for sizing!")
-        if vehicle.flight_envelope.design_range  == None:
-            raise ValueError("FLOPS requires a design range for sizing!")
-        if vehicle.flight_envelope.design_cruise_altitude == None:
-            raise ValueError("FLOPS requires a cruise altitude for sizing!")
-        if not hasattr(vehicle, 'flap_ratio'):
-            if vehicle.systems.accessories == "sst":
-                flap_ratio = 0.22
+            W_factors = settings.weight_reduction_factors
+            if 'structural' in W_factors and W_factors.structural != 0.:
+                print('Overriding individual structural weight factors')
+                W_factors.main_wing    = 0.
+                W_factors.empennage    = 0.
+                W_factors.fuselage     = 0.
+                W_factors.systems      = 0.
             else:
-                flap_ratio = 0.33
-            for wing in vehicle.wings:
-                if isinstance(wing, Wings.Main_Wing):
-                    wing.flap_ratio = flap_ratio 
-                
-    ##-------------------------------------------------------------------------------             
-    # Payload Weight
-    ##-------------------------------------------------------------------------------  
-    if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-        payload = FLOPS.compute_payload_weight(vehicle)
-    else:
-        payload = Common.compute_payload_weight(vehicle)
-    
-    
-    vehicle.payload.passengers                      = RCAIDE.Library.Components.Component()
-    vehicle.payload.passengers.tag                  = 'passengers'
-    vehicle.payload.passengers.mass_properties.mass = payload.passengers
-    
-    vehicle.payload.baggage                         = RCAIDE.Library.Components.Component()
-    vehicle.payload.baggage.tag                     = 'baggage'
-    vehicle.payload.baggage.mass_properties.mass    = payload.baggage
-    
-    vehicle.payload.cargo                           = RCAIDE.Library.Components.Component() 
-    vehicle.payload.cargo.tag                       = 'cargo'   
-    vehicle.payload.cargo.mass_properties.mass      = payload.cargo    
-
-    ##-------------------------------------------------------------------------------             
-    # Operating Items Weight
-    ##------------------------------------------------------------------------------- 
-    if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-        W_oper = FLOPS.compute_operating_items_weight(vehicle)
-    else:
-        W_oper = Transport.compute_operating_items_weight(vehicle)  
-
-    ##-------------------------------------------------------------------------------         
-    # System Weight
-    ##------------------------------------------------------------------------------- 
-    if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-        W_systems = FLOPS.compute_systems_weight(vehicle)
-    elif method_type == 'Raymer':
-        W_systems = Raymer.compute_systems_weight(vehicle)
-    else:
-        W_systems = Common.compute_systems_weight(vehicle)
+                W_factors.structural   = 0.
+                W_factors.systems      = 0. 
         
-    for item in W_systems.keys():
-        W_systems[item] *= (1. - W_factors.systems)
-    
-    ##-------------------------------------------------------------------------------                 
-    # Propulsion Weight 
-    ##-------------------------------------------------------------------------------
-    output                                      = Data()
-    output.empty                                = Data() 
-    output.empty.propulsion                     = Data() 
-    output.empty.propulsion.total               = 0
-    output.empty.propulsion.engines             = 0
-    output.empty.propulsion.thrust_reversers    = 0
-    output.empty.propulsion.miscellaneous       = 0
-    output.empty.propulsion.fuel_system         = 0
+        Wings = RCAIDE.Library.Components.Wings   
+                    
+        ##-------------------------------------------------------------------------------             
+        # Payload Weight
+        ##-------------------------------------------------------------------------------   
+        payload = Common.compute_payload_weight(vehicle) # CHECK!!!! 
+        
+        
+        vehicle.payload.passengers                      = RCAIDE.Library.Components.Component()
+        vehicle.payload.passengers.tag                  = 'passengers'
+        vehicle.payload.passengers.mass_properties.mass = payload.passengers
+        
+        vehicle.payload.baggage                         = RCAIDE.Library.Components.Component()
+        vehicle.payload.baggage.tag                     = 'baggage'
+        vehicle.payload.baggage.mass_properties.mass    = payload.baggage
+        
+        vehicle.payload.cargo                           = RCAIDE.Library.Components.Component() 
+        vehicle.payload.cargo.tag                       = 'cargo'   
+        vehicle.payload.cargo.mass_properties.mass      = payload.cargo    
 
-    W_energy_network                   = Data()
-    W_energy_network.total             = 0
-    W_energy_network.W_engine          = 0 
-    W_energy_network.W_thrust_reverser = 0 
-    W_energy_network.W_engine_controls = 0 
-    W_energy_network.W_starter         = 0 
-    W_energy_network.W_fuel_system     = 0 
-    W_energy_network.W_motors          = 0 
-    W_energy_network.W_nacelle         = 0 
-    W_energy_network.W_battery         = 0
-    W_energy_network.W_motor           = 0
-    number_of_engines                  = 0
-    number_of_tanks                    = 0
-    W_energy_network_cumulative        = 0 
+        ##-------------------------------------------------------------------------------             
+        # Operating Items Weight
+        ##-------------------------------------------------------------------------------  
+        W_oper = Transport.compute_operating_items_weight(vehicle)   # CHECK!!!! 
 
-    for network in vehicle.networks: 
-        W_energy_network_total   = 0 
-        # Fuel-Powered Propulsors  
-        if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-            W_propulsion                         = FLOPS.compute_propulsion_system_weight(vehicle, network)
-            W_energy_network_total              += W_propulsion.W_prop 
-            W_energy_network.W_engine           += W_propulsion.W_engine
-            W_energy_network.W_thrust_reverser  += W_propulsion.W_thrust_reverser
-            W_energy_network.W_engine_controls  += W_propulsion.W_engine_controls
-            W_energy_network.W_starter          += W_propulsion.W_starter
-            W_energy_network.W_fuel_system      += W_propulsion.W_fuel_system 
-            W_energy_network.W_nacelle          += W_propulsion.W_nacelle    
-            number_of_engines                   += W_propulsion.number_of_engines
-            number_of_tanks                     += W_propulsion.number_of_fuel_tanks  
-            for propulsor in network.propulsors:
-                propulsor.mass_properties.mass = W_energy_network_total / number_of_engines
+        ##-------------------------------------------------------------------------------         
+        # System Weight
+        ##-------------------------------------------------------------------------------  
+        W_systems = Raymer.compute_systems_weight(vehicle) 
             
-        elif method_type == 'Raymer':
+        for item in W_systems.keys():
+            W_systems[item] *= (1. - W_factors.systems)
+        
+        ##-------------------------------------------------------------------------------                 
+        # Propulsion Weight 
+        ##-------------------------------------------------------------------------------
+        output                                      = Data()
+        output.empty                                = Data() 
+        output.empty.propulsion                     = Data() 
+        output.empty.propulsion.total               = 0
+        output.empty.propulsion.engines             = 0
+        output.empty.propulsion.thrust_reversers    = 0
+        output.empty.propulsion.miscellaneous       = 0
+        output.empty.propulsion.fuel_system         = 0
+
+        W_energy_network                   = Data()
+        W_energy_network.total             = 0
+        W_energy_network.W_engine          = 0 
+        W_energy_network.W_thrust_reverser = 0 
+        W_energy_network.W_engine_controls = 0 
+        W_energy_network.W_starter         = 0 
+        W_energy_network.W_fuel_system     = 0 
+        W_energy_network.W_motors          = 0 
+        W_energy_network.W_nacelle         = 0 
+        W_energy_network.W_battery         = 0
+        W_energy_network.W_motor           = 0
+        number_of_engines                  = 0
+        number_of_tanks                    = 0
+        W_energy_network_cumulative        = 0 
+
+        for network in vehicle.networks: 
+            W_energy_network_total   = 0   
             W_propulsion                        = Raymer.compute_propulsion_system_weight(vehicle, network) 
             W_energy_network_total              += W_propulsion.W_prop 
             W_energy_network.W_engine           += W_propulsion.W_engine
@@ -249,240 +227,192 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
             number_of_engines                   += W_propulsion.number_of_engines
             number_of_tanks                     += W_propulsion.number_of_fuel_tanks
             for propulsor in network.propulsors:
-                propulsor.mass_properties.mass = W_energy_network_total / number_of_engines
-        else:
-            number_of_tanks = 0
-            for fuel_line in  network.fuel_lines: 
-                for fuel_tank in fuel_line.fuel_tanks:
-                    number_of_tanks +=  1
-            for propulsor in network.propulsors:
-                if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan):
-                    thrust_sls                     = propulsor.sealevel_static_thrust  
-                    W_engine_jet                   = Propulsion.compute_jet_engine_weight(thrust_sls)
-                    total_propulsor_mass           = Propulsion.integrated_propulsion(W_engine_jet) 
-                    propulsor.mass_properties.mass = total_propulsor_mass 
-                    W_energy_network_total         += total_propulsor_mass 
-                    number_of_engines += 1             
-                 
-        # Electric-Powered Propulsors  
-        for bus in network.busses: 
-            # electrical payload 
-            W_systems.W_electrical  += bus.payload.mass_properties.mass * Units.kg
-     
-            # Avionics Weight 
-            W_systems.W_avionics  += bus.avionics.mass_properties.mass      
-    
-            for battery in bus.battery_modules: 
-                W_energy_network_total  += battery.mass_properties.mass * Units.kg
-                W_energy_network.W_battery = battery.mass_properties.mass * Units.kg
-                
-        for propulsor in network.propulsors:
-            if 'motor' in propulsor:                           
-                W_energy_network.W_motor +=  propulsor.motor.mass_properties.mass
-                W_energy_network_total  +=  propulsor.motor.mass_properties.mass
-                   
-    W_energy_network_cumulative += W_energy_network_total
-    
-    ##-------------------------------------------------------------------------------                 
-    # Pod Weight Weight 
-    ##-------------------------------------------------------------------------------         
-    WPOD  = 0.0             
-    if method_type == 'FLOPS Complex': 
-        NENG   = number_of_engines
-        WTNFA  = W_energy_network.W_engine + W_energy_network.W_thrust_reverser + W_energy_network.W_starter \
-                + 0.25 * W_energy_network.W_engine_controls + 0.11 * W_systems.W_instruments + 0.13 * W_systems.W_electrical \
-                + 0.13 * W_systems.W_hyd_pnu + 0.25 * W_energy_network.W_fuel_system
-        WPOD += WTNFA / np.max([1, NENG]) + W_energy_network.W_nacelle / np.max(
-            [1.0, NENG + 1. / 2 * (NENG - 2 * np.floor(NENG / 2.))])
- 
-    output.empty.propulsion.total               = W_energy_network_cumulative
-    output.empty.propulsion.battery             = W_energy_network.W_battery
-    output.empty.propulsion.motors              = W_energy_network.W_motor
-    output.empty.propulsion.engines             = W_energy_network.W_engine
-    output.empty.propulsion.thrust_reversers    = W_energy_network.W_thrust_reverser
-    output.empty.propulsion.miscellaneous       = W_energy_network.W_engine_controls + W_energy_network.W_starter
-    output.empty.propulsion.fuel_system         = W_energy_network.W_fuel_system
-
-    ##-------------------------------------------------------------------------------                 
-    # Wing Weight 
-    ##------------------------------------------------------------------------------- 
-    Al_rho   = Aluminum().density
-    Al_sigma = Aluminum().yield_tensile_strength      
-    
-    num_main_wings      = 0
-    W_main_wing        = 0.0
-    W_tail_horizontal  = 0.0
-    W_tail_vertical    = 0.0
-    for wing in vehicle.wings:
-        if isinstance(wing, Wings.Main_Wing):
-            num_main_wings += 1
-    
-    for wing in vehicle.wings:
-        if isinstance(wing, Wings.Main_Wing): 
-            if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-                complexity = method_type.split()[1]
-                W_wing = FLOPS.compute_wing_weight(vehicle, wing, WPOD, complexity, settings, num_main_wings)
-            elif method_type == 'Raymer':
-                W_wing = Raymer.compute_main_wing_weight(vehicle, wing) 
-            else:
-                W_wing = Common.compute_main_wing_weight(vehicle, wing, Al_rho, Al_sigma) 
-            # Apply weight factor
-            W_wing = W_wing * (1. - W_factors.main_wing) * (1. - W_factors.structural)
-            if np.isnan(W_wing):
-                W_wing = 0.
-            wing.mass_properties.mass = W_wing
-            W_main_wing += W_wing
-        if isinstance(wing, Wings.Horizontal_Tail):
-            if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-                W_tail = FLOPS.compute_horizontal_tail_weight(vehicle, wing)
-            elif method_type == 'Raymer':
-                W_tail = Raymer.compute_horizontal_tail_weight(vehicle, wing)
-            else:
-                W_tail = Transport.compute_horizontal_tail_weight(vehicle, wing)
-            if type(W_tail) == np.ndarray:
-                W_tail = sum(W_tail)
-            # Apply weight factor
-            W_tail = W_tail * (1. - W_factors.empennage) * (1. - W_factors.structural)
-            # Pack and sum
-            wing.mass_properties.mass = W_tail
-            W_tail_horizontal += W_tail
-        if isinstance(wing, Wings.Vertical_Tail):
-            if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-                W_tail = FLOPS.compute_vertical_tail_weight(vehicle, wing)
-            elif method_type == 'Raymer':
-                W_tail = Raymer.compute_vertical_tail_weight(vehicle, wing)
-            else:
-                W_tail = Transport.compute_vertical_tail_weight(vehicle, wing)
-            # Apply weight factor
-            W_tail = W_tail * (1. - W_factors.empennage) * (1. - W_factors.structural)
-            # Pack and sum
-            wing.mass_properties.mass = W_tail
-            W_tail_vertical += W_tail
-        
-    ##-------------------------------------------------------------------------------                 
-    # Fuselage 
-    ##------------------------------------------------------------------------------- 
-    W_fuselage_total = 0
-    for fuse in vehicle.fuselages:
-        if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-            W_fuselage = FLOPS.compute_fuselage_weight(vehicle)
-        elif method_type == 'Raymer':
-            W_fuselage = Raymer.compute_fuselage_weight(vehicle, fuse, settings)
-        else:
-            W_fuselage = Transport.compute_fuselage_weight(vehicle, fuse, W_main_wing, W_energy_network_cumulative)
-        W_fuselage = W_fuselage * (1. - W_factors.fuselage) * (1. - W_factors.structural)
-        fuse.mass_properties.mass = W_fuselage
-        W_fuselage_total += W_fuselage
-    
-    ##-------------------------------------------------------------------------------                 
-    # Landing Gear Weight
-    ##------------------------------------------------------------------------------- 
-    if method_type == 'FLOPS Simple' or method_type == 'FLOPS Complex':
-        landing_gear = FLOPS.compute_landing_gear_weight(vehicle)
-    elif method_type == 'Raymer':
-        landing_gear = Raymer.compute_landing_gear_weight(vehicle)
-    else:
-        landing_gear =  Common.compute_landing_gear_weight(vehicle) 
-    
-    ##-------------------------------------------------------------------------------                 
-    # Accumulate Structural Weight
-    ##-------------------------------------------------------------------------------   
-    output.empty.structural                       = Data()
-    output.empty.structural.wings                  = W_main_wing +   W_tail_horizontal +  W_tail_vertical 
-    output.empty.structural.fuselage              = W_fuselage_total
-    output.empty.structural.landing_gear          = landing_gear.main +  landing_gear.nose  
-    output.empty.structural.nacelle               = W_energy_network.W_nacelle
-    
-    if 'FLOPS' in method_type:
-        print('Paint weight is currently ignored in FLOPS calculations.')
-    output.empty.structural.paint = 0  # TODO reconcile FLOPS paint calculations with Raymer and RCAIDE baseline
-    output.empty.structural.total = output.empty.structural.wings   + output.empty.structural.fuselage + output.empty.structural.landing_gear\
-                              + output.empty.structural.paint + output.empty.structural.nacelle 
-
-    ##-------------------------------------------------------------------------------                 
-    # Accumulate Systems Weight
-    ##-------------------------------------------------------------------------------
-    output.empty.systems                        = Data()
-    output.empty.systems.control_systems        = W_systems.W_flight_control
-    output.empty.systems.apu                    = W_systems.W_apu
-    output.empty.systems.electrical             = W_systems.W_electrical
-    output.empty.systems.avionics               = W_systems.W_avionics
-    output.empty.systems.hydraulics             = W_systems.W_hyd_pnu
-    output.empty.systems.furnishings            = W_systems.W_furnish
-    output.empty.systems.air_conditioner        = W_systems.W_ac + W_systems.W_anti_ice # Anti-ice is sometimes included in ECS
-    output.empty.systems.instruments            = W_systems.W_instruments
-    output.empty.systems.total                  = output.empty.systems.control_systems + output.empty.systems.apu \
-                                                    + output.empty.systems.electrical + output.empty.systems.avionics \
-                                                    + output.empty.systems.hydraulics + output.empty.systems.furnishings \
-                                                    + output.empty.systems.air_conditioner + output.empty.systems.instruments
- 
-    output.payload    = payload 
-    output.operational_items    = Data()
-    output.operational_items    = W_oper 
-    output.empty.total          = output.empty.structural.total + output.empty.propulsion.total + output.empty.systems.total 
-    output.zero_fuel_weight     = output.empty.total + output.operational_items.total + output.payload.total
-    output.max_takeoff          = vehicle.mass_properties.max_takeoff
-    total_fuel_weight           = vehicle.mass_properties.max_takeoff - output.zero_fuel_weight
-    
-    # assume fuel is equally distributed in fuel tanks
-    if use_max_fuel_weight:
-        for network in vehicle.networks: 
-            for fuel_line in network.fuel_lines:  
-                for fuel_tank in fuel_line.fuel_tanks:
-                    fuel_weight =  total_fuel_weight/number_of_tanks  
-                    fuel_tank.fuel.mass_properties.mass = fuel_weight
+                propulsor.mass_properties.mass = W_energy_network_total / number_of_engines 
                     
-    nose_landing_gear = False
-    main_landing_gear =  False
-    for LG in vehicle.landing_gears:
-        if isinstance(LG, RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear):
-            LG.mass_properties.mass = landing_gear.main
-            main_landing_gear = True
-        elif isinstance(LG, RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear):
-            LG.mass_properties.mass = landing_gear.nose
-            nose_landing_gear = True 
-    if nose_landing_gear == False:
-        nose_gear = RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear()  
-        nose_gear.mass_properties.mass = landing_gear.nose    
-        vehicle.append_component(nose_gear) 
-    if main_landing_gear == False:
-        main_gear = RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear()  
-        main_gear.mass_properties.mass = landing_gear.main  
-        vehicle.append_component(main_gear) 
+            # Electric-Powered Propulsors  
+            for bus in network.busses: 
+                # electrical payload 
+                W_systems.W_electrical  += bus.payload.mass_properties.mass * Units.kg
+        
+                # Avionics Weight 
+                W_systems.W_avionics  += bus.avionics.mass_properties.mass      
+        
+                for battery in bus.battery_modules: 
+                    W_energy_network_total  += battery.mass_properties.mass * Units.kg
+                    W_energy_network.W_battery = battery.mass_properties.mass * Units.kg
+                    
+            for propulsor in network.propulsors:
+                if 'motor' in propulsor:                           
+                    W_energy_network.W_motor +=  propulsor.motor.mass_properties.mass
+                    W_energy_network_total  +=  propulsor.motor.mass_properties.mass
+                    
+        W_energy_network_cumulative += W_energy_network_total
+        
+        ##-------------------------------------------------------------------------------                 
+        # Pod Weight Weight 
+        ##-------------------------------------------------------------------------------         
+        WPOD  = 0.0               
+        output.empty.propulsion.total               = W_energy_network_cumulative
+        output.empty.propulsion.battery             = W_energy_network.W_battery
+        output.empty.propulsion.motors              = W_energy_network.W_motor
+        output.empty.propulsion.engines             = W_energy_network.W_engine
+        output.empty.propulsion.thrust_reversers    = W_energy_network.W_thrust_reverser
+        output.empty.propulsion.miscellaneous       = W_energy_network.W_engine_controls + W_energy_network.W_starter
+        output.empty.propulsion.fuel_system         = W_energy_network.W_fuel_system
 
-    control_systems                         = RCAIDE.Library.Components.Component()
-    control_systems.tag                     = 'control_systems'  
-    control_systems.mass_properties.mass    = output.empty.systems.control_systems
-    electrical_systems                      = RCAIDE.Library.Components.Component()
-    electrical_systems.tag                  = 'electrical_systems'
-    electrical_systems.mass_properties.mass = output.empty.systems.electrical
-    furnishings                             = RCAIDE.Library.Components.Component()
-    furnishings.tag                         = 'furnishings'
-    furnishings.mass_properties.mass        = output.empty.systems.furnishings
-    air_conditioner                         = RCAIDE.Library.Components.Component() 
-    air_conditioner.tag                     = 'air_conditioner'
-    air_conditioner.mass_properties.mass    = output.empty.systems.air_conditioner
-    apu                                     = RCAIDE.Library.Components.Component()
-    apu.tag                                 = 'apu'
-    apu.mass_properties.mass                = output.empty.systems.apu
-    hydraulics                              = RCAIDE.Library.Components.Component()
-    hydraulics.tag                          = 'hydraulics' 
-    hydraulics.mass_properties.mass         = output.empty.systems.hydraulics
-    avionics                                = RCAIDE.Library.Components.Systems.Avionics()
-    avionics.mass_properties.mass           = output.empty.systems.avionics + output.empty.systems.instruments
-    optionals                               = RCAIDE.Library.Components.Component()
-    optionals.tag                           = 'optionals'
-    optionals                               = RCAIDE.Library.Components.Component()
-    optionals.mass_properties.mass          = output.operational_items.misc
+        ##-------------------------------------------------------------------------------                 
+        # Wing Weight 
+        ##------------------------------------------------------------------------------- 
+        Al_rho   = Aluminum().density
+        Al_sigma = Aluminum().yield_tensile_strength      
+        
+        num_main_wings      = 0
+        W_main_wing        = 0.0
+        W_tail_horizontal  = 0.0
+        W_tail_vertical    = 0.0
+        for wing in vehicle.wings:
+            if isinstance(wing, Wings.Main_Wing):
+                num_main_wings += 1
+        
+        for wing in vehicle.wings:
+            if isinstance(wing, Wings.Main_Wing):  
+                W_wing = Raymer.compute_main_wing_weight(vehicle, wing)  
+                # Apply weight factor
+                W_wing = W_wing * (1. - W_factors.main_wing) * (1. - W_factors.structural)
+                if np.isnan(W_wing):
+                    W_wing = 0.
+                wing.mass_properties.mass = W_wing
+                W_main_wing += W_wing
+            if isinstance(wing, Wings.Horizontal_Tail): 
+                W_tail = Raymer.compute_horizontal_tail_weight(vehicle, wing) 
+                if type(W_tail) == np.ndarray:
+                    W_tail = sum(W_tail)
+                # Apply weight factor
+                W_tail = W_tail * (1. - W_factors.empennage) * (1. - W_factors.structural)
+                # Pack and sum
+                wing.mass_properties.mass = W_tail
+                W_tail_horizontal += W_tail
+            if isinstance(wing, Wings.Vertical_Tail): 
+                W_tail = Raymer.compute_vertical_tail_weight(vehicle, wing) 
+                # Apply weight factor
+                W_tail = W_tail * (1. - W_factors.empennage) * (1. - W_factors.structural)
+                # Pack and sum
+                wing.mass_properties.mass = W_tail
+                W_tail_vertical += W_tail
+            
+        ##-------------------------------------------------------------------------------                 
+        # Fuselage 
+        ##------------------------------------------------------------------------------- 
+        W_fuselage_total = 0
+        for fuse in vehicle.fuselages:
+            if aircraft_class == RCAIDE.Framework.Analyses.Weights.Transport:   
+                W_fuselage = Raymer.compute_fuselage_weight(vehicle, fuse, settings)  
+            W_fuselage = W_fuselage * (1. - W_factors.fuselage) * (1. - W_factors.structural)
+            fuse.mass_properties.mass = W_fuselage
+            W_fuselage_total += W_fuselage
+        
+        ##-------------------------------------------------------------------------------                 
+        # Landing Gear Weight
+        ##-------------------------------------------------------------------------------  
+        landing_gear = Raymer.compute_landing_gear_weight(vehicle)
+        
+        ##-------------------------------------------------------------------------------                 
+        # Accumulate Structural Weight
+        ##-------------------------------------------------------------------------------   
+        output.empty.structural                       = Data()
+        output.empty.structural.wings                  = W_main_wing +   W_tail_horizontal +  W_tail_vertical 
+        output.empty.structural.fuselage              = W_fuselage_total
+        output.empty.structural.landing_gear          = landing_gear.main +  landing_gear.nose  
+        output.empty.structural.nacelle               = W_energy_network.W_nacelle
+        
+        output.empty.structural.paint = 0  # TODO reconcile FLOPS paint calculations with Raymer and RCAIDE baseline
+        output.empty.structural.total = output.empty.structural.wings   + output.empty.structural.fuselage + output.empty.structural.landing_gear\
+                                + output.empty.structural.paint + output.empty.structural.nacelle 
+
+        ##-------------------------------------------------------------------------------                 
+        # Accumulate Systems Weight
+        ##-------------------------------------------------------------------------------
+        output.empty.systems                        = Data()
+        output.empty.systems.control_systems        = W_systems.W_flight_control
+        output.empty.systems.apu                    = W_systems.W_apu
+        output.empty.systems.electrical             = W_systems.W_electrical
+        output.empty.systems.avionics               = W_systems.W_avionics
+        output.empty.systems.hydraulics             = W_systems.W_hyd_pnu
+        output.empty.systems.furnishings            = W_systems.W_furnish
+        output.empty.systems.air_conditioner        = W_systems.W_ac + W_systems.W_anti_ice # Anti-ice is sometimes included in ECS
+        output.empty.systems.instruments            = W_systems.W_instruments
+        output.empty.systems.total                  = output.empty.systems.control_systems + output.empty.systems.apu \
+                                                        + output.empty.systems.electrical + output.empty.systems.avionics \
+                                                        + output.empty.systems.hydraulics + output.empty.systems.furnishings \
+                                                        + output.empty.systems.air_conditioner + output.empty.systems.instruments
     
-    # assign components to vehicle
-    vehicle.systems.control_systems         = control_systems
-    vehicle.systems.electrical_systems      = electrical_systems
-    vehicle.systems.avionics                = avionics
-    vehicle.systems.furnishings             = furnishings
-    vehicle.systems.air_conditioner         = air_conditioner 
-    vehicle.systems.apu                     = apu
-    vehicle.systems.hydraulics              = hydraulics
-    vehicle.systems.optionals               = optionals   
+        output.payload    = payload 
+        output.operational_items    = Data()
+        output.operational_items    = W_oper 
+        output.empty.total          = output.empty.structural.total + output.empty.propulsion.total + output.empty.systems.total 
+        output.zero_fuel_weight     = output.empty.total + output.operational_items.total + output.payload.total
+        output.max_takeoff          = vehicle.mass_properties.max_takeoff
+        total_fuel_weight           = vehicle.mass_properties.max_takeoff - output.zero_fuel_weight
+        
+        # assume fuel is equally distributed in fuel tanks
+        if use_max_fuel_weight:
+            for network in vehicle.networks: 
+                for fuel_line in network.fuel_lines:  
+                    for fuel_tank in fuel_line.fuel_tanks:
+                        fuel_weight =  total_fuel_weight/number_of_tanks  
+                        fuel_tank.fuel.mass_properties.mass = fuel_weight
+                        
+        nose_landing_gear = False
+        main_landing_gear =  False
+        for LG in vehicle.landing_gears:
+            if isinstance(LG, RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear):
+                LG.mass_properties.mass = landing_gear.main
+                main_landing_gear = True
+            elif isinstance(LG, RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear):
+                LG.mass_properties.mass = landing_gear.nose
+                nose_landing_gear = True 
+        if nose_landing_gear == False:
+            nose_gear = RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear()  
+            nose_gear.mass_properties.mass = landing_gear.nose    
+            vehicle.append_component(nose_gear) 
+        if main_landing_gear == False:
+            main_gear = RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear()  
+            main_gear.mass_properties.mass = landing_gear.main  
+            vehicle.append_component(main_gear) 
+
+        control_systems                         = RCAIDE.Library.Components.Component()
+        control_systems.tag                     = 'control_systems'  
+        control_systems.mass_properties.mass    = output.empty.systems.control_systems
+        electrical_systems                      = RCAIDE.Library.Components.Component()
+        electrical_systems.tag                  = 'electrical_systems'
+        electrical_systems.mass_properties.mass = output.empty.systems.electrical
+        furnishings                             = RCAIDE.Library.Components.Component()
+        furnishings.tag                         = 'furnishings'
+        furnishings.mass_properties.mass        = output.empty.systems.furnishings
+        air_conditioner                         = RCAIDE.Library.Components.Component() 
+        air_conditioner.tag                     = 'air_conditioner'
+        air_conditioner.mass_properties.mass    = output.empty.systems.air_conditioner
+        apu                                     = RCAIDE.Library.Components.Component()
+        apu.tag                                 = 'apu'
+        apu.mass_properties.mass                = output.empty.systems.apu
+        hydraulics                              = RCAIDE.Library.Components.Component()
+        hydraulics.tag                          = 'hydraulics' 
+        hydraulics.mass_properties.mass         = output.empty.systems.hydraulics
+        avionics                                = RCAIDE.Library.Components.Systems.Avionics()
+        avionics.mass_properties.mass           = output.empty.systems.avionics + output.empty.systems.instruments
+        optionals                               = RCAIDE.Library.Components.Component()
+        optionals.tag                           = 'optionals'
+        optionals                               = RCAIDE.Library.Components.Component()
+        optionals.mass_properties.mass          = output.operational_items.misc
+        
+        # assign components to vehicle
+        vehicle.systems.control_systems         = control_systems
+        vehicle.systems.electrical_systems      = electrical_systems
+        vehicle.systems.avionics                = avionics
+        vehicle.systems.furnishings             = furnishings
+        vehicle.systems.air_conditioner         = air_conditioner 
+        vehicle.systems.apu                     = apu
+        vehicle.systems.hydraulics              = hydraulics
+        vehicle.systems.optionals               = optionals   
 
     return output
