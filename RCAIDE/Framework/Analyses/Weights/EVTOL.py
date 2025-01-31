@@ -68,7 +68,7 @@ class EVTOL(Weights):
         """
         # unpack
         vehicle = self.vehicle 
-        results = RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Electric.compute_operating_empty_weight(vehicle, settings=self.settings)
+        results = RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups.Electric.compute_operating_empty_weight(vehicle, settings=self.settings)
 
         # storing weigth breakdown into vehicle
         vehicle.weight_breakdown = results

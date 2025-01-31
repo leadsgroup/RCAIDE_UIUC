@@ -65,7 +65,7 @@ class BWB(Weights):
         """
         # unpack
         vehicle = self.vehicle 
-        results = RCAIDE.Library.Methods.Weights.Correlation_Buildups.BWB.compute_operating_empty_weight(vehicle,settings=self.settings)
+        results = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.BWB.compute_operating_empty_weight(vehicle,settings=self.settings)
 
         # storing weigth breakdown into vehicle
         vehicle.weight_breakdown = results

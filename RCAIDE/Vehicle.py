@@ -11,7 +11,7 @@ from RCAIDE                    import Framework
 from RCAIDE.Framework.Core     import Data, DataOrdered
 from RCAIDE.Library            import Components, Attributes 
 import numpy as np 
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups.Common.compute_operating_empty_weight import  compute_operating_empty_weight
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Common.compute_operating_empty_weight import  compute_operating_empty_weight
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Vehicle

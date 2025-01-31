@@ -11,7 +11,7 @@ from RCAIDE.Framework.Core import Units, Data
 from RCAIDE.Library.Methods.Geometry.Planform                       import segment_properties    
 from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan        import design_ducted_fan
 from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor          import design_motor  
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups.Propulsion import compute_motor_weight
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Propulsion import compute_motor_weight
 from RCAIDE.Library.Plots                                           import *     
  
 # python imports 

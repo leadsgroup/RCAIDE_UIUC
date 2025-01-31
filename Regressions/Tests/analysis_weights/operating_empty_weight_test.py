@@ -1,14 +1,14 @@
 # weights.py
 import  RCAIDE
 from RCAIDE.Framework.Core import Data  
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Propulsion       as Propulsion
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Transport        as Transport
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Common           as Common
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import General_Aviation as General_Aviation
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import BWB              as BWB
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Human_Powered    as HP
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import UAV              as UAV
-from RCAIDE.Library.Methods.Weights.Physics_Based_Buildups import Electric       as Electric
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Propulsion       as Propulsion
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Transport        as Transport
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Common           as Common
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import General_Aviation as General_Aviation
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import BWB              as BWB
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Human_Powered    as HP
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import UAV              as UAV
+from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups import Electric       as Electric
 from RCAIDE.Library.Plots import * 
 from RCAIDE.load import load as load_results
 from RCAIDE.save import save as save_results 

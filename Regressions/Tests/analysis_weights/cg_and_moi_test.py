@@ -7,9 +7,9 @@
 # cg_and_moi_test.py
 
 from RCAIDE.Framework.Core                                                   import Units,  Data  
-from RCAIDE.Library.Methods.Weights.Moment_of_Inertia.compute_aircraft_moment_of_inertia import compute_aircraft_moment_of_inertia
-from RCAIDE.Library.Methods.Weights.Center_of_Gravity                        import compute_vehicle_center_of_gravity
-from RCAIDE.Library.Methods.Weights.Moment_of_Inertia                        import compute_cuboid_moment_of_inertia
+from RCAIDE.Library.Methods.Mass_Properties.Moment_of_Inertia.compute_aircraft_moment_of_inertia import compute_aircraft_moment_of_inertia
+from RCAIDE.Library.Methods.Mass_Properties.Center_of_Gravity                        import compute_vehicle_center_of_gravity
+from RCAIDE.Library.Methods.Mass_Properties.Moment_of_Inertia                        import compute_cuboid_moment_of_inertia
 
 import numpy as  np
 import RCAIDE

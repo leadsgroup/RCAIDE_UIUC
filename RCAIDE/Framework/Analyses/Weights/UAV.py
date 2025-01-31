@@ -61,7 +61,7 @@ class UAV(Weights):
         """
         # unpack
         vehicle = self.vehicle 
-        results = RCAIDE.Library.Methods.Weights.Correlation_Buildups.UAV.compute_operating_empty_weight(vehicle)
+        results = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.UAV.compute_operating_empty_weight(vehicle)
 
         # storing weigth breakdown into vehicle
         vehicle.weight_breakdown = results
