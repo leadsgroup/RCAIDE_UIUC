@@ -15,5 +15,6 @@ def append_motor_conditions(motor,segment,propulsor_conditions):
     propulsor_conditions[motor.tag].outputs    = Conditions()
     propulsor_conditions[motor.tag].torque     = 0. * ones_row(1) 
     propulsor_conditions[motor.tag].efficiency = 0. * ones_row(1) 
-    
+    propulsor_conditions[motor.tag].current    = 0. * ones_row(1) 
+    propulsor_conditions[motor.tag].voltage    = 0. * ones_row(1) 
     return 

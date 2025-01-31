@@ -54,7 +54,9 @@ modules = [
     'Tests/performance/V_n_diagram_test.py', 
     'Tests/propulsion/propeller_performance_test.py',  
     'Tests/propulsion/propeller_non_uniform_inflow.py',  
-    'Tests/propulsion/propeller_wing_interaction_test.py',  
+    'Tests/propulsion/propeller_wing_interaction_test.py', 
+    'Tests/propulsion/dc_motor.py',
+    'Tests/propulsion/pmsm_motor.py',
 ]
 
 def run_module_test(module_path):

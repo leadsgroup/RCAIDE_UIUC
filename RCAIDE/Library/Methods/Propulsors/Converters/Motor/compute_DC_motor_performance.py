@@ -12,7 +12,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 #  compute_omega_and_Q_from_Cp_and_V
 # ----------------------------------------------------------------------------------------------------------------------    
-def compute_RPM_and_torque_from_power_coefficent_and_voltage(motor,motor_conditions,conditions):
+def compute_RPM_and_torque(motor,motor_conditions,conditions):
     """Calculates the motors RPM and torque using power coefficient and operating voltage.
     The following perperties of the motor are computed  
     motor_conditions.torque                    (numpy.ndarray):  torque [Nm]
