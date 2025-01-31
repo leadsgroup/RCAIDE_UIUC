@@ -8,9 +8,9 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports   
 import RCAIDE
-from RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance  import * 
-from RCAIDE.Library.Methods.Propulsors.Converters import Motor
-from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_ducted_fan_performance            import * 
+from RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance    import * 
+from RCAIDE.Library.Methods.Propulsors.Converters.Motor.compute_motor_performance                        import *
+from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_ducted_fan_performance              import * 
 from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_low_fidelity_ducted_fan_performance import *
 
 # pacakge imports  
@@ -63,11 +63,8 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     compute_voltage_out_from_throttle(esc,esc_conditions,conditions)
 
     # Assign conditions to the ducted_fan
-    motor_conditions.voltage              = esc_conditions.outputs.voltage 
-    if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor.PMSM_Motor):
-        Motor.compute_PMSM_motor_performance.compute_RPM_and_torque(motor,motor_conditions,conditions)
-    else:
-        Motor.compute_DC_motor_performance.compute_RPM_and_torque(motor,motor_conditions,conditions)
+    motor_conditions.voltage              = esc_conditions.outputs.voltage
+    compute_motor_performance(motor,motor_conditions,conditions) 
     
     # Spin the ducted_fan 
     ducted_fan_conditions.torque             = motor_conditions.torque
@@ -81,13 +78,7 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     if ducted_fan.fidelity == 'low':
         compute_low_fidelity_ducted_fan_performance(propulsor,state,center_of_gravity)  
     else:
-        compute_ducted_fan_performance(propulsor,state,center_of_gravity)  
-
-    # Run the motor for current
-    if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor.PMSM_Motor):
-        pass
-    else:
-        Motor.compute_DC_motor_performance.compute_current_from_RPM_and_voltage(motor,motor_conditions,conditions)
+        compute_ducted_fan_performance(propulsor,state,center_of_gravity)   
     
     # Detemine esc current 
     esc_conditions.outputs.current = motor_conditions.current
