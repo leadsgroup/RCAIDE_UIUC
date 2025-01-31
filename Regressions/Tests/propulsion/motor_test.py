@@ -50,6 +50,8 @@ def main():
         ctrl_pts = 1
         altitude = 0
         mach_number = 0.3
+        PMSM_current = 73
+
         atmosphere                                             = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976() 
         atmo_data                                              = atmosphere.compute_values(altitude = altitude) 
         segment                                                = RCAIDE.Framework.Mission.Segments.Segment()  
@@ -71,7 +73,6 @@ def main():
         for tag, propulsor_item in  electric_rotor.items():  
             if issubclass(type(propulsor_item), RCAIDE.Library.Components.Component):
                 propulsor_item.append_operating_conditions(segment,electric_rotor)            
-        
     
         # ------------------------------------------------------------------------------------------------------            
         # Create bus results data structure  
@@ -89,8 +90,24 @@ def main():
         motor_conditions.voltage                   = np.ones((ctrl_pts,1)) * bus.voltage 
 
         if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
-            motor_conditions.current = np.ones((ctrl_pts,1)) * 73
+
+            Q_cond_path_truth               = [375.04333098554946]
+            Q_conv_path_truth               = [0.024899697947077856]
+            Q_conv_path_cooling_flow_truth  = [0.0011197159981354437]
+            Q_conv_airgap_truth             = [0.0003900450642249714]
+            Q_conv_endspace_truth           = [0.048254460826049554]
+            Loss_cooling_truth              = [4.000000000000001e-08]
+
+            motor_conditions.current = np.ones((ctrl_pts,1)) * PMSM_current
             Motor.compute_motor_performance(motor,motor_conditions,conditions)
+
+            Q_cond_path              = motor_conditions.Q_cond_path                            
+            Q_conv_path              = motor_conditions.Q_conv_path                            
+            Q_conv_path_cooling_flow = motor_conditions.Q_conv_path_cooling_flow               
+            Q_conv_airgap            = motor_conditions.Q_conv_airgap                          
+            Q_conv_endspace          = motor_conditions.Q_conv_endspace                        
+            Loss_cooling             = motor_conditions.Loss_cooling            
+    
         else:
             motor_conditions.rotor_power_coefficient   = np.ones((ctrl_pts,1)) * 0.5
             Motor.compute_motor_performance(motor,motor_conditions,conditions)
@@ -104,16 +121,23 @@ def main():
         # Truth values 
         error = Data()
         error.omega_test     = np.max(np.abs(omega_truth[i]   - omega[0][0]  ))
-        error.torque_test_1  = np.max(np.abs(torque_truth[i]  - torque[0][0] ))
-        error.current_test_1 = np.max(np.abs(current_truth[i] - current[0][0])) 
+        error.torque_test    = np.max(np.abs(torque_truth[i]  - torque[0][0] ))
+        error.current_test   = np.max(np.abs(current_truth[i] - current[0][0])) 
         error.voltage_test   = np.max(np.abs(voltage_truth[i] - voltage[0][0])) 
+
+        if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
+            error.Q_cond_path_test      = np.max(np.abs(Q_cond_path_truth[0] - Q_cond_path))
+            error.Q_conv_path_test      = np.max(np.abs(Q_conv_path_truth[0] - Q_conv_path))
+            error.Q_conv_path_cooling_flow_test = np.max(np.abs(Q_conv_path_cooling_flow_truth[0] - Q_conv_path_cooling_flow))
+            error.Q_conv_airgap_test    = np.max(np.abs(Q_conv_airgap_truth[0] - Q_conv_airgap))
+            error.Q_conv_endspace_test  = np.max(np.abs(Q_conv_endspace_truth[0] - Q_conv_endspace))
+            error.Loss_cooling_test     = np.max(np.abs(Loss_cooling_truth[0] - Loss_cooling))
         
         print('Errors:')
         print(error)
         
         for k,v in list(error.items()):
             assert(np.abs(v)<1e-6) 
-                    
                
     return
 
