@@ -23,7 +23,7 @@ from copy import  deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_performance
 # ----------------------------------------------------------------------------------------------------------------------   
-def compute_turbofan_performance(turbofan,state,center_of_gravity):  
+def compute_turbofan_performance(turbofan,state,center_of_gravity = [[0., 0.,0.]]):  
     ''' Computes the perfomrance of one turbofan
     
     Assumptions: 
@@ -50,9 +50,10 @@ def compute_turbofan_performance(turbofan,state,center_of_gravity):
     ''' 
     conditions                = state.conditions   
     noise_conditions          = conditions.noise[turbofan.tag] 
-    turbofan_conditions       = conditions.energy[turbofan.tag] 
-    rho                       = conditions.freestream.density
+    turbofan_conditions       = conditions.energy[turbofan.tag]  
     U0                        = conditions.freestream.velocity
+    T                         = conditions.freestream.temperature
+    P                         = conditions.freestream.pressure
     ram                       = turbofan.ram
     inlet_nozzle              = turbofan.inlet_nozzle
     fan                       = turbofan.fan
@@ -236,8 +237,21 @@ def compute_turbofan_performance(turbofan,state,center_of_gravity):
     M                          =  np.cross(moment_vector, thrust_vector)   
     moment                     = M 
     power                      = turbofan_conditions.power 
-    turbofan_conditions.moment = moment
-
+    turbofan_conditions.moment = moment 
+        
+    # compute efficiencies 
+    mdot_air_core                                  = turbofan_conditions.core_mass_flow_rate
+    mdot_air_fan                                   = bypass_ratio *  mdot_air_core  
+    fuel_enthalpy                                  = combustor.fuel_data.specific_energy 
+    mdot_fuel                                      = turbofan_conditions.fuel_flow_rate  
+    h_e_f                                          = fan_nozzle_conditions.outputs.static_enthalpy
+    h_e_c                                          = core_nozzle_conditions.outputs.static_enthalpy
+    h_0                                            = turbofan.working_fluid.compute_cp(T,P) * T 
+    h_t4                                           = combustor_conditions.outputs.stagnation_enthalpy
+    h_t3                                           = hpc_conditions.outputs.stagnation_enthalpy 
+    turbofan_conditions.overall_efficiency         = thrust_vector* U0 / (mdot_fuel * fuel_enthalpy)  
+    turbofan_conditions.thermal_efficiency         = 1 - ((mdot_air_core +  mdot_fuel)*(h_e_c -  h_0) + mdot_air_fan*(h_e_f - h_0) + mdot_fuel *h_0)/((mdot_air_core +  mdot_fuel)*h_t4 - mdot_air_core *h_t3)  
+  
     # store data
     core_nozzle_res = Data(
                 exit_static_temperature             = core_nozzle_conditions.outputs.static_temperature,
