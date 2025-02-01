@@ -163,7 +163,7 @@ class Ducted_Fan(Component):
         self.K_fan                             = 0.9
         self.epsilon_d                         = 0.9
         self.A_R                               = 0.9
-        self.fidelity                          = 'polytropic'
+        self.fidelity                          = 'Blade_Element_Momentum_Theory' # 'Rankine_Froude_Momentum_Theory'
         self.nacelle                           = None  
         self.fan                               = RCAIDE.Library.Components.Propulsors.Converters.Fan()   
         self.ram                               = RCAIDE.Library.Components.Propulsors.Converters.Ram()  

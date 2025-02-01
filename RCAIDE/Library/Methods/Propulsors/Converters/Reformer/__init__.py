@@ -8,4 +8,4 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
-from .AutothermalReformer    import AutothermalReformer
+from .compute_reformer_performance    import compute_reformer_performance

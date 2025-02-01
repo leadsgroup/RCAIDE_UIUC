@@ -1,4 +1,4 @@
-# dc_motor_test.py
+# motor_test.py
 # 
 # Created:  Jan 2025, M. Clarke, M. Guidotti
 
@@ -9,8 +9,6 @@
 import RCAIDE
 from RCAIDE.Framework.Core                              import Units, Data
 from RCAIDE.Library.Plots                               import *     
-from RCAIDE.Library.Methods.Performance                 import propeller_aerodynamic_analysis
-from RCAIDE.Framework.Analyses.Atmospheric              import US_Standard_1976
 from RCAIDE.Framework.Mission.Common import Conditions, Results, Residuals
 from RCAIDE.Library.Methods.Propulsors.Converters import Motor
 from RCAIDE.Library.Methods.Propulsors.Converters.Motor.design_DC_motor import design_DC_motor

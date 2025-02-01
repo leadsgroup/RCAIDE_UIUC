@@ -10,10 +10,9 @@
 import RCAIDE
 from RCAIDE.Framework.Core              import Data
 from RCAIDE.Library.Components          import Component 
-from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.append_ducted_fan_conditions import  append_ducted_fan_conditions
 import numpy as np
 import scipy as sp
- 
+
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Nacalle
 # ----------------------------------------------------------------------------------------------------------------------  
@@ -26,7 +25,8 @@ class Reformer(Component):
         """ 
         """      
         
-        self.tag   = 'reformer'  
+        self.tag          = 'reformer'  
+
         # Jet-A parameters
         self.x_H          = 0.1348   # [-]               mass fraction of hydrogen content in Jet-A
         self.x_C          = 0.8637   # [-]               mass fraction of carbon content in Jet-A

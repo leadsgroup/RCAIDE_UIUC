@@ -33,4 +33,4 @@ from .Offtake_Shaft                              import Offtake_Shaft
 from RCAIDE.Library.Components.Energy.Sources.Solar_Panels import Solar_Panel
 from .Supersonic_Nozzle                          import Supersonic_Nozzle
 from .Turbine                                    import Turbine
-
+from .Reformer                                   import Reformer

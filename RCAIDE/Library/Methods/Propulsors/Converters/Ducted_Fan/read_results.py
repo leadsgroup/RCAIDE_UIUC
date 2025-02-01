@@ -66,7 +66,7 @@ def read_results(dfdc_analysis):
     results.performance.converged_solution              = np.zeros((len_m,len_tm,len_a))    
    
     # Read geometry 
-    geometry_filename   =   os.path.abspath(run_folder + os.path.sep+ ducted_fan.tag + '_geometry.txt')            
+    geometry_filename = os.path.join(run_folder, 'ducted_fan_geometry.txt')
     with open(geometry_filename,'r') as geometry_file: 
             geometry_lines                       = geometry_file.readlines() 
             results.geometry.hub_radius          = float(geometry_lines[27][12:23].strip())
@@ -87,7 +87,7 @@ def read_results(dfdc_analysis):
     design_velocity  = ducted_fan.cruise.design_freestream_velocity 
     design_altitude  = ducted_fan.cruise.design_altitude  
     string           = results_template.format(design_velocity,design_RPM,design_altitude)     
-    results_filename =  os.path.abspath(run_folder + os.path.sep+ string.replace(".", "_") + '.txt')
+    results_filename = os.path.join(run_folder, string.replace(".", "_") + '.txt')
     with open(results_filename,'r') as case_results_file: 
         case_lines                       = case_results_file.readlines() 
         results.performance.design_thrust              = float(case_lines[8][13:26].strip())
@@ -108,7 +108,7 @@ def read_results(dfdc_analysis):
                     rpm             = ((tip_machs[j]*a) /dfdc_analysis.geometry.tip_radius)/Units.rpm
                     velocity        =  mach[i] * a 
                     string          = results_template.format(velocity,rpm,altitudes[k])   
-                    results_filename   =  os.path.abspath(run_folder + os.path.sep+ string.replace(".", "_") + '.txt')
+                    results_filename   = os.path.join(run_folder, string.replace(".", "_") + '.txt')
                     with open(results_filename,'r') as case_results_file: 
                         case_lines                       = case_results_file.readlines() 
                         results.performance.thrust[i,j,k]              = float(case_lines[8][13:26].strip())

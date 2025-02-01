@@ -69,7 +69,17 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
     dfdc_analysis.settings.filenames.dfdc_bin_name  = dfdc_bin_name
     dfdc_analysis.settings.new_regression_results   = new_regression_results
     dfdc_analysis.settings.keep_files               = keep_files  
-    run_folder                                      = os.path.abspath(dfdc_analysis.settings.filenames.run_folder)
+    # Get the root directory (one level above RCAIDE)
+    current_dir = os.path.dirname(__file__)
+    # Go up to the root directory containing RCAIDE
+    root_dir = os.path.abspath(os.path.join(current_dir, *['..'] * 6))
+
+    # Set the run folder path
+    dfdc_analysis.settings.filenames.run_folder = os.path.join(root_dir, 'Regressions', 'Tests', 'network_ducted_fan', 'dfdc_files')
+    run_folder = dfdc_analysis.settings.filenames.run_folder
+
+    # Ensure the directory exists
+    os.makedirs(run_folder, exist_ok=True)
     run_script_path                                 = run_folder.rstrip('dfdc_files').rstrip('/')    
     deck_template                                   = dfdc_analysis.settings.filenames.deck_template 
     print_output                                    = dfdc_analysis.settings.print_output  

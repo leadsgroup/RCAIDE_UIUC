@@ -7,10 +7,12 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports  
-import RCAIDE
-from RCAIDE.Framework.Core                          import Units , Data 
-from RCAIDE.Library.Plots                           import *        
 
+import RCAIDE
+from RCAIDE.Framework.Core                              import Units, Data
+from RCAIDE.Library.Plots                               import *     
+from RCAIDE.Framework.Mission.Common import Conditions, Results, Residuals  
+from RCAIDE.Library.Methods.Propulsors.Converters import Motor
 # python imports     
 import numpy as np  
 import sys
@@ -20,166 +22,149 @@ import os
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles'))
 from NASA_X48    import vehicle_setup as vehicle_setup
 from NASA_X48    import configs_setup as configs_setup 
-
+from RCAIDE.Library.Methods.Propulsors.Converters.Motor          import design_DC_motor 
+# local imports 
+sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles' + os.path.sep + 'Rotors'))
+from Test_Propeller    import Test_Propeller  
 # ----------------------------------------------------------------------------------------------------------------------
 #   Main
 # ----------------------------------------------------------------------------------------------------------------------
 
 def main(): 
-    regression_flag = True # Keep true for regression on Appveyor
-    
-    # vehicle data
-    vehicle  = vehicle_setup(regression_flag) 
-    
-    # Set up vehicle configs
-    configs  = configs_setup(vehicle)
+    ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
+    # omega_truth = [36.455819245889195,37.653244590335106]
+    # torque_truth = [145.0992694988849,145.7740091588354]
+    # current_truth = [73.5454727365098,73.0]
+    # voltage_truth = [120,120.0]
 
-    # create analyses
-    analyses = analyses_setup(configs)
+    for i in range(len(ducted_fan_type)):
+        prop = Test_Propeller() 
+        motor = design_test_motor(prop)
 
-    # mission analyses 
-    mission = mission_setup(analyses)
-    
-    # create mission instances (for multiple types of missions)
-    missions = missions_setup(mission) 
-     
-    # mission analysis 
-    results = missions.base_mission.evaluate()  
+        bus                                            = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
+        bus.voltage                                   = 120                         
+        electric_rotor                                = RCAIDE.Library.Components.Propulsors.Electric_Rotor()  
+        electric_rotor.motor                          = motor 
+        electric_rotor.rotor                          = prop
  
-    # plt the old results
-    plot_mission(results)  
+        # set up conditions  
+        ctrl_pts = 1
+        altitude = 0
+        mach_number = 0.3
+        PMSM_current = 73
 
-    # check the results
-    CL_truth =  0.3290060144079024
-    if regression_flag:
-        error =  (CL_truth - CL_truth) / CL_truth
-    else:  
-        CL =  results.segments.cruise.conditions.aerodynamics.coefficients.lift.total[2][0]
-        error =  (CL - CL_truth) / CL_truth        
-    assert(np.abs(error)<1e-6)         
-    return 
-
-# ----------------------------------------------------------------------
-#   Define the Vehicle Analyses
-# ----------------------------------------------------------------------
-
-def analyses_setup(configs):
-    
-    analyses = RCAIDE.Framework.Analyses.Analysis.Container()
-    
-    # build a base analysis for each config
-    for tag,config in list(configs.items()):
-        analysis = base_analysis(config)
-        analyses[tag] = analysis
-    
-    return analyses
-
-def base_analysis(vehicle):
-
-    # ------------------------------------------------------------------
-    #   Initialize the Analyses
-    # ------------------------------------------------------------------     
-    analyses = RCAIDE.Framework.Analyses.Vehicle() 
-    
-    # ------------------------------------------------------------------
-    #  Weights
-    weights         = RCAIDE.Framework.Analyses.Weights.Weights_UAV()
-    weights.vehicle = vehicle
-    analyses.append(weights)
-    
-    # ------------------------------------------------------------------
-    #  Aerodynamics Analysis
-    aerodynamics                                       = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method()
-    aerodynamics.vehicle                               = vehicle
-    aerodynamics.settings.number_of_spanwise_vortices  = 25
-    aerodynamics.settings.number_of_chordwise_vortices = 5       
-    aerodynamics.settings.model_fuselage               = False
-    aerodynamics.settings.drag_coefficient_increment   = 0.0000
-    analyses.append(aerodynamics)
- 
-  
-    # ------------------------------------------------------------------
-    #  Energy
-    energy= RCAIDE.Framework.Analyses.Energy.Energy()
-    energy.vehicle  = vehicle 
-    analyses.append(energy)
-    
-    # ------------------------------------------------------------------
-    #  Planet Analysis
-    planet = RCAIDE.Framework.Analyses.Planets.Earth()
-    analyses.append(planet)
-    
-    # ------------------------------------------------------------------
-    #  Atmosphere Analysis
-    atmosphere = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
-    atmosphere.features.planet = planet.features
-    analyses.append(atmosphere)   
-    
-    # done!
-    return analyses    
-
-# ----------------------------------------------------------------------
-#   Plot Mission
-# ----------------------------------------------------------------------
-
-def plot_mission(results):
-      
-    
-    # Plot Electric Motor and Propeller Efficiencies 
-    plot_electric_propulsor_efficiencies(results)
-    
+        atmosphere                                             = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976() 
+        atmo_data                                              = atmosphere.compute_values(altitude = altitude) 
+        segment                                                = RCAIDE.Framework.Mission.Segments.Segment()  
+        conditions                                             = Results()  
+        conditions.freestream.density                          = atmo_data.density  
+        conditions.freestream.dynamic_viscosity                = atmo_data.dynamic_viscosity
+        conditions.freestream.speed_of_sound                   = atmo_data.speed_of_sound
+        conditions.freestream.temperature                      = atmo_data.temperature
+        conditions.freestream.altitude                         = np.ones((ctrl_pts,1)) *altitude
+        conditions.frames.inertial.velocity_vector             = np.array([[mach_number *atmo_data.speed_of_sound[0,0] , 0. ,0.]])     
+        segment.state.conditions                               = conditions  
+        segment.state.conditions.energy[bus.tag]               = Conditions() 
         
-    return 
+        segment.state.residuals.network = Residuals()
+            
+        electric_rotor.append_operating_conditions(segment) 
 
-# ----------------------------------------------------------------------
-#   Define the Mission
-# ----------------------------------------------------------------------
+        for tag, propulsor_item in  electric_rotor.items():  
+            if issubclass(type(propulsor_item), RCAIDE.Library.Components.Component):
+                propulsor_item.append_operating_conditions(segment,electric_rotor)            
     
-def mission_setup(analyses):
-    
-    # ------------------------------------------------------------------
-    #   Initialize the Mission
-    # ------------------------------------------------------------------
-    
-    mission = RCAIDE.Framework.Mission.Sequential_Segments()
-    mission.tag = 'the_mission'
-     
-    # unpack Segments module
-    Segments = RCAIDE.Framework.Mission.Segments 
-    base_segment = Segments.Segment()
-    
-    # ------------------------------------------------------------------
-    #   First Climb Segment: constant Mach, constant segment angle 
-    # ------------------------------------------------------------------
-    
-    segment = Segments.Cruise.Constant_Mach_Constant_Altitude(base_segment)
-    segment.tag = "cruise" 
-    segment.analyses.extend( analyses.base ) 
-    segment.altitude       = 1000 * Units.feet
-    segment.mach_number    = 0.2   * Units.kts
-    segment.distance       = 1000 * Units.feet  
-    segment.initial_battery_state_of_charge                          = 1.0 
-                
-    # define flight dynamics to model             
-    segment.flight_dynamics.force_x                                  = True  
-    segment.flight_dynamics.force_z                                  = True     
-    
-    # define flight controls 
-    segment.assigned_control_variables.throttle.active               = True           
-    segment.assigned_control_variables.throttle.assigned_propulsors  = [['center_propulsor','starboard_propulsor','port_propulsor']] 
-    segment.assigned_control_variables.body_angle.active             = True                   
-      
-    mission.append_segment(segment) 
-    return mission
+        # ------------------------------------------------------------------------------------------------------            
+        # Create bus results data structure  
+        # ------------------------------------------------------------------------------------------------------
+        segment.state.conditions.energy[bus.tag] = RCAIDE.Framework.Mission.Common.Conditions() 
+        segment.state.conditions.noise[bus.tag]  = RCAIDE.Framework.Mission.Common.Conditions()   
 
-def missions_setup(mission):
+        # ------------------------------------------------------------------------------------------------------
+        # Assign network-specific  residuals, unknowns and results data structures
+        # ------------------------------------------------------------------------------------------------------  
+        electric_rotor.append_propulsor_unknowns_and_residuals(segment) 
 
-    missions     = RCAIDE.Framework.Mission.Missions() 
-    mission.tag  = 'base_mission'
-    missions.append(mission)
+        motor_conditions = segment.state.conditions.energy[electric_rotor.tag][motor.tag]
+                # Assign conditions to the rotor
+        motor_conditions.voltage                   = np.ones((ctrl_pts,1)) * bus.voltage 
+        motor_conditions.rotor_power_coefficient   = np.ones((ctrl_pts,1)) * 0.5
+        Motor.compute_motor_performance(motor,motor_conditions,conditions)
+
+        # run analysis 
+        omega = motor_conditions.omega
+        torque = motor_conditions.torque
+        current = motor_conditions.current
+        voltage = motor_conditions.voltage
+ 
+        # Truth values 
+        error = Data()
+        error.omega_test     = np.max(np.abs(omega_truth[i]   - omega[0][0]  ))
+        error.torque_test    = np.max(np.abs(torque_truth[i]  - torque[0][0] ))
+        error.current_test   = np.max(np.abs(current_truth[i] - current[0][0])) 
+        error.voltage_test   = np.max(np.abs(voltage_truth[i] - voltage[0][0])) 
+        
+        print('Errors:')
+        print(error)
+        
+        for k,v in list(error.items()):
+            assert(np.abs(v)<1e-6) 
+               
+    return
+
+
+
+def design_test_motor(prop):
+    motor = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+    motor.mass_properties.mass = 9. * Units.kg 
+    motor.efficiency           = 0.935
+    motor.gear_ratio           = 1. 
+    motor.gearbox_efficiency   = 1. # Gear box efficiency     
+    motor.no_load_current      = 2.0 
+    motor.propeller_radius     = prop.tip_radius
+    motor.nominal_voltage      = 400
+    motor.rotor_radius         = prop.tip_radius
+    motor.design_torque        = prop.cruise.design_torque 
+    motor.angular_velocity     = prop.cruise.design_angular_velocity # Horse power of gas engine variant  750 * Units['hp']
+    design_DC_motor(motor) 
+    return motor
+
+def define_ducted_fan():
     
-    # done!
-    return missions
+    ducted_fan                                   = RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan()
+    ducted_fan.tag                               = 'test_ducted_fan'
+    ducted_fan.eta_p                             = 0.9
+    ducted_fan.K_fan                             = 0.9
+    ducted_fan.epsilon_d                         = 0.9
+    ducted_fan.A_R                               = 0.9
+
+    ducted_fan.number_of_rotor_blades            = 12 #22 
+    ducted_fan.number_of_radial_stations         = 20
+    ducted_fan.tip_radius                        = 3.124 / 2
+    ducted_fan.hub_radius                        = 3.124 /2 * 0.25
+    ducted_fan.blade_clearance                   = 0.01
+    ducted_fan.length                            = 2
+    ducted_fan.rotor_percent_x_location          = 0.4
+    ducted_fan.stator_percent_x_location         = 0.7
+    ducted_fan.cruise.design_thrust              = 10000  
+    ducted_fan.cruise.design_altitude            = 20000 *Units.ft  
+    ducted_fan.cruise.design_tip_mach            = 0.7
+    ducted_fan.cruise.design_torque            = 400
+    speed_of_sound                               =  316.032
+    ducted_fan.cruise.design_angular_velocity    = (ducted_fan.cruise.design_tip_mach *speed_of_sound) /ducted_fan.tip_radius  # 1352 RPM
+    ducted_fan.cruise.design_freestream_velocity = 0.45* speed_of_sound
+    ducted_fan.cruise.design_reference_velocity  = 0.45*  speed_of_sound  
+    
+    return ducted_fan 
+
+
+def define_electronic_speed_controller():
+
+    # Electronic Speed Controller       
+    esc                                              = RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller()
+    esc.tag                                          = 'esc'
+    esc.efficiency                                   = 0.95        
+    return esc
 
 
 if __name__ == '__main__': 

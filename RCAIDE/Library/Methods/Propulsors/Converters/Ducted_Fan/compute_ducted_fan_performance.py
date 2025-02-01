@@ -41,7 +41,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
     ducted_fan_conditions = propulsor_conditions[ducted_fan.tag]
     
-    if type(ducted_fan) ==  RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan: 
+    if ducted_fan.fidelity == 'Blade_Element_Momentum_Theory': 
                       
         altitude  = conditions.freestream.altitude / 1000
         a         = conditions.freestream.speed_of_sound
@@ -110,7 +110,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         
         # Unpack freestream conditions
         rho     = conditions.freestream.density[:,0,None] 
-        u0      = conditions.freestream.airspeed[:,0,None]
+        u0      = conditions.freestream.velocity[:,0,None]
     
         # Compute power 
         P_EM                       = propulsor.motor.design_torque*propulsor.motor.angular_velocity
