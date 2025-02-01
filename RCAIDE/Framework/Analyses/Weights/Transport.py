@@ -55,6 +55,7 @@ class Transport(Weights):
         
         self.settings = Data()
         self.settings.use_max_fuel_weight = True 
+        self.settings.advanced_composites = False
         
         # self.settings.weight_reduction_factors           = Data()  
         # self.settings.weight_reduction_factors.main_wing = 0.  # Reduction factors are proportional (.1 is a 10% weight reduction)
