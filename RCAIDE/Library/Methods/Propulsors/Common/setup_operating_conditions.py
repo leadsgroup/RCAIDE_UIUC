@@ -9,6 +9,7 @@
 # RCAIDE Imports
 import RCAIDE   
 from RCAIDE.Framework.Mission.Common import  Conditions, Results, Residuals
+from RCAIDE.Library.Mission.Common.Update.orientations import orientations
 
 # Python package imports
 import numpy as np
@@ -85,11 +86,20 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     conditions.freestream.Cp                          = np.atleast_2d(working_fluid.compute_cp(T,p))
     conditions.freestream.R                           = np.atleast_2d(working_fluid.gas_specific_constant)
     conditions.freestream.speed_of_sound              = np.atleast_2d(a)
-    conditions.freestream.velocity                    = velocity_vector
+    conditions.freestream.velocity                    = velocity_vector 
+    
+    AoA =  np.arctan(velocity_vector[0, 2] / velocity_vector[0, 0])
+
+    conditions.frames.body.inertial_rotations        =  np.array([[0, AoA, 0]]) 
+    conditions.static_stability.roll_rate            =  np.array([[0]])  
+    conditions.static_stability.pitch_rate           =  np.array([[0]])
+    conditions.static_stability.yaw_rate             =  np.array([[0]]) 
 
     # setup conditions   
     segment                                           = RCAIDE.Framework.Mission.Segments.Segment()  
-    segment.state.conditions                          = conditions      
+    segment.state.conditions                          = conditions    
+    orientations(segment)
+    
     segment.state.residuals.network = Residuals()
     propulsor.append_operating_conditions(segment) 
     for tag, item in  propulsor.items(): 
