@@ -44,6 +44,22 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
         propulsor = deepcopy(compoment)
         propulsor.working_fluid =  working_fluid
         
+        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turbofan:
+            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+    
+        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turbojet:
+            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+    
+        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turboprop:
+            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+    
+        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turboshaft:
+            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+    
+        if type(propulsor) == RCAIDE.Library.Components.Propulsors.ICE_Propeller:
+            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+            
+        
     planet                                            = RCAIDE.Library.Attributes.Planets.Earth()
     working_fluid = RCAIDE.Library.Attributes.Gases.Air()
     atmosphere_sls                                    = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
