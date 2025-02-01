@@ -22,7 +22,7 @@ import os
 # ----------------------------------------------------------------------
 #   Define the Vehicle
 # ---------------------------------------------------------------------- 
-def vehicle_setup(regression_flag):
+def vehicle_setup(regression_flag, ducted_fan_type):
 
     # ------------------------------------------------------------------
     #   Initialize the Vehicle
@@ -188,8 +188,8 @@ def vehicle_setup(regression_flag):
     esc                                              = RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller()
     esc.tag                                          = 'esc_1'
     esc.efficiency                                   = 0.95 
-    center_propulsor.electronic_speed_controller  = esc   
-          
+    center_propulsor.electronic_speed_controller     = esc   
+        
 
     # Ducted_fan                            
     ducted_fan                                   = RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan()
@@ -208,15 +208,19 @@ def vehicle_setup(regression_flag):
     ducted_fan.cruise.design_angular_velocity    = (ducted_fan.cruise.design_tip_mach *320) /ducted_fan.tip_radius  # 1352 RPM
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
     ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph
-    airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil() 
-    airfoil.NACA_4_Series_code                   = '2208'
-    ducted_fan.append_duct_airfoil(airfoil)  
-    airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil()
-    airfoil.NACA_4_Series_code                   = '0008'    
-    ducted_fan.append_hub_airfoil(airfoil) 
-    dfdc_bin_name = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'
-    keep_files    =  True 
-    design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files) 
+    
+    if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
+        pass
+    elif ducted_fan_type == 'Blade_Element_Momentum_Theory':
+        airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil() 
+        airfoil.NACA_4_Series_code                   = '2208'
+        ducted_fan.append_duct_airfoil(airfoil)  
+        airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil()
+        airfoil.NACA_4_Series_code                   = '0008'    
+        ducted_fan.append_hub_airfoil(airfoil) 
+        dfdc_bin_name = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'
+        keep_files    =  True 
+        design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files) 
     center_propulsor.ducted_fan                  = ducted_fan   
               
     # DC_Motor       

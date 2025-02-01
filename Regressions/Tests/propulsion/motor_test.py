@@ -62,8 +62,8 @@ def main():
             Motor.compute_motor_performance(motor,motor_conditions,operating_state.conditions)
 
         # run analysis 
-        omega = motor_conditions.omega
-        torque = motor_conditions.torque
+        omega   = motor_conditions.omega
+        torque  = motor_conditions.torque
         current = motor_conditions.current
         voltage = motor_conditions.voltage
  
