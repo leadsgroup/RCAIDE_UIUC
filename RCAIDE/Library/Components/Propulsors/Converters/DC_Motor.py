@@ -82,7 +82,7 @@ class DC_Motor(Converter):
 
     See Also
     --------
-    RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor
+    RCAIDE.Library.Methods.Propulsors.Converters.Motor
     """      
     def __defaults__(self):
         """This sets the default values for the component to function.
