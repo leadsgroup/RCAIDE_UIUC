@@ -214,8 +214,9 @@ class Rotor(Component):
         self.variable_pitch                    = False
         self.electric_propulsion_fraction      = 1.0
 
-        # Initialize the default wake set to Fidelity Zero 
-        self.Wake                      = Momentum_Theory_Wake() 
+        # Initialize the default wake set to Fidelity Zero
+        self.model_fidelity                    = "Actuator_Disc"
+        self.Wake                              = Momentum_Theory_Wake() 
         
         # blade optimization parameters     
         self.optimization_parameters                                    = Data() 
