@@ -6,13 +6,14 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------    
 # package imports 
-import numpy as np
 from RCAIDE.Framework.Core import Units
  
 # ----------------------------------------------------------------------------------------------------------------------
-#  compute_PMSM_motor_performance
+#  compute_reformer_performance
 # ----------------------------------------------------------------------------------------------------------------------    
 def compute_reformer_performance(reformer,reformer_conditions):
+    '''
+    '''
 
     Q_F = reformer_conditions.fuel_volume_flow_rate/(Units.cm**3/Units.hr)   # [cm**3/hr] Jet-A feed rate              
     Q_S = reformer_conditions.steam_volume_flow_rate/(Units.cm**3/Units.hr)  # [cm**3/hr] Deionized water feed rate            

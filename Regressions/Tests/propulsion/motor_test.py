@@ -8,20 +8,14 @@
 
 import RCAIDE
 from RCAIDE.Framework.Core                              import Units, Data
-from RCAIDE.Library.Plots                               import *     
-from RCAIDE.Framework.Mission.Common import Conditions, Results, Residuals
-from RCAIDE.Library.Methods.Propulsors.Converters import Motor
+from RCAIDE.Library.Plots                               import *      
+from RCAIDE.Library.Methods.Propulsors.Converters       import Motor
 from RCAIDE.Library.Methods.Propulsors.Converters.Motor.design_DC_motor import design_DC_motor
+from RCAIDE.Library.Methods.Propulsors.Common           import setup_operating_conditions 
 
-import os
+import os 
 import numpy as np 
-import matplotlib.pyplot as plt
-
-# python imports 
-import numpy as np
-import pylab as plt 
-import sys
-import os
+import sys 
 
 # local imports 
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles' + os.path.sep + 'Rotors'))
@@ -35,57 +29,14 @@ def main():
     voltage_truth = [120,120.0]
 
     for i in range(len(motor_type)):
-        prop = Test_Propeller() 
-        motor = design_test_motor(prop, motor_type[i])
-
-        bus                                            = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
-        bus.voltage                                   = 120                         
-        electric_rotor                                = RCAIDE.Library.Components.Propulsors.Electric_Rotor()  
-        electric_rotor.motor                          = motor 
-        electric_rotor.rotor                          = prop
- 
-        # set up conditions  
-        ctrl_pts = 1
-        altitude = 0
-        mach_number = 0.3
-        PMSM_current = 73
-
-        atmosphere                                             = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976() 
-        atmo_data                                              = atmosphere.compute_values(altitude = altitude) 
-        segment                                                = RCAIDE.Framework.Mission.Segments.Segment()  
-        conditions                                             = Results()  
-        conditions.freestream.density                          = atmo_data.density  
-        conditions.freestream.dynamic_viscosity                = atmo_data.dynamic_viscosity
-        conditions.freestream.speed_of_sound                   = atmo_data.speed_of_sound
-        conditions.freestream.temperature                      = atmo_data.temperature
-        conditions.freestream.altitude                         = np.ones((ctrl_pts,1)) *altitude
-        conditions.frames.inertial.velocity_vector             = np.array([[mach_number *atmo_data.speed_of_sound[0,0] , 0. ,0.]])     
-        segment.state.conditions                               = conditions  
-        segment.state.conditions.energy[bus.tag]               = Conditions() 
+        motor = design_test_motor( motor_type[i])
         
-
-        segment.state.residuals.network = Residuals()
-            
-        electric_rotor.append_operating_conditions(segment) 
-
-        for tag, propulsor_item in  electric_rotor.items():  
-            if issubclass(type(propulsor_item), RCAIDE.Library.Components.Component):
-                propulsor_item.append_operating_conditions(segment,electric_rotor)            
-    
-        # ------------------------------------------------------------------------------------------------------            
-        # Create bus results data structure  
-        # ------------------------------------------------------------------------------------------------------
-        segment.state.conditions.energy[bus.tag] = RCAIDE.Framework.Mission.Common.Conditions() 
-        segment.state.conditions.noise[bus.tag]  = RCAIDE.Framework.Mission.Common.Conditions()   
-
-        # ------------------------------------------------------------------------------------------------------
-        # Assign network-specific  residuals, unknowns and results data structures
-        # ------------------------------------------------------------------------------------------------------  
-        electric_rotor.append_propulsor_unknowns_and_residuals(segment) 
-
-        motor_conditions = segment.state.conditions.energy[electric_rotor.tag][motor.tag]
-                # Assign conditions to the rotor
-        motor_conditions.voltage                   = np.ones((ctrl_pts,1)) * bus.voltage 
+        # set up default operating conditions 
+        operating_state,propulsor_tag  = setup_operating_conditions(motor) 
+        
+        # Assign conditions to the rotor
+        motor_conditions = operating_state.conditions.energy[propulsor_tag][motor.tag]
+        motor_conditions.voltage[:, 0]   = 120
 
         if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
 
@@ -96,8 +47,8 @@ def main():
             Q_conv_endspace_truth           = [0.048254460826049554]
             Loss_cooling_truth              = [4.000000000000001e-08]
 
-            motor_conditions.current = np.ones((ctrl_pts,1)) * PMSM_current
-            Motor.compute_motor_performance(motor,motor_conditions,conditions)
+            motor_conditions.current[:, 0] =  73.
+            Motor.compute_motor_performance(motor,motor_conditions,operating_state.conditions)
 
             Q_cond_path              = motor_conditions.Q_cond_path                            
             Q_conv_path              = motor_conditions.Q_conv_path                            
@@ -107,8 +58,8 @@ def main():
             Loss_cooling             = motor_conditions.Loss_cooling            
     
         else:
-            motor_conditions.rotor_power_coefficient   = np.ones((ctrl_pts,1)) * 0.5
-            Motor.compute_motor_performance(motor,motor_conditions,conditions)
+            motor_conditions.rotor_power_coefficient[:, 0] =  0.5
+            Motor.compute_motor_performance(motor,motor_conditions,operating_state.conditions)
 
         # run analysis 
         omega = motor_conditions.omega
@@ -139,10 +90,12 @@ def main():
                
     return
 
-def design_test_motor(prop, motor_type):
+def design_test_motor(motor_type): 
+    
     if motor_type == 'DC_Motor':
         motor = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
-
+    
+        prop = Test_Propeller()
         motor.mass_properties.mass = 9. * Units.kg 
         motor.efficiency           = 0.935
         motor.gear_ratio           = 1. 

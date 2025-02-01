@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
-from RCAIDE.Library.Components                      import Component  
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Fan.append_fan_conditions import append_fan_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Fan  
 # ----------------------------------------------------------------------------------------------------------------------
-class Fan(Component):
+class Fan(Converter):
     """
     A fan component model for turbofan and ducted fan propulsion systems.
 

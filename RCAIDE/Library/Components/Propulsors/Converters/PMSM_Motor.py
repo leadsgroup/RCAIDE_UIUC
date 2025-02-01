@@ -7,13 +7,13 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------   
 # RCAIDE imports  
-from RCAIDE.Library.Components import Component
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Motor.append_motor_conditions import  append_motor_conditions
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  PMSM_Motor  
 # ----------------------------------------------------------------------------------------------------------------------           
-class PMSM_Motor(Component):
+class PMSM_Motor(Converter):
     """
 
     """      

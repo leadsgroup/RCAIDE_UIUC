@@ -7,7 +7,6 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports   
-import RCAIDE
 from RCAIDE.Library.Methods.Propulsors.Modulators.Electronic_Speed_Controller.compute_esc_performance  import * 
 from RCAIDE.Library.Methods.Propulsors.Converters.Motor.compute_motor_performance                      import *
 from RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance                      import * 

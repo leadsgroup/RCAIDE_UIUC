@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
-from RCAIDE.Library.Components                      import Component
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Combustor.append_combustor_conditions import  append_combustor_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Combustor
 # ---------------------------------------------------------------------------------------------------------------------- 
-class Combustor(Component):
+class Combustor(Converter):
     """
     A combustor component model for gas turbine engines that simulates the combustion process.
 

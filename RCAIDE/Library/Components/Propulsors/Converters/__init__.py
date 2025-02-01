@@ -15,6 +15,7 @@ RCAIDE.Library.Components.Propulsors
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
+from .Converter                                  import Converter
 from .Combustor                                  import Combustor
 from .Compressor                                 import Compressor
 from .Compression_Nozzle                         import Compression_Nozzle 

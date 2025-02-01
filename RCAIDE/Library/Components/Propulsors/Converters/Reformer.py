@@ -9,14 +9,14 @@
 # RCAIDE imports
 import RCAIDE
 from RCAIDE.Framework.Core              import Data
-from RCAIDE.Library.Components          import Component 
+from .Converter  import Converter
 import numpy as np
 import scipy as sp
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Nacalle
 # ----------------------------------------------------------------------------------------------------------------------  
-class Reformer(Component):
+class Reformer(Converter):
     """
  
     """

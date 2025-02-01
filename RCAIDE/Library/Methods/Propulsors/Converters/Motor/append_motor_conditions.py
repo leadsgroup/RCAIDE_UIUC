@@ -10,11 +10,12 @@ from RCAIDE.Framework.Mission.Common     import   Conditions
 # ----------------------------------------------------------------------------------------------------------------------    
 def append_motor_conditions(motor,segment,propulsor_conditions): 
     ones_row    = segment.state.ones_row 
-    propulsor_conditions[motor.tag]            = Conditions()
-    propulsor_conditions[motor.tag].inputs     = Conditions()
-    propulsor_conditions[motor.tag].outputs    = Conditions()
-    propulsor_conditions[motor.tag].torque     = 0. * ones_row(1) 
-    propulsor_conditions[motor.tag].efficiency = 0. * ones_row(1) 
-    propulsor_conditions[motor.tag].current    = 0. * ones_row(1) 
-    propulsor_conditions[motor.tag].voltage    = 0. * ones_row(1) 
+    propulsor_conditions[motor.tag]                         = Conditions()
+    propulsor_conditions[motor.tag].inputs                  = Conditions()
+    propulsor_conditions[motor.tag].outputs                 = Conditions()
+    propulsor_conditions[motor.tag].torque                  = 0. * ones_row(1) 
+    propulsor_conditions[motor.tag].efficiency              = 0. * ones_row(1) 
+    propulsor_conditions[motor.tag].current                 = 0. * ones_row(1) 
+    propulsor_conditions[motor.tag].voltage                 = 0. * ones_row(1)
+    propulsor_conditions[motor.tag].rotor_power_coefficient = 0. * ones_row(1)
     return 

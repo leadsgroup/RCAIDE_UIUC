@@ -16,19 +16,20 @@ from RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor  import Prop_Rot
 #  append_electric_rotor_residual_and_unknown
 # ----------------------------------------------------------------------------------------------------------------------  
 def append_electric_rotor_residual_and_unknown(propulsor,segment):
-    '''
-    
+    ''' 
     appends the torque matching residual and unknown
     '''
     
     ones_row    = segment.state.ones_row
-    rotor   = propulsor.rotor  
-    motor   = propulsor.motor
+    rotor       = propulsor.rotor  
+    motor       = propulsor.motor
     if type(rotor) == Propeller:
         cp_init  = float(rotor.cruise.design_power_coefficient)
     elif (type(rotor) == Lift_Rotor) or (type(rotor) == Prop_Rotor):
         cp_init  = float(rotor.hover.design_power_coefficient)
-            # Run the motor for current
+    else:
+        cp_init  = 0.5
+         
     if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
         segment.state.unknowns[ propulsor.tag + '_current']                    = 50 * ones_row(1)  
     else:

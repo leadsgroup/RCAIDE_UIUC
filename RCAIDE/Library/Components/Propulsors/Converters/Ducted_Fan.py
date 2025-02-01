@@ -9,7 +9,7 @@
 # RCAIDE imports
 import RCAIDE
 from RCAIDE.Framework.Core              import Data
-from RCAIDE.Library.Components          import Component 
+from .Converter                         import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.append_ducted_fan_conditions import  append_ducted_fan_conditions
 import numpy as np
 import scipy as sp
@@ -17,7 +17,7 @@ import scipy as sp
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Nacalle
 # ----------------------------------------------------------------------------------------------------------------------  
-class Ducted_Fan(Component):
+class Ducted_Fan(Converter):
     """
     A ducted fan propulsion system model that simulates the performance of a shrouded fan.
 

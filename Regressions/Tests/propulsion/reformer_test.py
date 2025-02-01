@@ -35,7 +35,7 @@ def main():
     O_C_truth     = [0.011870136164444744]    
     phi_truth     = [4.13667981438515]    
 
-    reformer = design_test_reformer()
+    reformer = RCAIDE.Library.Components.Propulsors.Converters.Reformer()
 
     # set up conditions  
     ctrl_pts = 1
@@ -74,42 +74,7 @@ def main():
     for k,v in list(error.items()):
         assert(np.abs(v)<1e-6) 
                
-    return
-
-def design_test_reformer():
-
-    reformer = RCAIDE.Library.Components.Propulsors.Converters.Reformer()
-
-    reformer.tag          = 'reformer'  
-    # Jet-A parameters
-    reformer.x_H          = 0.1348   # [-]               mass fraction of hydrogen content in Jet-A
-    reformer.x_C          = 0.8637   # [-]               mass fraction of carbon content in Jet-A
-        
-    # Reformate parameters
-    reformer.y_H2         = 0.9      # [mol]             mole fraction of hydrogen content in reformate
-    reformer.y_CO         = 0.3      # [mol]             mole fraxtion of carbon monoxide content in reformate
-    
-    # Reformer parameters
-    reformer.rho_F        = 0.813    # [g/cm**3]         Density of Jet-A
-    reformer.rho_S        = 1        # [g/cm**3]         Density of water
-    reformer.rho_A        = 0.001293 # [g/cm**3]         Density of air
-    reformer.MW_F         = 160      # [g/g-mol]         Average molecular weight of Jet-A    
-    reformer.MW_S         = 18.01    # [g/g-mol]         Average molecular weight of steam
-    reformer.MW_C         = 12.01    # [g/g-mol]         Average molecular weight of carbon
-    reformer.MW_H2        = 2.016    # [g/g-mol]         Average molecular weight of hydrogen
-    reformer.A_F_st_Jet_A = 14.62    # [lb_Air/lb_Jet_A] Stoichiometric air-to-fuel mass ratio 
-    reformer.theta        = 0.074    # [sec**-1]         Contact time
-    reformer.LHV_F        = 43.435   # [kJ/g-mol]        Lower heating value of Jet-A
-    reformer.LHV_H2       = 240.2    # [kJ/g-mol]        Lower heating value of Hydrogen
-    reformer.LHV_CO       = 283.1    # [kJ/g-mol]        Lower heating value of Carbon Monoxide
-    reformer.V_cat        = 9.653    # [cm**3]           Catalyst bed volume
-    reformer.eta          = 0.9      # [-]               Efficiency
-
-    return reformer
-
-# ----------------------------------------------------------------------        
-#   Call Main
-# ----------------------------------------------------------------------    
+    return    
 
 if __name__ == '__main__':
     main()
