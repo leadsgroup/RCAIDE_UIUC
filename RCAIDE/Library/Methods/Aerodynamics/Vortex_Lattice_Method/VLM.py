@@ -255,7 +255,7 @@ def VLM(conditions,settings,geometry):
     EW    = EW_small[inv,:,:]
 
     # Turn off sonic vortices when Mach>1
-    RHS = RHS*RFLAG # this no longer matches dimensions of numpy=1.26
+    RHS = RHS*RFLAG
     
     # To ensure compatibility for np.linalg.solve across numpy1.0 and numpy2.0
     RHS = np.atleast_3d(RHS)
@@ -273,7 +273,8 @@ def VLM(conditions,settings,geometry):
     GAMMA  = np.linalg.solve(A,RHS)
 
     # To ensure compatibility for np.linalg.solve across numpy1.0 and numpy2.0
-    GAMMA  = GAMMA.squeeze() 
+    RHS    = RHS.squeeze(axis=2)
+    GAMMA  = GAMMA.squeeze(axis=2)
 
     # ---------------------------------------------------------------------------------------
     # STEP 11: Compute Pressure Coefficient
