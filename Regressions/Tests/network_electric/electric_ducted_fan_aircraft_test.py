@@ -1,6 +1,5 @@
   
 # Regression/scripts/Tests/network_ducted_fan/electric_ducted_fan_netowrk.py
-# (c) Copyright 2023 Aerospace Research Community LLC
 # 
 # Created:  Jul 2023, M. Clarke 
 
@@ -17,6 +16,7 @@ import numpy as np
 import sys
 import matplotlib.pyplot as plt  
 import os
+
 # local imports 
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles'))
 from NASA_X48    import vehicle_setup as vehicle_setup
