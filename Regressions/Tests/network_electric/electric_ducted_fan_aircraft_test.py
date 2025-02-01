@@ -34,7 +34,7 @@ def main():
     # truth values 
     thrust_truth         = [36.455819245889195,37.653244590335106] # CORRECT MATTEO 
     efficiency_truth     = [145.0992694988849,145.7740091588354]  # CORRECT MATTEO 
-    current_truth         = [73.5454727365098,73.0]  # CORRECT MATTEO  
+    current_truth        = [73.5454727365098,73.0]  # CORRECT MATTEO  
  
     for i in range(len(ducted_fan_type)):  
         # vehicle data
