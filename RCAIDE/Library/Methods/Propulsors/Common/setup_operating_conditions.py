@@ -28,7 +28,7 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     
     if isinstance(compoment, RCAIDE.Library.Components.Propulsors.Converters.Converter):
         # assign generatic propulsor 
-        if type(compoment) == RCAIDE.Library.Components.Propulsors.Converters.Motor:  
+        if type(compoment) == RCAIDE.Library.Components.Propulsors.Converters.DC_Motor:  
             propulsor         = RCAIDE.Library.Components.Propulsors.Electric_Rotor()
             distributor       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
             propulsor.motor   = compoment  

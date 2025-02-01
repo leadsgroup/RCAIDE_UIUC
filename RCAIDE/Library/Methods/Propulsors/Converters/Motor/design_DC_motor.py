@@ -67,7 +67,7 @@ def design_DC_motor(motor):
     motor.speed_constant   = sol.x[0]
     motor.resistance       = sol.x[1]    
     
-    return   
+    return motor  
   
 # objective function
 def objective(x, v , omeg,  etam , Q , io ): 
