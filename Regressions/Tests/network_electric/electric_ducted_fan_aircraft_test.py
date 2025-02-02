@@ -28,18 +28,17 @@ from NASA_X48    import configs_setup as configs_setup
 
 def main():
 
-    regression_flag = False # Keep true for regression on Appveyor
+    regression_flag = True # Keep true for regression on Appveyor
     ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
-    thrust_truth         = [36.455819245889195,37.653244590335106] # CORRECT MATTEO 
-    efficiency_truth     = [145.0992694988849,145.7740091588354]  # CORRECT MATTEO 
-    current_truth        = [73.5454727365098,73.0]  # CORRECT MATTEO  
+    thrust_truth         = [0,1916.544062997636] 
+    efficiency_truth     = [0,0.9597355093209301]  
+    current_truth        = [0,45.954148420171784]  
  
     for i in range(len(ducted_fan_type)):  
         # vehicle data
         vehicle  = vehicle_setup(regression_flag, ducted_fan_type[i]) 
-        
         # Set up vehicle configs
         configs  = configs_setup(vehicle)
     
@@ -59,28 +58,28 @@ def main():
         if ducted_fan_type[i] ==  'Blade_Element_Momentum_Theory':  
             if regression_flag: # if regression skip test since we cannot run DFDC 
                 error = Data()
-                error.current     = 0
-                error.efficiency  = 0
-                error.current     = 0 
+                error.thrust       = 0
+                error.efficiency   = 0
+                error.current      = 0 
             else:  
-                thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy['center_propulsor'].thrust, axis=1)
-                efficiency  =  results.segments.cruise.conditions.conditions.energy['electric_ducted_fan']['ducted_fan'].efficiency
-                current     =  results.segments.cruise.conditions.conditions.energy['electric_ducted_fan']['motor'].current
+                thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1)
+                efficiency  =  results.segments.cruise.conditions.energy['electric_ducted_fan']['ducted_fan'].efficiency
+                current     =  results.segments.cruise.conditions.energy['electric_ducted_fan']['motor'].current
                 
                 error = Data()
-                error.current     = np.max(np.abs(thrust_truth[i]   - thurst[0][0]  ))
-                error.efficiency  = np.max(np.abs(efficiency_truth[i]  - efficiency[0][0] ))
-                error.current     = np.max(np.abs(current_truth[i] - current[0][0]))                 
+                error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0][0]  ))
+                error.efficiency   = np.max(np.abs(efficiency_truth[i]  - efficiency[0][0] ))
+                error.current      = np.max(np.abs(current_truth[i] - current[0][0]))                 
                 
         elif ducted_fan_type[i] ==  'Rankine_Froude_Momentum_Theory':  
-            thurst      =  np.linalg.norm(results.segments.cruise.conditions.conditions.energy['electric_ducted_fan'].thrust, axis=1)
-            efficiency  =  results.segments.cruise.conditions.conditions.energy['electric_ducted_fan']['ducted_fan'].efficiency
-            current     =  results.segments.cruise.conditions.conditions.energy['electric_ducted_fan']['motor'].current
+            thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1)
+            efficiency  =  results.segments.cruise.conditions.energy.starboard_propulsor.motor.efficiency[-1]
+            current     =  results.segments.cruise.conditions.energy.starboard_propulsor.motor.current[-1]
                 
             error = Data()
-            error.current       = np.max(np.abs(thrust_truth[i]   - thurst[0][0]  ))
-            error.efficiency    = np.max(np.abs(efficiency_truth[i]  - efficiency[0][0] ))
-            error.current       = np.max(np.abs(current_truth[i] - current[0][0]))          
+            error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0] ))
+            error.efficiency    = np.max(np.abs(efficiency_truth[i]  - efficiency[0]))
+            error.current       = np.max(np.abs(current_truth[i] - current[0]))          
         
         
         print('Errors:')

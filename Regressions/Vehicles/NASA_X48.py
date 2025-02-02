@@ -203,6 +203,11 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.rotor_percent_x_location          = 0.4
     ducted_fan.stator_percent_x_location         = 0.7
     ducted_fan.cruise.design_thrust              = 60 *  Units.lbs
+    if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
+        ducted_fan.cruise.design_power_coefficient  = 0.44716
+        ducted_fan.fidelity  = ducted_fan_type
+    elif ducted_fan_type == 'Blade_Element_Momentum_Theory':
+        ducted_fan.fidelity  = ducted_fan_type
     ducted_fan.cruise.design_altitude            = 1000    
     ducted_fan.cruise.design_tip_mach            = 0.7
     ducted_fan.cruise.design_angular_velocity    = (ducted_fan.cruise.design_tip_mach *320) /ducted_fan.tip_radius  # 1352 RPM
@@ -230,7 +235,10 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     motor.nominal_voltage                         = bus.voltage
     motor.no_load_current                         = 0.01
     motor.rotor_radius                            = ducted_fan.tip_radius
-    motor.design_torque                           = ducted_fan.cruise.design_torque
+    if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
+        motor.design_torque                       = 1.45
+    elif ducted_fan_type == 'Blade_Element_Momentum_Theory':
+        motor.design_torque                       = ducted_fan.cruise.design_torque
     motor.angular_velocity                        = ducted_fan.cruise.design_angular_velocity 
     design_DC_motor(motor)   
     motor.mass_properties.mass                    = compute_motor_weight(motor) 
