@@ -149,7 +149,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         # Filter out the physical root (real, non-negative values)
         T = [root.real for root in roots if np.isreal(root) and root.real >= 0][0]
     
-        thrust_vector  = np.array([[T, 0.0, 0.0]] * 16)   
+        thrust_vector  = np.array([[T, 0.0, 0.0]] * len(rho))   
         power          = P_EM * np.ones_like(rho)              
         torque         = propulsor.motor.design_torque*np.ones_like(rho)
         
