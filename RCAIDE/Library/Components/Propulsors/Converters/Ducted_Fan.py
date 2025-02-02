@@ -180,8 +180,7 @@ class Ducted_Fan(Converter):
         self.cruise.design_angular_velocity    = None
         self.cruise.design_freestream_velocity = None
         self.cruise.design_reference_velocity  = None 
-        self.cruise.design_freestream_mach     = None
-        self.cruise.design_reference_mach      = None 
+        self.cruise.design_freestream_mach     = None 
         self.duct_airfoil                      = None
         self.hub_airfoil                       = None
       

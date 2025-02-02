@@ -28,7 +28,7 @@ from NASA_X48    import configs_setup as configs_setup
 
 def main():
 
-    regression_flag = True # Keep true for regression on Appveyor
+    regression_flag = False # Keep true for regression on Appveyor
     ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
@@ -63,7 +63,7 @@ def main():
                 error.efficiency  = 0
                 error.current     = 0 
             else:  
-                thurst      =  np.linalg.norm(results.segments.cruise.conditions.conditions.energy['electric_ducted_fan'].thrust, axis=1)
+                thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy['center_propulsor'].thrust, axis=1)
                 efficiency  =  results.segments.cruise.conditions.conditions.energy['electric_ducted_fan']['ducted_fan'].efficiency
                 current     =  results.segments.cruise.conditions.conditions.energy['electric_ducted_fan']['motor'].current
                 

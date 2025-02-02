@@ -48,21 +48,13 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
     atmo_data       = atmosphere.compute_values(ducted_fan.cruise.design_altitude)      
     
     if ducted_fan.cruise.design_freestream_mach == None: 
-        ducted_fan.cruise.design_freestream_mach = ducted_fan.cruise.design_freestream_velocity / atmo_data.speed_of_sound[0,0]     
-    if ducted_fan.cruise.design_reference_mach == None:  
-        ducted_fan.cruise.design_reference_mach = ducted_fan.cruise.design_reference_velocity / atmo_data.speed_of_sound[0,0] 
+        ducted_fan.cruise.design_freestream_mach = ducted_fan.cruise.design_freestream_velocity / atmo_data.speed_of_sound[0,0]  
 
     if ducted_fan.cruise.design_freestream_velocity == None: 
-        ducted_fan.cruise.design_freestream_velocity = ducted_fan.cruise.design_freestream_mach * atmo_data.speed_of_sound[0,0]     
-    if  ducted_fan.cruise.design_reference_velocity== None:  
-        ducted_fan.cruise.design_reference_velocity = ducted_fan.cruise.design_reference_mach * atmo_data.speed_of_sound[0,0]        
+        ducted_fan.cruise.design_freestream_velocity = ducted_fan.cruise.design_freestream_mach * atmo_data.speed_of_sound[0,0]       
     
-    if (ducted_fan.cruise.design_angular_velocity)  == None   and (ducted_fan.cruise.design_tip_mach == None):
-        raise AttributeError('design tip mach and/or angular velocity not set') 
-    if ducted_fan.cruise.design_angular_velocity  == None:  
-        ducted_fan.cruise.design_angular_velocity    = (ducted_fan.cruise.design_tip_mach *atmo_data.speed_of_sound[0,0]) /ducted_fan.tip_radius          
-    if ducted_fan.cruise.design_tip_mach == None:
-        ducted_fan.cruise.design_tip_mach  =  (ducted_fan.cruise.design_angular_velocity * ducted_fan.tip_radius) *atmo_data.speed_of_sound[0,0]
+    if (ducted_fan.cruise.design_angular_velocity)  == None:
+        raise AttributeError('design tip mach and/or angular velocity not set')
         
     dfdc_analysis                                   = Ducted_Fan_Design_Code() 
     dfdc_analysis.geometry                          = ducted_fan

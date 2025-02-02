@@ -217,9 +217,9 @@ def vehicle_setup(regression_flag, ducted_fan_type):
         ducted_fan.append_duct_airfoil(airfoil)  
         airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil()
         airfoil.NACA_4_Series_code                   = '0008'    
-        ducted_fan.append_hub_airfoil(airfoil) 
-        dfdc_bin_name = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'
-        keep_files    =  True 
+        ducted_fan.append_hub_airfoil(airfoil)   
+        dfdc_bin_name                                = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'       
+        keep_files                                   =  True 
         design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files) 
     center_propulsor.ducted_fan                  = ducted_fan   
               
