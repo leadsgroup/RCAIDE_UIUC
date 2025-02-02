@@ -173,12 +173,14 @@ class Ducted_Fan(Converter):
         self.rotor.percent_x_location          = 0.4
         self.stator.percent_x_location         = 0.7
         self.cruise                            = Data()
+        self.climb                             = Data()
         self.cruise.design_thrust              = None
         self.cruise.design_altitude            = None
         self.cruise.design_angular_velocity    = None 
         self.cruise.design_freestream_velocity = None
         self.cruise.design_reference_velocity  = None 
         self.cruise.design_freestream_mach     = None 
+        self.climb.design_freestream_mach      = None 
         self.duct_airfoil                      = None
         self.hub_airfoil                       = None
       

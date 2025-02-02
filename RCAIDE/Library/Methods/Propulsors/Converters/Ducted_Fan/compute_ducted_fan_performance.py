@@ -8,7 +8,7 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports
 import  RCAIDE
-from RCAIDE.Framework.Core                              import Data , Units, orientation_product, orientation_transpose   
+from RCAIDE.Framework.Core                              import Data , Units, orientation_product, orientation_transpose  
 
 # package imports
 import  numpy as  np 
@@ -131,7 +131,10 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         a           = conditions.freestream.speed_of_sound 
         rho         = conditions.freestream.density 
         u0          = conditions.freestream.velocity 
-    
+        propeller_type = 'fixed_pitch'
+
+        eta_p       = compute_efficiency(propulsor, propeller_type, u0)
+        
         # Compute power 
         P_EM        = propulsor.motor.design_torque*propulsor.motor.angular_velocity 
         P_req       = P_EM*eta_p/K_fan
@@ -170,3 +173,56 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     conditions.energy[propulsor.tag][ducted_fan.tag] = outputs   
     
     return  
+
+def compute_efficiency(propulsor, propeller_type, u0,):
+    """
+    Calculate propeller efficiency based on propeller type and velocity.
+    
+    Parameters
+    ----------
+    propeller_type : str
+        Type of propeller ('constant_speed' or 'fixed_pitch')
+    u0 : float
+        Current velocity
+        
+    Returns
+    -------
+    float
+        Calculated propeller efficiency
+    """
+    from RCAIDE.Framework.Core import Units
+    
+    V_y = propulsor.ducted_fan.climb.design_freestream_velocity  # expected best rate-of-climb airspeed
+    V_c = propulsor.ducted_fan.cruise.design_freestream_velocity
+    A0  = 0.0
+
+    if propeller_type == 'constant_speed': 
+        eta_p_y   = 0.8
+        eta_p_opt = 0.88
+        eta_p_hs  = 0.8
+        V_hs      = V_c + 100 * Units.knots
+    elif propeller_type == 'fixed_pitch':
+        eta_p_y   = 0.7
+        eta_p_opt = 0.8
+        eta_p_hs  = 0.7
+        V_hs      = V_c + 50 * Units.knots
+    else:
+        raise ValueError(f"Unknown propeller type: {propeller_type}")
+
+    # Construct the matrix
+    matrix = np.array([
+        [V_y, V_y**2, V_y**3, V_y**4],
+        [V_c, V_c**2, V_c**3, V_c**4],
+        [1, 2*V_c, 3*V_c**2, 4*V_c**3],
+        [V_hs, V_hs**2, V_hs**3, V_hs**4]
+    ])
+
+    rhs = np.array([eta_p_y, eta_p_opt, 0, eta_p_hs])
+    
+    # Solve the system of equations
+    A1, A2, A3, A4 = np.linalg.solve(matrix, rhs)
+
+    # Calculate efficiency using the polynomial
+    eta_p = (A0 + A1*u0[0] + A2*u0[0]**2 + A3*u0[0]**3 + A4*u0[0]**4)[0]
+
+    return eta_p

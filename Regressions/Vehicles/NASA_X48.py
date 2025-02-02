@@ -218,6 +218,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.cruise.design_angular_velocity    = 20000 * Units.rpm
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
     ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph
+    ducted_fan.climb.design_freestream_velocity  = 80 *  Units.mph
     
     if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
         pass
