@@ -57,6 +57,7 @@ modules = [
     'Tests/propulsion/propeller_wing_interaction_test.py', 
     'Tests/propulsion/motor_test.py',
     'Tests/propulsion/reformer_test.py',
+    'Tests/network_electric/electric_ducted_fan_aircraft_test.py',
 ]
 
 def run_module_test(module_path):
