@@ -1,7 +1,14 @@
 # RCAIDE/Library/Methods/Propulsors/Converters/Expansion_Nozzlee/__init__.py
-# (c) Copyright 2023 Aerospace Research Community LLC
 
-""" RCAIDE Package Setup
+"""
+Collection of methods for modeling expansion nozzle performance in propulsion systems. 
+This module provides tools for computing nozzle conditions and performance metrics 
+including thrust, mass flow rates, and efficiencies.
+
+See Also
+--------
+RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle
+RCAIDE.Library.Methods.Propulsors.Converters.Nozzle_Calculations
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
