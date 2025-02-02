@@ -75,7 +75,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     
     segment = RCAIDE.Library.Components.Wings.Segments.Segment() 
     segment.tag                   = 'section_1'
-    segment.percent_span_location = 1.0
+    segment.percent_span_location = 0.0
     segment.twist                 = 3. * Units.deg
     segment.root_chord_percent    = 1.
     segment.dihedral_outboard     = 0. * Units.degrees
@@ -173,7 +173,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     bat.tag                                                = 'li_ion_battery'
     bat.electrical_configuration.series                    = 50  
     bat.electrical_configuration.parallel                  = 5 
-    bat.geometrtic_configuration.normal_count              = 25
+    bat.geometrtic_configuration.normal_count              = 25 
     bat.geometrtic_configuration.parallel_count            = 10
     bus.battery_modules.append(bat)      
     bus.initialize_bus_properties()
@@ -194,23 +194,22 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     # Ducted_fan                            
     ducted_fan                                   = RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan()
     ducted_fan.tag                               = 'ducted_fan'
-    ducted_fan.number_of_rotor_blades            = 12 #22 
+    ducted_fan.number_of_rotor_blades            = 22 
     ducted_fan.number_of_radial_stations         = 20
     ducted_fan.tip_radius                        = 6 * Units.inches  / 2
-    ducted_fan.hub_radius                        = 6* 0.25  * Units.inches /2 
+    ducted_fan.hub_radius                        = 0.25 * ducted_fan.tip_radius 
     ducted_fan.blade_clearance                   = 0.001
     ducted_fan.length                            = 10. * Units.inches
     ducted_fan.rotor_percent_x_location          = 0.4
     ducted_fan.stator_percent_x_location         = 0.7
-    ducted_fan.cruise.design_thrust              = 60 *  Units.lbs
+    ducted_fan.cruise.design_thrust              = 10 *  Units.lbs
     if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
         ducted_fan.cruise.design_power_coefficient  = 0.44716
         ducted_fan.fidelity  = ducted_fan_type
     elif ducted_fan_type == 'Blade_Element_Momentum_Theory':
         ducted_fan.fidelity  = ducted_fan_type
-    ducted_fan.cruise.design_altitude            = 1000    
-    ducted_fan.cruise.design_tip_mach            = 0.7
-    ducted_fan.cruise.design_angular_velocity    = (ducted_fan.cruise.design_tip_mach *320) /ducted_fan.tip_radius  # 1352 RPM
+    ducted_fan.cruise.design_altitude            = 8000  * Units.rpm  
+    ducted_fan.cruise.design_angular_velocity    = 20000 * Units.rpm
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
     ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph
     
@@ -232,8 +231,8 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     motor                                         = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
     motor.efficiency                              = 0.98
     motor.origin                                  = [[2.,  2.5, 0.95]]
-    motor.nominal_voltage                         = bus.voltage
-    motor.no_load_current                         = 0.01
+    motor.nominal_voltage                         = bus.voltage * 0.3 
+    motor.no_load_current                         = 0.001
     motor.rotor_radius                            = ducted_fan.tip_radius
     if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
         motor.design_torque                       = 1.45
@@ -242,9 +241,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     motor.angular_velocity                        = ducted_fan.cruise.design_angular_velocity 
     design_DC_motor(motor)   
     motor.mass_properties.mass                    = compute_motor_weight(motor) 
-    center_propulsor.motor                        = motor 
-   
-    # append propulsor to network
+    center_propulsor.motor                        = motor  
     net.propulsors.append(center_propulsor) 
 
     #------------------------------------------------------------------------------------------------------------------------------------  

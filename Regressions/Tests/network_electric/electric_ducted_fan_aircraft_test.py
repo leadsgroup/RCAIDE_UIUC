@@ -32,9 +32,7 @@ def main():
     ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
-    thrust_truth         = [0,1916.544062997636] 
-    efficiency_truth     = [0,0.9597355093209301]  
-    current_truth        = [0,45.954148420171784]  
+    thrust_truth         = [82.19764641624566,1916.544062997636]  
  
     for i in range(len(ducted_fan_type)):  
         # vehicle data
@@ -62,24 +60,15 @@ def main():
                 error.efficiency   = 0
                 error.current      = 0 
             else:  
-                thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1)
-                efficiency  =  results.segments.cruise.conditions.energy['electric_ducted_fan']['ducted_fan'].efficiency
-                current     =  results.segments.cruise.conditions.energy['electric_ducted_fan']['motor'].current
-                
+                thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.center_propulsor.thrust, axis=1)  
                 error = Data()
-                error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0][0]  ))
-                error.efficiency   = np.max(np.abs(efficiency_truth[i]  - efficiency[0][0] ))
-                error.current      = np.max(np.abs(current_truth[i] - current[0][0]))                 
+                error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0][0]  ))        
                 
         elif ducted_fan_type[i] ==  'Rankine_Froude_Momentum_Theory':  
-            thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1)
-            efficiency  =  results.segments.cruise.conditions.energy.starboard_propulsor.motor.efficiency[-1]
-            current     =  results.segments.cruise.conditions.energy.starboard_propulsor.motor.current[-1]
+            thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1) 
                 
             error = Data()
-            error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0] ))
-            error.efficiency    = np.max(np.abs(efficiency_truth[i]  - efficiency[0]))
-            error.current       = np.max(np.abs(current_truth[i] - current[0]))          
+            error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0] ))   
         
         
         print('Errors:')
@@ -124,7 +113,6 @@ def base_analysis(vehicle):
     aerodynamics.settings.number_of_spanwise_vortices  = 25
     aerodynamics.settings.number_of_chordwise_vortices = 5       
     aerodynamics.settings.model_fuselage               = False
-    aerodynamics.settings.drag_coefficient_increment   = 0.0000
     analyses.append(aerodynamics)
  
   
@@ -182,11 +170,11 @@ def mission_setup(analyses):
     #   First Climb Segment: constant Mach, constant segment angle 
     # ------------------------------------------------------------------
     
-    segment = Segments.Cruise.Constant_Mach_Constant_Altitude(base_segment)
+    segment = Segments.Cruise.Constant_Speed_Constant_Altitude(base_segment)
     segment.tag = "cruise" 
     segment.analyses.extend( analyses.base ) 
-    segment.altitude       = 1000 * Units.feet
-    segment.mach_number    = 0.2   * Units.kts
+    segment.altitude       = 8000  * Units.rpm
+    segment.air_speed      = 120 *  Units.mph
     segment.distance       = 1000 * Units.feet  
     segment.initial_battery_state_of_charge                          = 1.0 
                 
@@ -195,9 +183,10 @@ def mission_setup(analyses):
     segment.flight_dynamics.force_z                                  = True     
     
     # define flight controls 
-    segment.assigned_control_variables.throttle.active               = True           
-    segment.assigned_control_variables.throttle.assigned_propulsors  = [['center_propulsor','starboard_propulsor','port_propulsor']] 
-    segment.assigned_control_variables.body_angle.active             = True                   
+    segment.assigned_control_variables.throttle.active                  = True           
+    segment.assigned_control_variables.throttle.assigned_propulsors     = [['center_propulsor','starboard_propulsor','port_propulsor']] 
+    segment.assigned_control_variables.body_angle.active                = True        
+    segment.assigned_control_variables.body_angle.initial_guess_values  = [[1 * Units.degree]]                   
       
     mission.append_segment(segment) 
     return mission

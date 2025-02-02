@@ -94,9 +94,6 @@ class Ducted_Fan(Converter):
 
         - design_freestream_mach : float
             Design Mach number. Default is None.
-
-        - design_reference_mach : float
-            Design reference Mach number. Default is None.
             
     duct_airfoil : Data
         Duct aerodynamic surface data. Default is empty Data().
@@ -177,7 +174,7 @@ class Ducted_Fan(Converter):
         self.cruise                            = Data()
         self.cruise.design_thrust              = None
         self.cruise.design_altitude            = None
-        self.cruise.design_angular_velocity    = None
+        self.cruise.design_angular_velocity    = None 
         self.cruise.design_freestream_velocity = None
         self.cruise.design_reference_velocity  = None 
         self.cruise.design_freestream_mach     = None 

@@ -47,13 +47,13 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     N.A.        
     ''' 
     conditions                 = state.conditions    
-    ducted_fan_conditions      = conditions.energy[propulsor.tag] 
+    edf_conditions             = conditions.energy[propulsor.tag] 
     motor                      = propulsor.motor 
     ducted_fan                 = propulsor.ducted_fan 
     esc                        = propulsor.electronic_speed_controller  
-    esc_conditions             = ducted_fan_conditions[esc.tag]
-    motor_conditions           = ducted_fan_conditions[motor.tag]
-    ducted_fan_conditions      = ducted_fan_conditions[ducted_fan.tag]
+    esc_conditions             = edf_conditions[esc.tag]
+    motor_conditions           = edf_conditions[motor.tag]
+    ducted_fan_conditions      = edf_conditions[ducted_fan.tag]
     eta                        = conditions.energy[propulsor.tag].throttle
     
     esc_conditions.inputs.voltage   = voltage
@@ -84,12 +84,12 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     stored_propulsor_tag           = propulsor.tag 
     
     # compute total forces and moments from propulsor (future work would be to add moments from motors)
-    ducted_fan_conditions.thrust      = conditions.energy[propulsor.tag][ducted_fan.tag].thrust 
-    ducted_fan_conditions.moment      = conditions.energy[propulsor.tag][ducted_fan.tag].moment 
+    edf_conditions.thrust      = conditions.energy[propulsor.tag][ducted_fan.tag].thrust  
+    edf_conditions.moment      = conditions.energy[propulsor.tag][ducted_fan.tag].moment 
     
-    T  = conditions.energy[propulsor.tag][ducted_fan.tag].thrust 
-    M  = conditions.energy[propulsor.tag][ducted_fan.tag].moment 
-    P  = conditions.energy[propulsor.tag][esc.tag].power 
+    T  = edf_conditions.thrust 
+    M  = edf_conditions.moment 
+    P  = conditions.energy[propulsor.tag][esc.tag].power
     
     return T,M,P, stored_results_flag,stored_propulsor_tag 
                 
