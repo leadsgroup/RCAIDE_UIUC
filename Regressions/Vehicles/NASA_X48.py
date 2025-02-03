@@ -206,10 +206,10 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.stator_percent_x_location         = 0.7
     ducted_fan.fidelity                          = ducted_fan_type  
     ducted_fan.cruise.design_thrust              = 10 *  Units.lbs 
-    ducted_fan.cruise.design_altitude            = 8000  * Units.ft
-    ducted_fan.cruise.design_angular_velocity    = (1.4* 320) /  ducted_fan.tip_radius
-    ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
-    ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph 
+    ducted_fan.cruise.design_altitude            = 5000  * Units.ft
+    ducted_fan.cruise.design_angular_velocity    = (0.9* 339.709) /  ducted_fan.tip_radius
+    ducted_fan.cruise.design_freestream_velocity = 90 *  Units.mph
+    ducted_fan.cruise.design_reference_velocity  = 90 *  Units.mph 
      
     if ducted_fan_type == 'Blade_Element_Momentum_Theory':
         airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil() 
@@ -218,11 +218,9 @@ def vehicle_setup(regression_flag, ducted_fan_type):
         airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil()
         airfoil.NACA_4_Series_code                   = '0008'    
         ducted_fan.append_hub_airfoil(airfoil)   
-        dfdc_bin_name                                = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'       
-        keep_files                                   =  True 
+        dfdc_bin_name                                = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'  
     else:
-        dfdc_bin_name                                = 'dfdc'
-        keep_files                                   =  True
+        dfdc_bin_name                                = 'dfdc' 
     design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files = True) 
     center_propulsor.ducted_fan                  = ducted_fan    
               
@@ -230,7 +228,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     motor                                         = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
     motor.efficiency                              = 0.98
     motor.origin                                  = [[2.,  2.5, 0.95]]
-    motor.nominal_voltage                         = bus.voltage * 0.3 
+    motor.nominal_voltage                         = bus.voltage  
     motor.no_load_current                         = 0.001
     motor.rotor_radius                            = ducted_fan.tip_radius
     motor.design_torque                           = ducted_fan.cruise.design_torque

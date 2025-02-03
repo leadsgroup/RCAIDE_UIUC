@@ -53,7 +53,8 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
         epsilon_d = A_exit/A_R
         atmo      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
         rho       = atmo.compute_values(ducted_fan.cruise.design_altitude,0.).density 
-                # get propulsive efficiency 
+        
+        # get propulsive efficiency 
         C_p, C_t, eta_p = compute_ducted_fan_efficiency(ducted_fan, V, omega)
 
         if ducted_fan.cruise.design_thrust == None  and ducted_fan.cruise.design_power != None:
@@ -80,11 +81,11 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
         else:
             raise AttributeError('design thrust or power not set')
 
-        Q    = (P_EM / omega)[0]
+        Q    = (P_EM / omega) 
                 
-        ducted_fan.cruise.design_power              = P_EM
+        ducted_fan.cruise.design_power              = P_EM[0,0]
         ducted_fan.cruise.design_efficiency         = eta_p 
-        ducted_fan.cruise.design_torque             = Q
+        ducted_fan.cruise.design_torque             = Q[0,0]
         ducted_fan.cruise.design_thrust_coefficient = C_t  
         ducted_fan.cruise.design_power_coefficient  = C_p 
 

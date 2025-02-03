@@ -65,13 +65,11 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     compute_motor_performance(motor,motor_conditions,conditions) 
     
     # Spin the ducted_fan 
-    ducted_fan_conditions.torque             = motor_conditions.torque
+    #ducted_fan_conditions.torque             = motor_conditions.torque
     ducted_fan_conditions.omega              = motor_conditions.omega
-    ducted_fan_conditions.power              = motor_conditions.torque*motor_conditions.omega
+    ducted_fan_conditions.suppled_motor_power  = motor_conditions.power
     ducted_fan_conditions.tip_mach           = (motor_conditions.omega * ducted_fan.tip_radius) / conditions.freestream.speed_of_sound
-    ducted_fan_conditions.throttle           = esc_conditions.throttle
-    ducted_fan_conditions.operating_altitude = conditions.freestream.altitude
-    ducted_fan_conditions.inflow_velocity    = conditions.freestream.velocity 
+    ducted_fan_conditions.throttle           = esc_conditions.throttle 
     compute_ducted_fan_performance(propulsor,state,center_of_gravity)   
     
     # Detemine esc current 

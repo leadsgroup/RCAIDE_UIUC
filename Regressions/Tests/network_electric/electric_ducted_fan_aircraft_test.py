@@ -171,8 +171,8 @@ def mission_setup(analyses):
     segment = Segments.Cruise.Constant_Speed_Constant_Altitude(base_segment)
     segment.tag = "cruise" 
     segment.analyses.extend( analyses.base ) 
-    segment.altitude       = 8000  * Units.rpm
-    segment.air_speed      = 120 *  Units.mph
+    segment.altitude       = 5000  * Units.rpm
+    segment.air_speed      = 90 *  Units.mph
     segment.distance       = 1000 * Units.feet  
     segment.initial_battery_state_of_charge                          = 1.0 
                 
@@ -183,6 +183,7 @@ def mission_setup(analyses):
     # define flight controls 
     segment.assigned_control_variables.throttle.active                  = True           
     segment.assigned_control_variables.throttle.assigned_propulsors     = [['center_propulsor','starboard_propulsor','port_propulsor']] 
+    segment.assigned_control_variables.throttle.initial_guess_values    = [[1]]    
     segment.assigned_control_variables.body_angle.active                = True        
     segment.assigned_control_variables.body_angle.initial_guess_values  = [[1 * Units.degree]]                   
       

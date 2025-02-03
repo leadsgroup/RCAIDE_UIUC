@@ -152,9 +152,10 @@ def compute_motor_performance(motor,motor_conditions,conditions):
         Q = ((v-omega /KV)/Res -I0)/KV 
         I    = (v-(omega*G)/KV)/Res 
          
-        motor_conditions.torque  = Q
-        motor_conditions.omega   = omega  
+        motor_conditions.torque     = Q
+        motor_conditions.omega      = omega  
         motor_conditions.current    = I
+        motor_conditions.power      = omega *Q 
         motor_conditions.efficiency = (1-I0/I)*(1-I*Res/v) 
      
     return

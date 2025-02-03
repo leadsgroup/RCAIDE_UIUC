@@ -40,30 +40,28 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     propulsor_conditions  = conditions.energy[propulsor.tag]
     commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
     ducted_fan_conditions = propulsor_conditions[ducted_fan.tag]
+
+    a              = conditions.freestream.speed_of_sound 
+    rho            = conditions.freestream.density 
+    V              = conditions.freestream.velocity 
+    alt            = conditions.freestream.altitude 
+    omega          = ducted_fan_conditions.omega      
     
     if ducted_fan.fidelity == 'Blade_Element_Momentum_Theory': 
                       
-        altitude  = conditions.freestream.altitude / 1000
-        a         = conditions.freestream.speed_of_sound
-        
-        omega = ducted_fan_conditions.omega 
-        n     = omega/(2.*np.pi)   # Rotations per second
-        D     = ducted_fan.tip_radius * 2
-        A     = 0.25 * np.pi * (D ** 2)
-        
-        # Unpack freestream conditions
-        rho     = conditions.freestream.density[:,0,None] 
-        Vv      = conditions.frames.inertial.velocity_vector 
-    
+        altitude  = alt/ 1000   
+        n         = omega/(2.*np.pi)   # Rotations per second
+        D         = ducted_fan.tip_radius * 2
+        A         = 0.25 * np.pi * (D ** 2)  
         # Number of radial stations and segment control point
         B        = ducted_fan.number_of_rotor_blades
         Nr       = ducted_fan.number_of_radial_stations
-        ctrl_pts = len(Vv)
+        ctrl_pts = len(V)
          
         # Velocity in the rotor frame
         T_body2inertial         = conditions.frames.body.transform_to_inertial
         T_inertial2body         = orientation_transpose(T_body2inertial)
-        V_body                  = orientation_product(T_inertial2body,Vv)
+        V_body                  = orientation_product(T_inertial2body,V)
         body2thrust,orientation = ducted_fan.body_to_prop_vel(commanded_TV) 
         T_body2thrust           = orientation_transpose(np.ones_like(T_body2inertial[:])*body2thrust)
         V_thrust                = orientation_product(T_body2thrust,V_body)
@@ -127,32 +125,23 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         A_exit         = np.pi*ducted_fan.exit_radius**2
         A_R            = np.pi*(ducted_fan.tip_radius**2)
         epsilon_d      = A_exit/A_R
-        a              = conditions.freestream.speed_of_sound 
-        rho            = conditions.freestream.density 
-        V              = conditions.freestream.velocity 
-        omega          = ducted_fan_conditions.omega  
+        
         Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
         
-        # Compute power 
-        P_EM        = propulsor.motor.design_torque*propulsor.motor.angular_velocity 
-        P_req       = P_EM*eta_p/K_fan
-    
-        # Coefficients of the cubic equation
+        # Compute power  
+        P_req       = ducted_fan_conditions.suppled_motor_power*eta_p/K_fan
+        
+        # solving for Thrust
         a = 1 / (4 * rho * A_R * epsilon_d)
         b = -(1/2)*((V) ** 2)
         c = +(3/2)*(V)*P_req
-        d = -P_req**2
-    
-        # Use numpy.roots to solve the cubic equation
+        d = -P_req**2 
         coefficients = [float(a[0]), float(b[0]), float(c[0]), float(d[0])]
-        roots = np.roots(coefficients)
+        roots = np.roots(coefficients) 
+        T = [root.real for root in roots if np.isreal(root) and root.real >= 0][0]
     
-        # Filter out the physical root (real, non-negative values)
-        T = [root.real for root in roots if np.isreal(root) and root.real >= 0][-1]
-    
-        thrust_vector  = np.array([[T, 0.0, 0.0]] * len(rho))   
-        power          = P_EM * np.ones_like(rho)              
-        torque         = propulsor.motor.design_torque*np.ones_like(rho)
+        thrust_vector  = np.array([[T, 0.0, 0.0]] * len(rho))             
+        torque         = power /omega # propulsor.motor.design_torque*np.ones_like(rho)
         
         # Compute moment 
         moment_vector         = np.zeros((3))
