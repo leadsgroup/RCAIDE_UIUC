@@ -82,9 +82,9 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
 
         Q    = (P_EM / omega)[0][0]
                 
-        ducted_fan.cruise.design_power              = P_EM[0][0]
+        ducted_fan.cruise.design_power              = P_EM 
         ducted_fan.cruise.design_efficiency         = eta_p 
-        ducted_fan.cruise.design_torque             = Q[0][0]
+        ducted_fan.cruise.design_torque             = Q 
         ducted_fan.cruise.design_thrust_coefficient = C_t  
         ducted_fan.cruise.design_power_coefficient  = C_p 
 
