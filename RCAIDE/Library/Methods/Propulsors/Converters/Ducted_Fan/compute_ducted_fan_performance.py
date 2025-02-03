@@ -40,28 +40,30 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     propulsor_conditions  = conditions.energy[propulsor.tag]
     commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
     ducted_fan_conditions = propulsor_conditions[ducted_fan.tag]
-
-    a              = conditions.freestream.speed_of_sound 
-    rho            = conditions.freestream.density 
-    V              = conditions.freestream.velocity 
-    alt            = conditions.freestream.altitude 
-    omega          = ducted_fan_conditions.omega      
     
     if ducted_fan.fidelity == 'Blade_Element_Momentum_Theory': 
                       
-        altitude  = alt/ 1000   
-        n         = omega/(2.*np.pi)   # Rotations per second
-        D         = ducted_fan.tip_radius * 2
-        A         = 0.25 * np.pi * (D ** 2)  
+        altitude  = conditions.freestream.altitude / 1000
+        a         = conditions.freestream.speed_of_sound
+        
+        omega = ducted_fan_conditions.omega 
+        n     = omega/(2.*np.pi)   # Rotations per second
+        D     = ducted_fan.tip_radius * 2
+        A     = 0.25 * np.pi * (D ** 2)
+        
+        # Unpack freestream conditions
+        rho     = conditions.freestream.density[:,0,None] 
+        Vv      = conditions.frames.inertial.velocity_vector 
+    
         # Number of radial stations and segment control point
         B        = ducted_fan.number_of_rotor_blades
         Nr       = ducted_fan.number_of_radial_stations
-        ctrl_pts = len(V)
+        ctrl_pts = len(Vv)
          
         # Velocity in the rotor frame
         T_body2inertial         = conditions.frames.body.transform_to_inertial
         T_inertial2body         = orientation_transpose(T_body2inertial)
-        V_body                  = orientation_product(T_inertial2body,V)
+        V_body                  = orientation_product(T_inertial2body,Vv)
         body2thrust,orientation = ducted_fan.body_to_prop_vel(commanded_TV) 
         T_body2thrust           = orientation_transpose(np.ones_like(T_body2inertial[:])*body2thrust)
         V_thrust                = orientation_product(T_body2thrust,V_body)
@@ -125,23 +127,22 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         A_exit         = np.pi*ducted_fan.exit_radius**2
         A_R            = np.pi*(ducted_fan.tip_radius**2)
         epsilon_d      = A_exit/A_R
+        a              = conditions.freestream.speed_of_sound 
+        rho            = conditions.freestream.density 
+        V              = conditions.freestream.velocity 
+        omega          = ducted_fan_conditions.omega  
+        n, D, J, Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
         
-        Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
-        
-        # Compute power  
-        P_req       = ducted_fan_conditions.suppled_motor_power*eta_p/K_fan
-        
-        # solving for Thrust
-        a = 1 / (4 * rho * A_R * epsilon_d)
-        b = -(1/2)*((V) ** 2)
-        c = +(3/2)*(V)*P_req
-        d = -P_req**2 
-        coefficients = [float(a[0]), float(b[0]), float(c[0]), float(d[0])]
-        roots = np.roots(coefficients) 
-        T = [root.real for root in roots if np.isreal(root) and root.real >= 0][0]
+        # Compute Thrust
+        T              = Ct * rho * (V**2)*(D**2)
+
+        # Compute power 
+        P              = (3/4)*T*V + np.sqrt(((T**2)*(V**2))/16 + (T**3/(4*rho*A_R*epsilon_d))) # Cp * rho * (n**3)*(D**5)
+        P_EM           = P*K_fan/eta_p
     
-        thrust_vector  = np.array([[T, 0.0, 0.0]] * len(rho))             
-        torque         = power /omega # propulsor.motor.design_torque*np.ones_like(rho)
+        thrust_vector  = T  
+        power          = P_EM             
+        torque         = P_EM/omega
         
         # Compute moment 
         moment_vector         = np.zeros((3))
@@ -205,4 +206,4 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
 
     eta_p = a_etap + b_etap*J + c_etap*J**2 + d_etap*J**3 + e_etap*J**4
 
-    return Cp, Ct, eta_p
+    return n, D, J, Cp, Ct, eta_p

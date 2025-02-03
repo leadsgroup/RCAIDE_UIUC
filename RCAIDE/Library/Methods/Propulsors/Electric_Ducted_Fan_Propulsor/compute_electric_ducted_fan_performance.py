@@ -129,7 +129,9 @@ def reuse_stored_electric_ducted_fan_data(propulsor,state,network,stored_propuls
     conditions.energy[propulsor.tag][ducted_fan.tag]   = deepcopy(conditions.energy[stored_propulsor_tag][ducted_fan_0.tag])
     conditions.energy[propulsor.tag][esc.tag]          = deepcopy(conditions.energy[stored_propulsor_tag][esc_0.tag])
   
-    thrust                  = conditions.energy[propulsor.tag][ducted_fan.tag].thrust 
+    thrust                  = 0*state.ones_row(3)
+    thrust_var              = conditions.energy[propulsor.tag][ducted_fan.tag].thrust 
+    thrust[:,0]             = thrust_var.flatten()
     power                   = conditions.energy[propulsor.tag][esc.tag].power 
     
     moment_vector           = 0*state.ones_row(3) 
