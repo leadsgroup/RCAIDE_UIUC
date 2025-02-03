@@ -207,8 +207,13 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
     e_Ct = ducted_fan.Ct_polynomial_coefficients[4]
 
     Ct = a_Ct + b_Ct*J + c_Ct*J**2 + d_Ct*J**3 + e_Ct*J**4
-     
-    # create polynominal
-    eta_p = J*(Cp/Ct)
+
+    a_etap = ducted_fan.etap_polynomial_coefficients[0]  
+    b_etap = ducted_fan.etap_polynomial_coefficients[1]  
+    c_etap = ducted_fan.etap_polynomial_coefficients[2]
+    d_etap = ducted_fan.etap_polynomial_coefficients[3]
+    e_etap = ducted_fan.etap_polynomial_coefficients[4]
+
+    eta_p = a_etap + b_etap*J + c_etap*J**2 + d_etap*J**3 + e_etap*J**4
 
     return Cp, Ct, eta_p
