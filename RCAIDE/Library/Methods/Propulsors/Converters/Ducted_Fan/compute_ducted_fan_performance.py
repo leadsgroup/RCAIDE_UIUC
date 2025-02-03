@@ -131,28 +131,18 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         rho            = conditions.freestream.density 
         V              = conditions.freestream.velocity 
         omega          = ducted_fan_conditions.omega  
-        Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
+        n, D, J, Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
         
+        # Compute Thrust
+        T              = Ct * rho * (V**2)*(D**2)
+
         # Compute power 
-        P_EM        = propulsor.motor.design_torque*propulsor.motor.angular_velocity 
-        P_req       = P_EM*eta_p/K_fan
+        P              = (3/4)*T*V + np.sqrt(((T**2)*(V**2))/16 + (T**3/(4*rho*A_R*epsilon_d))) # Cp * rho * (n**3)*(D**5)
+        P_EM           = P*K_fan/eta_p
     
-        # Coefficients of the cubic equation
-        a = 1 / (4 * rho * A_R * epsilon_d)
-        b = -(1/2)*((V) ** 2)
-        c = +(3/2)*(V)*P_req
-        d = -P_req**2
-    
-        # Use numpy.roots to solve the cubic equation
-        coefficients = [float(a[0]), float(b[0]), float(c[0]), float(d[0])]
-        roots = np.roots(coefficients)
-    
-        # Filter out the physical root (real, non-negative values)
-        T = [root.real for root in roots if np.isreal(root) and root.real >= 0][-1]
-    
-        thrust_vector  = np.array([[T, 0.0, 0.0]] * len(rho))   
-        power          = P_EM * np.ones_like(rho)              
-        torque         = propulsor.motor.design_torque*np.ones_like(rho)
+        thrust_vector  = T  
+        power          = P_EM             
+        torque         = P_EM/omega
         
         # Compute moment 
         moment_vector         = np.zeros((3))
@@ -216,4 +206,4 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
 
     eta_p = a_etap + b_etap*J + c_etap*J**2 + d_etap*J**3 + e_etap*J**4
 
-    return Cp, Ct, eta_p
+    return n, D, J, Cp, Ct, eta_p
