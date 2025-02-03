@@ -1,11 +1,14 @@
-# RCAIDE/Library/Methods/Weights/Correlation_Buildups/Transport/operating_empty_weight.py
+# RCAIDE/Library/Methods/Weights/Correlation_Buildups/Transport/Raymer/operating_empty_weight.py
 # 
 # Created: Sep 2024, M. Clarke 
+# Modifed:  Feb 2025, A. Molloy, S. Shekar
+
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Imports
 # ----------------------------------------------------------------------------------------------------------------------
 import RCAIDE
+import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Raymer as Raymer
 from RCAIDE.Framework.Core import Data, Units
 from RCAIDE.Library.Attributes.Materials.Aluminum import Aluminum
 
@@ -15,7 +18,7 @@ import numpy as np
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Operating Empty Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE'):
+def compute_operating_empty_weight(vehicle, settings=None):
     """
     """
     
@@ -47,7 +50,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     
     Wings = RCAIDE.Library.Components.Wings  
     
-    payload = Common.compute_payload_weight(vehicle)
+    payload = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Common.compute_payload_weight(vehicle) 
     
     
     vehicle.payload.passengers                      = RCAIDE.Library.Components.Component()
@@ -65,15 +68,12 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     ##-------------------------------------------------------------------------------             
     # Operating Items Weight
     ##------------------------------------------------------------------------------- 
-    W_oper = Transport.compute_operating_items_weight(vehicle)  
+    W_oper = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Common.compute_operating_items_weight(vehicle)  # TO ADD
 
     ##-------------------------------------------------------------------------------         
     # System Weight
     ##------------------------------------------------------------------------------- 
-    if method_type == 'Raymer':
-        W_systems = Raymer.compute_systems_weight(vehicle)
-    else:
-        W_systems = Common.compute_systems_weight(vehicle)
+    W_systems = Raymer.compute_systems_weight(vehicle)
         
     for item in W_systems.keys():
         W_systems[item] *= (1. - W_factors.systems)
@@ -108,33 +108,19 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     for network in vehicle.networks: 
         W_energy_network_total   = 0 
         # Fuel-Powered Propulsors  
-    
-        if method_type == 'Raymer':
-            W_propulsion                        = Raymer.compute_propulsion_system_weight(vehicle, network) 
-            W_energy_network_total              += W_propulsion.W_prop 
-            W_energy_network.W_engine           += W_propulsion.W_engine
-            W_energy_network.W_thrust_reverser  += W_propulsion.W_thrust_reverser
-            W_energy_network.W_engine_controls  += W_propulsion.W_engine_controls
-            W_energy_network.W_starter          += W_propulsion.W_starter
-            W_energy_network.W_fuel_system      += W_propulsion.W_fuel_system 
-            W_energy_network.W_nacelle          += W_propulsion.W_nacelle    
-            number_of_engines                   += W_propulsion.number_of_engines
-            number_of_tanks                     += W_propulsion.number_of_fuel_tanks
-            for propulsor in network.propulsors:
-                propulsor.mass_properties.mass = W_energy_network_total / number_of_engines
-        else:
-            number_of_tanks = 0
-            for fuel_line in  network.fuel_lines: 
-                for fuel_tank in fuel_line.fuel_tanks:
-                    number_of_tanks +=  1
-            for propulsor in network.propulsors:
-                if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan):
-                    thrust_sls                     = propulsor.sealevel_static_thrust  
-                    W_engine_jet                   = Propulsion.compute_jet_engine_weight(thrust_sls)
-                    total_propulsor_mass           = Propulsion.integrated_propulsion(W_engine_jet) 
-                    propulsor.mass_properties.mass = total_propulsor_mass 
-                    W_energy_network_total         += total_propulsor_mass 
-                    number_of_engines += 1             
+   
+        W_propulsion                        = Raymer.compute_propulsion_system_weight(vehicle, network) 
+        W_energy_network_total              += W_propulsion.W_prop 
+        W_energy_network.W_engine           += W_propulsion.W_engine
+        W_energy_network.W_thrust_reverser  += W_propulsion.W_thrust_reverser
+        W_energy_network.W_engine_controls  += W_propulsion.W_engine_controls
+        W_energy_network.W_starter          += W_propulsion.W_starter
+        W_energy_network.W_fuel_system      += W_propulsion.W_fuel_system 
+        W_energy_network.W_nacelle          += W_propulsion.W_nacelle    
+        number_of_engines                   += W_propulsion.number_of_engines
+        number_of_tanks                     += W_propulsion.number_of_fuel_tanks
+        for propulsor in network.propulsors:
+            propulsor.mass_properties.mass = W_energy_network_total / number_of_engines
                  
         # Electric-Powered Propulsors  
         for bus in network.busses: 
@@ -183,10 +169,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     
     for wing in vehicle.wings:
         if isinstance(wing, Wings.Main_Wing): 
-            if method_type == 'Raymer':
-                W_wing = Raymer.compute_main_wing_weight(vehicle, wing) 
-            else:
-                W_wing = Common.compute_main_wing_weight(vehicle, wing, Al_rho, Al_sigma) 
+            W_wing = Raymer.compute_main_wing_weight(vehicle, wing) 
             # Apply weight factor
             W_wing = W_wing * (1. - W_factors.main_wing) * (1. - W_factors.structural)
             if np.isnan(W_wing):
@@ -194,10 +177,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
             wing.mass_properties.mass = W_wing
             W_main_wing += W_wing
         if isinstance(wing, Wings.Horizontal_Tail):
-            if method_type == 'Raymer':
-                W_tail = Raymer.compute_horizontal_tail_weight(vehicle, wing)
-            else:
-                W_tail = Transport.compute_horizontal_tail_weight(vehicle, wing)
+            W_tail = Raymer.compute_horizontal_tail_weight(vehicle, wing)
             if type(W_tail) == np.ndarray:
                 W_tail = sum(W_tail)
             # Apply weight factor
@@ -206,11 +186,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
             wing.mass_properties.mass = W_tail
             W_tail_horizontal += W_tail
         if isinstance(wing, Wings.Vertical_Tail):
-        
-            if method_type == 'Raymer':
-                W_tail = Raymer.compute_vertical_tail_weight(vehicle, wing)
-            else:
-                W_tail = Transport.compute_vertical_tail_weight(vehicle, wing)
+            W_tail = Raymer.compute_vertical_tail_weight(vehicle, wing)
             # Apply weight factor
             W_tail = W_tail * (1. - W_factors.empennage) * (1. - W_factors.structural)
             # Pack and sum
@@ -222,10 +198,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     ##------------------------------------------------------------------------------- 
     W_fuselage_total = 0
     for fuse in vehicle.fuselages:
-        if method_type == 'Raymer':
-            W_fuselage = Raymer.compute_fuselage_weight(vehicle, fuse, settings)
-        else:
-            W_fuselage = Transport.compute_fuselage_weight(vehicle, fuse, W_main_wing, W_energy_network_cumulative)
+        W_fuselage = Raymer.compute_fuselage_weight(vehicle, fuse, settings)
         W_fuselage = W_fuselage * (1. - W_factors.fuselage) * (1. - W_factors.structural)
         fuse.mass_properties.mass = W_fuselage
         W_fuselage_total += W_fuselage
@@ -233,10 +206,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     ##-------------------------------------------------------------------------------                 
     # Landing Gear Weight
     ##------------------------------------------------------------------------------- 
-    if method_type == 'Raymer':
-        landing_gear = Raymer.compute_landing_gear_weight(vehicle)
-    else:
-        landing_gear =  Common.compute_landing_gear_weight(vehicle) 
+    landing_gear = Raymer.compute_landing_gear_weight(vehicle)
     
     ##-------------------------------------------------------------------------------                 
     # Accumulate Structural Weight

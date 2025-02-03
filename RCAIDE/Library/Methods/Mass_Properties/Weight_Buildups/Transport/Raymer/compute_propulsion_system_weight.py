@@ -10,8 +10,7 @@
 # RCAIDE 
 import  RCAIDE 
 from RCAIDE.Framework.Core    import Units, Data
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups.FLOPS.compute_propulsion_system_weight import compute_engine_weight
-
+from RCAIDE.Library.Methods.Propulsors.Common import compute_static_sea_level_performance
 # python imports 
 import  numpy as  np
  
@@ -52,6 +51,7 @@ def compute_propulsion_system_weight(vehicle,network):
     """
 
     NENG    =  0 
+    WENG    =  0
     number_of_tanks =  0
     for network in  vehicle.networks:
         for fuel_line in network.fuel_lines:
@@ -60,16 +60,18 @@ def compute_propulsion_system_weight(vehicle,network):
             for propulsor in network.propulsors:
                 if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
                     ref_propulsor = propulsor  
-                    NENG  += 1 
+                    NENG  += 1
+                    BPR =  propulsor.bypass_ratio
+                    compute_static_sea_level_performance(propulsor)
+                    WENG   += 0.084 *  propulsor.sealevel_static_thrust **1.1 * np.exp(-0.045*BPR) # Raymer 3rd Edition eq. 10.4 
                 if 'nacelle' in propulsor:
                     ref_nacelle =  propulsor.nacelle 
                     
     WFSYS           = compute_fuel_system_weight(vehicle, NENG)
-    WENG            = compute_engine_weight(vehicle,ref_propulsor)
     WNAC            = compute_nacelle_weight(vehicle,ref_nacelle, NENG, WENG)
     WEC, WSTART     = compute_misc_engine_weight(vehicle,NENG, WENG)
     WTHR            = 0
-    WPRO            = NENG * WENG + WFSYS + WEC + WSTART + WTHR + WNAC
+    WPRO            = WENG + WFSYS + WEC + WSTART + WTHR + WNAC
 
     output                      = Data()
     output.W_prop               = WPRO
@@ -78,7 +80,7 @@ def compute_propulsion_system_weight(vehicle,network):
     output.W_engine_controls    = WEC
     output.W_fuel_system        = WFSYS
     output.W_nacelle            = WNAC
-    output.W_engine             = WENG * NENG
+    output.W_engine             = WENG 
     output.number_of_engines    = NENG
     output.number_of_fuel_tanks = number_of_tanks  
     return output
@@ -109,10 +111,10 @@ def compute_nacelle_weight(vehicle,ref_nacelle, NENG, WENG):
     Kng             = 1.017 # assuming the engine is pylon mounted
     Nlt             = ref_nacelle.length / Units.ft
     Nw              = ref_nacelle.diameter / Units.ft
-    Wec             = 2.331 * WENG ** 0.901 * 1.18 
+    Wec             = 2.331 * WENG ** 0.901 * 1.18
     Sn              = 2 * np.pi * Nw/2 * Nlt + np.pi * Nw**2/4 * 2
     WNAC            = 0.6724 * Kng * Nlt ** 0.1 * Nw ** 0.294 * vehicle.flight_envelope.ultimate_load ** 0.119 \
-                      * Wec ** 0.611 * NENG * 0.984 * Sn ** 0.224
+                      * Wec ** 0.611 * NENG ** 0.984 * Sn ** 0.224
     return WNAC * Units.lbs
 
 def compute_misc_engine_weight(vehicle, NENG, WENG):
@@ -140,10 +142,10 @@ def compute_misc_engine_weight(vehicle, NENG, WENG):
     L =  0 
     for fuselage in vehicle.fuselages:
         if L < fuselage.lengths.total: 
-            total_length = fuselage.lengths.total             
+            total_length = fuselage.lengths.total / 2 # approximately the distance from cockpit to engine           
     Lec     = NENG * total_length / Units.ft
     WEC     = 5 * NENG + 0.8 * Lec
-    WSTART  = 49.19*(NENG*WENG/1000)**0.541
+    WSTART  = 49.19*(WENG/1000)**0.541
     return WEC * Units.lbs, WSTART * Units.lbs
  
 def compute_fuel_system_weight(vehicle, NENG):
@@ -164,7 +166,12 @@ def compute_fuel_system_weight(vehicle, NENG):
         Properties Used:
             N/A
     """
-    VMAX    = vehicle.flight_envelope.design_mach_number
-    FMXTOT  = vehicle.mass_properties.max_zero_fuel / Units.lbs
-    WFSYS = 1.07 * FMXTOT ** 0.58 * NENG ** 0.43 * VMAX ** 0.34
+    Nt = 0
+    Vt = 0
+    for network in network:
+        for fuel_line in network.fuel_lines:
+            for fuel_tank in fuel_line.fuel_tanks:
+                Nt +=1
+                Vt += fuel_tank.volume
+    WFSYS = 2.405 * Vt**0.606 * 0.5 * Nt**0.5 
     return WFSYS * Units.lbs

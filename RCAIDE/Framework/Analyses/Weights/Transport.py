@@ -92,7 +92,7 @@ class Transport(Weights):
         """
         # unpack
         vehicle = self.vehicle 
-        if self.settings.method_type == "Raymer":
+        if self.method == "Raymer":
             results = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Raymer.compute_operating_empty_weight(self)
 
         # storing weigth breakdown into vehicle

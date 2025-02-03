@@ -9,11 +9,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 from . import BWB
-from . import Common
-from . import FLOPS
+from . import EVTOL
 from . import General_Aviation
 from . import Human_Powered
-from . import Propulsion
-from . import Raymer
 from . import Transport
 from . import UAV
