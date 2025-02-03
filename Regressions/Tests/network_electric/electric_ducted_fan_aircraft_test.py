@@ -28,7 +28,7 @@ from NASA_X48    import configs_setup as configs_setup
 
 def main():
 
-    regression_flag = True # Keep true for regression on Appveyor
+    regression_flag = False # Keep true for regression on Appveyor
     ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
@@ -62,7 +62,7 @@ def main():
             else:  
                 thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.center_propulsor.thrust, axis=1)  
                 error = Data()
-                error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0][0]  ))        
+                error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0] ))        
                 
         elif ducted_fan_type[i] ==  'Rankine_Froude_Momentum_Theory':  
             thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1) 
