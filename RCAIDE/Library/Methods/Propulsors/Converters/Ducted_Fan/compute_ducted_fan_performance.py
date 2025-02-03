@@ -144,7 +144,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         d = -P_req**2
     
         # Use numpy.roots to solve the cubic equation
-        coefficients = [float(a[0]), float(b[0]), float(c[0]), d]
+        coefficients = [float(a[0]), float(b[0]), float(c[0]), float(d[0])]
         roots = np.roots(coefficients)
     
         # Filter out the physical root (real, non-negative values)
