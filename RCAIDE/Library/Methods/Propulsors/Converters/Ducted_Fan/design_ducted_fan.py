@@ -47,31 +47,42 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
         
         omega     = ducted_fan.cruise.design_angular_velocity
         V         = ducted_fan.cruise.design_freestream_velocity
-        T         = ducted_fan.cruise.design_thrust
         K_fan     = ducted_fan.fan_effectiveness           
         A_R       = np.pi*(ducted_fan.tip_radius**2)
         A_exit    = np.pi*(ducted_fan.exit_radius**2)
         epsilon_d = A_exit/A_R
         atmo      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
         rho       = atmo.compute_values(ducted_fan.cruise.design_altitude,0.).density 
-
-        if design_thrust == None  and design_power != None
-            raise AttributeError('design thrust and power not set')
-        elif design_power == None  and design_thrust != None:
-            raise AttributeError('design power and thrust not set')
-        else:
-            raise AttributeError('design thrust and power not set')
-
-        # get propulsive efficiency 
+                # get propulsive efficiency 
         C_p, C_t, eta_p = compute_ducted_fan_efficiency(ducted_fan, V, omega)
+
+        if ducted_fan.cruise.design_thrust == None  and ducted_fan.cruise.design_power != None:
+            P_EM  = ducted_fan.cruise.design_power
+            P_req = P_EM*eta_p/K_fan
+    
+            # Coefficients of the cubic equation
+            a = 1 / (4 * rho * A_R * epsilon_d)
+            b = -(1/2)*((V) ** 2)
+            c = +(3/2)*(V)*P_req
+            d = -P_req**2
+    
+            # Use numpy.roots to solve the cubic equation
+            coefficients = [float(a[0]), float(b[0]), float(c[0]), d]
+            roots = np.roots(coefficients)
+    
+            # Filter out the physical root (real, non-negative values)
+            T = [root.real for root in roots if np.isreal(root) and root.real >= 0][-1]
+    
+        elif ducted_fan.cruise.design_power == None  and ducted_fan.cruise.design_thrust != None:
+            T         = ducted_fan.cruise.design_thrust
+            Preq = (3/4)*T*V + np.sqrt(((T**2)*(V**2))/16 + (T**3/(4*rho*A_R*epsilon_d)))
+            P_EM = Preq * K_fan/eta_p
+        else:
+            raise AttributeError('design thrust or power not set')
+
+        Q    = P_EM / omega
                 
-        # use design thrust to get power
-        Preq = (3/4)*T*V + np.sqrt(((T**2)*(V**2))/16 + (T**3/(4*rho*A_R*epsilon_d)))
-        P_EM = Preq * K_fan/eta_p
-        Q    = Preq / omega
-         
-        ducted_fan.cruise.design_power              = Preq
-        ducted_fan.cruise.design_motor_power        = P_EM
+        ducted_fan.cruise.design_power              = P_EM
         ducted_fan.cruise.design_efficiency         = eta_p 
         ducted_fan.cruise.design_torque             = Q
         ducted_fan.cruise.design_thrust_coefficient = C_t  

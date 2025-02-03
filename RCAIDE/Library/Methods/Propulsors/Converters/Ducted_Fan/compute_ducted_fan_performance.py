@@ -124,14 +124,14 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     
         # Unpack ducted_fan blade parameters and operating conditions  
         K_fan          = ducted_fan.fan_effectiveness
-        A_exit         = np.pi*ducted_fan.tip_radius**2
-        A_R            = np.pi*(ducted_fan.tip_radius**2 - ducted_fan.hub_radius**2)
+        A_exit         = np.pi*ducted_fan.exit_radius**2
+        A_R            = np.pi*(ducted_fan.tip_radius**2)
         epsilon_d      = A_exit/A_R
         a              = conditions.freestream.speed_of_sound 
         rho            = conditions.freestream.density 
         V              = conditions.freestream.velocity 
         omega          = ducted_fan_conditions.omega  
-        C_T, C_Q, eta_p = compute_ducted_fan_efficiency(ducted_fan, V, omega)
+        Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
         
         # Compute power 
         P_EM        = propulsor.motor.design_torque*propulsor.motor.angular_velocity 
@@ -139,8 +139,8 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     
         # Coefficients of the cubic equation
         a = 1 / (4 * rho * A_R * epsilon_d)
-        b = -(1/2)*((u0) ** 2)
-        c = +(3/2)*(u0)*P_req
+        b = -(1/2)*((V) ** 2)
+        c = +(3/2)*(V)*P_req
         d = -P_req**2
     
         # Use numpy.roots to solve the cubic equation
@@ -188,7 +188,7 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
         Calculated propeller efficiency
     """
 
-    n = ducted_fan.angular_velocity/(2*np.pi)
+    n = omega/(2*np.pi)
     D = 2*ducted_fan.tip_radius
     J = V/(n*D)
 
@@ -211,4 +211,4 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
     # create polynominal
     eta_p = J*(Cp/Ct)
 
-    return eta_p
+    return Cp, Ct, eta_p

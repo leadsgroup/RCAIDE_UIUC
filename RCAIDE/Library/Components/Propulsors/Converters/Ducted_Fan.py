@@ -158,8 +158,10 @@ class Ducted_Fan(Converter):
         self.blade_clearance                       = 0.01
         self.length                                = 1 
         self.fan_effectiveness                     = 1.1 
-        self.Cp_polynomial_coefficients            = [0.0002841648335565289,0.00029509431515845237,-0.0001452885163329045,3.132721598418425e-05,-1.6958433133445172e-05]
-        self.Ct_polynomial_coefficients            = [0.00037745844858822327,-0.006628987630822688,0.002923273755593381,0.0002373144106253682,-0.00011299564858198787]
+        # self.Cp_polynomial_coefficients            = [0.0002841648335565289,0.00029509431515845237,-0.0001452885163329045,3.132721598418425e-05,-1.6958433133445172e-05]
+        # self.Ct_polynomial_coefficients            = [0.00037745844858822327,-0.006628987630822688,0.002923273755593381,0.0002373144106253682,-0.00011299564858198787]
+        self.Cp_polynomial_coefficients            = [0.07475290077577544,0.028731335589934213,-0.30816443120233267,-0.013143408579484319,0.07416493080285531]
+        self.Ct_polynomial_coefficients            = [0.18356264070035083,-0.2701169136859317,0.13158972248722609,0.36171687989730134,-0.6994537726841166]
         self.fidelity                              = 'Blade_Element_Momentum_Theory' # 'Rankine_Froude_Momentum_Theory'  
         self.orientation_euler_angles              = [0.,0.,0.]  # vector of angles defining default orientation of rotor
         self.rotor                                 = Data()
@@ -168,6 +170,7 @@ class Ducted_Fan(Converter):
         self.stator.percent_x_location             = 0.7
         self.cruise                                = Data() 
         self.cruise.design_thrust                  = None
+        self.cruise.design_power                   = None
         self.cruise.design_altitude                = None
         self.cruise.design_efficiency              = None  
         self.cruise.design_angular_velocity        = None 

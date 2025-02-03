@@ -198,7 +198,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.number_of_radial_stations         = 20
     ducted_fan.tip_radius                        = 6 * Units.inches  / 2
     ducted_fan.hub_radius                        = 0.25 * ducted_fan.tip_radius 
-    ducted_fan.exit_radius                       = 1.1*ducted_fan.tip_radius
+    ducted_fan.exit_radius                       = 1.1 * ducted_fan.tip_radius
     ducted_fan.blade_clearance                   = 0.001
     ducted_fan.length                            = 10. * Units.inches 
     ducted_fan.fan_effectiveness                 = 1.1  
@@ -206,7 +206,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.stator_percent_x_location         = 0.7
     ducted_fan.fidelity                          = ducted_fan_type  
     ducted_fan.cruise.design_thrust              = 10 *  Units.lbs 
-    ducted_fan.cruise.design_altitude            = 8000  * Units.rpm  
+    ducted_fan.cruise.design_altitude            = 8000  * Units.ft
     ducted_fan.cruise.design_angular_velocity    = 20000 * Units.rpm
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
     ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph 
@@ -220,7 +220,10 @@ def vehicle_setup(regression_flag, ducted_fan_type):
         ducted_fan.append_hub_airfoil(airfoil)   
         dfdc_bin_name                                = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'       
         keep_files                                   =  True 
-    design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files) 
+    else:
+        dfdc_bin_name                                = 'dfdc'
+        keep_files                                   =  True
+    design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files = True) 
     center_propulsor.ducted_fan                  = ducted_fan    
               
     # DC_Motor       
@@ -230,7 +233,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     motor.nominal_voltage                         = bus.voltage * 0.3 
     motor.no_load_current                         = 0.001
     motor.rotor_radius                            = ducted_fan.tip_radius
-    motor.design_torque                       = ducted_fan.cruise.design_torque
+    motor.design_torque                           = ducted_fan.cruise.design_torque
     motor.angular_velocity                        = ducted_fan.cruise.design_angular_velocity 
     design_DC_motor(motor)   
     motor.mass_properties.mass                    = compute_motor_weight(motor) 
