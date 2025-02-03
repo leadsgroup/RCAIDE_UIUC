@@ -171,7 +171,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     
     return  
 
-def compute_ducted_fan_efficiency(ducted_fan, propeller_type, u0):
+def compute_ducted_fan_efficiency(ducted_fan, V, R, omega):
     """
     Calculate propeller efficiency based on propeller type and velocity.
     
@@ -187,38 +187,38 @@ def compute_ducted_fan_efficiency(ducted_fan, propeller_type, u0):
     float
         Calculated propeller efficiency
     """
+      
+    # 
     
-    V_y = ducted_fan.climb.design_freestream_velocity  # expected best rate-of-climb airspeed
-    V_c = ducted_fan.cruise.design_freestream_velocity
-    A0  = 0.0
-
-    if propeller_type == 'constant_speed': 
-        eta_p_y   = 0.8
-        eta_p_opt = 0.88
-        eta_p_hs  = 0.8
-        V_hs      = V_c + 100 * Units.knots
-    elif propeller_type == 'fixed_pitch':
-        eta_p_y   = 0.7
-        eta_p_opt = 0.8
-        eta_p_hs  = 0.7
-        V_hs      = V_c + 50 * Units.knots
-    else:
-        raise ValueError(f"Unknown propeller type: {propeller_type}")
-
-    # Construct the matrix
-    matrix = np.array([
-        [V_y, V_y**2, V_y**3, V_y**4],
-        [V_c, V_c**2, V_c**3, V_c**4],
-        [1, 2*V_c, 3*V_c**2, 4*V_c**3],
-        [V_hs, V_hs**2, V_hs**3, V_hs**4]
-    ])
-
-    rhs = np.array([eta_p_y, eta_p_opt, 0, eta_p_hs])
     
-    # Solve the system of equations
-    A1, A2, A3, A4 = np.linalg.solve(matrix, rhs)
+    a =  ducted_fan.actuator_disc_efficiency_coefficients[0]  
+    b =  ducted_fan.actuator_disc_efficiency_coefficients[1]  
+    c =  ducted_fan.actuator_disc_efficiency_coefficients[2]  
+     
+    # create polynominal
+    
+    # compute propulsive efficiency 
+    
+    
+    #if propeller_type == 'constant_speed': 
+        #eta_p_y   = 0.8
+        #eta_p_opt = 0.88
+        #eta_p_hs  = 0.8
+        #V_hs      = V_c + 100 * Units.knots
+    #elif propeller_type == 'fixed_pitch':
+        #eta_p_y   = 0.7
+        #eta_p_opt = 0.8
+        #eta_p_hs  = 0.7
+        #V_hs      = V_c + 50 * Units.knots
+    #else:
+        #raise ValueError(f"Unknown propeller type: {propeller_type}")
 
-    # Calculate efficiency using the polynomial
-    eta_p = (A0 + A1*u0[0] + A2*u0[0]**2 + A3*u0[0]**3 + A4*u0[0]**4)[0]
-
+    ## Construct the matrix
+    #matrix = np.array([
+        #[V_y, V_y**2, V_y**3, V_y**4],
+        #[V_c, V_c**2, V_c**3, V_c**4],
+        #[1, 2*V_c, 3*V_c**2, 4*V_c**3],
+        #[V_hs, V_hs**2, V_hs**3, V_hs**4]
+    #])
+ 
     return eta_p

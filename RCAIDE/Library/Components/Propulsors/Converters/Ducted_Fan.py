@@ -149,30 +149,31 @@ class Ducted_Fan(Converter):
         None
         """      
         
-        self.tag                               = 'ducted_fan'  
-        self.number_of_radial_stations         = 20
-        self.number_of_rotor_blades            = 12  
-        self.tip_radius                        = 1.0
-        self.hub_radius                        = 0.1
-        self.blade_clearance                   = 0.01
-        self.length                            = 1 
-        self.fan_effectiveness                 = 1.1 
-        self.fidelity                          = 'Blade_Element_Momentum_Theory' # 'Rankine_Froude_Momentum_Theory'  
-        self.orientation_euler_angles          = [0.,0.,0.]  # vector of angles defining default orientation of rotor
-        self.rotor                             = Data()
-        self.stator                            = Data()
-        self.rotor.percent_x_location          = 0.4
-        self.stator.percent_x_location         = 0.7
-        self.cruise                            = Data() 
-        self.cruise.design_thrust              = None
-        self.cruise.design_altitude            = None
-        self.cruise.design_efficiency          = None  
-        self.cruise.design_angular_velocity    = None 
-        self.cruise.design_freestream_velocity = None
-        self.cruise.design_reference_velocity  = None 
-        self.cruise.design_freestream_mach     = None  
-        self.duct_airfoil                      = None
-        self.hub_airfoil                       = None
+        self.tag                                   = 'ducted_fan'  
+        self.number_of_radial_stations             = 20
+        self.number_of_rotor_blades                = 12  
+        self.tip_radius                            = 1.0
+        self.hub_radius                            = 0.1
+        self.blade_clearance                       = 0.01
+        self.length                                = 1 
+        self.fan_effectiveness                     = 1.1 
+        self.actuator_disc_efficiency_coefficients = [a,b,c]
+        self.fidelity                              = 'Blade_Element_Momentum_Theory' # 'Rankine_Froude_Momentum_Theory'  
+        self.orientation_euler_angles              = [0.,0.,0.]  # vector of angles defining default orientation of rotor
+        self.rotor                                 = Data()
+        self.stator                                = Data()
+        self.rotor.percent_x_location              = 0.4
+        self.stator.percent_x_location             = 0.7
+        self.cruise                                = Data() 
+        self.cruise.design_thrust                  = None
+        self.cruise.design_altitude                = None
+        self.cruise.design_efficiency              = None  
+        self.cruise.design_angular_velocity        = None 
+        self.cruise.design_freestream_velocity     = None
+        self.cruise.design_reference_velocity      = None 
+        self.cruise.design_freestream_mach         = None  
+        self.duct_airfoil                          = None
+        self.hub_airfoil                           = None
       
     
     def append_duct_airfoil(self, airfoil):
