@@ -198,6 +198,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.number_of_radial_stations         = 20
     ducted_fan.tip_radius                        = 6 * Units.inches  / 2
     ducted_fan.hub_radius                        = 0.25 * ducted_fan.tip_radius 
+    ducted_fan.exit_radius                       = 1.1*ducted_fan.tip_radius
     ducted_fan.blade_clearance                   = 0.001
     ducted_fan.length                            = 10. * Units.inches 
     ducted_fan.fan_effectiveness                 = 1.1  

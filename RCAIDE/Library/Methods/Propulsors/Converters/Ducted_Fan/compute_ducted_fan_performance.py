@@ -129,7 +129,8 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         epsilon_d      = A_exit/A_R
         a              = conditions.freestream.speed_of_sound 
         rho            = conditions.freestream.density 
-        V              = conditions.freestream.velocity  
+        V              = conditions.freestream.velocity 
+        omega          = ducted_fan_conditions.omega  
         C_T, C_Q, eta_p = compute_ducted_fan_efficiency(ducted_fan, V, omega)
         
         # Compute power 
@@ -186,42 +187,28 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
     float
         Calculated propeller efficiency
     """
-       
-    D =  ducted_fan.tip_radius * 2
-    n = omega ..... 
-    
-    # Compute Advance Ratio
-    J =  V / n * D
-    
-    
-    a =  ducted_fan.actuator_disc_efficiency_coefficients[0]  
-    b =  ducted_fan.actuator_disc_efficiency_coefficients[1]  
-    c =  ducted_fan.actuator_disc_efficiency_coefficients[2]  
+
+    n = ducted_fan.angular_velocity/(2*np.pi)
+    D = 2*ducted_fan.tip_radius
+    J = V/(n*D)
+
+    a_Cp = ducted_fan.Cp_polynomial_coefficients[0]  
+    b_Cp = ducted_fan.Cp_polynomial_coefficients[1]  
+    c_Cp = ducted_fan.Cp_polynomial_coefficients[2]
+    d_Cp = ducted_fan.Cp_polynomial_coefficients[3]
+    e_Cp = ducted_fan.Cp_polynomial_coefficients[4]
+
+    Cp = a_Cp + b_Cp*J + c_Cp*J**2 + d_Cp*J**3 + e_Cp*J**4
+
+    a_Ct = ducted_fan.Ct_polynomial_coefficients[0]  
+    b_Ct = ducted_fan.Ct_polynomial_coefficients[1]  
+    c_Ct = ducted_fan.Ct_polynomial_coefficients[2]
+    d_Ct = ducted_fan.Ct_polynomial_coefficients[3]
+    e_Ct = ducted_fan.Ct_polynomial_coefficients[4]
+
+    Ct = a_Ct + b_Ct*J + c_Ct*J**2 + d_Ct*J**3 + e_Ct*J**4
      
     # create polynominal
-    
-    # compute propulsive efficiency 
-    
-    
-    #if propeller_type == 'constant_speed': 
-        #eta_p_y   = 0.8
-        #eta_p_opt = 0.88
-        #eta_p_hs  = 0.8
-        #V_hs      = V_c + 100 * Units.knots
-    #elif propeller_type == 'fixed_pitch':
-        #eta_p_y   = 0.7
-        #eta_p_opt = 0.8
-        #eta_p_hs  = 0.7
-        #V_hs      = V_c + 50 * Units.knots
-    #else:
-        #raise ValueError(f"Unknown propeller type: {propeller_type}")
+    eta_p = J*(Cp/Ct)
 
-    ## Construct the matrix
-    #matrix = np.array([
-        #[V_y, V_y**2, V_y**3, V_y**4],
-        #[V_c, V_c**2, V_c**3, V_c**4],
-        #[1, 2*V_c, 3*V_c**2, 4*V_c**3],
-        #[V_hs, V_hs**2, V_hs**3, V_hs**4]
-    #])
- 
-    return C_T, C_Q, eta_p
+    return eta_p
