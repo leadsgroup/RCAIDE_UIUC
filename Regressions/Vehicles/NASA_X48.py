@@ -200,6 +200,12 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.hub_radius                        = 0.25 * ducted_fan.tip_radius 
     ducted_fan.blade_clearance                   = 0.001
     ducted_fan.length                            = 10. * Units.inches
+    ducted_fan.eta_p                             = 0.9
+    ducted_fan.K_fan                             = 1.1
+    ducted_fan.A_exit                            = np.pi*(ducted_fan.tip_radius)**2
+    ducted_fan.A_R                               = np.pi*(ducted_fan.tip_radius**2 - ducted_fan.hub_radius**2)
+    ducted_fan.epsilon_d                         = ducted_fan.A_exit/ducted_fan.A_R
+
     ducted_fan.rotor_percent_x_location          = 0.4
     ducted_fan.stator_percent_x_location         = 0.7
     ducted_fan.cruise.design_thrust              = 10 *  Units.lbs
@@ -212,6 +218,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.cruise.design_angular_velocity    = 20000 * Units.rpm
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
     ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph
+    ducted_fan.climb.design_freestream_velocity  = 80 *  Units.mph
     
     if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
         pass

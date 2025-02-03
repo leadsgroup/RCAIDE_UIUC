@@ -157,9 +157,10 @@ class Ducted_Fan(Converter):
         self.blade_clearance                   = 0.01
         self.length                            = 1
         self.eta_p                             = 0.9
-        self.K_fan                             = 0.9
-        self.epsilon_d                         = 0.9
-        self.A_R                               = 0.9
+        self.K_fan                             = 1.1
+        self.A_exit                            = 0.9
+        self.A_R                               = np.pi*(self.tip_radius**2 - self.hub_radius**2)
+        self.epsilon_d                         = self.A_exit/self.A_R
         self.fidelity                          = 'Blade_Element_Momentum_Theory' # 'Rankine_Froude_Momentum_Theory'
         self.nacelle                           = None  
         self.fan                               = RCAIDE.Library.Components.Propulsors.Converters.Fan()   
@@ -172,12 +173,14 @@ class Ducted_Fan(Converter):
         self.rotor.percent_x_location          = 0.4
         self.stator.percent_x_location         = 0.7
         self.cruise                            = Data()
+        self.climb                             = Data()
         self.cruise.design_thrust              = None
         self.cruise.design_altitude            = None
         self.cruise.design_angular_velocity    = None 
         self.cruise.design_freestream_velocity = None
         self.cruise.design_reference_velocity  = None 
         self.cruise.design_freestream_mach     = None 
+        self.climb.design_freestream_mach      = None 
         self.duct_airfoil                      = None
         self.hub_airfoil                       = None
       

@@ -32,7 +32,7 @@ def main():
     ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
-    thrust_truth         = [82.19764641624566,1916.544062997636]  
+    thrust_truth         = [82.19764641624566, 34.17988257127831]  
  
     for i in range(len(ducted_fan_type)):  
         # vehicle data
@@ -57,8 +57,6 @@ def main():
             if regression_flag: # if regression skip test since we cannot run DFDC 
                 error = Data()
                 error.thrust       = 0
-                error.efficiency   = 0
-                error.current      = 0 
             else:  
                 thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.center_propulsor.thrust, axis=1)  
                 error = Data()
