@@ -203,13 +203,12 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.fan_effectiveness                 = 1.1  
     ducted_fan.rotor_percent_x_location          = 0.4
     ducted_fan.stator_percent_x_location         = 0.7
-    ducted_fan.cruise.design_thrust              = 10 *  Units.lbs 
     ducted_fan.fidelity                          = ducted_fan_type  
+    ducted_fan.cruise.design_thrust              = 10 *  Units.lbs 
     ducted_fan.cruise.design_altitude            = 8000  * Units.rpm  
     ducted_fan.cruise.design_angular_velocity    = 20000 * Units.rpm
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
-    ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph
-    ducted_fan.climb.design_freestream_velocity  = 80 *  Units.mph
+    ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph 
      
     if ducted_fan_type == 'Blade_Element_Momentum_Theory':
         airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil() 

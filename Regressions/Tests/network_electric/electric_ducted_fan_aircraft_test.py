@@ -28,8 +28,8 @@ from NASA_X48    import configs_setup as configs_setup
 
 def main():
 
-    regression_flag = True # Keep true for regression on Appveyor
-    ducted_fan_type  = ['Rankine_Froude_Momentum_Theory'] #['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
+    regression_flag  = True # Keep true for regression on Appveyor
+    ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
     thrust_truth         = [82.19764641624566, 34.17988257127831]  

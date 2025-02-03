@@ -129,9 +129,8 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         epsilon_d      = A_exit/A_R
         a              = conditions.freestream.speed_of_sound 
         rho            = conditions.freestream.density 
-        u0             = conditions.freestream.velocity 
-        propeller_type = 'fixed_pitch' 
-        eta_p          = compute_ducted_fan_efficiency(ducted_fan, propeller_type, u0)
+        V              = conditions.freestream.velocity  
+        C_T, C_Q, eta_p = compute_ducted_fan_efficiency(ducted_fan, V, omega)
         
         # Compute power 
         P_EM        = propulsor.motor.design_torque*propulsor.motor.angular_velocity 
@@ -171,7 +170,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     
     return  
 
-def compute_ducted_fan_efficiency(ducted_fan, V, R, omega):
+def compute_ducted_fan_efficiency(ducted_fan, V, omega):
     """
     Calculate propeller efficiency based on propeller type and velocity.
     
@@ -187,8 +186,12 @@ def compute_ducted_fan_efficiency(ducted_fan, V, R, omega):
     float
         Calculated propeller efficiency
     """
-      
-    # 
+       
+    D =  ducted_fan.tip_radius * 2
+    n = omega ..... 
+    
+    # Compute Advance Ratio
+    J =  V / n * D
     
     
     a =  ducted_fan.actuator_disc_efficiency_coefficients[0]  
@@ -221,4 +224,4 @@ def compute_ducted_fan_efficiency(ducted_fan, V, R, omega):
         #[V_hs, V_hs**2, V_hs**3, V_hs**4]
     #])
  
-    return eta_p
+    return C_T, C_Q, eta_p

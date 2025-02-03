@@ -8,9 +8,9 @@
 
 # RCAIDE imports
 import  RCAIDE
+from RCAIDE.Framework.Core import Data ,redirect  
 from RCAIDE.Framework.Analyses.Propulsion.Ducted_Fan_Design_Code import Ducted_Fan_Design_Code
-from RCAIDE.Framework.Core import Data ,redirect   
-from RCAIDE.Library.Plots  import *
+from RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_ducted_fan_performance import compute_ducted_fan_efficiency
  
 # python imports   
 from shutil import rmtree
@@ -45,19 +45,23 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
 
     if ducted_fan.fidelity == 'Rankine_Froude_Momentum_Theory':
         
+        omega = ducted_fan.cruise.design_angular_velocity
+        V     = ducted_fan.cruise.design_freestream_velocity
+        T     = ducted_fan.cruise.design_thrust
                 
-        # get propulsive efficiency
+        # get propulsive efficiency 
+        C_T, C_Q, eta_p = compute_ducted_fan_efficiency(ducted_fan, V, omega)
+                
         
         # use design thrust to get power
-        
-        
-        
-        ducted_fan.cruise.design_thrust             =  
-        ducted_fan.cruise.design_power              =  
-        ducted_fan.cruise.design_efficiency         =  
-        ducted_fan.cruise.design_torque             =  
-        ducted_fan.cruise.design_thrust_coefficient =  
-        ducted_fan.cruise.design_power_coefficient  =  
+        P =  
+        Q =  
+         
+        ducted_fan.cruise.design_power              = P
+        ducted_fan.cruise.design_efficiency         = eta_p 
+        ducted_fan.cruise.design_torque             = Q 
+        ducted_fan.cruise.design_thrust_coefficient = C_T  
+        ducted_fan.cruise.design_power_coefficient  = C_Q 
         
         
     elif ducted_fan.fidelity == 'Blade_Element_Momentum_Theory': 

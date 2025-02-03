@@ -157,7 +157,8 @@ class Ducted_Fan(Converter):
         self.blade_clearance                       = 0.01
         self.length                                = 1 
         self.fan_effectiveness                     = 1.1 
-        self.actuator_disc_efficiency_coefficients = [a,b,c]
+        self.power_coefficients_                   = [a,b,c]
+        self.thrust_coefficients_                  = [a,b,c]
         self.fidelity                              = 'Blade_Element_Momentum_Theory' # 'Rankine_Froude_Momentum_Theory'  
         self.orientation_euler_angles              = [0.,0.,0.]  # vector of angles defining default orientation of rotor
         self.rotor                                 = Data()
