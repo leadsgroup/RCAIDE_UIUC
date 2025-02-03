@@ -207,7 +207,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.fidelity                          = ducted_fan_type  
     ducted_fan.cruise.design_thrust              = 10 *  Units.lbs 
     ducted_fan.cruise.design_altitude            = 8000  * Units.ft
-    ducted_fan.cruise.design_angular_velocity    = 20000 * Units.rpm
+    ducted_fan.cruise.design_angular_velocity    = (0.9* 320) /  ducted_fan.tip_radius
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
     ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph 
      
