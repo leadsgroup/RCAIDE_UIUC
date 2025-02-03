@@ -199,30 +199,19 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     ducted_fan.tip_radius                        = 6 * Units.inches  / 2
     ducted_fan.hub_radius                        = 0.25 * ducted_fan.tip_radius 
     ducted_fan.blade_clearance                   = 0.001
-    ducted_fan.length                            = 10. * Units.inches
-    ducted_fan.eta_p                             = 0.9
-    ducted_fan.K_fan                             = 1.1
-    ducted_fan.A_exit                            = np.pi*(ducted_fan.tip_radius)**2
-    ducted_fan.A_R                               = np.pi*(ducted_fan.tip_radius**2 - ducted_fan.hub_radius**2)
-    ducted_fan.epsilon_d                         = ducted_fan.A_exit/ducted_fan.A_R
-
+    ducted_fan.length                            = 10. * Units.inches 
+    ducted_fan.fan_effectiveness                 = 1.1  
     ducted_fan.rotor_percent_x_location          = 0.4
     ducted_fan.stator_percent_x_location         = 0.7
-    ducted_fan.cruise.design_thrust              = 10 *  Units.lbs
-    if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
-        ducted_fan.cruise.design_power_coefficient  = 0.44716
-        ducted_fan.fidelity  = ducted_fan_type
-    elif ducted_fan_type == 'Blade_Element_Momentum_Theory':
-        ducted_fan.fidelity  = ducted_fan_type
+    ducted_fan.cruise.design_thrust              = 10 *  Units.lbs 
+    ducted_fan.fidelity                          = ducted_fan_type  
     ducted_fan.cruise.design_altitude            = 8000  * Units.rpm  
     ducted_fan.cruise.design_angular_velocity    = 20000 * Units.rpm
     ducted_fan.cruise.design_freestream_velocity = 120 *  Units.mph
     ducted_fan.cruise.design_reference_velocity  = 120 *  Units.mph
     ducted_fan.climb.design_freestream_velocity  = 80 *  Units.mph
-    
-    if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
-        pass
-    elif ducted_fan_type == 'Blade_Element_Momentum_Theory':
+     
+    if ducted_fan_type == 'Blade_Element_Momentum_Theory':
         airfoil                                      = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil() 
         airfoil.NACA_4_Series_code                   = '2208'
         ducted_fan.append_duct_airfoil(airfoil)  
@@ -231,8 +220,8 @@ def vehicle_setup(regression_flag, ducted_fan_type):
         ducted_fan.append_hub_airfoil(airfoil)   
         dfdc_bin_name                                = '/Users/matthewclarke/Documents/LEADS/CODES/DFDC/bin/dfdc'       
         keep_files                                   =  True 
-        design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files) 
-    center_propulsor.ducted_fan                  = ducted_fan   
+    design_ducted_fan(ducted_fan,dfdc_bin_name,regression_flag,keep_files) 
+    center_propulsor.ducted_fan                  = ducted_fan    
               
     # DC_Motor       
     motor                                         = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
@@ -241,10 +230,7 @@ def vehicle_setup(regression_flag, ducted_fan_type):
     motor.nominal_voltage                         = bus.voltage * 0.3 
     motor.no_load_current                         = 0.001
     motor.rotor_radius                            = ducted_fan.tip_radius
-    if ducted_fan_type == 'Rankine_Froude_Momentum_Theory':
-        motor.design_torque                       = 1.45
-    elif ducted_fan_type == 'Blade_Element_Momentum_Theory':
-        motor.design_torque                       = ducted_fan.cruise.design_torque
+    motor.design_torque                       = ducted_fan.cruise.design_torque
     motor.angular_velocity                        = ducted_fan.cruise.design_angular_velocity 
     design_DC_motor(motor)   
     motor.mass_properties.mass                    = compute_motor_weight(motor) 

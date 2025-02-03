@@ -7,7 +7,7 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports
-import  RCAIDE
+import  RCAIDE 
 from RCAIDE.Framework.Core                              import Data , Units, orientation_product, orientation_transpose  
 
 # package imports
@@ -118,22 +118,20 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
                 torque_per_blade                  = torque/B,
                 figure_of_merit                   = FoM, 
                 torque_coefficient                = Cq,
-                power_coefficient                 = Cp,  
-        )
+                power_coefficient                 = Cp)
         
-    else: 
+    elif ducted_fan.fidelity == 'Rankine_Froude_Momentum_Theory': 
     
-        # Unpack ducted_fan blade parameters and operating conditions 
-        eta_p       = ducted_fan.eta_p
-        K_fan       = ducted_fan.K_fan
-        epsilon_d   = ducted_fan.epsilon_d
-        A_R         = ducted_fan.A_R
-        a           = conditions.freestream.speed_of_sound 
-        rho         = conditions.freestream.density 
-        u0          = conditions.freestream.velocity 
-        propeller_type = 'fixed_pitch'
-
-        eta_p       = compute_efficiency(propulsor, propeller_type, u0)
+        # Unpack ducted_fan blade parameters and operating conditions  
+        K_fan          = ducted_fan.fan_effectiveness
+        A_exit         = np.pi*ducted_fan.tip_radius**2
+        A_R            = np.pi*(ducted_fan.tip_radius**2 - ducted_fan.hub_radius**2)
+        epsilon_d      = A_exit/A_R
+        a              = conditions.freestream.speed_of_sound 
+        rho            = conditions.freestream.density 
+        u0             = conditions.freestream.velocity 
+        propeller_type = 'fixed_pitch' 
+        eta_p          = compute_ducted_fan_efficiency(ducted_fan, propeller_type, u0)
         
         # Compute power 
         P_EM        = propulsor.motor.design_torque*propulsor.motor.angular_velocity 
@@ -167,14 +165,13 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
                 thrust                            = thrust_vector,  
                 power                             = power,
                 moment                            = moment, 
-                torque                            = torque,
-        )
+                torque                            = torque)
         
     conditions.energy[propulsor.tag][ducted_fan.tag] = outputs   
     
     return  
 
-def compute_efficiency(propulsor, propeller_type, u0,):
+def compute_ducted_fan_efficiency(ducted_fan, propeller_type, u0):
     """
     Calculate propeller efficiency based on propeller type and velocity.
     
@@ -190,10 +187,9 @@ def compute_efficiency(propulsor, propeller_type, u0,):
     float
         Calculated propeller efficiency
     """
-    from RCAIDE.Framework.Core import Units
     
-    V_y = propulsor.ducted_fan.climb.design_freestream_velocity  # expected best rate-of-climb airspeed
-    V_c = propulsor.ducted_fan.cruise.design_freestream_velocity
+    V_y = ducted_fan.climb.design_freestream_velocity  # expected best rate-of-climb airspeed
+    V_c = ducted_fan.cruise.design_freestream_velocity
     A0  = 0.0
 
     if propeller_type == 'constant_speed': 
