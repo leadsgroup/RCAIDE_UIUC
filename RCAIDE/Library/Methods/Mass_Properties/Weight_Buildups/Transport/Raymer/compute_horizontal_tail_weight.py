@@ -1,6 +1,5 @@
 # RCAIDE/Library/Methods/Weights/Correlation_Buildups/Raymer/compute_horizontal_tail_weight.py
 # 
-# 
 # Created:  Sep 2024, M. Clarke
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -65,16 +64,19 @@ def compute_horizontal_tail_weight(vehicle, wing, settings,elevator_fraction=0.4
     for fuselage in vehicle.fuselages:
         if L_fuselage < fuselage.lengths.total:
             ref_fuselage = fuselage
+            L_fuselage = ref_fuselage.lengths.total
     diff =[]
-    horiz_tail_location = vehicle.horizontal_tail.origin
+    names = []
+    horiz_tail_location = vehicle.wings.horizontal_stabilizer.origin[0][0]
     for segment in ref_fuselage.segments:
         segment_loc = segment.percent_x_location * ref_fuselage.lengths.total
         diff.append(np.abs(segment_loc - horiz_tail_location))
+        names.append(segment.tag)
     min_value = min(diff)
     min_index = diff.index(min_value)
             
     Kuht    = 1 # not a all-moving unit horizontal tail
-    Fw      = ref_fuselage.segments[min_index].width / Units.ft
+    Fw      = ref_fuselage.segments[names[min_index]].width / Units.ft
     Bh      = wing.spans.projected / Units.ft
     DG      = vehicle.mass_properties.max_takeoff / Units.lbs
     Sht     = wing.areas.reference / Units.ft ** 2

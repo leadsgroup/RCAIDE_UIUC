@@ -10,7 +10,7 @@
 # RCAIDE
 import RCAIDE
 from RCAIDE.Framework.Core    import Units ,  Data 
-from RCAIDE.Library.Methods.Performance.estimate_stall_speed import compute_stall_speed
+#from RCAIDE.Library.Methods.Performance.estimate_stall_speed import compute_stall_speed
  
 # ----------------------------------------------------------------------------------------------------------------------
 #  Horizontal Tail Weight 
@@ -72,7 +72,8 @@ def compute_landing_gear_weight(vehicle):
             Ln          = landing_gear.strut_length / Units.inch
             Nnw         = landing_gear.wheels  
         
-    Vstall      = compute_stall_speed(vehicle.mass_properties.max_takeoff, vehicle.wings.main_wing.areas.reference, 0, 2.5)  # stall speed
+    Vstall      = (2 * vehicle.mass_properties.max_takeoff * 9.81 / (vehicle.wings.main_wing.areas.reference * 1.225 * 2.5)) ** 0.5 # Assumes max Cl of 2.5, density of 1.225 kg/m^3
+    #compute_stall_speed(vehicle.mass_properties.max_takeoff, vehicle.wings.main_wing.areas.reference, 0, 2.5)  # stall speed
     Knp         = 1  # assuming not a kneeling gear
     W_main_landing_gear = 0.0106 * Kmp * WLDG ** 0.888 * Nl ** 0.25 * Lm ** 0.4 * Nmw ** 0.321 * Nmss ** (-0.5) * Vstall ** 0.1
     W_nose_landing_gear = 0.032 * Knp * WLDG ** 0.646 * Nl ** 0.2 * Ln ** 0.5 * Nnw ** 0.45

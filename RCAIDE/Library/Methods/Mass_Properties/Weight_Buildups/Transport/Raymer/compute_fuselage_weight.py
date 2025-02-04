@@ -44,21 +44,21 @@ def compute_fuselage_weight(vehicle, fuselage, settings):
         Properties Used:
             N/A
     """
-    Klg         = settings.Raymer.fuselage_mounted_landing_gear_factor
+    Klg         = settings.fuselage_mounted_landing_gear_factor
     DG          = vehicle.mass_properties.max_takeoff / Units.lbs
     length      = fuselage.lengths.total/ Units.ft
     fuselage_w  = fuselage.width / Units.ft
     fuselage_h  = fuselage.heights.maximum / Units.ft
     
-    if settings.cargo_doors == 0:
-        if settings.cargo_doors.clamshell:
+    if settings.cargo_doors_number == 0:
+        if settings.cargo_doors_clamshell:
             Kdoor       = 1.12  # clamshell cargo door
         else:
             Kdoor       = 1.  # 0 cargo door
-    if settings.cargo_doors == 1:
+    if settings.cargo_doors_number == 1:
         Kdoor       = 1.06  # 1 cargo door
-    if settings.cargo_doors == 2:
-        if settings.cargo_doors.clamshell:
+    if settings.cargo_doors_number == 2:
+        if settings.cargo_doors_clamshell:
             Kdoor       = 1.25  # clamshell cargo door
         else:
             Kdoor       = 1.12  # 2 cargo door
