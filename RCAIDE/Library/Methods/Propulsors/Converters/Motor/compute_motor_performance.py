@@ -1,7 +1,7 @@
 # RCAIDE/Library/Methods/Propulsors/Converters/Motor/compute_motor_performance.py
-# (c) Copyright 2023 Aerospace Research Community LLC
+
 # 
-# Created:  Jul 2024, RCAIDE Team 
+# Created:  Jan 2025, M. Clarke, M. Guidotti
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -16,34 +16,50 @@ import numpy as np
 #  compute_omega_and_Q_from_Cp_and_V
 # ----------------------------------------------------------------------------------------------------------------------    
 def compute_motor_performance(motor,motor_conditions,conditions):
-    """Calculates the motors RPM and torque using power coefficient and operating voltage.
-    The following perperties of the motor are computed  
-    motor_conditions.torque                    (numpy.ndarray):  torque [Nm]
-    motor_conditions.omega                     (numpy.ndarray):  omega  [radian/s] 
+    """
+    Computes motor performance characteristics including electrical, mechanical and thermal parameters.
 
-    Assumptions: 
-      Omega is solved by setting the torque of the motor equal to the torque of the prop
-      It assumes that the Cp is constant 
+    Parameters
+    ----------
+    motor : Converter
+        Motor component (DC_Motor or PMSM_Motor) for which performance is being computed
+    motor_conditions : Conditions
+        Container for motor operating conditions
+    conditions : Conditions 
+        Mission segment conditions containing freestream properties
 
-    Source:
-        None
+    Returns
+    -------
+    None
+        Updates motor_conditions in-place with computed performance parameters
 
-    Args:
-    conditions.freestream.density  (numpy.ndarray): density [kg/m^3] 
-    motor.
-        gear_ratio                                 (float): gear ratio                [unitless]
-        speed_constant                             (float): motor speed constant      [radian/s/V]
-        resistance                                 (float): motor internal resistnace [ohm]
-        outputs.omega                      (numpy.ndarray): angular velocity          [radian/s]
-        gearbox_efficiency                         (float): gearbox efficiency        [unitless]
-        expected_current                           (float): current                   [A]
-        no_load_current                            (float): no-load current           [A]
-        inputs.volage                      (numpy.ndarray): operating voltage         [V]
-        inputs.rotor_power_coefficient     (numpy.ndarray): power coefficient         [unitless]
-        rotor_radius                               (float): rotor radius              [m]
-           
-    Returns:
-        None
+    Notes
+    -----
+    This function handles both PMSM and DC motor types with different computation approaches:
+
+    For PMSM motors:
+        - Computes electromagnetic torque and power
+        - Calculates thermal resistances and heat transfer
+        - Determines cooling flow characteristics
+        - Evaluates airgap and endspace heat transfer
+
+    For DC motors:
+        - Uses speed-torque relationships
+        - Accounts for gearbox effects
+        - Computes electrical parameters (current, voltage)
+        - Determines overall efficiency
+
+    **Major Assumptions**
+        * Steady state operation
+        * Uniform temperature distribution
+        * No magnetic saturation effects
+        * Linear speed-torque characteristics for DC motors
+        * Constant material properties
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.DC_Motor
+    RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor
     """           
     # Unpack 
     rho   = conditions.freestream.density[:,0,None]

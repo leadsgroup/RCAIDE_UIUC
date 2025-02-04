@@ -1,7 +1,23 @@
 # RCAIDE/Library/Methods/Propulsors/Converters/Ducted_Fan/__init__.py
-# (c) Copyright 2023 Aerospace Research Community LLC
 
-""" RCAIDE Package Setup
+# Created:  Jan 2025, M. Clarke
+
+"""
+Ducted Fan Methods Package
+
+This module contains methods for analyzing and designing ducted fan propulsion systems. The methods support both low and medium-fidelity analysis.
+
+The module provides functionality for:
+    - Geometry generation and manipulation
+    - Performance analysis and efficiency calculations  
+    - DFDC case setup and execution
+    - Results processing and data handling
+
+See Also
+--------
+RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan
+RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_ducted_fan_performance
+RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.design_ducted_fan
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

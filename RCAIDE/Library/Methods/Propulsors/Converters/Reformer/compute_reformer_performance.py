@@ -12,9 +12,57 @@ from RCAIDE.Framework.Core import Units
 #  compute_reformer_performance
 # ----------------------------------------------------------------------------------------------------------------------    
 def compute_reformer_performance(reformer,reformer_conditions):
-    '''
-    
-    '''
+    """
+    Computes performance characteristics of an autothermal reformer converting jet fuel to hydrogen-rich reformate.
+
+    Parameters
+    ----------
+    reformer : Reformer
+        Reformer component containing physical and operational parameters
+    reformer_conditions : Conditions
+        Container for reformer operating conditions including feed rates
+
+    Returns
+    -------
+    None
+        Updates reformer_conditions in-place with computed performance parameters:
+            - effluent_gas_flow_rate : float
+                Reformer effluent gas flow rate [sccm]
+            - reformer_efficiency : float
+                Overall reformer efficiency [%]
+            - hydrogen_conversion_efficiency : float
+                Hydrogen conversion efficiency [%]
+            - space_velocity : float
+                Gas hourly space velocity [hr^-1]
+            - liquid_space_velocity : float
+                Liquid hourly space velocity [hr^-1]
+            - steam_to_carbon_feed_ratio : float
+                Molar ratio of steam to carbon [mol_H2O/mol_C]
+            - oxygen_to_carbon_feed_ratio : float
+                Molar ratio of oxygen to carbon [mol_O/mol_C]
+            - fuel_to_air_ratio : float
+                Equivalence ratio [-]
+
+    Notes
+    -----
+    This function calculates key performance metrics for an autothermal reformer including:
+        - Molar flow rates of reactants and products
+        - Space velocities
+        - Feed ratios
+        - Conversion efficiencies
+
+    **Major Assumptions**
+        * Steady state operation
+        * Complete mixing of reactants
+        * Uniform catalyst bed temperature
+        * No pressure drop across catalyst bed
+        * Ideal gas behavior for air and reformate
+        * Standard conditions (1 atm, 273.15 K) for gas flow rates
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.Reformer
+    """
 
     Q_F = reformer_conditions.fuel_volume_flow_rate/(Units.cm**3/Units.hr)   # [cm**3/hr] Jet-A feed rate              
     Q_S = reformer_conditions.steam_volume_flow_rate/(Units.cm**3/Units.hr)  # [cm**3/hr] Deionized water feed rate            

@@ -1,6 +1,7 @@
 # RCAIDE/Library/Methods/Propulsors/Converters/Ducted_Fan.py
 #  
 # Created:  Jul 2023, M. Clarke
+# Modified: Jan 2025, M. Clarke, M. Guidotti
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -27,19 +28,68 @@ import numpy as  np
 #  design_ducted_fan
 # ---------------------------------------------------------------------------------------------------------------------- 
 def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results = False, keep_files = True): 
-    """ Optimizes ducted fan given input design conditions.
+    """
+    Designs and optimizes a ducted fan propulsor using either Rankine-Froude Momentum Theory or 
+    Blade Element Momentum Theory (BEMT) with DFDC integration.
 
-    Assumptions: 
+    Parameters
+    ----------
+    ducted_fan : Ducted_Fan
+        Ducted fan component to be designed
+    dfdc_bin_name : str, optional
+        Name of DFDC executable, defaults to 'dfdc'
+    new_regression_results : bool, optional
+        Flag to generate new regression results, defaults to False
+    keep_files : bool, optional
+        Flag to keep DFDC input/output files, defaults to True
 
-    Source:
-        https://web.mit.edu/drela/Public/web/dfdc/
-        http://www.esotec.org/sw/DFDC.html 
-    
-    Inputs:
-        dfdc_analysis (dict): DFDC analysis data structure  
+    Returns
+    -------
+    None
+        Updates ducted_fan object with:
+            - Blade geometry (twist, chord, radius distributions)
+            - Performance characteristics at design point
+            - Performance surrogate models (BEMT only)
 
-    Outputs:
-        None
+    Notes
+    -----
+    Two fidelity levels are available:
+
+    1. Rankine-Froude Momentum Theory:
+        - Simple momentum theory calculations
+        - Uses polynomial fits for performance coefficients
+        - Quick preliminary design estimates
+
+    2. Blade Element Momentum Theory (BEMT):
+        - Detailed blade design using DFDC
+        - Generates performance surrogate models
+        - Accounts for 3D effects and losses
+        - Requires external DFDC executable
+
+    The BEMT method creates surrogate models for:
+        - Thrust
+        - Power
+        - Efficiency
+        - Torque
+        - Thrust coefficient
+        - Power coefficient
+
+    **Major Assumptions**
+        * Steady state operation
+        * Incompressible flow for Rankine-Froude
+        * No blade-wake interaction
+        * Linear interpolation for surrogate models
+        * US Standard Atmosphere 1976
+
+    References
+    ----------
+    [1] Drela, M., "DFDC - Ducted Fan Design Code", MIT Aero & Astro, 2005
+    [2] Esotec Developments, "DFDC Documentation", http://www.esotec.org/sw/DFDC.html
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan
+    RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.compute_ducted_fan_performance
     """
     
 
@@ -52,7 +102,7 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
         
         n, D, J, Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
 
-        T      = Ct * rho * (n**2)*(D**2) 
+        T      = Ct * rho * (n**2)*(D**4) 
         P      = Cp * rho * (n**3)*(D**5)  
         Q      = P / omega
                 

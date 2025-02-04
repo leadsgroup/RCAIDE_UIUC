@@ -1,7 +1,17 @@
-# RCAIDE/Library/Methods/Propulsors/Converters/DC_Motor/__init__.py
-# (c) Copyright 2023 Aerospace Research Community LLC
+# RCAIDE/Library/Methods/Propulsors/Converters/Motor/__init__.py
 
-""" RCAIDE Package Setup
+# Created:  Jan 2025, M. Clarke, M. Guidotti
+
+"""
+Motor Methods Package
+
+This module contains methods for motor performance analysis, design, and condition handling.
+The methods support both DC and PMSM motor modeling within the RCAIDE framework.
+
+See Also
+--------
+RCAIDE.Library.Components.Propulsors.Converters.DC_Motor
+RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

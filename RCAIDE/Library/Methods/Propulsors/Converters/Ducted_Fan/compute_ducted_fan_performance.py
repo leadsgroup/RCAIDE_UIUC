@@ -1,7 +1,8 @@
-# RCAIDE/Library/Methods/Propulsors/Converters/Rotor/compute_ducted_fan_performance.py
-# (c) Copyright 2023 Aerospace Research Community LLC
+# RCAIDE/Library/Methods/Propulsors/Converters/Ducted_Fan/compute_ducted_fan_performance.py
+
 # 
-# Created:  Jul 2024, RCAIDE Team 
+# Created:  Jan 2025, M. Clarke
+# Modified: Jan 2025, M. Clarke, M. Guidotti    
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -17,21 +18,68 @@ import  numpy as  np
 #  Generalized Rotor Class
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]]):
-    """Analyzes a general ducted_fan given geometry and operating conditions.
+    """
+    Computes ducted fan performance characteristics using either Blade Element Momentum Theory (BEMT) 
+    or Rankine-Froude Momentum Theory.
 
-    Assumptions:
-    N.A.
+    Parameters
+    ----------
+    propulsor : Converter
+        Ducted fan propulsor component containing the ducted fan
+    state : Conditions
+        Mission segment state conditions
+    center_of_gravity : array_like, optional
+        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
 
-    Source:
-    N.A.
-    
-    Inputs:
-        propulsor          (dict): propulsor data structure 
-        state              (dict): flight conditions data structure  
-        center_of_gravity  (list): center of gravity  
+    Returns
+    -------
+    None
+        Updates state.conditions.energy[propulsor.tag][ducted_fan.tag] with computed performance data:
+            - thrust : array(N,3)
+                Thrust vector [N]
+            - power : array(N,1)
+                Power required [W]
+            - torque : array(N,1)
+                Shaft torque [N-m]
+            - moment : array(N,3)
+                Moment vector [N-m]
+            - efficiency : array(N,1)
+                Propulsive efficiency [-]
+            - tip_mach : array(N,1)
+                Blade tip Mach number [-]
+            - thrust_coefficient : array(N,1)
+                Non-dimensional thrust coefficient [-]
+            - power_coefficient : array(N,1)
+                Non-dimensional power coefficient [-]
+            - figure_of_merit : array(N,1)
+                Hovering figure of merit [-] (BEMT only)
 
-    Outputs:
-        None
+    Notes
+    -----
+    Two fidelity levels are available:
+
+    1. Blade Element Momentum Theory (BEMT):
+        - Uses surrogate models trained on DFDC results
+        - Accounts for 3D effects and ducted fan geometry
+        - Computes detailed blade loading
+        - Includes tip losses and wake effects
+
+    2. Rankine-Froude Momentum Theory:
+        - Uses polynomial fits for thrust and power coefficients
+        - Simple momentum theory assumptions
+        - Suitable for preliminary design
+
+    **Major Assumptions**
+        * Steady state operation
+        * Incompressible flow for Rankine-Froude theory
+        * Rigid blades
+        * No blade-wake interaction
+        * No ground effect
+
+    See Also
+    --------
+    RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan
+    RCAIDE.Library.Methods.Propulsors.Converters.Ducted_Fan.design_ducted_fan
     """
 
     # Unpack ducted_fan blade parameters and operating conditions 
@@ -129,7 +177,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
         n, D, J, Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
         ctrl_pts       = len(V)
            
-        thrust              = Ct * rho * (n**2)*(D**2) 
+        thrust              = Ct * rho * (n**2)*(D**4) 
         power               = Cp * rho * (n**3)*(D**5)           
         thrust_vector       = np.zeros((ctrl_pts,3))
         thrust_vector[:,0]  = thrust[:,0]            

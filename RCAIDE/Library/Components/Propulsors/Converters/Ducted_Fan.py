@@ -19,116 +19,63 @@ import scipy as sp
 # ----------------------------------------------------------------------------------------------------------------------  
 class Ducted_Fan(Converter):
     """
-    A ducted fan propulsion system model that simulates the performance of a shrouded fan.
+    Ducted Fan Component Class
+
+    This class models a ducted fan propulsion system with both rotor and stator components. 
+    It inherits from the base Converter class and implements ducted-fan specific attributes and methods.
 
     Attributes
     ----------
     tag : str
-        Identifier for the ducted fan. Default is 'ducted_fan'.
-        
+        Identifier for the ducted fan component, defaults to 'ducted_fan'
     number_of_radial_stations : int
-        Number of radial calculation points for blade analysis. Default is 20.
-        
+        Number of radial stations for blade element analysis, defaults to 20
     number_of_rotor_blades : int
-        Number of blades in the rotor. Default is 12.
-        
+        Number of rotor blades, defaults to 12
     tip_radius : float
-        Outer radius of the rotor [m]. Default is 1.0.
-        
+        Outer radius of the rotor [m], defaults to 1.0
     hub_radius : float
-        Inner radius of the rotor at hub [m]. Default is 0.1.
-        
+        Inner radius of the rotor at hub [m], defaults to 0.1
+    exit_radius : float
+        Radius at the duct exit [m], defaults to 1.1
     blade_clearance : float
-        Clearance between blade tip and duct [m]. Default is 0.01.
-        
+        Clearance between blade tip and duct wall [m], defaults to 0.01
     length : float
-        Length of the ducted fan assembly [m]. Default is 1.0.
-        
+        Axial length of the ducted fan [m], defaults to 1.0
+    fan_effectiveness : float
+        Fan effectiveness factor [-], defaults to 1.1
+    Cp_polynomial_coefficients : list
+        Coefficients for power coefficient polynomial [-, -, -]
+    Ct_polynomial_coefficients : list
+        Coefficients for thrust coefficient polynomial [-, -, -]
+    etap_polynomial_coefficients : list
+        Coefficients for propulsive efficiency polynomial [-, -, -]
     fidelity : str
-        Level of fidelity for calculations. Default is 'polytropic'.
-        
-    nacelle : Component
-        Nacelle component. Default is None.
-        
-    fan : Component
-        Fan component. Default is Fan().
-        
-    ram : Component
-        Ram air intake component. Default is Ram().
-        
-    inlet_nozzle : Component
-        Inlet nozzle component. Default is Compression_Nozzle().
-        
+        Analysis fidelity level, either 'Blade_Element_Momentum_Theory' or 'Rankine_Froude_Momentum_Theory'
     orientation_euler_angles : list
-        Vector of angles defining default orientation [rad]. Default is [0.,0.,0.].
-        
+        Default orientation angles of rotor [rad, rad, rad]
     rotor : Data
-        Rotor configuration data
-
-        - percent_x_location : float
-            Rotor position as fraction of length. Default is 0.4.
-            
+        Container for rotor geometry and performance data
     stator : Data
-        Stator configuration data
-
-        - percent_x_location : float
-            Stator position as fraction of length. Default is 0.7.
-            
+        Container for stator geometry and performance data
     cruise : Data
-        Design cruise conditions
-
-        - design_thrust : float
-            Design point thrust. Default is None.
-
-        - design_altitude : float
-            Design altitude [m]. Default is None.
-            
-        - design_angular_velocity : float
-            Design rotational speed [rad/s]. Default is None.
-
-        - design_freestream_velocity : float
-            Design forward velocity [m/s]. Default is None.
-
-        - design_reference_velocity : float
-            Design reference velocity [m/s]. Default is None.
-
-        - design_freestream_mach : float
-            Design Mach number. Default is None.
-            
-    duct_airfoil : Data
-        Duct aerodynamic surface data. Default is empty Data().
-        
-    hub_airfoil : Data
-        Hub aerodynamic surface data. Default is empty Data().
+        Container for cruise design conditions
 
     Notes
     -----
-    The Ducted_Fan class models a shrouded fan propulsion system, including:
-    * Rotor-stator interaction effects
-    * Duct aerodynamic influences
-    * Hub effects
-    * Multiple coordinate frame transformations
-    
-    The model supports various fidelity levels and can handle both design and 
-    off-design conditions.
+    The ducted fan model includes detailed geometric parameters and performance characteristics
+    for both the rotor and stator components. The model supports multiple fidelity levels
+    and includes coordinate transformation capabilities for thrust vectoring analysis.
 
-    **Definitions**
+    **Major Assumptions**
+        * Axisymmetric flow
+        * Steady state operation
+        * Incompressible flow for low-fidelity analysis
+        * No radial flow
+        * Uniform inflow
+        * No blade-to-blade interaction
 
-    'Euler Angles'
-        Set of three angles used to describe orientation in 3D space
-        
-    'Reference Velocity'
-        Characteristic velocity used for non-dimensionalization
-        
-    'Polytropic'
-        Thermodynamic process with constant polytropic efficiency
-
-    See Also
-    --------
-    RCAIDE.Library.Components.Propulsors.Converters.Fan
-    RCAIDE.Library.Components.Propulsors.Converters.Ram
-    RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle
-    """
+    """ 
     
     def __defaults__(self):
         """ This sets the default values for the component to function.

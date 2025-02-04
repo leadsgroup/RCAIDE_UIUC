@@ -1,7 +1,16 @@
-# RCAIDE/Library/Methods/Propulsors/Converters/DC_Motor/__init__.py
-# (c) Copyright 2023 Aerospace Research Community LLC
+# RCAIDE/Library/Methods/Propulsors/Converters/Reformer/__init__.py
 
-""" RCAIDE Package Setup
+# Created:  Jan 2025, M. Clarke, M. Guidotti    
+
+"""
+Reformer Methods Package
+
+This module contains methods for modeling fuel reformer performance and operating conditions. The methods support both steady-state and transient analysis of catalytic fuel reforming processes.
+
+See Also
+--------
+RCAIDE.Library.Components.Propulsors.Converters.Reformer
+RCAIDE.Library.Methods.Propulsors.Converters.Reformer.compute_reformer_performance
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -9,3 +18,5 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 from .compute_reformer_performance    import compute_reformer_performance
+
+
