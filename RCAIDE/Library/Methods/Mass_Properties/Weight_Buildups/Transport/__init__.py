@@ -9,6 +9,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 from .  import Common
-#from .  import FLOPS
+from .  import FLOPS
 from .  import Raymer
 #from .  import Stanford

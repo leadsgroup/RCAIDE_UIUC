@@ -96,6 +96,9 @@ class Transport(Weights):
         vehicle = self.vehicle 
         if self.method == "Raymer":
             results = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Raymer.compute_operating_empty_weight(vehicle, self.settings)
+        elif self.method == "FLOPS Simple" or self.method == "FLOPS Complex":
+            self.settings.complexity = self.method.split()[1]
+            results =  RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.FLOPS.compute_operating_empty_weight(vehicle, self.settings)
 
         # storing weigth breakdown into vehicle
         vehicle.weight_breakdown = results

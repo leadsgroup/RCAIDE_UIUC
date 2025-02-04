@@ -7,21 +7,16 @@
 # ----------------------------------------------------------------------------------------------------------------------
 import RCAIDE
 from RCAIDE.Framework.Core import Data ,  Units 
-#from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Propulsion as Propulsion 
-#from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Common    as  Common
-#from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Raymer    as  Raymer 
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups import FLOPS     as  FLOPS 
-#from RCAIDE.Library.Methods.Weights.Correlation_Buildups import Transport as  Transport  
 from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Common import compute_payload_weight
 from RCAIDE.Library.Attributes.Materials.Aluminum import Aluminum
-
+import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.FLOPS as FLOPS
 # python imports 
 import numpy as np
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Operating Empty Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE'):
+def compute_operating_empty_weight(vehicle, settings=None):
     """ Main function that estimates the zero-fuel weight of a transport aircraft:
         - MTOW = WZFW + FUEL
         - WZFW = WOE + WPAYLOAD
@@ -246,7 +241,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     # Pod Weight Weight 
     ##-------------------------------------------------------------------------------         
     WPOD  = 0.0             
-    if method_type == 'FLOPS Complex': 
+    if settings.complexity == 'Complex': 
         NENG   = number_of_engines
         WTNFA  = W_energy_network.W_engine + W_energy_network.W_thrust_reverser + W_energy_network.W_starter \
                 + 0.25 * W_energy_network.W_engine_controls + 0.11 * W_systems.W_instruments + 0.13 * W_systems.W_electrical \
@@ -278,7 +273,7 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     
     for wing in vehicle.wings:
         if isinstance(wing, Wings.Main_Wing): 
-            complexity = method_type.split()[1]
+            complexity = settings.complexity
             W_wing = FLOPS.compute_wing_weight(vehicle, wing, WPOD, complexity, settings, num_main_wings)
 
             # Apply weight factor
@@ -328,11 +323,11 @@ def compute_operating_empty_weight(vehicle, settings=None, method_type='RCAIDE')
     output.empty.structural.landing_gear          = landing_gear.main +  landing_gear.nose  
     output.empty.structural.nacelle               = W_energy_network.W_nacelle
     
-    if 'FLOPS' in method_type:
-        print('Paint weight is currently ignored in FLOPS calculations.')
+  
+    print('Paint weight is currently ignored in FLOPS calculations.')
     output.empty.structural.paint = 0  # TODO reconcile FLOPS paint calculations with Raymer and RCAIDE baseline
     output.empty.structural.total = output.empty.structural.wings   + output.empty.structural.fuselage + output.empty.structural.landing_gear\
-                              + output.empty.structural.paint + output.empty.structural.nacelle 
+                                    + output.empty.structural.paint + output.empty.structural.nacelle 
 
     ##-------------------------------------------------------------------------------                 
     # Accumulate Systems Weight
