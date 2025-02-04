@@ -29,10 +29,10 @@ from NASA_X48    import configs_setup as configs_setup
 def main():
 
     regression_flag = True # Keep true for regression on Appveyor
-    ducted_fan_type  = ['Rankine_Froude_Momentum_Theory'] #['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
+    ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
-    thrust_truth         = [82.19764641624566, 34.17988257127831]  
+    thrust_truth         = [57.356384455604505, 57.35638441261067]  
  
     for i in range(len(ducted_fan_type)):  
         # vehicle data
@@ -56,18 +56,16 @@ def main():
         if ducted_fan_type[i] ==  'Blade_Element_Momentum_Theory':  
             if regression_flag: # if regression skip test since we cannot run DFDC 
                 error = Data()
-                error.thrust       = 0
+                error.thrust   = 0
             else:  
-                thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.center_propulsor.thrust, axis=1)  
-                error = Data()
-                error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0] ))        
+                thurst         =  np.linalg.norm(results.segments.cruise.conditions.energy.center_propulsor.thrust, axis=1)  
+                error          = Data()
+                error.thrust   = np.max(np.abs(thrust_truth[i]   - thurst[0] ))        
                 
         elif ducted_fan_type[i] ==  'Rankine_Froude_Momentum_Theory':  
-            thurst      =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1) 
-                
-            error = Data()
-            error.thrust       = np.max(np.abs(thrust_truth[i]   - thurst[0] ))   
-        
+            thurst         =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1)  
+            error          = Data()
+            error.thrust   = np.max(np.abs(thrust_truth[i]   - thurst[0] ))   
         
         print('Errors:')
         print(error)
@@ -135,19 +133,6 @@ def base_analysis(vehicle):
     return analyses    
 
 # ----------------------------------------------------------------------
-#   Plot Mission
-# ----------------------------------------------------------------------
-
-def plot_mission(results):
-      
-    
-    # Plot Electric Motor and Propeller Efficiencies 
-    plot_electric_propulsor_efficiencies(results)
-    
-        
-    return 
-
-# ----------------------------------------------------------------------
 #   Define the Mission
 # ----------------------------------------------------------------------
     
@@ -163,6 +148,7 @@ def mission_setup(analyses):
     # unpack Segments module
     Segments = RCAIDE.Framework.Mission.Segments 
     base_segment = Segments.Segment()
+    base_segment.state.numerics.number_of_control_points = 16 
     
     # ------------------------------------------------------------------
     #   First Climb Segment: constant Mach, constant segment angle 
@@ -171,9 +157,9 @@ def mission_setup(analyses):
     segment = Segments.Cruise.Constant_Speed_Constant_Altitude(base_segment)
     segment.tag = "cruise" 
     segment.analyses.extend( analyses.base ) 
-    segment.altitude       = 5000  * Units.rpm
+    segment.altitude       = 5000  * Units.feet
     segment.air_speed      = 90 *  Units.mph
-    segment.distance       = 1000 * Units.feet  
+    segment.distance       = 5000  
     segment.initial_battery_state_of_charge                          = 1.0 
                 
     # define flight dynamics to model             
@@ -183,9 +169,9 @@ def mission_setup(analyses):
     # define flight controls 
     segment.assigned_control_variables.throttle.active                  = True           
     segment.assigned_control_variables.throttle.assigned_propulsors     = [['center_propulsor','starboard_propulsor','port_propulsor']] 
-    segment.assigned_control_variables.throttle.initial_guess_values    = [[1]]    
+    segment.assigned_control_variables.throttle.initial_guess_values    = [[0.98]]    
     segment.assigned_control_variables.body_angle.active                = True        
-    segment.assigned_control_variables.body_angle.initial_guess_values  = [[1 * Units.degree]]                   
+    segment.assigned_control_variables.body_angle.initial_guess_values  = [[2 * Units.degree]]                   
       
     mission.append_segment(segment) 
     return mission

@@ -87,7 +87,7 @@ def read_results(dfdc_analysis):
     design_velocity  = ducted_fan.cruise.design_freestream_velocity 
     design_altitude  = ducted_fan.cruise.design_altitude  
     string           = results_template.format(design_velocity,design_RPM,design_altitude)     
-    results_filename = os.path.join(run_folder, string.replace(".", "_") + '.txt')
+    results_filename = os.path.join(run_folder, string + '.txt')
     with open(results_filename,'r') as case_results_file: 
         case_lines                       = case_results_file.readlines() 
         results.performance.design_thrust              = float(case_lines[8][13:26].strip())
@@ -105,10 +105,11 @@ def read_results(dfdc_analysis):
                     atmosphere      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
                     atmo_data       = atmosphere.compute_values(altitudes[k]) 
                     a               = atmo_data.speed_of_sound[0,0] 
-                    rpm             = ((tip_machs[j]*a) /dfdc_analysis.geometry.tip_radius)/Units.rpm
+                    omega           = ((tip_machs[j]*a) /dfdc_analysis.geometry.tip_radius)
+                    rpm             = omega / Units.rpm
                     velocity        =  mach[i] * a 
                     string          = results_template.format(velocity,rpm,altitudes[k])   
-                    results_filename   = os.path.join(run_folder, string.replace(".", "_") + '.txt')
+                    results_filename   = os.path.join(run_folder, string + '.txt')
                     with open(results_filename,'r') as case_results_file: 
                         case_lines                       = case_results_file.readlines() 
                         results.performance.thrust[i,j,k]              = float(case_lines[8][13:26].strip())

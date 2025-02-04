@@ -46,32 +46,20 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
     if ducted_fan.fidelity == 'Rankine_Froude_Momentum_Theory':
         
         omega     = ducted_fan.cruise.design_angular_velocity
-        V         = ducted_fan.cruise.design_freestream_velocity
-        K_fan     = ducted_fan.fan_effectiveness           
-        A_R       = np.pi*(ducted_fan.tip_radius**2)
-        A_exit    = np.pi*(ducted_fan.exit_radius**2)
-        epsilon_d = A_exit/A_R
+        V         = ducted_fan.cruise.design_freestream_velocity 
         atmo      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
-        rho       = atmo.compute_values(ducted_fan.cruise.design_altitude,0.).density 
-                # get propulsive efficiency 
+        rho       = atmo.compute_values(ducted_fan.cruise.design_altitude,0.).density
+        
         n, D, J, Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
 
-        if ducted_fan.cruise.design_thrust == None  and ducted_fan.cruise.design_power != None:
-            
-            P_EM  = ducted_fan.cruise.design_power
-            T     = Ct * rho * (V**2)*(D**2)
-        elif ducted_fan.cruise.design_power == None  and ducted_fan.cruise.design_thrust != None:
-            T    = ducted_fan.cruise.design_thrust
-            Preq = (3/4)*T*V + np.sqrt(((T**2)*(V**2))/16 + (T**3/(4*rho*A_R*epsilon_d)))
-            P_EM = Preq * K_fan/eta_p
-        else:
-            raise AttributeError('design thrust or power not set')
-
-        Q    = (P_EM / omega)[0]
+        T      = Ct * rho * (n**2)*(D**2) 
+        P      = Cp * rho * (n**3)*(D**5)  
+        Q      = P / omega
                 
-        ducted_fan.cruise.design_power              = P_EM
+        ducted_fan.cruise.design_power              = P[0, 0]
         ducted_fan.cruise.design_efficiency         = eta_p 
-        ducted_fan.cruise.design_torque             = Q
+        ducted_fan.cruise.design_thrust             = T[0, 0] 
+        ducted_fan.cruise.design_torque             = Q[0, 0]
         ducted_fan.cruise.design_thrust_coefficient = Ct  
         ducted_fan.cruise.design_power_coefficient  = Cp 
 
@@ -94,7 +82,8 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
         dfdc_analysis.geometry                          = ducted_fan
         dfdc_analysis.settings.filenames.dfdc_bin_name  = dfdc_bin_name
         dfdc_analysis.settings.new_regression_results   = new_regression_results
-        dfdc_analysis.settings.keep_files               = keep_files  
+        dfdc_analysis.settings.keep_files               = keep_files
+        
         # Get the root directory (one level above RCAIDE)
         current_dir = os.path.dirname(__file__)
         # Go up to the root directory containing RCAIDE

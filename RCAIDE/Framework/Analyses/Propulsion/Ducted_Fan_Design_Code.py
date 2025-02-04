@@ -41,7 +41,7 @@ class Ducted_Fan_Design_Code(Analysis):
         self.settings.filenames.dfdc_bin_name             = 'dfdc'   # to call dfdc from command line. If avl is not on the system path, include absolute path to the avl binary i.e. '/your/path/to/avl'
         self.settings.filenames.run_folder                = 'dfdc_files'   
         self.settings.filenames.deck_template             = 'commands_{0:02d}.deck'  
-        self.settings.filenames.results_template          = 'results_Vinf_{:.2f}_RPM_{:.2f}_Alt_{:.2f}' 
+        self.settings.filenames.results_template          = 'results_Vinf_{:.0f}_RPM_{:.0f}_Alt_{:.0f}' 
         self.settings.filenames.case                      = None
         self.settings.filenames.log_filename              = 'dfdc_log.txt'
         self.settings.filenames.err_filename              = 'dfdc_err.txt'

@@ -2,32 +2,32 @@ LOAD
 ducted_fan.case
 OPER
 atmo
-0.8377580409572781
+1.524
 vref
-53.6448
+40.2336
 vinf
-53.6448
+40.2336
 nbld 
-22
+12
 nrs 
 21
 rpm
-20000.0
+34057.55374034941
 thru
-4.535923700000001
+75
 desi
 shoo
 ducted_fan_geometry.txt
 atmo
-0.8377580409572781
+1.524
 rpm
-20000.0 
+34057.55374034941 
 vinf
-53.6448
+40.2336
 exec
 writ
 N
-results_Vinf_53_64_RPM_20000_00_Alt_837_76.txt
+results_Vinf_40_RPM_34058_Alt_1524.txt
 atmo
 0.0
 rpm
@@ -37,7 +37,7 @@ vinf
 exec
 writ
 N
-results_Vinf_51_04_RPM_25587_15_Alt_0_00.txt
+results_Vinf_51_RPM_25587_Alt_0.txt
 atmo
 0.762
 rpm
@@ -47,7 +47,7 @@ vinf
 exec
 writ
 N
-results_Vinf_50_60_RPM_25366_32_Alt_762_00.txt
+results_Vinf_51_RPM_25366_Alt_762.txt
 atmo
 1.524
 rpm
@@ -57,7 +57,7 @@ vinf
 exec
 writ
 N
-results_Vinf_50_16_RPM_25143_60_Alt_1524_00.txt
+results_Vinf_50_RPM_25144_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -67,7 +67,7 @@ vinf
 exec
 writ
 N
-results_Vinf_49_62_RPM_24873_77_Alt_2438_40.txt
+results_Vinf_50_RPM_24874_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -77,7 +77,7 @@ vinf
 exec
 writ
 N
-results_Vinf_51_04_RPM_29851_68_Alt_0_00.txt
+results_Vinf_51_RPM_29852_Alt_0.txt
 atmo
 0.762
 rpm
@@ -87,7 +87,7 @@ vinf
 exec
 writ
 N
-results_Vinf_50_60_RPM_29594_04_Alt_762_00.txt
+results_Vinf_51_RPM_29594_Alt_762.txt
 atmo
 1.524
 rpm
@@ -97,7 +97,7 @@ vinf
 exec
 writ
 N
-results_Vinf_50_16_RPM_29334_19_Alt_1524_00.txt
+results_Vinf_50_RPM_29334_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -107,7 +107,7 @@ vinf
 exec
 writ
 N
-results_Vinf_49_62_RPM_29019_40_Alt_2438_40.txt
+results_Vinf_50_RPM_29019_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -117,7 +117,7 @@ vinf
 exec
 writ
 N
-results_Vinf_51_04_RPM_34116_20_Alt_0_00.txt
+results_Vinf_51_RPM_34116_Alt_0.txt
 atmo
 0.762
 rpm
@@ -127,7 +127,7 @@ vinf
 exec
 writ
 N
-results_Vinf_50_60_RPM_33821_76_Alt_762_00.txt
+results_Vinf_51_RPM_33822_Alt_762.txt
 atmo
 1.524
 rpm
@@ -137,7 +137,7 @@ vinf
 exec
 writ
 N
-results_Vinf_50_16_RPM_33524_79_Alt_1524_00.txt
+results_Vinf_50_RPM_33525_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -147,7 +147,7 @@ vinf
 exec
 writ
 N
-results_Vinf_49_62_RPM_33165_03_Alt_2438_40.txt
+results_Vinf_50_RPM_33165_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -157,7 +157,7 @@ vinf
 exec
 writ
 N
-results_Vinf_102_09_RPM_25587_15_Alt_0_00.txt
+results_Vinf_102_RPM_25587_Alt_0.txt
 atmo
 0.762
 rpm
@@ -167,7 +167,7 @@ vinf
 exec
 writ
 N
-results_Vinf_101_21_RPM_25366_32_Alt_762_00.txt
+results_Vinf_101_RPM_25366_Alt_762.txt
 atmo
 1.524
 rpm
@@ -177,7 +177,7 @@ vinf
 exec
 writ
 N
-results_Vinf_100_32_RPM_25143_60_Alt_1524_00.txt
+results_Vinf_100_RPM_25144_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -187,7 +187,7 @@ vinf
 exec
 writ
 N
-results_Vinf_99_24_RPM_24873_77_Alt_2438_40.txt
+results_Vinf_99_RPM_24874_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -197,7 +197,7 @@ vinf
 exec
 writ
 N
-results_Vinf_102_09_RPM_29851_68_Alt_0_00.txt
+results_Vinf_102_RPM_29852_Alt_0.txt
 atmo
 0.762
 rpm
@@ -207,7 +207,7 @@ vinf
 exec
 writ
 N
-results_Vinf_101_21_RPM_29594_04_Alt_762_00.txt
+results_Vinf_101_RPM_29594_Alt_762.txt
 atmo
 1.524
 rpm
@@ -217,7 +217,7 @@ vinf
 exec
 writ
 N
-results_Vinf_100_32_RPM_29334_19_Alt_1524_00.txt
+results_Vinf_100_RPM_29334_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -227,7 +227,7 @@ vinf
 exec
 writ
 N
-results_Vinf_99_24_RPM_29019_40_Alt_2438_40.txt
+results_Vinf_99_RPM_29019_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -237,7 +237,7 @@ vinf
 exec
 writ
 N
-results_Vinf_102_09_RPM_34116_20_Alt_0_00.txt
+results_Vinf_102_RPM_34116_Alt_0.txt
 atmo
 0.762
 rpm
@@ -247,7 +247,7 @@ vinf
 exec
 writ
 N
-results_Vinf_101_21_RPM_33821_76_Alt_762_00.txt
+results_Vinf_101_RPM_33822_Alt_762.txt
 atmo
 1.524
 rpm
@@ -257,7 +257,7 @@ vinf
 exec
 writ
 N
-results_Vinf_100_32_RPM_33524_79_Alt_1524_00.txt
+results_Vinf_100_RPM_33525_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -267,7 +267,7 @@ vinf
 exec
 writ
 N
-results_Vinf_99_24_RPM_33165_03_Alt_2438_40.txt
+results_Vinf_99_RPM_33165_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -277,7 +277,7 @@ vinf
 exec
 writ
 N
-results_Vinf_153_13_RPM_25587_15_Alt_0_00.txt
+results_Vinf_153_RPM_25587_Alt_0.txt
 atmo
 0.762
 rpm
@@ -287,7 +287,7 @@ vinf
 exec
 writ
 N
-results_Vinf_151_81_RPM_25366_32_Alt_762_00.txt
+results_Vinf_152_RPM_25366_Alt_762.txt
 atmo
 1.524
 rpm
@@ -297,7 +297,7 @@ vinf
 exec
 writ
 N
-results_Vinf_150_48_RPM_25143_60_Alt_1524_00.txt
+results_Vinf_150_RPM_25144_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -307,7 +307,7 @@ vinf
 exec
 writ
 N
-results_Vinf_148_86_RPM_24873_77_Alt_2438_40.txt
+results_Vinf_149_RPM_24874_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -317,7 +317,7 @@ vinf
 exec
 writ
 N
-results_Vinf_153_13_RPM_29851_68_Alt_0_00.txt
+results_Vinf_153_RPM_29852_Alt_0.txt
 atmo
 0.762
 rpm
@@ -327,7 +327,7 @@ vinf
 exec
 writ
 N
-results_Vinf_151_81_RPM_29594_04_Alt_762_00.txt
+results_Vinf_152_RPM_29594_Alt_762.txt
 atmo
 1.524
 rpm
@@ -337,7 +337,7 @@ vinf
 exec
 writ
 N
-results_Vinf_150_48_RPM_29334_19_Alt_1524_00.txt
+results_Vinf_150_RPM_29334_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -347,7 +347,7 @@ vinf
 exec
 writ
 N
-results_Vinf_148_86_RPM_29019_40_Alt_2438_40.txt
+results_Vinf_149_RPM_29019_Alt_2438.txt
 atmo
 0.0
 rpm
@@ -357,7 +357,7 @@ vinf
 exec
 writ
 N
-results_Vinf_153_13_RPM_34116_20_Alt_0_00.txt
+results_Vinf_153_RPM_34116_Alt_0.txt
 atmo
 0.762
 rpm
@@ -367,7 +367,7 @@ vinf
 exec
 writ
 N
-results_Vinf_151_81_RPM_33821_76_Alt_762_00.txt
+results_Vinf_152_RPM_33822_Alt_762.txt
 atmo
 1.524
 rpm
@@ -377,7 +377,7 @@ vinf
 exec
 writ
 N
-results_Vinf_150_48_RPM_33524_79_Alt_1524_00.txt
+results_Vinf_150_RPM_33525_Alt_1524.txt
 atmo
 2.4384
 rpm
@@ -387,6 +387,6 @@ vinf
 exec
 writ
 N
-results_Vinf_148_86_RPM_33165_03_Alt_2438_40.txt
+results_Vinf_149_RPM_33165_Alt_2438.txt
 
 QUIT

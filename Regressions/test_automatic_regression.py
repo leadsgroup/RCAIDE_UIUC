@@ -37,7 +37,7 @@ modules = [
     'Tests/mission_segments/transition_segment_test.py', 
     'Tests/network_electric/battery_electric_aircraft_test.py',
     'Tests/network_electric/hydrogen_fuel_cell_aircraft_test.py', 
-    'Tests/network_ducted_fan/electric_ducted_fan_network_test.py',
+    'Tests/network_electric/electric_ducted_fan_aircraft_test.py',
     'Tests/network_turbofan/turbofan_network_test.py',
     'Tests/network_turbojet/turbojet_network_test.py',
     'Tests/network_turboprop/turboprop_network_test.py',
@@ -57,7 +57,6 @@ modules = [
     'Tests/propulsion/propeller_wing_interaction_test.py', 
     'Tests/propulsion/motor_test.py',
     'Tests/propulsion/reformer_test.py',
-    'Tests/network_electric/electric_ducted_fan_aircraft_test.py',
 ]
 
 def run_module_test(module_path):

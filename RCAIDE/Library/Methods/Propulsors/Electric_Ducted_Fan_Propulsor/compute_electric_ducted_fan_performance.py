@@ -64,19 +64,15 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     motor_conditions.voltage              = esc_conditions.outputs.voltage
     compute_motor_performance(motor,motor_conditions,conditions) 
     
-    # Spin the ducted_fan 
-    #ducted_fan_conditions.torque             = motor_conditions.torque
-    ducted_fan_conditions.omega              = motor_conditions.omega
-    ducted_fan_conditions.suppled_motor_power  = motor_conditions.power
+    # Spin the ducted_fan  
+    ducted_fan_conditions.omega              = motor_conditions.omega 
     ducted_fan_conditions.tip_mach           = (motor_conditions.omega * ducted_fan.tip_radius) / conditions.freestream.speed_of_sound
     ducted_fan_conditions.throttle           = esc_conditions.throttle 
     compute_ducted_fan_performance(propulsor,state,center_of_gravity)   
     
     # Detemine esc current 
     esc_conditions.outputs.current = motor_conditions.current
-    compute_current_in_from_throttle(esc,esc_conditions,conditions)  
-    esc_conditions.current         = esc_conditions.inputs.current  
-    esc_conditions.power           = esc_conditions.inputs.power
+    compute_current_in_from_throttle(esc,esc_conditions,conditions)   
     
     stored_results_flag            = True
     stored_propulsor_tag           = propulsor.tag 
@@ -87,7 +83,7 @@ def compute_electric_ducted_fan_performance(propulsor,state,voltage,center_of_gr
     
     T  = edf_conditions.thrust 
     M  = edf_conditions.moment 
-    P  = conditions.energy[propulsor.tag][esc.tag].power
+    P  = esc_conditions.inputs.power  
     
     return T,M,P, stored_results_flag,stored_propulsor_tag 
                 
@@ -123,25 +119,23 @@ def reuse_stored_electric_ducted_fan_data(propulsor,state,network,stored_propuls
     esc                        = propulsor.electronic_speed_controller  
     motor_0                    = network.propulsors[stored_propulsor_tag].motor 
     ducted_fan_0               = network.propulsors[stored_propulsor_tag].ducted_fan 
-    esc_0                      = network.propulsors[stored_propulsor_tag].electronic_speed_controller
+    esc_0                      = network.propulsors[stored_propulsor_tag].electronic_speed_controller 
     
     conditions.energy[propulsor.tag][motor.tag]        = deepcopy(conditions.energy[stored_propulsor_tag][motor_0.tag])
     conditions.energy[propulsor.tag][ducted_fan.tag]   = deepcopy(conditions.energy[stored_propulsor_tag][ducted_fan_0.tag])
     conditions.energy[propulsor.tag][esc.tag]          = deepcopy(conditions.energy[stored_propulsor_tag][esc_0.tag])
   
-    thrust                  = 0*state.ones_row(3)
-    thrust_var              = conditions.energy[propulsor.tag][ducted_fan.tag].thrust 
-    thrust[:,0]             = thrust_var.flatten()
-    power                   = conditions.energy[propulsor.tag][esc.tag].power 
+    thrust                  = conditions.energy[propulsor.tag][ducted_fan.tag].thrust 
+    power                   = conditions.energy[propulsor.tag][esc.tag].inputs.power 
     
     moment_vector           = 0*state.ones_row(3) 
     moment_vector[:,0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
     moment_vector[:,1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
     moment_vector[:,2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
-    moment                  = np.cross(moment_vector, thrust)
+    moment                  =  np.cross(moment_vector, thrust)
     
     conditions.energy[propulsor.tag][ducted_fan.tag].moment = moment  
     conditions.energy[propulsor.tag].thrust            = thrust   
     conditions.energy[propulsor.tag].moment            = moment  
     
-    return thrust,moment,power
+    return thrust,moment,power 

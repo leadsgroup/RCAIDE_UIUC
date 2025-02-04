@@ -72,9 +72,7 @@ def compute_electric_rotor_performance(propulsor,state,voltage,center_of_gravity
     
     # Detemine esc current 
     esc_conditions.outputs.current = motor_conditions.current
-    compute_current_in_from_throttle(esc,esc_conditions,conditions)  
-    esc_conditions.current   = esc_conditions.inputs.current  
-    esc_conditions.power     = esc_conditions.inputs.power
+    compute_current_in_from_throttle(esc,esc_conditions,conditions)
     
     stored_results_flag     = True
     stored_propulsor_tag    = propulsor.tag 
@@ -85,7 +83,7 @@ def compute_electric_rotor_performance(propulsor,state,voltage,center_of_gravity
     
     T  = conditions.energy[propulsor.tag][rotor.tag].thrust 
     M  = conditions.energy[propulsor.tag][rotor.tag].moment 
-    P  = conditions.energy[propulsor.tag][esc.tag].power 
+    P  = esc_conditions.inputs.power
     
     return T,M,P, stored_results_flag,stored_propulsor_tag 
                 
@@ -128,7 +126,7 @@ def reuse_stored_electric_rotor_data(propulsor,state,network,stored_propulsor_ta
     conditions.energy[propulsor.tag][esc.tag]          = deepcopy(conditions.energy[stored_propulsor_tag][esc_0.tag])
   
     thrust                  = conditions.energy[propulsor.tag][rotor.tag].thrust 
-    power                   = conditions.energy[propulsor.tag][esc.tag].power 
+    power                   = conditions.energy[propulsor.tag][esc.tag].inputs.power 
     
     moment_vector           = 0*state.ones_row(3) 
     moment_vector[:,0]      = rotor.origin[0][0]  -  center_of_gravity[0][0] 

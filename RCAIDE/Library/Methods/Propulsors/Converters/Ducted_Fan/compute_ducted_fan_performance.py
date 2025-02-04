@@ -41,18 +41,20 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
     ducted_fan_conditions = propulsor_conditions[ducted_fan.tag]
     
+
+    a              = conditions.freestream.speed_of_sound 
+    rho            = conditions.freestream.density 
+    omega          = ducted_fan_conditions.omega   
+    alt            = conditions.freestream.altitude 
+    
     if ducted_fan.fidelity == 'Blade_Element_Momentum_Theory': 
                       
-        altitude  = conditions.freestream.altitude / 1000
-        a         = conditions.freestream.speed_of_sound
-        
-        omega = ducted_fan_conditions.omega 
+        altitude  =alt/ 1000  
         n     = omega/(2.*np.pi)   # Rotations per second
         D     = ducted_fan.tip_radius * 2
         A     = 0.25 * np.pi * (D ** 2)
         
-        # Unpack freestream conditions
-        rho     = conditions.freestream.density[:,0,None] 
+        # Unpack freestream conditions 
         Vv      = conditions.frames.inertial.velocity_vector 
     
         # Number of radial stations and segment control point
@@ -123,37 +125,29 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     elif ducted_fan.fidelity == 'Rankine_Froude_Momentum_Theory': 
     
         # Unpack ducted_fan blade parameters and operating conditions  
-        K_fan          = ducted_fan.fan_effectiveness
-        A_exit         = np.pi*ducted_fan.exit_radius**2
-        A_R            = np.pi*(ducted_fan.tip_radius**2)
-        epsilon_d      = A_exit/A_R
-        a              = conditions.freestream.speed_of_sound 
-        rho            = conditions.freestream.density 
-        V              = conditions.freestream.velocity 
-        omega          = ducted_fan_conditions.omega  
+        V              = conditions.freestream.velocity  
         n, D, J, Cp, Ct, eta_p  = compute_ducted_fan_efficiency(ducted_fan, V, omega)
-        
-        # Compute Thrust
-        T              = Ct * rho * (V**2)*(D**2)
-
-        # Compute power 
-        P              = (3/4)*T*V + np.sqrt(((T**2)*(V**2))/16 + (T**3/(4*rho*A_R*epsilon_d))) # Cp * rho * (n**3)*(D**5)
-        P_EM           = P*K_fan/eta_p
-    
-        thrust_vector  = T  
-        power          = P_EM             
-        torque         = P_EM/omega
-        
+        ctrl_pts       = len(V)
+           
+        thrust              = Ct * rho * (n**2)*(D**2) 
+        power               = Cp * rho * (n**3)*(D**5)           
+        thrust_vector       = np.zeros((ctrl_pts,3))
+        thrust_vector[:,0]  = thrust[:,0]            
+        torque              = power/omega
+         
         # Compute moment 
-        moment_vector         = np.zeros((3))
-        moment_vector[0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
-        moment_vector[1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
-        moment_vector[2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
-        moment                = moment_vector
+        moment_vector           = np.zeros((ctrl_pts,3))
+        moment_vector[:,0]      = ducted_fan.origin[0][0]  -  center_of_gravity[0][0] 
+        moment_vector[:,1]      = ducted_fan.origin[0][1]  -  center_of_gravity[0][1] 
+        moment_vector[:,2]      = ducted_fan.origin[0][2]  -  center_of_gravity[0][2]
+        moment                  = np.cross(moment_vector, thrust_vector)
            
         outputs                                   = Data( 
                 thrust                            = thrust_vector,  
                 power                             = power,
+                power_coefficient                 = Cp, 
+                thrust_coefficient                = Ct,
+                efficiency                        = eta_p, 
                 moment                            = moment, 
                 torque                            = torque)
         
@@ -184,26 +178,20 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
 
     a_Cp = ducted_fan.Cp_polynomial_coefficients[0]  
     b_Cp = ducted_fan.Cp_polynomial_coefficients[1]  
-    c_Cp = ducted_fan.Cp_polynomial_coefficients[2]
-    d_Cp = ducted_fan.Cp_polynomial_coefficients[3]
-    e_Cp = ducted_fan.Cp_polynomial_coefficients[4]
+    c_Cp = ducted_fan.Cp_polynomial_coefficients[2] 
 
-    Cp = a_Cp + b_Cp*J + c_Cp*J**2 + d_Cp*J**3 + e_Cp*J**4
+    Cp = a_Cp + b_Cp*J + c_Cp*(J**2)
 
     a_Ct = ducted_fan.Ct_polynomial_coefficients[0]  
     b_Ct = ducted_fan.Ct_polynomial_coefficients[1]  
-    c_Ct = ducted_fan.Ct_polynomial_coefficients[2]
-    d_Ct = ducted_fan.Ct_polynomial_coefficients[3]
-    e_Ct = ducted_fan.Ct_polynomial_coefficients[4]
+    c_Ct = ducted_fan.Ct_polynomial_coefficients[2] 
 
-    Ct = a_Ct + b_Ct*J + c_Ct*J**2 + d_Ct*J**3 + e_Ct*J**4
+    Ct = a_Ct + b_Ct*J + c_Ct*(J**2)
 
     a_etap = ducted_fan.etap_polynomial_coefficients[0]  
     b_etap = ducted_fan.etap_polynomial_coefficients[1]  
-    c_etap = ducted_fan.etap_polynomial_coefficients[2]
-    d_etap = ducted_fan.etap_polynomial_coefficients[3]
-    e_etap = ducted_fan.etap_polynomial_coefficients[4]
+    c_etap = ducted_fan.etap_polynomial_coefficients[2] 
 
-    eta_p = a_etap + b_etap*J + c_etap*J**2 + d_etap*J**3 + e_etap*J**4
+    eta_p = a_etap + b_etap*J + c_etap*(J**2) 
 
     return n, D, J, Cp, Ct, eta_p
