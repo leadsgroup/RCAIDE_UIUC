@@ -33,7 +33,7 @@ class Electronic_Speed_Controller(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.DC_Motor
+    RCAIDE.Library.Components.Propulsors.Converters.Motor
         Electric motor components controlled by the ESC
     """
     

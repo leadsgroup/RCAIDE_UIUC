@@ -50,8 +50,10 @@ def compute_turbojet_performance(turbojet,state,center_of_gravity= [[0.0, 0.0,0.
     ''' 
     conditions                = state.conditions
     noise_conditions          = conditions.noise[turbojet.tag]  
-    turbojet_conditions       = conditions.energy[turbojet.tag]
-    rho                       = conditions.freestream.density
+    turbojet_conditions       = conditions.energy[turbojet.tag] 
+    U0                        = conditions.freestream.velocity
+    T                         = conditions.freestream.temperature
+    P                         = conditions.freestream.pressure
     ram                       = turbojet.ram
     inlet_nozzle              = turbojet.inlet_nozzle
     low_pressure_compressor   = turbojet.low_pressure_compressor
@@ -214,8 +216,19 @@ def compute_turbojet_performance(turbojet,state,center_of_gravity= [[0.0, 0.0,0.
     M                          = np.cross(moment_vector, thrust_vector)   
     moment                     = M 
     power                      = turbojet_conditions.power 
-    turbojet_conditions.moment = moment
- 
+    turbojet_conditions.moment = moment 
+
+    # compute efficiencies 
+    mdot_air_core                                  = turbojet_conditions.core_mass_flow_rate 
+    fuel_enthalpy                                  = combustor.fuel_data.specific_energy 
+    mdot_fuel                                      = turbojet_conditions.fuel_flow_rate   
+    h_e_c                                          = core_nozzle_conditions.outputs.static_enthalpy
+    h_0                                            = turbojet.working_fluid.compute_cp(T,P) * T 
+    h_t4                                           = combustor_conditions.outputs.stagnation_enthalpy
+    h_t3                                           = hpc_conditions.outputs.stagnation_enthalpy 
+    turbojet_conditions.overall_efficiency         = thrust_vector* U0 / (mdot_fuel * fuel_enthalpy)  
+    turbojet_conditions.thermal_efficiency         = 1 - ((mdot_air_core +  mdot_fuel)*(h_e_c -  h_0) + mdot_fuel *h_0)/((mdot_air_core +  mdot_fuel)*h_t4 - mdot_air_core *h_t3)  
+   
     # store data
     core_nozzle_res = Data(
                 exit_static_temperature             = core_nozzle_conditions.outputs.static_temperature,
