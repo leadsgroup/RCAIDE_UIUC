@@ -105,9 +105,9 @@ class Ducted_Fan(Converter):
         self.blade_clearance                       = 0.01
         self.length                                = 1 
         self.fan_effectiveness                     = 1.1 
-        self.Cp_polynomial_coefficients            = [0.0233,  0.0182, -0.0869]   
-        self.Ct_polynomial_coefficients            = [0.0605,-0.0529, -0.1203]   
-        self.etap_polynomial_coefficients          = [- 0.0979,4.1603 , -7.6128]  
+        self.Cp_polynomial_coefficients            = [0.551,  0.0182, -0.0869]   
+        self.Ct_polynomial_coefficients            = [0.4605,-0.0529, -0.1203]   
+        self.etap_polynomial_coefficients          = [0.0653,4.1603 , -7.6128]  
         self.fidelity                              = 'Blade_Element_Momentum_Theory' # 'Rankine_Froude_Momentum_Theory'  
         self.orientation_euler_angles              = [0.,0.,0.]  # vector of angles defining default orientation of rotor
         self.rotor                                 = Data()

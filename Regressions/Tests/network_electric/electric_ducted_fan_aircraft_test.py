@@ -32,7 +32,7 @@ def main():
     ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
     # truth values 
-    thrust_truth         = [57.356384455604505, 2.082435708612342]
+    thrust_truth         = [57.356384455604505, 57.35638445528938]
    
     for i in range(len(ducted_fan_type)):  
         # vehicle data
@@ -72,6 +72,7 @@ def main():
         
         for k,v in list(error.items()):
             assert(np.abs(v)<1e-6) 
+
     return 
 
 # ----------------------------------------------------------------------
@@ -88,6 +89,17 @@ def analyses_setup(configs):
         analyses[tag] = analysis
     
     return analyses
+
+def plot_results(results):
+    # Plots fligh conditions 
+    plot_flight_conditions(results) 
+    
+    
+    plot_battery_cell_conditions(results) 
+    
+    plot_aerodynamic_forces(results)
+
+    return
 
 def base_analysis(vehicle):
 
@@ -169,9 +181,9 @@ def mission_setup(analyses):
     # define flight controls 
     segment.assigned_control_variables.throttle.active                  = True           
     segment.assigned_control_variables.throttle.assigned_propulsors     = [['center_propulsor','starboard_propulsor','port_propulsor']] 
-    segment.assigned_control_variables.throttle.initial_guess_values    = [[0.98]]    
+    segment.assigned_control_variables.throttle.initial_guess_values    = [[0.905]]    
     segment.assigned_control_variables.body_angle.active                = True        
-    segment.assigned_control_variables.body_angle.initial_guess_values  = [[2 * Units.degree]]                   
+    segment.assigned_control_variables.body_angle.initial_guess_values  = [[2.05 * Units.degree]]                   
       
     mission.append_segment(segment) 
     return mission
