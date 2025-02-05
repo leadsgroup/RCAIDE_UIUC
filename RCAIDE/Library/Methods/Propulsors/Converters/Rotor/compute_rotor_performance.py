@@ -12,6 +12,7 @@ from RCAIDE.Library.Methods.Aerodynamics.Common.Lift    import compute_airfoil_a
 
 # package imports
 import  numpy as  np 
+from scipy.interpolate import interp1d
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Generalized Rotor Class
@@ -90,7 +91,23 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
         rotor =  propulsor.rotor
     elif 'propeller' in  propulsor:
         rotor =  propulsor.propeller
+
+    if rotor.fidelity == 'Blade_Element_Momentum_Theory_Helmholtz': 
+
+        outputs = BEMT_Helmholts_performance(rotor, conditions, propulsor, center_of_gravity)
+                      
+    elif rotor.fidelity == 'Actuator_Disk': 
+
+        outputs = Actuator_Disk_performance()
+    
+    conditions.energy[propulsor.tag][rotor.tag] = outputs    
      
+    
+    
+    return  
+
+def BEMT_Helmholts_performance(rotor, conditions, propulsor, center_of_gravity):
+
     propulsor_conditions  = conditions.energy[propulsor.tag]
     rotor_conditions      = propulsor_conditions[rotor.tag]
     commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
@@ -486,17 +503,88 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
                 rotor_drag_coefficient            = Crd,
                 pitch_command                     = pitch_c, 
                 figure_of_merit                   = FoM, 
-        ) 
-    
-    conditions.energy[propulsor.tag][rotor.tag] = outputs   
-    
-    return  
+        )  
 
-def compute_rotor_performance_BEMT_Hemholtz(inputs):
+    return outputs
+
+
+def Actuator_Disk_performance(rotor, conditions, propulsor, center_of_gravity):
+
+    propulsor_conditions  = conditions.energy[propulsor.tag]
+    rotor_conditions      = propulsor_conditions[rotor.tag]
+    commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
+    eta                   = rotor_conditions.throttle 
+    omega                 = rotor_conditions.omega
+    torque                = rotor_conditions.torque
+    a                     = conditions.freestream.speed_of_sound 
+    rho                   = conditions.freestream.density 
+    alt                   = conditions.freestream.altitude  
+    
+    # Unpack ducted_fan blade parameters and operating conditions  
+    V                     = conditions.freestream.velocity  
+    n, D, J, Cp, Ct, eta_p  = compute_propeller_efficiency(rotor, V, omega)
+    ctrl_pts              = len(V)
+       
+    power                 = torque*omega
+    thrust                = eta_p*power/V   
+    thrust_vector         = np.zeros((ctrl_pts,3))
+    thrust_vector[:,0]    = thrust[:,0]           
+     
+    # Compute moment 
+    moment_vector         = np.zeros((ctrl_pts,3))
+    moment_vector[:,0]    = rotor.origin[0][0]  -  center_of_gravity[0][0] 
+    moment_vector[:,1]    = rotor.origin[0][1]  -  center_of_gravity[0][1] 
+    moment_vector[:,2]    = rotor.origin[0][2]  -  center_of_gravity[0][2]
+    moment                = np.cross(moment_vector, thrust_vector)
+       
+    outputs                                   = Data( 
+            thrust                            = thrust_vector,  
+            power                             = power,
+            power_coefficient                 = Cp, 
+            thrust_coefficient                = Ct,
+            efficiency                        = eta_p, 
+            moment                            = moment, 
+            torque                            = torque)
 
     return
 
+def compute_propeller_efficiency(propeller, V, omega):
+    """
+    Calculate propeller efficiency based on propeller type and velocity.
+    
+    Parameters
+    ----------
+    propeller_type : str
+        Type of propeller ('constant_speed' or 'fixed_pitch')
+    u0 : float
+        Current velocity
+        
+    Returns
+    -------
+    float
+        Calculated propeller efficiency
+    """
 
-def compute_rotor_performance_Actuator_Disk(inputs):
+    n = omega/(2*np.pi)
+    D = 2*propeller.tip_radius
+    J = V/(n*D)
 
-    return
+    a_Cp = propeller.Cp_polynomial_coefficients[0]  
+    b_Cp = propeller.Cp_polynomial_coefficients[1]  
+    c_Cp = propeller.Cp_polynomial_coefficients[2] 
+
+    Cp = a_Cp + b_Cp*J + c_Cp*(J**2)
+
+    a_Ct = propeller.Ct_polynomial_coefficients[0]  
+    b_Ct = propeller.Ct_polynomial_coefficients[1]  
+    c_Ct = propeller.Ct_polynomial_coefficients[2] 
+
+    Ct = a_Ct + b_Ct*J + c_Ct*(J**2)
+
+    J_vector = propeller.etap_J_coefficients
+    eta_vector = propeller.etap_eff_coefficients
+
+    eta_fz = interp1d(J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    eta_p = eta_fz(J)
+
+    return n, D, J, Cp, Ct, eta_p

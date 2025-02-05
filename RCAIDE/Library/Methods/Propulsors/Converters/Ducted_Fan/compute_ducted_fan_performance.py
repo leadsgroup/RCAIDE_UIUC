@@ -13,6 +13,7 @@ from RCAIDE.Framework.Core                              import Data , Units, ori
 
 # package imports
 import  numpy as  np 
+from scipy.interpolate import interp1d
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Generalized Rotor Class
@@ -134,11 +135,11 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
 
     Ct = a_Ct + b_Ct*J + c_Ct*(J**2)
 
-    a_etap = ducted_fan.etap_polynomial_coefficients[0]  
-    b_etap = ducted_fan.etap_polynomial_coefficients[1]  
-    c_etap = ducted_fan.etap_polynomial_coefficients[2] 
+    J_vector = ducted_fan.etap_J_coefficients
+    eta_vector = ducted_fan.etap_eff_coefficients
 
-    eta_p = a_etap + b_etap*J + c_etap*(J**2) 
+    eta_fz = interp1d(J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    eta_p = eta_fz(J)
 
     return n, D, J, Cp, Ct, eta_p
 
