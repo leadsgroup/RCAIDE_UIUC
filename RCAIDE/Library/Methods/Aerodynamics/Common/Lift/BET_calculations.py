@@ -65,7 +65,7 @@ def compute_airfoil_aerodynamics(beta,c,r,R,B,Wa,Wt,a,nu,airfoils,airfoil_locati
     Re       = (W*c)/nu
 
     # If rotor airfoils are defined, use airfoil surrogate
-    if airfoil_locations != None:
+    if len(airfoil_locations) != 0:
         a_loc = np.array(airfoil_locations)
         # Compute blade Cl and Cd distribution from the airfoil data 
         if use_2d_analysis:

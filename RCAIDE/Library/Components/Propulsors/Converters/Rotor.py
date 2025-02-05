@@ -187,7 +187,7 @@ class Rotor(Component):
         self.number_azimuthal_stations         = 16 
         self.vtk_airfoil_points                = 40        
         self.airfoils                          = Airfoil_Container()
-        self.airfoil_polar_stations            = None 
+        self.airfoil_polar_stations            = [] 
         
         # design flight conditions 
         self.cruise                            = Data() 
