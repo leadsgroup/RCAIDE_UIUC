@@ -238,8 +238,7 @@ def vehicle_setup():
     # Propulsor: Starboard Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------         
     turbofan                                    = RCAIDE.Library.Components.Propulsors.Turbofan() 
-    turbofan.tag                                = 'center_propulsor'
-    turbofan.active_fuel_tanks                  = ['fuel_tank']   
+    turbofan.tag                                = 'center_propulsor' 
     turbofan.origin                             = [[120.0 *Units.feet, 0.0*Units.feet, 6.5*Units.feet]] 
     turbofan.engine_length                      = 2.71     
     turbofan.bypass_ratio                       = 8.4
@@ -341,8 +340,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------   
     right_turbofan                     = deepcopy(turbofan) 
     right_turbofan.tag                 = 'right_propulsor' 
-    right_turbofan.origin              = [[120.0 *Units.feet, 25.0*Units.feet, 6.5*Units.feet]]
-    right_turbofan.active_fuel_tanks   = ['tank_6_and_7','tank_5A_and_7A','tank_2_and_3','tank_11']  
+    right_turbofan.origin              = [[120.0 *Units.feet, 25.0*Units.feet, 6.5*Units.feet]] 
     right_nacelle                      = deepcopy(nacelle)
     right_nacelle.tag                  = 'right_nacelle'
     right_nacelle.origin               = [[120.0 *Units.feet, 25.0*Units.feet, 6.5*Units.feet]]
@@ -354,8 +352,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------    
     left_turbofan                    = deepcopy(turbofan) 
     left_turbofan.tag                 = 'left_propulsor' 
-    left_turbofan.origin              = [[120.0 *Units.feet, -25.0*Units.feet, 6.5*Units.feet]] 
-    left_turbofan.active_fuel_tanks   = ['tank_9','tank_10','tank_1_and_4','tank_5_and_8'] 
+    left_turbofan.origin              = [[120.0 *Units.feet, -25.0*Units.feet, 6.5*Units.feet]]  
     left_nacelle                      = deepcopy(nacelle)
     left_nacelle.tag                  = 'left_nacelle'
     left_nacelle.origin               = [[120.0 *Units.feet, -25.0*Units.feet, 6.5*Units.feet]]

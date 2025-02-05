@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports  
-from RCAIDE.Library.Components                      import Component   
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Engine.append_engine_conditions import append_engine_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Engine Class
 # ----------------------------------------------------------------------------------------------------------------------  
-class Engine(Component):
+class Engine(Converter):
     """
     An internal combustion engine component model for propulsion systems.
 

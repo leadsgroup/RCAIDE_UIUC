@@ -7,13 +7,13 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------   
 # RCAIDE imports  
-from RCAIDE.Library.Components import Component
-from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor.append_motor_conditions import  append_motor_conditions
+from .Converter  import Converter
+from RCAIDE.Library.Methods.Propulsors.Converters.Motor.append_motor_conditions import  append_motor_conditions
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  DC_Motor  
 # ----------------------------------------------------------------------------------------------------------------------           
-class DC_Motor(Component):
+class DC_Motor(Converter):
     """
     A direct current (DC) electric motor component model for electric propulsion systems.
 
@@ -82,7 +82,7 @@ class DC_Motor(Component):
 
     See Also
     --------
-    RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor
+    RCAIDE.Library.Methods.Propulsors.Converters.Motor
     """      
     def __defaults__(self):
         """This sets the default values for the component to function.

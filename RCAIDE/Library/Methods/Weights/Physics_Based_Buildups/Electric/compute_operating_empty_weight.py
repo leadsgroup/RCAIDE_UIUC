@@ -84,6 +84,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
     # Set up data structures for RCAIDE weight methods
     weight                                  = Data()  
     weight.battery                          = 0.0
+    weight.fuel_cell                        = 0.0
     weight.payload                          = 0.0
     weight.servos                           = 0.0
     weight.hubs                             = 0.0
@@ -199,7 +200,10 @@ def compute_operating_empty_weight(vehicle,settings = None):
             weight.avionics += bus.avionics.mass_properties.mass   
                          
             for modules in bus.battery_modules: 
-                weight.battery += modules.mass_properties.mass * Units.kg  
+                weight.battery += modules.mass_properties.mass * Units.kg 
+    
+            for fuel_cell in bus.fuel_cell_stacks: 
+                weight.fuel_cell += fuel_cell.mass_properties.mass * Units.kg                 
         
             # Servo, Hub and BRS Weights
             lift_rotor_hub_weight   = 4.   * Units.kg
@@ -361,8 +365,9 @@ def compute_operating_empty_weight(vehicle,settings = None):
     output.empty.propulsion.servos                    = miscelleneous_weight_factor *weight.servos
     output.empty.propulsion.wiring                    = miscelleneous_weight_factor *weight.wiring 
     output.empty.propulsion.battery                   = miscelleneous_weight_factor *weight.battery
+    output.empty.propulsion.fuel_cell                 = miscelleneous_weight_factor *weight.fuel_cell
     output.empty.propulsion.TMS                       = miscelleneous_weight_factor *weight.thermal_management_system.total
-    output.empty.propulsion.total                     = weight.rotors + weight.hubs +  weight.battery +  weight.motors +   weight.wiring +   weight.servos +  weight.thermal_management_system.total 
+    output.empty.propulsion.total                     = weight.rotors + weight.hubs  +  weight.fuel_cell  +  weight.battery +  weight.motors +   weight.wiring +   weight.servos +  weight.thermal_management_system.total 
 
     output.empty.systems                              = Data()
     output.empty.systems.environmental_control_system = miscelleneous_weight_factor * weight.ECS

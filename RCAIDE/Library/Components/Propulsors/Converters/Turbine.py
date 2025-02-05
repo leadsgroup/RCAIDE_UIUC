@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports  
-from RCAIDE.Library.Components                      import Component   
+from .Converter  import Converter 
 from RCAIDE.Library.Methods.Propulsors.Converters.Turbine.append_turbine_conditions import append_turbine_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Turbine
 # ----------------------------------------------------------------------------------------------------------------------  
-class Turbine(Component):
+class Turbine(Converter):
     """
     A turbine component model for gas turbine and turbofan engines.
 

@@ -430,8 +430,7 @@ def vehicle_setup():
     # Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------    
     starboard_propulsor                              = RCAIDE.Library.Components.Propulsors.Turboprop()    
-    starboard_propulsor.tag                          = 'starboard_propulsor' 
-    starboard_propulsor.active_fuel_tanks            = ['fuel_tank']   
+    starboard_propulsor.tag                          = 'starboard_propulsor'  
     starboard_propulsor.origin                       = [[ 9.559106394 ,4.219315295, 1.616135105]]
     starboard_propulsor.design_altitude              = 25000*Units.ft                                   # [-]         Design Altitude
     starboard_propulsor.design_mach_number           = 0.5                                              # [-]         Design Mach number
@@ -572,8 +571,7 @@ def vehicle_setup():
     # Propulsor: Port Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------      
     # copy turbofan
-    port_propulsor                                  = deepcopy(starboard_propulsor)
-    port_propulsor.active_fuel_tanks                = ['fuel_tank'] 
+    port_propulsor                                  = deepcopy(starboard_propulsor) 
     port_propulsor.tag                              = 'port_propulsor' 
     port_propulsor.origin                           = [[ 9.559106394 ,-4.219315295, 1.616135105]]  # change origin 
     port_propulsor.nacelle.tag                      = 'port_propulsor_nacelle' 

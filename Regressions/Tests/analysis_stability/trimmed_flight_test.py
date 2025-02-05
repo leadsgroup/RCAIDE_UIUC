@@ -107,13 +107,12 @@ def base_analysis(vehicle, configs):
     aerodynamics.settings.model_nacelle                 = True
     analyses.append(aerodynamics) 
       
-    stability                                       = RCAIDE.Framework.Analyses.Stability.Vortex_Lattice_Method() 
-    stability.settings.discretize_control_surfaces  = True
-    stability.settings.model_fuselage               = True                
-    stability.settings.model_nacelle                = True
-        
-    stability.configuration                         = configs
-    stability.vehicle                               = vehicle
+    stability                                           = RCAIDE.Framework.Analyses.Stability.Vortex_Lattice_Method() 
+    stability.settings.discretize_control_surfaces      = True
+    stability.settings.model_fuselage                   = True                
+    stability.settings.model_nacelle                    = True 
+    stability.configuration                             = configs
+    stability.vehicle                                   = vehicle
     analyses.append(stability)
 
     # ------------------------------------------------------------------
