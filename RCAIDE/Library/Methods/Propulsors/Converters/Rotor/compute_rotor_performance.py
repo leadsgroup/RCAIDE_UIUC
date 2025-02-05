@@ -491,3 +491,12 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
     conditions.energy[propulsor.tag][rotor.tag] = outputs   
     
     return  
+
+def compute_rotor_performance_BEMT_Hemholtz(inputs):
+
+    return
+
+
+def compute_rotor_performance_Actuator_Disk(inputs):
+
+    return

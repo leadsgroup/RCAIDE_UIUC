@@ -188,6 +188,11 @@ class Rotor(Component):
         self.vtk_airfoil_points                = 40        
         self.airfoils                          = Airfoil_Container()
         self.airfoil_polar_stations            = None 
+
+        self.Cp_polynomial_coefficients            = [0.551,  0.0182, -0.0869]   
+        self.Ct_polynomial_coefficients            = [0.4605,-0.0529, -0.1203]   
+        self.etap_polynomial_coefficients          = [0.0653,4.1603 , -7.6128]  
+        self.fidelity                              = 'Actuator_Disk' # 'Blade_Element_Momentum_Theory_Helmholtz'  
         
         # design flight conditions 
         self.cruise                            = Data() 
