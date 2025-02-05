@@ -102,7 +102,7 @@ def compute_systems_weight(vehicle):
     for fuselage in vehicle.fuselages:
         if L_fus < fuselage.lengths.total:
             ref_fuselage = fuselage
-    
+            L_fus = ref_fuselage.lengths.total
     flap_ratio     = flap_area / ref_wing.areas.reference
     L              = ref_fuselage.lengths.total / Units.ft
     Bw             = ref_wing.spans.projected / Units.ft

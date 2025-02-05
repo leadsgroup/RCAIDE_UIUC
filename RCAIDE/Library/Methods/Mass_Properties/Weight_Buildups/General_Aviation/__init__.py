@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
-
+import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer
 # from .compute_operating_empty_weight import compute_operating_empty_weight
 # from .compute_landing_gear_weight    import compute_landing_gear_weight    
 # from .compute_payload_weight         import compute_payload_weight         

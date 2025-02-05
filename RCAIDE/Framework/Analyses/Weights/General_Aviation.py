@@ -44,7 +44,9 @@ class General_Aviation(Weights):
         """           
         self.tag      = 'weights_general_aviation'
         self.vehicle  = None    
-        self.settings = None        
+        
+        self.settings = Data()  
+        self.settings.use_max_fuel_weight = True
         
     def evaluate(self):
         """Evaluate the weight analysis.
@@ -63,7 +65,12 @@ class General_Aviation(Weights):
         """
         # unpack
         vehicle = self.vehicle 
-        results = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.compute_operating_empty_weight(vehicle, settings=self.settings)
+        settings = self.settings
+        
+        if self.method == 'Raymer':
+            results = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_operating_empty_weight(vehicle, settings=settings)
+        else:
+            raise ValueError('Method type not supported')
 
         # storing weigth breakdown into vehicle
         vehicle.weight_breakdown = results
