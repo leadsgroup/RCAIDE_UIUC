@@ -76,16 +76,17 @@ def compute_systems_weight(vehicle):
     FNEF = 0 
     for network in  vehicle.networks:
         for propulsor in network.propulsors:
-            NENG += 1 
-            if propulsor.wing_mounted: 
-                FNEW += 1  
-            else:
-                FNEF += 1
-            if 'nacelle' in propulsor:
-                nacelle =  propulsor.nacelle 
-                FNAC    = nacelle.diameter / Units.ft
-            else:
-                FNAC    = 0                     
+            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
+                NENG += 1 
+                if propulsor.wing_mounted: 
+                    FNEW += 1  
+                else:
+                    FNEF += 1
+                if 'nacelle' in propulsor:
+                    nacelle =  propulsor.nacelle 
+                    FNAC    = nacelle.diameter / Units.ft
+                else:
+                    FNAC    = 0                     
             
     VMAX     = vehicle.flight_envelope.design_mach_number
     SFLAP    = 0
@@ -100,10 +101,13 @@ def compute_systems_weight(vehicle):
         for wing in  vehicle.wings:
             if S < wing.areas.reference:
                 ref_wing = wing
-                
-    DG    = vehicle.mass_properties.max_takeoff / Units.lbs
-    WSC   = 1.1 * VMAX ** 0.52 * SFLAP ** 0.6 * DG ** 0.32  # surface controls weight
     
+    DELTA  = 0.85 # Pressure Ratio (cruise to sea level) is assumed to be 0.85
+    ULF    = vehicle.flight_envelope.ultimate_load   
+    QDIVE  = 1481.35*DELTA*VMAX**2
+    DG    = vehicle.mass_properties.max_takeoff / Units.lbs
+    WSC   = 0.404*SW**0.317 * (DG/1000)**0.602 * ULF**0.525 * QDIVE**0.345
+     
     XL = 0
     WF = 0
     L_fus = 0
@@ -114,7 +118,6 @@ def compute_systems_weight(vehicle):
             WF  = fuselage.width / Units.ft
     FPAREA      = XL * WF
     NPASS       = vehicle.passengers
-    WAPU        = 54 * FPAREA ** 0.3 + 5.4 * NPASS ** 0.9  # apu weight
 
     if vehicle.passengers >= 150:
         NFLCR = 3  # number of flight crew
@@ -142,17 +145,15 @@ def compute_systems_weight(vehicle):
 
     WAC     = (3.2 * (FPAREA * DF) ** 0.6 + 9 * NPASS ** 0.83) * VMAX + 0.075 * WAVONC  # ac weight
 
-    WAI     = ref_wing.spans.projected / Units.ft * 1. / np.cos(ref_wing.sweeps.quarter_chord) + 3.8 * FNAC * NENG + 1.5 * WF  # anti-ice weight
+
 
     output                      = Data()
     output.W_flight_control    = WSC * Units.lbs
-    output.W_apu               = WAPU * Units.lbs
     output.W_hyd_pnu           = WHYD * Units.lbs
     output.W_instruments       = WIN * Units.lbs
     output.W_avionics          = WAVONC * Units.lbs
     output.W_electrical        = WELEC * Units.lbs
     output.W_ac                = WAC * Units.lbs
     output.W_furnish           = WFURN * Units.lbs
-    output.W_anti_ice          = WAI * Units.lbs
-    output.W_systems           = WSC + WAPU + WIN + WHYD + WELEC + WAVONC + WFURN + WAC + WAI
+    output.W_systems           = WSC  + WIN + WHYD + WELEC + WAVONC + WFURN + WAC 
     return output

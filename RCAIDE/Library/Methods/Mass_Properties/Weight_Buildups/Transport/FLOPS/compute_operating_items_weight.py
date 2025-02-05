@@ -62,36 +62,30 @@ def compute_operating_items_weight(vehicle):
     NENG =  0 
     for network in  vehicle.networks:
         for propulsor in network.propulsors:
-            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
                 ref_propulsor = propulsor  
                 NENG  += 1   
     
-    THRUST          = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
-    SW              = vehicle.reference_area / Units.ft ** 2
-    FMXTOT          = vehicle.mass_properties.max_zero_fuel / Units.lbs
+    # THRUST          = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
+    # SW              = vehicle.reference_area / Units.ft ** 2
+    # FMXTOT          = vehicle.mass_properties.max_zero_fuel / Units.lbs
     DESRNG          = vehicle.flight_envelope.design_range / Units.nmi
     VMAX            = vehicle.flight_envelope.design_mach_number   
     
-    number_of_tanks = 0  
-    for network in  vehicle.networks:
-        for fuel_line in network.fuel_lines:
-            for fuel_tank in fuel_line.fuel_tanks:
-                number_of_tanks += 1 
-    if number_of_tanks == 0:
-        number_of_tanks = 5    
+    # number_of_tanks = 0  
+    # for network in  vehicle.networks:
+    #     for fuel_line in network.fuel_lines:
+    #         for fuel_tank in fuel_line.fuel_tanks:
+    #             number_of_tanks += 1 
+    # if number_of_tanks == 0:
+    #     number_of_tanks = 5    
     
-    WUF             = 11.5 * NENG * THRUST ** 0.2 + 0.07 * SW + 1.6 * number_of_tanks * FMXTOT ** 0.28  # unusable fuel weight
-    WOIL            = 0.082 * NENG * THRUST ** 0.65  # engine oil weight
+    # WUF             = 11.5 * NENG * THRUST ** 0.2 + 0.07 * SW + 1.6 * number_of_tanks * FMXTOT ** 0.28  # unusable fuel weight
+    # WOIL            = 0.082 * NENG * THRUST ** 0.65  # engine oil weight
     
     for fuselage in  vehicle.fuselages: 
-        if hasattr(fuselage, 'number_coach_seats'):
-            NPT = fuselage.number_coach_seats  # number of economy passengers
-            NPF = (vehicle.passengers - NPT) / 4.  # number of first clss passengers
-            NPB = vehicle.passengers - NPF - NPT  # number of bussines passengers
-        else:
-            NPF = vehicle.passengers / 20.
-            NPB = vehicle.passengers / 10.
-            NPT = vehicle.passengers - NPF - NPB
+        NPF = vehicle.passengers / 20.
+        NPB = vehicle.passengers / 10.
+        NPT = vehicle.passengers - NPF - NPB
     vehicle.NPF = NPF
     vehicle.NPB = NPB
     vehicle.NPT = NPT
@@ -113,7 +107,7 @@ def compute_operating_items_weight(vehicle):
     WFLCRB = NFLCR * 225  # flight crew and baggage weight
 
     output                           = Data()
-    output.misc = WUF * Units.lbs + WOIL * Units.lbs + WSRV * Units.lbs + WCON * Units.lbs
+    output.misc = WSRV * Units.lbs + WCON * Units.lbs  # WUF * Units.lbs + WOIL * Units.lbs + 
     output.flight_crew               = WFLCRB * Units.lbs
     output.flight_attendants         = WFLAAB * Units.lbs
     output.total                     = output.misc + output.flight_crew + \

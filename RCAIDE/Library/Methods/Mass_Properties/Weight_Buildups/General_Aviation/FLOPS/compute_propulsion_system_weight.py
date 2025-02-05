@@ -67,7 +67,6 @@ def compute_propulsion_system_weight(vehicle,ref_propulsor):
      
     NENG =  0 
     number_of_tanks =  0
-    ref_nacelle =  None
     for network in  vehicle.networks:
         for propulsor in network.propulsors:
             if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
@@ -79,84 +78,23 @@ def compute_propulsion_system_weight(vehicle,ref_propulsor):
             for _ in fuel_line.fuel_tanks:
                 number_of_tanks +=  1
                   
-    if ref_nacelle is not None:
-        WNAC            = compute_nacelle_weight(ref_propulsor,ref_nacelle,NENG ) 
+     
+
     WFSYS           = compute_fuel_system_weight(vehicle, NENG)
     WENG            = compute_engine_weight(vehicle,ref_propulsor)
     WEC, WSTART     = compute_misc_propulsion_system_weight(vehicle,ref_propulsor,ref_nacelle,NENG)
-    WTHR            = compute_thrust_reverser_weight(ref_propulsor,NENG)
-    WPRO            = NENG * WENG + WFSYS + WEC + WSTART + WTHR + WNAC
+    WPRO            = NENG * WENG + WFSYS + WEC + WSTART
 
     output                      = Data()
     output.W_prop               = WPRO
-    output.W_thrust_reverser    = WTHR
     output.W_starter            = WSTART
     output.W_engine_controls    = WEC
     output.W_fuel_system        = WFSYS
-    output.W_nacelle            = WNAC
     output.W_engine             = WENG * NENG
     output.number_of_engines    = NENG 
     output.number_of_fuel_tanks = number_of_tanks  
     return output
 
-
-def compute_nacelle_weight(ref_propulsor,ref_nacelle,NENG):
-    """ Calculates the nacelle weight based on the FLOPS method
-    
-        Assumptions:
-            1) All nacelles are identical
-            2) The number of nacelles is the same as the number of engines 
-
-        Source:
-            The Flight Optimization System Weight Estimation Method
-
-        Inputs:
-            ref_propulsor    - data dictionary for the specific network that is being estimated [dimensionless]
-                -.number_of_engines: number of engines
-                -.engine_lenght: total length of engine                                  [m]
-                -.sealevel_static_thrust: sealevel static thrust of engine               [N]
-            nacelle.             
-                -.diameter: diameter of nacelle                                          [m]
-            WENG    - dry engine weight                                                  [kg]
-             
-             
-        Outputs:             
-            WNAC: nacelle weight                                                         [kg]
-
-        Properties Used:
-            N/A
-    """ 
-    TNAC   = NENG + 0.5 * (NENG - 2 * np.floor(NENG / 2.))
-    DNAC   = ref_nacelle.diameter / Units.ft
-    XNAC   = ref_nacelle.length / Units.ft
-    FTHRST = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
-    WNAC   = 0.25 * TNAC * DNAC * XNAC * FTHRST ** 0.36
-    return WNAC * Units.lbs
-
-
-def compute_thrust_reverser_weight(ref_propulsor,NENG):
-    """ Calculates the weight of the thrust reversers of the aircraft
-    
-        Assumptions:
-
-        Source:
-            The Flight Optimization System Weight Estimation Method
-
-        Inputs:
-            ref_propulsor    - data dictionary for the specific network that is being estimated [dimensionless]
-                -.number_of_engines: number of engines
-                -.sealevel_static_thrust: sealevel static thrust of engine  [N]
-
-        Outputs:
-            WTHR: Thrust reversers weight                                   [kg]
-
-        Properties Used:
-            N/A
-    """ 
-    TNAC = NENG + 1. / 2 * (NENG - 2 * np.floor(NENG / 2.))
-    THRUST = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
-    WTHR = 0.034 * THRUST * TNAC
-    return WTHR * Units.lbs
 
 
 def compute_misc_propulsion_system_weight(vehicle,ref_propulsor,ref_nacelle,NENG ):
@@ -203,8 +141,6 @@ def compute_fuel_system_weight(vehicle, NENG):
 
         Inputs:
             vehicle - data dictionary with vehicle properties                   [dimensionless]
-                -.design_mach_number: design mach number
-                -   [kg]
 
         Outputs:
             WFSYS: Fuel system weight                                       [kg]
@@ -212,9 +148,8 @@ def compute_fuel_system_weight(vehicle, NENG):
         Properties Used:
             N/A
     """
-    VMAX = vehicle.flight_envelope.design_mach_number
     FMXTOT = vehicle.mass_properties.max_fuel / Units.lbs
-    WFSYS = 1.07 * FMXTOT ** 0.58 * NENG ** 0.43 * VMAX ** 0.34
+    WFSYS = 1.07 * FMXTOT ** 0.58 * NENG ** 0.43 
     return WFSYS * Units.lbs
 
 
@@ -249,7 +184,7 @@ def compute_engine_weight(vehicle, ref_propulsor):
     ENOZ = 1
     THRSO = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
     THRUST = THRSO
-    WENGB = THRSO / 5.5
+    WENGB = THRSO / 10.5
     WINLB = 0 / Units.lbs
     WNOZB = 0 / Units.lbs
     WENGP = WENGB * (THRUST / THRSO) ** EEXP

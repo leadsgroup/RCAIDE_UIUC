@@ -69,7 +69,10 @@ class General_Aviation(Weights):
         
         if self.method == 'Raymer':
             results = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_operating_empty_weight(vehicle, settings=settings)
-        else:
+        elif self.method == "FLOPS Simple" or self.method == "FLOPS Complex":
+            self.settings.complexity = self.method.split()[1]
+            results =  RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.FLOPS.compute_operating_empty_weight(vehicle, self.settings)
+        else:   
             raise ValueError('Method type not supported')
 
         # storing weigth breakdown into vehicle
