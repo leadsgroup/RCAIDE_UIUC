@@ -13,7 +13,6 @@ from RCAIDE.Framework.Core                              import Data , Units, ori
 
 # package imports
 import  numpy as  np 
-from scipy.interpolate import interp1d
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Generalized Rotor Class
@@ -92,11 +91,11 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     
     if ducted_fan.fidelity == 'Blade_Element_Momentum_Theory': 
 
-        outputs = BEMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity, commanded_TV)
+        BEMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity, commanded_TV)
                       
     elif ducted_fan.fidelity == 'Rankine_Froude_Momentum_Theory': 
 
-        outputs = RFMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity)
+        RFMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity)
     
     conditions.energy[propulsor.tag][ducted_fan.tag] = outputs   
     
@@ -135,11 +134,11 @@ def compute_ducted_fan_efficiency(ducted_fan, V, omega):
 
     Ct = a_Ct + b_Ct*J + c_Ct*(J**2)
 
-    J_vector = ducted_fan.etap_J_coefficients
-    eta_vector = ducted_fan.etap_eff_coefficients
+    a_etap = ducted_fan.etap_polynomial_coefficients[0]  
+    b_etap = ducted_fan.etap_polynomial_coefficients[1]  
+    c_etap = ducted_fan.etap_polynomial_coefficients[2] 
 
-    eta_fz = interp1d(J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
-    eta_p = eta_fz(J)
+    eta_p = a_etap + b_etap*J + c_etap*(J**2) 
 
     return n, D, J, Cp, Ct, eta_p
 
@@ -259,5 +258,5 @@ def RFMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_grav
             moment                            = moment, 
             torque                            = torque)
     
-    return outputs
+    return
     

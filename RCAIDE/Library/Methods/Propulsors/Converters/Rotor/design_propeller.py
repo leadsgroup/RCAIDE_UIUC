@@ -48,18 +48,18 @@ def design_propeller(prop,number_of_stations=20):
         
         omega     = prop.cruise.design_angular_velocity
         V         = prop.cruise.design_freestream_velocity 
+        Q         = prop.cruise.design_torque
         atmo      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
         rho       = atmo.compute_values(prop.cruise.design_altitude,0.).density
         
-        n, D, J, Cp, Ct, eta_p  = compute_propeller_efficiency(prop, V, omega)
-
-        T      = Ct * rho * (n**2)*(D**4) 
-        P      = Cp * rho * (n**3)*(D**5)  
-        Q      = P / omega
+        n, D, J, eta_p  = compute_propeller_efficiency(prop, V, omega)
+        
+        power                 = Q*omega
+        thrust                = eta_p*power/V  
                 
-        prop.cruise.design_power              = P[0, 0]
+        prop.cruise.design_power              = power[0, 0]
         prop.cruise.design_efficiency         = eta_p 
-        prop.cruise.design_thrust             = T[0, 0] 
+        prop.cruise.design_thrust             = thrust[0, 0] 
         prop.cruise.design_torque             = Q[0, 0]
         prop.cruise.design_thrust_coefficient = Ct  
         prop.cruise.design_power_coefficient  = Cp 

@@ -522,7 +522,7 @@ def Actuator_Disk_performance(rotor, conditions, propulsor, center_of_gravity):
     
     # Unpack ducted_fan blade parameters and operating conditions  
     V                     = conditions.freestream.velocity  
-    n, D, J, Cp, Ct, eta_p  = compute_propeller_efficiency(rotor, V, omega)
+    n, D, J, eta_p  = compute_propeller_efficiency(rotor, V, omega)
     ctrl_pts              = len(V)
        
     power                 = torque*omega
@@ -569,22 +569,10 @@ def compute_propeller_efficiency(propeller, V, omega):
     D = 2*propeller.tip_radius
     J = V/(n*D)
 
-    a_Cp = propeller.Cp_polynomial_coefficients[0]  
-    b_Cp = propeller.Cp_polynomial_coefficients[1]  
-    c_Cp = propeller.Cp_polynomial_coefficients[2] 
-
-    Cp = a_Cp + b_Cp*J + c_Cp*(J**2)
-
-    a_Ct = propeller.Ct_polynomial_coefficients[0]  
-    b_Ct = propeller.Ct_polynomial_coefficients[1]  
-    c_Ct = propeller.Ct_polynomial_coefficients[2] 
-
-    Ct = a_Ct + b_Ct*J + c_Ct*(J**2)
-
     J_vector = propeller.etap_J_coefficients
     eta_vector = propeller.etap_eff_coefficients
 
     eta_fz = interp1d(J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
     eta_p = eta_fz(J)
 
-    return n, D, J, Cp, Ct, eta_p
+    return n, D, J, eta_p
