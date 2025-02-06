@@ -47,20 +47,23 @@ def design_propeller(prop,number_of_stations=20):
     if prop.fidelity == 'Actuator_Disk':
         
         omega     = prop.cruise.design_angular_velocity
+        thrust    = prop.cruise.design_thrust
         V         = prop.cruise.design_freestream_velocity 
-        Q         = prop.cruise.design_torque
         atmo      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
         rho       = atmo.compute_values(prop.cruise.design_altitude,0.).density
         
         n, D, J, eta_p  = compute_propeller_efficiency(prop, V, omega)
         
-        power                 = Q*omega
-        thrust                = eta_p*power/V  
+        power     = thrust*V/eta_p
+        Q         = power/omega
+
+        Ct        = thrust/(rho * (n**2)*(D**4))          
+        Cp        = power/(rho * (n**3)*(D**5) )              
                 
-        prop.cruise.design_power              = power[0, 0]
+        prop.cruise.design_power              = power
         prop.cruise.design_efficiency         = eta_p 
-        prop.cruise.design_thrust             = thrust[0, 0] 
-        prop.cruise.design_torque             = Q[0, 0]
+        prop.cruise.design_thrust             = thrust
+        prop.cruise.design_torque             = Q
         prop.cruise.design_thrust_coefficient = Ct  
         prop.cruise.design_power_coefficient  = Cp 
 

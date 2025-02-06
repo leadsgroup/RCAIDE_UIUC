@@ -91,11 +91,11 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
     
     if ducted_fan.fidelity == 'Blade_Element_Momentum_Theory': 
 
-        BEMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity, commanded_TV)
+        outputs = BEMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity, commanded_TV)
                       
     elif ducted_fan.fidelity == 'Rankine_Froude_Momentum_Theory': 
 
-        RFMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity)
+        outputs = RFMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_gravity)
     
     conditions.energy[propulsor.tag][ducted_fan.tag] = outputs   
     
@@ -258,5 +258,5 @@ def RFMT_performance(ducted_fan,ducted_fan_conditions,conditions, center_of_grav
             moment                            = moment, 
             torque                            = torque)
     
-    return
+    return outputs
     

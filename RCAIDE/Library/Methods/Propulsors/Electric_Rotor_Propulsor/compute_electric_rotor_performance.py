@@ -78,11 +78,11 @@ def compute_electric_rotor_performance(propulsor,state,voltage,center_of_gravity
     stored_propulsor_tag    = propulsor.tag 
     
     # compute total forces and moments from propulsor (future work would be to add moments from motors)
-    electric_rotor_conditions.thrust      = conditions.energy[propulsor.tag][rotor.tag].thrust 
-    electric_rotor_conditions.moment      = conditions.energy[propulsor.tag][rotor.tag].moment 
+    electric_rotor_conditions.thrust      = conditions.energy[propulsor.tag].thrust 
+    electric_rotor_conditions.moment      = conditions.energy[propulsor.tag].moment 
     
-    T  = conditions.energy[propulsor.tag][rotor.tag].thrust 
-    M  = conditions.energy[propulsor.tag][rotor.tag].moment 
+    T  = conditions.energy[propulsor.tag].thrust 
+    M  = conditions.energy[propulsor.tag].moment 
     P  = esc_conditions.inputs.power
     
     return T,M,P, stored_results_flag,stored_propulsor_tag 
@@ -125,7 +125,7 @@ def reuse_stored_electric_rotor_data(propulsor,state,network,stored_propulsor_ta
     conditions.energy[propulsor.tag][rotor.tag]        = deepcopy(conditions.energy[stored_propulsor_tag][rotor_0.tag])
     conditions.energy[propulsor.tag][esc.tag]          = deepcopy(conditions.energy[stored_propulsor_tag][esc_0.tag])
   
-    thrust                  = conditions.energy[propulsor.tag][rotor.tag].thrust 
+    thrust                  = conditions.energy[propulsor.tag].thrust 
     power                   = conditions.energy[propulsor.tag][esc.tag].inputs.power 
     
     moment_vector           = 0*state.ones_row(3) 
@@ -134,7 +134,7 @@ def reuse_stored_electric_rotor_data(propulsor,state,network,stored_propulsor_ta
     moment_vector[:,2]      = rotor.origin[0][2]  -  center_of_gravity[0][2]
     moment                  =  np.cross(moment_vector, thrust)
     
-    conditions.energy[propulsor.tag][rotor.tag].moment = moment  
+    conditions.energy[propulsor.tag].moment            = moment  
     conditions.energy[propulsor.tag].thrust            = thrust   
     conditions.energy[propulsor.tag].moment            = moment  
     
