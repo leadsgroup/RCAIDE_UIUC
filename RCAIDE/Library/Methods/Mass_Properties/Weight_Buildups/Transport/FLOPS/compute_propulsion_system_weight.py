@@ -17,7 +17,7 @@ import  numpy as  np
 # ----------------------------------------------------------------------------------------------------------------------
 #  Propulsion Systems Weight 
 # ----------------------------------------------------------------------------------------------------------------------
-def compute_propulsion_system_weight(vehicle,network):
+def compute_propulsion_system_weight(vehicle,ref_propulsor):
     """ Calculate the weight of propulsion system, including:
         - dry engine weight
         - fuel system weight
@@ -73,9 +73,6 @@ def compute_propulsion_system_weight(vehicle,network):
             if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
                 ref_propulsor = propulsor  
                 NENG  += 1 
-            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.ICE_Propeller) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller):
-                ref_propulsor = propulsor  
-                NENG  += 1 
             if 'nacelle' in propulsor:
                 ref_nacelle =  propulsor.nacelle   
         for fuel_line in network.fuel_lines:
@@ -84,8 +81,6 @@ def compute_propulsion_system_weight(vehicle,network):
                   
     if ref_nacelle is not None:
         WNAC            = compute_nacelle_weight(ref_propulsor,ref_nacelle,NENG ) 
-    else:
-        WNAC = 0
     WFSYS           = compute_fuel_system_weight(vehicle, NENG)
     WENG            = compute_engine_weight(vehicle,ref_propulsor)
     WEC, WSTART     = compute_misc_propulsion_system_weight(vehicle,ref_propulsor,ref_nacelle,NENG)
@@ -159,9 +154,8 @@ def compute_thrust_reverser_weight(ref_propulsor,NENG):
             N/A
     """ 
     TNAC = NENG + 1. / 2 * (NENG - 2 * np.floor(NENG / 2.))
-    #THRUST = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
-    #WTHR = 0.034 * THRUST * TNAC
-    WTHR = 0
+    THRUST = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
+    WTHR = 0.034 * THRUST * TNAC
     return WTHR * Units.lbs
 
 
@@ -192,12 +186,12 @@ def compute_misc_propulsion_system_weight(vehicle,ref_propulsor,ref_nacelle,NENG
         Properties Used:
             N/A
     """ 
-    #THRUST  = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
-    #WEC     = 0.26 * NENG * THRUST ** 0.5
-    #FNAC    = ref_nacelle.diameter / Units.ft
+    THRUST  = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
+    WEC     = 0.26 * NENG * THRUST ** 0.5
+    FNAC    = ref_nacelle.diameter / Units.ft
     VMAX    = vehicle.flight_envelope.design_mach_number
-    #WSTART  = 11.0 * NENG * VMAX ** 0.32 * FNAC ** 1.6
-    return 0,0 #WEC * Units.lbs, WSTART * Units.lbs
+    WSTART  = 11.0 * NENG * VMAX ** 0.32 * FNAC ** 1.6
+    return WEC * Units.lbs, WSTART * Units.lbs
 
  
 def compute_fuel_system_weight(vehicle, NENG):
@@ -234,7 +228,7 @@ def compute_engine_weight(vehicle, ref_propulsor):
             Baseline nozzle weight is 0 lbs as in example files FLOPS
 
         Source:
-            https://eaglepubs.erau.edu/introductiontoaerospaceflightvehicles/chapter/reciprocating-engine-propeller/#:~:text=While%20modern%20piston%20aero%2Dengines,(0.66%20kW%2Fkg).
+            The Flight Optimization System Weight Estimation Method
 
         Inputs:
             vehicle - data dictionary with vehicle properties                   [dimensionless]
@@ -250,20 +244,16 @@ def compute_engine_weight(vehicle, ref_propulsor):
         Properties Used:
             N/A
     """
-    # Compute static thrust
-    #rho = 1.225
-    #P = ref_propulsor.engine.sea_level_power
-    #A = np.pi * (ref_propulsor.propeller.tip_radius)**2
-    #T = P**(2/3)*(2*rho*A)**(1/3)
-    #THRSO = T* 1 / Units.lbf
-    # THRSO = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
-    #THRUST = THRSO
-    #WENGB = THRSO / 10.5
-    #WINLB = 0 / Units.lbs
-    #WNOZB = 0 / Units.lbs
-    #WENGP = WENGB * (THRUST / THRSO) ** EEXP
-    #WINL = WINLB * (THRUST / THRSO) ** EINL
-    #WNOZ = WNOZB * (THRUST / THRSO) ** ENOZ
-    #WENG = WENGP + WINL + WNOZ
-    WENG = ref_propulsor.engine.sea_level_power/(660) # Source: https://eaglepubs.erau.edu/introductiontoaerospaceflightvehicles/chapter/reciprocating-engine-propeller/#:~:text=While%20modern%20piston%20aero%2Dengines,(0.66%20kW%2Fkg).
+    EEXP = 1.15
+    EINL = 1
+    ENOZ = 1
+    THRSO = ref_propulsor.sealevel_static_thrust * 1 / Units.lbf
+    THRUST = THRSO
+    WENGB = THRSO / 5.5
+    WINLB = 0 / Units.lbs
+    WNOZB = 0 / Units.lbs
+    WENGP = WENGB * (THRUST / THRSO) ** EEXP
+    WINL = WINLB * (THRUST / THRSO) ** EINL
+    WNOZ = WNOZB * (THRUST / THRSO) ** ENOZ
+    WENG = WENGP + WINL + WNOZ
     return WENG * Units.lbs
