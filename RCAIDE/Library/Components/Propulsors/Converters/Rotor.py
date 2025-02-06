@@ -198,6 +198,7 @@ class Rotor(Component):
         self.cruise.design_power               = None
         self.cruise.design_thrust              = None
         self.cruise.design_power_coefficient   = 0.01 
+        self.cruise.design_thrust_coefficient  = 0.01
 
         # operating conditions 
         self.induced_power_factor              = 1.48        # accounts for interference effects
