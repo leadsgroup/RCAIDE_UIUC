@@ -134,7 +134,7 @@ def reuse_stored_electric_rotor_data(propulsor,state,network,stored_propulsor_ta
     moment_vector[:,2]      = rotor.origin[0][2]  -  center_of_gravity[0][2]
     moment                  =  np.cross(moment_vector, thrust)
     
-    conditions.energy[propulsor.tag][rotor.tag].moment = moment  
+    conditions.energy[propulsor.tag].moment            = moment  
     conditions.energy[propulsor.tag].thrust            = thrust   
     conditions.energy[propulsor.tag].moment            = moment  
     
