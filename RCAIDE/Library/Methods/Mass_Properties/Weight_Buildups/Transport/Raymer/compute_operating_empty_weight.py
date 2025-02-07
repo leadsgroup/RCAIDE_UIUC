@@ -10,7 +10,7 @@
 import RCAIDE
 import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Raymer as Raymer
 from RCAIDE.Framework.Core import Data, Units
-from RCAIDE.Library.Attributes.Materials.Aluminum import Aluminum
+from RCAIDE.Library.Attributes.Materials.Aluminum_Alloy import Aluminum_Alloy
 
 # python imports 
 import numpy as np
@@ -156,8 +156,8 @@ def compute_operating_empty_weight(vehicle, settings=None):
     ##-------------------------------------------------------------------------------                 
     # Wing Weight 
     ##------------------------------------------------------------------------------- 
-    Al_rho   = Aluminum().density
-    Al_sigma = Aluminum().yield_tensile_strength      
+    Al_rho   = Aluminum_Alloy().density
+    Al_sigma = Aluminum_Alloy().yield_tensile_strength      
     
     num_main_wings      = 0
     W_main_wing        = 0.0

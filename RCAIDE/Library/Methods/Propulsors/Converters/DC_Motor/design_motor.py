@@ -45,8 +45,8 @@ def design_motor(motor):
     
     # define optimizer bounds 
     KV_lower_bound  = 0.01
-    Res_lower_bound = 0.001
     KV_upper_bound  = 100
+    Res_lower_bound = 0.001
     Res_upper_bound = 10
     
     args       = (v , omeg,  etam , Q , io ) 

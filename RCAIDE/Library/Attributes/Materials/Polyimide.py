@@ -1,4 +1,4 @@
-# RCAIDE/Library/Attributes/Solids/Aluminum.py
+# RCAIDE/Library/Attributes/Solids/Polyimide.py
 # 
 
 # Created: Jan 2025 M. Clarke
@@ -6,14 +6,15 @@
 #-------------------------------------------------------------------------------
 # Imports
 #-------------------------------------------------------------------------------
-from RCAIDE.Framework.Core import Units
+
 from .Solid import Solid 
+from array import * 
 
 #-------------------------------------------------------------------------------
-# Aluminum 
+# Polyimide Insulation Material
 #------------------------------------------------------------------------------- 
-class Aluminum(Solid): 
-    """ Physical Constants Specific to pure Aluminum
+class Polyimide(Solid): 
+    """ Physical constants specific to Polyimide(PI)
     """
 
     def __defaults__(self):
@@ -26,12 +27,12 @@ class Aluminum(Solid):
             Guo, Ruochen, et al. "Electrical Architecture of 90-seater Electric Aircraft: A Cable Perspective."
             IEEE Transactions on Transportation Electrification (2024).
         """
- 
-        self.density                              = 2700. * Units['kg/(m**3)']
-        self.electrical_conductivity              = 3.69E7  # [s/m]
-        self.thermal_conductivity                 = 237     # [W/(m*K)]
-        self.resistance_temperature_scale_factor  = 0.00429 # [/degree C]
-        self.fatigue_life_cycles                  = 50E6 
-        self.modulus_of_elasticity                = 68E9  * Units.Pa
-        self.yield_tensile_strength               = 90E6  * Units.Pa
-        self.eletrical_resistivity                = 2.82E-8 # [Ohm/m] at 20C
+        self.electrical_permittivity    = 3.5 
+        self.dielectric_strength_range  = [6E7,8E7]  # [V/m] 
+        self.density                    = 1280 
+        self.thermal_conductivity       = 0.4
+        self.melting_point              = 653       # Kelvin
+        self.temperature_range          = [33, 533] # Kelvin
+        self.modulus_of_elasticity      = 3.1E9
+        self.yield_tensile_strength     = 96E6 
+        return 
