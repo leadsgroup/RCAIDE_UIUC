@@ -518,12 +518,10 @@ def Actuator_Disk_performance(rotor, conditions, propulsor, center_of_gravity):
     a                     = conditions.freestream.speed_of_sound 
     rho                   = conditions.freestream.density 
     alt                   = conditions.freestream.altitude  
-    Cp                    = rotor.cruise.design_power_coefficient  
-    Ct                    = rotor.cruise.design_thrust_coefficient 
     
     # Unpack ducted_fan blade parameters and operating conditions  
     V                     = conditions.freestream.velocity  
-    n, D, J, eta_p        = compute_propeller_efficiency(rotor, V, omega)
+    n, D, J, eta_p, Cp, Ct        = compute_propeller_efficiency(rotor, V, omega)
     ctrl_pts              = len(V)
 
     thrust                = Ct*(rho * (n**2)*(D**4))                 
@@ -575,10 +573,22 @@ def compute_propeller_efficiency(propeller, V, omega):
     D = 2*propeller.tip_radius
     J = V/(n*D)
 
-    J_vector = propeller.etap_J_coefficients
+    eta_J_vector = propeller.etap_J_coefficients
     eta_vector = propeller.etap_eff_coefficients
 
-    eta_fz = interp1d(J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    eta_fz = interp1d(eta_J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
     eta_p = eta_fz(J)
 
-    return n, D, J, eta_p
+    Cp_J_vector = propeller.Cp_J_coefficients
+    Cp_vector = propeller.Cp_power_coefficients
+
+    Cp_fz = interp1d(Cp_J_vector, Cp_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    Cp = Cp_fz(J)
+
+    Ct_J_vector = propeller.Ct_J_coefficients
+    Ct_vector = propeller.Ct_thrust_coefficients
+
+    Ct_fz = interp1d(Ct_J_vector, Ct_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    Ct = Ct_fz(J)
+
+    return n, D, J, eta_p, Cp, Ct

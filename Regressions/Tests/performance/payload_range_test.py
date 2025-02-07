@@ -25,21 +25,21 @@ from NASA_X57       import vehicle_setup as X57_vehicle_setup
 #  REGRESSION
 # ----------------------------------------------------------------------------------------------------------------------  
 def main(): 
-    # fuel_payload_range_res = fuel_aircraft_payload_range()
-    # fuel_r                 = fuel_payload_range_res.range[-1]
-    # fuel_r_true            = 7043315.924243388
-    # print('Fuel Range: ' + str(fuel_r))
-    # fuel_error =  abs(fuel_r - fuel_r_true) /fuel_r_true
-    # assert(abs(fuel_error)<1e-6)
+    fuel_payload_range_res = fuel_aircraft_payload_range()
+    fuel_r                 = fuel_payload_range_res.range[-1]
+    fuel_r_true            = 7043315.924243388
+    print('Fuel Range: ' + str(fuel_r))
+    fuel_error =  abs(fuel_r - fuel_r_true) /fuel_r_true
+    assert(abs(fuel_error)<1e-6)
     
-    rotor_type  = ['Actuator_Disk']
+    rotor_type  = ['Blade_Element_Momentum_Theory_Helmholtz', 'Actuator_Disk']
     electric_r_truth = [37039.99999999999, 37039.99999999999]
     for i in range(len(rotor_type)):
         electric_payload_range_res = electric_aircraft_payload_range(rotor_type[i])       
-    electric_r         =  electric_payload_range_res.range[-1]
-    print('Electric Range: ' + str(electric_r ))
-    electric_error =  abs(electric_r - electric_r_truth[i]) /electric_r_truth[i]
-    assert(abs(electric_error)<1e-6)
+        electric_r         =  electric_payload_range_res.range[-1]
+        print('Electric Range: ' + str(electric_r ))
+        electric_error =  abs(electric_r - electric_r_truth[i]) /electric_r_truth[i]
+        assert(abs(electric_error)<1e-6)
     return 
     
     
@@ -117,4 +117,3 @@ def electric_aircraft_payload_range(rotor_type):
 
 if __name__ == '__main__': 
     main()    
-    plt.show() 

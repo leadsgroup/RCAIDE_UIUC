@@ -52,13 +52,13 @@ def design_propeller(prop,number_of_stations=20):
         atmo      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
         rho       = atmo.compute_values(prop.cruise.design_altitude,0.).density
         
-        n, D, J, eta_p  = compute_propeller_efficiency(prop, V, omega)
+        n, D, J, eta_p, Cp, Ct  = compute_propeller_efficiency(prop, V, omega)
         
         power     = thrust*V/eta_p
         Q         = power/omega
 
-        Ct        = thrust/(rho * (n**2)*(D**4))          
-        Cp        = power/(rho * (n**3)*(D**5) )              
+        # Ct        = thrust/(rho * (n**2)*(D**4))          
+        # Cp        = power/(rho * (n**3)*(D**5) )              
                 
         prop.cruise.design_power              = power
         prop.cruise.design_efficiency         = eta_p 
