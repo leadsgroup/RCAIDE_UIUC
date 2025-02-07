@@ -297,7 +297,7 @@ def design_propeller(prop,number_of_stations=20):
         prop.thickness_to_chord                     = t_c
         prop.blade_solidity                         = sigma
 
-    return 
+    return prop
 
     
 def objective(x,airfoils,a_loc,RE,Cl,N):
