@@ -117,3 +117,4 @@ def electric_aircraft_payload_range(rotor_type):
 
 if __name__ == '__main__': 
     main()    
+    plt.show() 
