@@ -260,8 +260,8 @@ def compute_operating_empty_weight(vehicle, settings=None):
     ##-------------------------------------------------------------------------------                 
     # Wing Weight 
     ##------------------------------------------------------------------------------- 
-    Al_rho   = Aluminum().density
-    Al_sigma = Aluminum().yield_tensile_strength      
+    Al_rho   = Aluminum_Alloy().density
+    Al_sigma = Aluminum_Alloy().yield_tensile_strength      
     
     num_main_wings      = 0
     W_main_wing        = 0.0
