@@ -96,12 +96,12 @@ def compute_systems_weight(vehicle):
             SFLAP  += wing.areas.reference * wing.flap_ratio / Units.ft ** 2
             ref_wing  =  wing
     
-    S = 0
+    SW = 0
     if ref_wing == None:
         for wing in  vehicle.wings:
-            if S < wing.areas.reference:
+            if SW < wing.areas.reference / Units.ft ** 2:
                 ref_wing = wing
-    
+                SW = ref_wing.areas.reference / Units.ft ** 2
     DELTA  = 0.85 # Pressure Ratio (cruise to sea level) is assumed to be 0.85
     ULF    = vehicle.flight_envelope.ultimate_load   
     QDIVE  = 1481.35*DELTA*VMAX**2
@@ -119,10 +119,8 @@ def compute_systems_weight(vehicle):
     FPAREA      = XL * WF
     NPASS       = vehicle.passengers
 
-    if vehicle.passengers >= 150:
-        NFLCR = 3  # number of flight crew
-    else:
-        NFLCR = 2 
+    
+    NFLCR = 1 
     WIN     = 0.48 * FPAREA ** 0.57 * VMAX ** 0.5 * (10 + 2.5 * NFLCR + FNEW + 1.5 * FNEF)  # instrumentation weight
 
     SW      = vehicle.reference_area / Units.ft ** 2
@@ -138,9 +136,9 @@ def compute_systems_weight(vehicle):
     DESRNG  = vehicle.flight_envelope.design_range / Units.nmi
     WAVONC  = 15.8 * DESRNG ** 0.1 * NFLCR ** 0.7 * FPAREA ** 0.43  # avionics weight
 
-    XLP     = 0.8 * XL
+    XLP     = 0.25 * XL # Assumption that pax cabin is 25% of fuselage length
     DF      = ref_fuselage.heights.maximum / Units.ft # D stands for depth
-    WFURN   = 127 * NFLCR + 112 * vehicle.NPF + 78 * vehicle.NPB + 44 * vehicle.NPT \
+    WFURN   = 127 * NFLCR +  44 * vehicle.passengers \
                 + 2.6 * XLP * (WF + DF) * NFUSE  # furnishing weight
 
     WAC     = (3.2 * (FPAREA * DF) ** 0.6 + 9 * NPASS ** 0.83) * VMAX + 0.075 * WAVONC  # ac weight
@@ -152,8 +150,10 @@ def compute_systems_weight(vehicle):
     output.W_hyd_pnu           = WHYD * Units.lbs
     output.W_instruments       = WIN * Units.lbs
     output.W_avionics          = WAVONC * Units.lbs
+    output.W_apu               = 0.0
+    output.W_anti_ice          = 0.0
     output.W_electrical        = WELEC * Units.lbs
-    output.W_ac                = WAC * Units.lbs
+    output.W_ac                = 0.0
     output.W_furnish           = WFURN * Units.lbs
     output.W_systems           = WSC  + WIN + WHYD + WELEC + WAVONC + WFURN + WAC 
     return output

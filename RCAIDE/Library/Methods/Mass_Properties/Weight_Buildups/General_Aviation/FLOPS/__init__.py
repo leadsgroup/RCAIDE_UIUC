@@ -6,3 +6,4 @@ from .compute_propulsion_system_weight import compute_propulsion_system_weight
 from .compute_systems_weight import compute_systems_weight
 from .compute_wing_weight import compute_wing_weight
 from .compute_landing_gear_weight import compute_landing_gear_weight
+from .compute_operating_items_weight import compute_operating_items_weight

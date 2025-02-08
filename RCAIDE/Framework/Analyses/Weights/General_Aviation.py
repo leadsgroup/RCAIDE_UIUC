@@ -47,6 +47,13 @@ class General_Aviation(Weights):
         
         self.settings = Data()  
         self.settings.use_max_fuel_weight = True
+        self.settings.advanced_composites = False
+
+        # FLOPS settings
+        self.settings.FLOPS = Data() 
+        self.settings.FLOPS.aeroelastic_tailoring_factor = 0.   # Aeroelastic tailoring factor [0 no aeroelastic tailoring, 1 maximum aeroelastic tailoring] 
+        self.settings.FLOPS.strut_braced_wing_factor     = 0.   # Wing strut bracing factor [0 for no struts, 1 for struts]
+        
         
     def evaluate(self):
         """Evaluate the weight analysis.
