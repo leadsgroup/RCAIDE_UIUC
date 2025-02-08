@@ -58,7 +58,7 @@ def fuel_aircraft_payload_range():
 
     # ------------------------------------------------------------------
     #  Weights
-    weights         = RCAIDE.Framework.Analyses.Weights.Weights_Transport()
+    weights         = RCAIDE.Framework.Analyses.Weights.Transport()
     weights.vehicle = vehicle 
 
     # ------------------------------------------------------------------

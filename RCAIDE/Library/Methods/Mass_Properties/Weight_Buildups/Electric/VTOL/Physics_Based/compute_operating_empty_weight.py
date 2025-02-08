@@ -10,11 +10,7 @@
 # RCAIDE
 import RCAIDE
 from RCAIDE.Framework.Core                                          import Units, Data 
-from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups.Common   import compute_fuselage_weight
-from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups.Common   import compute_boom_weight
-from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups.Common   import compute_rotor_weight
-from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups.Common   import compute_wiring_weight
-from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups.Common   import compute_wing_weight
+import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.EVTOL.Physics_Based as EVTOL
 
 # package imports 
 import numpy as np
@@ -224,7 +220,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
                 rTip_ref                   = rotor.tip_radius 
                 bladeSol_ref               = rotor.blade_solidity 
                 prop_servo_weight          = 5.2 * Units.kg  
-                propeller_mass             = compute_rotor_weight(rotor, maxLift/5.) * Units.kg
+                propeller_mass             = EVTOL.compute_rotor_weight(rotor, maxLift/5.) * Units.kg
                 weight.rotors              += propeller_mass 
                 rotor.mass_properties.mass  =  propeller_mass + prop_hub_weight + prop_servo_weight
                 maxVTip                     = rotor.cruise.design_angular_velocity * rotor.tip_radius
@@ -242,7 +238,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
                     design_thrust = rotor.hover.design_thrust
                 else:
                     design_thrust =rotor.oei.design_thrust
-                lift_rotor_mass             = compute_rotor_weight(rotor,design_thrust)
+                lift_rotor_mass             = EVTOL.compute_rotor_weight(rotor,design_thrust)
                 weight.rotors               += lift_rotor_mass 
                 rotor.mass_properties.mass  =  lift_rotor_mass + lift_rotor_hub_weight + lift_rotor_servo_weight
                 weight.servos               += lift_rotor_servo_weight
@@ -267,7 +263,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
             maxLiftTorque  = maxLiftPower / maxLiftOmega  
             for bus in network.busses: 
                 tailrotor = next(iter(bus.lift_rotors))
-                weight.tail_rotor  = compute_rotor_weight(tailrotor, 1.5*maxLiftTorque/(1.25*rTip_ref))*0.2 * Units.kg
+                weight.tail_rotor  = EVTOL.compute_rotor_weight(tailrotor, 1.5*maxLiftTorque/(1.25*rTip_ref))*0.2 * Units.kg
                 weight.rotors     += weight.tail_rotor 
 
     #-------------------------------------------------------------------------------
@@ -303,7 +299,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
         if wing.symbolic:
             wing_weight = 0
         else:
-            wing_weight               = compute_wing_weight(wing, vehicle, maxLift/5, safety_factor= safety_factor, max_g_load =  max_g_load )
+            wing_weight               = EVTOL.compute_wing_weight(wing, vehicle, maxLift/5, safety_factor= safety_factor, max_g_load =  max_g_load )
             wing_tag                  = wing.tag
             weight.wings[wing_tag]    = wing_weight
             wing.mass_properties.mass = wing_weight 
@@ -311,7 +307,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
 
         # compute_wiring_weight weight
         if isinstance(wing, RCAIDE.Library.Components.Wings.Main_Wing):
-            wiring_weight  = compute_wiring_weight(wing, vehicle, maxLiftPower/(eta*total_number_of_rotors)) * Units.kg
+            wiring_weight  = EVTOL.compute_wiring_weight(wing, vehicle, maxLiftPower/(eta*total_number_of_rotors)) * Units.kg
         else:
             wiring_weight =  0
         weight.wiring  += wiring_weight 
@@ -333,7 +329,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
     # Fuselage  Weight  
     #-------------------------------------------------------------------------------
     for fuse in  vehicle.fuselages: 
-        fuselage_weight = compute_fuselage_weight(fuse, maxSpan, MTOW )  
+        fuselage_weight = EVTOL.compute_fuselage_weight(fuse, maxSpan, MTOW )  
         fuse.mass_properties.center_of_gravity[0][0] = .45*fuse.lengths.total
         fuse.mass_properties.mass                    =  fuselage_weight + weight.passengers + weight.seats + weight.wiring + weight.BRS
         weight.fuselage += fuselage_weight  
@@ -342,7 +338,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
     # Boom Weight
     #-------------------------------------------------------------------------------
     for boom in vehicle.booms:
-        boom_weight                = compute_boom_weight(boom) * Units.kg
+        boom_weight                = EVTOL.compute_boom_weight(boom) * Units.kg
         weight.booms               += boom_weight 
         boom.mass_properties.mass  =  boom_weight 
     

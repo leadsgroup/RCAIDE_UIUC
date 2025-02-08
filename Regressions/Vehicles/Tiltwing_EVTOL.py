@@ -8,11 +8,11 @@
 # ---------------------------------------------------------------------
 import RCAIDE
 from RCAIDE.Framework.Core import Units, Data    
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Propulsion            import compute_motor_weight
-from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor                     import design_motor
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor                        import design_prop_rotor ,design_prop_rotor 
-from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups.Electric            import converge_physics_based_weight_buildup 
-from RCAIDE.Library.Plots                                                      import *     
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.EVTOL               import compute_motor_weight
+from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor                      import design_motor
+from RCAIDE.Library.Methods.Propulsors.Converters.Rotor                         import design_prop_rotor ,design_prop_rotor 
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.EVTOL.Physics_Based import converge_physics_based_weight_buildup 
+from RCAIDE.Library.Plots                                                       import *     
 
 from RCAIDE.load    import load as load_rotor
 from RCAIDE.save    import save as save_rotor  

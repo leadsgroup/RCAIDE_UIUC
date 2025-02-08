@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Weights/Correlations/Transport/__init__.py
+# RCAIDE/Library/Methods/Mass_Properties/Weight_Buildups/Conventional/General_Aviation/__init__.py
 # 
 
 """RCAIDE Package Setup
@@ -7,8 +7,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
-
-from .  import Common
-from .  import FLOPS
-from .  import Raymer
-#from .  import Stanford
+from . import FLOPS
+from . import Raymer
+from . import Common

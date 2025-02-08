@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Mass_Properties/Weight_Buildups/__init__.py
+# RCAIDE/Library/Methods/Weights/Correlations/Transport/__init__.py
 # 
 
 """RCAIDE Package Setup
@@ -8,7 +8,6 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
-from . import Conventional
-from . import Electric
-from . import Hybrid
-from . import Hydrogen
+from .  import Common
+from .  import FLOPS
+from .  import Raymer

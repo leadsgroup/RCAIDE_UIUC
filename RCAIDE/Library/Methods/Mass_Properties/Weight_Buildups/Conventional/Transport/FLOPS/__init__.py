@@ -1,3 +1,12 @@
+# RCAIDE/Library/Methods/Mass_Properties/Weight_Buildups/Conventional/Transport/FLOPS/__init__.py
+# 
+
+"""RCAIDE Package Setup
+"""
+
+# ----------------------------------------------------------------------------------------------------------------------
+#  IMPORT
+# ----------------------------------------------------------------------------------------------------------------------
 from .compute_fuselage_weight import compute_fuselage_weight
 from .compute_horizontal_tail_weight import compute_horizontal_tail_weight
 from .compute_vertical_tail_weight import compute_vertical_tail_weight
