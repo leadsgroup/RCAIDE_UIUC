@@ -49,7 +49,7 @@ class Liquid_Cooled_Wavy_Channel(Component):
         self.channel_width                 = 0.005                  # width of the channel 
         self.channel_height                = 0.003                  # height of the channel 
         self.channel_contact_angle         = 47.5 * Units.degrees   # Contact Arc angle in degrees    
-        self.channel                       = Aluminum_Alloy()
+        self.channel                       = Aluminum()
         self.channel_aspect_ratio          = 1. 
         self.channels_per_module           = 1
         self.battery_contact_area          = 1.
