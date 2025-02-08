@@ -18,58 +18,138 @@ import  numpy as  np
 # Systems Weight 
 # ----------------------------------------------------------------------------------------------------------------------
 def compute_systems_weight(vehicle):
-    """ Calculate the system weight of the aircraft including:
-        -  flight control system
-        - apu weight
-        - hydraulics and pneumatics weight
-        - intstrumentation weight
-        - avionics weight
-        - electrical system weight
-        - air-condtioning weight
-        - furnishing weight
-        - anti-ice weight
+    """
+    Calculate the systems weight for general aviation aircraft using FLOPS methodology.
 
-    Assumptions:
-        1) No variable sweep, change VARSWP to 1 is variable sweep in aicraft
-        2) Hydraulic pressure is 3000 psf (HYDR)
-        3) 1 fuselage named fuselage. Function could be modified to allow multiple fuselages by
-           relaxing this assumption.
+    Parameters
+    ----------
+    vehicle : RCAIDE.Vehicle()
+        Vehicle data structure containing:
+            - networks : list
+                List of propulsion networks
+            - wings['main_wing'] : Component
+                Main wing data structure containing:
+                    - sweeps.quarter_chord : float
+                        Quarter chord sweep angle [deg]
+                    - areas.reference : float
+                        Wing reference area [m^2]
+                    - spans.projected : float
+                        Wing projected span [m]
+                    - flap_ratio : float
+                        Flap area to wing area ratio
+            - fuselages : list
+                List of fuselage components containing:
+                    - lengths.total : float
+                        Fuselage length [m]
+                    - width : float
+                        Fuselage width [m]
+                    - heights.maximum : float
+                        Maximum fuselage height [m]
+            - flight_envelope : Component
+                Flight envelope data containing:
+                    - design_mach_number : float
+                        Design cruise Mach number
+                    - ultimate_load : float
+                        Ultimate load factor
+                    - design_range : float
+                        Design range [nmi]
+            - passengers : int
+                Number of passengers
+            - design_dynamic_pressure : float
+                Design dynamic pressure [Pa]
+            - mass_properties.max_takeoff : float
+                Maximum takeoff weight [kg]
 
-    Source:
-        The Flight Optimization System Weight Estimation Method
+    Returns
+    -------
+    output : Data()
+        Data structure containing:
+            - W_flight_control : float
+                Flight control system weight [kg]
+            - W_hyd_pnu : float
+                Hydraulics and pneumatics weight [kg]
+            - W_instruments : float
+                Instruments weight [kg]
+            - W_avionics : float
+                Avionics weight [kg]
+            - W_apu : float
+                APU weight [kg], currently set to 0
+            - W_anti_ice : float
+                Anti-ice system weight [kg], currently set to 0
+            - W_electrical : float
+                Electrical system weight [kg]
+            - W_ac : float
+                Air conditioning weight [kg], currently set to 0
+            - W_furnish : float
+                Furnishing weight [kg]
+            - W_systems : float
+                Total systems weight [kg]
 
-   Inputs:
-        vehicle - data dictionary with vehicle properties                   [dimensionless]
-            -.networks: data dictionary containing all propulsion properties
-                -.number_of_engines: number of engines
-                -.sealevel_static_thrust: thrust at sea level               [N]
-            -.fuselages['fuselage'].lengths.total: fuselage total length    [meters]
-            -.fuselages['fuselage'].width: fuselage width                   [meters]
-            -.fuselages['fuselage'].heights.maximum: fuselage maximum height[meters]
-            -.mass_properties.max_takeoff: MTOW                             [kilograms]
-            -.design_mach_number: design mach number for cruise flight
-            -.design_range: design range of aircraft                        [nmi]
-            -.passengers: number of passengers in aircraft
-            -.wings['main_wing']: data dictionary with main wing properties
-                -.sweeps.quarter_chord: quarter chord sweep                 [deg]
-                -.areas.reference: wing surface area                        [m^2]
-                -.spans.projected: projected span of wing                   [m]
-                -.flap_ratio: flap surface area over wing surface area
+    Notes
+    -----
+    Calculates weights for all aircraft systems using FLOPS methodology.
+    
+    **Major Assumptions**
+        * Hydraulic system pressure is 3000 psf
+        * Single fuselage configuration
+        * Pressure ratio for cabin pressure (cruise to sea level) is 0.85. i.e. almostno cabin pressurization
+        * Passenger cabin length is 25% of fuselage length
+    
+    **Theory**
 
-   Outputs:
-       output - a data dictionary with fields:
-           W_flight_controls - weight of the flight control system                                [kilograms]
-           W_apu - weight of the apu                                                       [kilograms]
-           W_hyd_pnu - weight of the hydraulics and pneumatics                             [kilograms]
-           W_instruments - weight of the instruments and navigational equipment            [kilograms]
-           W_avionics - weight of the avionics                                             [kilograms]
-           W_electrical - weight of the electrical items                                         [kilograms]
-           W_ac - weight of the air conditioning and anti-ice system                       [kilograms]
-           W_furnish - weight of the furnishings in the fuselage                           [kilograms]
-           W_anti_ice - weight of anti-ice system                                          [kilograms]
+    Flight Controls:
+    .. math::
+        W_{fc} = 0.404 * S_w^{0.317} * (W_{TO}/1000)^{0.602} * N_{ult}^{0.525} * q^{0.345}
 
-    Properties Used:
-        N/A
+    Instruments:
+    .. math::
+        W_{in} = 0.48 * A_f^{0.57} * M^{0.5} * (10 + 2.5N_{c} + N_{ew} + 1.5N_{ef})
+
+    Hydraulic and Pneumatics:
+    .. math::
+        W_{hyd} = 0.57 * (A_f + 0.27 * S_w) * (1 + 0.03N_{ew} + 0.05N_{ef}) * (3000 / P)^{0.35} * M^{0.33}
+
+    Electrical:
+    .. math::
+        W_{elec} = 92 * L_f^{0.4} * W_f^{0.14} * N_{fuse}^{0.27} * N_{eng}^{0.69} * (1 + 0.044N_{c} + 0.0015N_{pax})
+
+    Avionics:
+    .. math::
+        W_{av} = 15.8 * D_{range}^{0.1} * N_{fc}^{0.7} * A_f^{0.43}
+
+    Furnishing:
+    .. math::
+        W_{furn} = 127 * N_{fc} + 44 * N_{pax} + 2.6 * L_f * (W_f + D) * N_{fuse}
+    
+    Air Conditioning:
+    .. math::
+        W_{ac} = 3.2 * (A_f * D)^{0.6} + 9 * N_{pax}^{0.83} * M + 0.075 * W_{av}
+
+    Where:
+        - W_{fc} is flight controls weight [lb]
+        - S_w is wing area [ft^2]
+        - W_{TO} is takeoff weight [lb]
+        - N_{ult} is ultimate load factor
+        - q is dynamic pressure [psf]
+        - A_f is fuselage planform area [ft^2]
+        - M is design Mach number
+        - N_{c} is number of crew
+        - N_{ew} is number of wing-mounted engines
+        - N_{ef} is number of fuselage-mounted engines
+        - P is hydraulic system pressure [psf]
+        - L_f is fuselage length [ft]
+        - W_f is fuselage width [ft]
+        - N_{fuse} is number of fuselages
+        - N_{eng} is total number of engines
+        - N_{pax} is number of passengers
+        - D_{range} is design range [nmi]
+        - N_{fc} is number of flight crew
+        - D is fuselage depth/height [ft]
+
+    References
+    ----------
+    [1] NASA. (1979). The Flight Optimization System Weights Estimation Method. 
+        NASA Technical Report.
     """ 
     NENG = 0
     FNEW = 0
