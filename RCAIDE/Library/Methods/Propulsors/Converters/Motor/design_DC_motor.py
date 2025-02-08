@@ -12,7 +12,7 @@ from scipy.optimize import minimize
 # ----------------------------------------------------------------------------------------------------------------------
 #  design motor 
 # ----------------------------------------------------------------------------------------------------------------------     
-def design_motor(motor):
+def design_DC_motor(motor):
     ''' Sizes a DC motor to obtain the best combination of speed constant and resistance values
     by sizing the motor for a design RPM value. Note that this design RPM value can be compute
     from design tip mach. The following properties are computed.  
@@ -67,7 +67,7 @@ def design_motor(motor):
     motor.speed_constant   = sol.x[0]
     motor.resistance       = sol.x[1]    
     
-    return   
+    return motor  
   
 # objective function
 def objective(x, v , omeg,  etam , Q , io ): 

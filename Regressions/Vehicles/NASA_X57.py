@@ -24,7 +24,7 @@ import os
 # ----------------------------------------------------------------------------------------------------------------------
 #   Build the Vehicle
 # ----------------------------------------------------------------------------------------------------------------------
-def vehicle_setup():
+def vehicle_setup(rotor_type):
     
     #------------------------------------------------------------------------------------------------------------------------------------
     # ################################################# Vehicle-level Properties ########################################################  
@@ -370,31 +370,46 @@ def vehicle_setup():
     esc.efficiency                                   = 0.95 
     starboard_propulsor.electronic_speed_controller  = esc   
      
-    # Propeller              
+    # Propeller    
     propeller                                        = RCAIDE.Library.Components.Propulsors.Converters.Propeller() 
-    propeller.tag                                    = 'propeller_1'  
-    propeller.tip_radius                             = 1.72/2   
-    propeller.number_of_blades                       = 3
-    propeller.hub_radius                             = 10.     * Units.inches 
-    propeller.cruise.design_freestream_velocity      = 175.*Units['mph']   
-    propeller.cruise.design_angular_velocity         = 2700. * Units.rpm 
-    propeller.cruise.design_Cl                       = 0.7 
-    propeller.cruise.design_altitude                 = 2500. * Units.feet 
-    propeller.cruise.design_thrust                   = 2000   
-    propeller.clockwise_rotation                     = False
-    propeller.variable_pitch                         = True  
-    propeller.origin                                 = [[2.,2.5,0.95]]   
-    airfoil                                          = RCAIDE.Library.Components.Airfoils.Airfoil()
-    airfoil.tag                                      = 'NACA_4412' 
-    airfoil.coordinate_file                          =  rel_path + 'Airfoils' + separator + 'NACA_4412.txt'   # absolute path   
-    airfoil.polar_files                              =[ rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_50000.txt',
-                                                        rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_100000.txt',
-                                                        rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_200000.txt',
-                                                        rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_500000.txt',
-                                                        rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_1000000.txt']   
-    propeller.append_airfoil(airfoil)                       
-    propeller.airfoil_polar_stations                 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] 
+
+    if rotor_type == 'Blade_Element_Momentum_Theory_Helmholtz':      
+        propeller.fidelity = rotor_type 
+        propeller.tag                                    = 'propeller_1'  
+        propeller.tip_radius                             = 1.72/2   
+        propeller.number_of_blades                       = 3
+        propeller.hub_radius                             = 10.     * Units.inches 
+        propeller.cruise.design_freestream_velocity      = 175.*Units['mph']   
+        propeller.cruise.design_angular_velocity         = 2700. * Units.rpm 
+        propeller.cruise.design_Cl                       = 0.7 
+        propeller.cruise.design_altitude                 = 2500. * Units.feet 
+        propeller.cruise.design_thrust                   = 2000   
+        propeller.clockwise_rotation                     = False
+        propeller.variable_pitch                         = True  
+        propeller.origin                                 = [[2.,2.5,0.95]]   
+        airfoil                                          = RCAIDE.Library.Components.Airfoils.Airfoil()
+        airfoil.tag                                      = 'NACA_4412' 
+        airfoil.coordinate_file                          =  rel_path + 'Airfoils' + separator + 'NACA_4412.txt'   # absolute path   
+        airfoil.polar_files                              =[ rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_50000.txt',
+                                                            rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_100000.txt',
+                                                            rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_200000.txt',
+                                                            rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_500000.txt',
+                                                            rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_1000000.txt']   
+        propeller.append_airfoil(airfoil)                       
+        propeller.airfoil_polar_stations                 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] 
+    
+    elif rotor_type == 'Actuator_Disk':       
+        propeller.fidelity = rotor_type 
+        propeller.tag                                    = 'propeller_1'  
+        propeller.number_of_blades                       = 3
+        propeller.tip_radius                             = 1.72/2 
+        propeller.cruise.design_freestream_velocity      = 175.*Units['mph']   
+        propeller.cruise.design_angular_velocity         = 2700. * Units.rpm 
+        propeller.cruise.design_altitude                 = 2500. * Units.feet 
+        propeller.cruise.design_thrust                   = 2000   
+    
     design_propeller(propeller)    
+    
     starboard_propulsor.rotor                        = propeller   
               
     # DC_Motor       
@@ -406,7 +421,7 @@ def vehicle_setup():
     motor.rotor_radius                               = propeller.tip_radius
     motor.design_torque                              = propeller.cruise.design_torque
     motor.angular_velocity                           = propeller.cruise.design_angular_velocity 
-    design_motor(motor)  
+    design_DC_motor(motor)  
     motor.mass_properties.mass                       = compute_motor_weight(motor) 
     starboard_propulsor.motor                        = motor 
  

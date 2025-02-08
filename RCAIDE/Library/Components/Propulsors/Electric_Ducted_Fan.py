@@ -66,7 +66,7 @@ class Electric_Ducted_Fan(Propulsor):
         self.tag                          = 'electric_ducted_fan'    
         self.motor                        = None
         self.ducted_fan                   = None 
-        self.electronic_speed_controller  = None 
+        self.electronic_speed_controller  = None
 
     def append_operating_conditions(self,segment):
         append_electric_ducted_fan_conditions(self,segment)

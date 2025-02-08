@@ -429,6 +429,7 @@ def vehicle_setup(new_regression=True) :
     propeller.cruise.design_thrust                         = 3129.031253067049 
     propeller.rotation                                     = 1
     propeller.variable_pitch                               = True  
+    propeller.fidelity                                     = 'Blade_Element_Momentum_Theory_Helmholtz'
     airfoil                                                = RCAIDE.Library.Components.Airfoils.Airfoil()
     airfoil.coordinate_file                                = rel_path + 'Airfoils' + separator + 'NACA_4412.txt'
     airfoil.polar_files                                    = [rel_path + 'Airfoils' + separator + 'Polars' + separator + 'NACA_4412_polar_Re_50000.txt' ,
@@ -457,7 +458,7 @@ def vehicle_setup(new_regression=True) :
     propeller_motor.rotor_radius                           = propeller.tip_radius
     propeller_motor.design_torque                          = propeller.cruise.design_torque
     propeller_motor.angular_velocity                       = propeller.cruise.design_angular_velocity/propeller_motor.gear_ratio  
-    design_motor(propeller_motor)  
+    design_DC_motor(propeller_motor)  
     propeller_motor.mass_properties.mass                   = compute_motor_weight(propeller_motor)  
     cruise_propulsor_1.motor                               = propeller_motor 
       
@@ -656,7 +657,7 @@ def vehicle_setup(new_regression=True) :
     lift_rotor_motor.rotor_radius                          = lift_rotor.tip_radius
     lift_rotor_motor.design_torque                         = lift_rotor.hover.design_torque
     lift_rotor_motor.angular_velocity                      = lift_rotor.hover.design_angular_velocity/lift_rotor_motor.gear_ratio  
-    design_motor(lift_rotor_motor)
+    design_DC_motor(lift_rotor_motor)
     lift_rotor_motor.mass_properties.mass                  = compute_motor_weight(lift_rotor_motor)     
     lift_propulsor_1.motor                                 = lift_rotor_motor
     

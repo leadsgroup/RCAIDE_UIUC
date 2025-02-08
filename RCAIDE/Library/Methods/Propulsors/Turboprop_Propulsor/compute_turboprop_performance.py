@@ -49,27 +49,27 @@ def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,
     Properties Used: 
     N.A.        
     ''' 
-    conditions                                            = state.conditions 
-    noise_conditions                                      = conditions.noise[turboprop.tag]  
-    turboprop_conditions                                  = conditions.energy[turboprop.tag]
-    
-    ram                                                   = turboprop.ram
-    inlet_nozzle                                          = turboprop.inlet_nozzle
-    compressor                                            = turboprop.compressor
-    combustor                                             = turboprop.combustor
-    high_pressure_turbine                                 = turboprop.high_pressure_turbine
-    low_pressure_turbine                                  = turboprop.low_pressure_turbine
-    core_nozzle                                           = turboprop.core_nozzle  
-
-    # unpack component conditions
-    turboprop_conditions                                  = conditions.energy[turboprop.tag]
-    ram_conditions                                        = turboprop_conditions[ram.tag]     
-    inlet_nozzle_conditions                               = turboprop_conditions[inlet_nozzle.tag]
-    core_nozzle_conditions                                = turboprop_conditions[core_nozzle.tag] 
-    compressor_conditions                                 = turboprop_conditions[compressor.tag]  
-    combustor_conditions                                  = turboprop_conditions[combustor.tag]
-    lpt_conditions                                        = turboprop_conditions[low_pressure_turbine.tag]
-    hpt_conditions                                        = turboprop_conditions[high_pressure_turbine.tag] 
+    conditions               = state.conditions 
+    noise_conditions         = conditions.noise[turboprop.tag]  
+    turboprop_conditions     = conditions.energy[turboprop.tag]
+    U0                       = conditions.freestream.velocity
+    T                        = conditions.freestream.temperature
+    P                        = conditions.freestream.pressure 
+    ram                      = turboprop.ram
+    inlet_nozzle             = turboprop.inlet_nozzle
+    compressor               = turboprop.compressor
+    combustor                = turboprop.combustor
+    high_pressure_turbine    = turboprop.high_pressure_turbine
+    low_pressure_turbine     = turboprop.low_pressure_turbine
+    core_nozzle              = turboprop.core_nozzle   
+    turboprop_conditions     = conditions.energy[turboprop.tag]
+    ram_conditions           = turboprop_conditions[ram.tag]     
+    inlet_nozzle_conditions  = turboprop_conditions[inlet_nozzle.tag]
+    core_nozzle_conditions   = turboprop_conditions[core_nozzle.tag] 
+    compressor_conditions    = turboprop_conditions[compressor.tag]  
+    combustor_conditions     = turboprop_conditions[combustor.tag]
+    lpt_conditions           = turboprop_conditions[low_pressure_turbine.tag]
+    hpt_conditions           = turboprop_conditions[high_pressure_turbine.tag] 
      
     # Step 1: Set the working fluid to determine the fluid properties
     ram.working_fluid                                     = turboprop.working_fluid
@@ -183,7 +183,18 @@ def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,
     M                  =  np.cross(moment_vector, thrust_vector)   
     moment             = M 
     power              = turboprop_conditions.power 
- 
+  
+    # compute efficiencies 
+    mdot_air_core                                  = turboprop_conditions.core_mass_flow_rate 
+    fuel_enthalpy                                  = combustor.fuel_data.specific_energy 
+    mdot_fuel                                      = turboprop_conditions.fuel_flow_rate   
+    h_e_c                                          = core_nozzle_conditions.outputs.static_enthalpy
+    h_0                                            = turboprop.working_fluid.compute_cp(T,P) * T 
+    h_t4                                           = combustor_conditions.outputs.stagnation_enthalpy
+    h_t3                                           = compressor_conditions.outputs.stagnation_enthalpy 
+    turboprop_conditions.overall_efficiency        = thrust_vector* U0 / (mdot_fuel * fuel_enthalpy)  
+    turboprop_conditions.thermal_efficiency        = 1 - ((mdot_air_core +  mdot_fuel)*(h_e_c -  h_0) + mdot_fuel *h_0)/((mdot_air_core +  mdot_fuel)*h_t4 - mdot_air_core *h_t3)  
+
 
     # Store data
     core_nozzle_res = Data(

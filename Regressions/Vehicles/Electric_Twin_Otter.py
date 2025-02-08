@@ -564,7 +564,7 @@ def vehicle_setup(cell_chemistry, btms_type):
     motor.rotor_radius                               = propeller.tip_radius
     motor.design_torque                              = propeller.cruise.design_torque 
     motor.angular_velocity                           = propeller.cruise.design_angular_velocity # Horse power of gas engine variant  750 * Units['hp']
-    design_motor(motor)  
+    design_DC_motor(motor)  
     motor.mass_properties.mass                       = compute_motor_weight(motor) 
     starboard_propulsor.motor                        = motor 
  

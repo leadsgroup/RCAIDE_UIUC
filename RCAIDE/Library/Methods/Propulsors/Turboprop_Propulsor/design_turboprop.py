@@ -18,7 +18,7 @@ from RCAIDE.Library.Methods.Propulsors.Converters.Turbine            import comp
 from RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle   import compute_expansion_nozzle_performance 
 from RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle import compute_compression_nozzle_performance
 from RCAIDE.Library.Methods.Propulsors.Turboprop_Propulsor           import size_core 
-from RCAIDE.Library.Methods.Propulsors.Common                        import compute_static_sea_level_performance 
+from RCAIDE.Library.Methods.Propulsors.Common                        import setup_operating_conditions 
 
 # Python package imports   
 import numpy                                                                as np
@@ -193,8 +193,15 @@ def design_turboprop(turboprop):
     # Step 25: Size the core of the turboprop  
     size_core(turboprop,turboprop_conditions,conditions)
     
-    # Step 26: Static Sea Level Thrust 
-    compute_static_sea_level_performance(turboprop)
+    # Step 26: Static Sea Level Thrust   
+    atmo_data_sea_level   = atmosphere.compute_values(0.0,0.0)   
+    V                     = atmo_data_sea_level.speed_of_sound[0][0]*0.01 
+    operating_state,_     = setup_operating_conditions(turboprop, altitude = 0,velocity_vector=np.array([[V, 0, 0]]))  
+    operating_state.conditions.energy[turboprop.tag].throttle[:,0] = 1.0  
+    sls_T,_,sls_P,_,_                             = turboprop.compute_performance(operating_state) 
+    turboprop.sealevel_static_thrust              = sls_T[0][0]
+    turboprop.sealevel_static_power               = sls_P[0][0]
+    
 
     turboprop.design_thrust_specific_fuel_consumption = turboprop_conditions.thrust_specific_fuel_consumption  
     turboprop.design_non_dimensional_thrust           = turboprop_conditions.non_dimensional_thrust            

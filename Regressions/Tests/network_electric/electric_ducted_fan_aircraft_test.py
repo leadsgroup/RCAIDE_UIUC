@@ -1,5 +1,5 @@
+  
 # Regression/scripts/Tests/network_ducted_fan/electric_ducted_fan_netowrk.py
-# (c) Copyright 2023 Aerospace Research Community LLC
 # 
 # Created:  Jul 2023, M. Clarke 
 
@@ -16,6 +16,7 @@ import numpy as np
 import sys
 import matplotlib.pyplot as plt  
 import os
+
 # local imports 
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles'))
 from NASA_X48    import vehicle_setup as vehicle_setup
@@ -25,38 +26,53 @@ from NASA_X48    import configs_setup as configs_setup
 #   Main
 # ----------------------------------------------------------------------------------------------------------------------
 
-def main(): 
+def main():
+
     regression_flag = True # Keep true for regression on Appveyor
+    ducted_fan_type  = ['Blade_Element_Momentum_Theory', 'Rankine_Froude_Momentum_Theory']
     
-    # vehicle data
-    vehicle  = vehicle_setup(regression_flag) 
+    # truth values 
+    thrust_truth         = [57.356384455604505, 57.35638445528938]
+   
+    for i in range(len(ducted_fan_type)):  
+        # vehicle data
+        vehicle  = vehicle_setup(regression_flag, ducted_fan_type[i]) 
+        # Set up vehicle configs
+        configs  = configs_setup(vehicle)
     
-    # Set up vehicle configs
-    configs  = configs_setup(vehicle)
-
-    # create analyses
-    analyses = analyses_setup(configs)
-
-    # mission analyses 
-    mission = mission_setup(analyses)
+        # create analyses
+        analyses = analyses_setup(configs)
     
-    # create mission instances (for multiple types of missions)
-    missions = missions_setup(mission) 
-     
-    # mission analysis 
-    results = missions.base_mission.evaluate()  
- 
-    # plt the old results
-    plot_mission(results)  
+        # mission analyses 
+        mission = mission_setup(analyses)
+        
+        # create mission instances (for multiple types of missions)
+        missions = missions_setup(mission) 
+         
+        # mission analysis 
+        results = missions.base_mission.evaluate()   
+        
+        
+        if ducted_fan_type[i] ==  'Blade_Element_Momentum_Theory':  
+            if regression_flag: # if regression skip test since we cannot run DFDC 
+                error = Data()
+                error.thrust   = 0
+            else:  
+                thurst         =  np.linalg.norm(results.segments.cruise.conditions.energy.center_propulsor.thrust, axis=1)  
+                error          = Data()
+                error.thrust   = np.max(np.abs(thrust_truth[i]   - thurst[0] ))        
+                
+        elif ducted_fan_type[i] ==  'Rankine_Froude_Momentum_Theory':  
+            thurst         =  np.linalg.norm(results.segments.cruise.conditions.energy.starboard_propulsor.thrust, axis=1)  
+            error          = Data()
+            error.thrust   = np.max(np.abs(thrust_truth[i]   - thurst[0] ))   
+        
+        print('Errors:')
+        print(error)
+        
+        for k,v in list(error.items()):
+            assert(np.abs(v)<1e-6) 
 
-    # check the results
-    CL_truth =  0.3290060144079024
-    if regression_flag:
-        error =  (CL_truth - CL_truth) / CL_truth
-    else:  
-        CL =  results.segments.cruise.conditions.aerodynamics.coefficients.lift.total[2][0]
-        error =  (CL - CL_truth) / CL_truth        
-    assert(np.abs(error)<1e-6)         
     return 
 
 # ----------------------------------------------------------------------
@@ -73,6 +89,17 @@ def analyses_setup(configs):
         analyses[tag] = analysis
     
     return analyses
+
+def plot_results(results):
+    # Plots fligh conditions 
+    plot_flight_conditions(results) 
+    
+    
+    plot_battery_cell_conditions(results) 
+    
+    plot_aerodynamic_forces(results)
+
+    return
 
 def base_analysis(vehicle):
 
@@ -94,7 +121,6 @@ def base_analysis(vehicle):
     aerodynamics.settings.number_of_spanwise_vortices  = 25
     aerodynamics.settings.number_of_chordwise_vortices = 5       
     aerodynamics.settings.model_fuselage               = False
-    aerodynamics.settings.drag_coefficient_increment   = 0.0000
     analyses.append(aerodynamics)
  
   
@@ -119,19 +145,6 @@ def base_analysis(vehicle):
     return analyses    
 
 # ----------------------------------------------------------------------
-#   Plot Mission
-# ----------------------------------------------------------------------
-
-def plot_mission(results):
-      
-    
-    # Plot Electric Motor and Propeller Efficiencies 
-    plot_electric_propulsor_efficiencies(results)
-    
-        
-    return 
-
-# ----------------------------------------------------------------------
 #   Define the Mission
 # ----------------------------------------------------------------------
     
@@ -147,17 +160,18 @@ def mission_setup(analyses):
     # unpack Segments module
     Segments = RCAIDE.Framework.Mission.Segments 
     base_segment = Segments.Segment()
+    base_segment.state.numerics.number_of_control_points = 16 
     
     # ------------------------------------------------------------------
     #   First Climb Segment: constant Mach, constant segment angle 
     # ------------------------------------------------------------------
     
-    segment = Segments.Cruise.Constant_Mach_Constant_Altitude(base_segment)
+    segment = Segments.Cruise.Constant_Speed_Constant_Altitude(base_segment)
     segment.tag = "cruise" 
     segment.analyses.extend( analyses.base ) 
-    segment.altitude       = 1000 * Units.feet
-    segment.mach_number    = 0.2   * Units.kts
-    segment.distance       = 1000 * Units.feet  
+    segment.altitude       = 5000  * Units.feet
+    segment.air_speed      = 90 *  Units.mph
+    segment.distance       = 5000  
     segment.initial_battery_state_of_charge                          = 1.0 
                 
     # define flight dynamics to model             
@@ -165,9 +179,11 @@ def mission_setup(analyses):
     segment.flight_dynamics.force_z                                  = True     
     
     # define flight controls 
-    segment.assigned_control_variables.throttle.active               = True           
-    segment.assigned_control_variables.throttle.assigned_propulsors  = [['center_propulsor','starboard_propulsor','port_propulsor']] 
-    segment.assigned_control_variables.body_angle.active             = True                   
+    segment.assigned_control_variables.throttle.active                  = True           
+    segment.assigned_control_variables.throttle.assigned_propulsors     = [['center_propulsor','starboard_propulsor','port_propulsor']] 
+    segment.assigned_control_variables.throttle.initial_guess_values    = [[0.905]]    
+    segment.assigned_control_variables.body_angle.active                = True        
+    segment.assigned_control_variables.body_angle.initial_guess_values  = [[2.05 * Units.degree]]                   
       
     mission.append_segment(segment) 
     return mission
@@ -185,4 +201,6 @@ def missions_setup(mission):
 if __name__ == '__main__': 
     main()    
     plt.show()
+        
+    
         

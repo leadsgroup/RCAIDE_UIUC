@@ -104,7 +104,7 @@ N
     alt               = case.altitude   
     V_inf             = case.velocity     
     RPM               = case.RPM        
-    results_filename  = case.tag
+    results_filename  = case.tag + '.txt'
     case_command      = base_case_command.format(alt,RPM,V_inf,results_filename)  
         
     return case_command 
