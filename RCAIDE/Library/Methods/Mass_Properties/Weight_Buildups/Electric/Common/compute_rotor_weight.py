@@ -6,7 +6,7 @@
 #-------------------------------------------------------------------------------
 # Imports
 #-------------------------------------------------------------------------------
-from RCAIDE.Library.Attributes.Materials import  Bidirectional_Carbon_Fiber, Carbon_Fiber_Honeycomb, Paint, Unidirectional_Carbon_Fiber, Epoxy, Nickel, Aluminum_Alloy, Aluminum_Alloy_Rib 
+from RCAIDE.Library.Attributes.Materials import  Bidirectional_Carbon_Fiber, Carbon_Fiber_Honeycomb, Paint, Unidirectional_Carbon_Fiber, Epoxy, Nickel, Aluminum_Alloy, Aluminum_Rib 
 import numpy as np
 import copy as cp
 

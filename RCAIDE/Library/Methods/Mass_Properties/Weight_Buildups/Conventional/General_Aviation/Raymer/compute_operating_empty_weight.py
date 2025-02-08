@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Weights/Correlation_Buildups/General_Aviation/compute_landing_gear_weight.py
+# RCAIDE/Library/Methods/Mass_Properties/Weight_Buildups/Conventional/General_Aviation/Raymer/compute_operating_empty_weight.py
 # 
 # 
 # Created:  Sep 2024, M. Clarke 
@@ -10,14 +10,7 @@
 # RCAIDE
 import RCAIDE
 from RCAIDE.Framework.Core import  Units , Data 
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_fuselage_weight import compute_fuselage_weight
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_landing_gear_weight import compute_landing_gear_weight
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_payload_weight import compute_payload_weight
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_systems_weight import compute_systems_weight
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_horizontal_tail_weight import compute_horizontal_tail_weight
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_vertical_tail_weight import compute_vertical_tail_weight
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_main_wing_weight import compute_main_wing_weight
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.General_Aviation.Raymer.compute_propulsion_system_weight import compute_propulsion_system_weight
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Conventional.General_Aviation.Raymer import *
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Main Wing Weight 

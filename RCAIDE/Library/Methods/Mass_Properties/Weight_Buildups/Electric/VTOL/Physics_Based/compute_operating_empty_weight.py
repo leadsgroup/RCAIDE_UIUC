@@ -10,7 +10,7 @@
 # RCAIDE
 import RCAIDE
 from RCAIDE.Framework.Core                                          import Units, Data 
-import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.EVTOL.Physics_Based as EVTOL
+import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.VTOL.Physics_Based as EVTOL
 
 # package imports 
 import numpy as np
