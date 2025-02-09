@@ -44,6 +44,8 @@ def Transport_Aircraft_Test():
     weight_analysis.vehicle                       = vehicle
     weight_analysis.method                        = 'Raymer'
     weight_analysis.settings.use_max_fuel_weight  = False  
+    weight_analysis.settings.cargo_doors_number   = 2
+    weight_analysis.settings.cargo_doors_clamshell= True
     results                                       = weight_analysis.evaluate() 
     
     # ------------------------------------------------------------------
@@ -65,9 +67,9 @@ def Transport_Aircraft_Test():
     
     print(weight_analysis.vehicle.tag + ' Moment of Intertia')
     print(MOI) 
-    accepted  = np.array([[33581156.817445405, 2555125.5197505737, 3277440.2336276565],
-                          [2555125.5197505737, 42285622.78492203, -1.4551915228366852e-11],
-                          [3277440.2336276565, -1.4551915228366852e-11, 61325416.03343895]]) 
+    accepted  = np.array([[34562843.719482906, 2545643.625699803, 3261423.2196058235],
+                          [2545643.625699803, 44054919.909391284, 1.4551915228366852e-11],
+                          [3261423.2196058235, 1.4551915228366852e-11, 62177985.287106596]]) 
     MOI_error     = MOI - accepted
 
     # Check the errors
