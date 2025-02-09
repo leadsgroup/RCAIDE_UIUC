@@ -148,13 +148,13 @@ def compute_operating_empty_weight(vehicle, settings=None):
     # Pod Weight Weight 
     ##-------------------------------------------------------------------------------         
     WPOD  = 0.0             
-    if settings.FLOPS.complexity == 'Complex': 
-        NENG   = number_of_engines
-        WTNFA  = W_energy_network.W_engine + W_energy_network.W_thrust_reverser + W_energy_network.W_starter \
-                + 0.25 * W_energy_network.W_engine_controls + 0.11 * W_systems.W_instruments + 0.13 * W_systems.W_electrical \
-                + 0.13 * W_systems.W_hyd_pnu + 0.25 * W_energy_network.W_fuel_system
-        WPOD += WTNFA / np.max([1, NENG]) + W_energy_network.W_nacelle / np.max(
-            [1.0, NENG + 1. / 2 * (NENG - 2 * np.floor(NENG / 2.))])
+
+    NENG   = number_of_engines
+    WTNFA  = W_energy_network.W_engine + W_energy_network.W_thrust_reverser + W_energy_network.W_starter \
+            + 0.25 * W_energy_network.W_engine_controls + 0.11 * W_systems.W_instruments + 0.13 * W_systems.W_electrical \
+            + 0.13 * W_systems.W_hyd_pnu + 0.25 * W_energy_network.W_fuel_system
+    WPOD += WTNFA / np.max([1, NENG]) + W_energy_network.W_nacelle / np.max(
+        [1.0, NENG + 1. / 2 * (NENG - 2 * np.floor(NENG / 2.))])
  
     output.empty.propulsion.total               = W_energy_network_cumulative
     output.empty.propulsion.battery             = W_energy_network.W_battery
