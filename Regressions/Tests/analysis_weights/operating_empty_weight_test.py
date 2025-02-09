@@ -31,12 +31,10 @@ def main():
 
 def Transport_Aircraft_Test(update_regression_values, show_figure):
     method_types = ['FLOPS', 'Raymer']
-
     for advanced_composites in [True, False]:  
         FLOPS_number = 0  
         for method_type in method_types:
-            print(f'Testing Transport Aircraft Method: {method_type} | Advanced Composites: {advanced_composites}')
-            
+            print(f'Testing Transport Aircraft Method: {method_type} | Advanced Composites: {advanced_composites} | Method: {"Simple" if FLOPS_number == 0 else "Complex"}')        
             weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
             weight_analysis.vehicle = transport_setup()
             weight_analysis.method = method_type
@@ -78,12 +76,13 @@ def Transport_Aircraft_Test(update_regression_values, show_figure):
 
 
 def General_Aviation_Test(update_regression_values, show_figure):
-    method_types = ['FLOPS', 'Raymer']
+    method_types = ['FLOPS', 'FLOPS','Raymer']
 
     for advanced_composite in [True, False]:  
         FLOPS_number = 0  
         for method_type in method_types:
-            print(f'Testing General Aviation Method: {method_type} | Advanced Composites: {advanced_composite}')
+            print(f'Testing General Aviation Method: {method_type} | Advanced Composites: {advanced_composite} | Method: {("Simple" if FLOPS_number == 0 else "Complex") if method_type == "FLOPS" else "Raymer"}')
+
             
             weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
             weight_analysis.vehicle = general_aviation_setup()
@@ -123,12 +122,11 @@ def General_Aviation_Test(update_regression_values, show_figure):
                 assert np.abs(err) < 1e-6, f'Check Failed: {k}'
             print('')
 
-
+    FLOPS_number = 0
     for method_type in method_types:
         # ---------
         # Jet Cessna 172 Variant Testing
-        print(f'Testing Jet Cessna 172 Method: {method_type}')
-        
+        print(f'Testing Jet General Aviation Method: {method_type} | Advanced Composites: {advanced_composite} | Method: {("Simple" if FLOPS_number == 0 else "Complex") if method_type == "FLOPS" else "Raymer"}')
         weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
         jet_cessna_172 = general_aviation_setup()
         jet_cessna_172.networks.fuel.propulsors.pop('ice_propeller')
@@ -140,9 +138,13 @@ def General_Aviation_Test(update_regression_values, show_figure):
         weight_analysis.aircraft_type = 'General_Aviation'
         weight_analysis.settings.advanced_composites = False
 
-        if method_type == 'FLOPS':
+        if method_type == 'FLOPS' and FLOPS_number == 0:
             save_filename = f'FLOPS_{"Simple"}_Jet'
             weight_analysis.settings.FLOPS.complexity = 'Simple'
+            FLOPS_number += 1
+        elif method_type == 'FLOPS' :
+            save_filename = f'FLOPS_{"Complex"}_Jet'
+            weight_analysis.settings.FLOPS.complexity = 'Complex'
             FLOPS_number += 1
         else:
             save_filename = 'Raymer_Jet'
