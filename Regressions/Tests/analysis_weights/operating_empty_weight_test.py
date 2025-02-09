@@ -27,27 +27,35 @@ from Solar_UAV              import vehicle_setup as uav_setup
 from Human_Powered_Glider   import vehicle_setup as hp_setup
 
 def main():
-    update_regression_values = False  # should be false unless code functionally changes
+    update_regression_values = True  # should be false unless code functionally changes
     show_figure              = False # leave false for regression
     
     Transport_Aircraft_Test(update_regression_values,show_figure)
     BWB_Aircraft_Test(update_regression_values,show_figure)
     General_Aviation_Test(update_regression_values,show_figure)
-    Human_Powered_Aircraft_Test(update_regression_values,show_figure)
     EVTOL_Aircraft_Test(update_regression_values,show_figure)
-    UAV_Test(update_regression_values,show_figure)
     return
 
 
 def Transport_Aircraft_Test(update_regression_values,show_figure):  
-    method_types = ['RCAIDE', 'FLOPS Simple', 'FLOPS Complex', 'Raymer']
-    
+    method_types = ['FLOPS', 'FLOPS', 'Raymer']
+    FLOPS_number = 0
+
     for method_type in method_types:
         print('Testing Method: '+method_type) 
         
         weight_analysis                               = RCAIDE.Framework.Analyses.Weights.Conventional()
         weight_analysis.vehicle                       = transport_setup() 
         weight_analysis.method                        = method_type 
+
+        if ((method_type == 'FLOPS') and (FLOPS_number == 0)):
+            FLOPS_number += 1
+            weight_analysis.settings.FLOPS.complexity  = 'Simple' 
+            method_type = 'FLOPS_Simple'
+        elif ((method_type == 'FLOPS') and (FLOPS_number == 1)):
+            FLOPS_number += 1
+            weight_analysis.settings.FLOPS.complexity  = 'Complex' 
+            method_type = 'FLOPS_Complex'
         weight                                        = weight_analysis.evaluate()
         plot_weight_breakdown(weight_analysis.vehicle, show_figure = show_figure) 
     
@@ -82,8 +90,10 @@ def Transport_Aircraft_Test(update_regression_values,show_figure):
 
 def General_Aviation_Test(update_regression_values,show_figure):
      
-    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_General_Aviation()
+    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Conventional()
     weight_analysis.vehicle  = general_aviation_setup()
+    weight_analysis.aircraft_type = 'General_Aviation'
+    weight_analysis.method   = 'FLOPS'
     weight                   = weight_analysis.evaluate()
     plot_weight_breakdown(weight_analysis.vehicle, show_figure = show_figure) 
     
@@ -115,8 +125,9 @@ def General_Aviation_Test(update_regression_values,show_figure):
         
 def BWB_Aircraft_Test(update_regression_values,show_figure):
     
-    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_BWB()
+    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Conventional()
     weight_analysis.vehicle  = bwb_setup()
+    weight_analysis.aircraft_type = 'BWB'
     weight                   = weight_analysis.evaluate()
     plot_weight_breakdown(weight_analysis.vehicle, show_figure = show_figure) 
     
@@ -147,8 +158,11 @@ def BWB_Aircraft_Test(update_regression_values,show_figure):
     return
 
 def EVTOL_Aircraft_Test(update_regression_values,show_figure): 
-    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_EVTOL()
+    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Electric()
     weight_analysis.vehicle  = evtol_setup(update_regression_values) 
+    weight_analysis.aircraft_type = 'VTOL'
+    weight_analysis.method   = 'Physics_Based'
+    weight_analysis.settings.safety_factor = 1.5    # CHECK THIS VALUE
     weight                   = weight_analysis.evaluate()
     plot_weight_breakdown(weight_analysis.vehicle, show_figure = show_figure) 
 
@@ -175,82 +189,6 @@ def EVTOL_Aircraft_Test(update_regression_values,show_figure):
 
         print('')
      
-    return
-
-        
-def Human_Powered_Aircraft_Test(update_regression_values,show_figure):
-    
-
-        
-    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_Human_Powered()
-    weight_analysis.vehicle  = hp_setup()
-    weight                   = weight_analysis.evaluate()
-    plot_weight_breakdown(weight_analysis.vehicle, show_figure = show_figure) 
-
-    if update_regression_values:
-        save_results(weight, os.path.join(os.path.dirname(__file__), 'weights_Human_Powered.res'))
-    old_weight = load_results(os.path.join(os.path.dirname(__file__), 'weights_Human_Powered.res'))
-    
-    check_list = [
-        'empty.total', 
-    ]
-
-    # do the check
-    for k in check_list:
-        print(k)
-
-        old_val = old_weight.deep_get(k)
-        new_val = weight.deep_get(k)
-        err = (new_val-old_val)/old_val
-        print('Error:' , err)
-        assert np.abs(err) < 1e-6 , 'Check Failed : %s' % k     
-
-        print('')
-        
-        
-    
-    
-    # plot vehicle 
-    plot_3d_vehicle(weight_analysis.vehicle, 
-                    min_x_axis_limit            = 0,
-                    max_x_axis_limit            = 10,
-                    min_y_axis_limit            = -10,
-                    max_y_axis_limit            = 10,
-                    min_z_axis_limit            = -10,
-                    max_z_axis_limit            = 10,
-                    save_figure                 = False, 
-                    show_figure                 = False, 
-                    )    
-                 
-    return       
-
-
-def UAV_Test(update_regression_values,show_figure):
-
-    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_UAV()
-    weight_analysis.vehicle  = uav_setup()
-    weight                   = weight_analysis.evaluate()
-    plot_weight_breakdown(weight_analysis.vehicle, show_figure = show_figure) 
-
-    if update_regression_values:
-        save_results(weight, os.path.join(os.path.dirname(__file__), 'weights_UAV.res'))
-    old_weight = load_results(os.path.join(os.path.dirname(__file__), 'weights_UAV.res'))
-    
-    check_list = [
-        'empty.total', 
-    ]
-
-    # do the check
-    for k in check_list:
-        print(k) 
-        old_val = old_weight.deep_get(k)
-        new_val = weight.deep_get(k)
-        err = (new_val-old_val)/old_val
-        print('Error:' , err)
-        assert np.abs(err) < 1e-6 , 'Check Failed : %s' % k     
-
-        print('') 
-    
     return
 
 

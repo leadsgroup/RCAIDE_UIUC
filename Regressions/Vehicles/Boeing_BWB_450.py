@@ -42,6 +42,8 @@ def vehicle_setup():
     # envelope properties
     vehicle.flight_envelope.ultimate_load = 2.5
     vehicle.flight_envelope.limit_load    = 1.5
+    vehicle.flight_envelope.design_mach_number = 0.8
+    vehicle.flight_envelope.design_range = 8000 * Units.nmi
 
     # basic parameters
     vehicle.reference_area         = 7840. * 2 * Units.feet**2       
@@ -214,12 +216,14 @@ def vehicle_setup():
     #  Turbofan Network
     #-------------------------------------------------------------------------------------------------------------------------     
     fuselage = RCAIDE.Library.Components.Fuselages.Blended_Wing_Body_Fuselage() 
-    #fuselage.aft_centerbody_area   = 1350
-    #fuselage.aft_centerbody_taper  = 0.5
-    #fuselage.cabin_area            = 15*450 
-    #fuselage.number_coach_seats    = vehicle.passengers 
-    #fuselage.seats_abreast         = 15
-    #fuselage.seat_pitch            = 1 * Units.meter
+    fuselage.aft_centerbody_area   = 1350
+    fuselage.aft_centerbody_taper  = 0.5
+    fuselage.cabin_area            = 15*450 
+    fuselage.number_coach_seats    = vehicle.passengers 
+    fuselage.seats_abreast         = 15
+    fuselage.seat_pitch            = 1 * Units.meter
+    fuselage.lengths.total         = 100
+    fuselage.width                 = 15
     
     # add to vehicle
     vehicle.append_component(fuselage)    
