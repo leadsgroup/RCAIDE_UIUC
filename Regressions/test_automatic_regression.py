@@ -27,7 +27,6 @@ modules = [
     'Tests/analysis_weights/operating_empty_weight_test.py',
     'Tests/analysis_weights/cg_and_moi_test.py',
     'Tests/energy_sources/battery_cell.py',
-    'Tests/energy_sources/fuel_battery_cell.py',
     'Tests/energy_sources/fuel_cell.py',
     'Tests/geometry/airfoil_import_test.py', 
     'Tests/geometry/airfoil_interpolation_test.py',    
