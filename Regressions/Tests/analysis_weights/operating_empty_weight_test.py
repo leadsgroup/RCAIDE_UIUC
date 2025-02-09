@@ -27,7 +27,7 @@ from Solar_UAV              import vehicle_setup as uav_setup
 from Human_Powered_Glider   import vehicle_setup as hp_setup
 
 def main():
-    update_regression_values = True  # should be false unless code functionally changes
+    update_regression_values = False  # should be false unless code functionally changes
     show_figure              = False # leave false for regression
     
     Transport_Aircraft_Test(update_regression_values,show_figure)
