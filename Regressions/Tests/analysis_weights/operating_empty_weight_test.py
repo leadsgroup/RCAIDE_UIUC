@@ -31,8 +31,9 @@ def main():
 
 def Transport_Aircraft_Test(update_regression_values, show_figure):
     method_types = ['FLOPS', 'Raymer']
+    FLOPS_number = 0 
     for advanced_composites in [True, False]:  
-        FLOPS_number = 0  
+         
         for method_type in method_types:
             print(f'Testing Transport Aircraft Method: {method_type} | Advanced Composites: {advanced_composites} | Method: {"Simple" if FLOPS_number == 0 else "Complex"}')        
             weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
