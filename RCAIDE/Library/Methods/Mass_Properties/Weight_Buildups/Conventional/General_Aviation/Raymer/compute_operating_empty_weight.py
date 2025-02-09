@@ -10,7 +10,7 @@
 # RCAIDE
 import RCAIDE
 from RCAIDE.Framework.Core import  Units , Data 
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Conventional.General_Aviation.Raymer import *
+import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Conventional.General_Aviation.Raymer as Raymer
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Main Wing Weight 
@@ -205,7 +205,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
                     W_energy_network_cumulative  += motor_mass                
         
         # Fuel network
-        W_propulsion = compute_propulsion_system_weight(network)      
+        W_propulsion = Raymer.compute_propulsion_system_weight(network)      
                 
         W_energy_network_cumulative = W_propulsion.W_prop
         number_of_engines           =  W_propulsion.number_of_engines
@@ -213,7 +213,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
     # Main
     for wing in vehicle.wings:
         if isinstance(wing,RCAIDE.Library.Components.Wings.Main_Wing):
-            W_wing    = compute_main_wing_weight(wing, vehicle, m_fuel)
+            W_wing    = Raymer.compute_main_wing_weight(wing, vehicle, m_fuel)
             wing.mass_properties.mass = W_wing
             
             # set main wing to be used in future horizontal tail calculations 
@@ -226,17 +226,17 @@ def compute_operating_empty_weight(vehicle, settings=None):
     for wing in vehicle.wings:            
         if isinstance(wing,RCAIDE.Library.Components.Wings.Horizontal_Tail):
             l_w2h              = wing.origin[0][0] + wing.aerodynamic_center[0] - main_wing.origin[0][0] - main_wing.aerodynamic_center[0] 
-            W_tail_horizontal  = compute_horizontal_tail_weight(wing, vehicle)                 
+            W_tail_horizontal  = Raymer.compute_horizontal_tail_weight(wing, vehicle)                 
             wing.mass_properties.mass = W_tail_horizontal     
         if isinstance(wing,RCAIDE.Library.Components.Wings.Vertical_Tail):     
-            W_tail_vertical   = compute_vertical_tail_weight(wing, vehicle) 
+            W_tail_vertical   = Raymer.compute_vertical_tail_weight(wing, vehicle) 
             wing.mass_properties.mass = W_tail_vertical
     if l_w2h == 0:
         print("Warning: l_w2h is zero")
 
     # Fuselage
     for fuselage in  vehicle.fuselages:  
-        W_fuselage  = compute_fuselage_weight(fuselage, vehicle, l_w2h)
+        W_fuselage  = Raymer.compute_fuselage_weight(fuselage, vehicle, l_w2h)
         fuselage.mass_properties.mass = W_fuselage
         
     # landing gear 
@@ -251,7 +251,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
         elif isinstance(LG, RCAIDE.Library.Components.Landing_Gear.Nose_Landing_Gear):
             strut_length_nose = LG.strut_length 
             nose_landing_gear = True
-    W_landing_gear         = compute_landing_gear_weight(landing_weight, Nult, strut_length_main, strut_length_nose) 
+    W_landing_gear         = Raymer.compute_landing_gear_weight(landing_weight, Nult, strut_length_main, strut_length_nose) 
     for landing_gear in vehicle.landing_gears:
         if isinstance(landing_gear, RCAIDE.Library.Components.Landing_Gear.Main_Landing_Gear):
             landing_gear.mass_properties.mass = W_landing_gear.main
@@ -269,7 +269,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
         vehicle.append_component(main_gear)
 
     # Calculating Empty Weight of Aircraft
-    W_systems           = compute_systems_weight(vehicle,V_fuel, V_fuel_int, number_of_tanks, number_of_engines)
+    W_systems           = Raymer.compute_systems_weight(vehicle,V_fuel, V_fuel_int, number_of_tanks, number_of_engines)
 
     # Calculate the equipment empty weight of the aircraft
 
@@ -277,7 +277,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
                           W_tail_horizontal +W_tail_vertical) 
 
     # packup outputs
-    W_payload = compute_payload_weight(vehicle)
+    W_payload = Raymer.compute_payload_weight(vehicle)
     
     vehicle.payload.passengers = RCAIDE.Library.Components.Component()
     vehicle.payload.baggage    = RCAIDE.Library.Components.Component()

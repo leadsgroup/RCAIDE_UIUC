@@ -30,7 +30,7 @@ def main():
     material            = RCAIDE.Library.Attributes.Materials.Acrylic()    
     material            = RCAIDE.Library.Attributes.Materials.Magnesium()  
     material            = RCAIDE.Library.Attributes.Materials.Titanium()   
-    material            = RCAIDE.Library.Attributes.Materials.Aluminum_Alloy()    
+    material            = RCAIDE.Library.Attributes.Materials.Aluminum()    
     material            = RCAIDE.Library.Attributes.Materials.Aluminum()  
     material            = RCAIDE.Library.Attributes.Materials.Perfluoroalkoxy()  
     material            = RCAIDE.Library.Attributes.Materials.Polyetherimide()  

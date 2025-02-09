@@ -1,13 +1,13 @@
 # weights.py
 import  RCAIDE
 from RCAIDE.Framework.Core import Data  
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Propulsion       as Propulsion
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Transport        as Transport
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Common           as Common
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import General_Aviation as General_Aviation
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import BWB              as BWB
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import UAV              as UAV
-from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups import Electric       as Electric
+# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Propulsion       as Propulsion
+# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Transport        as Transport
+# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Common           as Common
+# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import General_Aviation as General_Aviation
+# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import BWB              as BWB
+# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import UAV              as UAV
+#from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups import Electric       as Electric
 from RCAIDE.Library.Plots import * 
 from RCAIDE.load import load as load_results
 from RCAIDE.save import save as save_results 
@@ -45,7 +45,7 @@ def Transport_Aircraft_Test(update_regression_values,show_figure):
     for method_type in method_types:
         print('Testing Method: '+method_type) 
         
-        weight_analysis                               = RCAIDE.Framework.Analyses.Weights.Transport()
+        weight_analysis                               = RCAIDE.Framework.Analyses.Weights.Conventional()
         weight_analysis.vehicle                       = transport_setup() 
         weight_analysis.method                        = method_type 
         weight                                        = weight_analysis.evaluate()

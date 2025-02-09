@@ -50,7 +50,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
     
     Wings = RCAIDE.Library.Components.Wings  
     
-    payload = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Common.compute_payload_weight(vehicle) 
+    payload = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Conventional.Common.compute_payload_weight(vehicle) 
     
     
     vehicle.payload.passengers                      = RCAIDE.Library.Components.Component()
@@ -68,7 +68,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
     ##-------------------------------------------------------------------------------             
     # Operating Items Weight
     ##------------------------------------------------------------------------------- 
-    W_oper = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Transport.Common.compute_operating_items_weight(vehicle)  # TO ADD
+    W_oper = RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Conventional.Transport.Common.compute_operating_items_weight(vehicle)  # TO ADD
 
     ##-------------------------------------------------------------------------------         
     # System Weight

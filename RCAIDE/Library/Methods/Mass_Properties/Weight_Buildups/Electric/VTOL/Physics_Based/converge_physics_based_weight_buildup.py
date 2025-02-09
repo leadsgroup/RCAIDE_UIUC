@@ -45,7 +45,7 @@ def converge_physics_based_weight_buildup(base_vehicle,
     '''
     
 
-    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Weights_EVTOL()
+    weight_analysis          = RCAIDE.Framework.Analyses.Weights.Electric()
     weight_analysis.vehicle  = base_vehicle
     weight_analysis.settings.miscelleneous_weight_factor =  miscelleneous_weight_factor
     breakdown                = weight_analysis.evaluate() 

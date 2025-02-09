@@ -11,10 +11,10 @@
 # RCAIDE imports 
 import RCAIDE
 from RCAIDE.Framework.Core import Units   
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor             import design_propeller 
-from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor          import design_motor 
-from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.EVTOL.Physics_Based import compute_motor_weight
-from RCAIDE.Library.Methods.Geometry.Planform                       import wing_segmented_planform 
+from RCAIDE.Library.Methods.Propulsors.Converters.Rotor                      import design_propeller 
+from RCAIDE.Library.Methods.Propulsors.Converters.Motor                      import design_DC_motor 
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.Common  import compute_motor_weight
+from RCAIDE.Library.Methods.Geometry.Planform                                import wing_segmented_planform 
 
 # python imports 
 import numpy as np 

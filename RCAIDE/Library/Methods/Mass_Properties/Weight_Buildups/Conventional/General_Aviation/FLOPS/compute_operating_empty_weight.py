@@ -164,7 +164,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
     # Pod Weight Weight 
     ##-------------------------------------------------------------------------------         
     WPOD  = 0.0             
-    if settings.complexity == 'Complex': 
+    if settings.FLOPS.complexity == 'Complex': 
         NENG   = number_of_engines
         WTNFA  = W_energy_network.W_engine + W_energy_network.W_thrust_reverser + W_energy_network.W_starter \
                 + 0.25 * W_energy_network.W_engine_controls + 0.11 * W_systems.W_instruments + 0.13 * W_systems.W_electrical \
@@ -183,8 +183,8 @@ def compute_operating_empty_weight(vehicle, settings=None):
     ##-------------------------------------------------------------------------------                 
     # Wing Weights 
     ##------------------------------------------------------------------------------- 
-    Al_rho   = Aluminum_Alloy().density
-    Al_sigma = Aluminum_Alloy().yield_tensile_strength      
+    Al_rho   = Aluminum().density
+    Al_sigma = Aluminum().yield_tensile_strength      
     
     num_main_wings      = 0
     W_main_wing        = 0.0
@@ -196,7 +196,7 @@ def compute_operating_empty_weight(vehicle, settings=None):
     
     for wing in vehicle.wings:
         if isinstance(wing, Wings.Main_Wing): # Main wing
-            complexity = settings.complexity
+            complexity = settings.FLOPS.complexity
             W_wing = FLOPS.compute_wing_weight(vehicle, wing, WPOD, complexity, settings, num_main_wings)
 
             # Apply weight factor
