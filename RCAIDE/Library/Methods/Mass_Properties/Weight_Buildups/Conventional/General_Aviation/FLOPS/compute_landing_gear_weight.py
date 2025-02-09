@@ -88,6 +88,7 @@ def compute_landing_gear_weight(vehicle):
     for network in vehicle.networks:
         for propulsor in  network.propulsors:
             if propulsor.wing_mounted:
+                FNAC = 0
                 if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
                     nacelle =  propulsor.nacelle 
                     FNAC    = nacelle.diameter / Units.ft
