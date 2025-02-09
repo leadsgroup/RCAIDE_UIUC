@@ -50,9 +50,9 @@ class Hydrogen(Weights):
         Properties Used:
         N/A
         """
-        self.tag           = 'hydrogen_weights'
-        self.method        = 'Physics_Based'
-        self.aircraft_type = 'Transport'
-        self.propulsion_architecture = 'Hydrogen'
+        # self.tag           = 'hydrogen_weights'
+        # self.method        = 'Physics_Based'
+        # self.aircraft_type = 'Transport'
+        # self.propulsion_architecture = 'Hydrogen'
 
         
