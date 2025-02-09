@@ -119,7 +119,7 @@ def compute_rotor_weight(rotor,
     try:
         ribMat = rotor.materials.rib_materials.structural
     except AttributeError:
-        ribMat = Aluminum_Alloy_Rib()
+        ribMat = Aluminum_Alloy()
     ribWid = ribMat.minimum_width
     ribMGT = ribMat.minimum_gage_thickness
     ribDen = ribMat.density

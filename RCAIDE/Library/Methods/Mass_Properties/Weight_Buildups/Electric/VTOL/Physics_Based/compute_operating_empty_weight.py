@@ -11,7 +11,7 @@
 import RCAIDE
 from RCAIDE.Framework.Core                                          import Units, Data 
 import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.VTOL.Physics_Based as EVTOL
-
+import RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.Common as Common
 # package imports 
 import numpy as np
 
@@ -220,7 +220,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
                 rTip_ref                   = rotor.tip_radius 
                 bladeSol_ref               = rotor.blade_solidity 
                 prop_servo_weight          = 5.2 * Units.kg  
-                propeller_mass             = EVTOL.compute_rotor_weight(rotor, maxLift/5.) * Units.kg
+                propeller_mass             = Common.compute_rotor_weight(rotor, maxLift/5.) * Units.kg
                 weight.rotors              += propeller_mass 
                 rotor.mass_properties.mass  =  propeller_mass + prop_hub_weight + prop_servo_weight
                 maxVTip                     = rotor.cruise.design_angular_velocity * rotor.tip_radius
@@ -238,7 +238,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
                     design_thrust = rotor.hover.design_thrust
                 else:
                     design_thrust =rotor.oei.design_thrust
-                lift_rotor_mass             = EVTOL.compute_rotor_weight(rotor,design_thrust)
+                lift_rotor_mass             = Common.compute_rotor_weight(rotor,design_thrust)
                 weight.rotors               += lift_rotor_mass 
                 rotor.mass_properties.mass  =  lift_rotor_mass + lift_rotor_hub_weight + lift_rotor_servo_weight
                 weight.servos               += lift_rotor_servo_weight
@@ -263,7 +263,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
             maxLiftTorque  = maxLiftPower / maxLiftOmega  
             for bus in network.busses: 
                 tailrotor = next(iter(bus.lift_rotors))
-                weight.tail_rotor  = EVTOL.compute_rotor_weight(tailrotor, 1.5*maxLiftTorque/(1.25*rTip_ref))*0.2 * Units.kg
+                weight.tail_rotor  = Common.compute_rotor_weight(tailrotor, 1.5*maxLiftTorque/(1.25*rTip_ref))*0.2 * Units.kg
                 weight.rotors     += weight.tail_rotor 
 
     #-------------------------------------------------------------------------------
@@ -307,7 +307,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
 
         # compute_wiring_weight weight
         if isinstance(wing, RCAIDE.Library.Components.Wings.Main_Wing):
-            wiring_weight  = EVTOL.compute_wiring_weight(wing, vehicle, maxLiftPower/(eta*total_number_of_rotors)) * Units.kg
+            wiring_weight  = Common.compute_wiring_weight(wing, vehicle, maxLiftPower/(eta*total_number_of_rotors)) * Units.kg
         else:
             wiring_weight =  0
         weight.wiring  += wiring_weight 
