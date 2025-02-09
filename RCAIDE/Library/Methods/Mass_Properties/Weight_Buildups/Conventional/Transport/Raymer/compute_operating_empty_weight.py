@@ -123,21 +123,21 @@ def compute_operating_empty_weight(vehicle, settings=None):
             propulsor.mass_properties.mass = W_energy_network_total / number_of_engines
                  
         # Electric-Powered Propulsors  
-        for bus in network.busses: 
-            # electrical payload 
-            W_systems.W_electrical  += bus.payload.mass_properties.mass * Units.kg
+        # for bus in network.busses: 
+        #     # electrical payload 
+        #     W_systems.W_electrical  += bus.payload.mass_properties.mass * Units.kg
      
-            # Avionics Weight 
-            W_systems.W_avionics  += bus.avionics.mass_properties.mass      
+        #     # Avionics Weight 
+        #     W_systems.W_avionics  += bus.avionics.mass_properties.mass      
     
-            for battery in bus.battery_modules: 
-                W_energy_network_total  += battery.mass_properties.mass * Units.kg
-                W_energy_network.W_battery = battery.mass_properties.mass * Units.kg
+        #     for battery in bus.battery_modules: 
+        #         W_energy_network_total  += battery.mass_properties.mass * Units.kg
+        #         W_energy_network.W_battery = battery.mass_properties.mass * Units.kg
                 
-        for propulsor in network.propulsors:
-            if 'motor' in propulsor:                           
-                W_energy_network.W_motor +=  propulsor.motor.mass_properties.mass
-                W_energy_network_total  +=  propulsor.motor.mass_properties.mass
+        # for propulsor in network.propulsors:
+        #     if 'motor' in propulsor:                           
+        #         W_energy_network.W_motor +=  propulsor.motor.mass_properties.mass
+        #         W_energy_network_total  +=  propulsor.motor.mass_properties.mass
                    
     W_energy_network_cumulative += W_energy_network_total
     
@@ -146,8 +146,8 @@ def compute_operating_empty_weight(vehicle, settings=None):
     ##-------------------------------------------------------------------------------         
     WPOD  = 0.0             
     output.empty.propulsion.total               = W_energy_network_cumulative
-    output.empty.propulsion.battery             = W_energy_network.W_battery
-    output.empty.propulsion.motors              = W_energy_network.W_motor
+    output.empty.propulsion.battery             = 0 #W_energy_network.W_battery
+    output.empty.propulsion.motors              = 0 #W_energy_network.W_motor
     output.empty.propulsion.engines             = W_energy_network.W_engine
     output.empty.propulsion.thrust_reversers    = W_energy_network.W_thrust_reverser
     output.empty.propulsion.miscellaneous       = W_energy_network.W_engine_controls + W_energy_network.W_starter

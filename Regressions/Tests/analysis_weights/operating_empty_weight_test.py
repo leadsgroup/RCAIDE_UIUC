@@ -1,13 +1,7 @@
 # weights.py
 import  RCAIDE
-from RCAIDE.Framework.Core import Data  
-# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Propulsion       as Propulsion
-# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Transport        as Transport
-# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import Common           as Common
-# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import General_Aviation as General_Aviation
-# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import BWB              as BWB
-# from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups import UAV              as UAV
-#from RCAIDE.Library.Methods.Mass_Properties.Physics_Based_Buildups import Electric       as Electric
+from RCAIDE.Framework.Core import Data, Units 
+from RCAIDE.Library.Methods.Propulsors.Turbofan_Propulsor   import design_turbofan  
 from RCAIDE.Library.Plots import * 
 from RCAIDE.load import load as load_results
 from RCAIDE.save import save as save_results 
@@ -140,6 +134,59 @@ def General_Aviation_Test(update_regression_values, show_figure):
                 print(f'Error: {err:.6e}')
                 assert np.abs(err) < 1e-6, f'Check Failed: {k}'
             print('')
+
+            print(f'Jet Cessna 172 Testing Method: {method_type} | Advanced Composites: {advanced_composite}')
+            
+            weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
+            jet_cessna_172 = general_aviation_setup()
+            jet_cessna_172.networks.fuel.propulsors.pop('ice_propeller')
+            turbine = Jet_engine()
+            jet_cessna_172.networks.fuel.propulsors.append(turbine)
+            jet_cessna_172.networks.fuel.fuel_lines['fuel_line'].assigned_propulsors =  [[turbine.tag]]
+            weight_analysis.vehicle = jet_cessna_172
+            weight_analysis.method = method_type
+            weight_analysis.aircraft_type = 'General_Aviation'
+            weight_analysis.settings.advanced_composites = advanced_composite
+
+            save_filename = 'Raymer_Jet'
+            if method_type == 'FLOPS':
+                if FLOPS_number == 0:
+                    weight_analysis.settings.FLOPS.complexity = 'Simple'
+                    save_filename = 'FLOPS_Simple_Jet'
+                else:
+                    weight_analysis.settings.FLOPS.complexity = 'Complex'
+                    save_filename = 'FLOPS_Complex_Jet'
+                FLOPS_number += 1
+
+            if advanced_composite:
+                save_filename += '_Advanced_Composite'
+
+            weight = weight_analysis.evaluate()
+            plot_weight_breakdown(weight_analysis.vehicle, show_figure=show_figure)
+
+            save_path = os.path.join(os.path.dirname(__file__), f'weights_general_aviation_{save_filename}.res')
+
+            if update_regression_values:
+                save_results(weight, save_path)
+            old_weight = load_results(save_path)
+
+            check_list = [
+                'empty.total',
+                'empty.structural.wings',
+                'empty.structural.fuselage',
+                'empty.structural.total',
+                'empty.propulsion.total',
+                'empty.systems.total',
+            ]
+
+            for k in check_list:
+                print(k)
+                old_val = old_weight.deep_get(k)
+                new_val = weight.deep_get(k)
+                err = (new_val - old_val) / old_val
+                print(f'Error: {err:.6e}')
+                assert np.abs(err) < 1e-6, f'Check Failed: {k}'
+            print('')
         
 def BWB_Aircraft_Test(update_regression_values,show_figure):
     
@@ -213,6 +260,106 @@ def EVTOL_Aircraft_Test(update_regression_values,show_figure):
      
     return
 
+def Jet_engine():
+    turbofan                                    = RCAIDE.Library.Components.Propulsors.Turbofan() 
+    turbofan.tag                                = 'starboard_propulsor' 
+    turbofan.origin                             = [[13.72, 4.86,-1.1]] 
+    turbofan.engine_length                      = 2.71     
+    turbofan.bypass_ratio                       = 5.4    
+    turbofan.design_altitude                    = 35000.0*Units.ft
+    turbofan.design_mach_number                 = 0.78   
+    turbofan.design_thrust                      = 35000.0* Units.N 
+             
+    # fan                
+    fan                                         = RCAIDE.Library.Components.Propulsors.Converters.Fan()   
+    fan.tag                                     = 'fan'
+    fan.polytropic_efficiency                   = 0.93
+    fan.pressure_ratio                          = 1.7   
+    turbofan.fan                                = fan        
+                   
+    # working fluid                   
+    turbofan.working_fluid                      = RCAIDE.Library.Attributes.Gases.Air() 
+    ram                                         = RCAIDE.Library.Components.Propulsors.Converters.Ram()
+    ram.tag                                     = 'ram' 
+    turbofan.ram                                = ram 
+          
+    # inlet nozzle          
+    inlet_nozzle                                = RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle()
+    inlet_nozzle.tag                            = 'inlet nozzle'
+    inlet_nozzle.polytropic_efficiency          = 0.98
+    inlet_nozzle.pressure_ratio                 = 0.98 
+    turbofan.inlet_nozzle                       = inlet_nozzle 
+
+    # low pressure compressor    
+    low_pressure_compressor                       = RCAIDE.Library.Components.Propulsors.Converters.Compressor()    
+    low_pressure_compressor.tag                   = 'lpc'
+    low_pressure_compressor.polytropic_efficiency = 0.91
+    low_pressure_compressor.pressure_ratio        = 1.9   
+    turbofan.low_pressure_compressor              = low_pressure_compressor
+
+    # high pressure compressor  
+    high_pressure_compressor                       = RCAIDE.Library.Components.Propulsors.Converters.Compressor()    
+    high_pressure_compressor.tag                   = 'hpc'
+    high_pressure_compressor.polytropic_efficiency = 0.91
+    high_pressure_compressor.pressure_ratio        = 10.0    
+    turbofan.high_pressure_compressor              = high_pressure_compressor
+
+    # low pressure turbine  
+    low_pressure_turbine                           = RCAIDE.Library.Components.Propulsors.Converters.Turbine()   
+    low_pressure_turbine.tag                       ='lpt'
+    low_pressure_turbine.mechanical_efficiency     = 0.99
+    low_pressure_turbine.polytropic_efficiency     = 0.93 
+    turbofan.low_pressure_turbine                  = low_pressure_turbine
+   
+    # high pressure turbine     
+    high_pressure_turbine                          = RCAIDE.Library.Components.Propulsors.Converters.Turbine()   
+    high_pressure_turbine.tag                      ='hpt'
+    high_pressure_turbine.mechanical_efficiency    = 0.99
+    high_pressure_turbine.polytropic_efficiency    = 0.93 
+    turbofan.high_pressure_turbine                 = high_pressure_turbine 
+
+    # combustor  
+    combustor                                      = RCAIDE.Library.Components.Propulsors.Converters.Combustor()   
+    combustor.tag                                  = 'Comb'
+    combustor.efficiency                           = 0.99 
+    combustor.alphac                               = 1.0     
+    combustor.turbine_inlet_temperature            = 1500
+    combustor.pressure_ratio                       = 0.95
+    combustor.fuel_data                            = RCAIDE.Library.Attributes.Propellants.Jet_A1()  
+    turbofan.combustor                             = combustor
+
+    # core nozzle
+    core_nozzle                                    = RCAIDE.Library.Components.Propulsors.Converters.Expansion_Nozzle()   
+    core_nozzle.tag                                = 'core nozzle'
+    core_nozzle.polytropic_efficiency              = 0.95
+    core_nozzle.pressure_ratio                     = 0.99  
+    turbofan.core_nozzle                           = core_nozzle
+             
+    # fan nozzle             
+    fan_nozzle                                     = RCAIDE.Library.Components.Propulsors.Converters.Expansion_Nozzle()   
+    fan_nozzle.tag                                 = 'fan nozzle'
+    fan_nozzle.polytropic_efficiency               = 0.95
+    fan_nozzle.pressure_ratio                      = 0.99 
+    turbofan.fan_nozzle                            = fan_nozzle 
+    
+    # design turbofan
+    design_turbofan(turbofan)  
+    # append propulsor to distribution line  
+   
+    # Nacelle 
+    nacelle                                     = RCAIDE.Library.Components.Nacelles.Body_of_Revolution_Nacelle()
+    nacelle.diameter                            = 2.05
+    nacelle.length                              = 2.71
+    nacelle.tag                                 = 'nacelle_1'
+    nacelle.inlet_diameter                      = 2.0
+    nacelle.origin                              = [[13.5,4.38,-1.5]] 
+    nacelle.areas.wetted                        = 1.1*np.pi*nacelle.diameter*nacelle.length 
+    nacelle_airfoil                             = RCAIDE.Library.Components.Airfoils.NACA_4_Series_Airfoil()
+    nacelle_airfoil.NACA_4_Series_code          = '2410'
+    nacelle.append_airfoil(nacelle_airfoil)  
+    turbofan.nacelle                            = nacelle
+  
+    return(turbofan)
 
 if __name__ == '__main__':
     main()
