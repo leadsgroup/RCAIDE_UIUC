@@ -92,9 +92,7 @@ def compute_landing_gear_weight(vehicle):
                     nacelle =  propulsor.nacelle 
                     FNAC    = nacelle.diameter / Units.ft
                 if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.ICE_Propeller) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller): 
-                    FNAC    = propulsor.propeller.tip_radius * 2 / Units.ft
-                else:
-                    FNAC    = 0
+                    FNAC    = propulsor.propeller.tip_radius * 2 / Units.ft      
                 DIH     = main_wing.dihedral
                 YEE     = np.max(np.abs(np.array(network.origin)[:, 1])) / Units.inches
                 WF      = main_fuselage.width / Units.ft

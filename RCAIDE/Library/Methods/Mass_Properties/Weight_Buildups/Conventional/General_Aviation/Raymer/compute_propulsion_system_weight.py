@@ -68,13 +68,10 @@ def compute_jet_engine_weight(propulsor):
     thrust_sls    =  propulsor.sealevel_static_thrust 
     thrust_sls_en = thrust_sls / Units.force_pound # Convert N to lbs force  
     BPR = propulsor.bypass_ratio
-    
-    # process
-    weight = (0.4054*thrust_sls_en ** 0.9255) * Units.lb # Convert lbs to kg
 
-    WENG   += 0.084 *  (propulsor.sealevel_static_thrust/Units.lbf)**1.1 * np.exp(-0.045*BPR) * Units.lbs # Raymer 3rd Edition eq. 10.4 
+    WENG   = 0.084 *  (propulsor.sealevel_static_thrust/Units.lbf)**1.1 * np.exp(-0.045*BPR) * Units.lbs # Raymer 3rd Edition eq. 10.4 
     
-    return weight
+    return WENG
  
 # ----------------------------------------------------------------------------------------------------------------------
 #  Motor Weight 

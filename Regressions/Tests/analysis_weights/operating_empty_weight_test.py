@@ -30,12 +30,12 @@ def main():
 
 
 def Transport_Aircraft_Test(update_regression_values, show_figure):
-    method_types = ['FLOPS', 'FLOPS','Raymer']
-    
+    method_types = ['FLOPS', 'Raymer']
+
     for advanced_composites in [True, False]:  
         FLOPS_number = 0  
         for method_type in method_types:
-            print(f'Testing Method: {method_type} | Advanced Composites: {advanced_composites}')
+            print(f'Testing Transport Aircraft Method: {method_type} | Advanced Composites: {advanced_composites}')
             
             weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
             weight_analysis.vehicle = transport_setup()
@@ -43,17 +43,14 @@ def Transport_Aircraft_Test(update_regression_values, show_figure):
             weight_analysis.settings.advanced_composites = advanced_composites
 
             if method_type == 'FLOPS':
-                if FLOPS_number == 0:
-                    weight_analysis.settings.FLOPS.complexity = 'Simple'
-                    save_filename = 'FLOPS_Simple'
-                else:
-                    weight_analysis.settings.FLOPS.complexity = 'Complex'
-                    save_filename = 'FLOPS_Complex'
+                save_filename = f'FLOPS_{"Simple" if FLOPS_number == 0 else "Complex"}'
+                weight_analysis.settings.FLOPS.complexity = 'Simple' if FLOPS_number == 0 else 'Complex'
                 FLOPS_number += 1
             else:
                 save_filename = 'Raymer'
 
-            save_filename += '_Advanced_Composite' if advanced_composites else ''
+            if advanced_composites:
+                save_filename += '_Advanced_Composite'
 
             weight = weight_analysis.evaluate()
             plot_weight_breakdown(weight_analysis.vehicle, show_figure=show_figure)
@@ -72,22 +69,21 @@ def Transport_Aircraft_Test(update_regression_values, show_figure):
             ]
 
             for k in check_list:
-                print(k)
                 old_val = old_weight.deep_get(k)
                 new_val = weight.deep_get(k)
                 err = (new_val - old_val) / old_val
-                print(f'Error: {err:.6e}')
+                print(f'{k} Error: {err:.6e}')
                 assert np.abs(err) < 1e-6, f'Check Failed: {k}'
             print('')
-    return 
+
 
 def General_Aviation_Test(update_regression_values, show_figure):
-    method_types = ['FLOPS','FLOPS', 'Raymer']
+    method_types = ['FLOPS', 'Raymer']
 
     for advanced_composite in [True, False]:  
         FLOPS_number = 0  
         for method_type in method_types:
-            print(f'Testing Method: {method_type} | Advanced Composites: {advanced_composite}')
+            print(f'Testing General Aviation Method: {method_type} | Advanced Composites: {advanced_composite}')
             
             weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
             weight_analysis.vehicle = general_aviation_setup()
@@ -95,15 +91,12 @@ def General_Aviation_Test(update_regression_values, show_figure):
             weight_analysis.aircraft_type = 'General_Aviation'
             weight_analysis.settings.advanced_composites = advanced_composite
 
-            save_filename = 'Raymer'
             if method_type == 'FLOPS':
-                if FLOPS_number == 0:
-                    weight_analysis.settings.FLOPS.complexity = 'Simple'
-                    save_filename = 'FLOPS_Simple'
-                else:
-                    weight_analysis.settings.FLOPS.complexity = 'Complex'
-                    save_filename = 'FLOPS_Complex'
+                save_filename = f'FLOPS_{"Simple" if FLOPS_number == 0 else "Complex"}'
+                weight_analysis.settings.FLOPS.complexity = 'Simple' if FLOPS_number == 0 else 'Complex'
                 FLOPS_number += 1
+            else:
+                save_filename = 'Raymer'
 
             if advanced_composite:
                 save_filename += '_Advanced_Composite'
@@ -118,75 +111,62 @@ def General_Aviation_Test(update_regression_values, show_figure):
             old_weight = load_results(save_path)
 
             check_list = [
-                'empty.total',
-                'empty.structural.wings',
-                'empty.structural.fuselage',
-                'empty.structural.total',
-                'empty.propulsion.total',
-                'empty.systems.total',
+                'empty.total', 'empty.structural.wings', 'empty.structural.fuselage',
+                'empty.structural.total', 'empty.propulsion.total', 'empty.systems.total'
             ]
 
             for k in check_list:
-                print(k)
                 old_val = old_weight.deep_get(k)
                 new_val = weight.deep_get(k)
                 err = (new_val - old_val) / old_val
-                print(f'Error: {err:.6e}')
+                print(f'{k} Error: {err:.6e}')
                 assert np.abs(err) < 1e-6, f'Check Failed: {k}'
             print('')
 
-            print(f'Jet Cessna 172 Testing Method: {method_type} | Advanced Composites: {advanced_composite}')
-            
-            weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
-            jet_cessna_172 = general_aviation_setup()
-            jet_cessna_172.networks.fuel.propulsors.pop('ice_propeller')
-            turbine = Jet_engine()
-            jet_cessna_172.networks.fuel.propulsors.append(turbine)
-            jet_cessna_172.networks.fuel.fuel_lines['fuel_line'].assigned_propulsors =  [[turbine.tag]]
-            weight_analysis.vehicle = jet_cessna_172
-            weight_analysis.method = method_type
-            weight_analysis.aircraft_type = 'General_Aviation'
-            weight_analysis.settings.advanced_composites = advanced_composite
 
+    for method_type in method_types:
+        # ---------
+        # Jet Cessna 172 Variant Testing
+        print(f'Testing Jet Cessna 172 Method: {method_type}')
+        
+        weight_analysis = RCAIDE.Framework.Analyses.Weights.Conventional()
+        jet_cessna_172 = general_aviation_setup()
+        jet_cessna_172.networks.fuel.propulsors.pop('ice_propeller')
+        turbine = Jet_engine()
+        jet_cessna_172.networks.fuel.propulsors.append(turbine)
+        jet_cessna_172.networks.fuel.fuel_lines['fuel_line'].assigned_propulsors = [[turbine.tag]]
+        weight_analysis.vehicle = jet_cessna_172
+        weight_analysis.method = method_type
+        weight_analysis.aircraft_type = 'General_Aviation'
+        weight_analysis.settings.advanced_composites = False
+
+        if method_type == 'FLOPS':
+            save_filename = f'FLOPS_{"Simple"}_Jet'
+            weight_analysis.settings.FLOPS.complexity = 'Simple'
+            FLOPS_number += 1
+        else:
             save_filename = 'Raymer_Jet'
-            if method_type == 'FLOPS':
-                if FLOPS_number == 0:
-                    weight_analysis.settings.FLOPS.complexity = 'Simple'
-                    save_filename = 'FLOPS_Simple_Jet'
-                else:
-                    weight_analysis.settings.FLOPS.complexity = 'Complex'
-                    save_filename = 'FLOPS_Complex_Jet'
-                FLOPS_number += 1
 
-            if advanced_composite:
-                save_filename += '_Advanced_Composite'
+        weight = weight_analysis.evaluate()
+        plot_weight_breakdown(weight_analysis.vehicle, show_figure=show_figure)
 
-            weight = weight_analysis.evaluate()
-            plot_weight_breakdown(weight_analysis.vehicle, show_figure=show_figure)
+        save_path = os.path.join(os.path.dirname(__file__), f'weights_general_aviation_{save_filename}.res')
 
-            save_path = os.path.join(os.path.dirname(__file__), f'weights_general_aviation_{save_filename}.res')
+        if update_regression_values:
+            save_results(weight, save_path)
+        old_weight = load_results(save_path)
 
-            if update_regression_values:
-                save_results(weight, save_path)
-            old_weight = load_results(save_path)
-
-            check_list = [
-                'empty.total',
-                'empty.structural.wings',
-                'empty.structural.fuselage',
-                'empty.structural.total',
-                'empty.propulsion.total',
-                'empty.systems.total',
+        check_list = [
+                'empty.total', 'empty.structural.wings', 'empty.structural.fuselage',
+                'empty.structural.total', 'empty.propulsion.total', 'empty.systems.total'
             ]
-
-            for k in check_list:
-                print(k)
-                old_val = old_weight.deep_get(k)
-                new_val = weight.deep_get(k)
-                err = (new_val - old_val) / old_val
-                print(f'Error: {err:.6e}')
-                assert np.abs(err) < 1e-6, f'Check Failed: {k}'
-            print('')
+        for k in check_list:
+            old_val = old_weight.deep_get(k)
+            new_val = weight.deep_get(k)
+            err = (new_val - old_val) / old_val
+            print(f'{k} Error: {err:.6e}')
+            assert np.abs(err) < 1e-6, f'Check Failed: {k}'
+        print('')
         
 def BWB_Aircraft_Test(update_regression_values,show_figure):
     

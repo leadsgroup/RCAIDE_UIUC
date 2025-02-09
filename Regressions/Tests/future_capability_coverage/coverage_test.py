@@ -36,7 +36,7 @@ def main():
     material            = RCAIDE.Library.Attributes.Materials.Polyetherimide()  
     material            = RCAIDE.Library.Attributes.Materials.Polyimide()  
     material            = RCAIDE.Library.Attributes.Materials.Polytetrafluoroethylene()
-    material            = RCAIDE.Library.Attributes.Materials.CrossLinked_Polyethylene
+    material            = RCAIDE.Library.Attributes.Materials.CrossLinked_Polyethylene()
       
     # gases 
     working_fluid                       = RCAIDE.Library.Attributes.Gases.CO2()        

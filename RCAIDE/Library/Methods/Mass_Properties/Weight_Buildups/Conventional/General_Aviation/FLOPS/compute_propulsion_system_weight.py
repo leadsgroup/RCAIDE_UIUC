@@ -97,7 +97,7 @@ def compute_propulsion_system_weight(vehicle,network):
                 if 'nacelle' in propulsor:
                     ref_nacelle =  propulsor.nacelle   
                     WNAC = compute_nacelle_weight(propulsor,ref_nacelle,JNENG)
-                WTHR = compute_thrust_reverser_weight(vehicle,propulsor,JNENG)
+                WTHR = compute_thrust_reverser_weight(propulsor,JNENG)
                 WEC, WSTART = compute_misc_propulsion_system_weight(vehicle,propulsor,ref_nacelle,JNENG )
     
     NENG = JNENG + PNENG
