@@ -148,7 +148,7 @@ def vehicle_setup(rotor_type):
     #------------------------------------------------------------------------------------------------------------------------------------  
     #   Horizontal Tail
     #------------------------------------------------------------------------------------------------------------------------------------    
-    wing                                  = RCAIDE.Library.Components.Wings.Wing()
+    wing                                  = RCAIDE.Library.Components.Wings.Horizontal_Tail()
     wing.tag                              = 'horizontal_stabilizer' 
     wing.sweeps.quarter_chord             = 0.0 * Units.deg
     wing.thickness_to_chord               = 0.12
@@ -177,7 +177,7 @@ def vehicle_setup(rotor_type):
     #------------------------------------------------------------------------------------------------------------------------------------  
     #   Vertical Stabilizer
     #------------------------------------------------------------------------------------------------------------------------------------ 
-    wing                                  = RCAIDE.Library.Components.Wings.Wing()
+    wing                                  = RCAIDE.Library.Components.Wings.Vertical_Tail()
     wing.tag                              = 'vertical_stabilizer'     
     wing.sweeps.quarter_chord             = 25. * Units.deg
     wing.thickness_to_chord               = 0.12

@@ -214,9 +214,9 @@ def compute_wing_weight(vehicle, wing, WPOD, complexity, settings, num_main_wing
         SA = np.sin(ASW[-1])
         AR = 2 / S[-1]       
                 
-        if AR <= 5:
-            CAYA = 0
-        else:
+        
+        CAYA = 0
+        if AR >= 5:
             CAYA = AR - 5
         DEN = AR ** (.25 * FSTRT) * (1.0 + (.50 * FAERT - .160 * FSTRT) * SA ** 2 /
                                      + .03 * CAYA * (1.0 - .50 * FAERT) * SA)

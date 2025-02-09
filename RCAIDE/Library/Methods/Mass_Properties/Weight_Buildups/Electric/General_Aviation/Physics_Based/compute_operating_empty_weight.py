@@ -266,15 +266,6 @@ def compute_operating_empty_weight(vehicle, settings=None):
     ##-------------------------------------------------------------------------------                 
     # Create and assign miscellaneous components and weights to aircraft
     ##-------------------------------------------------------------------------------
-
-    # assume fuel is equally distributed in fuel tanks. Distribute mass among fuel tanks
-    if use_max_fuel_weight:
-        for network in vehicle.networks: 
-            for fuel_line in network.fuel_lines:  
-                for fuel_tank in fuel_line.fuel_tanks:
-                    fuel_weight =  total_fuel_weight/number_of_tanks  
-                    fuel_tank.fuel.mass_properties.mass = fuel_weight
-
     # Assign landing gear weights to landing gear components
     nose_landing_gear = False
     main_landing_gear =  False
