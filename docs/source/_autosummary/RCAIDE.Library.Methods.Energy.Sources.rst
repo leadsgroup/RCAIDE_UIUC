@@ -31,5 +31,7 @@ Sources
    :recursive:
 
    Batteries
+   Cryogenic_Tanks
+   Fuel_Cells
    Fuel_Tanks
 

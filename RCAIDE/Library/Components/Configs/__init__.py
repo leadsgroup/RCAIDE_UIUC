@@ -2,7 +2,7 @@
 # 
 
 """
-RCAIDE Package Setup for Configuration Components
+Documentation is coming for this module! This is a placeholder! for Configuration Components
 
 This module initializes the configuration components package, providing access to 
 vehicle configuration management and definition tools.

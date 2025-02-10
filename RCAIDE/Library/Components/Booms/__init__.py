@@ -2,7 +2,7 @@
 # 
 
 """
-RCAIDE Package Setup for Boom Components. This module initializes the boom components package, providing access to structural 
+Documentation is coming for this module! This is a placeholder! for Boom Components. This module initializes the boom components package, providing access to structural 
 boom elements used in aircraft and rotorcraft design.
 """
 

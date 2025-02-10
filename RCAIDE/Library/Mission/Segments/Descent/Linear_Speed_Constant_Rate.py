@@ -26,7 +26,8 @@ def initialize_conditions(segment):
     -----
     This function sets up the initial conditions for a descent segment with linearly
     varying true airspeed and constant descent rate. The horizontal velocity 
-    components vary with the changing airspeed.
+    components vary with the changing airspeed. Updates segment with velocity
+    vector, altitude, and position vector.
 
     **Required Segment Components**
 
@@ -52,35 +53,31 @@ def initialize_conditions(segment):
                 Initial conditions from previous segment
 
     **Calculation Process**
-    1. Discretize altitude profile
-    2. Calculate true airspeed variation:
-       V = V0 + (Vf - V0)*t where:
-       - V0 is initial airspeed
-       - Vf is final airspeed
-       - t is normalized time/distance
-    3. Calculate horizontal velocity magnitude:
-       v_xy = sqrt(V^2 - v_z^2) where:
-       - V is local true airspeed
-       - v_z is descent rate
-    4. Decompose horizontal velocity using sideslip angle:
-       - v_x = v_xy * cos(β)
-       - v_y = v_xy * sin(β)
-       where β is sideslip angle
+        1. Discretize altitude profile
+        2. Calculate true airspeed variation:
+        V = V0 + (Vf - V0)*t where:
+            - V0 is initial airspeed
+            - Vf is final airspeed
+            - t is normalized time/distance
+        3. Calculate horizontal velocity magnitude:
+        v_xy = sqrt(V^2 - v_z^2) where:
+            - V is local true airspeed
+            - v_z is descent rate
+        4. Decompose horizontal velocity using sideslip angle:
+            - v_x = v_xy * cos(β)
+            - v_y = v_xy * sin(β)
+            where β is sideslip angle
 
     **Major Assumptions**
-    * Linear true airspeed variation
-    * Constant descent rate
-    * Small angle approximations
-    * Quasi-steady flight
-    * No wind effects
+        * Linear true airspeed variation
+        * Constant descent rate
+        * Small angle approximations
+        * Quasi-steady flight
+        * No wind effects
 
     Returns
     -------
     None
-        Updates segment conditions directly:
-        - conditions.frames.inertial.velocity_vector [m/s]
-        - conditions.frames.inertial.position_vector [m]
-        - conditions.freestream.altitude [m]
 
     See Also
     --------

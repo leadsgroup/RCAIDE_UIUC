@@ -1,7 +1,7 @@
 # RCAIDE/Methods/Energy/Distributors/Electrical_Bus/__init__.py
 # 
 
-""" RCAIDE Package Setup
+""" Documentation is coming for this module! This is a placeholder!
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

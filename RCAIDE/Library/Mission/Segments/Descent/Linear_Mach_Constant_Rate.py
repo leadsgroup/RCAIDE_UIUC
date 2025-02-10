@@ -28,7 +28,8 @@ def initialize_conditions(segment):
     -----
     This function sets up the initial conditions for a descent segment with linearly
     varying Mach number and constant descent rate. The true airspeed varies with both
-    Mach number and local speed of sound.
+    Mach number and local speed of sound. Updates segment with velocity vector, position
+    vector, and altitude.
 
     **Required Segment Components**
 
@@ -54,36 +55,32 @@ def initialize_conditions(segment):
                 Initial conditions from previous segment
 
     **Calculation Process**
-    1. Get atmospheric properties for speed of sound
-    2. Discretize altitude profile
-    3. Calculate Mach number variation:
-       M = M0 + (Mf - M0)*t where:
-       - M0 is initial Mach number
-       - Mf is final Mach number
-       - t is normalized time/distance
-    4. Calculate true airspeed:
-       V = M * a where:
-       - M is local Mach number
-       - a is local speed of sound
-    5. Decompose velocity using:
-       - Fixed descent rate
-       - Sideslip angle
-       - Computed true airspeed
+        1. Get atmospheric properties for speed of sound
+        2. Discretize altitude profile
+        3. Calculate Mach number variation:
+        M = M0 + (Mf - M0)*t where:
+        - M0 is initial Mach number
+        - Mf is final Mach number
+        - t is normalized time/distance
+        4. Calculate true airspeed:
+        V = M * a where:
+        - M is local Mach number
+        - a is local speed of sound
+        5. Decompose velocity using:
+        - Fixed descent rate
+        - Sideslip angle
+        - Computed true airspeed
 
     **Major Assumptions**
-    * Linear Mach number variation
-    * Constant descent rate
-    * Standard atmosphere model
-    * Small angle approximations
-    * Quasi-steady flight
+        * Linear Mach number variation
+        * Constant descent rate
+        * Standard atmosphere model
+        * Small angle approximations
+        * Quasi-steady flight
 
     Returns
     -------
     None
-        Updates segment conditions directly:
-        - conditions.frames.inertial.velocity_vector [m/s]
-        - conditions.frames.inertial.position_vector [m]
-        - conditions.freestream.altitude [m]
 
     See Also
     --------

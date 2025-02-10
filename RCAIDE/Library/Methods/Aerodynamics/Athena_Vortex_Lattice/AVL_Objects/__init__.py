@@ -1,5 +1,7 @@
 
-""" RCAIDE AVL Data Package Setup
+""" Documentation is coming for this module! This is a placeholder!
+
+RCAIDE AVL Data Package Setup
 """
 
 from .Aircraft      import Aircraft

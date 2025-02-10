@@ -16,3 +16,4 @@ RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller
 # ----------------------------------------------------------------------------------------------------------------------
 
 from .compute_cs_ice_performance import compute_cs_ice_performance 
+from .append_ice_cs_propeller_conditions import append_ice_cs_propeller_conditions

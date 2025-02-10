@@ -25,7 +25,8 @@ def initialize_conditions(segment):
     -----
     This function sets up the initial conditions for a descent segment with constant
     true airspeed and constant descent angle. The vertical speed is determined by
-    the descent angle.
+    the descent angle. Updates segment conditions directly with velocity_vector [m/s],
+    altitude [m], and position_vector [m].
 
     **Required Segment Components**
 
@@ -47,34 +48,30 @@ def initialize_conditions(segment):
                 State conditions container
 
     **Calculation Process**
-    1. Discretize altitude profile
-    2. Decompose velocity into components using:
-        - Fixed descent angle
-        - Sideslip angle
-        - Constant true airspeed
-    3. Components calculated as:
-        - v_x = V * cos(β) * cos(-γ)
-        - v_y = V * sin(β) * cos(-γ)
-        - v_z = -V * sin(-γ)
-        where:
-        - V is true airspeed
-        - β is sideslip angle
-        - γ is descent angle
+        1. Discretize altitude profile
+        2. Decompose velocity into components using:
+            - Fixed descent angle
+            - Sideslip angle
+            - Constant true airspeed
+        3. Components calculated as:
+            - v_x = V * cos(β) * cos(-γ)
+            - v_y = V * sin(β) * cos(-γ)
+            - v_z = -V * sin(-γ)
+            where:
+            - V is true airspeed
+            - β is sideslip angle
+            - γ is descent angle
 
     **Major Assumptions**
-    * Constant true airspeed
-    * Fixed descent angle
-    * Small angle approximations
-    * Quasi-steady flight
-    * No wind effects
+        * Constant true airspeed
+        * Fixed descent angle
+        * Small angle approximations
+        * Quasi-steady flight
+        * No wind effects
 
     Returns
     -------
     None
-        Updates segment conditions directly:
-        - conditions.frames.inertial.velocity_vector [m/s]
-        - conditions.frames.inertial.position_vector [m]
-        - conditions.freestream.altitude [m]
 
     See Also
     --------

@@ -1,6 +1,6 @@
 # RCAIDE/Library/Methods/Thermal_Management/Batteries/Liquid_Cooled_Wavy_Channel/__init__.py
 
-""" RCAIDE Package Setup
+""" Documentation is coming for this module! This is a placeholder!
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

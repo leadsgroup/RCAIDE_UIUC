@@ -1,7 +1,7 @@
 # RCAIDE/Methods/Energy/Sources/Fuel_Tanks/__init__.py
 # 
 
-""" RCAIDE Package Setup
+""" Documentation is coming for this module! This is a placeholder!
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

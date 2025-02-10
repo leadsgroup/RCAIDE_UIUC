@@ -1,9 +1,9 @@
-RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor
+RCAIDE.Library.Methods.Propulsors.Converters.Motor
 
-DC\_Motor
-=========
+Motor
+=====
 
-.. automodule:: RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor
+.. automodule:: RCAIDE.Library.Methods.Propulsors.Converters.Motor
 
    
    
@@ -32,5 +32,5 @@ DC\_Motor
 
    append_motor_conditions
    compute_motor_performance
-   design_motor
+   design_DC_motor
 

@@ -1,7 +1,7 @@
 # RCAIDE/Framework/Analyses/Mission/Common/__init__.py
 #
 
-"""RCAIDE Package Setup
+"""Documentation is coming for this module! This is a placeholder!
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

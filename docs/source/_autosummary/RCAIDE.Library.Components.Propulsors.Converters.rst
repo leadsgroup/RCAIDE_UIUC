@@ -33,6 +33,7 @@ Converters
    Combustor
    Compression_Nozzle
    Compressor
+   Converter
    DC_Motor
    Ducted_Fan
    Engine
@@ -40,9 +41,11 @@ Converters
    Fan
    Lift_Rotor
    Offtake_Shaft
+   PMSM_Motor
    Prop_Rotor
    Propeller
    Ram
+   Reformer
    Rotor
    Supersonic_Nozzle
    Turbine

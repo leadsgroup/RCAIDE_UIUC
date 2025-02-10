@@ -34,5 +34,5 @@ Common
    append_payload_conditions
    compute_avionics_power_draw
    compute_payload_power_draw
-   compute_static_sea_level_performance
+   setup_operating_conditions
 

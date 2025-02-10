@@ -30,7 +30,8 @@ def initialize_conditions(segment):
     This function sets up the initial conditions for a descent segment with constant
     calibrated airspeed (CAS) and constant descent rate. It handles the conversion
     between CAS and true airspeed accounting for pressure and density variations
-    with altitude.
+    with altitude. Updates segment conditions directly with velocity_vector [m/s], altitude [m],
+    and position_vector [m].
 
     **Required Segment Components**
 
@@ -57,31 +58,27 @@ def initialize_conditions(segment):
                 Atmospheric model for property calculations
 
     **Calculation Process**
-    1. Discretize altitude profile
-    2. Get atmospheric properties at each altitude
-    3. Convert CAS to true airspeed using:
-        - Pressure ratio (δ)
-        - Compressibility effects
-        - Equivalent airspeed (EAS) conversion
-    4. Decompose velocity into components using:
-        - Fixed descent rate
-        - Sideslip angle
-        - Computed true airspeed
+        1. Discretize altitude profile
+        2. Get atmospheric properties at each altitude
+        3. Convert CAS to true airspeed using:
+            - Pressure ratio (δ)
+            - Compressibility effects
+            - Equivalent airspeed (EAS) conversion
+        4. Decompose velocity into components using:
+            - Fixed descent rate
+            - Sideslip angle
+            - Computed true airspeed
 
     **Major Assumptions**
-    * Constant calibrated airspeed
-    * Constant descent rate
-    * Standard atmosphere model with temperature deviation
-    * Small angle approximations
-    * Quasi-steady flight
+        * Constant calibrated airspeed
+        * Constant descent rate
+        * Standard atmosphere model with temperature deviation
+        * Small angle approximations
+        * Quasi-steady flight
 
     Returns
     -------
     None
-        Updates segment conditions directly:
-        - conditions.frames.inertial.velocity_vector [m/s]
-        - conditions.frames.inertial.position_vector [m]
-        - conditions.freestream.altitude [m]
 
     See Also
     --------

@@ -1,6 +1,6 @@
 # Rotor_Wake provides the functions needed to perform analyses.
 
-""" RCAIDE Package Setup
+""" Documentation is coming for this module! This is a placeholder!
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

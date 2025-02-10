@@ -33,13 +33,14 @@ Converters
    Combustor
    Compression_Nozzle
    Compressor
-   DC_Motor
    Ducted_Fan
    Engine
    Expansion_Nozzle
    Fan
+   Motor
    Offtake_Shaft
    Ram
+   Reformer
    Rotor
    Supersonic_Nozzle
    Turbine

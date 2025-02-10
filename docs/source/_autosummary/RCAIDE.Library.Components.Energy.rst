@@ -30,6 +30,7 @@ Energy
    :template: custom-module-template.rst
    :recursive:
 
+   Converters
    Distributors
    Modulators
    Sources

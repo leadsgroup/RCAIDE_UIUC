@@ -1,7 +1,7 @@
 # RCAIDE/Methods/Energy/Sources/Battery/Aluminum_Air/__init__.py
 # 
 
-""" RCAIDE Package Setup
+""" Documentation is coming for this module! This is a placeholder!
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

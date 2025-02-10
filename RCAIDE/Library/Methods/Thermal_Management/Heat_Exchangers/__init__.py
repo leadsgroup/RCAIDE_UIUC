@@ -1,6 +1,6 @@
 # RCAIDE/Library/Methods/Thermal_Management/Heat_Exchangers/__init__.py
 
-""" RCAIDE Package Setup
+""" Documentation is coming for this module! This is a placeholder!
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

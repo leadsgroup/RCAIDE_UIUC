@@ -6,11 +6,11 @@ provides a comprehensive set of tools for analyzing and designing different prop
 conventional to advanced configurations.
 
 The module includes methods for:
-- Constant Speed Internal Combustion Engine (ICE) propulsors
-- Electric propulsion systems (rotors and ducted fans)
-- Gas turbine engines (turbofan, turbojet, turboprop, turboshaft)
-- Power conversion and modulation systems
-- Common propulsion utilities and analysis tools
+    - Constant Speed Internal Combustion Engine (ICE) propulsors
+    - Electric propulsion systems (rotors and ducted fans)
+    - Gas turbine engines (turbofan, turbojet, turboprop, turboshaft)
+    - Power conversion and modulation systems
+    - Common propulsion utilities and analysis tools
 
 The methods handle both design and off-design performance calculations, component sizing, and 
 system integration analysis for various propulsion architectures.

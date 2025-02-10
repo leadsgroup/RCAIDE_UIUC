@@ -1,7 +1,7 @@
 # RCAIDE/Methods/Mission/Segments/Descent/__init__.py
 # 
 
-""" RCAIDE Package Setup
+""" Segments for 
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 # 
 
 """
-RCAIDE Package Setup for Geometry Plotting Functions
+Documentation is coming for this module! This is a placeholder! for Geometry Plotting Functions
 
 This module provides a collection of functions for visualizing vehicle geometry and components in 2D and 3D.
 
