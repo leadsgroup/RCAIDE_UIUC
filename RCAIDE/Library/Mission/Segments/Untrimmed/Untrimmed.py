@@ -55,35 +55,35 @@ def initialize_conditions(segment):
                 Initial conditions from previous segment
 
     **Calculation Process**
-    1. Check initial altitude
-    2. Decompose velocity into components using sideslip angle:
-       - v_x = V * cos(β)
-       - v_y = V * sin(β)
-     where:
-       - V is true airspeed
-       - β is sideslip angle
-    3. Set position and altitude
-    4. Set full acceleration vector
-    5. Set angular rates
+        1. Check initial altitude
+        2. Decompose velocity into components using sideslip angle:
+            - v_x = V * cos(β)
+            - v_y = V * sin(β)
+            where:
+            - V is true airspeed
+            - β is sideslip angle
+        3. Set position and altitude
+        4. Set full acceleration vector
+        5. Set angular rates
 
     **Major Assumptions**
-    * Fixed speed and altitude point
-    * No trim constraints enforced
-    * Full 6-DOF motion allowed
-    * Small angle approximations
-    * No atmospheric variations
+        * Fixed speed and altitude point
+        * No trim constraints enforced
+        * Full 6-DOF motion allowed
+        * Small angle approximations
+        * No atmospheric variations
 
     Returns
     -------
     None
         Updates segment conditions directly:
-        - conditions.freestream.altitude [m]
-        - conditions.frames.inertial.position_vector [m]
-        - conditions.frames.inertial.velocity_vector [m/s]
-        - conditions.frames.inertial.acceleration_vector [m/s^2]
-        - conditions.static_stability.roll_rate [rad/s]
-        - conditions.static_stability.pitch_rate [rad/s]
-        - conditions.static_stability.yaw_rate [rad/s]
+            - conditions.freestream.altitude [m]
+            - conditions.frames.inertial.position_vector [m]
+            - conditions.frames.inertial.velocity_vector [m/s]
+            - conditions.frames.inertial.acceleration_vector [m/s^2]
+            - conditions.static_stability.roll_rate [rad/s]
+            - conditions.static_stability.pitch_rate [rad/s]
+            - conditions.static_stability.yaw_rate [rad/s]
 
     See Also
     --------

@@ -29,7 +29,8 @@ def initialize_conditions(segment):
     -----
     This function sets up the initial conditions for a climb segment with constant
     calibrated airspeed (CAS) and constant rate of climb. It handles the conversion
-    between CAS and true airspeed accounting for atmospheric effects.
+    between CAS and true airspeed accounting for atmospheric effects. Also updates segment 
+    conditions with velocity vector, position vector, and altitude. 
 
     **Required Segment Components**
 
@@ -54,26 +55,22 @@ def initialize_conditions(segment):
                 Atmospheric model for property calculations
 
     **Conversion Process**
-    1. Compute atmospheric properties at altitude
-    2. Convert CAS to equivalent airspeed (EAS)
-    3. Convert EAS to true airspeed (TAS)
-    4. Decompose TAS into velocity components
+        1. Compute atmospheric properties at altitude
+        2. Convert CAS to equivalent airspeed (EAS)
+        3. Convert EAS to true airspeed (TAS)
+        4. Decompose TAS into velocity components
 
     **Major Assumptions**
-    * Constant calibrated airspeed
-    * Constant rate of climb
-    * Standard atmosphere model
-    * Small angle approximations
-    * Subsonic flow
+        * Constant calibrated airspeed
+        * Constant rate of climb
+        * Standard atmosphere model
+        * Small angle approximations
+        * Subsonic flow
 
     Returns
     -------
     None
-        Updates segment conditions directly:
-        - conditions.frames.inertial.velocity_vector [m/s]
-        - conditions.frames.inertial.position_vector [m]
-        - conditions.freestream.altitude [m]
-
+        
     See Also
     --------
     RCAIDE.Framework.Mission.Segments

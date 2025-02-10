@@ -1,7 +1,15 @@
 # RCAIDE/Methods/Mission/Segments/Descent/__init__.py
 # 
 
-""" Segments for 
+"""
+Collection of descent segment types for aircraft mission analysis. This module provides various 
+descent profiles including constant speed, linear Mach, constant angle, and different airspeed 
+measurement methods (EAS, CAS) combined with constant rate descents.
+
+See Also
+--------
+RCAIDE.Library.Mission.Segments.Climb
+RCAIDE.Library.Mission.Segments.Cruise
 """
 
 # ----------------------------------------------------------------------------------------------------------------------
