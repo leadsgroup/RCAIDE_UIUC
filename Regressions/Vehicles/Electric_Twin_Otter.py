@@ -11,11 +11,11 @@ import RCAIDE
 from RCAIDE.Framework.Core                                                                import Units   
 from RCAIDE.Library.Methods.Propulsors.Converters.Rotor                                   import design_propeller 
 from RCAIDE.Library.Methods.Propulsors.Converters.Motor                                   import design_DC_motor 
-from RCAIDE.Library.Methods.Weights.Correlation_Buildups.Propulsion                       import compute_motor_weight
+from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.Common               import compute_motor_weight
 from RCAIDE.Library.Methods.Geometry.Planform                                             import wing_segmented_planform
 from RCAIDE.Library.Methods.Thermal_Management.Heat_Exchangers.Cross_Flow_Heat_Exchanger  import design_cross_flow_heat_exchanger
 from RCAIDE.Library.Methods.Thermal_Management.Batteries.Liquid_Cooled_Wavy_Channel       import design_wavy_channel
- 
+
 # python imports 
 import numpy as np 
 from copy import deepcopy

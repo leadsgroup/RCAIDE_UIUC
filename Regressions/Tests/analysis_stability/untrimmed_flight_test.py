@@ -76,7 +76,7 @@ def base_analysis(vehicle, configs):
 
     # ------------------------------------------------------------------
     #  Weights
-    weights = RCAIDE.Framework.Analyses.Weights.Weights_Transport()
+    weights = RCAIDE.Framework.Analyses.Weights.Conventional()
     weights.vehicle = vehicle
     analyses.append(weights)
 
