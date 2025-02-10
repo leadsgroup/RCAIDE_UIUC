@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
-from RCAIDE.Library.Components                      import Component  
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Compressor.append_compressor_conditions import append_compressor_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Compressor 
 # ---------------------------------------------------------------------------------------------------------------------- 
-class Compressor(Component):
+class Compressor(Converter):
     """
     A compressor component model for gas turbine engines.
 

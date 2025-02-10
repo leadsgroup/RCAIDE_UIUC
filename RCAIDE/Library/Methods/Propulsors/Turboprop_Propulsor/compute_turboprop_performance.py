@@ -25,88 +25,50 @@ import numpy as np
 # ---------------------------------------------------------------------------------------------------------------------- 
 def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,0.0]]):    
     
-    """
-    Computes the performance characteristics of a turboprop engine including thrust, power, and moments.
-
-    Parameters
-    ----------
-    turboprop : Turboprop
-        Turboprop engine object containing all component definitions
-            - ram : Ram
-            - inlet_nozzle : Compression_Nozzle  
-            - compressor : Compressor
-            - combustor : Combustor
-            - high_pressure_turbine : Turbine
-            - low_pressure_turbine : Turbine
-            - core_nozzle : Expansion_Nozzle
-    state : State
-        State data structure containing conditions
-            - conditions.energy : dict
-                Energy conditions for each component
-            - conditions.noise : dict 
-                Noise conditions for components
-    center_of_gravity : array, optional
-        Aircraft center of gravity coordinates [[x, y, z]], defaults to [[0.0, 0.0, 0.0]]
-
-    Returns
-    -------
-    thrust_vector : array
-        Three-dimensional thrust force vector [N]
-    moment : array
-        Three-dimensional moment vector [N*m]
-    power : float
-        Power output of the turboprop [W]
-    stored_results_flag : bool
-        Flag indicating if results were stored
-    stored_propulsor_tag : str
-        Tag identifier of the turboprop with stored results
-
-    Notes
-    -----
-    The function performs a component-by-component analysis through the turboprop:
-    1. Ram inlet performance
-    2. Inlet nozzle compression
-    3. Compressor performance
-    4. Combustor performance
-    5. High pressure turbine performance
-    6. Low pressure turbine performance
-    7. Core nozzle expansion
-    8. Final thrust and moment calculations
-
-    **Theory**
-
-    The turboprop performance is calculated by analyzing the thermodynamic cycle
-    through each component sequentially, passing the output conditions of one
-    component as inputs to the next.
-
-    See Also
-    --------
-    RCAIDE.Library.Methods.Propulsors.Converters.Ram.compute_ram_performance
-    RCAIDE.Library.Methods.Propulsors.Converters.Combustor.compute_combustor_performance
-    RCAIDE.Library.Methods.Propulsors.Converters.Compressor.compute_compressor_performance
-    RCAIDE.Library.Methods.Propulsors.Converters.Turbine.compute_turbine_performance
-    """
-    conditions                                            = state.conditions 
-    noise_conditions                                      = conditions.noise[turboprop.tag]  
-    turboprop_conditions                                  = conditions.energy[turboprop.tag]
+    ''' Computes the performance of one turboprop
     
-    ram                                                   = turboprop.ram
-    inlet_nozzle                                          = turboprop.inlet_nozzle
-    compressor                                            = turboprop.compressor
-    combustor                                             = turboprop.combustor
-    high_pressure_turbine                                 = turboprop.high_pressure_turbine
-    low_pressure_turbine                                  = turboprop.low_pressure_turbine
-    core_nozzle                                           = turboprop.core_nozzle  
+    Assumptions: 
+    N/A
 
-    # unpack component conditions
-    turboprop_conditions                                  = conditions.energy[turboprop.tag]
-    ram_conditions                                        = turboprop_conditions[ram.tag]     
-    inlet_nozzle_conditions                               = turboprop_conditions[inlet_nozzle.tag]
-    core_nozzle_conditions                                = turboprop_conditions[core_nozzle.tag] 
-    compressor_conditions                                 = turboprop_conditions[compressor.tag]  
-    combustor_conditions                                  = turboprop_conditions[combustor.tag]
-    lpt_conditions                                        = turboprop_conditions[low_pressure_turbine.tag]
-    hpt_conditions                                        = turboprop_conditions[high_pressure_turbine.tag] 
+    Source:
+    N/A
+
+    Inputs:  
+    conditions           - operating conditions data structure     [-]  
+    fuel_line            - fuel line                               [-] 
+    turboprop            - turboprop data structure                [-] 
+    total_power          - power of turboprop group                [W] 
+
+    Outputs:  
+    thrust               - thrust of turboprop group               [W]
+    power                - power of turboprop group                [W] 
+    stored_results_flag  - boolean for stored results              [-]     
+    stored_propulsor_tag - name of turboprop with stored results   [-]
+    
+    Properties Used: 
+    N.A.        
+    ''' 
+    conditions               = state.conditions 
+    noise_conditions         = conditions.noise[turboprop.tag]  
+    turboprop_conditions     = conditions.energy[turboprop.tag]
+    U0                       = conditions.freestream.velocity
+    T                        = conditions.freestream.temperature
+    P                        = conditions.freestream.pressure 
+    ram                      = turboprop.ram
+    inlet_nozzle             = turboprop.inlet_nozzle
+    compressor               = turboprop.compressor
+    combustor                = turboprop.combustor
+    high_pressure_turbine    = turboprop.high_pressure_turbine
+    low_pressure_turbine     = turboprop.low_pressure_turbine
+    core_nozzle              = turboprop.core_nozzle   
+    turboprop_conditions     = conditions.energy[turboprop.tag]
+    ram_conditions           = turboprop_conditions[ram.tag]     
+    inlet_nozzle_conditions  = turboprop_conditions[inlet_nozzle.tag]
+    core_nozzle_conditions   = turboprop_conditions[core_nozzle.tag] 
+    compressor_conditions    = turboprop_conditions[compressor.tag]  
+    combustor_conditions     = turboprop_conditions[combustor.tag]
+    lpt_conditions           = turboprop_conditions[low_pressure_turbine.tag]
+    hpt_conditions           = turboprop_conditions[high_pressure_turbine.tag] 
      
     # Step 1: Set the working fluid to determine the fluid properties
     ram.working_fluid                                     = turboprop.working_fluid
@@ -220,7 +182,18 @@ def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,
     M                  =  np.cross(moment_vector, thrust_vector)   
     moment             = M 
     power              = turboprop_conditions.power 
- 
+  
+    # compute efficiencies 
+    mdot_air_core                                  = turboprop_conditions.core_mass_flow_rate 
+    fuel_enthalpy                                  = combustor.fuel_data.specific_energy 
+    mdot_fuel                                      = turboprop_conditions.fuel_flow_rate   
+    h_e_c                                          = core_nozzle_conditions.outputs.static_enthalpy
+    h_0                                            = turboprop.working_fluid.compute_cp(T,P) * T 
+    h_t4                                           = combustor_conditions.outputs.stagnation_enthalpy
+    h_t3                                           = compressor_conditions.outputs.stagnation_enthalpy 
+    turboprop_conditions.overall_efficiency        = thrust_vector* U0 / (mdot_fuel * fuel_enthalpy)  
+    turboprop_conditions.thermal_efficiency        = 1 - ((mdot_air_core +  mdot_fuel)*(h_e_c -  h_0) + mdot_fuel *h_0)/((mdot_air_core +  mdot_fuel)*h_t4 - mdot_air_core *h_t3)  
+
 
     # Store data
     core_nozzle_res = Data(

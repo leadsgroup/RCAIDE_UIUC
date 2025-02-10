@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
-from RCAIDE.Library.Components                      import Component  
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Compression_Nozzle.append_compression_nozzle_conditions import append_compression_nozzle_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Compression Nozzle 
 # ---------------------------------------------------------------------------------------------------------------------- 
-class Compression_Nozzle(Component):
+class Compression_Nozzle(Converter):
     """
     A compression nozzle component model for propulsion systems that converts flow energy into pressure.
 

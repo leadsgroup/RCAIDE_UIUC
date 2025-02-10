@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
-from RCAIDE.Library.Components                      import Component  
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Offtake_Shaft.append_offtake_shaft_conditions import append_offtake_shaft_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Shaft_Power_Offtake
 # ---------------------------------------------------------------------------------------------------------------------- 
-class Offtake_Shaft(Component):
+class Offtake_Shaft(Converter):
     """
     A power offtake shaft component model for extracting power from rotating machinery.
 

@@ -1,11 +1,6 @@
-# RCAIDE/Library/Methods/Propulsors/Electric_Rotor_Propulsor/append_electric_ducted_fan_residual_and_unknown.py
+# RCAIDE/Library/Methods/Propulsors/Electric_Rotor_Propulsor/append_electric_ducted_fan_residual_and_unknowns.py 
 # 
-# Created:  Jun 2024, M. Clarke  
-
-# ----------------------------------------------------------------------------------------------------------------------
-#  IMPORT
-# ----------------------------------------------------------------------------------------------------------------------  
- # RCAIDE imports    
+# Created:  Jun 2024, M. Clarke
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_electric_rotor_residual_and_unknown

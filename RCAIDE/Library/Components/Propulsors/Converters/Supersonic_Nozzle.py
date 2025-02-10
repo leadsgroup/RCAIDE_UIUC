@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
-from RCAIDE.Library.Components                      import Component  
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Supersonic_Nozzle.append_supersonic_nozzle_conditions import append_supersonic_nozzle_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Compressor 
 # ----------------------------------------------------------------------------------------------------------------------  
-class Supersonic_Nozzle(Component):
+class Supersonic_Nozzle(Converter):
     """
     A supersonic nozzle component model for propulsion systems capable of supersonic outflow.
 

@@ -32,7 +32,7 @@ def append_battery_conditions(battery,segment,bus):
             Optional:
             segment.
                  battery.cycle_in_day               [unitless]
-                 battery.module.temperature           [Kelvin]
+                 battery.module.temperature         [Kelvin]
                  battery.charge_throughput          [Ampere-Hours] 
                  battery.resistance_growth_factor   [unitless]
                  battery.capacity_fade_factor       [unitless]
@@ -44,14 +44,14 @@ def append_battery_conditions(battery,segment,bus):
                battery_discharge                    [boolean]
                increment_battery_age_by_one_day     [boolean]
                segment.state.conditions.energy
-               battery.battery_discharge_flag       [boolean]
+               battery.battery_discharge_flag         [boolean]
                battery.module.maximum_initial_energy  [watts]
                battery.module.energy                  [watts] 
                battery.module.temperature             [kelvin]
-               battery.cycle_in_day                 [int]
-               battery.cell.charge_throughput       [Ampere-Hours] 
-               battery.resistance_growth_factor     [unitless]
-               battery.capacity_fade_factor         [unitless] 
+               battery.cycle_in_day                   [int]
+               battery.cell.charge_throughput         [Ampere-Hours] 
+               battery.resistance_growth_factor       [unitless]
+               battery.capacity_fade_factor           [unitless] 
     
         Properties Used:
         None

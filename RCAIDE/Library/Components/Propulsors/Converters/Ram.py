@@ -8,13 +8,13 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports
 from RCAIDE.Framework.Core import Data
-from RCAIDE.Library.Components                      import Component  
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Ram.append_ram_conditions import append_ram_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
-#  Fan Component
+#  Ram Component
 # ----------------------------------------------------------------------------------------------------------------------
-class Ram(Component):
+class Ram(Converter):
     """
     A ram air compression component model that simulates the compression of incoming air flow.
 

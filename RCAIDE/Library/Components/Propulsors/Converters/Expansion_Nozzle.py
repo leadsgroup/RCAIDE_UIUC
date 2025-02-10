@@ -7,13 +7,13 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
-from RCAIDE.Library.Components                      import Component   
+from .Converter  import Converter
 from RCAIDE.Library.Methods.Propulsors.Converters.Expansion_Nozzle.append_expansion_nozzle_conditions import append_expansion_nozzle_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Expansion Nozzle
 # ----------------------------------------------------------------------------------------------------------------------
-class Expansion_Nozzle(Component):
+class Expansion_Nozzle(Converter):
     """
     An expansion nozzle component model for propulsion systems that converts pressure energy into kinetic energy.
 

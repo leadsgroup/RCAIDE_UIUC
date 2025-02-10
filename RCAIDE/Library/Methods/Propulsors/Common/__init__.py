@@ -14,6 +14,6 @@ RCAIDE.Library.Methods.Propulsors
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
-from .compute_static_sea_level_performance   import compute_static_sea_level_performance
+from .setup_operating_conditions             import setup_operating_conditions
 from .append_avionics_conditions             import append_avionics_conditions
 from .append_payload_conditions              import append_payload_conditions 

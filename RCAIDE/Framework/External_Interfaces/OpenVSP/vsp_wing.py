@@ -18,6 +18,8 @@ from RCAIDE.Library.Methods.Geometry.Planform import wing_planform, wing_segment
 
 import numpy as np
 import string
+import os
+import sys
 try:
     import vsp as vsp
 except ImportError:
@@ -34,52 +36,51 @@ t_table = str.maketrans( chars          + string.ascii_uppercase ,
 # ----------------------------------------------------------------------------------------------------------------------  
 #  vsp read wing
 # ----------------------------------------------------------------------------------------------------------------------  
-def read_vsp_wing(wing_id, units_type='SI', write_airfoil_file=True, use_scaling=True):
-    """
-    Reads an OpenVSP wing geometry and converts it to RCAIDE format
+def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil_file=True, use_scaling=True):
+    """This reads an OpenVSP wing vehicle geometry and writes it into a RCAIDE wing format.
 
-    Parameters
-    ----------
-    wing_id : str
-        OpenVSP geometry ID for wing
-    units_type : {'SI', 'imperial', 'inches'}, optional
-        Units system to use
-        Default: 'SI'
-    write_airfoil_file : bool, optional
-        Whether to write airfoil data to file
-        Default: True
-    use_scaling : bool, optional
-        Whether to use OpenVSP scaling
-        Default: True
+    Assumptions:
+    1. OpenVSP wing is divided into segments ("XSecs" in VSP).
+    2. Written for OpenVSP 3.21.1
 
-    Returns
-    -------
-    wing : RCAIDE.Library.Components.Wings.Wing
-        Wing object with properties:
-        
-        - origin [m] : Location in all three dimensions
-        - spans.projected [m] : Wing span
-        - chords.root/tip [m] : Root and tip chord lengths
-        - aspect_ratio [-] : Wing aspect ratio
-        - sweeps.quarter_chord [rad] : Quarter-chord sweep angle
-        - twists.root/tip [rad] : Root and tip twist angles
-        - thickness_to_chord [-] : t/c ratio
-        - dihedral [rad] : Wing dihedral angle
-        - areas.reference/wetted [m^2] : Wing areas
-        - segments : Container with airfoil data and section properties
+    Source:
+    N/A
 
-    Notes
-    -----
-    This function reads wing geometry from OpenVSP and converts it to RCAIDE format
-    with proper units and measurements.
+    Inputs:
+    1. VSP 10-digit geom ID for wing.
+    2. units_type set to 'SI' (default) or 'Imperial'.
+    3. Boolean for whether or not to write an airfoil file(default = True).
+    4. Boolean for whether or not to use the scaling from OpenVSP (default = True).
 
-    **Major Assumptions**
-    * Wing geometry follows OpenVSP conventions
-    * Airfoils are NACA 4-series, 6-series, or from file
-    * All required geometric parameters are accessible through VSP API
+    Outputs:
+    Writes RCAIDE wing object, with these geometries, from VSP:
+    	Wings.Wing.    (* is all keys)
+    		origin                                  [m] in all three dimensions
+    		spans.projected                         [m]
+    		chords.root                             [m]
+    		chords.tip                              [m]
+    		aspect_ratio                            [-]
+    		sweeps.quarter_chord                    [radians]
+    		twists.root                             [radians]
+    		twists.tip                              [radians]
+    		thickness_to_chord                      [-]
+    		dihedral                                [radians]
+    		symmetric                               <boolean>
+    		tag                                     <string>
+    		areas.reference                         [m^2]
+    		areas.wetted                            [m^2]
+    		Segments.
+    		  tag                                   <string>
+    		  twist                                 [radians]
+    		  percent_span_location                 [-]  .1 is 10%
+    		  root_chord_percent                    [-]  .1 is 10%
+    		  dihedral_outboard                     [radians]
+    		  sweeps.quarter_chord                  [radians]
+    		  thickness_to_chord                    [-]
+    		  airfoil                               <NACA 4-series, 6 series, or airfoil file>
 
-    **Extra modules required**
-    * OpenVSP (vsp or openvsp module)
+    Properties Used:
+    N/A
     """
 
     # Check if this is vertical tail, this seems like a weird first step but it's necessary
@@ -109,8 +110,12 @@ def read_vsp_wing(wing_id, units_type='SI', write_airfoil_file=True, use_scaling
     # Apply a tag to the wing
     if vsp.GetGeomName(wing_id):
         tag = vsp.GetGeomName(wing_id)
-        tag = tag.translate(t_table)
+        tag = tag.translate(t_table) 
+        if main_wing_tag == tag:
+            wing = RCAIDE.Library.Components.Wings.Main_Wing()
+        save_filename = os.path.join(sys.path[0], tag )
         wing.tag = tag
+
     else:
         wing.tag = 'winggeom'
 
@@ -244,8 +249,8 @@ def read_vsp_wing(wing_id, units_type='SI', write_airfoil_file=True, use_scaling
                 # (Write the root airfoil with final arg = 0. Write 4th airfoil of 5 segments with final arg = .8)
 
             if write_airfoil_file==True:
-                vsp.WriteSeligAirfoil(str(wing.tag) + '_airfoil_XSec_' + str(jj) +'.dat', wing_id, float(jj/segment_num))
-                airfoil.coordinate_file    = str(wing.tag) + '_airfoil_XSec_' + str(jj) +'.dat'
+                vsp.WriteSeligAirfoil(str(save_filename) + '_airfoil_XSec_' + str(jj) +'.dat', wing_id, float(jj/segment_num))
+                airfoil.coordinate_file    = str(save_filename) + '_airfoil_XSec_' + str(jj) +'.dat'
                 airfoil.tag                = 'airfoil'
 
                 segment.append_airfoil(airfoil)

@@ -9,7 +9,7 @@
 import RCAIDE
 from RCAIDE.Framework.Core import Units, Data    
 from RCAIDE.Library.Methods.Weights.Correlation_Buildups.Propulsion            import compute_motor_weight
-from RCAIDE.Library.Methods.Propulsors.Converters.DC_Motor                     import design_motor
+from RCAIDE.Library.Methods.Propulsors.Converters.Motor                     import design_DC_motor
 from RCAIDE.Library.Methods.Propulsors.Converters.Rotor                        import design_prop_rotor ,design_prop_rotor 
 from RCAIDE.Library.Methods.Weights.Physics_Based_Buildups.Electric            import converge_physics_based_weight_buildup 
 from RCAIDE.Library.Plots                                                      import *     
@@ -216,8 +216,7 @@ def vehicle_setup(new_regression=True):
     # Lift Bus 
     #====================================================================================================================================          
     bus                                                    = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
-    bus.tag                                                = 'bus'
-    bus.number_of_battery_modules                          =  10
+    bus.tag                                                = 'bus' 
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus Battery
@@ -229,7 +228,7 @@ def vehicle_setup(new_regression=True):
     bat.geometrtic_configuration.normal_count              = 20
     bat.geometrtic_configuration.parallel_count            = 24  
     
-    for _ in range(bus.number_of_battery_modules):
+    for _ in range(10):
         bus.battery_modules.append(deepcopy(bat))   
     bus.initialize_bus_properties()
     
@@ -306,7 +305,7 @@ def vehicle_setup(new_regression=True):
     prop_rotor_motor.rotor_radius            = prop_rotor.tip_radius
     prop_rotor_motor.design_torque           = prop_rotor.hover.design_torque
     prop_rotor_motor.angular_velocity        = prop_rotor.hover.design_angular_velocity/prop_rotor_motor.gear_ratio  
-    design_motor(prop_rotor_motor)
+    design_DC_motor(prop_rotor_motor)
     prop_rotor_motor.mass_properties.mass    = compute_motor_weight(prop_rotor_motor)     
     lift_propulsor.motor                     = prop_rotor_motor
      
