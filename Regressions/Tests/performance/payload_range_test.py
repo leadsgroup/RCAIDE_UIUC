@@ -60,7 +60,7 @@ def fuel_aircraft_payload_range():
 
     # ------------------------------------------------------------------
     #  Weights
-    weights         = RCAIDE.Framework.Analyses.Weights.Weights_Transport()
+    weights         = RCAIDE.Framework.Analyses.Weights.Conventional()
     weights.vehicle = vehicle 
 
     # ------------------------------------------------------------------
@@ -92,7 +92,7 @@ def electric_aircraft_payload_range(rotor_type):
 
     # ------------------------------------------------------------------
     #  Weights
-    weights = RCAIDE.Framework.Analyses.Weights.Weights_EVTOL()
+    weights = RCAIDE.Framework.Analyses.Weights.Electric()
     weights.vehicle = vehicle
 
     # since OEW was not defined, we evalaute it here   

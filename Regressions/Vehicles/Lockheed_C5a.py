@@ -52,14 +52,14 @@ def vehicle_setup():
     #   Vehicle-level Properties: https://apps.dtic.mil/sti/tr/pdf/ADA145518.pdf 
     # ------------------------------------------------------------------
 
-    # mass properties (http://www.embraercommercialaviation.com/AircraftPDF/E190_Weights.pdf)
+    # mass properties 
     vehicle.mass_properties.max_takeoff               =   348812  # kg
     vehicle.mass_properties.operating_empty           =   169643 # kg
     vehicle.mass_properties.takeoff                   =   296750 # kg
     vehicle.mass_properties.max_zero_fuel             =   288000 # kg
     vehicle.mass_properties.max_payload               =   118364 # kg
     vehicle.mass_properties.max_fuel                  =   150800 # kg
-    vehicle.mass_properties.cargo                     =   99770 # kg
+    vehicle.mass_properties.payload                   =   99770 # kg
     
     fuel_percentage = 1.0
 
@@ -546,6 +546,7 @@ def vehicle_setup():
     fuel.mass_properties.center_of_gravity      = [[23.0,0,3.913]] #vehicle.wings.main_wing.mass_properties.center_of_gravity
     fuel.internal_volume                        = fuel.mass_properties.mass/fuel.density  
     fuel_tank.fuel                              = fuel
+    fuel_tank.volume                           = fuel.internal_volume
     fuel_line.fuel_tanks.append(fuel_tank) 
     
 

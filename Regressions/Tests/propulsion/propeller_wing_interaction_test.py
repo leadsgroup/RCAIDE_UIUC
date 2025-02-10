@@ -131,7 +131,7 @@ def base_analysis(vehicle):
  
     # ------------------------------------------------------------------
     #  Weights
-    weights         = RCAIDE.Framework.Analyses.Weights.Weights_General_Aviation()
+    weights         = RCAIDE.Framework.Analyses.Weights.Electric()
     weights.vehicle = vehicle
     analyses.append(weights)
 

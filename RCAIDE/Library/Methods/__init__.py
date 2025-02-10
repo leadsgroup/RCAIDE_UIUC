@@ -18,7 +18,7 @@ from . import Performance
 from . import Propulsors
 from . import Stability
 from . import Utilities
-from . import Weights
+from . import Mass_Properties
 from . import Geodesics
 
 from .skip import skip
