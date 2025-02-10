@@ -72,7 +72,11 @@ class Weights(Analysis):
         vehicle = self.vehicle 
 
 
-        compute_module = importlib.import_module(f"RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.{self.propulsion_architecture}.{self.aircraft_type}.{self.method}.compute_operating_empty_weight")
+        
+        try:
+            compute_module = importlib.import_module(f"RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.{self.propulsion_architecture}.{self.aircraft_type}.{self.method}.compute_operating_empty_weight")
+        except:
+            raise Exception('Aircraft Type or Weight Buildup Method do not exist!')
         compute_operating_empty_weight = getattr(compute_module, "compute_operating_empty_weight")
         # Call the function
         results = compute_operating_empty_weight(vehicle, self.settings)
