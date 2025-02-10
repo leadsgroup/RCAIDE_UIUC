@@ -50,7 +50,6 @@ class Electric(Weights):
         Properties Used:
         N/A
         """
-        self.tag           = 'electric_weights'
         self.method        = 'Physics_Based'
         self.aircraft_type = 'General_Aviation'
         self.propulsion_architecture = 'Electric'

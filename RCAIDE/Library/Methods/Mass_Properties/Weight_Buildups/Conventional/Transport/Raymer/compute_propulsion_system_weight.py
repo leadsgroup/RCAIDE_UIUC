@@ -10,7 +10,6 @@
 # RCAIDE 
 import  RCAIDE 
 from RCAIDE.Framework.Core    import Units, Data
-# from RCAIDE.Library.Methods.Propulsors.Common import compute_static_sea_level_performance
 # python imports 
 import  numpy as  np
  
@@ -62,7 +61,6 @@ def compute_propulsion_system_weight(vehicle,network):
                     ref_propulsor = propulsor  
                     NENG  += 1
                     BPR =  propulsor.bypass_ratio
-                    #compute_static_sea_level_performance(propulsor)
                     WENG   += 0.084 *  (propulsor.sealevel_static_thrust/Units.lbf)**1.1 * np.exp(-0.045*BPR) * Units.lbs # Raymer 3rd Edition eq. 10.4 
                 if 'nacelle' in propulsor:
                     ref_nacelle =  propulsor.nacelle 

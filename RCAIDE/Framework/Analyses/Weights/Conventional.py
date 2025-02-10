@@ -51,7 +51,6 @@ class Conventional(Weights):
         Properties Used:
         N/A
         """
-        self.tag           = 'conventional_weights'
         self.method        = 'FLOPS'
         self.aircraft_type = 'Transport'
         self.propulsion_architecture = 'Conventional'
