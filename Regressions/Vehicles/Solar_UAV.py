@@ -181,7 +181,7 @@ def vehicle_setup():
     propulsor.electronic_speed_controller             = esc   
      
     # Propeller              
-    propeller                                        = RCAIDE.Library.Components.Propulsors.Converters.Propeller() 
+    propeller                                        = RCAIDE.Library.Components.Powertrain.Converters.Propeller() 
     propeller.tag                                    = 'propeller_1' 
     propeller.tip_radius                             =  4.25 * Units.meters 
     propeller.number_of_blades                       = 2
@@ -195,7 +195,7 @@ def vehicle_setup():
     propulsor.rotor                                  = propeller   
               
     # DC_Motor       
-    motor                                            = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor() 
+    motor                                            = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor() 
     motor.resistance                                 = 0.008
     motor.no_load_current                            = 4.5  * Units.ampere
     motor.speed_constant                             = 120. * Units['rpm'] # RPM/volt converted to (rad/s)/volt    

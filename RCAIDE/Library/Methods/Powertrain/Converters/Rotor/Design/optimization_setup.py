@@ -40,10 +40,10 @@ def optimization_setup(rotor,number_of_stations,print_iterations):
     problem                      = Data()
     nexus.optimization_problem   = problem
    
-    if type(rotor) != RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor or  type(rotor) != RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor:
+    if type(rotor) != RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor or  type(rotor) != RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor:
         assert('rotor must be of Lift-Rotor or Prop-Rotor class') 
         
-    if type(rotor) == RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor:
+    if type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor:
         nexus.prop_rotor_flag = True 
     else:
         nexus.prop_rotor_flag = False 

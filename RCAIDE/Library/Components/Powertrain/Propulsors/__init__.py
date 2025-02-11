@@ -30,7 +30,6 @@ RCAIDE.Library.Components.Energy
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
-from .                                           import Converters  
 from .Propulsor                                  import Propulsor
 from .Electric_Rotor                             import Electric_Rotor
 from .Electric_Ducted_Fan                        import Electric_Ducted_Fan

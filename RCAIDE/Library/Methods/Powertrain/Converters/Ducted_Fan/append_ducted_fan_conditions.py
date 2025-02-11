@@ -69,7 +69,7 @@ def append_ducted_fan_conditions(ducted_fan,segment,energy_conditions):
     
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan
+    RCAIDE.Library.Components.Powertrain.Converters.Ducted_Fan
     RCAIDE.Library.Methods.Powertrain.Converters.Ducted_Fan.compute_ducted_fan_performance
     """
 

@@ -251,7 +251,7 @@ def vehicle_setup(new_regression=True):
     g                                             = 9.81                                    # gravitational acceleration   
     Hover_Load                                    = vehicle.mass_properties.takeoff*g *1.1  # hover load   
 
-    prop_rotor                                    = RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor()   
+    prop_rotor                                    = RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor()   
     prop_rotor.tag                                = 'prop_rotor'   
     prop_rotor.tip_radius                         = 0.8875
     prop_rotor.hub_radius                         = 0.10 * prop_rotor.tip_radius
@@ -298,7 +298,7 @@ def vehicle_setup(new_regression=True):
     #------------------------------------------------------------------------------------------------------------------------------------               
     # Lift Rotor Motor  
     #------------------------------------------------------------------------------------------------------------------------------------    
-    prop_rotor_motor                         = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+    prop_rotor_motor                         = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor()
     prop_rotor_motor.efficiency              = 0.95
     prop_rotor_motor.nominal_voltage         = bus.voltage *0.75
     prop_rotor_motor.no_load_current         = 0.1

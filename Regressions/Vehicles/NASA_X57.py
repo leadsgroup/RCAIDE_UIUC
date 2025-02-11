@@ -371,7 +371,7 @@ def vehicle_setup(rotor_type):
     starboard_propulsor.electronic_speed_controller  = esc   
      
     # Propeller    
-    propeller                                        = RCAIDE.Library.Components.Propulsors.Converters.Propeller() 
+    propeller                                        = RCAIDE.Library.Components.Powertrain.Converters.Propeller() 
 
     if rotor_type == 'Blade_Element_Momentum_Theory_Helmholtz':      
         propeller.fidelity = rotor_type 
@@ -413,7 +413,7 @@ def vehicle_setup(rotor_type):
     starboard_propulsor.rotor                        = propeller   
               
     # DC_Motor       
-    motor                                            = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+    motor                                            = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor()
     motor.efficiency                                 = 0.98
     motor.origin                                     = [[2.,  2.5, 0.95]]
     motor.nominal_voltage                            = bus.voltage*0.5

@@ -61,7 +61,7 @@ def compute_reformer_performance(reformer,reformer_conditions):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.Reformer
+    RCAIDE.Library.Components.Powertrain.Converters.Reformer
     """
 
     Q_F = reformer_conditions.fuel_volume_flow_rate/(Units.cm**3/Units.hr)   # [cm**3/hr] Jet-A feed rate              

@@ -9,13 +9,12 @@
 # ----------------------------------------------------------------------------------------------------------------------
 
 from . import Aerodynamics 
-from . import Emissions
-from . import Energy
+from . import Emissions 
 from . import Gas_Dynamics
 from . import Geometry
 from . import Noise
 from . import Performance 
-from . import Propulsors
+from . import Powertrain
 from . import Stability
 from . import Utilities
 from . import Mass_Properties

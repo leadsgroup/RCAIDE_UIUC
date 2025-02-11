@@ -58,14 +58,14 @@ def compute_motor_performance(motor,motor_conditions,conditions):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.DC_Motor
-    RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor
+    RCAIDE.Library.Components.Powertrain.Converters.DC_Motor
+    RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor
     """           
     # Unpack 
     rho   = conditions.freestream.density[:,0,None]
     Res   = motor.resistance
 
-    if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor): 
+    if (type(motor) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor): 
 
         I              = motor_conditions.current
         V              = motor_conditions.voltage

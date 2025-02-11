@@ -9,7 +9,7 @@ This module contains methods for modeling fuel reformer performance and operatin
 
 See Also
 --------
-RCAIDE.Library.Components.Propulsors.Converters.Reformer
+RCAIDE.Library.Components.Powertrain.Converters.Reformer
 RCAIDE.Library.Methods.Powertrain.Converters.Reformer.compute_reformer_performance
 """
 

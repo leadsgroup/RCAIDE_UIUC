@@ -11,7 +11,7 @@ import os
 # design propeller  
 def Test_Propeller(): 
     
-    prop                                     = RCAIDE.Library.Components.Propulsors.Converters.Propeller() 
+    prop                                     = RCAIDE.Library.Components.Powertrain.Converters.Propeller() 
     prop.number_of_blades                    = 3
     prop.number_of_engines                   = 1
     prop.tip_radius                          = 1.0668

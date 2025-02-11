@@ -77,7 +77,7 @@ class Supersonic_Nozzle(Converter):
     See Also
     --------
     RCAIDE.Library.Components.Component
-    RCAIDE.Library.Components.Propulsors.Converters.Expansion_Nozzle
+    RCAIDE.Library.Components.Powertrain.Converters.Expansion_Nozzle
     """
     
     def __defaults__(self):

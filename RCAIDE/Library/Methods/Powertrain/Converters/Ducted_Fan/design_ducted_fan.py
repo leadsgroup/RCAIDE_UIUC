@@ -88,7 +88,7 @@ def design_ducted_fan(ducted_fan, dfdc_bin_name = 'dfdc', new_regression_results
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan
+    RCAIDE.Library.Components.Powertrain.Converters.Ducted_Fan
     RCAIDE.Library.Methods.Powertrain.Converters.Ducted_Fan.compute_ducted_fan_performance
     """
     

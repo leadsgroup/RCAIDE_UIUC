@@ -147,7 +147,7 @@ def vehicle_setup():
     propulsor.tag                                     = 'propulsor' 
                
     # Propeller              
-    propeller                                        = RCAIDE.Library.Components.Propulsors.Converters.Propeller() 
+    propeller                                        = RCAIDE.Library.Components.Powertrain.Converters.Propeller() 
     propeller.tag                                    = 'propeller_1' 
     propeller.tip_radius                             =  4.25 * Units.meters 
     propeller.number_of_blades                       = 2

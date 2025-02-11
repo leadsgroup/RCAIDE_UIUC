@@ -27,17 +27,17 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     
     working_fluid = RCAIDE.Library.Attributes.Gases.Air()
     
-    if isinstance(compoment, RCAIDE.Library.Components.Propulsors.Converters.Converter):
+    if isinstance(compoment, RCAIDE.Library.Components.Powertrain.Converters.Converter):
         # assign generatic propulsor 
-        if type(compoment) == RCAIDE.Library.Components.Propulsors.Converters.DC_Motor:  
+        if type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.DC_Motor:  
             propulsor         = RCAIDE.Library.Components.Propulsors.Electric_Rotor()
             distributor       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
             propulsor.motor   = compoment  
-        if type(compoment) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor: 
+        if type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor: 
             propulsor         = RCAIDE.Library.Components.Propulsors.Electric_Rotor() 
             distributor       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
             propulsor.motor   = compoment   
-        if isinstance(compoment,RCAIDE.Library.Components.Propulsors.Converters.Rotor):  
+        if isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Rotor):  
             propulsor         = RCAIDE.Library.Components.Propulsors.Electric_Rotor()
             distributor       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
             propulsor.rotor   = compoment   

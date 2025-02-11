@@ -17,8 +17,8 @@ import RCAIDE
 def unpack_electric_rotor_unknowns(propulsor,segment): 
     results = segment.state.conditions.energy[propulsor.tag]
     motor   = propulsor.motor  
-    if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
+    if (type(motor) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor):
         results[motor.tag].current = segment.state.unknowns[propulsor.tag + '_current'] 
-    elif (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.DC_Motor):
+    elif (type(motor) == RCAIDE.Library.Components.Powertrain.Converters.DC_Motor):
         results[motor.tag].rotor_power_coefficient = segment.state.unknowns[propulsor.tag + '_rotor_cp'] 
     return 

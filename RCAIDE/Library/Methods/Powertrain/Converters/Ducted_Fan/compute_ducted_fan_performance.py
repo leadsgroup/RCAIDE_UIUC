@@ -78,7 +78,7 @@ def compute_ducted_fan_performance(propulsor,state,center_of_gravity= [[0.0, 0.0
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan
+    RCAIDE.Library.Components.Powertrain.Converters.Ducted_Fan
     RCAIDE.Library.Methods.Powertrain.Converters.Ducted_Fan.design_ducted_fan
     """
 

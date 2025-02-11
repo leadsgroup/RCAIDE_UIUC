@@ -11,7 +11,7 @@
 import RCAIDE 
 from RCAIDE.Library.Components                                 import Component
 from RCAIDE.Library.Components.Component                       import Container
-from RCAIDE.Library.Methods.Powertrain.Energy.Distributors.Electrical_Bus import *
+from RCAIDE.Library.Methods.Powertrain.Distributors.Electrical_Bus import *
 
 
 # ----------------------------------------------------------------------------------------------------------------------

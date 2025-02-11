@@ -102,7 +102,7 @@ def ICE_CS(vehicle):
     propulsor.tag                              = 'ice_constant_speed_propeller' 
                                                    
     # Engine                     
-    engine                                     = RCAIDE.Library.Components.Propulsors.Converters.Engine()
+    engine                                     = RCAIDE.Library.Components.Powertrain.Converters.Engine()
     engine.sea_level_power                     = 180. * Units.horsepower
     engine.flat_rate_altitude                  = 0.0
     engine.rated_speed                         = 2700. * Units.rpm
@@ -111,7 +111,7 @@ def ICE_CS(vehicle):
     propulsor.engine                           = engine 
     
     # Prop  
-    prop                                   = RCAIDE.Library.Components.Propulsors.Converters.Propeller()
+    prop                                   = RCAIDE.Library.Components.Powertrain.Converters.Propeller()
     prop.number_of_blades                  = 2.0
     prop.variable_pitch                    = True 
     prop.tip_radius                        = 76./2. * Units.inches

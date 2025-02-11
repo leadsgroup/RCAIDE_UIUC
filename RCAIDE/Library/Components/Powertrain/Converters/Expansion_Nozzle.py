@@ -61,7 +61,7 @@ class Expansion_Nozzle(Converter):
     See Also
     --------
     RCAIDE.Library.Components.Component
-    RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle
+    RCAIDE.Library.Components.Powertrain.Converters.Compression_Nozzle
     RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle
     """
     

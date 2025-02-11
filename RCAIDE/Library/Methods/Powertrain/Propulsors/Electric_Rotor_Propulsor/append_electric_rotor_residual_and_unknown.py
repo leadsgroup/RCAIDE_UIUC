@@ -8,9 +8,9 @@
 # ----------------------------------------------------------------------------------------------------------------------  
  # RCAIDE imports 
 import RCAIDE
-from RCAIDE.Library.Components.Propulsors.Converters.Propeller   import Propeller 
-from RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor  import Lift_Rotor 
-from RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor  import Prop_Rotor 
+from RCAIDE.Library.Components.Powertrain.Converters.Propeller   import Propeller 
+from RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor  import Lift_Rotor 
+from RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor  import Prop_Rotor 
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_electric_rotor_residual_and_unknown
@@ -30,7 +30,7 @@ def append_electric_rotor_residual_and_unknown(propulsor,segment):
     else:
         cp_init  = 0.5
          
-    if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
+    if (type(motor) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor):
         segment.state.unknowns[ propulsor.tag + '_current']                    = 50 * ones_row(1)  
     else:
         segment.state.unknowns[ propulsor.tag + '_rotor_cp']                    = cp_init * ones_row(1)  

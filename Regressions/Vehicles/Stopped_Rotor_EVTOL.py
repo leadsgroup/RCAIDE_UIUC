@@ -415,7 +415,7 @@ def vehicle_setup(new_regression=True) :
     speed_of_sound                                         = 340                                    # speed of sound 
     Hover_Load                                             = vehicle.mass_properties.takeoff*g      # hover load   
             
-    propeller                                              = RCAIDE.Library.Components.Propulsors.Converters.Propeller()
+    propeller                                              = RCAIDE.Library.Components.Powertrain.Converters.Propeller()
     propeller.number_of_blades                             = 3
     propeller.tag                                          = 'propeller_1'  
     propeller.origin                                       = [[6.583, 1.300,  1.092 ]] 
@@ -446,7 +446,7 @@ def vehicle_setup(new_regression=True) :
     cruise_propulsor_1.rotor                               = propeller    
                 
     # Propeller Motor              
-    propeller_motor                                        = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+    propeller_motor                                        = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor()
     propeller_motor.efficiency                             = 0.95
     propeller_motor.tag                                    = 'propeller_motor_1'  
     propeller_motor.origin                                 = [[6.583, 1.300,  1.092 ]] 
@@ -601,7 +601,7 @@ def vehicle_setup(new_regression=True) :
     lift_propulsor_1.electronic_speed_controller           = lift_rotor_esc 
            
     # Lift Rotor Design              
-    lift_rotor                                             = RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor()   
+    lift_rotor                                             = RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor()   
     lift_rotor.tag                                         = 'lift_rotor_1'  
     lift_rotor.origin                                      = [[-0.073 ,  1.950 , 1.2]] 
     lift_rotor.active                                      = True          
@@ -646,7 +646,7 @@ def vehicle_setup(new_regression=True) :
     #------------------------------------------------------------------------------------------------------------------------------------               
     # Lift Rotor Motor  
     #------------------------------------------------------------------------------------------------------------------------------------    
-    lift_rotor_motor                                       = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+    lift_rotor_motor                                       = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor()
     lift_rotor_motor.efficiency                            = 0.9
     lift_rotor_motor.nominal_voltage                       = lift_bus.voltage*3/4  
     lift_rotor_motor.origin                                = [[-0.073 ,  1.950 , 1.2]]

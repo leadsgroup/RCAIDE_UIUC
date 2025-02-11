@@ -115,7 +115,7 @@ def blade_geometry_setup(rotor,number_of_stations):
     config.networks.electric.propulsors.electric_rotor.rotor.orientation_euler_angles = [0.0,np.pi/2,0.0]    
     configs.append(config)       
     
-    if type(rotor) == RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor:  
+    if type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor:  
         design_thrust_cruise  = rotor.cruise.design_thrust 
         design_power_cruise   = rotor.cruise.design_power      
         if (design_thrust_cruise == None) and (design_power_cruise== None):

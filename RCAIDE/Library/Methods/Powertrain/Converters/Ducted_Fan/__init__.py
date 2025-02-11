@@ -15,7 +15,7 @@ The module provides functionality for:
 
 See Also
 --------
-RCAIDE.Library.Components.Propulsors.Converters.Ducted_Fan
+RCAIDE.Library.Components.Powertrain.Converters.Ducted_Fan
 RCAIDE.Library.Methods.Powertrain.Converters.Ducted_Fan.compute_ducted_fan_performance
 RCAIDE.Library.Methods.Powertrain.Converters.Ducted_Fan.design_ducted_fan
 """

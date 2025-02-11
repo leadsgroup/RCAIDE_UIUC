@@ -41,8 +41,8 @@ def append_motor_conditions(motor,segment,propulsor_conditions):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.DC_Motor
-    RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor
+    RCAIDE.Library.Components.Powertrain.Converters.DC_Motor
+    RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor
     """
 
 

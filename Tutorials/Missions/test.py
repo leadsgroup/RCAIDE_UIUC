@@ -390,12 +390,12 @@ def vehicle_setup():
     outer_right_turbojet.working_fluid            = RCAIDE.Library.Attributes.Gases.Air()
     
     # Ram  
-    ram                                           = RCAIDE.Library.Components.Propulsors.Converters.Ram()
+    ram                                           = RCAIDE.Library.Components.Powertrain.Converters.Ram()
     ram.tag                                       = 'ram' 
     outer_right_turbojet.ram                      = ram 
          
     # Inlet Nozzle         
-    inlet_nozzle                                  = RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle()
+    inlet_nozzle                                  = RCAIDE.Library.Components.Powertrain.Converters.Compression_Nozzle()
     inlet_nozzle.tag                              = 'inlet_nozzle' 
     inlet_nozzle.polytropic_efficiency            = 1.0
     inlet_nozzle.pressure_ratio                   = 1.0
@@ -403,35 +403,35 @@ def vehicle_setup():
     outer_right_turbojet.inlet_nozzle             = inlet_nozzle    
           
     #  Low Pressure Compressor      
-    lp_compressor                                 = RCAIDE.Library.Components.Propulsors.Converters.Compressor()    
+    lp_compressor                                 = RCAIDE.Library.Components.Powertrain.Converters.Compressor()    
     lp_compressor.tag                             = 'low_pressure_compressor' 
     lp_compressor.polytropic_efficiency           = 0.88
     lp_compressor.pressure_ratio                  = 3.1     
     outer_right_turbojet.low_pressure_compressor  = lp_compressor         
         
     # High Pressure Compressor        
-    hp_compressor                                 = RCAIDE.Library.Components.Propulsors.Converters.Compressor()    
+    hp_compressor                                 = RCAIDE.Library.Components.Powertrain.Converters.Compressor()    
     hp_compressor.tag                             = 'high_pressure_compressor' 
     hp_compressor.polytropic_efficiency           = 0.88
     hp_compressor.pressure_ratio                  = 5.0  
     outer_right_turbojet.high_pressure_compressor = hp_compressor
  
     # Low Pressure Turbine 
-    lp_turbine                                    = RCAIDE.Library.Components.Propulsors.Converters.Turbine()   
+    lp_turbine                                    = RCAIDE.Library.Components.Powertrain.Converters.Turbine()   
     lp_turbine.tag                                ='low_pressure_turbine' 
     lp_turbine.mechanical_efficiency              = 0.99
     lp_turbine.polytropic_efficiency              = 0.89 
     outer_right_turbojet.low_pressure_turbine     = lp_turbine      
              
     # High Pressure Turbine         
-    hp_turbine                                    = RCAIDE.Library.Components.Propulsors.Converters.Turbine()   
+    hp_turbine                                    = RCAIDE.Library.Components.Powertrain.Converters.Turbine()   
     hp_turbine.tag                                ='high_pressure_turbine' 
     hp_turbine.mechanical_efficiency              = 0.99
     hp_turbine.polytropic_efficiency              = 0.87 
     outer_right_turbojet.high_pressure_turbine    = hp_turbine   
           
     # Combustor   
-    combustor                                     = RCAIDE.Library.Components.Propulsors.Converters.Combustor()   
+    combustor                                     = RCAIDE.Library.Components.Powertrain.Converters.Combustor()   
     combustor.tag                                 = 'combustor' 
     combustor.efficiency                          = 0.94
     combustor.alphac                              = 1.0     
@@ -441,7 +441,7 @@ def vehicle_setup():
     outer_right_turbojet.combustor                = combustor
      
     #  Afterburner  
-    afterburner                                   = RCAIDE.Library.Components.Propulsors.Converters.Combustor()   
+    afterburner                                   = RCAIDE.Library.Components.Powertrain.Converters.Combustor()   
     afterburner.tag                               = 'afterburner' 
     afterburner.efficiency                        = 0.9
     afterburner.alphac                            = 1.0     
@@ -451,7 +451,7 @@ def vehicle_setup():
     outer_right_turbojet.afterburner              = afterburner   
  
     # Core Nozzle 
-    nozzle                                        = RCAIDE.Library.Components.Propulsors.Converters.Supersonic_Nozzle()   
+    nozzle                                        = RCAIDE.Library.Components.Powertrain.Converters.Supersonic_Nozzle()   
     nozzle.tag                                    = 'core_nozzle' 
     nozzle.pressure_recovery                      = 0.95
     nozzle.pressure_ratio                         = 1.    

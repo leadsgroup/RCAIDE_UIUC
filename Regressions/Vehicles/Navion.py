@@ -321,7 +321,7 @@ def vehicle_setup():
     ice_prop                                   = RCAIDE.Library.Components.Propulsors.ICE_Propeller()      
                                                      
     # Engine                     
-    engine                                     = RCAIDE.Library.Components.Propulsors.Converters.Engine()
+    engine                                     = RCAIDE.Library.Components.Powertrain.Converters.Engine()
 
     engine.sea_level_power                     = 185. * Units.horsepower 
     engine.rated_speed                         = 2300. * Units.rpm 
@@ -329,7 +329,7 @@ def vehicle_setup():
     ice_prop.engine                            = engine 
      
     # Propeller 
-    prop                                    = RCAIDE.Library.Components.Propulsors.Converters.Propeller()
+    prop                                    = RCAIDE.Library.Components.Powertrain.Converters.Propeller()
     prop.tag                                = 'propeller'
     prop.number_of_blades                   = 2.0
     prop.tip_radius                         = 76./2. * Units.inches

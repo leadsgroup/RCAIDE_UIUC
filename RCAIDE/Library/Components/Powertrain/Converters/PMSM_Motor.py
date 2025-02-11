@@ -98,7 +98,7 @@ class PMSM_Motor(Converter):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters
+    RCAIDE.Library.Components.Powertrain.Converters
     """      
     def __defaults__(self):
         """

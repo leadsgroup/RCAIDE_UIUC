@@ -8,7 +8,7 @@
 
 # RCAIDE imports  
 from RCAIDE.Library.Components import Component 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Modulators.Electronic_Speed_Controller.append_esc_conditions   import append_esc_conditions 
+from RCAIDE.Library.Methods.Powertrain.Modulators.Electronic_Speed_Controller.append_esc_conditions   import append_esc_conditions 
  
 # ----------------------------------------------------------------------------------------------------------------------
 #  Electronic Speed Controller Class
@@ -33,7 +33,7 @@ class Electronic_Speed_Controller(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.Motor
+    RCAIDE.Library.Components.Powertrain.Converters.Motor
         Electric motor components controlled by the ESC
     """
     

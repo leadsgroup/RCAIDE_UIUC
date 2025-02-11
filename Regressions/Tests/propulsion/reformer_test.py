@@ -35,7 +35,7 @@ def main():
     O_C_truth     = [0.011870136164444744]    
     phi_truth     = [4.13667981438515]    
 
-    reformer = RCAIDE.Library.Components.Propulsors.Converters.Reformer()
+    reformer = RCAIDE.Library.Components.Powertrain.Converters.Reformer()
 
     # set up conditions  
     ctrl_pts = 1

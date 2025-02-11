@@ -146,9 +146,9 @@ class Rotor(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Converters.Propeller
-    RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor
-    RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor
+    RCAIDE.Library.Components.Powertrain.Converters.Propeller
+    RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor
+    RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor
     """
     def __defaults__(self):
         """This sets the default values for the component to function.
