@@ -89,10 +89,10 @@ def compute_landing_gear_weight(vehicle):
         for propulsor in  network.propulsors:
             if propulsor.wing_mounted:
                 FNAC = 0
-                if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
+                if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet):
                     nacelle =  propulsor.nacelle 
                     FNAC    = nacelle.diameter / Units.ft
-                if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.ICE_Propeller) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller): 
+                if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_ICE_Propeller): 
                     FNAC    = propulsor.propeller.tip_radius * 2 / Units.ft      
                 DIH     = main_wing.dihedral
                 YEE     = np.max(np.abs(np.array(network.origin)[:, 1])) / Units.inches

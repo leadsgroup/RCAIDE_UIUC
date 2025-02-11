@@ -113,7 +113,7 @@ def compute_systems_weight(vehicle):
     NENG = 0 
     for network in  vehicle.networks:
         for propulsor in network.propulsors:
-            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
+            if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet):
                 NENG += 1  
     fuse_w         = ref_fuselage.width / Units.ft
     fuse_h         = ref_fuselage.heights.maximum / Units.ft   

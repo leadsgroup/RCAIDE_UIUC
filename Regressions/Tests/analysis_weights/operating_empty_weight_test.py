@@ -1,7 +1,7 @@
 # weights.py
 import  RCAIDE
 from RCAIDE.Framework.Core import Data, Units 
-from RCAIDE.Library.Methods.Propulsors.Turbofan_Propulsor   import design_turbofan  
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor   import design_turbofan  
 from RCAIDE.Library.Plots import * 
 from RCAIDE.load import load as load_results
 from RCAIDE.save import save as save_results 
@@ -244,7 +244,7 @@ def EVTOL_Aircraft_Test(update_regression_values,show_figure):
     return
 
 def Jet_engine():
-    turbofan                                    = RCAIDE.Library.Components.Propulsors.Turbofan() 
+    turbofan                                    = RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan() 
     turbofan.tag                                = 'starboard_propulsor' 
     turbofan.origin                             = [[13.72, 4.86,-1.1]] 
     turbofan.engine_length                      = 2.71     
@@ -254,7 +254,7 @@ def Jet_engine():
     turbofan.design_thrust                      = 35000.0* Units.N 
              
     # fan                
-    fan                                         = RCAIDE.Library.Components.Propulsors.Converters.Fan()   
+    fan                                         = RCAIDE.Library.Components.Powertrain.Converters.Fan()   
     fan.tag                                     = 'fan'
     fan.polytropic_efficiency                   = 0.93
     fan.pressure_ratio                          = 1.7   
@@ -262,47 +262,47 @@ def Jet_engine():
                    
     # working fluid                   
     turbofan.working_fluid                      = RCAIDE.Library.Attributes.Gases.Air() 
-    ram                                         = RCAIDE.Library.Components.Propulsors.Converters.Ram()
+    ram                                         = RCAIDE.Library.Components.Powertrain.Converters.Ram()
     ram.tag                                     = 'ram' 
     turbofan.ram                                = ram 
           
     # inlet nozzle          
-    inlet_nozzle                                = RCAIDE.Library.Components.Propulsors.Converters.Compression_Nozzle()
+    inlet_nozzle                                = RCAIDE.Library.Components.Powertrain.Converters.Compression_Nozzle()
     inlet_nozzle.tag                            = 'inlet nozzle'
     inlet_nozzle.polytropic_efficiency          = 0.98
     inlet_nozzle.pressure_ratio                 = 0.98 
     turbofan.inlet_nozzle                       = inlet_nozzle 
 
     # low pressure compressor    
-    low_pressure_compressor                       = RCAIDE.Library.Components.Propulsors.Converters.Compressor()    
+    low_pressure_compressor                       = RCAIDE.Library.Components.Powertrain.Converters.Compressor()    
     low_pressure_compressor.tag                   = 'lpc'
     low_pressure_compressor.polytropic_efficiency = 0.91
     low_pressure_compressor.pressure_ratio        = 1.9   
     turbofan.low_pressure_compressor              = low_pressure_compressor
 
     # high pressure compressor  
-    high_pressure_compressor                       = RCAIDE.Library.Components.Propulsors.Converters.Compressor()    
+    high_pressure_compressor                       = RCAIDE.Library.Components.Powertrain.Converters.Compressor()    
     high_pressure_compressor.tag                   = 'hpc'
     high_pressure_compressor.polytropic_efficiency = 0.91
     high_pressure_compressor.pressure_ratio        = 10.0    
     turbofan.high_pressure_compressor              = high_pressure_compressor
 
     # low pressure turbine  
-    low_pressure_turbine                           = RCAIDE.Library.Components.Propulsors.Converters.Turbine()   
+    low_pressure_turbine                           = RCAIDE.Library.Components.Powertrain.Converters.Turbine()   
     low_pressure_turbine.tag                       ='lpt'
     low_pressure_turbine.mechanical_efficiency     = 0.99
     low_pressure_turbine.polytropic_efficiency     = 0.93 
     turbofan.low_pressure_turbine                  = low_pressure_turbine
    
     # high pressure turbine     
-    high_pressure_turbine                          = RCAIDE.Library.Components.Propulsors.Converters.Turbine()   
+    high_pressure_turbine                          = RCAIDE.Library.Components.Powertrain.Converters.Turbine()   
     high_pressure_turbine.tag                      ='hpt'
     high_pressure_turbine.mechanical_efficiency    = 0.99
     high_pressure_turbine.polytropic_efficiency    = 0.93 
     turbofan.high_pressure_turbine                 = high_pressure_turbine 
 
     # combustor  
-    combustor                                      = RCAIDE.Library.Components.Propulsors.Converters.Combustor()   
+    combustor                                      = RCAIDE.Library.Components.Powertrain.Converters.Combustor()   
     combustor.tag                                  = 'Comb'
     combustor.efficiency                           = 0.99 
     combustor.alphac                               = 1.0     
@@ -312,14 +312,14 @@ def Jet_engine():
     turbofan.combustor                             = combustor
 
     # core nozzle
-    core_nozzle                                    = RCAIDE.Library.Components.Propulsors.Converters.Expansion_Nozzle()   
+    core_nozzle                                    = RCAIDE.Library.Components.Powertrain.Converters.Expansion_Nozzle()   
     core_nozzle.tag                                = 'core nozzle'
     core_nozzle.polytropic_efficiency              = 0.95
     core_nozzle.pressure_ratio                     = 0.99  
     turbofan.core_nozzle                           = core_nozzle
              
     # fan nozzle             
-    fan_nozzle                                     = RCAIDE.Library.Components.Propulsors.Converters.Expansion_Nozzle()   
+    fan_nozzle                                     = RCAIDE.Library.Components.Powertrain.Converters.Expansion_Nozzle()   
     fan_nozzle.tag                                 = 'fan nozzle'
     fan_nozzle.polytropic_efficiency               = 0.95
     fan_nozzle.pressure_ratio                      = 0.99 

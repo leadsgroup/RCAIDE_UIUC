@@ -20,7 +20,7 @@ import os
 
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles'))
 from Cessna_172                       import vehicle_setup  
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor import design_propeller
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor import design_propeller
 
 # ----------------------------------------------------------------------
 #   Main
@@ -80,12 +80,12 @@ def ICE_CS(vehicle):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
-    fuel_line                                   = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line() 
+    fuel_line                                   = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line() 
     
     #------------------------------------------------------------------------------------------------------------------------------------  
     # uel Tank and Fuel
     #------------------------------------------------------------------------------------------------------------------------------------   
-    fuel_tank                                   = RCAIDE.Library.Components.Energy.Sources.Fuel_Tanks.Fuel_Tank()
+    fuel_tank                                   = RCAIDE.Library.Components.Powertrain.Sources.Fuel_Tanks.Fuel_Tank()
     fuel_tank.origin                            = vehicle.wings.main_wing.origin  
     fuel                                        = RCAIDE.Library.Attributes.Propellants.Aviation_Gasoline() 
     fuel.mass_properties.mass                   = 319 *Units.lbs 
@@ -98,11 +98,11 @@ def ICE_CS(vehicle):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    propulsor                                  = RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller()
+    propulsor                                  = RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_ICE_Propeller()
     propulsor.tag                              = 'ice_constant_speed_propeller' 
                                                    
     # Engine                     
-    engine                                     = RCAIDE.Library.Components.Propulsors.Converters.Engine()
+    engine                                     = RCAIDE.Library.Components.Powertrain.Converters.Engine()
     engine.sea_level_power                     = 180. * Units.horsepower
     engine.flat_rate_altitude                  = 0.0
     engine.rated_speed                         = 2700. * Units.rpm
@@ -111,7 +111,7 @@ def ICE_CS(vehicle):
     propulsor.engine                           = engine 
     
     # Prop  
-    prop                                   = RCAIDE.Library.Components.Propulsors.Converters.Propeller()
+    prop                                   = RCAIDE.Library.Components.Powertrain.Converters.Propeller()
     prop.number_of_blades                  = 2.0
     prop.variable_pitch                    = True 
     prop.tip_radius                        = 76./2. * Units.inches
