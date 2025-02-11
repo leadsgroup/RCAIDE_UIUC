@@ -53,10 +53,10 @@ class Propulsor(Component):
     See Also
     --------
     RCAIDE.Library.Components.Component
-    RCAIDE.Library.Components.Propulsors.Electric_Rotor
-    RCAIDE.Library.Components.Propulsors.Electric_Ducted_Fan
-    RCAIDE.Library.Components.Propulsors.ICE_Propeller
-    RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller
+    RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Ducted_Fan
+    RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller
+    RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_ICE_Propeller
     """
     
     

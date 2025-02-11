@@ -89,7 +89,7 @@ def compute_stack_properties(fuel_cell_stack):
     fuel_cell_stack.height = height 
     fuel_cell              = fuel_cell_stack.fuel_cell 
      
-    if type(fuel_cell_stack) == RCAIDE.Library.Components.Energy.Converters.Generic_Fuel_Cell_Stack:
+    if type(fuel_cell_stack) == RCAIDE.Library.Components.Powertrain.Converters.Generic_Fuel_Cell_Stack:
         lb                                     = 0.0001/(Units.cm**2.)    #lower bound on fuel cell current density
         ub                                     = 1.2/(Units.cm**2.)
         sign                                   = -1. # used to minimize -power 
@@ -113,7 +113,7 @@ def compute_stack_properties(fuel_cell_stack):
         fuel_cell_stack.maximum_current        = fuel_cell_stack.maximum_power / fuel_cell_stack.maximum_voltage
         fuel_cell_stack.maximum_fuel_flow_rate = mdot_H2 * n_total
     
-    elif type(fuel_cell_stack) == RCAIDE.Library.Components.Energy.Converters.Proton_Exchange_Membrane_Fuel_Cell: 
+    elif type(fuel_cell_stack) == RCAIDE.Library.Components.Powertrain.Converters.Proton_Exchange_Membrane_Fuel_Cell: 
     
         # check if mach number and temperature are passed
         design_altitude =  0
@@ -124,7 +124,7 @@ def compute_stack_properties(fuel_cell_stack):
          
         segment                  = RCAIDE.Framework.Mission.Segments.Segment()  
         segment.state.conditions = RCAIDE.Framework.Mission.Common.Results()   
-        bus     = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
+        bus     = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
         bus.fuel_cell_stacks.append(fuel_cell_stack)   
         
         bus.append_operating_conditions(segment)

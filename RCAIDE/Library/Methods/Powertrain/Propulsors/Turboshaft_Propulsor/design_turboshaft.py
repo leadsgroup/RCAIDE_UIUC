@@ -63,7 +63,7 @@ def design_turboshaft(turboshaft):
         conditions.freestream.velocity                    = np.atleast_1d(a*turboshaft.design_mach_number)
          
          
-    fuel_line                = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+    fuel_line                = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     segment                  = RCAIDE.Framework.Mission.Segments.Segment()  
     segment.state.conditions = conditions
     segment.state.conditions.energy[fuel_line.tag] = Conditions()

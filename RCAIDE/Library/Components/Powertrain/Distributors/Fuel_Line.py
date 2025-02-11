@@ -44,7 +44,7 @@ class Fuel_Line(Component):
     --------
     RCAIDE.Library.Components.Powertrain.Sources.Fuel_Tanks
         Fuel tank components
-    RCAIDE.Library.Components.Propulsors
+    RCAIDE.Library.Components.Powertrain.Propulsors
         Aircraft propulsion system components
     """ 
     

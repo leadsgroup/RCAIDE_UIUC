@@ -77,7 +77,7 @@ def compute_systems_weight(vehicle, V_fuel, V_int, N_tank, N_eng):
 
     # Avionics weight
     if len(vehicle.avionics) == 0:
-        avionics     = RCAIDE.Library.Components.Systems.Avionics()
+        avionics     = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
         W_uav        = 0. 
     else:
         avionics = vehicle.avionics

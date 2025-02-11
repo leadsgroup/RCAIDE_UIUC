@@ -9,8 +9,8 @@
 # RCAIDE imports 
 import RCAIDE
 from RCAIDE.Framework.Core                                                                import Units   
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor                                   import design_propeller 
-from RCAIDE.Library.Methods.Propulsors.Converters.Motor                                   import design_DC_motor 
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor                                   import design_propeller 
+from RCAIDE.Library.Methods.Powertrain.Converters.Motor                                   import design_DC_motor 
 from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.Common               import compute_motor_weight
 from RCAIDE.Library.Methods.Geometry.Planform                                             import wing_segmented_planform 
  
@@ -426,16 +426,16 @@ def vehicle_setup(fuel_cell_model):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus and Crogenic Line 
     #------------------------------------------------------------------------------------------------------------------------------------  
-    bus = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()   
+    bus = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus()   
       
     if fuel_cell_model == 'PEM': 
-        fuel_cell_stack = RCAIDE.Library.Components.Energy.Converters.Proton_Exchange_Membrane_Fuel_Cell() 
+        fuel_cell_stack = RCAIDE.Library.Components.Powertrain.Converters.Proton_Exchange_Membrane_Fuel_Cell() 
         fuel_cell_stack.electrical_configuration.series             = 940
         fuel_cell_stack.electrical_configuration.parallel           = 7
         fuel_cell_stack.geometrtic_configuration.normal_count       = 940
         fuel_cell_stack.geometrtic_configuration.parallel_count     = 7
     if fuel_cell_model == 'Larminie':  
-        fuel_cell_stack   = RCAIDE.Library.Components.Energy.Converters.Generic_Fuel_Cell_Stack() 
+        fuel_cell_stack   = RCAIDE.Library.Components.Powertrain.Converters.Generic_Fuel_Cell_Stack() 
         fuel_cell_stack.electrical_configuration.series             = 1020
         fuel_cell_stack.electrical_configuration.parallel           = 1
         fuel_cell_stack.geometrtic_configuration.normal_count       = 1020
@@ -453,11 +453,11 @@ def vehicle_setup(fuel_cell_model):
     #------------------------------------------------------------------------------------------------------------------------------------  
     #  Starboard Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    starboard_propulsor                              = RCAIDE.Library.Components.Propulsors.Electric_Rotor()  
+    starboard_propulsor                              = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()  
     starboard_propulsor.tag                          = 'starboard_propulsor'
     
     # Electronic Speed Controller       
-    esc                                              = RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller()
+    esc                                              = RCAIDE.Library.Components.Powertrain.Modulators.Electronic_Speed_Controller()
     esc.tag                                          = 'esc_1'
     esc.efficiency                                   = 0.95 
     esc.origin                                       = [[3.8,2.8129,1.22 ]]   
@@ -512,7 +512,7 @@ def vehicle_setup(fuel_cell_model):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Port Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    port_propulsor                             = RCAIDE.Library.Components.Propulsors.Electric_Rotor() 
+    port_propulsor                             = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor() 
     port_propulsor.tag                         = "port_propulsor" 
             
     esc_2                                      = deepcopy(esc)
@@ -544,7 +544,7 @@ def vehicle_setup(fuel_cell_model):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Avionics
     #------------------------------------------------------------------------------------------------------------------------------------  
-    avionics                     = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                     = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     avionics.power_draw          = 20. # Watts
     bus.avionics                 = avionics
     

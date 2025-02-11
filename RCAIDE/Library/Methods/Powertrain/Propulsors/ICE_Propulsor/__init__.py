@@ -8,6 +8,7 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
+from .append_ice_residual_and_unknown import append_ice_residual_and_unknown
 from .compute_ice_performance         import compute_ice_performance
 from .append_ice_propeller_conditions import append_ice_propeller_conditions
 from .unpack_ice_propeller_unknowns   import unpack_ice_propeller_unknowns

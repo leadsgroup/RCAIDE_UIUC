@@ -20,7 +20,7 @@ import os
 
 sys.path.append(os.path.join( os.path.split(os.path.split(sys.path[0])[0])[0], 'Vehicles'))
 from Cessna_172                       import vehicle_setup  
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor import design_propeller
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor import design_propeller
 
 # ----------------------------------------------------------------------
 #   Main
@@ -80,7 +80,7 @@ def ICE_CS(vehicle):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
-    fuel_line                                   = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line() 
+    fuel_line                                   = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line() 
     
     #------------------------------------------------------------------------------------------------------------------------------------  
     # uel Tank and Fuel
@@ -98,7 +98,7 @@ def ICE_CS(vehicle):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    propulsor                                  = RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller()
+    propulsor                                  = RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_ICE_Propeller()
     propulsor.tag                              = 'ice_constant_speed_propeller' 
                                                    
     # Engine                     

@@ -29,7 +29,6 @@ from . import Fuselages
 from . import Landing_Gear
 from . import Nacelles
 from . import Payloads
-from . import Powertrain 
-from . import Systems
+from . import Powertrain
 from . import Thermal_Management 
 from . import Wings

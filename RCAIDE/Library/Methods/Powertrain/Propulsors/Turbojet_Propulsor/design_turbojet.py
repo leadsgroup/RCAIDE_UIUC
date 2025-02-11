@@ -61,7 +61,7 @@ def design_turbojet(turbojet):
         conditions.freestream.speed_of_sound              = np.atleast_1d(a)
         conditions.freestream.velocity                    = np.atleast_1d(a*turbojet.design_mach_number)
   
-    fuel_line                                      = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+    fuel_line                                      = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     segment                                        = RCAIDE.Framework.Mission.Segments.Segment()  
     segment.state.conditions                       = conditions
     segment.state.conditions.energy[fuel_line.tag] = Conditions()

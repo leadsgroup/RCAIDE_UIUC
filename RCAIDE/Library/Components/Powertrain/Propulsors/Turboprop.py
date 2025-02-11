@@ -85,9 +85,9 @@ class Turboprop(Propulsor):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Propulsor
-    RCAIDE.Library.Components.Propulsors.Turbofan
-    RCAIDE.Library.Components.Propulsors.Turbojet
+    RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan
+    RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet
     """ 
     def __defaults__(self):    
         # setting the default values

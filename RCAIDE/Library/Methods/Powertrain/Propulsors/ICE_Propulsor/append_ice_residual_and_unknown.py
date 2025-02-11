@@ -9,7 +9,7 @@
 from RCAIDE.Framework.Core import  Units
 
 # ---------------------------------------------------------------------------------------------------------------------- 
-#  append_electric_rotor_residual_and_unknown
+#  append_ice_residual_and_unknown
 # ----------------------------------------------------------------------------------------------------------------------  
 def append_ice_residual_and_unknown(propulsor,segment):
     '''

@@ -9,7 +9,7 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
 import RCAIDE 
 from RCAIDE.Framework.Core import Units   
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor import design_propeller
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor import design_propeller
 from RCAIDE.Library.Methods.Geometry.Planform  import segment_properties
 from RCAIDE.Library.Plots       import *  
 
@@ -303,7 +303,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
-    fuel_line                                   = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()   
+    fuel_line                                   = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()   
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     #  Fuel Tank & Fuel
@@ -318,7 +318,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    ice_prop                                   = RCAIDE.Library.Components.Propulsors.ICE_Propeller()      
+    ice_prop                                   = RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller()      
                                                      
     # Engine                     
     engine                                     = RCAIDE.Library.Components.Powertrain.Converters.Engine()
@@ -360,7 +360,7 @@ def vehicle_setup():
     # Avionics
     #------------------------------------------------------------------------------------------------------------------------------------ 
     Wuav                                        = 2. * Units.lbs
-    avionics                                    = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                                    = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     avionics.mass_properties.uninstalled        = Wuav
     vehicle.avionics                            = avionics     
 

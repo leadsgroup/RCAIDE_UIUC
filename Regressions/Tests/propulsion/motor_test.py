@@ -9,9 +9,9 @@
 import RCAIDE
 from RCAIDE.Framework.Core                              import Units, Data
 from RCAIDE.Library.Plots                               import *      
-from RCAIDE.Library.Methods.Propulsors.Converters       import Motor
-from RCAIDE.Library.Methods.Propulsors.Converters.Motor.design_DC_motor import design_DC_motor
-from RCAIDE.Library.Methods.Propulsors.Common           import setup_operating_conditions 
+from RCAIDE.Library.Methods.Powertrain.Converters       import Motor
+from RCAIDE.Library.Methods.Powertrain.Converters.Motor.design_DC_motor import design_DC_motor
+from RCAIDE.Library.Methods.Powertrain                  import setup_operating_conditions 
 
 import os 
 import numpy as np 

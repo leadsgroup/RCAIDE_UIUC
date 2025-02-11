@@ -3,7 +3,7 @@
 # Created:  Jun 2024, M. Clarke
 
 # ---------------------------------------------------------------------------------------------------------------------- 
-#  append_electric_rotor_residual_and_unknown
+#  append_electric_ducted_fan_residual_and_unknown
 # ----------------------------------------------------------------------------------------------------------------------  
 def append_electric_ducted_fan_residual_and_unknown(propulsor,segment):
     ''' 

@@ -133,10 +133,10 @@ class Turbofan(Propulsor):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Propulsor
-    RCAIDE.Library.Components.Propulsors.Turbojet
-    RCAIDE.Library.Components.Propulsors.Turboprop
-    RCAIDE.Library.Components.Propulsors.Turboshaft
+    RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet
+    RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop
+    RCAIDE.Library.Components.Powertrain.Propulsors.Turboshaft
     """
     def __defaults__(self):    
         # setting the default values

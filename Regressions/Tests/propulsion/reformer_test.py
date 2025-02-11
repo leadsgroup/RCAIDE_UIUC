@@ -7,11 +7,11 @@
 # ----------------------------------------------------------------------
 
 import RCAIDE
-from RCAIDE.Framework.Core                              import Units, Data
-from RCAIDE.Library.Plots                               import *     
-from RCAIDE.Framework.Mission.Common import Conditions, Results, Residuals
-from RCAIDE.Library.Methods.Propulsors.Converters import Reformer
-from RCAIDE.Library.Methods.Propulsors.Converters.Reformer.compute_reformer_performance import compute_reformer_performance
+from RCAIDE.Framework.Core                        import Units, Data
+from RCAIDE.Library.Plots                         import *     
+from RCAIDE.Framework.Mission.Common              import Conditions, Results, Residuals
+from RCAIDE.Library.Methods.Powertrain.Converters import Reformer
+from RCAIDE.Library.Methods.Powertrain.Converters.Reformer.compute_reformer_performance import compute_reformer_performance
 
 import os
 import numpy as np 

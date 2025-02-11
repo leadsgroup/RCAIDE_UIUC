@@ -6,7 +6,7 @@
 # RCAIDE imports 
 import RCAIDE 
 from RCAIDE.Framework.Core import Units   
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor     import design_propeller
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor     import design_propeller
 from RCAIDE.Library.Methods.Energy.Sources.Batteries.Common import size_module_from_mass
 
 # python imports 
@@ -144,7 +144,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
-    bus                              = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
+    bus                              = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Solar Panel
@@ -171,11 +171,11 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     #  Starboard Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    propulsor                                         = RCAIDE.Library.Components.Propulsors.Electric_Rotor()  
+    propulsor                                         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()  
     propulsor.tag                                     = 'propulsor' 
              
     # Electronic Speed Controller                  
-    esc                                               = RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller()
+    esc                                               = RCAIDE.Library.Components.Powertrain.Modulators.Electronic_Speed_Controller()
     esc.tag                                           = 'esc_1'
     esc.efficiency                                    = 0.95 
     propulsor.electronic_speed_controller             = esc   
@@ -231,7 +231,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Avionics
     #------------------------------------------------------------------------------------------------------------------------------------  
-    avionics                     = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                     = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     avionics.power_draw          = 50. # Watts
     bus.avionics                 = avionics   
  

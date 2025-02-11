@@ -7,10 +7,10 @@
 
 # RCAIDE imports 
 import RCAIDE
-from RCAIDE.Framework.Core                                         import Units    
-from RCAIDE.Library.Methods.Propulsors.Turboshaft_Propulsor        import design_turboshaft 
-from RCAIDE.Framework.Mission.Common                               import Conditions
-from RCAIDE.Library.Plots                                          import *     
+from RCAIDE.Framework.Core                                             import Units    
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboshaft_Propulsor import design_turboshaft 
+from RCAIDE.Framework.Mission.Common                                   import Conditions
+from RCAIDE.Library.Plots                                              import *     
 
 # python imports 
 import numpy   as np      
@@ -52,7 +52,7 @@ def turboshaft_engine_Boeing_502_14(altitude,mach):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor: Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------         
-    turboshaft                                     = RCAIDE.Library.Components.Propulsors.Turboshaft() 
+    turboshaft                                     = RCAIDE.Library.Components.Powertrain.Propulsors.Turboshaft() 
     turboshaft.tag                                 = 'Turboshaft_propulsor'
     turboshaft.origin                              = [[13.72, 4.86,-1.1]] 
     turboshaft.engine_length                       = 0.945     

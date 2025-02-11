@@ -75,11 +75,11 @@ def compute_propulsion_system_weight(vehicle,network):
     number_of_tanks =  0
     for network in  vehicle.networks:
         for propulsor in network.propulsors:
-            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
+            if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet):
                 WENG          += compute_turbine_engine_weight(vehicle,propulsor)
                 JNENG  += 1 
 
-            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.ICE_Propeller) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Constant_Speed_ICE_Propeller):
+            if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_ICE_Propeller):
                 WENG          += compute_piston_engine_weight(propulsor)
                 PNENG  += 1 
                 
@@ -93,7 +93,7 @@ def compute_propulsion_system_weight(vehicle,network):
     WNAC = 0.0
     for network in  vehicle.networks:
         for propulsor in network.propulsors:
-            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
+            if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet):
                 if 'nacelle' in propulsor:
                     ref_nacelle =  propulsor.nacelle   
                     WNAC = compute_nacelle_weight(propulsor,ref_nacelle,JNENG)

@@ -47,7 +47,7 @@ class Constant_Speed_ICE_Propeller(Propulsor):
     
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Propulsor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor
     """ 
     def __defaults__(self):    
         # setting the default values

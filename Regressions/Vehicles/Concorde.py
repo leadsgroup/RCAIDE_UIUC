@@ -10,10 +10,10 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
 # RCAIDE imports 
 import RCAIDE
-from RCAIDE.Framework.Core                                  import Units , Data    
-from RCAIDE.Library.Methods.Propulsors.Turbojet_Propulsor   import design_turbojet
-from RCAIDE.Library.Methods.Geometry.Planform               import wing_segmented_planform
-from RCAIDE.Library.Plots     import *     
+from RCAIDE.Framework.Core                                             import Units , Data    
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbojet_Propulsor   import design_turbojet
+from RCAIDE.Library.Methods.Geometry.Planform                          import wing_segmented_planform
+from RCAIDE.Library.Plots                                              import *     
 
 # python imports 
 import numpy as np  
@@ -364,13 +364,13 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Fuel Distrubition Line 
     #------------------------------------------------------------------------------------------------------------------------------------  
-    fuel_line                                     = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line() 
+    fuel_line                                     = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line() 
     
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     #  Inner Right Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    outer_right_turbojet                          = RCAIDE.Library.Components.Propulsors.Turbojet()  
+    outer_right_turbojet                          = RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet()  
     outer_right_turbojet.tag                      = 'outer_right_turbojet'     
     outer_right_turbojet.engine_length            = 4.039
     outer_right_turbojet.nacelle_diameter         = 1.3

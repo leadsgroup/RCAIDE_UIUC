@@ -125,8 +125,8 @@ class Turbojet(Propulsor):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Propulsor
-    RCAIDE.Library.Components.Propulsors.Turbofan
+    RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan
     """ 
     def __defaults__(self):
         # setting the default values

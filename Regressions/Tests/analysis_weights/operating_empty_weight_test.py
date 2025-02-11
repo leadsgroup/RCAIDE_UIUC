@@ -1,7 +1,7 @@
 # weights.py
 import  RCAIDE
 from RCAIDE.Framework.Core import Data, Units 
-from RCAIDE.Library.Methods.Propulsors.Turbofan_Propulsor   import design_turbofan  
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor   import design_turbofan  
 from RCAIDE.Library.Plots import * 
 from RCAIDE.load import load as load_results
 from RCAIDE.save import save as save_results 
@@ -244,7 +244,7 @@ def EVTOL_Aircraft_Test(update_regression_values,show_figure):
     return
 
 def Jet_engine():
-    turbofan                                    = RCAIDE.Library.Components.Propulsors.Turbofan() 
+    turbofan                                    = RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan() 
     turbofan.tag                                = 'starboard_propulsor' 
     turbofan.origin                             = [[13.72, 4.86,-1.1]] 
     turbofan.engine_length                      = 2.71     

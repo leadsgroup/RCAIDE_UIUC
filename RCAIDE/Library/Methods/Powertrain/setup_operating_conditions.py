@@ -30,36 +30,36 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     if isinstance(compoment, RCAIDE.Library.Components.Powertrain.Converters.Converter):
         # assign generatic propulsor 
         if type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.DC_Motor:  
-            propulsor         = RCAIDE.Library.Components.Propulsors.Electric_Rotor()
-            distributor       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
+            propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
+            distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
             propulsor.motor   = compoment  
         if type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor: 
-            propulsor         = RCAIDE.Library.Components.Propulsors.Electric_Rotor() 
-            distributor       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
+            propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor() 
+            distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
             propulsor.motor   = compoment   
         if isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Rotor):  
-            propulsor         = RCAIDE.Library.Components.Propulsors.Electric_Rotor()
-            distributor       = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
+            propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
+            distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
             propulsor.rotor   = compoment   
             
-    elif isinstance(compoment,RCAIDE.Library.Components.Propulsors.Propulsor): 
+    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor): 
         propulsor = deepcopy(compoment)
         propulsor.working_fluid =  working_fluid
         
-        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turbofan:
-            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     
-        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turbojet:
-            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     
-        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turboprop:
-            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     
-        if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turboshaft:
-            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turboshaft:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     
-        if type(propulsor) == RCAIDE.Library.Components.Propulsors.ICE_Propeller:
-            distributor = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
             
         
     planet                                            = RCAIDE.Library.Attributes.Planets.Earth()

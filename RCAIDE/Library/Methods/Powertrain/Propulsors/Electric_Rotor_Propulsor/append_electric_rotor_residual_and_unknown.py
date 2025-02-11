@@ -7,10 +7,7 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------  
  # RCAIDE imports 
-import RCAIDE
-from RCAIDE.Library.Components.Powertrain.Converters.Propeller   import Propeller 
-from RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor  import Lift_Rotor 
-from RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor  import Prop_Rotor 
+import RCAIDE 
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_electric_rotor_residual_and_unknown
@@ -19,13 +16,12 @@ def append_electric_rotor_residual_and_unknown(propulsor,segment):
     ''' 
     appends the torque matching residual and unknown
     '''
-    
     ones_row    = segment.state.ones_row
     rotor       = propulsor.rotor  
     motor       = propulsor.motor
-    if type(rotor) == Propeller:
+    if type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Propeller:
         cp_init  = float(rotor.cruise.design_power_coefficient)
-    elif (type(rotor) == Lift_Rotor) or (type(rotor) == Prop_Rotor):
+    elif (type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor) or (type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor):
         cp_init  = float(rotor.hover.design_power_coefficient)
     else:
         cp_init  = 0.5

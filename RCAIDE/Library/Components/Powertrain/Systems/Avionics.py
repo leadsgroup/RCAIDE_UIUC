@@ -50,7 +50,7 @@ class Avionics(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Systems.System
+    RCAIDE.Library.Components.Powertrain.Systems.System
         Base system class
     """        
     def __defaults__(self):

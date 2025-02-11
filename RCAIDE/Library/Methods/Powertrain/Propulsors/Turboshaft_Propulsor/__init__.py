@@ -8,6 +8,7 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
+from .append_turboshaft_conditions   import append_turboshaft_conditions
 from .compute_power                  import compute_power
 from .size_core                      import size_core
 from .design_turboshaft              import design_turboshaft

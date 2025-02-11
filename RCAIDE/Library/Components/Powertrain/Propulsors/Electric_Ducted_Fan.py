@@ -59,7 +59,7 @@ class Electric_Ducted_Fan(Propulsor):
     
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Propulsor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor
     """
     def __defaults__(self):    
         # setting the default values

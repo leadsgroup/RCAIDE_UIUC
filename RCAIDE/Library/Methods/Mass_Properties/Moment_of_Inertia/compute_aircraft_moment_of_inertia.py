@@ -62,21 +62,21 @@ def compute_aircraft_moment_of_inertia(vehicle, CG_location, update_MOI=True):
     I_network = np.zeros([3, 3]) 
     for network in vehicle.networks:
         for propulsor in network.propulsors:
-            if isinstance(propulsor,RCAIDE.Library.Components.Propulsors.Electric_Rotor):
+            if isinstance(propulsor,RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor):
                 motor   = propulsor.motor 
                 I, mass = compute_cylinder_moment_of_inertia(motor.origin,motor.mass_properties.mass, 0, 0, 0,0, CG_location)
                 I_network += I
                 MOI_mass  += mass
                     
-            if isinstance(propulsor,RCAIDE.Library.Components.Propulsors.Turbofan):
+            if isinstance(propulsor,RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan):
                 I, mass= compute_cylinder_moment_of_inertia(propulsor.origin, propulsor.mass_properties.mass, propulsor.engine_length, propulsor.nacelle.diameter/2, 0, 0, CG_location)                    
                 I_network += I
                 MOI_mass += mass
-            if isinstance(propulsor,RCAIDE.Library.Components.Propulsors.Turboprop):
+            if isinstance(propulsor,RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop):
                 I, mass= compute_cylinder_moment_of_inertia(propulsor.origin, propulsor.mass_properties.mass, propulsor.engine_length, propulsor.engine_diameter/2, 0, 0, CG_location)                    
                 I_network += I
                 MOI_mass += mass
-            if isinstance(propulsor,RCAIDE.Library.Components.Propulsors.ICE_Propeller):
+            if isinstance(propulsor,RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller):
                 I, mass= compute_cylinder_moment_of_inertia(propulsor.origin, propulsor.mass_properties.mass, propulsor.engine_length, propulsor.engine_diameter/2, 0, 0, CG_location)                    
                 I_network += I
                 MOI_mass += mass

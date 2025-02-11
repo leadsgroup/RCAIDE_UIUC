@@ -13,7 +13,7 @@ import RCAIDE
 from RCAIDE.Framework.Core                                  import Units , Data     
 from RCAIDE.Library.Plots     import *     
 
-from   RCAIDE.Library.Methods.Propulsors.Turboprop_Propulsor   import design_turboprop
+from   RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop_Propulsor   import design_turboprop
 from   RCAIDE.Library.Methods.Geometry.Planform                import segment_properties
 
 # python imports 
@@ -424,12 +424,12 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------- 
     # Fuel Distrubition Line 
     #------------------------------------------------------------------------------------------------------------------------- 
-    fuel_line                                       = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line()  
+    fuel_line                                       = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()  
  
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------    
-    starboard_propulsor                              = RCAIDE.Library.Components.Propulsors.Turboprop()    
+    starboard_propulsor                              = RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop()    
     starboard_propulsor.tag                          = 'starboard_propulsor'  
     starboard_propulsor.origin                       = [[ 9.559106394 ,4.219315295, 1.616135105]]
     starboard_propulsor.design_altitude              = 25000*Units.ft                                   # [-]         Design Altitude

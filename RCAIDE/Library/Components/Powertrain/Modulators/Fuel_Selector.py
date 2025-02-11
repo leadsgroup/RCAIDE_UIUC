@@ -33,7 +33,7 @@ class Fuel_Selector(Component):
     --------
     RCAIDE.Library.Components.Powertrain.Sources.Fuel_Tanks
         Fuel storage components
-    RCAIDE.Library.Components.Energy.Distributors.Fuel_Line
+    RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line
         Fuel distribution components
     """
     

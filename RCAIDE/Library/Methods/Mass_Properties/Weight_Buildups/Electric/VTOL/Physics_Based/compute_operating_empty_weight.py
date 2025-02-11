@@ -109,7 +109,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
     apu.tag                                          = 'apu'
     hydraulics                                       = RCAIDE.Library.Components.Component()
     hydraulics.tag                                   = 'hydraulics'
-    avionics                                         = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                                         = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     optionals                                        = RCAIDE.Library.Components.Component()
     optionals.tag                                    = 'optionals'
     

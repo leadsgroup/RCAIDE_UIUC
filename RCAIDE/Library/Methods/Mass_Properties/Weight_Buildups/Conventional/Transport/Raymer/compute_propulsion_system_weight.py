@@ -57,7 +57,7 @@ def compute_propulsion_system_weight(vehicle,network):
             for fuel_tank in fuel_line.fuel_tanks:
                 number_of_tanks +=  1
             for propulsor in network.propulsors:
-                if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbojet):
+                if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet):
                     ref_propulsor = propulsor  
                     NENG  += 1
                     BPR =  propulsor.bypass_ratio

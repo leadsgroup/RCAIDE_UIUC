@@ -7,7 +7,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
- 
+
+from .append_turboprop_conditions   import append_turboprop_conditions
 from .size_core                     import size_core
 from .design_turboprop              import design_turboprop
 from .compute_thrust                import compute_thrust

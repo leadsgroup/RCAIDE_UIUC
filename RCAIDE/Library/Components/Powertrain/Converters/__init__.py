@@ -8,7 +8,7 @@ used in aircraft propulsion modeling.
 See Also
 --------
 RCAIDE.Library.Components.Powertrain.Sources
-RCAIDE.Library.Components.Propulsors
+RCAIDE.Library.Components.Powertrain.Propulsors
 """
 
 # ----------------------------------------------------------------------------------------------------------------------

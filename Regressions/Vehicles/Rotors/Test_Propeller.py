@@ -5,7 +5,7 @@
 # Imports
 import RCAIDE
 from RCAIDE.Framework.Core import Units
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor import design_propeller
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor import design_propeller
 import os 
 
 # design propeller  

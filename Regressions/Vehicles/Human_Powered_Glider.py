@@ -6,7 +6,7 @@
 # RCAIDE imports 
 import RCAIDE 
 from RCAIDE.Framework.Core import Units   
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor     import design_propeller 
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor     import design_propeller 
 
 # python imports 
 import numpy as np   
@@ -138,12 +138,12 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus
     #------------------------------------------------------------------------------------------------------------------------------------  
-    bus                              = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()  # Need to update 
+    bus                              = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus()  # Need to update 
  
     #------------------------------------------------------------------------------------------------------------------------------------  
     #  Starboard Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    propulsor                                         = RCAIDE.Library.Components.Propulsors.Electric_Rotor()  # need to update
+    propulsor                                         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()  # need to update
     propulsor.tag                                     = 'propulsor' 
                
     # Propeller              

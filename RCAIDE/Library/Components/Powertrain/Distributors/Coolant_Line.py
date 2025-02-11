@@ -58,9 +58,9 @@ class Coolant_Line(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Energy.Distributors.Heat_Exchanger
+    RCAIDE.Library.Components.Powertrain.Distributors.Heat_Exchanger
         Heat exchanger components for thermal management
-    RCAIDE.Library.Components.Energy.Distributors.Reservoir
+    RCAIDE.Library.Components.Powertrain.Distributors.Reservoir
         Coolant reservoir components
     """
     

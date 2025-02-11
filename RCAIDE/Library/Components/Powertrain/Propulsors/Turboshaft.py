@@ -133,8 +133,8 @@ class Turboshaft(Propulsor):
 
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Propulsor
-    RCAIDE.Library.Components.Propulsors.Turboprop
+    RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop
     """ 
     def __defaults__(self):
         # setting the default values

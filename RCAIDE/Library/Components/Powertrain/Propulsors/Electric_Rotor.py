@@ -67,7 +67,7 @@ class Electric_Rotor(Propulsor):
     
     See Also
     --------
-    RCAIDE.Library.Components.Propulsors.Propulsor
+    RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor
     RCAIDE.Library.Components.Energy
     """
     def __defaults__(self):    
