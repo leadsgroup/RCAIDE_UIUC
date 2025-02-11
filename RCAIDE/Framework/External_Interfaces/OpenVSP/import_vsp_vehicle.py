@@ -171,7 +171,7 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
     print("VSP geometry IDs: ")	
 
     # Label each geom type by storing its VSP geom ID. 
-
+    geom_names = []
     for geom in vsp_geoms: 
         geom_name = vsp.GetGeomName(geom)
         geom_names.append(geom_name)
@@ -198,13 +198,13 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
         geom_name = vsp.GetGeomName(geom)
         geom_type = vsp.GetGeomTypeName(str(geom))
 
-        if geom_type == 'Fuselage':
+        if geom_type == 'Fuselage' or  geom_name == B'lended_Wing':
             vsp_fuselages.append(geom)
         if geom_type == 'Wing':
             vsp_wings.append(geom)
         if geom_type == 'Propeller':
             vsp_rotors.append(geom) 
-        if (geom_type == 'Stack') or (geom_type == 'BodyOfRevolution'):
+        if (geom_type == 'Stack') or (geom_type == 'BodyOfRevolution') or geom_name == 'Nacelles':
             vsp_nacelle_type.append(geom_type)
             vsp_nacelles.append(geom) 
         
