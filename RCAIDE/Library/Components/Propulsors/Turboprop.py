@@ -33,10 +33,7 @@ class Turboprop(Propulsor):
         Turbine component of the engine. Default is None.
         
     combustor : Component
-        Combustor component of the engine. Default is None.
-        
-    active_fuel_tanks : list
-        List with names of active fuel tanks. Default is None.
+        Combustor component of the engine. Default is None. 
         
     engine_diameter : float
         Diameter of the engine [m]. Default is 0.0.
@@ -98,8 +95,7 @@ class Turboprop(Propulsor):
         self.nacelle                                  = None 
         self.compressor                               = None  
         self.turbine                                  = None  
-        self.combustor                                = None  
-        self.active_fuel_tanks                        = None         
+        self.combustor                                = None       
         self.engine_diameter                          = 0.0      
         self.engine_length                            = 0.0
         self.engine_height                            = 0.5      

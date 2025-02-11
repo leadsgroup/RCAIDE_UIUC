@@ -103,9 +103,17 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     VT_mask         = np.ma.masked_greater(vt,0 ).mask
     X_BOT_VALS      = np.ma.array(X, mask = VT_mask)[::-1]
     Y_BOT           = np.ma.array(Y, mask = VT_mask)[::-1]
+
+    x_mask          = X_BOT_VALS.mask   # for debugging
          
     X_BOT           = np.zeros_like(X_BOT_VALS)
+
+    x_mask_1                       = X_BOT.mask   # for debugging
+
     X_BOT[1:]       = np.cumsum(np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2),axis = 0)
+
+    x_mask_1                       = X_BOT.mask   # for debugging
+
     first_idx       = np.ma.count_masked(X_BOT,axis = 0)
     mask_count      = np.ma.count(X_BOT,axis = 0)
     prev_index      = first_idx-1
@@ -115,6 +123,8 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     aoas            = list(np.repeat(np.arange(ncases),ncpts))
     res             = list(np.tile(np.arange(ncpts),ncases) )
     X_BOT.mask[first_panel,aoas,res] = False
+
+    x_mask_1                       = X_BOT.mask   # for debugging
     
     # flow velocity and pressure of on botton surface 
     VE_BOT          = -VT[::-1]  
@@ -130,7 +140,9 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     DVE_BOT[last_panel,aoas,res]   = DVE_BOT_TEMP[last_paneldve,aoas,res] 
     
     # x - location of stagnation point 
-    L_BOT                          = X_BOT[-1,:,:]    
+    L_BOT                          = X_BOT[-1,:,:]
+
+    x_mask_1                       = X_BOT.mask    
         
     # laminar boundary layer properties using thwaites method  
     BOT_T_RESULTS  = thwaites_method(npanel,ncases,ncpts, nu, L_BOT , RE_L_VALS, X_BOT, VE_BOT, DVE_BOT,tolerance,

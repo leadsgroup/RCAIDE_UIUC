@@ -124,14 +124,14 @@ def compute_rotor_noise(microphone_locations,propulsor,rotor,segment,settings, r
                 fL      = np.tile(np.zeros_like(Re)[:,:,:,None],(1,1,1,chord_coord))
                 fD      = np.zeros_like(fL)
                 CL      = np.zeros_like(Re)
-                CD      = np.zeros_like(Re) 
+                CD      = np.zeros_like(Re)
                 y_up    = np.zeros_like(fL)
                 y_low   = np.zeros_like(fL)
                                   
                 for jj,airfoil in enumerate(airfoils):    
                     locs                  = np.where(np.array(a_loc) == jj ) 
                     alpha_azi             = np.atleast_2d(AOA_sec[cpt,locs,:].flatten())
-                    Re_azi                = np.atleast_2d(Re[cpt,locs,:].flatten())      
+                    Re_azi                = np.atleast_2d(Re[cpt,locs,:].flatten())  
                     pd                    = airfoil.polars 
                     if settings.use_plane_loading_surrogate: 
                         fL[cpt,locs,:,:]      = pd.lift_distribution_func((alpha_azi,Re_azi)).reshape(1,len(a_loc), num_az,chord_coord) 
@@ -157,7 +157,7 @@ def compute_rotor_noise(microphone_locations,propulsor,rotor,segment,settings, r
                 aeroacoustic_data.disc_lift_coefficient  = CL
                 aeroacoustic_data.disc_drag_coefficient  = CD 
                 aeroacoustic_data.blade_upper_surface    = y_up
-                aeroacoustic_data.blade_lower_surface    = y_low                        
+                aeroacoustic_data.blade_lower_surface    = y_low                     
                         
             harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_conditions,coordinates,rotor,settings,Noise,cpt)
         elif settings.fidelity == 'line_source': 
