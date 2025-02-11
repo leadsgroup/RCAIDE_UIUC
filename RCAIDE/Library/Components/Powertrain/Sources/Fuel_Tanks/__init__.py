@@ -12,7 +12,7 @@ See Also
 --------
 RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line
     Fuel distribution components
-RCAIDE.Library.Components.Energy.Modulators.Fuel_Selector
+RCAIDE.Library.Components.Powertrain.Modulators.Fuel_Selector
     Fuel flow control components
 """
 

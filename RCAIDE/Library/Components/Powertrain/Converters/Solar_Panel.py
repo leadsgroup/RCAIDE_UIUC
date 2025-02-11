@@ -31,7 +31,7 @@ class Solar_Panel(Component):
 
     See Also
     --------
-    RCAIDE.Library.Components.Energy.Modulators.Solar_Logic
+    RCAIDE.Library.Components.Powertrain.Modulators.Solar_Logic
         Solar power management and control
     """       
     def __defaults__(self):

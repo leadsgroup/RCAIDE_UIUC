@@ -136,7 +136,7 @@ def vehicle_setup():
     #initialize the electric network
     net            = RCAIDE.Framework.Networks.Solar()  
  
-    logic                 = RCAIDE.Library.Components.Energy.Modulators.Solar_Logic()
+    logic                 = RCAIDE.Library.Components.Powertrain.Modulators.Solar_Logic()
     logic.system_voltage  = 40.0
     logic.MPPT_efficiency = 0.95
     net.solar_logic       = logic 

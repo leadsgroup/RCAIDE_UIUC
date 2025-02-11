@@ -369,14 +369,14 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Fuel Distrubition Line 
     #------------------------------------------------------------------------------------------------------------------------------------  
-    fuel_line                                     = RCAIDE.Library.Components.Energy.Distributors.Fuel_Line() 
+    fuel_line                                     = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line() 
     fuel_line.identical_propulsors                = False # for regression 
     
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     #  Inner Right Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    outer_right_turbojet                          = RCAIDE.Library.Components.Propulsors.Turbojet()  
+    outer_right_turbojet                          = RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet()  
     outer_right_turbojet.tag                      = 'outer_right_turbojet'   
     outer_right_turbojet.active_fuel_tanks        = ['tank_6_and_7','tank_5A_and_7A','tank_2_and_3','tank_11']    
     outer_right_turbojet.engine_length            = 4.039
