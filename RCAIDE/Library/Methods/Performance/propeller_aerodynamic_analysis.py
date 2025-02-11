@@ -5,7 +5,7 @@ import RCAIDE
 from RCAIDE.Framework.Core                              import Units 
 from RCAIDE.Framework.Mission.Common                    import Results  
 from RCAIDE.Framework.Mission.Segments.Segment          import Segment  
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor.compute_rotor_performance import compute_rotor_performance 
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor.compute_rotor_performance import compute_rotor_performance 
  
 import numpy as np
 

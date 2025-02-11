@@ -149,7 +149,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Solar Panel
     #------------------------------------------------------------------------------------------------------------------------------------  
-    panel                      = RCAIDE.Library.Components.Energy.Sources.Solar_Panels.Solar_Panel()
+    panel                      = RCAIDE.Library.Components.Powertrain.Sources.Solar_Panels.Solar_Panel()
     panel.area                 = vehicle.reference_area * 0.9
     panel.efficiency           = 0.25
     panel.mass_properties.mass = panel.area*(0.60 * Units.kg)
@@ -158,7 +158,7 @@ def vehicle_setup():
     #------------------------------------------------------------------------------------------------------------------------------------           
     # Battery
     #------------------------------------------------------------------------------------------------------------------------------------  
-    bat                      = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC() 
+    bat                      = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Lithium_Ion_NMC() 
     bat.tag                  = 'li_ion_battery' 
     bat.mass_properties.mass = 90.0 * Units.kg
     bat.cell.specific_energy = 600. * Units.Wh/Units.kg

@@ -435,7 +435,7 @@ def vehicle_setup(cell_chemistry, btms_type):
         #------------------------------------------------------------------------------------------------------------------------------------           
         # Battery
         #------------------------------------------------------------------------------------------------------------------------------------  
-        bat_module                                             = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC()
+        bat_module                                             = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Lithium_Ion_NMC()
         bat_module.electrical_configuration.series             = 10
         bat_module.electrical_configuration.parallel           = 210
         bat_module.cell.nominal_capacity                       = 3.8 
@@ -453,7 +453,7 @@ def vehicle_setup(cell_chemistry, btms_type):
         #------------------------------------------------------------------------------------------------------------------------------------           
         # Battery
         #------------------------------------------------------------------------------------------------------------------------------------          
-            bat_module                                             = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_LFP()
+            bat_module                                             = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Lithium_Ion_LFP()
             bat_module.electrical_configuration.series             = 10
             bat_module.electrical_configuration.parallel           = 210
             bat_module.cell.nominal_capacity                       = 3.8 

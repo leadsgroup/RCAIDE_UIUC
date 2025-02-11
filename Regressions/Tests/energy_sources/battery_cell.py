@@ -48,12 +48,12 @@ def main():
     
      
 def lithium_air_battery_test(Ereq,Preq): 
-    battery_li_air                 = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Air()     
+    battery_li_air                 = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Lithium_Air()     
     return 
    
         
 def aluminum_air_battery_test(Ereq,Preq): 
-    battery_al_air                 = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Aluminum_Air()    
+    battery_al_air                 = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Aluminum_Air()    
     test_size_module_from_energy_and_power(battery_al_air, Ereq, Preq)
     test_mass_gain(battery_al_air, Preq)
     
@@ -63,7 +63,7 @@ def aluminum_air_battery_test(Ereq,Preq):
     return 
    
 def lithium_sulphur_battery_test(Ereq,Preq):   
-    battery_li_s                   = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Sulfur()
+    battery_li_s                   = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Lithium_Sulfur()
     specific_energy_guess          = 400*Units.Wh/Units.kg 
     test_find_ragone_properties(specific_energy_guess,battery_li_s, Ereq,Preq) 
     plot_battery_ragone_diagram(battery_li_s,   save_filename =  'lithium_sulfur')     
