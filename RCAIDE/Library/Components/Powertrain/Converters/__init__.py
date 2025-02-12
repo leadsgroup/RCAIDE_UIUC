@@ -37,3 +37,4 @@ from .Solar_Panel                                import Solar_Panel
 from .Supersonic_Nozzle                          import Supersonic_Nozzle
 from .Turbine                                    import Turbine
 from .Reformer                                   import Reformer
+from .Turboshaft                                 import Turboshaft
