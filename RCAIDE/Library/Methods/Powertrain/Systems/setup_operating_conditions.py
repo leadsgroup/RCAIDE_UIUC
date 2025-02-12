@@ -54,7 +54,7 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
         if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop:
             distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     
-        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turboshaft:
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Converters.Turboshaft:
             distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     
         if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller:
