@@ -7,7 +7,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboshaft_Propulsor import compute_power
+from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft import compute_power
 
 # Python package imports
 import numpy                                                       as np

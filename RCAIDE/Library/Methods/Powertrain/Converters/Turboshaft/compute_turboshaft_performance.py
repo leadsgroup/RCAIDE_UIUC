@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Energy/Propulsors/Networks/turboshaft_Propulsor/compute_turboshaft_performance.py
+# RCAIDE/Methods/Library/Methods/Powertrain/Converters/compute_turboshaft_performance.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -14,14 +14,14 @@ from RCAIDE.Library.Methods.Powertrain.Converters.Compressor         import comp
 from RCAIDE.Library.Methods.Powertrain.Converters.Turbine            import compute_turbine_performance
 from RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle   import compute_expansion_nozzle_performance 
 from RCAIDE.Library.Methods.Powertrain.Converters.Compression_Nozzle import compute_compression_nozzle_performance
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboshaft_Propulsor          import compute_power
+from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft         import compute_power
  
 # python imports 
 from copy import deepcopy 
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboshaft_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboshaft_performance(turboshaft,state,center_of_gravity= [[0.0, 0.0,0.0]]):    
+def compute_turboshaft_performance(turboshaft,state):    
     ''' Computes the perfomrance of one turboshaft
     
     Assumptions: 
@@ -175,14 +175,12 @@ def compute_turboshaft_performance(turboshaft,state,center_of_gravity= [[0.0, 0.
   
     noise_conditions.turboshaft.core_nozzle   = core_nozzle_res  
     
-    # Pack results   
-    moment                 = 0*state.ones_row(3)
-    thrust                 = 0*state.ones_row(3) 
+    # Pack results    
     power                  = turboshaft_conditions.power  
     stored_results_flag    = True
     stored_propulsor_tag   = turboshaft.tag
     
-    return thrust,moment,power,stored_results_flag,stored_propulsor_tag
+    return power,stored_results_flag,stored_propulsor_tag
 
 def reuse_stored_turboshaft_data(turboshaft,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one turboshaft for identical propulsors
@@ -209,7 +207,5 @@ def reuse_stored_turboshaft_data(turboshaft,state,network,stored_propulsor_tag,c
     conditions.energy[turboshaft.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turboshaft.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
       
-    power    = conditions.energy[turboshaft.tag].power    
-    moment   = 0*state.ones_row(3)
-    thrust   = 0*state.ones_row(3)
-    return thrust,moment,power    
+    power    = conditions.energy[turboshaft.tag].power   
+    return  power    

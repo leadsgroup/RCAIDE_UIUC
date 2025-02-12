@@ -8,7 +8,7 @@
 # RCAIDE imports 
 import RCAIDE
 from RCAIDE.Framework.Core                                             import Units    
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboshaft_Propulsor import design_turboshaft 
+from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft import design_turboshaft 
 from RCAIDE.Framework.Mission.Common                                   import Conditions
 from RCAIDE.Library.Plots                                              import *     
 

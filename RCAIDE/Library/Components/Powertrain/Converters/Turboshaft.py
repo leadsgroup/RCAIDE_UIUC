@@ -11,8 +11,8 @@
 import RCAIDE
 from RCAIDE.Framework.Core                  import Data
 from .                                      import Propulsor  
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboshaft_Propulsor.append_turboshaft_conditions     import append_turboshaft_conditions 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboshaft_Propulsor.compute_turboshaft_performance   import compute_turboshaft_performance, reuse_stored_turboshaft_data
+from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft.append_turboshaft_conditions     import append_turboshaft_conditions 
+from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft.compute_turboshaft_performance   import compute_turboshaft_performance, reuse_stored_turboshaft_data
  
 # ----------------------------------------------------------------------
 #  Turboshaft

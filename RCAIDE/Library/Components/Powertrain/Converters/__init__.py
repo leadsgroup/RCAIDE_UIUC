@@ -36,4 +36,5 @@ from .Offtake_Shaft                              import Offtake_Shaft
 from .Solar_Panel                                import Solar_Panel
 from .Supersonic_Nozzle                          import Supersonic_Nozzle
 from .Turbine                                    import Turbine
+from .Turboshaft                                 import Turboshaft
 from .Reformer                                   import Reformer

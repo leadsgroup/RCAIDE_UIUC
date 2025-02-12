@@ -90,11 +90,11 @@ class Electric(Network):
         total_power     = 0. * state.ones_row(1) 
         total_moment    = 0. * state.ones_row(3)  
         total_mdot      = 0. * state.ones_row(1)   
+        cryogen_mdot    = 0. * state.ones_row(1)  
         reverse_thrust  = network.reverse_thrust
        
         # Step 1: Compute performance of electric propulsor components 
         for bus in busses:
-            cryogen_mdot    = 0. * state.ones_row(1)  
             T               = 0. * state.ones_row(1) 
             total_power     = 0. * state.ones_row(1) 
             M               = 0. * state.ones_row(1)  
@@ -195,7 +195,7 @@ class Electric(Network):
                             fuel_cell_stack.reuse_stored_data(state,bus,stored_results_flag, stored_fuel_cell_tag)
                          
                     # compute cryogen mass flow rate 
-                    fuel_cell_stack_conditions  = bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag]                        
+                    fuel_cell_stack_conditions  = state.conditions.energy[bus.tag].fuel_cell_stacks[fuel_cell_stack.tag]                        
                     cryogen_mdot[t_idx]        += fuel_cell_stack_conditions.H2_mass_flow_rate[t_idx]
                     
                     # compute total mass flow rate 
