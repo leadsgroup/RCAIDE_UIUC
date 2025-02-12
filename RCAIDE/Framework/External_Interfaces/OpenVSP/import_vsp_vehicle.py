@@ -38,7 +38,7 @@ except ImportError:
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  vsp read 
 # ---------------------------------------------------------------------------------------------------------------------- 
-def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_type = None, units_type='SI',use_scaling=True,calculate_wetted_area=True): 
+def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_type = None, units_type='SI',use_scaling=True,calculate_wetted_area=True,blended_wing_body=False, transition_segment=None): 
     """This reads an OpenVSP vehicle geometry and writes it into a RCAIDE vehicle format.
     Includes wings, fuselages, and rotors.
 
@@ -132,6 +132,9 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
     if isinstance(propulsor_type,RCAIDE.Library.Components.Propulsors.Propulsor ) != True:
         raise Exception('Vehicle propulsor type must be defined. \n Choose from list in RCAIDE.Library.Compoments.Propulsors')     
 
+    if blended_wing_body and transition_segment == None:
+        raise ValueError("Transition segment must be specified for a Blended Wing Body configuration.")
+
     # Get the last path from sys.path
     system_path = sys.path[0]
     # Append the system path to the filename
@@ -151,6 +154,7 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
     vsp_rotors         = [] 
     vsp_nacelles      = [] 
     vsp_nacelle_type  = []
+
     
     vsp_geoms         = vsp.FindGeoms()
     geom_names        = []
@@ -198,13 +202,13 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
         geom_name = vsp.GetGeomName(geom)
         geom_type = vsp.GetGeomTypeName(str(geom))
 
-        if geom_type == 'Fuselage' or  geom_name == B'lended_Wing':
+        if geom_type == 'Fuselage':
             vsp_fuselages.append(geom)
         if geom_type == 'Wing':
             vsp_wings.append(geom)
         if geom_type == 'Propeller':
             vsp_rotors.append(geom) 
-        if (geom_type == 'Stack') or (geom_type == 'BodyOfRevolution') or geom_name == 'Nacelles':
+        if (geom_type == 'Stack') or (geom_type == 'BodyOfRevolution'):
             vsp_nacelle_type.append(geom_type)
             vsp_nacelles.append(geom) 
         
@@ -232,11 +236,11 @@ def import_vsp_vehicle(tag,main_wing_tag = None, network_type=None, propulsor_ty
     # Read Wings 
     # ------------------------------------------------------------------			
     for wing_id in vsp_wings:
-        wing = read_vsp_wing(wing_id, main_wing_tag, units_type,use_scaling)
+        wing = read_vsp_wing(wing_id, main_wing_tag, units_type,use_scaling,blended_wing_body = blended_wing_body,transition_segment =transition_segment)
         if calculate_wetted_area:
             wing.areas.wetted = measurements[vsp.GetGeomName(wing_id)] * (units_factor**2)  
         vehicle.append_component(wing)		 
-        
+    
     # ------------------------------------------------------------------			    
     # Read Enegy Network 
     # ------------------------------------------------------------------

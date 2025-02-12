@@ -36,7 +36,7 @@ t_table = str.maketrans( chars          + string.ascii_uppercase ,
 # ----------------------------------------------------------------------------------------------------------------------  
 #  vsp read wing
 # ----------------------------------------------------------------------------------------------------------------------  
-def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil_file=True, use_scaling=True):
+def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil_file=True, use_scaling=True ,blended_wing_body = False,transition_segment = 0):
     """This reads an OpenVSP wing vehicle geometry and writes it into a RCAIDE wing format.
 
     Assumptions:
@@ -175,14 +175,18 @@ def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil
     # -------------
 
     if single_seg == False:
-
         # Convert VSP XSecs to RCAIDE segments. (Wing segments are defined by outboard sections in VSP, but inboard sections in RCAIDE.)
         for i in range(1, segment_num+1):
             # XSec airfoil
             jj = i-1  # Airfoil index i-1 because VSP airfoils and sections are one index off relative to RCAIDE.
+           
+                
 
             segment = RCAIDE.Library.Components.Wings.Segments.Segment()
             segment.tag                   = 'Section_' + str(i)
+            if blended_wing_body and i <= transition_segment :
+                segment = RCAIDE.Library.Components.Wings.Segments.Segment()
+                segment.tag                   = 'Fuselage_Section_' + str(i)          
             thick_cord                    = vsp.GetParmVal(wing_id, 'ThickChord', 'XSecCurve_' + str(jj))
             segment.thickness_to_chord    = thick_cord	# Thick_cord stored for use in airfoil, below.
             if i!=segment_num:
