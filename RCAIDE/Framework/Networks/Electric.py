@@ -12,8 +12,8 @@ import RCAIDE
 from RCAIDE.Framework.Mission.Common                      import Residuals
 from RCAIDE.Library.Mission.Common.Unpack_Unknowns.energy import unknowns
 from .Network                                             import Network              
-from RCAIDE.Library.Methods.Propulsors.Common.compute_avionics_power_draw import compute_avionics_power_draw
-from RCAIDE.Library.Methods.Propulsors.Common.compute_payload_power_draw  import compute_payload_power_draw
+from RCAIDE.Library.Methods.Powertrain.Systems.compute_avionics_power_draw import compute_avionics_power_draw
+from RCAIDE.Library.Methods.Powertrain.Systems.compute_payload_power_draw  import compute_payload_power_draw
 
 # Python imports
 import  numpy as  np

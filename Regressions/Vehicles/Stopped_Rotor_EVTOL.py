@@ -11,8 +11,8 @@ import RCAIDE
 from RCAIDE.Framework.Core import Units 
 from RCAIDE.Library.Methods.Geometry.Planform                                  import segment_properties,wing_segmented_planform 
 from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.Common    import compute_motor_weight
-from RCAIDE.Library.Methods.Propulsors.Converters.Motor                      import design_DC_motor 
-from RCAIDE.Library.Methods.Propulsors.Converters.Rotor                        import design_propeller ,design_lift_rotor 
+from RCAIDE.Library.Methods.Powertrain.Converters.Motor                      import design_DC_motor 
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor                        import design_propeller ,design_lift_rotor 
 from RCAIDE.Library.Methods.Mass_Properties.Weight_Buildups.Electric.VTOL.Physics_Based            import converge_physics_based_weight_buildup 
 from RCAIDE.Library.Plots                                                      import *       
 from RCAIDE.load    import load as load_rotor
@@ -368,7 +368,7 @@ def vehicle_setup(new_regression=True) :
     boom.tag          = 'boom_2l' 
     vehicle.append_component(boom)      
          
-    sys                            = RCAIDE.Library.Components.Systems.System()
+    sys                            = RCAIDE.Library.Components.Powertrain.Systems.System()
     sys.mass_properties.mass       = 5 # kg   
     vehicle.append_component(sys)    
    
@@ -380,13 +380,13 @@ def vehicle_setup(new_regression=True) :
     #==================================================================================================================================== 
     # Forward Bus
     #====================================================================================================================================  
-    cruise_bus                                             = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus() 
+    cruise_bus                                             = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
     cruise_bus.tag                                         = 'cruise_bus' 
      
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus Battery
     #------------------------------------------------------------------------------------------------------------------------------------ 
-    bat                                                    = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC() 
+    bat                                                    = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Lithium_Ion_NMC() 
     bat.tag                                                = 'cruise_bus_battery'
     bat.electrical_configuration.series                    = 140  
     bat.electrical_configuration.parallel                  = 60 
@@ -399,12 +399,12 @@ def vehicle_setup(new_regression=True) :
     # Forward Bus Propulsors  
     #------------------------------------------------------------------------------------------------------------------------------------       
     # Define Forward Propulsor Container 
-    cruise_propulsor_1                                     = RCAIDE.Library.Components.Propulsors.Electric_Rotor()
+    cruise_propulsor_1                                     = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
     cruise_propulsor_1.tag                                 = 'cruise_propulsor_1'  
     cruise_propulsor_1.wing_mounted                        = False       
                  
     # Electronic Speed Controller                     
-    propeller_esc                                          = RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller() 
+    propeller_esc                                          = RCAIDE.Library.Components.Powertrain.Modulators.Electronic_Speed_Controller() 
     propeller_esc.efficiency                               = 0.95  
     propeller_esc.origin                                   = [[6.583, 1.300,  1.092 ]] 
     propeller_esc.tag                                      = 'propeller_esc_1' 
@@ -415,7 +415,7 @@ def vehicle_setup(new_regression=True) :
     speed_of_sound                                         = 340                                    # speed of sound 
     Hover_Load                                             = vehicle.mass_properties.takeoff*g      # hover load   
             
-    propeller                                              = RCAIDE.Library.Components.Propulsors.Converters.Propeller()
+    propeller                                              = RCAIDE.Library.Components.Powertrain.Converters.Propeller()
     propeller.number_of_blades                             = 3
     propeller.tag                                          = 'propeller_1'  
     propeller.origin                                       = [[6.583, 1.300,  1.092 ]] 
@@ -446,7 +446,7 @@ def vehicle_setup(new_regression=True) :
     cruise_propulsor_1.rotor                               = propeller    
                 
     # Propeller Motor              
-    propeller_motor                                        = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+    propeller_motor                                        = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor()
     propeller_motor.efficiency                             = 0.95
     propeller_motor.tag                                    = 'propeller_motor_1'  
     propeller_motor.origin                                 = [[6.583, 1.300,  1.092 ]] 
@@ -551,13 +551,13 @@ def vehicle_setup(new_regression=True) :
     # Additional Bus Loads
     #------------------------------------------------------------------------------------------------------------------------------------     
     # Payload   
-    payload                        = RCAIDE.Library.Components.Systems.Avionics()
+    payload                        = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     payload.power_draw             = 10. # Watts 
     payload.mass_properties.mass   = 1.0 * Units.kg
     cruise_bus.payload             = payload 
     
     # Avionics   
-    avionics                       = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                       = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     avionics.power_draw            = 10. # Watts  
     avionics.mass_properties.mass  = 1.0 * Units.kg
     cruise_bus.avionics            = avionics    
@@ -569,13 +569,13 @@ def vehicle_setup(new_regression=True) :
     #==================================================================================================================================== 
     # Lift Bus 
     #====================================================================================================================================          
-    lift_bus                                               = RCAIDE.Library.Components.Energy.Distributors.Electrical_Bus()
+    lift_bus                                               = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus()
     lift_bus.tag                                           = 'lift_bus' 
 
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Bus Battery
     #------------------------------------------------------------------------------------------------------------------------------------ 
-    bat                                                    = RCAIDE.Library.Components.Energy.Sources.Battery_Modules.Lithium_Ion_NMC() 
+    bat                                                    = RCAIDE.Library.Components.Powertrain.Sources.Battery_Modules.Lithium_Ion_NMC() 
     bat.tag                                                = 'lift_bus_battery'
     bat.electrical_configuration.series                    = 140   
     bat.electrical_configuration.parallel                  = 20 
@@ -589,19 +589,19 @@ def vehicle_setup(new_regression=True) :
     #------------------------------------------------------------------------------------------------------------------------------------    
      
     # Define Lift Propulsor Container 
-    lift_propulsor_1                                       = RCAIDE.Library.Components.Propulsors.Electric_Rotor()
+    lift_propulsor_1                                       = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
     lift_propulsor_1.tag                                   = 'lift_propulsor_1'
     lift_propulsor_1.wing_mounted                          = True         
               
     # Electronic Speed Controller           
-    lift_rotor_esc                                         = RCAIDE.Library.Components.Energy.Modulators.Electronic_Speed_Controller() 
+    lift_rotor_esc                                         = RCAIDE.Library.Components.Powertrain.Modulators.Electronic_Speed_Controller() 
     lift_rotor_esc.efficiency                              = 0.95    
     lift_rotor_esc.tag                                     = 'lift_rotor_esc_1' 
     lift_rotor_esc.origin                                  = [[-0.073 ,  1.950 , 1.2]] 
     lift_propulsor_1.electronic_speed_controller           = lift_rotor_esc 
            
     # Lift Rotor Design              
-    lift_rotor                                             = RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor()   
+    lift_rotor                                             = RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor()   
     lift_rotor.tag                                         = 'lift_rotor_1'  
     lift_rotor.origin                                      = [[-0.073 ,  1.950 , 1.2]] 
     lift_rotor.active                                      = True          
@@ -646,7 +646,7 @@ def vehicle_setup(new_regression=True) :
     #------------------------------------------------------------------------------------------------------------------------------------               
     # Lift Rotor Motor  
     #------------------------------------------------------------------------------------------------------------------------------------    
-    lift_rotor_motor                                       = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+    lift_rotor_motor                                       = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor()
     lift_rotor_motor.efficiency                            = 0.9
     lift_rotor_motor.nominal_voltage                       = lift_bus.voltage*3/4  
     lift_rotor_motor.origin                                = [[-0.073 ,  1.950 , 1.2]]
@@ -777,13 +777,13 @@ def vehicle_setup(new_regression=True) :
     # Additional Bus Loads
     #------------------------------------------------------------------------------------------------------------------------------------            
     # Payload   
-    payload                                                 = RCAIDE.Library.Components.Systems.Avionics()
+    payload                                                 = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     payload.power_draw                                      = 10. # Watts 
     payload.mass_properties.mass                            = 1.0 * Units.kg
     lift_bus.payload                                        = payload 
                              
     # Avionics                            
-    avionics                                                = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                                                = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     avionics.power_draw                                     = 10. # Watts  
     avionics.mass_properties.mass                           = 1.0 * Units.kg
     lift_bus.avionics                                       = avionics    

@@ -18,19 +18,19 @@ def compute_propulsion_system_weight(network):
     number_of_jet_engines = 0
     number_of_piston_engines = 0
     for propulsor in network.propulsors: # Check this 
-            if isinstance(propulsor, RCAIDE.Library.Components.Propulsors.Turbofan):
+            if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan):
                 number_of_jet_engines += 1
                 W_engine_jet            = compute_jet_engine_weight(propulsor)
                 W_propulsion            = integrated_propulsion_jet(W_engine_jet) 
                 propulsor.mass_properties.mass = W_propulsion
                 W_energy_network_total  += W_propulsion                
-            elif isinstance(propulsor, RCAIDE.Library.Components.Propulsors.ICE_Propeller):    
+            elif isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller):    
                 number_of_piston_engines += 1
                 W_engine_piston          = compute_piston_engine_weight(propulsor)
                 W_propulsion             = integrated_propulsion_piston(W_engine_piston) 
                 propulsor.mass_properties.mass = W_propulsion
                 W_energy_network_total  += W_propulsion
-            elif type(propulsor) ==  RCAIDE.Library.Components.Propulsors.Turboprop:      
+            elif type(propulsor) ==  RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop:      
                 number_of_piston_engines += 1
                 W_turboprop          = compute_turboprop_engine_weight(propulsor)
                 W_propulsion             = integrated_propulsion_piston(W_turboprop) 

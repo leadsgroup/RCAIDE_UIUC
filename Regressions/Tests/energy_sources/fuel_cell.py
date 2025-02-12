@@ -9,7 +9,7 @@
 # RCAIDE imports 
 import RCAIDE  
 from RCAIDE.Framework.Core                                    import Units, Data  
-from RCAIDE.Library.Methods.Energy.Sources.Batteries.Aluminum_Air import * 
+from RCAIDE.Library.Methods.Powertrain.Sources.Batteries.Aluminum_Air import * 
 from RCAIDE.Framework.Mission.Common                          import Conditions
 from RCAIDE.Library.Plots                                     import * 
 

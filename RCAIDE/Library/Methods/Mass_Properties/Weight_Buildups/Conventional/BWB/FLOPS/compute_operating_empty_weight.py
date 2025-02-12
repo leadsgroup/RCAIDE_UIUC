@@ -137,23 +137,6 @@ def compute_operating_empty_weight(vehicle,settings=None):
         for propulsor in network.propulsors:
             propulsor.mass_properties.mass = W_energy_network_total / number_of_engines
     W_energy_network_cumulative += W_energy_network_total
-    # # Compute Propulsor Weight
-    # number_of_tanks =  0
-    # for network in vehicle.networks:
-    #     W_propulsion = 0
-    #     no_of_engines = 0
-    #     for propulsor in network.propulsors:
-    #             if type(propulsor) == RCAIDE.Library.Components.Propulsors.Turbofan:
-    #                 no_of_engines  += 1
-    #                 thrust_sls            = propulsor.sealevel_static_thrust
-    #                 W_engine_jet          = Propulsion.compute_jet_engine_weight(thrust_sls)
-    #                 total_propulsor_mass  = Propulsion.integrated_propulsion(W_engine_jet)
-    #                 propulsor.mass_properties.mass = total_propulsor_mass
-    #                 W_propulsion   += total_propulsor_mass
-    #     for fuel_line in network.fuel_lines: 
-    #         for fuel_tank in fuel_line.fuel_tanks:
-    #             number_of_tanks +=  1
-
         
     # Compute Wing Weight 
     for wing in vehicle.wings:
@@ -265,7 +248,7 @@ def compute_operating_empty_weight(vehicle,settings=None):
     apu.tag                                          = 'apu'
     hydraulics                                       = RCAIDE.Library.Components.Component()
     hydraulics.tag                                   = 'hydraulics'
-    avionics                                         = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                                         = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     optionals                                        = RCAIDE.Library.Components.Component()
     optionals.tag                                    = 'optionals'
           

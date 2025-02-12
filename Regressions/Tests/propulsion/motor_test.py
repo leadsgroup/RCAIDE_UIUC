@@ -9,9 +9,9 @@
 import RCAIDE
 from RCAIDE.Framework.Core                              import Units, Data
 from RCAIDE.Library.Plots                               import *      
-from RCAIDE.Library.Methods.Propulsors.Converters       import Motor
-from RCAIDE.Library.Methods.Propulsors.Converters.Motor.design_DC_motor import design_DC_motor
-from RCAIDE.Library.Methods.Propulsors.Common           import setup_operating_conditions 
+from RCAIDE.Library.Methods.Powertrain.Converters       import Motor
+from RCAIDE.Library.Methods.Powertrain.Converters.Motor.design_DC_motor import design_DC_motor
+from RCAIDE.Library.Methods.Powertrain                  import setup_operating_conditions 
 
 import os 
 import numpy as np 
@@ -38,7 +38,7 @@ def main():
         motor_conditions = operating_state.conditions.energy[propulsor_tag][motor.tag]
         motor_conditions.voltage[:, 0]   = 120
 
-        if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
+        if (type(motor) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor):
 
             Q_cond_path_truth               = [375.04333098554946]
             Q_conv_path_truth               = [0.024899697947077856]
@@ -74,7 +74,7 @@ def main():
         error.current_test   = np.max(np.abs(current_truth[i] - current[0][0])) 
         error.voltage_test   = np.max(np.abs(voltage_truth[i] - voltage[0][0])) 
 
-        if (type(motor) == RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor):
+        if (type(motor) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor):
             error.Q_cond_path_test      = np.max(np.abs(Q_cond_path_truth[0] - Q_cond_path))
             error.Q_conv_path_test      = np.max(np.abs(Q_conv_path_truth[0] - Q_conv_path))
             error.Q_conv_path_cooling_flow_test = np.max(np.abs(Q_conv_path_cooling_flow_truth[0] - Q_conv_path_cooling_flow))
@@ -93,7 +93,7 @@ def main():
 def design_test_motor(motor_type): 
     
     if motor_type == 'DC_Motor':
-        motor = RCAIDE.Library.Components.Propulsors.Converters.DC_Motor()
+        motor = RCAIDE.Library.Components.Powertrain.Converters.DC_Motor()
     
         prop = Test_Propeller()
         motor.mass_properties.mass = 9. * Units.kg 
@@ -108,7 +108,7 @@ def design_test_motor(motor_type):
         motor.angular_velocity     = prop.cruise.design_angular_velocity # Horse power of gas engine variant  750 * Units['hp']
         design_DC_motor(motor) 
     elif motor_type == 'PMSM_Motor':
-        motor = RCAIDE.Library.Components.Propulsors.Converters.PMSM_Motor()
+        motor = RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor()
         motor.speed_constant            = 3                        # [rpm/V]        speed constant
         motor.stator_inner_diameter     = 0.16                        # [m]            stator inner diameter
         motor.stator_outer_diameter     = 0.348                       # [m]            stator outer diameter

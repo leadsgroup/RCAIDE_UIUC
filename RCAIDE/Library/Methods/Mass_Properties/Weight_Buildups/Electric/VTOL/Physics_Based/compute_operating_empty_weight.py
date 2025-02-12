@@ -109,7 +109,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
     apu.tag                                          = 'apu'
     hydraulics                                       = RCAIDE.Library.Components.Component()
     hydraulics.tag                                   = 'hydraulics'
-    avionics                                         = RCAIDE.Library.Components.Systems.Avionics()
+    avionics                                         = RCAIDE.Library.Components.Powertrain.Systems.Avionics()
     optionals                                        = RCAIDE.Library.Components.Component()
     optionals.tag                                    = 'optionals'
     
@@ -215,7 +215,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
             
         for propulsor in network.propulsors:
             rotor = propulsor.rotor   
-            if type(rotor) == RCAIDE.Library.Components.Propulsors.Converters.Propeller:
+            if type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Propeller:
                 ''' Propeller Weight '''  
                 number_of_propellers       += 1   
                 rTip_ref                   = rotor.tip_radius 
@@ -228,7 +228,7 @@ def compute_operating_empty_weight(vehicle,settings = None):
                 weight.servos              += prop_servo_weight
                 weight.hubs                += prop_hub_weight
                 
-            if (type(rotor) == RCAIDE.Library.Components.Propulsors.Converters.Lift_Rotor or type(rotor) == RCAIDE.Library.Components.Propulsors.Converters.Prop_Rotor) or type(rotor) == RCAIDE.Library.Components.Propulsors.Converters.Rotor:
+            if (type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Lift_Rotor or type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Prop_Rotor) or type(rotor) == RCAIDE.Library.Components.Powertrain.Converters.Rotor:
                 ''' Lift Rotor, Prop-Rotor or Rotor Weight '''  
                 number_of_lift_rotors       += 1  
                 rTip_ref                    = rotor.tip_radius
