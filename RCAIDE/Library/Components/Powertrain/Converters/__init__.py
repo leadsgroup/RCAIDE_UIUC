@@ -38,3 +38,4 @@ from .Supersonic_Nozzle                          import Supersonic_Nozzle
 from .Turbine                                    import Turbine
 from .Turboshaft                                 import Turboshaft
 from .Reformer                                   import Reformer
+from .Turboshaft                                 import Turboshaft
