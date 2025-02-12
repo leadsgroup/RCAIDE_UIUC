@@ -33,6 +33,7 @@ def append_bus_conditions(bus,segment):
     segment.state.conditions.energy[bus.tag].battery_modules       = Conditions()
     segment.state.conditions.energy[bus.tag].fuel_cell_stacks      = Conditions()
     segment.state.conditions.energy[bus.tag].power_draw            = 0 * ones_row(1)
+    segment.state.conditions.energy[bus.tag].hybrid_power_split_ratio = segment.hybrid_power_split_ratio * ones_row(1)
     segment.state.conditions.energy[bus.tag].state_of_charge       = 0 * ones_row(1) 
     segment.state.conditions.energy[bus.tag].depth_of_discharge    = 0 * ones_row(1) 
     segment.state.conditions.energy[bus.tag].current_draw          = 0 * ones_row(1)

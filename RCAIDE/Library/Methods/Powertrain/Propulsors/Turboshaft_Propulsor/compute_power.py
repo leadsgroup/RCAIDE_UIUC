@@ -75,18 +75,19 @@ def compute_power(turboshaft,turboshaft_conditions,conditions):
     """           
     #unpack the values
     fuel_type                                  = turboshaft.fuel_type
+    working_fluid                              = turboshaft.working_fluid
     LHV                                        = fuel_type.lower_heating_value                                                                        
     gamma                                      = conditions.freestream.isentropic_expansion_factor                                                      
     a0                                         = conditions.freestream.speed_of_sound                                                                   
-    M0                                         = conditions.freestream.mach_number                                                                      
-    Cp                                         = conditions.freestream.Cp                                                                               # Source [2]
+    M0                                         = conditions.freestream.mach_number                                                                                # Source [2]
     total_temperature_reference                = turboshaft_conditions.total_temperature_reference                                                          
     total_pressure_reference                   = turboshaft_conditions.total_pressure_reference                                                             # Source [1]
     eta_c                                      = turboshaft.conversion_efficiency                                                                       # Source [2]
                                                                                                                                                         
     #unpacking from turboshaft                                                                                                                          
     Tref                                       = turboshaft.reference_temperature                                                                       # Source [1]
-    Pref                                       = turboshaft.reference_pressure                                                                          # Source [1]
+    Pref                                       = turboshaft.reference_pressure                                                            
+    Cp                                         = working_fluid.compute_cp(total_temperature_reference,total_pressure_reference)                                                                          # Source [1]
     Tt4                                        = turboshaft_conditions.combustor_stagnation_temperature                                                    
     pi_c                                       = turboshaft.compressor.pressure_ratio                                                                   
     m_dot_compressor                           = turboshaft.compressor.mass_flow_rate                                                                   # Source [2]
@@ -114,7 +115,7 @@ def compute_power(turboshaft,turboshaft_conditions,conditions):
     Psp                                        =  Cp*total_temperature_reference*tau_lambda*tau_tH*(1 - tau_tL)*eta_c                                   # Source [2]    
     
     #Computing Power 
-    Power                                      = Psp*m_dot_air                                                                                          
+    Power                                      = Psp*m_dot_air*turboshaft_conditions.throttle                                                                                          
     #Power                                      = m_dot_air*Cp*total_temperature_reference*(tau_lambda*(1 - tau_t) - tau_r*(tau_c - 1))                 # Source [2]
 
     #fuel to air ratio
