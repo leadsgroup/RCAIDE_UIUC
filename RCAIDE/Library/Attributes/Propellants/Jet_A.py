@@ -36,7 +36,8 @@ class Jet_A(Propellant):
         self.specific_energy               = 43.02e6                        # J/kg
         self.energy_density                = 35276.4e6                      # J/m^3
         self.lower_heating_value           = 43.24e6                          # J/kg 
-        self.fuel_equivalence_ratio        = 0.3
+        self.equivalence_ratio_PZ          = 1.77   # Modify later to be JetA.design_fuel_equivalency_ratio # [-] 
+        self.equivalence_ratio_SZ          = 0.7   # Modify later to be JetA.design_fuel_equivalency_ratio # [-] 
         self.stoichiometric_fuel_air_ratio = 0.068
         self.max_mass_fraction             = Data({'Air' : 0.0633,'O2' : 0.3022})   # kg propellant / kg oxidizer
    
