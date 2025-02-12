@@ -30,13 +30,15 @@ class Jet_A(Propellant):
             
             
         """    
-        self.tag                          = 'Jet_A'
-        self.reactant                     = 'O2'
-        self.density                      = 820.0                          # kg/m^3 (15 C, 1 atm)
-        self.specific_energy              = 43.02e6                        # J/kg
-        self.energy_density               = 35276.4e6                      # J/m^3
-        self.lower_heating_value          = 43.24e6                          # J/kg 
-        self.max_mass_fraction            = Data({'Air' : 0.0633,'O2' : 0.3022})   # kg propellant / kg oxidizer
+        self.tag                           = 'Jet_A'
+        self.reactant                      = 'O2'
+        self.density                       = 820.0                          # kg/m^3 (15 C, 1 atm)
+        self.specific_energy               = 43.02e6                        # J/kg
+        self.energy_density                = 35276.4e6                      # J/m^3
+        self.lower_heating_value           = 43.24e6                          # J/kg 
+        self.fuel_equivalence_ratio        = 0.3
+        self.stoichiometric_fuel_air_ratio = 0.068
+        self.max_mass_fraction             = Data({'Air' : 0.0633,'O2' : 0.3022})   # kg propellant / kg oxidizer
    
         self.use_high_fidelity_kinetics_model      =  True 
         self.fuel_surrogate_chemical_properties    = {'N-C12H26':0.6, 'A1CH3':0.2, 'A1':0.2}
