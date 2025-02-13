@@ -21,7 +21,7 @@ from copy import deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboshaft_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboshaft_performance(turboshaft,state):    
+def compute_turboshaft_performance(turboshaft,fuel_line,state):    
     ''' Computes the perfomrance of one turboshaft
     
     Assumptions: 
@@ -46,8 +46,7 @@ def compute_turboshaft_performance(turboshaft,state):
     ''' 
     conditions                = state.conditions 
     noise_conditions          = conditions.noise[turboshaft.tag]  
-    turboshaft_conditions     = conditions.energy[turboshaft.tag]
-    rho                       = conditions.freestream.density  
+    turboshaft_conditions     = conditions.energy[turboshaft.tag] 
     ram                       = turboshaft.ram
     inlet_nozzle              = turboshaft.inlet_nozzle
     compressor                = turboshaft.compressor
@@ -179,10 +178,12 @@ def compute_turboshaft_performance(turboshaft,state):
     power                  = turboshaft_conditions.power  
     stored_results_flag    = True
     stored_propulsor_tag   = turboshaft.tag
+
+    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS
     
     return power,stored_results_flag,stored_propulsor_tag
 
-def reuse_stored_turboshaft_data(turboshaft,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
+def reuse_stored_turboshaft_data(turboshaft,state,network,fuel_line,bus,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one turboshaft for identical propulsors
     
     Assumptions: 
@@ -194,7 +195,7 @@ def reuse_stored_turboshaft_data(turboshaft,state,network,stored_propulsor_tag,c
     Inputs:  
     conditions           - operating conditions data structure     [-]  
     fuel_line            - fuelline                                [-] 
-    turboshaft            - turboshaft data structure              [-] 
+    turboshaft           - turboshaft data structure              [-] 
     total_power          - power of turboshaft group               [W] 
 
     Outputs:  
@@ -205,7 +206,9 @@ def reuse_stored_turboshaft_data(turboshaft,state,network,stored_propulsor_tag,c
     ''' 
     conditions                         = state.conditions   
     conditions.energy[turboshaft.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
-    conditions.noise[turboshaft.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
-      
-    power    = conditions.energy[turboshaft.tag].power   
+    conditions.noise[turboshaft.tag]   = deepcopy(conditions.noise[stored_propulsor_tag]) 
+    power                              = conditions.energy[turboshaft.tag].power
+    
+
+    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS     
     return  power    

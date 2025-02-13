@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Energy/Propulsors/Turboshaft_Propulsor/design_turboshaft.py
+# RCAIDE/Library/Methods/Energy/Propulsors/Turboshaft/design_turboshaft.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 

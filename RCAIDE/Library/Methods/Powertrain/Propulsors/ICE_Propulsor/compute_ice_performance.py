@@ -73,15 +73,18 @@ def compute_ice_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]])
     ice_conditions.moment      = conditions.energy[propulsor.tag][propeller.tag].moment
     ice_conditions.power       = conditions.energy[propulsor.tag][propeller.tag].power 
     
-    T  = conditions.energy[propulsor.tag][propeller.tag].thrust  
-    M  = conditions.energy[propulsor.tag][propeller.tag].moment 
-    P  = conditions.energy[propulsor.tag][propeller.tag].power 
+    thrust_vector  = conditions.energy[propulsor.tag][propeller.tag].thrust  
+    moment         = conditions.energy[propulsor.tag][propeller.tag].moment 
+    power          = conditions.energy[propulsor.tag][propeller.tag].power 
     
-    return T,M,P,stored_results_flag,stored_propulsor_tag 
+    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS
+    power_elec =  0*state.ones_row(3)
+    
+    return thrust_vector,moment,power,power_elec,stored_results_flag,stored_propulsor_tag 
     
     
     
-def reuse_stored_ice_data(propulsor,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
+def reuse_stored_ice_data(propulsor,state,network,fuel_line,bus,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one propulsor for identical propulsors
     
     Assumptions: 
@@ -115,21 +118,24 @@ def reuse_stored_ice_data(propulsor,state,network,stored_propulsor_tag,center_of
     conditions.energy[propulsor.tag][engine.tag]        = deepcopy(conditions.energy[stored_propulsor_tag][engine_0.tag])
     conditions.energy[propulsor.tag][propeller.tag]     = deepcopy(conditions.energy[stored_propulsor_tag][propeller_0.tag])
   
-    thrust                  = conditions.energy[propulsor.tag][propeller.tag].thrust 
+    thrust_vector           = conditions.energy[propulsor.tag][propeller.tag].thrust 
     power                   = conditions.energy[propulsor.tag][propeller.tag].power 
     
     moment_vector           = 0*state.ones_row(3) 
     moment_vector[:,0]      = propeller.origin[0][0]  -  center_of_gravity[0][0] 
     moment_vector[:,1]      = propeller.origin[0][1]  -  center_of_gravity[0][1] 
     moment_vector[:,2]      = propeller.origin[0][2]  -  center_of_gravity[0][2]
-    moment                  =  np.cross(moment_vector, thrust)
+    moment                  =  np.cross(moment_vector, thrust_vector)
     
     conditions.energy[propulsor.tag][propeller.tag].moment = moment  
-    conditions.energy[propulsor.tag].thrust            = thrust   
-    conditions.energy[propulsor.tag].moment            = moment  
-    conditions.energy[propulsor.tag].power             = power
+    conditions.energy[propulsor.tag].thrust                = thrust_vector   
+    conditions.energy[propulsor.tag].moment                = moment  
+    conditions.energy[propulsor.tag].power                 = power
  
-    return thrust,moment,power 
+    
+    power_elec =  0*state.ones_row(3)
+    
+    return thrust_vector,moment,power, power_elec
 
             
                

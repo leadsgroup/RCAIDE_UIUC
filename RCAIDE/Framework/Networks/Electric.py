@@ -98,30 +98,25 @@ class Electric(Network):
             T               = 0. * state.ones_row(1) 
             total_power     = 0. * state.ones_row(1) 
             M               = 0. * state.ones_row(1)  
+            bus_conditions  = state.conditions.energy[bus.tag]
             avionics        = bus.avionics
             payload         = bus.payload  
 
-            # Avionics Power Consumtion
-            avionics_conditions = state.conditions.energy[bus.tag][avionics.tag]
-            compute_avionics_power_draw(avionics,avionics_conditions,conditions)
+            # Avionics Power Consumtion 
+            compute_avionics_power_draw(avionics,bus,conditions)
 
-            # Payload Power
-            payload_conditions = state.conditions.energy[bus.tag][payload.tag]
-            compute_payload_power_draw(payload,payload_conditions,conditions)
+            # Payload Power 
+            compute_payload_power_draw(payload,bus,conditions)
 
             # Bus Voltage 
             bus_voltage = bus.voltage * state.ones_row(1)
 
-            if conditions.energy.recharging:
-                avionics_power         = (avionics_conditions.power*bus.power_split_ratio)* state.ones_row(1)
-                payload_power          = (payload_conditions.power*bus.power_split_ratio)* state.ones_row(1)            
-                total_esc_power        = 0 * state.ones_row(1)
+            if conditions.energy.recharging:             
                 bus.charging_current   = bus.nominal_capacity * bus.charging_c_rate 
                 charging_power         = (bus.charging_current*bus_voltage*bus.power_split_ratio)
 
                 # append bus outputs to bus
-                bus_conditions                    = state.conditions.energy[bus.tag]
-                bus_conditions.power_draw         = ((avionics_power + payload_power + total_esc_power) - charging_power)/bus.efficiency
+                bus_conditions.power_draw         -= charging_power/bus.efficiency
                 bus_conditions.current_draw       = -bus_conditions.power_draw/bus.voltage
 
             else:       
@@ -134,28 +129,22 @@ class Electric(Network):
                         if propulsor.active and bus.active:       
                             if network.identical_propulsors == False:
                                 # run analysis  
-                                T,M,P,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus_voltage,center_of_gravity)
+                                T,M,P,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus = bus, center_of_gravity= center_of_gravity)
                             else:             
                                 if stored_results_flag == False: 
                                     # run propulsor analysis 
-                                    T,M,P,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus_voltage,center_of_gravity)
+                                    T,M,P,_, stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus = bus, center_of_gravity= center_of_gravity)
                                 else:
                                     # use previous propulsor results 
-                                    T,M,P = propulsor.reuse_stored_data(state,network,stored_propulsor_tag,center_of_gravity)
+                                    T,M,P,_  = propulsor.reuse_stored_data(state,network,bus = bus,stored_propulsor_tag=stored_propulsor_tag,center_of_gravity=center_of_gravity)
     
                             total_thrust += T   
                             total_moment += M   
                             total_power  += P 
 
-                # compute power from each componemnt 
-                avionics_power  = (avionics_conditions.power*bus.power_split_ratio)* state.ones_row(1) 
-                payload_power   = (payload_conditions.power*bus.power_split_ratio)* state.ones_row(1)   
-                charging_power  = (state.conditions.energy[bus.tag].regenerative_power*bus_voltage*bus.power_split_ratio) 
-                total_esc_power = total_power*bus.power_split_ratio  
-
-                # append bus outputs to electrochemical energy source 
-                bus_conditions                    = state.conditions.energy[bus.tag]
-                bus_conditions.power_draw        += ((avionics_power + payload_power + total_esc_power) - charging_power)/bus.efficiency
+                # compute power from each componemnt   
+                charging_power  = (state.conditions.energy[bus.tag].regenerative_power*bus_voltage*bus.power_split_ratio)  
+                bus_conditions.power_draw        -= charging_power/bus.efficiency
                 bus_conditions.current_draw       = bus_conditions.power_draw/bus_voltage
 
         
@@ -318,6 +307,7 @@ class Electric(Network):
             N/A
         """                
         segment.state.residuals.network = Residuals()
+        segment.state.conditions.energy.hybrid_power_split_ratio[:,0] = 1
         
         for network in segment.analyses.energy.vehicle.networks:
             for p_i, propulsor in enumerate(network.propulsors): 

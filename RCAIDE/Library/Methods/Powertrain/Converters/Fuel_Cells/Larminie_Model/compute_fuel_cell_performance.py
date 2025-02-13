@@ -54,8 +54,8 @@ def compute_fuel_cell_performance(fuel_cell_stack,state,bus,coolant_lines,t_idx,
     # ---------------------------------------------------------------------------------
     bus_conditions              = state.conditions.energy[bus.tag]
     fuel_cell_stack_conditions  = bus_conditions.fuel_cell_stacks[fuel_cell_stack.tag]
-    P_bus                       = bus_conditions.power_draw[t_idx] 
-     
+    phi                         = state.conditions.energy.hybrid_power_split_ratio  
+    P_bus                       = bus_conditions.power_draw[t_idx]*phi   
     
     P_stack  = P_bus /len(bus.fuel_cell_stacks) 
     P_cell   = P_stack / n_total  

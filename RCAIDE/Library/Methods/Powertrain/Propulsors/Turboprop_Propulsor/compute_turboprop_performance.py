@@ -24,7 +24,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboprop_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,0.0]]):    
+def compute_turboprop_performance(turboprop,state,fuel_line,bus,center_of_gravity= [[0.0, 0.0,0.0]]):    
     
     ''' Computes the performance of one turboprop
     
@@ -209,11 +209,15 @@ def compute_turboprop_performance(turboprop,state,center_of_gravity= [[0.0, 0.0,
     
     # Pack results    
     stored_results_flag    = True
-    stored_propulsor_tag   = turboprop.tag 
+    stored_propulsor_tag   = turboprop.tag
     
-    return thrust_vector,moment,power,stored_results_flag,stored_propulsor_tag
 
-def reuse_stored_turboprop_data(turboprop,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
+    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS
+    power_elec =  0*state.ones_row(3)
+    
+    return thrust_vector,moment,power,power_elec,stored_results_flag,stored_propulsor_tag 
+
+def reuse_stored_turboprop_data(turboprop,state,network,fuel_line,bus,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one turboprop for identical propulsors
     
     Assumptions: 
@@ -248,5 +252,10 @@ def reuse_stored_turboprop_data(turboprop,state,network,stored_propulsor_tag,cen
     moment             = np.cross(moment_vector, thrust_vector)         
   
     power                                   = conditions.energy[turboprop.tag].power 
-    conditions.energy[turboprop.tag].moment =  moment 
-    return thrust_vector,moment,power    
+    conditions.energy[turboprop.tag].moment =  moment
+    
+
+    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS     
+    power_elec =  0*state.ones_row(3)
+    
+    return thrust_vector,moment,power, power_elec

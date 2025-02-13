@@ -23,7 +23,7 @@ from copy import  deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_performance
 # ----------------------------------------------------------------------------------------------------------------------   
-def compute_turbofan_performance(turbofan,state,center_of_gravity= [[0.0, 0.0,0.0]]):
+def compute_turbofan_performance(turbofan,state,fuel_line,bus,center_of_gravity= [[0.0, 0.0,0.0]]):
     ''' Computes the perfomrance of one turbofan
     
     Assumptions: 
@@ -275,9 +275,13 @@ def compute_turbofan_performance(turbofan,state,center_of_gravity= [[0.0, 0.0,0.
     stored_results_flag                     = True
     stored_propulsor_tag                    = turbofan.tag 
     
-    return thrust_vector,moment,power,stored_results_flag,stored_propulsor_tag 
+
+    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS
+    power_elec =  0*state.ones_row(3)
     
-def reuse_stored_turbofan_data(turbofan,state,network,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
+    return thrust_vector,moment,power,power_elec,stored_results_flag,stored_propulsor_tag 
+    
+def reuse_stored_turbofan_data(turbofan,state,network,fuel_line,bus,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one turbofan for identical turbofans
     
     Assumptions: 
@@ -300,7 +304,7 @@ def reuse_stored_turbofan_data(turbofan,state,network,stored_propulsor_tag,cente
     Properties Used: 
     N.A.        
     ''' 
-    conditions                                      = state.conditions  
+    conditions                       = state.conditions  
     conditions.energy[turbofan.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turbofan.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
     
@@ -313,7 +317,12 @@ def reuse_stored_turbofan_data(turbofan,state,network,stored_propulsor_tag,cente
     moment_vector[:,2] = turbofan.origin[0][2]  -  center_of_gravity[0][2]
     moment             = np.cross(moment_vector,thrust_vector)    
   
-    power                                   = conditions.energy[turbofan.tag].power 
-    conditions.energy[turbofan.tag].moment =  moment 
+    power                                  = conditions.energy[turbofan.tag].power 
+    conditions.energy[turbofan.tag].moment =  moment
+    
+    
+    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS 
  
-    return thrust_vector,moment,power    
+    power_elec =  0*state.ones_row(3)
+    
+    return thrust_vector,moment,power, power_elec

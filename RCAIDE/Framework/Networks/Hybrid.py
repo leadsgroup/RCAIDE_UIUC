@@ -67,29 +67,13 @@ class Hybrid(Network):
 
         # Step 1: Unpack
         conditions     = state.conditions   
-        reverse_thrust = network.reverse_thrust
-        total_thrust   = 0. * state.ones_row(3) 
-        total_moment   = 0. * state.ones_row(3) 
-        total_power    = 0. * state.ones_row(1) 
-        total_mdot     = 0. * state.ones_row(1)    
-       
-        # --------------------------------------------------------------------------------------------------
-        # Evaluate Propulsors 
-        # --------------------------------------------------------------------------------------------------
-        # Electric/Fuel Cells 
-        total_thrust,total_moment, total_power =  evaluate_electric_based_propulsors(network,state,center_of_gravity,total_thrust,total_moment, total_power, total_mdot)
-         
-        # Conventional Fuel/Direct Hydrogen Combustion  
-        total_thrust,total_moment, total_power, total_mdot =  evaluate_fuel_based_propulsors(network,state,center_of_gravity,total_thrust,total_moment, total_power, total_mdot)
-               
-        # --------------------------------------------------------------------------------------------------
-        # Evaluate Non-Thrust Producing Energy Conversion/Sources Compomnets 
-        # --------------------------------------------------------------------------------------------------               
-        # Electric/Fuel Cells     
-        total_mdot =  evaluate_electric_energy_storage(state,network,total_mdot)
+        reverse_thrust = network.reverse_thrust 
         
-        # Conventional Fuel/Direct Hydrogen Combustion 
-        total_mdot =  evaluate_fuel_energy_storage(state,network,total_mdot)
+        # Evaluate Propulsors   
+        total_thrust,total_moment,total_power,total_mdot =  evaluate_propulsors(network,state,center_of_gravity)
+                
+        # Evaluate Non-Thrust Producing Energy Conversion/Sources Compomnets  
+        total_mdot =  evaluate_energy_storage(state,network,total_mdot) 
  
         # Step 3: Pack results
         if reverse_thrust ==  True:

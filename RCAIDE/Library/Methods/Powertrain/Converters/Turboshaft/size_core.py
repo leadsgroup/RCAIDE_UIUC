@@ -1,8 +1,8 @@
-# RCAIDE/Methods/Energy/Propulsors/Turboshaft_Propulsor/size_core.py
+# RCAIDE/Methods/Energy/Propulsors/Turboshaft/size_core.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
-# Modified: Jun 2024, M. Guidotti & D.J. Lee
+# Modified: Jun 2024, M. Guidotti  
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT

@@ -1,8 +1,8 @@
-# RCAIDE/Library/Methods/Energy/Propulsors/Turboshaft_Propulsor/compute_power.py
+# RCAIDE/Library/Methods/Energy/Propulsors/Turboshaft/compute_power.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
-# Modified: Jun 2024, M. Guidotti & D.J. Lee
+# Modified: Jun 2024, M. Guidotti  
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -95,14 +95,10 @@ def compute_power(turboshaft,turboshaft_conditions,conditions):
     tau_lambda                                 = Tt4/total_temperature_reference                                                                        
     tau_r                                      = 1 + ((gamma - 1)/2)*M0**2                                                                              
     tau_c                                      = pi_c**((gamma - 1)/gamma)                                                                              
-    tau_t                                      = (1/(tau_r*tau_c)) + ((gamma - 1)*M0**2)/(2*tau_lambda*eta_c**2)                                        # Source [2]
-    #tau_t                                      = x/(tau_r*tau_c)                                                                                      # Source [1]
+    tau_t                                      = (1/(tau_r*tau_c)) + ((gamma - 1)*M0**2)/(2*tau_lambda*eta_c**2)                                                                   # Source [1]
     tau_tH                                     = 1 - (tau_r/tau_lambda)*(tau_c - 1)                                                                    # Source [2]
-    tau_tL                                     = tau_t/tau_tH                                                                                          # Source [2]
-    #x                                          = 1.02                                                                                                  # Source [1] Page 335
-    x                                          = tau_t*tau_r*tau_c                                                                                     # Source [1] 
-    #C_shaft                                    = tau_lambda*(1 - x/(tau_r*tau_c)) - tau_r*(tau_c - 1)                                                  # Source [1]
-    C_shaft                                    = tau_lambda*(1 - tau_t) - tau_r*(tau_c - 1)                                                             # Source [1]    
+    tau_tL                                     = tau_t/tau_tH                                                                                             # Source [1] Page 335
+    x                                          = tau_t*tau_r*tau_c                                                                                       # Source [1]    
 
     #Computing Specifc Thrust
     Tsp                                        = a0*(((2/(gamma - 1))*(tau_lambda/(tau_r*tau_c))*(tau_r*tau_c*tau_t - 1))**eta_c - M0)                  # Source [2]
@@ -110,24 +106,18 @@ def compute_power(turboshaft,turboshaft_conditions,conditions):
     #computing the core mass flow              
     m_dot_air                                  = m_dot_compressor*np.sqrt(Tref/total_temperature_reference)*(total_pressure_reference/Pref)             # Source [1]
     
-    #Computing Specifc Power
-    #Psp                                        = Cp*total_temperature_reference*C_shaft                                                                 # Source [1] 
+    #Computing Specifc Power                          # Source [1] 
     Psp                                        =  Cp*total_temperature_reference*tau_lambda*tau_tH*(1 - tau_tL)*eta_c                                   # Source [2]    
     
     #Computing Power 
-    Power                                      = Psp*m_dot_air*turboshaft_conditions.throttle                                                                                          
-    #Power                                      = m_dot_air*Cp*total_temperature_reference*(tau_lambda*(1 - tau_t) - tau_r*(tau_c - 1))                 # Source [2]
+    Power                                      = Psp*m_dot_air*turboshaft_conditions.throttle                                                             # Source [2]
 
     #fuel to air ratio
-    f                                          = (Cp*total_temperature_reference/LHV)*(tau_lambda - tau_r*tau_c)                                        # Source [2]    
-                                                                                                                                               
-    #fuel flow rate                             
-    #fuel_flow_rate                             = Power*PSFC*1./Units.hour                                                                              # Source [1]
+    f                                          = (Cp*total_temperature_reference/LHV)*(tau_lambda - tau_r*tau_c)                                                                               # Source [1]
     fuel_flow_rate                             = f*m_dot_air
     
     #Computing the PSFC                        
-    PSFC                                       = f/Psp                                                                                                  
-    #PSFC                                       = (tau_lambda/(C_shaft*LHV))                                                                            # Source [1]  
+    PSFC                                       = f/Psp                                                                                                     # Source [1]  
     
     #Computing the thermal efficiency                       
     eta_T                                      = 1 - (tau_r*(tau_c - 1))/(tau_lambda*(1 - x/(tau_r*tau_c)))                                             # Source [1]    
@@ -135,7 +125,7 @@ def compute_power(turboshaft,turboshaft_conditions,conditions):
     #pack outputs
     turboshaft_conditions.power_specific_fuel_consumption   = PSFC
     turboshaft_conditions.fuel_flow_rate                    = fuel_flow_rate                                                                              
-    turboshaft_conditions.power                             = Power
+    turboshaft_conditions.shaft_power                       = Power
     turboshaft_conditions.non_dimensional_power             = Psp
     turboshaft_conditions.non_dimensional_thrust            = Tsp
     turboshaft_conditions.thermal_efficiency                = eta_T

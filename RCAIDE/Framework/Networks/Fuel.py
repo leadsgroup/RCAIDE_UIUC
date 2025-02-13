@@ -82,14 +82,14 @@ class Fuel(Network):
                     if propulsor.active and fuel_line.active:   
                         if network.identical_propulsors == False:
                             # run analysis  
-                            T,M,P,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,center_of_gravity)
+                            T,M,P,_,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,fuel_line=fuel_line, center_of_gravity = center_of_gravity)
                         else:             
                             if stored_results_flag == False: 
                                 # run propulsor analysis 
-                                T,M,P,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,center_of_gravity)
+                                T,M,P,_,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,fuel_line=fuel_line, center_of_gravity = center_of_gravity)
                             else:
                                 # use previous propulsor results 
-                                T,M,P = propulsor.reuse_stored_data(state,network,stored_propulsor_tag,center_of_gravity)
+                                T,M,P,_= propulsor.reuse_stored_data(state,network,stored_propulsor_tag=stored_propulsor_tag,center_of_gravity=center_of_gravity)
                           
                         total_thrust += T   
                         total_moment += M   
@@ -198,6 +198,7 @@ class Fuel(Network):
             N/A
         """                   
         segment.state.residuals.network = Residuals()
+        segment.state.conditions.energy.hybrid_power_split_ratio[:,0] = 0
         
         for network in segment.analyses.energy.vehicle.networks:
             for p_i, propulsor in enumerate(network.propulsors): 

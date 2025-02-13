@@ -13,7 +13,7 @@ def append_turboshaft_conditions(turboshaft,segment):
     segment.state.conditions.energy[turboshaft.tag]                               = Conditions()  
     segment.state.conditions.energy[turboshaft.tag].throttle                      = 0. * ones_row(1)     
     segment.state.conditions.energy[turboshaft.tag].commanded_thrust_vector_angle = 0. * ones_row(1)   
-    segment.state.conditions.energy[turboshaft.tag].power                         = 0. * ones_row(1)
+    segment.state.conditions.energy[turboshaft.tag].shaft_power                   = 0. * ones_row(1)
     segment.state.conditions.energy[turboshaft.tag].fuel_flow_rate                = 0. * ones_row(1)
     segment.state.conditions.energy[turboshaft.tag].inputs                        = Conditions()
     segment.state.conditions.energy[turboshaft.tag].outputs                       = Conditions() 
