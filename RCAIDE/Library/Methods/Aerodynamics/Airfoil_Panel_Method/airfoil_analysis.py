@@ -2,7 +2,7 @@
 # 
 # 
 # Created:  Dec 2023, M. Clarke
-# Modified: Apr 2023, N. Nanjappa
+# Modified: Apr 2024, N. Nanjappa
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
@@ -101,20 +101,33 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     # ---------------------------------------------------------------------     
     VT              = np.ma.masked_greater(vt,0 )
     VT_mask         = np.ma.masked_greater(vt,0 ).mask
+    vt_count        = np.ma.count_masked(VT, axis=0)
     X_BOT_VALS      = np.ma.array(X, mask = VT_mask)[::-1]
-    Y_BOT           = np.ma.array(Y, mask = VT_mask)[::-1]
-
-    x_mask          = X_BOT_VALS.mask   # for debugging
-         
+    x_mask_1        = X_BOT_VALS.mask
+    x_mask_1_count  = np.ma.count_masked(X_BOT_VALS,axis = 0)
+    mask_diff       = x_mask_1 ^ VT_mask
+    Y_BOT           = np.ma.array(Y, mask = VT_mask)[::-1]  
     X_BOT           = np.zeros_like(X_BOT_VALS)
 
-    x_mask_1                       = X_BOT.mask   # for debugging
-
-    X_BOT[1:]       = np.cumsum(np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2),axis = 0)
-
-    x_mask_1                       = X_BOT.mask   # for debugging
+    x_mask_2        = X_BOT.mask
+    x_mask_2_count  = np.ma.count_masked(X_BOT,axis = 0)
+    distances_tmp   = np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2)
+    d_tmp_mask_1    = distances_tmp.mask
+    distances       = np.zeros_like(X_BOT_VALS)
+    d_mask          = distances.mask
+    distances[0,:,:] = X_BOT_VALS[0,:,:]
+    distances[1:]    = distances_tmp
+    X_BOT           = np.cumsum(distances, axis=0)
+    # X_BOT[1:]       = np.cumsum(np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2),axis = 0)
+    
+    x_mask_3        = X_BOT.mask
 
     first_idx       = np.ma.count_masked(X_BOT,axis = 0)
+    
+    comp1           = x_mask_1_count - vt_count
+    comp2           = x_mask_2_count - vt_count
+    comp3           = first_idx - vt_count
+
     mask_count      = np.ma.count(X_BOT,axis = 0)
     prev_index      = first_idx-1
     first_panel     = list(prev_index.flatten())
@@ -123,8 +136,8 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     aoas            = list(np.repeat(np.arange(ncases),ncpts))
     res             = list(np.tile(np.arange(ncpts),ncases) )
     X_BOT.mask[first_panel,aoas,res] = False
-
-    x_mask_1                       = X_BOT.mask   # for debugging
+    X_BOT.mask      = VT_mask[::-1]
+    x_mask_4        = np.ma.count_masked(X_BOT,axis = 0)
     
     # flow velocity and pressure of on botton surface 
     VE_BOT          = -VT[::-1]  
@@ -137,12 +150,11 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     DVE_BOT[1:-1]                  = ((b*DVE_BOT_TEMP[:-1] + a*DVE_BOT_TEMP[1:])/(a+b)).data
     DVE_BOT.mask                   = X_BOT.mask
     DVE_BOT[first_panel,aoas,res]  = DVE_BOT_TEMP[first_panel,aoas,res]
-    DVE_BOT[last_panel,aoas,res]   = DVE_BOT_TEMP[last_paneldve,aoas,res] 
+    DVE_BOT[last_panel,aoas,res]   = DVE_BOT_TEMP[last_paneldve,aoas,res]
+    DVE_BOT.mask                   = X_BOT.mask
     
     # x - location of stagnation point 
     L_BOT                          = X_BOT[-1,:,:]
-
-    x_mask_1                       = X_BOT.mask    
         
     # laminar boundary layer properties using thwaites method  
     BOT_T_RESULTS  = thwaites_method(npanel,ncases,ncpts, nu, L_BOT , RE_L_VALS, X_BOT, VE_BOT, DVE_BOT,tolerance,
@@ -175,7 +187,9 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     
     # TURBULENT_SURF  
     TURBULENT_SURF    = L_BOT.data
-    TURBULENT_COORD   = np.ma.masked_less(X_BOT.data  - X_TR_BOT,0) 
+    TURBULENT_COORD   = np.ma.masked_less(X_BOT.data  - X_TR_BOT,0)
+
+    turb_mask         = TURBULENT_COORD.mask
     
     # turbulent boundary layer properties using heads method  
     BOT_H_RESULTS     = heads_method(npanel,ncases,ncpts, nu, DELTA_TR_BOT, THETA_TR_BOT , DELTA_STAR_TR_BOT, 

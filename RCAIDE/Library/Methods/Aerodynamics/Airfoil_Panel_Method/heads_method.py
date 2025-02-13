@@ -80,7 +80,7 @@ def heads_method(npanel,ncases,ncpts,NU,DEL_0,THETA_0,DELTA_STAR_0,CF_0,ShapeFac
                 
                 def getH(H1_var):
                     if H1_var<3.3:
-                        H_var = 3.0
+                        H_var = 3.0    # This is the bug. Why does the code keep defaulting to this scenario (Does this indicate stall ?)
                     elif H1_var < 5.39142:
                         H_var = 0.6778 + 1.153793*(H1_var-3.3)**-0.32637;
                     elif H1_var >= 5.39142:
@@ -119,9 +119,9 @@ def heads_method(npanel,ncases,ncpts,NU,DEL_0,THETA_0,DELTA_STAR_0,CF_0,ShapeFac
                 
                 for i in range(1,n):
                     # initialise the variable values at the current grid point using previous grid points (to define the error functions)
-                    H_er = H[i-1];  cf_er = cf[i-1];  H1_er = H1[i-1];  Theta_er = Theta[i-1];
+                    H_er = H[i-1];  cf_er = cf[i-1];  H1_er = H1[i-1];  Theta_er = Theta[i-1]
                     # assign previous grid point values of H and Cf to start RK4
-                    H[i] = H[i-1]; cf[i] = cf[i-1];
+                    H[i] = H[i-1]; cf[i] = cf[i-1]
                     
                     #assume some error values
                     erH = 0.2; erH1 = 0.2; erTheta = 0.2; ercf = 0.2;
