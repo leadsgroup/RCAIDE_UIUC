@@ -127,6 +127,7 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     comp1           = x_mask_1_count - vt_count
     comp2           = x_mask_2_count - vt_count
     comp3           = first_idx - vt_count
+    d_comp          = np.ma.count_masked(distances_tmp, axis=0) - vt_count
 
     mask_count      = np.ma.count(X_BOT,axis = 0)
     prev_index      = first_idx-1
