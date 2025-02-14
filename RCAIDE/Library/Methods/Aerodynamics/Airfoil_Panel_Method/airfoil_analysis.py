@@ -120,7 +120,7 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     X_BOT           = np.cumsum(distances, axis=0)
     # X_BOT[1:]       = np.cumsum(np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2),axis = 0)
     
-    x_mask_3        = X_BOT.mask
+    x_mask_3        = X_BOT.mask     # THE ERROR IS DUE TO THE FACT THAT MASK OPERATIONS ARE DONE USING OR LOGIC
 
     first_idx       = np.ma.count_masked(X_BOT,axis = 0)
     
