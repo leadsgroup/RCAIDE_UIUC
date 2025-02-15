@@ -8,5 +8,5 @@
 #  IMPORT
 # ----------------------------------------------------------------------------------------------------------------------
 
-from .append_offtake_shaft_conditions    import append_offtake_shaft_conditions                    
-from .compute_offtake_shaft_performance  import compute_offtake_shaft_performance
+from .append_external_power_shaft_conditions    import append_external_power_shaft_conditions                    
+from .compute_external_power_shaft_performance  import compute_external_power_shaft_performance

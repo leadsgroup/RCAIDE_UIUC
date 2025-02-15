@@ -62,5 +62,5 @@ class Turboelectric_Generator(Turboshaft):
         return power,stored_results_flag,stored_propulsor_tag
     
     def reuse_stored_data(turboelectric_generator,state,network,stored_propulsor_tag,center_of_gravity = [[0, 0, 0]]):
-        power  = reuse_stored_Turboelectric_Generator_data(turboelectric_generator,state,network,stored_propulsor_tag,center_of_gravity)
+        power  = reuse_stored_turboelectric_generator_data(turboelectric_generator,state,network,stored_propulsor_tag,center_of_gravity)
         return power 

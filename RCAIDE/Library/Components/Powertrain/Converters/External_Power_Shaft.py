@@ -1,4 +1,4 @@
-# RCAIDE/Library/Components/Propulsors/Converters/Shaft_Power_Offtake.py
+# RCAIDE/Library/Components/Propulsors/Converters/External_Power_Shaft.py
 # (c) Copyright 2023 Aerospace Research Community LLC
 # 
 # Created:  Feb 2024, M. Clarke
@@ -8,12 +8,12 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
 from .Converter  import Converter
-from RCAIDE.Library.Methods.Powertrain.Converters.Offtake_Shaft.append_offtake_shaft_conditions import append_offtake_shaft_conditions
+from RCAIDE.Library.Methods.Powertrain.Converters.External_Power_Shaft.append_external_power_shaft_conditions import append_external_power_shaft_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Shaft_Power_Offtake
 # ---------------------------------------------------------------------------------------------------------------------- 
-class Offtake_Shaft(Converter):
+class External_Power_Shaft(Converter):
     """
     A power offtake shaft component model for extracting power from rotating machinery.
 
@@ -63,10 +63,12 @@ class Offtake_Shaft(Converter):
             None 
         """          
         self.power_draw            = 0.0
+        self.fixed_power_ratio     = False # if True, then a percentage of the power is drawn as opposed to a fixed power 
+        self.power_draw_percentage = 0.0
         self.reference_temperature = 288.15
-        self.reference_pressure    = 1.01325 * 10 ** 5 
+        self.reference_pressure    = 1.01325 * 10 ** 5
 
     def append_operating_conditions(self,segment,propulsor): 
         propulsor_conditions =  segment.state.conditions.energy[propulsor.tag]
-        append_offtake_shaft_conditions(self,segment,propulsor_conditions)
+        append_external_power_shaft_conditions(self,segment,propulsor_conditions)
         return                         

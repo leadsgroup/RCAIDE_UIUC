@@ -179,7 +179,7 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line):
     stored_results_flag    = True
     stored_propulsor_tag   = turboshaft.tag
 
-    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS
+    # MATTEO, WE NEED ADD CODE FOR 1) SHAFT OFFTAKE AND 2) MOTOR ANALYSIS
     
     return power,stored_results_flag,stored_propulsor_tag
 

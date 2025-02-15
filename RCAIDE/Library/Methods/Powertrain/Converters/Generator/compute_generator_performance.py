@@ -60,8 +60,8 @@ def compute_generator_performance(generator,generator_conditions,conditions):
     Kv    = generator.speed_constant
     Res   = generator.resistance
     v     = generator_conditions.voltage 
-    omeg  = generator_conditions.omega*G
-    power = generator_conditions.shaft_powwer
+    omeg  = generator_conditions.inputs.omega*G
+    power = generator_conditions.inputs.shaft_powwer
     etaG  = generator.gearbox_efficiency
     exp_i = generator.expected_current
     io    = generator.no_load_current + exp_i*(1-etaG)

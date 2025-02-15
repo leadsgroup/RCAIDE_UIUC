@@ -8,14 +8,15 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports  
 from RCAIDE.Framework.Core import Data   
-from RCAIDE.Library.Methods.Powertrain.Converters.Ram                import compute_ram_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Combustor          import compute_combustor_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Compressor         import compute_compressor_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Fan                import compute_fan_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Turbine            import compute_turbine_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle   import compute_expansion_nozzle_performance 
-from RCAIDE.Library.Methods.Powertrain.Converters.Compression_Nozzle import compute_compression_nozzle_performance
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor import compute_thrust
+from RCAIDE.Library.Methods.Powertrain.Converters.Ram                  import compute_ram_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Combustor            import compute_combustor_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Compressor           import compute_compressor_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Fan                  import compute_fan_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Turbine              import compute_turbine_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle     import compute_expansion_nozzle_performance 
+from RCAIDE.Library.Methods.Powertrain.Converters.Compression_Nozzle   import compute_compression_nozzle_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.External_Power_Shaft import compute_external_power_shaft_performance 
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor   import compute_thrust
 
 import  numpy as  np
 from copy import  deepcopy
@@ -65,6 +66,8 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     core_nozzle               = turbofan.core_nozzle
     fan_nozzle                = turbofan.fan_nozzle 
     bypass_ratio              = turbofan.bypass_ratio
+    lpc_external_shaft        = turbofan.low_pressure_compressor_external_shaft
+    hpc_external_shaft        = turbofan.high_pressure_compressor_external_shaft
     
     # unpack component conditions 
     ram_conditions          = turbofan_conditions[ram.tag]    
@@ -77,6 +80,7 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     hpt_conditions          = turbofan_conditions[high_pressure_turbine.tag]
     core_nozzle_conditions  = turbofan_conditions[core_nozzle.tag]
     fan_nozzle_conditions   = turbofan_conditions[fan_nozzle.tag]    
+    lpces_conditions        = turbofan_conditions[lpc_external_shaft.tag]  
  
     # Set the working fluid to determine the fluid properties
     ram.working_fluid = turbofan.working_fluid
@@ -139,19 +143,17 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     # Flow through the high pressor compressor 
     compute_combustor_performance(combustor,combustor_conditions,conditions)
 
-    # Link the shaft power output to the low pressure compressor
-    try:
-        shaft_power                                        = turbofan.Shaft_Power_Off_Take       
-        shaft_power.inputs.mdhc                            = turbofan.compressor_nondimensional_massflow
-        shaft_power.inputs.Tref                            = turbofan.reference_temperature
-        shaft_power.inputs.Pref                            = turbofan.reference_pressure
-        shaft_power.inputs.total_temperature_reference     = lpc_conditions.outputs.stagnation_temperature
-        shaft_power.inputs.total_pressure_reference        = lpc_conditions.outputs.stagnation_pressure
-
-        shaft_power(conditions)
-        lpt_conditions.inputs.shaft_power_off_take   = shaft_power.outputs
-    except:
-        pass
+    # Link the shaft power output to the high pressure compressor
+    if hpc_external_shaft != None: 
+        hpces_conditions          = turbofan_conditions[hpc_external_shaft.tag]            
+        hpces_conditions.inputs.mdhc                            = turbofan.compressor_nondimensional_massflow
+        hpces_conditions.inputs.Tref                            = turbofan.reference_temperature
+        hpces_conditions.inputs.Pref                            = turbofan.reference_pressure
+        hpces_conditions.inputs.total_temperature_reference     = hpc_conditions.outputs.stagnation_temperature
+        hpces_conditions.inputs.total_pressure_reference        = hpc_conditions.outputs.stagnation_pressure 
+        hpces_conditions.inputs.compressor = hpc_conditions.outputs  
+        compute_external_power_shaft_performance(hpc_external_shaft,hpces_conditions, conditions) 
+        hpt_conditions.inputs.external_power_shaft   = hpces_conditions.outputs
 
     # Link the high pressure turbine to the combustor
     hpt_conditions.inputs.stagnation_temperature    = combustor_conditions.outputs.stagnation_temperature
@@ -166,8 +168,20 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     high_pressure_turbine.working_fluid             = combustor.working_fluid 
         
     # Flow through the high pressure turbine
-    compute_turbine_performance(high_pressure_turbine,hpt_conditions,conditions)
+    compute_turbine_performance(high_pressure_turbine,hpt_conditions,conditions) 
 
+    # Link the shaft power output to the low pressure compressor
+    if lpc_external_shaft != None: 
+        lpces_conditions          = turbofan_conditions[lpc_external_shaft.tag]            
+        lpces_conditions.inputs.mdhc                            = turbofan.compressor_nondimensional_massflow
+        lpces_conditions.inputs.Tref                            = turbofan.reference_temperature
+        lpces_conditions.inputs.Pref                            = turbofan.reference_pressure
+        lpces_conditions.inputs.total_temperature_reference     = lpc_conditions.outputs.stagnation_temperature
+        lpces_conditions.inputs.total_pressure_reference        = lpc_conditions.outputs.stagnation_pressure 
+        lpces_conditions.inputs.compressor = lpc_conditions.outputs  
+        compute_external_power_shaft_performance(lpc_external_shaft,lpces_conditions, conditions) 
+        lpt_conditions.inputs.external_power_shaft   = lpces_conditions.outputs
+        
     # Link the low pressure turbine to the high pressure turbine
     lpt_conditions.inputs.stagnation_temperature     = hpt_conditions.outputs.stagnation_temperature
     lpt_conditions.inputs.stagnation_pressure        = hpt_conditions.outputs.stagnation_pressure
