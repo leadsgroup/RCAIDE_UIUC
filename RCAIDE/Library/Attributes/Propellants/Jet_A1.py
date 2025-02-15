@@ -36,6 +36,7 @@ class Jet_A1(Propellant):
         self.specific_energy           = 43.15e6                          # J/kg
         self.energy_density            = 34692.6e6                        # J/m^3
         self.lower_heating_value       = 43.24e6                          # J/kg 
+        self.heat_of_vaporization      = 300000                           # J/kg
         self.max_mass_fraction         = Data({'Air' : 0.0633, 'O2' : 0.3022})  # kg propellant / kg oxidizer
         self.temperatures.flash        = 311.15                           # K
         self.temperatures.autoignition = 483.15                           # K
