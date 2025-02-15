@@ -24,7 +24,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboprop_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboprop_performance(turboprop,state,fuel_line,bus,center_of_gravity= [[0.0, 0.0,0.0]]):    
+def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center_of_gravity= [[0.0, 0.0,0.0]]):    
     
     ''' Computes the performance of one turboprop
     

@@ -21,7 +21,7 @@ from copy import deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboshaft_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboshaft_performance(turboshaft,fuel_line,state):    
+def compute_turboshaft_performance(turboshaft,state,fuel_line):    
     ''' Computes the perfomrance of one turboshaft
     
     Assumptions: 

@@ -86,10 +86,10 @@ def reuse_stored_turboelectric_generator_data(turboelectric_generator,state,netw
     Properties Used: 
     N.A.        
     ''' 
-    conditions                         = state.conditions   
+    conditions                                      = state.conditions   
     conditions.energy[turboelectric_generator.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turboelectric_generator.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
       
-    P_mech   = 0 # NEED TO CORRECT conditions.energy[turboelectric_generator.tag].power  
-    P_elec   = 0 # NEED TO CORRECT conditions.energy[turboelectric_generator.tag].power   
+    P_mech   = conditions.energy[turboelectric_generator.tag].power  
+    P_elec   = conditions.energy[turboelectric_generator.tag].power   
     return  P_mech, P_elec

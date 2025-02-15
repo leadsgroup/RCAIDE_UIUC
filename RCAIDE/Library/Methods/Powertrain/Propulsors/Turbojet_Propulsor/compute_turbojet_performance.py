@@ -23,7 +23,7 @@ from copy import  deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turbojet_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turbojet_performance(turbojet,state,fuel_line,bus,center_of_gravity= [[0.0, 0.0,0.0]]):  
+def compute_turbojet_performance(turbojet,state,fuel_line=None,bus=None,center_of_gravity= [[0.0, 0.0,0.0]]):  
     ''' Computes the perfomrance of one turbojet
     
     Assumptions: 

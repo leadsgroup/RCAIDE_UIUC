@@ -15,7 +15,7 @@ from RCAIDE.Library.Methods.Powertrain.Converters.Fan                import comp
 from RCAIDE.Library.Methods.Powertrain.Converters.Turbine            import compute_turbine_performance
 from RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle   import compute_expansion_nozzle_performance 
 from RCAIDE.Library.Methods.Powertrain.Converters.Compression_Nozzle import compute_compression_nozzle_performance
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor            import compute_thrust
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor import compute_thrust
 
 import  numpy as  np
 from copy import  deepcopy
@@ -23,7 +23,7 @@ from copy import  deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_performance
 # ----------------------------------------------------------------------------------------------------------------------   
-def compute_turbofan_performance(turbofan,state,fuel_line,bus,center_of_gravity= [[0.0, 0.0,0.0]]):
+def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_of_gravity= [[0.0, 0.0,0.0]]):
     ''' Computes the perfomrance of one turbofan
     
     Assumptions: 

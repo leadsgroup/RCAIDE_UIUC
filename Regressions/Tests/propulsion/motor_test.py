@@ -34,7 +34,7 @@ def main():
         # set up default operating conditions 
         operating_state,propulsor_tag  = setup_operating_conditions(motor) 
         
-        # Assign conditions to the rotor
+        # Assign conditions to the motor
         motor_conditions = operating_state.conditions.energy[propulsor_tag][motor.tag]
         motor_conditions.voltage[:, 0]   = 120
 
