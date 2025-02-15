@@ -95,6 +95,7 @@ class Turboprop(Propulsor):
         self.nacelle                                  = None 
         self.compressor                               = None  
         self.turbine                                  = None  
+        self.compressor_external_shaft                = None
         self.combustor                                = None       
         self.engine_diameter                          = 0.0      
         self.engine_length                            = 0.0
@@ -104,7 +105,7 @@ class Turboprop(Propulsor):
         self.design_propeller_efficiency              = 0.0
         self.design_gearbox_efficiency                = 0.0 
         self.design_mach_number                       = 0.0
-        self.compressor_nondimensional_massflow       = 0.0
+        self.compressor_nondimensional_massflow       = 0.0 
         self.reference_temperature                    = 288.15
         self.reference_pressure                       = 1.01325*10**5  
     

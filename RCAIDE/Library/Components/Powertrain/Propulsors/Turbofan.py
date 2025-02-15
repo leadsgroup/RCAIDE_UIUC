@@ -151,7 +151,8 @@ class Turbofan(Propulsor):
         self.high_pressure_turbine                    = None 
         self.combustor                                = None 
         self.core_nozzle                              = None
-        self.external_shaft                           = None
+        self.low_pressure_compressor_external_shaft   = None
+        self.high_pressure_compressor_external_shaft  = None
         self.fan_nozzle                               = None       
         self.engine_diameter                          = 0.0      
         self.engine_length                            = 0.0

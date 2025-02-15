@@ -8,14 +8,15 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # RCAIDE imports      
 
-from RCAIDE.Framework.Core                                           import Data 
-from RCAIDE.Library.Methods.Powertrain.Converters.Ram                import compute_ram_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Combustor          import compute_combustor_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Compressor         import compute_compressor_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Turbine            import compute_turbine_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle   import compute_expansion_nozzle_performance 
-from RCAIDE.Library.Methods.Powertrain.Converters.Compression_Nozzle import compute_compression_nozzle_performance
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop_Propulsor           import compute_thrust
+from RCAIDE.Framework.Core                                             import Data 
+from RCAIDE.Library.Methods.Powertrain.Converters.Ram                  import compute_ram_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Combustor            import compute_combustor_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Compressor           import compute_compressor_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Turbine              import compute_turbine_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle     import compute_expansion_nozzle_performance 
+from RCAIDE.Library.Methods.Powertrain.Converters.Compression_Nozzle   import compute_compression_nozzle_performance
+from RCAIDE.Library.Methods.Powertrain.Converters.External_Power_Shaft import compute_external_power_shaft_performance 
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop_Propulsor  import compute_thrust
  
 # python imports 
 from   copy import deepcopy
@@ -61,7 +62,8 @@ def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center
     combustor                = turboprop.combustor
     high_pressure_turbine    = turboprop.high_pressure_turbine
     low_pressure_turbine     = turboprop.low_pressure_turbine
-    core_nozzle              = turboprop.core_nozzle   
+    core_nozzle              = turboprop.core_nozzle
+    external_shaft           = turboprop.external_shaft
     turboprop_conditions     = conditions.energy[turboprop.tag]
     ram_conditions           = turboprop_conditions[ram.tag]     
     inlet_nozzle_conditions  = turboprop_conditions[inlet_nozzle.tag]
@@ -109,7 +111,7 @@ def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center
     
     # Step 8: Compute flow through the high pressor compressor 
     compute_combustor_performance(combustor,combustor_conditions,conditions)
-
+    
     #link the high pressure turbione to the combustor 
     hpt_conditions.inputs.stagnation_temperature          = combustor_conditions.outputs.stagnation_temperature
     hpt_conditions.inputs.stagnation_pressure             = combustor_conditions.outputs.stagnation_pressure
@@ -122,6 +124,19 @@ def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center
     hpt_conditions.inputs.bypass_ratio                    = 0.0
     
     compute_turbine_performance(high_pressure_turbine,hpt_conditions,conditions)
+
+
+    ## Link the shaft power output to the high pressure compressor
+    #if external_shaft != None: 
+        #lpces_conditions                                        = turboprop_conditions[external_shaft.tag]            
+        #lpces_conditions.inputs.mdhc                            = turboprop.compressor_nondimensional_massflow
+        #lpces_conditions.inputs.Tref                            = turboprop.reference_temperature
+        #lpces_conditions.inputs.Pref                            = turboprop.reference_pressure
+        #lpces_conditions.inputs.total_temperature_reference     = compressor_conditions.outputs.stagnation_temperature
+        #lpces_conditions.inputs.total_pressure_reference        = compressor_conditions.outputs.stagnation_pressure 
+        #lpces_conditions.inputs.compressor = compressor_conditions.outputs  
+        #compute_external_power_shaft_performance(external_shaft,lpces_conditions, conditions) 
+        #lpt_conditions.inputs.external_power_shaft   = lpces_conditions.outputs 
             
     #link the low pressure turbine to the high pressure turbine 
     lpt_conditions.inputs.stagnation_temperature          = hpt_conditions.outputs.stagnation_temperature
