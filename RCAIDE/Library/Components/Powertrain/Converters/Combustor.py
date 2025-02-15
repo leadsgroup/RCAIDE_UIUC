@@ -145,14 +145,15 @@ class Combustor(Converter):
         self.burner_drag_coefficient           = 0.0
         self.absolute_sensible_enthalpy        = 0.0 
 
-        self.diameter                          = 0.2
-        self.length                            = 0.3
-        self.number_of_combustors              = 10                                      
-        self.N_PZ                              = 16     # [-]       Number of PSR 
-        self.L_PZ                              = 0.05   # [m]       Primary Zone length  
-        self.N_SZ                              = 3      # [-]       Number of dilution air inlets        
-        self.L_SZ                              = 0.075  # [m]       Secondary Zone length  
-        self.S_PZ                              = 0.6    # [-]       Mixing parameter, used to define the Equivalence Ratio standard deviation  
+        self.diameter                          = 0.1   # [m] Combustor Diameter
+        self.length                            = 0.3   # [m] Combustor Length
+        self.number_of_combustors              = 10    # [-] Number of Combustors for one engine
+        self.N_PZ                              = 21    # [-] Number of PSR in the Primary Zone
+        self.L_PZ                              = 0.05  # [m] Primary Zone length  
+        self.N_SZ                              = 3     # [-] Number of dilution air inlets in the Secondary Zone        
+        self.S_PZ                              = 0.39  # [-] Mixing parameter in the Primary Zone  
+        self.design_equivalence_ratio_PZ       = 1.77  # [-] Design Equivalence Ratio in Primary Zone at Maximum Throttle
+        self.design_equivalence_ratio_SZ       = 0.7   # [-] Design Equivalence Ratio in Secondary Zone at Maximum Throttle
   
     def append_operating_conditions(self,segment,propulsor):
         """
