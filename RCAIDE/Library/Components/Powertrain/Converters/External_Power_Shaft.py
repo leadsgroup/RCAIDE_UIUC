@@ -8,7 +8,7 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
 from .Converter  import Converter
-from RCAIDE.Library.Methods.Powertrain.Converters.External_Power_Shaft.append_external_power_shaft_conditions import append_external_power_shaft_conditions
+from RCAIDE.Library.Methods.Powertrain.Converters.External_Power_Shaft.append_offtake_shaft_conditions import append_external_power_shaft_conditions  
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Shaft_Power_Offtake
