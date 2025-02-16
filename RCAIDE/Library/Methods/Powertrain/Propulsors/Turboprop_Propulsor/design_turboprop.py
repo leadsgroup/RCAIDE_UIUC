@@ -170,26 +170,9 @@ def design_turboprop(turboprop):
 
     # compute the thrust using the thrust component
 
-    turboprop_conditions.cpt                              = lpt_conditions.outputs.cp
-    turboprop_conditions.R_t                              = lpt_conditions.outputs.gas_constant
-    turboprop_conditions.stag_temp_lpt_out                = lpt_conditions.inputs.stagnation_temperature
-    turboprop_conditions.stag_temp_lpt_in                 = lpt_conditions.outputs.stagnation_temperature
-    turboprop_conditions.stag_temp_hpt_out                = hpt_conditions.inputs.stagnation_temperature
-    turboprop_conditions.stag_temp_hpt_in                 = hpt_conditions.outputs.stagnation_temperature
-    turboprop_conditions.stag_press_lpt_exit              = lpt_conditions.outputs.stagnation_pressure 
-    turboprop_conditions.core_exit_velocity               = core_nozzle_conditions.outputs.velocity
-    turboprop_conditions.core_area_ratio                  = core_nozzle_conditions.outputs.area_ratio
-    turboprop_conditions.core_nozzle                      = core_nozzle_conditions.outputs
-    turboprop_conditions.P9                               = core_nozzle_conditions.outputs.static_pressure    
-    turboprop_conditions.T9                               = core_nozzle_conditions.outputs.static_temperature
-    turboprop_conditions.cpc                              = compressor_conditions.outputs.cp
-    turboprop_conditions.gamma_c                          = compressor_conditions.outputs.gamma
-    turboprop_conditions.R_c                              = compressor_conditions.outputs.gas_constant 
     turboprop_conditions.total_temperature_reference      = compressor_conditions.inputs.stagnation_temperature
     turboprop_conditions.total_pressure_reference         = compressor_conditions.inputs.stagnation_pressure 
-    turboprop_conditions.fuel_to_air_ratio                = combustor_conditions.outputs.fuel_to_air_ratio
-    turboprop_conditions.combustor_stagnation_temperature = combustor_conditions.outputs.stagnation_temperature 
-    
+
     # Step 25: Size the core of the turboprop  
     size_core(turboprop,turboprop_conditions,conditions)
     
