@@ -141,10 +141,10 @@ def harmonic_noise_line(harmonics_blade,harmonics_load,conditions,propulsor_cond
     # maximum thickness to chord ratio
     t_b            = rotor.thickness_to_chord
     t_b_5          = np.tile(t_b[None,None,:,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l))
-    
+    t_b_6          = np.tile(t_b[None,None,:,None,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l,chord_coord))
+
     # chordwise thickness distribution normalized wrt chord
-    
-    H_6            = (y_u_6 - y_l_6)/c_6
+    H_6            = (y_u_6 - y_l_6)/(c_6*t_b_6)
     
     # Rotorcraft speed and mach number
     V_3            = np.tile(np.linalg.norm(velocity_vector, axis=1) [:,None,None],(1,num_mic,num_h_b))
