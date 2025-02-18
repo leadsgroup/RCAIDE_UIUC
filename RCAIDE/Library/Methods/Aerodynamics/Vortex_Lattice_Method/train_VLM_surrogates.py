@@ -26,7 +26,6 @@ def train_VLM_surrogates(aerodynamics):
         CN_p multiplied by -3
         CN_r multiplied by 3
         CL_delta_a multiplied by -1
-        CN_delta_a multiplied by -10
         CLift_delta_e multiplied by 0.5
         
     Source:
@@ -525,7 +524,7 @@ def train_model(aerodynamics, Mach):
                 training.dCZ_ddelta_a    = (CZ_d_a[0,:] - CZ_d_a[1,:]) / (delta_a[0] - delta_a[1]) 
                 training.dCL_ddelta_a    = -1*((CL_d_a[0,:] - CL_d_a[1,:]) / (delta_a[0] - delta_a[1]))
                 training.dCM_ddelta_a    = (CM_d_a[0,:] - CM_d_a[1,:]) / (delta_a[0] - delta_a[1]) 
-                training.dCN_ddelta_a    = -10*((CN_d_a[0,:] - CN_d_a[1,:]) / (delta_a[0] - delta_a[1]))
+                training.dCN_ddelta_a    = (CN_d_a[0,:] - CN_d_a[1,:]) / (delta_a[0] - delta_a[1]) 
 
             # --------------------------------------------------------------------------------------------------------------
             # Elevator 
