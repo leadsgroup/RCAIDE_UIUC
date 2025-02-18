@@ -105,15 +105,8 @@ def base_analysis(vehicle, configs):
     aerodynamics.settings.drag_coefficient_increment    = 0.0000
     aerodynamics.settings.model_fuselage                = True                
     aerodynamics.settings.model_nacelle                 = True
+    aerodynamics.settings.use_surrogate                 = True
     analyses.append(aerodynamics) 
-      
-    stability                                           = RCAIDE.Framework.Analyses.Stability.Vortex_Lattice_Method() 
-    stability.settings.discretize_control_surfaces      = True
-    stability.settings.model_fuselage                   = True                
-    stability.settings.model_nacelle                    = True 
-    stability.configuration                             = configs
-    stability.vehicle                                   = vehicle
-    analyses.append(stability)
 
     # ------------------------------------------------------------------
     #  Energy
@@ -178,26 +171,22 @@ def mission_setup(analyses):
     segment.air_speed                                                           = 120 * Units['mph']
     segment.climb_rate                                                          = 1000* Units['ft/min']
     segment.sideslip_angle                                                      = 1 * Units.degrees
-                          
-    # define flight dynamics to model                       
-    segment.flight_dynamics.force_x                                             = True    
-    segment.flight_dynamics.force_z                                             = True    
-                
+
+    segment.flight_dynamics.force_x   = True    
+    segment.flight_dynamics.force_z   = True    
+    segment.flight_dynamics.force_y   = True     
+    segment.flight_dynamics.moment_y  = True 
+    segment.flight_dynamics.moment_x  = True
+    segment.flight_dynamics.moment_z  = True
+
     # define flight controls               
     segment.assigned_control_variables.throttle.active                          = True           
     segment.assigned_control_variables.throttle.assigned_propulsors             = [['ice_propeller']]    
     segment.assigned_control_variables.body_angle.active                        = True   
-    
-    # Longidinal Flight Mechanics
-    segment.flight_dynamics.moment_y                                            = True 
+
     segment.assigned_control_variables.elevator_deflection.active               = True    
     segment.assigned_control_variables.elevator_deflection.assigned_surfaces    = [['elevator']]
     segment.assigned_control_variables.elevator_deflection.initial_guess_values = [[0]]     
-   
-    # Lateral Flight Mechanics 
-    segment.flight_dynamics.force_y                                             = True     
-    segment.flight_dynamics.moment_x                                            = True
-    segment.flight_dynamics.moment_z                                            = True 
     segment.assigned_control_variables.aileron_deflection.active                = True    
     segment.assigned_control_variables.aileron_deflection.assigned_surfaces     = [['aileron']]
     segment.assigned_control_variables.aileron_deflection.initial_guess_values  = [[0]] 
