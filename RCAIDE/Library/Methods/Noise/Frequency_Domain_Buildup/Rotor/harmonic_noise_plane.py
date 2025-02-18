@@ -116,8 +116,8 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     # [control point, microphones, rotors, radial distribution, blade harmonics, load harmonics]  
     
     # freestream density and speed of sound
-    rho_3          = np.tile(freestream.density[cpt,:,None],(num_cpt,num_mic,num_h_b))
-    a_3            = np.tile(freestream.speed_of_sound[cpt,:,None],(num_cpt,num_mic,num_h_b))
+    rho_3          = np.tile(freestream.density[cpt,:,None],(1,num_mic,num_h_b))
+    a_3            = np.tile(freestream.speed_of_sound[cpt,:,None],(1,num_mic,num_h_b))
     
     B              = rotor.number_of_blades
     
@@ -141,7 +141,7 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     alpha_6        = np.tile((angle_of_attack + np.arccos(body2thrust[0,0]))[:,:,None,None,None,None],(1,num_mic,num_sec,num_h_b,num_h_l,chord_coord))
     
     # rotor angular speed
-    omega_3        = np.tile(aeroacoustic_data.omega[cpt,:,None],(num_cpt,num_mic,num_h_b))   
+    omega_3        = np.tile(aeroacoustic_data.omega[cpt,:,None],(1,num_mic,num_h_b))   
     
     R              = rotor.radius_distribution
     
@@ -150,9 +150,8 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     z_6            = np.tile((R/R[-1])[None,None,:,None,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l,chord_coord))
     
     # Radial chord distribution
-    c              = rotor.chord_distribution
-    c_5            = np.tile(c[None,None,:,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l))
-    c_6            = np.tile(c[None,None,:,None,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l,chord_coord))
+    c_5            = np.tile(rotor.chord_distribution[None,None,:,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l))
+    c_6            = np.tile(rotor.chord_distribution[None,None,:,None,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l,chord_coord))
     
     MCA_5          = np.tile(rotor.mid_chord_alignment[None,None,:,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l))
     
@@ -184,19 +183,19 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     
     # retarded theta
     theta_r        = coordinates.theta_hub_r[cpt,:,0,0]
-    theta_r_3      = np.tile(theta_r[None,:,None],(num_cpt,1,num_h_b))
-    theta_r_4      = np.tile(theta_r[None,:,None,None],(num_cpt,1,num_h_b,num_h_l))
-    theta_r_5      = np.tile(theta_r[None,:,None,None,None],(num_cpt,1,num_sec,num_h_b,num_h_l))
-    theta_r_6      = np.tile(theta_r[None,:,None,None,None,None],(num_cpt,1,num_sec,num_h_b,num_h_l,chord_coord))
+    theta_r_3      = np.tile(theta_r[None,:,None],(1,1,num_h_b))
+    theta_r_4      = np.tile(theta_r[None,:,None,None],(1,1,num_h_b,num_h_l))
+    theta_r_5      = np.tile(theta_r[None,:,None,None,None],(1,1,num_sec,num_h_b,num_h_l))
+    theta_r_6      = np.tile(theta_r[None,:,None,None,None,None],(1,1,num_sec,num_h_b,num_h_l,chord_coord))
     
     # retarded distance to source
     Y              = np.sqrt(coordinates.X_hub[cpt,:,0,0,1]**2 +  coordinates.X_hub[cpt,:,0,0,2] **2)
-    Y_3            = np.tile(Y[None,:,None],(num_cpt,1,num_h_b))
+    Y_3            = np.tile(Y[None,:,None],(1,1,num_h_b))
     r_3            = Y_3/np.sin(theta_r_3)
     
     # phase angles
     phi_0_vec      = np.tile(phi_0[:,None,None,None],(num_cpt,num_mic,num_h_b,num_h_l))
-    phi_4          = np.tile(coordinates.phi_hub_r[cpt,:,0,0,None,None],(num_cpt,1,num_h_b,num_h_l)) + phi_0_vec
+    phi_4          = np.tile(coordinates.phi_hub_r[cpt,:,0,0,None,None],(1,1,num_h_b,num_h_l)) + phi_0_vec
     phi_5          = np.tile(phi_4[:,:,None,:,:],(1,1,num_sec,1,1))
     phi_6          = np.tile(phi_4[:,:,None,:,:,None],(1,1,num_sec,1,1,chord_coord))
     
