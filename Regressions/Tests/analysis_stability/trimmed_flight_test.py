@@ -105,7 +105,7 @@ def base_analysis(vehicle, configs):
     aerodynamics.settings.drag_coefficient_increment    = 0.0000
     aerodynamics.settings.model_fuselage                = True                
     aerodynamics.settings.model_nacelle                 = True
-    aerodynamics.settings.use_surrogate                 = True
+    aerodynamics.settings.use_surrogate                 = False
     analyses.append(aerodynamics) 
 
     # ------------------------------------------------------------------
