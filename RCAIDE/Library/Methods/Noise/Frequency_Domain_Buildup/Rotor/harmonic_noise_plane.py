@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Noise/Multi_Fidelity/harmonic_noise_plane.py
+# RCAIDE/Methods/Noise/Multi_Fidelity/harmonic_noise_plane.py
 # 
 # 
 # Created:  Jul 2024, Niranjan Nanjappa
@@ -71,10 +71,6 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
                       For instance, m_6 is the 6 dimensional harmonic modes variable, m_5 is 5 dimensional harmonic modes variable
     '''     
 
-    # THIS IS PATCHWORK FOR TESTING ###############
-    thickness_fidelity      = 'steady'
-    ###############################################
-
     aeroacoustic_data       = propulsor_conditions[rotor.tag] 
     angle_of_attack         = np.atleast_2d(conditions.aerodynamics.angles.alpha[cpt]) 
     velocity_vector         = np.atleast_2d(conditions.frames.inertial.velocity_vector[cpt])  
@@ -85,8 +81,7 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     num_mic                 = len(coordinates.X_hub[0,:,0,0,0]) 
     phi_0                   = np.array([rotor.phase_offset_angle])  # phase angle offset  
     airfoils                = rotor.airfoils 
-    num_sec                 = len(rotor.radius_distribution)
-    num_az                  = aeroacoustic_data.number_azimuthal_stations 
+    num_sec                 = len(rotor.radius_distribution) 
     orientation             = np.array(rotor.orientation_euler_angles) * 1 
     body2thrust             = sp.spatial.transform.Rotation.from_rotvec(orientation).as_matrix() 
     commanded_thrust_vector =  np.atleast_2d(propulsor_conditions.commanded_thrust_vector_angle[cpt]) 
@@ -99,10 +94,9 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     fD      = aeroacoustic_data.disc_lift_distribution[cpt][None,:, :]
     CL      = aeroacoustic_data.disc_lift_coefficient[cpt][None,:, :]
     CD      = aeroacoustic_data.disc_drag_coefficient[cpt][None,:, :]
-
-    # Airfoil upper and lower surfaces            
-    y_u     = aeroacoustic_data.blade_upper_surface[cpt]
-    y_l     = aeroacoustic_data.blade_lower_surface[cpt]
+                
+    y_u_6   = np.tile(aeroacoustic_data.blade_upper_surface[cpt][None, None, :, 0,None, None, :],(1,num_mic,1,num_h_b,num_h_l,1))
+    y_l_6   = np.tile(aeroacoustic_data.blade_lower_surface[cpt][None, None, :, 0,None, None, :],(1,num_mic,1,num_h_b,num_h_l,1))
     
     # DFT to get loading modes
     CL_k           = sp.fft.rfft(CL, axis=2)
@@ -164,8 +158,11 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     # maximum thickness to chord ratio
     t_b            = rotor.thickness_to_chord
     t_b_5          = np.tile(t_b[None,None,:,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l))
-    t_b_6          = np.tile(t_b[None,None,:,None,None,None],(num_cpt,num_mic,1,num_h_b,num_h_l,chord_coord))
-        
+    
+    # chordwise thickness distribution normalized wrt chord
+    H_6            = (y_u_6 - y_l_6)/c_6
+    
+    
     # Rotorcraft speed and mach number
     V_3            = np.tile(np.linalg.norm(velocity_vector, axis=1) [:,None,None],(1,num_mic,num_h_b))
     M_3            = V_3/a_3
@@ -266,39 +263,18 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     L_Summation_3  = np.sum(L_Summand_4, axis=3)
     P_Lm           = (-1j*rho_3*(a_3**2)*B*np.exp(1j*k_m_3*r_3)*L_Summation_3)/(4*np.pi*(r_3/R_tip)*(1-M_3*np.cos(theta_r_3)))
     
+    # frequency domain source function for drag and lift
+    psi_V_5        = np.trapz(H_6*exp_term_6, x=X, axis=5)
     
     # FREQUENCY DOMAIN PRESSURE TERM FOR THICKNESS
-    if thickness_fidelity == 'steady':
-        y_u_6          = np.tile(y_u[None, None, :, 0,None, None, :],(1,num_mic,1,num_h_b,num_h_l,1))
-        y_l_6          = np.tile(y_l[None, None, :, 0,None, None, :],(1,num_mic,1,num_h_b,num_h_l,1))
-        H_6            = (y_u_6 - y_l_6)/(c_6*t_b_6)
-        psi_V_5        = np.trapz(H_6*exp_term_6, x=X, axis=5)
-        V_Integrand_5  = (M_r_5**2)*(k_x_hat_5**2)*t_b_5*psi_V_5*J_mBk_5
-        V_Summand_4    = np.trapz(V_Integrand_5, x=z_5[0,0,:,0,0], axis=2)*np.exp(1j*m_4*B*(phi_prime_4-(np.pi/2)))
-        
-        # we take a single dimension along the 4th axis because we only want the loading mode corresponding to k=0
-        V_Summation_3  = V_Summand_4[:,:,:,0]
-        P_Vm           = (-rho_3*(a_3**2)*B*np.exp(1j*k_m_3*r_3)*V_Summation_3)/(4*np.pi*(r_3/R_tip)*(1-M_3*np.cos(theta_r_3)))
+    V_Integrand_5  = (M_r_5**2)*(k_x_hat_5**2)*t_b_5*psi_V_5*J_mBk_5
+    V_Summand_4    = np.trapz(V_Integrand_5, x=z_5[0,0,:,0,0], axis=2)*np.exp(1j*m_4*B*(phi_prime_4-(np.pi/2)))
     
-    elif thickness_fidelity == 'plane':
-        AOA            = aeroacoustic_data.disc_effective_angle_of_attack[cpt]
-        AOA_tile       = np.tile(AOA[:,:,None],(1,1,chord_coord))
-        c_tile         = np.tile(c[:,None,None],(1,num_az,chord_coord))
-        t_b_tile       = np.tile(t_b[:,None,None],(1,num_az,chord_coord))
-        H_tile         = ((y_u - y_l)*AOA_tile)/(c_tile*t_b_tile)
-        H_k            = sp.fft.rfft(H_tile, axis=1)
-        H_k_6          = np.tile(H_k[None,None,:,None,0:num_h_l,:],(num_cpt,num_mic,1,num_h_b,1,1))
-        psi_Vk_5       = np.trapz(H_k_6*exp_term_6, x=X, axis=5)
-        psi_hat_Vk_5   = psi_Vk_5*np.exp(1j*(phi_s_5 + phi_5))
-        V_Integrand_5  = (M_r_5**2)*(k_x_hat_5**2)*t_b_5*psi_hat_Vk_5*J_mBk_5
-        V_Summand_4    = np.trapz(V_Integrand_5, x=z_5[0,0,:,0,0], axis=2)*np.exp(1j*(m_4*B-k_4)*(phi_prime_4-(np.pi/2)))
-        V_Summation_3  = np.sum(V_Summand_4, axis=3)
-        P_Vm           = (-rho_3*(a_3**2)*B*np.exp(1j*k_m_3*r_3)*V_Summation_3)/(4*np.pi*(r_3/R_tip)*(1-M_3*np.cos(theta_r_3)))
+    # we take a single dimension along the 4th axis because we only want the loading mode corresponding to k=0
+    V_Summation_3  = V_Summand_4[:,:,:,0]
+    P_Vm           = (-rho_3*(a_3**2)*B*np.exp(1j*k_m_3*r_3)*V_Summation_3)/(4*np.pi*(r_3/R_tip)*(1-M_3*np.cos(theta_r_3)))
     
-    elif thickness_fidelity == 'airfoil':
-        pass # haven't defined this yet
-
-
+    
     # SOUND PRESSURE LEVELS
     P_Lm_abs       = np.abs(P_Lm)
     P_Vm_abs       = np.abs(P_Vm)
@@ -307,3 +283,4 @@ def harmonic_noise_plane(harmonics_blade,harmonics_load,conditions,propulsor_con
     Noise.SPL_prop_harmonic_1_3_spectrum[np.isinf(Noise.SPL_prop_harmonic_1_3_spectrum)]         = 0 
     
     return
+    
