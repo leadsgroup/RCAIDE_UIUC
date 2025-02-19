@@ -19,14 +19,19 @@ def train_VLM_surrogates(aerodynamics):
     """Call methods to run VLM for sample point evaluation. 
     
     Assumptions:
-        CY_beta multiplied by 2
-        CL_beta multiplied by -1
-        CL_p multiplied by -2
-        CM_q multiplied by 10
-        CN_p multiplied by -3
-        CN_r multiplied by 3
-        CL_delta_a multiplied by -1
-        CLift_delta_e multiplied by 0.5
+        CY_beta multiplied by 2, verified against literature and AVL 
+        CL_p multiplied by -2, verified against literature and AVL 
+        CM_q multiplied by 10, verified against literature and AVL 
+        CN_p multiplied by -3, verified against literature and AVL 
+        CN_r multiplied by 3, verified against literature and AVL 
+        CL_delta_a multiplied by -1, verified against literature and AVL 
+        CLift_delta_e multiplied by 0.5, verified against literature and AVL 
+        CY_alpha multiplied by 0, based on theory 
+        CL_beta multiplied by -1, verified against literature and AVL 
+        p derivatives multiplied by -10, verified against literature and AVL 
+        r derivatives multiplied by -10, verified against literature and AVL 
+        Rudder derivatives multiplied by -1, verified against literature  
+        Aileron derivatives multiplied by -1, verified against literature
         
     Source:
         None
