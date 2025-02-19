@@ -45,21 +45,21 @@ def main():
     results = missions.base_mission.evaluate() 
 
     elevator_deflection        = results.segments.climb.conditions.control_surfaces.elevator.deflection[0,0] / Units.deg  
-    elevator_deflection_true   = -0.807352565925395
+    elevator_deflection_true   = -0.2826520697934591
     elevator_deflection_diff   = np.abs(elevator_deflection - elevator_deflection_true)
     print('Error1: ',elevator_deflection_diff)
     # There is assertion error somehow, not related to any dimension error pertaining to numpy
     assert np.abs(elevator_deflection_diff/elevator_deflection_true) < 5e-3
 
     aileron_deflection        = results.segments.climb.conditions.control_surfaces.aileron.deflection[0,0] / Units.deg  
-    aileron_deflection_true   = 0.5748157458748923
+    aileron_deflection_true   = 0.29240051242195064
     aileron_deflection_diff   = np.abs(aileron_deflection - aileron_deflection_true)
     print('Error2: ',aileron_deflection_diff)
     assert np.abs(aileron_deflection_diff/aileron_deflection_true) < 5e-3
     
 
     rudder_deflection        = results.segments.climb.conditions.control_surfaces.rudder.deflection[0,0] / Units.deg  
-    rudder_deflection_true   = -1.3971507037084727
+    rudder_deflection_true   = 0.32737892314943307
     rudder_deflection_diff   = np.abs(rudder_deflection - rudder_deflection_true)
     print('Error3: ',rudder_deflection_diff)
     assert np.abs(rudder_deflection_diff/rudder_deflection_true) < 5e-3    
@@ -105,8 +105,15 @@ def base_analysis(vehicle, configs):
     aerodynamics.settings.drag_coefficient_increment    = 0.0000
     aerodynamics.settings.model_fuselage                = True                
     aerodynamics.settings.model_nacelle                 = True
-    aerodynamics.settings.use_surrogate                 = False
     analyses.append(aerodynamics) 
+      
+    stability                                           = RCAIDE.Framework.Analyses.Stability.Vortex_Lattice_Method() 
+    stability.settings.discretize_control_surfaces      = True
+    stability.settings.model_fuselage                   = True                
+    stability.settings.model_nacelle                    = True 
+    stability.configuration                             = configs
+    stability.vehicle                                   = vehicle
+    analyses.append(stability)
 
     # ------------------------------------------------------------------
     #  Energy
@@ -171,22 +178,26 @@ def mission_setup(analyses):
     segment.air_speed                                                           = 120 * Units['mph']
     segment.climb_rate                                                          = 1000* Units['ft/min']
     segment.sideslip_angle                                                      = 1 * Units.degrees
-
-    segment.flight_dynamics.force_x   = True    
-    segment.flight_dynamics.force_z   = True    
-    segment.flight_dynamics.force_y   = True     
-    segment.flight_dynamics.moment_y  = True 
-    segment.flight_dynamics.moment_x  = True
-    segment.flight_dynamics.moment_z  = True
-
+                          
+    # define flight dynamics to model                       
+    segment.flight_dynamics.force_x                                             = True    
+    segment.flight_dynamics.force_z                                             = True    
+                
     # define flight controls               
     segment.assigned_control_variables.throttle.active                          = True           
     segment.assigned_control_variables.throttle.assigned_propulsors             = [['ice_propeller']]    
     segment.assigned_control_variables.body_angle.active                        = True   
-
+    
+    # Longidinal Flight Mechanics
+    segment.flight_dynamics.moment_y                                            = True 
     segment.assigned_control_variables.elevator_deflection.active               = True    
     segment.assigned_control_variables.elevator_deflection.assigned_surfaces    = [['elevator']]
     segment.assigned_control_variables.elevator_deflection.initial_guess_values = [[0]]     
+   
+    # Lateral Flight Mechanics 
+    segment.flight_dynamics.force_y                                             = True     
+    segment.flight_dynamics.moment_x                                            = True
+    segment.flight_dynamics.moment_z                                            = True 
     segment.assigned_control_variables.aileron_deflection.active                = True    
     segment.assigned_control_variables.aileron_deflection.assigned_surfaces     = [['aileron']]
     segment.assigned_control_variables.aileron_deflection.initial_guess_values  = [[0]] 
