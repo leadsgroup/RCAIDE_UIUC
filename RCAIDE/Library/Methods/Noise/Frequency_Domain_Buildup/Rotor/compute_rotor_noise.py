@@ -92,7 +92,7 @@ def compute_rotor_noise(microphone_locations,propulsor,rotor,segment,settings, r
     Results.SPL_broadband_1_3_spectrum_dBA                = np.zeros_like(Results.SPL_1_3_spectrum)
 
     # compute position vector from point source (or should it be origin) at rotor hub to microphones 
-    coordinates   = compute_rotor_point_source_coordinates(propulsor,rotor,conditions,microphone_locations,settings)        
+    coordinates   = compute_rotor_point_source_coordinates(propulsor,rotor,conditions,microphone_locations,settings)
 
     for cpt in range(num_cpt): 
         # ----------------------------------------------------------------------------------
