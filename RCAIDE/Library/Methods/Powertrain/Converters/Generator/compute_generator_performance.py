@@ -52,29 +52,54 @@ def compute_generator_performance(generator,generator_conditions,conditions):
     RCAIDE.Library.Components.Powertrain.Converters.DC_generator
     RCAIDE.Library.Components.Powertrain.Converters.PMSM_generator
     """           
-    # Unpack  
-    Res   = generator.resistance 
 
-    # Unpack
-    G     = generator.gearbox_ratio
-    Kv    = generator.speed_constant
-    Res   = generator.resistance
-    v     = generator_conditions.voltage 
-    omeg  = generator_conditions.inputs.omega*G
-    power = generator_conditions.inputs.shaft_powwer
-    etaG  = generator.gearbox_efficiency
-    exp_i = generator.expected_current
-    io    = generator.no_load_current + exp_i*(1-etaG)
-    
-    i=(v-omeg/Kv)/Res 
-    i[i < 0.0] = 0.0
- 
-    etam=(1-io/i)*(1-i*Res/v)
-    
-    Q     = power / omeg 
+    if generator.fidelity == 'DC_generator':
+        # Unpack  
+        Res   = generator.resistance 
 
-    v     = generator_conditions.voltage
+        # Unpack
+        G     = generator.gearbox_ratio
+        Kv    = generator.speed_constant
+        Res   = generator.resistance
+        v     = generator_conditions.voltage 
+        omeg  = generator_conditions.inputs.omega*G
+        power = generator_conditions.inputs.shaft_powwer
+        etaG  = generator.gearbox_efficiency
+        exp_i = generator.expected_current
+        io    = generator.no_load_current + exp_i*(1-etaG)
+
+        i=(v-omeg/Kv)/Res 
+        i[i < 0.0] = 0.0
     
+        etam=(1-io/i)*(1-i*Res/v)
+
+        Q     = power / omeg 
+
+        v     = generator_conditions.voltage
+
+    elif generator.fidelity == 'PMSM_generator':
+
+        Kv    = generator.speed_constant                          # [rpm/V]        speed constant
+        omega = generator.omega*60/(2*np.pi)                      # [rad/s -> rpm] nominal speed
+        D_in  = generator.inner_diameter                          # [m]            stator inner diameter
+        Power = generator.power                                   # [W]            total current that passes through the stator in both axial directions   
+    
+        # Input data from Literature
+        kw    = generator.winding_factor                          # [-]            winding factor
+        
+        # Input data from Assumptions
+        Res   = generator.resistance                              # [Ω]            resistance
+        L     = generator.stack_length                            # [m]            (It should be around 0.14 m) generator stack length 
+        l     = generator.length_of_path                          # [m]            length of the path  
+        mu_0  = generator.mu_0                                    # [N/A**2]       permeability of free space
+        mu_r  = generator.mu_r                                    # [N/A**2]       relative permeability of the magnetic material 
+    
+        Q     = Power/omega                                       # [Nm]           torque                  
+        i     = np.sqrt((2*Q*l)/(D_in*mu_0*mu_r*L*kw))            # [A]            total current 
+        v     = omega/((2 * np.pi / 60)*Kv) + i*Res               # [V]            total voltage
+
+        etam  = (1-io/i)*(1-i*Res/v)                              # [-]            efficiency
+   
     generator_conditions.torque     = Q   
     generator_conditions.current    = i 
     generator_conditions.power      = i *v 
