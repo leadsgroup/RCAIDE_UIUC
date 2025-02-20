@@ -63,7 +63,8 @@ def aircraft_aerodynamic_analysis(vehicle,
  
     state.analyses                                  =  Data()
     aerodynamics                                    = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
-    aerodynamics.settings.use_surrogate             = use_surrogate 
+    aerodynamics.settings.use_surrogate             = use_surrogate
+    aerodynamics.settings.oswald_efficiency_factor  = 0.9
     aerodynamics.vehicle                            = vehicle
     aerodynamics.settings.model_fuselage            = model_fuselage   
     aerodynamics.initialize()

@@ -470,14 +470,12 @@ def VLM(conditions,settings,geometry):
     BMX    = BFZ * Y - BFY * (Z - ZBAR)
     BMX    = BMX + SICPLE
     BMY    = BMLE * COD + BFX * (Z - ZBAR) - BFZ * (X - XBAR)
-    BMZ    = BMLE * SID - BFX * Y + BFY * (X - XBAR)
-    CDC    = BFZ * SINALF +  (BFX *COPSI + BFY *SINPSI) * COSALF
-    CDC    = CDC * CHORD_strip 
+    BMZ    = BMLE * SID - BFX * Y + BFY * (X - XBAR)  
 
     ES     = 2*s[0,LE_ind]
     STRIP  = ES *CHORD_strip
-    LIFT   = (BFZ *COSALF - (BFX *COPSI + BFY *SINPSI) *SINALF)*STRIP   
-    DRAG   = CDC*ES 
+    LIFT   = (BFZ * COSALF - (BFX *COPSI + BFY *SINPSI) *SINALF)*STRIP 
+    DRAG   = (BFZ * SINALF +  (BFX *COPSI + BFY *SINPSI) * COSALF)*STRIP
     MOMENT = STRIP * (BMY *COPSI - BMX *SINPSI)  
     FY     = (BFY *COPSI - BFX *SINPSI) *STRIP
     RM     = STRIP *(BMX *COSALF *COPSI + BMY *COSALF *SINPSI + BMZ *SINALF)
