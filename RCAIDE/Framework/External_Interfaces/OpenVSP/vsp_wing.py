@@ -249,6 +249,12 @@ def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil
 
             elif vsp.GetXSecShape(xsec_id) == vsp.XS_FILE_AIRFOIL:	# XSec shape: 12 is type AF_FILE
                 airfoil.geometry.thickness_to_chord = thick_cord
+                upper_pnts = vsp.GetAirfoilUpperPnts(xsec_id)
+                upper_pnts_array = np.array([(p.x(), p.y(), p.z()) for p in upper_pnts])
+
+                lower_pnts = vsp.GetAirfoilLowerPnts(xsec_id)
+                lower_pnts_array = np.array([(p.x(), p.y(), p.z()) for p in lower_pnts])
+                k = 0
                 # VSP airfoil API calls get coordinates and write files with the final argument being the fraction of segment position, regardless of relative spans.
                 # (Write the root airfoil with final arg = 0. Write 4th airfoil of 5 segments with final arg = .8)
     

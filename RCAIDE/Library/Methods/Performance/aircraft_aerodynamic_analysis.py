@@ -89,6 +89,7 @@ def aircraft_aerodynamic_analysis(vehicle,
         alpha             = angle_of_attack_range, 
         lift_coefficient  = CL_vals, 
         drag_coefficient  = CD_vals, 
+        full_results      = state.conditions.aerodynamics,
     )  
          
     # FUTURE WORK          
