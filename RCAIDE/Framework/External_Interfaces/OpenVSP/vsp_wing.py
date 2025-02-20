@@ -36,7 +36,7 @@ t_table = str.maketrans( chars          + string.ascii_uppercase ,
 # ----------------------------------------------------------------------------------------------------------------------  
 #  vsp read wing
 # ----------------------------------------------------------------------------------------------------------------------  
-def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil_file=True, use_scaling=True ,blended_wing_body = False,transition_segment = 0):
+def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil_file=False, use_scaling=True ,blended_wing_body = False,transition_segment = 0):
     """This reads an OpenVSP wing vehicle geometry and writes it into a RCAIDE wing format.
 
     Assumptions:
@@ -251,7 +251,7 @@ def read_vsp_wing(wing_id, main_wing_tag = None,  units_type='SI', write_airfoil
                 airfoil.geometry.thickness_to_chord = thick_cord
                 # VSP airfoil API calls get coordinates and write files with the final argument being the fraction of segment position, regardless of relative spans.
                 # (Write the root airfoil with final arg = 0. Write 4th airfoil of 5 segments with final arg = .8)
-
+    
             if write_airfoil_file==True:
                 vsp.WriteSeligAirfoil(str(save_filename) + '_airfoil_XSec_' + str(jj) +'.dat', wing_id, float(jj/segment_num))
                 airfoil.coordinate_file    = str(save_filename) + '_airfoil_XSec_' + str(jj) +'.dat'

@@ -62,7 +62,7 @@ class Takeoff(Evaluate):
         self.ground_incline       = 0.0 
         self.velocity_start       = None
         self.velocity_end         = 150 * Units.knots
-        self.friction_coefficient = 0.04
+        self.friction_coefficient = 0.02
         self.throttle             = 1.0
         self.altitude             = 0.0
         self.true_course          = 0.0 * Units.degrees 
