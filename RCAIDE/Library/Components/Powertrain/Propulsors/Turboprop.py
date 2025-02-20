@@ -8,8 +8,8 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
 from .                          import Propulsor
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop_Propulsor.append_turboprop_conditions     import append_turboprop_conditions 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop_Propulsor.compute_turboprop_performance   import compute_turboprop_performance, reuse_stored_turboprop_data
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop          .append_turboprop_conditions     import append_turboprop_conditions 
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop          .compute_turboprop_performance   import compute_turboprop_performance, reuse_stored_turboprop_data
  
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Fan Component
@@ -35,13 +35,13 @@ class Turboprop(Propulsor):
     combustor : Component
         Combustor component of the engine. Default is None. 
         
-    engine_diameter : float
+    diameter : float
         Diameter of the engine [m]. Default is 0.0.
         
-    engine_length : float
+    length : float
         Length of the engine [m]. Default is 0.0.
         
-    engine_height : float
+    height : float
         Engine centerline height above the ground plane [m]. Default is 0.5.
         
     design_isa_deviation : float
@@ -95,11 +95,10 @@ class Turboprop(Propulsor):
         self.nacelle                                  = None 
         self.compressor                               = None  
         self.turbine                                  = None  
-        self.compressor_external_shaft                = None
         self.combustor                                = None       
-        self.engine_diameter                          = 0.0      
-        self.engine_length                            = 0.0
-        self.engine_height                            = 0.5      
+        self.diameter                                 = 0.0      
+        self.length                                   = 0.0
+        self.height                                   = 0.5      
         self.design_isa_deviation                     = 0.0
         self.design_altitude                          = 0.0
         self.design_propeller_efficiency              = 0.0

@@ -8,7 +8,7 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
 from .Converter  import Converter
-from RCAIDE.Library.Methods.Powertrain.Converters.External_Power_Shaft.append_offtake_shaft_conditions import append_external_power_shaft_conditions  
+from RCAIDE.Library.Methods.Powertrain.Converters.External_Power_Shaft.append_external_power_shaft_conditions import append_external_power_shaft_conditions  
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Shaft_Power_Offtake
@@ -61,14 +61,14 @@ class External_Power_Shaft(Converter):
 
         Source:
             None 
-        """          
+        """
+        self.tag                   = 'external_power_shaft'
         self.power_draw            = 0.0
         self.fixed_power_ratio     = False # if True, then a percentage of the power is drawn as opposed to a fixed power 
         self.power_draw_percentage = 0.0
         self.reference_temperature = 288.15
         self.reference_pressure    = 1.01325 * 10 ** 5
 
-    def append_operating_conditions(self,segment,propulsor): 
-        propulsor_conditions =  segment.state.conditions.energy[propulsor.tag]
-        append_external_power_shaft_conditions(self,segment,propulsor_conditions)
+    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None): 
+        append_external_power_shaft_conditions(self,segment,energy_conditions)
         return                         

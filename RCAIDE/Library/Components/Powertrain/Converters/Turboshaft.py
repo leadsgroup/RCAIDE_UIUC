@@ -1,4 +1,4 @@
-# RCAIDE/Library/Components/Propulsors/Turboshaft.py
+# RCAIDE/Library/Components/Converters/Turboshaft.py
 # 
 #  
 # Created:  Mar 2024, M. Clarke
@@ -9,58 +9,46 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
 ## RCAIDE imports
 import RCAIDE
-from RCAIDE.Framework.Core                  import Data
-from RCAIDE.Library.Components              import Component 
+from .Converter                             import Converter
 from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft.append_turboshaft_conditions     import append_turboshaft_conditions 
 from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft.compute_turboshaft_performance   import compute_turboshaft_performance, reuse_stored_turboshaft_data
  
 # ----------------------------------------------------------------------
 #  Turboshaft
 # ----------------------------------------------------------------------
-class Turboshaft(Component):
-    """ 
+class Turboshaft(Converter):
+    """
+    MATTEO
     """ 
     def __defaults__(self):
         # setting the default values
         self.tag                                              = 'Turboshaft'
         self.fuel_type                                        = RCAIDE.Library.Attributes.Propellants.Jet_A1() 
-        self.nacelle                                          = None  
         self.ram                                              = None 
         self.inlet_nozzle                                     = None 
         self.compressor                                       = None 
         self.low_pressure_turbine                             = None 
         self.high_pressure_turbine                            = None 
         self.combustor                                        = None 
-        self.afterburner                                      = None
-        self.core_nozzle                                      = None      
-                                                              
-        self.engine_length                                    = 0.0
-        self.bypass_ratio                                     = 0.0 
+        self.core_nozzle                                      = None
+        self.active                                           = True
+        self.length                                           = 0.0
         self.design_isa_deviation                             = 0.0
         self.design_altitude                                  = 0.0
-        self.afterburner_active                               = False
         self.SFC_adjustment                                   = 0.0  
         self.reference_temperature                            = 288.15
         self.reference_pressure                               = 1.01325*10**5 
-        self.design_thrust                                    = 0.0
         self.design_power                                     = 0.0
-        self.mass_flow_rate_design                            = 0.0 
+        self.design_mass_flow_rate                            = 0.0 
         self.conversion_efficiency                            = 0.5
         self.compressor_nondimensional_massflow               = 0.0
-        self.OpenVSP_flow_through                             = False
                                                               
-        #areas needed for drag; not in there yet              
-        self.areas                                            = Data()
-        self.areas.wetted                                     = 0.0
-        self.areas.maximum                                    = 0.0
-        self.areas.exit                                       = 0.0
-        self.areas.inflow                                     = 0.0 
 
-    def append_operating_conditions(self,segment):
+    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None): 
         """
         Appends operating conditions to the segment.
-        """
-        append_turboshaft_conditions(self,segment)
+        """  
+        append_turboshaft_conditions(self,segment,energy_conditions,noise_conditions) 
         return
 
     def unpack_propulsor_unknowns(self,segment):   

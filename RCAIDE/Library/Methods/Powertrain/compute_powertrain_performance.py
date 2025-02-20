@@ -22,8 +22,8 @@ def evaluate_propulsors(network,state,center_of_gravity):
     fuel_lines                  = network.fuel_lines
     total_thrust                = 0. * state.ones_row(3) 
     total_moment                = 0. * state.ones_row(3) 
-    total_power_mech            = 0. * state.ones_row(1)
-    total_power_elec            = 0. * state.ones_row(1)
+    total_mech_power            = 0. * state.ones_row(1)
+    total_elec_power            = 0. * state.ones_row(1)
     total_mdot                  = 0. * state.ones_row(1)
 
     # Step 1: Compute Thrust 
@@ -66,12 +66,12 @@ def evaluate_propulsors(network,state,center_of_gravity):
                                 T,M,P_mech,P_elec,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,fuel_line,bus,center_of_gravity)
                             else:
                                 # use previous propulsor results 
-                                T,M,P_mech,P_elec = propulsor.reuse_stored_data(state,network,stored_propulsor_tag,center_of_gravity)
+                                T,M,P_mech,P_elec = propulsor.reuse_stored_data(state,network,fuel_line,bus,stored_propulsor_tag,center_of_gravity)
 
                         total_thrust      += T   
                         total_moment      += M   
-                        total_power_mech  += P_mech
-                        total_power_elec  += P_elec
+                        total_mech_power  += P_mech
+                        total_elec_power  += P_elec
 
             # compute power from each componemnt   
             charging_power  = (state.conditions.energy[bus.tag].regenerative_power*bus_voltage*bus.power_split_ratio)  
@@ -97,15 +97,15 @@ def evaluate_propulsors(network,state,center_of_gravity):
                     else:             
                         if stored_results_flag == False: 
                             # run propulsor analysis 
-                            T,M,P_mech,P_elec,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,fuel_line, bus,center_of_gravity)
+                            T,M,P_mech,P_elec,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,fuel_line,bus,center_of_gravity)
                         else:
                             # use previous propulsor results 
                             T,M,P_mech,P_elec = propulsor.reuse_stored_data(state,network,stored_propulsor_tag,center_of_gravity)
 
                     total_thrust      += T   
                     total_moment      += M   
-                    total_power_mech  += P_mech 
-                    total_power_elec  += P_elec
+                    total_mech_power  += P_mech 
+                    total_elec_power  += P_elec
                      
                     # compute fuel line mass flow rate 
                     fuel_line_mdot += conditions.energy[propulsor.tag].fuel_flow_rate
@@ -117,9 +117,9 @@ def evaluate_propulsors(network,state,center_of_gravity):
         for fuel_tank in fuel_line.fuel_tanks:  
             conditions.energy[fuel_line.tag][fuel_tank.tag].mass_flow_rate  = fuel_tank.fuel_selector_ratio*fuel_line_mdot + fuel_tank.secondary_fuel_flow         
  
-    return  total_thrust, total_moment, total_power_mech, total_power_elec, total_mdot
+    return  total_thrust, total_moment, total_mech_power, total_elec_power, total_mdot
 
-def evaluate_energy_storage(state,network,total_mdot, total_power_mech, total_power_ele):
+def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_elec_power):
     '''
     
     
@@ -140,7 +140,7 @@ def evaluate_energy_storage(state,network,total_mdot, total_power_mech, total_po
         # ------------------------------------------------------------------------------------------------------------------- 
         # Run Turboelectric Generation in Reverse - Interatively guess fuel flow that provides required power from generator  
         # -------------------------------------------------------------------------------------------------------------------        
-        power_elec           = bus_conditions.power_draw*(1 - phi)  # MATTEO- THIS NEEDS TO BE CHECKED 
+        power_elec           = bus_conditions.power_draw*(1 - phi) 
         alpha                = 0.000005
         throttle             = 0.5*state.ones_row(1)  
         stored_results_flag  = False
@@ -150,46 +150,45 @@ def evaluate_energy_storage(state,network,total_mdot, total_power_mech, total_po
             power_elec_guess  = 0. * state.ones_row(1) 
             fuel_line_mdot    = 0. * state.ones_row(1)
             total_mdot_var    = 0. * state.ones_row(1) 
-            for tag, item in fuel_line.items():
-                if type(item) == RCAIDE.Library.Components.Powertrain.Converters.Turboelectric_Generator: 
-                    if item.active and fuel_line.active: 
-                        state.conditions.energy[item.tag].throttle = throttle
-                        if network.identical_propulsors == False:
-                            # run analysis  
-                            P_mech, P_elec, stored_results_flag,stored_propulsor_tag = item.compute_performance(state,fuel_line,bus)
-                        else:             
-                            if stored_results_flag == False: 
-                                # run propulsor analysis 
-                                P_mech, P_elec, stored_results_flag,stored_propulsor_tag = item.compute_performance(state,fuel_line,bus)
-                            else:
-                                # use previous propulsor results 
-                                P_mech, P_elec = item.reuse_stored_data(state,network,stored_propulsor_tag)
+            for turboelectric_generator in fuel_line.turboelectric_generators: 
+                if turboelectric_generator.active and fuel_line.active: 
+                    state.conditions.energy[turboelectric_generator.tag].throttle = throttle
+                    if network.identical_propulsors == False:
+                        # run analysis  
+                        P_mech, P_elec, stored_results_flag,stored_propulsor_tag = turboelectric_generator.compute_performance(state,fuel_line,bus)
+                    else:             
+                        if stored_results_flag == False: 
+                            # run propulsor analysis 
+                            P_mech, P_elec, stored_results_flag,stored_propulsor_tag = turboelectric_generator.compute_performance(state,fuel_line,bus)
+                        else:
+                            # use previous propulsor results 
+                            P_mech, P_elec = turboelectric_generator.reuse_stored_data(state,network,stored_propulsor_tag)
 
-                        power_elec_guess += P_elec
+                    power_elec_guess += P_elec
 
-                        # compute fuel line mass flow rate 
-                        fuel_line_mdot += conditions.energy[item.tag].fuel_flow_rate
+                    # compute fuel line mass flow rate 
+                    fuel_line_mdot += conditions.energy[turboelectric_generator.tag].fuel_flow_rate
 
-                        # compute total mass flow rate 
-                        total_mdot_var  += conditions.energy[item.tag].fuel_flow_rate 
+                    # compute total mass flow rate 
+                    total_mdot_var  += conditions.energy[turboelectric_generator.tag].fuel_flow_rate 
 
             diff_target_power = power_elec - power_elec_guess 
             stored_results_flag = False 
             throttle  += alpha*(diff_target_power) 
 
-        # Step 2.2: Determine cumulative fuel flow from each fuel tank  
-        for fuel_tank in fuel_line.fuel_tanks:  
-            conditions.energy[fuel_line.tag][fuel_tank.tag].mass_flow_rate  += fuel_tank.fuel_selector_ratio*fuel_line_mdot + fuel_tank.secondary_fuel_flow            
+        ## Step 2.2: Determine cumulative fuel flow from each fuel tank  
+        #for fuel_tank in fuel_line.fuel_tanks:  
+            #conditions.energy[fuel_line.tag][fuel_tank.tag].mass_flow_rate  += fuel_tank.fuel_selector_ratio*fuel_line_mdot + fuel_tank.secondary_fuel_flow            
     
-        # update total mass flow rate 
-        total_mdot += total_mdot_var   
+        ## update total mass flow rate 
+        #total_mdot += total_mdot_var   
    
         # -----------------------------------------------------------------------------------------------------    
-        # Run Turboshaft Generation in Reverse - Interatively guess fuel flow that provides required power shaft 
+        # Run Turboshaft in Reverse - Interatively guess fuel flow that provides required power shaft 
         # -----------------------------------------------------------------------------------------------------    
         alpha                = 0.000005
         throttle             = 0.5*state.ones_row(1) 
-        power_mech           = fuel_line_conditions.shaft_power*(1 - phi) # MATTEO- THIS NEEDS TO BE CHECKED 
+        power_mech           = fuel_line_conditions.shaft_power*(1 - phi) # MATTEO CHECK ON THIS 
         stored_results_flag  = False
         stored_propulsor_tag = None
          
@@ -200,28 +199,27 @@ def evaluate_energy_storage(state,network,total_mdot, total_power_mech, total_po
             fuel_line_mdot            = 0. * state.ones_row(1)
             total_mdot_var            = 0. * state.ones_row(1)
             # update guess of mdot
-            for tag, item in fuel_line.items():
-                if type(item) == RCAIDE.Library.Components.Powertrain.Converters.Turboshaft: 
-                    if item.active and fuel_line.active: 
-                        state.conditions.energy[item.tag].throttle = throttle
-                        if network.identical_propulsors == False:
-                            # run analysis  
-                            P, stored_results_flag,stored_propulsor_tag = item.compute_performance(state)
-                        else:             
-                            if stored_results_flag == False: 
-                                # run propulsor analysis 
-                                P, stored_results_flag,stored_propulsor_tag = item.compute_performance(state)
-                            else:
-                                # use previous propulsor results 
-                                P = item.reuse_stored_data(state,network,stored_propulsor_tag)
-                         
-                        fuel_network_total_power  += P
-                        
-                        # compute fuel line mass flow rate 
-                        fuel_line_mdot += conditions.energy[item.tag].fuel_flow_rate
-                        
-                        # compute total mass flow rate 
-                        total_mdot_var  = conditions.energy[item.tag].fuel_flow_rate 
+            for turboshaft in fuel_line.turboshafts: 
+                if turboshaft.active and fuel_line.active: 
+                    state.conditions.energy[turboshaft.tag].throttle = throttle
+                    if network.identical_propulsors == False:
+                        # run analysis  
+                        P, stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
+                    else:             
+                        if stored_results_flag == False: 
+                            # run propulsor analysis 
+                            P, stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
+                        else:
+                            # use previous propulsor results 
+                            P = turboshaft.reuse_stored_data(state,network,stored_propulsor_tag)
+                     
+                    fuel_network_total_power  += P
+                    
+                    # compute fuel line mass flow rate 
+                    fuel_line_mdot += conditions.energy[turboshaft.tag].fuel_flow_rate
+                    
+                    # compute total mass flow rate 
+                    total_mdot_var  = conditions.energy[turboshaft.tag].fuel_flow_rate 
     
             diff_target_power = power_mech - fuel_network_total_power 
             stored_results_flag = False 

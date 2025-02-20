@@ -8,11 +8,11 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports 
 from .   import Propulsor 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor_Propulsor.unpack_electric_rotor_unknowns             import unpack_electric_rotor_unknowns
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor_Propulsor.pack_electric_rotor_residuals              import pack_electric_rotor_residuals
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor_Propulsor.append_electric_rotor_conditions           import append_electric_rotor_conditions
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor_Propulsor.compute_electric_rotor_performance         import compute_electric_rotor_performance, reuse_stored_electric_rotor_data
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor_Propulsor.append_electric_rotor_residual_and_unknown import append_electric_rotor_residual_and_unknown
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor.unpack_electric_rotor_unknowns             import unpack_electric_rotor_unknowns
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor.pack_electric_rotor_residuals              import pack_electric_rotor_residuals
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor.append_electric_rotor_conditions           import append_electric_rotor_conditions
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor.compute_electric_rotor_performance         import compute_electric_rotor_performance, reuse_stored_electric_rotor_data
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Electric_Rotor.append_electric_rotor_residual_and_unknown import append_electric_rotor_residual_and_unknown
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Electric_Rotor

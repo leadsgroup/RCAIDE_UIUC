@@ -21,7 +21,7 @@ from copy import deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboshaft_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboshaft_performance(turboshaft,state,fuel_line):    
+def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,center_of_gravity= [[0.0, 0.0,0.0]]): 
     ''' Computes the perfomrance of one turboshaft
     
     Assumptions: 
@@ -175,7 +175,7 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line):
     noise_conditions.turboshaft.core_nozzle   = core_nozzle_res  
     
     # Pack results    
-    power                  = turboshaft_conditions.power  
+    power                  = turboshaft_conditions.shaft_power  
     stored_results_flag    = True
     stored_propulsor_tag   = turboshaft.tag
 

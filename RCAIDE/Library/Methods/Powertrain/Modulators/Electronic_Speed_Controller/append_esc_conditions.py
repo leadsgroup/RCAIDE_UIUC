@@ -8,11 +8,11 @@ from RCAIDE.Framework.Mission.Common     import   Conditions
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_motor_conditions
 # ----------------------------------------------------------------------------------------------------------------------    
-def append_esc_conditions(esc,segment,propulsor_conditions): 
+def append_esc_conditions(esc,segment,energy_conditions): 
     ones_row    = segment.state.ones_row 
-    propulsor_conditions[esc.tag]            = Conditions()
-    propulsor_conditions[esc.tag].inputs     = Conditions()
-    propulsor_conditions[esc.tag].outputs    = Conditions()
-    propulsor_conditions[esc.tag].throttle   = 0. * ones_row(1)  
+    energy_conditions[esc.tag]            = Conditions()
+    energy_conditions[esc.tag].inputs     = Conditions()
+    energy_conditions[esc.tag].outputs    = Conditions()
+    energy_conditions[esc.tag].throttle   = 0. * ones_row(1)  
     
     return 

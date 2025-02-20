@@ -115,8 +115,7 @@ class DC_Motor(Converter):
         self.design_torque      = 0.0 
         self.interpolated_func  = None
         
-    def append_operating_conditions(self,segment,propulsor):
-        propulsor_conditions =  segment.state.conditions.energy[propulsor.tag]
-        append_motor_conditions(self,segment,propulsor_conditions)
+    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None): 
+        append_motor_conditions(self,segment,energy_conditions)
         return
     

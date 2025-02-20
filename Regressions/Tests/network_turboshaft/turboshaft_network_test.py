@@ -53,7 +53,7 @@ def turboshaft_engine_Boeing_502_14(altitude,mach):
     # Propulsor: Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------         
     turboshaft                                     = RCAIDE.Library.Components.Powertrain.Converters.Turboshaft() 
-    turboshaft.tag                                 = 'Turboshaft_propulsor'
+    turboshaft.tag                                 = 'turboshaft_propulsor'
     turboshaft.origin                              = [[13.72, 4.86,-1.1]] 
     turboshaft.engine_length                       = 0.945     
     turboshaft.bypass_ratio                        = 0    

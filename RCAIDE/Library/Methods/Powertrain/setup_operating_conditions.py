@@ -24,46 +24,9 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     Set up operating conditions 
     
     ''' 
-    
-    working_fluid = RCAIDE.Library.Attributes.Gases.Air()
-    
-    if isinstance(compoment, RCAIDE.Library.Components.Powertrain.Converters.Converter):
-        # assign generatic propulsor 
-        if type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.DC_Motor:  
-            propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
-            distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
-            propulsor.motor   = compoment  
-        if type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor: 
-            propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor() 
-            distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
-            propulsor.motor   = compoment   
-        if isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Rotor):  
-            propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
-            distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
-            propulsor.rotor   = compoment   
-            
-    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor): 
-        propulsor = deepcopy(compoment)
-        propulsor.working_fluid =  working_fluid
-        
-        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan:
-            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
-    
-        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet:
-            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
-    
-        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop:
-            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
-    
-        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turboshaft:
-            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
-    
-        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller:
-            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
-            
         
     planet                                            = RCAIDE.Library.Attributes.Planets.Earth()
-    working_fluid = RCAIDE.Library.Attributes.Gases.Air()
+    working_fluid                                     = RCAIDE.Library.Attributes.Gases.Air()
     atmosphere_sls                                    = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
     atmo_data                                         = atmosphere_sls.compute_values(0.0,0.0)
                                                       
@@ -89,8 +52,7 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     conditions.freestream.speed_of_sound              = np.atleast_2d(a)
     conditions.freestream.velocity                    = velocity_vector 
     
-    AoA =  np.arctan(velocity_vector[0, 2] / velocity_vector[0, 0])
-
+    AoA =  np.arctan(velocity_vector[0, 2] / velocity_vector[0, 0]) 
     conditions.frames.body.inertial_rotations        =  np.array([[0, AoA, 0]]) 
     conditions.static_stability.roll_rate            =  np.array([[0]])  
     conditions.static_stability.pitch_rate           =  np.array([[0]])
@@ -99,16 +61,57 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     # setup conditions   
     segment                                           = RCAIDE.Framework.Mission.Segments.Segment()  
     segment.state.conditions                          = conditions    
-    orientations(segment)
+    orientations(segment) 
+    segment.state.residuals.network                  = Residuals()  
+   
+    if type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.DC_Motor:                 
+        propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
+        distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
+        propulsor.motor   = compoment
+                
+    elif type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor: 
+        propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor() 
+        distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
+        propulsor.motor   = compoment
+                
+    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Rotor):  
+        propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
+        distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
+        propulsor.rotor   = compoment
+        
+                        
+    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Turboshaft):   
+        propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop()
+        distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line() 
+        propulsor.rotor   = compoment
+        
+                        
+    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor): 
+        propulsor = deepcopy(compoment)
+        propulsor.working_fluid =  working_fluid
+        
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turbofan:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     
-    segment.state.residuals.network = Residuals()
-    propulsor.append_operating_conditions(segment) 
-    for tag, item in  propulsor.items(): 
-        if issubclass(type(item), RCAIDE.Library.Components.Component):
-            item.append_operating_conditions(segment,propulsor) 
-      
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turbojet:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
+    
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
+            
+        if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Internal_Combustion_Engine:
+            distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
+    
+            if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine:
+                distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()            
+        
+    propulsor.append_operating_conditions(segment)  
+        
     segment.state.conditions.energy[distributor.tag] = Conditions() 
     segment.state.conditions.noise[distributor.tag]  = Conditions()    
     propulsor.append_propulsor_unknowns_and_residuals(segment)
          
     return segment.state , propulsor.tag
+ 
+    
+    

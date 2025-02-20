@@ -102,7 +102,8 @@ class Generator(Converter):
         Properties Used:
         None
         """           
-        self.tag                = 'generator' 
+        self.tag                = 'generator'
+        self.active             = True 
         self.resistance         = 0.0
         self.no_load_current    = 0.0
         self.speed_constant     = 0.0 
@@ -113,8 +114,7 @@ class Generator(Converter):
         self.design_torque      = 0.0 
         self.interpolated_func  = None
         
-    def append_operating_conditions(self,segment,propulsor):
-        propulsor_conditions =  segment.state.conditions.energy[propulsor.tag]
-        append_generator_conditions(self,segment,propulsor_conditions)
+    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None): 
+        append_generator_conditions(self,segment,energy_conditions,noise_conditions=None)
         return
     

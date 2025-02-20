@@ -1,4 +1,4 @@
-# RCAIDE/Methods/Energy/Propulsors/Turboshaft/size_core.py
+# RCAIDE/Methods/Energy/Converters/Turboshaft/size_core.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke
@@ -61,7 +61,7 @@ def size_core(turboshaft,turboshaft_conditions,conditions):
     mdot_compressor                                = mdot_air/ (np.sqrt(Tref/total_temperature_reference)*(total_pressure_reference/Pref))
 
     #pack outputs
-    turboshaft.mass_flow_rate_design               = mdot_air
+    turboshaft.design_mass_flow_rate               = mdot_air
     turboshaft.compressor.mass_flow_rate           = mdot_compressor
 
     return    

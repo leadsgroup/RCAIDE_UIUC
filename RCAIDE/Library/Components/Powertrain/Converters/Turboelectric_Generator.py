@@ -9,14 +9,16 @@
 ## RCAIDE imports
 import RCAIDE
 from RCAIDE.Framework.Core                  import Data 
+from .Converter                             import Converter
 from RCAIDE.Library.Components.Powertrain.Converters.Turboshaft import Turboshaft 
+from RCAIDE.Library.Components.Powertrain.Converters.Generator  import Generator 
 from RCAIDE.Library.Methods.Powertrain.Converters.Turboelectric_Generator.append_turboelectric_generator_conditions      import append_turboelectric_generator_conditions  
 from RCAIDE.Library.Methods.Powertrain.Converters.Turboelectric_Generator.compute_turboelectric_generator_performance    import compute_turboelectric_generator_performance, reuse_stored_turboelectric_generator_data
  
 # ----------------------------------------------------------------------
 #  Turboelectric_Generator
 # ----------------------------------------------------------------------
-class Turboelectric_Generator(Turboshaft):
+class Turboelectric_Generator(Converter):
     """
     A Turboelectric_Generator propulsion system model that simulates the performance of a Turboelectric_Generator engine.
  
@@ -34,15 +36,17 @@ class Turboelectric_Generator(Turboshaft):
     """ 
     def __defaults__(self):
         # setting the default values
-        self.tag                                              = 'Turboelectric_Generator' 
-        self.generator                                        = None 
-        self.gearbox_ratio                                    = None  
+        self.tag                       = 'Turboelectric_Generator'
+        self.turboshaft                = Turboshaft()
+        self.generator                 = Generator() 
+        self.gearbox_ratio             = None  
+        self.active                    = True 
 
-    def append_operating_conditions(self,segment):
+    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None): 
         """
         Appends operating conditions to the segment.
-        """
-        append_turboelectric_generator_conditions (self,segment)
+        """  
+        append_turboelectric_generator_conditions(self,segment,energy_conditions,noise_conditions) 
         return
 
     def unpack_propulsor_unknowns(self,segment):   
@@ -54,13 +58,13 @@ class Turboelectric_Generator(Turboshaft):
     def append_propulsor_unknowns_and_residuals(self,segment): 
         return
     
-    def compute_performance(self,state,center_of_gravity = [[0, 0, 0]]):
+    def compute_performance(self,state,fuel_line,bus,center_of_gravity = [[0, 0, 0]]):
         """
         Computes Turboelectric_Generator performance including power.
         """
-        power,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,center_of_gravity)
+        power,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,fuel_line,bus)
         return power,stored_results_flag,stored_propulsor_tag
     
-    def reuse_stored_data(turboelectric_generator,state,network,stored_propulsor_tag,center_of_gravity = [[0, 0, 0]]):
-        power  = reuse_stored_turboelectric_generator_data(turboelectric_generator,state,network,stored_propulsor_tag,center_of_gravity)
+    def reuse_stored_data(turboelectric_generator,state,fuel_line,bus,stored_propulsor_tag):
+        power  = reuse_stored_turboelectric_generator_data(turboelectric_generator,state,fuel_line,bus,stored_propulsor_tag)
         return power 

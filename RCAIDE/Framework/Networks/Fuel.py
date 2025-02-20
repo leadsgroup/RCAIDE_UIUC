@@ -202,11 +202,17 @@ class Fuel(Network):
         
         for network in segment.analyses.energy.vehicle.networks:
             for p_i, propulsor in enumerate(network.propulsors): 
-                propulsor.append_operating_conditions(segment)           
-    
-                for tag, propulsor_item in  propulsor.items():  
-                    if issubclass(type(propulsor_item), RCAIDE.Library.Components.Component):
-                        propulsor_item.append_operating_conditions(segment,propulsor)            
+
+                propulsor.append_operating_conditions(segment)                  
+                propulsor_conditions      = segment.state.conditions.energy[propulsor.tag]
+                for tag, item in  propulsor.items(): 
+                    if issubclass(type(item), RCAIDE.Library.Components.Component):
+                        item.append_operating_conditions(segment,propulsor_conditions) 
+                        for sub_tag, sub_item in  item.items(): 
+                            if issubclass(type(sub_item), RCAIDE.Library.Components.Component):
+                                item_conditions = propulsor_conditions[item.tag] 
+                                sub_item.append_operating_conditions(segment,item_conditions)
+                                           
     
             for fuel_line_i, fuel_line in enumerate(network.fuel_lines):   
                 # ------------------------------------------------------------------------------------------------------            

@@ -44,7 +44,7 @@ def design_propeller(prop,number_of_stations=20):
           
     """
 
-    if prop.fidelity == 'Actuator_Disk':
+    if prop.fidelity == 'Actuator_Disk_Theory':
         
         omega     = prop.cruise.design_angular_velocity
         thrust    = prop.cruise.design_thrust
@@ -55,10 +55,7 @@ def design_propeller(prop,number_of_stations=20):
         n, D, J, eta_p, Cp, Ct  = compute_propeller_efficiency(prop, V, omega)
         
         power     = thrust*V/eta_p
-        Q         = power/omega
-
-        # Ct        = thrust/(rho * (n**2)*(D**4))          
-        # Cp        = power/(rho * (n**3)*(D**5) )              
+        Q         = power/omega        
                 
         prop.cruise.design_power              = power
         prop.cruise.design_efficiency         = eta_p 
@@ -67,7 +64,7 @@ def design_propeller(prop,number_of_stations=20):
         prop.cruise.design_thrust_coefficient = Ct  
         prop.cruise.design_power_coefficient  = Cp 
 
-    elif prop.fidelity == 'Blade_Element_Momentum_Theory_Helmholtz':
+    elif prop.fidelity == 'Blade_Element_Momentum_Theory_Helmholtz_Wake':
         # Unpack
         N            = number_of_stations       # this number determines the discretization of the propeller into stations
         B            = prop.number_of_blades

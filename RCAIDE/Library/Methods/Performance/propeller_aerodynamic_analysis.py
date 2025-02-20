@@ -54,12 +54,8 @@ def propeller_aerodynamic_analysis(propeller,
     conditions.frames.body.transform_to_inertial[:,2,0]    = -np.sin(angle_of_attack)
     conditions.frames.body.transform_to_inertial[:,2,2]    = np.cos(angle_of_attack)  
     segment.state.conditions                               = conditions 
- 
 
     electric_rotor.append_operating_conditions(segment) 
-    for tag, item in  electric_rotor.items(): 
-        if issubclass(type(item), RCAIDE.Library.Components.Component):
-            item.append_operating_conditions(segment,electric_rotor)
             
     # Run BEMT
     segment.state.conditions.expand_rows(ctrl_pts)

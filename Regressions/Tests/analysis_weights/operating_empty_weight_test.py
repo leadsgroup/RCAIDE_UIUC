@@ -1,7 +1,7 @@
 # weights.py
 import  RCAIDE
 from RCAIDE.Framework.Core import Data, Units 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor   import design_turbofan  
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan   import design_turbofan  
 from RCAIDE.Library.Plots import * 
 from RCAIDE.load import load as load_results
 from RCAIDE.save import save as save_results 

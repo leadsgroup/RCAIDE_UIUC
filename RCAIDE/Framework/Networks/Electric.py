@@ -311,11 +311,7 @@ class Electric(Network):
         
         for network in segment.analyses.energy.vehicle.networks:
             for p_i, propulsor in enumerate(network.propulsors): 
-                propulsor.append_operating_conditions(segment)           
-    
-                for tag, propulsor_item in  propulsor.items():  
-                    if issubclass(type(propulsor_item), RCAIDE.Library.Components.Component):
-                        propulsor_item.append_operating_conditions(segment,propulsor)            
+                propulsor.append_operating_conditions(segment)                      
             
             for bus_i, bus in enumerate(network.busses):   
                 # ------------------------------------------------------------------------------------------------------            

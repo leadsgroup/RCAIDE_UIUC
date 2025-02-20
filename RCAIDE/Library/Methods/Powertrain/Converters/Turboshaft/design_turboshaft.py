@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Energy/Propulsors/Turboshaft/design_turboshaft.py
+# RCAIDE/Library/Methods/Energy/Converters/Turboshaft/design_turboshaft.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke 
@@ -17,8 +17,8 @@ from RCAIDE.Library.Methods.Powertrain.Converters.Compressor         import comp
 from RCAIDE.Library.Methods.Powertrain.Converters.Turbine            import compute_turbine_performance
 from RCAIDE.Library.Methods.Powertrain.Converters.Expansion_Nozzle   import compute_expansion_nozzle_performance 
 from RCAIDE.Library.Methods.Powertrain.Converters.Compression_Nozzle import compute_compression_nozzle_performance
-from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft          import size_core  
-from RCAIDE.Library.Methods.Powertrain.Systems                        import setup_operating_conditions 
+from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft         import size_core  
+from RCAIDE.Library.Methods.Powertrain                               import setup_operating_conditions 
 
 # Python package imports   
 import numpy                                                                as np
@@ -67,11 +67,11 @@ def design_turboshaft(turboshaft):
     segment                  = RCAIDE.Framework.Mission.Segments.Segment()  
     segment.state.conditions = conditions
     segment.state.conditions.energy[fuel_line.tag] = Conditions()
-    segment.state.conditions.noise[fuel_line.tag] = Conditions()
-    turboshaft.append_operating_conditions(segment) 
-    for tag, item in  turboshaft.items(): 
-        if issubclass(type(item), RCAIDE.Library.Components.Component):
-            item.append_operating_conditions(segment,turboshaft) 
+    segment.state.conditions.noise[fuel_line.tag]  = Conditions() 
+
+    propulsor              = RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop() 
+    propulsor.turboshaft   = turboshaft    
+    propulsor.append_operating_conditions(segment,propulsor)  
          
     ram                                                   = turboshaft.ram
     inlet_nozzle                                          = turboshaft.inlet_nozzle
@@ -205,8 +205,7 @@ def design_turboshaft(turboshaft):
     V                     = atmo_data_sea_level.speed_of_sound[0][0]*0.01 
     operating_state,_     = setup_operating_conditions(turboshaft, altitude = 0,velocity_vector=np.array([[V, 0, 0]]))  
     operating_state.conditions.energy[turboshaft.tag].throttle[:,0] = 1.0  
-    sls_T,_,sls_P,_,_                             = turboshaft.compute_performance(operating_state) 
-    turboshaft.sealevel_static_thrust              = sls_T[0][0]
+    sls_P,_,_                              = turboshaft.compute_performance(operating_state) 
     turboshaft.sealevel_static_power               = sls_P[0][0]
      
     return      

@@ -9,8 +9,8 @@
  # RCAIDE imports  
 from RCAIDE.Framework.Core      import Container
 from .                          import Propulsor
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor.append_turbofan_conditions     import append_turbofan_conditions 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor.compute_turbofan_performance   import compute_turbofan_performance, reuse_stored_turbofan_data
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan          .append_turbofan_conditions     import append_turbofan_conditions 
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan          .compute_turbofan_performance   import compute_turbofan_performance, reuse_stored_turbofan_data
  
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  Fan Component
@@ -60,13 +60,13 @@ class Turbofan(Propulsor):
     active_crypgenic_tanks_tanks : None or list
         Collection of active cryogenoc tanks. Default is None.
         
-    engine_diameter : float
+    diameter : float
         Diameter of the engine [m]. Default is 0.0.
         
-    engine_length : float
+    length : float
         Length of the engine [m]. Default is 0.0.
         
-    engine_height : float
+    height : float
         Engine centerline height above the ground plane [m]. Default is 0.5.
         
     exa : float
@@ -108,7 +108,7 @@ class Turbofan(Propulsor):
     design_thrust : float
         Design thrust of the engine [N]. Default is 0.0.
         
-    mass_flow_rate_design : float
+    design_mass_flow_rate : float
         Design mass flow rate [kg/s]. Default is 0.0.
         
     OpenVSP_flow_through : bool
@@ -150,13 +150,11 @@ class Turbofan(Propulsor):
         self.low_pressure_turbine                     = None 
         self.high_pressure_turbine                    = None 
         self.combustor                                = None 
-        self.core_nozzle                              = None
-        self.low_pressure_compressor_external_shaft   = None
-        self.high_pressure_compressor_external_shaft  = None
+        self.core_nozzle                              = None 
         self.fan_nozzle                               = None       
-        self.engine_diameter                          = 0.0      
-        self.engine_length                            = 0.0
-        self.engine_height                            = 0.5     # Engine centerline heigh above the ground plane
+        self.diameter                                 = 0.0      
+        self.length                                   = 0.0
+        self.height                                   = 0.5     # Engine centerline heigh above the ground plane
         self.exa                                      = 1       # distance from fan face to fan exit/ fan diameter)
         self.plug_diameter                            = 0.1     # dimater of the engine plug
         self.geometry_xe                              = 1.      # Geometry information for the installation effects function
@@ -170,7 +168,7 @@ class Turbofan(Propulsor):
         self.reference_temperature                    = 288.15
         self.reference_pressure                       = 1.01325*10**5 
         self.design_thrust                            = 0.0
-        self.mass_flow_rate_design                    = 0.0
+        self.design_mass_flow_rate                    = 0.0
         self.OpenVSP_flow_through                     = False
     
     def append_operating_conditions(self,segment):

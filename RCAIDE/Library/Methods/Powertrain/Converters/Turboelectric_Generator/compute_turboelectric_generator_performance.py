@@ -65,7 +65,7 @@ def compute_turboelectric_generator_performance(turboelectric_generator,state,fu
     
     return P_mech,P_elec,stored_results_flag,stored_propulsor_tag
 
-def reuse_stored_turboelectric_generator_data(turboelectric_generator,state,generators,turboshafts,fuel_line,bus,stored_converter_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
+def reuse_stored_turboelectric_generator_data(turboelectric_generator,state,fuel_line,bus,stored_converter_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one turboelectric_generator for identical propulsors
     
     Assumptions: 
@@ -91,8 +91,8 @@ def reuse_stored_turboelectric_generator_data(turboelectric_generator,state,gene
     bus_conditions             = conditions.energy[bus.tag]
     generator                  = turboelectric_generator.generator 
     turboshaft                 = turboelectric_generator.turboshaft  
-    generator_0                = generators[stored_converter_tag].generator  
-    turboshaft_0               = turboshafts[stored_converter_tag].turboshaft    
+    generator_0                = fuel_line.turboelectric_generators[stored_converter_tag].generator  
+    turboshaft_0               = fuel_line.turboelectric_generators[stored_converter_tag].turboshaft    
     
     conditions.energy[turboelectric_generator.tag][generator.tag]        = deepcopy(conditions.energy[stored_converter_tag][generator_0.tag])
     conditions.energy[turboelectric_generator.tag][turboshaft.tag]       = deepcopy(conditions.energy[stored_converter_tag][turboshaft_0.tag]) 

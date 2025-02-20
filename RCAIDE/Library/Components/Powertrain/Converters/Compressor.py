@@ -8,6 +8,7 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
 from .Converter  import Converter
+from .External_Power_Shaft import External_Power_Shaft
 from RCAIDE.Library.Methods.Powertrain.Converters.Compressor.append_compressor_conditions import append_compressor_conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
@@ -62,8 +63,8 @@ class Compressor(Converter):
         self.tag                             = 'Compressor'
         self.polytropic_efficiency           = 1.0
         self.pressure_ratio                  = 1.0
+        self.external_power_shaft            = External_Power_Shaft()
 
-    def append_operating_conditions(self,segment,propulsor): 
-        propulsor_conditions =  segment.state.conditions.energy[propulsor.tag]
-        append_compressor_conditions(self,segment,propulsor_conditions)
+    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None):  
+        append_compressor_conditions(self,segment,energy_conditions)
         return        

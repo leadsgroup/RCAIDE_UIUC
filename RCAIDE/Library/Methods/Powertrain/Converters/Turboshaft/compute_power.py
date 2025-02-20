@@ -1,4 +1,4 @@
-# RCAIDE/Library/Methods/Energy/Propulsors/Turboshaft/compute_power.py
+# RCAIDE/Library/Methods/Energy/Converters/Turboshaft/compute_power.py
 # 
 # 
 # Created:  Jul 2023, M. Clarke

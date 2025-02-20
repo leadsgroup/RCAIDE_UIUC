@@ -8,14 +8,14 @@ from RCAIDE.Framework.Mission.Common     import   Conditions
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  
 # ----------------------------------------------------------------------------------------------------------------------    
-def append_turbine_conditions(turbine,segment,propulsor_conditions): 
+def append_turbine_conditions(turbine,segment,energy_conditions): 
     ones_row    = segment.state.ones_row 
-    propulsor_conditions[turbine.tag]                                             = Conditions()
-    propulsor_conditions[turbine.tag].inputs                                      = Conditions()
-    propulsor_conditions[turbine.tag].outputs                                     = Conditions()
-    propulsor_conditions[turbine.tag].inputs.fan                                  = Conditions()
-    propulsor_conditions[turbine.tag].inputs.fan.work_done                        = 0*ones_row(1)  
-    propulsor_conditions[turbine.tag].inputs.external_power_shaft                 = Conditions()
-    propulsor_conditions[turbine.tag].inputs.external_power_shaft.work_done       = 0*ones_row(1) 
-    propulsor_conditions[turbine.tag].inputs.external_power_shaft.percent_power   = 0*ones_row(1) 
+    energy_conditions[turbine.tag]                                             = Conditions()
+    energy_conditions[turbine.tag].inputs                                      = Conditions()
+    energy_conditions[turbine.tag].outputs                                     = Conditions()
+    energy_conditions[turbine.tag].inputs.fan                                  = Conditions()
+    energy_conditions[turbine.tag].inputs.fan.work_done                        = 0*ones_row(1)  
+    energy_conditions[turbine.tag].inputs.external_power_shaft                 = Conditions()
+    energy_conditions[turbine.tag].inputs.external_power_shaft.work_done       = 0*ones_row(1) 
+    energy_conditions[turbine.tag].inputs.external_power_shaft.percent_power   = 0*ones_row(1) 
     return 

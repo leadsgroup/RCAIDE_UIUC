@@ -189,10 +189,7 @@ def run_rotor_hover(nexus):
     
     segment.state.conditions.energy[bus.tag] = Conditions()
     segment.state.conditions.noise[bus.tag]  = Conditions() 
-    electric_rotor.append_operating_conditions(segment) 
-    for tag, item in  electric_rotor.items(): 
-        if issubclass(type(item), RCAIDE.Library.Components.Component):
-            item.append_operating_conditions(segment,electric_rotor)
+    electric_rotor.append_operating_conditions(segment)
     
     rotor_conditions                      =  segment.state.conditions.energy[electric_rotor.tag][rotor.tag]     
     rotor_conditions.omega                = (atmosphere_conditions.speed_of_sound*rotor.hover.design_tip_mach)/rotor.tip_radius
@@ -270,9 +267,6 @@ def run_rotor_OEI(nexus):
     segment.state.conditions.energy[bus.tag] = Conditions()
     segment.state.conditions.noise[bus.tag]  = Conditions()
     electric_rotor.append_operating_conditions(segment) 
-    for tag, item in  electric_rotor.items(): 
-        if issubclass(type(item), RCAIDE.Library.Components.Component):
-            item.append_operating_conditions(segment,electric_rotor) 
                 
     rotor_conditions                      =  segment.state.conditions.energy[electric_rotor.tag][rotor.tag]     
     rotor_conditions.omega                = (atmosphere_conditions.speed_of_sound*rotor.oei.design_tip_mach)/rotor.tip_radius
@@ -322,9 +316,6 @@ def run_rotor_cruise(nexus):
         segment.state.conditions.energy[bus.tag] = Conditions()
         segment.state.conditions.noise[bus.tag]  = Conditions()
         electric_rotor.append_operating_conditions(segment) 
-        for tag, item in  electric_rotor.items(): 
-            if issubclass(type(item), RCAIDE.Library.Components.Component):
-                item.append_operating_conditions(segment,electric_rotor) 
             
         rotor_conditions                      =  segment.state.conditions.energy[electric_rotor.tag][rotor.tag]     
         rotor_conditions.omega                = (atmosphere_conditions.speed_of_sound*rotor.cruise.design_tip_mach)/rotor.tip_radius

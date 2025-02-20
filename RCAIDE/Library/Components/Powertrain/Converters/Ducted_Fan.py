@@ -198,9 +198,8 @@ class Ducted_Fan(Converter):
 
         return 
 
-    def append_operating_conditions(ducted_fan,segment,propulsor): 
-        energy_conditions       = segment.state.conditions.energy[propulsor.tag]
-        append_ducted_fan_conditions(ducted_fan,segment,energy_conditions)
+    def append_operating_conditions(ducted_fan,segment,energy_conditions,noise_conditions=None):  
+        append_ducted_fan_conditions(ducted_fan,segment,energy_conditions,noise_conditions)
         return        
           
     def vec_to_vel(self):

@@ -13,7 +13,7 @@ import RCAIDE
 from RCAIDE.Framework.Core                                  import Units , Data     
 from RCAIDE.Library.Plots     import *     
 
-from   RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop_Propulsor   import design_turboprop
+from   RCAIDE.Library.Methods.Powertrain.Propulsors.Turboprop  import design_turboprop
 from   RCAIDE.Library.Methods.Geometry.Planform                import segment_properties
 
 # python imports 

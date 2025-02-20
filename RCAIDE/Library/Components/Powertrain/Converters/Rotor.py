@@ -9,8 +9,7 @@
 
  # RCAIDE imports 
 from RCAIDE.Framework.Core                              import Data , Units, Container
-from RCAIDE.Library.Components                          import Component 
-from RCAIDE.Framework.Analyses.Propulsion               import Momentum_Theory_Wake 
+from RCAIDE.Library.Components                          import Component  
 from RCAIDE.Library.Methods.Powertrain.Converters.Rotor.append_rotor_conditions import  append_rotor_conditions
 
 # package imports
@@ -194,7 +193,9 @@ class Rotor(Component):
         self.Cp_power_coefficients             = [0.389, 0.369, 0.319, 0.178, 0]
         self.Ct_J_coefficients                 = [0, 0.846, 1.537, 1.678, 2.034, 2.658]        
         self.Ct_thrust_coefficients            = [0.180, 0.175, 0.156, 0.144, 0.096, 0]
-        self.fidelity                          = 'Blade_Element_Momentum_Theory_Helmholtz'  
+
+        # Initialize the default wake set to Fidelity Zero         
+        self.fidelity                          = 'Blade_Element_Momentum_Theory_Helmholtz_Wake'          
         
         # design flight conditions 
         self.cruise                            = Data() 
@@ -221,10 +222,7 @@ class Rotor(Component):
         self.start_angle_idx                   = 0           # azimuthal index at which the blade is started 
         self.variable_pitch                    = False
         self.electric_propulsion_fraction      = 1.0
-
-        # Initialize the default wake set to Fidelity Zero 
-        self.Wake                      = Momentum_Theory_Wake() 
-        
+ 
         # blade optimization parameters     
         self.optimization_parameters                                    = Data() 
         self.optimization_parameters.tip_mach_range                     = [0.3,0.7] 
@@ -237,9 +235,7 @@ class Rotor(Component):
         self.optimization_parameters.ideal_efficiency                   = 1.0     
         self.optimization_parameters.ideal_figure_of_merit              = 1.0
 
-    def append_operating_conditions(rotor,segment,propulsor): 
-        energy_conditions       = segment.state.conditions.energy[propulsor.tag]
-        noise_conditions        = segment.state.conditions.noise[propulsor.tag]
+    def append_operating_conditions(rotor,segment,energy_conditions,noise_conditions=None): 
         append_rotor_conditions(rotor,segment,energy_conditions,noise_conditions)
         return        
          

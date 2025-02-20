@@ -10,7 +10,7 @@
 import RCAIDE
 from RCAIDE.Framework.Core import Units       
 from RCAIDE.Library.Methods.Geometry.Planform               import segment_properties    
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan_Propulsor   import design_turbofan    
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Turbofan  import design_turbofan    
 from RCAIDE.Library.Plots                                   import *     
  
 # python imports 

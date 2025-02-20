@@ -126,10 +126,8 @@ def Harmonic_Noise_Validation(PP):
     # Run simulation using different fidelities 
     # -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     for fid in  range(len(fidelities)): 
-        electric_rotor.append_operating_conditions(segment) 
-        for tag, item in  electric_rotor.items(): 
-            if issubclass(type(item), RCAIDE.Library.Components.Component):
-                item.append_operating_conditions(segment,electric_rotor)  
+        electric_rotor.append_operating_conditions(segment)
+        
         # Run BEMT
         segment.state.conditions.expand_rows(ctrl_pts)
         rotor_conditions             =  segment.state.conditions.energy[electric_rotor.tag][rotor.tag]     
@@ -286,9 +284,6 @@ def Broadband_Noise_Validation(PP):
     rotor.use_2d_analysis                                  = True
      
     electric_rotor.append_operating_conditions(segment) 
-    for tag, item in  electric_rotor.items(): 
-        if issubclass(type(item), RCAIDE.Library.Components.Component):
-            item.append_operating_conditions(segment,electric_rotor)  
     # Run BEMT
     segment.state.conditions.expand_rows(ctrl_pts)
     rotor_conditions             =  segment.state.conditions.energy[electric_rotor.tag][rotor.tag]     

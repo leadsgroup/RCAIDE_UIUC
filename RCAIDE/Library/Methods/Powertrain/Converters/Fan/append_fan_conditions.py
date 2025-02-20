@@ -8,8 +8,8 @@ from RCAIDE.Framework.Mission.Common     import   Conditions
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_fan_conditions
 # ----------------------------------------------------------------------------------------------------------------------    
-def append_fan_conditions(fan,segment,propulsor_conditions): 
-    propulsor_conditions[fan.tag]                              = Conditions() 
-    propulsor_conditions[fan.tag].inputs                       = Conditions() 
-    propulsor_conditions[fan.tag].outputs                      = Conditions() 
+def append_fan_conditions(fan,segment,energy_conditions): 
+    energy_conditions[fan.tag]                              = Conditions() 
+    energy_conditions[fan.tag].inputs                       = Conditions() 
+    energy_conditions[fan.tag].outputs                      = Conditions() 
     return 

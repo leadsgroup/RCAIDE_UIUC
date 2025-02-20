@@ -98,7 +98,7 @@ def ICE_CS(vehicle):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------   
-    propulsor                                  = RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_ICE_Propeller()
+    propulsor                                  = RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine()
     propulsor.tag                              = 'ice_constant_speed_propeller' 
                                                    
     # Engine                     

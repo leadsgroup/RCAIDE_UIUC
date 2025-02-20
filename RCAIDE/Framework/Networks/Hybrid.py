@@ -49,7 +49,8 @@ class Hybrid(Network):
         self.tag                          = 'hybrid'
         self.reverse_thrust               = False
         self.wing_mounted                 = True   
-        self.system_voltage               = None   
+        self.system_voltage               = None
+        
     # linking the different network components
     def evaluate(network,state,center_of_gravity):
         """ Calculate thrust given the current state of the vehicle
@@ -70,10 +71,10 @@ class Hybrid(Network):
         reverse_thrust = network.reverse_thrust 
         
         # Evaluate Propulsors   
-        total_thrust,total_moment,total_power,total_mdot =  evaluate_propulsors(network,state,center_of_gravity)
+        total_thrust,total_moment,total_mech_power,total_elec_power,total_mdot =  evaluate_propulsors(network,state,center_of_gravity)
                 
-        # Evaluate Non-Thrust Producing Energy Conversion/Sources Compomnets  
-        total_mdot =  evaluate_energy_storage(state,network,total_mdot) 
+        # Evaluate Non-Thrust Producing Energy Conversion/Sources Components   
+        total_mdot =  evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_elec_power) 
  
         # Step 3: Pack results
         if reverse_thrust ==  True:
@@ -82,7 +83,7 @@ class Hybrid(Network):
             
         conditions.energy.thrust_force_vector  = total_thrust
         conditions.energy.thrust_moment_vector = total_moment
-        conditions.energy.power                = total_power 
+        conditions.energy.power                = total_mech_power 
         conditions.energy.vehicle_mass_rate    = total_mdot    
         
         return 
@@ -182,11 +183,7 @@ class Hybrid(Network):
         
         for network in segment.analyses.energy.vehicle.networks:
             for p_i, propulsor in enumerate(network.propulsors): 
-                propulsor.append_operating_conditions(segment)           
-    
-                for tag, propulsor_item in  propulsor.items():  
-                    if issubclass(type(propulsor_item), RCAIDE.Library.Components.Component):
-                        propulsor_item.append_operating_conditions(segment,propulsor)            
+                propulsor.append_operating_conditions(segment)                       
     
             for fuel_line_i, fuel_line in enumerate(network.fuel_lines):   
                 # ------------------------------------------------------------------------------------------------------            
@@ -209,9 +206,19 @@ class Hybrid(Network):
                 for fuel_tank in  fuel_line.fuel_tanks: 
                     fuel_tank.append_operating_conditions(segment,fuel_line)  
     
-                for tag, fuel_line_item in  fuel_line.items():  
+                for _, fuel_line_item in  fuel_line.items():  
                     if issubclass(type(fuel_line_item), RCAIDE.Library.Components.Component):
-                        fuel_line_item.append_operating_conditions(segment,fuel_line)    
+                        fuel_line_item.append_operating_conditions(segment,fuel_line)
+                
+                for turboelectric_generator in  fuel_line.turboelectric_generators:
+                    turboelectric_generator.append_operating_conditions(segment)
+                    for _, turboelectric_generator_item in  turboelectric_generator.items():  
+                        if issubclass(type(turboelectric_generator_item), RCAIDE.Library.Components.Component):
+                            turboelectric_generator_item.append_operating_conditions(segment,fuel_line) 
+                            for _, turboelectric_generator_sub_item in  turboelectric_generator_item.items():  
+                                if issubclass(type(turboelectric_generator_sub_item), RCAIDE.Library.Components.Component):
+                                    turboelectric_generator_sub_item.append_operating_conditions(segment,fuel_line)
+                                     
 
             for bus_i, bus in enumerate(network.busses):   
                 # ------------------------------------------------------------------------------------------------------            
