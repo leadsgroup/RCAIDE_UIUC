@@ -8,6 +8,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 import numpy as np
 
+from copy import  deepcopy
+
 # ---------------------------------------------------------------------------------------------------------------------- 
 # compute_compression_nozzle_performance
 # ----------------------------------------------------------------------------------------------------------------------
@@ -41,13 +43,15 @@ def compute_compressor_performance(compressor,compressor_conditions,conditions):
     """          
     
     # Unpack component inputs
-    Tt_in    = compressor_conditions.inputs.stagnation_temperature
-    Pt_in    = compressor_conditions.inputs.stagnation_pressure 
-    PR       = compressor.pressure_ratio
-    etapold  = compressor.polytropic_efficiency 
-    T0       = compressor_conditions.inputs.static_temperature
-    P0       = compressor_conditions.inputs.static_pressure  
-    M0       = compressor_conditions.inputs.mach_number    
+    Tt_in     = compressor_conditions.inputs.stagnation_temperature
+    Pt_in     = compressor_conditions.inputs.stagnation_pressure 
+    PR        = compressor.pressure_ratio
+    etapold   = compressor.polytropic_efficiency 
+    T0        = compressor_conditions.inputs.static_temperature
+    P0        = compressor_conditions.inputs.static_pressure  
+    M0        = compressor_conditions.inputs.mach_number
+    motor     = compressor.motor
+    generator = compressor.generator
     
     # Unpack ram inputs
     working_fluid           = compressor.working_fluid
@@ -78,7 +82,37 @@ def compute_compressor_performance(compressor,compressor_conditions,conditions):
     compressor_conditions.outputs.mach_number             = M_out
     compressor_conditions.outputs.gas_constant            = R
     compressor_conditions.outputs.gamma                   = gamma 
-    compressor_conditions.outputs.cp                      = Cp   
+    compressor_conditions.outputs.cp                      = Cp 
     
+    compressor_motor_conditions     =  compressor_conditions[motor.tag]
+    compressor_generator_conditions =  compressor_conditions[generator.tag] 
+
+    total_temperature_reference = Tt_out
+    total_pressure_reference    = Pt_out
+    mdhc                        = compressor.compressor_nondimensional_massflow 
+    Tref                        = compressor.reference_temperature   
+    Pref                        = compressor.reference_pressure      
+    
+    # compute core mass flow rate 
+    mdot_core = mdhc * np.sqrt(Tref / total_temperature_reference) * (total_pressure_reference / Pref)
+    
+    phi       =  conditions.energy.hybrid_power_split_ratio
+    phi_motor = deepcopy(phi)
+    phi_motor[phi_motor<0] =  0
+    
+    
+    phi_generator   = deepcopy(phi)
+    phi_generator[phi_generator>0] = 0
+
+    if motor != None: 
+        compressor_motor_conditions.outputs.work_done = phi_motor * work_done 
+        compressor_motor_conditions.outputs.power     = compressor_motor_conditions.outputs.work_done * mdot_core
+        compressor_motor_conditions.external_power_shaft.percent_power[:,0] = phi_motor
+            
+    elif generator != None: 
+        compressor_generator_conditions.outputs.work_done = phi_generator * work_done
+        compressor_generator_conditions.outputs.power     = compressor_generator_conditions.outputs.work_done * mdot_core
+        compressor_generator_conditions.external_power_shaft.percent_power[:,0] = phi_generator
+        
     return 
 

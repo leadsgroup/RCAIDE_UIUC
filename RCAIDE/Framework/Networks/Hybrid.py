@@ -226,7 +226,7 @@ class Hybrid(Network):
                 # ------------------------------------------------------------------------------------------------------
                 segment.state.conditions.energy[bus.tag] = RCAIDE.Framework.Mission.Common.Conditions() 
                 segment.state.conditions.noise[bus.tag]  = RCAIDE.Framework.Mission.Common.Conditions()   
-    
+
                 # ------------------------------------------------------------------------------------------------------
                 # Assign network-specific  residuals, unknowns and results data structures
                 # ------------------------------------------------------------------------------------------------------

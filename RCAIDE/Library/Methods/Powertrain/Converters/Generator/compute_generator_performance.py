@@ -6,6 +6,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
+import RCAIDE
 
 # package imports 
 import numpy as np
@@ -51,19 +52,35 @@ def compute_generator_performance(generator,generator_conditions,conditions):
     --------
     RCAIDE.Library.Components.Powertrain.Converters.DC_generator
     RCAIDE.Library.Components.Powertrain.Converters.PMSM_generator
-    """           
+    """
 
-    if generator.fidelity == 'DC_generator':
+    G     = generator.gearbox_ratio    
+     
+    if type(generator) == RCAIDE.Library.Components.Powertrain.Converters.DC_Generator:  
+        omeg  = generator_conditions.inputs.omega*G
+        power = generator_conditions.inputs.shaft_powwer 
+        fidelity = "Simple_DC_Electric_Machine" 
+    if type(generator) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Generator:  
+        omeg  = generator_conditions.inputs.omega*G
+        power = generator_conditions.inputs.shaft_powwer 
+        fidelity = "Simple_DC_Electric_Machine" 
+    elif (type(generator) ==  RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor): 
+        omeg  = generator_conditions.outputs.omega*G
+        power = generator_conditions.outputs.shaft_powwer
+        fidelity = "PMSM_Electric_Machine"
+    elif (type(generator) ==  RCAIDE.Library.Components.Powertrain.Converters.DC_Motor):
+        omeg  = generator_conditions.outputs.omega*G
+        power = generator_conditions.outputs.shaft_powwer
+        fidelity = "Simple_DC_Electric_Machine"
+        
+    if fidelity == 'Simple_DC_Electric_Machine':
         # Unpack  
         Res   = generator.resistance 
 
         # Unpack
-        G     = generator.gearbox_ratio
         Kv    = generator.speed_constant
         Res   = generator.resistance
         v     = generator_conditions.voltage 
-        omeg  = generator_conditions.inputs.omega*G
-        power = generator_conditions.inputs.shaft_powwer
         etaG  = generator.gearbox_efficiency
         exp_i = generator.expected_current
         io    = generator.no_load_current + exp_i*(1-etaG)
@@ -77,7 +94,7 @@ def compute_generator_performance(generator,generator_conditions,conditions):
 
         v     = generator_conditions.voltage
 
-    elif generator.fidelity == 'PMSM_generator':
+    elif fidelity == 'PMSM_Electric_Machine':
 
         Kv    = generator.speed_constant                          # [rpm/V]        speed constant
         omega = generator.omega*60/(2*np.pi)                      # [rad/s -> rpm] nominal speed

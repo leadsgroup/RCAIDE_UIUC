@@ -20,7 +20,6 @@ from . import Fan
 from . import Ram
 from . import Rotor
 from . import Generator
-from . import External_Power_Shaft
 from . import Turbine
 from . import Reformer
 from . import Turboshaft

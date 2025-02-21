@@ -33,7 +33,6 @@ from .Ram                                        import Ram
 from .Rotor                                      import Rotor
 from .Prop_Rotor                                 import Prop_Rotor
 from .Proton_Exchange_Membrane_Fuel_Cell         import Proton_Exchange_Membrane_Fuel_Cell
-from .External_Power_Shaft                       import External_Power_Shaft
 from .Solar_Panel                                import Solar_Panel
 from .Supersonic_Nozzle                          import Supersonic_Nozzle
 from .Turbine                                    import Turbine
