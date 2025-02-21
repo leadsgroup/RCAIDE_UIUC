@@ -94,7 +94,9 @@ def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center
     compressor_conditions.inputs.static_temperature       = inlet_nozzle_conditions.outputs.static_temperature
     compressor_conditions.inputs.static_pressure          = inlet_nozzle_conditions.outputs.static_pressure
     compressor_conditions.inputs.mach_number              = inlet_nozzle_conditions.outputs.mach_number  
-    compressor.working_fluid                              = inlet_nozzle.working_fluid 
+    compressor.working_fluid                              = inlet_nozzle.working_fluid
+    compressor_conditions.reference_temperature           = turboprop.reference_temperature
+    compressor_conditions.reference_pressure              = turboprop.reference_pressure   
 
     # Step 6: Compute flow through the low pressure compressor
     compute_compressor_performance(compressor,compressor_conditions,conditions)
@@ -130,7 +132,8 @@ def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center
     lpt_conditions.inputs.static_pressure                 = hpt_conditions.outputs.static_pressure 
     lpt_conditions.inputs.mach_number                     = hpt_conditions.outputs.mach_number     
     lpt_conditions.inputs.compressor                      = Data()
-    lpt_conditions.inputs.compressor.work_done            = 0.0        
+    lpt_conditions.inputs.compressor.work_done            = 0.0   
+    lpt_conditions.inputs.compressor.external_shaft_work_done = 0.0
     lpt_conditions.inputs.bypass_ratio                    = 0.0 
     lpt_conditions.inputs.fuel_to_air_ratio               = combustor_conditions.outputs.fuel_to_air_ratio 
     low_pressure_turbine.working_fluid                    = high_pressure_turbine.working_fluid    
@@ -188,7 +191,7 @@ def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center
                 exit_velocity                       = core_nozzle_conditions.outputs.velocity
             )
   
-    noise_conditions.turboprop.core_nozzle   = core_nozzle_res  
+    noise_conditions.core_nozzle   = core_nozzle_res  
     
     # Pack results    
     stored_results_flag    = True
