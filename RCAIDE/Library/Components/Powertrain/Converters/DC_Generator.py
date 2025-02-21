@@ -1,4 +1,4 @@
-# RCAIDE/Library/Components/Propulsors/Converters/Generator.py
+# RCAIDE/Library/Components/Propulsors/Converters/DC_Generator.py
 # 
 # 
 # Created:  Jan 2025, M. Clarke 
@@ -13,7 +13,7 @@ from RCAIDE.Library.Methods.Powertrain.Converters.Generator.append_generator_con
 # ----------------------------------------------------------------------------------------------------------------------
 #  Generator  
 # ----------------------------------------------------------------------------------------------------------------------           
-class Generator(Converter):
+class DC_Generator(Converter):
     """
     A electric generator component model for electric propulsion systems.
 
