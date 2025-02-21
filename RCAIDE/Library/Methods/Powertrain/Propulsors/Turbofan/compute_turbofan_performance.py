@@ -64,11 +64,7 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     low_pressure_turbine      = turbofan.low_pressure_turbine
     core_nozzle               = turbofan.core_nozzle
     fan_nozzle                = turbofan.fan_nozzle 
-    bypass_ratio              = turbofan.bypass_ratio
-    lpc_motor                 = low_pressure_compressor.motor
-    hpc_motor                 = high_pressure_compressor.motor
-    lpc_generator             = low_pressure_compressor.generator
-    hpc_generator             = high_pressure_compressor.generator
+    bypass_ratio              = turbofan.bypass_ratio 
     
     # unpack component conditions 
     ram_conditions          = turbofan_conditions[ram.tag]    
@@ -118,7 +114,7 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     lpc_conditions.inputs.static_pressure                      = fan_conditions.outputs.static_pressure
     lpc_conditions.inputs.mach_number                          = fan_conditions.outputs.mach_number  
     low_pressure_compressor.working_fluid                      = turbofan.working_fluid
-    low_pressure_compressor.compressor_nondimensional_massflow = turbofan.compressor_nondimensional_massflow
+    low_pressure_compressor.nondimensional_massflow            = turbofan.compressor_nondimensional_massflow
     low_pressure_compressor.reference_temperature              = turbofan.reference_temperature
     low_pressure_compressor.reference_pressure                 = turbofan.reference_pressure
         
@@ -132,7 +128,7 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     hpc_conditions.inputs.static_pressure                       = lpc_conditions.outputs.static_pressure
     hpc_conditions.inputs.mach_number                           = lpc_conditions.outputs.mach_number  
     high_pressure_compressor.working_fluid                      = low_pressure_compressor.working_fluid    
-    high_pressure_compressor.compressor_nondimensional_massflow = turbofan.compressor_nondimensional_massflow
+    high_pressure_compressor.nondimensional_massflow            = turbofan.compressor_nondimensional_massflow
     high_pressure_compressor.reference_temperature              = turbofan.reference_temperature
     high_pressure_compressor.reference_pressure                 = turbofan.reference_pressure
         
@@ -272,9 +268,9 @@ def compute_turbofan_performance(turbofan,state,fuel_line=None,bus=None,center_o
     stored_results_flag                     = True
     stored_propulsor_tag                    = turbofan.tag 
   
-    P_elec =  lpt_conditions[lpc_motor].outputs.power + lpt_conditions[lpc_generator].outputs.power +  hpt_conditions[hpc_motor].outputs.power + +  hpt_conditions[hpc_generator].outputs.power 
+    power_elec =  lpc_conditions.outputs.external_electrical_power + hpc_conditions.outputs.external_electrical_power 
     
-    return thrust_vector,moment,power,P_elec,stored_results_flag,stored_propulsor_tag 
+    return thrust_vector,moment,power,power_elec,stored_results_flag,stored_propulsor_tag 
     
 def reuse_stored_turbofan_data(turbofan,state,network,fuel_line,bus,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one turbofan for identical turbofans
@@ -301,7 +297,11 @@ def reuse_stored_turbofan_data(turbofan,state,network,fuel_line,bus,stored_propu
     ''' 
     conditions                       = state.conditions  
     conditions.energy[turbofan.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
-    conditions.noise[turbofan.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
+    conditions.noise[turbofan.tag]   = deepcopy(conditions.noise[stored_propulsor_tag]) 
+    low_pressure_compressor          = turbofan.low_pressure_compressor
+    high_pressure_compressor         = turbofan.high_pressure_compressor
+    lpc_conditions                   = conditions.energy[turbofan.tag][low_pressure_compressor.tag]
+    hpc_conditions                   = conditions.energy[turbofan.tag][high_pressure_compressor.tag]
     
     # compute moment  
     moment_vector      = 0*state.ones_row(3)
@@ -314,10 +314,7 @@ def reuse_stored_turbofan_data(turbofan,state,network,fuel_line,bus,stored_propu
   
     power                                  = conditions.energy[turbofan.tag].power 
     conditions.energy[turbofan.tag].moment =  moment
-    
-    
-    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS 
- 
-    power_elec =  0*state.ones_row(3)
+     
+    power_elec =  lpc_conditions.outputs.external_electrical_power + hpc_conditions.outputs.external_electrical_power 
     
     return thrust_vector,moment,power, power_elec

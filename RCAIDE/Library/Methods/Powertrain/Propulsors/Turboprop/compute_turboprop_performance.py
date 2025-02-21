@@ -193,10 +193,8 @@ def compute_turboprop_performance(turboprop,state,fuel_line=None,bus=None,center
     # Pack results    
     stored_results_flag    = True
     stored_propulsor_tag   = turboprop.tag
-    
-
-    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS
-    power_elec =  0*state.ones_row(3)
+     
+    power_elec =  compressor_conditions.outputs.external_electrical_power  
     
     return thrust_vector,moment,power,power_elec,stored_results_flag,stored_propulsor_tag 
 
@@ -224,6 +222,8 @@ def reuse_stored_turboprop_data(turboprop,state,network,fuel_line,bus,stored_pro
     conditions                        = state.conditions  
     conditions.energy[turboprop.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turboprop.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
+    compressor                        = turboprop.compressor  
+    compressor_conditions             = conditions.energy[turboprop.tag][compressor.tag]
     
     # compute moment  
     moment_vector      = 0*state.ones_row(3)
@@ -236,9 +236,7 @@ def reuse_stored_turboprop_data(turboprop,state,network,fuel_line,bus,stored_pro
   
     power                                   = conditions.energy[turboprop.tag].power 
     conditions.energy[turboprop.tag].moment =  moment
-    
-
-    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS     
-    power_elec =  0*state.ones_row(3)
-    
+       
+    power_elec =  compressor_conditions.outputs.external_electrical_power 
+        
     return thrust_vector,moment,power, power_elec

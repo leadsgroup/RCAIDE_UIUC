@@ -6,8 +6,10 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Imports 
 # ----------------------------------------------------------------------------------------------------------------------
-import numpy as np
 
+from RCAIDE.Library.Methods.Powertrain.Converters.Generator          import compute_generator_performance
+
+import numpy as np
 from copy import  deepcopy
 
 # ---------------------------------------------------------------------------------------------------------------------- 
@@ -43,15 +45,18 @@ def compute_compressor_performance(compressor,compressor_conditions,conditions):
     """          
     
     # Unpack component inputs
-    Tt_in     = compressor_conditions.inputs.stagnation_temperature
-    Pt_in     = compressor_conditions.inputs.stagnation_pressure 
-    PR        = compressor.pressure_ratio
-    etapold   = compressor.polytropic_efficiency 
-    T0        = compressor_conditions.inputs.static_temperature
-    P0        = compressor_conditions.inputs.static_pressure  
-    M0        = compressor_conditions.inputs.mach_number
-    motor     = compressor.motor
-    generator = compressor.generator
+    PR          = compressor.pressure_ratio
+    etapold     = compressor.polytropic_efficiency 
+    motor       = compressor.motor
+    generator   = compressor.generator 
+    mdhc        = compressor.nondimensional_massflow 
+    Tref        = compressor.reference_temperature   
+    Pref        = compressor.reference_pressure 
+    Tt_in       = compressor_conditions.inputs.stagnation_temperature
+    Pt_in       = compressor_conditions.inputs.stagnation_pressure 
+    T0          = compressor_conditions.inputs.static_temperature
+    P0          = compressor_conditions.inputs.static_pressure  
+    M0          = compressor_conditions.inputs.mach_number
     
     # Unpack ram inputs
     working_fluid           = compressor.working_fluid
@@ -84,35 +89,38 @@ def compute_compressor_performance(compressor,compressor_conditions,conditions):
     compressor_conditions.outputs.gamma                   = gamma 
     compressor_conditions.outputs.cp                      = Cp 
     
-    compressor_motor_conditions     =  compressor_conditions[motor.tag]
-    compressor_generator_conditions =  compressor_conditions[generator.tag] 
-
-    total_temperature_reference = Tt_out
-    total_pressure_reference    = Pt_out
-    mdhc                        = compressor.compressor_nondimensional_massflow 
-    Tref                        = compressor.reference_temperature   
-    Pref                        = compressor.reference_pressure      
-    
     # compute core mass flow rate 
-    mdot_core = mdhc * np.sqrt(Tref / total_temperature_reference) * (total_pressure_reference / Pref)
-    
-    phi       =  conditions.energy.hybrid_power_split_ratio
-    phi_motor = deepcopy(phi)
-    phi_motor[phi_motor<0] =  0
-    
-    
-    phi_generator   = deepcopy(phi)
-    phi_generator[phi_generator>0] = 0
+    mdot_core = mdhc * np.sqrt(Tref / Tt_out) * (Pt_out / Pref) 
+    phi       =  conditions.energy.hybrid_power_split_ratio 
 
     if motor != None: 
+        compressor_motor_conditions  = compressor_conditions[motor.tag]
+        phi_motor                    = deepcopy(phi)
+        phi_motor[phi_motor<0]       =  0
+        
+        # mechanical power 
         compressor_motor_conditions.outputs.work_done = phi_motor * work_done 
-        compressor_motor_conditions.outputs.power     = compressor_motor_conditions.outputs.work_done * mdot_core
-        compressor_motor_conditions.external_power_shaft.percent_power[:,0] = phi_motor
-            
+        compressor_motor_conditions.outputs.power     = compressor_motor_conditions.outputs.work_done * mdot_core  
+        compressor_conditions.outputs.external_shaft_work_done += compressor_motor_conditions.outputs.work_done
+
+        # electrical power
+        compute_generator_performance(motor,compressor_motor_conditions,conditions)
+        compressor_conditions.outputs.external_electrical_power  += compressor_motor_conditions.power
+        
     elif generator != None: 
+        compressor_generator_conditions = compressor_conditions[generator.tag] 
+        phi_generator                   = deepcopy(phi)
+        phi_generator[phi_generator>0]  = 0
+        
+
+        # mechanical power         
         compressor_generator_conditions.outputs.work_done = phi_generator * work_done
         compressor_generator_conditions.outputs.power     = compressor_generator_conditions.outputs.work_done * mdot_core
-        compressor_generator_conditions.external_power_shaft.percent_power[:,0] = phi_generator
+        compressor_conditions.outputs.external_shaft_work_done += compressor_generator_conditions.outputs.work_done
+         
+        # electrical power          
+        compute_generator_performance(generator,compressor_generator_conditions,conditions)
+        compressor_conditions.outputs.external_electrical_power   += compressor_generator_conditions.power
         
     return 
 

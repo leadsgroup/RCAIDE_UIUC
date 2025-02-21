@@ -109,17 +109,21 @@ def design_turbojet(turbojet):
     lpc_conditions.inputs.static_pressure         = inlet_nozzle_conditions.outputs.static_pressure
     lpc_conditions.inputs.mach_number             = inlet_nozzle_conditions.outputs.mach_number  
     low_pressure_compressor.working_fluid         = inlet_nozzle.working_fluid
+    low_pressure_compressor.reference_temperature = turbojet.reference_temperature
+    low_pressure_compressor.reference_pressure    = turbojet.reference_pressure
 
     # Step 6: Compute flow through the low pressure compressor
     compute_compressor_performance(low_pressure_compressor,lpc_conditions,conditions)
 
     # Step 7: Link the high pressure compressor to the low pressure compressor
-    hpc_conditions.inputs.stagnation_temperature = lpc_conditions.outputs.stagnation_temperature
-    hpc_conditions.inputs.stagnation_pressure    = lpc_conditions.outputs.stagnation_pressure
-    hpc_conditions.inputs.static_temperature     = lpc_conditions.outputs.static_temperature
-    hpc_conditions.inputs.static_pressure        = lpc_conditions.outputs.static_pressure
-    hpc_conditions.inputs.mach_number            = lpc_conditions.outputs.mach_number  
-    high_pressure_compressor.working_fluid       = low_pressure_compressor.working_fluid   
+    hpc_conditions.inputs.stagnation_temperature   = lpc_conditions.outputs.stagnation_temperature
+    hpc_conditions.inputs.stagnation_pressure      = lpc_conditions.outputs.stagnation_pressure
+    hpc_conditions.inputs.static_temperature       = lpc_conditions.outputs.static_temperature
+    hpc_conditions.inputs.static_pressure          = lpc_conditions.outputs.static_pressure
+    hpc_conditions.inputs.mach_number              = lpc_conditions.outputs.mach_number  
+    high_pressure_compressor.working_fluid         = low_pressure_compressor.working_fluid  
+    high_pressure_compressor.reference_temperature = turbojet.reference_temperature
+    high_pressure_compressor.reference_pressure    = turbojet.reference_pressure   
 
     # Step 8: Compute flow through the high pressure compressor
     compute_compressor_performance(high_pressure_compressor,hpc_conditions,conditions)

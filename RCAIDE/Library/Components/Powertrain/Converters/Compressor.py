@@ -64,6 +64,7 @@ class Compressor(Converter):
         self.pressure_ratio                  = 1.0
         self.motor                           = None
         self.generator                       = None
+        self.nondimensional_massflow         = 0.0
 
     def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None):  
         append_compressor_conditions(self,segment,energy_conditions)

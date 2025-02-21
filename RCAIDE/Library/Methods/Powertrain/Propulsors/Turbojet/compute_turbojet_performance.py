@@ -276,6 +276,10 @@ def reuse_stored_turbojet_data(turbojet,state,network,fuel_line,bus,stored_propu
     conditions                       = state.conditions  
     conditions.energy[turbojet.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turbojet.tag]   = deepcopy(conditions.noise[stored_propulsor_tag])
+    low_pressure_compressor          = turbojet.low_pressure_compressor
+    high_pressure_compressor         = turbojet.high_pressure_compressor
+    lpc_conditions                   = conditions.energy[turbojet.tag][low_pressure_compressor.tag]
+    hpc_conditions                   = conditions.energy[turbojet.tag][high_pressure_compressor.tag]
     
     # compute moment  
     moment_vector      = 0*state.ones_row(3)
@@ -287,10 +291,8 @@ def reuse_stored_turbojet_data(turbojet,state,network,fuel_line,bus,stored_propu
     moment             = np.cross(moment_vector, thrust_vector)    
   
     power              = conditions.energy[turbojet.tag].power 
-    conditions.energy[turbojet.tag].moment =  moment 
- 
+    conditions.energy[turbojet.tag].moment =  moment  
 
-    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS
-    power_elec =  0*state.ones_row(3)
-    
+    power_elec =  lpc_conditions.outputs.external_electrical_power + hpc_conditions.outputs.external_electrical_power 
+ 
     return thrust_vector,moment,power, power_elec
