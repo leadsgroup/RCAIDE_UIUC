@@ -13,7 +13,7 @@ from scipy.interpolate import interp1d
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  compute_induced_velocity
 # ----------------------------------------------------------------------------------------------------------------------   
-def compute_wake_induced_velocity(evaluation_points, props, ctrl_pts, identical_flag=False):  
+def compute_wake_induced_velocity(rotor,rotor_conditions,evaluation_points,ctrl_pts, identical_flag=False): 
     """ This computes the velocity induced by the a wake on specified evaluation points.
 
     Assumptions:  
