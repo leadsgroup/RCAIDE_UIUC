@@ -56,22 +56,22 @@ def compute_generator_performance(generator,generator_conditions,conditions):
 
     G     = generator.gearbox_ratio    
      
-    if type(generator) == RCAIDE.Library.Components.Powertrain.Converters.Generator:  
+    if type(generator) == RCAIDE.Library.Components.Powertrain.Converters.DC_Generator:  
         omeg  = generator_conditions.inputs.omega*G
         power = generator_conditions.inputs.shaft_powwer 
         fidelity = "Simple_DC_Electric_Machine" 
-    #elif type(generator) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Generator:  
-        #omeg  = generator_conditions.inputs.omega*G
-        #power = generator_conditions.inputs.shaft_powwer 
-        #fidelity = "Simple_DC_Electric_Machine" 
-    elif (type(generator) ==  RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor): 
-        omeg  = generator_conditions.outputs.omega*G
-        power = generator_conditions.outputs.shaft_powwer
-        fidelity = "PMSM_Electric_Machine"
+    elif type(generator) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Generator:  
+        omeg  = generator_conditions.inputs.omega*G
+        power = generator_conditions.inputs.shaft_powwer 
+        fidelity = "PMSM_Electric_Machine" 
     elif (type(generator) ==  RCAIDE.Library.Components.Powertrain.Converters.DC_Motor):
         omeg  = generator_conditions.outputs.omega*G
         power = generator_conditions.outputs.shaft_powwer
         fidelity = "Simple_DC_Electric_Machine"
+    elif (type(generator) ==  RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor): 
+        omeg  = generator_conditions.outputs.omega*G
+        power = generator_conditions.outputs.shaft_powwer
+        fidelity = "PMSM_Electric_Machine"
         
     if fidelity == 'Simple_DC_Electric_Machine':
         # Unpack  

@@ -59,7 +59,10 @@ def compute_turbine_performance(turbine,turbine_conditions,conditions):
     compressor_work       = turbine_conditions.inputs.compressor.work_done
     fan_work              = turbine_conditions.inputs.fan.work_done
     f                     = turbine_conditions.inputs.fuel_to_air_ratio 
-    external_shaft_power  = turbine_conditions.inputs.compressor.external_shaft_work_done 
+    if turbine_conditions.inputs.compressor.external_shaft_work_done != None:
+        external_shaft_power  = turbine_conditions.inputs.compressor.external_shaft_work_done 
+    else:
+        external_shaft_power  = 0.0
   
     # Using the work done by the compressors/fan and the fuel to air ratio to compute the energy drop across the turbine
     deltah_ht = -1/(1+f) * (compressor_work + external_shaft_power + alpha * fan_work) * 1/eta_mech

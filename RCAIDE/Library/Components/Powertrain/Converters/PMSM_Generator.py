@@ -1,4 +1,4 @@
-# RCAIDE/Library/Components/Propulsors/Converters/DC_Generator.py
+# RCAIDE/Library/Components/Propulsors/Converters/PMSM_Generator.py
 # 
 # 
 # Created:  Jan 2025, M. Clarke 
@@ -11,9 +11,9 @@ from .Converter  import Converter
 from RCAIDE.Library.Methods.Powertrain.Converters.Generator.append_generator_conditions import  append_generator_conditions
 
 # ----------------------------------------------------------------------------------------------------------------------
-#  DC_Generator  
+#  Generator  
 # ----------------------------------------------------------------------------------------------------------------------           
-class DC_Generator(Converter):
+class PMSM_Generator(Converter):
     """
     A electric generator component model for electric propulsion systems.
 
@@ -102,7 +102,7 @@ class DC_Generator(Converter):
         Properties Used:
         None
         """           
-        self.tag                = 'DC_generator'
+        self.tag                = 'PMSM_generator'
         self.active             = True 
         self.resistance         = 0.0
         self.no_load_current    = 0.0
