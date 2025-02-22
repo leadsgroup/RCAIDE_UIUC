@@ -15,7 +15,7 @@ import numpy as np
 # ----------------------------------------------------------------------------------------------------------------------
 # heads_method
 # ---------------------------------------------------------------------------------------------------------------------- 
-def heads_method(npanel,ncases,ncpts,NU,DEL_0,THETA_0,DELTA_STAR_0,CF_0,ShapeFactor_0,RE_L,TURBULENT_COORD,VE_I,DVE_I,TURBULENT_SURF,tol):
+def heads_method(npanel,ncases,ncpts,NU,DEL_0,THETA_0,DELTA_STAR_0,CF_0,ShapeFactor_0,RE_L,TURBULENT_COORD,VE_I,DVE_I,TURBULENT_SURF,tol,wrong_columns):
     """ Computes the boundary layer characteristics in turbulent
     flow pressure gradients
 
@@ -94,6 +94,9 @@ def heads_method(npanel,ncases,ncpts,NU,DEL_0,THETA_0,DELTA_STAR_0,CF_0,ShapeFac
                 # define RK4 slope function for VeThetaH1
                 def dVeThetaH1_by_dx(index, X, THETA, VETHETAH1):
                     return Ve_i[index]*0.0306*(((VETHETAH1/(Ve_i[index]*THETA))-3)**-0.6169)
+                
+                if case in wrong_columns:
+                    continue 
                 
                 x_i          = TURBULENT_COORD.data[:,case,cpt][TURBULENT_COORD.mask[:,case,cpt] ==False] 
                 Ve_i         = VE_I.data[:,case,cpt][TURBULENT_COORD.mask[:,case,cpt] ==False]

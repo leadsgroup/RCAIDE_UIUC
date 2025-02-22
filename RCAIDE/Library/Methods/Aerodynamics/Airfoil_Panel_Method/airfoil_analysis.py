@@ -101,34 +101,12 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     # ---------------------------------------------------------------------     
     VT              = np.ma.masked_greater(vt,0 )
     VT_mask         = np.ma.masked_greater(vt,0 ).mask
-    vt_count        = np.ma.count_masked(VT, axis=0)
     X_BOT_VALS      = np.ma.array(X, mask = VT_mask)[::-1]
-    x_mask_1        = X_BOT_VALS.mask
-    x_mask_1_count  = np.ma.count_masked(X_BOT_VALS,axis = 0)
-    mask_diff       = x_mask_1 ^ VT_mask
-    Y_BOT           = np.ma.array(Y, mask = VT_mask)[::-1]  
+    Y_BOT           = np.ma.array(Y, mask = VT_mask)[::-1]
+         
     X_BOT           = np.zeros_like(X_BOT_VALS)
-
-    x_mask_2        = X_BOT.mask
-    x_mask_2_count  = np.ma.count_masked(X_BOT,axis = 0)
-    distances_tmp   = np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2)
-    d_tmp_mask_1    = distances_tmp.mask
-    distances       = np.zeros_like(X_BOT_VALS)
-    d_mask          = distances.mask
-    distances[0,:,:] = X_BOT_VALS[0,:,:]
-    distances[1:]    = distances_tmp
-    X_BOT           = np.cumsum(distances, axis=0)
-    # X_BOT[1:]       = np.cumsum(np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2),axis = 0)
-    
-    x_mask_3        = X_BOT.mask     # THE ERROR IS DUE TO THE FACT THAT MASK OPERATIONS ARE DONE USING OR LOGIC
-
+    X_BOT[1:]       = np.cumsum(np.sqrt((X_BOT_VALS[1:] - X_BOT_VALS[:-1])**2 + (Y_BOT[1:] - Y_BOT[:-1])**2),axis = 0)
     first_idx       = np.ma.count_masked(X_BOT,axis = 0)
-    
-    comp1           = x_mask_1_count - vt_count
-    comp2           = x_mask_2_count - vt_count
-    comp3           = first_idx - vt_count
-    d_comp          = np.ma.count_masked(distances_tmp, axis=0) - vt_count
-
     mask_count      = np.ma.count(X_BOT,axis = 0)
     prev_index      = first_idx-1
     first_panel     = list(prev_index.flatten())
@@ -137,8 +115,6 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     aoas            = list(np.repeat(np.arange(ncases),ncpts))
     res             = list(np.tile(np.arange(ncpts),ncases) )
     X_BOT.mask[first_panel,aoas,res] = False
-    X_BOT.mask      = VT_mask[::-1]
-    x_mask_4        = np.ma.count_masked(X_BOT,axis = 0)
     
     # flow velocity and pressure of on botton surface 
     VE_BOT          = -VT[::-1]  
@@ -151,14 +127,29 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     DVE_BOT[1:-1]                  = ((b*DVE_BOT_TEMP[:-1] + a*DVE_BOT_TEMP[1:])/(a+b)).data
     DVE_BOT.mask                   = X_BOT.mask
     DVE_BOT[first_panel,aoas,res]  = DVE_BOT_TEMP[first_panel,aoas,res]
-    DVE_BOT[last_panel,aoas,res]   = DVE_BOT_TEMP[last_paneldve,aoas,res]
-    DVE_BOT.mask                   = X_BOT.mask
+    DVE_BOT[last_panel,aoas,res]   = DVE_BOT_TEMP[last_paneldve,aoas,res] 
     
     # x - location of stagnation point 
     L_BOT                          = X_BOT[-1,:,:]
-        
+    x_mask                         = X_BOT.mask
+    
+    # This is to prevent high AOA mask errors ##################################################################
+    VT_mask_count                  = np.ma.count_masked(VT, axis=0)
+    X_BOT_mask_count               = np.ma.count_masked(X_BOT, axis=0)
+
+    # Find columns where the counts are not equal
+    # wrong_columns = np.where(X_BOT_mask_count != VT_mask_count)[0]
+    
+    # # Set the entire column to True in X_BOT's mask
+    # X_BOT.mask[:, columns_to_mask] = True
+    # VE_BOT.mask[:, columns_to_mask] = True
+    # DVE_BOT.mask[:, columns_to_mask] = True
+    AOA_deg = np.rad2deg(alpha)
+    wrong_columns = np.where(abs(AOA_deg)>80)[1]
+    ############################################################################################################
+
     # laminar boundary layer properties using thwaites method  
-    BOT_T_RESULTS  = thwaites_method(npanel,ncases,ncpts, nu, L_BOT , RE_L_VALS, X_BOT, VE_BOT, DVE_BOT,tolerance,
+    BOT_T_RESULTS  = thwaites_method(npanel,ncases,ncpts, nu, L_BOT , RE_L_VALS, X_BOT, VE_BOT, DVE_BOT,tolerance,wrong_columns,
                                       THETA_0=initial_momentum_thickness)
     
     X_T_BOT          = BOT_T_RESULTS.X_T      
@@ -194,7 +185,7 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     
     # turbulent boundary layer properties using heads method  
     BOT_H_RESULTS     = heads_method(npanel,ncases,ncpts, nu, DELTA_TR_BOT, THETA_TR_BOT , DELTA_STAR_TR_BOT, 
-                                         CF_TR_BOT, H_TR_BOT, RE_L_VALS, TURBULENT_COORD, VE_BOT, DVE_BOT, TURBULENT_SURF, tolerance)
+                                         CF_TR_BOT, H_TR_BOT, RE_L_VALS, TURBULENT_COORD, VE_BOT, DVE_BOT, TURBULENT_SURF, tolerance,wrong_columns)
     
     X_H_BOT          = BOT_H_RESULTS.X_H      
     THETA_H_BOT      = BOT_H_RESULTS.THETA_H   
@@ -306,7 +297,7 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     L_TOP                          = X_TOP[-1,:,:]    
 
     # laminar boundary layer properties using thwaites method 
-    TOP_T_RESULTS    = thwaites_method(npanel,ncases,ncpts, nu, L_TOP , RE_L_VALS,X_TOP,VE_TOP, DVE_TOP,tolerance,
+    TOP_T_RESULTS    = thwaites_method(npanel,ncases,ncpts, nu, L_TOP , RE_L_VALS,X_TOP,VE_TOP, DVE_TOP,tolerance,wrong_columns,
                                       THETA_0=initial_momentum_thickness) 
     
     X_T_TOP          = TOP_T_RESULTS.X_T      
@@ -339,7 +330,7 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
 
     # turbulent boundary layer properties using heads method  
     TOP_H_RESULTS     = heads_method(npanel,ncases,ncpts, nu, DELTA_TR_TOP, THETA_TR_TOP , DELTA_STAR_TR_TOP, 
-                                         CF_TR_TOP, H_TR_TOP, RE_L_VALS, TURBULENT_COORD, VE_TOP, DVE_TOP, TURBULENT_SURF, tolerance)
+                                         CF_TR_TOP, H_TR_TOP, RE_L_VALS, TURBULENT_COORD, VE_TOP, DVE_TOP, TURBULENT_SURF, tolerance,wrong_columns)
 
     X_H_TOP          = TOP_H_RESULTS.X_H      
     THETA_H_TOP      = TOP_H_RESULTS.THETA_H   
@@ -414,19 +405,22 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     
     # ------------------------------------------------------------------------------------------------------
     # concatenate lower and upper surfaces   
-    # ------------------------------------------------------------------------------------------------------ 
-    THETA      = concatenate_surfaces(X_BOT,X_TOP,THETA_BOT_SURF,THETA_TOP_SURF,npanel,ncases,ncpts)
-    DELTA_STAR = concatenate_surfaces(X_BOT,X_TOP,DELTA_STAR_BOT_SURF,DELTA_STAR_TOP_SURF,npanel,ncases,ncpts) 
-    H          = concatenate_surfaces(X_BOT,X_TOP,H_BOT_SURF,H_TOP_SURF,npanel,ncases,ncpts)  
-    CF         = concatenate_surfaces(X_BOT,X_TOP,CF_BOT_SURF,CF_TOP_SURF,npanel,ncases,ncpts) 
-    RE_THETA   = concatenate_surfaces(X_BOT,X_TOP,RE_THETA_BOT_SURF,RE_THETA_TOP_SURF,npanel,ncases,ncpts)  
-    RE_X       = concatenate_surfaces(X_BOT,X_TOP,RE_X_BOT_SURF,RE_X_TOP_SURF,npanel,ncases,ncpts) 
-    DELTA      = concatenate_surfaces(X_BOT,X_TOP,DELTA_BOT_SURF,DELTA_TOP_SURF,npanel,ncases,ncpts)   
+    # ------------------------------------------------------------------------------------------------------
+    THETA      = concatenate_surfaces(X_BOT,X_TOP,THETA_BOT_SURF,THETA_TOP_SURF,npanel,ncases,ncpts,wrong_columns) # The error is here now, will be fixed soon
+    DELTA_STAR = concatenate_surfaces(X_BOT,X_TOP,DELTA_STAR_BOT_SURF,DELTA_STAR_TOP_SURF,npanel,ncases,ncpts,wrong_columns) 
+    H          = concatenate_surfaces(X_BOT,X_TOP,H_BOT_SURF,H_TOP_SURF,npanel,ncases,ncpts,wrong_columns)  
+    CF         = concatenate_surfaces(X_BOT,X_TOP,CF_BOT_SURF,CF_TOP_SURF,npanel,ncases,ncpts,wrong_columns) 
+    RE_THETA   = concatenate_surfaces(X_BOT,X_TOP,RE_THETA_BOT_SURF,RE_THETA_TOP_SURF,npanel,ncases,ncpts,wrong_columns)  
+    RE_X       = concatenate_surfaces(X_BOT,X_TOP,RE_X_BOT_SURF,RE_X_TOP_SURF,npanel,ncases,ncpts,wrong_columns) 
+    DELTA      = concatenate_surfaces(X_BOT,X_TOP,DELTA_BOT_SURF,DELTA_TOP_SURF,npanel,ncases,ncpts,wrong_columns)   
      
     VE_VALS    = np.ma.concatenate([np.flip(VE_BOT,axis = 0),VE_TOP ], axis = 0)
-    DVE_VALS   = np.ma.concatenate([np.flip(DVE_BOT,axis = 0),DVE_TOP], axis = 0)    
+    DVE_VALS   = np.ma.concatenate([np.flip(DVE_BOT,axis = 0),DVE_TOP], axis = 0)
+
+    DVE_VALS.mask[:,wrong_columns,:] = VE_VALS.mask[:,wrong_columns,:]     # DEBUG FIX FOR ENSURING WRONG COLUMNS FIT
+
     VE_VALS_1  = VE_VALS.flatten('F')
-    DVE_VALS_1 = DVE_VALS.flatten('F')   
+    DVE_VALS_1 = DVE_VALS.flatten('F')
     VE_VALS_2  = VE_VALS_1.data[~VE_VALS_1.mask]
     DVE_VALS_2 = DVE_VALS_1.data[~DVE_VALS_1.mask]  
     VE         = VE_VALS_2.reshape((npanel,ncases,ncpts),order = 'F') 
@@ -512,6 +506,27 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     
     # chordwise distribution of lift and drag
     fL, fD = chordwise_distribution(x_coord_3d,y_coord_3d,CP,alpha,npanel,CF,vt)
+
+    # FINAL DEBUG FIX FOR WRONG COLUMNS ###################################################
+    AERO_RES.cl[:,wrong_columns]     = 0
+    AERO_RES.cdpi[:,wrong_columns]   = 0
+    AERO_RES.cm[:,wrong_columns]     = 0
+    cd_sqy[:,wrong_columns]          = 0
+    CP_BL[:,wrong_columns,:]         = 0
+    DCP_DX[:,wrong_columns,:]        = 0
+    VE[:,wrong_columns,:]            = 0
+    DVE[:,wrong_columns,:]           = 0
+    THETA[:,wrong_columns,:]         = 0
+    DELTA_STAR[:,wrong_columns,:]    = 0
+    DELTA[:,wrong_columns,:]         = 0
+    RE_THETA[:,wrong_columns,:]      = 0
+    RE_X[:,wrong_columns,:]          = 0
+    H[:,wrong_columns,:]             = 0
+    CF[:,wrong_columns,:]            = 0
+    fL[:,wrong_columns,:]            = 0
+    fD[:,wrong_columns,:]            = 0
+    #######################################################################################
+
     
     airfoil_properties_old = Data(
         AoA            = alpha,
@@ -543,7 +558,7 @@ def airfoil_analysis(airfoil_geometry,alpha,Re_L,initial_momentum_thickness=1E-5
     return  airfoil_properties_old
 
 
-def concatenate_surfaces(X_BOT,X_TOP,FUNC_BOT_SURF,FUNC_TOP_SURF,npanel,ncases,ncpts): 
+def concatenate_surfaces(X_BOT,X_TOP,FUNC_BOT_SURF,FUNC_TOP_SURF,npanel,ncases,ncpts,wrong_columns): 
     '''Interpolation of airfoil properties   
     
     Assumptions:
@@ -571,7 +586,10 @@ def concatenate_surfaces(X_BOT,X_TOP,FUNC_BOT_SURF,FUNC_TOP_SURF,npanel,ncases,n
     FUNC = np.zeros((npanel,ncases,ncpts))  
     
     for case in range(ncases):
-        for cpt in range(ncpts):   
+        for cpt in range(ncpts):
+            if case in wrong_columns:
+                continue
+
             top_func          = FUNC_TOP_SURF[:,case,cpt][X_TOP[:,case,cpt].mask == False] 
             bot_func          = FUNC_BOT_SURF[:,case,cpt][X_BOT[:,case,cpt].mask == False]                  
             FUNC[:,case,cpt]  = np.concatenate([bot_func[::-1],top_func])
