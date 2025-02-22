@@ -9,7 +9,7 @@
 import RCAIDE
 from RCAIDE.Framework.Core   import interp2d
 from RCAIDE.Library.Methods.Geometry.Airfoil    import compute_airfoil_properties, compute_naca_4series, import_airfoil_geometry
-from RCAIDE.Library.Methods.Powertrain.Converters.Rotor.compute_rotor_performance import compute_propeller_efficiency
+from RCAIDE.Library.Methods.Powertrain.Converters.Rotor.Performance.Actuator_Disc_Theory.Actuator_Disk_performance import compute_rotor_efficiency
 
 # package imports 
 import numpy as np
@@ -46,16 +46,16 @@ def design_propeller(prop,number_of_stations=20):
 
     if prop.fidelity == 'Actuator_Disk_Theory':
         
-        omega     = prop.cruise.design_angular_velocity
-        thrust    = prop.cruise.design_thrust
-        V         = prop.cruise.design_freestream_velocity 
-        atmo      = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
-        rho       = atmo.compute_values(prop.cruise.design_altitude,0.).density
+        omega                                 = prop.cruise.design_angular_velocity
+        thrust                                = prop.cruise.design_thrust
+        V                                     = prop.cruise.design_freestream_velocity 
+        atmo                                  = RCAIDE.Framework.Analyses.Atmospheric.US_Standard_1976()
+        rho                                   = atmo.compute_values(prop.cruise.design_altitude,0.).density
+                           
+        n, D,J,eta_p,Cp,Ct                    = compute_rotor_efficiency(prop, V, omega)
         
-        n, D, J, eta_p, Cp, Ct  = compute_propeller_efficiency(prop, V, omega)
-        
-        power     = thrust*V/eta_p
-        Q         = power/omega        
+        power                                 = thrust*V/eta_p
+        Q                                     = power/omega        
                 
         prop.cruise.design_power              = power
         prop.cruise.design_efficiency         = eta_p 

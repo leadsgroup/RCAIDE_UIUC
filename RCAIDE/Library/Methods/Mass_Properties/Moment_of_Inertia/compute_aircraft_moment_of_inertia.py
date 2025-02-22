@@ -54,7 +54,7 @@ def compute_aircraft_moment_of_inertia(vehicle, CG_location, update_MOI=True):
     for wing in vehicle.wings:
         I, mass = wing.compute_moment_of_inertia(mass=wing.mass_properties.mass, center_of_gravity =CG_location)
         MOI_tensor += I
-        MOI_mass += mass
+        MOI_mass   += mass
     
     # ------------------------------------------------------------------        
     #  Energy network
@@ -76,7 +76,7 @@ def compute_aircraft_moment_of_inertia(vehicle, CG_location, update_MOI=True):
                 I, mass= compute_cylinder_moment_of_inertia(propulsor.origin, propulsor.mass_properties.mass, propulsor.length, propulsor.diameter/2, 0, 0, CG_location)                    
                 I_network += I
                 MOI_mass += mass
-            if isinstance(propulsor,RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller):
+            if isinstance(propulsor,RCAIDE.Library.Components.Powertrain.Propulsors.Internal_Combustion_Engine) or  isinstance(propulsor,RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine):
                 I, mass= compute_cylinder_moment_of_inertia(propulsor.origin, propulsor.mass_properties.mass, propulsor.length, propulsor.diameter/2, 0, 0, CG_location)                    
                 I_network += I
                 MOI_mass += mass

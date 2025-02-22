@@ -225,17 +225,14 @@ def compute_operating_empty_weight(vehicle, settings=None):
     ##-------------------------------------------------------------------------------                 
     # Accumulate Structural Weight
     ##-------------------------------------------------------------------------------   
-    output.empty.structural                       = Data()
-    output.empty.structural.wings                  = W_main_wing +   W_tail_horizontal +  W_tail_vertical 
-    output.empty.structural.fuselage              = W_fuselage_total
-    output.empty.structural.landing_gear          = landing_gear.main +  landing_gear.nose  
-    output.empty.structural.nacelle               = W_energy_network.W_nacelle
-    
-  
-    print('Paint weight is currently ignored in FLOPS calculations.')
-    output.empty.structural.paint = 0  # TODO reconcile FLOPS paint calculations with Raymer and RCAIDE baseline
-    output.empty.structural.total = output.empty.structural.wings   + output.empty.structural.fuselage + output.empty.structural.landing_gear\
-                                    + output.empty.structural.paint + output.empty.structural.nacelle 
+    output.empty.structural                      = Data()
+    output.empty.structural.wings                = W_main_wing +   W_tail_horizontal +  W_tail_vertical 
+    output.empty.structural.fuselage             = W_fuselage_total
+    output.empty.structural.landing_gear         = landing_gear.main +  landing_gear.nose  
+    output.empty.structural.nacelle              = W_energy_network.W_nacelle 
+    output.empty.structural.paint                = 0  # TODO reconcile FLOPS paint calculations with Raymer and RCAIDE baseline
+    output.empty.structural.total                = output.empty.structural.wings   + output.empty.structural.fuselage + output.empty.structural.landing_gear\
+                                                   + output.empty.structural.paint + output.empty.structural.nacelle 
 
     ##-------------------------------------------------------------------------------                 
     # Accumulate Systems Weight

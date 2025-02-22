@@ -24,7 +24,7 @@ import os
 # ----------------------------------------------------------------------------------------------------------------------
 #   Build the Vehicle
 # ----------------------------------------------------------------------------------------------------------------------
-def vehicle_setup(rotor_type):
+def vehicle_setup(rotor_model_fidelity):
     
     #------------------------------------------------------------------------------------------------------------------------------------
     # ################################################# Vehicle-level Properties ########################################################  
@@ -372,8 +372,8 @@ def vehicle_setup(rotor_type):
     # Propeller    
     propeller                                        = RCAIDE.Library.Components.Powertrain.Converters.Propeller() 
 
-    if rotor_type == 'Blade_Element_Momentum_Theory_Helmholtz_Wake':      
-        propeller.fidelity = rotor_type 
+    if rotor_model_fidelity == 'Blade_Element_Momentum_Theory_Helmholtz_Wake':      
+        propeller.fidelity = rotor_model_fidelity 
         propeller.tag                                    = 'propeller_1'  
         propeller.tip_radius                             = 1.72/2   
         propeller.number_of_blades                       = 3
@@ -397,8 +397,8 @@ def vehicle_setup(rotor_type):
         propeller.append_airfoil(airfoil)                       
         propeller.airfoil_polar_stations                 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] 
     
-    elif rotor_type == 'Actuator_Disk_Theory':       
-        propeller.fidelity = rotor_type 
+    elif rotor_model_fidelity == 'Actuator_Disk_Theory':       
+        propeller.fidelity                               = rotor_model_fidelity 
         propeller.tag                                    = 'propeller_1'  
         propeller.number_of_blades                       = 3
         propeller.tip_radius                             = 1.72/2 

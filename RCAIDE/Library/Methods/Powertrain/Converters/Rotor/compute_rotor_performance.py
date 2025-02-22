@@ -6,9 +6,7 @@
 # ----------------------------------------------------------------------------------------------------------------------
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
- # RCAIDE imports 
-from RCAIDE.Framework.Core                              import Data , Units, orientation_product, orientation_transpose  
-from RCAIDE.Library.Methods.Aerodynamics.Common.Lift    import compute_airfoil_aerodynamics,compute_inflow_and_tip_loss
+ # RCAIDE imports
 import RCAIDE.Library.Methods.Powertrain.Converters.Rotor.Performance.Actuator_Disc_Theory.Actuator_Disk_performance as Actuator_Disk_performance
 import RCAIDE.Library.Methods.Powertrain.Converters.Rotor.Performance.Blade_Element_Momentum_Theory_Helmholtz_Wake.BEMT_Helmholtz_performance as BEMT_Helmholtz_performance
 
@@ -105,44 +103,3 @@ def compute_rotor_performance(propulsor,state,center_of_gravity= [[0.0, 0.0,0.0]
     conditions.energy[propulsor.tag][rotor.tag] = outputs    
       
     return
-
-def compute_propeller_efficiency(propeller, V, omega):
-    """
-    Calculate propeller efficiency based on propeller type and velocity.
-    
-    Parameters
-    ----------
-    propeller_type : str
-        Type of propeller ('constant_speed' or 'fixed_pitch')
-    u0 : float
-        Current velocity
-        
-    Returns
-    -------
-    float
-        Calculated propeller efficiency
-    """
-
-    n = omega/(2*np.pi)
-    D = 2*propeller.tip_radius
-    J = V/(n*D)
-
-    eta_J_vector = propeller.etap_J_coefficients
-    eta_vector = propeller.etap_eff_coefficients
-
-    eta_fz = interp1d(eta_J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
-    eta_p = eta_fz(J)
-
-    Cp_J_vector = propeller.Cp_J_coefficients
-    Cp_vector = propeller.Cp_power_coefficients
-
-    Cp_fz = interp1d(Cp_J_vector, Cp_vector, kind='cubic', fill_value=0.0, bounds_error=False)
-    Cp = Cp_fz(J)
-
-    Ct_J_vector = propeller.Ct_J_coefficients
-    Ct_vector = propeller.Ct_thrust_coefficients
-
-    Ct_fz = interp1d(Ct_J_vector, Ct_vector, kind='cubic', fill_value=0.0, bounds_error=False)
-    Ct = Ct_fz(J)
-
-    return n, D, J, eta_p, Cp, Ct

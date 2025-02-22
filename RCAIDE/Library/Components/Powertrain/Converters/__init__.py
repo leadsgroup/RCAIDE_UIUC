@@ -26,7 +26,7 @@ from .Lift_Rotor                                 import Lift_Rotor
 from .DC_Motor                                   import DC_Motor
 from .Generic_Fuel_Cell_Stack                    import Generic_Fuel_Cell_Stack
 from .PMSM_Motor                                 import PMSM_Motor
-from .Generator                                  import Generator
+from .DC_Generator                               import DC_Generator 
 from .Ducted_Fan                                 import Ducted_Fan 
 from .Propeller                                  import Propeller
 from .Ram                                        import Ram 

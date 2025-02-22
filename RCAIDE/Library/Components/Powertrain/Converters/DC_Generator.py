@@ -11,7 +11,7 @@ from .Converter  import Converter
 from RCAIDE.Library.Methods.Powertrain.Converters.Generator.append_generator_conditions import  append_generator_conditions
 
 # ----------------------------------------------------------------------------------------------------------------------
-#  Generator  
+#  DC_Generator  
 # ----------------------------------------------------------------------------------------------------------------------           
 class DC_Generator(Converter):
     """

@@ -7,37 +7,35 @@
 #  IMPORT
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports 
-from RCAIDE.Framework.Core                              import Data  
+from RCAIDE.Framework.Core  import Data   
 
 # package imports
 import  numpy as  np  
+from scipy.interpolate import interp1d
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 # Actuator_Disk_performance
 # ----------------------------------------------------------------------------------------------------------------------  
 def Actuator_Disk_performance(rotor, conditions, propulsor, center_of_gravity):
+    '''
+    
+    MATTEO
+    
+    '''
 
     propulsor_conditions  = conditions.energy[propulsor.tag]
-    rotor_conditions      = propulsor_conditions[rotor.tag]
-    commanded_TV          = propulsor_conditions.commanded_thrust_vector_angle
-    eta                   = rotor_conditions.throttle 
-    omega                 = rotor_conditions.omega
-    a                     = conditions.freestream.speed_of_sound 
-    rho                   = conditions.freestream.density 
-    alt                   = conditions.freestream.altitude  
+    rotor_conditions      = propulsor_conditions[rotor.tag] 
+    omega                 = rotor_conditions.omega 
+    rho                   = conditions.freestream.density  
     
     # Unpack ducted_fan blade parameters and operating conditions  
     V                     = conditions.freestream.velocity  
-    n, D, J, eta_p, Cp, Ct        = compute_propeller_efficiency(rotor, V, omega)
+    n,D,J,eta_p,Cp,Ct     = compute_rotor_efficiency(rotor, V, omega)
     ctrl_pts              = len(V)
 
     thrust                = Ct*(rho * (n**2)*(D**4))                 
     power                 = Cp*(rho * (n**3)*(D**5) ) 
     torque                = power/omega
-    # power                 = torque*omega
-    # thrust                = eta_p*power/V   
-    # Cp                    = power/(rho * (n**3)*(D**5) ) 
-    # Ct                    = thrust/(rho * (n**2)*(D**4)) 
     thrust_vector         = np.zeros((ctrl_pts,3))
     thrust_vector[:,0]    = thrust[:,0]           
      
@@ -57,4 +55,48 @@ def Actuator_Disk_performance(rotor, conditions, propulsor, center_of_gravity):
             moment                            = moment, 
             torque                            = torque)
 
-    return outputs 
+    return outputs
+
+# ---------------------------------------------------------------------------------------------------------------------- 
+#  compute_rotor_efficiency
+# ---------------------------------------------------------------------------------------------------------------------- 
+def compute_rotor_efficiency(propeller, V, omega):
+    """
+    Calculate propeller efficiency based on propeller type and velocity.
+    
+    Parameters
+    ----------
+    propeller_type : str
+        Type of propeller ('constant_speed' or 'fixed_pitch')
+    u0 : float
+        Current velocity
+        
+    Returns
+    -------
+    float
+        Calculated propeller efficiency
+    """
+
+    n = omega/(2*np.pi)
+    D = 2*propeller.tip_radius
+    J = V/(n*D)
+
+    eta_J_vector = propeller.etap_J_coefficients
+    eta_vector = propeller.etap_eff_coefficients
+
+    eta_fz = interp1d(eta_J_vector, eta_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    eta_p = eta_fz(J)
+
+    Cp_J_vector = propeller.Cp_J_coefficients
+    Cp_vector = propeller.Cp_power_coefficients
+
+    Cp_fz = interp1d(Cp_J_vector, Cp_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    Cp = Cp_fz(J)
+
+    Ct_J_vector = propeller.Ct_J_coefficients
+    Ct_vector = propeller.Ct_thrust_coefficients
+
+    Ct_fz = interp1d(Ct_J_vector, Ct_vector, kind='cubic', fill_value=0.0, bounds_error=False)
+    Ct = Ct_fz(J)
+
+    return n, D, J, eta_p, Cp, Ct

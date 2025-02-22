@@ -79,7 +79,7 @@ def compute_propulsion_system_weight(vehicle,network):
                 WENG          += compute_turbine_engine_weight(vehicle,propulsor)
                 JNENG  += 1 
 
-            if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.ICE_Propeller) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_ICE_Propeller):
+            if isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Internal_Combustion_Engine) or  isinstance(propulsor, RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine):
                 WENG          += compute_piston_engine_weight(propulsor)
                 PNENG  += 1 
                 

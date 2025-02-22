@@ -290,8 +290,7 @@ def vehicle_setup(new_regression=True):
         loaded_prop_rotor = load_rotor(os.path.join(test_dir, 'vahana_tilt_rotor_geometry.res'))
         
         for key,item in prop_rotor.items():
-            prop_rotor[key] = loaded_prop_rotor[key] 
-        prop_rotor.Wake   = RCAIDE.Framework.Analyses.Propulsion.Momentum_Theory_Wake()         
+            prop_rotor[key] = loaded_prop_rotor[key]         
             
     lift_propulsor.rotor =  prop_rotor
     
