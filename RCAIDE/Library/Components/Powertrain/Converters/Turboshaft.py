@@ -22,7 +22,7 @@ class Turboshaft(Converter):
     """ 
     def __defaults__(self):
         # setting the default values
-        self.tag                                              = 'Turboshaft'
+        self.tag                                              = 'turboshaft'
         self.fuel_type                                        = RCAIDE.Library.Attributes.Propellants.Jet_A1() 
         self.ram                                              = None 
         self.inlet_nozzle                                     = None 

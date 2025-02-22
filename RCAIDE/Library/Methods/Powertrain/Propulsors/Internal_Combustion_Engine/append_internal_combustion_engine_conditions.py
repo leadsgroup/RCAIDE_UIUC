@@ -25,7 +25,6 @@ def append_internal_combustion_engine_conditions(internal_combustion_engine,segm
     segment.state.conditions.energy[internal_combustion_engine.tag].inputs                        = Conditions()
     segment.state.conditions.energy[internal_combustion_engine.tag].outputs                       = Conditions() 
     segment.state.conditions.noise[internal_combustion_engine.tag]                                = Conditions()  
-                
 
     ICE_energy_conditions      = segment.state.conditions.energy[internal_combustion_engine.tag]
     ICE_noise_conditions       = segment.state.conditions.noise[internal_combustion_engine.tag]

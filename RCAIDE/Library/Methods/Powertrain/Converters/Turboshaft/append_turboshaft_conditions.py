@@ -12,18 +12,23 @@ from RCAIDE.Framework.Mission.Common     import   Conditions
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_turboshaft_conditions
 # ----------------------------------------------------------------------------------------------------------------------    
-def append_turboshaft_conditions(turboshaft,segment,propulsor_conditions):  
+def append_turboshaft_conditions(turboshaft,segment,energy_conditions,noise_conditions):  
     ones_row    = segment.state.ones_row                  
-    propulsor_conditions[turboshaft.tag]                               = Conditions()  
-    propulsor_conditions[turboshaft.tag].throttle                      = 0. * ones_row(1)     
-    propulsor_conditions[turboshaft.tag].commanded_thrust_vector_angle = 0. * ones_row(1)   
-    propulsor_conditions[turboshaft.tag].shaft_power                   = 0. * ones_row(1)
-    propulsor_conditions[turboshaft.tag].fuel_flow_rate                = 0. * ones_row(1)
-    propulsor_conditions[turboshaft.tag].inputs                        = Conditions()
-    propulsor_conditions[turboshaft.tag].outputs                       = Conditions()
+    energy_conditions[turboshaft.tag]                               = Conditions()  
+    energy_conditions[turboshaft.tag].throttle                      = 0. * ones_row(1)     
+    energy_conditions[turboshaft.tag].commanded_thrust_vector_angle = 0. * ones_row(1)   
+    energy_conditions[turboshaft.tag].shaft_power                   = 0. * ones_row(1)
+    energy_conditions[turboshaft.tag].fuel_flow_rate                = 0. * ones_row(1)
+    energy_conditions[turboshaft.tag].inputs                        = Conditions()
+    energy_conditions[turboshaft.tag].outputs                       = Conditions()
+    noise_conditions[turboshaft.tag]                                = Conditions()
 
+    turboshaft_conditions      = energy_conditions[turboshaft.tag]
     for tag, item in  turboshaft.items(): 
         if issubclass(type(item), RCAIDE.Library.Components.Component):
-            item.append_operating_conditions(segment,turboshaft)     
-    
+            item.append_operating_conditions(segment,turboshaft_conditions) 
+            for sub_tag, sub_item in  item.items(): 
+                if issubclass(type(sub_item), RCAIDE.Library.Components.Component):
+                    item_conditions = turboshaft_conditions[item.tag] 
+                    sub_item.append_operating_conditions(segment,item_conditions) 
     return 

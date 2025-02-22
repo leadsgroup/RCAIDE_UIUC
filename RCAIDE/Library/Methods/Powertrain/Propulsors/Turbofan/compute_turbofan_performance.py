@@ -313,7 +313,7 @@ def reuse_stored_turbofan_data(turbofan,state,network,fuel_line,bus,stored_propu
     moment             = np.cross(moment_vector,thrust_vector)    
   
     power                                  = conditions.energy[turbofan.tag].power 
-    conditions.energy[turbofan.tag].moment =  moment
+    conditions.energy[turbofan.tag].moment = moment
      
     power_elec =  lpc_conditions.outputs.external_electrical_power + hpc_conditions.outputs.external_electrical_power 
     

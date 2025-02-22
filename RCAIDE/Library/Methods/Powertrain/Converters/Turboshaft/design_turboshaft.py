@@ -66,12 +66,9 @@ def design_turboshaft(turboshaft):
     fuel_line                = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     segment                  = RCAIDE.Framework.Mission.Segments.Segment()  
     segment.state.conditions = conditions
-    segment.state.conditions.energy[fuel_line.tag] = Conditions()
-    segment.state.conditions.noise[fuel_line.tag]  = Conditions() 
-
-    propulsor              = RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop() 
-    propulsor.turboshaft   = turboshaft    
-    propulsor.append_operating_conditions(segment,propulsor)  
+    segment.state.conditions.energy[fuel_line.tag] = Conditions() 
+    
+    turboshaft.append_operating_conditions(segment,energy_conditions=segment.state.conditions.energy,noise_conditions = segment.state.conditions.noise )  
          
     ram                                                   = turboshaft.ram
     inlet_nozzle                                          = turboshaft.inlet_nozzle
@@ -115,6 +112,8 @@ def design_turboshaft(turboshaft):
     compressor_conditions.inputs.static_pressure         = inlet_nozzle_conditions.outputs.static_pressure
     compressor_conditions.inputs.mach_number             = inlet_nozzle_conditions.outputs.mach_number  
     compressor.working_fluid                             = inlet_nozzle.working_fluid 
+    compressor.reference_temperature                     = turboshaft.reference_temperature
+    compressor.reference_pressure                        = turboshaft.reference_pressure
 
     # Step 6: Compute flow through the low pressure compressor
     compute_compressor_performance(compressor,compressor_conditions,conditions)
@@ -126,6 +125,8 @@ def design_turboshaft(turboshaft):
     combustor_conditions.inputs.static_pressure                       = compressor_conditions.outputs.static_pressure
     combustor_conditions.inputs.mach_number                           = compressor_conditions.outputs.mach_number  
     combustor.working_fluid                                           = compressor.working_fluid 
+    compressor.reference_temperature                                  = turboshaft.reference_temperature
+    compressor.reference_pressure                                     = turboshaft.reference_pressure  
     
     # Step 12: Compute flow through the high pressor compressor 
     compute_combustor_performance(combustor,combustor_conditions,conditions)
@@ -146,18 +147,19 @@ def design_turboshaft(turboshaft):
     compute_turbine_performance(high_pressure_turbine,hpt_conditions,conditions)
             
     #link the low pressure turbine to the high pressure turbine 
-    lpt_conditions.inputs.stagnation_temperature     = hpt_conditions.outputs.stagnation_temperature
-    lpt_conditions.inputs.stagnation_pressure        = hpt_conditions.outputs.stagnation_pressure 
-    lpt_conditions.inputs.static_temperature         = hpt_conditions.outputs.static_temperature
-    lpt_conditions.inputs.static_pressure            = hpt_conditions.outputs.static_pressure 
-    lpt_conditions.inputs.mach_number                = hpt_conditions.outputs.mach_number  
-    low_pressure_turbine.working_fluid               = high_pressure_turbine.working_fluid    
-    lpt_conditions.inputs.compressor                 = Data()
-    lpt_conditions.inputs.compressor.work_done       = 0.0     
-    lpt_conditions.inputs.fuel_to_air_ratio          = combustor_conditions.outputs.fuel_to_air_ratio 
-    lpt_conditions.inputs.bypass_ratio               = 0.0
-    lpt_conditions.inputs.fan                        = Data()
-    lpt_conditions.inputs.fan.work_done              = 0.0
+    lpt_conditions.inputs.stagnation_temperature              = hpt_conditions.outputs.stagnation_temperature
+    lpt_conditions.inputs.stagnation_pressure                 = hpt_conditions.outputs.stagnation_pressure 
+    lpt_conditions.inputs.static_temperature                  = hpt_conditions.outputs.static_temperature
+    lpt_conditions.inputs.static_pressure                     = hpt_conditions.outputs.static_pressure 
+    lpt_conditions.inputs.mach_number                         = hpt_conditions.outputs.mach_number  
+    low_pressure_turbine.working_fluid                        = high_pressure_turbine.working_fluid    
+    lpt_conditions.inputs.compressor                          = Data()
+    lpt_conditions.inputs.compressor.work_done                = 0.0 
+    lpt_conditions.inputs.compressor.external_shaft_work_done = 0.0 
+    lpt_conditions.inputs.fuel_to_air_ratio                   = combustor_conditions.outputs.fuel_to_air_ratio 
+    lpt_conditions.inputs.bypass_ratio                        = 0.0
+    lpt_conditions.inputs.fan                                 = Data()
+    lpt_conditions.inputs.fan.work_done                       = 0.0
      
     compute_turbine_performance(low_pressure_turbine,lpt_conditions,conditions)
     
@@ -201,12 +203,12 @@ def design_turboshaft(turboshaft):
     size_core(turboshaft,turboshaft_conditions,conditions)
     
     # Step 26: Static Sea Level Thrust  
-    atmo_data_sea_level   = atmosphere.compute_values(0.0,0.0)   
-    V                     = atmo_data_sea_level.speed_of_sound[0][0]*0.01 
-    operating_state,_     = setup_operating_conditions(turboshaft, altitude = 0,velocity_vector=np.array([[V, 0, 0]]))  
+    atmo_data_sea_level                                             = atmosphere.compute_values(0.0,0.0)   
+    V                                                               = atmo_data_sea_level.speed_of_sound[0][0]*0.01 
+    operating_state,_                                               = setup_operating_conditions(turboshaft, altitude = 0,velocity_vector=np.array([[V, 0, 0]]))  
     operating_state.conditions.energy[turboshaft.tag].throttle[:,0] = 1.0  
-    sls_P,_,_                              = turboshaft.compute_performance(operating_state) 
-    turboshaft.sealevel_static_power               = sls_P[0][0]
+    sls_P,_,_                                                       = turboshaft.compute_performance(operating_state) 
+    turboshaft.sealevel_static_power                                = sls_P[0][0]
      
     return      
   

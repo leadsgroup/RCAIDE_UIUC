@@ -59,8 +59,8 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
     conditions.static_stability.yaw_rate             =  np.array([[0]]) 
 
     # setup conditions   
-    segment                                           = RCAIDE.Framework.Mission.Segments.Segment()  
-    segment.state.conditions                          = conditions    
+    segment                                          = RCAIDE.Framework.Mission.Segments.Segment()  
+    segment.state.conditions                         = conditions    
     orientations(segment) 
     segment.state.residuals.network                  = Residuals()  
    
@@ -68,23 +68,43 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
         propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
         distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
         propulsor.motor   = compoment
+        
+        propulsor.append_operating_conditions(segment)   
+        segment.state.conditions.energy[distributor.tag] = Conditions() 
+        segment.state.conditions.noise[distributor.tag]  = Conditions()    
+        propulsor.append_propulsor_unknowns_and_residuals(segment)
+        
                 
     elif type(compoment) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor: 
         propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor() 
         distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
         propulsor.motor   = compoment
+        
+        propulsor.append_operating_conditions(segment)   
+        segment.state.conditions.energy[distributor.tag] = Conditions() 
+        segment.state.conditions.noise[distributor.tag]  = Conditions()    
+        propulsor.append_propulsor_unknowns_and_residuals(segment)
+        
                 
     elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Rotor):  
         propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Electric_Rotor()
         distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Electrical_Bus() 
         propulsor.rotor   = compoment
         
-                        
-    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Turboshaft):   
-        propulsor         = RCAIDE.Library.Components.Powertrain.Propulsors.Turboprop()
-        distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line() 
-        propulsor.rotor   = compoment
+        propulsor.append_operating_conditions(segment)   
+        segment.state.conditions.energy[distributor.tag] = Conditions() 
+        segment.state.conditions.noise[distributor.tag]  = Conditions()    
+        propulsor.append_propulsor_unknowns_and_residuals(segment)
         
+        
+                        
+    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Turboshaft):
+        propulsor         =  compoment 
+        distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()   
+        propulsor.append_operating_conditions(segment, energy_conditions=segment.state.conditions.energy, noise_conditions=segment.state.conditions.noise)
+        segment.state.conditions.energy[distributor.tag] = Conditions() 
+        segment.state.conditions.noise[distributor.tag]  = Conditions()    
+        propulsor.append_propulsor_unknowns_and_residuals(segment) 
                         
     elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor): 
         propulsor = deepcopy(compoment)
@@ -105,11 +125,10 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
             if type(propulsor) == RCAIDE.Library.Components.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine:
                 distributor = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()            
         
-    propulsor.append_operating_conditions(segment)  
-        
-    segment.state.conditions.energy[distributor.tag] = Conditions() 
-    segment.state.conditions.noise[distributor.tag]  = Conditions()    
-    propulsor.append_propulsor_unknowns_and_residuals(segment)
+        propulsor.append_operating_conditions(segment)   
+        segment.state.conditions.energy[distributor.tag] = Conditions() 
+        segment.state.conditions.noise[distributor.tag]  = Conditions()    
+        propulsor.append_propulsor_unknowns_and_residuals(segment)
          
     return segment.state , propulsor.tag
  

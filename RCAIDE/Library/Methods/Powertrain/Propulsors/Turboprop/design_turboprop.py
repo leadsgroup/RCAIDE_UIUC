@@ -107,8 +107,8 @@ def design_turboprop(turboprop):
     compressor_conditions.inputs.static_pressure          = inlet_nozzle_conditions.outputs.static_pressure
     compressor_conditions.inputs.mach_number              = inlet_nozzle_conditions.outputs.mach_number  
     compressor.working_fluid                              = inlet_nozzle.working_fluid 
-    compressor_conditions.reference_temperature           = turboprop.reference_temperature
-    compressor_conditions.reference_pressure              = turboprop.reference_pressure  
+    compressor.reference_temperature                      = turboprop.reference_temperature
+    compressor.reference_pressure                         = turboprop.reference_pressure  
 
     # Step 6: Compute flow through the low pressure compressor
     compute_compressor_performance(compressor,compressor_conditions,conditions)

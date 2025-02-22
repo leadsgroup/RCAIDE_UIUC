@@ -209,11 +209,11 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
                     state.conditions.energy[turboshaft.tag].throttle = throttle
                     if network.identical_propulsors == False:
                         # run analysis  
-                        P, stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
+                        P,stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
                     else:             
                         if stored_results_flag == False: 
                             # run propulsor analysis 
-                            P, stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
+                            P,stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
                         else:
                             # use previous propulsor results 
                             P = turboshaft.reuse_stored_data(state,network,stored_propulsor_tag)
@@ -245,8 +245,7 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
         for t_idx in range(state.numerics.number_of_control_points):            
             stored_results_flag       = False
             stored_battery_cell_tag   = None
-            stored_fuel_cell_tag      = None
-            
+            stored_fuel_cell_tag      = None 
             
             # Step 2.1.a : Battery Module Performance          
             for battery_module in  bus.battery_modules:                   

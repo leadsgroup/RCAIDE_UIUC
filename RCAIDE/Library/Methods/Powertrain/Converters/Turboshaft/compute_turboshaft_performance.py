@@ -119,18 +119,19 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,cent
     compute_turbine_performance(high_pressure_turbine,hpt_conditions,conditions)
 
     #link the low pressure turbine to the high pressure turbine 
-    lpt_conditions.inputs.stagnation_temperature     = hpt_conditions.outputs.stagnation_temperature
-    lpt_conditions.inputs.stagnation_pressure        = hpt_conditions.outputs.stagnation_pressure 
-    lpt_conditions.inputs.static_temperature         = hpt_conditions.outputs.static_temperature
-    lpt_conditions.inputs.static_pressure            = hpt_conditions.outputs.static_pressure 
-    lpt_conditions.inputs.mach_number                = hpt_conditions.outputs.mach_number  
-    low_pressure_turbine.working_fluid               = high_pressure_turbine.working_fluid    
-    lpt_conditions.inputs.compressor                 = Data()
-    lpt_conditions.inputs.compressor.work_done       = 0.0     
-    lpt_conditions.inputs.fuel_to_air_ratio          = combustor_conditions.outputs.fuel_to_air_ratio 
-    lpt_conditions.inputs.bypass_ratio               = 0.0
-    lpt_conditions.inputs.fan                        = Data()
-    lpt_conditions.inputs.fan.work_done              = 0.0
+    lpt_conditions.inputs.stagnation_temperature              = hpt_conditions.outputs.stagnation_temperature
+    lpt_conditions.inputs.stagnation_pressure                 = hpt_conditions.outputs.stagnation_pressure 
+    lpt_conditions.inputs.static_temperature                  = hpt_conditions.outputs.static_temperature
+    lpt_conditions.inputs.static_pressure                     = hpt_conditions.outputs.static_pressure 
+    lpt_conditions.inputs.mach_number                         = hpt_conditions.outputs.mach_number  
+    low_pressure_turbine.working_fluid                        = high_pressure_turbine.working_fluid    
+    lpt_conditions.inputs.compressor                          = Data()
+    lpt_conditions.inputs.compressor.work_done                = 0.0
+    lpt_conditions.inputs.compressor.external_shaft_work_done = 0.0
+    lpt_conditions.inputs.fuel_to_air_ratio                   = combustor_conditions.outputs.fuel_to_air_ratio 
+    lpt_conditions.inputs.bypass_ratio                        = 0.0
+    lpt_conditions.inputs.fan                                 = Data()
+    lpt_conditions.inputs.fan.work_done                       = 0.0
 
     compute_turbine_performance(low_pressure_turbine,lpt_conditions,conditions)
 
@@ -172,15 +173,13 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,cent
                 exit_velocity                       = core_nozzle_conditions.outputs.velocity
             )
   
-    noise_conditions.turboshaft.core_nozzle   = core_nozzle_res  
+    noise_conditions.core_nozzle = core_nozzle_res  
     
     # Pack results    
     power                  = turboshaft_conditions.shaft_power  
     stored_results_flag    = True
     stored_propulsor_tag   = turboshaft.tag
 
-    # MATTEO, WE NEED ADD CODE FOR 1) SHAFT OFFTAKE AND 2) MOTOR ANALYSIS
-    
     return power,stored_results_flag,stored_propulsor_tag
 
 def reuse_stored_turboshaft_data(turboshaft,state,network,fuel_line,bus,stored_propulsor_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
@@ -208,7 +207,4 @@ def reuse_stored_turboshaft_data(turboshaft,state,network,fuel_line,bus,stored_p
     conditions.energy[turboshaft.tag]  = deepcopy(conditions.energy[stored_propulsor_tag])
     conditions.noise[turboshaft.tag]   = deepcopy(conditions.noise[stored_propulsor_tag]) 
     power                              = conditions.energy[turboshaft.tag].power
-    
-
-    # ADD CODE FOR SHAFT OFFTAKE AND MOTORS     
-    return  power    
+    return power

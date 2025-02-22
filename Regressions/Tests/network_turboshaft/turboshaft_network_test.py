@@ -24,9 +24,9 @@ def main():
     mach               = 0.1  
     P , eta , PSFC = turboshaft_engine_Boeing_502_14(altitude,mach)
      
-    P_truth    = 147999.99999999997
-    eta_truth  = 0.505404846037369
-    PSFC_truth = 1.3566178140154075e-07
+    P_truth    = 149662.83366327186
+    eta_truth  = 0.5088849484982797
+    PSFC_truth = 1.3475293781503966e-07
     
 
     P_error = np.abs((P  - P_truth)/P_truth)
@@ -52,10 +52,9 @@ def turboshaft_engine_Boeing_502_14(altitude,mach):
     #------------------------------------------------------------------------------------------------------------------------------------  
     # Propulsor: Propulsor
     #------------------------------------------------------------------------------------------------------------------------------------         
-    turboshaft                                     = RCAIDE.Library.Components.Powertrain.Converters.Turboshaft() 
-    turboshaft.tag                                 = 'turboshaft_propulsor'
+    turboshaft                                     = RCAIDE.Library.Components.Powertrain.Converters.Turboshaft()  
     turboshaft.origin                              = [[13.72, 4.86,-1.1]] 
-    turboshaft.engine_length                       = 0.945     
+    turboshaft.length                              = 0.945     
     turboshaft.bypass_ratio                        = 0    
     turboshaft.design_altitude                     = 0.01*Units.ft
     turboshaft.design_mach_number                  = 0.1   
@@ -115,19 +114,18 @@ def turboshaft_engine_Boeing_502_14(altitude,mach):
     turboshaft.core_nozzle                         = core_nozzle
 
     # design turboshaft
-    design_turboshaft(turboshaft)
-    
+    design_turboshaft(turboshaft) 
 
     # set up default operating conditions 
     operating_state,propulsor_tag  = setup_operating_conditions(turboshaft) 
     
     # Assign conditions to the turboshaft
-    turboshaft_conditions = operating_state.conditions.energy[propulsor_tag][turboshaft.tag]    
-    turboshaft_conditions.energy[turboshaft.tag].throttle[:,0] = 1.0
+    turboshaft_conditions = operating_state.conditions.energy[turboshaft.tag]    
+    turboshaft_conditions.throttle[:,0] = 1.0
     
     compute_turboshaft_performance(turboshaft,operating_state)  
     
-    power                = power[0][0]
+    power                = turboshaft_conditions.shaft_power[0][0]
     thermal_efficiency   = turboshaft_conditions.thermal_efficiency[0][0]
     PSFC                 = turboshaft_conditions.power_specific_fuel_consumption[0][0]
 

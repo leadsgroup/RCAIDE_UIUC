@@ -50,8 +50,8 @@ def compute_compressor_performance(compressor,compressor_conditions,conditions):
     motor       = compressor.motor
     generator   = compressor.generator 
     mdhc        = compressor.nondimensional_massflow 
-    Tref        = compressor_conditions.reference_temperature   
-    Pref        = compressor_conditions.reference_pressure 
+    Tref        = compressor.reference_temperature   
+    Pref        = compressor.reference_pressure 
     Tt_in       = compressor_conditions.inputs.stagnation_temperature
     Pt_in       = compressor_conditions.inputs.stagnation_pressure 
     T0          = compressor_conditions.inputs.static_temperature

@@ -198,7 +198,6 @@ class Fuel(Network):
             N/A
         """                   
         segment.state.residuals.network = Residuals()
-        segment.state.conditions.energy.hybrid_power_split_ratio[:,0] = 0
         
         for network in segment.analyses.energy.vehicle.networks:
             for p_i, propulsor in enumerate(network.propulsors):  

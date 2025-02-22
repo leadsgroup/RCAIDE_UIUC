@@ -8,7 +8,7 @@
 # ---------------------------------------------------------------------------------------------------------------------- 
  # RCAIDE imports   
 from .                import Propulsor 
-from RCAIDE.Library.Methods.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine.append_constant_speed_interal_combustion_engine_conditions  import append_constant_speed_interal_combustion_engine_conditions
+from RCAIDE.Library.Methods.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine.append_constant_speed_internal_combustion_engine_conditions  import append_constant_speed_internal_combustion_engine_conditions
 from RCAIDE.Library.Methods.Powertrain.Propulsors.Constant_Speed_Internal_Combustion_Engine.compute_constant_speed_internal_combustion_engine_performance  import compute_constant_speed_internal_combustion_engine_performance, reuse_stored_constant_speed_internal_combustion_engine_data
  
 # ---------------------------------------------------------------------------------------------------------------------- 
@@ -57,7 +57,7 @@ class Constant_Speed_Internal_Combustion_Engine(Propulsor):
           
 
     def append_operating_conditions(self,segment):
-        append_constant_speed_interal_combustion_engine_conditions(self,segment)
+        append_constant_speed_internal_combustion_engine_conditions(self,segment)
         return
 
     def unpack_propulsor_unknowns(self,segment):   
