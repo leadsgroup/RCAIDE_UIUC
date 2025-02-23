@@ -511,8 +511,8 @@ def VLM(conditions,settings,geometry):
             spanwise_Cdrag_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = np.flip(Cdrag_i_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]][::-1], axis = 1)
             spanwise_alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = np.flip(alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]][::-1], axis = 1)
         else:
-            spanwise_stations[span_breaks[i]:span_breaks[i] + n_sw[i]] = Y[span_breaks[i]:span_breaks[i] + n_sw[i]]
-            spanwise_chords[span_breaks[i]:span_breaks[i] + n_sw[i]]   = CHORD_strip[span_breaks[i]:span_breaks[i] + n_sw[i]]
+            spanwise_stations[span_breaks[i]:span_breaks[i] + n_sw[i]]   = Y[span_breaks[i]:span_breaks[i] + n_sw[i]]
+            spanwise_chords[span_breaks[i]:span_breaks[i] + n_sw[i]]     = CHORD_strip[span_breaks[i]:span_breaks[i] + n_sw[i]]
             spanwise_Clift[:,span_breaks[i]:span_breaks[i] + n_sw[i]]    = Clift_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]] 
             spanwise_Cdrag_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = Cdrag_i_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]]
             spanwise_alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]
