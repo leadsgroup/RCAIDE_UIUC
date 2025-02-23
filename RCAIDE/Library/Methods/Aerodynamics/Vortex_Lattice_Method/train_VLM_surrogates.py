@@ -8,9 +8,10 @@
 import RCAIDE 
 from RCAIDE.Framework.Core import  Data 
 from RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.VLM import  VLM
+from RCAIDE.Library.Methods.Aerodynamics.Vortex_Lattice_Method.evaluate_VLM import call_VLM
+
 # package imports
 import numpy  as np
-from copy     import  deepcopy
 
 # ----------------------------------------------------------------------------------------------------------------------
 #  Vortex_Lattice
@@ -124,8 +125,22 @@ def train_model(aerodynamics, Mach):
     conditions                                      = RCAIDE.Framework.Mission.Common.Results()
     conditions.freestream.mach_number               = Machs
     conditions.aerodynamics.angles.alpha            = np.ones_like(Machs)*AoAs 
-    
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res, S_ref,b_ref,c_ref,X_ref,Y_ref ,Z_ref, Clift_wing_res, Cdrag_wing_res,_,_,_, _= call_VLM(conditions,settings,vehicle)
+
+    VLM_results,Clift_wing_res,Cdrag_wing_res = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
+    S_ref = VLM_results.S_ref
+    b_ref = VLM_results.b_ref
+    c_ref = VLM_results.c_ref
+    X_ref = VLM_results.X_ref
+    Y_ref = VLM_results.Y_ref
+    Z_ref = VLM_results.Z_ref      
     
     Clift_alpha   = np.reshape(Clift_res,(len_Mach,len_AoA)).T 
     Cdrag_alpha   = np.reshape(Cdrag_res,(len_Mach,len_AoA)).T 
@@ -173,7 +188,15 @@ def train_model(aerodynamics, Mach):
     conditions.aerodynamics.angles.alpha            = np.ones_like(Machs) *1E-12
     conditions.aerodynamics.angles.beta             = np.ones_like(Machs)*Betas   
     
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
     
     Clift_beta =    np.reshape(Clift_res,(len_Mach,len_Beta)).T - Clift_alpha_0
     Cdrag_beta =    np.reshape(Cdrag_res,(len_Mach,len_Beta)).T - Cdrag_alpha_0                                
@@ -194,16 +217,16 @@ def train_model(aerodynamics, Mach):
     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
     conditions.freestream.mach_number               = Machs + Machs*u_s 
     
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle) 
     
-    Clift_u     = np.reshape(Clift_res,(len_Mach,len_u)).T - Clift_alpha_0
-    Cdrag_u     = np.reshape(Cdrag_res,(len_Mach,len_u)).T - Cdrag_alpha_0
-    CX_u        = np.reshape(CX_res,(len_Mach,len_u)).T    - CX_alpha_0   
-    CY_u        = np.reshape(CY_res,(len_Mach,len_u)).T    - CY_alpha_0   
-    CZ_u        = np.reshape(CZ_res,(len_Mach,len_u)).T    - CZ_alpha_0   
-    CL_u        = np.reshape(CL_res,(len_Mach,len_u)).T    - CL_alpha_0   
-    CM_u        = np.reshape(CM_res,(len_Mach,len_u)).T    - CM_alpha_0   
-    CN_u        = np.reshape(CN_res,(len_Mach,len_u)).T    - CN_alpha_0   
+    Clift_u     = np.reshape(VLM_results.Clift,(len_Mach,len_u)).T - Clift_alpha_0
+    Cdrag_u     = np.reshape(VLM_results.Cdrag_i,(len_Mach,len_u)).T - Cdrag_alpha_0
+    CX_u        = np.reshape(VLM_results.CX,(len_Mach,len_u)).T    - CX_alpha_0   
+    CY_u        = np.reshape(VLM_results.CY,(len_Mach,len_u)).T    - CY_alpha_0   
+    CZ_u        = np.reshape(VLM_results.CZ,(len_Mach,len_u)).T    - CZ_alpha_0   
+    CL_u        = np.reshape(VLM_results.CL,(len_Mach,len_u)).T    - CL_alpha_0   
+    CM_u        = np.reshape(VLM_results.CM,(len_Mach,len_u)).T    - CM_alpha_0   
+    CN_u        = np.reshape(VLM_results.CN,(len_Mach,len_u)).T    - CN_alpha_0   
     
     # -------------------------------------------------------               
     # Velocity v 
@@ -217,7 +240,15 @@ def train_model(aerodynamics, Mach):
     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
     conditions.aerodynamics.angles.beta             = np.arcsin(v_s)       
     
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
     
     Clift_v     = np.reshape(Clift_res,(len_Mach,len_v)).T - Clift_alpha_0
     Cdrag_v     = np.reshape(Cdrag_res,(len_Mach,len_v)).T - Cdrag_alpha_0
@@ -239,7 +270,15 @@ def train_model(aerodynamics, Mach):
     conditions.aerodynamics.angles.alpha            = np.arcsin(w_s)
     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
     
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
     
     Clift_w     = np.reshape(Clift_res,(len_Mach,len_w)).T - Clift_alpha_0
     Cdrag_w     = np.reshape(Cdrag_res,(len_Mach,len_w)).T - Cdrag_alpha_0
@@ -263,7 +302,15 @@ def train_model(aerodynamics, Mach):
     conditions.static_stability.pitch_rate          = np.ones_like(Machs)*q_s     
     conditions.freestream.velocity                  = Machs * 343 # speed of sound   
     
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
     
     Clift_q     = np.reshape(Clift_res,(len_Mach,len_q)).T - Clift_alpha_0
     Cdrag_q     = np.reshape(Cdrag_res,(len_Mach,len_q)).T - Cdrag_alpha_0
@@ -286,8 +333,15 @@ def train_model(aerodynamics, Mach):
     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
     conditions.static_stability.roll_rate           = np.ones_like(Machs)*p_s 
     conditions.freestream.velocity                  = Machs * 343 # speed of sound           
-        
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)  
+    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
         
     Clift_p     = -10*(np.reshape(Clift_res,(len_Mach,len_p)).T - Clift_alpha_0)
     Cdrag_p     = -10*(np.reshape(Cdrag_res,(len_Mach,len_p)).T - Cdrag_alpha_0)
@@ -311,7 +365,15 @@ def train_model(aerodynamics, Mach):
     conditions.static_stability.yaw_rate            = np.ones_like(Machs)*r_s
     conditions.freestream.velocity                  = Machs * 343 # speed of sound  
     
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
     
     Clift_r     = 10*(np.reshape(Clift_res,(len_Mach,len_r)).T - Clift_alpha_0)
     Cdrag_r     = 10*(np.reshape(Cdrag_res,(len_Mach,len_r)).T - Cdrag_alpha_0)
@@ -501,7 +563,15 @@ def train_model(aerodynamics, Mach):
                     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
                     conditions.freestream.mach_number               = Machs    
                     vehicle.wings[wing.tag].control_surfaces.aileron.deflection =  delta_a[a_i]
-                    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+                    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+                    Clift_res = VLM_results.Clift
+                    Cdrag_res = VLM_results.Cdrag_i
+                    CX_res    = VLM_results.CX
+                    CY_res    = VLM_results.CY
+                    CZ_res    = VLM_results.CZ
+                    CL_res    = VLM_results.CL
+                    CM_res    = VLM_results.CM
+                    CN_res    = VLM_results.CN
                     vehicle.wings[wing.tag].control_surfaces.aileron.deflection = 0
                     
                     Clift_d_a[a_i,:] =  -(Clift_res[:,0]  - Clift_alpha_0[0,:])
@@ -552,7 +622,17 @@ def train_model(aerodynamics, Mach):
                     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
                     conditions.freestream.mach_number               = Machs     
                     vehicle.wings[wing.tag].control_surfaces.elevator.deflection =  delta_e[e_i]
-                    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+                
+                    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+                    Clift_res = VLM_results.Clift
+                    Cdrag_res = VLM_results.Cdrag_i
+                    CX_res    = VLM_results.CX
+                    CY_res    = VLM_results.CY
+                    CZ_res    = VLM_results.CZ
+                    CL_res    = VLM_results.CL
+                    CM_res    = VLM_results.CM
+                    CN_res    = VLM_results.CN
+                    
                     vehicle.wings[wing.tag].control_surfaces.elevator.deflection = 0 
                     Clift_d_e[e_i,:] = Clift_res[:,0]  - Clift_alpha_0[0,:]
                     Cdrag_d_e[e_i,:] = Cdrag_res[:,0]  - Cdrag_alpha_0[0,:]                                
@@ -601,7 +681,15 @@ def train_model(aerodynamics, Mach):
                     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
                     conditions.freestream.mach_number               = Machs    
                     vehicle.wings[wing.tag].control_surfaces.rudder.deflection =  delta_r[r_i]
-                    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+                    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+                    Clift_res = VLM_results.Clift
+                    Cdrag_res = VLM_results.Cdrag_i
+                    CX_res    = VLM_results.CX
+                    CY_res    = VLM_results.CY
+                    CZ_res    = VLM_results.CZ
+                    CL_res    = VLM_results.CL
+                    CM_res    = VLM_results.CM
+                    CN_res    = VLM_results.CN
                     vehicle.wings[wing.tag].control_surfaces.rudder.deflection = 0 
                     Clift_d_r[r_i,:] =   -(Clift_res[:,0]  - Clift_alpha_0[0,:])
                     Cdrag_d_r[r_i,:] =   -(Cdrag_res[:,0]  - Cdrag_alpha_0[0,:])                            
@@ -649,7 +737,15 @@ def train_model(aerodynamics, Mach):
                     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
                     conditions.freestream.mach_number               = Machs    
                     vehicle.wings[wing.tag].control_surfaces.flap.deflection = delta_f[f_i]
-                    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+                    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+                    Clift_res = VLM_results.Clift
+                    Cdrag_res = VLM_results.Cdrag_i
+                    CX_res    = VLM_results.CX
+                    CY_res    = VLM_results.CY
+                    CZ_res    = VLM_results.CZ
+                    CL_res    = VLM_results.CL
+                    CM_res    = VLM_results.CM
+                    CN_res    = VLM_results.CN
                     vehicle.wings[wing.tag].control_surfaces.flap.deflection = 0   
                     Clift_d_f[f_i,:] = Clift_res[:,0]  - Clift_alpha_0[0,:]
                     Cdrag_d_f[f_i,:] = Cdrag_res[:,0]  - Cdrag_alpha_0[0,:]                                
@@ -697,7 +793,15 @@ def train_model(aerodynamics, Mach):
                     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
                     conditions.freestream.mach_number               = Machs     
                     vehicle.wings[wing.tag].control_surfaces.slat.deflection = delta_s[s_i]
-                    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle)
+                    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+                    Clift_res = VLM_results.Clift
+                    Cdrag_res = VLM_results.Cdrag_i
+                    CX_res    = VLM_results.CX
+                    CY_res    = VLM_results.CY
+                    CZ_res    = VLM_results.CZ
+                    CL_res    = VLM_results.CL
+                    CM_res    = VLM_results.CM
+                    CN_res    = VLM_results.CN
                     vehicle.wings[wing.tag].control_surfaces.slat.deflection = 0 
                     Clift_d_s[s_i,:] = Clift_res[:,0]  - Clift_alpha_0[0,:]
                     Cdrag_d_s[s_i,:] = Cdrag_res[:,0]  - Cdrag_alpha_0[0,:]                                
@@ -1133,74 +1237,74 @@ def train_trasonic_model(aerodynamics, training_subsonic,training_supersonic,sub
     
     return training
         
-# ----------------------------------------------------------------------
-#  Evaluate VLM
-# ----------------------------------------------------------------------
-def call_VLM(conditions,settings,vehicle):
-    """Calculate aerodynamics coefficients inluding specific wing coefficients using the VLM
+## ----------------------------------------------------------------------
+##  Evaluate VLM
+## ----------------------------------------------------------------------
+#def call_VLM(conditions,settings,vehicle):
+    #"""Calculate aerodynamics coefficients inluding specific wing coefficients using the VLM
         
-    Assumptions:
-        None
+    #Assumptions:
+        #None
         
-    Source:
-        None
+    #Source:
+        #None
 
-    Args: 
-        conditions : flight conditions     [unitless]
-        settings   : VLM analysis settings [unitless]
-        vehicle    : vehicle configuration [unitless] 
+    #Args: 
+        #conditions : flight conditions     [unitless]
+        #settings   : VLM analysis settings [unitless]
+        #vehicle    : vehicle configuration [unitless] 
         
-    Returns: 
-        None  
-    """
+    #Returns: 
+        #None  
+    #"""
  
-    Clift_wings         = Data()
-    Cdrag_wings         = Data()
-    AoA_wing_induced    = Data()
+    #Clift_wings         = Data()
+    #Cdrag_wings         = Data()
+    #AoA_wing_induced    = Data()
     
-    results = VLM(conditions,settings,vehicle)
-    Clift   = results.CL       
-    Cdrag   = results.CDi     
-    Clift_w = results.CL_wing        
-    Cdrag_w = results.CDi_wing       
-    CX      = results.CX       
-    CY      = results.CY       
-    CZ      = results.CZ       
-    CL      = results.CL_mom
-    alpha_i = results.alpha_i 
-    CM      = results.CM       
-    CN      = results.CN 
-    S_ref   = results.S_ref    
-    b_ref   = results.b_ref    
-    c_ref   = results.c_ref    
-    X_ref   = results.X_ref    
-    Y_ref   = results.Y_ref    
-    Z_ref   = results.Z_ref
-    cl_y    = results.cl_y     
-    cdi_y   = results.cdi_y 
-    CPi     = results.CP 
+    #results = VLM(conditions,settings,vehicle)
+    #Clift   = results.CL       
+    #Cdrag   = results.CDi     
+    #Clift_w = results.Clift_wing        
+    #Cdrag_w = results.Cdrag_i_wing       
+    #CX      = results.CX       
+    #CY      = results.CY       
+    #CZ      = results.CZ       
+    #CL      = results.CL_mom
+    #alpha_i = results.alpha_i 
+    #CM      = results.CM       
+    #CN      = results.CN 
+    #S_ref   = results.S_ref    
+    #b_ref   = results.b_ref    
+    #c_ref   = results.c_ref    
+    #X_ref   = results.X_ref    
+    #Y_ref   = results.Y_ref    
+    #Z_ref   = results.Z_ref
+    #Clift_sectional    = results.Clift_sectional     
+    #Cdrag_i_sectional   = results.Cdrag_i_sectional 
+    #CPi     = results.CP 
     
 
-    # Dimensionalize the lift and drag for each wing
-    areas          = vehicle.vortex_distribution.wing_areas
-    dim_wing_lifts = Clift_w  * areas
-    dim_wing_drags = Cdrag_w * areas
+    ## Dimensionalize the lift and drag for each wing
+    #areas          = vehicle.vortex_distribution.wing_areas
+    #dim_wing_lifts = Clift_w  * areas
+    #dim_wing_drags = Cdrag_w * areas
     
-    i = 0
-    # Assign the lift and drag and non-dimensionalize
-    for wing in vehicle.wings.values():
-        ref = wing.areas.reference
-        if wing.symmetric:
-            Clift_wings[wing.tag]      = np.atleast_2d(np.sum(dim_wing_lifts[:,i:(i+2)],axis=1)).T/ref
-            Cdrag_wings[wing.tag]      = np.atleast_2d(np.sum(dim_wing_drags[:,i:(i+2)],axis=1)).T/ref
-            AoA_wing_induced[wing.tag] = np.concatenate((alpha_i[i],alpha_i[i+1]),axis=1)
-            i+=1
-        else:
-            Clift_wings[wing.tag]      = np.atleast_2d(dim_wing_lifts[:,i]).T/ref
-            Cdrag_wings[wing.tag]      = np.atleast_2d(dim_wing_drags[:,i]).T/ref
-            AoA_wing_induced[wing.tag] = alpha_i[i]
-        i+=1
+    #i = 0
+    ## Assign the lift and drag and non-dimensionalize
+    #for wing in vehicle.wings.values():
+        #ref = wing.areas.reference
+        #if wing.symmetric:
+            #Clift_wings[wing.tag]      = np.atleast_2d(np.sum(dim_wing_lifts[:,i:(i+2)],axis=1)).T/ref
+            #Cdrag_wings[wing.tag]      = np.atleast_2d(np.sum(dim_wing_drags[:,i:(i+2)],axis=1)).T/ref
+            #AoA_wing_induced[wing.tag] = np.concatenate((alpha_i[i],alpha_i[i+1]),axis=1)
+            #i+=1
+        #else:
+            #Clift_wings[wing.tag]      = np.atleast_2d(dim_wing_lifts[:,i]).T/ref
+            #Cdrag_wings[wing.tag]      = np.atleast_2d(dim_wing_drags[:,i]).T/ref
+            #AoA_wing_induced[wing.tag] = alpha_i[i]
+        #i+=1
     
-    return Clift,Cdrag,CX,CY,CZ,CL,CM,CN, S_ref,b_ref,c_ref,X_ref,Y_ref ,Z_ref, Clift_wings,Cdrag_wings,AoA_wing_induced,cl_y,cdi_y,CPi  
+    #return Clift,Cdrag,CX,CY,CZ,CL,CM,CN, S_ref,b_ref,c_ref,X_ref,Y_ref ,Z_ref, Clift_wings,Cdrag_wings,AoA_wing_induced,Clift_sectional,Cdrag_i_sectional,CPi  
 
         

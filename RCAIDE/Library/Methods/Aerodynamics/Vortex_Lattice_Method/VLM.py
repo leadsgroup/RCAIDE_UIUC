@@ -112,10 +112,10 @@ def VLM(conditions,settings,geometry):
         CL_mom                                 [Unitless], Rolling moment coeff (scaled by b_ref)
         CNTOT                                  [Unitless], Yawing  moment coeff (unscaled)
         CN                                 [Unitless], Yawing  moment coeff (scaled by b_ref)
-        CL_wing                                [Unitless], CL  of each wing
-        CDi_wing                               [Unitless], CDi of each wing
-        cl_y                                   [Unitless], CL  of each strip
-        cdi_y                                  [Unitless], CDi of each strip
+        Clift_wing                                [Unitless], CL  of each wing
+        Cdrag_i_wing                               [Unitless], CDi of each wing
+        Clift_y                                   [Unitless], CL  of each strip
+        Cdrag_i_y                                  [Unitless], CDi of each strip
         alpha_i                                [radians] , Induced angle of each strip in each wing (array of numpy arrays)
         CP                                     [Unitless], Pressure coefficient of each panel
         gamma                                  [Unitless], Vortex strengths of each panel
@@ -204,14 +204,12 @@ def VLM(conditions,settings,geometry):
     
     YAH = VD.YAH*1.  
     YBH = VD.YBH*1.
-    
     XA1 = VD.XA1*1.
     XB1 = VD.XB1*1.
     YA1 = VD.YA1
     YB1 = VD.YB1    
     ZA1 = VD.ZA1
-    ZB1 = VD.ZB1  
-    
+    ZB1 = VD.ZB1 
     XCH = VD.XCH
     
     XA_TE =  VD.XA_TE
@@ -482,11 +480,11 @@ def VLM(conditions,settings,geometry):
     YM     = STRIP *(BMZ *COSALF - (BMX *COPSI + BMY *SINPSI) *SINALF)
 
     # Now calculate the coefficients for each wing
-    cl_y     = LIFT/CHORD_strip/ES
-    cdi_y    = DRAG/CHORD_strip/ES
-    CL_wing  = np.add.reduceat(LIFT,span_breaks,axis=1)/SURF
-    CDi_wing = np.add.reduceat(DRAG,span_breaks,axis=1)/SURF
-    alpha_i  = np.hsplit(np.arctan(cdi_y/cl_y),span_breaks[1:])
+    Clift_y             = LIFT/CHORD_strip/ES
+    Cdrag_i_y           = DRAG/CHORD_strip/ES
+    Clift_wing          = np.add.reduceat(LIFT,span_breaks,axis=1)/SURF
+    Cdrag_i_wing        = np.add.reduceat(DRAG,span_breaks,axis=1)/SURF
+    alpha_i             = -Cdrag_i_y/Clift_y
     
     # Now calculate total coefficients
     CL       = np.atleast_2d(np.sum(LIFT,axis=1)/SREF).T          # CLTOT in VORLAX
@@ -499,45 +497,58 @@ def VLM(conditions,settings,geometry):
     CL_mom   = CRTOT/b_ref*(-1)                         # rolling moment coeff
     CNTOT    = np.atleast_2d(np.sum(YM,axis=1)/SREF).T   # yawing  moment coeff (unscaled)
     CN       = CNTOT/b_ref*(-1)                         # yawing  moment coeff
-
+  
+    spanwise_stations =  np.zeros_like(Y)
+    spanwise_chords   =  np.zeros_like(Y)
+    spanwise_Clift    =  np.zeros_like(Cdrag_i_y)
+    spanwise_Cdrag_i  =  np.zeros_like(Cdrag_i_y)
+    spanwise_alpha_i  =  np.zeros_like(Cdrag_i_y)
+    for i in range(len(n_sw)):
+        if i % 2 == 0:
+            spanwise_stations[span_breaks[i]:span_breaks[i] + n_sw[i]]   = Y[span_breaks[i]:span_breaks[i] + n_sw[i]][::-1]
+            spanwise_chords[span_breaks[i]:span_breaks[i] + n_sw[i]]     = CHORD_strip[span_breaks[i]:span_breaks[i] + n_sw[i]]
+            spanwise_Clift[:, span_breaks[i]:span_breaks[i] + n_sw[i]]   = np.flip(Clift_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]], axis = 1)
+            spanwise_Cdrag_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = np.flip(Cdrag_i_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]][::-1], axis = 1)
+            spanwise_alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = np.flip(alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]][::-1], axis = 1)
+        else:
+            spanwise_stations[span_breaks[i]:span_breaks[i] + n_sw[i]] = Y[span_breaks[i]:span_breaks[i] + n_sw[i]]
+            spanwise_chords[span_breaks[i]:span_breaks[i] + n_sw[i]]   = CHORD_strip[span_breaks[i]:span_breaks[i] + n_sw[i]]
+            spanwise_Clift[:,span_breaks[i]:span_breaks[i] + n_sw[i]]    = Clift_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]] 
+            spanwise_Cdrag_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = Cdrag_i_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]]
+            spanwise_alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]
     # ---------------------------------------------------------------------------------------
     # STEP 13: Pack outputs
     # ------------------ --------------------------------------------------------------------     
     precision      = settings.floating_point_precision
-    
-    #VORLAX _TOT outputs
-    results = Data()
-    # force coefficients
-    results.S_ref      = Sref
-    results.b_ref      = b_ref
-    results.c_ref      = c_bar  
-    results.X_ref      = x_m
-    results.Y_ref      = 0
-    results.Z_ref      = z_m
-    
-    results.CL         =  CL
-    results.CDi        =  CDi
-    
-    results.CX         =  CX
-    results.CY         =  CY 
-    results.CZ         = -CZ
-    
-    results.CL_mom     =  CL_mom 
-    results.CM         =  CM  
-    results.CN         =  CN
-    
-    #other RCAIDE outputs
-    results.CL_wing        = CL_wing   
-    results.CDi_wing       = CDi_wing 
-    results.cl_y           = cl_y   
-    results.cdi_y          = cdi_y       
-    results.alpha_i        = alpha_i  
-    results.CP             = np.array(CP    , dtype=precision)
-    results.gamma          = np.array(GAMMA , dtype=precision)
-    results.VD             = VD
-    results.V_distribution = rhs.V_distribution
-    results.V_x            = rhs.Vx_ind_total
-    results.V_z            = rhs.Vz_ind_total
+     
+    results = Data() 
+    results.S_ref             = Sref
+    results.b_ref             = b_ref
+    results.c_ref             = c_bar  
+    results.X_ref             = x_m
+    results.Y_ref             = 0
+    results.Z_ref             = z_m 
+    results.Clift             =  CL
+    results.Cdrag_i           =  CDi 
+    results.CX                =  CX
+    results.CY                =  CY 
+    results.CZ                = -CZ 
+    results.CL                =  CL_mom 
+    results.CM                =  CM  
+    results.CN                =  CN 
+    results.Clift_wing        = Clift_wing   
+    results.Cdrag_i_wing      = Cdrag_i_wing 
+    results.Clift_sectional   = spanwise_Clift    
+    results.Cdrag_i_sectional = spanwise_Cdrag_i
+    results.chord_sections    = spanwise_chords
+    results.spanwise_stations = spanwise_stations
+    results.alpha_i           = spanwise_alpha_i
+    results.CP                = np.array(CP    , dtype=precision)
+    results.gamma             = np.array(GAMMA , dtype=precision)
+    results.VD                = VD
+    results.V_distribution    = rhs.V_distribution
+    results.V_x               = rhs.Vx_ind_total
+    results.V_z               = rhs.Vz_ind_total
     
     return results
 
