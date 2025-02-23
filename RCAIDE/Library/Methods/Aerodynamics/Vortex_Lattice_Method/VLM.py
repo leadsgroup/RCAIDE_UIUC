@@ -473,7 +473,7 @@ def VLM(conditions,settings,geometry):
     ES     = 2*s[0,LE_ind]
     STRIP  = ES *CHORD_strip
     LIFT   = (BFZ * COSALF - (BFX *COPSI + BFY *SINPSI) *SINALF)*STRIP 
-    DRAG   = (BFZ * SINALF + (BFX *COPSI + BFY *SINPSI) * COSALF)*STRIP
+    DRAG   = (BFZ * SINALF + (BFX *COPSI + BFY *SINPSI) * COSALF)*STRIP /2 
     MOMENT = STRIP * (BMY *COPSI - BMX *SINPSI)  
     FY     = (BFY *COPSI - BFX *SINPSI) *STRIP
     RM     = STRIP *(BMX *COSALF *COPSI + BMY *COSALF *SINPSI + BMZ *SINALF)
@@ -488,7 +488,7 @@ def VLM(conditions,settings,geometry):
     
     # Now calculate total coefficients
     CL       = np.atleast_2d(np.sum(LIFT,axis=1)/SREF).T          # CLTOT in VORLAX
-    CDi      = np.atleast_2d(np.sum(DRAG,axis=1)/SREF).T          # CDTOT in VORLAX
+    CDi      = np.atleast_2d(np.sum(DRAG,axis=1)/SREF).T        # CDTOT in VORLAX
     CX       = (TANALF * CL - CDi)/(COSALF - SINALF*TANALF)
     CZ       = (CDi+ CX*COSALF)/SINALF 
     CM       = np.atleast_2d(np.sum(MOMENT,axis=1)/SREF).T/c_bar  # CMTOT in VORLAX 1. check deflection is accounted for correctly. 2. check this is right
