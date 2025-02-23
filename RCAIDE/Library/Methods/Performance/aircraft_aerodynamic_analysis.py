@@ -73,7 +73,7 @@ def aircraft_aerodynamic_analysis(vehicle,
     state.conditions.freestream.mach_number                 = Mach_number_range
     state.conditions.freestream.velocity                    = Mach_number_range  * a   
     state.conditions.freestream.reynolds_number             = state.conditions.freestream.density * state.conditions.freestream.velocity / state.conditions.freestream.dynamic_viscosity 
-    state.conditions.frames.inertial.velocity_vector[:,0]   = Mach_number_range[:,0]  * a[:,0]    
+    state.conditions.frames.inertial.velocity_vector[:,0]   = Mach_number_range[:,0] * a[:,0]    
     state.conditions.frames.body.inertial_rotations[:,1]    = angle_of_attack_range[:,0]
     
 

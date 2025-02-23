@@ -217,7 +217,16 @@ def train_model(aerodynamics, Mach):
     conditions.aerodynamics.angles.beta             = np.zeros_like(Machs) 
     conditions.freestream.mach_number               = Machs + Machs*u_s 
     
-    Clift_res,Cdrag_res,CX_res,CY_res,CZ_res,CL_res,CM_res,CN_res ,_,_,_,_,_,_,_,_,_,_,_, _= call_VLM(conditions,settings,vehicle) 
+
+    VLM_results,_,_ = call_VLM(conditions,settings,vehicle)
+    Clift_res = VLM_results.Clift
+    Cdrag_res = VLM_results.Cdrag_i
+    CX_res    = VLM_results.CX
+    CY_res    = VLM_results.CY
+    CZ_res    = VLM_results.CZ
+    CL_res    = VLM_results.CL
+    CM_res    = VLM_results.CM
+    CN_res    = VLM_results.CN
     
     Clift_u     = np.reshape(VLM_results.Clift,(len_Mach,len_u)).T - Clift_alpha_0
     Cdrag_u     = np.reshape(VLM_results.Cdrag_i,(len_Mach,len_u)).T - Cdrag_alpha_0
