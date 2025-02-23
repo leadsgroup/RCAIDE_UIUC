@@ -60,11 +60,13 @@ def aircraft_aerodynamic_analysis(vehicle,
     state.conditions.static_stability.yaw_rate    = np.zeros_like(angle_of_attack_range)
     state.conditions.expand_rows(ctrl_pts)
   
-    state.analyses                                  = Data()
-    aerodynamics                                    = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
-    aerodynamics.settings.use_surrogate             = use_surrogate
-    aerodynamics.vehicle                            = vehicle
-    aerodynamics.settings.model_fuselage            = model_fuselage   
+    state.analyses                                     = Data()
+    aerodynamics                                       = RCAIDE.Framework.Analyses.Aerodynamics.Vortex_Lattice_Method() 
+    aerodynamics.settings.use_surrogate                = use_surrogate
+    aerodynamics.vehicle                               = vehicle
+    aerodynamics.settings.model_fuselage               = model_fuselage 
+    aerodynamics.settings.number_of_spanwise_vortices  = 100
+    aerodynamics.settings.number_of_chordwise_vortices = 1  
     aerodynamics.initialize()
     state.analyses.aerodynamics = aerodynamics 
       

@@ -99,8 +99,8 @@ class Vortex_Lattice_Method(Aerodynamics):
         self.settings.supersonic.cross_sectional_area_calculation_type   = 'Fixed'     
         self.settings.supersonic.wave_drag_type                          = 'Raymer'    
     
-        self.settings.number_of_spanwise_vortices                        = 10
-        self.settings.number_of_chordwise_vortices                       = 2
+        self.settings.number_of_spanwise_vortices                        = 15
+        self.settings.number_of_chordwise_vortices                       = 5
         self.settings.wing_spanwise_vortices                             = None
         self.settings.wing_chordwise_vortices                            = None
         self.settings.fuselage_spanwise_vortices                         = None
