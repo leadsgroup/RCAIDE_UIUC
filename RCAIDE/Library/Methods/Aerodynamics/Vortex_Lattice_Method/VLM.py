@@ -473,7 +473,7 @@ def VLM(conditions,settings,geometry):
     ES     = 2*s[0,LE_ind]
     STRIP  = ES *CHORD_strip
     LIFT   = (BFZ * COSALF - (BFX *COPSI + BFY *SINPSI) *SINALF)*STRIP 
-    DRAG   = (BFZ * SINALF + (BFX *COPSI + BFY *SINPSI) * COSALF)*STRIP /2 
+    DRAG   = (BFZ * SINALF + (BFX *COPSI + BFY *SINPSI) * COSALF)*STRIP /2 # ADDED HERE
     MOMENT = STRIP * (BMY *COPSI - BMX *SINPSI)  
     FY     = (BFY *COPSI - BFX *SINPSI) *STRIP
     RM     = STRIP *(BMX *COSALF *COPSI + BMY *COSALF *SINPSI + BMZ *SINALF)
