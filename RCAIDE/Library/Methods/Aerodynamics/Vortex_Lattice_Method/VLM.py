@@ -516,6 +516,18 @@ def VLM(conditions,settings,geometry):
             spanwise_Clift[:,span_breaks[i]:span_breaks[i] + n_sw[i]]    = Clift_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]] 
             spanwise_Cdrag_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = Cdrag_i_y[:,span_breaks[i]:span_breaks[i] + n_sw[i]]
             spanwise_alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]  = alpha_i[:,span_breaks[i]:span_breaks[i] + n_sw[i]]
+            
+            
+    # TO REMOVE !! 
+    d_eta      =  abs(np.diff(spanwise_stations, prepend = 0))
+    alpha_i_2  =  np.zeros_like(spanwise_Clift)
+    for i in  range(len(spanwise_stations)):
+        for j in range(len(spanwise_stations)):
+            if i == j:
+                pass
+            else:
+                alpha_i_2[:,i] -= (1/(8 *np.pi)) * spanwise_Clift[:,j] *spanwise_chords[j] *d_eta[j] /((spanwise_stations[i] - spanwise_stations[j] )**2  )
+                        
     # ---------------------------------------------------------------------------------------
     # STEP 13: Pack outputs
     # ------------------ --------------------------------------------------------------------     
