@@ -129,5 +129,6 @@ def compute_power(turboshaft,turboshaft_conditions,conditions):
     turboshaft_conditions.non_dimensional_power             = Psp
     turboshaft_conditions.non_dimensional_thrust            = Tsp
     turboshaft_conditions.thermal_efficiency                = eta_T
+    turboshaft_conditions.angular_velocity                  = turboshaft.design_angular_velocity
 
     return 
