@@ -50,14 +50,14 @@ class Turboelectric_Generator(Converter):
         append_turboelectric_generator_conditions(self,segment,fuel_line) 
         return
 
-    def unpack_propulsor_unknowns(self,segment):   
-        return 
+    # def unpack_propulsor_unknowns(self,segment):   This is worng 
+    #     return 
 
-    def pack_propulsor_residuals(self,segment): 
-        return    
+    # def pack_propulsor_residuals(self,segment): 
+    #     return    
 
-    def append_propulsor_unknowns_and_residuals(self,segment): 
-        return
+    # def append_propulsor_unknowns_and_residuals(self,segment): 
+    #     return
     
     def compute_performance(self,state,fuel_line,bus=None,center_of_gravity = [[0, 0, 0]]):
         """

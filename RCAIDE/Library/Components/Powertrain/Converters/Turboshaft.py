@@ -18,7 +18,7 @@ from RCAIDE.Library.Methods.Powertrain.Converters.Turboshaft.compute_turboshaft_
 # ----------------------------------------------------------------------
 class Turboshaft(Converter):
     """
-    MATTEO
+    MATTEO There are defaults that are defined that might not be called anywhere so need to remove them
     """ 
     def __defaults__(self):
         # setting the default values
@@ -56,7 +56,7 @@ class Turboshaft(Converter):
         return 
 
     def pack_propulsor_residuals(self,segment): 
-        return    
+        return      
 
     def append_propulsor_unknowns_and_residuals(self,segment): 
         return

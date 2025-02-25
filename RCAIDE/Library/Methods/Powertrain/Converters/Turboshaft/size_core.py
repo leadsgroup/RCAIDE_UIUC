@@ -61,7 +61,7 @@ def size_core(turboshaft,turboshaft_conditions,conditions):
     mdot_compressor                                = mdot_air/ (np.sqrt(Tref/total_temperature_reference)*(total_pressure_reference/Pref))
 
     #pack outputs
-    turboshaft.design_mass_flow_rate               = mdot_air
+    turboshaft.mass_flow_rate                      = mdot_air
     turboshaft.compressor.mass_flow_rate           = mdot_compressor
 
     return    
