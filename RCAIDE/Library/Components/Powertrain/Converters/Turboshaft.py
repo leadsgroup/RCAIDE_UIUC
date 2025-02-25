@@ -42,6 +42,7 @@ class Turboshaft(Converter):
         self.design_mass_flow_rate                            = 0.0 
         self.conversion_efficiency                            = 0.5
         self.compressor_nondimensional_massflow               = 0.0
+        self.design_angular_velocity                          = 0.0
                                                               
 
     def append_operating_conditions(self,segment,fuel_line,converter): 

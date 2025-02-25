@@ -56,6 +56,8 @@ def compute_turboshaft_performance(turboshaft,state,converter,fuel_line=None,bus
     low_pressure_turbine      = turboshaft.low_pressure_turbine 
     core_nozzle               = turboshaft.core_nozzle
 
+    turboshaft_conditions.angular_velocity = turboshaft.design_angular_velocity # MATTEO WHERE DO I PLACE THIS ACCURATELY
+
     # unpack component conditions 
     ram_conditions          = turboshaft_conditions[ram.tag]     
     inlet_nozzle_conditions = turboshaft_conditions[inlet_nozzle.tag]

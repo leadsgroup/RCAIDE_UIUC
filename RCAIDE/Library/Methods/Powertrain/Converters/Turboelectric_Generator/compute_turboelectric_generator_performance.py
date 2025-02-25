@@ -48,11 +48,11 @@ def compute_turboelectric_generator_performance(turboelectric_generator,state,fu
     
     compute_turboshaft_performance(turboshaft,state,turboelectric_generator,fuel_line) 
     #turboshaft.compute_turboshaft_performance()
-    P_mech       = turboelectric_generator_conditions.turboshaft.shaft_power   # MATTEO check this 
-    omega        = 0      # turboelectric_generator_conditions.turboshaft.omega        # MATTEO check this, it doesnt exist!@@@!!!!
+    P_mech       = turboelectric_generator_conditions[turboshaft.tag].shaft_power   # MATTEO check this 
+    omega        = turboelectric_generator_conditions[turboshaft.tag].angular_velocity        # MATTEO check this, it doesnt exist!@@@!!!!
     
-    generator_conditions    = turboelectric_generator.generator
-    generator_conditions.inputs.shaft_powwer     = P_mech    # MATTEO PLEASE VERIFY? 
+    generator_conditions    = turboelectric_generator_conditions[generator.tag]
+    generator_conditions.inputs.shaft_power     = P_mech    # MATTEO PLEASE VERIFY? 
     generator_conditions.inputs.omega            = omega     # MATTEO PLEASE VERIFY? 
     compute_generator_performance(generator,generator_conditions,conditions)   
     P_elec                                       = generator_conditions.power
