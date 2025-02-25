@@ -61,7 +61,8 @@ class Fuel_Line(Component):
         self.fuel_tanks                    = Container()
         self.cryogenic_tanks               = Container()
         self.assigned_propulsors           = []
-        self.turboelectric_generators      = Container()
-        self.turboshafts                   = Container()       
+       # self.turboelectric_generators      = Container()
+        # self.turboshafts                   = Container()
+        self.converters                    = Container()       
         self.active                        = True 
         self.efficiency                    = 1.0 

@@ -43,11 +43,11 @@ class Turboelectric_Generator(Converter):
         self.gearbox_ratio             = None  
         self.active                    = True 
 
-    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None): 
+    def append_operating_conditions(self,fuel_line,segment,energy_conditions,noise_conditions=None): 
         """
         Appends operating conditions to the segment.
         """  
-        append_turboelectric_generator_conditions(self,segment,energy_conditions,noise_conditions) 
+        append_turboelectric_generator_conditions(self,fuel_line,segment,energy_conditions,noise_conditions) 
         return
 
     def unpack_propulsor_unknowns(self,segment):   
