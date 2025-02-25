@@ -26,10 +26,8 @@ def append_turboelectric_generator_conditions(turboelectric_generator,segment,fu
 
     turboelectric_generator_conditions      = fuel_line_results[turboelectric_generator.tag]
     for tag, item in  turboelectric_generator.items(): 
-        if issubclass(type(item), RCAIDE.Library.Components.Powertrain.Converters.Turboshaft):
-            item.append_operating_conditions(segment,fuel_line,turboelectric_generator)   
-        if issubclass(type(item), RCAIDE.Library.Components.Component) and not issubclass(type(item), RCAIDE.Library.Components.Powertrain.Converters.Turboshaft):
-            item.append_operating_conditions(segment,fuel_line) 
+        if issubclass(type(item), RCAIDE.Library.Components.Component):
+            item.append_operating_conditions(segment,fuel_line,turboelectric_generator)  
             for _, sub_item in  item.items(): 
                 if issubclass(type(sub_item), RCAIDE.Library.Components.Component):
                     item_conditions = turboelectric_generator_conditions[item.tag] 
