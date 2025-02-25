@@ -46,9 +46,11 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,cent
     ''' 
     conditions                = state.conditions 
    # noise_conditions          = conditions.noise[turboshaft.tag]  
-
-    turboshaft_conditions     = conditions.energy[turboshaft.tag] 
-    ram                       = turboshaft.ram
+    if fuel_line is not None:
+        turboshaft_conditions     = conditions.energy[fuel_line.turboelectric_generators.turboelectric_generator.tag][fuel_line.turboelectric_generators.turboelectric_generator.turboshaft.tag]  # ****** ADD A FOR LOOP TO CHECK THROUGH TURBOSHAFT GENERATORS THROUGH THE FUEL LINE
+    else:
+        turboshaft_conditions     = conditions.energy[turboshaft.tag]
+    ram                       = conditions.energy.ram
     inlet_nozzle              = turboshaft.inlet_nozzle
     compressor                = turboshaft.compressor
     combustor                 = turboshaft.combustor
