@@ -26,12 +26,17 @@ import numpy                                                                as n
 # ----------------------------------------------------------------------------------------------------------------------  
 #  Design Turboshaft
 # ----------------------------------------------------------------------------------------------------------------------   
-def design_turboshaft(turboshaft):  
+def design_turboshaft(converter):  
+    # need to put if statements to check if Turboelectric generator houses the turboshaft or it is standalone
+    if isinstance(converter, RCAIDE.Library.Components.Powertrain.Converters.Turboelectric_Generator):
+        turboshaft = converter.turboshaft
+    else:
+        turboshaft = converter
+
     #check if mach number and temperature are passed
     if(turboshaft.design_mach_number==None or turboshaft.design_altitude==None):
-        
         #raise an error
-        raise NameError('The sizing conditions require an altitude and a Mach number')
+        raise ValueError('The sizing conditions require an altitude and a Mach number')
     
     else:
         #call the atmospheric model to get the conditions at the specified altitude
@@ -65,10 +70,13 @@ def design_turboshaft(turboshaft):
          
     fuel_line                = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()
     segment                  = RCAIDE.Framework.Mission.Segments.Segment()  
+    segment.state            = Conditions()  
     segment.state.conditions = conditions
-    segment.state.conditions.energy[fuel_line.tag] = Conditions() 
+    segment.state.conditions.energy[fuel_line.tag] = Conditions()
+    segment.state.conditions.energy[fuel_line.tag][converter.tag] = Conditions()
+
     
-    turboshaft.append_operating_conditions(segment,energy_conditions=segment.state.conditions.energy,noise_conditions = segment.state.conditions.noise )  
+    turboshaft.append_operating_conditions(segment,fuel_line,converter)  
          
     ram                                                   = turboshaft.ram
     inlet_nozzle                                          = turboshaft.inlet_nozzle
@@ -79,7 +87,7 @@ def design_turboshaft(turboshaft):
     core_nozzle                                           = turboshaft.core_nozzle  
 
     # unpack component conditions
-    turboshaft_conditions   = conditions.energy[turboshaft.tag]
+    turboshaft_conditions   = conditions.energy[fuel_line.tag][converter.tag][turboshaft.tag]
     ram_conditions          = turboshaft_conditions[ram.tag]     
     inlet_nozzle_conditions = turboshaft_conditions[inlet_nozzle.tag]
     core_nozzle_conditions  = turboshaft_conditions[core_nozzle.tag] 
@@ -205,9 +213,9 @@ def design_turboshaft(turboshaft):
     # Step 26: Static Sea Level Thrust  
     atmo_data_sea_level                                             = atmosphere.compute_values(0.0,0.0)   
     V                                                               = atmo_data_sea_level.speed_of_sound[0][0]*0.01 
-    operating_state,_                                               = setup_operating_conditions(turboshaft, altitude = 0,velocity_vector=np.array([[V, 0, 0]]))  
-    operating_state.conditions.energy[turboshaft.tag].throttle[:,0] = 1.0  
-    sls_P,_,_                                                       = turboshaft.compute_performance(operating_state) 
+    operating_state,_                                               = setup_operating_conditions(converter, altitude = 0,velocity_vector=np.array([[V, 0, 0]]))  
+    operating_state.conditions.energy[fuel_line.tag][converter.tag][turboshaft.tag].throttle[:,0] = 1.0  
+    sls_P,_,_                                                       = turboshaft.compute_performance(operating_state,converter,fuel_line) 
     turboshaft.sealevel_static_power                                = sls_P[0][0]
      
     return      

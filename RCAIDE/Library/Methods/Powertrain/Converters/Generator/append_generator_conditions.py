@@ -1,13 +1,13 @@
 # RCAIDE/Library/Methods/Powertrain/Converters/Generator/append_generator_conditions.py
 # 
 # Created:  Feb 2025, M. Guidotti
-
+########## This file is rewritten needs to be checked later to maintain consistency
 from RCAIDE.Framework.Mission.Common     import   Conditions
 
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_generator_conditions
 # ----------------------------------------------------------------------------------------------------------------------    
-def append_generator_conditions(generator,segment,propulsor_conditions,noise_conditions): 
+def append_generator_conditions(generator,segment): 
 
     """
     Initializes generator operating conditions for a mission segment.
@@ -43,16 +43,18 @@ def append_generator_conditions(generator,segment,propulsor_conditions,noise_con
     RCAIDE.Library.Components.Powertrain.Converters.DC_Motor
     RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor
     """
-
+    # NEED TO CHANGe FROM PROPULSOR CONDITIONS MATTEO the inpurs need to change they are weird 
 
     ones_row    = segment.state.ones_row 
-    propulsor_conditions[generator.tag]                         = Conditions()
-    propulsor_conditions[generator.tag].inputs                  = Conditions()
-    propulsor_conditions[generator.tag].outputs                 = Conditions()
-    propulsor_conditions[generator.tag].torque                  = 0. * ones_row(1) 
-    propulsor_conditions[generator.tag].omega                   = 0. * ones_row(1) 
-    propulsor_conditions[generator.tag].torque                  = 0. * ones_row(1) 
-    propulsor_conditions[generator.tag].current                 = 0. * ones_row(1) 
-    propulsor_conditions[generator.tag].voltage                 = 0. * ones_row(1) 
+    propulsor_conditions[][generator.tag]                         = Conditions()
+    propulsor_conditions[][generator.tag].inputs                  = Conditions()
+    propulsor_conditions[][generator.tag].outputs                 = Conditions()
+    propulsor_conditions[][generator.tag].torque                  = 0. * ones_row(1) 
+    # propulsor_conditio[]ns[generator.tag].torque                  = 0. * ones_row(1) 
+    propulsor_conditions[][generator.tag].current                 = 0. * ones_row(1) 
+    propulsor_conditions[][generator.tag].voltage                 = 0. * ones_row(1) 
+    propulsor_conditions[][generator.tag].inputs.shaft_power                  = 0. * ones_row(1)
+    propulsor_conditions[][generator.tag].inputs.omega                  = 0. * ones_row(1)
+    
     return 
 

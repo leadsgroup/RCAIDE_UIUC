@@ -97,14 +97,24 @@ def setup_operating_conditions(compoment, altitude = 0,velocity_vector=np.array(
         propulsor.append_propulsor_unknowns_and_residuals(segment)
         
         
-                        
-    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Turboshaft):
-        propulsor         =  compoment 
+    elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Turboelectric_Generator):
+        shaft             =  compoment.turboshaft 
         distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()   
-        propulsor.append_operating_conditions(segment, energy_conditions=segment.state.conditions.energy, noise_conditions=segment.state.conditions.noise)
         segment.state.conditions.energy[distributor.tag] = Conditions() 
+        segment.state.conditions.energy[distributor.tag][compoment.tag] = Conditions() 
         segment.state.conditions.noise[distributor.tag]  = Conditions()    
-        propulsor.append_propulsor_unknowns_and_residuals(segment) 
+        shaft.append_operating_conditions(segment,distributor,compoment)
+        shaft.append_propulsor_unknowns_and_residuals(segment) 
+        return segment.state , compoment.tag
+                          
+    # elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Converters.Turboshaft):
+    #     turboshaft         =  compoment.turboshaft 
+    #     distributor       = RCAIDE.Library.Components.Powertrain.Distributors.Fuel_Line()   
+    #     segment.state.conditions.energy[distributor.tag] = Conditions() 
+    #     segment.state.conditions.noise[distributor.tag]  = Conditions()    
+    #     converter.append_operating_conditions(segment,distributor,main_component)
+    #     converter.append_propulsor_unknowns_and_residuals(segment) 
+    #     return segment.state , converter.tag
                         
     elif isinstance(compoment,RCAIDE.Library.Components.Powertrain.Propulsors.Propulsor): 
         propulsor = deepcopy(compoment)

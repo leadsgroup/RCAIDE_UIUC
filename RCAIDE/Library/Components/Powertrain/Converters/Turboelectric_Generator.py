@@ -37,17 +37,17 @@ class Turboelectric_Generator(Converter):
     """ 
     def __defaults__(self):
         # setting the default values
-        self.tag                       = 'Turboelectric_Generator'
+        self.tag                       = 'turboelectric_generator'
         self.turboshaft                = Turboshaft()
         self.generator                 = DC_Generator() 
         self.gearbox_ratio             = None  
         self.active                    = True 
 
-    def append_operating_conditions(self,fuel_line,segment,energy_conditions,noise_conditions=None): 
+    def append_operating_conditions(self,segment,fuel_line): 
         """
         Appends operating conditions to the segment.
         """  
-        append_turboelectric_generator_conditions(self,fuel_line,segment,energy_conditions,noise_conditions) 
+        append_turboelectric_generator_conditions(self,segment,fuel_line) 
         return
 
     def unpack_propulsor_unknowns(self,segment):   
@@ -59,11 +59,11 @@ class Turboelectric_Generator(Converter):
     def append_propulsor_unknowns_and_residuals(self,segment): 
         return
     
-    def compute_performance(self,state,fuel_line,bus,center_of_gravity = [[0, 0, 0]]):
+    def compute_performance(self,state,fuel_line,bus=None,center_of_gravity = [[0, 0, 0]]):
         """
         Computes Turboelectric_Generator performance including power.
         """
-        power,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,fuel_line,bus)
+        power,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,fuel_line)
         return power,stored_results_flag,stored_propulsor_tag
     
     def reuse_stored_data(turboelectric_generator,state,fuel_line,bus,stored_propulsor_tag):

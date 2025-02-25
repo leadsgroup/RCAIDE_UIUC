@@ -206,19 +206,9 @@ class Hybrid(Network):
                 for fuel_tank in  fuel_line.fuel_tanks: 
                     fuel_tank.append_operating_conditions(segment,fuel_line)  
     
-                for _, fuel_line_item in  fuel_line.items():  
-                    if issubclass(type(fuel_line_item), RCAIDE.Library.Components.Component):
-                        fuel_line_item.append_operating_conditions(segment,fuel_line)
-                
-                for turboelectric_generator in  fuel_line.turboelectric_generators:
-                    turboelectric_generator.append_operating_conditions(segment,fuel_line, energy_conditions=segment.state.conditions.energy)
-                    # for _, turboelectric_generator_item in  turboelectric_generator.items():  
-                    #     if issubclass(type(turboelectric_generator_item), RCAIDE.Library.Components.Component):
-                    #         turboelectric_generator_item.append_operating_conditions(segment,fuel_line) 
-                    #         for _, turboelectric_generator_sub_item in  turboelectric_generator_item.items():  
-                    #             if issubclass(type(turboelectric_generator_sub_item), RCAIDE.Library.Components.Component):
-                    #                 turboelectric_generator_sub_item.append_operating_conditions(segment,fuel_line)
-                                     
+                for converter in  fuel_line.converters:
+                    converter.append_operating_conditions(segment,fuel_line)
+
 
             for bus_i, bus in enumerate(network.busses):   
                 # ------------------------------------------------------------------------------------------------------            

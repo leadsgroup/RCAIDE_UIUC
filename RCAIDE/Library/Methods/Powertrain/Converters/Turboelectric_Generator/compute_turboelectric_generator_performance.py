@@ -16,7 +16,7 @@ from copy import deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboelectric_generator_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboelectric_generator_performance(turboelectric_generator,state,fuel_line,bus):    
+def compute_turboelectric_generator_performance(turboelectric_generator,state,fuel_line):    
     ''' Computes the perfomrance of one turboelectric_generator
     
     Assumptions: 
@@ -42,16 +42,16 @@ def compute_turboelectric_generator_performance(turboelectric_generator,state,fu
 
     conditions        = state.conditions
     generator         = turboelectric_generator.generator
-    turboshaft        = turboelectric_generator.turboshaft
+    turboshaft        = turboelectric_generator.turboshaft # check if there are more than one turboshaft
 
-    turboelectric_generator_conditions = conditions.energy[turboelectric_generator.tag] 
-    generator_conditions               = turboelectric_generator_conditions[generator.tag]
-    turboshaft_conditions              = turboelectric_generator_conditions[turboshaft.tag]    
+    turboelectric_generator_conditions = conditions.energy.fuel_line[turboelectric_generator.tag] 
     
-    compute_turboshaft_performance(turboshaft,state,fuel_line,bus) 
-    P_mech       = turboelectric_generator_conditions.turboshaft.power  
-    omega        = turboelectric_generator_conditions.turboshaft.omega
- 
+    compute_turboshaft_performance(turboshaft,state,turboelectric_generator,fuel_line) 
+    #turboshaft.compute_turboshaft_performance()
+    P_mech       = turboelectric_generator_conditions.turboshaft.shaft_power   # MATTEO check this 
+    omega        = 0      # turboelectric_generator_conditions.turboshaft.omega        # MATTEO check this, it doesnt exist!@@@!!!!
+    
+    generator_conditions    = turboelectric_generator.generator
     generator_conditions.inputs.shaft_powwer     = P_mech    # MATTEO PLEASE VERIFY? 
     generator_conditions.inputs.omega            = omega     # MATTEO PLEASE VERIFY? 
     compute_generator_performance(generator,generator_conditions,conditions)   

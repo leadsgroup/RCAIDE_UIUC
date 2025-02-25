@@ -21,7 +21,7 @@ from copy import deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboshaft_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,center_of_gravity= [[0.0, 0.0,0.0]]): 
+def compute_turboshaft_performance(turboshaft,state,converter,fuel_line=None,bus=None,center_of_gravity= [[0.0, 0.0,0.0]]): 
     ''' Computes the perfomrance of one turboshaft
     
     Assumptions: 
@@ -46,10 +46,8 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,cent
     ''' 
     conditions                = state.conditions 
    # noise_conditions          = conditions.noise[turboshaft.tag]  
-    if fuel_line is not None:
-        turboshaft_conditions     = conditions.energy[fuel_line.turboelectric_generators.turboelectric_generator.tag][fuel_line.turboelectric_generators.turboelectric_generator.turboshaft.tag]  # ****** ADD A FOR LOOP TO CHECK THROUGH TURBOSHAFT GENERATORS THROUGH THE FUEL LINE
-    else:
-        turboshaft_conditions     = conditions.energy[turboshaft.tag]
+   
+    turboshaft_conditions     = conditions.energy[fuel_line.tag][converter.tag][turboshaft.tag]
     ram                       = turboshaft.ram
     inlet_nozzle              = turboshaft.inlet_nozzle
     compressor                = turboshaft.compressor

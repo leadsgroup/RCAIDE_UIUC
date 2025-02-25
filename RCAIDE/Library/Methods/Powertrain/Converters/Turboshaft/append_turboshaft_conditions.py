@@ -12,19 +12,22 @@ from RCAIDE.Framework.Mission.Common     import   Conditions
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_turboshaft_conditions
 # ----------------------------------------------------------------------------------------------------------------------    
-def append_turboshaft_conditions(turboshaft,segment,energy_conditions,noise_conditions):  
-    ones_row    = segment.state.ones_row                  
-    energy_conditions[turboshaft.tag]                               = Conditions()  
-    energy_conditions[turboshaft.tag].throttle                      = 0. * ones_row(1)     
-    energy_conditions[turboshaft.tag].commanded_thrust_vector_angle = 0. * ones_row(1)   
-    energy_conditions[turboshaft.tag].shaft_power                   = 0. * ones_row(1)
-    energy_conditions[turboshaft.tag].fuel_flow_rate                = 0. * ones_row(1)
-    energy_conditions[turboshaft.tag].inputs                        = Conditions()
-    energy_conditions[turboshaft.tag].outputs                       = Conditions()
-    if noise_conditions is not None:
-        noise_conditions[turboshaft.tag]                                = Conditions()
+def append_turboshaft_conditions(turboshaft,segment,fuel_line,converter):  
+    ones_row    = segment.state.ones_row                 
+    
+    converter_results                              = segment.state.conditions.energy[fuel_line.tag][converter.tag] 
+    converter_results[turboshaft.tag]              = Conditions()
 
-    turboshaft_conditions      = energy_conditions[turboshaft.tag]
+    converter_results[turboshaft.tag].throttle                      = 0. * ones_row(1)     
+    converter_results[turboshaft.tag].commanded_thrust_vector_angle = 0. * ones_row(1)   
+    converter_results[turboshaft.tag].shaft_power                   = 0. * ones_row(1)
+    converter_results[turboshaft.tag].fuel_flow_rate                = 0. * ones_row(1)
+    converter_results[turboshaft.tag].inputs                        = Conditions()
+    converter_results[turboshaft.tag].outputs                       = Conditions()
+   
+   # noise_conditions[turboshaft.tag]                                = Conditions() add noise later
+
+    turboshaft_conditions      = converter_results[turboshaft.tag]
     for tag, item in  turboshaft.items(): 
         if issubclass(type(item), RCAIDE.Library.Components.Component):
             item.append_operating_conditions(segment,turboshaft_conditions) 

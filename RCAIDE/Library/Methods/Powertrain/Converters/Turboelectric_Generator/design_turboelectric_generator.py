@@ -20,7 +20,7 @@ def design_turboelectric_generator(turboelectric_generator):
     """
     MATTEO HEADER
     """
-    design_turboshaft(turboelectric_generator.turboshaft)
+    design_turboshaft(turboelectric_generator)
      
     return      
   
