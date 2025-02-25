@@ -591,7 +591,7 @@ def evaluate_surrogate(state,settings,vehicle):
         inviscid_wing_lifts = compute_coefficient(sub_sur.Clift_wing_alpha[wing.tag],trans_sur.Clift_wing_alpha[wing.tag],sup_sur.Cdrag_wing_alpha[wing.tag] ,h_sub,h_sup,Mach,pts_alpha)
         inviscid_wing_drags = compute_coefficient(sub_sur.Cdrag_wing_alpha[wing.tag],trans_sur.Cdrag_wing_alpha[wing.tag],sup_sur.Cdrag_wing_alpha[wing.tag] ,h_sub,h_sup,Mach,pts_alpha)
         # Pack 
-        conditions.aerodynamics.coefficients.lift.induced.inviscid_wings[wing.tag]         =  inviscid_wing_lifts 
+        conditions.aerodynamics.coefficients.lift.induced.inviscid_wings[wing.tag] =  inviscid_wing_lifts 
         conditions.aerodynamics.coefficients.lift.compressible_wings[wing.tag]     =  inviscid_wing_lifts 
         conditions.aerodynamics.coefficients.drag.induced.inviscid_wings[wing.tag] =  inviscid_wing_drags   
     
