@@ -45,7 +45,8 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,cent
     N.A.        
     ''' 
     conditions                = state.conditions 
-    noise_conditions          = conditions.noise[turboshaft.tag]  
+   # noise_conditions          = conditions.noise[turboshaft.tag]  
+
     turboshaft_conditions     = conditions.energy[turboshaft.tag] 
     ram                       = turboshaft.ram
     inlet_nozzle              = turboshaft.inlet_nozzle
@@ -173,7 +174,7 @@ def compute_turboshaft_performance(turboshaft,state,fuel_line=None,bus=None,cent
                 exit_velocity                       = core_nozzle_conditions.outputs.velocity
             )
   
-    noise_conditions.core_nozzle = core_nozzle_res  
+    #noise_conditions.core_nozzle = core_nozzle_res  
     
     # Pack results    
     power                  = turboshaft_conditions.shaft_power  

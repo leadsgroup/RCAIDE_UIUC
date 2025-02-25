@@ -7,7 +7,7 @@ from RCAIDE.Framework.Mission.Common     import   Conditions
 # ---------------------------------------------------------------------------------------------------------------------- 
 #  append_generator_conditions
 # ----------------------------------------------------------------------------------------------------------------------    
-def append_generator_conditions(generator,segment,propulsor_conditions): 
+def append_generator_conditions(generator,segment,propulsor_conditions,noise_conditions): 
 
     """
     Initializes generator operating conditions for a mission segment.

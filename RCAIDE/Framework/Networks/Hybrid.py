@@ -211,7 +211,7 @@ class Hybrid(Network):
                         fuel_line_item.append_operating_conditions(segment,fuel_line)
                 
                 for turboelectric_generator in  fuel_line.turboelectric_generators:
-                    turboelectric_generator.append_operating_conditions(segment)
+                    turboelectric_generator.append_operating_conditions(segment,energy_conditions=segment.state.conditions.energy)
                     for _, turboelectric_generator_item in  turboelectric_generator.items():  
                         if issubclass(type(turboelectric_generator_item), RCAIDE.Library.Components.Component):
                             turboelectric_generator_item.append_operating_conditions(segment,fuel_line) 

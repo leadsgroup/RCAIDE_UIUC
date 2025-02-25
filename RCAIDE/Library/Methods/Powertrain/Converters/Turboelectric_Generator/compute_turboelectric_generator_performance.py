@@ -48,7 +48,7 @@ def compute_turboelectric_generator_performance(turboelectric_generator,state,fu
     generator_conditions               = turboelectric_generator_conditions[generator.tag]
     turboshaft_conditions              = turboelectric_generator_conditions[turboshaft.tag]    
     
-    compute_turboshaft_performance(turboshaft,turboshaft_conditions,conditions) 
+    compute_turboshaft_performance(turboshaft,state,fuel_line,bus) 
     P_mech       = turboelectric_generator_conditions.turboshaft.power  
     omega        = turboelectric_generator_conditions.turboshaft.omega
  

@@ -21,7 +21,8 @@ def append_turboshaft_conditions(turboshaft,segment,energy_conditions,noise_cond
     energy_conditions[turboshaft.tag].fuel_flow_rate                = 0. * ones_row(1)
     energy_conditions[turboshaft.tag].inputs                        = Conditions()
     energy_conditions[turboshaft.tag].outputs                       = Conditions()
-    noise_conditions[turboshaft.tag]                                = Conditions()
+    if noise_conditions is not None:
+        noise_conditions[turboshaft.tag]                                = Conditions()
 
     turboshaft_conditions      = energy_conditions[turboshaft.tag]
     for tag, item in  turboshaft.items(): 
