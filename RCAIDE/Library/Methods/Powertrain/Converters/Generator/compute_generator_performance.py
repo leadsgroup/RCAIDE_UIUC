@@ -97,9 +97,9 @@ def compute_generator_performance(generator,generator_conditions,conditions):
     elif fidelity == 'PMSM_Electric_Machine':
 
         Kv    = generator.speed_constant                          # [rpm/V]        speed constant
-        omega = generator.omega*60/(2*np.pi)                      # [rad/s -> rpm] nominal speed
+        omega = omeg*60/(2*np.pi)                      # [rad/s -> rpm] nominal speed
         D_in  = generator.inner_diameter                          # [m]            stator inner diameter
-        Power = generator.power                                   # [W]            total current that passes through the stator in both axial directions   
+        Power = power                                   # [W]            total current that passes through the stator in both axial directions   
     
         # Input data from Literature
         kw    = generator.winding_factor                          # [-]            winding factor
