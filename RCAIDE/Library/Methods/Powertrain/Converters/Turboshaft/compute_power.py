@@ -104,13 +104,13 @@ def compute_power(turboshaft,turboshaft_conditions,conditions):
     Tsp                                        = a0*(((2/(gamma - 1))*(tau_lambda/(tau_r*tau_c))*(tau_r*tau_c*tau_t - 1))**eta_c - M0)                  # Source [2]
     
     #computing the core mass flow              
-    m_dot_air                                  = m_dot_compressor*np.sqrt(Tref/total_temperature_reference)*(total_pressure_reference/Pref)             # Source [1]
+    m_dot_air                                  = m_dot_compressor*turboshaft_conditions.throttle*np.sqrt(Tref/total_temperature_reference)*(total_pressure_reference/Pref)             # Source [1]
     
     #Computing Specifc Power                          # Source [1] 
     Psp                                        =  Cp*total_temperature_reference*tau_lambda*tau_tH*(1 - tau_tL)*eta_c                                   # Source [2]    
     
     #Computing Power 
-    Power                                      = Psp*m_dot_air*turboshaft_conditions.throttle                                                             # Source [2]
+    Power                                      = Psp*m_dot_air                                                             # Source [2]
 
     #fuel to air ratio
     f                                          = (Cp*total_temperature_reference/LHV)*(tau_lambda - tau_r*tau_c)                                                                               # Source [1]

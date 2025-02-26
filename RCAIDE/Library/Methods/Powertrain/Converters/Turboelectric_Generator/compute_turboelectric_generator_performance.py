@@ -16,7 +16,7 @@ from copy import deepcopy
 # ----------------------------------------------------------------------------------------------------------------------
 # compute_turboelectric_generator_performance
 # ---------------------------------------------------------------------------------------------------------------------- 
-def compute_turboelectric_generator_performance(turboelectric_generator,state,fuel_line):    
+def compute_turboelectric_generator_performance(turboelectric_generator,state,fuel_line, bus):    
     ''' Computes the perfomrance of one turboelectric_generator
     
     Assumptions: 
@@ -46,24 +46,24 @@ def compute_turboelectric_generator_performance(turboelectric_generator,state,fu
 
     turboelectric_generator_conditions = conditions.energy.fuel_line[turboelectric_generator.tag] 
     
-    compute_turboshaft_performance(turboshaft,state,turboelectric_generator,fuel_line) 
+    power,stored_results_flag,stored_propulsor_tag = compute_turboshaft_performance(turboshaft,state,turboelectric_generator,fuel_line) 
     #turboshaft.compute_turboshaft_performance()
-    P_mech       = turboelectric_generator_conditions[turboshaft.tag].shaft_power   # MATTEO check this 
-    omega        = turboelectric_generator_conditions[turboshaft.tag].angular_velocity        # MATTEO check this, it doesnt exist!@@@!!!!
+
+    omega        = turboshaft.design_angular_velocity       # MATTEO check this, it doesnt exist!@@@!!!!
     
     generator_conditions    = turboelectric_generator_conditions[generator.tag]
-    generator_conditions.inputs.shaft_power     = P_mech    # MATTEO PLEASE VERIFY? 
+    generator_conditions.inputs.shaft_power      = power    # MATTEO PLEASE VERIFY? 
     generator_conditions.inputs.omega            = omega     # MATTEO PLEASE VERIFY? 
     compute_generator_performance(generator,generator_conditions,conditions)   
     P_elec                                       = generator_conditions.power
     
-    #conditions.energy[bus.tag].power_draw =  - generator_conditions.outputs.power # MATTEO I MADE THIS NEGATIVE BECAUSE POWER IS ENTERING THE SYSTEM
+    conditions.energy[bus.tag].power_draw =  - generator_conditions.power # MATTEO I MADE THIS NEGATIVE BECAUSE POWER IS ENTERING THE SYSTEM
     
     # Pack results      
     stored_results_flag    = True
     stored_propulsor_tag   = turboelectric_generator.tag
     
-    return P_mech,P_elec,stored_results_flag,stored_propulsor_tag
+    return power,P_elec,stored_results_flag,stored_propulsor_tag
 
 def reuse_stored_turboelectric_generator_data(turboelectric_generator,state,fuel_line,bus,stored_converter_tag,center_of_gravity= [[0.0, 0.0,0.0]]):
     '''Reuses results from one turboelectric_generator for identical propulsors

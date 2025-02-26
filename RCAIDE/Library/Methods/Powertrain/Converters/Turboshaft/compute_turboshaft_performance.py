@@ -163,7 +163,8 @@ def compute_turboshaft_performance(turboshaft,state,converter,fuel_line=None,bus
     turboshaft_conditions.total_pressure_reference                 = compressor_conditions.inputs.stagnation_pressure 
     turboshaft_conditions.flow_through_core                        =  1.0 #scaled constant to turn on core thrust computation
     turboshaft_conditions.flow_through_fan                         =  0.0 #scaled constant to turn on fan thrust computation        
-    
+
+
     # Compute the power
     compute_power(turboshaft,turboshaft_conditions,conditions) 
 
@@ -180,6 +181,7 @@ def compute_turboshaft_performance(turboshaft,state,converter,fuel_line=None,bus
     
     # Pack results    
     power                  = turboshaft_conditions.shaft_power  
+
     stored_results_flag    = True
     stored_propulsor_tag   = turboshaft.tag
 

@@ -63,7 +63,7 @@ class Turboelectric_Generator(Converter):
         """
         Computes Turboelectric_Generator performance including power.
         """
-        power,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,fuel_line)
+        power,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,fuel_line, bus)
         return power,stored_results_flag,stored_propulsor_tag
     
     def reuse_stored_data(turboelectric_generator,state,fuel_line,bus,stored_propulsor_tag):
