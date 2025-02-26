@@ -182,53 +182,53 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
         # Run Motor/Generator 
         # -----------------------------------------------------------------------------------------------------
 
-        # power_mech           = fuel_line_conditions[turboelectric_generator.tag].turboshaft.shaft_power*(phi)         
+        power_mech           = fuel_line_conditions[turboelectric_generator.tag].turboshaft.shaft_power*(phi)         
        
         # run motor/generator to determine how much current is drawn 
         # update the bus
         
         
-        # # -----------------------------------------------------------------------------------------------------    
-        # # Run Turboshaft in Reverse - Interatively guess fuel flow that provides required power shaft 
-        # # -----------------------------------------------------------------------------------------------------    
-        # alpha                = 0.0000005
-        # throttle             = 0.5*state.ones_row(1) 
-        # power_mech           = fuel_line_conditions[turboelectric_generator.tag].turboshaft.shaft_power*(1 - phi)  
-        # stored_results_flag  = False
-        # stored_propulsor_tag = None
+        # -----------------------------------------------------------------------------------------------------    
+        # Run Turboshaft in Reverse - Interatively guess fuel flow that provides required power shaft 
+        # -----------------------------------------------------------------------------------------------------    
+        alpha                = 0.0000005
+        throttle             = 0.5*state.ones_row(1) 
+        power_mech           = fuel_line_conditions[turboelectric_generator.tag].turboshaft.shaft_power*(1 - phi)  
+        stored_results_flag  = False
+        stored_propulsor_tag = None
          
-        # # Step 2.1: Compute thrust,moment and power of propulsors 
-        # diff_target_power = 100
-        # while np.any(np.abs(diff_target_power) > 1E-6): 
-        #     fuel_network_total_power  = 0. * state.ones_row(1)  
-        #     fuel_line_mdot            = 0. * state.ones_row(1)
-        #     total_mdot_var            = 0. * state.ones_row(1)
-        #     # update guess of mdot
-        #     for turboshaft in fuel_line.turboshafts: 
-        #         if turboshaft.active and fuel_line.active: 
-        #             state.conditions.energy[turboshaft.tag].throttle = throttle
-        #             if network.identical_propulsors == False:
-        #                 # run analysis  
-        #                 P,stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
-        #             else:             
-        #                 if stored_results_flag == False: 
-        #                     # run propulsor analysis 
-        #                     P,stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
-        #                 else:
-        #                     # use previous propulsor results 
-        #                     P = turboshaft.reuse_stored_data(state,network,stored_propulsor_tag)
+        # Step 2.1: Compute thrust,moment and power of propulsors 
+        diff_target_power = 100
+        while np.any(np.abs(diff_target_power) > 1E-6): 
+            fuel_network_total_power  = 0. * state.ones_row(1)  
+            fuel_line_mdot            = 0. * state.ones_row(1)
+            total_mdot_var            = 0. * state.ones_row(1)
+            # update guess of mdot
+            for turboshaft in fuel_line.turboshafts: 
+                if turboshaft.active and fuel_line.active: 
+                    state.conditions.energy[turboshaft.tag].throttle = throttle
+                    if network.identical_propulsors == False:
+                        # run analysis  
+                        P,stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
+                    else:             
+                        if stored_results_flag == False: 
+                            # run propulsor analysis 
+                            P,stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
+                        else:
+                            # use previous propulsor results 
+                            P = turboshaft.reuse_stored_data(state,network,stored_propulsor_tag)
                      
-        #             fuel_network_total_power  += P
+                    fuel_network_total_power  += P
                     
-        #             # compute fuel line mass flow rate 
-        #             fuel_line_mdot += conditions.energy[turboshaft.tag].fuel_flow_rate
+                    # compute fuel line mass flow rate 
+                    fuel_line_mdot += conditions.energy[turboshaft.tag].fuel_flow_rate
                     
-        #             # compute total mass flow rate 
-        #             total_mdot_var  = conditions.energy[turboshaft.tag].fuel_flow_rate 
+                    # compute total mass flow rate 
+                    total_mdot_var  = conditions.energy[turboshaft.tag].fuel_flow_rate 
     
-        #     diff_target_power = power_mech - fuel_network_total_power 
-        #     stored_results_flag = False 
-        #     throttle  += alpha*(diff_target_power) 
+            diff_target_power = power_mech - fuel_network_total_power 
+            stored_results_flag = False 
+            throttle  += alpha*(diff_target_power) 
                 
         # Step 2.2: Determine cumulative fuel flow from each fuel tank  
         for fuel_tank in fuel_line.fuel_tanks:  
