@@ -201,8 +201,16 @@ class Rotor(Component):
         self.cruise                            = Data() 
         self.cruise.design_power               = None
         self.cruise.design_thrust              = None
+        self.cruise.design_torque              = None 
         self.cruise.design_power_coefficient   = 0.01 
         self.cruise.design_thrust_coefficient  = 0.01
+        self.cruise.design_Cl                  = 0.7 
+        self.cruise.design_angular_velocity    = None
+        self.cruise.design_tip_mach            = None
+        self.cruise.design_acoustics           = None
+        self.cruise.design_performance         = None
+        self.cruise.design_SPL_dBA             = None
+        self.cruise.design_pitch_command       = 0.0     
 
         # operating conditions 
         self.induced_power_factor              = 1.48        # accounts for interference effects
