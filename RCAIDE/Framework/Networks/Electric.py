@@ -129,18 +129,18 @@ class Electric(Network):
                         if propulsor.active and bus.active:       
                             if network.identical_propulsors == False:
                                 # run analysis  
-                                T,M,P,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus = bus, center_of_gravity= center_of_gravity)
+                                T,M,P_mech,P_elec,stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus = bus, center_of_gravity= center_of_gravity)
                             else:             
                                 if stored_results_flag == False: 
                                     # run propulsor analysis 
-                                    T,M,P,_, stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus = bus, center_of_gravity= center_of_gravity)
+                                    T,M,P_mech,P_elec, stored_results_flag,stored_propulsor_tag = propulsor.compute_performance(state,bus = bus, center_of_gravity= center_of_gravity)
                                 else:
                                     # use previous propulsor results 
-                                    T,M,P,_  = propulsor.reuse_stored_data(state,network,bus = bus,stored_propulsor_tag=stored_propulsor_tag,center_of_gravity=center_of_gravity)
+                                    T,M,P_mech,P_elec  = propulsor.reuse_stored_data(state,network,bus = bus,stored_propulsor_tag=stored_propulsor_tag,center_of_gravity=center_of_gravity)
     
                             total_thrust += T   
                             total_moment += M   
-                            total_power  += P 
+                            total_power  += P_mech 
 
                 # compute power from each componemnt   
                 charging_power  = (state.conditions.energy[bus.tag].regenerative_power*bus_voltage*bus.power_split_ratio)  
