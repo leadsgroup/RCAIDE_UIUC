@@ -58,19 +58,19 @@ def compute_generator_performance(generator,generator_conditions,conditions):
      
     if type(generator) == RCAIDE.Library.Components.Powertrain.Converters.DC_Generator:  
         omeg  = generator_conditions.inputs.omega*G
-        power = generator_conditions.inputs.shaft_powwer 
+        power = generator_conditions.inputs.shaft_power 
         fidelity = "Simple_DC_Electric_Machine" 
     elif type(generator) == RCAIDE.Library.Components.Powertrain.Converters.PMSM_Generator:  
         omeg  = generator_conditions.inputs.omega*G
-        power = generator_conditions.inputs.shaft_powwer 
+        power = generator_conditions.inputs.shaft_power 
         fidelity = "PMSM_Electric_Machine" 
     elif (type(generator) ==  RCAIDE.Library.Components.Powertrain.Converters.DC_Motor):
         omeg  = generator_conditions.outputs.omega*G
-        power = generator_conditions.outputs.shaft_powwer
+        power = generator_conditions.outputs.shaft_power
         fidelity = "Simple_DC_Electric_Machine"
     elif (type(generator) ==  RCAIDE.Library.Components.Powertrain.Converters.PMSM_Motor): 
         omeg  = generator_conditions.outputs.omega*G
-        power = generator_conditions.outputs.shaft_powwer
+        power = generator_conditions.outputs.shaft_power
         fidelity = "PMSM_Electric_Machine"
         
     if fidelity == 'Simple_DC_Electric_Machine':
@@ -80,11 +80,12 @@ def compute_generator_performance(generator,generator_conditions,conditions):
         # Unpack
         Kv    = generator.speed_constant
         Res   = generator.resistance
-        v     = generator_conditions.voltage 
         etaG  = generator.gearbox_efficiency
         exp_i = generator.expected_current
         io    = generator.no_load_current + exp_i*(1-etaG)
 
+        v     = generator_conditions.voltage
+         
         i=(v-omeg/Kv)/Res 
         i[i < 0.0] = 0.0
     
@@ -92,14 +93,11 @@ def compute_generator_performance(generator,generator_conditions,conditions):
 
         Q     = power / omeg 
 
-        v     = generator_conditions.voltage
-
     elif fidelity == 'PMSM_Electric_Machine':
 
         Kv    = generator.speed_constant                          # [rpm/V]        speed constant
-        omega = generator.omega*60/(2*np.pi)                      # [rad/s -> rpm] nominal speed
-        D_in  = generator.inner_diameter                          # [m]            stator inner diameter
-        Power = generator.power                                   # [W]            total current that passes through the stator in both axial directions   
+        omega = omeg*60/(2*np.pi)                      # [rad/s -> rpm] nominal speed
+        D_in  = generator.inner_diameter                          # [m]            stator inner diameter  
     
         # Input data from Literature
         kw    = generator.winding_factor                          # [-]            winding factor
@@ -111,15 +109,15 @@ def compute_generator_performance(generator,generator_conditions,conditions):
         mu_0  = generator.mu_0                                    # [N/A**2]       permeability of free space
         mu_r  = generator.mu_r                                    # [N/A**2]       relative permeability of the magnetic material 
     
-        Q     = Power/omega                                       # [Nm]           torque                  
+        Q     = power/omega                                       # [Nm]           torque                  
         i     = np.sqrt((2*Q*l)/(D_in*mu_0*mu_r*L*kw))            # [A]            total current 
         v     = omega/((2 * np.pi / 60)*Kv) + i*Res               # [V]            total voltage
 
         etam  = (1-io/i)*(1-i*Res/v)                              # [-]            efficiency
    
-    generator_conditions.torque     = Q   
-    generator_conditions.current    = i 
-    generator_conditions.power      = i *v 
-    generator_conditions.efficiency = etam 
+    generator_conditions.outputs.torque     = Q   
+    generator_conditions.outputs.current    = i 
+    generator_conditions.outputs.power      = i *v 
+    generator_conditions.outputs.efficiency = etam 
  
     return

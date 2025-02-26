@@ -22,8 +22,10 @@ def append_turboshaft_conditions(turboshaft,segment,fuel_line,converter):
     converter_results[turboshaft.tag].commanded_thrust_vector_angle = 0. * ones_row(1)   
     converter_results[turboshaft.tag].shaft_power                   = 0. * ones_row(1)
     converter_results[turboshaft.tag].fuel_flow_rate                = 0. * ones_row(1)
+    converter_results[turboshaft.tag].angular_velocity               = 0. * ones_row(1) 
     converter_results[turboshaft.tag].inputs                        = Conditions()
     converter_results[turboshaft.tag].outputs                       = Conditions()
+
    
    # noise_conditions[turboshaft.tag]                                = Conditions() add noise later
 

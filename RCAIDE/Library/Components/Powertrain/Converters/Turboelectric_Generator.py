@@ -50,21 +50,21 @@ class Turboelectric_Generator(Converter):
         append_turboelectric_generator_conditions(self,segment,fuel_line) 
         return
 
-    def unpack_propulsor_unknowns(self,segment):   
-        return 
+    # def unpack_propulsor_unknowns(self,segment):   This is worng 
+    #     return 
 
-    def pack_propulsor_residuals(self,segment): 
-        return    
+    # def pack_propulsor_residuals(self,segment): 
+    #     return    
 
-    def append_propulsor_unknowns_and_residuals(self,segment): 
-        return
+    # def append_propulsor_unknowns_and_residuals(self,segment): 
+    #     return
     
-    def compute_performance(self,state,fuel_line,bus=None,center_of_gravity = [[0, 0, 0]]):
+    def compute_performance(self,state,fuel_line,bus=None):
         """
         Computes Turboelectric_Generator performance including power.
         """
-        power,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,fuel_line)
-        return power,stored_results_flag,stored_propulsor_tag
+        P_mech,P_elec,stored_results_flag,stored_propulsor_tag =  compute_turboelectric_generator_performance(self,state,fuel_line, bus)
+        return P_mech,P_elec,stored_results_flag,stored_propulsor_tag
     
     def reuse_stored_data(turboelectric_generator,state,fuel_line,bus,stored_propulsor_tag):
         power  = reuse_stored_turboelectric_generator_data(turboelectric_generator,state,fuel_line,bus,stored_propulsor_tag)

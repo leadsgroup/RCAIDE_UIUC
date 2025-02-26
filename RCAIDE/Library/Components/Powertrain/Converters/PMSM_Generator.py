@@ -120,7 +120,7 @@ class PMSM_Generator(Converter):
         self.mu_r               = 0.0
         self.interpolated_func  = None
         
-    def append_operating_conditions(self,segment,energy_conditions,noise_conditions=None): 
-        append_generator_conditions(self,segment,energy_conditions,noise_conditions=None)
+    def append_operating_conditions(self,segment,energy_conditions): 
+        append_generator_conditions(self,segment,energy_conditions)
         return
     
