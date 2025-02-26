@@ -142,12 +142,12 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
         # Run Turboelectric Generation in Reverse - Interatively guess fuel flow that provides required power from generator  
         # -------------------------------------------------------------------------------------------------------------------        
         power_elec           = bus_conditions.power_draw*(1 - phi) 
-        alpha                = 0.000005
+        alpha                = 0.0000005
         throttle             = 0.5*state.ones_row(1)  
         stored_results_flag  = False
         stored_propulsor_tag = None  
         diff_target_power    = 100
-        while np.any(np.abs(diff_target_power) > 1E-6): 
+        while np.any(np.abs(diff_target_power) > 1E-3): 
             power_elec_guess  = 0. * state.ones_row(1) 
             fuel_line_mdot    = 0. * state.ones_row(1)
             total_mdot_var    = 0. * state.ones_row(1) 
@@ -168,12 +168,12 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
                     power_elec_guess += P_elec
 
                     # compute fuel line mass flow rate 
-                    fuel_line_mdot += conditions.energy[turboelectric_generator.tag].fuel_flow_rate
+                    fuel_line_mdot += conditions.energy[fuel_line.tag][turboelectric_generator.tag].fuel_flow_rate
 
                     # compute total mass flow rate 
-                    total_mdot_var  += conditions.energy[turboelectric_generator.tag].fuel_flow_rate 
+                    total_mdot_var  += conditions.energy[fuel_line.tag][turboelectric_generator.tag].fuel_flow_rate 
 
-            diff_target_power = power_elec - power_elec_guess 
+            diff_target_power = power_elec_guess - power_elec 
             stored_results_flag = False 
             throttle  += alpha*(diff_target_power)  
        
@@ -182,7 +182,7 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
         # Run Motor/Generator 
         # -----------------------------------------------------------------------------------------------------
 
-        power_mech           = fuel_line_conditions.shaft_power*(phi)         
+        power_mech           = fuel_line_conditions[turboelectric_generator.tag].turboshaft.shaft_power*(phi)         
        
         # run motor/generator to determine how much current is drawn 
         # update the bus
@@ -191,9 +191,9 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
         # -----------------------------------------------------------------------------------------------------    
         # Run Turboshaft in Reverse - Interatively guess fuel flow that provides required power shaft 
         # -----------------------------------------------------------------------------------------------------    
-        alpha                = 0.000005
+        alpha                = 0.0000005
         throttle             = 0.5*state.ones_row(1) 
-        power_mech           = fuel_line_conditions.shaft_power*(1 - phi)  
+        power_mech           = fuel_line_conditions[turboelectric_generator.tag].turboshaft.shaft_power*(1 - phi)  
         stored_results_flag  = False
         stored_propulsor_tag = None
          
