@@ -204,9 +204,9 @@ def evaluate_energy_storage(state,network,total_mdot,total_mech_power, total_ele
             fuel_line_mdot            = 0. * state.ones_row(1)
             total_mdot_var            = 0. * state.ones_row(1)
             # update guess of mdot
-            for turboshaft in fuel_line.turboshafts: 
-                if turboshaft.active and fuel_line.active: 
-                    state.conditions.energy[turboshaft.tag].throttle = throttle
+            for turboshaft in fuel_line.converters.turboelectric_generator.turboshaft: 
+                if turboelectric_generator.active and fuel_line.active: 
+                    state.conditions.energy.fuel_line[turboelectric_generator.tag].turboshaft.throttle = throttle
                     if network.identical_propulsors == False:
                         # run analysis  
                         P,stored_results_flag,stored_propulsor_tag = turboshaft.compute_performance(state)
